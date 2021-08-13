@@ -17,11 +17,11 @@
 		"@types/node": "file:../node_modules/@types/node",
 		"@types/react": "file:../node_modules/@types/react",
 		"@types/react-dom": "file:../node_modules/@types/react-dom",
+		"maas-react-components": "file:..",
 		"react": "file:../node_modules/react",
 		"react-dom": "file:../node_modules/react-dom",
 		"react-scripts": "file:../node_modules/react-scripts",
-		"maas-react-components": "file:..",
-		"typescript": "file:../node_modules/typescript"
+		"typescript": "^4.3.5"
 	},
 	"devDependencies": {
 		"@babel/plugin-syntax-object-rest-spread": "^7.8.3"
