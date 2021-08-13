@@ -16,7 +16,6 @@ npm install --save maas-react-components
 import React, { Component } from "react";
 
 import MyComponent from "maas-react-components";
-import "maas-react-components/dist/index.css";
 
 class Example extends Component {
 	render() {

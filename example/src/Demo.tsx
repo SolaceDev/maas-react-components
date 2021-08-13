@@ -1,4 +1,3 @@
-import "maas-react-components/dist/index.css";
 import { Container, SolaceButton, SolaceTextField, Stack } from "maas-react-components";
 
 import MenuItem from "@material-ui/core/MenuItem";
