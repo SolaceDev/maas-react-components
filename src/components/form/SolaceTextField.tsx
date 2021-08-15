@@ -2,7 +2,7 @@ import { Box, FormHelperText, InputLabel, styled, TextField, TextFieldProps, use
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
-import { constants } from "../constants";
+import { constants } from "../../constants";
 
 type CommonTextFieldProps = TextFieldProps & {
 	// Pass true to use original mui label style.

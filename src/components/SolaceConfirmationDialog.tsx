@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 
-import SolaceButton, { SolaceButtonProps } from "./SolaceButton";
+import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 
 type actionProps = Partial<SolaceButtonProps> & { label: string };
 
@@ -51,7 +51,7 @@ export default function SolaceConfirmationDialog(props: SolaceConfirmationDialog
 					<SolaceButton
 						onClick={action.onClick}
 						key={`key-${action.label}`}
-						color={action.color ?? "primary"}
+						// color={action.color ?? "primary"}
 						variant={action.variant ?? "text"}
 						disabled={action.disabled}
 					>

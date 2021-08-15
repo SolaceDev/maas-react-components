@@ -160,24 +160,3 @@ const theme = {
 };
 
 export default theme;
-
-declare module "@material-ui/core/styles" {
-	interface TypographyVariants {
-		one33rem: React.CSSProperties;
-	}
-	interface BreakpointOverrides {
-		solaceMd: true;
-	}
-
-	// allow configuration using `createTheme`
-	interface TypographyVariantsOptions {
-		one33rem?: React.CSSProperties;
-	}
-}
-
-// Update the Typography's variant prop options
-declare module "@material-ui/core/Typography" {
-	interface TypographyPropsVariantOverrides {
-		one33rem: true;
-	}
-}

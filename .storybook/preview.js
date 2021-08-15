@@ -3,11 +3,9 @@ import { withDesign } from "storybook-addon-designs";
 
 import theme from "../src/theme";
 
-const solaceTheme = createTheme(theme);
-
 export const decorators = [
 	(Story) => (
-		<ThemeProvider theme={solaceTheme}>
+		<ThemeProvider theme={createTheme(theme)}>
 			<Story />
 		</ThemeProvider>
 	),
