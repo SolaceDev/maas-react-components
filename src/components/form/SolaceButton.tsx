@@ -1,10 +1,6 @@
 import { Button, IconButton, Link } from "@material-ui/core";
 import React from "react";
 
-// type Buttons = ButtonProps | IconButtonProps | LinkProps;
-
-// export type SolaceButtonProps = Buttons & { variant: "text" | "outlined" | "contained" | "icon" | "link" };
-
 export interface SolaceButtonProps {
 	/**
 	 * Unique identifier for the button
@@ -23,6 +19,14 @@ export interface SolaceButtonProps {
 	 */
 	underline?: "none" | "hover" | "always";
 	/**
+	 * Element placed before the children
+	 */
+	startIcon?: symbol;
+	/**
+	 * Element placed after the children
+	 */
+	endIcon?: symbol;
+	/**
 	 * Optional click handler
 	 */
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -33,6 +37,8 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 	variant = "text",
 	disabled = false,
 	underline = "hover",
+	startIcon,
+	endIcon,
 	onClick,
 	children
 }) => {
@@ -43,10 +49,20 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 	};
 
 	if (variant === "icon") {
-		return <IconButton id={id}>{children}</IconButton>;
+		return (
+			<IconButton id={id} disabled={disabled} onClick={handleClick}>
+				{children}
+			</IconButton>
+		);
 	} else if (variant === "link") {
 		return (
-			<Link id={id} component="button" underline={disabled ? "none" : underline ?? "hover"}>
+			<Link
+				id={id}
+				onClick={handleClick}
+				component="button"
+				disabled={disabled}
+				underline={disabled ? "none" : underline ?? "hover"}
+			>
 				{children}
 			</Link>
 		);
@@ -63,7 +79,14 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 		};
 
 		return (
-			<Button id={id} variant={BUTTON_VARIANT_MAP[variant]} onClick={handleClick}>
+			<Button
+				id={id}
+				startIcon={startIcon}
+				endIcon={endIcon}
+				disabled={disabled}
+				variant={BUTTON_VARIANT_MAP[variant]}
+				onClick={handleClick}
+			>
 				{children}
 			</Button>
 		);

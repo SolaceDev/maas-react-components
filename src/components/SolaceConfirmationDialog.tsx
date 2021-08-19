@@ -49,9 +49,8 @@ export default function SolaceConfirmationDialog(props: SolaceConfirmationDialog
 			<DialogActions sx={{ padding: theme.spacing(3), paddingTop: theme.spacing(1.5) }}>
 				{actions.map((action) => (
 					<SolaceButton
-						onClick={action.onClick}
 						key={`key-${action.label}`}
-						// color={action.color ?? "primary"}
+						onClick={action.onClick}
 						variant={action.variant ?? "text"}
 						disabled={action.disabled}
 					>

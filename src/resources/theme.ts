@@ -1,5 +1,7 @@
 import { grey, red } from "@material-ui/core/colors";
 
+import { GREEN1, GREEN2, GREEN3, GREY1, GREY2, GREY3, GREY4, WHITE1 } from "./colorPallet";
+
 // A custom theme for this app
 const theme = {
 	breakpoints: {
@@ -33,26 +35,66 @@ const theme = {
 		},
 		MuiButton: {
 			defaultProps: {
-				disableRipple: true
+				disableRipple: true,
+				disableElevation: true
 			},
 			styleOverrides: {
 				contained: {
 					"&:disabled": {
-						color: "#fff"
+						color: WHITE1,
+						backgroundColor: GREY1
+					},
+					"&:active": {
+						backgroundColor: GREEN2
 					}
 				},
-
 				outlinedPrimary: {
+					borderWidth: "1px",
+					borderStyle: "solid",
+					"&:disabled": {
+						color: GREY1,
+						borderColor: GREY1
+					},
 					"&:hover": {
-						backgroundColor: grey[50]
+						backgroundColor: GREY2
+					},
+					"&:active": {
+						backgroundColor: GREY3
 					}
 				},
 				root: {
-					textTransform: "none"
+					textTransform: "none",
+					padding: "6px 16px",
+					borderRadius: "4px",
+					minWidth: "100px",
+					height: "32px",
+					fontWeight: "medium"
+				},
+				startIcon: {
+					"&>*:nth-of-type(1)": {
+						fontSize: "unset",
+						width: "24px",
+						height: "24px",
+						marginLeft: "-12px"
+					}
+				},
+				endIcon: {
+					"&>*:nth-of-type(1)": {
+						fontSize: "unset",
+						width: "24px",
+						height: "24px",
+						marginRight: "-12px"
+					}
 				},
 				textPrimary: {
+					"&:disabled": {
+						color: GREY1
+					},
 					"&:hover": {
-						backgroundColor: grey[100]
+						backgroundColor: GREY2
+					},
+					"&:active": {
+						backgroundColor: GREY3
 					}
 				}
 			}
@@ -93,16 +135,18 @@ const theme = {
 		MuiIconButton: {
 			defaultProps: { disableRipple: true },
 			styleOverrides: {
-				colorPrimary: {
-					"&:hover": {
-						backgroundColor: grey[100]
-					}
-				},
 				root: {
-					"&:hover": {
-						borderRadius: "4px"
+					padding: "4px",
+					borderRadius: "5px",
+					"&:disabled": {
+						color: GREY1
 					},
-					borderRadius: "4px"
+					"&:hover": {
+						backgroundColor: GREY2
+					},
+					"&:active": {
+						backgroundColor: GREY4
+					}
 				}
 			}
 		},
@@ -110,7 +154,7 @@ const theme = {
 		MuiInputLabel: {
 			styleOverrides: {
 				asterisk: {
-					color: "#00AD93"
+					color: GREEN1
 				},
 				root: {
 					color: grey[800],
@@ -122,8 +166,14 @@ const theme = {
 		MuiLink: {
 			styleOverrides: {
 				root: {
+					padding: "6px 16px",
+					borderRadius: "4px",
+					minWidth: "100px",
+					height: "32px",
+					fontWeight: "normal",
+					fontSize: "14px",
 					"&[disabled]": {
-						color: grey[500]
+						color: GREY1
 					}
 				}
 			}
@@ -137,16 +187,16 @@ const theme = {
 			main: red.A400
 		},
 		primary: {
-			contrastText: "#fff",
-			dark: "#00CCAD",
-			main: "#00AD93"
+			contrastText: WHITE1,
+			dark: GREEN3,
+			main: GREEN1
 		},
 		secondary: {
-			contrastText: "#fff",
-			main: "#00CCAD"
+			contrastText: WHITE1,
+			main: GREEN3
 		},
 		text: {
-			primary: "rgba(0, 0, 0, 0.8)"
+			primary: WHITE1
 		}
 	},
 	spacing: 8,

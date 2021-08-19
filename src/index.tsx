@@ -13,4 +13,4 @@ export { default as SolaceConfirmationDialog } from "./components/SolaceConfirma
 export { default as SolaceMenuPopper } from "./components/SolaceMenuPopper";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";
 
-export { default as SolaceTheme } from "./theme";
+export { default as SolaceTheme } from "./resources/theme";
