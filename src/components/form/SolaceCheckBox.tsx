@@ -5,9 +5,6 @@ interface CommonCheckBoxProps extends CheckboxProps {
 	testId?: string;
 }
 
-/**
- * TODO - these styles need to be moved to the theme.ts file
- */
 const StyledCheckBoxIcon = styled("span")(({ theme }) => ({
 	borderRadius: 3,
 	width: 24,
