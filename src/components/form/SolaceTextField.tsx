@@ -52,7 +52,7 @@ export default function SolaceTextField(props: CommonTextFieldProps): JSX.Elemen
 		if (onChange) {
 			onChange({
 				id: id,
-				data: event.target.value
+				value: event.target.value
 			});
 		}
 	};
