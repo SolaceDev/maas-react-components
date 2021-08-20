@@ -2,6 +2,7 @@ import { Box, FormHelperText, InputLabel, styled, TextField, TextFieldProps, use
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
+import { useState } from "react";
 import { constants } from "../../constants";
 
 type CommonTextFieldProps = TextFieldProps & {
@@ -29,9 +30,32 @@ const StyledTextField = styled(TextField)(() => ({
  */
 
 export default function SolaceTextField(props: CommonTextFieldProps): JSX.Element {
-	const { helperText, testId, margin, useMuiLabelFormat, label, useSameLineLabel, InputProps, useLastPass, ...rest } =
-		props;
+	const {
+		id,
+		helperText,
+		testId,
+		margin,
+		useMuiLabelFormat,
+		label,
+		useSameLineLabel,
+		InputProps,
+		useLastPass,
+		onChange,
+		value,
+		...rest
+	} = props;
 	const theme = useTheme();
+	const [inputValue, setInputValue] = useState(value);
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setInputValue(event.target.value);
+		if (onChange) {
+			onChange({
+				id: id,
+				data: event.target.value
+			});
+		}
+	};
 
 	const textField = () => (
 		<React.Fragment>
@@ -43,6 +67,8 @@ export default function SolaceTextField(props: CommonTextFieldProps): JSX.Elemen
 					"data-testid": testId,
 					...props.inputProps
 				}}
+				onChange={handleChange}
+				value={inputValue}
 				role="textfield"
 				InputProps={{
 					...InputProps,

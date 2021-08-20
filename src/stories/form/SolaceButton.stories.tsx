@@ -26,6 +26,8 @@ const Template: ComponentStory<typeof SolaceButton> = (args) => <SolaceButton {.
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {
 	onClick: action("default-button-clicked"),
+	dataQa: "testDataProp",
+	dataTags: "testDataTag1 testDataTag2",
 	children: "Click Me!"
 };
 
@@ -54,6 +56,7 @@ export const IconButton = Template.bind({});
 IconButton.args = {
 	onClick: action("icon-button-clicked"),
 	variant: "icon",
+	title: "Delete",
 	children: <DeleteIcon />
 };
 
@@ -62,6 +65,13 @@ LinkButton.args = {
 	onClick: action("link-button-clicked"),
 	variant: "link",
 	children: "Click Me!"
+};
+
+export const ExternalLinkButton = Template.bind({});
+ExternalLinkButton.args = {
+	variant: "link",
+	href: "http://www.cnn.com",
+	children: "Visit CNN"
 };
 
 export const WithStartIcon = Template.bind({});

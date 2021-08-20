@@ -2,6 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import SolaceTextField from "../../components/form/SolaceTextField";
+import { action } from "@storybook/addon-actions";
 
 export default {
 	title: "Forms/SolaceTextfield",
@@ -17,10 +18,16 @@ export default {
 
 const Template: ComponentStory<typeof SolaceTextField> = (args) => <SolaceTextField {...args} />;
 
-export const DefaultTextfield = (args: any) => <SolaceTextField {...args} />;
+export const DefaultTextfield = Template.bind({});
+DefaultTextfield.args = {
+	onChange: action("text-changed"),
+	id: "demoTextField"
+};
 
 export const StackedLabeleFormat = Template.bind({});
 StackedLabeleFormat.args = {
+	onChange: action("text-changed"),
+	id: "demoTextField",
 	label: "Some Label"
 };
 

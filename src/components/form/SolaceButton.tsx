@@ -1,7 +1,8 @@
-import { Button, IconButton, Link } from "@material-ui/core";
+import { Button, IconButton, Link, Tooltip } from "@material-ui/core";
 import React from "react";
+import SolaceComponentProps from "../SolaceComponentProps";
 
-export interface SolaceButtonProps {
+export interface SolaceButtonProps extends SolaceComponentProps {
 	/**
 	 * Unique identifier for the button
 	 */
@@ -18,6 +19,14 @@ export interface SolaceButtonProps {
 	 * Controls when the link should have an underline
 	 */
 	underline?: "none" | "hover" | "always";
+	/**
+	 * Text to use for tooltip and arial-label (assecibility)
+	 */
+	title?: string;
+	/**
+	 * URL to navigate to on click
+	 */
+	href?: string;
 	/**
 	 * Element placed before the children
 	 */
@@ -37,9 +46,13 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 	variant = "text",
 	disabled = false,
 	underline = "hover",
+	title = "",
+	href,
 	startIcon,
 	endIcon,
 	onClick,
+	dataQa,
+	dataTags,
 	children
 }) => {
 	const handleClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -50,21 +63,28 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 
 	if (variant === "icon") {
 		return (
-			<IconButton id={id} disabled={disabled} onClick={handleClick}>
-				{children}
-			</IconButton>
+			<Tooltip title={title} arial-lable={title}>
+				<IconButton data-qa={dataQa} data-tags={dataTags} id={id} disabled={disabled} onClick={handleClick}>
+					{children}
+				</IconButton>
+			</Tooltip>
 		);
 	} else if (variant === "link") {
 		return (
-			<Link
-				id={id}
-				onClick={handleClick}
-				component="button"
-				disabled={disabled}
-				underline={disabled ? "none" : underline ?? "hover"}
-			>
-				{children}
-			</Link>
+			<Tooltip title={title} arial-lable={title}>
+				<Link
+					id={id}
+					data-qa={dataQa}
+					data-tags={dataTags}
+					component={href ? "a" : "button"}
+					target={href ? "_blank" : "_self"}
+					href={href}
+					disabled={disabled}
+					underline={disabled ? "none" : underline ?? "hover"}
+				>
+					{children}
+				</Link>
+			</Tooltip>
 		);
 	} else {
 		enum MATERIAL_VARIANTS {
@@ -79,16 +99,20 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 		};
 
 		return (
-			<Button
-				id={id}
-				startIcon={startIcon}
-				endIcon={endIcon}
-				disabled={disabled}
-				variant={BUTTON_VARIANT_MAP[variant]}
-				onClick={handleClick}
-			>
-				{children}
-			</Button>
+			<Tooltip title={title} arial-lable={title}>
+				<Button
+					id={id}
+					data-qa={dataQa}
+					data-tags={dataTags}
+					startIcon={startIcon}
+					endIcon={endIcon}
+					disabled={disabled}
+					variant={BUTTON_VARIANT_MAP[variant]}
+					onClick={handleClick}
+				>
+					{children}
+				</Button>
+			</Tooltip>
 		);
 	}
 };

@@ -1,6 +1,6 @@
 import { grey, red } from "@material-ui/core/colors";
 
-import { GREEN1, GREEN2, GREEN3, GREY1, GREY2, GREY3, GREY4, WHITE1 } from "./colorPallet";
+import { GREEN1, GREEN2, GREEN3, GREEN4, GREY1, GREY2, GREY3, GREY4, GREY5, GREY6, WHITE1 } from "./colorPallet";
 
 // A custom theme for this app
 const theme = {
@@ -150,7 +150,6 @@ const theme = {
 				}
 			}
 		},
-
 		MuiInputLabel: {
 			styleOverrides: {
 				asterisk: {
@@ -196,7 +195,7 @@ const theme = {
 			main: GREEN3
 		},
 		text: {
-			primary: WHITE1
+			primary: GREY6
 		}
 	},
 	spacing: 8,
