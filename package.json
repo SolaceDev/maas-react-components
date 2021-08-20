@@ -1,10 +1,16 @@
 {
-	"name": "maas-react-components",
+	"name": "@SolaceDev/maas-react-components",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SolaceDev/maas-react-components"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/SolaceDev"
+	},
 	"version": "1.0.0",
 	"description": "React component library designed for Solace.",
 	"author": "",
 	"license": "MIT",
-	"repository": "/maas-react-components",
 	"main": "dist/index.js",
 	"module": "dist/index.modern.js",
 	"source": "src/index.tsx",
@@ -12,7 +18,7 @@
 		"node": ">=10"
 	},
 	"scripts": {
-		"build": "microbundle-crl --no-compress --format cjs",
+		"build": "microbundle-crl --compress --format cjs,modern",
 		"start": "microbundle-crl watch --no-compress --format cjs",
 		"prepare": "run-s build ",
 		"test": "run-s test:unit test:lint test:build",

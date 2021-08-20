@@ -19,7 +19,7 @@ export default function SolaceMenuPopper(props: SolaceMenuPopperProps): JSX.Elem
 	const { index, items, disableButton, showIcons } = props;
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-	const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+	const handleMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		setAnchorEl(event.currentTarget);
 	};
 

@@ -3,7 +3,7 @@ export * from "@material-ui/core/colors";
 
 export { default as SolaceToasts } from "./components/SolaceToasts";
 export { default as NoAccess } from "./components/NoAccess";
-export { default as SolaceBackdrop } from "./components/SolaceBackdrop";
+export { default as SolaceBackDrop } from "./components/SolaceBackDrop";
 export { default as SolaceButton } from "./components/form/SolaceButton";
 export { default as SolaceAutoCompleteTextField } from "./components/form/SolaceAutoCompleteTextField";
 export { default as SolaceCheckBox } from "./components/form/SolaceCheckBox";

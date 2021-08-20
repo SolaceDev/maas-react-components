@@ -2,7 +2,6 @@ import { Box, FormHelperText, InputLabel, styled, TextField, TextFieldProps, use
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
-import { useState } from "react";
 import { constants } from "../../constants";
 
 type CommonTextFieldProps = TextFieldProps & {
@@ -31,7 +30,6 @@ const StyledTextField = styled(TextField)(() => ({
 
 export default function SolaceTextField(props: CommonTextFieldProps): JSX.Element {
 	const {
-		id,
 		helperText,
 		testId,
 		margin,
@@ -41,19 +39,13 @@ export default function SolaceTextField(props: CommonTextFieldProps): JSX.Elemen
 		InputProps,
 		useLastPass,
 		onChange,
-		value,
 		...rest
 	} = props;
 	const theme = useTheme();
-	const [inputValue, setInputValue] = useState(value);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setInputValue(event.target.value);
 		if (onChange) {
-			onChange({
-				id: id,
-				value: event.target.value
-			});
+			onChange(event);
 		}
 	};
 
@@ -68,7 +60,6 @@ export default function SolaceTextField(props: CommonTextFieldProps): JSX.Elemen
 					...props.inputProps
 				}}
 				onChange={handleChange}
-				value={inputValue}
 				role="textfield"
 				InputProps={{
 					...InputProps,
