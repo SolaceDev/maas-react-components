@@ -2,7 +2,7 @@ import { Box, FormHelperText, InputLabel, styled, TextField, TextFieldProps, use
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
-import { constants } from "../constants";
+import { constants } from "../../constants";
 
 type CommonTextFieldProps = TextFieldProps & {
 	// Pass true to use original mui label style.
@@ -29,9 +29,25 @@ const StyledTextField = styled(TextField)(() => ({
  */
 
 export default function SolaceTextField(props: CommonTextFieldProps): JSX.Element {
-	const { helperText, testId, margin, useMuiLabelFormat, label, useSameLineLabel, InputProps, useLastPass, ...rest } =
-		props;
+	const {
+		helperText,
+		testId,
+		margin,
+		useMuiLabelFormat,
+		label,
+		useSameLineLabel,
+		InputProps,
+		useLastPass,
+		onChange,
+		...rest
+	} = props;
 	const theme = useTheme();
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (onChange) {
+			onChange(event);
+		}
+	};
 
 	const textField = () => (
 		<React.Fragment>
@@ -43,6 +59,7 @@ export default function SolaceTextField(props: CommonTextFieldProps): JSX.Elemen
 					"data-testid": testId,
 					...props.inputProps
 				}}
+				onChange={handleChange}
 				role="textfield"
 				InputProps={{
 					...InputProps,

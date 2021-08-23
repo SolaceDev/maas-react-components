@@ -5,7 +5,7 @@ import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 import { SxProps } from "@material-ui/system";
 import React from "react";
 
-import SolaceButton from "./SolaceButton";
+import SolaceButton from "./form/SolaceButton";
 
 interface SolaceMenuPopperProps {
 	index: number;
@@ -19,7 +19,7 @@ export default function SolaceMenuPopper(props: SolaceMenuPopperProps): JSX.Elem
 	const { index, items, disableButton, showIcons } = props;
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-	const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+	const handleMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		setAnchorEl(event.currentTarget);
 	};
 
@@ -37,12 +37,12 @@ export default function SolaceMenuPopper(props: SolaceMenuPopperProps): JSX.Elem
 			<SolaceButton
 				id={`moreButton-${index}`}
 				key={`key-moreButton-${index}`}
-				sx={props.buttonStyle}
+				// sx={props.buttonStyle}
 				onClick={handleMenuClick}
 				disabled={disableButton}
 				variant="icon"
-				color="default"
-				size="medium"
+				// color="default"
+				// size="medium"
 			>
 				<MoreHorizOutlinedIcon />
 			</SolaceButton>
