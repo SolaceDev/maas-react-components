@@ -10,10 +10,16 @@ export default {
 	parameters: {
 		design: {
 			type: "figma",
-			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=1%3A2"
+			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=430%3A548"
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		type: {
+			control: {
+				type: 'select'
+			}
+		}
+	}
 } as ComponentMeta<typeof SolaceTextField>;
 
 const Template: ComponentStory<typeof SolaceTextField> = (args) => <SolaceTextField {...args} />;
@@ -21,37 +27,82 @@ const Template: ComponentStory<typeof SolaceTextField> = (args) => <SolaceTextFi
 export const DefaultTextfield = Template.bind({});
 DefaultTextfield.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField"
+	title: "Demo Text Field",
+	id: "demoTextFieldId",
+	name: "demoTextField",
+	isReadOnly: false
 };
 
 export const StackedLabeleFormat = Template.bind({});
 StackedLabeleFormat.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField",
+	title: "Demo Text Field",
+	name: "demoTextField",
 	label: "Some Label"
 };
 
 export const InlineLabeleFormat = Template.bind({});
 InlineLabeleFormat.args = {
+	onChange: action("text-changed"),
+	name: "demoTextField",
+	title: "Demo Text Field",
 	label: "Some Label",
-	useSameLineLabel: true
+	isInlineLabel: true
 };
 
-export const MaterialLabeleFormat = Template.bind({});
-MaterialLabeleFormat.args = {
+export const PlaceholderText = Template.bind({});
+PlaceholderText.args = {
+	onChange: action("text-changed"),
+	name: "demoTextField",
+	title: "Demo Text Field",
 	label: "Some Label",
-	useMuiLabelFormat: true
+	placeholder: "Some placeholder text"
 };
 
 export const HelperText = Template.bind({});
 HelperText.args = {
+	onChange: action("text-changed"),
+	name: "demoTextField",
+	title: "Demo Text Field",
 	label: "Some Label",
 	helperText: "Some helper text"
 };
 
 export const ErrorState = Template.bind({});
 ErrorState.args = {
+	onChange: action("text-changed"),
+	name: "demoTextField",
+	title: "Demo Text Field",
 	label: "Some Label",
-	helperText: "Some error text",
-	error: true
+	helperText: "The text you entered was invalid",
+	hasErrors: true
+};
+
+export const RequiredTextField = Template.bind({});
+RequiredTextField.args = {
+	onChange: action("text-changed"),
+	name: "demoTextField",
+	title: "Demo Text Field",
+	label: "Some Label",
+	isRequired: true
+};
+
+export const DisabledTextField = Template.bind({});
+DisabledTextField.args = {
+	onChange: action("text-changed"),
+	name: "demoTextField",
+	title: "Demo Text Field",
+	label: "Some Label",
+	value: "Some value",
+	isDisabled: true
+};
+
+export const ReadOnlyTextField = Template.bind({});
+ReadOnlyTextField.args = {
+	onChange: action("text-changed"),
+	name: "demoTextField",
+	title: "Demo Text Field",
+	label: "Some Label",
+	value: "Some value",
+	isReadOnly: true
 };

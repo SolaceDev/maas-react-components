@@ -1,6 +1,7 @@
 import { grey, red } from "@material-ui/core/colors";
 
-import { GREEN1, GREEN2, GREEN3, GREY1, GREY2, GREY3, GREY4, GREY6, WHITE1 } from "./colorPallet";
+import { BASE_COLORS } from "./colorPallette";
+import { BASE_FONT_PX_SIZES } from "./typography";
 
 // A custom theme for this app
 const theme = {
@@ -39,27 +40,31 @@ const theme = {
 				disableElevation: true
 			},
 			styleOverrides: {
-				contained: {
+				containedPrimary: {
+					color: BASE_COLORS.whites.white1,
+					"&:hover": {
+						backgroundColor: BASE_COLORS.greens.green5
+					},
 					"&:disabled": {
-						color: WHITE1,
-						backgroundColor: GREY1
+						color: BASE_COLORS.whites.white1,
+						backgroundColor: BASE_COLORS.greys.grey3
 					},
 					"&:active": {
-						backgroundColor: GREEN2
+						backgroundColor: BASE_COLORS.greens.green6
 					}
 				},
 				outlinedPrimary: {
 					borderWidth: "1px",
 					borderStyle: "solid",
 					"&:disabled": {
-						color: GREY1,
-						borderColor: GREY1
+						color: BASE_COLORS.greys.grey3,
+						borderColor: BASE_COLORS.greys.grey3
 					},
 					"&:hover": {
-						backgroundColor: GREY2
+						backgroundColor: BASE_COLORS.greys.grey18
 					},
 					"&:active": {
-						backgroundColor: GREY3
+						backgroundColor: BASE_COLORS.greys.grey19
 					}
 				},
 				root: {
@@ -87,14 +92,15 @@ const theme = {
 					}
 				},
 				textPrimary: {
+					borderRadius: "4px",
 					"&:disabled": {
-						color: GREY1
+						color: BASE_COLORS.greys.grey3
 					},
 					"&:hover": {
-						backgroundColor: GREY2
+						backgroundColor: BASE_COLORS.greys.grey0
 					},
 					"&:active": {
-						backgroundColor: GREY3
+						backgroundColor: BASE_COLORS.greys.grey19
 					}
 				}
 			}
@@ -118,17 +124,20 @@ const theme = {
 		MuiFormControl: {
 			styleOverrides: {
 				root: {
-					backgroundColor: "white"
+					margin: "0px"
 				}
 			}
 		},
-		MuiFormControlLabel: {
+		MuiFormHelperText: {
 			styleOverrides: {
-				label: {
-					fontSize: "0.875rem"
-				},
 				root: {
-					color: "inherit"
+					fontSize: "0.75rem",
+					color: BASE_COLORS.greys.grey11,
+					lineHeight: "150%",
+					".MuiSvgIcon-root": {
+						width: "18px",
+						height: "18px"
+					}
 				}
 			}
 		},
@@ -139,13 +148,13 @@ const theme = {
 					padding: "4px",
 					borderRadius: "5px",
 					"&:disabled": {
-						color: GREY1
+						color: BASE_COLORS.greys.grey3
 					},
 					"&:hover": {
-						backgroundColor: GREY2
+						backgroundColor: BASE_COLORS.greys.grey23
 					},
 					"&:active": {
-						backgroundColor: GREY4
+						backgroundColor: BASE_COLORS.greys.grey19
 					}
 				}
 			}
@@ -153,12 +162,19 @@ const theme = {
 		MuiInputLabel: {
 			styleOverrides: {
 				asterisk: {
-					color: GREEN1
+					color: BASE_COLORS.greens.green2
 				},
 				root: {
-					color: grey[800],
+					color: BASE_COLORS.greys.grey11,
 					fontSize: "0.875rem",
-					fontWeight: 500
+					fontWeight: 500,
+					lineHeight: "150%",
+					"&.Mui-error": {
+						color: BASE_COLORS.greys.grey11
+					},
+					"&.Mui-disabled": {
+						color: BASE_COLORS.greys.grey8
+					}
 				}
 			}
 		},
@@ -172,7 +188,49 @@ const theme = {
 					fontWeight: "normal",
 					fontSize: "14px",
 					"&[disabled]": {
-						color: GREY1
+						color: BASE_COLORS.greys.grey3
+					}
+				}
+			}
+		},
+		MuiOutlinedInput: {
+			styleOverrides: {
+				root: {
+					".MuiOutlinedInput-notchedOutline": {
+						border: `solid 1px ${BASE_COLORS.greys.grey3}`,
+						backgroundColor: BASE_COLORS.greys.grey1,
+					},
+					"&:hover": {
+						".MuiOutlinedInput-notchedOutline": {
+							border: `solid 1px ${BASE_COLORS.greys.grey5}`,
+							backgroundColor: BASE_COLORS.greys.grey1
+						}
+					},
+					"&.Mui-focused": {
+						".MuiOutlinedInput-notchedOutline": {
+							border: `solid 1px ${BASE_COLORS.greens.green1}`
+						}
+					},
+					"&.Mui-disabled": {
+						backgroundColor: BASE_COLORS.greys.grey19,
+						".MuiOutlinedInput-notchedOutline": {
+							border: `solid 1px ${BASE_COLORS.greys.grey2}`
+						},
+						input: {
+							webkitTextFillColor: BASE_COLORS.greys.grey14
+						}
+					},
+				},
+				input: {
+					fontSize: BASE_FONT_PX_SIZES.sm,
+					color: BASE_COLORS.greys.grey14,
+					padding: "0px 8px",
+					height: "35px",
+					"&:read-only": {
+						padding: "0px",
+					},
+					"&:read-only + .MuiOutlinedInput-notchedOutline": {
+						border: "none",
 					}
 				}
 			}
@@ -180,26 +238,27 @@ const theme = {
 	},
 	palette: {
 		background: {
-			default: "#f9f9f9"
+			default: BASE_COLORS.greys.grey4
 		},
 		error: {
-			main: red.A400
+			main: BASE_COLORS.reds.red1
 		},
 		primary: {
-			contrastText: WHITE1,
-			dark: GREEN3,
-			main: GREEN1
+			contrastText: BASE_COLORS.greys.grey1,
+			dark: BASE_COLORS.greens.green5,
+			main: BASE_COLORS.greens.green2
 		},
 		secondary: {
-			contrastText: WHITE1,
-			main: GREEN3
+			contrastText: BASE_COLORS.greys.grey1,
+			main: BASE_COLORS.greens.green3
 		},
 		text: {
-			primary: GREY6
+			primary: BASE_COLORS.greys.grey14
 		}
 	},
 	spacing: 8,
 	typography: {
+		fontSize: BASE_FONT_PX_SIZES.sm,
 		body1: {
 			fontSize: "0.875rem"
 		},

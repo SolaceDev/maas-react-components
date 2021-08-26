@@ -14,7 +14,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	/**
 	 * Renders the button disabled
 	 */
-	disabled?: boolean;
+	isDisabled?: boolean;
 	/**
 	 * Controls when the link should have an underline
 	 */
@@ -44,7 +44,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 const SolaceButton: React.FC<SolaceButtonProps> = ({
 	id,
 	variant = "text",
-	disabled = false,
+	isDisabled = false,
 	underline = "hover",
 	title = "",
 	href,
@@ -64,7 +64,7 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 	if (variant === "icon") {
 		return (
 			<Tooltip title={title} arial-lable={title}>
-				<IconButton data-qa={dataQa} data-tags={dataTags} id={id} disabled={disabled} onClick={handleClick}>
+				<IconButton data-qa={dataQa} data-tags={dataTags} id={id} disabled={isDisabled} onClick={handleClick}>
 					{children}
 				</IconButton>
 			</Tooltip>
@@ -79,8 +79,8 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 					component={href ? "a" : "button"}
 					target={href ? "_blank" : "_self"}
 					href={href}
-					disabled={disabled}
-					underline={disabled ? "none" : underline ?? "hover"}
+					disabled={isDisabled}
+					underline={isDisabled ? "none" : underline ?? "hover"}
 				>
 					{children}
 				</Link>
@@ -106,7 +106,7 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 					data-tags={dataTags}
 					startIcon={startIcon}
 					endIcon={endIcon}
-					disabled={disabled}
+					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}
 					onClick={handleClick}
 				>
