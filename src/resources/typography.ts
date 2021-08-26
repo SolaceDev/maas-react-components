@@ -1,4 +1,4 @@
-export const BASE_FONT_SIZES = {
+export const BASE_FONT_PX_SIZES = {
 	xxs: 10,
 	xs: 12,
 	sm: 14,

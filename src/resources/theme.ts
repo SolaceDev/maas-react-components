@@ -1,7 +1,7 @@
 import { grey, red } from "@material-ui/core/colors";
 
 import { BASE_COLORS } from "./colorPallette";
-import { BASE_FONT_SIZES } from "./typography";
+import { BASE_FONT_PX_SIZES } from "./typography";
 
 // A custom theme for this app
 const theme = {
@@ -169,6 +169,9 @@ const theme = {
 					fontSize: "0.875rem",
 					fontWeight: 500,
 					lineHeight: "150%",
+					"&.Mui-error": {
+						color: BASE_COLORS.greys.grey11
+					},
 					"&.Mui-disabled": {
 						color: BASE_COLORS.greys.grey8
 					}
@@ -195,7 +198,7 @@ const theme = {
 				root: {
 					".MuiOutlinedInput-notchedOutline": {
 						border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-						backgroundColor: BASE_COLORS.greys.grey1
+						backgroundColor: BASE_COLORS.greys.grey1,
 					},
 					"&:hover": {
 						".MuiOutlinedInput-notchedOutline": {
@@ -214,15 +217,21 @@ const theme = {
 							border: `solid 1px ${BASE_COLORS.greys.grey2}`
 						},
 						input: {
-							"-webkit-text-fill-color": BASE_COLORS.greys.grey14
+							webkitTextFillColor: BASE_COLORS.greys.grey14
 						}
-					}
+					},
 				},
 				input: {
-					fontSize: BASE_FONT_SIZES.sm,
+					fontSize: BASE_FONT_PX_SIZES.sm,
 					color: BASE_COLORS.greys.grey14,
 					padding: "0px 8px",
-					height: "35px"
+					height: "35px",
+					"&:read-only": {
+						padding: "0px",
+					},
+					"&:read-only + .MuiOutlinedInput-notchedOutline": {
+						border: "none",
+					}
 				}
 			}
 		}
@@ -249,7 +258,7 @@ const theme = {
 	},
 	spacing: 8,
 	typography: {
-		fontSize: BASE_FONT_SIZES.sm,
+		fontSize: BASE_FONT_PX_SIZES.sm,
 		body1: {
 			fontSize: "0.875rem"
 		},

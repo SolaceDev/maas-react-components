@@ -13,7 +13,13 @@ export default {
 			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=430%3A548"
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		type: {
+			control: {
+				type: 'select'
+			}
+		}
+	}
 } as ComponentMeta<typeof SolaceTextField>;
 
 const Template: ComponentStory<typeof SolaceTextField> = (args) => <SolaceTextField {...args} />;
@@ -22,21 +28,23 @@ export const DefaultTextfield = Template.bind({});
 DefaultTextfield.args = {
 	onChange: action("text-changed"),
 	title: "Demo Text Field",
-	id: "demoTextField"
+	id: "demoTextFieldId",
+	name: "demoTextField",
+	isReadOnly: false
 };
 
 export const StackedLabeleFormat = Template.bind({});
 StackedLabeleFormat.args = {
 	onChange: action("text-changed"),
 	title: "Demo Text Field",
-	id: "demoTextField",
+	name: "demoTextField",
 	label: "Some Label"
 };
 
 export const InlineLabeleFormat = Template.bind({});
 InlineLabeleFormat.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField",
+	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
 	isInlineLabel: true
@@ -45,7 +53,7 @@ InlineLabeleFormat.args = {
 export const PlaceholderText = Template.bind({});
 PlaceholderText.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField",
+	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
 	placeholder: "Some placeholder text"
@@ -54,7 +62,7 @@ PlaceholderText.args = {
 export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField",
+	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
 	helperText: "Some helper text"
@@ -63,7 +71,7 @@ HelperText.args = {
 export const ErrorState = Template.bind({});
 ErrorState.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField",
+	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
 	helperText: "The text you entered was invalid",
@@ -73,7 +81,7 @@ ErrorState.args = {
 export const RequiredTextField = Template.bind({});
 RequiredTextField.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField",
+	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
 	isRequired: true
@@ -82,7 +90,7 @@ RequiredTextField.args = {
 export const DisabledTextField = Template.bind({});
 DisabledTextField.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField",
+	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
 	value: "Some value",
@@ -92,18 +100,9 @@ DisabledTextField.args = {
 export const ReadOnlyTextField = Template.bind({});
 ReadOnlyTextField.args = {
 	onChange: action("text-changed"),
-	id: "demoTextField",
+	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
 	value: "Some value",
 	isReadOnly: true
-};
-
-export const PasswordTextField = Template.bind({});
-PasswordTextField.args = {
-	onChange: action("text-changed"),
-	id: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
-	isPassword: true
 };

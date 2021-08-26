@@ -6,35 +6,86 @@ import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface SolaceTextFieldChangeEvent {
-	id: string;
+	name: string;
 	value: string;
 }
 
 export interface SolaceTextFieldProps extends SolaceComponentProps {
-	id: string;
+	/**
+	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
+	 */
+	id?: string;
+	/**
+	 * Name attribute to assign to the `input` element
+	 */
+	name: string;
+	/**
+	 * the label content to display on the screen
+	 */
 	label?: string | JSX.Element;
+	/**
+	 * The value of the `input` element, required for controlled component
+	 */
 	value?: string;
+	/**
+	 * Content to display as supportive/explanitory text
+	 */
 	helperText?: string | JSX.Element;
+	/**
+	 * Short hint displayed in the `input` before user enters a value
+	 */
 	placeholder?: string;
+	/**
+	 * The maximum number of characters which can be typed as the `input` value
+	 */
 	maxLength?: number;
+	/**
+	 * The type of `input` element to render
+	 */
+	type?: "text" | "number" | "password" | "email" | "url";
+	/**
+	 * The size/width of the `input` measured in characters
+	 */
 	size?: number;
+	/**
+	 * The text to display as the tooltip hint
+	 */
 	title?: string;
+	/**
+	 * Boolean flag to mark the `input` in error state
+	 */
 	hasErrors?: boolean;
+	/**
+	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
+	 */
 	isRequired?: boolean;
+	/**
+	 * Boolean flag to control whether to stack the label on top of the `input` element (false) or place them inline to one another (true)
+	 */
 	isInlineLabel?: boolean;
+	/**
+	 * Boolean flag to disable the `input`
+	 */
 	isDisabled?: boolean;
+	/**
+	 * Boolean flag to set the `input` in a read-only state
+	 */
 	isReadOnly?: boolean;
-	isPassword?: boolean;
+	/**
+	 * Callback function to trigger whenever the value of the `input` is changed
+	 */
 	onChange?: (event: SolaceTextFieldChangeEvent) => void;
 }
 
 const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 	id,
+	name,
 	label,
 	value,
 	helperText,
 	placeholder,
 	maxLength = constants.maxLength,
+	type = "text",
 	size = 50,
 	title,
 	hasErrors = false,
@@ -42,7 +93,6 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 	isInlineLabel = false,
 	isDisabled = false,
 	isReadOnly = false,
-	isPassword = false,
 	onChange,
 	dataQa,
 	dataTags
@@ -52,7 +102,7 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (onChange) {
 			onChange({
-				id: id,
+				name: name,
 				value: event.target.value
 			});
 		}
@@ -65,31 +115,37 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 		</Box>
 	);
 
+	const getId = () => {
+		return id ? id : name;
+	}
+
 	const textField = () => (
 		<React.Fragment>
 			<TextField
-				id={`${id}-textfield`}
+				id={`${getId()}-textfield`}
+				name={name}
 				inputProps={{
 					maxLength: maxLength,
 					size: size,
 					"data-qa": dataQa,
-					"data-tags": dataTags
+					"data-tags": dataTags,
+					readOnly: isReadOnly,
 				}}
 				role="textbox"
 				title={title}
-				type={isPassword ? "password" : "text"}
+				type={type}
 				autoComplete="off"
-				aria-describedby={helperText ? `${id}-textfield-helper-text` : ""}
-				aria-labelledby={label ? `${id}-label` : ""}
+				aria-describedby={helperText ? `${getId()}-textfield-helper-text` : ""}
+				aria-labelledby={label ? `${getId()}-label` : ""}
 				InputProps={{
 					sx: { height: theme.spacing(4) },
-					readOnly: isReadOnly,
 					disabled: isDisabled,
 					required: isRequired
 				}}
 				FormHelperTextProps={{
 					variant: "standard",
-					error: hasErrors
+					error: hasErrors,
+					component: "div"
 				}}
 				helperText={getHelperText()}
 				margin="dense"
@@ -105,8 +161,8 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
 					<InputLabel
-						id={`${id}-label`}
-						htmlFor={`${id}-textfield`}
+						id={`${getId()}-label`}
+						htmlFor={`${getId()}-textfield`}
 						required={isRequired}
 						disabled={isDisabled}
 						error={hasErrors}
@@ -125,8 +181,8 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 					alignItems="center"
 				>
 					<InputLabel
-						id={`${id}-label`}
-						htmlFor={`${id}-textfield`}
+						id={`${getId()}-label`}
+						htmlFor={`${getId()}-textfield`}
 						required={isRequired}
 						color="primary"
 						disabled={isDisabled}
