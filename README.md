@@ -2,25 +2,53 @@
 
 > React component library designed for Solace.
 
-[![NPM](https://img.shields.io/npm/v/maas-react-components.svg)](https://www.npmjs.com/package/maas-react-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/maas-react-components.svg)](https://github.com/SolaceDev/maas-react-components/packages/944783) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+## Setup npm registry
+
+Before installing the package this step needs to be completed.
+You can authenticate to GitHub Packages with npm by creating a npmrc file in your root directory.
+
+```
+@solacedev:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=GITHUB_TOKEN
+```
+
+GITHUB_TOKEN needs to be replaced by user specific github token. Make sure the package permissions ( write:packages, read:packages ) are correctly selected during token creation.
+
+See this [link](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) to see how to create github token. Read more about [packages](https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages) permissions.
 
 ## Install
 
 ```bash
-npm install --save maas-react-components
+
+npm install --save @solacedev/maas-react-components
+
 ```
+
+### Custom Package Name
+
+npm gives you the ability to import this package with a custom package name, which makes it easier to import components and use smaller names if that is a preference.
+
+For e.g. If a team wants to use the package named as common-components, install the package like this
+
+```
+npm i common-components@solacedev/maas-react-components
+```
+
+See usage example below to see how it would impact the imports.
 
 ## Usage
 
 ```tsx
 import React, { Component } from "react";
+import { SolaceButton } from "@solacedev/maas-react-components";
 
-import MyComponent from "maas-react-components";
+//With custom named package
+import { SolaceButton } from "common-component";
 
-class Example extends Component {
-	render() {
-		return <MyComponent />;
-	}
+export default function Example() {
+	return <SolaceButton />;
 }
 ```
 
