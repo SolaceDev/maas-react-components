@@ -1,124 +1,145 @@
-import { Box, FormHelperText, InputLabel, styled, TextField, TextFieldProps, useTheme } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Box, InputLabel, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
 import { constants } from "../../constants";
+import SolaceComponentProps from "../SolaceComponentProps";
 
-type CommonTextFieldProps = TextFieldProps & {
-	// Pass true to use original mui label style.
-	useMuiLabelFormat: boolean;
-	// Pass true to have the label placed in the same line as the text field
-	useSameLineLabel?: boolean;
-	// data-testId for the textfield component.
-	testId?: string;
-	// Pass true to enable LastPass browser extension.
-	useLastPass?: boolean;
-};
+export interface SolaceTextFieldChangeEvent {
+	id: string;
+	value: string;
+}
 
-const StyledTextField = styled(TextField)(() => ({
-	".MuiInputBase-root.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-		borderColor: "rgba(0, 0, 0, 0.35)"
-	}
-}));
+export interface SolaceTextFieldProps extends SolaceComponentProps {
+	id: string;
+	label?: string | JSX.Element;
+	value?: string;
+	helperText?: string | JSX.Element;
+	placeholder?: string;
+	maxLength?: number;
+	size?: number;
+	title?: string;
+	hasErrors?: boolean;
+	isRequired?: boolean;
+	isInlineLabel?: boolean;
+	isDisabled?: boolean;
+	isReadOnly?: boolean;
+	isPassword?: boolean;
+	onChange?: (event: SolaceTextFieldChangeEvent) => void;
+}
 
-/**
- * Common text field that provides the ability to use textfield with mui styled label or bold formatted label.
- * @type CommonTextFieldProps
- * @param props
- * @returns
- */
-
-export default function SolaceTextField(props: CommonTextFieldProps): JSX.Element {
-	const {
-		helperText,
-		testId,
-		margin,
-		useMuiLabelFormat,
-		label,
-		useSameLineLabel,
-		InputProps,
-		useLastPass,
-		onChange,
-		...rest
-	} = props;
+const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
+	id,
+	label,
+	value,
+	helperText,
+	placeholder,
+	maxLength = constants.maxLength,
+	size = 50,
+	title,
+	hasErrors = false,
+	isRequired = false,
+	isInlineLabel = false,
+	isDisabled = false,
+	isReadOnly = false,
+	isPassword = false,
+	onChange,
+	dataQa,
+	dataTags
+}) => {
 	const theme = useTheme();
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (onChange) {
-			onChange(event);
+			onChange({
+				id: id,
+				value: event.target.value
+			});
 		}
 	};
 
+	const getHelperText = () => (
+		<Box display="flex">
+			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
+			{helperText}
+		</Box>
+	);
+
 	const textField = () => (
 		<React.Fragment>
-			<StyledTextField
-				{...rest}
+			<TextField
+				id={`${id}-textfield`}
 				inputProps={{
-					maxLength: constants.maxLength,
-					"data-lpignore": !useLastPass,
-					"data-testid": testId,
-					...props.inputProps
+					maxLength: maxLength,
+					size: size,
+					"data-qa": dataQa,
+					"data-tags": dataTags
 				}}
-				onChange={handleChange}
-				role="textfield"
+				role="textbox"
+				title={title}
+				type={isPassword ? "password" : "text"}
+				autoComplete="off"
+				aria-describedby={helperText ? `${id}-textfield-helper-text` : ""}
+				aria-labelledby={label ? `${id}-label` : ""}
 				InputProps={{
-					...InputProps,
-					// define input height
-					sx: rest.multiline || rest.select ? undefined : { height: theme.spacing(4) }
+					sx: { height: theme.spacing(4) },
+					readOnly: isReadOnly,
+					disabled: isDisabled,
+					required: isRequired
 				}}
-				FormHelperTextProps={{ variant: "standard" }}
-				helperText={!props.error && helperText}
-				margin={!useMuiLabelFormat ? "dense" : margin}
-				label={useMuiLabelFormat && label}
-				SelectProps={{
-					SelectDisplayProps: { style: { paddingBottom: theme.spacing(0.75), paddingTop: theme.spacing(0.75) } },
-					IconComponent: ExpandMoreIcon
+				FormHelperTextProps={{
+					variant: "standard",
+					error: hasErrors
 				}}
+				helperText={getHelperText()}
+				margin="dense"
+				placeholder={placeholder}
+				value={value}
+				onChange={handleChange}
 			/>
-			{props.error && (
-				<FormHelperText component={"div"} error role="error">
-					<Box display="flex">
-						<ErrorOutlineOutlinedIcon fontSize="small" sx={{ marginRight: theme.spacing() }} />
-						{helperText}
-					</Box>
-				</FormHelperText>
-			)}
 		</React.Fragment>
 	);
 
 	return (
 		<React.Fragment>
-			{!useMuiLabelFormat && !useSameLineLabel && props.label && (
+			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<InputLabel required={props.required} color="primary" disabled={props.disabled} error={props.error}>
+					<InputLabel
+						id={`${id}-label`}
+						htmlFor={`${id}-textfield`}
+						required={isRequired}
+						disabled={isDisabled}
+						error={hasErrors}
+					>
 						{label}
 					</InputLabel>
 					{textField()}
 				</Box>
 			)}
-			{!useMuiLabelFormat && useSameLineLabel && props.label && (
+			{isInlineLabel && label && (
 				<Box
-					marginTop={theme.spacing()}
+					marginBottom={theme.spacing()}
 					display="flex"
 					flexDirection="row"
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<InputLabel required={props.required} color="primary" disabled={props.disabled}>
+					<InputLabel
+						id={`${id}-label`}
+						htmlFor={`${id}-textfield`}
+						required={isRequired}
+						color="primary"
+						disabled={isDisabled}
+						error={hasErrors}
+					>
 						{label}
 					</InputLabel>
 					{textField()}
 				</Box>
 			)}
-			{(useMuiLabelFormat || !props.label) && textField()}
+			{!label && textField()}
 		</React.Fragment>
 	);
-}
-
-SolaceTextField.defaultProps = {
-	size: "small",
-	margin: "normal",
-	useMuiLabelFormat: false,
-	useSameLineLabel: false,
-	useLastPass: false
 };
+
+export default SolaceTextField;
