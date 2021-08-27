@@ -4,7 +4,7 @@ import React from "react";
 
 export interface SolaceCheckboxChangeEvent {
 	name: string;
-	value: string;
+	value: boolean;
 }
 
 interface SolaceCheckBoxProps extends SolaceComponentProps {
