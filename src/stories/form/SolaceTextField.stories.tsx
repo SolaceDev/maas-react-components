@@ -29,8 +29,7 @@ DefaultTextfield.args = {
 	onChange: action("text-changed"),
 	title: "Demo Text Field",
 	id: "demoTextFieldId",
-	name: "demoTextField",
-	isReadOnly: false
+	name: "demoTextField"
 };
 
 export const StackedLabeleFormat = Template.bind({});
@@ -68,8 +67,8 @@ HelperText.args = {
 	helperText: "Some helper text"
 };
 
-export const ErrorState = Template.bind({});
-ErrorState.args = {
+export const WithErrors = Template.bind({});
+WithErrors.args = {
 	onChange: action("text-changed"),
 	name: "demoTextField",
 	title: "Demo Text Field",
@@ -78,8 +77,8 @@ ErrorState.args = {
 	hasErrors: true
 };
 
-export const RequiredTextField = Template.bind({});
-RequiredTextField.args = {
+export const Required = Template.bind({});
+Required.args = {
 	onChange: action("text-changed"),
 	name: "demoTextField",
 	title: "Demo Text Field",
@@ -87,8 +86,8 @@ RequiredTextField.args = {
 	isRequired: true
 };
 
-export const DisabledTextField = Template.bind({});
-DisabledTextField.args = {
+export const Disabled = Template.bind({});
+Disabled.args = {
 	onChange: action("text-changed"),
 	name: "demoTextField",
 	title: "Demo Text Field",
@@ -97,8 +96,8 @@ DisabledTextField.args = {
 	isDisabled: true
 };
 
-export const ReadOnlyTextField = Template.bind({});
-ReadOnlyTextField.args = {
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
 	onChange: action("text-changed"),
 	name: "demoTextField",
 	title: "Demo Text Field",

@@ -234,6 +234,25 @@ const theme = {
 					}
 				}
 			}
+		},
+		MuiCheckbox: {
+			styleOverrides: {
+				root: {
+					"&.Mui-checked .MuiSvgIcon-root, &.Mui-checked:hover .MuiSvgIcon-root": {
+						fill: BASE_COLORS.greens.green1
+					},
+					"&:hover .MuiSvgIcon-root": {
+						fill: BASE_COLORS.greys.grey8
+					},
+					".MuiSvgIcon-root": {
+						fill: BASE_COLORS.greys.grey5
+					},
+					"&.Mui-disabled .MuiSvgIcon-root": {
+						fill: BASE_COLORS.greys.grey3
+					},
+					padding: "0px 4px 0px 0px"
+				}
+			}
 		}
 	},
 	palette: {
