@@ -1,64 +1,138 @@
-import { Checkbox, CheckboxProps, styled } from "@material-ui/core";
+import { Box, Checkbox, FormHelperText, InputLabel, useTheme } from "@material-ui/core";
+import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React from "react";
 
-interface CommonCheckBoxProps extends CheckboxProps {
-	testId?: string;
+export interface SolaceCheckboxChangeEvent {
+	name: string;
+	value: string;
 }
 
-const StyledCheckBoxIcon = styled("span")(({ theme }) => ({
-	borderRadius: 3,
-	width: 24,
-	height: 24,
-	boxShadow: "inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)",
-	backgroundColor: theme.palette.background.default,
-	backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
-	".Mui-focusVisible &": {
-		outline: "2px auto rgba(19,124,189,.6)",
-		outlineOffset: 2
-	},
-	"input:hover ~ &": {
-		backgroundColor: theme.palette.background.default
-	},
-	"input:disabled ~ &": {
-		boxShadow: "none",
-		background: "rgba(206,217,224,.5)"
-	}
-}));
-const StyledCheckedIcon = styled(StyledCheckBoxIcon)(({ theme }) => ({
-	backgroundColor: theme.palette.background.default,
-	backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
-	"&:before": {
-		display: "block",
-		width: 24,
-		height: 24,
-		backgroundImage:
-			"url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
-			" fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
-			"1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='" +
-			encodeURIComponent(theme.palette.primary.main) +
-			"'/%3E%3C/svg%3E\")",
-		content: '""'
-	},
-	"input:hover ~ &": {
-		backgroundColor: theme.palette.background.default
-	}
-}));
+interface SolaceCheckBoxProps extends SolaceComponentProps {
+	/**
+	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` accessible for screen readers
+	 */
+	id?: string;
+	/**
+	 * Name attribute to assign to the `checkbox` element
+	 */
+	name: string;
+	/**
+	 * the label content to display on the screen
+	 */
+	label?: string | JSX.Element;
+	/**
+	 * The text to display as the tooltip hint
+	 */
+	title?: string;
+	/**
+	 * Content to display as supportive/explanitory text
+	 */
+	helperText?: string | JSX.Element;
+	/**
+	 * Boolean flag to mark the `input` in error state
+	 */
+	hasErrors?: boolean;
+	/**
+	 * Boolean flag to check or uncheck the `checkbox`
+	 */
+	isChecked?: boolean;
+	/**
+	 * Boolean flag used to display an indicator of whether or not this `checkbox` is mandatory
+	 */
+	isRequired?: boolean;
+	/**
+	 * Boolean flag to disable the `checkbox`
+	 */
+	isDisabled?: boolean;
+	/**
+	 * Callback function to trigger whenever the value of the `checkbox` is changed
+	 */
+	onChange?: (event: SolaceCheckboxChangeEvent) => void;
+}
 
-export default function SolaceCheckBox(props: CommonCheckBoxProps): JSX.Element {
-	const { testId, ...rest } = props;
+const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
+	id,
+	name,
+	label,
+	title,
+	helperText,
+	hasErrors = false,
+	isChecked = false,
+	isRequired = false,
+	isDisabled = false,
+	onChange,
+	dataQa,
+	dataTags
+}) => {
+	const theme = useTheme();
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (onChange) {
+			onChange({
+				name: name,
+				value: event.target.checked
+			});
+		}
+	};
+
+	const getHelperText = () => (
+		<Box display="flex">
+			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
+			{helperText}
+		</Box>
+	);
+
+	const getId = () => {
+		return id ? id : name;
+	}
 
 	return (
-		<Checkbox
-			{...rest}
-			inputProps={{
-				...props.inputProps,
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				//@ts-ignore
-				"data-testid": testId
-			}}
-			disableRipple
-			checkedIcon={<StyledCheckedIcon />}
-			icon={<StyledCheckBoxIcon />}
-		/>
+		<React.Fragment>
+			<Box
+				display="flex"
+				flexDirection="row"
+				justifyContent="flex-start"
+				alignItems="center"
+			>
+				<Checkbox
+					id={`${getId()}-checkbox`}
+					name={name}
+					inputProps={{
+						"data-qa": dataQa,
+						"data-tags": dataTags
+					}}
+					role="textbox"
+					title={title}
+					disabled={isDisabled}
+					aria-labelledby={label ? `${getId()}-label` : ""}
+					disableRipple
+					defaultChecked={isChecked}
+					onChange={handleChange}
+				/>
+				{label && (
+					<InputLabel
+						id={`${getId()}-label`}
+						htmlFor={`${getId()}-checkbox`}
+						required={isRequired}
+						color="primary"
+						disabled={isDisabled}
+						error={hasErrors}
+					>
+						{label}
+					</InputLabel>
+				)}
+			</Box>
+			{helperText && (
+				<FormHelperText
+					error={hasErrors}
+					component="div"
+					sx={{ marginLeft: theme.spacing(0.4) }}
+				>
+					{getHelperText()}
+				</FormHelperText>
+			)}
+		</React.Fragment>
 	);
 }
+
+export default SolaceCheckBox;
