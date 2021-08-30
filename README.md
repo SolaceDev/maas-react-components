@@ -7,11 +7,15 @@
 ## Setup npm registry
 
 Before installing the package this step needs to be completed.
+
 You can authenticate to GitHub Packages with npm by creating a npmrc file in your root directory.
 
 ```
+
 @solacedev:registry=https://npm.pkg.github.com
+
 //npm.pkg.github.com/:_authToken=GITHUB_TOKEN
+
 ```
 
 GITHUB_TOKEN needs to be replaced by user specific github token. Make sure the package permissions ( write:packages, read:packages ) are correctly selected during token creation.
@@ -22,7 +26,11 @@ See this [link](https://docs.github.com/en/github/authenticating-to-github/keepi
 
 ```bash
 
+
+
 npm install --save @solacedev/maas-react-components
+
+
 
 ```
 
@@ -33,7 +41,9 @@ npm gives you the ability to import this package with a custom package name, whi
 For e.g. If a team wants to use the package named as common-components, install the package like this
 
 ```
+
 npm i common-components@solacedev/maas-react-components
+
 ```
 
 See usage example below to see how it would impact the imports.
@@ -42,15 +52,25 @@ See usage example below to see how it would impact the imports.
 
 ```tsx
 import React, { Component } from "react";
+
 import { SolaceButton } from "@solacedev/maas-react-components";
 
 //With custom named package
+
 import { SolaceButton } from "common-component";
 
 export default function Example() {
 	return <SolaceButton />;
 }
 ```
+
+## Development
+
+Follow the following steps to start component development on your local machines:
+
+1.  Run `npm run install:dev`. This will install required packages both for storybook and component library.
+2.  If this is the **first time** you are developing on this repo run `npm run dev:link`. **Note: this step is only required only once**.
+3.  Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
 
 ## License
 

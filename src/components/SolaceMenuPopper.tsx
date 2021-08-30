@@ -39,7 +39,7 @@ export default function SolaceMenuPopper(props: SolaceMenuPopperProps): JSX.Elem
 				key={`key-moreButton-${index}`}
 				// sx={props.buttonStyle}
 				onClick={handleMenuClick}
-				disabled={disableButton}
+				isDisabled={disableButton}
 				variant="icon"
 				// color="default"
 				// size="medium"

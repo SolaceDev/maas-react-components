@@ -1,4 +1,4 @@
-import SolaceButton from "./components/SolaceButton";
+import SolaceButton from "./components/form/SolaceButton";
 
 describe("ExampleComponent", () => {
 	it("is truthy", () => {

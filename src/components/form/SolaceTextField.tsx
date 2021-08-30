@@ -116,7 +116,7 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 
 	const getId = () => {
 		return id ? id : name;
-	}
+	};
 
 	const textField = () => (
 		<React.Fragment>
@@ -128,7 +128,7 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 					size: size,
 					"data-qa": dataQa,
 					"data-tags": dataTags,
-					readOnly: isReadOnly,
+					readOnly: isReadOnly
 				}}
 				role="textbox"
 				title={title}
@@ -143,8 +143,7 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 				}}
 				FormHelperTextProps={{
 					variant: "standard",
-					error: hasErrors,
-					component: "div"
+					error: hasErrors
 				}}
 				helperText={getHelperText()}
 				margin="dense"

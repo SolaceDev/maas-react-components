@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import SolaceTextField from "../../components/form/SolaceTextField";
+import { SolaceTextField } from "@solacedev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -16,7 +16,7 @@ export default {
 	argTypes: {
 		type: {
 			control: {
-				type: 'select'
+				type: "select"
 			}
 		}
 	}

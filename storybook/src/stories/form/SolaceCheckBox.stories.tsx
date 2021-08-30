@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import SolaceCheckBox from "../../components/form/SolaceCheckBox";
+import { SolaceCheckBox } from "@solacedev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -18,7 +18,7 @@ DefaultCheckbox.args = {
 	onChange: action("checkbox-changed"),
 	title: "Demo Checkbox",
 	id: "demoCheckboxId",
-	name: "demoCheckbox",
+	name: "demoCheckbox"
 };
 
 export const Labeled = Template.bind({});

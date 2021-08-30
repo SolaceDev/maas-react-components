@@ -1,5 +1,3 @@
-import { grey, red } from "@material-ui/core/colors";
-
 import { BASE_COLORS } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
@@ -198,7 +196,7 @@ const theme = {
 				root: {
 					".MuiOutlinedInput-notchedOutline": {
 						border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-						backgroundColor: BASE_COLORS.greys.grey1,
+						backgroundColor: BASE_COLORS.greys.grey1
 					},
 					"&:hover": {
 						".MuiOutlinedInput-notchedOutline": {
@@ -219,7 +217,7 @@ const theme = {
 						input: {
 							webkitTextFillColor: BASE_COLORS.greys.grey14
 						}
-					},
+					}
 				},
 				input: {
 					fontSize: BASE_FONT_PX_SIZES.sm,
@@ -227,10 +225,10 @@ const theme = {
 					padding: "0px 8px",
 					height: "35px",
 					"&:read-only": {
-						padding: "0px",
+						padding: "0px"
 					},
 					"&:read-only + .MuiOutlinedInput-notchedOutline": {
-						border: "none",
+						border: "none"
 					}
 				}
 			}
