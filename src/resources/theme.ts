@@ -219,7 +219,7 @@ const theme = {
 						input: {
 							webkitTextFillColor: BASE_COLORS.greys.grey14
 						}
-					},
+					}
 				},
 				input: {
 					fontSize: BASE_FONT_PX_SIZES.sm,
@@ -251,6 +251,13 @@ const theme = {
 						fill: BASE_COLORS.greys.grey3
 					},
 					padding: "0px 4px 0px 0px"
+				}
+			}
+		},
+		MuiSelect: {
+			styleOverrides: {
+				outlined: {
+					height: "100px"
 				}
 			}
 		}
