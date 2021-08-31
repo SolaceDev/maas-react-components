@@ -18,7 +18,7 @@
 		"node": ">=14"
 	},
 	"scripts": {
-		"install:dev": "npm install && cd storybook/ && npm ci",
+		"install:dev": "npm install && cd storybook/ && npm i",
 		"dev:link": "npm link && cd storybook && npm link @SolaceDev/maas-react-components",
 		"build": "microbundle-crl --compress --format cjs,modern",
 		"build:dev": "microbundle-crl watch --no-compress --format cjs",
@@ -77,9 +77,9 @@
 		"dist"
 	],
 	"lint-staged": {
-		"*.{tsx,ts}": "eslint --cache --fix",
-		"*.{ts,tsx,css,md}": "prettier --write",
-		"*.js": "eslint --cache --fix",
-		"*.{js,css,md}": "prettier --write"
+		"*.{tsx,ts}": [
+			"eslint --cache --fix"
+		],
+		"*.{ts,tsx,css,md}": "prettier --write"
 	}
 }
