@@ -16,9 +16,9 @@ jobs:
         uses: technote-space/package-version-check-action@v1
         with:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH_PREFIX: release/
 
   build:
+    needs: checkVersion
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
