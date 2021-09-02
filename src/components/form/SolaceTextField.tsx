@@ -1,6 +1,8 @@
 import { Box, TextField, InputLabel, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 
@@ -97,6 +99,11 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 	dataTags
 }) => {
 	const theme = useTheme();
+	const [textValue, setTextValue] = useState(value);
+
+	useEffect(() => {
+		setTextValue(value);
+	}, [value]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (onChange) {
@@ -116,7 +123,7 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 
 	const getId = () => {
 		return id ? id : name;
-	}
+	};
 
 	const textField = () => (
 		<React.Fragment>
@@ -129,13 +136,14 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 					"data-qa": dataQa,
 					"data-tags": dataTags,
 					readOnly: isReadOnly,
+					"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
+					"aria-labelledby": label ? `${getId()}-label` : "",
+					"aria-readonly": isReadOnly,
+					role: "textbox",
+					title: title
 				}}
-				role="textbox"
-				title={title}
 				type={type}
 				autoComplete="off"
-				aria-describedby={helperText ? `${getId()}-textfield-helper-text` : ""}
-				aria-labelledby={label ? `${getId()}-label` : ""}
 				InputProps={{
 					sx: { height: theme.spacing(4) },
 					disabled: isDisabled,
@@ -143,13 +151,12 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 				}}
 				FormHelperTextProps={{
 					variant: "standard",
-					error: hasErrors,
-					component: "div"
+					error: hasErrors
 				}}
 				helperText={getHelperText()}
 				margin="dense"
 				placeholder={placeholder}
-				value={value}
+				value={textValue}
 				onChange={handleChange}
 			/>
 		</React.Fragment>

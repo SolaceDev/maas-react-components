@@ -1,6 +1,5 @@
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { withDesign } from "storybook-addon-designs";
-
 import theme from "../src/resources/theme";
 
 export const decorators = [

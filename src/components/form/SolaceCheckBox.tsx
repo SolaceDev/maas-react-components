@@ -1,13 +1,17 @@
 import { Box, Checkbox, FormHelperText, InputLabel, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import SolaceComponentProps from "../SolaceComponentProps";
+import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 
 export interface SolaceCheckboxChangeEvent {
 	name: string;
 	value: boolean;
 }
 
-interface SolaceCheckBoxProps extends SolaceComponentProps {
+export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` accessible for screen readers
 	 */
@@ -65,8 +69,14 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 	dataTags
 }) => {
 	const theme = useTheme();
+	const [selected, setSelected] = useState(isChecked);
+
+	useEffect(() => {
+		setSelected(isChecked);
+	}, [isChecked]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSelected(event.target.checked);
 		if (onChange) {
 			onChange({
 				name: name,
@@ -84,29 +94,26 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 
 	const getId = () => {
 		return id ? id : name;
-	}
+	};
 
 	return (
 		<React.Fragment>
-			<Box
-				display="flex"
-				flexDirection="row"
-				justifyContent="flex-start"
-				alignItems="center"
-			>
+			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
 				<Checkbox
 					id={`${getId()}-checkbox`}
 					name={name}
-					inputProps={{
-						"data-qa": dataQa,
-						"data-tags": dataTags
-					}}
-					role="textbox"
+					inputProps={
+						{
+							"aria-labelledby": label ? `${getId()}-label` : "",
+							"data-qa": dataQa,
+							"data-tags": dataTags
+						} as SolaceHTMLAttributeProps
+					}
+					role="checkbox"
 					title={title}
 					disabled={isDisabled}
-					aria-labelledby={label ? `${getId()}-label` : ""}
 					disableRipple
-					defaultChecked={isChecked}
+					checked={selected}
 					onChange={handleChange}
 				/>
 				{label && (
@@ -123,16 +130,12 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 				)}
 			</Box>
 			{helperText && (
-				<FormHelperText
-					error={hasErrors}
-					component="div"
-					sx={{ marginLeft: theme.spacing(0.4) }}
-				>
+				<FormHelperText error={hasErrors} component="div" sx={{ marginLeft: theme.spacing(0.4) }}>
 					{getHelperText()}
 				</FormHelperText>
 			)}
 		</React.Fragment>
 	);
-}
+};
 
 export default SolaceCheckBox;

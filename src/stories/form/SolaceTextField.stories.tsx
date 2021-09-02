@@ -14,9 +14,9 @@ export default {
 		}
 	},
 	argTypes: {
-		type: {
+		helperText: {
 			control: {
-				type: 'select'
+				type: "text"
 			}
 		}
 	}

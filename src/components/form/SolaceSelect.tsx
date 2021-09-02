@@ -1,7 +1,6 @@
-import { Box, Select, MenuItem, InputLabel, useTheme } from "@material-ui/core";
+import { Box, TextField, InputLabel, useTheme, FormHelperText } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
-import React, { useState } from "react";
-import { constants } from "../../constants";
+import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface SolaceSelectChangeEvent {
@@ -34,10 +33,6 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 * The type of `input` element to render
 	 */
 	type?: "text" | "number" | "password" | "email" | "url";
-	/**
-	 * The size/width of the `input` measured in characters
-	 */
-	size?: number;
 	/**
 	 * The text to display as the tooltip hint
 	 */
@@ -72,10 +67,9 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 	id,
 	name,
 	label,
-	value = '',
+	value = "",
 	helperText,
 	type = "text",
-	size = 50,
 	title,
 	hasErrors = false,
 	isRequired = false,
@@ -84,10 +78,15 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 	isReadOnly = false,
 	onChange,
 	dataQa,
-	dataTags
+	dataTags,
+	children
 }) => {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value);
+
+	useEffect(() => {
+		setSelectedValue(value);
+	}, [value]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSelectedValue(event.target.value);
@@ -108,53 +107,47 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 
 	const getId = () => {
 		return id ? id : name;
-	}
+	};
 
 	const select = () => (
 		<React.Fragment>
-			<Select
+			<TextField
 				id={`${getId()}-select`}
 				name={name}
 				inputProps={{
-					size: size,
 					"data-qa": dataQa,
 					"data-tags": dataTags,
-					readOnly: isReadOnly,
+					"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
+					"aria-labelledby": label ? `${getId()}-label` : "",
+					"aria-readonly": isReadOnly,
+					role: "select",
+					title: title
 				}}
-				role="textbox"
-				title={title}
-				type={type}
-				autoComplete="off"
-				aria-describedby={helperText ? `${getId()}-select-helper-text` : ""}
-				aria-labelledby={label ? `${getId()}-label` : ""}
+				select
 				InputProps={{
 					sx: { height: theme.spacing(4) },
+					className: isReadOnly ? "readOnlySelect" : "",
 					disabled: isDisabled,
+					readOnly: isReadOnly,
 					required: isRequired
 				}}
 				FormHelperTextProps={{
 					variant: "standard",
-					error: hasErrors,
-					component: "div"
+					error: hasErrors
 				}}
 				helperText={getHelperText()}
+				title={title}
+				type={type}
+				error={hasErrors}
+				autoComplete="off"
+				required={isRequired}
+				disabled={isDisabled}
 				margin="dense"
 				value={selectedValue}
 				onChange={handleChange}
 			>
-				<MenuItem
-					key="steve"
-					value="Steve"
-				>
-					Steve
-				</MenuItem>
-				<MenuItem
-					key="kevin"
-					value="Kevin"
-				>
-					Kevin
-				</MenuItem>
-			</Select>
+				{children}
+			</TextField>
 		</React.Fragment>
 	);
 

@@ -1,5 +1,3 @@
-import { grey, red } from "@material-ui/core/colors";
-
 import { BASE_COLORS } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
@@ -198,12 +196,29 @@ const theme = {
 				root: {
 					".MuiOutlinedInput-notchedOutline": {
 						border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-						backgroundColor: BASE_COLORS.greys.grey1,
+						backgroundColor: BASE_COLORS.greys.grey1
 					},
 					"&:hover": {
 						".MuiOutlinedInput-notchedOutline": {
 							border: `solid 1px ${BASE_COLORS.greys.grey5}`,
 							backgroundColor: BASE_COLORS.greys.grey1
+						}
+					},
+					"&:hover .MuiOutlinedInput-input:read-only": {
+						".MuiOutlinedInput-notchedOutline": {
+							border: "none"
+						}
+					},
+					"&.readOnlySelect, &.readOnlySelect.Mui-focused": {
+						".MuiOutlinedInput-notchedOutline": {
+							border: "none"
+						},
+						".MuiSvgIcon-root": {
+							display: "none"
+						},
+						".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
+							cursor: "default",
+							padding: "0px"
 						}
 					},
 					"&.Mui-focused": {
@@ -217,7 +232,8 @@ const theme = {
 							border: `solid 1px ${BASE_COLORS.greys.grey2}`
 						},
 						input: {
-							webkitTextFillColor: BASE_COLORS.greys.grey14
+							webkitTextFillColor: BASE_COLORS.greys.grey14,
+							padding: "8px"
 						}
 					}
 				},
@@ -227,10 +243,10 @@ const theme = {
 					padding: "0px 8px",
 					height: "35px",
 					"&:read-only": {
-						padding: "0px",
+						padding: "0px"
 					},
 					"&:read-only + .MuiOutlinedInput-notchedOutline": {
-						border: "none",
+						border: "none"
 					}
 				}
 			}
@@ -256,8 +272,11 @@ const theme = {
 		},
 		MuiSelect: {
 			styleOverrides: {
-				outlined: {
-					height: "100px"
+				select: {
+					"&.MuiOutlinedInput-input": {
+						padding: "6px 34px 6px 8px",
+						minWidth: "330px"
+					}
 				}
 			}
 		}
