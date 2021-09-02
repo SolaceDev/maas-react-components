@@ -1,6 +1,7 @@
 import { Box, Checkbox, FormHelperText, InputLabel, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React from "react";
+import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface SolaceCheckboxChangeEvent {
 	name: string;
@@ -84,23 +85,18 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 
 	const getId = () => {
 		return id ? id : name;
-	}
+	};
+
+	// temp fix to get around typescript issues.
+	console.log(dataQa);
+	console.log(dataTags);
 
 	return (
 		<React.Fragment>
-			<Box
-				display="flex"
-				flexDirection="row"
-				justifyContent="flex-start"
-				alignItems="center"
-			>
+			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
 				<Checkbox
 					id={`${getId()}-checkbox`}
 					name={name}
-					inputProps={{
-						"data-qa": dataQa,
-						"data-tags": dataTags
-					}}
 					role="textbox"
 					title={title}
 					disabled={isDisabled}
@@ -123,16 +119,12 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 				)}
 			</Box>
 			{helperText && (
-				<FormHelperText
-					error={hasErrors}
-					component="div"
-					sx={{ marginLeft: theme.spacing(0.4) }}
-				>
+				<FormHelperText error={hasErrors} component="div" sx={{ marginLeft: theme.spacing(0.4) }}>
 					{getHelperText()}
 				</FormHelperText>
 			)}
 		</React.Fragment>
 	);
-}
+};
 
 export default SolaceCheckBox;

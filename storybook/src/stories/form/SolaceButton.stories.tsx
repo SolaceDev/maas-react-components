@@ -1,9 +1,7 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import DeleteIcon from "@material-ui/icons/Delete";
-
-import SolaceButton from "../../components/form/SolaceButton";
+import { SolaceButton, DeleteIcon } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Forms/SolaceButton",

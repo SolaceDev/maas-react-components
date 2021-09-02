@@ -1,3 +1,5 @@
+const path = require("path");
+const toPath = (filePath) => path.join(process.cwd(), filePath);
 module.exports = {
 	stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
 	addons: [
@@ -17,13 +19,15 @@ module.exports = {
 	webpackFinal: async (config) => {
 		return {
 			...config,
+			watch: true,
 			resolve: {
 				...config.resolve,
 				alias: {
 					...config.resolve.alias,
-					"@emotion/core": require.resolve("@emotion/react"),
-					"@emotion/styled": require.resolve("@emotion/styled"),
-					"emotion-theming": require.resolve("@emotion/react")
+					// emotion core needs to be removed from maas-react-components once this issue has been resolved.
+					"@emotion/core": require.resolve("../../node_modules/@emotion/core"),
+					"@emotion/styled": require.resolve("../../node_modules/@emotion/styled"),
+					"emotion-theming": require.resolve("../../node_modules/@emotion/react")
 				}
 			}
 		};

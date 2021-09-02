@@ -52,7 +52,7 @@ export default function SolaceConfirmationDialog(props: SolaceConfirmationDialog
 						key={`key-${action.label}`}
 						onClick={action.onClick}
 						variant={action.variant ?? "text"}
-						disabled={action.disabled}
+						isDisabled={action.isDisabled}
 					>
 						{action.label}
 					</SolaceButton>
