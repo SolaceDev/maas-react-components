@@ -18,7 +18,7 @@ You can authenticate to GitHub Packages with npm by creating a npmrc file in you
 
 ```
 
-GITHUB_TOKEN needs to be replaced by user specific github token. Make sure the package permissions ( write:packages, read:packages ) are correctly selected during token creation.
+GITHUB_TOKEN needs to be replaced by user specific github token. Make sure the package permissions ( write:packages, read:packages ) are correctly selected during token creation, and SSO is also enabled.
 
 See this [link](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) to see how to create github token. Read more about [packages](https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages) permissions.
 
@@ -71,6 +71,16 @@ Follow the following steps to start component development on your local machines
 1.  Run `npm run install:dev`. This will install required packages both for storybook and component library.
 2.  If this is the **first time** you are developing on this repo run `npm run dev:link`. **Note: this step is only required only once**.
 3.  Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
+
+**Note for developers** : Don't forget to include one of the following values in a commit, before pushing your branch to master. This would trigger a automated package version update.
+
+| value | defintition                                                               |
+| ----- | ------------------------------------------------------------------------- |
+| major | MAJOR version when you make incompatible API changes                      |
+| minor | MINOR version when you add functionality in a backwards compatible manner |
+| patch | PATCH version when you make backwards compatible bug fixes                |
+
+[Semantic Versioning](https://semver.org/)
 
 ## License
 
