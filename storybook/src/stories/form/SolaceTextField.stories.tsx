@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import SolaceTextField from "../../components/form/SolaceTextField";
+import { SolaceTextField } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -14,9 +14,55 @@ export default {
 		}
 	},
 	argTypes: {
+		label: {
+			control: {
+				type: "text"
+			}
+		},
 		helperText: {
 			control: {
 				type: "text"
+			}
+		},
+		hasErrors: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isInlineLabel: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isRequired: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isDisabled: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isReadOnly: {
+			control: {
+				type: "boolean"
+			}
+		},
+		value: {
+			control: {
+				type: "text"
+			}
+		},
+		type: {
+			options: ["text", "number", "password", "email", "url"],
+			control: {
+				type: "select"
+			}
+		},
+		size: {
+			control: {
+				type: "number"
 			}
 		}
 	}
@@ -26,7 +72,7 @@ const Template: ComponentStory<typeof SolaceTextField> = (args) => <SolaceTextFi
 
 export const DefaultTextfield = Template.bind({});
 DefaultTextfield.args = {
-	onChange: action("text-changed"),
+	onChange: action("callback"),
 	title: "Demo Text Field",
 	id: "demoTextFieldId",
 	name: "demoTextField"
@@ -34,7 +80,7 @@ DefaultTextfield.args = {
 
 export const StackedLabeleFormat = Template.bind({});
 StackedLabeleFormat.args = {
-	onChange: action("text-changed"),
+	onChange: action("callback"),
 	title: "Demo Text Field",
 	name: "demoTextField",
 	label: "Some Label"
@@ -51,7 +97,7 @@ InlineLabeleFormat.args = {
 
 export const PlaceholderText = Template.bind({});
 PlaceholderText.args = {
-	onChange: action("text-changed"),
+	onChange: action("callback"),
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
@@ -60,7 +106,7 @@ PlaceholderText.args = {
 
 export const HelperText = Template.bind({});
 HelperText.args = {
-	onChange: action("text-changed"),
+	onChange: action("callback"),
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
@@ -69,7 +115,7 @@ HelperText.args = {
 
 export const WithErrors = Template.bind({});
 WithErrors.args = {
-	onChange: action("text-changed"),
+	onChange: action("callback"),
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
@@ -79,7 +125,7 @@ WithErrors.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-	onChange: action("text-changed"),
+	onChange: action("callback"),
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
@@ -88,7 +134,7 @@ Required.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-	onChange: action("text-changed"),
+	onChange: action("callback"),
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
@@ -98,7 +144,7 @@ Disabled.args = {
 
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
-	onChange: action("text-changed"),
+	onChange: action("callback"),
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
