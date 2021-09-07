@@ -1,5 +1,6 @@
 export * from "@material-ui/core";
 export * from "@material-ui/core/colors";
+export { default as DeleteIcon } from "@material-ui/icons/Delete";
 
 export { default as SolaceToasts } from "./components/SolaceToasts";
 export { default as NoAccess } from "./components/NoAccess";
@@ -12,5 +13,6 @@ export { default as SolaceChip } from "./components/SolaceChip";
 export { default as SolaceConfirmationDialog } from "./components/SolaceConfirmationDialog";
 export { default as SolaceMenuPopper } from "./components/SolaceMenuPopper";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";
+export { default as SolaceSelect } from "./components/form/SolaceSelect";
 
 export { default as SolaceTheme } from "./resources/theme";

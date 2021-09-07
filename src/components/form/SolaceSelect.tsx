@@ -1,4 +1,4 @@
-import { Box, TextField, InputLabel, useTheme, FormHelperText } from "@material-ui/core";
+import { Box, TextField, InputLabel, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -29,10 +29,6 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 * Content to display as supportive/explanitory text
 	 */
 	helperText?: string | JSX.Element;
-	/**
-	 * The type of `input` element to render
-	 */
-	type?: "text" | "number" | "password" | "email" | "url";
 	/**
 	 * The text to display as the tooltip hint
 	 */
@@ -69,7 +65,6 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 	label,
 	value = "",
 	helperText,
-	type = "text",
 	title,
 	hasErrors = false,
 	isRequired = false,
@@ -137,7 +132,6 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 				}}
 				helperText={getHelperText()}
 				title={title}
-				type={type}
 				error={hasErrors}
 				autoComplete="off"
 				required={isRequired}
