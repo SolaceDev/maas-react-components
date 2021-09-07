@@ -9,3 +9,9 @@ export const decorators = [
 	),
 	withDesign
 ];
+
+export const parameters = {
+	controls: {
+		expanded: true
+	}
+};

@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof SolaceCheckBox> = (args) => <SolaceCheckBo
 
 export const DefaultCheckbox = Template.bind({});
 DefaultCheckbox.args = {
-	onChange: action("checkbox-changed"),
+	onChange: action("callback"),
 	title: "Demo Checkbox",
 	id: "demoCheckboxId",
 	name: "demoCheckbox"
@@ -23,7 +23,7 @@ DefaultCheckbox.args = {
 
 export const Labeled = Template.bind({});
 Labeled.args = {
-	onChange: action("checkbox-changed"),
+	onChange: action("callback"),
 	title: "Demo Checkbox",
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
@@ -32,7 +32,7 @@ Labeled.args = {
 
 export const HelperText = Template.bind({});
 HelperText.args = {
-	onChange: action("checkbox-changed"),
+	onChange: action("callback"),
 	title: "Demo Checkbox",
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
@@ -42,7 +42,7 @@ HelperText.args = {
 
 export const WithErrors = Template.bind({});
 WithErrors.args = {
-	onChange: action("checkbox-changed"),
+	onChange: action("callback"),
 	title: "Demo Checkbox",
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
@@ -53,7 +53,7 @@ WithErrors.args = {
 
 export const Required = Template.bind({});
 Required.args = {
-	onChange: action("checkbox-changed"),
+	onChange: action("callback"),
 	name: "demoCheckbox",
 	title: "Demo Checkbox",
 	label: "Some Label",
@@ -62,7 +62,7 @@ Required.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-	onChange: action("checkbox-changed"),
+	onChange: action("callback"),
 	name: "demoCheckbox",
 	title: "Demo Checkbox",
 	label: "Some Label",

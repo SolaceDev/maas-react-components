@@ -1,14 +1,15 @@
 import { Box, Checkbox, FormHelperText, InputLabel, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
+import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 
 export interface SolaceCheckboxChangeEvent {
 	name: string;
 	value: boolean;
 }
 
-interface SolaceCheckBoxProps extends SolaceComponentProps {
+export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` accessible for screen readers
 	 */
@@ -66,8 +67,14 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 	dataTags
 }) => {
 	const theme = useTheme();
+	const [selected, setSelected] = useState(isChecked);
+
+	useEffect(() => {
+		setSelected(isChecked);
+	}, [isChecked]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSelected(event.target.checked);
 		if (onChange) {
 			onChange({
 				name: name,
@@ -87,22 +94,24 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 		return id ? id : name;
 	};
 
-	// temp fix to get around typescript issues.
-	console.log(dataQa);
-	console.log(dataTags);
-
 	return (
 		<React.Fragment>
 			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
 				<Checkbox
 					id={`${getId()}-checkbox`}
 					name={name}
-					role="textbox"
+					inputProps={
+						{
+							"aria-labelledby": label ? `${getId()}-label` : "",
+							"data-qa": dataQa,
+							"data-tags": dataTags
+						} as SolaceHTMLAttributeProps
+					}
+					role="checkbox"
 					title={title}
 					disabled={isDisabled}
-					aria-labelledby={label ? `${getId()}-label` : ""}
 					disableRipple
-					defaultChecked={isChecked}
+					checked={selected}
 					onChange={handleChange}
 				/>
 				{label && (

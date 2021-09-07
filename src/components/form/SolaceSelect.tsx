@@ -1,15 +1,14 @@
 import { Box, TextField, InputLabel, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
-import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 
-export interface SolaceTextFieldChangeEvent {
+export interface SolaceSelectChangeEvent {
 	name: string;
 	value: string;
 }
 
-export interface SolaceTextFieldProps extends SolaceComponentProps {
+export interface SolaceSelectProps extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
 	 */
@@ -30,22 +29,6 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * Content to display as supportive/explanitory text
 	 */
 	helperText?: string | JSX.Element;
-	/**
-	 * Short hint displayed in the `input` before user enters a value
-	 */
-	placeholder?: string;
-	/**
-	 * The maximum number of characters which can be typed as the `input` value
-	 */
-	maxLength?: number;
-	/**
-	 * The type of `input` element to render
-	 */
-	type?: "text" | "number" | "password" | "email" | "url";
-	/**
-	 * The size/width of the `input` measured in characters
-	 */
-	size?: number;
 	/**
 	 * The text to display as the tooltip hint
 	 */
@@ -73,19 +56,15 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
-	onChange?: (event: SolaceTextFieldChangeEvent) => void;
+	onChange?: (event: SolaceSelectChangeEvent) => void;
 }
 
-const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
+const SolaceSelect: React.FC<SolaceSelectProps> = ({
 	id,
 	name,
 	label,
-	value,
+	value = "",
 	helperText,
-	placeholder,
-	maxLength = constants.maxLength,
-	type = "text",
-	size = 50,
 	title,
 	hasErrors = false,
 	isRequired = false,
@@ -94,16 +73,18 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 	isReadOnly = false,
 	onChange,
 	dataQa,
-	dataTags
+	dataTags,
+	children
 }) => {
 	const theme = useTheme();
-	const [textValue, setTextValue] = useState(value);
+	const [selectedValue, setSelectedValue] = useState(value);
 
 	useEffect(() => {
-		setTextValue(value);
+		setSelectedValue(value);
 	}, [value]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSelectedValue(event.target.value);
 		if (onChange) {
 			onChange({
 				name: name,
@@ -123,28 +104,26 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 		return id ? id : name;
 	};
 
-	const textField = () => (
+	const select = () => (
 		<React.Fragment>
 			<TextField
-				id={`${getId()}-textfield`}
+				id={`${getId()}-select`}
 				name={name}
 				inputProps={{
-					maxLength: maxLength,
-					size: size,
 					"data-qa": dataQa,
 					"data-tags": dataTags,
-					readOnly: isReadOnly,
-					"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
+					"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
 					"aria-labelledby": label ? `${getId()}-label` : "",
 					"aria-readonly": isReadOnly,
-					role: "textbox",
+					role: "select",
 					title: title
 				}}
-				type={type}
-				autoComplete="off"
+				select
 				InputProps={{
 					sx: { height: theme.spacing(4) },
+					className: isReadOnly ? "readOnlySelect" : "",
 					disabled: isDisabled,
+					readOnly: isReadOnly,
 					required: isRequired
 				}}
 				FormHelperTextProps={{
@@ -152,11 +131,17 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 					error: hasErrors
 				}}
 				helperText={getHelperText()}
+				title={title}
+				error={hasErrors}
+				autoComplete="off"
+				required={isRequired}
+				disabled={isDisabled}
 				margin="dense"
-				placeholder={placeholder}
-				value={textValue}
+				value={selectedValue}
 				onChange={handleChange}
-			/>
+			>
+				{children}
+			</TextField>
 		</React.Fragment>
 	);
 
@@ -166,14 +151,14 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 				<Box marginTop={theme.spacing()}>
 					<InputLabel
 						id={`${getId()}-label`}
-						htmlFor={`${getId()}-textfield`}
+						htmlFor={`${getId()}-select`}
 						required={isRequired}
 						disabled={isDisabled}
 						error={hasErrors}
 					>
 						{label}
 					</InputLabel>
-					{textField()}
+					{select()}
 				</Box>
 			)}
 			{isInlineLabel && label && (
@@ -186,7 +171,7 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 				>
 					<InputLabel
 						id={`${getId()}-label`}
-						htmlFor={`${getId()}-textfield`}
+						htmlFor={`${getId()}-select`}
 						required={isRequired}
 						color="primary"
 						disabled={isDisabled}
@@ -194,12 +179,12 @@ const SolaceTextField: React.FC<SolaceTextFieldProps> = ({
 					>
 						{label}
 					</InputLabel>
-					{textField()}
+					{select()}
 				</Box>
 			)}
-			{!label && textField()}
+			{!label && select()}
 		</React.Fragment>
 	);
 };
 
-export default SolaceTextField;
+export default SolaceSelect;

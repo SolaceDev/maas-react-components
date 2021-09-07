@@ -204,6 +204,23 @@ const theme = {
 							backgroundColor: BASE_COLORS.greys.grey1
 						}
 					},
+					"&:hover .MuiOutlinedInput-input:read-only": {
+						".MuiOutlinedInput-notchedOutline": {
+							border: "none"
+						}
+					},
+					"&.readOnlySelect, &.readOnlySelect.Mui-focused": {
+						".MuiOutlinedInput-notchedOutline": {
+							border: "none"
+						},
+						".MuiSvgIcon-root": {
+							display: "none"
+						},
+						".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
+							cursor: "default",
+							padding: "0px"
+						}
+					},
 					"&.Mui-focused": {
 						".MuiOutlinedInput-notchedOutline": {
 							border: `solid 1px ${BASE_COLORS.greens.green1}`
@@ -215,7 +232,8 @@ const theme = {
 							border: `solid 1px ${BASE_COLORS.greys.grey2}`
 						},
 						input: {
-							webkitTextFillColor: BASE_COLORS.greys.grey14
+							webkitTextFillColor: BASE_COLORS.greys.grey14,
+							padding: "8px"
 						}
 					}
 				},
@@ -249,6 +267,16 @@ const theme = {
 						fill: BASE_COLORS.greys.grey3
 					},
 					padding: "0px 4px 0px 0px"
+				}
+			}
+		},
+		MuiSelect: {
+			styleOverrides: {
+				select: {
+					"&.MuiOutlinedInput-input": {
+						padding: "6px 34px 6px 8px",
+						minWidth: "330px"
+					}
 				}
 			}
 		}

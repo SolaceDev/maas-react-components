@@ -1,17 +1,15 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceTextField } from "@SolaceDev/maas-react-components";
+import { SolaceSelect } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
+import { MenuItem } from "@material-ui/core";
 
 export default {
-	title: "Forms/SolaceTextfield",
-	component: SolaceTextField,
+	title: "Forms/SolaceSelect",
+	component: SolaceSelect,
 	parameters: {
-		design: {
-			type: "figma",
-			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=430%3A548"
-		}
+		controls: { sort: "alpha" }
 	},
 	argTypes: {
 		label: {
@@ -53,72 +51,73 @@ export default {
 			control: {
 				type: "text"
 			}
-		},
-		type: {
-			options: ["text", "number", "password", "email", "url"],
-			control: {
-				type: "select"
-			}
-		},
-		size: {
-			control: {
-				type: "number"
-			}
 		}
 	}
-} as ComponentMeta<typeof SolaceTextField>;
+} as ComponentMeta<typeof SolaceSelect>;
 
-const Template: ComponentStory<typeof SolaceTextField> = (args) => <SolaceTextField {...args} />;
+const SELECT_OPTIONS: Array<any> = [];
+SELECT_OPTIONS.push(
+	<MenuItem key="option1" value="option1">
+		Menu Option #1
+	</MenuItem>
+);
+SELECT_OPTIONS.push(
+	<MenuItem key="option2" value="option2">
+		Menu Option #2
+	</MenuItem>
+);
+SELECT_OPTIONS.push(
+	<MenuItem key="option3" value="option3">
+		Menu Option #3
+	</MenuItem>
+);
+const Template: ComponentStory<typeof SolaceSelect> = (args) => <SolaceSelect {...args} />;
 
 export const DefaultTextfield = Template.bind({});
 DefaultTextfield.args = {
 	onChange: action("callback"),
-	title: "Demo Text Field",
-	id: "demoTextFieldId",
-	name: "demoTextField"
+	title: "Demo Select",
+	id: "demoSelectId",
+	name: "demoSelect",
+	children: SELECT_OPTIONS
 };
 
 export const StackedLabeleFormat = Template.bind({});
 StackedLabeleFormat.args = {
 	onChange: action("callback"),
-	title: "Demo Text Field",
-	name: "demoTextField",
-	label: "Some Label"
+	title: "Demo Select",
+	name: "demoSelect",
+	label: "Some Label",
+	children: SELECT_OPTIONS
 };
 
 export const InlineLabeleFormat = Template.bind({});
 InlineLabeleFormat.args = {
-	onChange: action("text-changed"),
-	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
-	isInlineLabel: true
-};
-
-export const PlaceholderText = Template.bind({});
-PlaceholderText.args = {
 	onChange: action("callback"),
-	name: "demoTextField",
-	title: "Demo Text Field",
+	name: "demoSelect",
+	title: "Demo Select",
 	label: "Some Label",
-	placeholder: "Some placeholder text"
+	children: SELECT_OPTIONS,
+	isInlineLabel: true
 };
 
 export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("callback"),
-	name: "demoTextField",
-	title: "Demo Text Field",
+	name: "demoSelect",
+	title: "Demo Select Field",
 	label: "Some Label",
+	children: SELECT_OPTIONS,
 	helperText: "Some helper text"
 };
 
 export const WithErrors = Template.bind({});
 WithErrors.args = {
 	onChange: action("callback"),
-	name: "demoTextField",
-	title: "Demo Text Field",
+	name: "demoSelect",
+	title: "Demo Select Field",
 	label: "Some Label",
+	children: SELECT_OPTIONS,
 	helperText: "The text you entered was invalid",
 	hasErrors: true
 };
@@ -126,28 +125,31 @@ WithErrors.args = {
 export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),
-	name: "demoTextField",
-	title: "Demo Text Field",
+	name: "demoSelect",
+	title: "Demo Select Field",
 	label: "Some Label",
+	children: SELECT_OPTIONS,
 	isRequired: true
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
 	onChange: action("callback"),
-	name: "demoTextField",
-	title: "Demo Text Field",
+	name: "demoSelect",
+	title: "Demo Select Field",
 	label: "Some Label",
-	value: "Some value",
+	children: SELECT_OPTIONS,
+	value: "option2",
 	isDisabled: true
 };
 
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
 	onChange: action("callback"),
-	name: "demoTextField",
-	title: "Demo Text Field",
+	name: "demoSelect",
+	title: "Demo Select Field",
 	label: "Some Label",
-	value: "Some value",
+	children: SELECT_OPTIONS,
+	value: "option3",
 	isReadOnly: true
 };

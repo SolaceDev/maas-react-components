@@ -23,7 +23,7 @@ const Template: ComponentStory<typeof SolaceButton> = (args) => <SolaceButton {.
 
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {
-	onClick: action("default-button-clicked"),
+	onClick: action("callback"),
 	dataQa: "testDataProp",
 	dataTags: "testDataTag1 testDataTag2",
 	children: "Click Me!"
@@ -31,28 +31,28 @@ DefaultButton.args = {
 
 export const CallToActionButton = Template.bind({});
 CallToActionButton.args = {
-	onClick: action("call-to-action-button-clicked"),
+	onClick: action("callback"),
 	variant: "call-to-action",
 	children: "Click Me!"
 };
 
 export const OutlineButton = Template.bind({});
 OutlineButton.args = {
-	onClick: action("outline-button-clicked"),
+	onClick: action("callback"),
 	variant: "outline",
 	children: "Click Me!"
 };
 
 export const TextButton = Template.bind({});
 TextButton.args = {
-	onClick: action("text-button-clicked"),
+	onClick: action("callback"),
 	variant: "text",
 	children: "Click Me!"
 };
 
 export const IconButton = Template.bind({});
 IconButton.args = {
-	onClick: action("icon-button-clicked"),
+	onClick: action("callback"),
 	variant: "icon",
 	title: "Delete",
 	children: <DeleteIcon />
@@ -60,7 +60,7 @@ IconButton.args = {
 
 export const LinkButton = Template.bind({});
 LinkButton.args = {
-	onClick: action("link-button-clicked"),
+	onClick: action("callback"),
 	variant: "link",
 	children: "Click Me!"
 };
@@ -74,7 +74,7 @@ ExternalLinkButton.args = {
 
 export const WithStartIcon = Template.bind({});
 WithStartIcon.args = {
-	onClick: action("button-clicked"),
+	onClick: action("callback"),
 	variant: "call-to-action",
 	startIcon: <DeleteIcon />,
 	children: "Delete"
@@ -82,7 +82,7 @@ WithStartIcon.args = {
 
 export const WithEndIcon = Template.bind({});
 WithEndIcon.args = {
-	onClick: action("button-clicked"),
+	onClick: action("callback"),
 	variant: "call-to-action",
 	endIcon: <DeleteIcon />,
 	children: "Delete"
