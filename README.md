@@ -70,7 +70,11 @@ Follow the following steps to start component development on your local machines
 
 1.  Run `npm run install:dev`. This will install required packages both for storybook and component library.
 2.  If this is the **first time** you are developing on this repo run `npm run dev:link`. **Note: this step is only required only once**.
-3.  Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
+3.  If this is the **first time** you are developing on this repo, change to the storybook directory `cd ./storybook`, then `npm install` so that we can install the link to `@SolaceDev/maas-react-components`
+4.  Navigate back up to the base component directory `cd ..`
+5.  Start the application and storybook with `npm start`
+
+All subsequent times (after you've installed and linked everything once), run `npm start` from the base directory and all should work
 
 ## License
 
