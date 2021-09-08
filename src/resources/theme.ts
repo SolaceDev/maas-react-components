@@ -191,7 +191,64 @@ const theme = {
 				}
 			}
 		},
+		MuiInputBase: {
+			styleOverrides: {
+				multiline: {
+					// TextArea Component
+					display: "inline-block",
+					"&.MuiOutlinedInput-root": {
+						padding: "0px",
+						marginRight: "20px",
+						display: "inline-table", // this ensures helper text is below textarea
+						minWidth: "354px",
+						".MuiOutlinedInput-notchedOutline": {
+							border: "none"
+						}
+					},
+					".MuiOutlinedInput-input": {
+						border: `solid 1px ${BASE_COLORS.greys.grey3}`,
+						borderRadius: "4px",
+						padding: "8px"
+					},
+					"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
+						{
+							border: "none",
+							padding: "0px",
+							cursor: "default"
+						},
+					"&:hover": {
+						".MuiOutlinedInput-input": {
+							border: `solid 1px ${BASE_COLORS.greys.grey5}`
+						},
+						"&.MuiOutlinedInput-root": {
+							".MuiOutlinedInput-notchedOutline": {
+								border: "none"
+							}
+						}
+					},
+					"&.Mui-focused": {
+						".MuiOutlinedInput-input": {
+							border: `solid 1px ${BASE_COLORS.greens.green1}`
+						},
+						"&.MuiOutlinedInput-root": {
+							".MuiOutlinedInput-notchedOutline": {
+								border: "none"
+							}
+						}
+					},
+					".Mui-disabled.MuiOutlinedInput-input, &:hover .Mui-disabled.MuiOutlinedInput-input": {
+						backgroundColor: BASE_COLORS.greys.grey19,
+						padding: "8px",
+						border: `solid 1px ${BASE_COLORS.greys.grey2}`
+					},
+					"&.Mui-disabled .MuiOutlinedInput-input:read-only.Mui-disabled + .MuiOutlinedInput-notchedOutline": {
+						border: "none"
+					}
+				}
+			}
+		},
 		MuiOutlinedInput: {
+			// Textfield component
 			styleOverrides: {
 				root: {
 					".MuiOutlinedInput-notchedOutline": {
@@ -229,6 +286,9 @@ const theme = {
 					"&.Mui-disabled": {
 						backgroundColor: BASE_COLORS.greys.grey19,
 						".MuiOutlinedInput-notchedOutline": {
+							border: `solid 1px ${BASE_COLORS.greys.grey2}`
+						},
+						".MuiOutlinedInput-input:read-only + .MuiOutlinedInput-notchedOutline": {
 							border: `solid 1px ${BASE_COLORS.greys.grey2}`
 						},
 						input: {
@@ -271,6 +331,7 @@ const theme = {
 			}
 		},
 		MuiSelect: {
+			// Select component
 			styleOverrides: {
 				select: {
 					"&.MuiOutlinedInput-input": {
