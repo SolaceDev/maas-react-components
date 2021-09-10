@@ -98,7 +98,7 @@ function SolaceToggle({
 		<React.Fragment>
 			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
 				<Switch
-					id={`${getId()}-checkbox`}
+					id={`${getId()}-toggle`}
 					name={name}
 					size="small"
 					inputProps={
@@ -108,7 +108,7 @@ function SolaceToggle({
 							"data-tags": dataTags
 						} as SolaceHTMLAttributeProps
 					}
-					role="checkbox"
+					role="switch"
 					title={title}
 					disabled={isDisabled}
 					disableRipple
@@ -118,7 +118,7 @@ function SolaceToggle({
 				{label && (
 					<InputLabel
 						id={`${getId()}-label`}
-						htmlFor={`${getId()}-checkbox`}
+						htmlFor={`${getId()}-toggle`}
 						required={isRequired}
 						color="primary"
 						disabled={isDisabled}
