@@ -2,6 +2,7 @@ export const BASE_COLORS = {
 	greens: {
 		green1: "#00C895",
 		green2: "#00AD93",
+		"green2-rgb": "rgb(0, 173, 147)",
 		green3: "#009193",
 		green4: "#4B6C6C",
 		green5: "#00CCAD",
@@ -44,4 +45,8 @@ export const BASE_COLORS = {
 	yellows: {
 		yellow1: "#F3AA24"
 	}
+};
+
+export const getRGBA = (rgbValue: string, opacity: number): string => {
+	return rgbValue.replace("rgb", "rgba").replace(")", `, ${opacity})`);
 };
