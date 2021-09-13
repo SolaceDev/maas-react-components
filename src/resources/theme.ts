@@ -1,4 +1,4 @@
-import { BASE_COLORS } from "./colorPallette";
+import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 // A custom theme for this app
@@ -337,6 +337,59 @@ const theme = {
 					"&.MuiOutlinedInput-input": {
 						padding: "6px 34px 6px 8px",
 						minWidth: "330px"
+					}
+				}
+			}
+		},
+		MuiSwitch: {
+			styleOverrides: {
+				root: {
+					width: "50px",
+					height: "30px",
+					marginRight: "8px",
+					paddingBottom: "0px",
+					".MuiButtonBase-root": {
+						"&.MuiSwitch-switchBase": {
+							"&.Mui-checked": {
+								transform: "translate(22px)"
+							},
+							"&.Mui-checked + .MuiSwitch-track": {
+								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3),
+								opacity: 1
+							},
+							"&.Mui-disabled + .MuiSwitch-track": {
+								backgroundColor: BASE_COLORS.greys.grey2,
+								opacity: 1
+							},
+							"&.Mui-disabled .MuiSwitch-thumb": {
+								backgroundColor: BASE_COLORS.greys.grey19,
+								borderColor: BASE_COLORS.greys.grey2
+							},
+							"&:hover": {
+								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3)
+							}
+						},
+						".MuiSwitch-thumb": {
+							width: "16px",
+							height: "16px",
+							border: `solid 2px ${getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3)}`,
+							boxShadow: "none"
+						}
+					},
+					".MuiSwitch-track": {
+						height: "12px",
+						width: "36px",
+						transform: "translateY(1px)",
+						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3),
+						opacity: 1
+					}
+				},
+				switchBase: {
+					"&.MuiChecked .MuiSwitch-track": {
+						height: "12px",
+						transform: "translateY(1px)",
+						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3),
+						opacity: 1
 					}
 				}
 			}
