@@ -103,22 +103,6 @@ const theme = {
 				}
 			}
 		},
-		MuiDialogActions: {
-			styleOverrides: {
-				spacing: {
-					"& :not(:first-of-type)": {
-						marginLeft: "8px"
-					}
-				}
-			}
-		},
-		MuiDialogTitle: {
-			styleOverrides: {
-				root: {
-					padding: "24px 24px 16px 24px"
-				}
-			}
-		},
 		MuiFormControl: {
 			styleOverrides: {
 				root: {
@@ -390,6 +374,42 @@ const theme = {
 						transform: "translateY(1px)",
 						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3),
 						opacity: 1
+					}
+				}
+			}
+		},
+		MuiDialog: {
+			styleOverrides: {
+				root: {
+					".MuiBackdrop-root": {
+						backgroundColor: BASE_COLORS.greys.grey5
+					},
+					".MuiPaper-root": {
+						minWidth: "400px",
+						maxWidth: "80%",
+						maxHeight: "80%",
+						boxShadow: `0px 2px 8px ${BASE_COLORS.greys.grey4}`,
+						padding: "24px",
+						".MuiDialogTitle-root": {
+							fontSize: BASE_FONT_PX_SIZES.xl,
+							color: BASE_COLORS.greys.grey14,
+							padding: "0px 0px 24px 0px"
+						},
+						".MuiDialogContent-root": {
+							fontSize: BASE_FONT_PX_SIZES.sm,
+							lineHeight: BASE_FONT_PX_SIZES.lg,
+							color: BASE_COLORS.greys.grey14,
+							padding: "0px",
+							".MuiBox-root": {
+								display: "grid"
+							}
+						},
+						".MuiDialogActions-root": {
+							padding: "24px 0px 0px 0px",
+							"& > :not(:nth-child(1))": {
+								marginLeft: "16px"
+							}
+						}
 					}
 				}
 			}
