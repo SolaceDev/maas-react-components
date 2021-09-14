@@ -13,6 +13,7 @@
 	"license": "MIT",
 	"main": "dist/index.js",
 	"module": "dist/index.modern.js",
+	"types": "dist/index.d.ts",
 	"source": "src/index.tsx",
 	"engines": {
 		"node": ">=14"
@@ -20,8 +21,8 @@
 	"scripts": {
 		"install:dev": "npm install && cd storybook/ && npm i",
 		"dev:link": "npm link && cd storybook && npm link @SolaceDev/maas-react-components",
-		"build": "microbundle-crl --compress --format cjs,modern",
-		"build:dev": "microbundle-crl watch --no-compress --format cjs",
+		"build": "microbundle --compress --jsx React.createElement --format cjs,modern",
+		"build:dev": "microbundle watch --jsx React.createElement --no-compress --format cjs",
 		"start": "./scripts/start.sh",
 		"prepare": "run-s build",
 		"test": "cross-env CI=1 react-scripts test --env=jsdom",
@@ -59,7 +60,7 @@
 		"gh-pages": "^3.2.3",
 		"husky": "^7.0.2",
 		"lint-staged": "^10.5.4",
-		"microbundle-crl": "^0.13.11",
+		"microbundle": "^0.13.3",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.3.2",
 		"react": "^17.0.2",

@@ -57,7 +57,7 @@ import { SolaceButton } from "@SolaceDev/maas-react-components";
 
 //With custom named package
 
-import { SolaceButton } from "common-component";
+import { SolaceButton } from "common-components";
 
 export default function Example() {
 	return <SolaceButton />;
@@ -69,16 +69,11 @@ export default function Example() {
 Follow the following steps to start component development on your local machines:
 
 1.  Run `npm run install:dev`. This will install required packages both for storybook and component library.
-2.  If this is the **first time** you are developing on this repo run `npm run dev:link`. **Note: this step is only required only once**.
-3.  If this is the **first time** you are developing on this repo, change to the storybook directory `cd ./storybook`, then `npm install` so that we can install the link to `@SolaceDev/maas-react-components`
-4.  Navigate back up to the base component directory `cd ..`
-5.  Start the application and storybook with `npm start`
-
-All subsequent times (after you've installed and linked everything once), run `npm start` from the base directory and all should work
+2.  Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
 
 **Note for developers** : Don't forget to include one of the following values in a commit, before pushing your branch to master. This would trigger a automated package version update.
 
-| value | defintition                                                               |
+| Value | Defintition                                                               |
 | ----- | ------------------------------------------------------------------------- |
 | major | MAJOR version when you make incompatible API changes                      |
 | minor | MINOR version when you add functionality in a backwards compatible manner |
