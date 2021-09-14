@@ -10,7 +10,7 @@ export default {
 	parameters: {
 		design: {
 			type: "figma",
-			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/UI-Library%3A-Patterns?node-id=2931%3A22385"
+			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/UI-Library%3A-Patterns?node-id=2937%3A22461"
 		}
 	},
 	argTypes: {}
