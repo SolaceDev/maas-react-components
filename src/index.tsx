@@ -10,9 +10,11 @@ export { default as SolaceAutoCompleteTextField } from "./components/form/Solace
 export { default as SolaceCheckBox } from "./components/form/SolaceCheckBox";
 export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceChip } from "./components/SolaceChip";
-export { default as SolaceConfirmationDialog } from "./components/SolaceConfirmationDialog";
+export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceConfirmationDialog";
 export { default as SolaceMenuPopper } from "./components/SolaceMenuPopper";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";
 export { default as SolaceSelect } from "./components/form/SolaceSelect";
+export { default as SolaceTextArea } from "./components/form/SolaceTextArea";
+export { default as SolaceToggle } from "./components/form/SolaceToggle";
 
 export { default as SolaceTheme } from "./resources/theme";
