@@ -1,17 +1,17 @@
-import { Box, Checkbox, FormHelperText, useTheme } from "@material-ui/core";
+import { Box, Radio, FormHelperText, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import { SolaceLabel } from "../..";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
-import { RestingCheckBoxIcon, SelectedCheckBoxIcon } from "../../resources/icons/CheckBoxIcons";
+import { RestingRadioIcon, SelectedRadioIcon } from "../../resources/icons/RadioIcons";
 
-export interface SolaceCheckboxChangeEvent {
+export interface SolaceRadioChangeEvent {
 	name: string;
 	value: boolean;
 }
 
-export interface SolaceCheckBoxProps extends SolaceComponentProps {
+export interface SolaceRadioProps extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` accessible for screen readers
 	 */
@@ -51,10 +51,10 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	/**
 	 * Callback function to trigger whenever the value of the `checkbox` is changed
 	 */
-	onChange?: (event: SolaceCheckboxChangeEvent) => void;
+	onChange?: (event: SolaceRadioChangeEvent) => void;
 }
 
-const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
+const SolaceRadio: React.FC<SolaceRadioProps> = ({
 	id,
 	name,
 	label,
@@ -99,11 +99,11 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 	return (
 		<React.Fragment>
 			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
-				<Checkbox
+				<Radio
 					id={`${getId()}-checkbox`}
 					name={name}
-					icon={RestingCheckBoxIcon}
-					checkedIcon={SelectedCheckBoxIcon}
+					icon={RestingRadioIcon}
+					checkedIcon={SelectedRadioIcon}
 					inputProps={
 						{
 							"aria-labelledby": label ? `${getId()}-label` : "",
@@ -111,7 +111,7 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 							"data-tags": dataTags
 						} as SolaceHTMLAttributeProps
 					}
-					role="checkbox"
+					role="radio"
 					title={title}
 					disabled={isDisabled}
 					disableRipple
@@ -121,7 +121,7 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 				{label && (
 					<SolaceLabel
 						id={`${getId()}-label`}
-						htmlForId={`${getId()}-checkbox`}
+						htmlForId={`${getId()}-radio`}
 						isRequired={isRequired}
 						isDisabled={isDisabled}
 					>
@@ -138,4 +138,4 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 	);
 };
 
-export default SolaceCheckBox;
+export default SolaceRadio;

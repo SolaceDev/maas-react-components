@@ -1,6 +1,7 @@
-import { Box, TextField, InputLabel, useTheme } from "@material-ui/core";
+import { Box, TextField, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
+import { SolaceLabel } from "../..";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface SolaceSelectChangeEvent {
@@ -149,15 +150,14 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 		<React.Fragment>
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<InputLabel
+					<SolaceLabel
 						id={`${getId()}-label`}
-						htmlFor={`${getId()}-select`}
-						required={isRequired}
-						disabled={isDisabled}
-						error={hasErrors}
+						htmlForId={`${getId()}-select`}
+						isRequired={isRequired}
+						isDisabled={isDisabled}
 					>
 						{label}
-					</InputLabel>
+					</SolaceLabel>
 					{select()}
 				</Box>
 			)}
@@ -169,16 +169,14 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<InputLabel
+					<SolaceLabel
 						id={`${getId()}-label`}
-						htmlFor={`${getId()}-select`}
-						required={isRequired}
-						color="primary"
-						disabled={isDisabled}
-						error={hasErrors}
+						htmlForId={`${getId()}-select`}
+						isRequired={isRequired}
+						isDisabled={isDisabled}
 					>
 						{label}
-					</InputLabel>
+					</SolaceLabel>
 					{select()}
 				</Box>
 			)}

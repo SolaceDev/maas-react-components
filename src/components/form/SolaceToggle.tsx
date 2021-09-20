@@ -1,6 +1,7 @@
-import { Box, FormHelperText, InputLabel, Switch, useTheme } from "@material-ui/core";
+import { Box, FormHelperText, Switch, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
+import { SolaceLabel } from "../..";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 
@@ -65,7 +66,7 @@ function SolaceToggle({
 	onChange,
 	dataQa,
 	dataTags
-}: SolaceToggleProps): React.ReactNode {
+}: SolaceToggleProps): JSX.Element {
 	const theme = useTheme();
 	const [selected, setSelected] = useState(isOn);
 
@@ -116,16 +117,14 @@ function SolaceToggle({
 					onChange={handleChange}
 				/>
 				{label && (
-					<InputLabel
+					<SolaceLabel
 						id={`${getId()}-label`}
-						htmlFor={`${getId()}-toggle`}
-						required={isRequired}
-						color="primary"
-						disabled={isDisabled}
-						error={hasErrors}
+						htmlForId={`${getId()}-toggle`}
+						isRequired={isRequired}
+						isDisabled={isDisabled}
 					>
 						{label}
-					</InputLabel>
+					</SolaceLabel>
 				)}
 			</Box>
 			{helperText && (
