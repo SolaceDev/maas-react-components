@@ -17,7 +17,15 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	 */
 	id?: string;
 	/**
+<<<<<<< HEAD
 	 * Name attribute to assign to the `radio` element
+=======
+<<<<<<< HEAD
+	 * Name attribute to assign to the `radio` element
+=======
+	 * Name attribute to assign to the `checkbox` element
+>>>>>>> 28fc486e68a7abf2954fd5e145bc3da08423ab66
+>>>>>>> 9634f44e16ecd05885f634328be454dc5f00509b
 	 */
 	name: string;
 	/**
