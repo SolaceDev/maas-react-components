@@ -8,6 +8,7 @@ export { default as SolaceBackDrop } from "./components/SolaceBackDrop";
 export { default as SolaceButton } from "./components/form/SolaceButton";
 export { default as SolaceAutoCompleteTextField } from "./components/form/SolaceAutoCompleteTextField";
 export { default as SolaceCheckBox } from "./components/form/SolaceCheckBox";
+export { default as SolaceRadio } from "./components/form/SolaceRadio";
 export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceChip } from "./components/SolaceChip";
 export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceConfirmationDialog";
@@ -16,5 +17,6 @@ export { default as SolaceTextField } from "./components/form/SolaceTextField";
 export { default as SolaceSelect } from "./components/form/SolaceSelect";
 export { default as SolaceTextArea } from "./components/form/SolaceTextArea";
 export { default as SolaceToggle } from "./components/form/SolaceToggle";
+export { default as SolaceLabel } from "./components/form/SolaceLabel";
 
 export { default as SolaceTheme } from "./resources/theme";

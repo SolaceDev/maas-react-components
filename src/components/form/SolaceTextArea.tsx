@@ -1,6 +1,7 @@
-import { Box, TextField, InputLabel, useTheme } from "@material-ui/core";
+import { Box, TextField, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
+import { SolaceLabel } from "../..";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 
@@ -153,6 +154,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 					variant: "standard",
 					error: hasErrors
 				}}
+				error={hasErrors}
 				helperText={getHelperText()}
 				margin="dense"
 				placeholder={placeholder}
@@ -166,15 +168,14 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 		<React.Fragment>
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<InputLabel
+					<SolaceLabel
 						id={`${getId()}-label`}
-						htmlFor={`${getId()}-textfield`}
-						required={isRequired}
-						disabled={isDisabled}
-						error={hasErrors}
+						htmlForId={`${getId()}-textfield`}
+						isRequired={isRequired}
+						isDisabled={isDisabled}
 					>
 						{label}
-					</InputLabel>
+					</SolaceLabel>
 					{textField()}
 				</Box>
 			)}
@@ -186,16 +187,14 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<InputLabel
+					<SolaceLabel
 						id={`${getId()}-label`}
-						htmlFor={`${getId()}-textfield`}
-						required={isRequired}
-						color="primary"
-						disabled={isDisabled}
-						error={hasErrors}
+						htmlForId={`${getId()}-textfield`}
+						isRequired={isRequired}
+						isDisabled={isDisabled}
 					>
 						{label}
-					</InputLabel>
+					</SolaceLabel>
 					{textField()}
 				</Box>
 			)}

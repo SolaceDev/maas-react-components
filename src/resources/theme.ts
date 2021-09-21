@@ -116,6 +116,8 @@ const theme = {
 					fontSize: "0.75rem",
 					color: BASE_COLORS.greys.grey11,
 					lineHeight: "150%",
+					marginLeft: "0px",
+					marginTop: "2px",
 					".MuiSvgIcon-root": {
 						width: "18px",
 						height: "18px"
@@ -231,66 +233,74 @@ const theme = {
 				}
 			}
 		},
-		MuiOutlinedInput: {
+		MuiTextField: {
 			// Textfield component
 			styleOverrides: {
 				root: {
-					".MuiOutlinedInput-notchedOutline": {
-						border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-						backgroundColor: BASE_COLORS.greys.grey1
-					},
-					"&:hover": {
+					".MuiOutlinedInput-root": {
+						backgroundColor: BASE_COLORS.whites.white1,
 						".MuiOutlinedInput-notchedOutline": {
-							border: `solid 1px ${BASE_COLORS.greys.grey5}`,
+							border: `solid 1px ${BASE_COLORS.greys.grey3}`,
 							backgroundColor: BASE_COLORS.greys.grey1
+						},
+						"&:hover": {
+							".MuiOutlinedInput-notchedOutline": {
+								border: `solid 1px ${BASE_COLORS.greys.grey5}`,
+								backgroundColor: BASE_COLORS.greys.grey1
+							}
+						},
+						"&:hover .MuiOutlinedInput-input:read-only": {
+							".MuiOutlinedInput-notchedOutline": {
+								border: "none"
+							}
+						},
+						"&.readOnlySelect, .MuiOutlinedInput-root.readOnlySelect.Mui-focused": {
+							".MuiOutlinedInput-notchedOutline": {
+								border: "none"
+							},
+							".MuiSvgIcon-root": {
+								display: "none"
+							},
+							".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
+								cursor: "default",
+								padding: "0px"
+							}
+						},
+						"&.Mui-focused": {
+							".MuiOutlinedInput-notchedOutline": {
+								border: `solid 1px ${BASE_COLORS.greens.green1}`
+							}
+						},
+						"&.Mui-error": {
+							".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
+								borderColor: `${BASE_COLORS.reds.red1}`
+							}
+						},
+						"&.Mui-disabled": {
+							backgroundColor: BASE_COLORS.greys.grey19,
+							".MuiOutlinedInput-notchedOutline": {
+								border: `solid 1px ${BASE_COLORS.greys.grey2}`
+							},
+							".MuiOutlinedInput-input:read-only + .MuiOutlinedInput-notchedOutline": {
+								border: `solid 1px ${BASE_COLORS.greys.grey2}`
+							},
+							input: {
+								webkitTextFillColor: BASE_COLORS.greys.grey14,
+								padding: "8px"
+							}
 						}
 					},
-					"&:hover .MuiOutlinedInput-input:read-only": {
-						".MuiOutlinedInput-notchedOutline": {
-							border: "none"
-						}
-					},
-					"&.readOnlySelect, &.readOnlySelect.Mui-focused": {
-						".MuiOutlinedInput-notchedOutline": {
-							border: "none"
-						},
-						".MuiSvgIcon-root": {
-							display: "none"
-						},
-						".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
-							cursor: "default",
+					".MuiOutlinedInput-input": {
+						fontSize: BASE_FONT_PX_SIZES.sm,
+						color: BASE_COLORS.greys.grey14,
+						padding: "0px 8px",
+						height: "35px",
+						"&:read-only": {
 							padding: "0px"
-						}
-					},
-					"&.Mui-focused": {
-						".MuiOutlinedInput-notchedOutline": {
-							border: `solid 1px ${BASE_COLORS.greens.green1}`
-						}
-					},
-					"&.Mui-disabled": {
-						backgroundColor: BASE_COLORS.greys.grey19,
-						".MuiOutlinedInput-notchedOutline": {
-							border: `solid 1px ${BASE_COLORS.greys.grey2}`
 						},
-						".MuiOutlinedInput-input:read-only + .MuiOutlinedInput-notchedOutline": {
-							border: `solid 1px ${BASE_COLORS.greys.grey2}`
-						},
-						input: {
-							webkitTextFillColor: BASE_COLORS.greys.grey14,
-							padding: "8px"
+						"&:read-only + .MuiOutlinedInput-notchedOutline": {
+							border: "none"
 						}
-					}
-				},
-				input: {
-					fontSize: BASE_FONT_PX_SIZES.sm,
-					color: BASE_COLORS.greys.grey14,
-					padding: "0px 8px",
-					height: "35px",
-					"&:read-only": {
-						padding: "0px"
-					},
-					"&:read-only + .MuiOutlinedInput-notchedOutline": {
-						border: "none"
 					}
 				}
 			}
@@ -298,19 +308,43 @@ const theme = {
 		MuiCheckbox: {
 			styleOverrides: {
 				root: {
-					"&.Mui-checked .MuiSvgIcon-root, &.Mui-checked:hover .MuiSvgIcon-root": {
-						fill: BASE_COLORS.greens.green1
+					"&:hover": {
+						".MuiSvgIcon-root rect": {
+							strokeOpacity: "0.35"
+						}
 					},
-					"&:hover .MuiSvgIcon-root": {
-						fill: BASE_COLORS.greys.grey8
+					"&.Mui-disabled .MuiSvgIcon-root rect": {
+						fill: BASE_COLORS.greys.grey19
 					},
-					".MuiSvgIcon-root": {
-						fill: BASE_COLORS.greys.grey5
+					"&.Mui-disabled .MuiSvgIcon-root path": {
+						fillOpacity: "0.5"
 					},
-					"&.Mui-disabled .MuiSvgIcon-root": {
-						fill: BASE_COLORS.greys.grey3
+					"+ .MuiInputLabel-root": {
+						marginLeft: "16px"
 					},
-					padding: "0px 4px 0px 0px"
+					padding: "0px"
+				}
+			}
+		},
+		MuiRadio: {
+			styleOverrides: {
+				root: {
+					"&:hover": {
+						".MuiSvgIcon-root rect": {
+							strokeOpacity: "0.35"
+						},
+						backgroundColor: "none"
+					},
+					"&.Mui-disabled .MuiSvgIcon-root rect": {
+						fill: BASE_COLORS.greys.grey19
+					},
+					"&.Mui-disabled .MuiSvgIcon-root circle": {
+						fillOpacity: "0.5"
+					},
+					"+ .MuiInputLabel-root": {
+						marginLeft: "16px"
+					},
+					padding: "0px"
 				}
 			}
 		},
