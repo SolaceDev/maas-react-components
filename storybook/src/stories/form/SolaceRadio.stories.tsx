@@ -23,7 +23,8 @@ DefaultRadio.args = {
 	onChange: action("callback"),
 	title: "Demo Radio",
 	id: "demoRadioId",
-	name: "demoRadio"
+	name: "demoRadio",
+	value: "someValue"
 };
 
 export const Labeled = Template.bind({});
@@ -32,7 +33,8 @@ Labeled.args = {
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	label: "Some Label"
+	label: "Some Label",
+	value: "someValue"
 };
 
 export const HelperText = Template.bind({});
@@ -42,7 +44,8 @@ HelperText.args = {
 	id: "demoRadioId",
 	name: "demoRadio",
 	label: "Some Label",
-	helperText: "Some helper text here"
+	helperText: "Some helper text here",
+	value: "someValue"
 };
 
 export const WithErrors = Template.bind({});
@@ -53,7 +56,8 @@ WithErrors.args = {
 	name: "demoRadio",
 	label: "Some Label",
 	hasErrors: true,
-	helperText: "Some error occured"
+	helperText: "Some error occured",
+	value: "someValue"
 };
 
 export const Required = Template.bind({});
@@ -62,7 +66,8 @@ Required.args = {
 	name: "demoRadio",
 	title: "Demo Checkbox",
 	label: "Some Label",
-	isRequired: true
+	isRequired: true,
+	value: "someValue"
 };
 
 export const Disabled = Template.bind({});
@@ -72,5 +77,6 @@ Disabled.args = {
 	title: "Demo Radio",
 	label: "Some Label",
 	isChecked: true,
-	isDisabled: true
+	isDisabled: true,
+	value: "someValue"
 };

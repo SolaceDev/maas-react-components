@@ -9,6 +9,7 @@ export { default as SolaceButton } from "./components/form/SolaceButton";
 export { default as SolaceAutoCompleteTextField } from "./components/form/SolaceAutoCompleteTextField";
 export { default as SolaceCheckBox } from "./components/form/SolaceCheckBox";
 export { default as SolaceRadio } from "./components/form/SolaceRadio";
+export { default as SolaceRadioGroup } from "./components/form/SolaceRadioGroup";
 export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceChip } from "./components/SolaceChip";
 export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceConfirmationDialog";
