@@ -1,4 +1,4 @@
-import { Box, Radio, FormHelperText, useTheme } from "@material-ui/core";
+import { Box, Radio, FormHelperText, useTheme, useRadioGroup } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import { SolaceLabel } from "../..";
@@ -20,6 +20,10 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	 * Name attribute to assign to the `radio` element
 	 */
 	name: string;
+	/**
+	 * Value assign to the `radio` element
+	 */
+	value?: string;
 	/**
 	 * the label content to display on the screen
 	 */
@@ -54,10 +58,11 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	onChange?: (event: SolaceRadioChangeEvent) => void;
 }
 
-const SolaceRadio: React.FC<SolaceRadioProps> = ({
+function SolaceRadio({
 	id,
 	name,
 	label,
+	value,
 	title,
 	helperText,
 	hasErrors = false,
@@ -67,17 +72,24 @@ const SolaceRadio: React.FC<SolaceRadioProps> = ({
 	onChange,
 	dataQa,
 	dataTags
-}) => {
+}: SolaceRadioProps): JSX.Element {
 	const theme = useTheme();
 	const [selected, setSelected] = useState(isChecked);
+	const radioGroup = useRadioGroup();
 
 	useEffect(() => {
 		setSelected(isChecked);
 	}, [isChecked]);
 
+	useEffect(() => {
+		if (radioGroup) {
+			setSelected(radioGroup.value === value);
+		}
+	}, [radioGroup, value]);
+
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSelected(event.target.checked);
-		if (onChange) {
+		if (onChange && event.target.checked) {
 			onChange({
 				name: name,
 				value: event.target.checked
@@ -98,10 +110,10 @@ const SolaceRadio: React.FC<SolaceRadioProps> = ({
 
 	return (
 		<React.Fragment>
-			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
+			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="top">
 				<Radio
-					id={`${getId()}-checkbox`}
 					name={name}
+					value={value}
 					icon={RestingRadioIcon}
 					checkedIcon={SelectedRadioIcon}
 					inputProps={
@@ -136,6 +148,6 @@ const SolaceRadio: React.FC<SolaceRadioProps> = ({
 			)}
 		</React.Fragment>
 	);
-};
+}
 
 export default SolaceRadio;

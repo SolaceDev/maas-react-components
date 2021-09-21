@@ -3,7 +3,7 @@ import React from "react";
 
 export interface SolaceLabelProps {
 	/**
-	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
+	 * Unique identifier of the label
 	 */
 	id: string;
 	/**
