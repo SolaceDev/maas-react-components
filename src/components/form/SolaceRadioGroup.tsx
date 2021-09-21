@@ -100,7 +100,7 @@ function SolaceRadioGroup({
 	const getRadioGroup = () => (
 		<React.Fragment>
 			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
-				<RadioGroup aria-lable={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
+				<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
 					{children}
 				</RadioGroup>
 			</Box>
