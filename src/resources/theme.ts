@@ -110,6 +110,15 @@ const theme = {
 				}
 			}
 		},
+		MuiFormGroup: {
+			styleOverrides: {
+				root: {
+					".MuiBox-root:not(:last-child) .MuiRadio-root": {
+						marginBottom: "12px"
+					}
+				}
+			}
+		},
 		MuiFormHelperText: {
 			styleOverrides: {
 				root: {
@@ -313,6 +322,9 @@ const theme = {
 							strokeOpacity: "0.35"
 						}
 					},
+					".MuiSvgIcon-root path": {
+						fill: BASE_COLORS.greens.green1
+					},
 					"&.Mui-disabled .MuiSvgIcon-root rect": {
 						fill: BASE_COLORS.greys.grey19
 					},
@@ -337,6 +349,9 @@ const theme = {
 					},
 					"&.Mui-disabled .MuiSvgIcon-root rect": {
 						fill: BASE_COLORS.greys.grey19
+					},
+					".MuiSvgIcon-root circle": {
+						fill: BASE_COLORS.greens.green1
 					},
 					"&.Mui-disabled .MuiSvgIcon-root circle": {
 						fillOpacity: "0.5"
