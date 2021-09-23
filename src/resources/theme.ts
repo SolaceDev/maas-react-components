@@ -71,7 +71,7 @@ const theme = {
 					borderRadius: "4px",
 					minWidth: "100px",
 					height: "32px",
-					fontWeight: "medium"
+					fontWeight: 500
 				},
 				startIcon: {
 					"&>*:nth-of-type(1)": {
@@ -466,7 +466,7 @@ const theme = {
 	},
 	palette: {
 		background: {
-			default: BASE_COLORS.greys.grey4
+			default: BASE_COLORS.greys.grey19
 		},
 		error: {
 			main: BASE_COLORS.reds.red1
