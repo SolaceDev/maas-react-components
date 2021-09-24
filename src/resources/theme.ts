@@ -71,7 +71,7 @@ const theme = {
 					borderRadius: "4px",
 					minWidth: "100px",
 					height: "32px",
-					fontWeight: "medium"
+					fontWeight: 500
 				},
 				startIcon: {
 					"&>*:nth-of-type(1)": {
@@ -238,6 +238,9 @@ const theme = {
 					},
 					"&.Mui-disabled .MuiOutlinedInput-input:read-only.Mui-disabled + .MuiOutlinedInput-notchedOutline": {
 						border: "none"
+					},
+					".MuiInputBase-inputMultiline": {
+						backgroundColor: BASE_COLORS.whites.white1
 					}
 				}
 			}
@@ -341,6 +344,11 @@ const theme = {
 		MuiRadio: {
 			styleOverrides: {
 				root: {
+					alignItems: "flex-start",
+					marginRight: "12px",
+					".MuiFormHelperText-root": {
+						marginLeft: "0px"
+					},
 					"&:hover": {
 						".MuiSvgIcon-root rect": {
 							strokeOpacity: "0.35"
@@ -387,7 +395,7 @@ const theme = {
 								transform: "translate(22px)"
 							},
 							"&.Mui-checked + .MuiSwitch-track": {
-								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3),
+								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
 								opacity: 1
 							},
 							"&.Mui-disabled + .MuiSwitch-track": {
@@ -399,13 +407,13 @@ const theme = {
 								borderColor: BASE_COLORS.greys.grey2
 							},
 							"&:hover": {
-								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3)
+								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35)
 							}
 						},
 						".MuiSwitch-thumb": {
 							width: "16px",
 							height: "16px",
-							border: `solid 2px ${getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3)}`,
+							border: `solid 2px ${getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35)}`,
 							boxShadow: "none"
 						}
 					},
@@ -413,7 +421,7 @@ const theme = {
 						height: "12px",
 						width: "36px",
 						transform: "translateY(1px)",
-						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3),
+						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
 						opacity: 1
 					}
 				},
@@ -421,7 +429,7 @@ const theme = {
 					"&.MuiChecked .MuiSwitch-track": {
 						height: "12px",
 						transform: "translateY(1px)",
-						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.3),
+						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
 						opacity: 1
 					}
 				}

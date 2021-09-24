@@ -131,21 +131,23 @@ function SolaceRadio({
 					onChange={handleChange}
 				/>
 				{label && (
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-radio`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
-						{label}
-					</SolaceLabel>
+					<div>
+						<SolaceLabel
+							id={`${getId()}-label`}
+							htmlForId={`${getId()}-radio`}
+							isRequired={isRequired}
+							isDisabled={isDisabled}
+						>
+							{label}
+						</SolaceLabel>
+						{helperText && (
+							<FormHelperText error={hasErrors} component="div">
+								{getHelperText()}
+							</FormHelperText>
+						)}
+					</div>
 				)}
 			</Box>
-			{helperText && (
-				<FormHelperText error={hasErrors} component="div" sx={{ marginLeft: theme.spacing(0.4) }}>
-					{getHelperText()}
-				</FormHelperText>
-			)}
 		</React.Fragment>
 	);
 }
