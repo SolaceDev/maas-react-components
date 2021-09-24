@@ -474,7 +474,7 @@ const theme = {
 	},
 	palette: {
 		background: {
-			default: BASE_COLORS.greys.grey4
+			default: BASE_COLORS.greys.grey19
 		},
 		error: {
 			main: BASE_COLORS.reds.red1
