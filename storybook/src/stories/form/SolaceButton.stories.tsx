@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceButton, DeleteIcon } from "@SolaceDev/maas-react-components";
@@ -86,4 +86,16 @@ WithEndIcon.args = {
 	variant: "call-to-action",
 	endIcon: <DeleteIcon />,
 	children: "Delete"
+};
+
+export const FileUpload = (): ReactNode => {
+	return (
+		<label htmlFor="upload-photo">
+			<input style={{ display: "none" }} id="upload-photo" name="upload-photo" type="file" />
+
+			<SolaceButton variant="outline" component="span">
+				Upload button
+			</SolaceButton>
+		</label>
+	);
 };

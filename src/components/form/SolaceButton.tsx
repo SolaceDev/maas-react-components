@@ -28,6 +28,10 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	 */
 	href?: string;
 	/**
+	 * The component used for the root node. Either a string to use a HTML element or a component button
+	 */
+	component?: "button" | "span";
+	/**
 	 * Element placed before the children
 	 */
 	startIcon?: symbol;
@@ -39,22 +43,27 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	 * Optional click handler
 	 */
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+	/**
+	 * Button label or contents
+	 */
+	children?: string | JSX.Element;
 }
 
-const SolaceButton: React.FC<SolaceButtonProps> = ({
+function SolaceButton({
 	id,
 	variant = "text",
 	isDisabled = false,
 	underline = "hover",
 	title = "",
 	href,
+	component = "button",
 	startIcon,
 	endIcon,
 	onClick,
 	dataQa,
 	dataTags,
 	children
-}) => {
+}: SolaceButtonProps): JSX.Element {
 	const handleClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (onClick) {
 			onClick(event);
@@ -106,6 +115,7 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 					data-tags={dataTags}
 					startIcon={startIcon}
 					endIcon={endIcon}
+					component={component}
 					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}
 					onClick={handleClick}
@@ -115,6 +125,6 @@ const SolaceButton: React.FC<SolaceButtonProps> = ({
 			</Tooltip>
 		);
 	}
-};
+}
 
 export default SolaceButton;
