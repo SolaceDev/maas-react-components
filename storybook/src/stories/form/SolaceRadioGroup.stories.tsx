@@ -52,6 +52,22 @@ InlineLabelFormat.args = {
 	children: RADIOS
 };
 
+const RADIOS_WITH_HELPER: Array<React.ReactNode> = [];
+RADIOS_WITH_HELPER.push(
+	<SolaceRadio
+		value="option1"
+		label="Import to Event Portal"
+		helperText="Runtime Discovery is used to import your architecture into the PubSub+ Discovery"
+	/>
+);
+RADIOS_WITH_HELPER.push(
+	<SolaceRadio
+		value="option2"
+		label="Topic Subscriptions Analysis"
+		helperText="Topic Scans are used in the PubSub+ Topic Explorer to analyze your runtime data"
+	/>
+);
+
 export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("callback"),
@@ -59,8 +75,8 @@ HelperText.args = {
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
-	helperText: "Some helper text here",
-	children: RADIOS
+	helperText: "Some group helper text here",
+	children: RADIOS_WITH_HELPER
 };
 
 export const WithErrors = Template.bind({});

@@ -1,4 +1,4 @@
-import { Box, FormHelperText, useTheme, RadioGroup } from "@material-ui/core";
+import { Box, FormHelperText, useTheme, RadioGroup, Grid } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import { SolaceLabel } from "../..";
@@ -53,7 +53,7 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	/**
 	 * Callback function to trigger whenever the value of the `radio group` is changed
 	 */
-	children: React.ReactNode;
+	children: Array<React.ReactNode>;
 }
 
 function SolaceRadioGroup({
@@ -97,20 +97,27 @@ function SolaceRadioGroup({
 		return id ? id : name;
 	};
 
-	const getRadioGroup = () => (
-		<React.Fragment>
-			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
-				<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
-					{children}
-				</RadioGroup>
-			</Box>
-			{helperText && (
-				<FormHelperText error={hasErrors} component="div" sx={{ marginLeft: theme.spacing(0.4) }}>
-					{getHelperText()}
-				</FormHelperText>
-			)}
-		</React.Fragment>
-	);
+	const getRadioGroup = () => {
+		const childItems: Array<React.ReactNode> = [];
+		children.forEach((child) => childItems.push(<Grid item>{child}</Grid>));
+
+		return (
+			<React.Fragment>
+				<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
+					<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
+						<Grid container spacing={1.5} direction="column">
+							{childItems}
+						</Grid>
+					</RadioGroup>
+				</Box>
+				{helperText && (
+					<FormHelperText error={hasErrors} component="div" sx={{ marginLeft: theme.spacing(0.4) }}>
+						{getHelperText()}
+					</FormHelperText>
+				)}
+			</React.Fragment>
+		);
+	};
 
 	return (
 		<React.Fragment>
