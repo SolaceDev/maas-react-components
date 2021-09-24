@@ -66,7 +66,7 @@ const theme = {
 					}
 				},
 				root: {
-					textTransform: "none",
+					textTransform: "none" as const,
 					padding: "6px 16px",
 					borderRadius: "4px",
 					minWidth: "100px",
@@ -178,7 +178,7 @@ const theme = {
 					borderRadius: "4px",
 					minWidth: "100px",
 					height: "32px",
-					fontWeight: "normal",
+					fontWeight: "normal" as const,
 					fontSize: "14px",
 					"&[disabled]": {
 						color: BASE_COLORS.greys.grey3
