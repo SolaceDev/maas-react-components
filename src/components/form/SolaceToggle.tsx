@@ -1,7 +1,7 @@
 import { Box, FormHelperText, Switch, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
-import { SolaceLabel } from "../..";
+import SolaceLabel from "./SolaceLabel";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 

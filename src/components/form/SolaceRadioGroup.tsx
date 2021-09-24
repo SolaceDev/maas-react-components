@@ -1,7 +1,7 @@
 import { Box, FormHelperText, useTheme, RadioGroup, Grid } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
-import { SolaceLabel } from "../..";
+import SolaceLabel from "./SolaceLabel";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface SolaceRadioGroupChangeEvent {
