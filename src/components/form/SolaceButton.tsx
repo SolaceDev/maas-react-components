@@ -32,6 +32,10 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	 */
 	component?: "button" | "span";
 	/**
+	 * Attribute which specifies the type of button (button, submit or reset)
+	 */
+	type?: "button" | "submit" | "reset";
+	/**
 	 * Element placed before the children
 	 */
 	startIcon?: symbol;
@@ -57,6 +61,7 @@ function SolaceButton({
 	title = "",
 	href,
 	component = "button",
+	type = "button",
 	startIcon,
 	endIcon,
 	onClick,
@@ -73,7 +78,14 @@ function SolaceButton({
 	if (variant === "icon") {
 		return (
 			<Tooltip title={title} arial-lable={title}>
-				<IconButton data-qa={dataQa} data-tags={dataTags} id={id} disabled={isDisabled} onClick={handleClick}>
+				<IconButton
+					data-qa={dataQa}
+					data-tags={dataTags}
+					type={type}
+					id={id}
+					disabled={isDisabled}
+					onClick={handleClick}
+				>
 					{children}
 				</IconButton>
 			</Tooltip>
@@ -88,6 +100,7 @@ function SolaceButton({
 					component={href ? "a" : "button"}
 					target={href ? "_blank" : "_self"}
 					href={href}
+					type={type}
 					disabled={isDisabled}
 					underline={isDisabled ? "none" : underline ?? "hover"}
 				>
@@ -116,6 +129,7 @@ function SolaceButton({
 					startIcon={startIcon}
 					endIcon={endIcon}
 					component={component}
+					type={type}
 					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}
 					onClick={handleClick}
