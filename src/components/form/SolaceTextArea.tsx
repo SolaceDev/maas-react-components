@@ -1,7 +1,7 @@
 import { Box, TextField, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
-import { SolaceLabel } from "../..";
+import SolaceLabel from "./SolaceLabel";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 
