@@ -127,7 +127,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	const textField = () => (
 		<React.Fragment>
 			<TextField
-				id={`${getId()}-textfield`}
+				id={`${getId()}`}
 				name={name}
 				inputProps={{
 					maxLength: maxLength,
@@ -168,12 +168,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 		<React.Fragment>
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-textfield`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
 						{label}
 					</SolaceLabel>
 					{textField()}
@@ -187,12 +182,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-textfield`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
 						{label}
 					</SolaceLabel>
 					{textField()}
