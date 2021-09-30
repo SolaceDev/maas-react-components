@@ -8,7 +8,8 @@ export const BASE_COLORS = {
 		green5: "#00CCAD",
 		green6: "#05BDA1",
 		green7: "#7ED321",
-		green8: "#005E5F"
+		green8: "#005E5F",
+		test: "1"
 	},
 	greys: {
 		grey0: "rgba(0, 0, 0, 0.05)",

@@ -6,7 +6,6 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
-import React from "react";
 
 export type SolaceToasts = {
 	severity?: "success" | "info" | "warning" | "error";

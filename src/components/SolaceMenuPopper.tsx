@@ -3,7 +3,7 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 import { SxProps } from "@material-ui/system";
-import React from "react";
+import { Fragment, useState } from "react";
 
 import SolaceButton from "./form/SolaceButton";
 
@@ -17,7 +17,7 @@ interface SolaceMenuPopperProps {
 
 export default function SolaceMenuPopper(props: SolaceMenuPopperProps): JSX.Element {
 	const { index, items, disableButton, showIcons } = props;
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		setAnchorEl(event.currentTarget);
@@ -33,7 +33,7 @@ export default function SolaceMenuPopper(props: SolaceMenuPopperProps): JSX.Elem
 	};
 
 	return (
-		<React.Fragment>
+		<Fragment>
 			<SolaceButton
 				id={`moreButton-${index}`}
 				key={`key-moreButton-${index}`}
@@ -67,7 +67,7 @@ export default function SolaceMenuPopper(props: SolaceMenuPopperProps): JSX.Elem
 					</MenuItem>
 				))}
 			</Menu>
-		</React.Fragment>
+		</Fragment>
 	);
 }
 
