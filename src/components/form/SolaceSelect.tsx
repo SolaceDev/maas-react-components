@@ -58,9 +58,13 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
 	onChange?: (event: SolaceSelectChangeEvent) => void;
+	/**
+	 * An array of MenuItems to render as the select options
+	 */
+	children: Array<JSX.Element>;
 }
 
-const SolaceSelect: React.FC<SolaceSelectProps> = ({
+function SolaceSelect({
 	id,
 	name,
 	label,
@@ -76,7 +80,7 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 	dataQa,
 	dataTags,
 	children
-}) => {
+}: SolaceSelectProps): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value);
 
@@ -183,6 +187,6 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 			{!label && select()}
 		</React.Fragment>
 	);
-};
+}
 
 export default SolaceSelect;
