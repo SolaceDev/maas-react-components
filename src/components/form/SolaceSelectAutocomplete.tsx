@@ -1,0 +1,209 @@
+import React, { SyntheticEvent, useEffect, useState } from "react";
+import { Box, Autocomplete, TextField, useTheme, Grid } from "@material-ui/core";
+import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import SolaceComponentProps from "../SolaceComponentProps";
+import SolaceLabel from "./SolaceLabel";
+
+export interface SolaceSelectAutocompleteItem {
+	name: string;
+	value: string;
+	subText?: string;
+	suplementalText?: string;
+}
+
+export interface SolaceSelectAutocompleteChangeEvent {
+	name: string;
+	value: SolaceSelectAutocompleteItem | null;
+}
+
+export interface SolaceSelectAutoCompleteProps extends SolaceComponentProps {
+	/**
+	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
+	 */
+	id?: string;
+	/**
+	 * Name attribute to assign to the `input` element
+	 */
+	name: string;
+	/**
+	 * the label content to display on the screen
+	 */
+	label?: string | JSX.Element;
+	/**
+	 * The value of the autocomplete
+	 */
+	value?: SolaceSelectAutocompleteItem;
+	/**
+	 * Content to display as supportive/explanitory text
+	 */
+	helperText?: string | JSX.Element;
+	/**
+	 * The text to display as the tooltip hint
+	 */
+	title?: string;
+	/**
+	 * Boolean flag to mark the `input` in error state
+	 */
+	hasErrors?: boolean;
+	/**
+	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
+	 */
+	isRequired?: boolean;
+	/**
+	 * Boolean flag to control whether to stack the label on top of the `input` element (false) or place them inline to one another (true)
+	 */
+	isInlineLabel?: boolean;
+	/**
+	 * Boolean flag to disable the `input`
+	 */
+	isDisabled?: boolean;
+	/**
+	 * Boolean flag to set the `input` in a read-only state
+	 */
+	isReadOnly?: boolean;
+	/**
+	 * Callback function to trigger whenever the value of the `input` is changed
+	 */
+	onChange?: (event: SolaceSelectAutocompleteChangeEvent) => void;
+	/**
+	 * An array of SolaceSelectAutocompleteItems to render as the select options
+	 */
+	options: Array<SolaceSelectAutocompleteItem>;
+}
+
+function SolaceSelectAutocomplete({
+	id,
+	name,
+	label,
+	value,
+	helperText,
+	title,
+	hasErrors = false,
+	isRequired = false,
+	isInlineLabel = false,
+	isDisabled = false,
+	isReadOnly = false,
+	onChange,
+	dataQa,
+	dataTags,
+	options
+}: SolaceSelectAutoCompleteProps): JSX.Element {
+	const theme = useTheme();
+	const [selectedValue, setSelectedValue] = useState(value || null);
+
+	useEffect(() => {
+		setSelectedValue(value || null);
+	}, [value]);
+
+	const handleChange = (event: SyntheticEvent<Element, Event>, value: SolaceSelectAutocompleteItem | null) => {
+		setSelectedValue(value);
+		console.log(event);
+
+		if (onChange) {
+			onChange({
+				name: name,
+				value: value
+			});
+		}
+	};
+
+	const getId = () => {
+		return id ? id : name;
+	};
+
+	const getHelperText = () => (
+		<Box display="flex">
+			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
+			{helperText}
+		</Box>
+	);
+
+	const select = () => (
+		<Autocomplete
+			id={getId()}
+			sx={{ width: 300 }}
+			options={options}
+			autoHighlight
+			value={selectedValue}
+			getOptionLabel={(option) => option.name}
+			renderOption={(props, option) => (
+				<Box component="li" {...props}>
+					<Grid container justifyContent="space-between">
+						<Grid item>
+							{option.name}
+							{option.subText && (
+								<span className="subtext">
+									<br />
+									{option.subText}
+								</span>
+							)}
+						</Grid>
+						{option.suplementalText && (
+							<Grid className="suplementalText" item>
+								{option.suplementalText}
+							</Grid>
+						)}
+					</Grid>
+				</Box>
+			)}
+			disabled={isDisabled || isReadOnly}
+			onChange={handleChange}
+			renderInput={(params) => (
+				<TextField
+					{...params}
+					title={title}
+					error={hasErrors}
+					helperText={getHelperText()}
+					inputProps={{
+						...params.inputProps,
+						"data-qa": dataQa,
+						"data-tags": dataTags,
+						"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
+						"aria-labelledby": label ? `${getId()}-label` : "",
+						"aria-readonly": isReadOnly,
+						role: "select",
+						title: title
+					}}
+					InputProps={{
+						...params.InputProps,
+						sx: { height: theme.spacing(4) },
+						className: isReadOnly ? "readOnlySelect" : "",
+						disabled: isDisabled,
+						readOnly: isReadOnly,
+						required: isRequired
+					}}
+				/>
+			)}
+		/>
+	);
+
+	return (
+		<React.Fragment>
+			{!isInlineLabel && label && (
+				<Box marginTop={theme.spacing()}>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
+						{label}
+					</SolaceLabel>
+					{select()}
+				</Box>
+			)}
+			{isInlineLabel && label && (
+				<Box
+					marginBottom={theme.spacing()}
+					display="flex"
+					flexDirection="row"
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
+						{label}
+					</SolaceLabel>
+					{select()}
+				</Box>
+			)}
+			{!label && select()}
+		</React.Fragment>
+	);
+}
+
+export default SolaceSelectAutocomplete;

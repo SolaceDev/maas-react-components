@@ -112,7 +112,7 @@ function SolaceSelect({
 	const select = () => (
 		<React.Fragment>
 			<TextField
-				id={`${getId()}-select`}
+				id={getId()}
 				name={name}
 				inputProps={{
 					"data-qa": dataQa,
@@ -140,7 +140,7 @@ function SolaceSelect({
 				error={hasErrors}
 				autoComplete="off"
 				required={isRequired}
-				disabled={isDisabled}
+				disabled={isDisabled || isReadOnly}
 				margin="dense"
 				value={selectedValue}
 				onChange={handleChange}
@@ -154,12 +154,7 @@ function SolaceSelect({
 		<React.Fragment>
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-select`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
 						{label}
 					</SolaceLabel>
 					{select()}
@@ -173,12 +168,7 @@ function SolaceSelect({
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-select`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
 						{label}
 					</SolaceLabel>
 					{select()}
