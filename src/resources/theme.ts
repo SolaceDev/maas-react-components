@@ -382,6 +382,36 @@ const theme = {
 				}
 			}
 		},
+		MuiAutocomplete: {
+			styleOverrides: {
+				root: {
+					minWidth: "372px",
+					".MuiOutlinedInput-root .MuiAutocomplete-input": {
+						padding: "0px"
+					},
+					".MuiOutlinedInput-root": {
+						padding: "0px 0px 0px 8px",
+						height: "32px"
+					},
+					".MuiOutlinedInput-root.readOnlySelect": {
+						padding: "0px"
+					},
+					".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
+						padding: "0px"
+					}
+				},
+				popper: {
+					color: BASE_COLORS.greys.grey14,
+					".subtext": {
+						color: BASE_COLORS.greys.grey8
+					},
+					".suplementalText": {
+						fontSize: BASE_FONT_PX_SIZES.xs,
+						color: BASE_COLORS.greys.grey8
+					}
+				}
+			}
+		},
 		MuiSwitch: {
 			styleOverrides: {
 				root: {
