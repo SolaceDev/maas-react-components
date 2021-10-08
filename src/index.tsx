@@ -19,5 +19,6 @@ export { default as SolaceSelect } from "./components/form/SolaceSelect";
 export { default as SolaceTextArea } from "./components/form/SolaceTextArea";
 export { default as SolaceToggle } from "./components/form/SolaceToggle";
 export { default as SolaceLabel } from "./components/form/SolaceLabel";
+export { default as SolaceTable } from "./components/table/SolaceTable";
 
 export { default as SolaceTheme } from "./resources/theme";
