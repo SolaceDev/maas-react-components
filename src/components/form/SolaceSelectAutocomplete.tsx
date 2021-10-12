@@ -1,22 +1,10 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import { Box, Autocomplete, TextField, useTheme, Grid } from "@material-ui/core";
+import { Box, Autocomplete, TextField, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceLabel from "./SolaceLabel";
 
-export interface SolaceSelectAutocompleteItem {
-	name: string;
-	value: string;
-	subText?: string;
-	suplementalText?: string;
-}
-
-export interface SolaceSelectAutocompleteChangeEvent {
-	name: string;
-	value: SolaceSelectAutocompleteItem | null;
-}
-
-export interface SolaceSelectAutoCompleteProps extends SolaceComponentProps {
+export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
 	 */
@@ -32,7 +20,7 @@ export interface SolaceSelectAutoCompleteProps extends SolaceComponentProps {
 	/**
 	 * The value of the autocomplete
 	 */
-	value?: SolaceSelectAutocompleteItem;
+	value?: V;
 	/**
 	 * Content to display as supportive/explanitory text
 	 */
@@ -64,14 +52,20 @@ export interface SolaceSelectAutoCompleteProps extends SolaceComponentProps {
 	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
-	onChange?: (event: SolaceSelectAutocompleteChangeEvent) => void;
+	onChange?: (event: { name: string; value: V | null }) => void;
+	/**
+	 * The component type to use for rendering all option instances
+	 */
+	itemComponent: (item: T) => React.ReactNode;
+	itemMappingCallback: (item: V) => T;
+	optionsLabelCallback: (item: T) => string;
 	/**
 	 * An array of SolaceSelectAutocompleteItems to render as the select options
 	 */
-	options: Array<SolaceSelectAutocompleteItem>;
+	options: Array<V>;
 }
 
-function SolaceSelectAutocomplete({
+function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 	id,
 	name,
 	label,
@@ -84,10 +78,13 @@ function SolaceSelectAutocomplete({
 	isDisabled = false,
 	isReadOnly = false,
 	onChange,
+	itemComponent,
+	itemMappingCallback,
+	optionsLabelCallback,
 	dataQa,
 	dataTags,
 	options
-}: SolaceSelectAutoCompleteProps): JSX.Element {
+}: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
 
@@ -95,8 +92,8 @@ function SolaceSelectAutocomplete({
 		setSelectedValue(value || null);
 	}, [value]);
 
-	const handleChange = (event: SyntheticEvent<Element, Event>, value: SolaceSelectAutocompleteItem | null) => {
-		setSelectedValue(value);
+	const handleChange = (event: SyntheticEvent<Element, Event>, value: V | null) => {
+		setSelectedValue(value || null);
 		console.log(event);
 
 		if (onChange) {
@@ -125,27 +122,18 @@ function SolaceSelectAutocomplete({
 			options={options}
 			autoHighlight
 			value={selectedValue}
-			getOptionLabel={(option) => option.name}
-			renderOption={(props, option) => (
-				<Box component="li" {...props}>
-					<Grid container justifyContent="space-between">
-						<Grid item>
-							{option.name}
-							{option.subText && (
-								<span className="subtext">
-									<br />
-									{option.subText}
-								</span>
-							)}
-						</Grid>
-						{option.suplementalText && (
-							<Grid className="suplementalText" item>
-								{option.suplementalText}
-							</Grid>
-						)}
-					</Grid>
-				</Box>
-			)}
+			getOptionLabel={(option) => {
+				const mappedOption = itemMappingCallback(option);
+				return optionsLabelCallback(mappedOption);
+			}}
+			renderOption={(props, option) => {
+				const mappedOption = itemMappingCallback(option);
+				return (
+					<Box component="li" {...props}>
+						{itemComponent(mappedOption)}
+					</Box>
+				);
+			}}
 			disabled={isDisabled || isReadOnly}
 			onChange={handleChange}
 			renderInput={(params) => (

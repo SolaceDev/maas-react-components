@@ -1,7 +1,12 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceSelectAutocomplete } from "@SolaceDev/maas-react-components";
+import {
+	SolaceSelectAutocomplete,
+	SolaceSelectAutocompleteItem,
+	getSolaceSelectAutocompleteOptionLabel,
+	SolaceSelectAutocompleteItemProps
+} from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -49,7 +54,7 @@ export default {
 	}
 } as ComponentMeta<typeof SolaceSelectAutocomplete>;
 
-const SELECT_OPTIONS: Array<any> = [
+const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "Option #1",
 		value: "option1",
@@ -77,6 +82,9 @@ const Template: ComponentStory<typeof SolaceSelectAutocomplete> = (args) => <Sol
 export const DefaultAutocomplete = Template.bind({});
 DefaultAutocomplete.args = {
 	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
 	title: "Demo Select",
 	id: "demoSelectId",
 	name: "demoSelect",
@@ -86,6 +94,9 @@ DefaultAutocomplete.args = {
 export const StackedLabeleFormat = Template.bind({});
 StackedLabeleFormat.args = {
 	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
 	title: "Demo Select",
 	name: "demoSelect",
 	label: "Some Label",
@@ -95,6 +106,9 @@ StackedLabeleFormat.args = {
 export const InlineLabeleFormat = Template.bind({});
 InlineLabeleFormat.args = {
 	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
 	name: "demoSelect",
 	title: "Demo Select",
 	label: "Some Label",
@@ -105,6 +119,9 @@ InlineLabeleFormat.args = {
 export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
 	name: "demoSelect",
 	title: "Demo Select Field",
 	label: "Some Label",
@@ -115,6 +132,9 @@ HelperText.args = {
 export const WithErrors = Template.bind({});
 WithErrors.args = {
 	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
 	name: "demoSelect",
 	title: "Demo Select Field",
 	label: "Some Label",
@@ -126,6 +146,9 @@ WithErrors.args = {
 export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
 	name: "demoSelect",
 	title: "Demo Select Field",
 	label: "Some Label",
@@ -136,6 +159,9 @@ Required.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
 	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
 	name: "demoSelect",
 	title: "Demo Select Field",
 	label: "Some Label",
@@ -152,6 +178,9 @@ Disabled.args = {
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
 	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
 	name: "demoSelect",
 	title: "Demo Select Field",
 	label: "Some Label",
