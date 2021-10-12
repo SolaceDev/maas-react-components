@@ -57,7 +57,13 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * The component type to use for rendering all option instances
 	 */
 	itemComponent: (item: T) => React.ReactNode;
+	/**
+	 * The mapping callback which will map/translate the original option object to the formatted type required by the itemComponent
+	 */
 	itemMappingCallback: (item: V) => T;
+	/**
+	 * The callback function which generates the display lable for the selected option
+	 */
 	optionsLabelCallback: (item: T) => string;
 	/**
 	 * An array of SolaceSelectAutocompleteItems to render as the select options
