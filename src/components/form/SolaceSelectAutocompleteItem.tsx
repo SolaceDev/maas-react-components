@@ -8,7 +8,7 @@ export interface SolaceSelectAutocompleteItemProps {
 	supplementalText?: string;
 }
 
-export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option.name;
+export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option?.name;
 
 function SolaceSelectAutocompleteItem({
 	name,
