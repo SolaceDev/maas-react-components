@@ -6,39 +6,38 @@ import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import Sort from "@material-ui/icons/Sort";
 import SolaceCheckBox from "../form/SolaceCheckBox";
 
-const StyledTableRow = styled("tr")(() => ({
+export const StyledTableRow = styled("tr")(() => ({
 	borderCollapse: "collapse",
 	border: "1px solid rgba(0, 0, 0, 0.05)",
-	padding: "4px",
+	padding: "4px 8px",
+	marginLeft: "4px",
 	height: "32px",
 	"&.selected": {
 		backgroundColor: "#e8f9f4"
 	}
 }));
 
-const StyledTableData = styled("td")(() => ({
+export const StyledTableData = styled("td")(() => ({
 	borderCollapse: "collapse",
 	borderBottom: "1px solid #e8e8e8",
-	padding: "4px",
-	"& span": {
+	padding: "8px 8px",
+	".cursor-pointer": {
 		cursor: "pointer"
 	},
-	"&.checkbox-cell": {
-		width: "30px",
+	"&.checkbox": {
 		textAlign: "center"
 	}
 }));
 
-const StyledTableHeader = styled("th")(() => ({
+export const StyledTableHeader = styled("th")(() => ({
 	borderCollapse: "collapse",
-	padding: "4px",
+	padding: "4px 8px",
 	minWidth: "30px",
-	height: "32px",
+	minHeight: "32px",
 	textAlign: "left",
 	"&.sortable": {
 		position: "relative",
 		cursor: "pointer",
-		paddingLeft: "8px",
 		marginTop: "3px",
 		"&.inactive": {
 			color: "grey"
@@ -46,13 +45,38 @@ const StyledTableHeader = styled("th")(() => ({
 	}
 }));
 
+export interface CustomTableRowProps {
+	rows: Record<string, unknown>[];
+	columns: TableColumn[];
+	selectionType: SELECTION_TYPE;
+	updateSelection: (row: Record<string, unknown>) => void;
+	checkboxSelectionChanged: (row: Record<string, unknown>) => void;
+	renderCustomRow: () => {
+		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
+		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
+	};
+}
+
+export interface CustomTableColumnProps {
+	columns: TableColumn[];
+	selectedColumn: TableColumn;
+	selectAll: boolean;
+	handleSort: (column: TableColumn) => void;
+	selectAllSelectionChanged: () => void;
+}
+
 export const useSolaceTable = (
 	rows: Record<string, unknown>[],
 	columns: TableColumn[],
 	selectionType: SELECTION_TYPE,
 	selectionChangedCallback: (row: Record<string, unknown>[]) => void,
 	sortCallback: (column: TableColumn) => void,
-	preSelectedColumn: TableColumn | undefined
+	preSelectedColumn: TableColumn | undefined,
+	renderCustomRow?: () => {
+		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
+		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
+	},
+	renderCustomColumn?: (customColumnProps: CustomTableColumnProps) => React.ReactNode
 ): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<Record<string, unknown>[]>([]);
 	const [selectedColumn, setSelectedColumn] = useState<TableColumn>(preSelectedColumn ? preSelectedColumn : columns[0]);
@@ -61,7 +85,7 @@ export const useSolaceTable = (
 
 	useEffect(() => {
 		selectionChangedCallback(selectedRows);
-		if (selectedRows.length === rows.length) {
+		if (rows.length !== 0 && selectedRows.length === rows.length) {
 			setSelectAll(true);
 		} else {
 			setSelectAll(false);
@@ -70,39 +94,42 @@ export const useSolaceTable = (
 
 	useEffect(() => {
 		sortCallback(selectedColumn);
-	}, [selectedColumn, sortDirection]);
+	}, [selectedColumn, sortDirection, sortCallback]);
 
-	function updateSelection(row: any) {
+	function updateSelection(row: Record<string, unknown>) {
 		handleSelectionChanged(row);
 	}
 
-	function handleSelectionChanged(row: any) {
+	function handleSelectionChanged(row: Record<string, unknown>) {
 		if (selectionType !== SELECTION_TYPE.NONE) {
 			handleSingleSelection(row);
 		}
 	}
 
-	function handleSingleSelection(row: any) {
+	function handleSingleSelection(row: Record<string, unknown>) {
 		const selectedIndex = rows.findIndex((row) => row.solaceTableSelected);
 		rows[selectedIndex] = { ...rows[selectedIndex], solaceTableSelected: false };
 		row.solaceTableSelected = !row.solaceTableSelected;
 		setSelectedRows(row.solaceTableSelected ? [row] : []);
 	}
 
-	function handleSort(col: any) {
-		if (selectedColumn?.field === col.field) {
-			col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
-			setSelectedColumn(col);
-			setSortDirection(col.sortDirection);
-		} else {
-			setSelectedColumn(col);
-		}
-	}
+	const handleSort = useCallback(
+		(col: TableColumn) => {
+			if (selectedColumn?.field === col.field) {
+				col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
+				setSelectedColumn(col);
+				setSortDirection(col.sortDirection);
+			} else {
+				setSelectedColumn(col);
+			}
+		},
+		[selectedColumn?.field]
+	);
 
-	function selectAllSelectionChanged() {
-		rows.map((row) => (row.solaceTableSelected = !row.solaceTableSelected));
+	const selectAllSelectionChanged = useCallback(() => {
+		rows.map((row) => (row.solaceTableSelected = !selectAll));
 		setSelectedRows(selectAll ? [] : rows);
-	}
+	}, [rows, selectAll]);
 
 	function checkboxSelectionChanged(row: Record<string, unknown>) {
 		row.solaceTableSelected = !row.solaceTableSelected;
@@ -111,7 +138,7 @@ export const useSolaceTable = (
 		);
 	}
 
-	function addCheckBoxToHeader(): React.ReactNode | void {
+	const addCheckBoxToHeader = useCallback((): React.ReactNode | void => {
 		if (selectionType === SELECTION_TYPE.MULTI) {
 			return (
 				<StyledTableHeader key={"selectAllCheckbox"}>
@@ -125,12 +152,12 @@ export const useSolaceTable = (
 		} else {
 			return;
 		}
-	}
+	}, [selectAll, selectAllSelectionChanged, selectionType]);
 
 	function addCheckBoxToRows(row: Record<string, unknown>): React.ReactNode | void {
 		if (selectionType === SELECTION_TYPE.MULTI) {
 			return (
-				<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox-cell" onClick={(e) => e.stopPropagation()}>
+				<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
 					<SolaceCheckBox
 						name={`${row.id}rowCheckbox`}
 						onChange={() => checkboxSelectionChanged(row)}
@@ -187,20 +214,28 @@ export const useSolaceTable = (
 				]}
 			</StyledTableRow>
 		);
-	}, [selectedColumn, selectedColumn?.field, selectedColumn?.sortDirection, selectAll]);
+	}, [selectedColumn, addCheckBoxToHeader, columns, handleSort]);
 
-	const rowNodes = creatRowNodes();
-	const columnNodes = createColumnNodes();
+	const rowNodes = renderCustomRow
+		? renderCustomRow().renderRow({
+				rows,
+				columns,
+				selectionType,
+				updateSelection,
+				checkboxSelectionChanged,
+				renderCustomRow
+		  })
+		: creatRowNodes();
+
+	const columnNodes = renderCustomColumn
+		? renderCustomColumn({ columns, selectedColumn, selectAll, handleSort, selectAllSelectionChanged })
+		: createColumnNodes();
 
 	return [columnNodes, rowNodes];
 };
 
 /*
- - checkbox OK
+ - hover
  - resizing
  - column hiding
- - sorting (icon) OK
- - selection (none, single, multi) single by row, multi checkbox OK
- - custom rows
-
 */
