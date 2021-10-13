@@ -69,6 +69,14 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * An array of SolaceSelectAutocompleteItems to render as the select options
 	 */
 	options: Array<V>;
+	/**
+	 * Fetch updated list of options
+	 */
+	fetchOptions: (searchTerm: string) => void;
+	/**
+	 * The callback to notify container that the select closed (can use this to clear fetched options)
+	 */
+	onCloseCallback?: () => void;
 }
 
 function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
@@ -89,19 +97,43 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 	optionsLabelCallback,
 	dataQa,
 	dataTags,
-	options
+	options,
+	fetchOptions,
+	onCloseCallback
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
+	const [inputValue, setInputValue] = React.useState("");
+	const [filteredOptions, setFilteredOptions] = useState(options || []);
+	const [loading, setLoading] = useState(false);
+	const [isFetching, setIsFetching] = useState(false);
+	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		setSelectedValue(value || null);
 	}, [value]);
 
-	const handleChange = (event: SyntheticEvent<Element, Event>, value: V | null) => {
-		setSelectedValue(value || null);
-		console.log(event);
+	useEffect(() => {
+		setLoading(open && isFetching);
+	}, [open, isFetching]);
 
+	useEffect(() => {
+		setFilteredOptions([]);
+		setIsFetching(true);
+		fetchOptions(inputValue);
+	}, [inputValue, fetchOptions]);
+
+	useEffect(() => {
+		setFilteredOptions(options);
+		setIsFetching(false);
+	}, [options]);
+
+	// @ts-ignore ... this is to prevent TS never read error for event
+	const handleChange = (event: SyntheticEvent<Element, Event>, value: V | null) => {
+		// set internal state for selected value
+		setSelectedValue(value || null);
+
+		// notify externally
 		if (onChange) {
 			onChange({
 				name: name,
@@ -125,7 +157,12 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 		<Autocomplete
 			id={getId()}
 			sx={{ width: 300 }}
-			options={options}
+			filterOptions={(x) => x}
+			// @ts-ignore ... this is to prevent TS never read error for event
+			onInputChange={(event, newInputValue) => {
+				setInputValue(newInputValue);
+			}}
+			options={filteredOptions}
 			autoHighlight
 			value={selectedValue}
 			getOptionLabel={(option) => {
@@ -133,14 +170,28 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 				return optionsLabelCallback(mappedOption);
 			}}
 			renderOption={(props, option) => {
-				const mappedOption = itemMappingCallback(option);
-				return (
-					<Box component="li" {...props}>
-						{itemComponent(mappedOption)}
-					</Box>
-				);
+				if (option) {
+					const mappedOption = itemMappingCallback(option);
+					return (
+						<Box component="li" {...props}>
+							{itemComponent(mappedOption)}
+						</Box>
+					);
+				}
+				return null;
 			}}
 			disabled={isDisabled || isReadOnly}
+			loading={loading}
+			open={open}
+			onClose={() => {
+				onCloseCallback && onCloseCallback(); // notify parent select closed
+				setOpen(false);
+			}}
+			onOpen={() => {
+				setIsFetching(true);
+				setOpen(true);
+				fetchOptions(inputValue);
+			}}
 			onChange={handleChange}
 			renderInput={(params) => (
 				<TextField
