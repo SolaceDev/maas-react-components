@@ -128,6 +128,15 @@ WithErrors.args = {
 	hasErrors: true
 };
 
+export const AutoFocus = Template.bind({});
+AutoFocus.args = {
+	onChange: action("callback"),
+	name: "demoTextField",
+	title: "Demo Text Field",
+	label: "Some Label",
+	autoFocus: true
+};
+
 export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),
@@ -155,14 +164,4 @@ ReadOnly.args = {
 	label: "Some Label",
 	value: "Some value",
 	isReadOnly: true
-};
-
-export const AutoFocus = Template.bind({});
-AutoFocus.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
-	value: "Some value",
-	autoFocus: true
 };
