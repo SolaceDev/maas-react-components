@@ -29,6 +29,11 @@ export default {
 				type: "boolean"
 			}
 		},
+		autoFocus: {
+			control: {
+				type: "boolean"
+			}
+		},
 		isInlineLabel: {
 			control: {
 				type: "boolean"
@@ -150,4 +155,14 @@ ReadOnly.args = {
 	label: "Some Label",
 	value: "Some value",
 	isReadOnly: true
+};
+
+export const AutoFocus = Template.bind({});
+AutoFocus.args = {
+	onChange: action("callback"),
+	name: "demoTextField",
+	title: "Demo Text Field",
+	label: "Some Label",
+	value: "Some value",
+	autoFocus: true
 };
