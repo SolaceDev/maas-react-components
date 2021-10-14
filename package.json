@@ -41,7 +41,6 @@
 	},
 	"devDependencies": {
 		"@emotion/core": "^10.1.1",
-		"@sambego/storybook-state": "^2.0.1",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
 		"@testing-library/user-event": "^7.2.1",
@@ -67,7 +66,6 @@
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-scripts": "^4.0.3",
-		"storybook-addon-mock": "^1.6.0",
 		"typescript": "3.9.10"
 	},
 	"dependencies": {
