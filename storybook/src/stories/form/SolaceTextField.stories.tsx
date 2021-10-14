@@ -29,6 +29,11 @@ export default {
 				type: "boolean"
 			}
 		},
+		autoFocus: {
+			control: {
+				type: "boolean"
+			}
+		},
 		isInlineLabel: {
 			control: {
 				type: "boolean"
@@ -121,6 +126,15 @@ WithErrors.args = {
 	label: "Some Label",
 	helperText: "The text you entered was invalid",
 	hasErrors: true
+};
+
+export const AutoFocus = Template.bind({});
+AutoFocus.args = {
+	onChange: action("callback"),
+	name: "demoTextField",
+	title: "Demo Text Field",
+	label: "Some Label",
+	autoFocus: true
 };
 
 export const Required = Template.bind({});

@@ -52,6 +52,10 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 */
 	title?: string;
 	/**
+	 * Boolean flag to control whether the `input` element is focused during first mount
+	 */
+	autoFocus?: boolean;
+	/**
 	 * Boolean flag to mark the `input` in error state
 	 */
 	hasErrors?: boolean;
@@ -88,6 +92,7 @@ function SolaceTextField({
 	type = "text",
 	size = 50,
 	title,
+	autoFocus = false,
 	hasErrors = false,
 	isRequired = false,
 	isInlineLabel = false,
@@ -145,6 +150,7 @@ function SolaceTextField({
 				type={type}
 				error={hasErrors}
 				autoComplete="off"
+				autoFocus={autoFocus}
 				InputProps={{
 					sx: { height: theme.spacing(4) },
 					disabled: isDisabled,
