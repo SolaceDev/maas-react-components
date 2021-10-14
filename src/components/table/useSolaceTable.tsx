@@ -5,22 +5,29 @@ import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import Sort from "@material-ui/icons/Sort";
 import SolaceCheckBox from "../form/SolaceCheckBox";
+import { BASE_COLORS } from "./../../resources/colorPallette";
 
-export const StyledTableRow = styled("tr")(() => ({
+export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	border: "1px solid rgba(0, 0, 0, 0.05)",
-	padding: "4px 8px",
-	marginLeft: "4px",
+	border: `1px solid ${BASE_COLORS.greys.grey0}`,
+	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
+	marginLeft: theme.spacing(0.5),
 	height: "32px",
 	"&.selected": {
 		backgroundColor: "#e8f9f4"
+	},
+	"&:hover": {
+		background: "#e5e5e5"
+	},
+	"&:hover + tr td table": {
+		background: "#e5e5e5"
 	}
 }));
 
-export const StyledTableData = styled("td")(() => ({
+export const StyledTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: "1px solid #e8e8e8",
-	padding: "8px 8px",
+	padding: theme.spacing(),
 	".cursor-pointer": {
 		cursor: "pointer"
 	},
@@ -29,19 +36,16 @@ export const StyledTableData = styled("td")(() => ({
 	}
 }));
 
-export const StyledTableHeader = styled("th")(() => ({
+export const StyledTableHeader = styled("th")(({ theme }) => ({
 	borderCollapse: "collapse",
-	padding: "4px 8px",
+	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
 	minWidth: "30px",
 	minHeight: "32px",
 	textAlign: "left",
 	"&.sortable": {
 		position: "relative",
 		cursor: "pointer",
-		marginTop: "3px",
-		"&.inactive": {
-			color: "grey"
-		}
+		marginTop: theme.spacing(0.5)
 	}
 }));
 
@@ -233,9 +237,3 @@ export const useSolaceTable = (
 
 	return [columnNodes, rowNodes];
 };
-
-/*
- - hover
- - resizing
- - column hiding
-*/

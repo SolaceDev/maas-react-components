@@ -2,23 +2,67 @@ import React from "react";
 import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./useSolaceTable";
 import { styled } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
+import { BASE_COLORS } from "./../../resources/colorPallette";
 
 interface TablePropType extends SolaceComponentProps {
+	/**
+	 * Unique identifier for the button
+	 */
+	id?: string;
+	/**
+	 * Array of items to be displayed
+	 */
 	rows: Record<string, unknown>[];
+	/**
+	 * Array of columns to be rendered
+	 */
 	columns: TableColumn[];
+	/**
+	 * Selection Type enum: NONE, SINGLE, MULTI
+	 */
 	selectionType: SELECTION_TYPE;
+	/**
+	 * Enables columns hiding
+	 */
 	hasColumnHiding?: boolean;
+	/**
+	 * Selected column. If not passed in, will default to the first column
+	 */
 	selectedColumn?: TableColumn;
+	/**
+	 * Zero state message
+	 */
 	zeroStateMessage?: string;
+	/**
+	 * Renders a custom zero state message
+	 */
 	renderCustomZeroState?: () => React.ReactNode;
+	/**
+	 * Selection changed callback
+	 */
 	selectionChangedCallback: (row: Record<string, unknown>[]) => void;
+	/**
+	 * Sort callback
+	 */
 	sortCallback: (column: TableColumn) => void;
+	/**
+	 * Renders a custom row. Has two parts: renderRow is to render the row itself, and render children for creating the children
+	 */
 	renderCustomRow?: () => {
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
 		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
 	};
+	/**
+	 * Renders custom columns
+	 */
 	renderCustomColumn?: (customTableColumnProps: CustomTableColumnProps) => React.ReactNode;
+	/**
+	 * Header hover callback
+	 */
 	headerHoverCallback?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+	/**
+	 * Row hover callback
+	 */
 	rowHoverCallback?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
@@ -44,16 +88,18 @@ export enum SORT_DIRECTION {
 	DCS = "desc"
 }
 
-const TableWrapper = styled("div")(() => ({
+const TableWrapper = styled("div")(({ theme }) => ({
 	display: "flex",
 	flexDirection: "column",
-	borderRadius: "2px",
-	border: "1px solid rgba(0, 0, 0, 0.05)",
+	borderRadius: theme.shape.borderRadius,
+	border: `1px solid ${BASE_COLORS.greys.grey0}`,
 	width: "100%",
 	height: "100%",
 	minHeight: "200px",
 	maxHeight: "100%",
-	overflow: "auto"
+	overflow: "auto",
+	fontFamily: theme.typography.fontFamily,
+	fontSize: theme.typography.body1.fontSize
 }));
 
 const StyledTable = styled("table")(() => ({

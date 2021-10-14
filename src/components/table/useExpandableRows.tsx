@@ -65,7 +65,7 @@ export const useExpandableRows = ({
 						))
 					]}
 				</StyledTableRow>
-				{expansionState.includes(rowIndex) && renderCustomRow().renderChildren(row)}
+				{expansionState.includes(rowIndex) ? renderCustomRow().renderChildren(row) : null}
 			</React.Fragment>
 		));
 	}

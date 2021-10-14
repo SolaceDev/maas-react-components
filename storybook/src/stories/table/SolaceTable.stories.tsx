@@ -4,6 +4,16 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceTable } from "@SolaceDev/maas-react-components";
 import { SELECTION_TYPE, SORT_DIRECTION, TableColumn } from "../../../../src/components/table/SolaceTable";
 import { useExpandableRows } from "../../../../src/components/table/useExpandableRows";
+import { styled } from "@material-ui/core";
+
+const StyledCustomRow = styled("tr")(() => ({
+	"&:hover": {
+		background: "#e5e5e5"
+	},
+	"&.selected": {
+		backgroundColor: "#e8f9f4"
+	}
+}));
 
 export default {
 	title: "Table/SolaceTable",
@@ -127,14 +137,37 @@ const columns: TableColumn[] = [
 	}
 ];
 
+// Custom rows MUST have a valid table html hierarchy starting with a <tr>
 const renderExpandableRowChildren = (row) => {
 	return (
-		<div style={{ padding: "20px 0", paddingLeft: "40px" }} key={`${row.id}_expansion`}>
-			<div>{row.first_name}</div>
-			<div>{row.last_name}</div>
-			<div>{row.email}</div>
-			<div>{row.gender}</div>
-		</div>
+		<StyledCustomRow className={row.solaceTableSelected ? "selected" : ""}>
+			<td colSpan={5}>
+				<table style={{ display: "block", width: "100%", padding: "12px 0 12px 40px" }}>
+					<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }} colSpan={5}>
+								{row.first_name}
+							</td>
+						</tr>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }} colSpan={5}>
+								{row.last_name}
+							</td>
+						</tr>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }} colSpan={5}>
+								{row.email}
+							</td>
+						</tr>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }} colSpan={5}>
+								{row.gender}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</StyledCustomRow>
 	);
 };
 
