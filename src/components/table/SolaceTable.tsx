@@ -2,6 +2,7 @@ import React from "react";
 import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./useSolaceTable";
 import { styled } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
+import { SELECTION_TYPE, TableColumn } from "./table-utils";
 import { BASE_COLORS } from "./../../resources/colorPallette";
 
 interface TablePropType extends SolaceComponentProps {
@@ -28,15 +29,15 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Selected column. If not passed in, will default to the first column
 	 */
-	selectedColumn?: TableColumn;
+	sortedColumn?: TableColumn | undefined;
 	/**
-	 * Zero state message
+	 * Empty state message
 	 */
-	zeroStateMessage?: string;
+	emptyStateMessage?: string;
 	/**
-	 * Renders a custom zero state message
+	 * Renders a custom empty state message
 	 */
-	renderCustomZeroState?: () => React.ReactNode;
+	renderCustomEmptyState?: () => React.ReactNode;
 	/**
 	 * Selection changed callback
 	 */
@@ -44,7 +45,7 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Sort callback
 	 */
-	sortCallback: (column: TableColumn) => void;
+	sortCallback: (column: TableColumn | undefined) => void;
 	/**
 	 * Renders a custom row. Has two parts: renderRow is to render the row itself, and render children for creating the children
 	 */
@@ -66,28 +67,6 @@ interface TablePropType extends SolaceComponentProps {
 	rowHoverCallback?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
-export interface TableColumn {
-	field: string;
-	headerName: string;
-	class?: string;
-	width?: number;
-	sortable: boolean;
-	sortDirection?: SORT_DIRECTION;
-	disableToggling: boolean;
-	resizable?: boolean;
-}
-
-export enum SELECTION_TYPE {
-	SINGLE = "single",
-	MULTI = "multi",
-	NONE = "none"
-}
-
-export enum SORT_DIRECTION {
-	ASC = "asc",
-	DCS = "desc"
-}
-
 const TableWrapper = styled("div")(({ theme }) => ({
 	display: "flex",
 	flexDirection: "column",
@@ -107,7 +86,7 @@ const StyledTable = styled("table")(() => ({
 	width: "100%"
 }));
 
-const ZeroState = styled("div")(() => ({
+const EmptyState = styled("div")(() => ({
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
@@ -121,11 +100,11 @@ function SolaceTable({
 	columns,
 	selectionType,
 	selectionChangedCallback,
-	selectedColumn,
+	sortedColumn,
 	sortCallback,
 	renderCustomRow,
-	zeroStateMessage,
-	renderCustomZeroState,
+	emptyStateMessage,
+	renderCustomEmptyState,
 	renderCustomHeader
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable(
@@ -134,16 +113,16 @@ function SolaceTable({
 		selectionType,
 		selectionChangedCallback,
 		sortCallback,
-		selectedColumn,
+		sortedColumn,
 		renderCustomRow,
 		renderCustomHeader
 	);
 
-	function showZeroStateMessage(): React.ReactNode {
-		if (renderCustomZeroState) {
-			return <ZeroState>{renderCustomZeroState()}</ZeroState>;
+	function showEmptyStateMessage(): React.ReactNode {
+		if (renderCustomEmptyState) {
+			return <EmptyState>{renderCustomEmptyState()}</EmptyState>;
 		} else {
-			return <ZeroState>{zeroStateMessage ? zeroStateMessage : DEFAULT_EMPTY_MESSAGE}</ZeroState>;
+			return <EmptyState>{emptyStateMessage ? emptyStateMessage : DEFAULT_EMPTY_MESSAGE}</EmptyState>;
 		}
 	}
 
@@ -153,7 +132,7 @@ function SolaceTable({
 				<thead>{columnNodes}</thead>
 				<tbody>{!!rows.length && rowNodes}</tbody>
 			</StyledTable>
-			{!rows.length && showZeroStateMessage()}
+			{!rows.length && showEmptyStateMessage()}
 		</TableWrapper>
 	);
 }

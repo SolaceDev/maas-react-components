@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { TableColumn, SELECTION_TYPE, SORT_DIRECTION } from "./SolaceTable";
-import { styled } from "@material-ui/core";
+import { TableColumn, SELECTION_TYPE, SORT_DIRECTION } from "./table-utils";
+import { styled, useTheme } from "@material-ui/core";
 import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import Sort from "@material-ui/icons/Sort";
@@ -54,7 +54,7 @@ export interface CustomTableRowProps {
 	columns: TableColumn[];
 	selectionType: SELECTION_TYPE;
 	updateSelection: (row: Record<string, unknown>) => void;
-	checkboxSelectionChanged: (row: Record<string, unknown>) => void;
+	handleCheckboxClick: (row: Record<string, unknown>) => void;
 	renderCustomRow: () => {
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
 		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
@@ -63,10 +63,10 @@ export interface CustomTableRowProps {
 
 export interface CustomTableColumnProps {
 	columns: TableColumn[];
-	selectedColumn: TableColumn;
+	sortedColumn: TableColumn | undefined;
 	selectAll: boolean;
 	handleSort: (column: TableColumn) => void;
-	selectAllSelectionChanged: () => void;
+	handleSelectAllClick: () => void;
 }
 
 export const useSolaceTable = (
@@ -74,7 +74,7 @@ export const useSolaceTable = (
 	columns: TableColumn[],
 	selectionType: SELECTION_TYPE,
 	selectionChangedCallback: (row: Record<string, unknown>[]) => void,
-	sortCallback: (column: TableColumn) => void,
+	sortCallback: (column: TableColumn | undefined) => void,
 	preSelectedColumn: TableColumn | undefined,
 	renderCustomRow?: () => {
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
@@ -83,9 +83,13 @@ export const useSolaceTable = (
 	renderCustomHeader?: (customColumnProps: CustomTableColumnProps) => React.ReactNode
 ): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<Record<string, unknown>[]>([]);
-	const [selectedColumn, setSelectedColumn] = useState<TableColumn>(preSelectedColumn ? preSelectedColumn : columns[0]);
+	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
+		preSelectedColumn ? preSelectedColumn : columns.find((col) => col.sortable)
+	);
 	const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(SORT_DIRECTION.DCS);
 	const [selectAll, setSelectAll] = useState(false);
+
+	const theme = useTheme();
 
 	useEffect(() => {
 		selectionChangedCallback(selectedRows);
@@ -97,8 +101,8 @@ export const useSolaceTable = (
 	}, [selectedRows, rows.length, selectedRows.length, selectionChangedCallback]);
 
 	useEffect(() => {
-		sortCallback(selectedColumn);
-	}, [selectedColumn, sortDirection, sortCallback]);
+		sortCallback(sortedColumn);
+	}, [sortedColumn, sortDirection, sortCallback]);
 
 	function updateSelection(row: Record<string, unknown>) {
 		handleSelectionChanged(row);
@@ -110,84 +114,78 @@ export const useSolaceTable = (
 		}
 	}
 
-	function handleSingleSelection(row: Record<string, unknown>) {
-		const selectedIndex = rows.findIndex((row) => row.solaceTableSelected);
-		rows[selectedIndex] = { ...rows[selectedIndex], solaceTableSelected: false };
-		row.solaceTableSelected = !row.solaceTableSelected;
-		setSelectedRows(row.solaceTableSelected ? [row] : []);
+	function handleSingleSelection(clickedRow: Record<string, unknown>) {
+		clickedRow.rowSelected = selectedRows.length > 1 ? true : !clickedRow.rowSelected;
+		setSelectAll(false);
+		rows.map((row) => {
+			if (clickedRow.id !== row.id) {
+				row.rowSelected = false;
+			}
+		});
+		setSelectedRows(clickedRow.rowSelected ? [clickedRow] : []);
 	}
 
 	const handleSort = useCallback(
 		(col: TableColumn) => {
-			if (selectedColumn?.field === col.field) {
+			if (sortedColumn?.field === col.field) {
 				col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
-				setSelectedColumn(col);
+				setSortedColumn(col);
 				setSortDirection(col.sortDirection);
 			} else {
-				setSelectedColumn(col);
+				setSortedColumn(col);
 			}
 		},
-		[selectedColumn?.field]
+		[sortedColumn?.field]
 	);
 
-	const selectAllSelectionChanged = useCallback(() => {
-		rows.map((row) => (row.solaceTableSelected = !selectAll));
+	const handleSelectAllClick = useCallback(() => {
+		rows.map((row) => (row.rowSelected = !selectAll));
 		setSelectedRows(selectAll ? [] : rows);
 	}, [rows, selectAll]);
 
-	function checkboxSelectionChanged(row: Record<string, unknown>) {
-		row.solaceTableSelected = !row.solaceTableSelected;
-		setSelectedRows(
-			row.solaceTableSelected ? [...selectedRows, row] : selectedRows.filter((item) => row.id !== item.id)
-		);
+	function handleCheckboxClick(row: Record<string, unknown>) {
+		row.rowSelected = !row.rowSelected;
+		setSelectedRows(row.rowSelected ? [...selectedRows, row] : selectedRows.filter((item) => row.id !== item.id));
 	}
 
 	const addCheckBoxToHeader = useCallback((): React.ReactNode | void => {
 		if (selectionType === SELECTION_TYPE.MULTI) {
 			return (
 				<StyledTableHeader key={"selectAllCheckbox"}>
-					<SolaceCheckBox
-						name={"selectAllCheckbox"}
-						onChange={() => selectAllSelectionChanged()}
-						isChecked={selectAll}
-					/>
+					<SolaceCheckBox name={"selectAllCheckbox"} onChange={() => handleSelectAllClick()} isChecked={selectAll} />
 				</StyledTableHeader>
 			);
 		} else {
 			return;
 		}
-	}, [selectAll, selectAllSelectionChanged, selectionType]);
+	}, [selectAll, handleSelectAllClick, selectionType]);
 
-	function addCheckBoxToRows(row: Record<string, unknown>): React.ReactNode | void {
-		if (selectionType === SELECTION_TYPE.MULTI) {
-			return (
-				<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
-					<SolaceCheckBox
-						name={`${row.id}rowCheckbox`}
-						onChange={() => checkboxSelectionChanged(row)}
-						isChecked={!!row.solaceTableSelected}
-					/>
-				</StyledTableData>
-			);
-		} else {
-			return;
-		}
+	function addCheckBoxToRows(row: Record<string, unknown>): React.ReactNode {
+		return (
+			<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
+				<SolaceCheckBox
+					name={`${row.id}rowCheckbox`}
+					onChange={() => handleCheckboxClick(row)}
+					isChecked={!!row.rowSelected}
+				/>
+			</StyledTableData>
+		);
 	}
 
 	function creatRowNodes(): React.ReactNode[] {
 		return rows.map((row: any) => (
-			<StyledTableRow
-				key={row.id}
-				onClick={() => updateSelection(row)}
-				className={row.solaceTableSelected ? "selected" : ""}
-			>
+			<StyledTableRow key={row.id} onClick={() => updateSelection(row)} className={row.rowSelected ? "selected" : ""}>
 				{[
-					addCheckBoxToRows(row),
-					columns.map((item) => (
-						<StyledTableData key={row[item.field]}>
-							<span>{row[item.field]}</span>
-						</StyledTableData>
-					))
+					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
+					columns.map((col) => {
+						if (!col.hasNoRows) {
+							return (
+								<StyledTableData key={row[col.field]}>
+									<span>{row[col.field]}</span>
+								</StyledTableData>
+							);
+						}
+					})
 				]}
 			</StyledTableRow>
 		));
@@ -202,15 +200,15 @@ export const useSolaceTable = (
 						<StyledTableHeader key={col.headerName} className={col.sortable ? "sortable" : ""}>
 							<>
 								{col.headerName}
-								{selectedColumn?.field === col.field &&
+								{sortedColumn?.field === col.field &&
 									col.sortable &&
 									(col.sortDirection === SORT_DIRECTION.DCS ? (
-										<ArrowDropUp style={{ marginLeft: "2px" }} onClick={() => handleSort(col)} />
+										<ArrowDropUp sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
 									) : (
-										<ArrowDropDown style={{ marginLeft: "2px" }} onClick={() => handleSort(col)} />
+										<ArrowDropDown sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
 									))}
-								{selectedColumn?.field !== col.field && col.sortable && (
-									<Sort style={{ marginLeft: "4px" }} onClick={() => handleSort(col)} />
+								{sortedColumn?.field !== col.field && col.sortable && (
+									<Sort sx={{ marginLeft: theme.spacing(0.5) }} onClick={() => handleSort(col)} />
 								)}
 							</>
 						</StyledTableHeader>
@@ -218,7 +216,7 @@ export const useSolaceTable = (
 				]}
 			</StyledTableRow>
 		);
-	}, [selectedColumn, addCheckBoxToHeader, columns, handleSort]);
+	}, [sortedColumn, addCheckBoxToHeader, columns, handleSort, theme]);
 
 	const rowNodes = renderCustomRow
 		? renderCustomRow().renderRow({
@@ -226,13 +224,13 @@ export const useSolaceTable = (
 				columns,
 				selectionType,
 				updateSelection,
-				checkboxSelectionChanged,
+				handleCheckboxClick,
 				renderCustomRow
 		  })
 		: creatRowNodes();
 
 	const columnNodes = renderCustomHeader
-		? renderCustomHeader({ columns, selectedColumn, selectAll, handleSort, selectAllSelectionChanged })
+		? renderCustomHeader({ columns, sortedColumn, selectAll, handleSort, handleSelectAllClick })
 		: createHeaderNodes();
 
 	return [columnNodes, rowNodes];

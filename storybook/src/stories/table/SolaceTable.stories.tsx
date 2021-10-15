@@ -2,7 +2,7 @@ import React from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceTable } from "@SolaceDev/maas-react-components";
-import { SELECTION_TYPE, SORT_DIRECTION, TableColumn } from "../../../../src/components/table/SolaceTable";
+import { SELECTION_TYPE, SORT_DIRECTION, TableColumn } from "../../../../src/components/table/table-utils";
 import { useExpandableRows } from "../../../../src/components/table/useExpandableRows";
 import { styled } from "@material-ui/core";
 
@@ -140,7 +140,7 @@ const columns: TableColumn[] = [
 // Custom rows MUST have a valid table html hierarchy starting with a <tr>
 const renderExpandableRowChildren = (row) => {
 	return (
-		<StyledCustomRow className={row.solaceTableSelected ? "selected" : ""}>
+		<StyledCustomRow className={row.rowSelected ? "selected" : ""}>
 			<td colSpan={5}>
 				<table style={{ display: "block", width: "100%", padding: "12px 0 12px 40px" }}>
 					<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
@@ -178,7 +178,7 @@ const renderCustomExpandableRows = () => {
 	};
 };
 
-const renderCustomZeroState = () => {
+const renderCustomEmptyState = () => {
 	return (
 		<div
 			style={{
@@ -198,8 +198,8 @@ const renderCustomZeroState = () => {
 export const DefaultTable = Template.bind({});
 export const SingleSelectionTable = Template.bind({});
 export const CustomRowTable = Template.bind({});
-export const ZeroStateTable = Template.bind({});
-export const CustomZeroStateTable = Template.bind({});
+export const EmptyStateTable = Template.bind({});
+export const CustomEmptyStateTable = Template.bind({});
 
 DefaultTable.args = {
 	selectionChangedCallback: action("selection callback"),
@@ -221,12 +221,21 @@ CustomRowTable.args = {
 	selectionChangedCallback: action("selection callback"),
 	sortCallback: action("sort callback"),
 	rows: rows,
-	columns: columns,
+	columns: [
+		{
+			field: "chevron",
+			headerName: "",
+			sortable: false,
+			disableToggling: false,
+			hasNoRows: true
+		},
+		...columns
+	],
 	selectionType: SELECTION_TYPE.MULTI,
 	renderCustomRow: renderCustomExpandableRows
 };
 
-ZeroStateTable.args = {
+EmptyStateTable.args = {
 	selectionChangedCallback: action("selection callback"),
 	sortCallback: action("sort callback"),
 	rows: [],
@@ -234,11 +243,11 @@ ZeroStateTable.args = {
 	selectionType: SELECTION_TYPE.MULTI
 };
 
-CustomZeroStateTable.args = {
+CustomEmptyStateTable.args = {
 	selectionChangedCallback: action("selection callback"),
 	sortCallback: action("sort callback"),
 	rows: [],
 	columns: columns,
-	renderCustomZeroState: renderCustomZeroState,
+	renderCustomEmptyState: renderCustomEmptyState,
 	selectionType: SELECTION_TYPE.MULTI
 };

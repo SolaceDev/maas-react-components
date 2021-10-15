@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SELECTION_TYPE } from "./SolaceTable";
+import { SELECTION_TYPE } from "./table-utils";
 import { StyledTableRow, StyledTableData, CustomTableRowProps } from "./useSolaceTable";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
@@ -10,59 +10,67 @@ export const useExpandableRows = ({
 	columns,
 	selectionType,
 	updateSelection,
-	checkboxSelectionChanged,
+	handleCheckboxClick,
 	renderCustomRow
 }: CustomTableRowProps): React.ReactNode[] => {
 	const [expansionState, setExpansionState] = useState<Array<number>>([]);
 
-	function addCheckBoxToRows(row: Record<string, unknown>, rowIndex: number): React.ReactNode | void {
-		if (selectionType === SELECTION_TYPE.MULTI) {
-			return (
-				<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
-					<span style={{ display: "flex", maxWidth: "40px" }}>
-						<SolaceCheckBox
-							name={`${row.id}rowCheckbox`}
-							onChange={() => checkboxSelectionChanged(row)}
-							isChecked={!!row.solaceTableSelected}
-						/>
-						{addChevronToRows(row, rowIndex)}
-					</span>
-				</StyledTableData>
-			);
-		} else {
-			return;
-		}
+	function addCheckBoxToRows(row: Record<string, unknown>): React.ReactNode {
+		return (
+			<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
+				<span style={{ display: "flex", maxWidth: "40px" }}>
+					<SolaceCheckBox
+						name={`${row.id}rowCheckbox`}
+						onChange={() => handleCheckboxClick(row)}
+						isChecked={!!row.rowSelected}
+					/>
+				</span>
+			</StyledTableData>
+		);
 	}
 
 	function addChevronToRows(row: Record<string, unknown>, rowIndex: number): React.ReactNode | void {
 		return expansionState.includes(rowIndex) ? (
-			<KeyboardArrowDown
-				fontSize="large"
-				key={`${row.id}chevronDown`}
-				className="cursor-pointer"
-				onClick={() => setExpansionState(expansionState.filter((index) => index !== rowIndex))}
-			/>
+			<StyledTableData key={`${row.id}chevronDown`}>
+				<KeyboardArrowDown
+					fontSize="large"
+					className="cursor-pointer"
+					onClick={(e) => {
+						e.stopPropagation();
+						setExpansionState(expansionState.filter((index) => index !== rowIndex));
+					}}
+				/>
+			</StyledTableData>
 		) : (
-			<KeyboardArrowRight
-				fontSize="large"
-				key={`${row.id}chevronRight`}
-				className="cursor-pointer"
-				onClick={() => setExpansionState([...expansionState, rowIndex])}
-			/>
+			<StyledTableData key={`${row.id}chevronRight`}>
+				<KeyboardArrowRight
+					fontSize="large"
+					className="cursor-pointer"
+					onClick={(e) => {
+						e.stopPropagation();
+						setExpansionState([...expansionState, rowIndex]);
+					}}
+				/>
+			</StyledTableData>
 		);
 	}
 
-	function creatExpandableRowNodes(): React.ReactNode[] {
+	function createExpandableRowNodes(): React.ReactNode[] {
 		return rows.map((row: Record<string, unknown>, rowIndex) => (
 			<React.Fragment key={`${row.id}_wrapper`}>
-				<StyledTableRow onClick={() => updateSelection(row)} className={row.solaceTableSelected ? "selected" : ""}>
+				<StyledTableRow onClick={() => updateSelection(row)} className={row.rowSelected ? "selected" : ""}>
 					{[
-						addCheckBoxToRows(row, rowIndex),
-						columns.map((item) => (
-							<StyledTableData key={row.id + row[item.field]}>
-								<span>{row[item.field]}</span>
-							</StyledTableData>
-						))
+						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row, rowIndex),
+						addChevronToRows(row, rowIndex),
+						columns.map((col) => {
+							if (!col.hasNoRows) {
+								return (
+									<StyledTableData key={row[col.field]}>
+										<span>{row[col.field]}</span>
+									</StyledTableData>
+								);
+							}
+						})
 					]}
 				</StyledTableRow>
 				{expansionState.includes(rowIndex) ? renderCustomRow().renderChildren(row) : null}
@@ -70,7 +78,7 @@ export const useExpandableRows = ({
 		));
 	}
 
-	const expandableRows = creatExpandableRowNodes();
+	const expandableRows = createExpandableRowNodes();
 
 	return expandableRows;
 };
