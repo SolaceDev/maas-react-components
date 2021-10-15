@@ -5,6 +5,7 @@ import { SolaceTable } from "@SolaceDev/maas-react-components";
 import { SELECTION_TYPE, SORT_DIRECTION, TableColumn } from "../../../../src/components/table/table-utils";
 import { useExpandableRows } from "../../../../src/components/table/useExpandableRows";
 import { styled } from "@material-ui/core";
+import { withState, Store } from "@sambego/storybook-state";
 
 const StyledCustomRow = styled("tr")(() => ({
 	"&:hover": {
@@ -14,22 +15,6 @@ const StyledCustomRow = styled("tr")(() => ({
 		backgroundColor: "#e8f9f4"
 	}
 }));
-
-export default {
-	title: "Under Construction/SolaceTable",
-	component: SolaceTable,
-	parameters: {
-		design: {
-			type: "figma",
-			url: ""
-		}
-	},
-	argTypes: {
-		variant: {
-			control: { type: "radio" }
-		}
-	}
-} as ComponentMeta<typeof SolaceTable>;
 
 const Template: ComponentStory<typeof SolaceTable> = (args) => <SolaceTable {...args} />;
 
@@ -137,32 +122,41 @@ const columns: TableColumn[] = [
 	}
 ];
 
+const store = new Store({
+	rows: rows
+});
+
+export default {
+	title: "Under Construction/SolaceTable",
+	component: SolaceTable,
+	parameters: {
+		design: {
+			type: "figma",
+			url: ""
+		},
+		state: { store }
+	},
+	decorators: [withState()]
+} as ComponentMeta<typeof SolaceTable>;
+
 // Custom rows MUST have a valid table html hierarchy starting with a <tr>
 const renderExpandableRowChildren = (row) => {
 	return (
 		<StyledCustomRow className={row.rowSelected ? "selected" : ""}>
-			<td colSpan={5}>
-				<table style={{ display: "block", width: "100%", padding: "12px 0 12px 40px" }}>
+			<td colSpan={6}>
+				<table style={{ display: "block", width: "100%", padding: "12px 0 12px 60px" }}>
 					<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
 						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }} colSpan={5}>
-								{row.first_name}
-							</td>
+							<td style={{ display: "block", width: "100%" }}>{row.first_name}</td>
 						</tr>
 						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }} colSpan={5}>
-								{row.last_name}
-							</td>
+							<td style={{ display: "block", width: "100%" }}>{row.last_name}</td>
 						</tr>
 						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }} colSpan={5}>
-								{row.email}
-							</td>
+							<td style={{ display: "block", width: "100%" }}>{row.email}</td>
 						</tr>
 						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }} colSpan={5}>
-								{row.gender}
-							</td>
+							<td style={{ display: "block", width: "100%" }}>{row.gender}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -201,26 +195,36 @@ export const CustomRowTable = Template.bind({});
 export const EmptyStateTable = Template.bind({});
 export const CustomEmptyStateTable = Template.bind({});
 
+const sortData = (selectedColumn: TableColumn) => {
+	return rows.sort((a, b) => {
+		if (selectedColumn.sortDirection === SORT_DIRECTION.ASC) {
+			return a[selectedColumn.field] > b[selectedColumn.field] ? 1 : -1;
+		} else {
+			return a[selectedColumn.field] > b[selectedColumn.field] ? -1 : 1;
+		}
+	});
+};
+
 DefaultTable.args = {
 	selectionChangedCallback: action("selection callback"),
-	sortCallback: action("sort callback"),
-	rows: rows,
+	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
+	rows: store.get("rows") || null,
 	columns: columns,
 	selectionType: SELECTION_TYPE.MULTI
 };
 
 SingleSelectionTable.args = {
 	selectionChangedCallback: action("selection callback"),
-	sortCallback: action("sort callback"),
-	rows: rows,
+	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
+	rows: store.get("rows") || null,
 	columns: columns,
 	selectionType: SELECTION_TYPE.SINGLE
 };
 
 CustomRowTable.args = {
 	selectionChangedCallback: action("selection callback"),
-	sortCallback: action("sort callback"),
-	rows: rows,
+	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
+	rows: store.get("rows") || null,
 	columns: [
 		{
 			field: "chevron",

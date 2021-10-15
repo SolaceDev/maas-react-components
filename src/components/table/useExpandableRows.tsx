@@ -69,6 +69,8 @@ export const useExpandableRows = ({
 										<span>{row[col.field]}</span>
 									</StyledTableData>
 								);
+							} else {
+								return;
 							}
 						})
 					]}

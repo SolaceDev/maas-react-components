@@ -184,6 +184,8 @@ export const useSolaceTable = (
 									<span>{row[col.field]}</span>
 								</StyledTableData>
 							);
+						} else {
+							return;
 						}
 					})
 				]}
@@ -202,7 +204,7 @@ export const useSolaceTable = (
 								{col.headerName}
 								{sortedColumn?.field === col.field &&
 									col.sortable &&
-									(col.sortDirection === SORT_DIRECTION.DCS ? (
+									(col.sortDirection === SORT_DIRECTION.ASC ? (
 										<ArrowDropUp sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
 									) : (
 										<ArrowDropDown sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
