@@ -178,7 +178,7 @@ export const useSolaceTable = (
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 					columns.map((col) => {
-						if (!col.hasNoRows) {
+						if (!col.hasNoCell) {
 							return (
 								<StyledTableData key={row[col.field]}>
 									<span>{row[col.field]}</span>

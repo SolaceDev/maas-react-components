@@ -231,7 +231,7 @@ CustomRowTable.args = {
 			headerName: "",
 			sortable: false,
 			disableToggling: false,
-			hasNoRows: true
+			hasNoCell: true
 		},
 		...columns
 	],

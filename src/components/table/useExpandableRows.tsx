@@ -63,7 +63,7 @@ export const useExpandableRows = ({
 						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row, rowIndex),
 						addChevronToRows(row, rowIndex),
 						columns.map((col) => {
-							if (!col.hasNoRows) {
+							if (!col.hasNoCell) {
 								return (
 									<StyledTableData key={row[col.field]}>
 										<span>{row[col.field]}</span>

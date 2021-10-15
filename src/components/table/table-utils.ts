@@ -7,7 +7,7 @@ export interface TableColumn {
 	sortDirection?: SORT_DIRECTION;
 	disableToggling: boolean;
 	resizable?: boolean;
-	hasNoRows?: boolean;
+	hasNoCell?: boolean;
 }
 
 export enum SELECTION_TYPE {
