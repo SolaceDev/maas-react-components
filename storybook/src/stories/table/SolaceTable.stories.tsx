@@ -16,7 +16,7 @@ const StyledCustomRow = styled("tr")(() => ({
 }));
 
 export default {
-	title: "Table/SolaceTable",
+	title: "Under Construction/SolaceTable",
 	component: SolaceTable,
 	parameters: {
 		design: {

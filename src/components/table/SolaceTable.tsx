@@ -53,9 +53,9 @@ interface TablePropType extends SolaceComponentProps {
 		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
 	};
 	/**
-	 * Renders custom columns
+	 * Renders a custom header
 	 */
-	renderCustomColumn?: (customTableColumnProps: CustomTableColumnProps) => React.ReactNode;
+	renderCustomHeader?: (customTableColumnProps: CustomTableColumnProps) => React.ReactNode;
 	/**
 	 * Header hover callback
 	 */
@@ -126,7 +126,7 @@ function SolaceTable({
 	renderCustomRow,
 	zeroStateMessage,
 	renderCustomZeroState,
-	renderCustomColumn
+	renderCustomHeader
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable(
 		rows,
@@ -136,7 +136,7 @@ function SolaceTable({
 		sortCallback,
 		selectedColumn,
 		renderCustomRow,
-		renderCustomColumn
+		renderCustomHeader
 	);
 
 	function showZeroStateMessage(): React.ReactNode {

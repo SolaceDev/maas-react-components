@@ -80,7 +80,7 @@ export const useSolaceTable = (
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
 		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
 	},
-	renderCustomColumn?: (customColumnProps: CustomTableColumnProps) => React.ReactNode
+	renderCustomHeader?: (customColumnProps: CustomTableColumnProps) => React.ReactNode
 ): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<Record<string, unknown>[]>([]);
 	const [selectedColumn, setSelectedColumn] = useState<TableColumn>(preSelectedColumn ? preSelectedColumn : columns[0]);
@@ -193,7 +193,7 @@ export const useSolaceTable = (
 		));
 	}
 
-	const createColumnNodes = useCallback(() => {
+	const createHeaderNodes = useCallback(() => {
 		return (
 			<StyledTableRow>
 				{[
@@ -231,9 +231,9 @@ export const useSolaceTable = (
 		  })
 		: creatRowNodes();
 
-	const columnNodes = renderCustomColumn
-		? renderCustomColumn({ columns, selectedColumn, selectAll, handleSort, selectAllSelectionChanged })
-		: createColumnNodes();
+	const columnNodes = renderCustomHeader
+		? renderCustomHeader({ columns, selectedColumn, selectAll, handleSort, selectAllSelectionChanged })
+		: createHeaderNodes();
 
 	return [columnNodes, rowNodes];
 };
