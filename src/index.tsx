@@ -16,6 +16,10 @@ export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceC
 export { default as SolaceMenuPopper } from "./components/SolaceMenuPopper";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";
 export { default as SolaceSelect } from "./components/form/SolaceSelect";
+export { default as SolaceSelectAutocomplete } from "./components/form/SolaceSelectAutocomplete";
+export { default as SolaceSelectAutocompleteItem } from "./components/form/SolaceSelectAutocompleteItem";
+export { getOptionLabel as getSolaceSelectAutocompleteOptionLabel } from "./components/form/SolaceSelectAutocompleteItem";
+export type { SolaceSelectAutocompleteItemProps } from "./components/form/SolaceSelectAutocompleteItem";
 export { default as SolaceTextArea } from "./components/form/SolaceTextArea";
 export { default as SolaceToggle } from "./components/form/SolaceToggle";
 export { default as SolaceLabel } from "./components/form/SolaceLabel";

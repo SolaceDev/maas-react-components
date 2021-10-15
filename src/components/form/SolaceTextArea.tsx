@@ -52,6 +52,10 @@ export interface SolaceTextAreaProps extends SolaceComponentProps {
 	 */
 	title?: string;
 	/**
+	 * Boolean flag to control whether the `input` element is focused during first mount
+	 */
+	autoFocus?: boolean;
+	/**
 	 * Boolean flag to mark the `input` in error state
 	 */
 	hasErrors?: boolean;
@@ -88,6 +92,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	minRows = 4,
 	maxRows = 4,
 	title,
+	autoFocus = false,
 	hasErrors = false,
 	isRequired = false,
 	isInlineLabel = false,
@@ -142,6 +147,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 				}}
 				type="text"
 				autoComplete="off"
+				autoFocus={autoFocus}
 				minRows={minRows}
 				maxRows={maxRows}
 				multiline={true}
@@ -180,7 +186,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 					display="flex"
 					flexDirection="row"
 					justifyContent="space-between"
-					alignItems="center"
+					alignItems="flex-start"
 				>
 					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
 						{label}

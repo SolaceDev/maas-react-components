@@ -58,9 +58,13 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
 	onChange?: (event: SolaceSelectChangeEvent) => void;
+	/**
+	 * An array of MenuItems to render as the select options
+	 */
+	children: Array<JSX.Element>;
 }
 
-const SolaceSelect: React.FC<SolaceSelectProps> = ({
+function SolaceSelect({
 	id,
 	name,
 	label,
@@ -76,7 +80,7 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 	dataQa,
 	dataTags,
 	children
-}) => {
+}: SolaceSelectProps): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value);
 
@@ -108,7 +112,7 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 	const select = () => (
 		<React.Fragment>
 			<TextField
-				id={`${getId()}-select`}
+				id={getId()}
 				name={name}
 				inputProps={{
 					"data-qa": dataQa,
@@ -136,7 +140,7 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 				error={hasErrors}
 				autoComplete="off"
 				required={isRequired}
-				disabled={isDisabled}
+				disabled={isDisabled || isReadOnly}
 				margin="dense"
 				value={selectedValue}
 				onChange={handleChange}
@@ -150,12 +154,7 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 		<React.Fragment>
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-select`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
 						{label}
 					</SolaceLabel>
 					{select()}
@@ -167,14 +166,9 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 					display="flex"
 					flexDirection="row"
 					justifyContent="space-between"
-					alignItems="center"
+					alignItems="flex-start"
 				>
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-select`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
 						{label}
 					</SolaceLabel>
 					{select()}
@@ -183,6 +177,6 @@ const SolaceSelect: React.FC<SolaceSelectProps> = ({
 			{!label && select()}
 		</React.Fragment>
 	);
-};
+}
 
 export default SolaceSelect;
