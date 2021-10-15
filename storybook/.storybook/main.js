@@ -7,7 +7,8 @@ module.exports = {
 		"@storybook/addon-essentials",
 		"storybook-addon-designs",
 		"@storybook/addon-actions",
-		"@storybook/addon-a11y"
+		"@storybook/addon-a11y",
+		"storybook-addon-mock/register"
 	],
 	/**
 	 * The following webpack config overrides have been put in place to address a Storybook bug where
