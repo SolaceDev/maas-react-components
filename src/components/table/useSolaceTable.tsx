@@ -17,7 +17,10 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 		backgroundColor: "#e8f9f4"
 	},
 	"&:hover": {
-		background: "#e5e5e5"
+		background: "#e5e5e5",
+		"&.header": {
+			background: "transparent"
+		}
 	},
 	"&:hover + tr td table": {
 		background: "#e5e5e5"
@@ -195,7 +198,7 @@ export const useSolaceTable = (
 
 	const createHeaderNodes = useCallback(() => {
 		return (
-			<StyledTableRow>
+			<StyledTableRow className="header">
 				{[
 					addCheckBoxToHeader(),
 					...columns.map((col) => (

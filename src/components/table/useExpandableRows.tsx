@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SELECTION_TYPE } from "./table-utils";
 import { StyledTableRow, StyledTableData, CustomTableRowProps } from "./useSolaceTable";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
@@ -14,6 +14,10 @@ export const useExpandableRows = ({
 	renderCustomRow
 }: CustomTableRowProps): React.ReactNode[] => {
 	const [expansionState, setExpansionState] = useState<Array<number>>([]);
+
+	useEffect(() => {
+		setExpansionState([]);
+	}, [rows]);
 
 	function addCheckBoxToRows(row: Record<string, unknown>): React.ReactNode {
 		return (

@@ -196,13 +196,14 @@ export const EmptyStateTable = Template.bind({});
 export const CustomEmptyStateTable = Template.bind({});
 
 const sortData = (selectedColumn: TableColumn) => {
-	return rows.sort((a, b) => {
+	const newRows = [...rows].sort((a, b) => {
 		if (selectedColumn.sortDirection === SORT_DIRECTION.ASC) {
 			return a[selectedColumn.field] > b[selectedColumn.field] ? 1 : -1;
 		} else {
 			return a[selectedColumn.field] > b[selectedColumn.field] ? -1 : 1;
 		}
 	});
+	return newRows;
 };
 
 DefaultTable.args = {
