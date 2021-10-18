@@ -28,7 +28,7 @@ export interface TableActionMenuItem {
 	callback: (row: TableRow) => void;
 	disabled?: boolean;
 	hidden?: boolean;
-	datQa?: string;
+	dataQa?: string;
 	id?: string;
 }
 

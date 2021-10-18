@@ -3,6 +3,7 @@ import { TableRow, TableActionMenuItem } from "./table-utils";
 import { styled } from "@material-ui/core";
 import { BASE_COLORS } from "./../../resources/colorPallette";
 import { useOutsideClicked } from "./useClickedOutside";
+import SolaceComponentProps from "../SolaceComponentProps";
 
 export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	position: "absolute",
@@ -31,15 +32,14 @@ export const StyledActionItem = styled("div")(({ theme }) => ({
 	}
 }));
 
-const ActionMenu = ({
-	actionMenuItems,
-	row,
-	setRowWithOpenActionMenu
-}: {
+interface ActionMenuPropType extends SolaceComponentProps {
+	id?: string;
 	actionMenuItems: TableActionMenuItem[];
 	row: TableRow;
 	setRowWithOpenActionMenu: Function;
-}): JSX.Element => {
+}
+
+const ActionMenu = ({ actionMenuItems, row, setRowWithOpenActionMenu }: ActionMenuPropType): JSX.Element => {
 	const actionMenuRef = useRef(null);
 	useOutsideClicked(actionMenuRef, setRowWithOpenActionMenu);
 
