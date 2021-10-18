@@ -1,5 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { TableColumn, SELECTION_TYPE, SORT_DIRECTION } from "./table-utils";
+import {
+	TableColumn,
+	TableRow,
+	TableActionMenuItem,
+	SELECTION_TYPE,
+	SORT_DIRECTION,
+	addEmptyHeaderCell,
+	addActionMenuIcon
+} from "./table-utils";
 import { styled, useTheme } from "@material-ui/core";
 import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
@@ -36,7 +44,11 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	},
 	"&.checkbox": {
 		textAlign: "center"
-	}
+	},
+	maxWidth: "0",
+	overflow: "hidden",
+	textOverflow: "ellipsis",
+	whiteSpace: "nowrap"
 }));
 
 export const StyledTableHeader = styled("th")(({ theme }) => ({
@@ -53,15 +65,16 @@ export const StyledTableHeader = styled("th")(({ theme }) => ({
 }));
 
 export interface CustomTableRowProps {
-	rows: Record<string, unknown>[];
+	rows: TableRow[];
 	columns: TableColumn[];
 	selectionType: SELECTION_TYPE;
-	updateSelection: (row: Record<string, unknown>) => void;
-	handleCheckboxClick: (row: Record<string, unknown>) => void;
+	updateSelection: (row: TableRow) => void;
+	handleCheckboxClick: (row: TableRow) => void;
 	renderCustomRow: () => {
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
-		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
+		renderChildren: (row: TableRow) => React.ReactNode;
 	};
+	rowActionMenuItems?: TableActionMenuItem[];
 }
 
 export interface CustomTableColumnProps {
@@ -73,24 +86,26 @@ export interface CustomTableColumnProps {
 }
 
 export const useSolaceTable = (
-	rows: Record<string, unknown>[],
+	rows: TableRow[],
 	columns: TableColumn[],
 	selectionType: SELECTION_TYPE,
-	selectionChangedCallback: (row: Record<string, unknown>[]) => void,
+	selectionChangedCallback: (row: TableRow[]) => void,
 	sortCallback: (column: TableColumn | undefined) => void,
 	preSelectedColumn: TableColumn | undefined,
 	renderCustomRow?: () => {
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
-		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
+		renderChildren: (row: TableRow) => React.ReactNode;
 	},
-	renderCustomHeader?: (customColumnProps: CustomTableColumnProps) => React.ReactNode
+	renderCustomHeader?: (customColumnProps: CustomTableColumnProps) => React.ReactNode,
+	rowActionMenuItems?: TableActionMenuItem[]
 ): React.ReactNode[] => {
-	const [selectedRows, setSelectedRows] = useState<Record<string, unknown>[]>([]);
+	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
 		preSelectedColumn ? preSelectedColumn : columns.find((col) => col.sortable)
 	);
 	const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(SORT_DIRECTION.DCS);
 	const [selectAll, setSelectAll] = useState(false);
+	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
 
 	const theme = useTheme();
 
@@ -107,17 +122,17 @@ export const useSolaceTable = (
 		sortCallback(sortedColumn);
 	}, [sortedColumn, sortDirection, sortCallback]);
 
-	function updateSelection(row: Record<string, unknown>) {
+	function updateSelection(row: TableRow) {
 		handleSelectionChanged(row);
 	}
 
-	function handleSelectionChanged(row: Record<string, unknown>) {
+	function handleSelectionChanged(row: TableRow) {
 		if (selectionType !== SELECTION_TYPE.NONE) {
 			handleSingleSelection(row);
 		}
 	}
 
-	function handleSingleSelection(clickedRow: Record<string, unknown>) {
+	function handleSingleSelection(clickedRow: TableRow) {
 		clickedRow.rowSelected = selectedRows.length > 1 ? true : !clickedRow.rowSelected;
 		setSelectAll(false);
 		rows.map((row) => {
@@ -146,7 +161,7 @@ export const useSolaceTable = (
 		setSelectedRows(selectAll ? [] : rows);
 	}, [rows, selectAll]);
 
-	function handleCheckboxClick(row: Record<string, unknown>) {
+	function handleCheckboxClick(row: TableRow) {
 		row.rowSelected = !row.rowSelected;
 		setSelectedRows(row.rowSelected ? [...selectedRows, row] : selectedRows.filter((item) => row.id !== item.id));
 	}
@@ -163,7 +178,7 @@ export const useSolaceTable = (
 		}
 	}, [selectAll, handleSelectAllClick, selectionType]);
 
-	function addCheckBoxToRows(row: Record<string, unknown>): React.ReactNode {
+	function addCheckBoxToRows(row: TableRow): React.ReactNode {
 		return (
 			<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
 				<SolaceCheckBox
@@ -173,6 +188,11 @@ export const useSolaceTable = (
 				/>
 			</StyledTableData>
 		);
+	}
+
+	function openRowActionMenu(e: React.MouseEvent<HTMLElement>, row: TableRow) {
+		e.stopPropagation();
+		setRowWithOpenActionMenu(row.id);
 	}
 
 	function creatRowNodes(): React.ReactNode[] {
@@ -190,7 +210,15 @@ export const useSolaceTable = (
 						} else {
 							return;
 						}
-					})
+					}),
+					!!rowActionMenuItems &&
+						addActionMenuIcon(
+							row,
+							rowWithOpenActionMenu === row.id,
+							openRowActionMenu,
+							rowActionMenuItems,
+							setRowWithOpenActionMenu
+						)
 				]}
 			</StyledTableRow>
 		));
@@ -217,11 +245,12 @@ export const useSolaceTable = (
 								)}
 							</>
 						</StyledTableHeader>
-					))
+					)),
+					!!rowActionMenuItems && addEmptyHeaderCell()
 				]}
 			</StyledTableRow>
 		);
-	}, [sortedColumn, addCheckBoxToHeader, columns, handleSort, theme]);
+	}, [sortedColumn, addCheckBoxToHeader, columns, handleSort, theme, rowActionMenuItems]);
 
 	const rowNodes = renderCustomRow
 		? renderCustomRow().renderRow({
@@ -230,7 +259,8 @@ export const useSolaceTable = (
 				selectionType,
 				updateSelection,
 				handleCheckboxClick,
-				renderCustomRow
+				renderCustomRow,
+				rowActionMenuItems
 		  })
 		: creatRowNodes();
 

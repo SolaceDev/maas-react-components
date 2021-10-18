@@ -2,7 +2,7 @@ import React from "react";
 import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./useSolaceTable";
 import { styled } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
-import { SELECTION_TYPE, TableColumn } from "./table-utils";
+import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
 import { BASE_COLORS } from "./../../resources/colorPallette";
 
 interface TablePropType extends SolaceComponentProps {
@@ -13,7 +13,7 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Array of items to be displayed
 	 */
-	rows: Record<string, unknown>[];
+	rows: TableRow[];
 	/**
 	 * Array of columns to be rendered
 	 */
@@ -26,6 +26,10 @@ interface TablePropType extends SolaceComponentProps {
 	 * Enables columns hiding
 	 */
 	hasColumnHiding?: boolean;
+	/**
+	 * has row action menu items
+	 */
+	rowActionMenuItems?: TableActionMenuItem[];
 	/**
 	 * Selected column. If not passed in, will default to the first column
 	 */
@@ -41,7 +45,7 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Selection changed callback
 	 */
-	selectionChangedCallback: (row: Record<string, unknown>[]) => void;
+	selectionChangedCallback: (row: TableRow[]) => void;
 	/**
 	 * Sort callback
 	 */
@@ -51,7 +55,7 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	renderCustomRow?: () => {
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
-		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
+		renderChildren: (row: TableRow) => React.ReactNode;
 	};
 	/**
 	 * Renders a custom header
@@ -78,7 +82,8 @@ const TableWrapper = styled("div")(({ theme }) => ({
 	maxHeight: "100%",
 	overflow: "auto",
 	fontFamily: theme.typography.fontFamily,
-	fontSize: theme.typography.body1.fontSize
+	fontSize: theme.typography.body1.fontSize,
+	background: "white"
 }));
 
 const StyledTable = styled("table")(() => ({
@@ -105,7 +110,8 @@ function SolaceTable({
 	renderCustomRow,
 	emptyStateMessage,
 	renderCustomEmptyState,
-	renderCustomHeader
+	renderCustomHeader,
+	rowActionMenuItems
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable(
 		rows,
@@ -115,7 +121,8 @@ function SolaceTable({
 		sortCallback,
 		sortedColumn,
 		renderCustomRow,
-		renderCustomHeader
+		renderCustomHeader,
+		rowActionMenuItems
 	);
 
 	function showEmptyStateMessage(): React.ReactNode {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SELECTION_TYPE } from "./table-utils";
+import { SELECTION_TYPE, TableRow, addActionMenuIcon } from "./table-utils";
 import { StyledTableRow, StyledTableData, CustomTableRowProps } from "./useSolaceTable";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
@@ -11,15 +11,17 @@ export const useExpandableRows = ({
 	selectionType,
 	updateSelection,
 	handleCheckboxClick,
-	renderCustomRow
+	renderCustomRow,
+	rowActionMenuItems
 }: CustomTableRowProps): React.ReactNode[] => {
 	const [expansionState, setExpansionState] = useState<Array<number>>([]);
+	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
 
 	useEffect(() => {
 		setExpansionState([]);
 	}, [rows]);
 
-	function addCheckBoxToRows(row: Record<string, unknown>): React.ReactNode {
+	function addCheckBoxToRows(row: TableRow): React.ReactNode {
 		return (
 			<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
 				<span style={{ display: "flex", maxWidth: "40px" }}>
@@ -33,7 +35,7 @@ export const useExpandableRows = ({
 		);
 	}
 
-	function addChevronToRows(row: Record<string, unknown>, rowIndex: number): React.ReactNode | void {
+	function addChevronToRows(row: TableRow, rowIndex: number): React.ReactNode | void {
 		return expansionState.includes(rowIndex) ? (
 			<StyledTableData key={`${row.id}chevronDown`}>
 				<KeyboardArrowDown
@@ -59,12 +61,17 @@ export const useExpandableRows = ({
 		);
 	}
 
+	function openRowActionMenu(e: React.MouseEvent<HTMLElement>, row: TableRow) {
+		e.stopPropagation();
+		setRowWithOpenActionMenu(row.id);
+	}
+
 	function createExpandableRowNodes(): React.ReactNode[] {
-		return rows.map((row: Record<string, unknown>, rowIndex) => (
+		return rows.map((row: TableRow, rowIndex) => (
 			<React.Fragment key={`${row.id}_wrapper`}>
 				<StyledTableRow onClick={() => updateSelection(row)} className={row.rowSelected ? "selected" : ""}>
 					{[
-						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row, rowIndex),
+						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 						addChevronToRows(row, rowIndex),
 						columns.map((col) => {
 							if (!col.hasNoCell) {
@@ -76,7 +83,15 @@ export const useExpandableRows = ({
 							} else {
 								return;
 							}
-						})
+						}),
+						!!rowActionMenuItems &&
+							addActionMenuIcon(
+								row,
+								rowWithOpenActionMenu === row.id,
+								openRowActionMenu,
+								rowActionMenuItems,
+								setRowWithOpenActionMenu
+							)
 					]}
 				</StyledTableRow>
 				{expansionState.includes(rowIndex) ? renderCustomRow().renderChildren(row) : null}
