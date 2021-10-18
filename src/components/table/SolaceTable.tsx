@@ -64,11 +64,11 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Header hover callback
 	 */
-	headerHoverCallback?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+	headerHoverCallback?: () => void;
 	/**
 	 * Row hover callback
 	 */
-	rowHoverCallback?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+	rowHoverCallback?: (row: TableRow) => void;
 }
 
 const TableWrapper = styled("div")(({ theme }) => ({
@@ -111,7 +111,9 @@ function SolaceTable({
 	emptyStateMessage,
 	renderCustomEmptyState,
 	renderCustomHeader,
-	rowActionMenuItems
+	rowActionMenuItems,
+	headerHoverCallback,
+	rowHoverCallback
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable(
 		rows,
@@ -122,7 +124,9 @@ function SolaceTable({
 		sortedColumn,
 		renderCustomRow,
 		renderCustomHeader,
-		rowActionMenuItems
+		rowActionMenuItems,
+		headerHoverCallback,
+		rowHoverCallback
 	);
 
 	function showEmptyStateMessage(): React.ReactNode {

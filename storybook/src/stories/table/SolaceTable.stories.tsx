@@ -278,5 +278,7 @@ RowActionMenuTable.args = {
 	rows: store.get("rows") || null,
 	columns: columns,
 	selectionType: SELECTION_TYPE.MULTI,
-	rowActionMenuItems: rowActionMenuItems
+	rowActionMenuItems: rowActionMenuItems,
+	headerHoverCallback: action("header hover callback"),
+	rowHoverCallback: action("row hover callback")
 };

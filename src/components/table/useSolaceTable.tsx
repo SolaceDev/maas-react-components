@@ -75,6 +75,8 @@ export interface CustomTableRowProps {
 		renderChildren: (row: TableRow) => React.ReactNode;
 	};
 	rowActionMenuItems?: TableActionMenuItem[];
+	headerHoverCallback?: () => void;
+	rowHoverCallback?: (row: TableRow) => void;
 }
 
 export interface CustomTableColumnProps {
@@ -97,7 +99,9 @@ export const useSolaceTable = (
 		renderChildren: (row: TableRow) => React.ReactNode;
 	},
 	renderCustomHeader?: (customColumnProps: CustomTableColumnProps) => React.ReactNode,
-	rowActionMenuItems?: TableActionMenuItem[]
+	rowActionMenuItems?: TableActionMenuItem[],
+	headerHoverCallback?: () => void,
+	rowHoverCallback?: (row: TableRow) => void
 ): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
@@ -196,8 +200,13 @@ export const useSolaceTable = (
 	}
 
 	function creatRowNodes(): React.ReactNode[] {
-		return rows.map((row: any) => (
-			<StyledTableRow key={row.id} onClick={() => updateSelection(row)} className={row.rowSelected ? "selected" : ""}>
+		return rows.map((row: TableRow) => (
+			<StyledTableRow
+				key={row.id}
+				onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
+				onClick={() => updateSelection(row)}
+				className={row.rowSelected ? "selected" : ""}
+			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 					columns.map((col) => {
@@ -226,7 +235,7 @@ export const useSolaceTable = (
 
 	const createHeaderNodes = useCallback(() => {
 		return (
-			<StyledTableRow className="header">
+			<StyledTableRow className="header" onMouseEnter={headerHoverCallback ? () => headerHoverCallback() : undefined}>
 				{[
 					addCheckBoxToHeader(),
 					...columns.map((col) => (
@@ -260,7 +269,8 @@ export const useSolaceTable = (
 				updateSelection,
 				handleCheckboxClick,
 				renderCustomRow,
-				rowActionMenuItems
+				rowActionMenuItems,
+				rowHoverCallback
 		  })
 		: creatRowNodes();
 

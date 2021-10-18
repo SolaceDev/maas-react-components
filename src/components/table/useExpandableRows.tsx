@@ -12,7 +12,8 @@ export const useExpandableRows = ({
 	updateSelection,
 	handleCheckboxClick,
 	renderCustomRow,
-	rowActionMenuItems
+	rowActionMenuItems,
+	rowHoverCallback
 }: CustomTableRowProps): React.ReactNode[] => {
 	const [expansionState, setExpansionState] = useState<Array<number>>([]);
 	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
@@ -69,7 +70,11 @@ export const useExpandableRows = ({
 	function createExpandableRowNodes(): React.ReactNode[] {
 		return rows.map((row: TableRow, rowIndex) => (
 			<React.Fragment key={`${row.id}_wrapper`}>
-				<StyledTableRow onClick={() => updateSelection(row)} className={row.rowSelected ? "selected" : ""}>
+				<StyledTableRow
+					onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
+					onClick={() => updateSelection(row)}
+					className={row.rowSelected ? "selected" : ""}
+				>
 					{[
 						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 						addChevronToRows(row, rowIndex),
