@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { SELECTION_TYPE, TableRow, addActionMenuIcon } from "./table-utils";
+import { SELECTION_TYPE, TableRow, addActionMenuIcon, TableColumn } from "../table-utils";
 import { StyledTableRow, StyledTableData, CustomTableRowProps } from "./useSolaceTable";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import SolaceCheckBox from "../form/SolaceCheckBox";
+import SolaceCheckBox from "../../form/SolaceCheckBox";
 
 export const useExpandableRows = ({
 	rows,
-	columns,
+	renderedColumns,
 	selectionType,
 	updateSelection,
 	handleCheckboxClick,
@@ -78,8 +78,8 @@ export const useExpandableRows = ({
 					{[
 						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 						addChevronToRows(row, rowIndex),
-						columns.map((col) => {
-							if (!col.hasNoCell) {
+						renderedColumns.map((col: TableColumn) => {
+							if (!col.hasNoCell && !col.isHidden) {
 								return (
 									<StyledTableData key={row[col.field]}>
 										<span>{row[col.field]}</span>

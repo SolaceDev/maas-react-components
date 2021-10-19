@@ -1,5 +1,5 @@
 import React from "react";
-import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./useSolaceTable";
+import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./hooks/useSolaceTable";
 import { styled } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
@@ -113,7 +113,8 @@ function SolaceTable({
 	renderCustomHeader,
 	rowActionMenuItems,
 	headerHoverCallback,
-	rowHoverCallback
+	rowHoverCallback,
+	hasColumnHiding
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable(
 		rows,
@@ -126,7 +127,8 @@ function SolaceTable({
 		renderCustomHeader,
 		rowActionMenuItems,
 		headerHoverCallback,
-		rowHoverCallback
+		rowHoverCallback,
+		hasColumnHiding
 	);
 
 	function showEmptyStateMessage(): React.ReactNode {

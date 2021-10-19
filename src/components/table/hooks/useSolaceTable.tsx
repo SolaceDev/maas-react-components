@@ -6,14 +6,15 @@ import {
 	SELECTION_TYPE,
 	SORT_DIRECTION,
 	addEmptyHeaderCell,
-	addActionMenuIcon
-} from "./table-utils";
+	addActionMenuIcon,
+	addColumnHidingControl
+} from "../table-utils";
 import { styled, useTheme } from "@material-ui/core";
 import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import Sort from "@material-ui/icons/Sort";
-import SolaceCheckBox from "../form/SolaceCheckBox";
-import { BASE_COLORS } from "./../../resources/colorPallette";
+import SolaceCheckBox from "../../form/SolaceCheckBox";
+import { BASE_COLORS } from "../../../resources/colorPallette";
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
@@ -66,7 +67,7 @@ export const StyledTableHeader = styled("th")(({ theme }) => ({
 
 export interface CustomTableRowProps {
 	rows: TableRow[];
-	columns: TableColumn[];
+	renderedColumns: TableColumn[];
 	selectionType: SELECTION_TYPE;
 	updateSelection: (row: TableRow) => void;
 	handleCheckboxClick: (row: TableRow) => void;
@@ -77,6 +78,7 @@ export interface CustomTableRowProps {
 	rowActionMenuItems?: TableActionMenuItem[];
 	headerHoverCallback?: () => void;
 	rowHoverCallback?: (row: TableRow) => void;
+	hasColumnHiding?: boolean;
 }
 
 export interface CustomTableColumnProps {
@@ -85,6 +87,13 @@ export interface CustomTableColumnProps {
 	selectAll: boolean;
 	handleSort: (column: TableColumn) => void;
 	handleSelectAllClick: () => void;
+	addColumnHidingControl: (
+		columns: TableColumn[],
+		openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void,
+		isColumnHidingControlOpen: boolean,
+		setIsColumnHidingControlOpen: Function,
+		setRenderedColumns: Function
+	) => React.ReactNode;
 }
 
 export const useSolaceTable = (
@@ -101,15 +110,18 @@ export const useSolaceTable = (
 	renderCustomHeader?: (customColumnProps: CustomTableColumnProps) => React.ReactNode,
 	rowActionMenuItems?: TableActionMenuItem[],
 	headerHoverCallback?: () => void,
-	rowHoverCallback?: (row: TableRow) => void
+	rowHoverCallback?: (row: TableRow) => void,
+	hasColumnHiding?: boolean
 ): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
 		preSelectedColumn ? preSelectedColumn : columns.find((col) => col.sortable)
 	);
 	const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(SORT_DIRECTION.DCS);
+	const [renderedColumns, setRenderedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
 	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
+	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
 
 	const theme = useTheme();
 
@@ -199,6 +211,14 @@ export const useSolaceTable = (
 		setRowWithOpenActionMenu(row.id);
 	}
 
+	const openColumnHidingControl = useCallback(
+		(e: React.MouseEvent<HTMLElement>): void => {
+			e.stopPropagation();
+			setIsColumnHidingControlOpen(!isColumnHidingControlOpen);
+		},
+		[isColumnHidingControlOpen]
+	);
+
 	function creatRowNodes(): React.ReactNode[] {
 		return rows.map((row: TableRow) => (
 			<StyledTableRow
@@ -209,8 +229,8 @@ export const useSolaceTable = (
 			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
-					columns.map((col) => {
-						if (!col.hasNoCell) {
+					renderedColumns.map((col) => {
+						if (!col.hasNoCell && !col.isHidden) {
 							return (
 								<StyledTableData key={row[col.field]}>
 									<span>{row[col.field]}</span>
@@ -238,33 +258,56 @@ export const useSolaceTable = (
 			<StyledTableRow className="header" onMouseEnter={headerHoverCallback ? () => headerHoverCallback() : undefined}>
 				{[
 					addCheckBoxToHeader(),
-					...columns.map((col) => (
-						<StyledTableHeader key={col.headerName} className={col.sortable ? "sortable" : ""}>
-							<>
-								{col.headerName}
-								{sortedColumn?.field === col.field &&
-									col.sortable &&
-									(col.sortDirection === SORT_DIRECTION.ASC ? (
-										<ArrowDropUp sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
-									) : (
-										<ArrowDropDown sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
-									))}
-								{sortedColumn?.field !== col.field && col.sortable && (
-									<Sort sx={{ marginLeft: theme.spacing(0.5) }} onClick={() => handleSort(col)} />
-								)}
-							</>
-						</StyledTableHeader>
-					)),
-					!!rowActionMenuItems && addEmptyHeaderCell()
+					...renderedColumns.map(
+						(col) =>
+							!col.isHidden && (
+								<StyledTableHeader key={col.headerName} className={col.sortable ? "sortable" : ""}>
+									<>
+										{col.headerName}
+										{sortedColumn?.field === col.field &&
+											col.sortable &&
+											(col.sortDirection === SORT_DIRECTION.ASC ? (
+												<ArrowDropUp sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
+											) : (
+												<ArrowDropDown sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
+											))}
+										{sortedColumn?.field !== col.field && col.sortable && (
+											<Sort sx={{ marginLeft: theme.spacing(0.5) }} onClick={() => handleSort(col)} />
+										)}
+									</>
+								</StyledTableHeader>
+							)
+					),
+					!!rowActionMenuItems && !hasColumnHiding && addEmptyHeaderCell(),
+					hasColumnHiding &&
+						addColumnHidingControl(
+							columns,
+							openColumnHidingControl,
+							isColumnHidingControlOpen,
+							setIsColumnHidingControlOpen,
+							setRenderedColumns
+						)
 				]}
 			</StyledTableRow>
 		);
-	}, [sortedColumn, addCheckBoxToHeader, columns, handleSort, theme, rowActionMenuItems]);
+	}, [
+		sortedColumn,
+		addCheckBoxToHeader,
+		renderedColumns,
+		handleSort,
+		theme,
+		rowActionMenuItems,
+		hasColumnHiding,
+		headerHoverCallback,
+		isColumnHidingControlOpen,
+		setIsColumnHidingControlOpen,
+		openColumnHidingControl
+	]);
 
 	const rowNodes = renderCustomRow
 		? renderCustomRow().renderRow({
 				rows,
-				columns,
+				renderedColumns,
 				selectionType,
 				updateSelection,
 				handleCheckboxClick,
@@ -275,7 +318,14 @@ export const useSolaceTable = (
 		: creatRowNodes();
 
 	const columnNodes = renderCustomHeader
-		? renderCustomHeader({ columns, sortedColumn, selectAll, handleSort, handleSelectAllClick })
+		? renderCustomHeader({
+				columns,
+				sortedColumn,
+				selectAll,
+				handleSort,
+				handleSelectAllClick,
+				addColumnHidingControl
+		  })
 		: createHeaderNodes();
 
 	return [columnNodes, rowNodes];

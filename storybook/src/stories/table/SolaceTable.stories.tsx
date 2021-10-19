@@ -3,9 +3,10 @@ import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceTable } from "@SolaceDev/maas-react-components";
 import { SELECTION_TYPE, SORT_DIRECTION, TableColumn } from "../../../../src/components/table/table-utils";
-import { useExpandableRows } from "../../../../src/components/table/useExpandableRows";
+import { useExpandableRows } from "../../../../src/components/table/hooks/useExpandableRows";
 import { styled } from "@material-ui/core";
 import { withState, Store } from "@sambego/storybook-state";
+// import { useArgs } from "@storybook/client-api";
 
 const StyledCustomRow = styled("tr")(() => ({
 	"&:hover": {
@@ -96,29 +97,33 @@ const columns: TableColumn[] = [
 		field: "first_name",
 		headerName: "First Name",
 		sortable: true,
-		disableToggling: true,
-		sortDirection: SORT_DIRECTION.DCS
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.DCS,
+		isHidden: false
 	},
 	{
 		headerName: "Last Name",
 		field: "last_name",
 		sortable: false,
-		disableToggling: true,
-		sortDirection: SORT_DIRECTION.DCS
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.DCS,
+		isHidden: false
 	},
 	{
 		headerName: "Email",
 		field: "email",
 		sortable: true,
-		disableToggling: true,
-		sortDirection: SORT_DIRECTION.DCS
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.DCS,
+		isHidden: false
 	},
 	{
 		headerName: "Gender",
 		field: "gender",
 		sortable: true,
-		disableToggling: true,
-		sortDirection: SORT_DIRECTION.DCS
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.DCS,
+		isHidden: false
 	}
 ];
 
@@ -134,7 +139,11 @@ export default {
 			type: "figma",
 			url: ""
 		},
-		state: { store }
+		state: { store },
+		args: {
+			rows,
+			columns
+		}
 	},
 	decorators: [withState()]
 } as ComponentMeta<typeof SolaceTable>;
@@ -192,9 +201,8 @@ const renderCustomEmptyState = () => {
 export const DefaultTable = Template.bind({});
 export const SingleSelectionTable = Template.bind({});
 export const CustomRowTable = Template.bind({});
-export const EmptyStateTable = Template.bind({});
-export const CustomEmptyStateTable = Template.bind({});
 export const RowActionMenuTable = Template.bind({});
+export const ColumnHidingTable = Template.bind({});
 
 const sortData = (selectedColumn: TableColumn) => {
 	const newRows = [...rows].sort((a, b) => {
@@ -245,31 +253,44 @@ CustomRowTable.args = {
 			field: "chevron",
 			headerName: "",
 			sortable: false,
-			disableToggling: false,
+			disableHiding: true,
 			hasNoCell: true
 		},
 		...columns
 	],
 	rowActionMenuItems: rowActionMenuItems,
 	selectionType: SELECTION_TYPE.MULTI,
-	renderCustomRow: renderCustomExpandableRows
+	renderCustomRow: renderCustomExpandableRows,
+	hasColumnHiding: true
 };
 
-EmptyStateTable.args = {
-	selectionChangedCallback: action("selection callback"),
-	sortCallback: action("sort callback"),
-	rows: [],
-	columns: columns,
-	selectionType: SELECTION_TYPE.MULTI
+export const EmptyStateTable = () => {
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action("selection callback")}
+				sortCallback={action("sort callback")}
+				rows={[]}
+				columns={columns}
+				selectionType={SELECTION_TYPE.MULTI}
+			></SolaceTable>
+		</div>
+	);
 };
 
-CustomEmptyStateTable.args = {
-	selectionChangedCallback: action("selection callback"),
-	sortCallback: action("sort callback"),
-	rows: [],
-	columns: columns,
-	renderCustomEmptyState: renderCustomEmptyState,
-	selectionType: SELECTION_TYPE.MULTI
+export const CustomEmptyStateTable = () => {
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action("selection callback")}
+				sortCallback={action("sort callback")}
+				rows={[]}
+				columns={columns}
+				selectionType={SELECTION_TYPE.MULTI}
+				renderCustomEmptyState={renderCustomEmptyState}
+			></SolaceTable>
+		</div>
+	);
 };
 
 RowActionMenuTable.args = {
@@ -281,4 +302,14 @@ RowActionMenuTable.args = {
 	rowActionMenuItems: rowActionMenuItems,
 	headerHoverCallback: action("header hover callback"),
 	rowHoverCallback: action("row hover callback")
+};
+
+ColumnHidingTable.args = {
+	selectionChangedCallback: action("selection callback"),
+	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
+	rows: store.get("rows") || null,
+	columns: columns,
+	selectionType: SELECTION_TYPE.MULTI,
+	rowActionMenuItems: rowActionMenuItems,
+	hasColumnHiding: true
 };

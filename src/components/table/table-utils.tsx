@@ -1,10 +1,12 @@
 import React from "react";
-import { StyledTableHeader } from "./useSolaceTable";
+import { StyledTableHeader } from "./hooks/useSolaceTable";
 import SolaceButton from "./../form/SolaceButton";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { styled } from "@material-ui/core";
 import { BASE_COLORS } from "./../../resources/colorPallette";
-import ActionMenu from "./ActionMenu";
+import ActionMenu from "./components/ActionMenu";
+import ColumnHidingControlMenu from "./components/ColumnHidingControlMenu";
+import SettingsIcon from "@material-ui/icons/Settings";
 
 export interface TableColumn {
 	field: string;
@@ -13,9 +15,10 @@ export interface TableColumn {
 	width?: number;
 	sortable: boolean;
 	sortDirection?: SORT_DIRECTION;
-	disableToggling: boolean;
+	disableHiding: boolean;
 	resizable?: boolean;
 	hasNoCell?: boolean;
+	isHidden?: boolean;
 }
 
 export interface TableRow {
@@ -93,5 +96,28 @@ export const addActionMenuIcon = (
 				<ActionMenu actionMenuItems={actionMenuItems} row={row} setRowWithOpenActionMenu={setRowWithOpenActionMenu} />
 			)}
 		</StyledRelativeTableData>
+	);
+};
+
+export const addColumnHidingControl = (
+	columns: TableColumn[],
+	openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void,
+	isColumnHidingControlOpen: boolean,
+	setIsColumnHidingControlOpen: Function,
+	setRenderedColumns: Function
+): React.ReactNode => {
+	return (
+		<StyledTableHeader key={"column-hiding-control"}>
+			<SolaceButton variant={"icon"} onClick={(e) => openColumnHidingControl(e)}>
+				<SettingsIcon />
+			</SolaceButton>
+			{isColumnHidingControlOpen && (
+				<ColumnHidingControlMenu
+					columns={columns}
+					onCloseCallback={setIsColumnHidingControlOpen}
+					setRenderedColumns={setRenderedColumns}
+				/>
+			)}
+		</StyledTableHeader>
 	);
 };

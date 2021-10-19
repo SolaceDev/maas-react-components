@@ -1,21 +1,21 @@
 import React, { useRef } from "react";
-import { TableRow, TableActionMenuItem } from "./table-utils";
+import { TableRow, TableActionMenuItem } from "../table-utils";
 import { styled } from "@material-ui/core";
-import { BASE_COLORS } from "./../../resources/colorPallette";
-import { useOutsideClicked } from "./useClickedOutside";
-import SolaceComponentProps from "../SolaceComponentProps";
+import { BASE_COLORS } from "../../../resources/colorPallette";
+import { useOutsideClicked } from "../hooks/useClickedOutside";
+import SolaceComponentProps from "../../SolaceComponentProps";
 
 export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	position: "absolute",
 	display: "block",
 	top: "30px",
-	right: "50px",
+	right: "calc(100%-150px)",
 	padding: `${theme.spacing()} 0`,
 	border: `1px solid ${BASE_COLORS.greys.grey0}`,
-	borderRadius: "5px",
+	borderRadius: "2px",
 	minHeight: "32px",
 	minWidth: "60px",
-	background: theme.palette.background.default,
+	background: BASE_COLORS.whites.white1,
 	zIndex: 3
 }));
 
@@ -28,7 +28,7 @@ export const StyledActionItem = styled("div")(({ theme }) => ({
 	},
 	"&.disabled-item": {
 		opacity: 0.5,
-		"pointer-events": "none"
+		pointerEvents: "none"
 	}
 }));
 
