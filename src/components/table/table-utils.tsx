@@ -77,7 +77,7 @@ export const StyledActionItem = styled("div")(({ theme }) => ({
 }));
 
 export const addEmptyHeaderCell = (): React.ReactNode => {
-	return <StyledTableHeader key={"emptyHeaderCell"}></StyledTableHeader>;
+	return <StyledTableHeader className="icon-column" key={"emptyHeaderCell"}></StyledTableHeader>;
 };
 
 export const addActionMenuIcon = (
@@ -107,7 +107,7 @@ export const addColumnHidingControl = (
 	setRenderedColumns: Function
 ): React.ReactNode => {
 	return (
-		<StyledTableHeader key={"column-hiding-control"}>
+		<StyledTableHeader key={"column-hiding-control"} className="icon-column">
 			<SolaceButton variant={"icon"} onClick={(e) => openColumnHidingControl(e)}>
 				<SettingsIcon />
 			</SolaceButton>

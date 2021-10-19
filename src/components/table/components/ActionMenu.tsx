@@ -9,7 +9,7 @@ export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	position: "absolute",
 	display: "block",
 	top: "30px",
-	right: "calc(100%-150px)",
+	right: "40px",
 	padding: `${theme.spacing()} 0`,
 	border: `1px solid ${BASE_COLORS.greys.grey0}`,
 	borderRadius: "2px",

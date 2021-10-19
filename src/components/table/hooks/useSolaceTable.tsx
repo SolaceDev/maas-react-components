@@ -62,6 +62,9 @@ export const StyledTableHeader = styled("th")(({ theme }) => ({
 		position: "relative",
 		cursor: "pointer",
 		marginTop: theme.spacing(0.5)
+	},
+	"&.icon-column": {
+		width: "40px"
 	}
 }));
 
@@ -185,7 +188,7 @@ export const useSolaceTable = (
 	const addCheckBoxToHeader = useCallback((): React.ReactNode | void => {
 		if (selectionType === SELECTION_TYPE.MULTI) {
 			return (
-				<StyledTableHeader key={"selectAllCheckbox"}>
+				<StyledTableHeader key={"selectAllCheckbox"} className="icon-column">
 					<SolaceCheckBox name={"selectAllCheckbox"} onChange={() => handleSelectAllClick()} isChecked={selectAll} />
 				</StyledTableHeader>
 			);
@@ -261,7 +264,10 @@ export const useSolaceTable = (
 					...renderedColumns.map(
 						(col) =>
 							!col.isHidden && (
-								<StyledTableHeader key={col.headerName} className={col.sortable ? "sortable" : ""}>
+								<StyledTableHeader
+									key={col.headerName}
+									className={`${col.sortable ? "sortable" : ""} ${col.hasNoCell ? "icon-column" : ""}`}
+								>
 									<>
 										{col.headerName}
 										{sortedColumn?.field === col.field &&
