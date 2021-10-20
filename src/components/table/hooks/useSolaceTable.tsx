@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import {
 	TableColumn,
 	TableRow,
@@ -120,13 +120,15 @@ export const useSolaceTable = (
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
 		preSelectedColumn ? preSelectedColumn : columns.find((col) => col.sortable)
 	);
-	const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(SORT_DIRECTION.DCS);
+	const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(sortedColumn?.sortDirection || SORT_DIRECTION.ASC);
 	const [renderedColumns, setRenderedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
 	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
 
 	const theme = useTheme();
+
+	const firstRender = useRef(true);
 
 	useEffect(() => {
 		selectionChangedCallback(selectedRows);
@@ -138,8 +140,12 @@ export const useSolaceTable = (
 	}, [selectedRows, rows.length, selectedRows.length, selectionChangedCallback]);
 
 	useEffect(() => {
-		sortCallback(sortedColumn);
-	}, [sortedColumn, sortDirection, sortCallback]);
+		if (!firstRender.current) {
+			sortCallback(sortedColumn);
+		} else {
+			firstRender.current = false;
+		}
+	}, [sortedColumn, sortedColumn?.sortDirection, sortCallback, sortDirection]);
 
 	function updateSelection(row: TableRow) {
 		handleSelectionChanged(row);
@@ -166,11 +172,11 @@ export const useSolaceTable = (
 		(col: TableColumn) => {
 			if (sortedColumn?.field === col.field) {
 				col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
-				setSortedColumn(col);
 				setSortDirection(col.sortDirection);
 			} else {
-				setSortedColumn(col);
+				setSortDirection(col.sortDirection ? col.sortDirection : SORT_DIRECTION.ASC);
 			}
+			setSortedColumn(col);
 		},
 		[sortedColumn?.field]
 	);
@@ -307,7 +313,8 @@ export const useSolaceTable = (
 		headerHoverCallback,
 		isColumnHidingControlOpen,
 		setIsColumnHidingControlOpen,
-		openColumnHidingControl
+		openColumnHidingControl,
+		columns
 	]);
 
 	const rowNodes = renderCustomRow

@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { action } from "@storybook/addon-actions";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta } from "@storybook/react";
 import { SolaceTable } from "@SolaceDev/maas-react-components";
 import { SELECTION_TYPE, SORT_DIRECTION, TableColumn } from "../../../../src/components/table/table-utils";
 import { useExpandableRows } from "../../../../src/components/table/hooks/useExpandableRows";
 import { styled } from "@material-ui/core";
-import { withState, Store } from "@sambego/storybook-state";
-// import { useArgs } from "@storybook/client-api";
 
 const StyledCustomRow = styled("tr")(() => ({
 	"&:hover": {
@@ -17,74 +15,72 @@ const StyledCustomRow = styled("tr")(() => ({
 	}
 }));
 
-const Template: ComponentStory<typeof SolaceTable> = (args) => <SolaceTable {...args} />;
-
 const rows = [
 	{
-		id: 1,
+		id: "1",
 		first_name: "Fern",
 		last_name: "Vanstone",
 		email: "fvanstone0@ft.com",
 		gender: "Agender"
 	},
 	{
-		id: 2,
+		id: "2",
 		first_name: "Avery",
 		last_name: "Delcastel",
 		email: "adelcastel1@chicagotribune.com",
 		gender: "Polygender"
 	},
 	{
-		id: 3,
+		id: "3",
 		first_name: "Shepard",
 		last_name: "Bowering",
 		email: "sbowering2@globo.com",
 		gender: "Agender"
 	},
 	{
-		id: 4,
+		id: "4",
 		first_name: "Hana",
 		last_name: "Wingeatt",
 		email: "hwingeatt3@pcworld.com",
 		gender: "Female"
 	},
 	{
-		id: 5,
+		id: "5",
 		first_name: "Cash",
 		last_name: "Hull",
 		email: "chull4@tiny.cc",
 		gender: "Female"
 	},
 	{
-		id: 6,
+		id: "6",
 		first_name: "Deni",
 		last_name: "Karsh",
 		email: "dkarsh5@forbes.com",
 		gender: "Agender"
 	},
 	{
-		id: 7,
+		id: "7",
 		first_name: "Katlin",
 		last_name: "O'Grogane",
 		email: "kogrogane6@narod.ru",
 		gender: "Non-binary"
 	},
 	{
-		id: 8,
+		id: "8",
 		first_name: "Warner",
 		last_name: "Spillard",
 		email: "wspillard7@e-recht24.de",
 		gender: "Polygender"
 	},
 	{
-		id: 9,
+		id: "9",
 		first_name: "Lazarus",
 		last_name: "Trahear",
 		email: "ltrahear8@telegraph.co.uk",
 		gender: "Male"
 	},
 	{
-		id: 10,
+		id: "10",
 		first_name: "Veronike",
 		last_name: "Malsher",
 		email: "vmalsher9@twitpic.com",
@@ -98,7 +94,7 @@ const columns: TableColumn[] = [
 		headerName: "First Name",
 		sortable: true,
 		disableHiding: false,
-		sortDirection: SORT_DIRECTION.DCS,
+		sortDirection: SORT_DIRECTION.ASC,
 		isHidden: false
 	},
 	{
@@ -127,10 +123,6 @@ const columns: TableColumn[] = [
 	}
 ];
 
-const store = new Store({
-	rows: rows
-});
-
 export default {
 	title: "Under Construction/SolaceTable",
 	component: SolaceTable,
@@ -139,13 +131,11 @@ export default {
 			type: "figma",
 			url: ""
 		},
-		state: { store },
 		args: {
 			rows,
 			columns
 		}
-	},
-	decorators: [withState()]
+	}
 } as ComponentMeta<typeof SolaceTable>;
 
 // Custom rows MUST have a valid table html hierarchy starting with a <tr>
@@ -198,21 +188,15 @@ const renderCustomEmptyState = () => {
 		</div>
 	);
 };
-export const DefaultTable = Template.bind({});
-export const SingleSelectionTable = Template.bind({});
-export const CustomRowTable = Template.bind({});
-export const RowActionMenuTable = Template.bind({});
-export const ColumnHidingTable = Template.bind({});
 
 const sortData = (selectedColumn: TableColumn) => {
-	const newRows = [...rows].sort((a, b) => {
+	return rows.sort((a, b) => {
 		if (selectedColumn.sortDirection === SORT_DIRECTION.ASC) {
 			return a[selectedColumn.field] > b[selectedColumn.field] ? 1 : -1;
 		} else {
 			return a[selectedColumn.field] > b[selectedColumn.field] ? -1 : 1;
 		}
 	});
-	return newRows;
 };
 
 const rowActionMenuItems = [
@@ -228,43 +212,76 @@ const rowActionMenuItems = [
 	}
 ];
 
-DefaultTable.args = {
-	selectionChangedCallback: action("selection callback"),
-	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
-	rows: store.get("rows") || null,
-	columns: columns,
-	selectionType: SELECTION_TYPE.MULTI
+export const DefaultTable = (): JSX.Element => {
+	const [tableRows, setRows] = useState([...sortData(columns[0])]);
+
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn)]);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action("selection callback")}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columns}
+				selectionType={SELECTION_TYPE.MULTI}
+			></SolaceTable>
+		</div>
+	);
 };
 
-SingleSelectionTable.args = {
-	selectionChangedCallback: action("selection callback"),
-	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
-	rows: store.get("rows") || null,
-	columns: columns,
-	selectionType: SELECTION_TYPE.SINGLE
+export const SingleSelectionTable = (): JSX.Element => {
+	const [tableRows, setRows] = useState([...sortData(columns[0])]);
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn)]);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action("selection callback")}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columns}
+				selectionType={SELECTION_TYPE.SINGLE}
+			></SolaceTable>
+		</div>
+	);
 };
 
-CustomRowTable.args = {
-	selectionChangedCallback: action("selection callback"),
-	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
-	rows: store.get("rows") || null,
-	columns: [
-		{
-			field: "chevron",
-			headerName: "",
-			sortable: false,
-			disableHiding: true,
-			hasNoCell: true
-		},
-		...columns
-	],
-	rowActionMenuItems: rowActionMenuItems,
-	selectionType: SELECTION_TYPE.MULTI,
-	renderCustomRow: renderCustomExpandableRows,
-	hasColumnHiding: true
+export const CustomRowTable = (): JSX.Element => {
+	const [tableRows, setRows] = useState([...sortData(columns[0])]);
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn)]);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action("selection callback")}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={[
+					{
+						field: "chevron",
+						headerName: "",
+						sortable: false,
+						disableHiding: true,
+						hasNoCell: true
+					},
+					...columns
+				]}
+				selectionType={SELECTION_TYPE.MULTI}
+				renderCustomRow={renderCustomExpandableRows}
+				hasColumnHiding={true}
+			></SolaceTable>
+		</div>
+	);
 };
 
-export const EmptyStateTable = () => {
+export const EmptyStateTable = (): JSX.Element => {
 	return (
 		<div>
 			<SolaceTable
@@ -278,7 +295,7 @@ export const EmptyStateTable = () => {
 	);
 };
 
-export const CustomEmptyStateTable = () => {
+export const CustomEmptyStateTable = (): JSX.Element => {
 	return (
 		<div>
 			<SolaceTable
@@ -293,23 +310,47 @@ export const CustomEmptyStateTable = () => {
 	);
 };
 
-RowActionMenuTable.args = {
-	selectionChangedCallback: action("selection callback"),
-	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
-	rows: store.get("rows") || null,
-	columns: columns,
-	selectionType: SELECTION_TYPE.MULTI,
-	rowActionMenuItems: rowActionMenuItems,
-	headerHoverCallback: action("header hover callback"),
-	rowHoverCallback: action("row hover callback")
+export const RowActionMenuTable = (): JSX.Element => {
+	const [tableRows, setRows] = useState([...sortData(columns[0])]);
+
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn)]);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action("selection callback")}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columns}
+				selectionType={SELECTION_TYPE.MULTI}
+				rowActionMenuItems={rowActionMenuItems}
+				headerHoverCallback={action("header hover callback")}
+				rowHoverCallback={action("row hover callback")}
+			></SolaceTable>
+		</div>
+	);
 };
 
-ColumnHidingTable.args = {
-	selectionChangedCallback: action("selection callback"),
-	sortCallback: (selectedColumn) => store.set({ rows: sortData(selectedColumn) }),
-	rows: store.get("rows") || null,
-	columns: columns,
-	selectionType: SELECTION_TYPE.MULTI,
-	rowActionMenuItems: rowActionMenuItems,
-	hasColumnHiding: true
+export const ColumnHidingTable = (): JSX.Element => {
+	const [tableRows, setRows] = useState([...sortData(columns[0])]);
+
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn)]);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action("selection callback")}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columns}
+				selectionType={SELECTION_TYPE.MULTI}
+				rowActionMenuItems={rowActionMenuItems}
+				hasColumnHiding={true}
+			></SolaceTable>
+		</div>
+	);
 };
