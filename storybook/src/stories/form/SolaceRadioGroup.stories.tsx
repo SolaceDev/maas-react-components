@@ -55,6 +55,17 @@ InlineLabelFormat.args = {
 	children: RADIOS
 };
 
+function buildSubText() {
+	return (
+		<div>
+			Runtime Discovery is used to import your architecture into the{" "}
+			<a href="#" style={{ color: "#00c895", textDecoration: "none" }}>
+				PubSub+ Discovery
+			</a>
+		</div>
+	);
+}
+
 const RADIOS_WITH_HELPER: Array<React.ReactNode> = [];
 RADIOS_WITH_HELPER.push(
 	<SolaceRadio
@@ -62,7 +73,7 @@ RADIOS_WITH_HELPER.push(
 		name="option1"
 		value="option1"
 		label="Import to Event Portal"
-		subText="Runtime Discovery is used to import your architecture into the PubSub+ Discovery"
+		subText={buildSubText()}
 		isLargeLabel={true}
 	/>
 );
