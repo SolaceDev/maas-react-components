@@ -19,15 +19,16 @@ export default {
 const Template: ComponentStory<typeof SolaceRadioGroup> = (args) => <SolaceRadioGroup {...args} />;
 
 const RADIOS: Array<React.ReactNode> = [];
-RADIOS.push(<SolaceRadio value="option1" label="Option 1" />);
-RADIOS.push(<SolaceRadio value="option2" label="Option 2" />);
-RADIOS.push(<SolaceRadio value="option3" label="Option 3" />);
+RADIOS.push(<SolaceRadio key="option1" name="option1" value="option1" label="Option 1" />);
+RADIOS.push(<SolaceRadio key="option2" name="option2" value="option2" label="Option 2" />);
+RADIOS.push(<SolaceRadio key="option3" name="option3" value="option3" label="Option 3" />);
 
 export const DefaultRadioGroup = Template.bind({});
 DefaultRadioGroup.args = {
 	onChange: action("callback"),
 	title: "Demo RadioGroup",
 	name: "demoRadioGroup",
+	value: "option1",
 	children: RADIOS
 };
 
@@ -38,6 +39,7 @@ StackedLabelFormat.args = {
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
+	value: "option1",
 	children: RADIOS
 };
 
@@ -49,22 +51,29 @@ InlineLabelFormat.args = {
 	name: "demoRadioGroup",
 	label: "Some Label",
 	isInlineLabel: true,
+	value: "option1",
 	children: RADIOS
 };
 
 const RADIOS_WITH_HELPER: Array<React.ReactNode> = [];
 RADIOS_WITH_HELPER.push(
 	<SolaceRadio
+		key="option1"
+		name="option1"
 		value="option1"
 		label="Import to Event Portal"
-		helperText="Runtime Discovery is used to import your architecture into the PubSub+ Discovery"
+		subText="Runtime Discovery is used to import your architecture into the PubSub+ Discovery"
+		isLargeLabel={true}
 	/>
 );
 RADIOS_WITH_HELPER.push(
 	<SolaceRadio
+		key="option2"
+		name="option2"
 		value="option2"
 		label="Topic Subscriptions Analysis"
-		helperText="Topic Scans are used in the PubSub+ Topic Explorer to analyze your runtime data"
+		subText="Topic Scans are used in the PubSub+ Topic Explorer to analyze your runtime data"
+		isLargeLabel={true}
 	/>
 );
 
@@ -76,6 +85,7 @@ HelperText.args = {
 	name: "demoRadioGroup",
 	label: "Some Label",
 	helperText: "Some group helper text here",
+	value: "option1",
 	children: RADIOS_WITH_HELPER
 };
 
@@ -88,6 +98,7 @@ WithErrors.args = {
 	label: "Some Label",
 	hasErrors: true,
 	helperText: "Some error occured",
+	value: "option1",
 	children: RADIOS
 };
 
@@ -97,6 +108,7 @@ Required.args = {
 	name: "demoRadioGroup",
 	title: "Demo RadioGroup",
 	label: "Some Label",
+	value: "option1",
 	isRequired: true,
 	children: RADIOS
 };

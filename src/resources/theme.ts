@@ -349,9 +349,6 @@ const theme = {
 					".MuiFormHelperText-root": {
 						marginLeft: "0px"
 					},
-					".MuiBox-root": {
-						alignItems: "flex-end"
-					},
 					".MuiSvgIcon-root .SolaceRadioContainer": {
 						strokeOpacity: "0.2",
 						stroke: "black",
