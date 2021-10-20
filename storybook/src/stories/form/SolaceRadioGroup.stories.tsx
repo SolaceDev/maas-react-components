@@ -94,7 +94,7 @@ HelperText.args = {
 	title: "Demo RadioGroup",
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
-	label: "Some Label",
+	label: "Select the discovery type and fill the form to start a scan",
 	helperText: "Some group helper text here",
 	value: "option1",
 	children: RADIOS_WITH_HELPER
