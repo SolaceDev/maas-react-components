@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SELECTION_TYPE, TableRow, addActionMenuIcon, TableColumn } from "../table-utils";
+import { SELECTION_TYPE, TableRow, addActionMenuIcon, TableColumn, addEmptyRowCell } from "../table-utils";
 import { StyledTableRow, StyledTableData, CustomTableRowProps } from "./useSolaceTable";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
@@ -7,20 +7,25 @@ import SolaceCheckBox from "../../form/SolaceCheckBox";
 
 export const useExpandableRows = ({
 	rows,
-	renderedColumns,
+	displayedColumns,
 	selectionType,
 	updateSelection,
 	handleCheckboxClick,
 	renderCustomRow,
 	rowActionMenuItems,
-	rowHoverCallback
+	rowHoverCallback,
+	hasColumnHiding,
+	displayedColumnsChangedCallback
 }: CustomTableRowProps): React.ReactNode[] => {
 	const [expansionState, setExpansionState] = useState<Array<number>>([]);
 	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
 
 	useEffect(() => {
 		setExpansionState([]);
-	}, [rows]);
+		if (displayedColumnsChangedCallback) {
+			displayedColumnsChangedCallback(displayedColumns);
+		}
+	}, [rows, displayedColumnsChangedCallback, displayedColumns]);
 
 	function addCheckBoxToRows(row: TableRow): React.ReactNode {
 		return (
@@ -78,7 +83,7 @@ export const useExpandableRows = ({
 					{[
 						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 						addChevronToRows(row, rowIndex),
-						renderedColumns.map((col: TableColumn) => {
+						displayedColumns.map((col: TableColumn) => {
 							if (!col.hasNoCell && !col.isHidden) {
 								return (
 									<StyledTableData key={row[col.field]}>
@@ -96,7 +101,8 @@ export const useExpandableRows = ({
 								openRowActionMenu,
 								rowActionMenuItems,
 								setRowWithOpenActionMenu
-							)
+							),
+						!rowActionMenuItems && hasColumnHiding && addEmptyRowCell()
 					]}
 				</StyledTableRow>
 				{expansionState.includes(rowIndex) ? renderCustomRow().renderChildren(row) : null}

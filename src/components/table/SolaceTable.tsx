@@ -27,6 +27,10 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	hasColumnHiding?: boolean;
 	/**
+	 * Function that is called on displayed columns change
+	 */
+	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
+	/**
 	 * has row action menu items
 	 */
 	rowActionMenuItems?: TableActionMenuItem[];
@@ -115,7 +119,8 @@ function SolaceTable({
 	rowActionMenuItems,
 	headerHoverCallback,
 	rowHoverCallback,
-	hasColumnHiding
+	hasColumnHiding,
+	displayedColumnsChangedCallback
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable(
 		rows,
@@ -129,7 +134,8 @@ function SolaceTable({
 		rowActionMenuItems,
 		headerHoverCallback,
 		rowHoverCallback,
-		hasColumnHiding
+		hasColumnHiding,
+		displayedColumnsChangedCallback
 	);
 
 	function showEmptyStateMessage(): React.ReactNode {

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledTableHeader } from "./hooks/useSolaceTable";
+import { StyledTableHeader, StyledTableData } from "./hooks/useSolaceTable";
 import SolaceButton from "./../form/SolaceButton";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { styled } from "@material-ui/core";
@@ -80,6 +80,10 @@ export const addEmptyHeaderCell = (): React.ReactNode => {
 	return <StyledTableHeader className="icon-column" key={"emptyHeaderCell"}></StyledTableHeader>;
 };
 
+export const addEmptyRowCell = (): React.ReactNode => {
+	return <StyledTableData key={"emptyRowCell"}></StyledTableData>;
+};
+
 export const addActionMenuIcon = (
 	row: TableRow,
 	isActionMenuOpen: boolean,
@@ -104,7 +108,8 @@ export const addColumnHidingControl = (
 	openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void,
 	isColumnHidingControlOpen: boolean,
 	setIsColumnHidingControlOpen: Function,
-	setRenderedColumns: Function
+	setDisplayedColumns: Function,
+	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void
 ): React.ReactNode => {
 	return (
 		<StyledTableHeader key={"column-hiding-control"} className="icon-column">
@@ -115,7 +120,8 @@ export const addColumnHidingControl = (
 				<ColumnHidingControlMenu
 					columns={columns}
 					onCloseCallback={setIsColumnHidingControlOpen}
-					setRenderedColumns={setRenderedColumns}
+					setDisplayedColumns={setDisplayedColumns}
+					displayedColumnsChangedCallback={displayedColumnsChangedCallback}
 				/>
 			)}
 		</StyledTableHeader>

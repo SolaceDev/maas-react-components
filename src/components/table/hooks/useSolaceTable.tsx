@@ -6,6 +6,7 @@ import {
 	SELECTION_TYPE,
 	SORT_DIRECTION,
 	addEmptyHeaderCell,
+	addEmptyRowCell,
 	addActionMenuIcon,
 	addColumnHidingControl
 } from "../table-utils";
@@ -70,7 +71,7 @@ export const StyledTableHeader = styled("th")(({ theme }) => ({
 
 export interface CustomTableRowProps {
 	rows: TableRow[];
-	renderedColumns: TableColumn[];
+	displayedColumns: TableColumn[];
 	selectionType: SELECTION_TYPE;
 	updateSelection: (row: TableRow) => void;
 	handleCheckboxClick: (row: TableRow) => void;
@@ -82,6 +83,7 @@ export interface CustomTableRowProps {
 	headerHoverCallback?: () => void;
 	rowHoverCallback?: (row: TableRow) => void;
 	hasColumnHiding?: boolean;
+	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
 }
 
 export interface CustomTableColumnProps {
@@ -95,7 +97,7 @@ export interface CustomTableColumnProps {
 		openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void,
 		isColumnHidingControlOpen: boolean,
 		setIsColumnHidingControlOpen: Function,
-		setRenderedColumns: Function
+		setDisplayedColumns: Function
 	) => React.ReactNode;
 }
 
@@ -114,14 +116,15 @@ export const useSolaceTable = (
 	rowActionMenuItems?: TableActionMenuItem[],
 	headerHoverCallback?: () => void,
 	rowHoverCallback?: (row: TableRow) => void,
-	hasColumnHiding?: boolean
+	hasColumnHiding?: boolean,
+	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void
 ): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
 		preSelectedColumn ? preSelectedColumn : columns.find((col) => col.sortable)
 	);
 	const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(sortedColumn?.sortDirection || SORT_DIRECTION.ASC);
-	const [renderedColumns, setRenderedColumns] = useState(columns);
+	const [displayedColumns, setDisplayedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
 	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
@@ -238,7 +241,7 @@ export const useSolaceTable = (
 			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
-					renderedColumns.map((col) => {
+					displayedColumns.map((col) => {
 						if (!col.hasNoCell && !col.isHidden) {
 							return (
 								<StyledTableData key={row[col.field]}>
@@ -256,7 +259,8 @@ export const useSolaceTable = (
 							openRowActionMenu,
 							rowActionMenuItems,
 							setRowWithOpenActionMenu
-						)
+						),
+					!rowActionMenuItems && hasColumnHiding && addEmptyRowCell()
 				]}
 			</StyledTableRow>
 		));
@@ -267,7 +271,7 @@ export const useSolaceTable = (
 			<StyledTableRow className="header" onMouseEnter={headerHoverCallback ? () => headerHoverCallback() : undefined}>
 				{[
 					addCheckBoxToHeader(),
-					...renderedColumns.map(
+					...displayedColumns.map(
 						(col) =>
 							!col.isHidden && (
 								<StyledTableHeader
@@ -297,7 +301,8 @@ export const useSolaceTable = (
 							openColumnHidingControl,
 							isColumnHidingControlOpen,
 							setIsColumnHidingControlOpen,
-							setRenderedColumns
+							setDisplayedColumns,
+							displayedColumnsChangedCallback
 						)
 				]}
 			</StyledTableRow>
@@ -305,7 +310,7 @@ export const useSolaceTable = (
 	}, [
 		sortedColumn,
 		addCheckBoxToHeader,
-		renderedColumns,
+		displayedColumns,
 		handleSort,
 		theme,
 		rowActionMenuItems,
@@ -314,19 +319,23 @@ export const useSolaceTable = (
 		isColumnHidingControlOpen,
 		setIsColumnHidingControlOpen,
 		openColumnHidingControl,
-		columns
+		columns,
+		displayedColumnsChangedCallback
 	]);
 
 	const rowNodes = renderCustomRow
 		? renderCustomRow().renderRow({
 				rows,
-				renderedColumns,
+				displayedColumns,
 				selectionType,
 				updateSelection,
 				handleCheckboxClick,
 				renderCustomRow,
 				rowActionMenuItems,
-				rowHoverCallback
+				headerHoverCallback,
+				rowHoverCallback,
+				hasColumnHiding,
+				displayedColumnsChangedCallback
 		  })
 		: creatRowNodes();
 
