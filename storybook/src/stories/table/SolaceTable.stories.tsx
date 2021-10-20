@@ -5,7 +5,6 @@ import { SolaceTable } from "@SolaceDev/maas-react-components";
 import { SELECTION_TYPE, SORT_DIRECTION, TableColumn } from "../../../../src/components/table/table-utils";
 import { useExpandableRows } from "../../../../src/components/table/hooks/useExpandableRows";
 import { styled } from "@material-ui/core";
-import { useEffect } from "@storybook/client-api";
 
 const StyledCustomRow = styled("tr")(() => ({
 	"&:hover": {
@@ -138,32 +137,6 @@ export default {
 		}
 	}
 } as ComponentMeta<typeof SolaceTable>;
-
-// Custom rows MUST have a valid table html hierarchy starting with a <tr>
-// const renderExpandableRowChildren = (row) => {
-// 	return (
-// 		<StyledCustomRow className={row.rowSelected ? "selected" : ""}>
-// 			<td colSpan={7}>
-// 				<table style={{ display: "block", width: "100%", padding: "12px 0 12px 60px" }}>
-// 					<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
-// 						<tr style={{ display: "block", width: "100%" }}>
-// 							<td style={{ display: "block", width: "100%" }}>{row.first_name}</td>
-// 						</tr>
-// 						<tr style={{ display: "block", width: "100%" }}>
-// 							<td style={{ display: "block", width: "100%" }}>{row.last_name}</td>
-// 						</tr>
-// 						<tr style={{ display: "block", width: "100%" }}>
-// 							<td style={{ display: "block", width: "100%" }}>{row.email}</td>
-// 						</tr>
-// 						<tr style={{ display: "block", width: "100%" }}>
-// 							<td style={{ display: "block", width: "100%" }}>{row.gender}</td>
-// 						</tr>
-// 					</tbody>
-// 				</table>
-// 			</td>
-// 		</StyledCustomRow>
-// 	);
-// };
 
 const renderCustomEmptyState = () => {
 	return (
