@@ -24,7 +24,9 @@ DefaultRadio.args = {
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	value: "someValue"
+	value: "someValue",
+	isLargeLabel: false,
+	isDisabled: false
 };
 
 export const Labeled = Template.bind({});
@@ -33,31 +35,43 @@ Labeled.args = {
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	label: "Some Label",
-	value: "someValue"
+	label: "Inline label",
+	value: "someValue",
+	isLargeLabel: false,
+	isDisabled: false
 };
 
-export const HelperText = Template.bind({});
-HelperText.args = {
+export const SubText = Template.bind({});
+SubText.args = {
 	onChange: action("callback"),
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	label: "Some Label",
-	helperText: "Some helper text here",
-	value: "someValue"
+	label: "Header text",
+	subText: "Subtext subtext",
+	value: "someValue",
+	isLargeLabel: false,
+	isDisabled: false
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.args = {
+function buildSubText() {
+	return (
+		<span>
+			Runtime Discovery is used to import your architecture into the <i>PubSub+ Discovery</i>
+		</span>
+	);
+}
+export const LargeLabelAndCustomSubText = Template.bind({});
+LargeLabelAndCustomSubText.args = {
 	onChange: action("callback"),
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	label: "Some Label",
-	hasErrors: true,
-	helperText: "Some error occured",
-	value: "someValue"
+	label: "Import to Event Portal",
+	subText: buildSubText(),
+	value: "someValue",
+	isLargeLabel: true,
+	isDisabled: false
 };
 
 export const Required = Template.bind({});
@@ -65,9 +79,11 @@ Required.args = {
 	onChange: action("callback"),
 	name: "demoRadio",
 	title: "Demo Checkbox",
-	label: "Some Label",
+	label: "Inline Label",
 	isRequired: true,
-	value: "someValue"
+	value: "someValue",
+	isLargeLabel: false,
+	isDisabled: false
 };
 
 export const Disabled = Template.bind({});
@@ -75,8 +91,9 @@ Disabled.args = {
 	onChange: action("callback"),
 	name: "demoRadio",
 	title: "Demo Radio",
-	label: "Some Label",
+	label: "Inline Label",
 	isChecked: true,
+	isLargeLabel: false,
 	isDisabled: true,
 	value: "someValue"
 };

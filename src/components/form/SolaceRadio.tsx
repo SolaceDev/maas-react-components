@@ -1,7 +1,5 @@
-import { Box, Radio, FormHelperText, useTheme, useRadioGroup } from "@material-ui/core";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import { Box, InputLabel, Radio, useRadioGroup, useTheme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import SolaceLabel from "./SolaceLabel";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 import { RestingRadioIcon, SelectedRadioIcon } from "../../resources/icons/RadioIcons";
@@ -35,11 +33,7 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	/**
 	 * Content to display as supportive/explanitory text
 	 */
-	helperText?: string | JSX.Element;
-	/**
-	 * Boolean flag to mark the `input` in error state
-	 */
-	hasErrors?: boolean;
+	subText?: string | JSX.Element;
 	/**
 	 * Boolean flag to check or uncheck the `radio`
 	 */
@@ -53,9 +47,30 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	 */
 	isDisabled?: boolean;
 	/**
+	 * Display the label with a larger font
+	 */
+	isLargeLabel?: boolean;
+	/**
 	 * Callback function to trigger whenever the value of the `radio` is changed
 	 */
 	onChange?: (event: SolaceRadioChangeEvent) => void;
+}
+
+interface LabelElementProps {
+	bold: boolean;
+	large: boolean;
+	children: string | JSX.Element;
+}
+
+function LabelElement({ children, bold, large }: LabelElementProps) {
+	const theme = useTheme();
+	const component = bold ? "strong" : "span";
+	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
+	return (
+		<Box component={component} sx={{ fontSize: typography.fontSize, lineHeight: typography.lineHeight }}>
+			{children}
+		</Box>
+	);
 }
 
 function SolaceRadio({
@@ -64,11 +79,11 @@ function SolaceRadio({
 	label,
 	value,
 	title,
-	helperText,
-	hasErrors = false,
+	subText,
 	isChecked = false,
 	isRequired = false,
 	isDisabled = false,
+	isLargeLabel = false,
 	onChange,
 	dataQa,
 	dataTags
@@ -97,28 +112,22 @@ function SolaceRadio({
 		}
 	};
 
-	const getHelperText = () => (
-		<Box display="flex">
-			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
-			{helperText}
-		</Box>
-	);
-
-	const getId = () => {
-		return id ? id : name;
-	};
+	if (!id) {
+		id = name;
+	}
 
 	return (
 		<React.Fragment>
-			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="top">
+			<Box display="grid" gridTemplateColumns="auto 1fr" gridTemplateRows="auto auto" alignItems="center">
 				<Radio
+					id={`${id}-radio`}
 					name={name}
 					value={value}
 					icon={RestingRadioIcon}
 					checkedIcon={SelectedRadioIcon}
 					inputProps={
 						{
-							"aria-labelledby": label ? `${getId()}-label` : "",
+							"aria-labelledby": label ? `${id}-label` : "",
 							"data-qa": dataQa,
 							"data-tags": dataTags
 						} as SolaceHTMLAttributeProps
@@ -131,21 +140,26 @@ function SolaceRadio({
 					onChange={handleChange}
 				/>
 				{label && (
-					<div>
-						<SolaceLabel
-							id={`${getId()}-label`}
-							htmlForId={`${getId()}-radio`}
-							isRequired={isRequired}
-							isDisabled={isDisabled}
+					<Box>
+						<InputLabel
+							id={`${id}-label`}
+							htmlFor={`${id}-radio`}
+							required={isRequired}
+							disabled={isDisabled}
+							sx={{ color: theme.palette.text.primary, cursor: "pointer" }}
 						>
-							{label}
-						</SolaceLabel>
-						{helperText && (
-							<FormHelperText error={hasErrors} component="div">
-								{getHelperText()}
-							</FormHelperText>
-						)}
-					</div>
+							<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel}>
+								{label}
+							</LabelElement>
+						</InputLabel>
+					</Box>
+				)}
+				{subText && (
+					<Box gridColumn="2" gridRow="2">
+						<InputLabel id={`${id}-subtext`} disabled={isDisabled} sx={{ color: theme.palette.text.primary }}>
+							{subText}
+						</InputLabel>
+					</Box>
 				)}
 			</Box>
 		</React.Fragment>
