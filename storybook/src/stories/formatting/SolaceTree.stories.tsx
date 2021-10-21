@@ -1,17 +1,16 @@
+// @ts-ignore
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceToggle } from "@SolaceDev/maas-react-components";
-import { action } from "@storybook/addon-actions";
 import SolaceTree from "../../../../src/components/SolaceTree";
-import { Box, Card } from "@material-ui/core";
+import { Card, Typography } from "@material-ui/core";
 
 export default {
 	title: "Under Construction/SolaceTree",
 	component: SolaceTree,
 	parameters: {},
 	argTypes: {}
-} as ComponentMeta<typeof SolaceToggle>;
+} as ComponentMeta<typeof SolaceTree>;
 
 const Template: ComponentStory<typeof SolaceTree> = (args) => <SolaceTree {...args} />;
 
@@ -21,26 +20,37 @@ DefaultExample.args = {
 		{
 			component: (
 				<Card>
-					Hello world! <br />
-					This is a large card it has a lot of lines
+					<Typography>
+						Hello world! <br />
+						asdf
+					</Typography>
 				</Card>
 			),
 			treeChildren: [
 				<Card>
-					I like trains <br /> This is a large card it has a lot of lines
+					<Typography>
+						I like trains <br /> asd
+					</Typography>
 				</Card>,
 				<Card>
-					I like pizza <br />
-					Next Card <br />
-					Another line</br>
+					<Typography>
+						I like pizza <br />
+						Next Card <br />
+					</Typography>
 				</Card>
 			]
 		},
 		{
-			component: <Card>Stuff</Card>,
+			component: (
+				<Card>
+					<Typography>Stuff</Typography>
+				</Card>
+			),
 			treeChildren: [
 				<Card>
-					More stuff <br /> Other stuff
+					<Typography>
+						More stuff <br /> Other stuff
+					</Typography>
 				</Card>
 			]
 		}

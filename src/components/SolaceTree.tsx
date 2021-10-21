@@ -1,11 +1,8 @@
 import React from "react";
 import { Box, Grid, Stack } from "@material-ui/core";
 
-// it should display an array of components where one component is a parent with multiple children
-const toPx = (num: number) => num + "px";
-
-const TreeConnectorSVG: React.FC = () => {
-	const borderProperties1 = "2px solid";
+const TreeConnector: React.FC<{ borderWidth: string; borderRadius: string }> = ({ borderWidth, borderRadius }) => {
+	const borderProperties1 = borderWidth + " solid";
 
 	return (
 		<Box
@@ -14,7 +11,7 @@ const TreeConnectorSVG: React.FC = () => {
 				borderBottom: borderProperties1,
 				height: "100%",
 				width: "100%",
-				borderRadius: "0 0 0 10px"
+				borderRadius: "0 0 0 " + borderRadius
 			}}
 		></Box>
 	);
@@ -27,53 +24,52 @@ export interface TreeObject {
 
 interface SolaceTree {
 	components: TreeObject[];
-	config: {
-		spacing: number;
-		width: string;
-		height: string;
-		verticalAlign: string;
-		paddingLeftConnector: string;
-	};
-	rowHeight: string;
-	offset: string;
-	connectorColor: string;
+	spacing: number; // vertical spacing between indexs of TreeObjects
+	rowHeight: string; // height of 1 row
+	offset: string; // offset of the child display stack from the connector stack
+	connectorWidth: string; // width of the connector
+	leftOffset: string; // distance from the left margin
+	connectorBorderRadius: string; // radius of the corner on the connector
+	connectorStroke: string; // size of connector stroke
 }
 /**
  *  SolaceDataTree Component
- *  Displays a series of components
+ *  Displays a series of components arranged to look like a tree of height 2.
  *
- * @interface SolaceToolTip
+ *  The "connector" is the part that connects the children to the parent component.
+ *
+ *  The components passed into this component should all have a uniform height
+ *
+ * @interface SolaceTree
  * @param props
  * @returns JSX.Element
  *
  */
 export default function SolaceTree(props: SolaceTree): JSX.Element {
-	const { config } = props;
-	const rowHeight = 40;
-	const offset = rowHeight - 10;
+	const { rowHeight, offset, connectorBorderRadius, connectorWidth, spacing, leftOffset, connectorStroke } = props;
 	return (
 		<>
-			<Stack spacing={config.spacing}>
+			<Stack spacing={spacing}>
 				{props.components.map((obj, index) => (
 					<Grid key={index} container sx={{ paddingBottom: "5px", width: "100%" }}>
 						<Grid item xs={12}>
 							{obj.component}
 						</Grid>
-						<Grid item width={20}></Grid>
-						<Grid item width={config.width}>
+						<Grid item width={leftOffset}></Grid>
+						<Grid item width={connectorWidth}>
 							{obj.treeChildren.map(() => (
 								<Stack>
-									<Box sx={{ width: config.width, height: toPx(rowHeight) }}>
-										<TreeConnectorSVG></TreeConnectorSVG>
+									<Box sx={{ width: connectorWidth, height: rowHeight }}>
+										<TreeConnector borderWidth={connectorStroke} borderRadius={connectorBorderRadius}></TreeConnector>
 									</Box>
 								</Stack>
 							))}
 						</Grid>
-						<Grid item>
+						<Grid item sx={{ flexGrow: 1 }}>
 							<Stack>
-								<Box sx={{ height: toPx(offset) }}></Box>
+								<Box sx={{ height: offset }}></Box>
 								{obj.treeChildren.map((component) => (
-									<Box sx={{ height: toPx(rowHeight) }}>{component}</Box>
+									<Box sx={{ height: rowHeight }}>{component}</Box>
 								))}
 							</Stack>
 						</Grid>
@@ -84,16 +80,12 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 	);
 }
 
-const width = 20;
-const height = 30;
-
 SolaceTree.defaultProps = {
-	config: {
-		spacing: 2,
-		width: toPx(width),
-		height: toPx(height),
-		paddingLeftConnector: "10"
-	},
-	rowHeight: "40px",
-	offset: "30px"
+	spacing: 2,
+	rowHeight: "45px",
+	offset: "30px",
+	connectorWidth: "20px",
+	leftOffset: "20px",
+	connectorBorderRadius: "2px",
+	connectorStroke: "3px"
 };
