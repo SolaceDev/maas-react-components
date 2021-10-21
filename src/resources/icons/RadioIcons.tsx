@@ -1,17 +1,21 @@
 import React from "react";
 import { SvgIcon } from "@material-ui/core";
 
+const SIZE = 24;
+
+function Container() {
+	return <circle className="SolaceRadioContainer" cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 2 - 1}></circle>;
+}
+
 export const RestingRadioIcon = (
-	<SvgIcon width="24" height="24" viewBox="0 0 24 24" fill="none">
-		<rect width="24" height="24" rx="12" fill="white" />
-		<rect x="0.5" y="0.5" width="23" height="23" rx="11.5" stroke="black" strokeOpacity="0.2" fillOpacity="0" />
+	<SvgIcon width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`}>
+		<Container></Container>
 	</SvgIcon>
 );
 
 export const SelectedRadioIcon = (
-	<SvgIcon width="24" height="24" viewBox="0 0 24 24" fill="none">
-		<rect width="24" height="24" rx="12" fill="white" />
-		<rect x="0.5" y="0.5" width="23" height="23" rx="11.5" stroke="black" strokeOpacity="0.2" fillOpacity="0" />
-		<circle cx="6" cy="6.27051" r="6" transform="translate(6, 6)" />
+	<SvgIcon width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`}>
+		<Container></Container>
+		<circle className="SolaceRadioSelection" cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 4}></circle>
 	</SvgIcon>
 );

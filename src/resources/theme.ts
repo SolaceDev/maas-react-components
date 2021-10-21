@@ -345,27 +345,32 @@ const theme = {
 			styleOverrides: {
 				root: {
 					alignItems: "flex-start",
-					marginRight: "12px",
+					marginRight: "16px",
 					".MuiFormHelperText-root": {
 						marginLeft: "0px"
 					},
+					".MuiSvgIcon-root .SolaceRadioContainer": {
+						strokeOpacity: "0.2",
+						stroke: "black",
+						fill: "white"
+					},
 					"&:hover": {
-						".MuiSvgIcon-root rect": {
+						".MuiSvgIcon-root .SolaceRadioContainer": {
 							strokeOpacity: "0.35"
+						}
+					},
+					"&.Mui-checked": {
+						".SolaceRadioSelection": {
+							fill: BASE_COLORS.greens.green1
+						}
+					},
+					"&.Mui-disabled .MuiSvgIcon-root": {
+						".SolaceRadioContainer": {
+							fill: BASE_COLORS.greys.grey19
 						},
-						backgroundColor: "none"
-					},
-					"&.Mui-disabled .MuiSvgIcon-root rect": {
-						fill: BASE_COLORS.greys.grey19
-					},
-					".MuiSvgIcon-root circle": {
-						fill: BASE_COLORS.greens.green1
-					},
-					"&.Mui-disabled .MuiSvgIcon-root circle": {
-						fillOpacity: "0.5"
-					},
-					"+ .MuiInputLabel-root": {
-						marginLeft: "16px"
+						".SolaceRadioSelection": {
+							opacity: 0.35
+						}
 					},
 					padding: "0px"
 				}
@@ -526,7 +531,16 @@ const theme = {
 	typography: {
 		fontSize: BASE_FONT_PX_SIZES.sm,
 		body1: {
-			fontSize: "0.875rem"
+			fontSize: BASE_FONT_PX_SIZES.sm,
+			lineHeight: BASE_FONT_PX_SIZES.sm * 1.5 + "px"
+		},
+		caption: {
+			fontSize: BASE_FONT_PX_SIZES.xs,
+			lineHeight: BASE_FONT_PX_SIZES.xs * 1.5 + "px"
+		},
+		subtitle1: {
+			fontSize: BASE_FONT_PX_SIZES.md,
+			lineHeight: BASE_FONT_PX_SIZES.md * 1.5 + "px"
 		},
 		fontFamily: "Rubik,sans-serif",
 		one33rem: { fontSize: "1.33rem" }
