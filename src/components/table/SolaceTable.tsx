@@ -1,8 +1,8 @@
 import React from "react";
-import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./useSolaceTable";
+import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./hooks/useSolaceTable";
 import { styled } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
-import { SELECTION_TYPE, TableColumn } from "./table-utils";
+import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
 import { BASE_COLORS } from "./../../resources/colorPallette";
 
 interface TablePropType extends SolaceComponentProps {
@@ -13,7 +13,7 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Array of items to be displayed
 	 */
-	rows: Record<string, unknown>[];
+	rows: TableRow[];
 	/**
 	 * Array of columns to be rendered
 	 */
@@ -26,6 +26,14 @@ interface TablePropType extends SolaceComponentProps {
 	 * Enables columns hiding
 	 */
 	hasColumnHiding?: boolean;
+	/**
+	 * Function that is called on displayed columns change
+	 */
+	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
+	/**
+	 * has row action menu items
+	 */
+	rowActionMenuItems?: TableActionMenuItem[];
 	/**
 	 * Selected column. If not passed in, will default to the first column
 	 */
@@ -41,7 +49,7 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Selection changed callback
 	 */
-	selectionChangedCallback: (row: Record<string, unknown>[]) => void;
+	selectionChangedCallback: (row: TableRow[]) => void;
 	/**
 	 * Sort callback
 	 */
@@ -51,7 +59,7 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	renderCustomRow?: () => {
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
-		renderChildren: (row: Record<string, unknown>) => React.ReactNode;
+		renderChildren: (row: TableRow) => React.ReactNode;
 	};
 	/**
 	 * Renders a custom header
@@ -60,11 +68,11 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Header hover callback
 	 */
-	headerHoverCallback?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+	headerHoverCallback?: () => void;
 	/**
 	 * Row hover callback
 	 */
-	rowHoverCallback?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+	rowHoverCallback?: (row: TableRow) => void;
 }
 
 const TableWrapper = styled("div")(({ theme }) => ({
@@ -78,12 +86,14 @@ const TableWrapper = styled("div")(({ theme }) => ({
 	maxHeight: "100%",
 	overflow: "auto",
 	fontFamily: theme.typography.fontFamily,
-	fontSize: theme.typography.body1.fontSize
+	fontSize: theme.typography.body1.fontSize,
+	background: "white"
 }));
 
 const StyledTable = styled("table")(() => ({
 	borderCollapse: "collapse",
-	width: "100%"
+	width: "100%",
+	tableLayout: "fixed"
 }));
 
 const EmptyState = styled("div")(() => ({
@@ -105,7 +115,12 @@ function SolaceTable({
 	renderCustomRow,
 	emptyStateMessage,
 	renderCustomEmptyState,
-	renderCustomHeader
+	renderCustomHeader,
+	rowActionMenuItems,
+	headerHoverCallback,
+	rowHoverCallback,
+	hasColumnHiding,
+	displayedColumnsChangedCallback
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable(
 		rows,
@@ -115,7 +130,12 @@ function SolaceTable({
 		sortCallback,
 		sortedColumn,
 		renderCustomRow,
-		renderCustomHeader
+		renderCustomHeader,
+		rowActionMenuItems,
+		headerHoverCallback,
+		rowHoverCallback,
+		hasColumnHiding,
+		displayedColumnsChangedCallback
 	);
 
 	function showEmptyStateMessage(): React.ReactNode {
