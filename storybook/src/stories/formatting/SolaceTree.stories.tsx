@@ -54,3 +54,78 @@ DefaultExample.args = {
 		}
 	]
 };
+export const BigCards = Template.bind({});
+BigCards.args = {
+	components: [
+		{
+			component: (
+				<Card>
+					<Typography>
+						Hello world! <br />
+						<br />
+						asdf
+						<br />
+						dkasjldsa
+						<br />
+					</Typography>
+				</Card>
+			),
+			treeChildren: [
+				<Card>
+					<Typography>
+						Hello world! <br />
+						<br />
+						asdf
+						<br />
+						dkasjldsa
+						<br />
+					</Typography>
+				</Card>,
+				<Card>
+					<Typography>
+						Hello world! <br />
+						<br />
+						asdf
+						<br />
+						dkasjldsa
+						<br />
+					</Typography>
+				</Card>
+			]
+		},
+		{
+			component: (
+				<Card>
+					<Typography>
+						Hello world! <br />
+						<br />
+						asdf
+						<br />
+						dkasjldsa
+						<br />
+					</Typography>
+				</Card>
+			),
+			treeChildren: [
+				<Card>
+					<Typography>
+						Hello world! <br />
+						<br />
+						asdf
+						<br />
+						dkasjldsa
+						<br />
+					</Typography>
+				</Card>
+			]
+		}
+	],
+	connectorOffset: "5rem",
+	rowHeight: "6rem",
+	connectorWidth: "1rem",
+	connectorBorderRadius: "0.5rem",
+	connectorStroke: "2px",
+	connectorColor: "red",
+	spacing: 1,
+	leftOffset: "1rem"
+};
