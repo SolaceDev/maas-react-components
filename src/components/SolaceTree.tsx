@@ -106,7 +106,7 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 SolaceTree.defaultProps = {
 	spacing: 0,
 	rowHeight: "45px",
-	connectorOffset: "30px",
+	connectorOffset: "25px",
 	connectorWidth: "20px",
 	leftOffset: "20px",
 	connectorBorderRadius: "2px",
