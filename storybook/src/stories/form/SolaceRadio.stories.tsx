@@ -13,7 +13,23 @@ export default {
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2931%3A22385"
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		isRequired: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isDisabled: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isLargeLabel: {
+			control: {
+				type: "boolean"
+			}
+		}
+	}
 } as ComponentMeta<typeof SolaceRadio>;
 
 const Template: ComponentStory<typeof SolaceRadio> = (args) => <SolaceRadio {...args} />;
@@ -24,9 +40,7 @@ DefaultRadio.args = {
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	value: "someValue",
-	isLargeLabel: false,
-	isDisabled: false
+	value: "someValue"
 };
 
 export const Labeled = Template.bind({});
@@ -36,9 +50,7 @@ Labeled.args = {
 	id: "demoRadioId",
 	name: "demoRadio",
 	label: "Inline label",
-	value: "someValue",
-	isLargeLabel: false,
-	isDisabled: false
+	value: "someValue"
 };
 
 export const SubText = Template.bind({});
@@ -49,9 +61,7 @@ SubText.args = {
 	name: "demoRadio",
 	label: "Header text",
 	subText: "Subtext subtext",
-	value: "someValue",
-	isLargeLabel: false,
-	isDisabled: false
+	value: "someValue"
 };
 
 function buildSubText() {
@@ -81,9 +91,7 @@ Required.args = {
 	title: "Demo Checkbox",
 	label: "Inline Label",
 	isRequired: true,
-	value: "someValue",
-	isLargeLabel: false,
-	isDisabled: false
+	value: "someValue"
 };
 
 export const Disabled = Template.bind({});
@@ -93,7 +101,6 @@ Disabled.args = {
 	title: "Demo Radio",
 	label: "Inline Label",
 	isChecked: true,
-	isLargeLabel: false,
 	isDisabled: true,
 	value: "someValue"
 };

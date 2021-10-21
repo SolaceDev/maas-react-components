@@ -146,7 +146,7 @@ function SolaceRadio({
 							htmlFor={`${id}-radio`}
 							required={isRequired}
 							disabled={isDisabled}
-							sx={{ color: theme.palette.text.primary, cursor: "pointer" }}
+							sx={{ color: theme.palette.text.primary, cursor: isDisabled ? "auto" : "pointer" }}
 						>
 							<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel}>
 								{label}
