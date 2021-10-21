@@ -110,6 +110,6 @@ SolaceTree.defaultProps = {
 	connectorWidth: "20px",
 	leftOffset: "20px",
 	connectorBorderRadius: "2px",
-	connectorStroke: "2px",
+	connectorStroke: "1px",
 	connectorColor: "#808080"
 };
