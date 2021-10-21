@@ -25,31 +25,80 @@ DefaultExample.args = {
 				</Card>
 			),
 			treeChildren: [
-				<Card>
-					<Typography>
-						I like trains <br /> asd
-					</Typography>
-				</Card>,
-				<Card>
-					<Typography>
-						I like pizza <br />
-						Next Card <br />
-					</Typography>
-				</Card>
+				{
+					component: (
+						<Card>
+							<Typography>
+								I like trains <br /> asd
+							</Typography>
+						</Card>
+					),
+					treeChildren: [
+						{
+							component: (
+								<Card>
+									<Typography>
+										Whoa recursion! <br />
+										recursion yay!
+									</Typography>
+								</Card>
+							),
+							treeChildren: [
+								{
+									component: (
+										<Card>
+											<Typography>
+												dude <br />
+												this is so deep
+											</Typography>
+										</Card>
+									)
+								}
+							]
+						},
+						{
+							component: (
+								<Card>
+									<Typography>
+										More Recursion! <br />
+										recursion yay!
+									</Typography>
+								</Card>
+							)
+						}
+					]
+				},
+				{
+					component: (
+						<Card>
+							<Typography>
+								I like pizza <br />
+								Next Card <br />
+							</Typography>
+						</Card>
+					)
+				}
 			]
 		},
 		{
 			component: (
 				<Card>
-					<Typography>Stuff</Typography>
+					<Typography>
+						Stuff <br />
+						More stuff
+					</Typography>
 				</Card>
 			),
 			treeChildren: [
-				<Card>
-					<Typography>
-						More stuff <br /> Other stuff
-					</Typography>
-				</Card>
+				{
+					component: (
+						<Card>
+							<Typography>
+								More stuff <br /> Other stuff
+							</Typography>
+						</Card>
+					)
+				}
 			]
 		}
 	]
@@ -71,26 +120,34 @@ BigCards.args = {
 				</Card>
 			),
 			treeChildren: [
-				<Card>
-					<Typography>
-						Hello world! <br />
-						<br />
-						asdf
-						<br />
-						dkasjldsa
-						<br />
-					</Typography>
-				</Card>,
-				<Card>
-					<Typography>
-						Hello world! <br />
-						<br />
-						asdf
-						<br />
-						dkasjldsa
-						<br />
-					</Typography>
-				</Card>
+				{
+					component: (
+						<Card>
+							<Typography>
+								Hello world!
+								<br />
+								asdf
+								<br />
+								dkasjldsa
+								<br />
+							</Typography>
+						</Card>
+					)
+				},
+				{
+					component: (
+						<Card>
+							<Typography>
+								Hello world! <br />
+								<br />
+								asdf
+								<br />
+								dkasjldsa
+								<br />
+							</Typography>
+						</Card>
+					)
+				}
 			]
 		},
 		{
@@ -107,16 +164,20 @@ BigCards.args = {
 				</Card>
 			),
 			treeChildren: [
-				<Card>
-					<Typography>
-						Hello world! <br />
-						<br />
-						asdf
-						<br />
-						dkasjldsa
-						<br />
-					</Typography>
-				</Card>
+				{
+					component: (
+						<Card>
+							<Typography>
+								Hello world! <br />
+								<br />
+								asdf
+								<br />
+								dkasjldsa
+								<br />
+							</Typography>
+						</Card>
+					)
+				}
 			]
 		}
 	],

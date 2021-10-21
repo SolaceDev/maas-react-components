@@ -1,11 +1,7 @@
 import React from "react";
 import { Box, Grid, Stack } from "@material-ui/core";
 
-const TreeConnector: React.FC<{ borderWidth: string; borderRadius: string; color: string }> = ({
-	borderWidth,
-	borderRadius,
-	color
-}) => {
+const TreeConnector = ({ borderWidth, borderRadius, color }) => {
 	const borderProperties1 = borderWidth + " solid " + color;
 
 	return (
@@ -20,12 +16,41 @@ const TreeConnector: React.FC<{ borderWidth: string; borderRadius: string; color
 		></Box>
 	);
 };
-
 export interface TreeObject {
-	treeChildren: JSX.Element[];
+	treeChildren?: TreeObject[];
 	component: JSX.Element;
 }
+const hasChildren = (child: TreeObject) => child.treeChildren && child.treeChildren.length >= 0;
 
+const offsetCalculation = (rowHeight: string, connectorOffset: string) =>
+	"(" + rowHeight + " - " + connectorOffset + ")";
+
+// I really hope this works
+export const createHeightCalculation = (
+	node: TreeObject | undefined,
+	rowHeight: string,
+	connectorOffset: string
+): string => {
+	const calculateHeight = (index: number, rowHeight: string, connectorOffset: string) =>
+		index != 0 ? "(" + rowHeight + ")" : offsetCalculation(rowHeight, connectorOffset);
+
+	if (!node) {
+		return calculateHeight(0, rowHeight, connectorOffset);
+	} else {
+		return "(" + countNodes(node) + " * " + rowHeight + ")";
+	}
+};
+
+const countNodes = (node: TreeObject): number => {
+	if (node.treeChildren && node.treeChildren.length > 0) {
+		return node.treeChildren
+			.map((child) => countNodes(child))
+			.concat([1])
+			.reduce((acc, value) => acc + value, 0);
+	} else {
+		return 1;
+	}
+};
 interface SolaceTree {
 	components: TreeObject[];
 	spacing: number; // vertical spacing between indexs of TreeObjects
@@ -61,54 +86,72 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 		connectorStroke,
 		connectorColor
 	} = props;
+	const childProps = (components: TreeObject[]) => {
+		const newProps = { ...props };
+		newProps.components = components;
+		return newProps;
+	};
+
 	return (
-		<>
-			<Stack spacing={spacing}>
-				{props.components.map((obj, index) => (
-					<Grid key={index} container sx={{ paddingBottom: "5px", width: "100%" }}>
-						<Grid item xs={12}>
-							{obj.component}
-						</Grid>
-						<Grid item width={leftOffset}></Grid>
-						<Grid item width={connectorWidth}>
-							<Stack>
-								{obj.treeChildren.map((_child, index) => (
-									<Box
-										sx={{
-											width: connectorWidth,
-											height: index === 0 ? "calc(" + rowHeight + " - " + connectorOffset + ")" : rowHeight
-										}}
-									>
-										<TreeConnector
-											borderWidth={connectorStroke}
-											borderRadius={connectorBorderRadius}
-											color={connectorColor}
-										></TreeConnector>
-									</Box>
-								))}
-							</Stack>
-						</Grid>
-						<Grid item sx={{ flexGrow: 1 }}>
-							<Stack>
-								<Box sx={{ height: "10px" }}></Box>
-								{obj.treeChildren.map((component) => (
-									<Box sx={{ height: rowHeight }}>{component}</Box>
-								))}
-							</Stack>
-						</Grid>
+		<Stack spacing={spacing}>
+			{props.components.map(({ component, treeChildren }, index) => (
+				<Grid key={index} container sx={{ width: "100%" }}>
+					<Grid item xs={12}>
+						<Box height={rowHeight}>{component}</Box>
 					</Grid>
-				))}
-			</Stack>
-		</>
+					{treeChildren && (
+						<>
+							<Grid item width={leftOffset}></Grid>
+							<Grid item width={connectorWidth}>
+								<Stack>
+									{treeChildren.map((_child, index) => (
+										<Box
+											sx={{
+												width: connectorWidth,
+												height:
+													"calc" +
+													createHeightCalculation(
+														index >= 1 ? treeChildren[index - 1] : undefined,
+														rowHeight,
+														connectorOffset,
+														index
+													)
+											}}
+										>
+											<TreeConnector
+												borderWidth={connectorStroke}
+												borderRadius={connectorBorderRadius}
+												color={connectorColor}
+											></TreeConnector>
+										</Box>
+									))}
+								</Stack>
+							</Grid>
+							<Grid item sx={{ flexGrow: 1 }}>
+								<Stack>
+									{treeChildren.map((child) =>
+										hasChildren(child) ? (
+											<SolaceTree {...childProps([child] as TreeObject[])} />
+										) : (
+											<Box sx={{ height: rowHeight }}>{child.component}</Box>
+										)
+									)}
+								</Stack>
+							</Grid>
+						</>
+					)}
+				</Grid>
+			))}
+		</Stack>
 	);
 }
 
 SolaceTree.defaultProps = {
 	spacing: 0,
 	rowHeight: "45px",
-	connectorOffset: "25px",
-	connectorWidth: "20px",
-	leftOffset: "20px",
+	connectorOffset: "35px",
+	connectorWidth: "10px",
+	leftOffset: "5px",
 	connectorBorderRadius: "2px",
 	connectorStroke: "1px",
 	connectorColor: "#808080"
