@@ -1,7 +1,5 @@
-// @ts-ignore
-import React from "react";
+import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-
 import SolaceTree from "../../../../src/components/SolaceTree";
 import { Card, Typography } from "@material-ui/core";
 
