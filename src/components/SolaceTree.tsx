@@ -12,7 +12,7 @@ const TreeConnector = (config: { borderWidth: number; borderRadius: number; colo
 				borderBottom: borderProperties,
 				height: "100%",
 				width: "100%",
-				borderRadius: "0 0 0 " + borderRadius
+				borderRadius: "0 0 0 " + theme.spacing(borderRadius)
 			}}
 		></Box>
 	);
@@ -49,7 +49,6 @@ const countNodes = (node: TreeNode): number => {
 
 interface SolaceTree extends SolaceComponentProps {
 	components: TreeNode[];
-	verticalSpacing: number; // vertical spacing between indexs of TreeObjects
 	rowHeight: number; // height of 1 row
 	connectorOffset: number; // offset of the child display stack from the connector stack
 	connectorWidth: number; // width of the connector
@@ -78,7 +77,6 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 		connectorOffset,
 		connectorBorderRadius,
 		connectorWidth,
-		spacing,
 		leftOffset,
 		connectorStroke,
 		connectorColor
@@ -93,7 +91,7 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 
 	console.log(props.components);
 	return (
-		<Stack spacing={spacing}>
+		<Stack>
 			{props.components.map(({ component, children }, index) => (
 				<Grid key={index} container sx={{ width: "100%" }}>
 					<Grid item xs={12}>
@@ -148,12 +146,11 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 }
 
 SolaceTree.defaultProps = {
-	verticalSpacing: 0,
 	rowHeight: 5.5,
-	connectorOffset: 4, // borken
-	connectorWidth: 2, // broken
-	leftOffset: 2, //broken
-	connectorBorderRadius: 0.5, //broken
-	connectorStroke: 0.1, // broken
+	connectorOffset: 4,
+	connectorWidth: 2,
+	leftOffset: 2,
+	connectorBorderRadius: 0.5,
+	connectorStroke: 0.1,
 	connectorColor: "#808080"
 };

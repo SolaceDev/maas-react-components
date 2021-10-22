@@ -181,12 +181,11 @@ BigCards.args = {
 			]
 		}
 	],
-	connectorOffset: "5rem",
-	rowHeight: "6rem",
-	connectorWidth: "1rem",
-	connectorBorderRadius: "0.5rem",
-	connectorStroke: "2px",
+	connectorOffset: 8,
+	rowHeight: 11,
+	connectorWidth: 2,
+	connectorBorderRadius: 4,
+	connectorStroke: 0.1,
 	connectorColor: "red",
-	spacing: 1,
-	leftOffset: "1rem"
+	leftOffset: 3
 };
