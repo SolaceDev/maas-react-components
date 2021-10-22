@@ -57,7 +57,6 @@ interface SolaceTree extends SolaceComponentProps {
 	connectorBorderRadius: number; // radius of the corner on the connector
 	connectorStroke: number; // size of connector stroke
 	connectorColor: string;
-	theme: Theme;
 }
 /**
  *  SolaceDataTree Component

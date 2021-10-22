@@ -96,7 +96,7 @@ DefaultExample.args = {
 				<Card>
 					<Typography>
 						Stuff <br />
-						More stuffƒ
+						More stuƒƒ
 					</Typography>
 				</Card>
 			),
