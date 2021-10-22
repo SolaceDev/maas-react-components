@@ -74,3 +74,12 @@ Disabled.args = {
 	isChecked: true,
 	isDisabled: true
 };
+
+export const Indeterminate = Template.bind({});
+Indeterminate.args = {
+	onChange: action("callback"),
+	name: "demoCheckbox",
+	title: "Demo Checkbox",
+	label: "Some Label",
+	isIndeterminate: true
+};
