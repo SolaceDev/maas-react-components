@@ -82,31 +82,30 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 		connectorColor
 	} = props;
 	const theme = useTheme();
-	const sp = theme.spacing;
+
 	const childProps = (components: TreeNode[]) => {
 		const newProps = { ...props };
 		newProps.components = components;
 		return newProps;
 	};
 
-	console.log(props.components);
 	return (
 		<Stack>
 			{props.components.map(({ component, children }, index) => (
 				<Grid key={index} container sx={{ width: "100%" }}>
 					<Grid item xs={12}>
-						<Box height={sp(rowHeight)}>{component}</Box>
+						<Box height={theme.spacing(rowHeight)}>{component}</Box>
 					</Grid>
 					{children && (
 						<>
-							<Grid item width={sp(leftOffset)}></Grid>
-							<Grid item width={sp(connectorWidth)}>
+							<Grid item width={theme.spacing(leftOffset)}></Grid>
+							<Grid item width={theme.spacing(connectorWidth)}>
 								<Stack>
 									{children.map((_child, index) => (
 										<Box
 											sx={{
-												width: sp(connectorWidth),
-												height: sp(
+												width: theme.spacing(connectorWidth),
+												height: theme.spacing(
 													createHeightCalculation(
 														index >= 1 ? children[index - 1] : undefined,
 														rowHeight,
@@ -132,7 +131,7 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 										hasChildren(child) ? (
 											<SolaceTree {...childProps([child] as TreeNode[])} />
 										) : (
-											<Box sx={{ height: sp(rowHeight) }}>{child.component}</Box>
+											<Box sx={{ height: theme.spacing(rowHeight) }}>{child.component}</Box>
 										)
 									)}
 								</Stack>
