@@ -61,7 +61,7 @@ interface SolaceTree extends SolaceComponentProps {
 }
 /**
  *  SolaceDataTree Component
- *  Displays a series of components arranged to look like a tree of height 2.
+ *  Displays a series of components arranged to look like a tree of any height
  *
  *  The "connector" is the part that connects the children to the parent component.
  *
