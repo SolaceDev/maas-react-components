@@ -1,14 +1,15 @@
 import React from "react";
-import { Box, Grid, Stack } from "@material-ui/core";
+import { Box, Grid, Stack, Theme, useTheme } from "@material-ui/core";
+import SolaceComponentProps from "./SolaceComponentProps";
 
-const TreeConnector = ({ borderWidth, borderRadius, color }) => {
-	const borderProperties1 = borderWidth + " solid " + color;
-
+const TreeConnector = (config: { borderWidth: number; borderRadius: number; color: string; theme: Theme }) => {
+	const { borderWidth, borderRadius, color, theme } = config;
+	const borderProperties = theme.spacing(borderWidth) + " solid " + color;
 	return (
 		<Box
 			sx={{
-				borderLeft: borderProperties1,
-				borderBottom: borderProperties1,
+				borderLeft: borderProperties,
+				borderBottom: borderProperties,
 				height: "100%",
 				width: "100%",
 				borderRadius: "0 0 0 " + borderRadius
@@ -16,34 +17,28 @@ const TreeConnector = ({ borderWidth, borderRadius, color }) => {
 		></Box>
 	);
 };
-export interface TreeObject {
-	treeChildren?: TreeObject[];
+export interface TreeNode {
+	children?: TreeNode[];
 	component: JSX.Element;
 }
-const hasChildren = (child: TreeObject) => child.treeChildren && child.treeChildren.length >= 0;
-
-const offsetCalculation = (rowHeight: string, connectorOffset: string) =>
-	"(" + rowHeight + " - " + connectorOffset + ")";
-
+const hasChildren = (child: TreeNode) => child.children && child.children.length >= 0;
 // I really hope this works
 export const createHeightCalculation = (
-	node: TreeObject | undefined,
-	rowHeight: string,
-	connectorOffset: string
-): string => {
-	const calculateHeight = (index: number, rowHeight: string, connectorOffset: string) =>
-		index != 0 ? "(" + rowHeight + ")" : offsetCalculation(rowHeight, connectorOffset);
-
+	node: TreeNode | undefined,
+	rowHeight: number,
+	connectorOffset: number,
+	index: number
+): number => {
 	if (!node) {
-		return calculateHeight(0, rowHeight, connectorOffset);
+		return index != 0 ? rowHeight : rowHeight - connectorOffset;
 	} else {
-		return "(" + countNodes(node) + " * " + rowHeight + ")";
+		return countNodes(node) * rowHeight;
 	}
 };
 
-const countNodes = (node: TreeObject): number => {
-	if (node.treeChildren && node.treeChildren.length > 0) {
-		return node.treeChildren
+const countNodes = (node: TreeNode): number => {
+	if (node.children && node.children.length > 0) {
+		return node.children
 			.map((child) => countNodes(child))
 			.concat([1])
 			.reduce((acc, value) => acc + value, 0);
@@ -51,16 +46,18 @@ const countNodes = (node: TreeObject): number => {
 		return 1;
 	}
 };
-interface SolaceTree {
-	components: TreeObject[];
-	spacing: number; // vertical spacing between indexs of TreeObjects
-	rowHeight: string; // height of 1 row
-	connectorOffset: string; // offset of the child display stack from the connector stack
-	connectorWidth: string; // width of the connector
-	leftOffset: string; // distance from the left margin
-	connectorBorderRadius: string; // radius of the corner on the connector
-	connectorStroke: string; // size of connector stroke
+
+interface SolaceTree extends SolaceComponentProps {
+	components: TreeNode[];
+	verticalSpacing: number; // vertical spacing between indexs of TreeObjects
+	rowHeight: number; // height of 1 row
+	connectorOffset: number; // offset of the child display stack from the connector stack
+	connectorWidth: number; // width of the connector
+	leftOffset: number; // distance from the left margin
+	connectorBorderRadius: number; // radius of the corner on the connector
+	connectorStroke: number; // size of connector stroke
 	connectorColor: string;
+	theme: Theme;
 }
 /**
  *  SolaceDataTree Component
@@ -86,54 +83,58 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 		connectorStroke,
 		connectorColor
 	} = props;
-	const childProps = (components: TreeObject[]) => {
-		const newProps = { ...props };
+	const theme = useTheme();
+	const sp = theme.spacing;
+	const childProps = (components: TreeNode[]) => {
+		const newProps = JSON.parse(JSON.stringify(props));
 		newProps.components = components;
 		return newProps;
 	};
 
+	console.log(props.components);
 	return (
 		<Stack spacing={spacing}>
-			{props.components.map(({ component, treeChildren }, index) => (
+			{props.components.map(({ component, children }, index) => (
 				<Grid key={index} container sx={{ width: "100%" }}>
 					<Grid item xs={12}>
-						<Box height={rowHeight}>{component}</Box>
+						<Box height={sp(rowHeight)}>{component}</Box>
 					</Grid>
-					{treeChildren && (
+					{children && (
 						<>
-							<Grid item width={leftOffset}></Grid>
-							<Grid item width={connectorWidth}>
+							<Grid item width={sp(leftOffset)}></Grid>
+							<Grid item width={sp(connectorWidth)}>
 								<Stack>
-									{treeChildren.map((_child, index) => (
+									{children.map((_child, index) => (
 										<Box
 											sx={{
-												width: connectorWidth,
-												height:
-													"calc" +
+												width: sp(connectorWidth),
+												height: sp(
 													createHeightCalculation(
-														index >= 1 ? treeChildren[index - 1] : undefined,
+														index >= 1 ? children[index - 1] : undefined,
 														rowHeight,
 														connectorOffset,
 														index
 													)
+												)
 											}}
 										>
 											<TreeConnector
 												borderWidth={connectorStroke}
 												borderRadius={connectorBorderRadius}
 												color={connectorColor}
-											></TreeConnector>
+												theme={theme}
+											/>
 										</Box>
 									))}
 								</Stack>
 							</Grid>
 							<Grid item sx={{ flexGrow: 1 }}>
 								<Stack>
-									{treeChildren.map((child) =>
+									{children.map((child) =>
 										hasChildren(child) ? (
-											<SolaceTree {...childProps([child] as TreeObject[])} />
+											<SolaceTree {...childProps([child] as TreeNode[])} />
 										) : (
-											<Box sx={{ height: rowHeight }}>{child.component}</Box>
+											<Box sx={{ height: sp(rowHeight) }}>{child.component}</Box>
 										)
 									)}
 								</Stack>
@@ -147,12 +148,12 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 }
 
 SolaceTree.defaultProps = {
-	spacing: 0,
-	rowHeight: "45px",
-	connectorOffset: "35px",
-	connectorWidth: "10px",
-	leftOffset: "5px",
-	connectorBorderRadius: "2px",
-	connectorStroke: "1px",
+	verticalSpacing: 0,
+	rowHeight: 5.5,
+	connectorOffset: 4, // borken
+	connectorWidth: 2, // broken
+	leftOffset: 2, //broken
+	connectorBorderRadius: 0.5, //broken
+	connectorStroke: 0.1, // broken
 	connectorColor: "#808080"
 };

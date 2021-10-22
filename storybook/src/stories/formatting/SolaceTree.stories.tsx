@@ -24,7 +24,7 @@ DefaultExample.args = {
 					</Typography>
 				</Card>
 			),
-			treeChildren: [
+			children: [
 				{
 					component: (
 						<Card>
@@ -33,7 +33,7 @@ DefaultExample.args = {
 							</Typography>
 						</Card>
 					),
-					treeChildren: [
+					children: [
 						{
 							component: (
 								<Card>
@@ -43,7 +43,7 @@ DefaultExample.args = {
 									</Typography>
 								</Card>
 							),
-							treeChildren: [
+							children: [
 								{
 									component: (
 										<Card>
@@ -85,11 +85,11 @@ DefaultExample.args = {
 				<Card>
 					<Typography>
 						Stuff <br />
-						More stuff
+						More stuffƒ
 					</Typography>
 				</Card>
 			),
-			treeChildren: [
+			children: [
 				{
 					component: (
 						<Card>
@@ -119,7 +119,7 @@ BigCards.args = {
 					</Typography>
 				</Card>
 			),
-			treeChildren: [
+			children: [
 				{
 					component: (
 						<Card>
@@ -163,7 +163,7 @@ BigCards.args = {
 					</Typography>
 				</Card>
 			),
-			treeChildren: [
+			children: [
 				{
 					component: (
 						<Card>
