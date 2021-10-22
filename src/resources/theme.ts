@@ -171,6 +171,25 @@ const theme = {
 				}
 			}
 		},
+		MuiFormLabel: {
+			styleOverrides: {
+				asterisk: {
+					color: BASE_COLORS.greens.green2
+				},
+				root: {
+					color: BASE_COLORS.greys.grey11,
+					fontSize: "0.875rem",
+					fontWeight: "regular",
+					lineHeight: "150%",
+					"&.Mui-error": {
+						color: BASE_COLORS.greys.grey11
+					},
+					"&.Mui-disabled": {
+						color: BASE_COLORS.greys.grey9
+					}
+				}
+			}
+		},
 		MuiLink: {
 			styleOverrides: {
 				root: {
@@ -297,7 +316,8 @@ const theme = {
 								border: `solid 1px ${BASE_COLORS.greys.grey2}`
 							},
 							input: {
-								webkitTextFillColor: BASE_COLORS.greys.grey14,
+								WebkitTextFillColor: BASE_COLORS.greys.grey5,
+								color: BASE_COLORS.greys.grey5,
 								padding: "8px"
 							}
 						}
