@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { SELECTION_TYPE, TableRow, addActionMenuIcon, TableColumn, addEmptyRowCell } from "../table-utils";
-import { StyledTableRow, StyledTableData, CustomTableRowProps } from "./useSolaceTable";
+import {
+	SELECTION_TYPE,
+	TableRow,
+	addActionMenuIcon,
+	TableColumn,
+	addEmptyRowCell,
+	StyledTableData
+} from "../table-utils";
+import { CustomTableRowProps, StyledTableRow } from "./useSolaceTable";
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SolaceCheckBox from "../../form/SolaceCheckBox";

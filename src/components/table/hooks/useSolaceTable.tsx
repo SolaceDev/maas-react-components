@@ -8,7 +8,9 @@ import {
 	addEmptyHeaderCell,
 	addEmptyRowCell,
 	addActionMenuIcon,
-	addColumnHidingControl
+	addColumnHidingControl,
+	StyledTableData,
+	StyledTableHeader
 } from "../table-utils";
 import { styled, useTheme } from "@material-ui/core";
 import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
@@ -34,38 +36,6 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	},
 	"&:hover + tr td table": {
 		background: "#e5e5e5"
-	}
-}));
-
-export const StyledTableData = styled("td")(({ theme }) => ({
-	borderCollapse: "collapse",
-	borderBottom: "1px solid #e8e8e8",
-	padding: theme.spacing(),
-	".cursor-pointer": {
-		cursor: "pointer"
-	},
-	"&.checkbox": {
-		textAlign: "center"
-	},
-	maxWidth: "0",
-	overflow: "hidden",
-	textOverflow: "ellipsis",
-	whiteSpace: "nowrap"
-}));
-
-export const StyledTableHeader = styled("th")(({ theme }) => ({
-	borderCollapse: "collapse",
-	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
-	minWidth: "30px",
-	minHeight: "32px",
-	textAlign: "left",
-	"&.sortable": {
-		position: "relative",
-		cursor: "pointer",
-		marginTop: theme.spacing(0.5)
-	},
-	"&.icon-column": {
-		width: "40px"
 	}
 }));
 
