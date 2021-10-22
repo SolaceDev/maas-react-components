@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledTableHeader, StyledTableData } from "./hooks/useSolaceTable";
+// import { StyledTableHeader, StyledTableData } from "./hooks/useSolaceTable";
 import SolaceButton from "./../form/SolaceButton";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { styled } from "@material-ui/core";
@@ -45,6 +45,38 @@ export enum SORT_DIRECTION {
 	ASC = "asc",
 	DCS = "desc"
 }
+
+export const StyledTableData = styled("td")(({ theme }) => ({
+	borderCollapse: "collapse",
+	borderBottom: "1px solid #e8e8e8",
+	padding: theme.spacing(),
+	".cursor-pointer": {
+		cursor: "pointer"
+	},
+	"&.checkbox": {
+		textAlign: "center"
+	},
+	maxWidth: "0",
+	overflow: "hidden",
+	textOverflow: "ellipsis",
+	whiteSpace: "nowrap"
+}));
+
+export const StyledTableHeader = styled("th")(({ theme }) => ({
+	borderCollapse: "collapse",
+	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
+	minWidth: "30px",
+	minHeight: "32px",
+	textAlign: "left",
+	"&.sortable": {
+		position: "relative",
+		cursor: "pointer",
+		marginTop: theme.spacing(0.5)
+	},
+	"&.icon-column": {
+		width: "40px"
+	}
+}));
 
 export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	position: "absolute",
