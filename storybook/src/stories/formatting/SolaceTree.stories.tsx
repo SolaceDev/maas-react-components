@@ -42,6 +42,16 @@ DefaultExample.args = {
 										recursion yay!
 									</Typography>
 								</Card>
+							)
+						},
+						{
+							component: (
+								<Card>
+									<Typography>
+										Whoa recursion! <br />
+										recursion yay!
+									</Typography>
+								</Card>
 							),
 							children: [
 								{
@@ -56,6 +66,7 @@ DefaultExample.args = {
 								}
 							]
 						},
+
 						{
 							component: (
 								<Card>

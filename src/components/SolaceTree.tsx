@@ -22,7 +22,8 @@ export interface TreeNode {
 	component: JSX.Element;
 }
 const hasChildren = (child: TreeNode) => child.children && child.children.length >= 0;
-// I really hope this works
+
+// calculates the height in theme units of a node and it's children
 export const createHeightCalculation = (
 	node: TreeNode | undefined,
 	rowHeight: number,
@@ -35,7 +36,7 @@ export const createHeightCalculation = (
 		return countNodes(node) * rowHeight;
 	}
 };
-
+// counts children nodes of a node
 const countNodes = (node: TreeNode): number => {
 	if (node.children && node.children.length > 0) {
 		return node.children
@@ -84,7 +85,7 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 	const theme = useTheme();
 	const sp = theme.spacing;
 	const childProps = (components: TreeNode[]) => {
-		const newProps = JSON.parse(JSON.stringify(props));
+		const newProps = { ...props };
 		newProps.components = components;
 		return newProps;
 	};
@@ -150,7 +151,7 @@ SolaceTree.defaultProps = {
 	connectorOffset: 4,
 	connectorWidth: 2,
 	leftOffset: 2,
-	connectorBorderRadius: 0.5,
+	connectorBorderRadius: 0.1,
 	connectorStroke: 0.1,
 	connectorColor: "#808080"
 };
