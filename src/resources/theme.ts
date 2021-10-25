@@ -158,7 +158,7 @@ const theme = {
 					color: BASE_COLORS.greens.green2
 				},
 				root: {
-					color: BASE_COLORS.greys.grey11,
+					color: BASE_COLORS.greys.grey14,
 					fontSize: "0.875rem",
 					fontWeight: 500,
 					lineHeight: "150%",
