@@ -1,9 +1,8 @@
-import { Box, TextField, useTheme } from "@material-ui/core";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import { TextField, useTheme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
-import SolaceLabel from "./SolaceLabel";
+import FormChildBase from "./FormChildBase";
 
 export interface SolaceTextFieldChangeEvent {
 	name: string;
@@ -118,13 +117,6 @@ function SolaceTextField({
 		}
 	};
 
-	const getHelperText = () => (
-		<Box display="flex">
-			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
-			{helperText}
-		</Box>
-	);
-
 	const getId = () => {
 		return id ? id : name;
 	};
@@ -156,11 +148,6 @@ function SolaceTextField({
 					disabled: isDisabled,
 					required: isRequired
 				}}
-				FormHelperTextProps={{
-					variant: "standard",
-					error: hasErrors
-				}}
-				helperText={getHelperText()}
 				margin="dense"
 				placeholder={placeholder}
 				value={textValue}
@@ -171,29 +158,19 @@ function SolaceTextField({
 
 	return (
 		<React.Fragment>
-			{!isInlineLabel && label && (
-				<Box marginTop={theme.spacing()}>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
-						{label}
-					</SolaceLabel>
-					{textField()}
-				</Box>
-			)}
-			{isInlineLabel && label && (
-				<Box
-					marginBottom={theme.spacing()}
-					display="flex"
-					flexDirection="row"
-					justifyContent="space-between"
-					alignItems="flex-start"
-				>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
-						{label}
-					</SolaceLabel>
-					{textField()}
-				</Box>
-			)}
-			{!label && textField()}
+			<FormChildBase
+				id={id}
+				name={name}
+				label={label}
+				helperText={helperText}
+				errorText={hasErrors ? helperText : undefined}
+				isDisabled={isDisabled}
+				isReadOnly={isReadOnly}
+				isRequired={isRequired}
+				isInlineLabel={isInlineLabel}
+			>
+				{textField()}
+			</FormChildBase>
 		</React.Fragment>
 	);
 }

@@ -328,11 +328,8 @@ const theme = {
 					".MuiSvgIcon-root path": {
 						fill: BASE_COLORS.greens.green1
 					},
-					"&.Mui-disabled .MuiSvgIcon-root rect": {
-						fill: BASE_COLORS.greys.grey19
-					},
 					"&.Mui-disabled .MuiSvgIcon-root path": {
-						fillOpacity: "0.5"
+						fillOpacity: "0.35"
 					},
 					"+ .MuiInputLabel-root": {
 						marginLeft: "16px"
@@ -365,9 +362,6 @@ const theme = {
 						}
 					},
 					"&.Mui-disabled .MuiSvgIcon-root": {
-						".SolaceRadioContainer": {
-							fill: BASE_COLORS.greys.grey19
-						},
 						".SolaceRadioSelection": {
 							opacity: 0.35
 						}
@@ -524,7 +518,9 @@ const theme = {
 			main: BASE_COLORS.greens.green3
 		},
 		text: {
-			primary: BASE_COLORS.greys.grey14
+			primary: BASE_COLORS.greys.grey14,
+			secondary: BASE_COLORS.greys.grey11,
+			disabled: BASE_COLORS.greys.grey5
 		}
 	},
 	spacing: 8,
