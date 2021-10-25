@@ -67,7 +67,7 @@ function LabelElement({ children, bold, large }: LabelElementProps) {
 	const component = bold ? "strong" : "span";
 	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
 	return (
-		<Box component={component} sx={{ fontSize: typography.fontSize, lineHeight: typography.lineHeight }}>
+		<Box component={component} sx={{ fontSize: typography.fontSize, lineHeight: "24px" }}>
 			{children}
 		</Box>
 	);
