@@ -4,3 +4,4 @@ node_modules
 .eslintcache
 storybook/storybook-static
 storybook/build-storybook.log
+*.iml
