@@ -121,10 +121,8 @@ const SolaceCheckBox = ({
 	const getSelectedIcon = () => {
 		if (isIndeterminate) {
 			return IndeterminateCheckBoxIcon;
-		} else if (readOnly) {
-			return <SelectedCheckBoxIcon color={theme.palette.grey[700]} />;
 		} else {
-			return <SelectedCheckBoxIcon />;
+			return SelectedCheckBoxIcon;
 		}
 	};
 
@@ -146,6 +144,7 @@ const SolaceCheckBox = ({
 					role="checkbox"
 					title={title}
 					disabled={isDisabled || readOnly}
+					className={readOnly ? "readOnly" : undefined}
 					disableRipple
 					checked={selected}
 					onChange={handleChange}

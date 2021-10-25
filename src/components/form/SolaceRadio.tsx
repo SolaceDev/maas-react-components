@@ -125,12 +125,7 @@ function SolaceRadio({
 	}
 
 	const pickSelectedIcon = (): JSX.Element => {
-		if (readOnly) {
-			console.log("readonly");
-			return <SelectedRadioIcon color={theme.palette.grey[700]}></SelectedRadioIcon>;
-		} else {
-			return <SelectedRadioIcon></SelectedRadioIcon>;
-		}
+		return <SelectedRadioIcon></SelectedRadioIcon>;
 	};
 
 	return (
@@ -151,6 +146,7 @@ function SolaceRadio({
 					}
 					role="radio"
 					title={title}
+					className={readOnly ? "readOnly" : undefined}
 					disabled={isDisabled || readOnly}
 					disableRipple
 					checked={selected}
