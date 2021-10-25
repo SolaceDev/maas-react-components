@@ -157,20 +157,18 @@ function SolaceTextField({
 	);
 
 	return (
-		<React.Fragment>
-			<FormChildBase
-				id={getId()}
-				label={label}
-				helperText={helperText}
-				errorText={hasErrors ? helperText : undefined}
-				isDisabled={isDisabled}
-				isReadOnly={isReadOnly}
-				isRequired={isRequired}
-				isInlineLabel={isInlineLabel}
-			>
-				{textField()}
-			</FormChildBase>
-		</React.Fragment>
+		<FormChildBase
+			id={getId()}
+			label={label}
+			helperText={helperText}
+			errorText={hasErrors ? helperText : undefined}
+			isDisabled={isDisabled}
+			isReadOnly={isReadOnly}
+			isRequired={isRequired}
+			isInlineLabel={isInlineLabel}
+		>
+			{textField()}
+		</FormChildBase>
 	);
 }
 
