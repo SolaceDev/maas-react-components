@@ -66,6 +66,8 @@ function LabelElement({ children, bold, large }: LabelElementProps) {
 	const theme = useTheme();
 	const component = bold ? "strong" : "span";
 	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
+	// 24 px is the row height in the grid because it's the height of the svg
+	// It needs to be 24 px, because otherwise the spacing is wrong
 	return (
 		<Box component={component} sx={{ fontSize: typography.fontSize, lineHeight: "24px" }}>
 			{children}
