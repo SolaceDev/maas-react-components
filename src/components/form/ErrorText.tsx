@@ -11,14 +11,12 @@ export interface ErrorTextProps extends SolaceComponentProps {
 function ErrorText({ children }: ErrorTextProps): JSX.Element {
 	const theme = useTheme();
 	return (
-		<Box display="flex" flexDirection="row">
-			<FormLabel sx={{ color: theme.palette.error.main, fontSize: theme.typography.caption }}>
-				<Box display="flex" flexDirection="row" alignItems="center">
-					<ErrorOutlineOutlined sx={{ marginRight: theme.spacing() }} />
-					{children}
-				</Box>
-			</FormLabel>
-		</Box>
+		<FormLabel sx={{ color: theme.palette.error.main, fontSize: theme.typography.caption }}>
+			<Box display="flex" flexDirection="row" alignItems="center">
+				<ErrorOutlineOutlined sx={{ marginRight: theme.spacing() }} />
+				{children}
+			</Box>
+		</FormLabel>
 	);
 }
 

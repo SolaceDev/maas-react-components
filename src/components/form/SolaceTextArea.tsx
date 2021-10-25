@@ -159,8 +159,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	return (
 		<React.Fragment>
 			<FormChildBase
-				id={id}
-				name={name}
+				id={getId()}
 				label={label}
 				helperText={helperText}
 				errorText={hasErrors ? helperText : undefined}

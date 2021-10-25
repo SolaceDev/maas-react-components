@@ -102,57 +102,52 @@ function SolaceSelect({
 	};
 
 	const select = () => (
-		<React.Fragment>
-			<TextField
-				id={getId()}
-				name={name}
-				inputProps={{
-					"data-qa": dataQa,
-					"data-tags": dataTags,
-					"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
-					"aria-labelledby": label ? `${getId()}-label` : "",
-					"aria-readonly": isReadOnly,
-					role: "select",
-					title: title
-				}}
-				select
-				InputProps={{
-					sx: { height: theme.spacing(4) },
-					className: isReadOnly ? "readOnlySelect" : "",
-					disabled: isDisabled,
-					readOnly: isReadOnly,
-					required: isRequired
-				}}
-				title={title}
-				autoComplete="off"
-				required={isRequired}
-				disabled={isDisabled || isReadOnly}
-				margin="dense"
-				value={selectedValue}
-				onChange={handleChange}
-			>
-				{children}
-			</TextField>
-		</React.Fragment>
+		<TextField
+			id={getId()}
+			name={name}
+			inputProps={{
+				"data-qa": dataQa,
+				"data-tags": dataTags,
+				"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
+				"aria-labelledby": label ? `${getId()}-label` : "",
+				"aria-readonly": isReadOnly,
+				role: "select",
+				title: title
+			}}
+			select
+			InputProps={{
+				sx: { height: theme.spacing(4) },
+				className: isReadOnly ? "readOnlySelect" : "",
+				disabled: isDisabled,
+				readOnly: isReadOnly,
+				required: isRequired
+			}}
+			title={title}
+			autoComplete="off"
+			required={isRequired}
+			disabled={isDisabled || isReadOnly}
+			margin="dense"
+			value={selectedValue}
+			onChange={handleChange}
+		>
+			{children}
+		</TextField>
 	);
 
 	const errorText = hasErrors ? helperText : undefined;
 	return (
-		<React.Fragment>
-			<FormChildBase
-				id={getId()}
-				name={name}
-				label={label}
-				helperText={helperText}
-				errorText={errorText}
-				isDisabled={isDisabled}
-				isReadOnly={isReadOnly}
-				isRequired={isRequired}
-				isInlineLabel={isInlineLabel}
-			>
-				{select()}
-			</FormChildBase>
-		</React.Fragment>
+		<FormChildBase
+			id={getId()}
+			label={label}
+			helperText={helperText}
+			errorText={errorText}
+			isDisabled={isDisabled}
+			isReadOnly={isReadOnly}
+			isRequired={isRequired}
+			isInlineLabel={isInlineLabel}
+		>
+			{select()}
+		</FormChildBase>
 	);
 }
 

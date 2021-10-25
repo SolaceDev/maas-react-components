@@ -68,7 +68,7 @@ function FormChildBase({
 					{label}
 				</SolaceLabel>
 			)}
-			<Box>
+			<Box display="flex" flexDirection="column">
 				{children}
 				{helperText && !errorText && <HelperText>{helperText}</HelperText>}
 				{errorText && <ErrorText>{errorText}</ErrorText>}

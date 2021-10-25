@@ -117,21 +117,18 @@ function SolaceRadioGroup({
 
 	const errorText = hasErrors ? helperText : undefined;
 	return (
-		<React.Fragment>
-			<FormChildBase
-				id={id}
-				name={name}
-				label={label}
-				helperText={helperText}
-				errorText={errorText}
-				isDisabled={isDisabled}
-				isReadOnly={isReadOnly}
-				isRequired={isRequired}
-				isInlineLabel={isInlineLabel}
-			>
-				<Box sx={{ marginTop: theme.spacing(1) }}>{getRadioGroup()}</Box>
-			</FormChildBase>
-		</React.Fragment>
+		<FormChildBase
+			id={id}
+			label={label}
+			helperText={helperText}
+			errorText={errorText}
+			isDisabled={isDisabled}
+			isReadOnly={isReadOnly}
+			isRequired={isRequired}
+			isInlineLabel={isInlineLabel}
+		>
+			<Box sx={{ marginTop: theme.spacing(1) }}>{getRadioGroup()}</Box>
+		</FormChildBase>
 	);
 }
 
