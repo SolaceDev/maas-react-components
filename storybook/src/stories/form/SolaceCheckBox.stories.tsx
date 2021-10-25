@@ -83,3 +83,13 @@ Indeterminate.args = {
 	label: "Some Label",
 	isIndeterminate: true
 };
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+	onChange: action("callback"),
+	name: "demoCheckbox",
+	title: "Demo Checkbox",
+	label: "Some Label",
+	isChecked: true,
+	readOnly: true
+};

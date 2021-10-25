@@ -60,6 +60,10 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	 * is Indeterminate
 	 */
 	isIndeterminate?: boolean;
+	/**
+	 * is Indeterminate
+	 */
+	readOnly?: boolean;
 }
 
 const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
@@ -73,6 +77,7 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 	isRequired = false,
 	isDisabled = false,
 	isIndeterminate = false,
+	readOnly = false,
 	onChange,
 	dataQa,
 	dataTags
@@ -116,8 +121,10 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 	const getSelectedIcon = () => {
 		if (isIndeterminate) {
 			return IndeterminateCheckBoxIcon;
+		} else if (readOnly) {
+			return <SelectedCheckBoxIcon color={theme.palette.grey[700]} />;
 		} else {
-			return SelectedCheckBoxIcon;
+			return <SelectedCheckBoxIcon />;
 		}
 	};
 
@@ -138,7 +145,7 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 					}
 					role="checkbox"
 					title={title}
-					disabled={isDisabled}
+					disabled={isDisabled || readOnly}
 					disableRipple
 					checked={selected}
 					onChange={handleChange}

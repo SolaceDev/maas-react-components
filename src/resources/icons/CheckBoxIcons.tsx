@@ -11,11 +11,12 @@ const CheckboxIcon = (props: { children?: React.ReactNode }) => (
 
 export const RestingCheckBoxIcon = <CheckboxIcon />;
 
-export const SelectedCheckBoxIcon = (
+export const SelectedCheckBoxIcon = (props: { color?: string }): JSX.Element => (
 	<CheckboxIcon>
 		<path
 			d="M2.95765 7.91172C2.32003 7.38283 1.37438 7.47097 0.845484 8.10859C0.316589 8.74621 0.404729 9.69186 1.04235 10.2208L2.95765 7.91172ZM6.74244 13L5.78479 14.1545C6.41919 14.6807 7.35935 14.5965 7.89009 13.9659L6.74244 13ZM17.1477 2.96586C17.6811 2.33203 17.5997 1.38578 16.9659 0.852346C16.332 0.318915 15.3858 0.400306 14.8523 1.03414L17.1477 2.96586ZM1.04235 10.2208L5.78479 14.1545L7.70009 11.8455L2.95765 7.91172L1.04235 10.2208ZM7.89009 13.9659L17.1477 2.96586L14.8523 1.03414L5.59478 12.0341L7.89009 13.9659Z"
 			transform="translate(3, 5)"
+			style={{ fill: props.color }}
 		/>
 	</CheckboxIcon>
 );

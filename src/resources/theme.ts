@@ -331,6 +331,9 @@ const theme = {
 					"&.Mui-disabled .MuiSvgIcon-root rect": {
 						fill: BASE_COLORS.greys.grey19
 					},
+					"&.solace-readonly .MuiSvgIcon-root path": {
+						fill: BASE_COLORS.greys.grey19
+					},
 					"&.Mui-disabled .MuiSvgIcon-root path": {
 						fillOpacity: "0.5"
 					},
