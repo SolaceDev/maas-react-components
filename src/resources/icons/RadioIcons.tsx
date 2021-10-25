@@ -13,15 +13,9 @@ export const RestingRadioIcon = (
 	</SvgIcon>
 );
 
-export const SelectedRadioIcon = (props: { color?: string }): JSX.Element => (
+export const SelectedRadioIcon = (
 	<SvgIcon width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`}>
 		<Container />
-		<circle
-			className="SolaceRadioSelection"
-			cx={SIZE / 2}
-			cy={SIZE / 2}
-			r={SIZE / 4}
-			style={{ fill: props.color }}
-		></circle>
+		<circle className="SolaceRadioSelection" cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 4}></circle>
 	</SvgIcon>
 );

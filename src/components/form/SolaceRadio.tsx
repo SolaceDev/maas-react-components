@@ -124,10 +124,6 @@ function SolaceRadio({
 		id = name;
 	}
 
-	const pickSelectedIcon = (): JSX.Element => {
-		return <SelectedRadioIcon></SelectedRadioIcon>;
-	};
-
 	return (
 		<React.Fragment>
 			<Box display="grid" gridTemplateColumns="auto 1fr" gridTemplateRows="auto auto" alignItems="center">
@@ -136,7 +132,7 @@ function SolaceRadio({
 					name={name}
 					value={value}
 					icon={RestingRadioIcon}
-					checkedIcon={pickSelectedIcon()}
+					checkedIcon={SelectedRadioIcon}
 					inputProps={
 						{
 							"aria-labelledby": label ? `${id}-label` : "",
