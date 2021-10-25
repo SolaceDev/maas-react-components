@@ -122,38 +122,36 @@ function SolaceTextField({
 	};
 
 	const textField = () => (
-		<React.Fragment>
-			<TextField
-				id={`${getId()}`}
-				name={name}
-				inputProps={{
-					maxLength: maxLength,
-					size: size,
-					"data-qa": dataQa,
-					"data-tags": dataTags,
-					"data-lpignore": true,
-					readOnly: isReadOnly,
-					"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
-					"aria-labelledby": label ? `${getId()}-label` : "",
-					"aria-readonly": isReadOnly,
-					role: "textbox",
-					title: title
-				}}
-				type={type}
-				error={hasErrors}
-				autoComplete="off"
-				autoFocus={autoFocus}
-				InputProps={{
-					sx: { height: theme.spacing(4) },
-					disabled: isDisabled,
-					required: isRequired
-				}}
-				margin="dense"
-				placeholder={placeholder}
-				value={textValue}
-				onChange={handleChange}
-			/>
-		</React.Fragment>
+		<TextField
+			id={`${getId()}`}
+			name={name}
+			inputProps={{
+				maxLength: maxLength,
+				size: size,
+				"data-qa": dataQa,
+				"data-tags": dataTags,
+				"data-lpignore": true,
+				readOnly: isReadOnly,
+				"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
+				"aria-labelledby": label ? `${getId()}-label` : "",
+				"aria-readonly": isReadOnly,
+				role: "textbox",
+				title: title
+			}}
+			type={type}
+			error={hasErrors}
+			autoComplete="off"
+			autoFocus={autoFocus}
+			InputProps={{
+				sx: { height: theme.spacing(4) },
+				disabled: isDisabled,
+				required: isRequired
+			}}
+			margin="dense"
+			placeholder={placeholder}
+			value={textValue}
+			onChange={handleChange}
+		/>
 	);
 
 	return (

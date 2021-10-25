@@ -122,38 +122,36 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	};
 
 	const textField = () => (
-		<React.Fragment>
-			<TextField
-				id={`${getId()}`}
-				name={name}
-				inputProps={{
-					maxLength: maxLength,
-					"data-qa": dataQa,
-					"data-tags": dataTags,
-					readOnly: isReadOnly,
-					"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
-					"aria-labelledby": label ? `${getId()}-label` : "",
-					"aria-readonly": isReadOnly,
-					role: "textbox",
-					title: title
-				}}
-				type="text"
-				autoComplete="off"
-				autoFocus={autoFocus}
-				minRows={minRows}
-				maxRows={maxRows}
-				multiline={true}
-				InputProps={{
-					sx: { height: theme.spacing(4) },
-					disabled: isDisabled,
-					required: isRequired
-				}}
-				margin="dense"
-				placeholder={placeholder}
-				value={textValue}
-				onChange={handleChange}
-			/>
-		</React.Fragment>
+		<TextField
+			id={`${getId()}`}
+			name={name}
+			inputProps={{
+				maxLength: maxLength,
+				"data-qa": dataQa,
+				"data-tags": dataTags,
+				readOnly: isReadOnly,
+				"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
+				"aria-labelledby": label ? `${getId()}-label` : "",
+				"aria-readonly": isReadOnly,
+				role: "textbox",
+				title: title
+			}}
+			type="text"
+			autoComplete="off"
+			autoFocus={autoFocus}
+			minRows={minRows}
+			maxRows={maxRows}
+			multiline={true}
+			InputProps={{
+				sx: { height: theme.spacing(4) },
+				disabled: isDisabled,
+				required: isRequired
+			}}
+			margin="dense"
+			placeholder={placeholder}
+			value={textValue}
+			onChange={handleChange}
+		/>
 	);
 
 	return (

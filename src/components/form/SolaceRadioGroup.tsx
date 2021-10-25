@@ -103,15 +103,13 @@ function SolaceRadioGroup({
 		));
 
 		return (
-			<React.Fragment>
-				<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
-					<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
-						<Grid container spacing={1.5} direction="column">
-							{childItems}
-						</Grid>
-					</RadioGroup>
-				</Box>
-			</React.Fragment>
+			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
+				<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
+					<Grid container spacing={1.5} direction="column">
+						{childItems}
+					</Grid>
+				</RadioGroup>
+			</Box>
 		);
 	};
 
