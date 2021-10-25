@@ -81,6 +81,7 @@ Indeterminate.args = {
 	name: "demoCheckbox",
 	title: "Demo Checkbox",
 	label: "Some Label",
+	isChecked: false,
 	isIndeterminate: true
 };
 

@@ -328,10 +328,10 @@ const theme = {
 					".MuiSvgIcon-root path": {
 						fill: BASE_COLORS.greens.green1
 					},
-					"&.Mui-disabled .MuiSvgIcon-root rect": {
-						fill: BASE_COLORS.greys.grey19
+					".MuiSvgIcon-root line": {
+						fill: BASE_COLORS.greens.green1
 					},
-					"&.solace-readonly .MuiSvgIcon-root path": {
+					"&.Mui-disabled .MuiSvgIcon-root rect": {
 						fill: BASE_COLORS.greys.grey19
 					},
 					"&.Mui-disabled .MuiSvgIcon-root path": {

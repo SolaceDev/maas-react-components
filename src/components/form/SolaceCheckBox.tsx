@@ -57,16 +57,16 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	 */
 	onChange?: (event: SolaceCheckboxChangeEvent) => void;
 	/**
-	 * is Indeterminate
+	 * Boolean flag to set the checkbox to indeterminate
 	 */
 	isIndeterminate?: boolean;
 	/**
-	 * is Indeterminate
+	 * Boolean flag to set the checkbox to readOnly
 	 */
 	readOnly?: boolean;
 }
 
-const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
+const SolaceCheckBox = ({
 	id,
 	name,
 	label,
@@ -81,7 +81,7 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 	onChange,
 	dataQa,
 	dataTags
-}) => {
+}: SolaceCheckBoxProps): JSX.Element => {
 	const theme = useTheme();
 	const [selected, setSelected] = useState(isChecked);
 
