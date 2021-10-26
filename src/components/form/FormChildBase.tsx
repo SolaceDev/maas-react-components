@@ -29,15 +29,15 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
-	isRequired?: boolean;
+	isRequired: boolean;
 	/**
 	 * Boolean flag to disable the `input`
 	 */
-	isDisabled?: boolean;
+	isDisabled: boolean;
 	/**
 	 * Boolean flag to set the `input` in a read-only state
 	 */
-	isReadOnly?: boolean;
+	isReadOnly: boolean;
 	/**
 	 * Display the label horizontally
 	 */
@@ -51,7 +51,7 @@ function FormChildBase({
 	label,
 	isRequired,
 	isDisabled,
-	isInlineLabel = false,
+	isInlineLabel,
 	helperText,
 	errorText,
 	children

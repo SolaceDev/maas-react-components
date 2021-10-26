@@ -134,13 +134,12 @@ function SolaceSelect({
 		</TextField>
 	);
 
-	const errorText = hasErrors ? helperText : undefined;
 	return (
 		<FormChildBase
 			id={getId()}
 			label={label}
 			helperText={helperText}
-			errorText={errorText}
+			errorText={hasErrors ? helperText : undefined}
 			isDisabled={isDisabled}
 			isReadOnly={isReadOnly}
 			isRequired={isRequired}
