@@ -5,14 +5,14 @@ const CheckboxIcon = (props: { children?: React.ReactNode }) => (
 	<SvgIcon width="24" height="24" viewBox="0 0 24 24" fill="none">
 		<rect width="24" height="24" rx="4" fill="white" />
 		<rect
-			x="0.5"
-			y="0.5"
-			width="23"
-			height="23"
-			rx="3.5"
+			x={0.5}
+			y={0.5}
+			width={23}
+			height={23}
+			rx={3.5}
 			stroke="black"
-			strokeOpacity="0.2"
-			fillOpacity="0"
+			strokeOpacity={0.2}
+			fillOpacity={0}
 			className="SolaceCheckboxContainer"
 		/>
 		{props.children}
