@@ -403,6 +403,9 @@ const theme = {
 					},
 					".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
 						padding: "0px"
+					},
+					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
+						background: "transparent"
 					}
 				},
 				popper: {
