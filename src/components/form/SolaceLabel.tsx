@@ -1,4 +1,4 @@
-import { InputLabel } from "@material-ui/core";
+import { FormLabel } from "@material-ui/core";
 import React from "react";
 
 export interface SolaceLabelProps {
@@ -32,9 +32,9 @@ function SolaceLabel({
 	children
 }: SolaceLabelProps): JSX.Element {
 	return (
-		<InputLabel id={id} htmlFor={htmlForId} required={isRequired} disabled={isDisabled}>
+		<FormLabel id={id} htmlFor={htmlForId} required={isRequired} disabled={isDisabled} sx={{ display: "block" }}>
 			{children}
-		</InputLabel>
+		</FormLabel>
 	);
 }
 

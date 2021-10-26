@@ -100,15 +100,6 @@ InlineLabeleFormat.args = {
 	isInlineLabel: true
 };
 
-export const PlaceholderText = Template.bind({});
-PlaceholderText.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
-	placeholder: "Some placeholder text"
-};
-
 export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("callback"),
