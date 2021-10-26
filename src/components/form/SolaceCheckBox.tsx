@@ -4,7 +4,11 @@ import React, { useEffect, useState } from "react";
 import SolaceLabel from "./SolaceLabel";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
-import { RestingCheckBoxIcon, SelectedCheckBoxIcon } from "../../resources/icons/CheckBoxIcons";
+import {
+	IndeterminateCheckBoxIcon,
+	RestingCheckBoxIcon,
+	SelectedCheckBoxIcon
+} from "../../resources/icons/CheckBoxIcons";
 
 export interface SolaceCheckboxChangeEvent {
 	name: string;
@@ -52,9 +56,17 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the value of the `checkbox` is changed
 	 */
 	onChange?: (event: SolaceCheckboxChangeEvent) => void;
+	/**
+	 * Boolean flag to set the checkbox to indeterminate
+	 */
+	isIndeterminate?: boolean;
+	/**
+	 * Boolean flag to set the checkbox to readOnly
+	 */
+	readOnly?: boolean;
 }
 
-const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
+const SolaceCheckBox = ({
 	id,
 	name,
 	label,
@@ -64,10 +76,12 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 	isChecked = false,
 	isRequired = false,
 	isDisabled = false,
+	isIndeterminate = false,
+	readOnly = false,
 	onChange,
 	dataQa,
 	dataTags
-}) => {
+}: SolaceCheckBoxProps): JSX.Element => {
 	const theme = useTheme();
 	const [selected, setSelected] = useState(isChecked);
 
@@ -96,14 +110,30 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 		return id ? id : name;
 	};
 
+	const getCheckboxIcon = () => {
+		if (isIndeterminate) {
+			return IndeterminateCheckBoxIcon;
+		} else {
+			return RestingCheckBoxIcon;
+		}
+	};
+
+	const getSelectedIcon = () => {
+		if (isIndeterminate) {
+			return IndeterminateCheckBoxIcon;
+		} else {
+			return SelectedCheckBoxIcon;
+		}
+	};
+
 	return (
 		<React.Fragment>
 			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
 				<Checkbox
 					id={`${getId()}-checkbox`}
 					name={name}
-					icon={RestingCheckBoxIcon}
-					checkedIcon={SelectedCheckBoxIcon}
+					icon={getCheckboxIcon()}
+					checkedIcon={getSelectedIcon()}
 					inputProps={
 						{
 							"aria-labelledby": label ? `${getId()}-label` : "",
@@ -113,7 +143,8 @@ const SolaceCheckBox: React.FC<SolaceCheckBoxProps> = ({
 					}
 					role="checkbox"
 					title={title}
-					disabled={isDisabled}
+					disabled={isDisabled || readOnly}
+					className={readOnly ? "readOnly" : undefined}
 					disableRipple
 					checked={selected}
 					onChange={handleChange}

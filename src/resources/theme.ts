@@ -158,7 +158,7 @@ const theme = {
 					color: BASE_COLORS.greens.green2
 				},
 				root: {
-					color: BASE_COLORS.greys.grey11,
+					color: BASE_COLORS.greys.grey14,
 					fontSize: "0.875rem",
 					fontWeight: 500,
 					lineHeight: "150%",
@@ -348,14 +348,28 @@ const theme = {
 					".MuiSvgIcon-root path": {
 						fill: BASE_COLORS.greens.green1
 					},
-					"&.Mui-disabled .MuiSvgIcon-root rect": {
-						fill: BASE_COLORS.greys.grey19
+					".MuiSvgIcon-root line": {
+						stroke: BASE_COLORS.greens.green1
 					},
-					"&.Mui-disabled .MuiSvgIcon-root path": {
-						fillOpacity: "0.5"
+					"&.Mui-disabled .MuiSvgIcon-root": {
+						rect: {
+							fillOpacity: 0.35,
+							fill: "white"
+						},
+						path: {
+							fillOpacity: 0.35
+						}
 					},
 					"+ .MuiInputLabel-root": {
 						marginLeft: "16px"
+					},
+					"&.readOnly .MuiSvgIcon-root": {
+						".SolaceCheckboxContainer": {
+							fill: BASE_COLORS.greys.grey19
+						},
+						".SolaceCheckboxCheckmark": {
+							fill: BASE_COLORS.greys.grey5
+						}
 					},
 					padding: "0px"
 				}
@@ -386,10 +400,20 @@ const theme = {
 					},
 					"&.Mui-disabled .MuiSvgIcon-root": {
 						".SolaceRadioContainer": {
-							fill: BASE_COLORS.greys.grey19
+							stroke: BASE_COLORS.greys.grey2
 						},
 						".SolaceRadioSelection": {
 							opacity: 0.35
+						}
+					},
+					"&.readOnly .MuiSvgIcon-root": {
+						".SolaceRadioContainer": {
+							fill: BASE_COLORS.greys.grey19,
+							opacity: 1
+						},
+						".SolaceRadioSelection": {
+							fill: BASE_COLORS.greys.grey5,
+							opacity: 1
 						}
 					},
 					padding: "0px"
