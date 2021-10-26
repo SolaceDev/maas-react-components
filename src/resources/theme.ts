@@ -536,7 +536,7 @@ const theme = {
 						},
 						".MuiDialogContent-root": {
 							fontSize: BASE_FONT_PX_SIZES.sm,
-							lineHeight: BASE_FONT_PX_SIZES.lg,
+							lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
 							color: BASE_COLORS.greys.grey14,
 							padding: "0px",
 							".MuiBox-root": {
