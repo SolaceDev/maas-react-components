@@ -329,7 +329,7 @@ const theme = {
 						fill: BASE_COLORS.greens.green1
 					},
 					".MuiSvgIcon-root line": {
-						fill: BASE_COLORS.greens.green1
+						stroke: BASE_COLORS.greens.green1
 					},
 					"&.Mui-disabled .MuiSvgIcon-root": {
 						rect: {
