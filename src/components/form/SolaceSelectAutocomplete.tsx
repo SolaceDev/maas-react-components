@@ -77,6 +77,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * The callback to notify container that the select closed (can use this to clear fetched options)
 	 */
 	onCloseCallback?: () => void;
+	/**
+	 * Used to determine if the option represents the given value.
+	 */
+	isOptionEqualToValueCallback?: (option: V, value: V) => boolean;
 }
 
 function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
@@ -99,7 +103,8 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 	dataTags,
 	options,
 	fetchOptionsCallback,
-	onCloseCallback
+	onCloseCallback,
+	isOptionEqualToValueCallback
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -219,6 +224,7 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 					}}
 				/>
 			)}
+			isOptionEqualToValue={isOptionEqualToValueCallback}
 		/>
 	);
 

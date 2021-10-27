@@ -179,7 +179,7 @@ const theme = {
 				root: {
 					color: BASE_COLORS.greys.grey11,
 					fontSize: "0.875rem",
-					fontWeight: "regular",
+					fontWeight: 400,
 					lineHeight: "150%",
 					"&.Mui-error": {
 						color: BASE_COLORS.greys.grey11
