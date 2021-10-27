@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
 	TableColumn,
 	TableRow,
@@ -93,15 +93,12 @@ export const useSolaceTable = (
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
 		preSelectedColumn ? preSelectedColumn : columns.find((col) => col.sortable)
 	);
-	const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(sortedColumn?.sortDirection || SORT_DIRECTION.ASC);
 	const [displayedColumns, setDisplayedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
 	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
 
 	const theme = useTheme();
-
-	const firstRender = useRef(true);
 
 	useEffect(() => {
 		selectionChangedCallback(selectedRows);
@@ -111,14 +108,6 @@ export const useSolaceTable = (
 			setSelectAll(false);
 		}
 	}, [selectedRows, rows.length, selectedRows.length, selectionChangedCallback]);
-
-	useEffect(() => {
-		if (!firstRender.current) {
-			sortCallback(sortedColumn);
-		} else {
-			firstRender.current = false;
-		}
-	}, [sortedColumn, sortedColumn?.sortDirection, sortCallback, sortDirection]);
 
 	function updateSelection(row: TableRow) {
 		handleSelectionChanged(row);
@@ -145,13 +134,13 @@ export const useSolaceTable = (
 		(col: TableColumn) => {
 			if (sortedColumn?.field === col.field) {
 				col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
-				setSortDirection(col.sortDirection);
 			} else {
-				setSortDirection(col.sortDirection ? col.sortDirection : SORT_DIRECTION.ASC);
+				col.sortDirection = SORT_DIRECTION.ASC;
 			}
 			setSortedColumn(col);
+			sortCallback(col);
 		},
-		[sortedColumn?.field]
+		[sortedColumn, sortCallback]
 	);
 
 	const handleSelectAllClick = useCallback(() => {
@@ -247,20 +236,19 @@ export const useSolaceTable = (
 								<StyledTableHeader
 									key={col.headerName}
 									className={`${col.sortable ? "sortable" : ""} ${col.hasNoCell ? "icon-column" : ""}`}
+									onClick={() => (col.sortable ? handleSort(col) : undefined)}
 								>
-									<>
-										{col.headerName}
-										{sortedColumn?.field === col.field &&
-											col.sortable &&
-											(col.sortDirection === SORT_DIRECTION.ASC ? (
-												<ArrowDropUp sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
-											) : (
-												<ArrowDropDown sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
-											))}
-										{sortedColumn?.field !== col.field && col.sortable && (
-											<Sort sx={{ marginLeft: theme.spacing(0.5) }} onClick={() => handleSort(col)} />
-										)}
-									</>
+									{col.headerName}
+									{sortedColumn?.field === col.field &&
+										col.sortable &&
+										(col.sortDirection === SORT_DIRECTION.ASC ? (
+											<ArrowDropUp sx={{ marginLeft: theme.spacing(0.25) }} />
+										) : (
+											<ArrowDropDown sx={{ marginLeft: theme.spacing(0.25) }} />
+										))}
+									{sortedColumn?.field !== col.field && col.sortable && (
+										<Sort sx={{ marginLeft: theme.spacing(0.5) }} />
+									)}
 								</StyledTableHeader>
 							)
 					),
