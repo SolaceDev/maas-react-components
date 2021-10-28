@@ -13,9 +13,7 @@ import {
 	StyledTableHeader
 } from "../table-utils";
 import { styled, useTheme } from "@material-ui/core";
-import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
-import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
-import Sort from "@material-ui/icons/Sort";
+import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 import { BASE_COLORS } from "../../../resources/colorPallette";
 
@@ -242,13 +240,11 @@ export const useSolaceTable = (
 									{sortedColumn?.field === col.field &&
 										col.sortable &&
 										(col.sortDirection === SORT_DIRECTION.ASC ? (
-											<ArrowDropUp sx={{ marginLeft: theme.spacing(0.25) }} />
+											<AscendingSortIcon opacity={0.8} />
 										) : (
-											<ArrowDropDown sx={{ marginLeft: theme.spacing(0.25) }} />
+											<DescendingSortIcon opacity={0.8} />
 										))}
-									{sortedColumn?.field !== col.field && col.sortable && (
-										<Sort sx={{ marginLeft: theme.spacing(0.5) }} />
-									)}
+									{sortedColumn?.field !== col.field && col.sortable && <UnsortedIcon />}
 								</StyledTableHeader>
 							)
 					),

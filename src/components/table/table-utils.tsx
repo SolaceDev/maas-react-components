@@ -50,6 +50,7 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: "1px solid #e8e8e8",
 	padding: theme.spacing(),
+	height: "22px",
 	".cursor-pointer": {
 		cursor: "pointer"
 	},
@@ -65,8 +66,10 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 export const StyledTableHeader = styled("th")(({ theme }) => ({
 	borderCollapse: "collapse",
 	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
+	fontSize: "16px", // need to pull form theme once we set the theme up to support this
+	fontWeight: 500,
 	minWidth: "30px",
-	minHeight: "32px",
+	height: "48px",
 	textAlign: "left",
 	"&.sortable": {
 		position: "relative",
