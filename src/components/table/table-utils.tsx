@@ -84,7 +84,7 @@ export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	top: "10px",
 	right: "10px",
 	padding: `${theme.spacing()} 0`,
-	border: `1px solid ${BASE_COLORS.greys.grey0}`,
+	border: `1px solid ${BASE_COLORS.greys.grey1}`,
 	borderRadius: "5px",
 	minHeight: "32px",
 	minWidth: "60px",
