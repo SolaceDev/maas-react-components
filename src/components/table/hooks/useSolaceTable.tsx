@@ -231,20 +231,21 @@ export const useSolaceTable = (
 					...displayedColumns.map(
 						(col) =>
 							!col.isHidden && (
-								<StyledTableHeader
-									key={col.headerName}
-									className={`${col.sortable ? "sortable" : ""} ${col.hasNoCell ? "icon-column" : ""}`}
-									onClick={() => (col.sortable ? handleSort(col) : undefined)}
-								>
-									{col.headerName}
-									{sortedColumn?.field === col.field &&
-										col.sortable &&
-										(col.sortDirection === SORT_DIRECTION.ASC ? (
-											<AscendingSortIcon opacity={0.8} />
-										) : (
-											<DescendingSortIcon opacity={0.8} />
-										))}
-									{sortedColumn?.field !== col.field && col.sortable && <UnsortedIcon />}
+								<StyledTableHeader key={col.headerName} className={`${col.hasNoCell ? "icon-column" : ""}`}>
+									<span
+										className={`${col.sortable ? "sortable" : ""}`}
+										onClick={() => (col.sortable ? handleSort(col) : undefined)}
+									>
+										{col.headerName}
+										{sortedColumn?.field === col.field &&
+											col.sortable &&
+											(col.sortDirection === SORT_DIRECTION.ASC ? (
+												<AscendingSortIcon opacity={0.8} />
+											) : (
+												<DescendingSortIcon opacity={0.8} />
+											))}
+										{sortedColumn?.field !== col.field && col.sortable && <UnsortedIcon />}
+									</span>
 								</StyledTableHeader>
 							)
 					),
