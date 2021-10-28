@@ -95,7 +95,7 @@ const theme = {
 						color: BASE_COLORS.greys.grey3
 					},
 					"&:hover": {
-						backgroundColor: BASE_COLORS.greys.grey0
+						backgroundColor: BASE_COLORS.greys.grey1
 					},
 					"&:active": {
 						backgroundColor: BASE_COLORS.greys.grey19
@@ -272,12 +272,12 @@ const theme = {
 						backgroundColor: BASE_COLORS.whites.white1,
 						".MuiOutlinedInput-notchedOutline": {
 							border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-							backgroundColor: BASE_COLORS.greys.grey1
+							backgroundColor: BASE_COLORS.greys.grey0
 						},
 						"&:hover": {
 							".MuiOutlinedInput-notchedOutline": {
 								border: `solid 1px ${BASE_COLORS.greys.grey5}`,
-								backgroundColor: BASE_COLORS.greys.grey1
+								backgroundColor: BASE_COLORS.greys.grey0
 							}
 						},
 						"&:hover .MuiOutlinedInput-input:read-only": {
@@ -562,12 +562,12 @@ const theme = {
 			main: BASE_COLORS.reds.red1
 		},
 		primary: {
-			contrastText: BASE_COLORS.greys.grey1,
+			contrastText: BASE_COLORS.greys.grey0,
 			dark: BASE_COLORS.greens.green5,
 			main: BASE_COLORS.greens.green2
 		},
 		secondary: {
-			contrastText: BASE_COLORS.greys.grey1,
+			contrastText: BASE_COLORS.greys.grey0,
 			main: BASE_COLORS.greens.green3
 		},
 		text: {

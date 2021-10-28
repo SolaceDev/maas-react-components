@@ -21,7 +21,7 @@ import { BASE_COLORS } from "../../../resources/colorPallette";
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	border: `1px solid ${BASE_COLORS.greys.grey0}`,
+	border: `1px solid ${BASE_COLORS.greys.grey1}`,
 	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
 	marginLeft: theme.spacing(0.5),
 	height: "32px",
