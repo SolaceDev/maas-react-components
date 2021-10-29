@@ -71,7 +71,7 @@ export const StyledTableHeader = styled("th")(({ theme }) => ({
 	minWidth: "30px",
 	height: "48px",
 	textAlign: "left",
-	"&.sortable": {
+	"& .sortable": {
 		position: "relative",
 		cursor: "pointer",
 		marginTop: theme.spacing(0.5)
