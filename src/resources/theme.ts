@@ -552,6 +552,19 @@ const theme = {
 					}
 				}
 			}
+		},
+		MuiChip: {
+			styleOverrides: {
+				root: {
+					borderRadius: "40px",
+					"& .MuiChip-label": {
+						fontSize: BASE_FONT_PX_SIZES.sm
+					}
+				},
+				filled: {
+					backgroundColor: BASE_COLORS.greys.grey2
+				}
+			}
 		}
 	},
 	palette: {
