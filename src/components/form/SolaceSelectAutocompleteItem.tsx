@@ -10,6 +10,13 @@ export interface SolaceSelectAutocompleteItemProps {
 
 export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option?.name;
 
+export const isOptionEqual = (
+	option: SolaceSelectAutocompleteItemProps,
+	value: SolaceSelectAutocompleteItemProps
+): boolean => {
+	return option?.value === value?.value;
+};
+
 function SolaceSelectAutocompleteItem({
 	name,
 	subText,

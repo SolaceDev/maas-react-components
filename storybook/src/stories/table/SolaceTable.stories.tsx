@@ -201,9 +201,22 @@ export const DefaultTable = (): JSX.Element => {
 
 export const SingleSelectionTable = (): JSX.Element => {
 	const [tableRows, setRows] = useState([...sortData(columns[0])]);
-	const handleSort = useCallback((selectedColumn) => {
-		setRows([...sortData(selectedColumn)]);
-	}, []);
+
+	const handleSort = useCallback(
+		(selectedColumn) => {
+			action("columnSort");
+			const originalData = [...tableRows];
+			const sortedData = originalData.sort((a, b) => {
+				if (selectedColumn.sortDirection === SORT_DIRECTION.ASC) {
+					return a[selectedColumn.field] > b[selectedColumn.field] ? 1 : -1;
+				} else {
+					return a[selectedColumn.field] > b[selectedColumn.field] ? -1 : 1;
+				}
+			});
+			setRows(sortedData);
+		},
+		[tableRows]
+	);
 
 	return (
 		<div>

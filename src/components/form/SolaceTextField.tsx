@@ -31,10 +31,6 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 */
 	helperText?: string | JSX.Element;
 	/**
-	 * Short hint displayed in the `input` before user enters a value
-	 */
-	placeholder?: string;
-	/**
 	 * The maximum number of characters which can be typed as the `input` value
 	 */
 	maxLength?: number;
@@ -86,7 +82,6 @@ function SolaceTextField({
 	label,
 	value,
 	helperText,
-	placeholder,
 	maxLength = constants.maxLength,
 	type = "text",
 	size = 50,
@@ -148,7 +143,6 @@ function SolaceTextField({
 				required: isRequired
 			}}
 			margin="dense"
-			placeholder={placeholder}
 			value={textValue}
 			onChange={handleChange}
 		/>

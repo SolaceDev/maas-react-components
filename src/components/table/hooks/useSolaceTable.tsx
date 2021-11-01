@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
 	TableColumn,
 	TableRow,
@@ -13,15 +13,13 @@ import {
 	StyledTableHeader
 } from "../table-utils";
 import { styled, useTheme } from "@material-ui/core";
-import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
-import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
-import Sort from "@material-ui/icons/Sort";
+import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 import { BASE_COLORS } from "../../../resources/colorPallette";
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	border: `1px solid ${BASE_COLORS.greys.grey0}`,
+	border: `1px solid ${BASE_COLORS.greys.grey1}`,
 	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
 	marginLeft: theme.spacing(0.5),
 	height: "32px",
@@ -93,15 +91,12 @@ export const useSolaceTable = (
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
 		preSelectedColumn ? preSelectedColumn : columns.find((col) => col.sortable)
 	);
-	const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(sortedColumn?.sortDirection || SORT_DIRECTION.ASC);
 	const [displayedColumns, setDisplayedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
 	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
 
 	const theme = useTheme();
-
-	const firstRender = useRef(true);
 
 	useEffect(() => {
 		selectionChangedCallback(selectedRows);
@@ -111,14 +106,6 @@ export const useSolaceTable = (
 			setSelectAll(false);
 		}
 	}, [selectedRows, rows.length, selectedRows.length, selectionChangedCallback]);
-
-	useEffect(() => {
-		if (!firstRender.current) {
-			sortCallback(sortedColumn);
-		} else {
-			firstRender.current = false;
-		}
-	}, [sortedColumn, sortedColumn?.sortDirection, sortCallback, sortDirection]);
 
 	function updateSelection(row: TableRow) {
 		handleSelectionChanged(row);
@@ -145,13 +132,13 @@ export const useSolaceTable = (
 		(col: TableColumn) => {
 			if (sortedColumn?.field === col.field) {
 				col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
-				setSortDirection(col.sortDirection);
 			} else {
-				setSortDirection(col.sortDirection ? col.sortDirection : SORT_DIRECTION.ASC);
+				col.sortDirection = SORT_DIRECTION.ASC;
 			}
 			setSortedColumn(col);
+			sortCallback(col);
 		},
-		[sortedColumn?.field]
+		[sortedColumn, sortCallback]
 	);
 
 	const handleSelectAllClick = useCallback(() => {
@@ -244,23 +231,21 @@ export const useSolaceTable = (
 					...displayedColumns.map(
 						(col) =>
 							!col.isHidden && (
-								<StyledTableHeader
-									key={col.headerName}
-									className={`${col.sortable ? "sortable" : ""} ${col.hasNoCell ? "icon-column" : ""}`}
-								>
-									<>
+								<StyledTableHeader key={col.headerName} className={`${col.hasNoCell ? "icon-column" : ""}`}>
+									<span
+										className={`${col.sortable ? "sortable" : ""}`}
+										onClick={() => (col.sortable ? handleSort(col) : undefined)}
+									>
 										{col.headerName}
 										{sortedColumn?.field === col.field &&
 											col.sortable &&
 											(col.sortDirection === SORT_DIRECTION.ASC ? (
-												<ArrowDropUp sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
+												<AscendingSortIcon opacity={0.8} />
 											) : (
-												<ArrowDropDown sx={{ marginLeft: theme.spacing(0.25) }} onClick={() => handleSort(col)} />
+												<DescendingSortIcon opacity={0.8} />
 											))}
-										{sortedColumn?.field !== col.field && col.sortable && (
-											<Sort sx={{ marginLeft: theme.spacing(0.5) }} onClick={() => handleSort(col)} />
-										)}
-									</>
+										{sortedColumn?.field !== col.field && col.sortable && <UnsortedIcon />}
+									</span>
 								</StyledTableHeader>
 							)
 					),

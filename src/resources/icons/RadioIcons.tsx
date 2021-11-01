@@ -15,7 +15,7 @@ export const RestingRadioIcon = (
 
 export const SelectedRadioIcon = (
 	<SvgIcon width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`}>
-		<Container></Container>
+		<Container />
 		<circle className="SolaceRadioSelection" cx={SIZE / 2} cy={SIZE / 2} r={SIZE / 4}></circle>
 	</SvgIcon>
 );

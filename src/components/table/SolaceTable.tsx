@@ -79,7 +79,7 @@ const TableWrapper = styled("div")(({ theme }) => ({
 	display: "flex",
 	flexDirection: "column",
 	borderRadius: theme.shape.borderRadius,
-	border: `1px solid ${BASE_COLORS.greys.grey0}`,
+	border: `1px solid ${BASE_COLORS.greys.grey1}`,
 	width: "100%",
 	height: "100%",
 	minHeight: "200px",

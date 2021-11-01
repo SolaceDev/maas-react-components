@@ -1,16 +1,13 @@
-import { Chip, ChipProps, styled } from "@material-ui/core";
+import { Chip } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import React from "react";
 
-const StyledChip = styled(Chip)(() => ({
-	"& .MuiChip-deleteIcon": {
-		color: "inherit"
-	}
-}));
-export default function SolaceChip(props: ChipProps): JSX.Element {
-	return <StyledChip {...props} deleteIcon={<CloseIcon />} />;
+export interface SolaceChipProps {
+	label?: string;
+	variant?: "filled" | "outlined";
+	disabled?: boolean;
 }
 
-SolaceChip.defaultProps = {
-	size: "small"
-};
+export default function SolaceChip({ label, variant = "filled", disabled = false }: SolaceChipProps): JSX.Element {
+	return <Chip label={label} variant={variant} size="small" disabled={disabled} deleteIcon={<CloseIcon />} />;
+}

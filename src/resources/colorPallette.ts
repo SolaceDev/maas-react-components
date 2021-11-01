@@ -11,8 +11,8 @@ export const BASE_COLORS = {
 		green8: "#005E5F"
 	},
 	greys: {
-		grey0: "rgba(0, 0, 0, 0.05)",
-		grey1: "rgba(0, 0, 0, 0)", // white
+		grey0: "rgba(0, 0, 0, 0)", // white
+		grey1: "rgba(0, 0, 0, 0.05)",
 		grey2: "rgba(0, 0, 0, 0.1)",
 		grey3: "rgba(0, 0, 0, 0.2)",
 		grey4: "rgba(0, 0, 0, 0.3)",

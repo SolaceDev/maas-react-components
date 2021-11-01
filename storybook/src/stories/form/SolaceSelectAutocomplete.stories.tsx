@@ -7,6 +7,7 @@ import {
 	SolaceSelectAutocomplete,
 	SolaceSelectAutocompleteItem,
 	getSolaceSelectAutocompleteOptionLabel,
+	isSolaceSelectAutocompleteOptionEqual,
 	SolaceSelectAutocompleteItemProps
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
@@ -121,6 +122,7 @@ DefaultAutocomplete.args = {
 	onChange: action("callback"),
 	itemComponent: SolaceSelectAutocompleteItem,
 	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
 	itemMappingCallback: (option) => option,
 	title: "Demo Select",
 	id: "demoSelectId",
@@ -300,6 +302,7 @@ Disabled.args = {
 	onChange: action("callback"),
 	itemComponent: SolaceSelectAutocompleteItem,
 	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
 	itemMappingCallback: (option) => option,
 	name: "demoSelect",
 	title: "Demo Select Field",

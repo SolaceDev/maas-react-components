@@ -3,6 +3,7 @@ import { Box } from "@material-ui/system";
 import React from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { ErrorIcon } from "../../resources/icons/ErrorIcon";
+import { BASE_FONT_PX_SIZES } from "../../resources/typography";
 
 export interface ErrorTextProps extends SolaceComponentProps {
 	children: string | JSX.Element;
@@ -10,9 +11,10 @@ export interface ErrorTextProps extends SolaceComponentProps {
 
 function ErrorText({ children }: ErrorTextProps): JSX.Element {
 	const theme = useTheme();
+	const size = theme.typography.subtitle1.fontSize?.toString();
 	return (
 		<Box display="flex" flexDirection="row" alignItems="center">
-			<ErrorIcon size={16} fill={theme.palette.error.main}></ErrorIcon>
+			<ErrorIcon size={size ? parseInt(size) : BASE_FONT_PX_SIZES.md} fill={theme.palette.error.main}></ErrorIcon>
 			<FormLabel
 				sx={{ color: theme.palette.error.main, fontSize: theme.typography.caption, marginLeft: theme.spacing(0.5) }}
 			>

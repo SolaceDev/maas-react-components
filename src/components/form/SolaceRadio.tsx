@@ -54,6 +54,10 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the value of the `radio` is changed
 	 */
 	onChange?: (event: SolaceRadioChangeEvent) => void;
+	/**
+	 * Boolean flag to set the radio to readOnly
+	 */
+	readOnly: boolean;
 }
 
 interface LabelElementProps {
@@ -66,8 +70,11 @@ function LabelElement({ children, bold, large }: LabelElementProps) {
 	const theme = useTheme();
 	const component = bold ? "strong" : "span";
 	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
+	// 24 px is the row height in the grid because it's the height of the svg
+	// It needs to be 24 px, because otherwise the text won't be centered
+	// Attempts to find another solution: 1
 	return (
-		<Box component={component} sx={{ fontSize: typography.fontSize, lineHeight: typography.lineHeight }}>
+		<Box component={component} sx={{ fontSize: typography.fontSize, lineHeight: "24px" }}>
 			{children}
 		</Box>
 	);
@@ -86,7 +93,8 @@ function SolaceRadio({
 	isLargeLabel = false,
 	onChange,
 	dataQa,
-	dataTags
+	dataTags,
+	readOnly = false
 }: SolaceRadioProps): JSX.Element {
 	const theme = useTheme();
 	const [selected, setSelected] = useState(isChecked);
@@ -133,7 +141,8 @@ function SolaceRadio({
 				}
 				role="radio"
 				title={title}
-				disabled={isDisabled}
+				className={readOnly ? "readOnly" : undefined}
+				disabled={isDisabled || readOnly}
 				disableRipple
 				checked={selected}
 				onChange={handleChange}

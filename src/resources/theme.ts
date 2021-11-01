@@ -95,7 +95,7 @@ const theme = {
 						color: BASE_COLORS.greys.grey3
 					},
 					"&:hover": {
-						backgroundColor: BASE_COLORS.greys.grey0
+						backgroundColor: BASE_COLORS.greys.grey1
 					},
 					"&:active": {
 						backgroundColor: BASE_COLORS.greys.grey19
@@ -158,7 +158,7 @@ const theme = {
 					color: BASE_COLORS.greens.green2
 				},
 				root: {
-					color: BASE_COLORS.greys.grey11,
+					color: BASE_COLORS.greys.grey14,
 					fontSize: "0.875rem",
 					fontWeight: 500,
 					lineHeight: "150%",
@@ -167,6 +167,25 @@ const theme = {
 					},
 					"&.Mui-disabled": {
 						color: BASE_COLORS.greys.grey8
+					}
+				}
+			}
+		},
+		MuiFormLabel: {
+			styleOverrides: {
+				asterisk: {
+					color: BASE_COLORS.greens.green2
+				},
+				root: {
+					color: BASE_COLORS.greys.grey11,
+					fontSize: "0.875rem",
+					fontWeight: 400,
+					lineHeight: "150%",
+					"&.Mui-error": {
+						color: BASE_COLORS.greys.grey11
+					},
+					"&.Mui-disabled": {
+						color: BASE_COLORS.greys.grey9
 					}
 				}
 			}
@@ -253,12 +272,12 @@ const theme = {
 						backgroundColor: BASE_COLORS.whites.white1,
 						".MuiOutlinedInput-notchedOutline": {
 							border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-							backgroundColor: BASE_COLORS.greys.grey1
+							backgroundColor: BASE_COLORS.greys.grey0
 						},
 						"&:hover": {
 							".MuiOutlinedInput-notchedOutline": {
 								border: `solid 1px ${BASE_COLORS.greys.grey5}`,
-								backgroundColor: BASE_COLORS.greys.grey1
+								backgroundColor: BASE_COLORS.greys.grey0
 							}
 						},
 						"&:hover .MuiOutlinedInput-input:read-only": {
@@ -297,7 +316,8 @@ const theme = {
 								border: `solid 1px ${BASE_COLORS.greys.grey2}`
 							},
 							input: {
-								webkitTextFillColor: BASE_COLORS.greys.grey14,
+								WebkitTextFillColor: BASE_COLORS.greys.grey5,
+								color: BASE_COLORS.greys.grey5,
 								padding: "8px"
 							}
 						}
@@ -329,10 +349,31 @@ const theme = {
 						fill: BASE_COLORS.greens.green1
 					},
 					"&.Mui-disabled .MuiSvgIcon-root path": {
-						fillOpacity: "0.35"
+						fillOpacity: "0.35",
+						fill: "white"
+					},
+					".MuiSvgIcon-root line": {
+						stroke: BASE_COLORS.greens.green1
+					},
+					"&.Mui-disabled .MuiSvgIcon-root": {
+						rect: {
+							fillOpacity: 0.35,
+							fill: "white"
+						},
+						path: {
+							fillOpacity: 0.35
+						}
 					},
 					"+ .MuiInputLabel-root": {
 						marginLeft: "16px"
+					},
+					"&.readOnly .MuiSvgIcon-root": {
+						".SolaceCheckboxContainer": {
+							fill: BASE_COLORS.greys.grey19
+						},
+						".SolaceCheckboxCheckmark": {
+							fill: BASE_COLORS.greys.grey5
+						}
 					},
 					padding: "0px"
 				}
@@ -366,6 +407,16 @@ const theme = {
 							opacity: 0.35
 						}
 					},
+					"&.readOnly .MuiSvgIcon-root": {
+						".SolaceRadioContainer": {
+							fill: BASE_COLORS.greys.grey19,
+							opacity: 1
+						},
+						".SolaceRadioSelection": {
+							fill: BASE_COLORS.greys.grey5,
+							opacity: 1
+						}
+					},
 					padding: "0px"
 				}
 			}
@@ -397,6 +448,9 @@ const theme = {
 					},
 					".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
 						padding: "0px"
+					},
+					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
+						background: "transparent"
 					}
 				},
 				popper: {
@@ -483,7 +537,7 @@ const theme = {
 						},
 						".MuiDialogContent-root": {
 							fontSize: BASE_FONT_PX_SIZES.sm,
-							lineHeight: BASE_FONT_PX_SIZES.lg,
+							lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
 							color: BASE_COLORS.greys.grey14,
 							padding: "0px",
 							".MuiBox-root": {
@@ -499,6 +553,19 @@ const theme = {
 					}
 				}
 			}
+		},
+		MuiChip: {
+			styleOverrides: {
+				root: {
+					borderRadius: "40px",
+					"& .MuiChip-label": {
+						fontSize: BASE_FONT_PX_SIZES.sm
+					}
+				},
+				filled: {
+					backgroundColor: BASE_COLORS.greys.grey2
+				}
+			}
 		}
 	},
 	palette: {
@@ -509,12 +576,12 @@ const theme = {
 			main: BASE_COLORS.reds.red1
 		},
 		primary: {
-			contrastText: BASE_COLORS.greys.grey1,
+			contrastText: BASE_COLORS.greys.grey0,
 			dark: BASE_COLORS.greens.green5,
 			main: BASE_COLORS.greens.green2
 		},
 		secondary: {
-			contrastText: BASE_COLORS.greys.grey1,
+			contrastText: BASE_COLORS.greys.grey0,
 			main: BASE_COLORS.greens.green3
 		},
 		text: {

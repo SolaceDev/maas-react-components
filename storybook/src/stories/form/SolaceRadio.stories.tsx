@@ -104,3 +104,14 @@ Disabled.args = {
 	isDisabled: true,
 	value: "someValue"
 };
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+	onChange: action("callback"),
+	name: "demoRadio",
+	title: "Demo Radio",
+	label: "Inline Label",
+	isChecked: true,
+	readOnly: true,
+	value: "someValue"
+};

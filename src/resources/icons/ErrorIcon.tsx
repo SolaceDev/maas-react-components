@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "./IconProps";
 
-export function ErrorIcon({ size = 16, fill = "rgba(0, 0, 0, 0.8)" }: IconProps): JSX.Element {
+export function ErrorIcon({ size, fill }: IconProps): JSX.Element {
 	return (
 		<svg width={`${size}px`} height={`${size}px`} viewBox={`0 0 24 24`}>
 			<path

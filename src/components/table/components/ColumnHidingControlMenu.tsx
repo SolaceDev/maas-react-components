@@ -12,7 +12,7 @@ export const ColumnHidingContainer = styled("div")(({ theme }) => ({
 	top: "30px",
 	right: "40px",
 	padding: `${theme.spacing()} 0`,
-	border: `1px solid ${BASE_COLORS.greys.grey0}`,
+	border: `1px solid ${BASE_COLORS.greys.grey1}`,
 	borderRadius: "2px",
 	minHeight: "32px",
 	minWidth: "60px",

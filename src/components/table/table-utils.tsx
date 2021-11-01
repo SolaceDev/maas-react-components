@@ -50,6 +50,7 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: "1px solid #e8e8e8",
 	padding: theme.spacing(),
+	height: "22px",
 	".cursor-pointer": {
 		cursor: "pointer"
 	},
@@ -65,10 +66,12 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 export const StyledTableHeader = styled("th")(({ theme }) => ({
 	borderCollapse: "collapse",
 	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
+	fontSize: "16px", // need to pull form theme once we set the theme up to support this
+	fontWeight: 500,
 	minWidth: "30px",
-	minHeight: "32px",
+	height: "48px",
 	textAlign: "left",
-	"&.sortable": {
+	"& .sortable": {
 		position: "relative",
 		cursor: "pointer",
 		marginTop: theme.spacing(0.5)
@@ -84,7 +87,7 @@ export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	top: "10px",
 	right: "10px",
 	padding: `${theme.spacing()} 0`,
-	border: `1px solid ${BASE_COLORS.greys.grey0}`,
+	border: `1px solid ${BASE_COLORS.greys.grey1}`,
 	borderRadius: "5px",
 	minHeight: "32px",
 	minWidth: "60px",
