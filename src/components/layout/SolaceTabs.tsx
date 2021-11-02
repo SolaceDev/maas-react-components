@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box, Tabs, Tab } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
 
-interface TabProps extends SolaceComponentProps {
+interface TabProps {
 	/**
 	 * Label of the tab
 	 */
@@ -12,11 +12,11 @@ interface TabProps extends SolaceComponentProps {
 	 */
 	value: string;
 	/**
-	 * The anchor tag of the tab. For tabs that have different routes
+	 * The route pathname of the tab. For tabs that have different routes.
 	 */
 	href?: string;
 	/**
-	 * Optional click handler if href is not used for navigation
+	 * Optional click handler if routes is not used for navigation. For in-page navigation.
 	 */
 	onTabClick?: (tabValue: string) => void;
 	/**
@@ -25,7 +25,7 @@ interface TabProps extends SolaceComponentProps {
 	disabled?: boolean;
 }
 
-interface SolaceTabsProps {
+interface SolaceTabsProps extends SolaceComponentProps {
 	tabs: TabProps[];
 	/**
 	 * The value of the active tab
@@ -44,7 +44,7 @@ function AnchorTab(props: TabProps) {
 					props.onTabClick(props.value);
 				}
 			}}
-			sx={{ height: "100%", textTransform: "none", fontWeight: "normal" }}
+			sx={{ height: "100%" }}
 			{...props}
 		/>
 	);
