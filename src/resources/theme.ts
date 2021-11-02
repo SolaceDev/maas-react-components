@@ -364,7 +364,7 @@ const theme = {
 							fillOpacity: 0.35
 						}
 					},
-					"+ .MuiInputLabel-root": {
+					"+ .MuiFormLabel-root": {
 						marginLeft: "16px"
 					},
 					"&.readOnly .MuiSvgIcon-root": {
