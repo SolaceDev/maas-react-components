@@ -1,9 +1,8 @@
-import { Box, TextField, useTheme } from "@material-ui/core";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import { TextField, useTheme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import SolaceLabel from "./SolaceLabel";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
+import FormChildBase from "./FormChildBase";
 
 export interface SolaceTextAreaChangeEvent {
 	name: string;
@@ -118,84 +117,56 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 		}
 	};
 
-	const getHelperText = () => (
-		<Box display="flex">
-			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
-			{helperText}
-		</Box>
-	);
-
 	const getId = () => {
 		return id ? id : name;
 	};
 
 	const textField = () => (
-		<React.Fragment>
-			<TextField
-				id={`${getId()}`}
-				name={name}
-				inputProps={{
-					maxLength: maxLength,
-					"data-qa": dataQa,
-					"data-tags": dataTags,
-					readOnly: isReadOnly,
-					"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
-					"aria-labelledby": label ? `${getId()}-label` : "",
-					"aria-readonly": isReadOnly,
-					role: "textbox",
-					title: title
-				}}
-				type="text"
-				autoComplete="off"
-				autoFocus={autoFocus}
-				minRows={minRows}
-				maxRows={maxRows}
-				multiline={true}
-				InputProps={{
-					sx: { height: theme.spacing(4) },
-					disabled: isDisabled,
-					required: isRequired
-				}}
-				FormHelperTextProps={{
-					variant: "standard",
-					error: hasErrors
-				}}
-				error={hasErrors}
-				helperText={getHelperText()}
-				margin="dense"
-				placeholder={placeholder}
-				value={textValue}
-				onChange={handleChange}
-			/>
-		</React.Fragment>
+		<TextField
+			id={`${getId()}`}
+			name={name}
+			inputProps={{
+				maxLength: maxLength,
+				"data-qa": dataQa,
+				"data-tags": dataTags,
+				readOnly: isReadOnly,
+				"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
+				"aria-labelledby": label ? `${getId()}-label` : "",
+				"aria-readonly": isReadOnly,
+				role: "textbox",
+				title: title
+			}}
+			type="text"
+			autoComplete="off"
+			autoFocus={autoFocus}
+			minRows={minRows}
+			maxRows={maxRows}
+			multiline={true}
+			InputProps={{
+				sx: { height: theme.spacing(4) },
+				disabled: isDisabled,
+				required: isRequired
+			}}
+			margin="dense"
+			placeholder={placeholder}
+			value={textValue}
+			onChange={handleChange}
+		/>
 	);
 
 	return (
-		<React.Fragment>
-			{!isInlineLabel && label && (
-				<Box marginTop={theme.spacing()}>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
-						{label}
-					</SolaceLabel>
-					{textField()}
-				</Box>
-			)}
-			{isInlineLabel && label && (
-				<Box
-					marginBottom={theme.spacing()}
-					display="flex"
-					flexDirection="row"
-					justifyContent="space-between"
-					alignItems="flex-start"
-				>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
-						{label}
-					</SolaceLabel>
-					{textField()}
-				</Box>
-			)}
-			{!label && textField()}
-		</React.Fragment>
+		<FormChildBase
+			id={getId()}
+			label={label}
+			helperText={helperText}
+			errorText={hasErrors ? helperText : undefined}
+			isDisabled={isDisabled}
+			isReadOnly={isReadOnly}
+			isRequired={isRequired}
+			isInlineLabel={isInlineLabel}
+		>
+			{textField()}
+		</FormChildBase>
 	);
 };
 
