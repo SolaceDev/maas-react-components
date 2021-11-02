@@ -55,7 +55,7 @@ function SolaceTabs({ tabs, activeTabValue }: SolaceTabsProps): JSX.Element {
 		<Box sx={{ width: "100%" }}>
 			<Tabs value={activeTabValue}>
 				{tabs.map((item: TabProps) => (
-					<AnchorTab {...item} key={item.value} />
+					<AnchorTab {...item} key={`anchroTab-${item.value}`} />
 				))}
 			</Tabs>
 		</Box>
