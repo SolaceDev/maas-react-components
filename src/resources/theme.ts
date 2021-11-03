@@ -569,8 +569,8 @@ const theme = {
 		MuiTab: {
 			styleOverrides: {
 				root: {
-					textTransform: "none",
-					fontWeight: "normal"
+					textTransform: "none" as const,
+					fontWeight: 400
 				}
 			}
 		}
