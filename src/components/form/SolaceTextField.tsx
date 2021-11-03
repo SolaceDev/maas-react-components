@@ -1,8 +1,9 @@
-import { TextField, useTheme } from "@material-ui/core";
+import { Box, TextField, useTheme } from "@material-ui/core";
+import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
-import FormChildBase from "./FormChildBase";
+import SolaceLabel from "./SolaceLabel";
 
 export interface SolaceTextFieldChangeEvent {
 	name: string;
@@ -112,55 +113,82 @@ function SolaceTextField({
 		}
 	};
 
+	const getHelperText = () => (
+		<Box display="flex">
+			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
+			{helperText}
+		</Box>
+	);
+
 	const getId = () => {
 		return id ? id : name;
 	};
 
 	const textField = () => (
-		<TextField
-			id={`${getId()}`}
-			name={name}
-			inputProps={{
-				maxLength: maxLength,
-				size: size,
-				"data-qa": dataQa,
-				"data-tags": dataTags,
-				"data-lpignore": true,
-				readOnly: isReadOnly,
-				"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
-				"aria-labelledby": label ? `${getId()}-label` : "",
-				"aria-readonly": isReadOnly,
-				role: "textbox",
-				title: title
-			}}
-			type={type}
-			error={hasErrors}
-			autoComplete="off"
-			autoFocus={autoFocus}
-			InputProps={{
-				sx: { height: theme.spacing(4) },
-				disabled: isDisabled,
-				required: isRequired
-			}}
-			margin="dense"
-			value={textValue}
-			onChange={handleChange}
-		/>
+		<React.Fragment>
+			<TextField
+				id={`${getId()}`}
+				name={name}
+				inputProps={{
+					maxLength: maxLength,
+					size: size,
+					"data-qa": dataQa,
+					"data-tags": dataTags,
+					"data-lpignore": true,
+					readOnly: isReadOnly,
+					"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
+					"aria-labelledby": label ? `${getId()}-label` : "",
+					"aria-readonly": isReadOnly,
+					role: "textbox",
+					title: title
+				}}
+				type={type}
+				error={hasErrors}
+				autoComplete="off"
+				autoFocus={autoFocus}
+				InputProps={{
+					sx: { height: theme.spacing(4) },
+					disabled: isDisabled,
+					required: isRequired
+				}}
+				FormHelperTextProps={{
+					variant: "standard",
+					error: hasErrors
+				}}
+				helperText={getHelperText()}
+				margin="dense"
+				value={textValue}
+				onChange={handleChange}
+			/>
+		</React.Fragment>
 	);
 
 	return (
-		<FormChildBase
-			id={getId()}
-			label={label}
-			helperText={helperText}
-			errorText={hasErrors ? helperText : undefined}
-			isDisabled={isDisabled}
-			isReadOnly={isReadOnly}
-			isRequired={isRequired}
-			isInlineLabel={isInlineLabel}
-		>
-			{textField()}
-		</FormChildBase>
+		<React.Fragment>
+			{!isInlineLabel && label && (
+				<Box marginTop={theme.spacing()}>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled || isReadOnly}>
+						{label}
+					</SolaceLabel>
+					{textField()}
+				</Box>
+			)}
+			{isInlineLabel && label && (
+				<Box
+					marginBottom={theme.spacing()}
+					display="flex"
+					flexDirection="row"
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled || isReadOnly}>
+						{label}
+					</SolaceLabel>
+					{textField()}
+				</Box>
+			)}
+			{!label && textField()}
+		</React.Fragment>
 	);
 }
 

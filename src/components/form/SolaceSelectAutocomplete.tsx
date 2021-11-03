@@ -1,7 +1,8 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Box, Autocomplete, TextField, useTheme } from "@material-ui/core";
+import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import SolaceComponentProps from "../SolaceComponentProps";
-import FormChildBase from "./FormChildBase";
+import SolaceLabel from "./SolaceLabel";
 
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
 	/**
@@ -150,6 +151,13 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 		return id ? id : name;
 	};
 
+	const getHelperText = () => (
+		<Box display="flex">
+			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
+			{helperText}
+		</Box>
+	);
+
 	const select = () => (
 		<Autocomplete
 			id={getId()}
@@ -194,6 +202,8 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 				<TextField
 					{...params}
 					title={title}
+					error={hasErrors}
+					helperText={getHelperText()}
 					inputProps={{
 						...params.inputProps,
 						"data-qa": dataQa,
@@ -219,18 +229,31 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 	);
 
 	return (
-		<FormChildBase
-			id={getId()}
-			label={label}
-			helperText={helperText}
-			errorText={hasErrors ? helperText : undefined}
-			isDisabled={isDisabled}
-			isReadOnly={isReadOnly}
-			isRequired={isRequired}
-			isInlineLabel={isInlineLabel}
-		>
-			{select()}
-		</FormChildBase>
+		<React.Fragment>
+			{!isInlineLabel && label && (
+				<Box marginTop={theme.spacing()}>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
+						{label}
+					</SolaceLabel>
+					{select()}
+				</Box>
+			)}
+			{isInlineLabel && label && (
+				<Box
+					marginBottom={theme.spacing()}
+					display="flex"
+					flexDirection="row"
+					justifyContent="space-between"
+					alignItems="flex-start"
+				>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
+						{label}
+					</SolaceLabel>
+					{select()}
+				</Box>
+			)}
+			{!label && select()}
+		</React.Fragment>
 	);
 }
 
