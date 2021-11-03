@@ -1,8 +1,8 @@
-import { Box, FormHelperText, useTheme, RadioGroup, Grid } from "@material-ui/core";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import { Box, RadioGroup, Grid } from "@material-ui/core";
+import { useTheme } from "@material-ui/system";
 import React, { useEffect, useState } from "react";
-import SolaceLabel from "./SolaceLabel";
 import SolaceComponentProps from "../SolaceComponentProps";
+import FormChildBase from "./FormChildBase";
 
 export interface SolaceRadioGroupChangeEvent {
 	name: string;
@@ -47,6 +47,10 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	 */
 	isDisabled?: boolean;
 	/**
+	 * Boolean flag to disable the `radio group`
+	 */
+	isReadOnly?: boolean;
+	/**
 	 * Callback function to trigger whenever the value of the `radio group` is changed
 	 */
 	onChange?: (event: SolaceRadioGroupChangeEvent) => void;
@@ -63,9 +67,10 @@ function SolaceRadioGroup({
 	value,
 	helperText,
 	hasErrors = false,
-	isInlineLabel = false,
+	isReadOnly = false,
 	isRequired = false,
 	isDisabled = false,
+	isInlineLabel = false,
 	onChange,
 	children
 }: SolaceRadioGroupProps): JSX.Element {
@@ -86,13 +91,6 @@ function SolaceRadioGroup({
 		}
 	};
 
-	const getHelperText = () => (
-		<Box display="flex">
-			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
-			{helperText}
-		</Box>
-	);
-
 	if (!id) {
 		id = name;
 	}
@@ -105,56 +103,30 @@ function SolaceRadioGroup({
 		));
 
 		return (
-			<React.Fragment>
-				<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
-					<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
-						<Grid container spacing={1.5} direction="column">
-							{childItems}
-						</Grid>
-					</RadioGroup>
-				</Box>
-				{helperText && (
-					<FormHelperText error={hasErrors} component="div" sx={{ marginLeft: theme.spacing(0.4) }}>
-						{getHelperText()}
-					</FormHelperText>
-				)}
-			</React.Fragment>
+			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
+				<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
+					<Grid container spacing={1.5} direction="column">
+						{childItems}
+					</Grid>
+				</RadioGroup>
+			</Box>
 		);
 	};
 
+	const errorText = hasErrors ? helperText : undefined;
 	return (
-		<React.Fragment>
-			{!isInlineLabel && label && (
-				<Box marginTop={theme.spacing()}>
-					<Box marginBottom={theme.spacing()}>
-						<SolaceLabel
-							id={`${id}-label`}
-							htmlForId={`${id}-textfield`}
-							isRequired={isRequired}
-							isDisabled={isDisabled}
-						>
-							{label}
-						</SolaceLabel>
-					</Box>
-					{getRadioGroup()}
-				</Box>
-			)}
-			{isInlineLabel && label && (
-				<Box
-					marginBottom={theme.spacing()}
-					display="flex"
-					flexDirection="row"
-					justifyContent="space-between"
-					alignItems="flex-start"
-				>
-					<SolaceLabel id={`${id}-label`} htmlForId={`${id}-textfield`} isRequired={isRequired} isDisabled={isDisabled}>
-						{label}
-					</SolaceLabel>
-					{getRadioGroup()}
-				</Box>
-			)}
-			{!label && getRadioGroup()}
-		</React.Fragment>
+		<FormChildBase
+			id={id}
+			label={label}
+			helperText={helperText}
+			errorText={errorText}
+			isDisabled={isDisabled}
+			isReadOnly={isReadOnly}
+			isRequired={isRequired}
+			isInlineLabel={isInlineLabel}
+		>
+			<Box sx={{ marginTop: isInlineLabel ? 0 : theme.spacing(1) }}>{getRadioGroup()}</Box>
+		</FormChildBase>
 	);
 }
 

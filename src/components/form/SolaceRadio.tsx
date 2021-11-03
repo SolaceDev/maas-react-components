@@ -125,53 +125,51 @@ function SolaceRadio({
 	}
 
 	return (
-		<React.Fragment>
-			<Box display="grid" gridTemplateColumns="auto 1fr" gridTemplateRows="auto auto" alignItems="center">
-				<Radio
-					id={`${id}-radio`}
-					name={name}
-					value={value}
-					icon={RestingRadioIcon}
-					checkedIcon={SelectedRadioIcon}
-					inputProps={
-						{
-							"aria-labelledby": label ? `${id}-label` : "",
-							"data-qa": dataQa,
-							"data-tags": dataTags
-						} as SolaceHTMLAttributeProps
-					}
-					role="radio"
-					title={title}
-					className={readOnly ? "readOnly" : undefined}
-					disabled={isDisabled || readOnly}
-					disableRipple
-					checked={selected}
-					onChange={handleChange}
-				/>
-				{label && (
-					<Box>
-						<InputLabel
-							id={`${id}-label`}
-							htmlFor={`${id}-radio`}
-							required={isRequired}
-							disabled={isDisabled}
-							sx={{ color: theme.palette.text.primary, cursor: isDisabled ? "auto" : "pointer" }}
-						>
-							<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel}>
-								{label}
-							</LabelElement>
-						</InputLabel>
-					</Box>
-				)}
-				{subText && (
-					<Box gridColumn="2" gridRow="2">
-						<InputLabel id={`${id}-subtext`} disabled={isDisabled} sx={{ color: theme.palette.text.primary }}>
-							{subText}
-						</InputLabel>
-					</Box>
-				)}
-			</Box>
-		</React.Fragment>
+		<Box display="grid" gridTemplateColumns="auto 1fr" gridTemplateRows="auto auto" alignItems="center">
+			<Radio
+				id={`${id}-radio`}
+				name={name}
+				value={value}
+				icon={RestingRadioIcon}
+				checkedIcon={SelectedRadioIcon}
+				inputProps={
+					{
+						"aria-labelledby": label ? `${id}-label` : "",
+						"data-qa": dataQa,
+						"data-tags": dataTags
+					} as SolaceHTMLAttributeProps
+				}
+				role="radio"
+				title={title}
+				className={readOnly ? "readOnly" : undefined}
+				disabled={isDisabled || readOnly}
+				disableRipple
+				checked={selected}
+				onChange={handleChange}
+			/>
+			{label && (
+				<Box>
+					<InputLabel
+						id={`${id}-label`}
+						htmlFor={`${id}-radio`}
+						required={isRequired}
+						disabled={isDisabled}
+						sx={{ color: theme.palette.text.primary, cursor: isDisabled ? "auto" : "pointer" }}
+					>
+						<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel}>
+							{label}
+						</LabelElement>
+					</InputLabel>
+				</Box>
+			)}
+			{subText && (
+				<Box gridColumn="2" gridRow="2">
+					<InputLabel id={`${id}-subtext`} disabled={isDisabled} sx={{ color: theme.palette.text.primary }}>
+						{subText}
+					</InputLabel>
+				</Box>
+			)}
+		</Box>
 	);
 }
 
