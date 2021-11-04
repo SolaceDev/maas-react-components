@@ -12,6 +12,7 @@ export { default as SolaceRadio } from "./components/form/SolaceRadio";
 export { default as SolaceRadioGroup } from "./components/form/SolaceRadioGroup";
 export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceChip } from "./components/SolaceChip";
+export { default as SolaceTabs } from "./components/layout/SolaceTabs";
 export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceConfirmationDialog";
 export { default as SolaceMenuPopper } from "./components/SolaceMenuPopper";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";

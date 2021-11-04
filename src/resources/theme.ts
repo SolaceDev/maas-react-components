@@ -565,6 +565,14 @@ const theme = {
 					backgroundColor: BASE_COLORS.greys.grey2
 				}
 			}
+		},
+		MuiTab: {
+			styleOverrides: {
+				root: {
+					textTransform: "none" as const,
+					fontWeight: 400
+				}
+			}
 		}
 	},
 	palette: {
