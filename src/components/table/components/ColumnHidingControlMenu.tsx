@@ -29,8 +29,8 @@ export const StyledColumnControl = styled("div")(({ theme }) => ({
 interface ColumnHidingControlMenu extends SolaceComponentProps {
 	id?: string;
 	columns: TableColumn[];
-	onCloseCallback: Function;
-	setDisplayedColumns: Function;
+	onCloseCallback: (value: React.SetStateAction<boolean>) => void;
+	setDisplayedColumns: (displayedColumns: TableColumn[]) => void;
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
 }
 
@@ -48,7 +48,7 @@ const ColumnHidingControlMenu = ({
 	useOutsideClicked(columnHidingMenuRef, onCloseCallback);
 
 	const handleColumnControlChange = (column: TableColumn) => {
-		onCloseCallback();
+		onCloseCallback(false);
 		const columnIndex = columns.findIndex((col) => col.field === column.field);
 		const newColumns = columns.slice();
 		newColumns[columnIndex].isHidden = !newColumns[columnIndex].isHidden;

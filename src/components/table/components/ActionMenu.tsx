@@ -36,7 +36,7 @@ interface ActionMenuPropType extends SolaceComponentProps {
 	id?: string;
 	actionMenuItems: TableActionMenuItem[];
 	row: TableRow;
-	setRowWithOpenActionMenu: Function;
+	setRowWithOpenActionMenu: (value: React.SetStateAction<string | null | undefined>) => void;
 }
 
 const ActionMenu = ({ actionMenuItems, row, setRowWithOpenActionMenu }: ActionMenuPropType): JSX.Element => {
@@ -44,7 +44,7 @@ const ActionMenu = ({ actionMenuItems, row, setRowWithOpenActionMenu }: ActionMe
 	useOutsideClicked(actionMenuRef, setRowWithOpenActionMenu);
 
 	const handleActionMenuClick = (item: TableActionMenuItem) => {
-		setRowWithOpenActionMenu();
+		setRowWithOpenActionMenu(null);
 		item.callback(row);
 	};
 

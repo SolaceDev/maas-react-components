@@ -25,7 +25,7 @@ export const useExpandableRows = ({
 	displayedColumnsChangedCallback
 }: CustomTableRowProps): React.ReactNode[] => {
 	const [expansionState, setExpansionState] = useState<Array<number>>([]);
-	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
+	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string | null | undefined>();
 
 	useEffect(() => {
 		setExpansionState([]);
