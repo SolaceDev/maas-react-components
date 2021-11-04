@@ -12,7 +12,7 @@ import {
 	StyledTableData,
 	StyledTableHeader
 } from "../table-utils";
-import { styled, useTheme } from "@material-ui/core";
+import { styled } from "@material-ui/core";
 import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 import { BASE_COLORS } from "../../../resources/colorPallette";
@@ -64,8 +64,8 @@ export interface CustomTableColumnProps {
 		columns: TableColumn[],
 		openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void,
 		isColumnHidingControlOpen: boolean,
-		setIsColumnHidingControlOpen: Function,
-		setDisplayedColumns: Function
+		setIsColumnHidingControlOpen: () => void,
+		setDisplayedColumns: (displayedColumns: TableColumn[]) => void
 	) => React.ReactNode;
 }
 
@@ -93,10 +93,8 @@ export const useSolaceTable = (
 	);
 	const [displayedColumns, setDisplayedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
-	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string>();
+	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string | null>();
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
-
-	const theme = useTheme();
 
 	useEffect(() => {
 		selectionChangedCallback(selectedRows);
@@ -267,7 +265,6 @@ export const useSolaceTable = (
 		addCheckBoxToHeader,
 		displayedColumns,
 		handleSort,
-		theme,
 		rowActionMenuItems,
 		hasColumnHiding,
 		headerHoverCallback,
