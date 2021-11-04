@@ -571,7 +571,7 @@ const theme = {
 			styleOverrides: {
 				root: {
 					textTransform: "none" as const,
-					fontWeight: "gaga"
+					fontWeight: 400
 				}
 			}
 		}
