@@ -35,16 +35,21 @@ const Container = styled("div")(({ theme }) => ({
 	}
 }));
 
+const ImgContainer = styled("div")(() => ({
+	// need to move this styled componet definition into the theme file once we figure out how
+	margin: "0px 0px 40px 0px"
+}));
+
 const TitleText = styled("p")(() => ({
 	// need to move this styled componet definition into the theme file once we figure out how
-	margin: "40px 0px 0px 0px",
+	margin: "0px 0px 14px 0px",
 	fontSize: BASE_FONT_PX_SIZES.xxl,
 	color: BASE_COLORS.greys.grey14
 }));
 
 const DetailsContainer = styled("div")(() => ({
 	// need to move this styled componet definition into the theme file once we figure out how
-	margin: "14px 0px",
+	margin: "0px 0px 14px 0px",
 	fontSize: BASE_FONT_PX_SIZES.sm,
 	color: BASE_COLORS.greys.grey14
 }));
@@ -65,7 +70,7 @@ function SolaceDetailMessage({ msgImg, title, details, actions }: SolaceDetailMe
 
 	return (
 		<Container>
-			{msgImg && msgImg}
+			{msgImg && <ImgContainer>{msgImg}</ImgContainer>}
 			{title && <TitleText>{title}</TitleText>}
 			{details && <DetailsContainer>{details}</DetailsContainer>}
 			{actions && <ButtonGroup>{buildActionButtons()}</ButtonGroup>}
