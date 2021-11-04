@@ -77,6 +77,20 @@ NoTitleMessage.args = {
 	]
 };
 
+export const NoDetailsMessage = Template.bind({});
+NoDetailsMessage.args = {
+	msgImg: <ApiProducts />,
+	title: "Ha ... I Only Have A Title and Button",
+	actions: [
+		{
+			id: "catalog-btn",
+			variant: "call-to-action",
+			children: "Go To Catalog",
+			onClick: action("button-clicked")
+		}
+	]
+};
+
 export const NoActionsMessage = Template.bind({});
 NoActionsMessage.args = {
 	msgImg: <ApiProducts />,
