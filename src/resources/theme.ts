@@ -326,7 +326,7 @@ const theme = {
 						fontSize: BASE_FONT_PX_SIZES.sm,
 						color: BASE_COLORS.greys.grey14,
 						padding: "0px 8px",
-						height: "35px",
+						height: "34px",
 						"&:read-only": {
 							padding: "0px"
 						},
@@ -425,7 +425,7 @@ const theme = {
 			styleOverrides: {
 				select: {
 					"&.MuiOutlinedInput-input": {
-						padding: "6px 34px 6px 8px",
+						padding: "7px 34px 5px 8px",
 						minWidth: "330px"
 					}
 				}
