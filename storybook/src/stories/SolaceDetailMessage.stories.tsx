@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceDetailMessage } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../resources/images/NoAccessBook";
 import FailedFetch from "../resources/images/FailedFetch";
+import ApiProducts from "../resources/images/ApiProducts";
 
 export default {
 	title: "Under Construction/SolaceDetailMessage",
@@ -46,6 +47,41 @@ FailedFetchMessage.args = {
 			onClick: action("button-clicked")
 		}
 	]
+};
+
+export const NoImageMessage = Template.bind({});
+NoImageMessage.args = {
+	title: "No Image Message",
+	details: "Hey, this message has no image",
+	actions: [
+		{
+			id: "catalog-btn",
+			variant: "call-to-action",
+			children: "Go To Catalog",
+			onClick: action("button-clicked")
+		}
+	]
+};
+
+export const NoTitleMessage = Template.bind({});
+NoTitleMessage.args = {
+	msgImg: <ApiProducts />,
+	details: "Somebody stole my title!!!",
+	actions: [
+		{
+			id: "catalog-btn",
+			variant: "call-to-action",
+			children: "Go To Catalog",
+			onClick: action("button-clicked")
+		}
+	]
+};
+
+export const NoActionsMessage = Template.bind({});
+NoActionsMessage.args = {
+	msgImg: <ApiProducts />,
+	title: "Actionless Jackson",
+	details: "Where my buttons at???"
 };
 
 export const MultiActionMessage = Template.bind({});
