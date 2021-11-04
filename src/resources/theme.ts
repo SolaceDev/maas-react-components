@@ -570,7 +570,11 @@ const theme = {
 			styleOverrides: {
 				root: {
 					textTransform: "none" as const,
-					fontWeight: 400
+					fontWeight: 400,
+					color: BASE_COLORS.greys.grey11,
+					"&.Mui-selected, :hover": {
+						color: BASE_COLORS.greys.grey14
+					}
 				}
 			}
 		}
