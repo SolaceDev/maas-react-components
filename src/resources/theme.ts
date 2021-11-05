@@ -95,7 +95,7 @@ const theme = {
 						color: BASE_COLORS.greys.grey3
 					},
 					"&:hover": {
-						backgroundColor: BASE_COLORS.greys.grey0
+						backgroundColor: BASE_COLORS.greys.grey1
 					},
 					"&:active": {
 						backgroundColor: BASE_COLORS.greys.grey19
@@ -158,7 +158,7 @@ const theme = {
 					color: BASE_COLORS.greens.green2
 				},
 				root: {
-					color: BASE_COLORS.greys.grey11,
+					color: BASE_COLORS.greys.grey14,
 					fontSize: "0.875rem",
 					fontWeight: 500,
 					lineHeight: "150%",
@@ -167,6 +167,25 @@ const theme = {
 					},
 					"&.Mui-disabled": {
 						color: BASE_COLORS.greys.grey8
+					}
+				}
+			}
+		},
+		MuiFormLabel: {
+			styleOverrides: {
+				asterisk: {
+					color: BASE_COLORS.greens.green2
+				},
+				root: {
+					color: BASE_COLORS.greys.grey11,
+					fontSize: "0.875rem",
+					fontWeight: 400,
+					lineHeight: "150%",
+					"&.Mui-error": {
+						color: BASE_COLORS.greys.grey11
+					},
+					"&.Mui-disabled": {
+						color: BASE_COLORS.greys.grey9
 					}
 				}
 			}
@@ -253,12 +272,12 @@ const theme = {
 						backgroundColor: BASE_COLORS.whites.white1,
 						".MuiOutlinedInput-notchedOutline": {
 							border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-							backgroundColor: BASE_COLORS.greys.grey1
+							backgroundColor: BASE_COLORS.greys.grey0
 						},
 						"&:hover": {
 							".MuiOutlinedInput-notchedOutline": {
 								border: `solid 1px ${BASE_COLORS.greys.grey5}`,
-								backgroundColor: BASE_COLORS.greys.grey1
+								backgroundColor: BASE_COLORS.greys.grey0
 							}
 						},
 						"&:hover .MuiOutlinedInput-input:read-only": {
@@ -297,7 +316,8 @@ const theme = {
 								border: `solid 1px ${BASE_COLORS.greys.grey2}`
 							},
 							input: {
-								webkitTextFillColor: BASE_COLORS.greys.grey14,
+								WebkitTextFillColor: BASE_COLORS.greys.grey5,
+								color: BASE_COLORS.greys.grey5,
 								padding: "8px"
 							}
 						}
@@ -306,7 +326,7 @@ const theme = {
 						fontSize: BASE_FONT_PX_SIZES.sm,
 						color: BASE_COLORS.greys.grey14,
 						padding: "0px 8px",
-						height: "35px",
+						height: "34px",
 						"&:read-only": {
 							padding: "0px"
 						},
@@ -328,14 +348,28 @@ const theme = {
 					".MuiSvgIcon-root path": {
 						fill: BASE_COLORS.greens.green1
 					},
-					"&.Mui-disabled .MuiSvgIcon-root rect": {
-						fill: BASE_COLORS.greys.grey19
+					".MuiSvgIcon-root line": {
+						stroke: BASE_COLORS.greens.green1
 					},
-					"&.Mui-disabled .MuiSvgIcon-root path": {
-						fillOpacity: "0.5"
+					"&.Mui-disabled .MuiSvgIcon-root": {
+						rect: {
+							fillOpacity: 0.35,
+							fill: "white"
+						},
+						path: {
+							fillOpacity: 0.35
+						}
 					},
 					"+ .MuiInputLabel-root": {
 						marginLeft: "16px"
+					},
+					"&.readOnly .MuiSvgIcon-root": {
+						".SolaceCheckboxContainer": {
+							fill: BASE_COLORS.greys.grey19
+						},
+						".SolaceCheckboxCheckmark": {
+							fill: BASE_COLORS.greys.grey5
+						}
 					},
 					padding: "0px"
 				}
@@ -345,27 +379,42 @@ const theme = {
 			styleOverrides: {
 				root: {
 					alignItems: "flex-start",
-					marginRight: "12px",
+					marginRight: "16px",
 					".MuiFormHelperText-root": {
 						marginLeft: "0px"
 					},
+					".MuiSvgIcon-root .SolaceRadioContainer": {
+						strokeOpacity: "0.2",
+						stroke: "black",
+						fill: "white"
+					},
 					"&:hover": {
-						".MuiSvgIcon-root rect": {
+						".MuiSvgIcon-root .SolaceRadioContainer": {
 							strokeOpacity: "0.35"
+						}
+					},
+					"&.Mui-checked": {
+						".SolaceRadioSelection": {
+							fill: BASE_COLORS.greens.green1
+						}
+					},
+					"&.Mui-disabled .MuiSvgIcon-root": {
+						".SolaceRadioContainer": {
+							stroke: BASE_COLORS.greys.grey2
 						},
-						backgroundColor: "none"
+						".SolaceRadioSelection": {
+							opacity: 0.35
+						}
 					},
-					"&.Mui-disabled .MuiSvgIcon-root rect": {
-						fill: BASE_COLORS.greys.grey19
-					},
-					".MuiSvgIcon-root circle": {
-						fill: BASE_COLORS.greens.green1
-					},
-					"&.Mui-disabled .MuiSvgIcon-root circle": {
-						fillOpacity: "0.5"
-					},
-					"+ .MuiInputLabel-root": {
-						marginLeft: "16px"
+					"&.readOnly .MuiSvgIcon-root": {
+						".SolaceRadioContainer": {
+							fill: BASE_COLORS.greys.grey19,
+							opacity: 1
+						},
+						".SolaceRadioSelection": {
+							fill: BASE_COLORS.greys.grey5,
+							opacity: 1
+						}
 					},
 					padding: "0px"
 				}
@@ -376,8 +425,41 @@ const theme = {
 			styleOverrides: {
 				select: {
 					"&.MuiOutlinedInput-input": {
-						padding: "6px 34px 6px 8px",
+						padding: "7px 34px 5px 8px",
 						minWidth: "330px"
+					}
+				}
+			}
+		},
+		MuiAutocomplete: {
+			styleOverrides: {
+				root: {
+					minWidth: "372px",
+					".MuiOutlinedInput-root .MuiAutocomplete-input": {
+						padding: "0px"
+					},
+					".MuiOutlinedInput-root": {
+						padding: "0px 0px 0px 8px",
+						height: "32px"
+					},
+					".MuiOutlinedInput-root.readOnlySelect": {
+						padding: "0px"
+					},
+					".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
+						padding: "0px"
+					},
+					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
+						background: "transparent"
+					}
+				},
+				popper: {
+					color: BASE_COLORS.greys.grey14,
+					".subtext": {
+						color: BASE_COLORS.greys.grey8
+					},
+					".suplementalText": {
+						fontSize: BASE_FONT_PX_SIZES.xs,
+						color: BASE_COLORS.greys.grey8
 					}
 				}
 			}
@@ -454,7 +536,7 @@ const theme = {
 						},
 						".MuiDialogContent-root": {
 							fontSize: BASE_FONT_PX_SIZES.sm,
-							lineHeight: BASE_FONT_PX_SIZES.lg,
+							lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
 							color: BASE_COLORS.greys.grey14,
 							padding: "0px",
 							".MuiBox-root": {
@@ -470,6 +552,31 @@ const theme = {
 					}
 				}
 			}
+		},
+		MuiChip: {
+			styleOverrides: {
+				root: {
+					borderRadius: "40px",
+					"& .MuiChip-label": {
+						fontSize: BASE_FONT_PX_SIZES.sm
+					}
+				},
+				filled: {
+					backgroundColor: BASE_COLORS.greys.grey2
+				}
+			}
+		},
+		MuiTab: {
+			styleOverrides: {
+				root: {
+					textTransform: "none" as const,
+					fontWeight: 400,
+					color: BASE_COLORS.greys.grey11,
+					"&.Mui-selected, :hover": {
+						color: BASE_COLORS.greys.grey14
+					}
+				}
+			}
 		}
 	},
 	palette: {
@@ -480,12 +587,12 @@ const theme = {
 			main: BASE_COLORS.reds.red1
 		},
 		primary: {
-			contrastText: BASE_COLORS.greys.grey1,
+			contrastText: BASE_COLORS.greys.grey0,
 			dark: BASE_COLORS.greens.green5,
 			main: BASE_COLORS.greens.green2
 		},
 		secondary: {
-			contrastText: BASE_COLORS.greys.grey1,
+			contrastText: BASE_COLORS.greys.grey0,
 			main: BASE_COLORS.greens.green3
 		},
 		text: {
@@ -496,7 +603,16 @@ const theme = {
 	typography: {
 		fontSize: BASE_FONT_PX_SIZES.sm,
 		body1: {
-			fontSize: "0.875rem"
+			fontSize: BASE_FONT_PX_SIZES.sm,
+			lineHeight: BASE_FONT_PX_SIZES.sm * 1.5 + "px"
+		},
+		caption: {
+			fontSize: BASE_FONT_PX_SIZES.xs,
+			lineHeight: BASE_FONT_PX_SIZES.xs * 1.5 + "px"
+		},
+		subtitle1: {
+			fontSize: BASE_FONT_PX_SIZES.md,
+			lineHeight: BASE_FONT_PX_SIZES.md * 1.5 + "px"
 		},
 		fontFamily: "Rubik,sans-serif",
 		one33rem: { fontSize: "1.33rem" }

@@ -13,7 +13,23 @@ export default {
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2931%3A22385"
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		isRequired: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isDisabled: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isLargeLabel: {
+			control: {
+				type: "boolean"
+			}
+		}
+	}
 } as ComponentMeta<typeof SolaceRadio>;
 
 const Template: ComponentStory<typeof SolaceRadio> = (args) => <SolaceRadio {...args} />;
@@ -33,31 +49,39 @@ Labeled.args = {
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	label: "Some Label",
+	label: "Inline label",
 	value: "someValue"
 };
 
-export const HelperText = Template.bind({});
-HelperText.args = {
+export const SubText = Template.bind({});
+SubText.args = {
 	onChange: action("callback"),
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	label: "Some Label",
-	helperText: "Some helper text here",
+	label: "Header text",
+	subText: "Subtext subtext",
 	value: "someValue"
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.args = {
+function buildSubText() {
+	return (
+		<span>
+			Runtime Discovery is used to import your architecture into the <i>PubSub+ Discovery</i>
+		</span>
+	);
+}
+export const LargeLabelAndCustomSubText = Template.bind({});
+LargeLabelAndCustomSubText.args = {
 	onChange: action("callback"),
 	title: "Demo Radio",
 	id: "demoRadioId",
 	name: "demoRadio",
-	label: "Some Label",
-	hasErrors: true,
-	helperText: "Some error occured",
-	value: "someValue"
+	label: "Import to Event Portal",
+	subText: buildSubText(),
+	value: "someValue",
+	isLargeLabel: true,
+	isDisabled: false
 };
 
 export const Required = Template.bind({});
@@ -65,7 +89,7 @@ Required.args = {
 	onChange: action("callback"),
 	name: "demoRadio",
 	title: "Demo Checkbox",
-	label: "Some Label",
+	label: "Inline Label",
 	isRequired: true,
 	value: "someValue"
 };
@@ -75,8 +99,19 @@ Disabled.args = {
 	onChange: action("callback"),
 	name: "demoRadio",
 	title: "Demo Radio",
-	label: "Some Label",
+	label: "Inline Label",
 	isChecked: true,
 	isDisabled: true,
+	value: "someValue"
+};
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+	onChange: action("callback"),
+	name: "demoRadio",
+	title: "Demo Radio",
+	label: "Inline Label",
+	isChecked: true,
+	readOnly: true,
 	value: "someValue"
 };

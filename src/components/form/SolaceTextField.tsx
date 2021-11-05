@@ -32,8 +32,8 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 */
 	helperText?: string | JSX.Element;
 	/**
-	 * Short hint displayed in the `input` before user enters a value
-	 */
+	* Short hint displayed in the `input` before user enters a value
+	*/
 	placeholder?: string;
 	/**
 	 * The maximum number of characters which can be typed as the `input` value
@@ -51,6 +51,10 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * The text to display as the tooltip hint
 	 */
 	title?: string;
+	/**
+	 * Boolean flag to control whether the `input` element is focused during first mount
+	 */
+	autoFocus?: boolean;
 	/**
 	 * Boolean flag to mark the `input` in error state
 	 */
@@ -88,6 +92,7 @@ function SolaceTextField({
 	type = "text",
 	size = 50,
 	title,
+	autoFocus = false,
 	hasErrors = false,
 	isRequired = false,
 	isInlineLabel = false,
@@ -145,6 +150,7 @@ function SolaceTextField({
 				type={type}
 				error={hasErrors}
 				autoComplete="off"
+				autoFocus={autoFocus}
 				InputProps={{
 					sx: { height: theme.spacing(4) },
 					disabled: isDisabled,
@@ -167,7 +173,7 @@ function SolaceTextField({
 		<React.Fragment>
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled || isReadOnly}>
 						{label}
 					</SolaceLabel>
 					{textField()}
@@ -181,7 +187,7 @@ function SolaceTextField({
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled}>
+					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled || isReadOnly}>
 						{label}
 					</SolaceLabel>
 					{textField()}

@@ -81,6 +81,10 @@ Follow the following steps to start component development on your local machines
 
 [Semantic Versioning](https://semver.org/)
 
+## View Storybook
+To see the storybook visit: https://solid-garbanzo-f65ff422.pages.github.io/ 
+
+You do need access to this repo to see the storybook. 
 ## License
 
 MIT © [](https://github.com/)

@@ -93,13 +93,16 @@ function SolaceRadioGroup({
 		</Box>
 	);
 
-	const getId = () => {
-		return id ? id : name;
-	};
+	if (!id) {
+		id = name;
+	}
 
 	const getRadioGroup = () => {
-		const childItems: Array<React.ReactNode> = [];
-		children.forEach((child) => childItems.push(<Grid item>{child}</Grid>));
+		const childItems: Array<React.ReactNode> = children.map((child, i) => (
+			<Grid item key={i}>
+				{child}
+			</Grid>
+		));
 
 		return (
 			<React.Fragment>
@@ -123,14 +126,16 @@ function SolaceRadioGroup({
 		<React.Fragment>
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-textfield`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
-						{label}
-					</SolaceLabel>
+					<Box marginBottom={theme.spacing()}>
+						<SolaceLabel
+							id={`${id}-label`}
+							htmlForId={`${id}-textfield`}
+							isRequired={isRequired}
+							isDisabled={isDisabled}
+						>
+							{label}
+						</SolaceLabel>
+					</Box>
 					{getRadioGroup()}
 				</Box>
 			)}
@@ -140,14 +145,9 @@ function SolaceRadioGroup({
 					display="flex"
 					flexDirection="row"
 					justifyContent="space-between"
-					alignItems="center"
+					alignItems="flex-start"
 				>
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-textfield`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
+					<SolaceLabel id={`${id}-label`} htmlForId={`${id}-textfield`} isRequired={isRequired} isDisabled={isDisabled}>
 						{label}
 					</SolaceLabel>
 					{getRadioGroup()}
