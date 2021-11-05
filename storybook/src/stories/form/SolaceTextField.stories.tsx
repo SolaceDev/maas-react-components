@@ -109,6 +109,15 @@ HelperText.args = {
 	helperText: "Some helper text"
 };
 
+export const PlaceholderText = Template.bind({});
+PlaceholderText.args = {
+	onChange: action("callback"),
+	name: "demoTextField",
+	title: "Demo Text Field",
+	label: "Some Label",
+	placeholder: "Some placeholder text"
+};
+
 export const WithErrors = Template.bind({});
 WithErrors.args = {
 	onChange: action("callback"),
