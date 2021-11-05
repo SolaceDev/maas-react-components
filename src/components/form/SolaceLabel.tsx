@@ -1,5 +1,4 @@
 import { FormLabel } from "@material-ui/core";
-import React from "react";
 
 export interface SolaceLabelProps {
 	/**

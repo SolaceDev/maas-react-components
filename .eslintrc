@@ -5,8 +5,7 @@
 		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
-		"prettier",
-		"react/jsx-runtime"
+		"prettier"
 	],
 	"plugins": ["@typescript-eslint", "simple-import-sort", "react", "react-hooks"],
 	"env": {
@@ -30,6 +29,8 @@
 		"react/jsx-handler-names": 0,
 		"react/jsx-fragments": 0,
 		"react/no-unused-prop-types": 0,
-		"import/export": 0
+		"import/export": 0,
+		"react/jsx-uses-react": "off",
+		"react/react-in-jsx-scope": "off"
 	}
 }

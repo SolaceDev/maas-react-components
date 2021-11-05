@@ -1,8 +1,9 @@
+import { ThemeOptions } from "@material-ui/core";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 // A custom theme for this app
-const theme = {
+const theme: ThemeOptions = {
 	breakpoints: {
 		values: {
 			// desktop
@@ -13,9 +14,6 @@ const theme = {
 
 			// tablets
 			sm: 600,
-
-			//custom solace dialog
-			solaceMd: 800,
 
 			// large screens
 			xl: 1536,
@@ -66,7 +64,7 @@ const theme = {
 					}
 				},
 				root: {
-					textTransform: "none" as const,
+					textTransform: "none",
 					padding: "6px 16px",
 					borderRadius: "4px",
 					minWidth: "100px",
@@ -197,7 +195,7 @@ const theme = {
 					borderRadius: "4px",
 					minWidth: "100px",
 					height: "32px",
-					fontWeight: "normal" as const,
+					fontWeight: "normal",
 					fontSize: "14px",
 					"&[disabled]": {
 						color: BASE_COLORS.greys.grey3
@@ -569,7 +567,7 @@ const theme = {
 		MuiTab: {
 			styleOverrides: {
 				root: {
-					textTransform: "none" as const,
+					textTransform: "none",
 					fontWeight: 400,
 					color: BASE_COLORS.greys.grey11,
 					"&.Mui-selected, :hover": {
@@ -614,8 +612,7 @@ const theme = {
 			fontSize: BASE_FONT_PX_SIZES.md,
 			lineHeight: BASE_FONT_PX_SIZES.md * 1.5 + "px"
 		},
-		fontFamily: "Rubik,sans-serif",
-		one33rem: { fontSize: "1.33rem" }
+		fontFamily: "Rubik,sans-serif"
 	}
 };
 
