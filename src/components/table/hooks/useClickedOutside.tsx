@@ -1,10 +1,13 @@
 import { useCallback, useEffect } from "react";
 
-export const useOutsideClicked = (ref: React.RefObject<HTMLElement>, setRowWithOpenActionMenu: Function): void => {
+export const useOutsideClicked = (
+	ref: React.RefObject<HTMLElement>,
+	setRowWithOpenActionMenu: (value: any) => void
+): void => {
 	const handleClick = useCallback(
 		(event) => {
 			if (ref.current && !ref.current.contains(event.target)) {
-				setRowWithOpenActionMenu();
+				setRowWithOpenActionMenu(null);
 			}
 		},
 		[ref, setRowWithOpenActionMenu]
@@ -15,7 +18,7 @@ export const useOutsideClicked = (ref: React.RefObject<HTMLElement>, setRowWithO
 
 		return () => {
 			document.removeEventListener("mousedown", handleClick);
-			setRowWithOpenActionMenu();
+			setRowWithOpenActionMenu(null);
 		};
 	}, [ref, handleClick, setRowWithOpenActionMenu]);
 };

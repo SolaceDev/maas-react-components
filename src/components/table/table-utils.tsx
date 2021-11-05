@@ -124,7 +124,7 @@ export const addActionMenuIcon = (
 	isActionMenuOpen: boolean,
 	openRowActionMenu: (e: React.MouseEvent<HTMLElement>, row: TableRow) => void,
 	actionMenuItems: TableActionMenuItem[],
-	setRowWithOpenActionMenu: Function
+	setRowWithOpenActionMenu: (value: React.SetStateAction<string | null | undefined>) => void
 ): React.ReactNode => {
 	return (
 		<StyledRelativeTableData key={`${row.id}_ActionMenu`}>
@@ -142,8 +142,8 @@ export const addColumnHidingControl = (
 	columns: TableColumn[],
 	openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void,
 	isColumnHidingControlOpen: boolean,
-	setIsColumnHidingControlOpen: Function,
-	setDisplayedColumns: Function,
+	setIsColumnHidingControlOpen: (value: React.SetStateAction<boolean>) => void,
+	setDisplayedColumns: (displayedColumns: TableColumn[]) => void,
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void
 ): React.ReactNode => {
 	return (
