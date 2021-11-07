@@ -579,6 +579,31 @@ const theme = {
 			}
 		}
 	},
+	mixins: {
+		/** SolaceSidePanelLayout Component */
+		sidePanelLayout_mainPanel: {
+			height: "100%",
+			width: "100%",
+			padding: "0px",
+			display: "grid",
+			backgroundColor: BASE_COLORS.whites.white1,
+			overflowY: "auto"
+		},
+		sidePanelLayout_contentPanelSection: {
+			display: "flex",
+			height: "100%",
+			overflowY: "auto",
+			flexDirection: "column",
+			alignItems: "left",
+			padding: "0px"
+		},
+		sidePanelLayout_sidePanelSection: {
+			height: "calc(100% - 2px)",
+			overflowY: "auto",
+			border: `1px solid ${BASE_COLORS.greys.grey2}`,
+			boxShadow: `0 1px 4px ${BASE_COLORS.greys.grey3}`
+		}
+	},
 	palette: {
 		background: {
 			default: BASE_COLORS.greys.grey19
@@ -619,4 +644,11 @@ const theme = {
 	}
 };
 
+declare module "@material-ui/core/styles/createMixins" {
+	interface Mixins {
+		sidePanelLayout_sidePanelSection: React.CSSProperties;
+		sidePanelLayout_contentPanelSection: React.CSSProperties;
+		sidePanelLayout_mainPanel: React.CSSProperties;
+	}
+}
 export default theme;

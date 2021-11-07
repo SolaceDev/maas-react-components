@@ -14,6 +14,7 @@ export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceChip } from "./components/SolaceChip";
 export { default as SolaceTabs } from "./components/layout/SolaceTabs";
 export { default as SolaceSidePanelLayout } from "./components/layout/SolaceSidePanelLayout";
+export { PANEL_POSITION as SolacePanelPosition } from "./components/layout/SolaceSidePanelLayout";
 export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceConfirmationDialog";
 export { default as SolaceMenuPopper } from "./components/SolaceMenuPopper";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";
