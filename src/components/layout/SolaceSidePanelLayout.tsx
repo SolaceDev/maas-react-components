@@ -7,10 +7,25 @@ export enum PANEL_POSITION {
 }
 
 export interface SolaceSidePanelLayoutProps {
+	/**
+	 * The main content that is always render on the screen regardless if the side panel is expanded or collapsed
+	 */
 	mainContent: JSX.Element;
+	/**
+	 * The content you want to show/hide in the side panel
+	 */
 	sidePanelContent?: JSX.Element;
+	/**
+	 * Flag signifying if the side panel is expanded or collapsed
+	 */
 	showSidePanel?: boolean;
+	/**
+	 * The desired width of the side panel
+	 */
 	sidePanelWidth?: number;
+	/**
+	 * property to control which side of the main content the side panel is rendered on
+	 */
 	sidePanelPosition?: PANEL_POSITION;
 }
 
