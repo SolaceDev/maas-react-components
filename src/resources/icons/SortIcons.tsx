@@ -6,7 +6,7 @@ export interface SortIconProps {
 	opacity?: number;
 }
 
-export const AscendingSortIcon = ({ fill = "black", opacity = 0.35 }: SortIconProps) => (
+export const AscendingSortIcon = ({ fill = "black", opacity = 0.35 }: SortIconProps): JSX.Element => (
 	<SvgIcon sx={{ width: "16px", height: "10px" }} viewBox="0 0 16 10" fill="none">
 		<g transform="translate(9,0)">
 			<path
@@ -25,7 +25,7 @@ export const AscendingSortIcon = ({ fill = "black", opacity = 0.35 }: SortIconPr
 	</SvgIcon>
 );
 
-export const DescendingSortIcon = ({ fill = "black", opacity = 0.35 }: SortIconProps) => (
+export const DescendingSortIcon = ({ fill = "black", opacity = 0.35 }: SortIconProps): JSX.Element => (
 	<SvgIcon sx={{ width: "16px", height: "10px" }} viewBox="0 0 16 10" fill="none">
 		<g transform="translate(9,0)">
 			<path
@@ -44,7 +44,7 @@ export const DescendingSortIcon = ({ fill = "black", opacity = 0.35 }: SortIconP
 	</SvgIcon>
 );
 
-export const UnsortedIcon = ({ fill = "black", opacity = 0.35 }: SortIconProps) => (
+export const UnsortedIcon = ({ fill = "black", opacity = 0.35 }: SortIconProps): JSX.Element => (
 	<SvgIcon sx={{ width: "16px", height: "10px" }} viewBox="0 0 16 10" fill="none">
 		<g transform="translate(9,0)">
 			<path

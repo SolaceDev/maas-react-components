@@ -16,7 +16,11 @@ function ErrorText({ children }: ErrorTextProps): JSX.Element {
 		<Box display="flex" flexDirection="row" alignItems="center">
 			<ErrorIcon size={size ? parseInt(size) : BASE_FONT_PX_SIZES.md} fill={theme.palette.error.main}></ErrorIcon>
 			<FormLabel
-				sx={{ color: theme.palette.error.main, fontSize: theme.typography.caption, marginLeft: theme.spacing(0.5) }}
+				sx={{
+					color: theme.palette.error.main,
+					fontSize: theme.typography.caption.fontSize,
+					marginLeft: theme.spacing(1)
+				}}
 			>
 				{children}
 			</FormLabel>

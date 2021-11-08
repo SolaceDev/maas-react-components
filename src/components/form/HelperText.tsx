@@ -9,7 +9,9 @@ export interface HelperTextProps extends SolaceComponentProps {
 function HelperText({ children }: HelperTextProps): JSX.Element {
 	const theme = useTheme();
 	return (
-		<FormLabel sx={{ color: theme.palette.text.secondary, fontSize: theme.typography.caption }}>{children}</FormLabel>
+		<FormLabel sx={{ color: theme.palette.text.secondary, fontSize: theme.typography.caption.fontSize }}>
+			{children}
+		</FormLabel>
 	);
 }
 

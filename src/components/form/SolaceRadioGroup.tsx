@@ -113,13 +113,12 @@ function SolaceRadioGroup({
 		);
 	};
 
-	const errorText = hasErrors ? helperText : undefined;
 	return (
 		<FormChildBase
 			id={id}
 			label={label}
 			helperText={helperText}
-			errorText={errorText}
+			errorText={hasErrors ? helperText : undefined}
 			isDisabled={isDisabled}
 			isReadOnly={isReadOnly}
 			isRequired={isRequired}

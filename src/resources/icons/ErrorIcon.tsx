@@ -1,9 +1,10 @@
 import React from "react";
 import { IconProps } from "./IconProps";
+import { SvgIcon } from "@material-ui/core";
 
 export function ErrorIcon({ size, fill }: IconProps): JSX.Element {
 	return (
-		<svg width={`${size}px`} height={`${size}px`} viewBox={`0 0 24 24`}>
+		<SvgIcon sx={{ width: `${size}px`, height: `${size}px` }} viewBox="0 0 24 24">
 			<path
 				d="M11.208 14.784C11.2827 14.8587 11.3733 14.896 11.48 14.896H12.776C12.8933 14.896 12.984 14.8587 13.048 14.784C13.1227 14.7093 13.16 14.6187 13.16 14.512V7.184C13.16 7.06667 13.1227 6.976 13.048 6.912C12.984 6.83733 12.8933 6.8 12.776 6.8H11.48C11.3733 6.8 11.2827 6.83733 11.208 6.912C11.1333 6.98667 11.096 7.07733 11.096 7.184V14.512C11.096 14.6187 11.1333 14.7093 11.208 14.784Z"
 				fill={fill}
@@ -18,6 +19,6 @@ export function ErrorIcon({ size, fill }: IconProps): JSX.Element {
 				d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z"
 				fill={fill}
 			/>
-		</svg>
+		</SvgIcon>
 	);
 }
