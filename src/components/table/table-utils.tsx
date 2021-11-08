@@ -1,4 +1,4 @@
-import React from "react";
+// import { StyledTableHeader, StyledTableData } from "./hooks/useSolaceTable";
 import SolaceButton from "./../form/SolaceButton";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { styled } from "@material-ui/core";

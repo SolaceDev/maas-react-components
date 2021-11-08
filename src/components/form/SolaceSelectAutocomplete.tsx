@@ -82,7 +82,7 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	isOptionEqualToValueCallback?: (option: V, value: V) => boolean;
 }
 
-function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
+function SolaceSelectAutocomplete<T, V>({
 	id,
 	name,
 	label,
@@ -132,8 +132,7 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 		setIsFetching(false);
 	}, [options]);
 
-	// @ts-ignore ... this is to prevent TS never read error for event
-	const handleChange = (event: SyntheticEvent<Element, Event>, value: V | null) => {
+	const handleChange = (_event: SyntheticEvent<Element, Event>, value: V | null) => {
 		// set internal state for selected value
 		setSelectedValue(value || null);
 
@@ -155,8 +154,7 @@ function SolaceSelectAutocomplete<T extends unknown, V extends unknown>({
 			id={getId()}
 			sx={{ width: 300 }}
 			filterOptions={(x) => x}
-			// @ts-ignore ... this is to prevent TS never read error for event
-			onInputChange={(event, newInputValue) => {
+			onInputChange={(_event, newInputValue) => {
 				setInputValue(newInputValue);
 			}}
 			options={filteredOptions}

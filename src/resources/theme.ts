@@ -1,8 +1,9 @@
+import { ThemeOptions } from "@material-ui/core";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 // A custom theme for this app
-const theme = {
+const theme: ThemeOptions = {
 	breakpoints: {
 		values: {
 			// desktop
@@ -13,9 +14,6 @@ const theme = {
 
 			// tablets
 			sm: 600,
-
-			//custom solace dialog
-			solaceMd: 800,
 
 			// large screens
 			xl: 1536,
@@ -66,7 +64,7 @@ const theme = {
 					}
 				},
 				root: {
-					textTransform: "none" as const,
+					textTransform: "none",
 					padding: "6px 16px",
 					borderRadius: "4px",
 					minWidth: "100px",
@@ -197,7 +195,7 @@ const theme = {
 					borderRadius: "4px",
 					minWidth: "100px",
 					height: "32px",
-					fontWeight: "normal" as const,
+					fontWeight: "normal",
 					fontSize: "14px",
 					"&[disabled]": {
 						color: BASE_COLORS.greys.grey3
@@ -570,7 +568,7 @@ const theme = {
 		MuiTab: {
 			styleOverrides: {
 				root: {
-					textTransform: "none" as const,
+					textTransform: "none",
 					fontWeight: 400,
 					"&.Mui-selected, :hover": {
 						color: BASE_COLORS.greys.grey14
@@ -586,6 +584,31 @@ const theme = {
 					}
 				}
 			}
+		}
+	},
+	mixins: {
+		/** SolaceSidePanelLayout Component */
+		sidePanelLayout_mainPanel: {
+			height: "100%",
+			width: "100%",
+			padding: "0px",
+			display: "grid",
+			backgroundColor: BASE_COLORS.whites.white1,
+			overflowY: "auto"
+		},
+		sidePanelLayout_contentPanelSection: {
+			display: "flex",
+			height: "100%",
+			overflowY: "auto",
+			flexDirection: "column",
+			alignItems: "left",
+			padding: "0px"
+		},
+		sidePanelLayout_sidePanelSection: {
+			height: "calc(100% - 2px)",
+			overflowY: "auto",
+			border: `1px solid ${BASE_COLORS.greys.grey2}`,
+			boxShadow: `0 1px 4px ${BASE_COLORS.greys.grey3}`
 		}
 	},
 	palette: {
@@ -625,9 +648,15 @@ const theme = {
 			fontSize: BASE_FONT_PX_SIZES.md,
 			lineHeight: BASE_FONT_PX_SIZES.md * 1.5 + "px"
 		},
-		fontFamily: "Rubik,sans-serif",
-		one33rem: { fontSize: "1.33rem" }
+		fontFamily: "Rubik,sans-serif"
 	}
 };
 
+declare module "@material-ui/core/styles/createMixins" {
+	interface Mixins {
+		sidePanelLayout_sidePanelSection: React.CSSProperties;
+		sidePanelLayout_contentPanelSection: React.CSSProperties;
+		sidePanelLayout_mainPanel: React.CSSProperties;
+	}
+}
 export default theme;

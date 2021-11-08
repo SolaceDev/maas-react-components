@@ -1,6 +1,5 @@
 import { FormLabel, useTheme } from "@material-ui/core";
 import { Box } from "@material-ui/system";
-import React from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { ErrorIcon } from "../../resources/icons/ErrorIcon";
 import { BASE_FONT_PX_SIZES } from "../../resources/typography";

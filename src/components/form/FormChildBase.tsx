@@ -3,7 +3,6 @@ import SolaceLabel from "./SolaceLabel";
 import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
 import SolaceComponentProps from "../SolaceComponentProps";
-import React from "react";
 
 export interface FormChildBaseProps extends SolaceComponentProps {
 	/**

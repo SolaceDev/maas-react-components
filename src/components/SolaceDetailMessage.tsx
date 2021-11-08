@@ -1,4 +1,3 @@
-import React from "react";
 import { styled } from "@material-ui/core";
 
 import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
@@ -44,7 +43,8 @@ const TitleText = styled("p")(() => ({
 	// need to move this styled componet definition into the theme file once we figure out how
 	margin: "0px 0px 14px 0px",
 	fontSize: BASE_FONT_PX_SIZES.xxl,
-	color: BASE_COLORS.greys.grey14
+	color: BASE_COLORS.greys.grey14,
+	textAlign: "center"
 }));
 
 const DetailsContainer = styled("div")(() => ({
