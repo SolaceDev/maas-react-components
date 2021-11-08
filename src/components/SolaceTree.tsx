@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Grid, Stack, Theme, useTheme } from "@material-ui/core";
 import SolaceComponentProps from "./SolaceComponentProps";
 
@@ -103,6 +102,7 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 								<Stack>
 									{children.map((_child, index) => (
 										<Box
+											key={`treeconnector-${index}`}
 											sx={{
 												width: theme.spacing(connectorWidth),
 												height: theme.spacing(

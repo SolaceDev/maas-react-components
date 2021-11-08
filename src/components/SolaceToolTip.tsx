@@ -1,6 +1,5 @@
 import { Tooltip, TooltipProps } from "@material-ui/core";
 import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
-import React from "react";
 
 interface SolaceToolTip extends Omit<TooltipProps, "children"> {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,6 +1,5 @@
 import { Box, Grid, styled, Typography } from "@material-ui/core";
 import BlockIcon from "@material-ui/icons/Block";
-import React from "react";
 
 const StyledGrid = styled(Grid)(() => ({ minHeight: "calc(100vh - 108px)" }));
 
