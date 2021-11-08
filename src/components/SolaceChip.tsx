@@ -1,6 +1,5 @@
 import { Chip } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import React from "react";
 
 export interface SolaceChipProps {
 	label?: string;

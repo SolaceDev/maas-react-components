@@ -1,8 +1,6 @@
 import { Box, FormHelperText, InputLabel, styled, TextField, TextFieldProps, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 
-import React from "react";
-
 type CommonAutoCompleteTextFieldProps = TextFieldProps;
 
 const StyledAutoCompleteTextField = styled(TextField)(({ theme }) => ({

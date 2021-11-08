@@ -32,8 +32,8 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 */
 	helperText?: string | JSX.Element;
 	/**
-	* Short hint displayed in the `input` before user enters a value
-	*/
+	 * Short hint displayed in the `input` before user enters a value
+	 */
 	placeholder?: string;
 	/**
 	 * The maximum number of characters which can be typed as the `input` value
@@ -173,7 +173,12 @@ function SolaceTextField({
 		<React.Fragment>
 			{!isInlineLabel && label && (
 				<Box marginTop={theme.spacing()}>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled || isReadOnly}>
+					<SolaceLabel
+						id={`${getId()}-label`}
+						htmlForId={`${getId()}`}
+						isRequired={isRequired}
+						isDisabled={isDisabled || isReadOnly}
+					>
 						{label}
 					</SolaceLabel>
 					{textField()}
@@ -187,7 +192,12 @@ function SolaceTextField({
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={`${getId()}`} isRequired={isRequired} isDisabled={isDisabled || isReadOnly}>
+					<SolaceLabel
+						id={`${getId()}-label`}
+						htmlForId={`${getId()}`}
+						isRequired={isRequired}
+						isDisabled={isDisabled || isReadOnly}
+					>
 						{label}
 					</SolaceLabel>
 					{textField()}

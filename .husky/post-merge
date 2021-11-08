@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+function changed {
+    git diff --name-only HEAD@{1} HEAD | grep "^$1" >/dev/null 2>&1
+}
+
+# find all package-lock files
+find * -type f -name "package-lock.json" -not -path "**/node_modules/*" -not -path "node_modules/*" | while read line; do
+    # if any package-lock is changed the below npm ci command would be auto executed.
+    if changed $line; then
+        echo "📦 package-lock.json changed. Running npm ci to bring your dependencies up to date."
+        npm ci
+        break
+    fi
+done

@@ -1,4 +1,3 @@
-import React from "react";
 import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./hooks/useSolaceTable";
 import { styled } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";

@@ -1,5 +1,5 @@
 import { Button, IconButton, Link, Tooltip } from "@material-ui/core";
-import React from "react";
+
 import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface SolaceButtonProps extends SolaceComponentProps {
