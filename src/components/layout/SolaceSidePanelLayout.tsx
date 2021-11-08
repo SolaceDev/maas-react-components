@@ -1,4 +1,3 @@
-import React from "react";
 import { styled } from "@material-ui/core";
 
 export enum PANEL_POSITION {
@@ -31,17 +30,22 @@ export interface SolaceSidePanelLayoutProps {
 	children: JSX.Element;
 }
 
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
 const SidePanelContainer = styled("div")(({ theme }) => ({
 	...theme.mixins.sidePanelLayout_sidePanelSection
 }));
 
+//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
 const MainPanelContainer = styled("div")(({ theme }) => ({
 	...theme.mixins.sidePanelLayout_contentPanelSection
 }));
 
+//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
 const PanelContainer = styled("div")(({ theme }) => ({
 	...theme.mixins.sidePanelLayout_mainPanel
 }));
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 function SolaceSidePanelLayout({
 	children,
