@@ -66,7 +66,7 @@ interface LabelElementProps {
 	children: string | JSX.Element;
 }
 
-function LabelElement({ children, bold, large }: LabelElementProps) {
+function LabelElement({ children, bold, large }: LabelElementProps): JSX.Element {
 	const theme = useTheme();
 	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
 	// 24 px is the row height in the grid because it's the height of the svg
