@@ -571,7 +571,19 @@ const theme = {
 			styleOverrides: {
 				root: {
 					textTransform: "none" as const,
-					fontWeight: 400
+					fontWeight: 400,
+					"&.Mui-selected, :hover": {
+						color: BASE_COLORS.greys.grey14
+					}
+				}
+			}
+		},
+		MuiTabs: {
+			styleOverrides: {
+				root: {
+					a: {
+						color: BASE_COLORS.greys.grey11
+					}
 				}
 			}
 		}

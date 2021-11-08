@@ -44,6 +44,7 @@ function AnchorTab(props: TabProps) {
 					props.onTabClick(props.value);
 				}
 			}}
+			disableRipple={true}
 			sx={{ height: "100%" }}
 			{...props}
 		/>
