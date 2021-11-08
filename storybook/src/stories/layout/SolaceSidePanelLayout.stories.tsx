@@ -66,31 +66,25 @@ export const DefaultSidePanel = (): JSX.Element => {
 		setPanelOpen(!panelOpen);
 	};
 
-	const detailMessage = (
-		<div style={{ margin: "auto" }}>
-			<SolaceDetailMessage
-				msgImg={<NoAccessImg />}
-				title="Side Panel Layout Demo"
-				details={<span>Click the buton to toggle the side panel</span>}
-				actions={[
-					{
-						id: "catalog-btn",
-						variant: "call-to-action",
-						children: panelOpen ? "Close Panel" : "Open Panel",
-						onClick: HandlePanelToggle
-					}
-				]}
-			/>
-		</div>
-	);
-
 	return (
 		<StoryContainer>
-			<SolaceSidePanelLayout
-				mainContent={detailMessage}
-				sidePanelContent={sidePanelMessage}
-				showSidePanel={panelOpen}
-			/>
+			<SolaceSidePanelLayout sidePanelContent={sidePanelMessage} showSidePanel={panelOpen}>
+				<div style={{ margin: "auto" }}>
+					<SolaceDetailMessage
+						msgImg={<NoAccessImg />}
+						title="Side Panel Layout Demo"
+						details={<span>Click the buton to toggle the side panel</span>}
+						actions={[
+							{
+								id: "catalog-btn",
+								variant: "call-to-action",
+								children: panelOpen ? "Close Panel" : "Open Panel",
+								onClick: HandlePanelToggle
+							}
+						]}
+					/>
+				</div>
+			</SolaceSidePanelLayout>
 		</StoryContainer>
 	);
 };
@@ -102,32 +96,25 @@ export const CustomSidePanelSize = (): JSX.Element => {
 		setPanelOpen(!panelOpen);
 	};
 
-	const detailMessage = (
-		<div style={{ margin: "auto" }}>
-			<SolaceDetailMessage
-				msgImg={<NoAccessImg />}
-				title="Side Panel Layout Demo"
-				details={<span>Click the buton to toggle the side panel</span>}
-				actions={[
-					{
-						id: "catalog-btn",
-						variant: "call-to-action",
-						children: panelOpen ? "Close Panel" : "Open Panel",
-						onClick: HandlePanelToggle
-					}
-				]}
-			/>
-		</div>
-	);
-
 	return (
 		<StoryContainer>
-			<SolaceSidePanelLayout
-				mainContent={detailMessage}
-				sidePanelContent={sidePanelMessage}
-				showSidePanel={panelOpen}
-				sidePanelWidth={500}
-			/>
+			<SolaceSidePanelLayout sidePanelContent={sidePanelMessage} showSidePanel={panelOpen} sidePanelWidth={500}>
+				<div style={{ margin: "auto" }}>
+					<SolaceDetailMessage
+						msgImg={<NoAccessImg />}
+						title="Side Panel Layout Demo"
+						details={<span>Click the buton to toggle the side panel</span>}
+						actions={[
+							{
+								id: "catalog-btn",
+								variant: "call-to-action",
+								children: panelOpen ? "Close Panel" : "Open Panel",
+								onClick: HandlePanelToggle
+							}
+						]}
+					/>
+				</div>
+			</SolaceSidePanelLayout>
 		</StoryContainer>
 	);
 };
@@ -139,33 +126,30 @@ export const LeftSidePanelSize = (): JSX.Element => {
 		setPanelOpen(!panelOpen);
 	};
 
-	const detailMessage = (
-		<div style={{ margin: "auto" }}>
-			<SolaceDetailMessage
-				msgImg={<NoAccessImg />}
-				title="Side Panel Layout Demo"
-				details={<span>Click the buton to toggle the side panel</span>}
-				actions={[
-					{
-						id: "catalog-btn",
-						variant: "call-to-action",
-						children: panelOpen ? "Close Panel" : "Open Panel",
-						onClick: HandlePanelToggle
-					}
-				]}
-			/>
-		</div>
-	);
-
 	return (
 		<StoryContainer>
 			<SolaceSidePanelLayout
-				mainContent={detailMessage}
 				sidePanelContent={sidePanelMessage}
 				showSidePanel={panelOpen}
 				sidePanelWidth={400}
 				sidePanelPosition={SolacePanelPosition.LEFT}
-			/>
+			>
+				<div style={{ margin: "auto" }}>
+					<SolaceDetailMessage
+						msgImg={<NoAccessImg />}
+						title="Side Panel Layout Demo"
+						details={<span>Click the buton to toggle the side panel</span>}
+						actions={[
+							{
+								id: "catalog-btn",
+								variant: "call-to-action",
+								children: panelOpen ? "Close Panel" : "Open Panel",
+								onClick: HandlePanelToggle
+							}
+						]}
+					/>
+				</div>
+			</SolaceSidePanelLayout>
 		</StoryContainer>
 	);
 };

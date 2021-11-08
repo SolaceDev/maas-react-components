@@ -8,10 +8,6 @@ export enum PANEL_POSITION {
 
 export interface SolaceSidePanelLayoutProps {
 	/**
-	 * The main content that is always render on the screen regardless if the side panel is expanded or collapsed
-	 */
-	mainContent: JSX.Element;
-	/**
 	 * The content you want to show/hide in the side panel
 	 */
 	sidePanelContent?: JSX.Element;
@@ -27,6 +23,12 @@ export interface SolaceSidePanelLayoutProps {
 	 * property to control which side of the main content the side panel is rendered on
 	 */
 	sidePanelPosition?: PANEL_POSITION;
+	/**
+	 * The main content that is render on the screen regardless if the side panel is
+	 * expanded or collapsed. As the side panel expands, the main content area shall be
+	 * responsive and shink to accomodate it's size
+	 */
+	children: JSX.Element;
 }
 
 const SidePanelContainer = styled("div")(({ theme }) => ({
@@ -42,7 +44,7 @@ const PanelContainer = styled("div")(({ theme }) => ({
 }));
 
 function SolaceSidePanelLayout({
-	mainContent,
+	children,
 	sidePanelContent,
 	showSidePanel,
 	sidePanelWidth = 320,
@@ -58,7 +60,7 @@ function SolaceSidePanelLayout({
 			{showSidePanel && sidePanelPosition === PANEL_POSITION.LEFT && (
 				<SidePanelContainer>{sidePanelContent}</SidePanelContainer>
 			)}
-			<MainPanelContainer>{mainContent}</MainPanelContainer>
+			<MainPanelContainer>{children}</MainPanelContainer>
 			{showSidePanel && sidePanelPosition === PANEL_POSITION.RIGHT && (
 				<SidePanelContainer>{sidePanelContent}</SidePanelContainer>
 			)}
