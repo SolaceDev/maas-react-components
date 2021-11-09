@@ -30,5 +30,6 @@ export { default as SolaceToggle } from "./components/form/SolaceToggle";
 export { default as SolaceLabel } from "./components/form/SolaceLabel";
 export { default as SolaceTable } from "./components/table/SolaceTable";
 export { useExpandableRows } from "./components/table/hooks/useExpandableRows";
+export { default as SolacePagination } from "./components/SolacePagination";
 
 export { default as SolaceTheme } from "./resources/theme";

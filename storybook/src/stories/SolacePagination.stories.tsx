@@ -1,0 +1,40 @@
+import React, { useState } from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+
+import { SolacePagination } from "@SolaceDev/maas-react-components";
+
+export default {
+	title: "Under Construction/SolacePagination",
+	component: SolacePagination,
+	parameters: {},
+	argTypes: {
+		totalResults: {
+			control: {
+				type: "number",
+				defaultValue: 156
+			}
+		},
+		pageSize: {
+			control: {
+				type: "select",
+				options: [10, 20, 50, 100]
+			}
+		}
+	}
+} as ComponentMeta<typeof SolacePagination>;
+
+const Template: ComponentStory<typeof SolacePagination> = (args) => <SolacePagination {...args} />;
+
+export const DefaultPagination = (args): JSX.Element => {
+	const [selectedPage, setSelectedPage] = useState(1);
+
+	return (
+		<SolacePagination
+			totalResults={args.totalResults || 156}
+			activePage={selectedPage}
+			pageSize={args.pageSize}
+			onPageSelection={(page) => setSelectedPage(page)}
+		/>
+	);
+};

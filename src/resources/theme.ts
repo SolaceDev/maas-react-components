@@ -583,6 +583,26 @@ const theme: ThemeOptions = {
 					}
 				}
 			}
+		},
+		MuiPagination: {
+			styleOverrides: {
+				root: {
+					".MuiTouchRipple-root": {
+						display: "none"
+					},
+					".MuiButtonBase-root.MuiPaginationItem-root": {
+						color: BASE_COLORS.greens.green2,
+						fontSize: BASE_FONT_PX_SIZES.md
+					},
+					".MuiButtonBase-root.MuiPaginationItem-root:hover": {
+						background: "none"
+					},
+					".MuiButtonBase-root.MuiPaginationItem-root.Mui-selected": {
+						background: "none",
+						color: BASE_COLORS.greys.grey14
+					}
+				}
+			}
 		}
 	},
 	mixins: {
