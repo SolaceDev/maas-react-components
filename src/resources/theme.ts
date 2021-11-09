@@ -346,6 +346,10 @@ const theme: ThemeOptions = {
 					".MuiSvgIcon-root path": {
 						fill: BASE_COLORS.greens.green1
 					},
+					"&.Mui-disabled .MuiSvgIcon-root path": {
+						fillOpacity: "0.35",
+						fill: "white"
+					},
 					".MuiSvgIcon-root line": {
 						stroke: BASE_COLORS.greens.green1
 					},
@@ -358,7 +362,7 @@ const theme: ThemeOptions = {
 							fillOpacity: 0.35
 						}
 					},
-					"+ .MuiInputLabel-root": {
+					"+ .MuiFormLabel-root": {
 						marginLeft: "16px"
 					},
 					"&.readOnly .MuiSvgIcon-root": {
@@ -397,9 +401,6 @@ const theme: ThemeOptions = {
 						}
 					},
 					"&.Mui-disabled .MuiSvgIcon-root": {
-						".SolaceRadioContainer": {
-							stroke: BASE_COLORS.greys.grey2
-						},
 						".SolaceRadioSelection": {
 							opacity: 0.35
 						}
@@ -627,7 +628,9 @@ const theme: ThemeOptions = {
 			main: BASE_COLORS.greens.green3
 		},
 		text: {
-			primary: BASE_COLORS.greys.grey14
+			primary: BASE_COLORS.greys.grey14,
+			secondary: BASE_COLORS.greys.grey11,
+			disabled: BASE_COLORS.greys.grey5
 		}
 	},
 	spacing: 8,

@@ -1,6 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { ComponentMeta } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import {
 	SolaceSidePanelLayout,
 	SolacePanelPosition,

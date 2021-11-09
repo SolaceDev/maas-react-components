@@ -66,15 +66,14 @@ interface LabelElementProps {
 	children: string | JSX.Element;
 }
 
-function LabelElement({ children, bold, large }: LabelElementProps) {
+function LabelElement({ children, bold, large }: LabelElementProps): JSX.Element {
 	const theme = useTheme();
-	const component = bold ? "strong" : "span";
 	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
 	// 24 px is the row height in the grid because it's the height of the svg
 	// It needs to be 24 px, because otherwise the text won't be centered
 	// Attempts to find another solution: 1
 	return (
-		<Box component={component} sx={{ fontSize: typography.fontSize, lineHeight: "24px" }}>
+		<Box component={"span"} sx={{ fontSize: typography.fontSize, lineHeight: "24px", fontWeight: bold ? 500 : 400 }}>
 			{children}
 		</Box>
 	);
@@ -125,53 +124,55 @@ function SolaceRadio({
 	}
 
 	return (
-		<React.Fragment>
-			<Box display="grid" gridTemplateColumns="auto 1fr" gridTemplateRows="auto auto" alignItems="center">
-				<Radio
-					id={`${id}-radio`}
-					name={name}
-					value={value}
-					icon={RestingRadioIcon}
-					checkedIcon={SelectedRadioIcon}
-					inputProps={
-						{
-							"aria-labelledby": label ? `${id}-label` : "",
-							"data-qa": dataQa,
-							"data-tags": dataTags
-						} as SolaceHTMLAttributeProps
-					}
-					role="radio"
-					title={title}
-					className={readOnly ? "readOnly" : undefined}
-					disabled={isDisabled || readOnly}
-					disableRipple
-					checked={selected}
-					onChange={handleChange}
-				/>
-				{label && (
-					<Box>
-						<InputLabel
-							id={`${id}-label`}
-							htmlFor={`${id}-radio`}
-							required={isRequired}
-							disabled={isDisabled}
-							sx={{ color: theme.palette.text.primary, cursor: isDisabled ? "auto" : "pointer" }}
-						>
-							<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel}>
-								{label}
-							</LabelElement>
-						</InputLabel>
-					</Box>
-				)}
-				{subText && (
-					<Box gridColumn="2" gridRow="2">
-						<InputLabel id={`${id}-subtext`} disabled={isDisabled} sx={{ color: theme.palette.text.primary }}>
-							{subText}
-						</InputLabel>
-					</Box>
-				)}
-			</Box>
-		</React.Fragment>
+		<Box display="grid" gridTemplateColumns="auto 1fr" gridTemplateRows="auto auto" alignItems="center">
+			<Radio
+				id={`${id}-radio`}
+				name={name}
+				value={value}
+				icon={RestingRadioIcon}
+				checkedIcon={SelectedRadioIcon}
+				inputProps={
+					{
+						"aria-labelledby": label ? `${id}-label` : "",
+						"data-qa": dataQa,
+						"data-tags": dataTags
+					} as SolaceHTMLAttributeProps
+				}
+				role="radio"
+				title={title}
+				className={readOnly ? "readOnly" : undefined}
+				disabled={isDisabled || readOnly}
+				disableRipple
+				checked={selected}
+				onChange={handleChange}
+			/>
+			{label && (
+				<Box>
+					<InputLabel
+						id={`${id}-label`}
+						htmlFor={`${id}-radio`}
+						required={isRequired}
+						disabled={isDisabled}
+						sx={{ color: theme.palette.text.primary, cursor: isDisabled ? "auto" : "pointer" }}
+					>
+						<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel}>
+							{label}
+						</LabelElement>
+					</InputLabel>
+				</Box>
+			)}
+			{subText && (
+				<Box gridColumn="2" gridRow="2">
+					<InputLabel
+						id={`${id}-subtext`}
+						disabled={isDisabled}
+						sx={{ color: theme.palette.text.primary, fontWeight: 400 }}
+					>
+						{subText}
+					</InputLabel>
+				</Box>
+			)}
+		</Box>
 	);
 }
 
