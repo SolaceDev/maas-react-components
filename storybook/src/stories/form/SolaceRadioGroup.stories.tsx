@@ -19,9 +19,9 @@ export default {
 const Template: ComponentStory<typeof SolaceRadioGroup> = (args) => <SolaceRadioGroup {...args} />;
 
 const RADIOS: Array<React.ReactNode> = [];
-RADIOS.push(<SolaceRadio key="option1" name="option1" value="option1" label="Option 1" readOnly={false} />);
-RADIOS.push(<SolaceRadio key="option2" name="option2" value="option2" label="Option 2" readOnly={false} />);
-RADIOS.push(<SolaceRadio key="option3" name="option3" value="option3" label="Option 3" readOnly={false} />);
+RADIOS.push(<SolaceRadio key="option1" name="option1" value="option1" label="Option 1" />);
+RADIOS.push(<SolaceRadio key="option2" name="option2" value="option2" label="Option 2" />);
+RADIOS.push(<SolaceRadio key="option3" name="option3" value="option3" label="Option 3" />);
 
 export const DefaultRadioGroup = Template.bind({});
 DefaultRadioGroup.args = {
@@ -75,7 +75,6 @@ RADIOS_WITH_HELPER.push(
 		label="Import to Event Portal"
 		subText={buildSubText()}
 		isLargeLabel={true}
-		readOnly={false}
 	/>
 );
 RADIOS_WITH_HELPER.push(
@@ -86,7 +85,6 @@ RADIOS_WITH_HELPER.push(
 		label="Topic Subscriptions Analysis"
 		subText="Topic Scans are used in the PubSub+ Topic Explorer to analyze your runtime data"
 		isLargeLabel={true}
-		readOnly={false}
 	/>
 );
 
@@ -127,15 +125,9 @@ Required.args = {
 };
 
 const DISABLED_RADIOS: Array<React.ReactNode> = [];
-DISABLED_RADIOS.push(
-	<SolaceRadio key="option1" value="option1" isDisabled={true} name="option1" label="Option 1" readOnly={false} />
-);
-DISABLED_RADIOS.push(
-	<SolaceRadio key="option2" value="option2" isDisabled={true} name="option2" label="Option 2" readOnly={false} />
-);
-DISABLED_RADIOS.push(
-	<SolaceRadio key="option3" value="option3" isDisabled={true} name="option3" label="Option 3" readOnly={false} />
-);
+DISABLED_RADIOS.push(<SolaceRadio key="option1" value="option1" isDisabled={true} name="option1" label="Option 1" />);
+DISABLED_RADIOS.push(<SolaceRadio key="option2" value="option2" isDisabled={true} name="option2" label="Option 2" />);
+DISABLED_RADIOS.push(<SolaceRadio key="option3" value="option3" isDisabled={true} name="option3" label="Option 3" />);
 
 export const Disabled = Template.bind({});
 Disabled.args = {

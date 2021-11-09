@@ -1,7 +1,6 @@
 export * from "@material-ui/core";
 export * from "@material-ui/core/colors";
 export { default as DeleteIcon } from "@material-ui/icons/Delete";
-export { default as ErrorOutlineOutlinedIcon } from "@material-ui/icons/ErrorOutlineOutlined";
 
 export { default as SolaceToasts } from "./components/SolaceToasts";
 export { default as NoAccess } from "./components/NoAccess";
