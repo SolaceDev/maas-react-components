@@ -32,8 +32,13 @@ export interface SolaceSidePanelLayoutProps {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-ignore - need to resolve these TypeScript validation errors as a future activity
-const SidePanelContainer = styled("div")(({ theme }) => ({
-	...theme.mixins.sidePanelLayout_sidePanelSection
+const LeftSidePanelContainer = styled("div")(({ theme }) => ({
+	...theme.mixins.sidePanelLayout_leftSidePanelSection
+}));
+
+//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
+const RightSidePanelContainer = styled("div")(({ theme }) => ({
+	...theme.mixins.sidePanelLayout_rightSidePanelSection
 }));
 
 //@ts-ignore - need to resolve these TypeScript validation errors as a future activity
@@ -62,11 +67,11 @@ function SolaceSidePanelLayout({
 	return (
 		<PanelContainer sx={{ gridTemplateColumns: `${showSidePanel ? panelPlacement : "1fr"}` }}>
 			{showSidePanel && sidePanelPosition === PANEL_POSITION.LEFT && (
-				<SidePanelContainer>{sidePanelContent}</SidePanelContainer>
+				<LeftSidePanelContainer>{sidePanelContent}</LeftSidePanelContainer>
 			)}
 			<MainPanelContainer>{children}</MainPanelContainer>
 			{showSidePanel && sidePanelPosition === PANEL_POSITION.RIGHT && (
-				<SidePanelContainer>{sidePanelContent}</SidePanelContainer>
+				<RightSidePanelContainer>{sidePanelContent}</RightSidePanelContainer>
 			)}
 		</PanelContainer>
 	);

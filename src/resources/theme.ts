@@ -358,7 +358,7 @@ const theme: ThemeOptions = {
 							fillOpacity: 0.35
 						}
 					},
-					"+ .MuiInputLabel-root": {
+					"+ .MuiFormLabel-root": {
 						marginLeft: "16px"
 					},
 					"&.readOnly .MuiSvgIcon-root": {
@@ -603,11 +603,15 @@ const theme: ThemeOptions = {
 			alignItems: "left",
 			padding: "0px"
 		},
-		sidePanelLayout_sidePanelSection: {
-			height: "calc(100% - 2px)",
+		sidePanelLayout_rightSidePanelSection: {
+			height: "100%",
 			overflowY: "auto",
-			border: `1px solid ${BASE_COLORS.greys.grey2}`,
-			boxShadow: `0 1px 4px ${BASE_COLORS.greys.grey3}`
+			borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`
+		},
+		sidePanelLayout_leftSidePanelSection: {
+			height: "100%",
+			overflowY: "auto",
+			borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
 		}
 	},
 	palette: {
@@ -651,7 +655,8 @@ const theme: ThemeOptions = {
 
 declare module "@material-ui/core/styles/createMixins" {
 	interface Mixins {
-		sidePanelLayout_sidePanelSection: React.CSSProperties;
+		sidePanelLayout_leftSidePanelSection: React.CSSProperties;
+		sidePanelLayout_rightSidePanelSection: React.CSSProperties;
 		sidePanelLayout_contentPanelSection: React.CSSProperties;
 		sidePanelLayout_mainPanel: React.CSSProperties;
 	}
