@@ -12,7 +12,7 @@
 	"author": "",
 	"license": "MIT",
 	"main": "dist/index.js",
-	"module": "dist/index.js",
+	"module": "dist/index.modern.js",
 	"types": "dist/index.d.ts",
 	"source": "src/index.tsx",
 	"engines": {
@@ -21,7 +21,7 @@
 	"scripts": {
 		"install:dev": "npm install && cd storybook/ && npm i",
 		"dev:link": "npm link && cd storybook && npm link @SolaceDev/maas-react-components",
-		"build": "microbundle --compress --jsx React.createElement --format cjs",
+		"build": "microbundle --compress --jsx React.createElement --format cjs,modern",
 		"build:dev": "microbundle watch --jsx React.createElement --no-compress --format cjs",
 		"start": "./scripts/start.sh",
 		"prepare": "husky install && run-s build",
