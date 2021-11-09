@@ -1,8 +1,7 @@
-import { Box, TextField, useTheme } from "@material-ui/core";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import { TextField, useTheme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import SolaceLabel from "./SolaceLabel";
 import SolaceComponentProps from "../SolaceComponentProps";
+import FormChildBase from "./FormChildBase";
 
 export interface SolaceSelectChangeEvent {
 	name: string;
@@ -73,9 +72,9 @@ function SolaceSelect({
 	title,
 	hasErrors = false,
 	isRequired = false,
-	isInlineLabel = false,
 	isDisabled = false,
 	isReadOnly = false,
+	isInlineLabel = false,
 	onChange,
 	dataQa,
 	dataTags,
@@ -98,84 +97,56 @@ function SolaceSelect({
 		}
 	};
 
-	const getHelperText = () => (
-		<Box display="flex">
-			{hasErrors && <ErrorOutlineOutlinedIcon sx={{ marginRight: theme.spacing() }} />}
-			{helperText}
-		</Box>
-	);
-
 	const getId = () => {
 		return id ? id : name;
 	};
 
 	const select = () => (
-		<React.Fragment>
-			<TextField
-				id={getId()}
-				name={name}
-				inputProps={{
-					"data-qa": dataQa,
-					"data-tags": dataTags,
-					"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
-					"aria-labelledby": label ? `${getId()}-label` : "",
-					"aria-readonly": isReadOnly,
-					role: "select",
-					title: title
-				}}
-				select
-				InputProps={{
-					sx: { height: theme.spacing(4) },
-					className: isReadOnly ? "readOnlySelect" : "",
-					disabled: isDisabled,
-					readOnly: isReadOnly,
-					required: isRequired
-				}}
-				FormHelperTextProps={{
-					variant: "standard",
-					error: hasErrors
-				}}
-				helperText={getHelperText()}
-				title={title}
-				error={hasErrors}
-				autoComplete="off"
-				required={isRequired}
-				disabled={isDisabled || isReadOnly}
-				margin="dense"
-				value={selectedValue}
-				onChange={handleChange}
-			>
-				{children}
-			</TextField>
-		</React.Fragment>
+		<TextField
+			id={getId()}
+			name={name}
+			inputProps={{
+				"data-qa": dataQa,
+				"data-tags": dataTags,
+				"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
+				"aria-labelledby": label ? `${getId()}-label` : "",
+				"aria-readonly": isReadOnly,
+				role: "select",
+				title: title
+			}}
+			select
+			InputProps={{
+				sx: { height: theme.spacing(4) },
+				className: isReadOnly ? "readOnlySelect" : "",
+				disabled: isDisabled,
+				readOnly: isReadOnly,
+				required: isRequired
+			}}
+			title={title}
+			autoComplete="off"
+			required={isRequired}
+			disabled={isDisabled || isReadOnly}
+			margin="dense"
+			value={selectedValue}
+			onChange={handleChange}
+		>
+			{children}
+		</TextField>
 	);
 
 	return (
-		<React.Fragment>
-			{!isInlineLabel && label && (
-				<Box marginTop={theme.spacing()}>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
-						{label}
-					</SolaceLabel>
-					{select()}
-				</Box>
-			)}
-			{isInlineLabel && label && (
-				<Box
-					marginBottom={theme.spacing()}
-					display="flex"
-					flexDirection="row"
-					justifyContent="space-between"
-					alignItems="flex-start"
-				>
-					<SolaceLabel id={`${getId()}-label`} htmlForId={getId()} isRequired={isRequired} isDisabled={isDisabled}>
-						{label}
-					</SolaceLabel>
-					{select()}
-				</Box>
-			)}
-			{!label && select()}
-		</React.Fragment>
+		<FormChildBase
+			id={getId()}
+			label={label}
+			helperText={helperText}
+			errorText={hasErrors ? helperText : undefined}
+			isDisabled={isDisabled}
+			isReadOnly={isReadOnly}
+			isRequired={isRequired}
+			isInlineLabel={isInlineLabel}
+		>
+			{select()}
+		</FormChildBase>
 	);
 }
 
