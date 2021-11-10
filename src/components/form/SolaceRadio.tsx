@@ -68,13 +68,13 @@ interface LabelElementProps {
 
 function LabelElement({ children, bold, large }: LabelElementProps) {
 	const theme = useTheme();
-	const component = bold ? "strong" : "span";
+	const weight = bold ? 500 : 400;
 	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
 	// 24 px is the row height in the grid because it's the height of the svg
 	// It needs to be 24 px, because otherwise the text won't be centered
 	// Attempts to find another solution: 1
 	return (
-		<Box component={component} sx={{ fontSize: typography.fontSize, lineHeight: "24px" }}>
+		<Box component="span" sx={{ fontSize: typography.fontSize, lineHeight: "24px", fontWeight: weight }}>
 			{children}
 		</Box>
 	);

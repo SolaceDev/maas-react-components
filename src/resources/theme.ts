@@ -65,26 +65,24 @@ const theme: ThemeOptions = {
 				},
 				root: {
 					textTransform: "none",
-					padding: "6px 16px",
 					borderRadius: "4px",
 					minWidth: "100px",
-					height: "32px",
-					fontWeight: 500
+					height: "32px"
 				},
 				startIcon: {
-					"&>*:nth-of-type(1)": {
-						fontSize: "unset",
-						width: "24px",
-						height: "24px",
-						marginLeft: "-12px"
+					width: "24px",
+					height: "24px",
+					marginLeft: "-12px",
+					">*:nth-of-type(1)": {
+						fontSize: "24px"
 					}
 				},
 				endIcon: {
-					"&>*:nth-of-type(1)": {
-						fontSize: "unset",
-						width: "24px",
-						height: "24px",
-						marginRight: "-12px"
+					width: "24px",
+					height: "24px",
+					marginRight: "-12px",
+					">*:nth-of-type(1)": {
+						fontSize: "24px"
 					}
 				},
 				textPrimary: {
@@ -122,7 +120,7 @@ const theme: ThemeOptions = {
 				root: {
 					fontSize: "0.75rem",
 					color: BASE_COLORS.greys.grey11,
-					lineHeight: "150%",
+					lineHeight: 1.5,
 					marginLeft: "0px",
 					marginTop: "2px",
 					".MuiSvgIcon-root": {
@@ -142,10 +140,11 @@ const theme: ThemeOptions = {
 						color: BASE_COLORS.greys.grey3
 					},
 					"&:hover": {
-						backgroundColor: BASE_COLORS.greys.grey23
+						backgroundColor: BASE_COLORS.greys.grey2,
+						color: BASE_COLORS.greys.grey14
 					},
 					"&:active": {
-						backgroundColor: BASE_COLORS.greys.grey19
+						backgroundColor: BASE_COLORS.greys.grey1
 					}
 				}
 			}
@@ -158,8 +157,8 @@ const theme: ThemeOptions = {
 				root: {
 					color: BASE_COLORS.greys.grey14,
 					fontSize: "0.875rem",
-					fontWeight: 500,
-					lineHeight: "150%",
+					fontWeight: 400,
+					lineHeight: 1.5,
 					"&.Mui-error": {
 						color: BASE_COLORS.greys.grey11
 					},
@@ -178,7 +177,7 @@ const theme: ThemeOptions = {
 					color: BASE_COLORS.greys.grey11,
 					fontSize: "0.875rem",
 					fontWeight: 400,
-					lineHeight: "150%",
+					lineHeight: 1.5,
 					"&.Mui-error": {
 						color: BASE_COLORS.greys.grey11
 					},
@@ -191,14 +190,16 @@ const theme: ThemeOptions = {
 		MuiLink: {
 			styleOverrides: {
 				root: {
-					padding: "6px 16px",
-					borderRadius: "4px",
-					minWidth: "100px",
-					height: "32px",
-					fontWeight: "normal",
+					lineHeight: 1.5,
 					fontSize: "14px",
 					"&[disabled]": {
 						color: BASE_COLORS.greys.grey3
+					},
+					".SolaceOpenExternalIcon": {
+						width: "16px",
+						height: "16px",
+						fill: "#00ad93",
+						marginBottom: "2px"
 					}
 				}
 			}
@@ -639,15 +640,20 @@ const theme: ThemeOptions = {
 		fontSize: BASE_FONT_PX_SIZES.sm,
 		body1: {
 			fontSize: BASE_FONT_PX_SIZES.sm,
-			lineHeight: BASE_FONT_PX_SIZES.sm * 1.5 + "px"
+			lineHeight: 1.5
+		},
+		button: {
+			lineHeight: 1.5,
+			fontSize: BASE_FONT_PX_SIZES.sm,
+			fontWeight: 400
 		},
 		caption: {
 			fontSize: BASE_FONT_PX_SIZES.xs,
-			lineHeight: BASE_FONT_PX_SIZES.xs * 1.5 + "px"
+			lineHeight: 1.5
 		},
 		subtitle1: {
 			fontSize: BASE_FONT_PX_SIZES.md,
-			lineHeight: BASE_FONT_PX_SIZES.md * 1.5 + "px"
+			lineHeight: 1.5
 		},
 		fontFamily: "Rubik,sans-serif"
 	}
