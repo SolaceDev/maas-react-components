@@ -145,6 +145,9 @@ const theme: ThemeOptions = {
 					},
 					"&:active": {
 						backgroundColor: BASE_COLORS.greys.grey1
+					},
+					".MuiSvgIcon-root": {
+						fill: BASE_COLORS.greys.grey8
 					}
 				}
 			}
@@ -668,7 +671,7 @@ const theme: ThemeOptions = {
 		button: {
 			lineHeight: 1.5,
 			fontSize: BASE_FONT_PX_SIZES.sm,
-			fontWeight: 400
+			fontWeight: 500
 		},
 		caption: {
 			fontSize: BASE_FONT_PX_SIZES.xs,
