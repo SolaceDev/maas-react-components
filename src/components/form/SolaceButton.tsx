@@ -124,7 +124,7 @@ function SolaceButton({
 					underline={isDisabled ? "none" : underline ?? "hover"}
 					sx={styles}
 				>
-					<Box sx={{ marginRight: theme.spacing(4 / 8) }} component="span">
+					<Box sx={{ marginRight: theme.spacing(6 / 8) }} component="span">
 						{children}
 					</Box>
 					{href && <OpenExternalIcon></OpenExternalIcon>}

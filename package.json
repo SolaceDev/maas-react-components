@@ -7,7 +7,7 @@
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/SolaceDev"
 	},
-	"version": "1.4.3",
+	"version": "1.4.4",
 	"description": "React component library designed for Solace.",
 	"author": "",
 	"license": "MIT",
@@ -21,8 +21,8 @@
 	"scripts": {
 		"install:dev": "npm install && cd storybook/ && npm i",
 		"dev:link": "npm link && cd storybook && npm link @SolaceDev/maas-react-components",
-		"build": "microbundle --compress --jsx React.createElement --format cjs,modern",
-		"build:dev": "microbundle watch --jsx React.createElement --no-compress --format cjs",
+		"build": "microbundle --compress --jsx React.createElement --format cjs,modern --define process.env.NODE_ENV=production",
+		"build:dev": "microbundle watch --jsx React.createElement --no-compress --format cjs --define process.env.NODE_ENV=development",
 		"start": "./scripts/start.sh",
 		"prepare": "husky install && run-s build",
 		"test": "cross-env CI=1 react-scripts test --env=jsdom",
