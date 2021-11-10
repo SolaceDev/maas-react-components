@@ -1,4 +1,7 @@
 import { Button, IconButton, Link, Tooltip } from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
+import { Box } from "@material-ui/system";
+import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
 
 import SolaceComponentProps from "../SolaceComponentProps";
 
@@ -74,6 +77,7 @@ function SolaceButton({
 			onClick(event);
 		}
 	};
+	const theme = useTheme();
 
 	if (variant === "icon") {
 		return (
@@ -91,6 +95,21 @@ function SolaceButton({
 			</Tooltip>
 		);
 	} else if (variant === "link") {
+		let styles;
+		if (!href) {
+			styles = {
+				padding: `${theme.spacing(6 / 8)} ${theme.spacing(16 / 8)}`,
+				borderRadius: theme.spacing(4 / 8),
+				minWidth: "100px",
+				height: theme.spacing(32 / 8)
+			};
+		} else {
+			styles = {
+				padding: "0",
+				display: "inline-flex",
+				alignItems: "center"
+			};
+		}
 		return (
 			<Tooltip title={title} arial-lable={title}>
 				<Link
@@ -103,8 +122,12 @@ function SolaceButton({
 					type={type}
 					disabled={isDisabled}
 					underline={isDisabled ? "none" : underline ?? "hover"}
+					sx={styles}
 				>
-					{children}
+					<Box sx={{ marginRight: theme.spacing(6 / 8) }} component="span">
+						{children}
+					</Box>
+					{href && <OpenExternalIcon></OpenExternalIcon>}
 				</Link>
 			</Tooltip>
 		);
@@ -120,6 +143,13 @@ function SolaceButton({
 			text: MATERIAL_VARIANTS.text
 		};
 
+		let padding;
+		if (startIcon || endIcon) {
+			padding = `${theme.spacing(4 / 8)}`;
+		} else {
+			padding = `${theme.spacing(6 / 8)} ${theme.spacing(16 / 8)}`;
+		}
+
 		return (
 			<Tooltip title={title} arial-lable={title}>
 				<Button
@@ -133,6 +163,7 @@ function SolaceButton({
 					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}
 					onClick={handleClick}
+					sx={{ padding: padding }}
 				>
 					{children}
 				</Button>

@@ -72,6 +72,18 @@ ExternalLinkButton.args = {
 	children: "Visit CNN"
 };
 
+export const ExternaLinkWithText = (): ReactNode => {
+	return (
+		<div>
+			You can{" "}
+			<SolaceButton variant="link" href="https://solace.com">
+				learn more in the SSO documentation
+			</SolaceButton>{" "}
+			or just figure it out yourself.
+		</div>
+	);
+};
+
 export const WithStartIcon = Template.bind({});
 WithStartIcon.args = {
 	onClick: action("callback"),
