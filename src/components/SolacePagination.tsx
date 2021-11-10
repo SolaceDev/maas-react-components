@@ -4,11 +4,11 @@ export interface SolacePaginationProps {
 	/**
 	 * Flag signifying if the side panel is expanded or collapsed
 	 */
-	activePage: number;
+	activePage?: number;
 	/**
 	 * The desired width of the side panel
 	 */
-	pageSize: number;
+	pageSize?: number;
 	/**
 	 * property to control which side of the main content the side panel is rendered on
 	 */
@@ -25,11 +25,11 @@ export interface SolacePaginationProps {
 	 *  Ex: "Showing ${firstItemIndex}-${lastItemIndex} of ${totalResults} results" would result in:
 	 *  -> Showing 1-10 of 156 results
 	 */
-	displayText: string;
+	displayText?: string;
 	/**
 	 * Callback function to notify which page was clicked/selected by the end user
 	 */
-	onPageSelection: (selectedPage: number) => void;
+	onPageSelection?: (selectedPage: number) => void;
 }
 
 const PaginationContainer = styled("div")(() => ({
@@ -62,7 +62,7 @@ function SolacePagination({
 	const lastItemIndex = Math.min(activePage * pageSize, totalResults);
 
 	const handlePageSelection = (event: React.ChangeEvent<unknown>, page: number) => {
-		if (event && page > 0) {
+		if (event && page > 0 && onPageSelection) {
 			onPageSelection(page);
 		}
 	};
