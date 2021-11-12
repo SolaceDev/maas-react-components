@@ -73,3 +73,12 @@ export const WithChildrenComponents = (): JSX.Element => (
 		</SolaceSelect>
 	</SolaceConfirmationDialog>
 );
+
+export const WithNoChildren = (): JSX.Element => (
+	<SolaceConfirmationDialog
+		title="No Children"
+		contentText="Some content text sitting above dialog child components (form elements in this case)"
+		isOpen={true}
+		actions={[{ label: "Ok", onClick: action("button-clicked-callback"), variant: "outline" }]}
+	/>
+);
