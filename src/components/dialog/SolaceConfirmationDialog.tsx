@@ -10,7 +10,7 @@ export interface SolaceConfirmationDialogProps {
 	contentText?: string;
 	actions: actionProps[];
 	isOpen: boolean;
-	children: ReactNode;
+	children?: ReactNode;
 }
 
 function SolaceConfirmationDialog({
