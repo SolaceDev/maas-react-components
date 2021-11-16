@@ -31,7 +31,13 @@ function SolaceLabel({
 	children
 }: SolaceLabelProps): JSX.Element {
 	return (
-		<FormLabel id={id} htmlFor={htmlForId} required={isRequired} disabled={isDisabled} sx={{ display: "block" }}>
+		<FormLabel
+			id={id}
+			htmlFor={htmlForId}
+			required={isRequired}
+			disabled={isDisabled}
+			sx={{ display: "block", color: "rgba(0, 0, 0, 0.8)", fontWeight: "regular" }}
+		>
 			{children}
 		</FormLabel>
 	);
