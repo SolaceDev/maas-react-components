@@ -1,4 +1,4 @@
-import { FormLabel } from "@material-ui/core";
+import { FormLabel, useTheme } from "@material-ui/core";
 
 export interface SolaceLabelProps {
 	/**
@@ -30,13 +30,14 @@ function SolaceLabel({
 	isDisabled = false,
 	children
 }: SolaceLabelProps): JSX.Element {
+	const theme = useTheme();
 	return (
 		<FormLabel
 			id={id}
 			htmlFor={htmlForId}
 			required={isRequired}
 			disabled={isDisabled}
-			sx={{ display: "block", color: "rgba(0, 0, 0, 0.8)", fontWeight: "regular" }}
+			sx={{ display: "block", color: theme.palette.text.primary, fontWeight: "regular" }}
 		>
 			{children}
 		</FormLabel>
