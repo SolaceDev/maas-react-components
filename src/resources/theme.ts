@@ -229,7 +229,7 @@ const theme: ThemeOptions = {
 					"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
 						{
 							border: "none",
-							padding: "0px",
+							padding: "6px 0 0 0",
 							cursor: "default"
 						},
 					"&:hover": {
