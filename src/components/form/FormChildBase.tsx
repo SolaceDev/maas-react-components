@@ -14,6 +14,14 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	 */
 	label?: string | JSX.Element;
 	/**
+	 * Boolean flag to allow font size of 16px (default to 14px)
+	 */
+	isLargeLabel?: boolean;
+	/**
+	 * Boolean falg to allow font weight of medium (default to regular)
+	 */
+	isDarkLabel?: boolean;
+	/**
 	 * The value of the `input` element, required for controlled component
 	 */
 	value?: string;
@@ -48,6 +56,8 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 function FormChildBase({
 	id,
 	label,
+	isLargeLabel,
+	isDarkLabel,
 	isRequired,
 	isDisabled,
 	isInlineLabel,
@@ -63,7 +73,14 @@ function FormChildBase({
 			alignItems="flex-start"
 		>
 			{label && (
-				<SolaceLabel id={`${id}-label`} htmlForId={`${id}`} isRequired={isRequired} isDisabled={isDisabled}>
+				<SolaceLabel
+					id={`${id}-label`}
+					htmlForId={`${id}`}
+					isRequired={isRequired}
+					isDisabled={isDisabled}
+					isLargeLabel={isLargeLabel}
+					isDarkLabel={isDarkLabel}
+				>
 					{label}
 				</SolaceLabel>
 			)}

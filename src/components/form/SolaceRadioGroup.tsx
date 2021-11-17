@@ -23,6 +23,14 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	 */
 	label?: string | JSX.Element;
 	/**
+	 * Boolean flag to allow font size of 16px (default to 14px)
+	 */
+	isLargeLabel?: boolean;
+	/**
+	 * Boolean falg to allow font weight of medium (default to regular)
+	 */
+	isDarkLabel?: boolean;
+	/**
 	 * Content to display as supportive/explanitory text
 	 */
 	helperText?: string | JSX.Element;
@@ -64,6 +72,8 @@ function SolaceRadioGroup({
 	id,
 	name,
 	label,
+	isLargeLabel = false,
+	isDarkLabel = false,
 	value,
 	helperText,
 	hasErrors = false,
@@ -117,6 +127,8 @@ function SolaceRadioGroup({
 		<FormChildBase
 			id={id}
 			label={label}
+			isLargeLabel={isLargeLabel}
+			isDarkLabel={isDarkLabel}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
 			isDisabled={isDisabled}

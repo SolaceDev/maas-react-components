@@ -115,6 +115,30 @@ WithErrors.args = {
 	children: RADIOS
 };
 
+export const WithLargeLabel = Template.bind({});
+WithLargeLabel.args = {
+	onChange: action("callback"),
+	title: "Demo RadioGroup",
+	id: "demoRadioGroupId",
+	name: "demoRadioGroup",
+	label: "Some Label",
+	isLargeLabel: true,
+	value: "option1",
+	children: RADIOS
+};
+
+export const WithDarkLabel = Template.bind({});
+WithDarkLabel.args = {
+	onChange: action("callback"),
+	title: "Demo RadioGroup",
+	id: "demoRadioGroupId",
+	name: "demoRadioGroup",
+	label: "Some Label",
+	isDarkLabel: true,
+	value: "option1",
+	children: RADIOS
+};
+
 export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),

@@ -18,6 +18,14 @@ export interface SolaceLabelProps {
 	 */
 	isDisabled?: boolean;
 	/**
+	 * Boolean flag to allow font size of 16px (default to 14px)
+	 */
+	isLargeLabel?: boolean;
+	/**
+	 * Boolean falg to allow font weight of medium (default to regular)
+	 */
+	isDarkLabel?: boolean;
+	/**
 	 *
 	 */
 	children?: React.ReactNode;
@@ -28,6 +36,8 @@ function SolaceLabel({
 	htmlForId,
 	isRequired = false,
 	isDisabled = false,
+	isLargeLabel = false,
+	isDarkLabel = false,
 	children
 }: SolaceLabelProps): JSX.Element {
 	const theme = useTheme();
@@ -37,7 +47,12 @@ function SolaceLabel({
 			htmlFor={htmlForId}
 			required={isRequired}
 			disabled={isDisabled}
-			sx={{ display: "block", color: theme.palette.text.primary, fontWeight: "regular" }}
+			sx={{
+				display: "block",
+				color: theme.palette.text.primary,
+				fontWeight: isDarkLabel ? "medium" : "regular",
+				fontSize: isLargeLabel ? "16px" : "14px"
+			}}
 		>
 			{children}
 		</FormLabel>
