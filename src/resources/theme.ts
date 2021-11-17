@@ -405,6 +405,10 @@ const theme: ThemeOptions = {
 						}
 					},
 					"&.Mui-disabled .MuiSvgIcon-root": {
+						".SolaceRadioContainer": {
+							stroke: BASE_COLORS.greys.grey2,
+							strokeOpacity: 1
+						},
 						".SolaceRadioSelection": {
 							opacity: 0.35
 						}

@@ -63,17 +63,26 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 interface LabelElementProps {
 	bold: boolean;
 	large: boolean;
+	isDisabled: boolean;
 	children: string | JSX.Element;
 }
 
-function LabelElement({ children, bold, large }: LabelElementProps): JSX.Element {
+function LabelElement({ children, bold, large, isDisabled }: LabelElementProps): JSX.Element {
 	const theme = useTheme();
 	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
 	// 24 px is the row height in the grid because it's the height of the svg
 	// It needs to be 24 px, because otherwise the text won't be centered
 	// Attempts to find another solution: 1
 	return (
-		<Box component={"span"} sx={{ fontSize: typography.fontSize, lineHeight: "24px", fontWeight: bold ? 500 : 400 }}>
+		<Box
+			component={"span"}
+			sx={{
+				fontSize: typography.fontSize,
+				lineHeight: "24px",
+				fontWeight: bold ? 500 : 400,
+				color: isDisabled ? theme.palette.text.disabled : theme.palette.text.primary
+			}}
+		>
 			{children}
 		</Box>
 	);
@@ -155,7 +164,7 @@ function SolaceRadio({
 						disabled={isDisabled}
 						sx={{ color: theme.palette.text.primary, cursor: isDisabled ? "auto" : "pointer" }}
 					>
-						<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel}>
+						<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel} isDisabled={isDisabled}>
 							{label}
 						</LabelElement>
 					</InputLabel>
