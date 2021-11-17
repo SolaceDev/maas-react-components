@@ -12,7 +12,7 @@ function ErrorText({ children }: ErrorTextProps): JSX.Element {
 	const theme = useTheme();
 	const size = theme.typography.subtitle1.fontSize?.toString();
 	return (
-		<Box display="flex" flexDirection="row" alignItems="center" sx={{ paddingTop: "12px", alignSelf: "center" }}>
+		<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center" sx={{ paddingTop: "12px" }}>
 			<ErrorIcon size={size ? parseInt(size) : BASE_FONT_PX_SIZES.md} fill={theme.palette.error.main}></ErrorIcon>
 			<FormLabel
 				sx={{
