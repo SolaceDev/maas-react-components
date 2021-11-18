@@ -21,6 +21,16 @@ export default {
 			control: {
 				type: "boolean"
 			}
+		},
+		isLargeLabel: {
+			control: {
+				type: "boolean"
+			}
+		},
+		isBoldLabel: {
+			control: {
+				type: "boolean"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceLabel>;
@@ -31,6 +41,20 @@ export const DefaultLabel = Template.bind({});
 DefaultLabel.args = {
 	id: "demoTextFieldId",
 	children: "Custom Lable"
+};
+
+export const LargeLabel = Template.bind({});
+LargeLabel.args = {
+	id: "demoTextFieldId",
+	isLargeLabel: true,
+	children: "Custom Label"
+};
+
+export const BoldLabel = Template.bind({});
+BoldLabel.args = {
+	id: "demoTextFieldId",
+	isBoldLabel: true,
+	children: "Custom Label"
 };
 
 export const Required = Template.bind({});
