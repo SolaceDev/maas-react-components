@@ -102,6 +102,41 @@ HelperText.args = {
 	children: RADIOS_WITH_HELPER
 };
 
+const RADIOS_WITH_LIGHT_SUBTEXT: Array<React.ReactNode> = [];
+RADIOS_WITH_LIGHT_SUBTEXT.push(
+	<SolaceRadio
+		key="option1"
+		name="option1"
+		value="option1"
+		label="Option 1"
+		subText="This is a regular subText for Option 1"
+		isLargeLabel={true}
+		readOnly={false}
+	/>
+);
+RADIOS_WITH_LIGHT_SUBTEXT.push(
+	<SolaceRadio
+		key="option2"
+		name="option2"
+		value="option2"
+		label="Option 2"
+		subText="This is a light subText for Option 2"
+		isLargeLabel={true}
+		isLightSubText={true}
+		readOnly={false}
+	/>
+);
+export const LightSubtext = Template.bind({});
+LightSubtext.args = {
+	onChange: action("callback"),
+	title: "Demo RadioGroup",
+	id: "demoRadioGroupId",
+	name: "demoRadioGroup",
+	label: "Select the discovery type and fill the form to start a scan",
+	value: "option1",
+	children: RADIOS_WITH_LIGHT_SUBTEXT
+};
+
 export const WithErrors = Template.bind({});
 WithErrors.args = {
 	onChange: action("callback"),

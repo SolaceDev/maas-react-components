@@ -28,6 +28,11 @@ export default {
 			control: {
 				type: "boolean"
 			}
+		},
+		isLightSubText: {
+			control: {
+				type: "boolean"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceRadio>;
@@ -61,6 +66,18 @@ SubText.args = {
 	name: "demoRadio",
 	label: "Header text",
 	subText: "Subtext subtext",
+	value: "someValue"
+};
+
+export const LightSubText = Template.bind({});
+LightSubText.args = {
+	onChange: action("callback"),
+	title: "Demo Radio",
+	id: "demoRadioId",
+	name: "demoRadio",
+	label: "Header text",
+	subText: "Subtext subtext",
+	isLightSubText: true,
 	value: "someValue"
 };
 

@@ -35,6 +35,10 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	 */
 	subText?: string | JSX.Element;
 	/**
+	 * allow subText to be displayed at 55% black (default to 80%)
+	 */
+	isLightSubText?: boolean;
+	/**
 	 * Boolean flag to check or uncheck the `radio`
 	 */
 	isChecked?: boolean;
@@ -95,6 +99,7 @@ function SolaceRadio({
 	value,
 	title,
 	subText,
+	isLightSubText = false,
 	isChecked = false,
 	isRequired = false,
 	isDisabled = false,
@@ -175,7 +180,7 @@ function SolaceRadio({
 					<InputLabel
 						id={`${id}-subtext`}
 						disabled={isDisabled}
-						sx={{ color: theme.palette.text.primary, fontWeight: 400 }}
+						sx={{ color: isLightSubText ? "rgba(0, 0, 0, 0.55)" : theme.palette.text.primary, fontWeight: 400 }}
 					>
 						{subText}
 					</InputLabel>
