@@ -416,6 +416,7 @@ const theme: ThemeOptions = {
 					"&.readOnly .MuiSvgIcon-root": {
 						".SolaceRadioContainer": {
 							fill: BASE_COLORS.greys.grey19,
+							stroke: BASE_COLORS.greys.grey3,
 							opacity: 1
 						},
 						".SolaceRadioSelection": {
