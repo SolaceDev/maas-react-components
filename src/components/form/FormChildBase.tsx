@@ -20,7 +20,7 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	/**
 	 * Boolean falg to allow font weight of medium (default to regular)
 	 */
-	isDarkLabel?: boolean;
+	isBoldLabel?: boolean;
 	/**
 	 * The value of the `input` element, required for controlled component
 	 */
@@ -57,7 +57,7 @@ function FormChildBase({
 	id,
 	label,
 	isLargeLabel,
-	isDarkLabel,
+	isBoldLabel,
 	isRequired,
 	isDisabled,
 	isInlineLabel,
@@ -79,7 +79,7 @@ function FormChildBase({
 					isRequired={isRequired}
 					isDisabled={isDisabled}
 					isLargeLabel={isLargeLabel}
-					isDarkLabel={isDarkLabel}
+					isBoldLabel={isBoldLabel}
 				>
 					{label}
 				</SolaceLabel>

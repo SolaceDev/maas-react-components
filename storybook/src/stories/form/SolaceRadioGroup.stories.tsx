@@ -127,14 +127,14 @@ WithLargeLabel.args = {
 	children: RADIOS
 };
 
-export const WithDarkLabel = Template.bind({});
-WithDarkLabel.args = {
+export const WithBoldLabel = Template.bind({});
+WithBoldLabel.args = {
 	onChange: action("callback"),
 	title: "Demo RadioGroup",
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
-	isDarkLabel: true,
+	isBoldLabel: true,
 	value: "option1",
 	children: RADIOS
 };

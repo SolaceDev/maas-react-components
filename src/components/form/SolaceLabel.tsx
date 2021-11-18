@@ -24,7 +24,7 @@ export interface SolaceLabelProps {
 	/**
 	 * Boolean falg to allow font weight of medium (default to regular)
 	 */
-	isDarkLabel?: boolean;
+	isBoldLabel?: boolean;
 	/**
 	 *
 	 */
@@ -37,7 +37,7 @@ function SolaceLabel({
 	isRequired = false,
 	isDisabled = false,
 	isLargeLabel = false,
-	isDarkLabel = false,
+	isBoldLabel = false,
 	children
 }: SolaceLabelProps): JSX.Element {
 	const theme = useTheme();
@@ -50,7 +50,7 @@ function SolaceLabel({
 			sx={{
 				display: "block",
 				color: theme.palette.text.primary,
-				fontWeight: isDarkLabel ? "medium" : "regular",
+				fontWeight: isBoldLabel ? "medium" : "regular",
 				fontSize: isLargeLabel ? "16px" : "14px"
 			}}
 		>

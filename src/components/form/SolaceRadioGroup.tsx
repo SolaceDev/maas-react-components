@@ -29,7 +29,7 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	/**
 	 * Boolean falg to allow font weight of medium (default to regular)
 	 */
-	isDarkLabel?: boolean;
+	isBoldLabel?: boolean;
 	/**
 	 * Content to display as supportive/explanitory text
 	 */
@@ -73,7 +73,7 @@ function SolaceRadioGroup({
 	name,
 	label,
 	isLargeLabel = false,
-	isDarkLabel = false,
+	isBoldLabel = false,
 	value,
 	helperText,
 	hasErrors = false,
@@ -128,7 +128,7 @@ function SolaceRadioGroup({
 			id={id}
 			label={label}
 			isLargeLabel={isLargeLabel}
-			isDarkLabel={isDarkLabel}
+			isBoldLabel={isBoldLabel}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
 			isDisabled={isDisabled}
