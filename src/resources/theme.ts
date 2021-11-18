@@ -360,7 +360,9 @@ const theme: ThemeOptions = {
 					"&.Mui-disabled .MuiSvgIcon-root": {
 						rect: {
 							fillOpacity: 0.35,
-							fill: "white"
+							fill: "white",
+							stroke: BASE_COLORS.greys.grey2,
+							strokeOpacity: 1
 						},
 						path: {
 							fillOpacity: 0.35
