@@ -20,9 +20,9 @@ jobs:
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         uses: chromaui/action@v1
-        run: cd ./storybook && npm run chromatic
         # Chromatic GitHub Action options
         with:
           token: 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
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: 10e61b689d33
+        run: cd ./storybook && npm run chromatic
