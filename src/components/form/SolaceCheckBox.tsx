@@ -1,7 +1,6 @@
-import { Box, Checkbox, FormHelperText, useTheme } from "@material-ui/core";
+import { Box, Checkbox, FormHelperText, useTheme, FormLabel } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
-import SolaceLabel from "./SolaceLabel";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 import {
@@ -64,6 +63,36 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	 * Boolean flag to set the checkbox to readOnly
 	 */
 	readOnly?: boolean;
+}
+
+interface CheckBoxLabelProps {
+	id: string;
+	htmlForId?: string;
+	isRequired?: boolean;
+	isDisabled?: boolean;
+	children?: React.ReactNode;
+}
+
+function CheckBoxLabel({
+	id,
+	htmlForId,
+	isRequired = false,
+	isDisabled = false,
+	children
+}: CheckBoxLabelProps): JSX.Element {
+	const theme = useTheme();
+	return (
+		<FormLabel
+			id={id}
+			htmlFor={htmlForId}
+			required={isRequired}
+			disabled={isDisabled}
+			className="SolaceCheckBoxLabel"
+			sx={{ display: "block", color: theme.palette.text.primary }}
+		>
+			{children}
+		</FormLabel>
+	);
 }
 
 const SolaceCheckBox = ({
@@ -150,14 +179,14 @@ const SolaceCheckBox = ({
 					onChange={handleChange}
 				/>
 				{label && (
-					<SolaceLabel
+					<CheckBoxLabel
 						id={`${getId()}-label`}
 						htmlForId={`${getId()}-checkbox`}
 						isRequired={isRequired}
 						isDisabled={isDisabled}
 					>
 						{label}
-					</SolaceLabel>
+					</CheckBoxLabel>
 				)}
 			</Box>
 			{helperText && (

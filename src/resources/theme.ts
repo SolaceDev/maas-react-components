@@ -185,6 +185,9 @@ const theme: ThemeOptions = {
 						color: BASE_COLORS.greys.grey11
 					},
 					"&.Mui-disabled": {
+						"&.SolaceCheckBoxLabel": {
+							color: BASE_COLORS.greys.grey5
+						},
 						color: BASE_COLORS.greys.grey9
 					}
 				}
