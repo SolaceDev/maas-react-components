@@ -28,3 +28,4 @@ jobs:
           projectToken: 10e61b689d33
           # storybook directory
           workingDir: storybook
+          exitZeroOnChanges: true
