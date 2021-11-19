@@ -19,8 +19,6 @@ jobs:
         run: npm install && cd ./storybook && npm install
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
-        # working directory for storybook
-        working-directory: storybook
         # publish
         uses: chromaui/action@v1
         # Chromatic GitHub Action options
@@ -28,3 +26,5 @@ jobs:
           token: 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
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: 10e61b689d33
+          # storybook directory
+          workingDir: storybook
