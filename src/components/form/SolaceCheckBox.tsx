@@ -190,7 +190,11 @@ const SolaceCheckBox = ({
 				)}
 			</Box>
 			{helperText && (
-				<FormHelperText error={hasErrors} component="div" sx={{ marginLeft: theme.spacing(0.4), marginTop: "2px" }}>
+				<FormHelperText
+					error={hasErrors}
+					component="div"
+					sx={{ marginLeft: theme.spacing(0.4), marginTop: theme.spacing(0.25) }}
+				>
 					{getHelperText()}
 				</FormHelperText>
 			)}
