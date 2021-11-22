@@ -74,7 +74,7 @@ RADIOS_WITH_HELPER.push(
 		value="option1"
 		label="Import to Event Portal"
 		subText={buildSubText()}
-		isLargeLabel={true}
+		largeLabel={true}
 		readOnly={false}
 	/>
 );
@@ -85,7 +85,7 @@ RADIOS_WITH_HELPER.push(
 		value="option2"
 		label="Topic Subscriptions Analysis"
 		subText="Topic Scans are used in the PubSub+ Topic Explorer to analyze your runtime data"
-		isLargeLabel={true}
+		largeLabel={true}
 		readOnly={false}
 	/>
 );
@@ -110,7 +110,7 @@ RADIOS_WITH_LIGHT_SUBTEXT.push(
 		value="option1"
 		label="Option 1"
 		subText="This is a regular subText for Option 1"
-		isLargeLabel={true}
+		largeLabel={true}
 		readOnly={false}
 	/>
 );
@@ -121,8 +121,8 @@ RADIOS_WITH_LIGHT_SUBTEXT.push(
 		value="option2"
 		label="Option 2"
 		subText="This is a light subText for Option 2"
-		isLargeLabel={true}
-		isLightSubText={true}
+		largeLabel={true}
+		lightSubText={true}
 		readOnly={false}
 	/>
 );
@@ -187,13 +187,13 @@ Required.args = {
 
 const DISABLED_RADIOS: Array<React.ReactNode> = [];
 DISABLED_RADIOS.push(
-	<SolaceRadio key="option1" value="option1" isDisabled={true} name="option1" label="Option 1" readOnly={false} />
+	<SolaceRadio key="option1" value="option1" disabled={true} name="option1" label="Option 1" readOnly={false} />
 );
 DISABLED_RADIOS.push(
-	<SolaceRadio key="option2" value="option2" isDisabled={true} name="option2" label="Option 2" readOnly={false} />
+	<SolaceRadio key="option2" value="option2" disabled={true} name="option2" label="Option 2" readOnly={false} />
 );
 DISABLED_RADIOS.push(
-	<SolaceRadio key="option3" value="option3" isDisabled={true} name="option3" label="Option 3" readOnly={false} />
+	<SolaceRadio key="option3" value="option3" disabled={true} name="option3" label="Option 3" readOnly={false} />
 );
 
 export const Disabled = Template.bind({});

@@ -38,23 +38,23 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	/**
 	 * allow subText to be displayed at 55% black (default to 80%)
 	 */
-	isLightSubText?: boolean;
+	lightSubText?: boolean;
 	/**
 	 * Boolean flag to check or uncheck the `radio`
 	 */
-	isChecked?: boolean;
+	checked?: boolean;
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `radio` is mandatory
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 	/**
 	 * Boolean flag to disable the `radio`
 	 */
-	isDisabled?: boolean;
+	disabled?: boolean;
 	/**
 	 * Display the label with a larger font
 	 */
-	isLargeLabel?: boolean;
+	largeLabel?: boolean;
 	/**
 	 * Callback function to trigger whenever the value of the `radio` is changed
 	 */
@@ -68,11 +68,11 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 interface LabelElementProps {
 	bold: boolean;
 	large: boolean;
-	isDisabled: boolean;
+	disabled: boolean;
 	children: string | JSX.Element;
 }
 
-function LabelElement({ children, bold, large, isDisabled }: LabelElementProps): JSX.Element {
+function LabelElement({ children, bold, large, disabled }: LabelElementProps): JSX.Element {
 	const theme = useTheme();
 	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
 	// 24 px is the row height in the grid because it's the height of the svg
@@ -84,8 +84,8 @@ function LabelElement({ children, bold, large, isDisabled }: LabelElementProps):
 			sx={{
 				fontSize: typography.fontSize,
 				lineHeight: "24px",
-				fontWeight: bold ? 500 : 400,
-				color: isDisabled ? theme.palette.text.disabled : theme.palette.text.primary
+				fontWeight: bold ? "medium" : "regular",
+				color: disabled ? theme.palette.text.disabled : theme.palette.text.primary
 			}}
 		>
 			{children}
@@ -100,23 +100,23 @@ function SolaceRadio({
 	value,
 	title,
 	subText,
-	isLightSubText = false,
-	isChecked = false,
-	isRequired = false,
-	isDisabled = false,
-	isLargeLabel = false,
+	lightSubText = false,
+	checked = false,
+	required = false,
+	disabled = false,
+	largeLabel = false,
 	onChange,
 	dataQa,
 	dataTags,
 	readOnly = false
 }: SolaceRadioProps): JSX.Element {
 	const theme = useTheme();
-	const [selected, setSelected] = useState(isChecked);
+	const [selected, setSelected] = useState(checked);
 	const radioGroup = useRadioGroup();
 
 	useEffect(() => {
-		setSelected(isChecked);
-	}, [isChecked]);
+		setSelected(checked);
+	}, [checked]);
 
 	useEffect(() => {
 		if (radioGroup) {
@@ -156,7 +156,7 @@ function SolaceRadio({
 				role="radio"
 				title={title}
 				className={readOnly ? "readOnly" : undefined}
-				disabled={isDisabled || readOnly}
+				disabled={disabled || readOnly}
 				disableRipple
 				checked={selected}
 				onChange={handleChange}
@@ -166,11 +166,11 @@ function SolaceRadio({
 					<InputLabel
 						id={`${id}-label`}
 						htmlFor={`${id}-radio`}
-						required={isRequired}
-						disabled={isDisabled}
-						sx={{ color: theme.palette.text.primary, cursor: isDisabled ? "auto" : "pointer" }}
+						required={required}
+						disabled={disabled}
+						sx={{ color: theme.palette.text.primary, cursor: disabled ? "auto" : "pointer" }}
 					>
-						<LabelElement bold={isLargeLabel || subText !== undefined} large={isLargeLabel} isDisabled={isDisabled}>
+						<LabelElement bold={largeLabel || subText !== undefined} large={largeLabel} disabled={disabled}>
 							{label}
 						</LabelElement>
 					</InputLabel>
@@ -180,8 +180,8 @@ function SolaceRadio({
 				<Box gridColumn="2" gridRow="2">
 					<InputLabel
 						id={`${id}-subtext`}
-						disabled={isDisabled}
-						sx={{ color: isLightSubText ? BASE_COLORS.greys.grey9 : theme.palette.text.primary, fontWeight: 400 }}
+						disabled={disabled}
+						sx={{ color: lightSubText ? BASE_COLORS.greys.grey9 : theme.palette.text.primary, fontWeight: "regular" }}
 					>
 						{subText}
 					</InputLabel>
