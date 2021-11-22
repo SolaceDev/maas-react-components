@@ -18,19 +18,9 @@ module.exports = {
 	 * Suggested Solution: https://github.com/mui-org/material-ui/issues/24282#issuecomment-830696771
 	 */
 	webpackFinal: async (config) => {
-		return {
-			...config,
-			watch: true,
-			resolve: {
-				...config.resolve,
-				alias: {
-					...config.resolve.alias,
-					// emotion core needs to be removed from maas-react-components once this issue has been resolved.
-					"@emotion/core": require.resolve("../../node_modules/@emotion/core"),
-					"@emotion/styled": require.resolve("../../node_modules/@emotion/styled"),
-					"emotion-theming": require.resolve("../../node_modules/@emotion/react")
-				}
-			}
-		};
+		delete config.resolve.alias["emotion-theming"];
+		delete config.resolve.alias["@emotion/styled"];
+		delete config.resolve.alias["@emotion/core"];
+		return config;
 	}
 };
