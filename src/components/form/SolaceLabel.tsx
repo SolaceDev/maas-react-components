@@ -51,7 +51,7 @@ function SolaceLabel({
 				display: "block",
 				color: theme.palette.text.primary,
 				fontWeight: isBoldLabel ? "medium" : "regular",
-				fontSize: isLargeLabel ? "16px" : "14px"
+				fontSize: isLargeLabel ? theme.typography.subtitle1 : theme.typography.body1
 			}}
 		>
 			{children}
