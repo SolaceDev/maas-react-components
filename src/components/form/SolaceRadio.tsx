@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 import { RestingRadioIcon, SelectedRadioIcon } from "../../resources/icons/RadioIcons";
+import { BASE_COLORS } from "../../resources/colorPallette";
 
 export interface SolaceRadioChangeEvent {
 	name: string;
@@ -180,7 +181,7 @@ function SolaceRadio({
 					<InputLabel
 						id={`${id}-subtext`}
 						disabled={isDisabled}
-						sx={{ color: isLightSubText ? "rgba(0, 0, 0, 0.55)" : theme.palette.text.primary, fontWeight: 400 }}
+						sx={{ color: isLightSubText ? BASE_COLORS.greys.grey9 : theme.palette.text.primary, fontWeight: 400 }}
 					>
 						{subText}
 					</InputLabel>
