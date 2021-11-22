@@ -50,7 +50,7 @@ InlineLabelFormat.args = {
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
-	isInlineLabel: true,
+	inlineLabel: true,
 	value: "option1",
 	children: RADIOS
 };
@@ -157,7 +157,7 @@ WithLargeLabel.args = {
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
-	isLargeLabel: true,
+	largeLabel: true,
 	value: "option1",
 	children: RADIOS
 };
@@ -169,7 +169,7 @@ WithBoldLabel.args = {
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
-	isBoldLabel: true,
+	boldLabel: true,
 	value: "option1",
 	children: RADIOS
 };
@@ -181,7 +181,7 @@ Required.args = {
 	title: "Demo RadioGroup",
 	label: "Some Label",
 	value: "option1",
-	isRequired: true,
+	required: true,
 	children: RADIOS
 };
 
@@ -203,6 +203,6 @@ Disabled.args = {
 	title: "Demo RadioGroup",
 	label: "Some Label",
 	value: "option2",
-	isDisabled: true,
+	disabled: true,
 	children: DISABLED_RADIOS
 };

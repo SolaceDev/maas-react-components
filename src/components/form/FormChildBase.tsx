@@ -16,11 +16,11 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag to allow font size of 16px (default to 14px)
 	 */
-	isLargeLabel?: boolean;
+	largeLabel?: boolean;
 	/**
 	 * Boolean falg to allow font weight of medium (default to regular)
 	 */
-	isBoldLabel?: boolean;
+	boldLabel?: boolean;
 	/**
 	 * The value of the `input` element, required for controlled component
 	 */
@@ -36,19 +36,19 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
-	isRequired: boolean;
+	required: boolean;
 	/**
 	 * Boolean flag to disable the `input`
 	 */
-	isDisabled: boolean;
+	disabled: boolean;
 	/**
 	 * Boolean flag to set the `input` in a read-only state
 	 */
-	isReadOnly: boolean;
+	readOnly: boolean;
 	/**
 	 * Display the label horizontally
 	 */
-	isInlineLabel: boolean;
+	inlineLabel: boolean;
 
 	children: JSX.Element;
 }
@@ -56,11 +56,11 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 function FormChildBase({
 	id,
 	label,
-	isLargeLabel,
-	isBoldLabel,
-	isRequired,
-	isDisabled,
-	isInlineLabel,
+	largeLabel,
+	boldLabel,
+	required,
+	disabled,
+	inlineLabel,
 	helperText,
 	errorText,
 	children
@@ -68,7 +68,7 @@ function FormChildBase({
 	return (
 		<Box
 			display="flex"
-			flexDirection={isInlineLabel ? "row" : "column"}
+			flexDirection={inlineLabel ? "row" : "column"}
 			justifyContent="space-between"
 			alignItems="flex-start"
 		>
@@ -76,10 +76,10 @@ function FormChildBase({
 				<SolaceLabel
 					id={`${id}-label`}
 					htmlForId={`${id}`}
-					isRequired={isRequired}
-					isDisabled={isDisabled}
-					isLargeLabel={isLargeLabel}
-					isBoldLabel={isBoldLabel}
+					isRequired={required}
+					isDisabled={disabled}
+					isLargeLabel={largeLabel}
+					isBoldLabel={boldLabel}
 				>
 					{label}
 				</SolaceLabel>

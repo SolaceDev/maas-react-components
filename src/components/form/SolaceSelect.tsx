@@ -40,19 +40,19 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 	/**
 	 * Boolean flag to control whether to stack the label on top of the `input` element (false) or place them inline to one another (true)
 	 */
-	isInlineLabel?: boolean;
+	inlineLabel?: boolean;
 	/**
 	 * Boolean flag to disable the `input`
 	 */
-	isDisabled?: boolean;
+	disabled?: boolean;
 	/**
 	 * Boolean flag to set the `input` in a read-only state
 	 */
-	isReadOnly?: boolean;
+	readOnly?: boolean;
 	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
@@ -71,10 +71,10 @@ function SolaceSelect({
 	helperText,
 	title,
 	hasErrors = false,
-	isRequired = false,
-	isDisabled = false,
-	isReadOnly = false,
-	isInlineLabel = false,
+	required = false,
+	disabled = false,
+	readOnly = false,
+	inlineLabel = false,
 	onChange,
 	dataQa,
 	dataTags,
@@ -110,22 +110,22 @@ function SolaceSelect({
 				"data-tags": dataTags,
 				"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
 				"aria-labelledby": label ? `${getId()}-label` : "",
-				"aria-readonly": isReadOnly,
+				"aria-readonly": readOnly,
 				role: "select",
 				title: title
 			}}
 			select
 			InputProps={{
 				sx: { height: theme.spacing(4) },
-				className: isReadOnly ? "readOnlySelect" : "",
-				disabled: isDisabled,
-				readOnly: isReadOnly,
-				required: isRequired
+				className: readOnly ? "readOnlySelect" : "",
+				disabled: disabled,
+				readOnly: readOnly,
+				required: required
 			}}
 			title={title}
 			autoComplete="off"
-			required={isRequired}
-			disabled={isDisabled || isReadOnly}
+			required={required}
+			disabled={disabled || readOnly}
 			margin="dense"
 			value={selectedValue}
 			onChange={handleChange}
@@ -140,10 +140,10 @@ function SolaceSelect({
 			label={label}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
-			isDisabled={isDisabled}
-			isReadOnly={isReadOnly}
-			isRequired={isRequired}
-			isInlineLabel={isInlineLabel}
+			disabled={disabled}
+			readOnly={readOnly}
+			required={required}
+			inlineLabel={inlineLabel}
 		>
 			{select()}
 		</FormChildBase>

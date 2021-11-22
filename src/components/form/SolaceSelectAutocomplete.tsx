@@ -35,19 +35,19 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 	/**
 	 * Boolean flag to control whether to stack the label on top of the `input` element (false) or place them inline to one another (true)
 	 */
-	isInlineLabel?: boolean;
+	inlineLabel?: boolean;
 	/**
 	 * Boolean flag to disable the `input`
 	 */
-	isDisabled?: boolean;
+	disabled?: boolean;
 	/**
 	 * Boolean flag to set the `input` in a read-only state
 	 */
-	isReadOnly?: boolean;
+	readOnly?: boolean;
 	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
@@ -90,10 +90,10 @@ function SolaceSelectAutocomplete<T, V>({
 	helperText,
 	title,
 	hasErrors = false,
-	isRequired = false,
-	isInlineLabel = false,
-	isDisabled = false,
-	isReadOnly = false,
+	required = false,
+	inlineLabel = false,
+	disabled = false,
+	readOnly = false,
 	onChange,
 	itemComponent,
 	itemMappingCallback,
@@ -175,7 +175,7 @@ function SolaceSelectAutocomplete<T, V>({
 				}
 				return null;
 			}}
-			disabled={isDisabled || isReadOnly}
+			disabled={disabled || readOnly}
 			loading={loading}
 			open={open}
 			onClose={() => {
@@ -198,17 +198,17 @@ function SolaceSelectAutocomplete<T, V>({
 						"data-tags": dataTags,
 						"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
 						"aria-labelledby": label ? `${getId()}-label` : "",
-						"aria-readonly": isReadOnly,
+						"aria-readonly": readOnly,
 						role: "select",
 						title: title
 					}}
 					InputProps={{
 						...params.InputProps,
 						sx: { height: theme.spacing(4) },
-						className: isReadOnly ? "readOnlySelect" : "",
-						disabled: isDisabled,
-						readOnly: isReadOnly,
-						required: isRequired
+						className: readOnly ? "readOnlySelect" : "",
+						disabled: disabled,
+						readOnly: readOnly,
+						required: required
 					}}
 				/>
 			)}
@@ -222,10 +222,10 @@ function SolaceSelectAutocomplete<T, V>({
 			label={label}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
-			isDisabled={isDisabled}
-			isReadOnly={isReadOnly}
-			isRequired={isRequired}
-			isInlineLabel={isInlineLabel}
+			disabled={disabled}
+			readOnly={readOnly}
+			required={required}
+			inlineLabel={inlineLabel}
 		>
 			{select()}
 		</FormChildBase>
