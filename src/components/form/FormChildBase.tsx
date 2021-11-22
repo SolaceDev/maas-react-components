@@ -76,10 +76,10 @@ function FormChildBase({
 				<SolaceLabel
 					id={`${id}-label`}
 					htmlForId={`${id}`}
-					isRequired={required}
-					isDisabled={disabled}
-					isLargeLabel={largeLabel}
-					isBoldLabel={boldLabel}
+					required={required}
+					disabled={disabled}
+					largeLabel={largeLabel}
+					boldLabel={boldLabel}
 				>
 					{label}
 				</SolaceLabel>

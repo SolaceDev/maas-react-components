@@ -153,8 +153,8 @@ const SolaceCheckBox = ({
 					<SolaceLabel
 						id={`${getId()}-label`}
 						htmlForId={`${getId()}-checkbox`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
+						required={isRequired}
+						disabled={isDisabled}
 					>
 						{label}
 					</SolaceLabel>

@@ -120,8 +120,8 @@ function SolaceToggle({
 					<SolaceLabel
 						id={`${getId()}-label`}
 						htmlForId={`${getId()}-toggle`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
+						required={isRequired}
+						disabled={isDisabled}
 					>
 						{label}
 					</SolaceLabel>

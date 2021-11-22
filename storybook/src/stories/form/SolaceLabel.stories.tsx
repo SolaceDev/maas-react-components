@@ -12,22 +12,22 @@ export default {
 				type: "text"
 			}
 		},
-		isRequired: {
+		required: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isDisabled: {
+		disabled: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isLargeLabel: {
+		largeLabel: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isBoldLabel: {
+		boldLabel: {
 			control: {
 				type: "boolean"
 			}
@@ -40,33 +40,33 @@ const Template: ComponentStory<typeof SolaceLabel> = (args) => <SolaceLabel {...
 export const DefaultLabel = Template.bind({});
 DefaultLabel.args = {
 	id: "demoTextFieldId",
-	children: "Custom Lable"
+	children: "Custom Label"
 };
 
 export const LargeLabel = Template.bind({});
 LargeLabel.args = {
 	id: "demoTextFieldId",
-	isLargeLabel: true,
+	largeLabel: true,
 	children: "Custom Label"
 };
 
 export const BoldLabel = Template.bind({});
 BoldLabel.args = {
 	id: "demoTextFieldId",
-	isBoldLabel: true,
+	boldLabel: true,
 	children: "Custom Label"
 };
 
 export const Required = Template.bind({});
 Required.args = {
 	id: "demoTextFieldId",
-	isRequired: true,
-	children: "Custom Lable"
+	required: true,
+	children: "Custom Label"
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
 	id: "demoTextFieldId",
-	isDisabled: true,
-	children: "Custom Lable"
+	disabled: true,
+	children: "Custom Label"
 };
