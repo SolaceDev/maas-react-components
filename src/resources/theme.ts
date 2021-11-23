@@ -377,7 +377,7 @@ const theme: ThemeOptions = {
 					},
 					"&.readOnly .MuiSvgIcon-root": {
 						".SolaceCheckboxContainer": {
-							fill: "#F9F9F9",
+							fill: BASE_COLORS.greys.grey19,
 							stroke: BASE_COLORS.greys.grey3,
 							strokeOpacity: 1
 						},
