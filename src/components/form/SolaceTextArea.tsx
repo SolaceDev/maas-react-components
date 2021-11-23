@@ -121,38 +121,45 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 		return id ? id : name;
 	};
 
-	const textField = () => (
-		<TextField
-			id={`${getId()}`}
-			name={name}
-			inputProps={{
-				maxLength: maxLength,
-				"data-qa": dataQa,
-				"data-tags": dataTags,
-				readOnly: isReadOnly,
-				"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
-				"aria-labelledby": label ? `${getId()}-label` : "",
-				"aria-readonly": isReadOnly,
-				role: "textbox",
-				title: title
-			}}
-			type="text"
-			autoComplete="off"
-			autoFocus={autoFocus}
-			minRows={minRows}
-			maxRows={maxRows}
-			multiline={true}
-			InputProps={{
-				sx: { height: theme.spacing(4) },
-				disabled: isDisabled,
-				required: isRequired
-			}}
-			margin="dense"
-			placeholder={placeholder}
-			value={textValue}
-			onChange={handleChange}
-		/>
-	);
+	const textField = () => {
+		return (
+			<>
+				{isReadOnly && <div>{textValue}</div>}
+				{!isReadOnly && (
+					<TextField
+						id={`${getId()}`}
+						name={name}
+						inputProps={{
+							maxLength: maxLength,
+							"data-qa": dataQa,
+							"data-tags": dataTags,
+							readOnly: isReadOnly,
+							"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
+							"aria-labelledby": label ? `${getId()}-label` : "",
+							"aria-readonly": isReadOnly,
+							role: "textbox",
+							title: title
+						}}
+						type="text"
+						autoComplete="off"
+						autoFocus={autoFocus}
+						minRows={minRows}
+						maxRows={maxRows}
+						multiline={true}
+						InputProps={{
+							sx: { height: theme.spacing(4) },
+							disabled: isDisabled,
+							required: isRequired
+						}}
+						margin="dense"
+						placeholder={placeholder}
+						value={textValue}
+						onChange={handleChange}
+					/>
+				)}
+			</>
+		);
+	};
 
 	return (
 		<FormChildBase
