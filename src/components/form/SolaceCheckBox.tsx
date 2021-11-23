@@ -68,9 +68,9 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 interface CheckBoxLabelProps {
 	id: string;
 	htmlForId?: string;
-	required?: boolean;
-	disabled?: boolean;
-	children?: React.ReactNode;
+	required: boolean;
+	disabled: boolean;
+	children?: JSX.Element | string;
 }
 
 function CheckBoxLabel({
