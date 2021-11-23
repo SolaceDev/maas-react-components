@@ -42,15 +42,15 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag to check or uncheck the `checkbox`
 	 */
-	isChecked?: boolean;
+	checked?: boolean;
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `checkbox` is mandatory
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 	/**
 	 * Boolean flag to disable the `checkbox`
 	 */
-	isDisabled?: boolean;
+	disabled?: boolean;
 	/**
 	 * Callback function to trigger whenever the value of the `checkbox` is changed
 	 */
@@ -58,7 +58,7 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag to set the checkbox to indeterminate
 	 */
-	isIndeterminate?: boolean;
+	indeterminate?: boolean;
 	/**
 	 * Boolean flag to set the checkbox to readOnly
 	 */
@@ -68,16 +68,16 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 interface CheckBoxLabelProps {
 	id: string;
 	htmlForId?: string;
-	isRequired?: boolean;
-	isDisabled?: boolean;
+	required?: boolean;
+	disabled?: boolean;
 	children?: React.ReactNode;
 }
 
 function CheckBoxLabel({
 	id,
 	htmlForId,
-	isRequired = false,
-	isDisabled = false,
+	required = false,
+	disabled = false,
 	children
 }: CheckBoxLabelProps): JSX.Element {
 	const theme = useTheme();
@@ -85,8 +85,8 @@ function CheckBoxLabel({
 		<FormLabel
 			id={id}
 			htmlFor={htmlForId}
-			required={isRequired}
-			disabled={isDisabled}
+			required={required}
+			disabled={disabled}
 			className="SolaceCheckBoxLabel"
 			sx={{ display: "block", color: theme.palette.text.primary }}
 		>
@@ -102,21 +102,21 @@ const SolaceCheckBox = ({
 	title,
 	helperText,
 	hasErrors = false,
-	isChecked = false,
-	isRequired = false,
-	isDisabled = false,
-	isIndeterminate = false,
+	checked = false,
+	required = false,
+	disabled = false,
+	indeterminate = false,
 	readOnly = false,
 	onChange,
 	dataQa,
 	dataTags
 }: SolaceCheckBoxProps): JSX.Element => {
 	const theme = useTheme();
-	const [selected, setSelected] = useState(isChecked);
+	const [selected, setSelected] = useState(checked);
 
 	useEffect(() => {
-		setSelected(isChecked);
-	}, [isChecked]);
+		setSelected(checked);
+	}, [checked]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSelected(event.target.checked);
@@ -140,7 +140,7 @@ const SolaceCheckBox = ({
 	};
 
 	const getCheckboxIcon = () => {
-		if (isIndeterminate) {
+		if (indeterminate) {
 			return IndeterminateCheckBoxIcon;
 		} else {
 			return RestingCheckBoxIcon;
@@ -148,7 +148,7 @@ const SolaceCheckBox = ({
 	};
 
 	const getSelectedIcon = () => {
-		if (isIndeterminate) {
+		if (indeterminate) {
 			return IndeterminateCheckBoxIcon;
 		} else {
 			return SelectedCheckBoxIcon;
@@ -172,7 +172,7 @@ const SolaceCheckBox = ({
 					}
 					role="checkbox"
 					title={title}
-					disabled={isDisabled || readOnly}
+					disabled={disabled || readOnly}
 					className={readOnly ? "readOnly" : undefined}
 					disableRipple
 					checked={selected}
@@ -182,8 +182,8 @@ const SolaceCheckBox = ({
 					<CheckBoxLabel
 						id={`${getId()}-label`}
 						htmlForId={`${getId()}-checkbox`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
+						required={required}
+						disabled={disabled}
 					>
 						{label}
 					</CheckBoxLabel>

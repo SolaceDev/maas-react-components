@@ -73,8 +73,8 @@ const ColumnHidingControlMenu = ({
 								name={column.field}
 								label={column.headerName}
 								onChange={() => handleColumnControlChange(column)}
-								isChecked={!column.isHidden}
-								isDisabled={!column.isHidden && oneColumnIsVisible}
+								checked={!column.isHidden}
+								disabled={!column.isHidden && oneColumnIsVisible}
 							></SolaceCheckBox>
 						</StyledColumnControl>
 					)
