@@ -80,16 +80,8 @@ function CheckBoxLabel({
 	disabled = false,
 	children
 }: CheckBoxLabelProps): JSX.Element {
-	const theme = useTheme();
 	return (
-		<FormLabel
-			id={id}
-			htmlFor={htmlForId}
-			required={required}
-			disabled={disabled}
-			className="SolaceCheckBoxLabel"
-			sx={{ display: "block", color: theme.palette.text.primary }}
-		>
+		<FormLabel id={id} htmlFor={htmlForId} required={required} disabled={disabled} sx={{ display: "block" }}>
 			{children}
 		</FormLabel>
 	);

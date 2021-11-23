@@ -185,9 +185,6 @@ const theme: ThemeOptions = {
 						color: BASE_COLORS.greys.grey11
 					},
 					"&.Mui-disabled": {
-						"&.SolaceCheckBoxLabel": {
-							color: BASE_COLORS.greys.grey5
-						},
 						color: BASE_COLORS.greys.grey9
 					}
 				}
@@ -371,8 +368,12 @@ const theme: ThemeOptions = {
 							fillOpacity: 0.35
 						}
 					},
-					"+ .MuiFormLabel-root": {
-						marginLeft: "16px"
+					"+.MuiFormLabel-root": {
+						marginLeft: "16px",
+						color: BASE_COLORS.greys.grey14,
+						"&.Mui-disabled": {
+							color: BASE_COLORS.greys.grey5
+						}
 					},
 					"&.readOnly .MuiSvgIcon-root": {
 						".SolaceCheckboxContainer": {
