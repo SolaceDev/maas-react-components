@@ -360,21 +360,30 @@ const theme: ThemeOptions = {
 					"&.Mui-disabled .MuiSvgIcon-root": {
 						rect: {
 							fillOpacity: 0.35,
-							fill: "white"
+							fill: "white",
+							stroke: BASE_COLORS.greys.grey2,
+							strokeOpacity: 1
 						},
 						path: {
 							fillOpacity: 0.35
 						}
 					},
-					"+ .MuiFormLabel-root": {
-						marginLeft: "16px"
+					"+.MuiFormLabel-root": {
+						marginLeft: "16px",
+						color: BASE_COLORS.greys.grey14,
+						"&.Mui-disabled": {
+							color: BASE_COLORS.greys.grey5
+						}
 					},
 					"&.readOnly .MuiSvgIcon-root": {
 						".SolaceCheckboxContainer": {
-							fill: BASE_COLORS.greys.grey19
+							fill: BASE_COLORS.greys.grey19,
+							stroke: BASE_COLORS.greys.grey3,
+							strokeOpacity: 1
 						},
 						".SolaceCheckboxCheckmark": {
-							fill: BASE_COLORS.greys.grey5
+							fill: BASE_COLORS.greys.grey5,
+							fillOpacity: 1
 						}
 					},
 					padding: "0px"

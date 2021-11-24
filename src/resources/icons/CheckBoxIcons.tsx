@@ -32,6 +32,6 @@ export const SelectedCheckBoxIcon = (
 
 export const IndeterminateCheckBoxIcon = (
 	<CheckboxIcon>
-		<line x1="5" y1="12" x2="19" y2="12" strokeWidth="3" strokeLinecap="round" />
+		<line x1="6" y1="12" x2="18" y2="12" strokeWidth="3" strokeLinecap="round" />
 	</CheckboxIcon>
 );
