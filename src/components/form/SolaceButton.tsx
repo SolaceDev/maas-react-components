@@ -6,53 +6,17 @@ import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface SolaceButtonProps extends SolaceComponentProps {
-	/**
-	 * Unique identifier for the button
-	 */
 	id?: string;
-	/**
-	 * The type/style of button to render
-	 */
 	variant: "call-to-action" | "outline" | "text" | "icon" | "link";
-	/**
-	 * Renders the button disabled
-	 */
 	isDisabled?: boolean;
-	/**
-	 * Controls when the link should have an underline
-	 */
 	underline?: "none" | "hover" | "always";
-	/**
-	 * Text to use for tooltip and arial-label (assecibility)
-	 */
 	title?: string;
-	/**
-	 * URL to navigate to on click
-	 */
 	href?: string;
-	/**
-	 * The component used for the root node. Either a string to use a HTML element or a component button
-	 */
 	component?: "button" | "span";
-	/**
-	 * Attribute which specifies the type of button (button, submit or reset)
-	 */
 	type?: "button" | "submit" | "reset";
-	/**
-	 * Element placed before the children
-	 */
 	startIcon?: symbol;
-	/**
-	 * Element placed after the children
-	 */
 	endIcon?: symbol;
-	/**
-	 * Optional click handler
-	 */
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-	/**
-	 * Button label or contents
-	 */
 	children?: string | JSX.Element;
 }
 

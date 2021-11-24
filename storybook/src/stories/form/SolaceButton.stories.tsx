@@ -10,11 +10,90 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=1%3A2"
+		},
+		docs: {
+			description: {
+				component: "Button component for reuse in all Solace based applications"
+			}
 		}
 	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the button"
+		},
 		variant: {
-			control: { type: "radio" }
+			options: ["call-to-action", "outline", "text", "icon", "link"],
+			control: {
+				type: "select"
+			},
+			description: "The type/style of button to render",
+			table: {
+				defaultValue: {
+					summary: "text"
+				}
+			}
+		},
+		isDisabled: {
+			control: { type: "boolean" },
+			description: "Renders the button disabled",
+			table: {
+				defaultValue: {
+					summary: false
+				}
+			}
+		},
+		underline: {
+			options: ["none", "hover", "always"],
+			control: { type: "select" },
+			description: "Controls when the link should have an underline",
+			table: {
+				defaultValue: {
+					summary: "hover"
+				}
+			}
+		},
+		title: {
+			control: { type: "text" },
+			description: "Text to use for tooltip and arial-label (assecibility)"
+		},
+		href: {
+			control: { type: "text" },
+			description: "URL to navigate to on click"
+		},
+		component: {
+			options: ["button", "span"],
+			control: { type: "select" },
+			description: "The component used for the root node. Either a string to use a HTML element or a component button",
+			table: {
+				defaultValue: {
+					summary: "button"
+				}
+			}
+		},
+		type: {
+			options: ["button", "submit", "reset"],
+			control: { type: "select" },
+			description: "Attribute which specifies the type of button (button, submit or reset)",
+			table: {
+				defaultValue: {
+					summary: "button"
+				}
+			}
+		},
+		startIcon: {
+			description: "Element placed before the children"
+		},
+		endIcon: {
+			description: "Element placed after the children"
+		},
+		onClick: {
+			control: { type: "string" },
+			description: "Optional click handler"
+		},
+		children: {
+			control: { type: "object" },
+			description: "Button label or contents"
 		}
 	}
 } as ComponentMeta<typeof SolaceButton>;

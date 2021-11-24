@@ -7,7 +7,7 @@
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/SolaceDev"
 	},
-	"version": "1.5.4",
+	"version": "1.6.1",
 	"description": "React component library designed for Solace.",
 	"author": "",
 	"license": "MIT",
@@ -73,7 +73,9 @@
 		"@emotion/react": "^11.4.1",
 		"@emotion/styled": "^11.3.0",
 		"@material-ui/core": "^5.0.0-beta.3",
-		"@material-ui/icons": "^5.0.0-beta.1"
+		"@material-ui/icons": "^5.0.0-beta.1",
+		"codemirror": "^5.63.3",
+		"react-codemirror2": "^7.2.1"
 	},
 	"files": [
 		"dist"
