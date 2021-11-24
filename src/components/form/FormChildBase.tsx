@@ -1,5 +1,6 @@
 import { Box } from "@material-ui/core";
 import SolaceLabel from "./SolaceLabel";
+import SolaceStackLabel from "./SolaceStackLabel";
 import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -14,19 +15,23 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	 */
 	label?: string | JSX.Element;
 	/**
+	 * Boolean flag to render stack label for a group of select components
+	 */
+	stackLabel?: boolean;
+	/**
 	 * Boolean flag to allow font size of 16px (default to 14px)
 	 */
-	largeLabel?: boolean;
+	largeStackLabel?: boolean;
 	/**
-	 * Boolean falg to allow font weight of medium (default to regular)
+	 * Boolean flag to allow font weight of medium (default to regular)
 	 */
-	boldLabel?: boolean;
+	boldStackLabel?: boolean;
 	/**
 	 * The value of the `input` element, required for controlled component
 	 */
 	value?: string;
 	/**
-	 * Content to display as supportive/explanitory text
+	 * Content to display as supportive/explanatory text
 	 */
 	helperText?: string | JSX.Element;
 	/**
@@ -56,8 +61,9 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 function FormChildBase({
 	id,
 	label,
-	largeLabel,
-	boldLabel,
+	stackLabel,
+	largeStackLabel,
+	boldStackLabel,
 	required,
 	disabled,
 	inlineLabel,
@@ -72,15 +78,20 @@ function FormChildBase({
 			justifyContent="space-between"
 			alignItems="flex-start"
 		>
-			{label && (
-				<SolaceLabel
+			{stackLabel && label && (
+				<SolaceStackLabel
 					id={`${id}-label`}
 					htmlForId={`${id}`}
 					required={required}
 					disabled={disabled}
-					largeLabel={largeLabel}
-					boldLabel={boldLabel}
+					large={largeStackLabel}
+					bold={boldStackLabel}
 				>
+					{label}
+				</SolaceStackLabel>
+			)}
+			{!stackLabel && label && (
+				<SolaceLabel id={`${id}-label`} htmlForId={`${id}`} required={required} disabled={disabled}>
 					{label}
 				</SolaceLabel>
 			)}

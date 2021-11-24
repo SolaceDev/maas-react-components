@@ -23,15 +23,19 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	 */
 	label?: string | JSX.Element;
 	/**
-	 * Boolean flag to allow font size of 16px (default to 14px)
+	 * Boolean flag to render stack label for a group of select components
 	 */
-	largeLabel?: boolean;
+	stackLabel?: boolean;
 	/**
-	 * Boolean falg to allow font weight of medium (default to regular)
+	 * Boolean flag to allow font size of 16px (default to 14px) for stack label
 	 */
-	boldLabel?: boolean;
+	largeStackLabel?: boolean;
 	/**
-	 * Content to display as supportive/explanitory text
+	 * Boolean flag to allow font weight of medium (default to regular) for stack label
+	 */
+	boldStackLabel?: boolean;
+	/**
+	 * Content to display as supportive/explanatory text
 	 */
 	helperText?: string | JSX.Element;
 	/**
@@ -72,8 +76,9 @@ function SolaceRadioGroup({
 	id,
 	name,
 	label,
-	largeLabel = false,
-	boldLabel = false,
+	stackLabel = true, // use stack label for radio group
+	largeStackLabel = false,
+	boldStackLabel = false,
 	value,
 	helperText,
 	hasErrors = false,
@@ -127,8 +132,9 @@ function SolaceRadioGroup({
 		<FormChildBase
 			id={id}
 			label={label}
-			largeLabel={largeLabel}
-			boldLabel={boldLabel}
+			stackLabel={stackLabel}
+			largeStackLabel={largeStackLabel}
+			boldStackLabel={boldStackLabel}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
 			disabled={disabled}

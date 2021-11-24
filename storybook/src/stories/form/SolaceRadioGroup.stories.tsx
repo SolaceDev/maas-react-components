@@ -39,6 +39,33 @@ StackedLabelFormat.args = {
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
+	stackLabel: true,
+	value: "option1",
+	children: RADIOS
+};
+
+export const WithLargeStackLabel = Template.bind({});
+WithLargeStackLabel.args = {
+	onChange: action("callback"),
+	title: "Demo RadioGroup",
+	id: "demoRadioGroupId",
+	name: "demoRadioGroup",
+	label: "Some Label",
+	stackLabel: true,
+	largeStackLabel: true,
+	value: "option1",
+	children: RADIOS
+};
+
+export const WithBoldStackLabel = Template.bind({});
+WithBoldStackLabel.args = {
+	onChange: action("callback"),
+	title: "Demo RadioGroup",
+	id: "demoRadioGroupId",
+	name: "demoRadioGroup",
+	label: "Some Label",
+	stackLabel: true,
+	boldStackLabel: true,
 	value: "option1",
 	children: RADIOS
 };
@@ -146,30 +173,6 @@ WithErrors.args = {
 	label: "Some Label",
 	hasErrors: true,
 	helperText: "Some error occured",
-	value: "option1",
-	children: RADIOS
-};
-
-export const WithLargeLabel = Template.bind({});
-WithLargeLabel.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
-	label: "Some Label",
-	largeLabel: true,
-	value: "option1",
-	children: RADIOS
-};
-
-export const WithBoldLabel = Template.bind({});
-WithBoldLabel.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
-	label: "Some Label",
-	boldLabel: true,
 	value: "option1",
 	children: RADIOS
 };

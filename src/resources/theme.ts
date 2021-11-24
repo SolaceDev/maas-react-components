@@ -177,7 +177,7 @@ const theme: ThemeOptions = {
 					color: BASE_COLORS.greens.green2
 				},
 				root: {
-					color: BASE_COLORS.greys.grey11,
+					color: BASE_COLORS.greys.grey14,
 					fontSize: "0.875rem",
 					fontWeight: 400,
 					lineHeight: 1.5,
@@ -186,6 +186,9 @@ const theme: ThemeOptions = {
 					},
 					"&.Mui-disabled": {
 						color: BASE_COLORS.greys.grey9
+					},
+					"&.SolaceStackLabel-bold": {
+						fontWeight: 500
 					}
 				}
 			}
