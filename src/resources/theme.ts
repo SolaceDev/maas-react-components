@@ -462,6 +462,9 @@ const theme: ThemeOptions = {
 					},
 					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
 						background: "transparent"
+					},
+					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
+						fill: BASE_COLORS.greys.grey14
 					}
 				},
 				popper: {
