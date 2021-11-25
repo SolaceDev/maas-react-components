@@ -440,6 +440,25 @@ const theme: ThemeOptions = {
 						padding: "7px 34px 5px 8px",
 						minWidth: "330px"
 					}
+				},
+				// TODO:
+				icon: {},
+				iconOpen: {
+					color: "red",
+					transform: "rotate(0deg)"
+				}
+			}
+		},
+		MuiMenu: {
+			styleOverrides: {
+				root: {
+					".MuiPaper-root": {
+						// TODO:
+						boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.2)",
+						".MuiMenuItem-root": {
+							color: "red"
+						}
+					}
 				}
 			}
 		},
