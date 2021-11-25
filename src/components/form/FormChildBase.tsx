@@ -21,11 +21,11 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag to allow font size of 16px (default to 14px)
 	 */
-	largeStackLabel?: boolean;
+	large?: boolean;
 	/**
 	 * Boolean flag to allow font weight of medium (default to regular)
 	 */
-	boldStackLabel?: boolean;
+	bold?: boolean;
 	/**
 	 * The value of the `input` element, required for controlled component
 	 */
@@ -62,8 +62,8 @@ function FormChildBase({
 	id,
 	label,
 	stackLabel,
-	largeStackLabel,
-	boldStackLabel,
+	large,
+	bold,
 	required,
 	disabled,
 	inlineLabel,
@@ -84,8 +84,8 @@ function FormChildBase({
 					htmlForId={`${id}`}
 					required={required}
 					disabled={disabled}
-					large={largeStackLabel}
-					bold={boldStackLabel}
+					large={large}
+					bold={bold}
 				>
 					{label}
 				</SolaceStackLabel>

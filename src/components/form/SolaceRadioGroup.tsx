@@ -29,11 +29,11 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag to allow font size of 16px (default to 14px) for stack label
 	 */
-	largeStackLabel?: boolean;
+	large?: boolean;
 	/**
 	 * Boolean flag to allow font weight of medium (default to regular) for stack label
 	 */
-	boldStackLabel?: boolean;
+	bold?: boolean;
 	/**
 	 * Content to display as supportive/explanatory text
 	 */
@@ -77,8 +77,8 @@ function SolaceRadioGroup({
 	name,
 	label,
 	stackLabel = true, // use stack label for radio group
-	largeStackLabel = false,
-	boldStackLabel = false,
+	large = false,
+	bold = false,
 	value,
 	helperText,
 	hasErrors = false,
@@ -133,8 +133,8 @@ function SolaceRadioGroup({
 			id={id}
 			label={label}
 			stackLabel={stackLabel}
-			largeStackLabel={largeStackLabel}
-			boldStackLabel={boldStackLabel}
+			large={large}
+			bold={bold}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
 			disabled={disabled}

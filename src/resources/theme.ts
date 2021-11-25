@@ -1,4 +1,5 @@
 import { ThemeOptions } from "@material-ui/core";
+import React from "react";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
@@ -654,6 +655,21 @@ const theme: ThemeOptions = {
 			height: "100%",
 			overflowY: "auto",
 			borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+		},
+		/** ErrorText for form components */
+		formComponent_ErrorText: {
+			container: {
+				display: "flex",
+				flexDirection: "row",
+				justifyContent: "flex-start",
+				alignItems: "center",
+				marginTop: "12px"
+			},
+			label: {
+				color: BASE_COLORS.reds.red1,
+				fontSize: BASE_FONT_PX_SIZES.xs,
+				marginLeft: "8px"
+			}
 		}
 	},
 	palette: {
@@ -708,6 +724,10 @@ declare module "@material-ui/core/styles/createMixins" {
 		sidePanelLayout_rightSidePanelSection: React.CSSProperties;
 		sidePanelLayout_contentPanelSection: React.CSSProperties;
 		sidePanelLayout_mainPanel: React.CSSProperties;
+		formComponent_ErrorText: {
+			container: React.CSSProperties;
+			label: React.CSSProperties;
+		};
 	}
 }
 export default theme;

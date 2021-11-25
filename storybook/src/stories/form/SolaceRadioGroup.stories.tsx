@@ -52,7 +52,7 @@ WithLargeStackLabel.args = {
 	name: "demoRadioGroup",
 	label: "Some Label",
 	stackLabel: true,
-	largeStackLabel: true,
+	large: true,
 	value: "option1",
 	children: RADIOS
 };
@@ -65,7 +65,7 @@ WithBoldStackLabel.args = {
 	name: "demoRadioGroup",
 	label: "Some Label",
 	stackLabel: true,
-	boldStackLabel: true,
+	bold: true,
 	value: "option1",
 	children: RADIOS
 };
