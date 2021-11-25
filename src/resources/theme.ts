@@ -475,7 +475,7 @@ const theme: ThemeOptions = {
 				popper: {
 					color: BASE_COLORS.greys.grey14,
 					".subtext": {
-						color: BASE_COLORS.greys.grey8
+						color: BASE_COLORS.greys.grey9
 					},
 					".suplementalText": {
 						fontSize: BASE_FONT_PX_SIZES.xs,
