@@ -473,6 +473,13 @@ const theme: ThemeOptions = {
 					}
 				},
 				popper: {
+					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='false'].Mui-focused ": {
+						backgroundColor: BASE_COLORS.greys.grey2
+					},
+					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused ": {
+						backgroundColor: getRGBA(BASE_COLORS.greens["green1-rgb"], 0.1)
+					},
+					boxShadow: `0px 2px 8px ${BASE_COLORS.greys.grey4}`,
 					color: BASE_COLORS.greys.grey14,
 					".subtext": {
 						color: BASE_COLORS.greys.grey9
