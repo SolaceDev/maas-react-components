@@ -4,17 +4,10 @@ import SolaceComponentProps from "../SolaceComponentProps";
 import { ErrorIcon } from "../../resources/icons/ErrorIcon";
 import { BASE_FONT_PX_SIZES } from "../../resources/typography";
 
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
-const ErrorTextContainer = styled(Box)(({ theme }) => ({
-	...theme.mixins.formComponent_ErrorText.container
-}));
+const ErrorTextContainer = styled(Box)(({ theme }) => theme.mixins.formComponent_ErrorText.container);
 
-//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
-const ErrorTextLabel = styled(FormLabel)(({ theme }) => ({
-	...theme.mixins.formComponent_ErrorText.label
-}));
-/* eslint-enable @typescript-eslint/ban-ts-comment */
+const ErrorTextLabel = styled(FormLabel)(({ theme }) => theme.mixins.formComponent_ErrorText.label);
+
 export interface ErrorTextProps extends SolaceComponentProps {
 	children: string | JSX.Element;
 }

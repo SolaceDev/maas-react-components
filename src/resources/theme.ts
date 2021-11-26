@@ -1,5 +1,4 @@
 import { ThemeOptions } from "@material-ui/core";
-import React from "react";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
@@ -725,8 +724,8 @@ declare module "@material-ui/core/styles/createMixins" {
 		sidePanelLayout_contentPanelSection: React.CSSProperties;
 		sidePanelLayout_mainPanel: React.CSSProperties;
 		formComponent_ErrorText: {
-			container: React.CSSProperties;
-			label: React.CSSProperties;
+			container: CSSProperties;
+			label: CSSProperties;
 		};
 	}
 }
