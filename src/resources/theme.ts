@@ -433,6 +433,9 @@ const theme: ThemeOptions = {
 			}
 		},
 		MuiSelect: {
+			defaultProps: {
+				disabled: false
+			},
 			// Select component
 			styleOverrides: {
 				select: {
@@ -456,7 +459,18 @@ const theme: ThemeOptions = {
 						// TODO:
 						boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.2)",
 						".MuiMenuItem-root": {
-							color: "red"
+							// color: "red"
+						},
+						".MuiList-root.MuiMenu-list": {
+							".MuiMenuItem-root.MuiButtonBase-root": {
+								color: "green",
+								// remove all ripple effect from MenuList Items
+								// currently applied on SolaceSelect
+								"*,*::before,*::after": {
+									transition: "none !important",
+									animation: "none !important"
+								}
+							}
 						}
 					}
 				}
