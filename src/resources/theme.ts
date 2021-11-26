@@ -444,7 +444,6 @@ const theme: ThemeOptions = {
 				// TODO:
 				icon: {},
 				iconOpen: {
-					color: "red",
 					transform: "rotate(0deg)"
 				}
 			}
@@ -453,8 +452,10 @@ const theme: ThemeOptions = {
 			styleOverrides: {
 				root: {
 					".MuiPaper-root": {
-						// TODO:
 						boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.2)",
+						// remove MenuList open/close animation
+						// currently applied to SolaceSelect component
+						transition: "none !important",
 						".MuiMenuItem-root": {
 							"&.Mui-selected": {
 								backgroundColor: BASE_COLORS.greens.green9
@@ -464,7 +465,7 @@ const theme: ThemeOptions = {
 							".MuiMenuItem-root.MuiButtonBase-root": {
 								color: "green",
 								// remove all ripple effect from MenuList Items
-								// currently applied on SolaceSelect
+								// currently applied to SolaceSelect component
 								"*,*::before,*::after": {
 									transition: "none !important",
 									animation: "none !important"
