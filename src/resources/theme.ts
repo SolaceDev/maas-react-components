@@ -433,9 +433,6 @@ const theme: ThemeOptions = {
 			}
 		},
 		MuiSelect: {
-			defaultProps: {
-				disabled: false
-			},
 			// Select component
 			styleOverrides: {
 				select: {
@@ -459,7 +456,9 @@ const theme: ThemeOptions = {
 						// TODO:
 						boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.2)",
 						".MuiMenuItem-root": {
-							// color: "red"
+							"&.Mui-selected": {
+								backgroundColor: BASE_COLORS.greens.green9
+							}
 						},
 						".MuiList-root.MuiMenu-list": {
 							".MuiMenuItem-root.MuiButtonBase-root": {
