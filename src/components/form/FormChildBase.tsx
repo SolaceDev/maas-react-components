@@ -15,15 +15,15 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	 */
 	label?: string | JSX.Element;
 	/**
-	 * Boolean flag to render stack label for a group of select components
+	 * Boolean flag to allow labels to be rendered as SolaceStackLabel component, which provides more props, such as large, bold
 	 */
 	stackLabel?: boolean;
 	/**
-	 * Boolean flag to allow font size of 16px (default to 14px)
+	 * Boolean flag to allow StackSolaceLabel component to be rendered with larger font size of 16px (default to 14px)
 	 */
 	large?: boolean;
 	/**
-	 * Boolean flag to allow font weight of medium (default to regular)
+	 * Boolean flag to allow StackSolaceLabel component to be rendered with font weight of medium (default to regular)
 	 */
 	bold?: boolean;
 	/**
