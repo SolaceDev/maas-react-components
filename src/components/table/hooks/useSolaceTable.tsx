@@ -153,7 +153,7 @@ export const useSolaceTable = (
 		if (selectionType === SELECTION_TYPE.MULTI) {
 			return (
 				<StyledTableHeader key={"selectAllCheckbox"} className="icon-column">
-					<SolaceCheckBox name={"selectAllCheckbox"} onChange={() => handleSelectAllClick()} isChecked={selectAll} />
+					<SolaceCheckBox name={"selectAllCheckbox"} onChange={() => handleSelectAllClick()} checked={selectAll} />
 				</StyledTableHeader>
 			);
 		} else {
@@ -167,7 +167,7 @@ export const useSolaceTable = (
 				<SolaceCheckBox
 					name={`${row.id}rowCheckbox`}
 					onChange={() => handleCheckboxClick(row)}
-					isChecked={!!row.rowSelected}
+					checked={!!row.rowSelected}
 				/>
 			</StyledTableData>
 		);

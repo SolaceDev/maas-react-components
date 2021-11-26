@@ -62,7 +62,7 @@ Required.args = {
 	name: "demoCheckbox",
 	title: "Demo Checkbox",
 	label: "Some Label",
-	isRequired: true
+	required: true
 };
 
 export const Disabled = Template.bind({});
@@ -71,8 +71,8 @@ Disabled.args = {
 	name: "demoCheckbox",
 	title: "Demo Checkbox",
 	label: "Some Label",
-	isChecked: true,
-	isDisabled: true
+	checked: true,
+	disabled: true
 };
 
 export const Indeterminate = Template.bind({});
@@ -81,8 +81,8 @@ Indeterminate.args = {
 	name: "demoCheckbox",
 	title: "Demo Checkbox",
 	label: "Some Label",
-	isChecked: false,
-	isIndeterminate: true
+	checked: false,
+	indeterminate: true
 };
 
 export const ReadOnly = Template.bind({});
@@ -91,6 +91,6 @@ ReadOnly.args = {
 	name: "demoCheckbox",
 	title: "Demo Checkbox",
 	label: "Some Label",
-	isChecked: true,
+	checked: true,
 	readOnly: true
 };
