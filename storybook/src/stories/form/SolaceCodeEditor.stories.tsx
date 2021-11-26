@@ -56,6 +56,17 @@ DefaultEditor.args = {
 	onChange: action("callback")
 };
 
+export const EmptyEditor = Template.bind({});
+EmptyEditor.args = {
+	id: "schemaVersion[content]",
+	name: "schemaVersion[content]",
+	value: "",
+	hasErrors: undefined,
+	helperText: null,
+	onChange: (editor, data, value) => action(value),
+	dataQa: "schemaVersion[content]"
+};
+
 export const JSONEditor = Template.bind({});
 JSONEditor.args = {
 	onChange: action("callback"),
