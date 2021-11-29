@@ -189,6 +189,9 @@ const theme: ThemeOptions = {
 					},
 					"&.SolaceStackLabel-bold": {
 						fontWeight: 500
+					},
+					"&.read-only": {
+						color: BASE_COLORS.greys.grey9
 					}
 				}
 			}
