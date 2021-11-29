@@ -1,5 +1,5 @@
 import { FormLabel, useTheme } from "@material-ui/core";
-import classNames from "classnames";
+import clsx from "clsx";
 
 export interface SolaceStackLabelProps {
 	/**
@@ -53,7 +53,7 @@ function SolaceStackLabel({
 			htmlFor={htmlForId}
 			required={required}
 			disabled={disabled}
-			className={classNames({ "SolaceStackLabel-bold": bold, "read-only": readOnly })}
+			className={clsx({ "SolaceStackLabel-bold": bold, "read-only": readOnly })}
 			sx={{
 				display: "block",
 				fontSize: large ? theme.typography.subtitle1 : theme.typography.body1

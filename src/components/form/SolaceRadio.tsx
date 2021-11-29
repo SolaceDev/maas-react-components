@@ -4,7 +4,7 @@ import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 import { RestingRadioIcon, SelectedRadioIcon } from "../../resources/icons/RadioIcons";
 import { BASE_COLORS } from "../../resources/colorPallette";
-import classNames from "classnames";
+import clsx from "clsx";
 export interface SolaceRadioChangeEvent {
 	name: string;
 	value: boolean;
@@ -155,7 +155,7 @@ function SolaceRadio({
 				}
 				role="radio"
 				title={title}
-				className={classNames({ readOnly: readOnly })}
+				className={clsx({ readOnly: readOnly })}
 				disabled={disabled || readOnly}
 				disableRipple
 				checked={selected}

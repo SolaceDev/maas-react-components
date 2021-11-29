@@ -1,5 +1,5 @@
 import { FormLabel } from "@material-ui/core";
-import classNames from "classnames";
+import clsx from "clsx";
 
 export interface SolaceLabelProps {
 	/**
@@ -45,7 +45,7 @@ function SolaceLabel({
 			sx={{
 				display: "block"
 			}}
-			className={classNames({ "read-only": readOnly })}
+			className={clsx({ "read-only": readOnly })}
 		>
 			{children}
 		</FormLabel>
