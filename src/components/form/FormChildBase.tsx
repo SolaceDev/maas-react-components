@@ -1,5 +1,6 @@
 import { Box } from "@material-ui/core";
 import SolaceLabel from "./SolaceLabel";
+import SolaceStackLabel from "./SolaceStackLabel";
 import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -14,11 +15,23 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	 */
 	label?: string | JSX.Element;
 	/**
+	 * Boolean flag to allow labels to be rendered as SolaceStackLabel component, which provides more props, such as large, bold
+	 */
+	stackLabel?: boolean;
+	/**
+	 * Boolean flag to allow StackSolaceLabel component to be rendered with larger font size of 16px (default to 14px)
+	 */
+	large?: boolean;
+	/**
+	 * Boolean flag to allow StackSolaceLabel component to be rendered with font weight of medium (default to regular)
+	 */
+	bold?: boolean;
+	/**
 	 * The value of the `input` element, required for controlled component
 	 */
 	value?: string;
 	/**
-	 * Content to display as supportive/explanitory text
+	 * Content to display as supportive/explanatory text
 	 */
 	helperText?: string | JSX.Element;
 	/**
@@ -28,19 +41,19 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
-	isRequired: boolean;
+	required: boolean;
 	/**
 	 * Boolean flag to disable the `input`
 	 */
-	isDisabled: boolean;
+	disabled: boolean;
 	/**
 	 * Boolean flag to set the `input` in a read-only state
 	 */
-	isReadOnly: boolean;
+	readOnly: boolean;
 	/**
 	 * Display the label horizontally
 	 */
-	isInlineLabel: boolean;
+	inlineLabel: boolean;
 
 	children: JSX.Element;
 }
@@ -48,9 +61,12 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 function FormChildBase({
 	id,
 	label,
-	isRequired,
-	isDisabled,
-	isInlineLabel,
+	stackLabel,
+	large,
+	bold,
+	required,
+	disabled,
+	inlineLabel,
 	helperText,
 	errorText,
 	children
@@ -58,12 +74,24 @@ function FormChildBase({
 	return (
 		<Box
 			display="flex"
-			flexDirection={isInlineLabel ? "row" : "column"}
+			flexDirection={inlineLabel ? "row" : "column"}
 			justifyContent="space-between"
 			alignItems="flex-start"
 		>
-			{label && (
-				<SolaceLabel id={`${id}-label`} htmlForId={`${id}`} isRequired={isRequired} isDisabled={isDisabled}>
+			{stackLabel && label && (
+				<SolaceStackLabel
+					id={`${id}-label`}
+					htmlForId={`${id}`}
+					required={required}
+					disabled={disabled}
+					large={large}
+					bold={bold}
+				>
+					{label}
+				</SolaceStackLabel>
+			)}
+			{!stackLabel && label && (
+				<SolaceLabel id={`${id}-label`} htmlForId={`${id}`} required={required} disabled={disabled}>
 					{label}
 				</SolaceLabel>
 			)}

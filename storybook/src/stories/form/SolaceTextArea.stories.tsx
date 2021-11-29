@@ -34,22 +34,22 @@ export default {
 				type: "boolean"
 			}
 		},
-		isInlineLabel: {
+		inlineLabel: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isRequired: {
+		required: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isDisabled: {
+		disabled: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isReadOnly: {
+		readOnly: {
 			control: {
 				type: "boolean"
 			}
@@ -97,7 +97,7 @@ InlineLabeleFormat.args = {
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
-	isInlineLabel: true
+	inlineLabel: true
 };
 
 export const PlaceholderText = Template.bind({});
@@ -143,7 +143,7 @@ Required.args = {
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
-	isRequired: true
+	required: true
 };
 
 export const Disabled = Template.bind({});
@@ -153,7 +153,7 @@ Disabled.args = {
 	title: "Demo Text Field",
 	label: "Some Label",
 	value: "Some value",
-	isDisabled: true
+	disabled: true
 };
 
 export const ReadOnly = Template.bind({});
@@ -163,5 +163,5 @@ ReadOnly.args = {
 	title: "Demo Text Field",
 	label: "Some Label",
 	value: "Some value",
-	isReadOnly: true
+	readOnly: true
 };

@@ -12,26 +12,28 @@ export interface SolaceLabelProps {
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 	/**
 	 * Boolean flag to disable the `input`
 	 */
-	isDisabled?: boolean;
+	disabled?: boolean;
 	/**
 	 *
 	 */
 	children?: React.ReactNode;
 }
 
-function SolaceLabel({
-	id,
-	htmlForId,
-	isRequired = false,
-	isDisabled = false,
-	children
-}: SolaceLabelProps): JSX.Element {
+function SolaceLabel({ id, htmlForId, required = false, disabled = false, children }: SolaceLabelProps): JSX.Element {
 	return (
-		<FormLabel id={id} htmlFor={htmlForId} required={isRequired} disabled={isDisabled} sx={{ display: "block" }}>
+		<FormLabel
+			id={id}
+			htmlFor={htmlForId}
+			required={required}
+			disabled={disabled}
+			sx={{
+				display: "block"
+			}}
+		>
 			{children}
 		</FormLabel>
 	);
