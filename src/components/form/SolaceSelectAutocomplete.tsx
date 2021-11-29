@@ -221,7 +221,7 @@ function SolaceSelectAutocomplete<T, V>({
 			label={label}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
-			isDisabled={isDisabled}
+			isDisabled={isDisabled || isReadOnly}
 			isReadOnly={isReadOnly}
 			isRequired={isRequired}
 			isInlineLabel={isInlineLabel}
