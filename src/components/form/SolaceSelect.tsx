@@ -2,6 +2,7 @@ import { TextField, useTheme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
+import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 
 export interface SolaceSelectChangeEvent {
 	name: string;
@@ -129,6 +130,9 @@ function SolaceSelect({
 			margin="dense"
 			value={selectedValue}
 			onChange={handleChange}
+			SelectProps={{
+				IconComponent: () => <SelectDropdownIcon />
+			}}
 		>
 			{children}
 		</TextField>

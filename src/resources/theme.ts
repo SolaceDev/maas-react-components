@@ -102,7 +102,18 @@ const theme: ThemeOptions = {
 		MuiFormControl: {
 			styleOverrides: {
 				root: {
-					margin: "0px"
+					margin: "0px",
+					// re-position the Solace Dropdown icon inside Select input element
+					".MuiOutlinedInput-root.MuiSelect-root": {
+						".MuiSvgIcon-root": {
+							position: "absolute",
+							top: "12px",
+							right: "0",
+							display: "inline-block",
+							color: BASE_COLORS.greys.grey8,
+							pointerEvents: "none"
+						}
+					}
 				}
 			}
 		},
@@ -441,10 +452,9 @@ const theme: ThemeOptions = {
 						minWidth: "330px"
 					}
 				},
-				// TODO:
-				icon: {},
 				iconOpen: {
-					transform: "rotate(0deg)"
+					// remove dropdown icon flip animation when Select menu opens/closes
+					transform: "none"
 				}
 			}
 		},
@@ -463,7 +473,6 @@ const theme: ThemeOptions = {
 						},
 						".MuiList-root.MuiMenu-list": {
 							".MuiMenuItem-root.MuiButtonBase-root": {
-								color: "green",
 								// remove all ripple effect from MenuList Items
 								// currently applied to SolaceSelect component
 								"*,*::before,*::after": {
