@@ -5,6 +5,8 @@ import { SolaceTable } from "@SolaceDev/maas-react-components";
 import { SELECTION_TYPE, SORT_DIRECTION, TableColumn } from "../../../../src/components/table/table-utils";
 import { useExpandableRows } from "../../../../src/components/table/hooks/useExpandableRows";
 import { styled } from "@material-ui/core";
+import { CustomTableRowProps, StyledTableRow } from "../../../../src/components/table/hooks/useSolaceTable";
+import { TableRow } from "../../../../dist/components/table/table-utils";
 
 const StyledCustomRow = styled("tr")(() => ({
 	"&:hover": {
@@ -123,6 +125,92 @@ const columns: TableColumn[] = [
 	}
 ];
 
+const schemaRows = [
+	{
+		id: "1",
+		name: "schema1",
+		sharedText: true,
+		version_count: 3,
+		schemaType: "jsonSchema",
+		contentType: "json"
+	},
+	{
+		id: "4",
+		name: "schema4",
+		sharedText: true,
+		version_count: 1,
+		schemaType: "xsd",
+		contentType: "xml"
+	},
+	{
+		id: "3",
+		name: "schema3",
+		sharedText: false,
+		version_count: 4,
+		schemaType: "avro",
+		contentType: "binary"
+	},
+	{
+		id: "2",
+		name: "schema2",
+		sharedText: true,
+		version_count: 3,
+		schemaType: "avro",
+		contentType: "json"
+	},
+	{
+		id: "5",
+		name: "schema5",
+		sharedText: false,
+		version_count: 8,
+		schemaType: "dtd",
+		contentType: "xml"
+	}
+];
+
+const schemaColumns: TableColumn[] = [
+	{
+		field: "name",
+		headerName: "Name",
+		sortable: true,
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.ASC,
+		isHidden: false
+	},
+	{
+		headerName: "Shared",
+		field: "sharedText",
+		sortable: true,
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.DCS,
+		isHidden: false
+	},
+	{
+		headerName: "# of Versions",
+		field: "version_count",
+		sortable: false,
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.DCS,
+		isHidden: false
+	},
+	{
+		headerName: "Schema Type",
+		field: "schemaType",
+		sortable: true,
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.DCS,
+		isHidden: false
+	},
+	{
+		headerName: "Content Type",
+		field: "contentType",
+		sortable: true,
+		disableHiding: false,
+		sortDirection: SORT_DIRECTION.DCS,
+		isHidden: false
+	}
+];
+
 export default {
 	title: "Under Construction/SolaceTable",
 	component: SolaceTable,
@@ -158,6 +246,16 @@ const renderCustomEmptyState = () => {
 
 const sortData = (selectedColumn: TableColumn) => {
 	return rows.sort((a, b) => {
+		if (selectedColumn.sortDirection === SORT_DIRECTION.ASC) {
+			return a[selectedColumn.field] > b[selectedColumn.field] ? 1 : -1;
+		} else {
+			return a[selectedColumn.field] > b[selectedColumn.field] ? -1 : 1;
+		}
+	});
+};
+
+const sortSchemaData = (selectedColumn: TableColumn) => {
+	return schemaRows.sort((a, b) => {
 		if (selectedColumn.sortDirection === SORT_DIRECTION.ASC) {
 			return a[selectedColumn.field] > b[selectedColumn.field] ? 1 : -1;
 		} else {
@@ -309,6 +407,97 @@ export const CustomRowTable = (): JSX.Element => {
 				renderCustomRow={renderCustomExpandableRows}
 				hasColumnHiding={hasColumnHiding}
 				displayedColumnsChangedCallback={displayedColumnsChanged}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const CustomSchemaRowTable = (): JSX.Element => {
+	const [tableRows, setRows] = useState([...sortSchemaData(schemaColumns[0])]);
+	const [displayedColumnsCount, setDisplayedColumnsCount] = useState<number>();
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortSchemaData(selectedColumn)]);
+	}, []);
+	const selectionType = SELECTION_TYPE.SINGLE;
+
+	const renderSchemaRows = useCallback(() => {
+		return {
+			renderRow: useSchemaRows,
+			renderChildren: null
+		};
+	}, []);
+
+	const schemaTypeLabel = {
+		jsonSchema: "JSON Schema",
+		xsd: "XSD",
+		dtd: "DTD",
+		avro: "AVRO"
+	};
+
+	const schemaContentTypeLabel = {
+		jsonSchema: {
+			json: "JSON"
+		},
+		xsd: {
+			xml: "XML"
+		},
+		dtd: {
+			xml: "XML"
+		},
+		avro: {
+			binary: "Binary",
+			json: "JSON"
+		}
+	};
+
+	const getSharedContent = (shared) => {
+		return shared ? "Shared" : "Not Shared";
+	};
+
+	const getSchemaTypeContent = (schemaType) => {
+		return schemaTypeLabel[schemaType];
+	};
+
+	const getContentTypeContent = (schemaType, contentType) => {
+		return schemaContentTypeLabel[schemaType][contentType];
+	};
+
+	const useSchemaRows = ({
+		rows,
+		displayedColumns,
+		selectionType,
+		updateSelection,
+		handleCheckboxClick,
+		renderCustomRow,
+		rowActionMenuItems,
+		rowHoverCallback,
+		hasColumnHiding,
+		displayedColumnsChangedCallback
+	}: CustomTableRowProps): JSX.Element[] => {
+		return rows.map((row: TableRow, rowIndex) => (
+			<StyledTableRow
+				key={`schemaRow${rowIndex}`}
+				onClick={() => updateSelection(row)}
+				className={row.rowSelected ? "selected" : ""}
+			>
+				<td>{row.name}</td>
+				<td>{getSharedContent(row.sharedText)}</td>
+				<td>{row.version_count}</td>
+				<td>{getSchemaTypeContent(row.schemaType)}</td>
+				<td>{getContentTypeContent(row.schemaType, row.contentType)}</td>
+			</StyledTableRow>
+		));
+	};
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action("selection callback")}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={[...schemaColumns]}
+				selectionType={SELECTION_TYPE.SINGLE}
+				renderCustomRow={renderSchemaRows}
 			></SolaceTable>
 		</div>
 	);
