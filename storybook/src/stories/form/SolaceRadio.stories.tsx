@@ -14,17 +14,22 @@ export default {
 		}
 	},
 	argTypes: {
-		isRequired: {
+		required: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isDisabled: {
+		disabled: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isLargeLabel: {
+		largeLabel: {
+			control: {
+				type: "boolean"
+			}
+		},
+		lightSubText: {
 			control: {
 				type: "boolean"
 			}
@@ -64,6 +69,18 @@ SubText.args = {
 	value: "someValue"
 };
 
+export const LightSubText = Template.bind({});
+LightSubText.args = {
+	onChange: action("callback"),
+	title: "Demo Radio",
+	id: "demoRadioId",
+	name: "demoRadio",
+	label: "Header text",
+	subText: "Subtext subtext",
+	lightSubText: true,
+	value: "someValue"
+};
+
 function buildSubText() {
 	return (
 		<span>
@@ -80,8 +97,8 @@ LargeLabelAndCustomSubText.args = {
 	label: "Import to Event Portal",
 	subText: buildSubText(),
 	value: "someValue",
-	isLargeLabel: true,
-	isDisabled: false
+	largeLabel: true,
+	disabled: false
 };
 
 export const Required = Template.bind({});
@@ -90,7 +107,7 @@ Required.args = {
 	name: "demoRadio",
 	title: "Demo Checkbox",
 	label: "Inline Label",
-	isRequired: true,
+	required: true,
 	value: "someValue"
 };
 
@@ -100,8 +117,8 @@ Disabled.args = {
 	name: "demoRadio",
 	title: "Demo Radio",
 	label: "Inline Label",
-	isChecked: true,
-	isDisabled: true,
+	checked: true,
+	disabled: true,
 	value: "someValue"
 };
 
@@ -111,7 +128,7 @@ ReadOnly.args = {
 	name: "demoRadio",
 	title: "Demo Radio",
 	label: "Inline Label",
-	isChecked: true,
+	checked: true,
 	readOnly: true,
 	value: "someValue"
 };

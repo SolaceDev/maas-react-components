@@ -1,11 +1,11 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceLabel } from "@SolaceDev/maas-react-components";
+import { SolaceStackLabel } from "@SolaceDev/maas-react-components";
 
 export default {
-	title: "Forms/SolaceLabel",
-	component: SolaceLabel,
+	title: "Forms/SolaceStackLabel",
+	component: SolaceStackLabel,
 	argTypes: {
 		htmlForId: {
 			control: {
@@ -21,15 +21,39 @@ export default {
 			control: {
 				type: "boolean"
 			}
+		},
+		large: {
+			control: {
+				type: "boolean"
+			}
+		},
+		bold: {
+			control: {
+				type: "boolean"
+			}
 		}
 	}
-} as ComponentMeta<typeof SolaceLabel>;
+} as ComponentMeta<typeof SolaceStackLabel>;
 
-const Template: ComponentStory<typeof SolaceLabel> = (args) => <SolaceLabel {...args} />;
+const Template: ComponentStory<typeof SolaceStackLabel> = (args) => <SolaceStackLabel {...args} />;
 
 export const DefaultLabel = Template.bind({});
 DefaultLabel.args = {
 	id: "demoTextFieldId",
+	children: "Custom Label"
+};
+
+export const LargeLabel = Template.bind({});
+LargeLabel.args = {
+	id: "demoTextFieldId",
+	large: true,
+	children: "Custom Label"
+};
+
+export const BoldLabel = Template.bind({});
+BoldLabel.args = {
+	id: "demoTextFieldId",
+	bold: true,
 	children: "Custom Label"
 };
 

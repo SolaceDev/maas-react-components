@@ -39,6 +39,33 @@ StackedLabelFormat.args = {
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
+	stackLabel: true,
+	value: "option1",
+	children: RADIOS
+};
+
+export const WithLargeStackLabel = Template.bind({});
+WithLargeStackLabel.args = {
+	onChange: action("callback"),
+	title: "Demo RadioGroup",
+	id: "demoRadioGroupId",
+	name: "demoRadioGroup",
+	label: "Some Label",
+	stackLabel: true,
+	large: true,
+	value: "option1",
+	children: RADIOS
+};
+
+export const WithBoldStackLabel = Template.bind({});
+WithBoldStackLabel.args = {
+	onChange: action("callback"),
+	title: "Demo RadioGroup",
+	id: "demoRadioGroupId",
+	name: "demoRadioGroup",
+	label: "Some Label",
+	stackLabel: true,
+	bold: true,
 	value: "option1",
 	children: RADIOS
 };
@@ -50,7 +77,7 @@ InlineLabelFormat.args = {
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
 	label: "Some Label",
-	isInlineLabel: true,
+	inlineLabel: true,
 	value: "option1",
 	children: RADIOS
 };
@@ -74,7 +101,7 @@ RADIOS_WITH_HELPER.push(
 		value="option1"
 		label="Import to Event Portal"
 		subText={buildSubText()}
-		isLargeLabel={true}
+		largeLabel={true}
 		readOnly={false}
 	/>
 );
@@ -85,7 +112,7 @@ RADIOS_WITH_HELPER.push(
 		value="option2"
 		label="Topic Subscriptions Analysis"
 		subText="Topic Scans are used in the PubSub+ Topic Explorer to analyze your runtime data"
-		isLargeLabel={true}
+		largeLabel={true}
 		readOnly={false}
 	/>
 );
@@ -100,6 +127,41 @@ HelperText.args = {
 	helperText: "Some group helper text here",
 	value: "option1",
 	children: RADIOS_WITH_HELPER
+};
+
+const RADIOS_WITH_LIGHT_SUBTEXT: Array<React.ReactNode> = [];
+RADIOS_WITH_LIGHT_SUBTEXT.push(
+	<SolaceRadio
+		key="option1"
+		name="option1"
+		value="option1"
+		label="Option 1"
+		subText="This is a regular subText for Option 1"
+		largeLabel={true}
+		readOnly={false}
+	/>
+);
+RADIOS_WITH_LIGHT_SUBTEXT.push(
+	<SolaceRadio
+		key="option2"
+		name="option2"
+		value="option2"
+		label="Option 2"
+		subText="This is a light subText for Option 2"
+		largeLabel={true}
+		lightSubText={true}
+		readOnly={false}
+	/>
+);
+export const LightSubtext = Template.bind({});
+LightSubtext.args = {
+	onChange: action("callback"),
+	title: "Demo RadioGroup",
+	id: "demoRadioGroupId",
+	name: "demoRadioGroup",
+	label: "Select the discovery type and fill the form to start a scan",
+	value: "option1",
+	children: RADIOS_WITH_LIGHT_SUBTEXT
 };
 
 export const WithErrors = Template.bind({});
@@ -122,19 +184,19 @@ Required.args = {
 	title: "Demo RadioGroup",
 	label: "Some Label",
 	value: "option1",
-	isRequired: true,
+	required: true,
 	children: RADIOS
 };
 
 const DISABLED_RADIOS: Array<React.ReactNode> = [];
 DISABLED_RADIOS.push(
-	<SolaceRadio key="option1" value="option1" isDisabled={true} name="option1" label="Option 1" readOnly={false} />
+	<SolaceRadio key="option1" value="option1" disabled={true} name="option1" label="Option 1" readOnly={false} />
 );
 DISABLED_RADIOS.push(
-	<SolaceRadio key="option2" value="option2" isDisabled={true} name="option2" label="Option 2" readOnly={false} />
+	<SolaceRadio key="option2" value="option2" disabled={true} name="option2" label="Option 2" readOnly={false} />
 );
 DISABLED_RADIOS.push(
-	<SolaceRadio key="option3" value="option3" isDisabled={true} name="option3" label="Option 3" readOnly={false} />
+	<SolaceRadio key="option3" value="option3" disabled={true} name="option3" label="Option 3" readOnly={false} />
 );
 
 export const Disabled = Template.bind({});
@@ -144,6 +206,6 @@ Disabled.args = {
 	title: "Demo RadioGroup",
 	label: "Some Label",
 	value: "option2",
-	isDisabled: true,
+	disabled: true,
 	children: DISABLED_RADIOS
 };
