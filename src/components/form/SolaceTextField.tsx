@@ -164,6 +164,7 @@ function SolaceTextField({
 			readOnly={readOnly}
 			required={required}
 			inlineLabel={inlineLabel}
+			centerInlineLabel={inlineLabel}
 		>
 			{textField()}
 		</FormChildBase>

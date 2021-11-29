@@ -54,6 +54,10 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	 * Display the label horizontally
 	 */
 	inlineLabel: boolean;
+	/**
+	 * Center align the inline label, this will e used only for single line field label
+	 */
+	centerInlineLabel?: boolean;
 
 	children: JSX.Element;
 }
@@ -67,6 +71,7 @@ function FormChildBase({
 	required,
 	disabled,
 	inlineLabel,
+	centerInlineLabel,
 	helperText,
 	errorText,
 	children
@@ -76,7 +81,7 @@ function FormChildBase({
 			display="flex"
 			flexDirection={inlineLabel ? "row" : "column"}
 			justifyContent="space-between"
-			alignItems="flex-start"
+			alignItems={centerInlineLabel ? "center" : "flex-start"}
 		>
 			{stackLabel && label && (
 				<SolaceStackLabel
