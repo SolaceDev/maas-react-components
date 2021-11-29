@@ -8,6 +8,7 @@ import {
 	RestingCheckBoxIcon,
 	SelectedCheckBoxIcon
 } from "../../resources/icons/CheckBoxIcons";
+import classNames from "classnames";
 
 export interface SolaceCheckboxChangeEvent {
 	name: string;
@@ -165,7 +166,7 @@ const SolaceCheckBox = ({
 					role="checkbox"
 					title={title}
 					disabled={disabled || readOnly}
-					className={readOnly ? "readOnly" : undefined}
+					className={classNames({ readOnly: readOnly })}
 					disableRipple
 					checked={selected}
 					onChange={handleChange}
