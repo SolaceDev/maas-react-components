@@ -550,6 +550,15 @@ const theme: ThemeOptions = {
 				}
 			}
 		},
+		MuiMenu: {
+			styleOverrides: {
+				root: {
+					".MuiPaper-root": {
+						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`
+					}
+				}
+			}
+		},
 		MuiDialog: {
 			styleOverrides: {
 				root: {
