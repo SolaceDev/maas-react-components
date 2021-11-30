@@ -1,7 +1,6 @@
 import { ThemeOptions } from "@material-ui/core";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
-
 // A custom theme for this app
 const theme: ThemeOptions = {
 	breakpoints: {
@@ -483,7 +482,7 @@ const theme: ThemeOptions = {
 						backgroundColor: BASE_COLORS.greys.grey2
 					},
 					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused ": {
-						backgroundColor: getRGBA(BASE_COLORS.greens["green1-rgb"], 0.1)
+						backgroundColor: getRGBA(BASE_COLORS.greens.green1_rgb, 0.1)
 					},
 					boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 					color: BASE_COLORS.greys.grey14,
@@ -510,7 +509,7 @@ const theme: ThemeOptions = {
 								transform: "translate(22px)"
 							},
 							"&.Mui-checked + .MuiSwitch-track": {
-								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
+								backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
 								opacity: 1
 							},
 							"&.Mui-disabled + .MuiSwitch-track": {
@@ -522,7 +521,7 @@ const theme: ThemeOptions = {
 								borderColor: BASE_COLORS.greys.grey2
 							},
 							"&:hover": {
-								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35)
+								backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35)
 							}
 						},
 						".MuiSwitch-thumb": {
@@ -536,7 +535,7 @@ const theme: ThemeOptions = {
 						height: "12px",
 						width: "36px",
 						transform: "translateY(1px)",
-						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
+						backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
 						opacity: 1
 					}
 				},
@@ -544,7 +543,7 @@ const theme: ThemeOptions = {
 					"&.MuiChecked .MuiSwitch-track": {
 						height: "12px",
 						transform: "translateY(1px)",
-						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
+						backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
 						opacity: 1
 					}
 				}

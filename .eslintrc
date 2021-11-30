@@ -5,9 +5,10 @@
 		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
-		"prettier"
+		"prettier",
+		"plugin:sonarjs/recommended"
 	],
-	"plugins": ["@typescript-eslint", "simple-import-sort", "react", "react-hooks", "unused-imports"],
+	"plugins": ["@typescript-eslint", "simple-import-sort", "react", "react-hooks", "unused-imports", "sonarjs"],
 	"env": {
 		"node": true
 	},

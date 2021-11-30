@@ -79,6 +79,8 @@ export const useExpandableRows = ({
 		setRowWithOpenActionMenu(row.id);
 	}
 
+	// TODO: Refactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed
+	// eslint-disable-next-line sonarjs/cognitive-complexity
 	function createExpandableRowNodes(): React.ReactNode[] {
 		return rows.map((row: TableRow, rowIndex) => (
 			<React.Fragment key={`${row.id}_wrapper`}>
@@ -117,7 +119,5 @@ export const useExpandableRows = ({
 		));
 	}
 
-	const expandableRows = createExpandableRowNodes();
-
-	return expandableRows;
+	return createExpandableRowNodes();
 };
