@@ -189,6 +189,9 @@ const theme: ThemeOptions = {
 					},
 					"&.SolaceStackLabel-bold": {
 						fontWeight: 500
+					},
+					"&.read-only": {
+						color: BASE_COLORS.greys.grey9
 					}
 				}
 			}
@@ -470,12 +473,22 @@ const theme: ThemeOptions = {
 					},
 					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
 						background: "transparent"
+					},
+					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
+						fill: BASE_COLORS.greys.grey14
 					}
 				},
 				popper: {
+					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='false'].Mui-focused ": {
+						backgroundColor: BASE_COLORS.greys.grey2
+					},
+					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused ": {
+						backgroundColor: getRGBA(BASE_COLORS.greens["green1-rgb"], 0.1)
+					},
+					boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 					color: BASE_COLORS.greys.grey14,
 					".subtext": {
-						color: BASE_COLORS.greys.grey8
+						color: BASE_COLORS.greys.grey9
 					},
 					".suplementalText": {
 						fontSize: BASE_FONT_PX_SIZES.xs,
@@ -533,6 +546,15 @@ const theme: ThemeOptions = {
 						transform: "translateY(1px)",
 						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
 						opacity: 1
+					}
+				}
+			}
+		},
+		MuiMenu: {
+			styleOverrides: {
+				root: {
+					".MuiPaper-root": {
+						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`
 					}
 				}
 			}

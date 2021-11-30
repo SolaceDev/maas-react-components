@@ -1,4 +1,5 @@
 import { FormLabel, useTheme } from "@material-ui/core";
+import clsx from "clsx";
 
 export interface SolaceStackLabelProps {
 	/**
@@ -17,6 +18,10 @@ export interface SolaceStackLabelProps {
 	 * Boolean flag to disable the `input`
 	 */
 	disabled?: boolean;
+	/**
+	 * Boolean flag for readOnly labels, changes font color to 55% black
+	 */
+	readOnly?: boolean;
 	/**
 	 * Boolean flag to allow font size of 16px (default to 14px)
 	 */
@@ -38,6 +43,7 @@ function SolaceStackLabel({
 	disabled = false,
 	large = false,
 	bold = false,
+	readOnly = false,
 	children
 }: SolaceStackLabelProps): JSX.Element {
 	const theme = useTheme();
@@ -47,7 +53,7 @@ function SolaceStackLabel({
 			htmlFor={htmlForId}
 			required={required}
 			disabled={disabled}
-			className={bold ? "SolaceStackLabel-bold" : ""}
+			className={clsx({ "SolaceStackLabel-bold": bold, "read-only": readOnly })}
 			sx={{
 				display: "block",
 				fontSize: large ? theme.typography.subtitle1 : theme.typography.body1

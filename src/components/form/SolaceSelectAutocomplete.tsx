@@ -2,7 +2,6 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Box, Autocomplete, TextField, useTheme } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
-
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
@@ -226,6 +225,7 @@ function SolaceSelectAutocomplete<T, V>({
 			readOnly={readOnly}
 			required={required}
 			inlineLabel={inlineLabel}
+			centerInlineLabel={inlineLabel}
 		>
 			{select()}
 		</FormChildBase>

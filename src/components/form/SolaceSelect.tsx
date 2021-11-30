@@ -144,6 +144,7 @@ function SolaceSelect({
 			readOnly={readOnly}
 			required={required}
 			inlineLabel={inlineLabel}
+			centerInlineLabel={inlineLabel}
 		>
 			{select()}
 		</FormChildBase>

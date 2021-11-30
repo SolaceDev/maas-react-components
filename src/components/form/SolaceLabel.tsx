@@ -1,4 +1,5 @@
 import { FormLabel } from "@material-ui/core";
+import clsx from "clsx";
 
 export interface SolaceLabelProps {
 	/**
@@ -18,12 +19,23 @@ export interface SolaceLabelProps {
 	 */
 	disabled?: boolean;
 	/**
+	 * Boolean flag for readOnly labels, changes font color to 55% black
+	 */
+	readOnly?: boolean;
+	/**
 	 *
 	 */
 	children?: React.ReactNode;
 }
 
-function SolaceLabel({ id, htmlForId, required = false, disabled = false, children }: SolaceLabelProps): JSX.Element {
+function SolaceLabel({
+	id,
+	htmlForId,
+	required = false,
+	disabled = false,
+	readOnly = false,
+	children
+}: SolaceLabelProps): JSX.Element {
 	return (
 		<FormLabel
 			id={id}
@@ -33,6 +45,7 @@ function SolaceLabel({ id, htmlForId, required = false, disabled = false, childr
 			sx={{
 				display: "block"
 			}}
+			className={clsx({ "read-only": readOnly })}
 		>
 			{children}
 		</FormLabel>
