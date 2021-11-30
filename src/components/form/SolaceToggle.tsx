@@ -24,7 +24,7 @@ function LabelElement({ children, bold, large, disabled }: LabelElementProps): J
 			component={"span"}
 			sx={{
 				fontSize: typography.fontSize,
-				lineHeight: "28px",
+				lineHeight: typography.lineHeight,
 				fontWeight: bold ? "medium" : "regular",
 				color: disabled ? theme.palette.text.disabled : theme.palette.text.primary
 			}}
