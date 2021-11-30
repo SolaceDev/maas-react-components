@@ -331,7 +331,7 @@ export const useSolaceTable = (
 				hasColumnHiding,
 				displayedColumnsChangedCallback
 		  })
-		: createCustomRowNodes
+		: renderCustomRowCells
 		? createCustomRowNodes()
 		: creatRowNodes();
 
