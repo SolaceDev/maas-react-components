@@ -13,7 +13,23 @@ export default {
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/UI-Library%3A-Patterns?node-id=2937%3A22461"
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		required: {
+			control: {
+				type: "boolean"
+			}
+		},
+		disabled: {
+			control: {
+				type: "boolean"
+			}
+		},
+		largeLabel: {
+			control: {
+				type: "boolean"
+			}
+		}
+	}
 } as ComponentMeta<typeof SolaceToggle>;
 
 const Template: ComponentStory<typeof SolaceToggle> = (args) => <SolaceToggle {...args} />;
@@ -33,6 +49,16 @@ Labeled.args = {
 	id: "demoToggleId",
 	name: "demoToggle",
 	label: "Some Label"
+};
+
+export const LargeLabel = Template.bind({});
+LargeLabel.args = {
+	onChange: action("callback"),
+	title: "Demo Toggle",
+	id: "demoToggleId",
+	name: "demoToggle",
+	label: "Some Label",
+	largeLabel: true
 };
 
 export const HelperText = Template.bind({});
@@ -62,7 +88,7 @@ Required.args = {
 	name: "demoToggle",
 	title: "Demo Toggle",
 	label: "Some Label",
-	isRequired: true
+	required: true
 };
 
 export const Disabled = Template.bind({});
@@ -72,5 +98,5 @@ Disabled.args = {
 	title: "Demo Toggle",
 	label: "Some Label",
 	isOn: true,
-	isDisabled: true
+	disabled: true
 };
