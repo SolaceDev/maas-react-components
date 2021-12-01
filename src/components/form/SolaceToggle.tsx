@@ -1,4 +1,4 @@
-import { Box, FormHelperText, Switch, InputLabel, useTheme } from "@material-ui/core";
+import { Box, FormHelperText, Switch, InputLabel, Typography, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -9,28 +9,29 @@ export interface SolaceToggleChangeEvent {
 	value: boolean;
 }
 
-interface LabelElementProps {
+interface SolaceToggleLabelProps {
 	bold: boolean;
 	disabled: boolean;
 	large: boolean;
 	children: string | JSX.Element;
 }
 
-function LabelElement({ children, bold, large, disabled }: LabelElementProps): JSX.Element {
+function SolaceToggleLabel({ children, bold, large, disabled }: SolaceToggleLabelProps): JSX.Element {
 	const theme = useTheme();
-	const typography = large ? theme.typography.subtitle1 : theme.typography.body1;
+
 	return (
-		<Box
-			component={"span"}
+		<Typography
+			variant={large ? "subtitle1" : "body1"}
 			sx={{
-				fontSize: typography.fontSize,
-				lineHeight: typography.lineHeight,
+				color: disabled ? theme.palette.text.disabled : theme.palette.text.primary,
 				fontWeight: bold ? "medium" : "regular",
-				color: disabled ? theme.palette.text.disabled : theme.palette.text.primary
+				alignSelf: "center"
 			}}
+			component="span"
 		>
-			{children}
-		</Box>
+			{" "}
+			{children}{" "}
+		</Typography>
 	);
 }
 
@@ -125,10 +126,7 @@ function SolaceToggle({
 		</Box>
 	);
 
-	const getStateText = (selected: boolean, disabled: boolean) => {
-		if (disabled) {
-			return "Disabled";
-		}
+	const getStateText = (selected: boolean) => {
 		if (selected) {
 			return "On";
 		} else {
@@ -162,7 +160,7 @@ function SolaceToggle({
 					onChange={handleChange}
 				/>
 				{label && (
-					<Box>
+					<>
 						<InputLabel
 							id={`${id}-label`}
 							htmlFor={`${id}-toggle`}
@@ -170,21 +168,21 @@ function SolaceToggle({
 							disabled={disabled}
 							sx={{ color: theme.palette.text.primary, cursor: disabled ? "auto" : "pointer" }}
 						>
-							<LabelElement bold={false} large={largeLabel} disabled={disabled}>
+							<SolaceToggleLabel bold={false} large={largeLabel} disabled={disabled}>
 								{label}
-							</LabelElement>
+							</SolaceToggleLabel>
 							{stateText && (
-								<LabelElement bold={false} large={largeLabel} disabled={disabled}>
+								<SolaceToggleLabel bold={false} large={largeLabel} disabled={disabled}>
 									{": "}
-								</LabelElement>
+								</SolaceToggleLabel>
 							)}
 							{stateText && (
-								<LabelElement bold={true} large={largeLabel} disabled={disabled}>
-									{getStateText(selected, disabled)}
-								</LabelElement>
+								<SolaceToggleLabel bold={true} large={largeLabel} disabled={disabled}>
+									{getStateText(selected)}
+								</SolaceToggleLabel>
 							)}
 						</InputLabel>
-					</Box>
+					</>
 				)}
 			</Box>
 			{helperText && (
