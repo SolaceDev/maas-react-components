@@ -500,6 +500,7 @@ const theme: ThemeOptions = {
 		MuiSwitch: {
 			styleOverrides: {
 				root: {
+					marginTop: "3px",
 					width: "50px",
 					height: "30px",
 					marginRight: "8px",

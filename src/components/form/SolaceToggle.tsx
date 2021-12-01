@@ -29,8 +29,7 @@ function SolaceToggleLabel({ children, bold, large, disabled }: SolaceToggleLabe
 			}}
 			component="span"
 		>
-			{" "}
-			{children}{" "}
+			{children}
 		</Typography>
 	);
 }
@@ -126,13 +125,7 @@ function SolaceToggle({
 		</Box>
 	);
 
-	const getStateText = (selected: boolean) => {
-		if (selected) {
-			return "On";
-		} else {
-			return "Off";
-		}
-	};
+	const getStateText = (selected: boolean) => (selected ? "On" : "Off");
 
 	const getId = () => {
 		return id ? id : name;
@@ -169,13 +162,8 @@ function SolaceToggle({
 							sx={{ color: theme.palette.text.primary, cursor: disabled ? "auto" : "pointer" }}
 						>
 							<SolaceToggleLabel bold={false} large={largeLabel} disabled={disabled}>
-								{label}
+								{`${label}${stateText ? ": " : ""}`}
 							</SolaceToggleLabel>
-							{stateText && (
-								<SolaceToggleLabel bold={false} large={largeLabel} disabled={disabled}>
-									{": "}
-								</SolaceToggleLabel>
-							)}
 							{stateText && (
 								<SolaceToggleLabel bold={true} large={largeLabel} disabled={disabled}>
 									{getStateText(selected)}
