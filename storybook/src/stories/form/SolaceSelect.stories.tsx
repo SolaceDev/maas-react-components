@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceSelect } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@material-ui/core";
+import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Forms/SolaceSelect",
@@ -57,20 +58,53 @@ export default {
 
 const SELECT_OPTIONS: Array<any> = [];
 SELECT_OPTIONS.push(
-	<MenuItem key="option1" value="option1">
+	<MenuItem key="option1" value="Menu Option #1">
 		Menu Option #1
 	</MenuItem>
 );
 SELECT_OPTIONS.push(
-	<MenuItem key="option2" value="option2">
+	<MenuItem key="option2" value="Menu Option #2">
 		Menu Option #2
 	</MenuItem>
 );
 SELECT_OPTIONS.push(
-	<MenuItem key="option3" value="option3">
+	<MenuItem key="option3" value="Menu Option #3">
 		Menu Option #3
 	</MenuItem>
 );
+
+const SELECT_OPTIONS_WITH_SUBTEXT: Array<SolaceSelectAutocompleteItemProps> = [
+	{
+		name: "Option #1",
+		value: "option1",
+		subText: "Some sub text for option 1",
+		supplementalText: "supplemental text option 1"
+	},
+	{
+		name: "Option #2",
+		value: "option2",
+		subText: "Some sub text for option 2"
+	},
+	{
+		name: "Option #3",
+		value: "option3"
+	},
+	{
+		name: "Option #4",
+		value: "option4",
+		supplementalText: "supplemental text option 4"
+	}
+];
+function generateSelectOptionsWithSubtext(): Array<JSX.Element> {
+	return SELECT_OPTIONS_WITH_SUBTEXT.map((option) => {
+		return (
+			<MenuItem key={option.value} value={option.name}>
+				<SolaceSelectAutocompleteItem {...option} />
+			</MenuItem>
+		);
+	});
+}
+
 const Template: ComponentStory<typeof SolaceSelect> = (args) => <SolaceSelect {...args} />;
 
 export const DefaultTextfield = Template.bind({});
@@ -82,8 +116,8 @@ DefaultTextfield.args = {
 	children: SELECT_OPTIONS
 };
 
-export const StackedLabeleFormat = Template.bind({});
-StackedLabeleFormat.args = {
+export const StackedLabelFormat = Template.bind({});
+StackedLabelFormat.args = {
 	onChange: action("callback"),
 	title: "Demo Select",
 	name: "demoSelect",
@@ -91,14 +125,23 @@ StackedLabeleFormat.args = {
 	children: SELECT_OPTIONS
 };
 
-export const InlineLabeleFormat = Template.bind({});
-InlineLabeleFormat.args = {
+export const InlineLabelFormat = Template.bind({});
+InlineLabelFormat.args = {
 	onChange: action("callback"),
 	name: "demoSelect",
 	title: "Demo Select",
 	label: "Some Label",
 	children: SELECT_OPTIONS,
 	isInlineLabel: true
+};
+
+export const Subtext = Template.bind({});
+Subtext.args = {
+	onChange: action("callback"),
+	name: "demoSelect",
+	title: "Demo Select Field",
+	label: "Some Label",
+	children: generateSelectOptionsWithSubtext()
 };
 
 export const HelperText = Template.bind({});

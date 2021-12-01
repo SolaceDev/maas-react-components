@@ -131,7 +131,8 @@ function SolaceSelect({
 			value={selectedValue}
 			onChange={handleChange}
 			SelectProps={{
-				IconComponent: () => <SelectDropdownIcon />
+				IconComponent: () => <SelectDropdownIcon />,
+				renderValue: () => `${selectedValue}`
 			}}
 		>
 			{children}

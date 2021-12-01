@@ -467,6 +467,7 @@ const theme: ThemeOptions = {
 						// currently applied to SolaceSelect component
 						transition: "none !important",
 						".MuiMenuItem-root": {
+							fontSize: "14px",
 							"&.Mui-selected": {
 								backgroundColor: BASE_COLORS.greens.green9
 							}
@@ -478,6 +479,15 @@ const theme: ThemeOptions = {
 								"*,*::before,*::after": {
 									transition: "none !important",
 									animation: "none !important"
+								}
+							},
+							".MuiGrid-root.MuiGrid-container": {
+								".subtext": {
+									color: BASE_COLORS.greys.grey9
+								},
+								".suplementalText": {
+									fontSize: BASE_FONT_PX_SIZES.xs,
+									color: BASE_COLORS.greys.grey9
 								}
 							}
 						}
