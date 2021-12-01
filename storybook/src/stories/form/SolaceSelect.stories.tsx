@@ -182,7 +182,7 @@ Disabled.args = {
 	title: "Demo Select Field",
 	label: "Some Label",
 	children: SELECT_OPTIONS,
-	value: "option2",
+	value: "Menu Option #2",
 	isDisabled: true
 };
 
@@ -193,6 +193,6 @@ ReadOnly.args = {
 	title: "Demo Select Field",
 	label: "Some Label",
 	children: SELECT_OPTIONS,
-	value: "option3",
+	value: "Menu Option #3",
 	isReadOnly: true
 };
