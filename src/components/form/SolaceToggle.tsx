@@ -56,6 +56,10 @@ export interface SolaceToggleProps extends SolaceComponentProps {
 	 */
 	helperText?: string | JSX.Element;
 	/**
+	 * Boolean flag to show the state of toggle element
+	 */
+	stateText?: boolean;
+	/**
 	 * Boolean flag to mark the `input` in error state
 	 */
 	hasErrors?: boolean;
@@ -92,6 +96,7 @@ function SolaceToggle({
 	required = false,
 	disabled = false,
 	largeLabel = false,
+	stateText = false,
 	onChange,
 	dataQa,
 	dataTags
@@ -122,12 +127,12 @@ function SolaceToggle({
 
 	const getStateText = (selected: boolean, disabled: boolean) => {
 		if (disabled) {
-			return ": Disabled";
+			return "Disabled";
 		}
 		if (selected) {
-			return ": On";
+			return "On";
 		} else {
-			return ": Off";
+			return "Off";
 		}
 	};
 
@@ -168,9 +173,16 @@ function SolaceToggle({
 							<LabelElement bold={false} large={largeLabel} disabled={disabled}>
 								{label}
 							</LabelElement>
-							<LabelElement bold={true} large={largeLabel} disabled={disabled}>
-								{getStateText(selected, disabled)}
-							</LabelElement>
+							{stateText && (
+								<LabelElement bold={false} large={largeLabel} disabled={disabled}>
+									{": "}
+								</LabelElement>
+							)}
+							{stateText && (
+								<LabelElement bold={true} large={largeLabel} disabled={disabled}>
+									{getStateText(selected, disabled)}
+								</LabelElement>
+							)}
 						</InputLabel>
 					</Box>
 				)}

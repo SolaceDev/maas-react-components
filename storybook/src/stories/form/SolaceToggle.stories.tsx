@@ -28,6 +28,11 @@ export default {
 			control: {
 				type: "boolean"
 			}
+		},
+		stateText: {
+			control: {
+				type: "boolean"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceToggle>;
@@ -59,6 +64,16 @@ LargeLabel.args = {
 	name: "demoToggle",
 	label: "Some Label",
 	largeLabel: true
+};
+
+export const LabeledWithStateText = Template.bind({});
+LabeledWithStateText.args = {
+	onChange: action("callback"),
+	title: "Demo Toggle",
+	id: "demoToggleId",
+	name: "demoToggle",
+	label: "Some Label",
+	stateText: true
 };
 
 export const HelperText = Template.bind({});
