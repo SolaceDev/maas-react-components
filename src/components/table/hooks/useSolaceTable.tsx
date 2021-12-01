@@ -47,6 +47,7 @@ export interface CustomTableRowProps {
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
 		renderChildren: (row: TableRow) => React.ReactNode;
 	};
+	renderCustomRowCells?: (row: TableRow) => JSX.Element[];
 	rowActionMenuItems?: TableActionMenuItem[];
 	headerHoverCallback?: () => void;
 	rowHoverCallback?: (row: TableRow) => void;
@@ -80,6 +81,7 @@ export const useSolaceTable = (
 		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
 		renderChildren: (row: TableRow) => React.ReactNode;
 	},
+	renderCustomRowCells?: (row: TableRow) => JSX.Element[],
 	renderCustomHeader?: (customColumnProps: CustomTableColumnProps) => React.ReactNode,
 	rowActionMenuItems?: TableActionMenuItem[],
 	headerHoverCallback?: () => void,
@@ -221,6 +223,43 @@ export const useSolaceTable = (
 		));
 	}
 
+	const getCustomCells = (row: TableRow) => {
+		if (renderCustomRowCells) {
+			return renderCustomRowCells(row);
+		} else {
+			return [];
+		}
+	};
+
+	function createCustomRowNodes(): React.ReactNode[] {
+		return rows.map((row: TableRow) => (
+			<StyledTableRow
+				key={row.id}
+				onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
+				onClick={() => updateSelection(row)}
+				className={row.rowSelected ? "selected" : ""}
+			>
+				{[
+					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
+
+					/** TODO - add all custom cells for this row here */
+					...getCustomCells(row),
+					/** End of custom cells */
+
+					!!rowActionMenuItems &&
+						addActionMenuIcon(
+							row,
+							rowWithOpenActionMenu === row.id,
+							openRowActionMenu,
+							rowActionMenuItems,
+							setRowWithOpenActionMenu
+						),
+					!rowActionMenuItems && hasColumnHiding && addEmptyRowCell()
+				]}
+			</StyledTableRow>
+		));
+	}
+
 	const createHeaderNodes = useCallback(() => {
 		return (
 			<StyledTableRow className="header" onMouseEnter={headerHoverCallback ? () => headerHoverCallback() : undefined}>
@@ -275,6 +314,9 @@ export const useSolaceTable = (
 		displayedColumnsChangedCallback
 	]);
 
+	// if RenderCustomRow defined, render the row, otherwise
+	// if createCustomRowNodes defined, render all the custom
+	// row cells, otherwise createRowNodes
 	const rowNodes = renderCustomRow
 		? renderCustomRow().renderRow({
 				rows,
@@ -289,6 +331,8 @@ export const useSolaceTable = (
 				hasColumnHiding,
 				displayedColumnsChangedCallback
 		  })
+		: renderCustomRowCells
+		? createCustomRowNodes()
 		: creatRowNodes();
 
 	const columnNodes = renderCustomHeader

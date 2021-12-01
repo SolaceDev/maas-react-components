@@ -28,22 +28,22 @@ export default {
 				type: "boolean"
 			}
 		},
-		isInlineLabel: {
+		inlineLabel: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isRequired: {
+		required: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isDisabled: {
+		disabled: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isReadOnly: {
+		readOnly: {
 			control: {
 				type: "boolean"
 			}
@@ -132,7 +132,7 @@ InlineLabelFormat.args = {
 	title: "Demo Select",
 	label: "Some Label",
 	children: SELECT_OPTIONS,
-	isInlineLabel: true
+	inlineLabel: true
 };
 
 export const Subtext = Template.bind({});
@@ -172,7 +172,7 @@ Required.args = {
 	title: "Demo Select Field",
 	label: "Some Label",
 	children: SELECT_OPTIONS,
-	isRequired: true
+	required: true
 };
 
 export const Disabled = Template.bind({});
@@ -183,7 +183,7 @@ Disabled.args = {
 	label: "Some Label",
 	children: SELECT_OPTIONS,
 	value: "Menu Option #2",
-	isDisabled: true
+	disabled: true
 };
 
 export const ReadOnly = Template.bind({});
@@ -194,5 +194,5 @@ ReadOnly.args = {
 	label: "Some Label",
 	children: SELECT_OPTIONS,
 	value: "Menu Option #3",
-	isReadOnly: true
+	readOnly: true
 };

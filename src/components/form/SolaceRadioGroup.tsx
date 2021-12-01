@@ -23,7 +23,19 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	 */
 	label?: string | JSX.Element;
 	/**
-	 * Content to display as supportive/explanitory text
+	 * Boolean flag to render stack label for a group of select components
+	 */
+	stackLabel?: boolean;
+	/**
+	 * Boolean flag to allow font size of 16px (default to 14px) for stack label
+	 */
+	large?: boolean;
+	/**
+	 * Boolean flag to allow font weight of medium (default to regular) for stack label
+	 */
+	bold?: boolean;
+	/**
+	 * Content to display as supportive/explanatory text
 	 */
 	helperText?: string | JSX.Element;
 	/**
@@ -37,19 +49,19 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag to control whether to stack the label on top of the `input` element (false) or place them inline to one another (true)
 	 */
-	isInlineLabel?: boolean;
+	inlineLabel?: boolean;
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `radio group` is mandatory
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 	/**
 	 * Boolean flag to disable the `radio group`
 	 */
-	isDisabled?: boolean;
+	disabled?: boolean;
 	/**
 	 * Boolean flag to disable the `radio group`
 	 */
-	isReadOnly?: boolean;
+	readOnly?: boolean;
 	/**
 	 * Callback function to trigger whenever the value of the `radio group` is changed
 	 */
@@ -64,13 +76,16 @@ function SolaceRadioGroup({
 	id,
 	name,
 	label,
+	stackLabel = true, // use stack label for radio group
+	large = false,
+	bold = false,
 	value,
 	helperText,
 	hasErrors = false,
-	isReadOnly = false,
-	isRequired = false,
-	isDisabled = false,
-	isInlineLabel = false,
+	readOnly = false,
+	required = false,
+	disabled = false,
+	inlineLabel = false,
 	onChange,
 	children
 }: SolaceRadioGroupProps): JSX.Element {
@@ -117,14 +132,17 @@ function SolaceRadioGroup({
 		<FormChildBase
 			id={id}
 			label={label}
+			stackLabel={stackLabel}
+			large={large}
+			bold={bold}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
-			isDisabled={isDisabled}
-			isReadOnly={isReadOnly}
-			isRequired={isRequired}
-			isInlineLabel={isInlineLabel}
+			disabled={disabled}
+			readOnly={readOnly}
+			required={required}
+			inlineLabel={inlineLabel}
 		>
-			<Box sx={{ marginTop: isInlineLabel ? 0 : theme.spacing(1) }}>{getRadioGroup()}</Box>
+			<Box sx={{ marginTop: inlineLabel ? 0 : theme.spacing(1) }}>{getRadioGroup()}</Box>
 		</FormChildBase>
 	);
 }

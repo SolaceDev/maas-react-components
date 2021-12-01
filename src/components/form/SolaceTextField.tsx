@@ -61,19 +61,19 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 	/**
 	 * Boolean flag to control whether to stack the label on top of the `input` element (false) or place them inline to one another (true)
 	 */
-	isInlineLabel?: boolean;
+	inlineLabel?: boolean;
 	/**
 	 * Boolean flag to disable the `input`
 	 */
-	isDisabled?: boolean;
+	disabled?: boolean;
 	/**
 	 * Boolean flag to set the `input` in a read-only state
 	 */
-	isReadOnly?: boolean;
+	readOnly?: boolean;
 	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
@@ -93,10 +93,10 @@ function SolaceTextField({
 	title,
 	autoFocus = false,
 	hasErrors = false,
-	isRequired = false,
-	isInlineLabel = false,
-	isDisabled = false,
-	isReadOnly = false,
+	required = false,
+	inlineLabel = false,
+	disabled = false,
+	readOnly = false,
 	onChange,
 	dataQa,
 	dataTags
@@ -131,10 +131,10 @@ function SolaceTextField({
 				"data-qa": dataQa,
 				"data-tags": dataTags,
 				"data-lpignore": true,
-				readOnly: isReadOnly,
+				readOnly: readOnly,
 				"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
 				"aria-labelledby": label ? `${getId()}-label` : "",
-				"aria-readonly": isReadOnly,
+				"aria-readonly": readOnly,
 				role: "textbox",
 				title: title
 			}}
@@ -144,8 +144,8 @@ function SolaceTextField({
 			autoFocus={autoFocus}
 			InputProps={{
 				sx: { height: theme.spacing(4) },
-				disabled: isDisabled,
-				required: isRequired
+				disabled: disabled,
+				required: required
 			}}
 			margin="dense"
 			placeholder={placeholder}
@@ -160,10 +160,11 @@ function SolaceTextField({
 			label={label}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
-			isDisabled={isDisabled}
-			isReadOnly={isReadOnly}
-			isRequired={isRequired}
-			isInlineLabel={isInlineLabel}
+			disabled={disabled}
+			readOnly={readOnly}
+			required={required}
+			inlineLabel={inlineLabel}
+			centerInlineLabel={inlineLabel}
 		>
 			{textField()}
 		</FormChildBase>

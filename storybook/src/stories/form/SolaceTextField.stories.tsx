@@ -34,22 +34,22 @@ export default {
 				type: "boolean"
 			}
 		},
-		isInlineLabel: {
+		inlineLabel: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isRequired: {
+		required: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isDisabled: {
+		disabled: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isReadOnly: {
+		readOnly: {
 			control: {
 				type: "boolean"
 			}
@@ -83,21 +83,21 @@ DefaultTextfield.args = {
 	name: "demoTextField"
 };
 
-export const StackedLabeleFormat = Template.bind({});
-StackedLabeleFormat.args = {
+export const StackedLabelFormat = Template.bind({});
+StackedLabelFormat.args = {
 	onChange: action("callback"),
 	title: "Demo Text Field",
 	name: "demoTextField",
 	label: "Some Label"
 };
 
-export const InlineLabeleFormat = Template.bind({});
-InlineLabeleFormat.args = {
+export const InlineLabelFormat = Template.bind({});
+InlineLabelFormat.args = {
 	onChange: action("text-changed"),
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
-	isInlineLabel: true
+	inlineLabel: true
 };
 
 export const HelperText = Template.bind({});
@@ -143,7 +143,7 @@ Required.args = {
 	name: "demoTextField",
 	title: "Demo Text Field",
 	label: "Some Label",
-	isRequired: true
+	required: true
 };
 
 export const Disabled = Template.bind({});
@@ -153,7 +153,7 @@ Disabled.args = {
 	title: "Demo Text Field",
 	label: "Some Label",
 	value: "Some value",
-	isDisabled: true
+	disabled: true
 };
 
 export const ReadOnly = Template.bind({});
@@ -163,5 +163,5 @@ ReadOnly.args = {
 	title: "Demo Text Field",
 	label: "Some Label",
 	value: "Some value",
-	isReadOnly: true
+	readOnly: true
 };

@@ -1,7 +1,7 @@
-import { FormLabel } from "@material-ui/core";
+import { FormLabel, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 
-export interface SolaceLabelProps {
+export interface SolaceStackLabelProps {
 	/**
 	 * Unique identifier of the label
 	 */
@@ -23,33 +23,45 @@ export interface SolaceLabelProps {
 	 */
 	readOnly?: boolean;
 	/**
+	 * Boolean flag to allow font size of 16px (default to 14px)
+	 */
+	large?: boolean;
+	/**
+	 * Boolean flag to allow font weight of medium (default to regular)
+	 */
+	bold?: boolean;
+	/**
 	 *
 	 */
 	children?: React.ReactNode;
 }
 
-function SolaceLabel({
+function SolaceStackLabel({
 	id,
 	htmlForId,
 	required = false,
 	disabled = false,
+	large = false,
+	bold = false,
 	readOnly = false,
 	children
-}: SolaceLabelProps): JSX.Element {
+}: SolaceStackLabelProps): JSX.Element {
+	const theme = useTheme();
 	return (
 		<FormLabel
 			id={id}
 			htmlFor={htmlForId}
 			required={required}
 			disabled={disabled}
+			className={clsx({ "SolaceStackLabel-bold": bold, "read-only": readOnly })}
 			sx={{
-				display: "block"
+				display: "block",
+				fontSize: large ? theme.typography.subtitle1 : theme.typography.body1
 			}}
-			className={clsx({ "read-only": readOnly })}
 		>
 			{children}
 		</FormLabel>
 	);
 }
 
-export default SolaceLabel;
+export default SolaceStackLabel;

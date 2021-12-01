@@ -1,6 +1,7 @@
 export const BASE_COLORS = {
 	greens: {
 		green1: "#00C895",
+		"green1-rgb": "rgb(0, 200, 149)",
 		green2: "#00AD93",
 		"green2-rgb": "rgb(0, 173, 147)",
 		green3: "#009193",
