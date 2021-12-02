@@ -527,7 +527,7 @@ const theme: ThemeOptions = {
 						".MuiSwitch-thumb": {
 							width: "16px",
 							height: "16px",
-							border: `solid 2px ${getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35)}`,
+							border: `solid 2px ${getRGBA(BASE_COLORS.greens.green2_rgb, 0.35)}`,
 							boxShadow: "none"
 						}
 					},
