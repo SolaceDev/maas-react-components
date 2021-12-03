@@ -110,8 +110,13 @@ const theme: ThemeOptions = {
 							top: "12px",
 							right: "0",
 							display: "inline-block",
-							color: BASE_COLORS.greys.grey8,
-							pointerEvents: "none"
+							pointerEvents: "none",
+							color: BASE_COLORS.greys.grey8 // dropdown icon color in resting/focused/error states
+						},
+						"&.Mui-disabled": {
+							".MuiSvgIcon-root": {
+								color: BASE_COLORS.greys.grey3 // dropdown icon color in disabled state
+							}
 						}
 					}
 				}
