@@ -70,7 +70,7 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 		name: "Option #1",
 		value: "option1",
 		subText: "Some sub text for option 1",
-		suplementalText: "suplemental text option 1"
+		supplementalText: "supplemental text option 1"
 	},
 	{
 		name: "Option #2",
@@ -84,7 +84,7 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "Option #4",
 		value: "option4",
-		suplementalText: "suplemental text option 4"
+		supplementalText: "supplemental text option 4"
 	}
 ];
 

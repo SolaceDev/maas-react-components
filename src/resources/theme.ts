@@ -102,7 +102,26 @@ const theme: ThemeOptions = {
 		MuiFormControl: {
 			styleOverrides: {
 				root: {
-					margin: "0px"
+					margin: "0px",
+					// re-position the Solace Dropdown icon inside Select input element
+					".MuiOutlinedInput-root.MuiSelect-root": {
+						".MuiSvgIcon-root": {
+							position: "absolute",
+							top: "12px",
+							right: "0",
+							display: "inline-block",
+							pointerEvents: "none",
+							color: BASE_COLORS.greys.grey8 // dropdown icon color in resting/focused/error states
+						},
+						"&.Mui-disabled": {
+							".MuiSvgIcon-root": {
+								color: BASE_COLORS.greys.grey3 // dropdown icon color in disabled state
+							}
+						},
+						"&.readOnlySelect": {
+							backgroundColor: "transparent" // apply transparent bg color in readonly state
+						}
+					}
 				}
 			}
 		},
@@ -451,6 +470,47 @@ const theme: ThemeOptions = {
 						padding: "7px 34px 5px 8px",
 						minWidth: "330px"
 					}
+				},
+				iconOpen: {
+					// remove dropdown icon flip animation when Select menu opens/closes
+					transform: "none"
+				}
+			}
+		},
+		MuiMenu: {
+			styleOverrides: {
+				root: {
+					".MuiPaper-root": {
+						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
+						// remove MenuList open/close animation
+						// currently applied to SolaceSelect component
+						transition: "none !important",
+						".MuiMenuItem-root": {
+							fontSize: "14px",
+							"&.Mui-selected": {
+								backgroundColor: BASE_COLORS.greens.green9
+							}
+						},
+						".MuiList-root.MuiMenu-list": {
+							".MuiMenuItem-root.MuiButtonBase-root": {
+								// remove all ripple effect from MenuList Items
+								// currently applied to SolaceSelect component
+								"*,*::before,*::after": {
+									transition: "none !important",
+									animation: "none !important"
+								}
+							},
+							".MuiGrid-root.MuiGrid-container": {
+								".subtext": {
+									color: BASE_COLORS.greys.grey9
+								},
+								".suplementalText": {
+									fontSize: BASE_FONT_PX_SIZES.xs,
+									color: BASE_COLORS.greys.grey9
+								}
+							}
+						}
+					}
 				}
 			}
 		},
@@ -547,15 +607,6 @@ const theme: ThemeOptions = {
 						transform: "translateY(1px)",
 						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
 						opacity: 1
-					}
-				}
-			}
-		},
-		MuiMenu: {
-			styleOverrides: {
-				root: {
-					".MuiPaper-root": {
-						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`
 					}
 				}
 			}
