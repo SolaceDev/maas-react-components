@@ -102,7 +102,26 @@ const theme: ThemeOptions = {
 		MuiFormControl: {
 			styleOverrides: {
 				root: {
-					margin: "0px"
+					margin: "0px",
+					// re-position the Solace Dropdown icon inside Select input element
+					".MuiOutlinedInput-root.MuiSelect-root": {
+						".MuiSvgIcon-root": {
+							position: "absolute",
+							top: "12px",
+							right: "0",
+							display: "inline-block",
+							pointerEvents: "none",
+							color: BASE_COLORS.greys.grey8 // dropdown icon color in resting/focused/error states
+						},
+						"&.Mui-disabled": {
+							".MuiSvgIcon-root": {
+								color: BASE_COLORS.greys.grey3 // dropdown icon color in disabled state
+							}
+						},
+						"&.readOnlySelect": {
+							backgroundColor: "transparent" // apply transparent bg color in readonly state
+						}
+					}
 				}
 			}
 		},
@@ -177,7 +196,7 @@ const theme: ThemeOptions = {
 					color: BASE_COLORS.greens.green2
 				},
 				root: {
-					color: BASE_COLORS.greys.grey11,
+					color: BASE_COLORS.greys.grey14,
 					fontSize: "0.875rem",
 					fontWeight: 400,
 					lineHeight: 1.5,
@@ -185,6 +204,12 @@ const theme: ThemeOptions = {
 						color: BASE_COLORS.greys.grey11
 					},
 					"&.Mui-disabled": {
+						color: BASE_COLORS.greys.grey9
+					},
+					"&.SolaceStackLabel-bold": {
+						fontWeight: 500
+					},
+					"&.read-only": {
 						color: BASE_COLORS.greys.grey9
 					}
 				}
@@ -360,21 +385,30 @@ const theme: ThemeOptions = {
 					"&.Mui-disabled .MuiSvgIcon-root": {
 						rect: {
 							fillOpacity: 0.35,
-							fill: "white"
+							fill: "white",
+							stroke: BASE_COLORS.greys.grey2,
+							strokeOpacity: 1
 						},
 						path: {
 							fillOpacity: 0.35
 						}
 					},
-					"+ .MuiFormLabel-root": {
-						marginLeft: "16px"
+					"+.MuiFormLabel-root": {
+						marginLeft: "16px",
+						color: BASE_COLORS.greys.grey14,
+						"&.Mui-disabled": {
+							color: BASE_COLORS.greys.grey5
+						}
 					},
 					"&.readOnly .MuiSvgIcon-root": {
 						".SolaceCheckboxContainer": {
-							fill: BASE_COLORS.greys.grey19
+							fill: BASE_COLORS.greys.grey19,
+							stroke: BASE_COLORS.greys.grey3,
+							strokeOpacity: 1
 						},
 						".SolaceCheckboxCheckmark": {
-							fill: BASE_COLORS.greys.grey5
+							fill: BASE_COLORS.greys.grey5,
+							fillOpacity: 1
 						}
 					},
 					padding: "0px"
@@ -405,6 +439,10 @@ const theme: ThemeOptions = {
 						}
 					},
 					"&.Mui-disabled .MuiSvgIcon-root": {
+						".SolaceRadioContainer": {
+							stroke: BASE_COLORS.greys.grey2,
+							strokeOpacity: 1
+						},
 						".SolaceRadioSelection": {
 							opacity: 0.35
 						}
@@ -412,6 +450,7 @@ const theme: ThemeOptions = {
 					"&.readOnly .MuiSvgIcon-root": {
 						".SolaceRadioContainer": {
 							fill: BASE_COLORS.greys.grey19,
+							stroke: BASE_COLORS.greys.grey3,
 							opacity: 1
 						},
 						".SolaceRadioSelection": {
@@ -430,6 +469,47 @@ const theme: ThemeOptions = {
 					"&.MuiOutlinedInput-input": {
 						padding: "7px 34px 5px 8px",
 						minWidth: "330px"
+					}
+				},
+				iconOpen: {
+					// remove dropdown icon flip animation when Select menu opens/closes
+					transform: "none"
+				}
+			}
+		},
+		MuiMenu: {
+			styleOverrides: {
+				root: {
+					".MuiPaper-root": {
+						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
+						// remove MenuList open/close animation
+						// currently applied to SolaceSelect component
+						transition: "none !important",
+						".MuiMenuItem-root": {
+							fontSize: "14px",
+							"&.Mui-selected": {
+								backgroundColor: BASE_COLORS.greens.green9
+							}
+						},
+						".MuiList-root.MuiMenu-list": {
+							".MuiMenuItem-root.MuiButtonBase-root": {
+								// remove all ripple effect from MenuList Items
+								// currently applied to SolaceSelect component
+								"*,*::before,*::after": {
+									transition: "none !important",
+									animation: "none !important"
+								}
+							},
+							".MuiGrid-root.MuiGrid-container": {
+								".subtext": {
+									color: BASE_COLORS.greys.grey9
+								},
+								".suplementalText": {
+									fontSize: BASE_FONT_PX_SIZES.xs,
+									color: BASE_COLORS.greys.grey9
+								}
+							}
+						}
 					}
 				}
 			}
@@ -453,12 +533,22 @@ const theme: ThemeOptions = {
 					},
 					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
 						background: "transparent"
+					},
+					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
+						fill: BASE_COLORS.greys.grey14
 					}
 				},
 				popper: {
+					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='false'].Mui-focused ": {
+						backgroundColor: BASE_COLORS.greys.grey2
+					},
+					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused ": {
+						backgroundColor: getRGBA(BASE_COLORS.greens["green1-rgb"], 0.1)
+					},
+					boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 					color: BASE_COLORS.greys.grey14,
 					".subtext": {
-						color: BASE_COLORS.greys.grey8
+						color: BASE_COLORS.greys.grey9
 					},
 					".suplementalText": {
 						fontSize: BASE_FONT_PX_SIZES.xs,
@@ -470,6 +560,7 @@ const theme: ThemeOptions = {
 		MuiSwitch: {
 			styleOverrides: {
 				root: {
+					marginTop: "3px",
 					width: "50px",
 					height: "30px",
 					marginRight: "8px",
@@ -637,6 +728,21 @@ const theme: ThemeOptions = {
 			height: "100%",
 			overflowY: "auto",
 			borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+		},
+		/** ErrorText for form components */
+		formComponent_ErrorText: {
+			container: {
+				display: "flex",
+				flexDirection: "row",
+				justifyContent: "flex-start",
+				alignItems: "center",
+				marginTop: "12px"
+			},
+			label: {
+				color: BASE_COLORS.reds.red1,
+				fontSize: BASE_FONT_PX_SIZES.xs,
+				marginLeft: "8px"
+			}
 		}
 	},
 	palette: {
@@ -691,6 +797,10 @@ declare module "@material-ui/core/styles/createMixins" {
 		sidePanelLayout_rightSidePanelSection: React.CSSProperties;
 		sidePanelLayout_contentPanelSection: React.CSSProperties;
 		sidePanelLayout_mainPanel: React.CSSProperties;
+		formComponent_ErrorText: {
+			container: CSSProperties;
+			label: CSSProperties;
+		};
 	}
 }
 export default theme;

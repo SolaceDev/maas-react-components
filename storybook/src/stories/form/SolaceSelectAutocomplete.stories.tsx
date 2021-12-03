@@ -41,22 +41,22 @@ export default {
 				type: "boolean"
 			}
 		},
-		isInlineLabel: {
+		inlineLabel: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isRequired: {
+		required: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isDisabled: {
+		disabled: {
 			control: {
 				type: "boolean"
 			}
 		},
-		isReadOnly: {
+		readOnly: {
 			control: {
 				type: "boolean"
 			}
@@ -70,7 +70,7 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 		name: "Option #1",
 		value: "option1",
 		subText: "Some sub text for option 1",
-		suplementalText: "suplemental text option 1"
+		supplementalText: "supplemental text option 1"
 	},
 	{
 		name: "Option #2",
@@ -84,7 +84,7 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "Option #4",
 		value: "option4",
-		suplementalText: "suplemental text option 4"
+		supplementalText: "supplemental text option 4"
 	}
 ];
 
@@ -134,8 +134,8 @@ DefaultAutocomplete.args = {
 	onCloseCallback: () => store.set({ options: [] })
 };
 
-export const StackedLabeleFormat = Template.bind({});
-StackedLabeleFormat.parameters = {
+export const StackedLabelFormat = Template.bind({});
+StackedLabelFormat.parameters = {
 	mockData: [
 		{
 			url: "http://someOtherExample.com/filterOptions",
@@ -148,7 +148,7 @@ StackedLabeleFormat.parameters = {
 		}
 	]
 };
-StackedLabeleFormat.args = {
+StackedLabelFormat.args = {
 	onChange: action("callback"),
 	itemComponent: SolaceSelectAutocompleteItem,
 	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
@@ -190,7 +190,7 @@ InlineLabeleFormat.args = {
 		await fetchOptions(searchTerm);
 	},
 	onCloseCallback: () => store.set({ options: [] }),
-	isInlineLabel: true
+	inlineLabel: true
 };
 
 export const HelperText = Template.bind({});
@@ -281,7 +281,7 @@ Required.args = {
 		await fetchOptions(searchTerm);
 	},
 	onCloseCallback: () => store.set({ options: [] }),
-	isRequired: true
+	required: true
 };
 
 export const Disabled = Template.bind({});
@@ -318,7 +318,7 @@ Disabled.args = {
 		subText: "Some sub text",
 		suplementalText: "opt2"
 	},
-	isDisabled: true
+	disabled: true
 };
 
 export const ReadOnly = Template.bind({});
@@ -354,5 +354,5 @@ ReadOnly.args = {
 		subText: "Some sub text",
 		suplementalText: "opt2"
 	},
-	isReadOnly: true
+	readOnly: true
 };

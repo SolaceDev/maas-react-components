@@ -1,13 +1,37 @@
-import { Box, FormHelperText, Switch, useTheme } from "@material-ui/core";
+import { Box, FormHelperText, Switch, InputLabel, Typography, useTheme } from "@material-ui/core";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
-import SolaceLabel from "./SolaceLabel";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 
 export interface SolaceToggleChangeEvent {
 	name: string;
 	value: boolean;
+}
+
+interface SolaceToggleLabelProps {
+	bold: boolean;
+	disabled: boolean;
+	large: boolean;
+	children: string | JSX.Element;
+}
+
+function SolaceToggleLabel({ children, bold, large, disabled }: SolaceToggleLabelProps): JSX.Element {
+	const theme = useTheme();
+
+	return (
+		<Typography
+			variant={large ? "subtitle1" : "body1"}
+			sx={{
+				color: disabled ? theme.palette.text.disabled : theme.palette.text.primary,
+				fontWeight: bold ? "medium" : "regular",
+				alignSelf: "center"
+			}}
+			component="span"
+		>
+			{children}
+		</Typography>
+	);
 }
 
 export interface SolaceToggleProps extends SolaceComponentProps {
@@ -32,6 +56,10 @@ export interface SolaceToggleProps extends SolaceComponentProps {
 	 */
 	helperText?: string | JSX.Element;
 	/**
+	 * Boolean flag to show the state of toggle element
+	 */
+	stateText?: boolean;
+	/**
 	 * Boolean flag to mark the `input` in error state
 	 */
 	hasErrors?: boolean;
@@ -42,11 +70,15 @@ export interface SolaceToggleProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `toggle` is mandatory
 	 */
-	isRequired?: boolean;
+	required?: boolean;
 	/**
 	 * Boolean flag to disable the `toggle`
 	 */
-	isDisabled?: boolean;
+	disabled?: boolean;
+	/**
+	 * Display the label with a larger font
+	 */
+	largeLabel?: boolean;
 	/**
 	 * Callback function to trigger whenever the value of the `toggle` is changed
 	 */
@@ -61,8 +93,10 @@ function SolaceToggle({
 	helperText,
 	hasErrors = false,
 	isOn = false,
-	isRequired = false,
-	isDisabled = false,
+	required = false,
+	disabled = false,
+	largeLabel = false,
+	stateText = false,
 	onChange,
 	dataQa,
 	dataTags
@@ -91,6 +125,8 @@ function SolaceToggle({
 		</Box>
 	);
 
+	const getStateText = (selected: boolean) => (selected ? "On" : "Off");
+
 	const getId = () => {
 		return id ? id : name;
 	};
@@ -111,20 +147,30 @@ function SolaceToggle({
 					}
 					role="switch"
 					title={title}
-					disabled={isDisabled}
+					disabled={disabled}
 					disableRipple
 					checked={selected}
 					onChange={handleChange}
 				/>
 				{label && (
-					<SolaceLabel
-						id={`${getId()}-label`}
-						htmlForId={`${getId()}-toggle`}
-						isRequired={isRequired}
-						isDisabled={isDisabled}
-					>
-						{label}
-					</SolaceLabel>
+					<>
+						<InputLabel
+							id={`${id}-label`}
+							htmlFor={`${id}-toggle`}
+							required={required}
+							disabled={disabled}
+							sx={{ color: theme.palette.text.primary, cursor: disabled ? "auto" : "pointer" }}
+						>
+							<SolaceToggleLabel bold={false} large={largeLabel} disabled={disabled}>
+								{`${label}${stateText ? ": " : ""}`}
+							</SolaceToggleLabel>
+							{stateText && (
+								<SolaceToggleLabel bold={true} large={largeLabel} disabled={disabled}>
+									{getStateText(selected)}
+								</SolaceToggleLabel>
+							)}
+						</InputLabel>
+					</>
 				)}
 			</Box>
 			{helperText && (

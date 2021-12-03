@@ -41,7 +41,7 @@ export const useExpandableRows = ({
 					<SolaceCheckBox
 						name={`${row.id}rowCheckbox`}
 						onChange={() => handleCheckboxClick(row)}
-						isChecked={!!row.rowSelected}
+						checked={!!row.rowSelected}
 					/>
 				</span>
 			</StyledTableData>
