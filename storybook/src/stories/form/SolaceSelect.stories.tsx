@@ -58,17 +58,17 @@ export default {
 
 const SELECT_OPTIONS: Array<any> = [];
 SELECT_OPTIONS.push(
-	<MenuItem key="option1" value="Menu Option #1">
+	<MenuItem key="option1" value="option1">
 		Menu Option #1
 	</MenuItem>
 );
 SELECT_OPTIONS.push(
-	<MenuItem key="option2" value="Menu Option #2">
+	<MenuItem key="option2" value="option2">
 		Menu Option #2
 	</MenuItem>
 );
 SELECT_OPTIONS.push(
-	<MenuItem key="option3" value="Menu Option #3">
+	<MenuItem key="option3" value="option3">
 		Menu Option #3
 	</MenuItem>
 );
@@ -98,7 +98,7 @@ const SELECT_OPTIONS_WITH_SUBTEXT: Array<SolaceSelectAutocompleteItemProps> = [
 function generateSelectOptionsWithSubtext(): Array<JSX.Element> {
 	return SELECT_OPTIONS_WITH_SUBTEXT.map((option) => {
 		return (
-			<MenuItem key={option.value} value={option.name}>
+			<MenuItem key={option.value} value={option.value}>
 				<SolaceSelectAutocompleteItem {...option} />
 			</MenuItem>
 		);
@@ -138,6 +138,10 @@ InlineLabelFormat.args = {
 export const Subtext = Template.bind({});
 Subtext.args = {
 	onChange: action("callback"),
+	getOptionDisplayValue: (value) => {
+		const match = SELECT_OPTIONS_WITH_SUBTEXT.find((props) => props.value === value);
+		return match ? match.name : "";
+	},
 	name: "demoSelect",
 	title: "Demo Select Field",
 	label: "Some Label",
@@ -182,7 +186,7 @@ Disabled.args = {
 	title: "Demo Select Field",
 	label: "Some Label",
 	children: SELECT_OPTIONS,
-	value: "Menu Option #2",
+	value: "option2",
 	disabled: true
 };
 
@@ -193,6 +197,6 @@ ReadOnly.args = {
 	title: "Demo Select Field",
 	label: "Some Label",
 	children: SELECT_OPTIONS,
-	value: "Menu Option #3",
+	value: "option3",
 	readOnly: true
 };

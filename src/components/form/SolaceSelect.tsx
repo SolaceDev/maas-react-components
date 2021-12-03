@@ -1,5 +1,5 @@
 import { TextField, useTheme } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
@@ -8,7 +8,6 @@ export interface SolaceSelectChangeEvent {
 	name: string;
 	value: string;
 }
-
 export interface SolaceSelectProps extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
@@ -59,6 +58,10 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 */
 	onChange?: (event: SolaceSelectChangeEvent) => void;
 	/**
+	 * Callback function to return option display value based on selected option value
+	 */
+	getOptionDisplayValue?: (value: unknown) => ReactNode;
+	/**
 	 * An array of MenuItems to render as the select options
 	 */
 	children: Array<JSX.Element>;
@@ -77,6 +80,7 @@ function SolaceSelect({
 	readOnly = false,
 	inlineLabel = false,
 	onChange,
+	getOptionDisplayValue,
 	dataQa,
 	dataTags,
 	children
@@ -132,7 +136,11 @@ function SolaceSelect({
 			onChange={handleChange}
 			SelectProps={{
 				IconComponent: () => <SelectDropdownIcon />,
-				renderValue: () => `${selectedValue}`
+				renderValue: getOptionDisplayValue
+					? (value: unknown) => {
+							return getOptionDisplayValue(value);
+					  }
+					: undefined
 			}}
 		>
 			{children}
