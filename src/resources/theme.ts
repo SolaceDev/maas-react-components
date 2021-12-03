@@ -117,6 +117,9 @@ const theme: ThemeOptions = {
 							".MuiSvgIcon-root": {
 								color: BASE_COLORS.greys.grey3 // dropdown icon color in disabled state
 							}
+						},
+						"&.readOnlySelect": {
+							backgroundColor: "transparent" // apply transparent bg color in readonly state
 						}
 					}
 				}
