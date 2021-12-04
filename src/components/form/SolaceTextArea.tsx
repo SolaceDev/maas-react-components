@@ -145,7 +145,8 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 			InputProps={{
 				sx: { height: theme.spacing(4) },
 				disabled: disabled,
-				required: required
+				required: required,
+				className: inlineLabel ? "inline-label" : ""
 			}}
 			margin="dense"
 			placeholder={placeholder}

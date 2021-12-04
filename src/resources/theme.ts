@@ -242,8 +242,14 @@ const theme: ThemeOptions = {
 						marginRight: "20px",
 						display: "inline-table", // this ensures helper text is below textarea
 						minWidth: "354px",
+						backgroundColor: "transparent", // set background transparent on TextArea input container
 						".MuiOutlinedInput-notchedOutline": {
 							border: "none"
+						},
+						"&.inline-label": {
+							".MuiOutlinedInput-input:read-only": {
+								padding: "0px" // top align with label in ready-only & inline state
+							}
 						}
 					},
 					".MuiOutlinedInput-input": {
