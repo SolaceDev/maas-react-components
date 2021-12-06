@@ -88,6 +88,8 @@ export const useSolaceTable = (
 	rowHoverCallback?: (row: TableRow) => void,
 	hasColumnHiding?: boolean,
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void
+	// TODO: Refactor this function to reduce its Cognitive Complexity from 107 to the 15 allowed
+	// eslint-disable-next-line sonarjs/cognitive-complexity
 ): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
