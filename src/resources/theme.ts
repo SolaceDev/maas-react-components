@@ -741,8 +741,7 @@ const theme: ThemeOptions = {
 				display: "flex",
 				flexDirection: "row",
 				justifyContent: "flex-start",
-				alignItems: "center",
-				marginTop: "12px"
+				alignItems: "center"
 			},
 			label: {
 				color: BASE_COLORS.reds.red1,
