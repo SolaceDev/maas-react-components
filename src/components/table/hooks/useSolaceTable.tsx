@@ -16,6 +16,7 @@ import { styled } from "@material-ui/core";
 import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 import { BASE_COLORS } from "../../../resources/colorPallette";
+import clsx from "clsx";
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
@@ -25,6 +26,9 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	height: "32px",
 	"&.selected": {
 		backgroundColor: "#e8f9f4"
+	},
+	"&.clickable": {
+		cursor: "pointer"
 	},
 	"&:hover": {
 		background: "#e5e5e5",
@@ -196,7 +200,10 @@ export const useSolaceTable = (
 				key={row.id}
 				onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
 				onClick={() => updateSelection(row)}
-				className={row.rowSelected ? "selected" : ""}
+				className={clsx({
+					selected: row.rowSelected,
+					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
+				})}
 			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
@@ -239,7 +246,10 @@ export const useSolaceTable = (
 				key={row.id}
 				onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
 				onClick={() => updateSelection(row)}
-				className={row.rowSelected ? "selected" : ""}
+				className={clsx({
+					selected: row.rowSelected,
+					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
+				})}
 			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
