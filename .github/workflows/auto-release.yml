@@ -1,6 +1,8 @@
 name: AutoRelease
 on:
   push:
+    branches:
+      - "main"
     tags:
       - "*"
 
