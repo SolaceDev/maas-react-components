@@ -47,7 +47,7 @@ export enum SORT_DIRECTION {
 
 export const StyledTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
-	borderBottom: "1px solid #e8e8e8",
+	borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
 	padding: theme.spacing(),
 	height: "22px",
 	".cursor-pointer": {
