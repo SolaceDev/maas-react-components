@@ -21,8 +21,6 @@ import clsx from "clsx";
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
-	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
-	marginLeft: theme.spacing(0.5),
 	height: "32px",
 	"&.selected": {
 		backgroundColor: "#e8f9f4"
@@ -38,6 +36,9 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	},
 	"&:hover + tr td table": {
 		background: `${BASE_COLORS.greys.grey24}`
+	},
+	"td:first-of-type, th:first-of-type": {
+		paddingLeft: `${theme.spacing(2)}`
 	}
 }));
 

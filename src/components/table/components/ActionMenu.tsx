@@ -23,6 +23,8 @@ export const StyledActionItem = styled("div")(({ theme }) => ({
 	minWidth: "60px",
 	padding: `${theme.spacing()} ${theme.spacing(2)}`,
 	cursor: "pointer",
+	whiteSpace: "nowrap",
+	textAlign: "left",
 	"&:hover": {
 		background: "#e5e5e5"
 	},
