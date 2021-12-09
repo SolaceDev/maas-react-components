@@ -9,6 +9,7 @@ import SolaceCheckBox from "../../form/SolaceCheckBox";
 export const ColumnHidingContainer = styled("div")(({ theme }) => ({
 	position: "absolute",
 	display: "block",
+	whiteSpace: "nowrap",
 	top: "30px",
 	right: "40px",
 	padding: `${theme.spacing()} 0`,

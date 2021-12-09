@@ -76,7 +76,9 @@ export const StyledTableHeader = styled("th")(({ theme }) => ({
 		marginTop: theme.spacing(0.5)
 	},
 	"&.icon-column": {
-		width: "40px"
+		width: "50px",
+		textAlign: "center",
+		position: "relative"
 	}
 }));
 
@@ -98,7 +100,8 @@ export const StyledRelativeTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: "1px solid #e8e8e8",
 	padding: theme.spacing(),
-	position: "relative"
+	position: "relative",
+	textAlign: "center"
 }));
 
 export const StyledActionItem = styled("div")(({ theme }) => ({
