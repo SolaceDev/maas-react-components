@@ -34,5 +34,6 @@ export { default as SolaceTable } from "./components/table/SolaceTable";
 export { useExpandableRows } from "./components/table/hooks/useExpandableRows";
 export { default as SolacePagination } from "./components/SolacePagination";
 export { default as SolaceCodeEditor } from "./components/form/SolaceCodeEditor";
+export { default as SolaceEnumValueInputForm } from "./components/form/SolaceEnumValueInputForm";
 
 export { default as SolaceTheme } from "./resources/theme";

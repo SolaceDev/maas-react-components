@@ -82,6 +82,7 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the element of the `input` loses focus
 	 */
 	onBlur?: () => void;
+	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 function SolaceTextField({
@@ -103,6 +104,7 @@ function SolaceTextField({
 	readOnly = false,
 	onChange,
 	onBlur,
+	onKeyDown,
 	dataQa,
 	dataTags
 }: SolaceTextFieldProps): JSX.Element {
@@ -157,6 +159,7 @@ function SolaceTextField({
 			value={textValue}
 			onChange={handleChange}
 			onBlur={onBlur}
+			onKeyDown={onKeyDown}
 		/>
 	);
 
