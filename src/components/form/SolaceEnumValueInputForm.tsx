@@ -47,10 +47,10 @@ const SolaceEnumValueInputForm = (): JSX.Element => {
 							style={{
 								backgroundColor: "transparent",
 								padding: "9px 0px",
+								minWidth: "600px",
 
 								// grid
 								// display: "grid",
-								// minWidth: "600px",
 								// gridTemplateColumns: "1fr 6fr 8fr 1fr",
 								// gridGap: "10px",
 
@@ -63,9 +63,9 @@ const SolaceEnumValueInputForm = (): JSX.Element => {
 								alignItems: "center"
 							}}
 						>
-							<span style={{ cursor: "move", alignSelf: "center" }} onClick={handleMoveItem}>
+							<div style={{ cursor: "move", paddingTop: "2px" }} onClick={handleMoveItem}>
 								<MoveIcon />
-							</span>
+							</div>
 							<SolaceTextField name="name" value={item.name} onChange={(e) => handleInputChange(e, index)} />
 							<SolaceTextField
 								name="displayName"
@@ -73,7 +73,7 @@ const SolaceEnumValueInputForm = (): JSX.Element => {
 								onChange={(e) => handleInputChange(e, index)}
 								onKeyDown={(e) => handleKeyDown(e, index)}
 							/>
-							<div style={{ cursor: "pointer" }} onClick={() => handleDeleteItem(index)}>
+							<div style={{ cursor: "pointer", paddingTop: "2px" }} onClick={() => handleDeleteItem(index)}>
 								<DeleteIcon />
 							</div>
 						</div>
