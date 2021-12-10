@@ -78,6 +78,10 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
 	onChange?: (event: SolaceTextFieldChangeEvent) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` loses focus
+	 */
+	onBlur?: () => void;
 }
 
 function SolaceTextField({
@@ -98,6 +102,7 @@ function SolaceTextField({
 	disabled = false,
 	readOnly = false,
 	onChange,
+	onBlur,
 	dataQa,
 	dataTags
 }: SolaceTextFieldProps): JSX.Element {
@@ -151,6 +156,7 @@ function SolaceTextField({
 			placeholder={placeholder}
 			value={textValue}
 			onChange={handleChange}
+			onBlur={onBlur}
 		/>
 	);
 

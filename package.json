@@ -7,7 +7,7 @@
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/SolaceDev"
 	},
-	"version": "1.7.1",
+	"version": "1.7.11",
 	"description": "React component library designed for Solace.",
 	"author": "",
 	"license": "MIT",
@@ -57,6 +57,7 @@
 		"eslint-plugin-react": "^7.26.1",
 		"eslint-plugin-react-hooks": "^4.2.1-beta-0cc724c77-20211125",
 		"eslint-plugin-simple-import-sort": "^7.0.0",
+		"eslint-plugin-sonarjs": "^0.10.0",
 		"eslint-plugin-unused-imports": "^1.1.5",
 		"gh-pages": "^3.2.3",
 		"husky": "^7.0.4",

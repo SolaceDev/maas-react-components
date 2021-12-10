@@ -81,7 +81,7 @@ interface TablePropType extends SolaceComponentProps {
 const TableWrapper = styled("div")(({ theme }) => ({
 	display: "flex",
 	flexDirection: "column",
-	border: `1px solid ${BASE_COLORS.greys.grey2}`,
+	border: `1px solid ${BASE_COLORS.greys.grey24}`,
 	width: "100%",
 	height: "100%",
 	minHeight: "200px",

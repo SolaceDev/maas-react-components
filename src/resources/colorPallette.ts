@@ -1,9 +1,9 @@
 export const BASE_COLORS = {
 	greens: {
 		green1: "#00C895",
-		"green1-rgb": "rgb(0, 200, 149)",
+		green1_rgb: "rgb(0, 200, 149)",
 		green2: "#00AD93",
-		"green2-rgb": "rgb(0, 173, 147)",
+		green2_rgb: "rgb(0, 173, 147)",
 		green3: "#009193",
 		green4: "#4B6C6C",
 		green5: "#00CCAD",
@@ -36,7 +36,8 @@ export const BASE_COLORS = {
 		grey20: "#2D2D2D",
 		grey21: "#474747",
 		grey22: "#828282",
-		grey23: "#EEE"
+		grey23: "#EEE",
+		grey24: "#e5e5e5"
 	},
 	reds: {
 		red1: "#D0021B"
