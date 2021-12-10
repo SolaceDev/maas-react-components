@@ -1,6 +1,9 @@
 import { ThemeOptions } from "@material-ui/core";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
+
+const noneImportant = "none !important";
+
 // A custom theme for this app
 const theme: ThemeOptions = {
 	breakpoints: {
@@ -483,7 +486,7 @@ const theme: ThemeOptions = {
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 						// remove MenuList open/close animation
 						// currently applied to SolaceSelect component
-						transition: "none !important",
+						transition: noneImportant,
 						".MuiMenuItem-root": {
 							fontSize: "14px",
 							"&.Mui-selected": {
@@ -495,8 +498,8 @@ const theme: ThemeOptions = {
 								// remove all ripple effect from MenuList Items
 								// currently applied to SolaceSelect component
 								"*,*::before,*::after": {
-									transition: "none !important",
-									animation: "none !important"
+									transition: noneImportant,
+									animation: noneImportant
 								}
 							},
 							".MuiGrid-root.MuiGrid-container": {
@@ -734,8 +737,7 @@ const theme: ThemeOptions = {
 				display: "flex",
 				flexDirection: "row",
 				justifyContent: "flex-start",
-				alignItems: "center",
-				marginTop: "12px"
+				marginTop: "2px"
 			},
 			label: {
 				color: BASE_COLORS.reds.red1,
