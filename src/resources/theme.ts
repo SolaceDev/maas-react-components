@@ -261,7 +261,8 @@ const theme: ThemeOptions = {
 						{
 							border: "none",
 							padding: "7px 0 0 0",
-							cursor: "default"
+							cursor: "default",
+							backgroundColor: "transparent" // set background transparent on TextArea input container in readonly state
 						},
 					"&:hover": {
 						".MuiOutlinedInput-input": {
