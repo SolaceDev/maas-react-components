@@ -1,5 +1,5 @@
 import { TextField, useTheme } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -107,11 +107,6 @@ function SolaceTextField({
 	dataTags
 }: SolaceTextFieldProps): JSX.Element {
 	const theme = useTheme();
-	const [textValue, setTextValue] = useState(value);
-
-	useEffect(() => {
-		setTextValue(value);
-	}, [value]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (onChange) {
@@ -154,7 +149,7 @@ function SolaceTextField({
 			}}
 			margin="dense"
 			placeholder={placeholder}
-			value={textValue}
+			value={value}
 			onChange={handleChange}
 			onBlur={onBlur}
 		/>
