@@ -250,7 +250,7 @@ const theme: ThemeOptions = {
 						},
 						"&.inline-label": {
 							".MuiOutlinedInput-input:read-only": {
-								padding: "0px" // top align with label in ready-only & inline state
+								padding: "1px" // top align with label in ready-only & inline state
 							}
 						}
 					},
