@@ -11,6 +11,28 @@ enum EnumNavigationKeys {
 	NextLine = "Enter"
 }
 
+// TODO: make the function more generic
+// const NUM_OF_COLUMN_PER_ROW = 2
+
+// the navigation logic assumes there are two columns per row for the enum list
+const navigateEnumList = (key: string, index: number, enumList: NodeListOf<Element>): void => {
+	if (key === EnumNavigationKeys.Left && index > 0) {
+		(enumList[index - 1] as HTMLElement).focus();
+	} else if (key === EnumNavigationKeys.Right && index + 1 < enumList.length) {
+		(enumList[index + 1] as HTMLElement).focus();
+	} else if (key === EnumNavigationKeys.Up && index - 1 > 0) {
+		(enumList[index - 2] as HTMLElement).focus();
+	} else if (key === EnumNavigationKeys.Down && index + 2 < enumList.length) {
+		(enumList[index + 2] as HTMLElement).focus();
+	} else if (key === EnumNavigationKeys.NextLine && index + 2 < enumList.length) {
+		if (index % 2 === 0) {
+			(enumList[index + 2] as HTMLElement).focus();
+		} else if (index % 2 === 1) {
+			(enumList[index + 1] as HTMLElement).focus();
+		}
+	}
+};
+
 const SolaceEnumValueInputForm = (): JSX.Element => {
 	const [inputList, setInputList] = useState([{ name: "", displayName: "" }]);
 
@@ -31,24 +53,6 @@ const SolaceEnumValueInputForm = (): JSX.Element => {
 			const list = [...inputList];
 			list.splice(index, 1);
 			setInputList(list);
-		}
-	};
-
-	const navigateEnumList = (key: string, index: number, enumList: NodeListOf<Element>): void => {
-		if (key === EnumNavigationKeys.Left && index > 0) {
-			(enumList[index - 1] as HTMLElement).focus();
-		} else if (key === EnumNavigationKeys.Right && index + 1 < enumList.length) {
-			(enumList[index + 1] as HTMLElement).focus();
-		} else if (key === EnumNavigationKeys.Up && index - 1 > 0) {
-			(enumList[index - 2] as HTMLElement).focus();
-		} else if (key === EnumNavigationKeys.Down && index + 2 < enumList.length) {
-			(enumList[index + 2] as HTMLElement).focus();
-		} else if (key === EnumNavigationKeys.NextLine && index + 2 < enumList.length) {
-			if (index % 2 === 0) {
-				(enumList[index + 2] as HTMLElement).focus();
-			} else if (index % 2 === 1) {
-				(enumList[index + 1] as HTMLElement).focus();
-			}
 		}
 	};
 
