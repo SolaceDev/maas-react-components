@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { SolaceTextField } from "@SolaceDev/maas-react-components";
@@ -164,4 +164,19 @@ ReadOnly.args = {
 	label: "Some Label",
 	value: "Some value",
 	readOnly: true
+};
+
+export const Controlled = ({ value: initialValue, name, ...args }): JSX.Element => {
+	const [value, setValue] = useState(initialValue);
+	const handleChange = (e) => {
+		setValue(e.value);
+	};
+
+	return <SolaceTextField value={value} name={name} onChange={handleChange} {...args} />;
+};
+Controlled.args = {
+	name: "controlledTextField",
+	label: "Controlled Text Field",
+	value: "Initial value",
+	helperText: "The value of the text field is controlled by the change handler in the story."
 };
