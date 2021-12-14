@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { SolaceTextArea } from "@SolaceDev/maas-react-components";
@@ -164,4 +164,19 @@ ReadOnly.args = {
 	label: "Some Label",
 	value: "Some value",
 	readOnly: true
+};
+
+export const Controlled = ({ value: initialValue, name, ...args }): JSX.Element => {
+	const [value, setValue] = useState(initialValue);
+	const handleChange = (e) => {
+		setValue(e.value);
+	};
+
+	return <SolaceTextArea value={value} name={name} onChange={handleChange} {...args} />;
+};
+Controlled.args = {
+	name: "controlledTextArea",
+	label: "Controlled Text Area",
+	value: "Initial value",
+	helperText: "The value of the text area is controlled by the change handler in the story."
 };
