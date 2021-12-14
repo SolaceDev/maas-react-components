@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-// import { useDrag, useDrop, DropTargetMonitor } from "react-dnd";
-// import { XYCoord } from "dnd-core";
 import { SolaceEnumInputItem } from "./SolaceEnumInputItem";
 
 enum EnumNavigationKeys {
@@ -36,12 +34,20 @@ const navigateEnumList = (key: string, index: number, enumList: NodeListOf<Eleme
 const SolaceEnumInputForm = (): JSX.Element => {
 	const [inputList, setInputList] = useState([{ name: "", displayName: "" }]);
 
+	// check whether an enum item is a ghost item
+	const ghostItem = (index: number): boolean => {
+		if (index === inputList.length - 1 && inputList[index].name == "" && inputList[index].displayName == "") {
+			return true;
+		}
+		return false;
+	};
+
 	const handleInputChange = (event: SolaceTextFieldChangeEvent, index: number) => {
 		const name: string = event.name;
 		const value: string = event.value;
 		const list = [...inputList];
-		list[index][name] = value;
-		// create a ghost row
+		list[index][name] = value.trim();
+		// create a ghost row at the end of the list
 		if (name && list.length - 1 === index) {
 			list.push({ name: "", displayName: "" });
 		}
@@ -49,7 +55,7 @@ const SolaceEnumInputForm = (): JSX.Element => {
 	};
 
 	const handleDeleteItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
-		if (event.type === "click" && inputList.length > 1) {
+		if (event.type === "click" && !ghostItem(index) && inputList.length > 1) {
 			const list = [...inputList];
 			list.splice(index, 1);
 			setInputList(list);
@@ -57,39 +63,30 @@ const SolaceEnumInputForm = (): JSX.Element => {
 	};
 
 	const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		const inputList = document.querySelectorAll("[data-qa='enum-input']");
+		const inputEleList = document.querySelectorAll("[data-qa='enum-input']");
 		const focusedEle = document.activeElement;
 
-		for (let i = 0; i < inputList.length; i++) {
-			if (inputList[i].getAttribute("data-tags") === focusedEle?.getAttribute("data-tags")) {
-				navigateEnumList(event.key, i, inputList);
+		for (let i = 0; i < inputEleList.length; i++) {
+			if (inputEleList[i].getAttribute("data-tags") === focusedEle?.getAttribute("data-tags")) {
+				navigateEnumList(event.key, i, inputEleList);
 			}
 		}
 	};
 
-	// const handleMoveItem = useCallback(
-	// 	(dragIndex: number, hoverIndex: number) => {
-	// 		const list = [...inputList];
-	// 		const dragCard = list[dragIndex];
-	// 		list.splice(dragIndex, 1);
-	// 		const _list = [...list];
-	// 		_list.splice(hoverIndex, 0, dragCard);
-	// 		setInputList(_list);
-	// 	},
-	// 	[inputList]
-	// );
-
-	// const [{ isDragging }, drag] = useDrag({
-	// 	type: "card",
-	// 	item: () => {
-	// 		return { id, index };
-	// 	},
-	// 	collect: (monitor: any) => ({
-	// 		isDragging: monitor.isDragging()
-	// 	})
-	// });
-	// const opacity = isDragging ? 0 : 1;
-	// drag(drop(ref));
+	const handleMoveItem = useCallback(
+		(dragIndex: number, hoverIndex: number) => {
+			const list = [...inputList];
+			// get the dragged item index
+			const dragCard = list[dragIndex];
+			// remove the dragged item from its current position
+			list.splice(dragIndex, 1);
+			// insert the dragged item into the new position
+			list.splice(hoverIndex, 0, dragCard);
+			// update enum list
+			setInputList(list);
+		},
+		[inputList]
+	);
 
 	return (
 		<DndProvider backend={HTML5Backend}>
@@ -99,16 +96,18 @@ const SolaceEnumInputForm = (): JSX.Element => {
 						return (
 							<SolaceEnumInputItem
 								key={index}
-								id={index}
+								id={`enumInput-${index}`}
+								index={index}
 								name={item.name}
 								displayName={item.displayName}
 								onChange={handleInputChange}
 								onDelete={handleDeleteItem}
 								onKeyUp={handleKeyUp}
+								moveItem={handleMoveItem}
+								ghostItem={ghostItem(index)}
 							/>
 						);
 					})}
-
 				<div style={{ marginTop: 20 }}>
 					<div>Show data:</div>
 					<div>{JSON.stringify(inputList)}</div>
