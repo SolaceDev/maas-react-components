@@ -244,8 +244,14 @@ const theme: ThemeOptions = {
 						marginRight: "20px",
 						display: "inline-table", // this ensures helper text is below textarea
 						minWidth: "354px",
+						backgroundColor: "transparent", // set background transparent on TextArea input container
 						".MuiOutlinedInput-notchedOutline": {
 							border: "none"
+						},
+						"&.inline-label": {
+							".MuiOutlinedInput-input:read-only": {
+								padding: "1px" // top align with label in ready-only & inline state
+							}
 						}
 					},
 					".MuiOutlinedInput-input": {
@@ -256,8 +262,9 @@ const theme: ThemeOptions = {
 					"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
 						{
 							border: "none",
-							padding: "0px",
-							cursor: "default"
+							padding: "7px 0 0 0",
+							cursor: "default",
+							backgroundColor: "transparent" // set background transparent on TextArea input container in readonly state
 						},
 					"&:hover": {
 						".MuiOutlinedInput-input": {
@@ -705,31 +712,33 @@ const theme: ThemeOptions = {
 	},
 	mixins: {
 		/** SolaceSidePanelLayout Component */
-		sidePanelLayout_mainPanel: {
-			height: "100%",
-			width: "100%",
-			padding: "0px",
-			display: "grid",
-			backgroundColor: BASE_COLORS.whites.white1,
-			overflowY: "auto"
-		},
-		sidePanelLayout_contentPanelSection: {
-			display: "flex",
-			height: "100%",
-			overflowY: "auto",
-			flexDirection: "column",
-			alignItems: "left",
-			padding: "0px"
-		},
-		sidePanelLayout_rightSidePanelSection: {
-			height: "100%",
-			overflowY: "auto",
-			borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`
-		},
-		sidePanelLayout_leftSidePanelSection: {
-			height: "100%",
-			overflowY: "auto",
-			borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+		sidePanelLayout: {
+			wrapper: {
+				height: "100%",
+				width: "100%",
+				padding: "0px",
+				display: "grid",
+				backgroundColor: BASE_COLORS.whites.white1,
+				overflowY: "auto"
+			},
+			content: {
+				display: "flex",
+				height: "100%",
+				overflowY: "auto",
+				flexDirection: "column",
+				alignItems: "left",
+				padding: "0px"
+			},
+			left: {
+				height: "100%",
+				overflowY: "auto",
+				borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+			},
+			right: {
+				height: "100%",
+				overflowY: "auto",
+				borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`
+			}
 		},
 		/** ErrorText for form components */
 		formComponent_ErrorText: {
@@ -794,10 +803,12 @@ const theme: ThemeOptions = {
 
 declare module "@material-ui/core/styles/createMixins" {
 	interface Mixins {
-		sidePanelLayout_leftSidePanelSection: React.CSSProperties;
-		sidePanelLayout_rightSidePanelSection: React.CSSProperties;
-		sidePanelLayout_contentPanelSection: React.CSSProperties;
-		sidePanelLayout_mainPanel: React.CSSProperties;
+		sidePanelLayout: {
+			wrapper: CSSProperties;
+			content: CSSProperties;
+			left: CSSProperties;
+			right: CSSProperties;
+		};
 		formComponent_ErrorText: {
 			container: CSSProperties;
 			label: CSSProperties;
