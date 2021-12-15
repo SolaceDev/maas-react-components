@@ -47,7 +47,7 @@ function SolaceButton({
 
 	if (variant === "icon") {
 		return (
-			<Tooltip title={title} arial-lable={title}>
+			<Tooltip title={title} arial-label={title}>
 				<IconButton
 					data-qa={dataQa}
 					data-tags={dataTags}
@@ -77,7 +77,7 @@ function SolaceButton({
 			};
 		}
 		return (
-			<Tooltip title={title} arial-lable={title}>
+			<Tooltip title={title} arial-label={title}>
 				<Link
 					id={id}
 					data-qa={dataQa}
@@ -117,7 +117,7 @@ function SolaceButton({
 		}
 
 		return (
-			<Tooltip title={title} arial-lable={title}>
+			<Tooltip title={title} arial-label={title}>
 				<Button
 					id={id}
 					data-qa={dataQa}
