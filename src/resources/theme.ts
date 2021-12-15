@@ -199,16 +199,25 @@ const theme: ThemeOptions = {
 				},
 				root: {
 					color: BASE_COLORS.greys.grey14,
-					fontSize: "0.875rem",
+					fontSize: "14px",
 					fontWeight: 400,
 					lineHeight: 1.5,
 					"&.Mui-error": {
 						color: BASE_COLORS.greys.grey11
 					},
-					"&.Mui-disabled": {
+					"&.light-sub-text": {
 						color: BASE_COLORS.greys.grey9
 					},
-					"&.SolaceStackLabel-bold": {
+					"&.Mui-disabled": {
+						color: BASE_COLORS.greys.grey9,
+						"&.check-box-label": {
+							color: BASE_COLORS.greys.grey5
+						},
+						"&.radio-btn-label": {
+							color: BASE_COLORS.greys.grey5
+						}
+					},
+					"&.bold-label": {
 						fontWeight: 500
 					},
 					"&.read-only": {
