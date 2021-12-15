@@ -1,10 +1,13 @@
 import SolaceTextField, { SolaceTextFieldChangeEvent } from "./SolaceTextField";
+import { styled } from "@material-ui/core";
 import { DeleteIcon } from "../../resources/icons/DeleteIcon";
 import { MoveIcon } from "../../resources/icons/MoveIcon";
 import React, { useRef } from "react";
 import { useDrag, useDrop, DropTargetMonitor } from "react-dnd";
 import { XYCoord } from "dnd-core";
 import { BASE_COLORS } from "../../resources/colorPallette";
+
+const SolaceEnumInputItemContainer = styled("div")(({ theme }) => theme.mixins.formComponent_EnumInputItem.container);
 
 export interface SolaceEnumInputItemProps {
 	id: string;
@@ -102,51 +105,40 @@ export const SolaceEnumInputItem = ({
 	});
 	drag(drop(ref));
 	return (
-		<React.Fragment>
-			<div
-				key={id}
-				ref={preview}
-				data-handler-id={handlerId}
-				style={{
-					backgroundColor: "transparent",
-					padding: "4px 0px",
-					minWidth: "500px",
-					maxWidth: "900px",
-					opacity: isDragging ? 0.5 : 1,
-
-					// grid
-					display: "grid",
-					gridTemplateColumns: "24px 1fr 1fr 24px",
-					gridGap: "4px"
-				}}
-			>
-				<div ref={ref} style={{ cursor: ghostItem ? "default" : "move", paddingTop: "2px" }}>
-					<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-				</div>
-				<SolaceTextField
-					name="name"
-					dataQa="enum-input"
-					dataTags={`${index}-0`}
-					value={name}
-					onChange={(e) => onChange(e, index)}
-					onKeyUp={onKeyUp}
-				/>
-				<SolaceTextField
-					name="displayName"
-					dataQa="enum-input"
-					dataTags={`${index}-1`}
-					value={displayName}
-					onChange={(e) => onChange(e, index)}
-					onKeyUp={onKeyUp}
-				/>
-				<div
-					style={{ cursor: ghostItem ? "default" : "pointer", paddingTop: "2px" }}
-					onClick={(e) => onDelete(e, index)}
-					tabIndex={0}
-				>
-					<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-				</div>
+		<SolaceEnumInputItemContainer
+			key={id}
+			ref={preview}
+			data-handler-id={handlerId}
+			style={{
+				opacity: isDragging ? 0.5 : 1
+			}}
+		>
+			<div ref={ref} style={{ cursor: ghostItem ? "default" : "move", paddingTop: "2px" }}>
+				<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
 			</div>
-		</React.Fragment>
+			<SolaceTextField
+				name="name"
+				dataQa="enum-input"
+				dataTags={`${index}-0`}
+				value={name}
+				onChange={(e) => onChange(e, index)}
+				onKeyUp={onKeyUp}
+			/>
+			<SolaceTextField
+				name="displayName"
+				dataQa="enum-input"
+				dataTags={`${index}-1`}
+				value={displayName}
+				onChange={(e) => onChange(e, index)}
+				onKeyUp={onKeyUp}
+			/>
+			<div
+				style={{ cursor: ghostItem ? "default" : "pointer", paddingTop: "2px" }}
+				onClick={(e) => onDelete(e, index)}
+				tabIndex={0}
+			>
+				<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+			</div>
+		</SolaceEnumInputItemContainer>
 	);
 };

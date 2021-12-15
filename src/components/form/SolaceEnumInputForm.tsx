@@ -1,9 +1,12 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { styled } from "@material-ui/core";
 import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { SolaceEnumInputItem } from "./SolaceEnumInputItem";
 import SolaceLabel from "./SolaceLabel";
+
+const SolaceEnumInputFormLabel = styled("div")(({ theme }) => theme.mixins.formComponent_EnumInputForm.label);
 
 enum EnumNavigationKeys {
 	Left = "ArrowLeft",
@@ -118,23 +121,12 @@ const SolaceEnumInputForm = ({
 	return (
 		<DndProvider backend={HTML5Backend}>
 			<div>
-				<div
-					style={{
-						backgroundColor: "transparent",
-						padding: "4px 0px",
-						minWidth: "500px",
-						maxWidth: "900px",
-
-						display: "grid",
-						gridTemplateColumns: "24px 1fr 1fr 24px",
-						gridGap: "4px"
-					}}
-				>
+				<SolaceEnumInputFormLabel>
 					<div></div>
 					<SolaceLabel id="nameLabel">Name</SolaceLabel>
 					<SolaceLabel id="displayNameLabel">Display Name</SolaceLabel>
 					<div></div>
-				</div>
+				</SolaceEnumInputFormLabel>
 				{inputList.length > 0 &&
 					inputList.map((item, index) => {
 						return (

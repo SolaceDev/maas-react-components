@@ -483,6 +483,7 @@ const theme: ThemeOptions = {
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 						// remove MenuList open/close animation
 						// currently applied to SolaceSelect component
+						// eslint-disable-next-line sonarjs/no-duplicate-string
 						transition: "none !important",
 						".MuiMenuItem-root": {
 							fontSize: "14px",
@@ -742,6 +743,31 @@ const theme: ThemeOptions = {
 				fontSize: BASE_FONT_PX_SIZES.xs,
 				marginLeft: "8px"
 			}
+		},
+		/** EnumInputItem for form components */
+		formComponent_EnumInputItem: {
+			container: {
+				backgroundColor: "transparent",
+				padding: "4px 0px",
+				minWidth: "500px",
+				maxWidth: "900px",
+				display: "grid",
+				gridTemplateColumns: "24px 1fr 1fr 24px",
+				gridGap: "4px"
+			}
+		},
+		/** EnumInputForm for form components */
+		formComponent_EnumInputForm: {
+			label: {
+				backgroundColor: "transparent",
+				padding: "4px 0px",
+				minWidth: "500px",
+				maxWidth: "900px",
+
+				display: "grid",
+				gridTemplateColumns: "24px 1fr 1fr 24px",
+				gridGap: "4px"
+			}
 		}
 	},
 	palette: {
@@ -798,6 +824,12 @@ declare module "@material-ui/core/styles/createMixins" {
 		sidePanelLayout_mainPanel: React.CSSProperties;
 		formComponent_ErrorText: {
 			container: CSSProperties;
+			label: CSSProperties;
+		};
+		formComponent_EnumInputItem: {
+			container: CSSProperties;
+		};
+		formComponent_EnumInputForm: {
 			label: CSSProperties;
 		};
 	}
