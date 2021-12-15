@@ -131,9 +131,7 @@ const SolaceEnumInputForm = ({
 					}}
 				>
 					<div></div>
-					<SolaceLabel id="nameLabel" required={true}>
-						Name
-					</SolaceLabel>
+					<SolaceLabel id="nameLabel">Name</SolaceLabel>
 					<SolaceLabel id="displayNameLabel">Display Name</SolaceLabel>
 					<div></div>
 				</div>
