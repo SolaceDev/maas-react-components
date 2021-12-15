@@ -35,7 +35,7 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	/**
 	 * Content to display as supportive/explanitory text
 	 */
-	subText?: string | JSX.Element;
+	subTextProps?: { label?: string | JSX.Element; light?: boolean };
 	/**
 	 * Content to display as supportive/explanitory text
 	 */
@@ -68,10 +68,6 @@ export interface SolaceCheckBoxProps extends SolaceComponentProps {
 	 * Boolean flag to set the checkbox to readOnly
 	 */
 	readOnly?: boolean;
-	/**
-	 * allow subText to be displayed at 55% black (default to 80%)
-	 */
-	lightSubText?: boolean;
 	/**
 	 * Boolean flag to allow font weight of medium (default to regular) for label
 	 */
@@ -121,7 +117,6 @@ const SolaceCheckBox = ({
 	name,
 	label,
 	title,
-	subText,
 	helperText,
 	hasErrors = false,
 	checked = false,
@@ -129,9 +124,9 @@ const SolaceCheckBox = ({
 	disabled = false,
 	indeterminate = false,
 	readOnly = false,
-	lightSubText = false,
 	boldLabel = false,
 	largeLabel = false,
+	subTextProps = { label: "", light: false },
 	onChange,
 	dataQa,
 	dataTags
@@ -206,9 +201,9 @@ const SolaceCheckBox = ({
 				<Box
 					display="flex"
 					flexDirection="column"
-					justifyContent={subText ? "flex-start" : "center"}
+					justifyContent={subTextProps.label ? "flex-start" : "center"}
 					alignItems="flex-start"
-					sx={{ paddingLeft: "16px" }}
+					sx={{ paddingLeft: theme.spacing(2) }}
 				>
 					{label && (
 						<CheckBoxLabel
@@ -222,13 +217,13 @@ const SolaceCheckBox = ({
 							{label}
 						</CheckBoxLabel>
 					)}
-					{subText && (
+					{subTextProps.label && (
 						<FormLabel
 							id={`${id}-subtext`}
 							disabled={disabled}
-							className={clsx({ "light-sub-text": lightSubText, "check-box-label": true })}
+							className={clsx({ "light-sub-text": subTextProps.light, "check-box-label": true })}
 						>
-							{subText}
+							{subTextProps.label}
 						</FormLabel>
 					)}
 				</Box>

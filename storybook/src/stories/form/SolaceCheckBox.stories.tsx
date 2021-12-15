@@ -31,9 +31,16 @@ export default {
 				type: "boolean"
 			}
 		},
-		lightSubText: {
-			control: {
-				type: "boolean"
+		subTextProps: {
+			label: {
+				control: {
+					type: "text"
+				}
+			},
+			light: {
+				control: {
+					type: "boolean"
+				}
 			}
 		},
 		largeLabel: {
@@ -58,8 +65,7 @@ Labeled.args = {
 	onChange: action("callback"),
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
-	label: LABEL,
-	subText: ""
+	label: LABEL
 };
 
 export const BoldLabel = Template.bind({});
@@ -68,8 +74,7 @@ BoldLabel.args = {
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: LABEL,
-	boldLabel: true,
-	subText: ""
+	boldLabel: true
 };
 
 export const LargeLabel = Template.bind({});
@@ -78,8 +83,7 @@ LargeLabel.args = {
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: LABEL,
-	largeLabel: true,
-	subText: ""
+	largeLabel: true
 };
 
 export const SubText = Template.bind({});
@@ -88,9 +92,9 @@ SubText.args = {
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: "Primary Label",
-	subText: "subtext subtext",
-	boldLabel: false,
-	lightSubText: false
+	subTextProps: {
+		label: "Subtext subtext"
+	}
 };
 
 export const LightSubText = Template.bind({});
@@ -99,8 +103,10 @@ LightSubText.args = {
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: "Primary Label",
-	subText: "This is a light subtext",
-	lightSubText: true
+	subTextProps: {
+		label: "This is a light subtext",
+		light: true
+	}
 };
 
 export const HelperText = Template.bind({});
@@ -109,8 +115,7 @@ HelperText.args = {
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: LABEL,
-	helperText: "Some helper text here",
-	subText: ""
+	helperText: "Some helper text here"
 };
 
 export const WithErrors = Template.bind({});
@@ -120,8 +125,7 @@ WithErrors.args = {
 	name: "demoCheckbox",
 	label: LABEL,
 	hasErrors: true,
-	helperText: "Some error occured",
-	subText: ""
+	helperText: "Some error occured"
 };
 
 export const Required = Template.bind({});
@@ -129,8 +133,7 @@ Required.args = {
 	onChange: action("callback"),
 	name: "demoCheckbox",
 	label: LABEL,
-	required: true,
-	subText: ""
+	required: true
 };
 
 export const Disabled = Template.bind({});
@@ -139,8 +142,7 @@ Disabled.args = {
 	name: "demoCheckbox",
 	label: LABEL,
 	checked: true,
-	disabled: true,
-	subText: ""
+	disabled: true
 };
 
 export const Indeterminate = Template.bind({});
@@ -158,6 +160,5 @@ ReadOnly.args = {
 	name: "demoCheckbox",
 	label: LABEL,
 	checked: true,
-	readOnly: true,
-	subText: ""
+	readOnly: true
 };
