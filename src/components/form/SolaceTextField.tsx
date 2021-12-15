@@ -82,9 +82,17 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the element of the `input` loses focus
 	 */
 	onBlur?: () => void;
-	// TODO: description needed
+	/**
+	 * Callback function to trigger whenever the element of the `input` receives key down event
+	 */
 	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` receives key up event
+	 */
 	onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` is focused
+	 */
 	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 

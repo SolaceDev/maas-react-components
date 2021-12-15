@@ -4,6 +4,7 @@ import { MoveIcon } from "../../resources/icons/MoveIcon";
 import React, { useRef } from "react";
 import { useDrag, useDrop, DropTargetMonitor } from "react-dnd";
 import { XYCoord } from "dnd-core";
+import { BASE_COLORS } from "../../resources/colorPallette";
 
 export interface SolaceEnumInputItemProps {
 	id: string;
@@ -99,7 +100,6 @@ export const SolaceEnumInputItem = ({
 			isDragging: monitor.isDragging()
 		})
 	});
-	const opacity = isDragging ? 0.6 : 1;
 	drag(drop(ref));
 	return (
 		<React.Fragment>
@@ -109,27 +109,19 @@ export const SolaceEnumInputItem = ({
 				data-handler-id={handlerId}
 				style={{
 					backgroundColor: "transparent",
-					border: isDragging ? "1px dashed grey" : "",
 					padding: "4px 0px",
 					minWidth: "500px",
-					opacity,
+					maxWidth: "900px",
+					opacity: isDragging ? 0.5 : 1,
 
-					// grid option
-					// display: "grid",
-					// gridTemplateColumns: "1fr 6fr 8fr 1fr",
-					// gridGap: "10px",
-
-					// flexbox option
-					display: "flex",
-					gap: "0px 6px",
-					flexDirection: "row",
-					flexWrap: "nowrap",
-					justifyContent: "space-between",
-					alignItems: "center"
+					// grid
+					display: "grid",
+					gridTemplateColumns: "24px 1fr 1fr 24px",
+					gridGap: "4px"
 				}}
 			>
 				<div ref={ref} style={{ cursor: ghostItem ? "default" : "move", paddingTop: "2px" }}>
-					<MoveIcon fill={ghostItem ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0.65)"} opacity={1} />
+					<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
 				</div>
 				<SolaceTextField
 					name="name"
@@ -152,7 +144,7 @@ export const SolaceEnumInputItem = ({
 					onClick={(e) => onDelete(e, index)}
 					tabIndex={0}
 				>
-					<DeleteIcon fill={ghostItem ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0.65)"} opacity={1} />
+					<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
 				</div>
 			</div>
 		</React.Fragment>

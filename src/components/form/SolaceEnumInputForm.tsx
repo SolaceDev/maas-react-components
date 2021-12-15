@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { SolaceEnumInputItem } from "./SolaceEnumInputItem";
+import SolaceLabel from "./SolaceLabel";
 
 enum EnumNavigationKeys {
 	Left = "ArrowLeft",
@@ -15,28 +16,53 @@ enum EnumNavigationKeys {
 // the navigation logic assumes there are two columns per row for the enum list
 const navigateEnumList = (key: string, index: number, enumList: NodeListOf<Element>): void => {
 	if (key === EnumNavigationKeys.Left && index > 0) {
-		(enumList[index - 1] as HTMLElement).focus();
+		(enumList[index - 1] as HTMLInputElement).select();
 	} else if (key === EnumNavigationKeys.Right && index + 1 < enumList.length) {
-		(enumList[index + 1] as HTMLElement).focus();
+		(enumList[index + 1] as HTMLInputElement).select();
 	} else if (key === EnumNavigationKeys.Up && index - 1 > 0) {
-		(enumList[index - 2] as HTMLElement).focus();
+		(enumList[index - 2] as HTMLInputElement).select();
 	} else if (key === EnumNavigationKeys.Down && index + 2 < enumList.length) {
-		(enumList[index + 2] as HTMLElement).focus();
+		(enumList[index + 2] as HTMLInputElement).select();
 	} else if (key === EnumNavigationKeys.NextLine && index + 2 < enumList.length) {
 		if (index % 2 === 0) {
-			(enumList[index + 2] as HTMLElement).focus();
+			(enumList[index + 2] as HTMLInputElement).select();
 		} else if (index % 2 === 1) {
-			(enumList[index + 1] as HTMLElement).focus();
+			(enumList[index + 1] as HTMLInputElement).select();
 		}
 	}
 };
 
-const SolaceEnumInputForm = (): JSX.Element => {
-	const [inputList, setInputList] = useState([{ name: "", displayName: "" }]);
+export interface EnumItem {
+	name: string;
+	displayName: string;
+}
 
-	// check whether an enum item is a ghost item
+export interface SolaceEnumInputFormProps {
+	initialEnumList: EnumItem[];
+	updateEnumList: (list: EnumItem[]) => void;
+}
+
+const SolaceEnumInputForm = ({
+	initialEnumList = [{ name: "", displayName: "" }],
+	updateEnumList
+}: SolaceEnumInputFormProps): JSX.Element => {
+	const [inputList, setInputList] = useState(initialEnumList);
+
+	useEffect(() => {
+		if (initialEnumList.length === 0 || initialEnumList[0].name) {
+			const list = [...inputList];
+			list.push({ name: "", displayName: "" });
+			setInputList(list);
+		}
+	}, [initialEnumList]);
+
+	useEffect(() => {
+		updateEnumList(inputList.filter((item) => item.name !== ""));
+	}, [inputList]);
+
+	// determine whether an enum item is a ghost item
 	const ghostItem = (index: number): boolean => {
-		if (index === inputList.length - 1 && inputList[index].name == "" && inputList[index].displayName == "") {
+		if (index === inputList.length - 1 && inputList[index].name === "" && inputList[index].displayName === "") {
 			return true;
 		}
 		return false;
@@ -47,6 +73,7 @@ const SolaceEnumInputForm = (): JSX.Element => {
 		const value: string = event.value;
 		const list = [...inputList];
 		list[index][name] = value.trim();
+
 		// create a ghost row at the end of the list
 		if (name && list.length - 1 === index) {
 			list.push({ name: "", displayName: "" });
@@ -90,7 +117,26 @@ const SolaceEnumInputForm = (): JSX.Element => {
 
 	return (
 		<DndProvider backend={HTML5Backend}>
-			<React.Fragment>
+			<div>
+				<div
+					style={{
+						backgroundColor: "transparent",
+						padding: "4px 0px",
+						minWidth: "500px",
+						maxWidth: "900px",
+
+						display: "grid",
+						gridTemplateColumns: "24px 1fr 1fr 24px",
+						gridGap: "4px"
+					}}
+				>
+					<div></div>
+					<SolaceLabel id="nameLabel" required={true}>
+						Name
+					</SolaceLabel>
+					<SolaceLabel id="displayNameLabel">Display Name</SolaceLabel>
+					<div></div>
+				</div>
 				{inputList.length > 0 &&
 					inputList.map((item, index) => {
 						return (
@@ -108,11 +154,7 @@ const SolaceEnumInputForm = (): JSX.Element => {
 							/>
 						);
 					})}
-				<div style={{ marginTop: 20 }}>
-					<div>Show data:</div>
-					<div>{JSON.stringify(inputList)}</div>
-				</div>
-			</React.Fragment>
+			</div>
 		</DndProvider>
 	);
 };
