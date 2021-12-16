@@ -4,13 +4,14 @@ import SolaceButton from "./form/SolaceButton";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { ErrorIcon } from "../resources/icons/ErrorIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
+import { BASE_COLORS } from "../resources/colorPallette";
 
 const Container = styled("div")(({ theme }) => ({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "space-between",
 	height: "100%",
-	backgroundColor: "rgba(208, 2, 27, 0.1)",
+	backgroundColor: BASE_COLORS.reds.red2,
 	borderRadius: "2px",
 	borderLeft: `3px solid ${theme.palette.error.main}`,
 	paddingRight: "4px",
