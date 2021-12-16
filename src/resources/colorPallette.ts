@@ -40,7 +40,8 @@ export const BASE_COLORS = {
 		grey24: "#e5e5e5"
 	},
 	reds: {
-		red1: "#D0021B"
+		red1: "#D0021B",
+		red2: "rgba(208, 2, 27, 0.1)"
 	},
 	whites: {
 		white1: "#FFF"
