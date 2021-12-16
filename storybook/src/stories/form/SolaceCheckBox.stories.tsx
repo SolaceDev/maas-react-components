@@ -5,6 +5,7 @@ import { SolaceCheckBox } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 const LABEL = "Some Label";
+const TITLE = "Demo Checkbox";
 
 export default {
 	title: "Forms/SolaceCheckBox",
@@ -56,6 +57,7 @@ const Template: ComponentStory<typeof SolaceCheckBox> = (args) => <SolaceCheckBo
 export const DefaultCheckbox = Template.bind({});
 DefaultCheckbox.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox"
 };
@@ -63,6 +65,7 @@ DefaultCheckbox.args = {
 export const Labeled = Template.bind({});
 Labeled.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: LABEL
@@ -71,6 +74,7 @@ Labeled.args = {
 export const BoldLabel = Template.bind({});
 BoldLabel.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: LABEL,
@@ -80,6 +84,7 @@ BoldLabel.args = {
 export const LargeLabel = Template.bind({});
 LargeLabel.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: LABEL,
@@ -89,6 +94,7 @@ LargeLabel.args = {
 export const SubText = Template.bind({});
 SubText.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: "Primary Label",
@@ -100,6 +106,7 @@ SubText.args = {
 export const LightSubText = Template.bind({});
 LightSubText.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: "Primary Label",
@@ -112,6 +119,7 @@ LightSubText.args = {
 export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: LABEL,
@@ -121,6 +129,7 @@ HelperText.args = {
 export const WithErrors = Template.bind({});
 WithErrors.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
 	label: LABEL,
@@ -131,6 +140,7 @@ WithErrors.args = {
 export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	name: "demoCheckbox",
 	label: LABEL,
 	required: true
@@ -139,6 +149,7 @@ Required.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	name: "demoCheckbox",
 	label: LABEL,
 	checked: true,
@@ -148,6 +159,7 @@ Disabled.args = {
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	name: "demoCheckbox",
 	label: LABEL,
 	checked: false,
@@ -157,6 +169,7 @@ Indeterminate.args = {
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	name: "demoCheckbox",
 	label: LABEL,
 	checked: true,
