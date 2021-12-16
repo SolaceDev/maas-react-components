@@ -53,7 +53,7 @@ function SolaceStackLabel({
 			htmlFor={htmlForId}
 			required={required}
 			disabled={disabled}
-			className={clsx({ "SolaceStackLabel-bold": bold, "read-only": readOnly })}
+			className={clsx({ "bold-label": bold, "read-only": readOnly })}
 			sx={{
 				display: "block",
 				fontSize: large ? theme.typography.subtitle1 : theme.typography.body1

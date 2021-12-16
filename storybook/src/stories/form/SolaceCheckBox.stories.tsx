@@ -4,6 +4,9 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceCheckBox } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+const LABEL = "Some Label";
+const TITLE = "Demo Checkbox";
+
 export default {
 	title: "Forms/SolaceCheckBox",
 	component: SolaceCheckBox,
@@ -13,7 +16,40 @@ export default {
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2932%3A22443"
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		required: {
+			control: {
+				type: "boolean"
+			}
+		},
+		disabled: {
+			control: {
+				type: "boolean"
+			}
+		},
+		boldLabel: {
+			control: {
+				type: "boolean"
+			}
+		},
+		subTextProps: {
+			label: {
+				control: {
+					type: "text"
+				}
+			},
+			light: {
+				control: {
+					type: "boolean"
+				}
+			}
+		},
+		largeLabel: {
+			control: {
+				type: "boolean"
+			}
+		}
+	}
 } as ComponentMeta<typeof SolaceCheckBox>;
 
 const Template: ComponentStory<typeof SolaceCheckBox> = (args) => <SolaceCheckBox {...args} />;
@@ -21,7 +57,7 @@ const Template: ComponentStory<typeof SolaceCheckBox> = (args) => <SolaceCheckBo
 export const DefaultCheckbox = Template.bind({});
 DefaultCheckbox.args = {
 	onChange: action("callback"),
-	title: "Demo Checkbox",
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox"
 };
@@ -29,29 +65,74 @@ DefaultCheckbox.args = {
 export const Labeled = Template.bind({});
 Labeled.args = {
 	onChange: action("callback"),
-	title: "Demo Checkbox",
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
-	label: "Some Label"
+	label: LABEL
+};
+
+export const BoldLabel = Template.bind({});
+BoldLabel.args = {
+	onChange: action("callback"),
+	title: TITLE,
+	id: "demoCheckboxId",
+	name: "demoCheckbox",
+	label: LABEL,
+	boldLabel: true
+};
+
+export const LargeLabel = Template.bind({});
+LargeLabel.args = {
+	onChange: action("callback"),
+	title: TITLE,
+	id: "demoCheckboxId",
+	name: "demoCheckbox",
+	label: LABEL,
+	largeLabel: true
+};
+
+export const SubText = Template.bind({});
+SubText.args = {
+	onChange: action("callback"),
+	title: TITLE,
+	id: "demoCheckboxId",
+	name: "demoCheckbox",
+	label: "Primary Label",
+	subTextProps: {
+		label: "Subtext subtext"
+	}
+};
+
+export const LightSubText = Template.bind({});
+LightSubText.args = {
+	onChange: action("callback"),
+	title: TITLE,
+	id: "demoCheckboxId",
+	name: "demoCheckbox",
+	label: "Primary Label",
+	subTextProps: {
+		label: "This is a light subtext",
+		light: true
+	}
 };
 
 export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("callback"),
-	title: "Demo Checkbox",
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
-	label: "Some Label",
+	label: LABEL,
 	helperText: "Some helper text here"
 };
 
 export const WithErrors = Template.bind({});
 WithErrors.args = {
 	onChange: action("callback"),
-	title: "Demo Checkbox",
+	title: TITLE,
 	id: "demoCheckboxId",
 	name: "demoCheckbox",
-	label: "Some Label",
+	label: LABEL,
 	hasErrors: true,
 	helperText: "Some error occured"
 };
@@ -59,18 +140,18 @@ WithErrors.args = {
 export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	name: "demoCheckbox",
-	title: "Demo Checkbox",
-	label: "Some Label",
+	label: LABEL,
 	required: true
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	name: "demoCheckbox",
-	title: "Demo Checkbox",
-	label: "Some Label",
+	label: LABEL,
 	checked: true,
 	disabled: true
 };
@@ -78,9 +159,9 @@ Disabled.args = {
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	name: "demoCheckbox",
-	title: "Demo Checkbox",
-	label: "Some Label",
+	label: LABEL,
 	checked: false,
 	indeterminate: true
 };
@@ -88,9 +169,9 @@ Indeterminate.args = {
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
 	onChange: action("callback"),
+	title: TITLE,
 	name: "demoCheckbox",
-	title: "Demo Checkbox",
-	label: "Some Label",
+	label: LABEL,
 	checked: true,
 	readOnly: true
 };

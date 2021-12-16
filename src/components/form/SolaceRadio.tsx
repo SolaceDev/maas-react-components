@@ -1,9 +1,8 @@
-import { Box, InputLabel, Radio, useRadioGroup, useTheme } from "@material-ui/core";
+import { Box, FormLabel, InputLabel, Radio, useRadioGroup, useTheme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
 import { RestingRadioIcon, SelectedRadioIcon } from "../../resources/icons/RadioIcons";
-import { BASE_COLORS } from "../../resources/colorPallette";
 import clsx from "clsx";
 export interface SolaceRadioChangeEvent {
 	name: string;
@@ -178,13 +177,13 @@ function SolaceRadio({
 			)}
 			{subText && (
 				<Box gridColumn="2" gridRow="2">
-					<InputLabel
+					<FormLabel
 						id={`${id}-subtext`}
 						disabled={disabled}
-						sx={{ color: lightSubText ? BASE_COLORS.greys.grey9 : theme.palette.text.primary, fontWeight: "regular" }}
+						className={clsx({ "light-sub-text": lightSubText, "radio-btn-label": true })}
 					>
 						{subText}
-					</InputLabel>
+					</FormLabel>
 				</Box>
 			)}
 		</Box>
