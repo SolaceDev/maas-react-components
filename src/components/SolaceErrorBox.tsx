@@ -38,18 +38,24 @@ export interface SolaceErrorBoxProps extends SolaceComponentProps {
 	 * Boolean flag to control whether to show a close button in the end of the error box
 	 */
 	showCloseButton?: boolean;
+	/**
+	 * Callback function after the message box is closed
+	 */
+	onClose?: () => void;
 }
 
 function SolaceErrorBox({
 	message,
 	showErrorIcon = true,
-	showCloseButton = false
+	showCloseButton = false,
+	onClose
 }: SolaceErrorBoxProps): JSX.Element | null {
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(true);
 
 	const handleClose = () => {
 		setOpen(false);
+		onClose?.();
 	};
 
 	return open ? (

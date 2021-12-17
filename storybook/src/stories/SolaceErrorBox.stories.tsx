@@ -1,5 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 
 import { SolaceErrorBox } from "@SolaceDev/maas-react-components";
 
@@ -30,15 +31,24 @@ export default {
 
 const Template: ComponentStory<typeof SolaceErrorBox> = (args) => <SolaceErrorBox {...args} />;
 
+const message = "Something is wrong.";
+
 export const DefaultErrorBox = Template.bind({});
 DefaultErrorBox.args = {
-	message: "Something is wrong."
+	message
 };
 
 export const WithCloseButton = Template.bind({});
 WithCloseButton.args = {
-	message: "Something is wrong.",
+	message,
 	showCloseButton: true
+};
+
+export const WithCloseAction = Template.bind({});
+WithCloseAction.args = {
+	message,
+	showCloseButton: true,
+	onClose: action("callback")
 };
 
 export const WithinContainer = ({ message, ...args }): JSX.Element => {
