@@ -5,11 +5,32 @@ import { MoveIcon } from "../../resources/icons/MoveIcon";
 import React from "react";
 import { BASE_COLORS } from "../../resources/colorPallette";
 
-const SolaceAttributeValuePairContainer = styled("div")(
-	({ theme }) => theme.mixins.formComponent_EnumInputItem.container
-);
+interface SolaceAVPMoveButtonProps {
+	cursor: string;
+}
+interface SolaceAVPDeleteButtonProps {
+	cursor: string;
+	backgroundColor: string;
+}
 
-enum valueInputTypes {
+const SolaceAVPContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.container);
+const SolaceAVPInputForKey = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForKey);
+const SolaceAVPInputForValue = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForValue);
+
+const SolaceAVPMoveButton = styled("div")<SolaceAVPMoveButtonProps>(({ theme, cursor }) => ({
+	...theme.mixins.formComponent_AVPItem.moveButton,
+	cursor: cursor
+}));
+
+const SolaceAVPDeleteButton = styled("div")<SolaceAVPDeleteButtonProps>(({ theme, cursor, backgroundColor }) => ({
+	...theme.mixins.formComponent_AVPItem.deleteButton,
+	cursor: cursor,
+	":hover": {
+		backgroundColor: backgroundColor
+	}
+}));
+
+export enum valueInputTypes {
 	textfield = "textfield",
 	select = "select",
 	autocomplete = "autocomplete"
@@ -37,7 +58,7 @@ export interface SolaceAttributeValuePairProps {
 	 */
 	dataTags: string;
 	/**
-	 * specifies the type of the value providing component: types can be input, select etc. component (currently default to SolaceTextField)
+	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
 	 */
 	type?: valueInputTypes;
 	/**
@@ -67,45 +88,50 @@ export const SolaceAttributeValuePair = ({
 	avpKey,
 	avpValue,
 	dataTags,
-	type = valueInputTypes.textfield,
+	type,
 	ghostItem = false,
 	onDelete,
 	onChange,
 	onKeyUp
 }: SolaceAttributeValuePairProps) => {
 	return (
-		<SolaceAttributeValuePairContainer className={ghostItem ? "ghost" : ""}>
-			<div>
+		<SolaceAVPContainer>
+			<SolaceAVPMoveButton cursor={ghostItem ? "default" : "move"}>
 				<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-			</div>
-			{type == valueInputTypes.textfield && (
-				<SolaceTextField
-					name="key"
-					dataQa={`avpKey-${index}`}
-					dataTags={dataTags}
-					value={avpKey}
-					onChange={(e) => onChange(e, index)}
-					onKeyUp={onKeyUp}
-				/>
+			</SolaceAVPMoveButton>
+			{!type && (
+				<SolaceAVPInputForKey>
+					<SolaceTextField
+						name="key"
+						dataQa={`avpKey-${index}`}
+						dataTags={dataTags}
+						value={avpKey}
+						onChange={(e) => onChange(e, index)}
+						onKeyUp={onKeyUp}
+					/>
+				</SolaceAVPInputForKey>
 			)}
-			{type === valueInputTypes.textfield && (
-				<SolaceTextField
-					name="value"
-					dataQa={`avpValue-${index}`}
-					dataTags={dataTags}
-					value={avpValue}
-					onChange={(e) => onChange(e, index)}
-					onKeyUp={onKeyUp}
-				/>
+			{!type && (
+				<SolaceAVPInputForValue>
+					<SolaceTextField
+						name="value"
+						dataQa={`avpValue-${index}`}
+						dataTags={dataTags}
+						value={avpValue}
+						onChange={(e) => onChange(e, index)}
+						onKeyUp={onKeyUp}
+					/>
+				</SolaceAVPInputForValue>
 			)}
 
-			<div
-				style={{ cursor: ghostItem ? "default" : "pointer", paddingTop: "2px" }}
+			<SolaceAVPDeleteButton
 				onClick={(e) => onDelete(e, index)}
 				tabIndex={0}
+				cursor={ghostItem ? "default" : "pointer"}
+				backgroundColor={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
 			>
 				<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-			</div>
-		</SolaceAttributeValuePairContainer>
+			</SolaceAVPDeleteButton>
+		</SolaceAVPContainer>
 	);
 };

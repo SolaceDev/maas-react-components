@@ -15,13 +15,6 @@ interface AVPItem {
 	type?: string;
 }
 
-interface SolaceAttributeValuePairFormProps {
-	labelForKeys: string;
-	labelForValues: string;
-	initialAVPList: AVPItem[];
-	onAVPListUpdate: (list: AVPItem[]) => void;
-}
-
 const SAMPLE_AVP_LIST = [
 	{ key: "Jan", value: "January" },
 	{ key: "Feb", value: "February" },

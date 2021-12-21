@@ -1,17 +1,19 @@
-// import { useCallback } from "react";
 import { styled } from "@material-ui/core";
 import SolaceLabel from "./SolaceLabel";
+import { valueInputTypes } from "./SolaceAttributeValuePair";
 import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePairList";
 
-const SolaceEnumInputFormLabel = styled("div")(({ theme }) => theme.mixins.formComponent_EnumInputForm.label);
-
-const SolaceAttributeValuePairFormContainer = styled("div")`
-	background-color: lightgrey;
-`;
+const SolaceAVPFormContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.container);
+const SolaceAVPFormLabel = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.labelWrapper);
+const SolaceAVPListContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.listWrapper);
 
 export interface SolaceAttributeValuePairFormProps {
 	labelForKeys: string;
 	labelForValues: string;
+	/**
+	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
+	 */
+	type?: valueInputTypes;
 	initialAVPList: Array<AVPItem>;
 	onAVPListUpdate: (list: Array<AVPItem>) => void;
 }
@@ -24,15 +26,15 @@ const SolaceAttributeValuePairForm = ({
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	console.log(initialAVPList);
 	return (
-		<SolaceAttributeValuePairFormContainer>
-			<SolaceEnumInputFormLabel>
-				<div></div>
+		<SolaceAVPFormContainer>
+			<SolaceAVPFormLabel>
 				<SolaceLabel id="avpLabelForKeys">{labelForKeys}</SolaceLabel>
 				<SolaceLabel id="avpLabelForValues">{labelForValues}</SolaceLabel>
-				<div></div>
-			</SolaceEnumInputFormLabel>
-			<SolaceAttributeValuePairList initialAVPList={initialAVPList} onAVPListUpdate={onAVPListUpdate} />
-		</SolaceAttributeValuePairFormContainer>
+			</SolaceAVPFormLabel>
+			<SolaceAVPListContainer>
+				<SolaceAttributeValuePairList initialAVPList={initialAVPList} onAVPListUpdate={onAVPListUpdate} />
+			</SolaceAVPListContainer>
+		</SolaceAVPFormContainer>
 	);
 };
 

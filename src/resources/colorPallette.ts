@@ -36,7 +36,7 @@ export const BASE_COLORS = {
 		grey20: "#2D2D2D",
 		grey21: "#474747",
 		grey22: "#828282",
-		grey23: "#EEE"
+		grey23: "#EEEEEE"
 	},
 	reds: {
 		red1: "#D0021B"

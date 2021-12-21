@@ -1,15 +1,18 @@
-import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
-import { SolaceAttributeValuePair } from "./SolaceAttributeValuePair";
 import React, { useState, useEffect } from "react";
+import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
+import { SolaceAttributeValuePair, valueInputTypes } from "./SolaceAttributeValuePair";
 
 export interface AVPItem {
 	id?: string;
 	key: string;
 	value: string;
-	type?: string;
 }
 
 export interface AVPListProps {
+	/**
+	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
+	 */
+	type?: valueInputTypes;
 	initialAVPList: Array<AVPItem>;
 	onAVPListUpdate: (list: Array<AVPItem>) => void;
 }
@@ -35,7 +38,7 @@ const handleNavigateAVPList = (key: string, index: number, enumList: NodeListOf<
 	}
 };
 
-const SolaceAttributeValuePairList = ({ initialAVPList, onAVPListUpdate }: AVPListProps): JSX.Element => {
+const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }: AVPListProps): JSX.Element => {
 	const [avpList, setAVPList] = useState(initialAVPList);
 
 	useEffect(() => {
@@ -102,6 +105,7 @@ const SolaceAttributeValuePairList = ({ initialAVPList, onAVPListUpdate }: AVPLi
 						avpKey={item.key}
 						avpValue={item.value}
 						dataTags="avpInput"
+						type={type}
 						onChange={handleInputChange}
 						onDelete={handleDeleteItem}
 						onKeyUp={handleKeyUp}

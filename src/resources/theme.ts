@@ -744,29 +744,60 @@ const theme: ThemeOptions = {
 				marginLeft: "8px"
 			}
 		},
-		/** EnumInputItem for form components */
-		formComponent_EnumInputItem: {
+		/** Attribute Value Pair (AVP) for form components */
+		formComponent_AVPItem: {
 			container: {
-				backgroundColor: "transparent",
-				padding: "4px 0px",
-				minWidth: "500px",
-				maxWidth: "900px",
 				display: "grid",
-				gridTemplateColumns: "24px 1fr 1fr 24px",
-				gridGap: "4px"
+				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
+				gridTemplateRows: "auto"
+			},
+			moveButton: {
+				paddingTop: "4px",
+				paddingLeft: "4px",
+				justifyItems: "end"
+			},
+			deleteButton: {
+				paddingTop: "4px",
+				paddingLeft: "4px",
+				borderRadius: "4px",
+				justifyItems: "start"
+			},
+			inputWrapperForKey: {
+				gridColumnStart: 2,
+				gridColumnEnd: 3
+			},
+			inputWrapperForValue: {
+				gridColumnStart: 4,
+				gridColumnEnd: 5
 			}
 		},
-		/** EnumInputForm for form components */
-		formComponent_EnumInputForm: {
-			label: {
+		formComponent_AVPForm: {
+			container: {
 				backgroundColor: "transparent",
-				padding: "4px 0px",
 				minWidth: "500px",
-				maxWidth: "900px",
-
+				maxWidth: "900px"
+			},
+			listWrapper: {
 				display: "grid",
-				gridTemplateColumns: "24px 1fr 1fr 24px",
-				gridGap: "4px"
+				gridTemplateColumns: "auto",
+				gridTemplateRows: "auto",
+				rowGap: "8px"
+			},
+			labelWrapper: {
+				padding: "2px 0px",
+				display: "grid",
+				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
+				gridTemplateRows: "auto",
+				label: {
+					":first-of-type": {
+						gridColumnStart: 2,
+						gridColumnEnd: 3
+					},
+					":last-of-type": {
+						gridColumnStart: 4,
+						gridColumnEnd: 5
+					}
+				}
 			}
 		}
 	},
@@ -826,11 +857,17 @@ declare module "@material-ui/core/styles/createMixins" {
 			container: CSSProperties;
 			label: CSSProperties;
 		};
-		formComponent_EnumInputItem: {
+		formComponent_AVPItem: {
 			container: CSSProperties;
+			moveButton: CSSProperties;
+			deleteButton: CSSProperties;
+			inputWrapperForKey: CSSProperties;
+			inputWrapperForValue: CSSProperties;
 		};
-		formComponent_EnumInputForm: {
-			label: CSSProperties;
+		formComponent_AVPForm: {
+			container: CSSProperties;
+			listWrapper: CSSProperties;
+			labelWrapper: CSSProperties;
 		};
 	}
 }
