@@ -12,7 +12,6 @@ interface AVPItem {
 	id?: string;
 	key: string;
 	value: string;
-	type?: string;
 }
 
 const SAMPLE_AVP_LIST = [

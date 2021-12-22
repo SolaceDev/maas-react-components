@@ -1,8 +1,10 @@
+import React from "react";
 import SolaceTextField, { SolaceTextFieldChangeEvent } from "./SolaceTextField";
 import { styled } from "@material-ui/core";
+import { Draggable } from "react-beautiful-dnd";
 import { DeleteIcon } from "../../resources/icons/DeleteIcon";
 import { MoveIcon } from "../../resources/icons/MoveIcon";
-import React from "react";
+
 import { BASE_COLORS } from "../../resources/colorPallette";
 
 interface SolaceAVPMoveButtonProps {
@@ -10,7 +12,7 @@ interface SolaceAVPMoveButtonProps {
 }
 interface SolaceAVPDeleteButtonProps {
 	cursor: string;
-	backgroundColor: string;
+	background: string;
 }
 
 const SolaceAVPContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.container);
@@ -22,11 +24,11 @@ const SolaceAVPMoveButton = styled("div")<SolaceAVPMoveButtonProps>(({ theme, cu
 	cursor: cursor
 }));
 
-const SolaceAVPDeleteButton = styled("div")<SolaceAVPDeleteButtonProps>(({ theme, cursor, backgroundColor }) => ({
+const SolaceAVPDeleteButton = styled("div")<SolaceAVPDeleteButtonProps>(({ theme, cursor, background }) => ({
 	...theme.mixins.formComponent_AVPItem.deleteButton,
 	cursor: cursor,
 	":hover": {
-		backgroundColor: backgroundColor
+		backgroundColor: background
 	}
 }));
 
@@ -38,7 +40,7 @@ export enum valueInputTypes {
 
 export interface SolaceAttributeValuePairProps {
 	/**
-	 * unique id for each Attribute Value Pair (AVP) item TODO: may not needed for AVP item
+	 * unique id for each Attribute Value Pair (AVP) item
 	 */
 	id?: string;
 	/**
@@ -58,6 +60,7 @@ export interface SolaceAttributeValuePairProps {
 	 */
 	dataTags: string;
 	/**
+	 * TODO: implementation required
 	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
 	 */
 	type?: valueInputTypes;
@@ -77,10 +80,6 @@ export interface SolaceAttributeValuePairProps {
 	 * callback for keyup event
 	 */
 	onKeyUp: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-	/**
-	 * callback for drag and drop action
-	 */
-	moveItem?: (dragIndex: number, hoverIndex: number) => void;
 }
 
 export const SolaceAttributeValuePair = ({
@@ -88,50 +87,51 @@ export const SolaceAttributeValuePair = ({
 	avpKey,
 	avpValue,
 	dataTags,
-	type,
 	ghostItem = false,
 	onDelete,
 	onChange,
 	onKeyUp
 }: SolaceAttributeValuePairProps) => {
 	return (
-		<SolaceAVPContainer>
-			<SolaceAVPMoveButton cursor={ghostItem ? "default" : "move"}>
-				<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-			</SolaceAVPMoveButton>
-			{!type && (
-				<SolaceAVPInputForKey>
-					<SolaceTextField
-						name="key"
-						dataQa={`avpKey-${index}`}
-						dataTags={dataTags}
-						value={avpKey}
-						onChange={(e) => onChange(e, index)}
-						onKeyUp={onKeyUp}
-					/>
-				</SolaceAVPInputForKey>
-			)}
-			{!type && (
-				<SolaceAVPInputForValue>
-					<SolaceTextField
-						name="value"
-						dataQa={`avpValue-${index}`}
-						dataTags={dataTags}
-						value={avpValue}
-						onChange={(e) => onChange(e, index)}
-						onKeyUp={onKeyUp}
-					/>
-				</SolaceAVPInputForValue>
-			)}
+		<Draggable draggableId={`avp-${index}`} index={index}>
+			{(provided) => (
+				<SolaceAVPContainer ref={provided.innerRef} {...provided.draggableProps}>
+					<SolaceAVPMoveButton {...provided.dragHandleProps} cursor={ghostItem ? "default" : "move"}>
+						<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+					</SolaceAVPMoveButton>
 
-			<SolaceAVPDeleteButton
-				onClick={(e) => onDelete(e, index)}
-				tabIndex={0}
-				cursor={ghostItem ? "default" : "pointer"}
-				backgroundColor={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
-			>
-				<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-			</SolaceAVPDeleteButton>
-		</SolaceAVPContainer>
+					<SolaceAVPInputForKey>
+						<SolaceTextField
+							name="key"
+							dataQa={`avpKey-${index}`}
+							dataTags={dataTags}
+							value={avpKey}
+							onChange={(e) => onChange(e, index)}
+							onKeyUp={onKeyUp}
+						/>
+					</SolaceAVPInputForKey>
+
+					<SolaceAVPInputForValue>
+						<SolaceTextField
+							name="value"
+							dataQa={`avpValue-${index}`}
+							dataTags={dataTags}
+							value={avpValue}
+							onChange={(e) => onChange(e, index)}
+							onKeyUp={onKeyUp}
+						/>
+					</SolaceAVPInputForValue>
+
+					<SolaceAVPDeleteButton
+						onClick={(e) => onDelete(e, index)}
+						tabIndex={0}
+						cursor={ghostItem ? "default" : "pointer"}
+						background={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
+					>
+						<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+					</SolaceAVPDeleteButton>
+				</SolaceAVPContainer>
+			)}
+		</Draggable>
 	);
 };

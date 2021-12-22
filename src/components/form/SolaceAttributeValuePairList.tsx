@@ -10,10 +10,17 @@ export interface AVPItem {
 
 export interface AVPListProps {
 	/**
+	 * TODO: implementation required
 	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
 	 */
 	type?: valueInputTypes;
+	/**
+	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
+	 */
 	initialAVPList: Array<AVPItem>;
+	/**
+	 * callback function that returns the updated AVP list
+	 */
 	onAVPListUpdate: (list: Array<AVPItem>) => void;
 }
 
@@ -41,22 +48,23 @@ const handleNavigateAVPList = (key: string, index: number, enumList: NodeListOf<
 const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }: AVPListProps): JSX.Element => {
 	const [avpList, setAVPList] = useState(initialAVPList);
 
+	/**
+	 * on initialAVPList updated
+	 */
 	useEffect(() => {
-		const list = [...avpList];
-		list.push({ key: "", value: "" });
-		setAVPList(list);
-	}, []);
+		setAVPList(initialAVPList);
+	}, [initialAVPList]);
 
+	/**
+	 * on current avpList updated
+	 */
 	useEffect(() => {
-		onAVPListUpdate(avpList.filter((item) => item.key !== "" || item.value !== ""));
+		onAVPListUpdate(avpList);
 	}, [avpList]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = (index: number): boolean => {
-		if (index === avpList.length - 1 && avpList[index].key === "" && avpList[index].value === "") {
-			return true;
-		}
-		return false;
+		return index === avpList.length - 1 ? true : false;
 	};
 
 	const handleInputChange = (event: SolaceTextFieldChangeEvent, index: number) => {
@@ -64,7 +72,7 @@ const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }:
 		const value: string = event.value;
 		const list = [...avpList];
 		list[index][name] = value.trim();
-		// create a ghost row at the end of the list upon input changes
+		// add a new row at the end of the list upon input changes
 		if (name && list.length - 1 === index) {
 			list.push({ key: "", value: "" });
 		}
@@ -90,10 +98,6 @@ const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }:
 		}
 	};
 
-	const handleMoveItem = () => {
-		console.log("handle move item");
-	};
-
 	return (
 		<React.Fragment>
 			{avpList.map((item, index) => {
@@ -109,7 +113,6 @@ const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }:
 						onChange={handleInputChange}
 						onDelete={handleDeleteItem}
 						onKeyUp={handleKeyUp}
-						moveItem={handleMoveItem}
 						ghostItem={ghostItem(index)}
 					/>
 				);
