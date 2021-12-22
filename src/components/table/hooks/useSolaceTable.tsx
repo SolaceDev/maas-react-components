@@ -20,9 +20,7 @@ import clsx from "clsx";
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
-	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
-	marginLeft: theme.spacing(0.5),
+	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
 	height: "32px",
 	"&.selected": {
 		backgroundColor: "#e8f9f4"
@@ -31,13 +29,16 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 		cursor: "pointer"
 	},
 	"&:hover": {
-		background: "#e5e5e5",
+		background: `${BASE_COLORS.greys.grey24}`,
 		"&.header": {
 			background: "transparent"
 		}
 	},
 	"&:hover + tr td table": {
-		background: "#e5e5e5"
+		background: `${BASE_COLORS.greys.grey24}`
+	},
+	"td:first-of-type, th:first-of-type": {
+		paddingLeft: `${theme.spacing(2)}`
 	}
 }));
 

@@ -13,6 +13,7 @@ export { default as SolaceRadio } from "./components/form/SolaceRadio";
 export { default as SolaceRadioGroup } from "./components/form/SolaceRadioGroup";
 export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceChip } from "./components/SolaceChip";
+export { default as SolaceErrorBox } from "./components/SolaceErrorBox";
 export { default as SolaceTabs } from "./components/layout/SolaceTabs";
 export { default as SolaceSidePanelLayout } from "./components/layout/SolaceSidePanelLayout";
 export { PANEL_POSITION as SolacePanelPosition } from "./components/layout/SolaceSidePanelLayout";

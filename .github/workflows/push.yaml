@@ -1,4 +1,4 @@
-name: "On Push"
+name: "On Push to Main"
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
         with:
           tag-prefix: ""
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
   deploy-to-pages:
@@ -42,3 +42,24 @@ jobs:
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           cd ./storybook && npm install && npm run deploy
+  chromatic-deployment:
+    name: "Deploy Storybook to Chromatic"
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: npm install && cd ./storybook && npm install
+        # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        # publish
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          token: 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
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: 10e61b689d33
+          # storybook directory
+          workingDir: storybook
+          exitZeroOnChanges: false        

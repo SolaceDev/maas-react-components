@@ -30,27 +30,13 @@ export interface SolaceSidePanelLayoutProps {
 	children: JSX.Element;
 }
 
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
-const LeftSidePanelContainer = styled("div")(({ theme }) => ({
-	...theme.mixins.sidePanelLayout_leftSidePanelSection
-}));
+const LeftSidePanelContainer = styled("div")(({ theme }) => theme.mixins.sidePanelLayout.left);
 
-//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
-const RightSidePanelContainer = styled("div")(({ theme }) => ({
-	...theme.mixins.sidePanelLayout_rightSidePanelSection
-}));
+const RightSidePanelContainer = styled("div")(({ theme }) => theme.mixins.sidePanelLayout.right);
 
-//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
-const MainPanelContainer = styled("div")(({ theme }) => ({
-	...theme.mixins.sidePanelLayout_contentPanelSection
-}));
+const MainPanelContainer = styled("div")(({ theme }) => theme.mixins.sidePanelLayout.content);
 
-//@ts-ignore - need to resolve these TypeScript validation errors as a future activity
-const PanelContainer = styled("div")(({ theme }) => ({
-	...theme.mixins.sidePanelLayout_mainPanel
-}));
-/* eslint-enable @typescript-eslint/ban-ts-comment */
+const PanelContainer = styled("div")(({ theme }) => theme.mixins.sidePanelLayout.wrapper);
 
 function SolaceSidePanelLayout({
 	children,

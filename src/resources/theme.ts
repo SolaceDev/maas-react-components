@@ -1,6 +1,9 @@
 import { ThemeOptions } from "@material-ui/core";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
+
+const noneImportant = "none !important";
+
 // A custom theme for this app
 const theme: ThemeOptions = {
 	breakpoints: {
@@ -196,16 +199,25 @@ const theme: ThemeOptions = {
 				},
 				root: {
 					color: BASE_COLORS.greys.grey14,
-					fontSize: "0.875rem",
+					fontSize: "14px",
 					fontWeight: 400,
 					lineHeight: 1.5,
 					"&.Mui-error": {
 						color: BASE_COLORS.greys.grey11
 					},
-					"&.Mui-disabled": {
+					"&.light-sub-text": {
 						color: BASE_COLORS.greys.grey9
 					},
-					"&.SolaceStackLabel-bold": {
+					"&.Mui-disabled": {
+						color: BASE_COLORS.greys.grey9,
+						"&.check-box-label": {
+							color: BASE_COLORS.greys.grey5
+						},
+						"&.radio-btn-label": {
+							color: BASE_COLORS.greys.grey5
+						}
+					},
+					"&.bold-label": {
 						fontWeight: 500
 					},
 					"&.read-only": {
@@ -241,8 +253,14 @@ const theme: ThemeOptions = {
 						marginRight: "20px",
 						display: "inline-table", // this ensures helper text is below textarea
 						minWidth: "354px",
+						backgroundColor: "transparent", // set background transparent on TextArea input container
 						".MuiOutlinedInput-notchedOutline": {
 							border: "none"
+						},
+						"&.inline-label": {
+							".MuiOutlinedInput-input:read-only": {
+								padding: "1px" // top align with label in ready-only & inline state
+							}
 						}
 					},
 					".MuiOutlinedInput-input": {
@@ -253,8 +271,9 @@ const theme: ThemeOptions = {
 					"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
 						{
 							border: "none",
-							padding: "0px",
-							cursor: "default"
+							padding: "7px 0 0 0",
+							cursor: "default",
+							backgroundColor: "transparent" // set background transparent on TextArea input container in readonly state
 						},
 					"&:hover": {
 						".MuiOutlinedInput-input": {
@@ -483,8 +502,7 @@ const theme: ThemeOptions = {
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 						// remove MenuList open/close animation
 						// currently applied to SolaceSelect component
-						// eslint-disable-next-line sonarjs/no-duplicate-string
-						transition: "none !important",
+						transition: noneImportant,
 						".MuiMenuItem-root": {
 							fontSize: "14px",
 							"&.Mui-selected": {
@@ -496,8 +514,8 @@ const theme: ThemeOptions = {
 								// remove all ripple effect from MenuList Items
 								// currently applied to SolaceSelect component
 								"*,*::before,*::after": {
-									transition: "none !important",
-									animation: "none !important"
+									transition: noneImportant,
+									animation: noneImportant
 								}
 							},
 							".MuiGrid-root.MuiGrid-container": {
@@ -703,31 +721,33 @@ const theme: ThemeOptions = {
 	},
 	mixins: {
 		/** SolaceSidePanelLayout Component */
-		sidePanelLayout_mainPanel: {
-			height: "100%",
-			width: "100%",
-			padding: "0px",
-			display: "grid",
-			backgroundColor: BASE_COLORS.whites.white1,
-			overflowY: "auto"
-		},
-		sidePanelLayout_contentPanelSection: {
-			display: "flex",
-			height: "100%",
-			overflowY: "auto",
-			flexDirection: "column",
-			alignItems: "left",
-			padding: "0px"
-		},
-		sidePanelLayout_rightSidePanelSection: {
-			height: "100%",
-			overflowY: "auto",
-			borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`
-		},
-		sidePanelLayout_leftSidePanelSection: {
-			height: "100%",
-			overflowY: "auto",
-			borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+		sidePanelLayout: {
+			wrapper: {
+				height: "100%",
+				width: "100%",
+				padding: "0px",
+				display: "grid",
+				backgroundColor: BASE_COLORS.whites.white1,
+				overflowY: "auto"
+			},
+			content: {
+				display: "flex",
+				height: "100%",
+				overflowY: "auto",
+				flexDirection: "column",
+				alignItems: "left",
+				padding: "0px"
+			},
+			left: {
+				height: "100%",
+				overflowY: "auto",
+				borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+			},
+			right: {
+				height: "100%",
+				overflowY: "auto",
+				borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`
+			}
 		},
 		/** ErrorText for form components */
 		formComponent_ErrorText: {
@@ -735,8 +755,7 @@ const theme: ThemeOptions = {
 				display: "flex",
 				flexDirection: "row",
 				justifyContent: "flex-start",
-				alignItems: "center",
-				marginTop: "12px"
+				marginTop: "2px"
 			},
 			label: {
 				color: BASE_COLORS.reds.red1,
@@ -849,10 +868,12 @@ const theme: ThemeOptions = {
 
 declare module "@material-ui/core/styles/createMixins" {
 	interface Mixins {
-		sidePanelLayout_leftSidePanelSection: React.CSSProperties;
-		sidePanelLayout_rightSidePanelSection: React.CSSProperties;
-		sidePanelLayout_contentPanelSection: React.CSSProperties;
-		sidePanelLayout_mainPanel: React.CSSProperties;
+		sidePanelLayout: {
+			wrapper: CSSProperties;
+			content: CSSProperties;
+			left: CSSProperties;
+			right: CSSProperties;
+		};
 		formComponent_ErrorText: {
 			container: CSSProperties;
 			label: CSSProperties;

@@ -11,8 +11,8 @@ export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	top: "30px",
 	right: "40px",
 	padding: `${theme.spacing()} 0`,
-	border: `1px solid ${BASE_COLORS.greys.grey1}`,
-	borderRadius: "2px",
+	boxShadow: `0 1px 4px ${BASE_COLORS.greys.grey3}`,
+	borderRadius: "4px",
 	minHeight: "32px",
 	minWidth: "60px",
 	background: BASE_COLORS.whites.white1,
@@ -23,6 +23,8 @@ export const StyledActionItem = styled("div")(({ theme }) => ({
 	minWidth: "60px",
 	padding: `${theme.spacing()} ${theme.spacing(2)}`,
 	cursor: "pointer",
+	whiteSpace: "nowrap",
+	textAlign: "left",
 	"&:hover": {
 		background: "#e5e5e5"
 	},
