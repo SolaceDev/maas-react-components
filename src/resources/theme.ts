@@ -762,6 +762,62 @@ const theme: ThemeOptions = {
 				fontSize: BASE_FONT_PX_SIZES.xs,
 				marginLeft: "8px"
 			}
+		},
+		/** Attribute Value Pair (AVP) for form components */
+		formComponent_AVPItem: {
+			container: {
+				display: "grid",
+				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
+				gridTemplateRows: "auto"
+			},
+			moveButton: {
+				paddingTop: "4px",
+				paddingLeft: "4px",
+				justifyItems: "end"
+			},
+			deleteButton: {
+				paddingTop: "4px",
+				paddingLeft: "4px",
+				borderRadius: "4px",
+				justifyItems: "start"
+			},
+			inputWrapperForKey: {
+				gridColumnStart: 2,
+				gridColumnEnd: 3
+			},
+			inputWrapperForValue: {
+				gridColumnStart: 4,
+				gridColumnEnd: 5
+			}
+		},
+		formComponent_AVPForm: {
+			container: {
+				backgroundColor: "transparent",
+				minWidth: "500px",
+				maxWidth: "900px"
+			},
+			listWrapper: {
+				display: "grid",
+				gridTemplateColumns: "auto",
+				gridTemplateRows: "auto",
+				rowGap: "8px"
+			},
+			labelWrapper: {
+				padding: "2px 0px",
+				display: "grid",
+				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
+				gridTemplateRows: "auto",
+				label: {
+					":first-of-type": {
+						gridColumnStart: 2,
+						gridColumnEnd: 3
+					},
+					":last-of-type": {
+						gridColumnStart: 4,
+						gridColumnEnd: 5
+					}
+				}
+			}
 		}
 	},
 	palette: {
@@ -821,6 +877,18 @@ declare module "@material-ui/core/styles/createMixins" {
 		formComponent_ErrorText: {
 			container: CSSProperties;
 			label: CSSProperties;
+		};
+		formComponent_AVPItem: {
+			container: CSSProperties;
+			moveButton: CSSProperties;
+			deleteButton: CSSProperties;
+			inputWrapperForKey: CSSProperties;
+			inputWrapperForValue: CSSProperties;
+		};
+		formComponent_AVPForm: {
+			container: CSSProperties;
+			listWrapper: CSSProperties;
+			labelWrapper: CSSProperties;
 		};
 	}
 }

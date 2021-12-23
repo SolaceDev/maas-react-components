@@ -75,10 +75,13 @@ export default {
 
 const Template: ComponentStory<typeof SolaceTextField> = (args) => <SolaceTextField {...args} />;
 
+const DEMO_TITLE = "Demo Text Field";
+const DEMO_LABEL = "Some Label";
+
 export const DefaultTextfield = Template.bind({});
 DefaultTextfield.args = {
 	onChange: action("callback"),
-	title: "Demo Text Field",
+	title: DEMO_TITLE,
 	id: "demoTextFieldId",
 	name: "demoTextField"
 };
@@ -86,17 +89,17 @@ DefaultTextfield.args = {
 export const StackedLabelFormat = Template.bind({});
 StackedLabelFormat.args = {
 	onChange: action("callback"),
-	title: "Demo Text Field",
+	title: DEMO_TITLE,
 	name: "demoTextField",
-	label: "Some Label"
+	label: DEMO_LABEL
 };
 
 export const InlineLabelFormat = Template.bind({});
 InlineLabelFormat.args = {
 	onChange: action("text-changed"),
 	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
 	inlineLabel: true
 };
 
@@ -104,8 +107,8 @@ export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("callback"),
 	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
 	helperText: "Some helper text"
 };
 
@@ -113,8 +116,8 @@ export const PlaceholderText = Template.bind({});
 PlaceholderText.args = {
 	onChange: action("callback"),
 	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
 	placeholder: "Some placeholder text"
 };
 
@@ -122,8 +125,8 @@ export const WithErrors = Template.bind({});
 WithErrors.args = {
 	onChange: action("callback"),
 	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
 	helperText: "The text you entered was invalid",
 	hasErrors: true
 };
@@ -132,8 +135,8 @@ export const AutoFocus = Template.bind({});
 AutoFocus.args = {
 	onChange: action("callback"),
 	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
 	autoFocus: true
 };
 
@@ -141,8 +144,8 @@ export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),
 	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
 	required: true
 };
 
@@ -150,8 +153,8 @@ export const Disabled = Template.bind({});
 Disabled.args = {
 	onChange: action("callback"),
 	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
 	value: "Some value",
 	disabled: true
 };
@@ -160,8 +163,8 @@ export const ReadOnly = Template.bind({});
 ReadOnly.args = {
 	onChange: action("callback"),
 	name: "demoTextField",
-	title: "Demo Text Field",
-	label: "Some Label",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
 	value: "Some value",
 	readOnly: true
 };

@@ -75,7 +75,9 @@
 		"@emotion/styled": "^11.3.0",
 		"@material-ui/core": "^5.0.0-beta.3",
 		"@material-ui/icons": "^5.0.0-beta.1",
+		"@types/react-beautiful-dnd": "^13.1.2",
 		"codemirror": "^5.63.3",
+		"react-beautiful-dnd": "^13.1.0",
 		"react-codemirror2": "^7.2.1"
 	},
 	"files": [
