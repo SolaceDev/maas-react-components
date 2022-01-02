@@ -108,6 +108,7 @@ const EmptyState = styled("div")(() => ({
 const DEFAULT_EMPTY_MESSAGE = "No Items Found";
 
 function SolaceTable({
+	id,
 	rows,
 	columns,
 	selectionType,
@@ -152,7 +153,7 @@ function SolaceTable({
 
 	return (
 		<TableWrapper>
-			<StyledTable>
+			<StyledTable data-qa={id}>
 				<thead>{columnNodes}</thead>
 				<tbody>{!!rows.length && rowNodes}</tbody>
 			</StyledTable>

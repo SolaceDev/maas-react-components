@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 import SolaceButton, { SolaceButtonProps } from "../form/SolaceButton";
 
-type actionProps = Partial<SolaceButtonProps> & { label: string };
+type actionProps = Partial<SolaceButtonProps> & { label: string; id?: string };
 
 export interface SolaceConfirmationDialogProps {
 	title?: string;
@@ -22,15 +22,20 @@ function SolaceConfirmationDialog({
 }: SolaceConfirmationDialogProps): JSX.Element {
 	return (
 		<Dialog open={isOpen}>
-			<DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
+			<DialogTitle>
+				<div data-qa="title">{title}</div>
+			</DialogTitle>
 			<DialogContent>
-				{contentText && <DialogContentText>{contentText}</DialogContentText>}
-				{children}
+				<div data-qa="content">
+					{contentText && <DialogContentText>{contentText}</DialogContentText>}
+					{children}
+				</div>
 			</DialogContent>
 			<DialogActions>
 				{actions.map((action) => (
 					<SolaceButton
-						key={`key-${action.label}`}
+						data-qa={action.id}
+						key={action.label}
 						onClick={action.onClick}
 						variant={action.variant ?? "text"}
 						isDisabled={action.isDisabled}
