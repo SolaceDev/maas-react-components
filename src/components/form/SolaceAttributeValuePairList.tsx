@@ -62,7 +62,7 @@ const SolaceAttributeValuePairList = ({
 	avpKeyValidationCallback,
 	avpValueValidationCallback
 }: AVPListProps): JSX.Element => {
-	const [avpList, setAVPList] = useState<any[]>(initialAVPList);
+	const [avpList, setAVPList] = useState<AVPItem[]>(initialAVPList);
 
 	/**
 	 * on initialAVPList updated

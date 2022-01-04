@@ -70,14 +70,7 @@ export const WithoutInitialData = () => {
 
 	return (
 		<div>
-			<SolaceAttributeValuePairForm
-				labelForKeys="Keys"
-				labelForValues="Values"
-				initialAVPList={currentList}
-				onAVPListUpdate={handleListUpdate}
-				avpKeyValidationCallback={validateEnumInput}
-				avpValueValidationCallback={undefined}
-			/>
+			<SolaceAttributeValuePairForm onAVPListUpdate={handleListUpdate} avpKeyValidationCallback={validateEnumInput} />
 			<div style={{ marginTop: 20 }}>
 				<div>
 					Is form OK: <b>{enumValidated ? "Yes" : "No"}</b>

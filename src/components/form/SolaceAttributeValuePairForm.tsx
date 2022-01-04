@@ -21,11 +21,11 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * label for the key column
 	 */
-	labelForKeys: string;
+	labelForKeys?: string;
 	/**
 	 * label for the value column
 	 */
-	labelForValues: string;
+	labelForValues?: string;
 	/**
 	 * TODO: implementation required
 	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
@@ -34,7 +34,7 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
 	 */
-	initialAVPList: Array<AVPItem>;
+	initialAVPList?: Array<AVPItem>;
 	/**
 	 * callback function that returns the current AVP list
 	 */
@@ -52,14 +52,14 @@ export interface SolaceAttributeValuePairFormProps {
 const SolaceAttributeValuePairForm = ({
 	labelForKeys = "Name",
 	labelForValues = "DisplayName",
-	initialAVPList,
+	initialAVPList = [],
 	onAVPListUpdate,
 	avpKeyValidationCallback,
 	avpValueValidationCallback
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [avpList, setAVPList] = useState(initialAVPList);
 	/**
-	 * add append empty key/value pair on initial rendering
+	 * add append empty key/value pair on initial rendering, works as componentDidMount
 	 */
 	useEffect(() => {
 		const list = [...avpList, { key: "", value: "" }];

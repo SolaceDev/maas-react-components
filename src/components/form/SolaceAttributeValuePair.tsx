@@ -87,11 +87,11 @@ export interface SolaceAttributeValuePairProps {
 	/**
 	 * validation error on an AVP value input value
 	 */
-	keyErrorText: string;
+	keyErrorText?: string;
 	/**
 	 * validation error on an AVP value input value
 	 */
-	valueErrorText: string;
+	valueErrorText?: string;
 }
 
 export const SolaceAttributeValuePair = ({
