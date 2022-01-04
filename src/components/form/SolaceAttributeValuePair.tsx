@@ -80,6 +80,18 @@ export interface SolaceAttributeValuePairProps {
 	 * callback for keyup event
 	 */
 	onKeyUp: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	/**
+	 * callback for onblur event
+	 */
+	onBlur: (event: React.FocusEvent<HTMLInputElement>, index: number) => void;
+	/**
+	 * validation error on an AVP value input value
+	 */
+	keyErrorText: string;
+	/**
+	 * validation error on an AVP value input value
+	 */
+	valueErrorText: string;
 }
 
 export const SolaceAttributeValuePair = ({
@@ -90,7 +102,10 @@ export const SolaceAttributeValuePair = ({
 	ghostItem = false,
 	onDelete,
 	onChange,
-	onKeyUp
+	onKeyUp,
+	onBlur,
+	keyErrorText,
+	valueErrorText
 }: SolaceAttributeValuePairProps) => {
 	return (
 		<Draggable draggableId={`avp-${index}`} index={index}>
@@ -108,6 +123,9 @@ export const SolaceAttributeValuePair = ({
 							value={avpKey}
 							onChange={(e) => onChange(e, index)}
 							onKeyUp={onKeyUp}
+							onBlur={(e) => onBlur(e, index)}
+							hasErrors={ghostItem ? false : !!keyErrorText}
+							helperText={ghostItem ? "" : keyErrorText}
 						/>
 					</SolaceAVPInputForKey>
 
@@ -119,6 +137,9 @@ export const SolaceAttributeValuePair = ({
 							value={avpValue}
 							onChange={(e) => onChange(e, index)}
 							onKeyUp={onKeyUp}
+							onBlur={(e) => onBlur(e, index)}
+							hasErrors={ghostItem ? false : !!valueErrorText}
+							helperText={ghostItem ? "" : valueErrorText}
 						/>
 					</SolaceAVPInputForValue>
 

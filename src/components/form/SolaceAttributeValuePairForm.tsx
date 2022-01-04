@@ -39,13 +39,23 @@ export interface SolaceAttributeValuePairFormProps {
 	 * callback function that returns the current AVP list
 	 */
 	onAVPListUpdate: (list: Array<AVPItem>) => void;
+	/**
+	 * validate individual AVP values, the function is triggered onBlur event
+	 */
+	avpKeyValidationCallback?: (input: string, values: Array<AVPItem>) => string;
+	/**
+	 * validate individual AVP values, the function is triggered onBlur event
+	 */
+	avpValueValidationCallback?: (input: string, values: Array<AVPItem>) => string;
 }
 
 const SolaceAttributeValuePairForm = ({
 	labelForKeys = "Name",
 	labelForValues = "DisplayName",
 	initialAVPList,
-	onAVPListUpdate
+	onAVPListUpdate,
+	avpKeyValidationCallback,
+	avpValueValidationCallback
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [avpList, setAVPList] = useState(initialAVPList);
 	/**
@@ -90,6 +100,7 @@ const SolaceAttributeValuePairForm = ({
 
 		setAVPList(reorderedList);
 	};
+
 	return (
 		<DragDropContext onDragEnd={handleDragEnd}>
 			<Droppable droppableId="avpForm">
@@ -100,7 +111,12 @@ const SolaceAttributeValuePairForm = ({
 							<SolaceLabel id="avpLabelForValues">{labelForValues}</SolaceLabel>
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
-							<SolaceAttributeValuePairList initialAVPList={avpList} onAVPListUpdate={handleListUpdate} />
+							<SolaceAttributeValuePairList
+								initialAVPList={avpList}
+								onAVPListUpdate={handleListUpdate}
+								avpKeyValidationCallback={avpKeyValidationCallback}
+								avpValueValidationCallback={avpValueValidationCallback}
+							/>
 						</SolaceAVPListContainer>
 						{provided.placeholder}
 					</SolaceAVPFormContainer>
