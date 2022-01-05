@@ -17,7 +17,7 @@ const solaceTopicPattern = /^[^/*#!>]*$/;
 const validateEnumInput = (currentInput, values: Array<any>) => {
 	let error = "";
 	// validate individual input values
-	if (currentInput.trim().length === 0) {
+	if (currentInput && currentInput.trim().length === 0) {
 		error = "Cannot be blank";
 	} else if (!currentInput.match(kafkaTopicPattern)) {
 		// use kafka topic pattern for all enum value validation for simplicity
@@ -51,8 +51,61 @@ const SAMPLE_AVP_LIST = [
 	{ key: "Apr", value: "April" }
 ];
 
+// eslint-disable-next-line sonarjs/no-identical-functions
 export const WithoutInitialData = () => {
 	const [currentList, setCurrentList] = useState([]);
+
+	const handleListUpdate = (updatedList: Array<AVPItem>) => {
+		setCurrentList(updatedList);
+	};
+	return (
+		<div>
+			<SolaceAttributeValuePairForm
+				labelForKeys="Keys"
+				labelForValues="Values"
+				initialAVPList={currentList}
+				onAVPListUpdate={handleListUpdate}
+			/>
+			<div style={{ marginTop: 20 }}>
+				<div>Show me the data:</div>
+				<div>{JSON.stringify(currentList)}</div>
+			</div>
+		</div>
+	);
+};
+
+// eslint-disable-next-line sonarjs/no-identical-functions
+export const WithData = () => {
+	const [currentList, setCurrentList] = useState(SAMPLE_AVP_LIST);
+
+	const handleListUpdate = (updatedList: Array<AVPItem>) => {
+		setCurrentList(updatedList);
+	};
+	return (
+		<div>
+			<SolaceAttributeValuePairForm
+				labelForKeys="Keys"
+				labelForValues="Values"
+				initialAVPList={currentList}
+				onAVPListUpdate={handleListUpdate}
+			/>
+			<div style={{ marginTop: 20 }}>
+				<div>Show me the data:</div>
+				<div>{JSON.stringify(currentList)}</div>
+			</div>
+		</div>
+	);
+};
+
+const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
+	{ key: "", value: "January" },
+	{ key: "Feb", value: "February" },
+	{ key: "Feb", value: "March" },
+	{ key: "@April", value: "April" }
+];
+
+export const WithValidation = () => {
+	const [currentList, setCurrentList] = useState<Array<AVPItem>>(SAMPLE_AVP_LIST_WITH_FALSE_VALUES);
 	const [enumValidated, setEnumValidated] = useState(true);
 
 	useEffect(() => {
@@ -70,36 +123,15 @@ export const WithoutInitialData = () => {
 
 	return (
 		<div>
-			<SolaceAttributeValuePairForm onAVPListUpdate={handleListUpdate} avpKeyValidationCallback={validateEnumInput} />
+			<SolaceAttributeValuePairForm
+				initialAVPList={currentList}
+				onAVPListUpdate={handleListUpdate}
+				avpKeyValidationCallback={validateEnumInput}
+			/>
 			<div style={{ marginTop: 20 }}>
 				<div>
 					Is form OK: <b>{enumValidated ? "Yes" : "No"}</b>
 				</div>
-				<div>Show me the data:</div>
-				<div>{JSON.stringify(currentList)}</div>
-			</div>
-		</div>
-	);
-};
-
-export const WithData = () => {
-	const [currentList, setCurrentList] = useState(SAMPLE_AVP_LIST);
-
-	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setCurrentList(updatedList);
-	};
-
-	return (
-		<div>
-			<SolaceAttributeValuePairForm
-				labelForKeys="Keys"
-				labelForValues="Values"
-				initialAVPList={currentList}
-				onAVPListUpdate={handleListUpdate}
-				avpKeyValidationCallback={validateEnumInput}
-				avpValueValidationCallback={validateEnumInput}
-			/>
-			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
 				<div>{JSON.stringify(currentList)}</div>
 			</div>
