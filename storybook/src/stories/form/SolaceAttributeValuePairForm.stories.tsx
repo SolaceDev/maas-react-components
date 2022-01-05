@@ -17,7 +17,7 @@ const solaceTopicPattern = /^[^/*#!>]*$/;
 const validateEnumInput = (currentInput, values: Array<any>) => {
 	let error = "";
 	// validate individual input values
-	if (currentInput && currentInput.trim().length === 0) {
+	if (currentInput.trim().length === 0) {
 		error = "Cannot be blank";
 	} else if (!currentInput.match(kafkaTopicPattern)) {
 		// use kafka topic pattern for all enum value validation for simplicity

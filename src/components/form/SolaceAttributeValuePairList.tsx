@@ -63,6 +63,7 @@ const SolaceAttributeValuePairList = ({
 	avpValueValidationCallback
 }: AVPListProps): JSX.Element => {
 	const [avpList, setAVPList] = useState<AVPItem[]>(initialAVPList);
+	const [errorCount, setErrorCount] = useState(0);
 
 	/**
 	 * on initialAVPList updated
@@ -77,6 +78,37 @@ const SolaceAttributeValuePairList = ({
 	useEffect(() => {
 		onAVPListUpdate(avpList);
 	}, [avpList]);
+
+	/**
+	 * run a full validation process when error total counts change
+	 */
+	useEffect(() => {
+		const list = [...avpList];
+		let count = 0;
+		list.forEach((value, index) => {
+			if (avpKeyValidationCallback) {
+				const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
+				if (error) {
+					list[index]["keyErrorText"] = error;
+					count++;
+				} else if (!error && list[index]["keyErrorText"]) {
+					delete list[index]["keyErrorText"];
+					count--;
+				}
+			}
+			if (avpValueValidationCallback) {
+				const error = avpValueValidationCallback(value.value, list.slice(0, -1));
+				if (error) {
+					list[index]["valueErrorText"] = error;
+					count++;
+				} else if (!error && list[index]["valueErrorText"]) {
+					delete list[index]["valueErrorText"];
+					count--;
+				}
+			}
+		});
+		setErrorCount(count);
+	}, [errorCount]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = (index: number): boolean => {
@@ -117,21 +149,27 @@ const SolaceAttributeValuePairList = ({
 
 	const handleInputOnBlur = (event: React.FocusEvent<HTMLInputElement>, index: number) => {
 		const list = [...avpList];
+		let count = 0;
 		if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
 			const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
 			if (error) {
 				list[index]["keyErrorText"] = error;
+				count++;
 			} else if (!error && list[index]["keyErrorText"]) {
 				delete list[index]["keyErrorText"];
+				count--;
 			}
 		} else if (event.target.getAttribute("name") === "value" && avpValueValidationCallback) {
 			const error = avpValueValidationCallback(event.target.value, list.slice(0, -1));
 			if (error) {
 				list[index]["valueErrorText"] = error;
+				count++;
 			} else if (!error && list[index]["valueErrorText"]) {
 				delete list[index]["valueErrorText"];
+				count--;
 			}
 		}
+		setErrorCount(count);
 		setAVPList(list);
 	};
 
