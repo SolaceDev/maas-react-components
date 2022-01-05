@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
 import { SolaceAttributeValuePair, valueInputTypes } from "./SolaceAttributeValuePair";
+// import { v4 as uuidv4 } from "uuid";
 
 export interface AVPItem {
 	id?: string;
@@ -176,10 +177,11 @@ const SolaceAttributeValuePairList = ({
 	return (
 		<React.Fragment>
 			{avpList.map((item, index) => {
+				// const uniqueId = uuidv4();
 				return (
 					<SolaceAttributeValuePair
-						key={index}
-						id={`${index}-${item.key}`}
+						key={`${index}`}
+						id={`${index}`}
 						index={index}
 						avpKey={item.key}
 						avpValue={item.value}

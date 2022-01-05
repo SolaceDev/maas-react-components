@@ -7,21 +7,29 @@ import { MoveIcon } from "../../resources/icons/MoveIcon";
 
 import { BASE_COLORS } from "../../resources/colorPallette";
 
+interface SolaceAVPContainerProps {
+	isDragging: boolean;
+}
+
 interface SolaceAVPMoveButtonProps {
-	cursor: string;
+	isDragging: boolean;
+	ghostItem: boolean;
 }
 interface SolaceAVPDeleteButtonProps {
 	cursor: string;
 	background: string;
 }
 
-const SolaceAVPContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.container);
+const SolaceAVPContainer = styled("div")<SolaceAVPContainerProps>(({ theme, isDragging }) => ({
+	...theme.mixins.formComponent_AVPItem.container,
+	backgroundColor: isDragging ? BASE_COLORS.greens.green9 : "inherit"
+}));
 const SolaceAVPInputForKey = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForKey);
 const SolaceAVPInputForValue = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForValue);
 
-const SolaceAVPMoveButton = styled("div")<SolaceAVPMoveButtonProps>(({ theme, cursor }) => ({
+const SolaceAVPMoveButton = styled("div")<SolaceAVPMoveButtonProps>(({ theme, ghostItem, isDragging }) => ({
 	...theme.mixins.formComponent_AVPItem.moveButton,
-	cursor: cursor
+	cursor: ghostItem ? "default" : isDragging ? "move" : "pointer"
 }));
 
 const SolaceAVPDeleteButton = styled("div")<SolaceAVPDeleteButtonProps>(({ theme, cursor, background }) => ({
@@ -42,7 +50,7 @@ export interface SolaceAttributeValuePairProps {
 	/**
 	 * unique id for each Attribute Value Pair (AVP) item
 	 */
-	id?: string;
+	id: string;
 	/**
 	 * index for each Attribute Value Pair (AVP) item in the list, used to updated the list in response to delete and onchange events
 	 */
@@ -95,6 +103,7 @@ export interface SolaceAttributeValuePairProps {
 }
 
 export const SolaceAttributeValuePair = ({
+	id,
 	index,
 	avpKey,
 	avpValue,
@@ -108,10 +117,10 @@ export const SolaceAttributeValuePair = ({
 	valueErrorText
 }: SolaceAttributeValuePairProps) => {
 	return (
-		<Draggable draggableId={`avp-${index}`} index={index}>
-			{(provided) => (
-				<SolaceAVPContainer ref={provided.innerRef} {...provided.draggableProps}>
-					<SolaceAVPMoveButton {...provided.dragHandleProps} cursor={ghostItem ? "default" : "move"}>
+		<Draggable draggableId={id} index={index} isDragDisabled={ghostItem}>
+			{(provided, snapshot) => (
+				<SolaceAVPContainer ref={provided.innerRef} {...provided.draggableProps} isDragging={snapshot.isDragging}>
+					<SolaceAVPMoveButton {...provided.dragHandleProps} isDragging={snapshot.isDragging} ghostItem={ghostItem}>
 						<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
 					</SolaceAVPMoveButton>
 
