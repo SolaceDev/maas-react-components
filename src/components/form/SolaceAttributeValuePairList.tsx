@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
 import { SolaceAttributeValuePair, valueInputTypes } from "./SolaceAttributeValuePair";
-// import { v4 as uuidv4 } from "uuid";
 
 export interface AVPItem {
 	id?: string;
@@ -33,6 +32,18 @@ export interface AVPListProps {
 	 * validate individual AVP values, the function is triggered by onBlur event
 	 */
 	avpValueValidationCallback?: (input: string, values: Array<AVPItem>) => string;
+	/**
+	 * index of the element that is being dragged over with
+	 * the index is updated on dragging
+	 */
+	dropOverIndex: number | null;
+	/**
+	 * dropping over state with three possible values:
+	 * true: dropping from top to bottom
+	 * false: dropping from bottom to top
+	 * null: dropping back to the same position or outside of the droppable container
+	 */
+	dropFromTop: boolean | null;
 }
 
 enum AVPNavigationKeys {
@@ -61,7 +72,9 @@ const SolaceAttributeValuePairList = ({
 	initialAVPList,
 	onAVPListUpdate,
 	avpKeyValidationCallback,
-	avpValueValidationCallback
+	avpValueValidationCallback,
+	dropOverIndex,
+	dropFromTop
 }: AVPListProps): JSX.Element => {
 	const [avpList, setAVPList] = useState<AVPItem[]>(initialAVPList);
 	const [errorCount, setErrorCount] = useState(0);
@@ -177,7 +190,6 @@ const SolaceAttributeValuePairList = ({
 	return (
 		<React.Fragment>
 			{avpList.map((item, index) => {
-				// const uniqueId = uuidv4();
 				return (
 					<SolaceAttributeValuePair
 						key={`${index}`}
@@ -194,6 +206,8 @@ const SolaceAttributeValuePairList = ({
 						onBlur={handleInputOnBlur}
 						keyErrorText={item.keyErrorText}
 						valueErrorText={item.valueErrorText}
+						dropOverIndex={dropOverIndex}
+						dropFromTop={dropFromTop}
 					/>
 				);
 			})}

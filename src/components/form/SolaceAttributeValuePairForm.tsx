@@ -58,6 +58,8 @@ const SolaceAttributeValuePairForm = ({
 	avpValueValidationCallback
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [avpList, setAVPList] = useState(initialAVPList);
+	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
+	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
 	/**
 	 * add append empty key/value pair on initial rendering, works as componentDidMount
 	 */
@@ -99,10 +101,32 @@ const SolaceAttributeValuePairForm = ({
 		const reorderedList = reorderList(avpList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
+		setDropOverIndex(null); // reset drop over index on drag end
+		setDropFromTop(null); // reset drop over direction on drag end
+	};
+
+	/**
+	 * update drop over index & direction on drag update
+	 * this allows to apply visual indicators to UI elements based on dragging behaviours
+	 */
+	const handleDragUpdate = (update: any) => {
+		const sourceIndex: number | null = update.source.index;
+		const destinationIndex: number | null = update.destination.index;
+		const dropOverIndex: number | null = destinationIndex;
+		let dropFromTop: boolean | null = null;
+		if (sourceIndex !== null && destinationIndex !== null) {
+			if (sourceIndex > destinationIndex) {
+				dropFromTop = false;
+			} else if (sourceIndex < destinationIndex) {
+				dropFromTop = true;
+			}
+		}
+		setDropOverIndex(dropOverIndex);
+		setDropFromTop(dropFromTop);
 	};
 
 	return (
-		<DragDropContext onDragEnd={handleDragEnd}>
+		<DragDropContext onDragEnd={handleDragEnd} onDragUpdate={handleDragUpdate}>
 			<Droppable droppableId="avpForm">
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
@@ -116,6 +140,8 @@ const SolaceAttributeValuePairForm = ({
 								onAVPListUpdate={handleListUpdate}
 								avpKeyValidationCallback={avpKeyValidationCallback}
 								avpValueValidationCallback={avpValueValidationCallback}
+								dropOverIndex={dropOverIndex}
+								dropFromTop={dropFromTop}
 							/>
 						</SolaceAVPListContainer>
 						{provided.placeholder}

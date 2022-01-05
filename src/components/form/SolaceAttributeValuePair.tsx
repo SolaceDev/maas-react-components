@@ -9,6 +9,9 @@ import { BASE_COLORS } from "../../resources/colorPallette";
 
 interface SolaceAVPContainerProps {
 	isDragging: boolean;
+	dropOverIndex: number | null;
+	dropFromTop: boolean | null;
+	index: number;
 }
 
 interface SolaceAVPMoveButtonProps {
@@ -20,10 +23,24 @@ interface SolaceAVPDeleteButtonProps {
 	background: string;
 }
 
-const SolaceAVPContainer = styled("div")<SolaceAVPContainerProps>(({ theme, isDragging }) => ({
-	...theme.mixins.formComponent_AVPItem.container,
-	backgroundColor: isDragging ? BASE_COLORS.greens.green9 : "inherit"
-}));
+// conditionally display a drop line as a visual indicator for droppable position
+const displayDropLine = (dropFromTop: boolean | null, dropOverIndex: number | null, index: number): string => {
+	let dropLine = "";
+	if (dropFromTop != null && dropOverIndex !== null) {
+		if (dropFromTop && dropOverIndex + 1 === index) {
+			dropLine = `1px solid ${BASE_COLORS.greens.green2}`;
+		} else if (!dropFromTop && dropOverIndex === index) dropLine = `1px solid ${BASE_COLORS.greens.green2}`;
+	}
+	return dropLine;
+};
+
+const SolaceAVPContainer = styled("div")<SolaceAVPContainerProps>(
+	({ theme, isDragging, dropOverIndex, index, dropFromTop }) => ({
+		...theme.mixins.formComponent_AVPItem.container,
+		backgroundColor: isDragging ? BASE_COLORS.greens.green9 : "inherit",
+		borderTop: displayDropLine(dropFromTop, dropOverIndex, index)
+	})
+);
 const SolaceAVPInputForKey = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForKey);
 const SolaceAVPInputForValue = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForValue);
 
@@ -100,6 +117,18 @@ export interface SolaceAttributeValuePairProps {
 	 * validation error on an AVP value input value
 	 */
 	valueErrorText?: string;
+	/**
+	 * index of the element that is being dragged over with
+	 * the index is updated on dragging
+	 */
+	dropOverIndex: number | null;
+	/**
+	 * dropping over state with three possible values:
+	 * true: dropping from top to bottom
+	 * false: dropping from bottom to top
+	 * null: dropping back to the same position or outside of the droppable container
+	 */
+	dropFromTop: boolean | null;
 }
 
 export const SolaceAttributeValuePair = ({
@@ -114,12 +143,21 @@ export const SolaceAttributeValuePair = ({
 	onKeyUp,
 	onBlur,
 	keyErrorText,
-	valueErrorText
+	valueErrorText,
+	dropOverIndex,
+	dropFromTop
 }: SolaceAttributeValuePairProps) => {
 	return (
 		<Draggable draggableId={id} index={index} isDragDisabled={ghostItem}>
 			{(provided, snapshot) => (
-				<SolaceAVPContainer ref={provided.innerRef} {...provided.draggableProps} isDragging={snapshot.isDragging}>
+				<SolaceAVPContainer
+					ref={provided.innerRef}
+					{...provided.draggableProps}
+					isDragging={snapshot.isDragging}
+					dropOverIndex={dropOverIndex}
+					dropFromTop={dropFromTop}
+					index={index}
+				>
 					<SolaceAVPMoveButton {...provided.dragHandleProps} isDragging={snapshot.isDragging} ghostItem={ghostItem}>
 						<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
 					</SolaceAVPMoveButton>
