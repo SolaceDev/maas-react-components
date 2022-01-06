@@ -558,10 +558,6 @@ const theme: ThemeOptions = {
 									color: BASE_COLORS.greys.grey9,
 									marginLeft: "24px"
 								},
-								".PrimaryText": {
-									display: "flex",
-									flexDirection: "row"
-								},
 								"&.Mui-disabled": {
 									color: BASE_COLORS.greys.grey5
 								}

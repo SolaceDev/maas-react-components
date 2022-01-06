@@ -117,9 +117,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				{item?.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
 				<Grid container direction={"column"} justifyContent="center">
 					<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
-						<Grid item className="PrimaryText" alignItems={"center"}>
-							{item.name}
-						</Grid>
+						<Grid item>{item.name}</Grid>
 						{item?.supplementalText && (
 							<Grid className="suplementalText" item>
 								{item?.supplementalText}
