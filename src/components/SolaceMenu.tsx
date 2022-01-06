@@ -23,7 +23,7 @@ export interface SolaceMenuItemProps {
 	 */
 	icon?: JSX.Element | HTMLElement;
 	/**
-	 * Adds a cesondary action (ex. more info icon button) to the right end of menu item
+	 * Adds a secondary action (ex. more info icon button) to the right end of menu item
 	 */
 	secondaryAction?: JSX.Element | HTMLElement;
 
@@ -119,7 +119,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 					<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
 						<Grid item>{item.name}</Grid>
 						{item?.supplementalText && (
-							<Grid className="suplementalText" item>
+							<Grid className="supplementalText" item>
 								{item?.supplementalText}
 							</Grid>
 						)}
