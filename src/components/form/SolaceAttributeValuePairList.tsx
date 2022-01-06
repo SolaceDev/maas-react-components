@@ -6,9 +6,15 @@ export interface AVPItem {
 	id?: string;
 	key: string;
 	value: string;
+	keyErrorText?: string;
+	valueErrorText?: string;
 }
 
 export interface AVPListProps {
+	/**
+	 * read only flag
+	 */
+	readOnly?: boolean;
 	/**
 	 * TODO: implementation required
 	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
@@ -22,6 +28,26 @@ export interface AVPListProps {
 	 * callback function that returns the updated AVP list
 	 */
 	onAVPListUpdate: (list: Array<AVPItem>) => void;
+	/**
+	 * validate individual AVP values, the function is triggered by onBlur event
+	 */
+	avpKeyValidationCallback?: (input: string, values: Array<AVPItem>) => string;
+	/**
+	 * validate individual AVP values, the function is triggered by onBlur event
+	 */
+	avpValueValidationCallback?: (input: string, values: Array<AVPItem>) => string;
+	/**
+	 * index of the element that is being dragged over with
+	 * the index is updated on dragging
+	 */
+	dropOverIndex: number | null;
+	/**
+	 * dropping over state with three possible values:
+	 * true: dropping from top to bottom
+	 * false: dropping from bottom to top
+	 * null: dropping back to the same position or outside of the droppable container
+	 */
+	dropFromTop: boolean | null;
 }
 
 enum AVPNavigationKeys {
@@ -45,8 +71,18 @@ const handleNavigateAVPList = (key: string, index: number, enumList: NodeListOf<
 	}
 };
 
-const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }: AVPListProps): JSX.Element => {
-	const [avpList, setAVPList] = useState(initialAVPList);
+const SolaceAttributeValuePairList = ({
+	readOnly,
+	type,
+	initialAVPList,
+	onAVPListUpdate,
+	avpKeyValidationCallback,
+	avpValueValidationCallback,
+	dropOverIndex,
+	dropFromTop
+}: AVPListProps): JSX.Element => {
+	const [avpList, setAVPList] = useState<AVPItem[]>(initialAVPList);
+	const [errorCount, setErrorCount] = useState(0);
 
 	/**
 	 * on initialAVPList updated
@@ -62,6 +98,37 @@ const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }:
 		onAVPListUpdate(avpList);
 	}, [avpList]);
 
+	/**
+	 * run a full validation process when error total counts change
+	 */
+	useEffect(() => {
+		const list = [...avpList];
+		let count = 0;
+		list.forEach((value, index) => {
+			if (avpKeyValidationCallback) {
+				const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
+				if (error) {
+					list[index]["keyErrorText"] = error;
+					count++;
+				} else if (!error && list[index]["keyErrorText"]) {
+					delete list[index]["keyErrorText"];
+					count--;
+				}
+			}
+			if (avpValueValidationCallback) {
+				const error = avpValueValidationCallback(value.value, list.slice(0, -1));
+				if (error) {
+					list[index]["valueErrorText"] = error;
+					count++;
+				} else if (!error && list[index]["valueErrorText"]) {
+					delete list[index]["valueErrorText"];
+					count--;
+				}
+			}
+		});
+		setErrorCount(count);
+	}, [errorCount]);
+
 	// determine whether an enum item is a ghost item
 	const ghostItem = (index: number): boolean => {
 		return index === avpList.length - 1 ? true : false;
@@ -72,6 +139,7 @@ const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }:
 		const value: string = event.value;
 		const list = [...avpList];
 		list[index][name] = value.trim();
+
 		// add a new row at the end of the list upon input changes
 		if (name && list.length - 1 === index) {
 			list.push({ key: "", value: "" });
@@ -98,13 +166,39 @@ const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }:
 		}
 	};
 
+	const handleInputOnBlur = (event: React.FocusEvent<HTMLInputElement>, index: number) => {
+		const list = [...avpList];
+		let count = 0;
+		if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
+			const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
+			if (error) {
+				list[index]["keyErrorText"] = error;
+				count++;
+			} else if (!error && list[index]["keyErrorText"]) {
+				delete list[index]["keyErrorText"];
+				count--;
+			}
+		} else if (event.target.getAttribute("name") === "value" && avpValueValidationCallback) {
+			const error = avpValueValidationCallback(event.target.value, list.slice(0, -1));
+			if (error) {
+				list[index]["valueErrorText"] = error;
+				count++;
+			} else if (!error && list[index]["valueErrorText"]) {
+				delete list[index]["valueErrorText"];
+				count--;
+			}
+		}
+		setErrorCount(count);
+		setAVPList(list);
+	};
+
 	return (
 		<React.Fragment>
 			{avpList.map((item, index) => {
 				return (
 					<SolaceAttributeValuePair
-						key={index}
-						id={`${index}-${item.key}`}
+						key={`${index}`}
+						id={`${index}`}
 						index={index}
 						avpKey={item.key}
 						avpValue={item.value}
@@ -114,6 +208,12 @@ const SolaceAttributeValuePairList = ({ type, initialAVPList, onAVPListUpdate }:
 						onDelete={handleDeleteItem}
 						onKeyUp={handleKeyUp}
 						ghostItem={ghostItem(index)}
+						onBlur={handleInputOnBlur}
+						keyErrorText={item.keyErrorText}
+						valueErrorText={item.valueErrorText}
+						dropOverIndex={dropOverIndex}
+						dropFromTop={dropFromTop}
+						readOnly={readOnly}
 					/>
 				);
 			})}
