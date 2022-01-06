@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolacePopover } from "@SolaceDev/maas-react-components";
+import { SolaceButton, SolacePopover } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Forms/SolacePopover",
@@ -52,10 +52,34 @@ export default {
 
 const Template: ComponentStory<typeof SolacePopover> = (args) => <SolacePopover {...args} />;
 
-export const DefaultPopover = Template.bind({});
-DefaultPopover.args = {
-	anchorElement: <div>anchor element</div>,
-	children: <div>popover element</div>
+export const DefaultButtonPopover = () => {
+	const renderPopoverContent = () => {
+		return <div>Popover content</div>;
+	};
+	return (
+		<div>
+			<SolacePopover anchorElement={<SolaceButton variant="text">Hover to show Popover</SolaceButton>}>
+				{renderPopoverContent()}
+			</SolacePopover>
+		</div>
+	);
+};
+
+export const PositionedButtonPopover = () => {
+	const renderPopoverContent = () => {
+		return <div>Popover content is now positioned to the bottom left of the button</div>;
+	};
+	return (
+		<div>
+			<SolacePopover
+				anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
+				transformOrigin={{ horizontal: "left", vertical: "top" }}
+				anchorElement={<SolaceButton variant="text">Hover to show Popover</SolaceButton>}
+			>
+				{renderPopoverContent()}
+			</SolacePopover>
+		</div>
+	);
 };
 
 export const PositionedPopover = Template.bind({});

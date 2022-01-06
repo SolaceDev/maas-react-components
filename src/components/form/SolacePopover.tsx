@@ -75,7 +75,9 @@ const SolacePopover = ({
 				{anchorElement}
 			</div>
 			<Popover
-				sx={{ pointerEvents: "none" }}
+				sx={{
+					pointerEvents: "none"
+				}}
 				open={open}
 				anchorEl={anchorEl}
 				anchorReference={anchorReference}
@@ -86,7 +88,16 @@ const SolacePopover = ({
 				disableRestoreFocus
 				marginThreshold={marginThreshold}
 			>
-				{children}
+				<div
+					style={{
+						padding: "16px",
+						borderRadius: "4px",
+						backgroundColor: "#fff",
+						boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.15)"
+					}}
+				>
+					{children}
+				</div>
 			</Popover>
 		</React.Fragment>
 	);
