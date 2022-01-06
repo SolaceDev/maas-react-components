@@ -19,6 +19,18 @@ const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number)
 
 export interface SolaceAttributeValuePairFormProps {
 	/**
+	 * Unique identifier, if `id` is not specified, `name` value will be used
+	 */
+	id?: string;
+	/**
+	 * Name attribute to assign to the AVP form
+	 */
+	name: string;
+	/**
+	 * read only flag
+	 */
+	readOnly?: boolean;
+	/**
 	 * label for the key column
 	 */
 	labelForKeys?: string;
@@ -38,7 +50,7 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * callback function that returns the current AVP list
 	 */
-	onAVPListUpdate: (list: Array<AVPItem>) => void;
+	onAVPListUpdate?: (list: Array<AVPItem>) => void;
 	/**
 	 * validate individual AVP values, the function is triggered onBlur event
 	 */
@@ -50,6 +62,9 @@ export interface SolaceAttributeValuePairFormProps {
 }
 
 const SolaceAttributeValuePairForm = ({
+	id,
+	name,
+	readOnly,
 	labelForKeys = "Name",
 	labelForValues = "DisplayName",
 	initialAVPList = [],
@@ -72,9 +87,11 @@ const SolaceAttributeValuePairForm = ({
 	 * remove the empty key/value pair in each callback
 	 */
 	useEffect(() => {
-		const list = [...avpList];
-		list.splice(-1);
-		onAVPListUpdate(list);
+		if (onAVPListUpdate) {
+			const list = [...avpList];
+			list.splice(-1);
+			onAVPListUpdate(list);
+		}
 	}, [avpList]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
@@ -125,9 +142,13 @@ const SolaceAttributeValuePairForm = ({
 		setDropFromTop(dropFromTop);
 	};
 
+	const getId = () => {
+		return id ? id : name;
+	};
+
 	return (
 		<DragDropContext onDragEnd={handleDragEnd} onDragUpdate={handleDragUpdate}>
-			<Droppable droppableId="avpForm">
+			<Droppable droppableId={getId()}>
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
 						<SolaceAVPFormLabel>
@@ -142,6 +163,7 @@ const SolaceAttributeValuePairForm = ({
 								avpValueValidationCallback={avpValueValidationCallback}
 								dropOverIndex={dropOverIndex}
 								dropFromTop={dropFromTop}
+								readOnly={readOnly}
 							/>
 						</SolaceAVPListContainer>
 						{provided.placeholder}

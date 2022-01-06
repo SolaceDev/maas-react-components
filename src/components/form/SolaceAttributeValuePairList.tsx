@@ -12,6 +12,10 @@ export interface AVPItem {
 
 export interface AVPListProps {
 	/**
+	 * read only flag
+	 */
+	readOnly?: boolean;
+	/**
 	 * TODO: implementation required
 	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
 	 */
@@ -68,6 +72,7 @@ const handleNavigateAVPList = (key: string, index: number, enumList: NodeListOf<
 };
 
 const SolaceAttributeValuePairList = ({
+	readOnly,
 	type,
 	initialAVPList,
 	onAVPListUpdate,
@@ -208,6 +213,7 @@ const SolaceAttributeValuePairList = ({
 						valueErrorText={item.valueErrorText}
 						dropOverIndex={dropOverIndex}
 						dropFromTop={dropFromTop}
+						readOnly={readOnly}
 					/>
 				);
 			})}

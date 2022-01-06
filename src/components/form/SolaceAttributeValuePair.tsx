@@ -129,6 +129,10 @@ export interface SolaceAttributeValuePairProps {
 	 * null: dropping back to the same position or outside of the droppable container
 	 */
 	dropFromTop: boolean | null;
+	/**
+	 * read only flag
+	 */
+	readOnly?: boolean;
 }
 
 export const SolaceAttributeValuePair = ({
@@ -145,7 +149,8 @@ export const SolaceAttributeValuePair = ({
 	keyErrorText,
 	valueErrorText,
 	dropOverIndex,
-	dropFromTop
+	dropFromTop,
+	readOnly
 }: SolaceAttributeValuePairProps) => {
 	return (
 		<Draggable draggableId={id} index={index} isDragDisabled={ghostItem}>
@@ -158,9 +163,11 @@ export const SolaceAttributeValuePair = ({
 					dropFromTop={dropFromTop}
 					index={index}
 				>
-					<SolaceAVPMoveButton {...provided.dragHandleProps} isDragging={snapshot.isDragging} ghostItem={ghostItem}>
-						<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-					</SolaceAVPMoveButton>
+					{!readOnly && (
+						<SolaceAVPMoveButton {...provided.dragHandleProps} isDragging={snapshot.isDragging} ghostItem={ghostItem}>
+							<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+						</SolaceAVPMoveButton>
+					)}
 
 					<SolaceAVPInputForKey>
 						<SolaceTextField
@@ -173,6 +180,7 @@ export const SolaceAttributeValuePair = ({
 							onBlur={(e) => onBlur(e, index)}
 							hasErrors={ghostItem ? false : !!keyErrorText}
 							helperText={ghostItem ? "" : keyErrorText}
+							readOnly={readOnly}
 						/>
 					</SolaceAVPInputForKey>
 
@@ -187,17 +195,20 @@ export const SolaceAttributeValuePair = ({
 							onBlur={(e) => onBlur(e, index)}
 							hasErrors={ghostItem ? false : !!valueErrorText}
 							helperText={ghostItem ? "" : valueErrorText}
+							readOnly={readOnly}
 						/>
 					</SolaceAVPInputForValue>
 
-					<SolaceAVPDeleteButton
-						onClick={(e) => onDelete(e, index)}
-						tabIndex={0}
-						cursor={ghostItem ? "default" : "pointer"}
-						background={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
-					>
-						<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-					</SolaceAVPDeleteButton>
+					{!readOnly && (
+						<SolaceAVPDeleteButton
+							onClick={(e) => onDelete(e, index)}
+							tabIndex={0}
+							cursor={ghostItem ? "default" : "pointer"}
+							background={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
+						>
+							<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+						</SolaceAVPDeleteButton>
+					)}
 				</SolaceAVPContainer>
 			)}
 		</Draggable>
