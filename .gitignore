@@ -5,3 +5,4 @@ node_modules
 storybook/storybook-static
 storybook/build-storybook.log
 *.iml
+.DS_Store
