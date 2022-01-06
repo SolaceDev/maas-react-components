@@ -101,28 +101,31 @@ const SolaceAttributeValuePairList = ({
 	/**
 	 * run a full validation process when error total counts change
 	 */
+	// eslint-disable-next-line sonarjs/cognitive-complexity
 	useEffect(() => {
 		const list = [...avpList];
 		let count = 0;
 		list.forEach((value, index) => {
-			if (avpKeyValidationCallback) {
-				const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
-				if (error) {
-					list[index]["keyErrorText"] = error;
-					count++;
-				} else if (!error && list[index]["keyErrorText"]) {
-					delete list[index]["keyErrorText"];
-					count--;
+			if (index !== list.length - 1) {
+				if (avpKeyValidationCallback) {
+					const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
+					if (error) {
+						list[index]["keyErrorText"] = error;
+						count++;
+					} else if (!error && list[index]["keyErrorText"]) {
+						delete list[index]["keyErrorText"];
+						count--;
+					}
 				}
-			}
-			if (avpValueValidationCallback) {
-				const error = avpValueValidationCallback(value.value, list.slice(0, -1));
-				if (error) {
-					list[index]["valueErrorText"] = error;
-					count++;
-				} else if (!error && list[index]["valueErrorText"]) {
-					delete list[index]["valueErrorText"];
-					count--;
+				if (avpValueValidationCallback) {
+					const error = avpValueValidationCallback(value.value, list.slice(0, -1));
+					if (error) {
+						list[index]["valueErrorText"] = error;
+						count++;
+					} else if (!error && list[index]["valueErrorText"]) {
+						delete list[index]["valueErrorText"];
+						count--;
+					}
 				}
 			}
 		});
@@ -166,30 +169,33 @@ const SolaceAttributeValuePairList = ({
 		}
 	};
 
+	// eslint-disable-next-line sonarjs/cognitive-complexity
 	const handleInputOnBlur = (event: React.FocusEvent<HTMLInputElement>, index: number) => {
-		const list = [...avpList];
-		let count = 0;
-		if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
-			const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
-			if (error) {
-				list[index]["keyErrorText"] = error;
-				count++;
-			} else if (!error && list[index]["keyErrorText"]) {
-				delete list[index]["keyErrorText"];
-				count--;
+		if (index !== avpList.length - 1) {
+			const list = [...avpList];
+			let count = 0;
+			if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
+				const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
+				if (error) {
+					list[index]["keyErrorText"] = error;
+					count++;
+				} else if (!error && list[index]["keyErrorText"]) {
+					delete list[index]["keyErrorText"];
+					count--;
+				}
+			} else if (event.target.getAttribute("name") === "value" && avpValueValidationCallback) {
+				const error = avpValueValidationCallback(event.target.value, list.slice(0, -1));
+				if (error) {
+					list[index]["valueErrorText"] = error;
+					count++;
+				} else if (!error && list[index]["valueErrorText"]) {
+					delete list[index]["valueErrorText"];
+					count--;
+				}
 			}
-		} else if (event.target.getAttribute("name") === "value" && avpValueValidationCallback) {
-			const error = avpValueValidationCallback(event.target.value, list.slice(0, -1));
-			if (error) {
-				list[index]["valueErrorText"] = error;
-				count++;
-			} else if (!error && list[index]["valueErrorText"]) {
-				delete list[index]["valueErrorText"];
-				count--;
-			}
+			setErrorCount(count);
+			setAVPList(list);
 		}
-		setErrorCount(count);
-		setAVPList(list);
 	};
 
 	return (

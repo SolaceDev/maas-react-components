@@ -807,17 +807,7 @@ const theme: ThemeOptions = {
 				padding: "2px 0px",
 				display: "grid",
 				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
-				gridTemplateRows: "auto",
-				label: {
-					":first-of-type": {
-						gridColumnStart: 2,
-						gridColumnEnd: 3
-					},
-					":last-of-type": {
-						gridColumnStart: 4,
-						gridColumnEnd: 5
-					}
-				}
+				gridTemplateRows: "auto"
 			}
 		}
 	},
