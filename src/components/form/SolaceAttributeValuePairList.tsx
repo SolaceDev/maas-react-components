@@ -83,14 +83,12 @@ const SolaceAttributeValuePairList = ({
 }: AVPListProps): JSX.Element => {
 	const [avpList, setAVPList] = useState<AVPItem[]>(initialAVPList);
 	const [errorCount, setErrorCount] = useState(0);
-	const [listLength, setListLength] = useState(0);
 
 	/**
 	 * on initialAVPList updated
 	 */
 	useEffect(() => {
 		setAVPList(initialAVPList);
-		setListLength(avpList.length);
 	}, [initialAVPList]);
 
 	/**
@@ -98,7 +96,6 @@ const SolaceAttributeValuePairList = ({
 	 */
 	useEffect(() => {
 		onAVPListUpdate(avpList);
-		setListLength(avpList.length);
 	}, [avpList]);
 
 	/**
@@ -133,7 +130,7 @@ const SolaceAttributeValuePairList = ({
 			}
 		});
 		setErrorCount(count);
-	}, [errorCount, listLength]);
+	}, [errorCount, avpList.length]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = (index: number): boolean => {
