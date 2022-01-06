@@ -138,7 +138,6 @@ const SolaceAttributeValuePairList = ({
 	};
 
 	const handleInputChange = (event: SolaceTextFieldChangeEvent, index: number) => {
-		console.log(`handleInputChange`);
 		const name: string = event.name;
 		const value: string = event.value;
 		const list = [...avpList];
