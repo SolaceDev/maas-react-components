@@ -807,7 +807,19 @@ const theme: ThemeOptions = {
 				padding: "2px 0px",
 				display: "grid",
 				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
-				gridTemplateRows: "auto"
+				gridTemplateRows: "auto",
+				label: {
+					color: BASE_COLORS.greys.grey11,
+					fontWeight: "medium",
+					":first-of-type": {
+						gridColumnStart: 2,
+						gridColumnEnd: 3
+					},
+					":last-of-type": {
+						gridColumnStart: 4,
+						gridColumnEnd: 5
+					}
+				}
 			}
 		}
 	},

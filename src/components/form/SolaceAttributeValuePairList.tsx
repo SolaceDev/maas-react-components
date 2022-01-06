@@ -130,7 +130,7 @@ const SolaceAttributeValuePairList = ({
 			}
 		});
 		setErrorCount(count);
-	}, [errorCount]);
+	}, [errorCount, avpList.length]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = (index: number): boolean => {

@@ -4,28 +4,9 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import SolaceLabel from "./SolaceLabel";
 import { valueInputTypes } from "./SolaceAttributeValuePair";
 import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePairList";
-import { BASE_COLORS } from "../../resources/colorPallette";
-
-interface SolaceAVPFormLabelProps {
-	readonly: boolean | undefined;
-}
 
 const SolaceAVPFormContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.container);
-const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(({ theme, readonly }) => ({
-	...theme.mixins.formComponent_AVPForm.labelWrapper,
-	label: {
-		color: readonly ? `${BASE_COLORS.greys.grey11}` : `${BASE_COLORS.greys.grey14}`,
-		fontWeight: readonly ? "medium" : "regular",
-		":first-of-type": {
-			gridColumnStart: 2,
-			gridColumnEnd: 3
-		},
-		":last-of-type": {
-			gridColumnStart: 4,
-			gridColumnEnd: 5
-		}
-	}
-}));
+const SolaceAVPFormLabel = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.labelWrapper);
 const SolaceAVPListContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.listWrapper);
 
 const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number): Array<AVPItem> => {
@@ -170,7 +151,7 @@ const SolaceAttributeValuePairForm = ({
 			<Droppable droppableId={getId()}>
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
-						<SolaceAVPFormLabel readonly={readOnly}>
+						<SolaceAVPFormLabel>
 							<SolaceLabel id="avpLabelForKeys">{labelForKeys}</SolaceLabel>
 							<SolaceLabel id="avpLabelForValues">{labelForValues}</SolaceLabel>
 						</SolaceAVPFormLabel>
