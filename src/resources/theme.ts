@@ -768,7 +768,8 @@ const theme: ThemeOptions = {
 			container: {
 				display: "grid",
 				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
-				gridTemplateRows: "auto"
+				gridTemplateRows: "auto",
+				padding: "4px 0px"
 			},
 			moveButton: {
 				paddingTop: "4px",
@@ -800,7 +801,7 @@ const theme: ThemeOptions = {
 				display: "grid",
 				gridTemplateColumns: "auto",
 				gridTemplateRows: "auto",
-				rowGap: "8px"
+				rowGap: "0px"
 			},
 			labelWrapper: {
 				padding: "2px 0px",

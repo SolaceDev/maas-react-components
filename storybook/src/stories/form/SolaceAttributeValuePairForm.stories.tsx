@@ -61,6 +61,7 @@ export const WithoutInitialData = () => {
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
+				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
 				initialAVPList={currentList}
@@ -84,6 +85,7 @@ export const WithData = () => {
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
+				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
 				initialAVPList={currentList}
@@ -93,6 +95,21 @@ export const WithData = () => {
 				<div>Show me the data:</div>
 				<div>{JSON.stringify(currentList)}</div>
 			</div>
+		</div>
+	);
+};
+
+export const ReadOnly = () => {
+	const [currentList, setCurrentList] = useState(SAMPLE_AVP_LIST);
+	return (
+		<div>
+			<SolaceAttributeValuePairForm
+				name="avpForm"
+				readOnly={true}
+				labelForKeys="Keys"
+				labelForValues="Values"
+				initialAVPList={currentList}
+			/>
 		</div>
 	);
 };
@@ -124,6 +141,7 @@ export const WithValidation = () => {
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
+				name="avpForm"
 				initialAVPList={currentList}
 				onAVPListUpdate={handleListUpdate}
 				avpKeyValidationCallback={validateEnumInput}

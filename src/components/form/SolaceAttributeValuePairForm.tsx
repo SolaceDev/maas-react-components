@@ -19,6 +19,18 @@ const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number)
 
 export interface SolaceAttributeValuePairFormProps {
 	/**
+	 * Unique identifier, if `id` is not specified, `name` value will be used
+	 */
+	id?: string;
+	/**
+	 * Name attribute to assign to the AVP form
+	 */
+	name: string;
+	/**
+	 * read only flag
+	 */
+	readOnly?: boolean;
+	/**
 	 * label for the key column
 	 */
 	labelForKeys?: string;
@@ -38,7 +50,7 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * callback function that returns the current AVP list
 	 */
-	onAVPListUpdate: (list: Array<AVPItem>) => void;
+	onAVPListUpdate?: (list: Array<AVPItem>) => void;
 	/**
 	 * validate individual AVP values, the function is triggered onBlur event
 	 */
@@ -50,6 +62,9 @@ export interface SolaceAttributeValuePairFormProps {
 }
 
 const SolaceAttributeValuePairForm = ({
+	id,
+	name,
+	readOnly,
 	labelForKeys = "Name",
 	labelForValues = "DisplayName",
 	initialAVPList = [],
@@ -58,6 +73,8 @@ const SolaceAttributeValuePairForm = ({
 	avpValueValidationCallback
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [avpList, setAVPList] = useState(initialAVPList);
+	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
+	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
 	/**
 	 * add append empty key/value pair on initial rendering, works as componentDidMount
 	 */
@@ -70,9 +87,11 @@ const SolaceAttributeValuePairForm = ({
 	 * remove the empty key/value pair in each callback
 	 */
 	useEffect(() => {
-		const list = [...avpList];
-		list.splice(-1);
-		onAVPListUpdate(list);
+		if (onAVPListUpdate) {
+			const list = [...avpList];
+			list.splice(-1);
+			onAVPListUpdate(list);
+		}
 	}, [avpList]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
@@ -99,11 +118,37 @@ const SolaceAttributeValuePairForm = ({
 		const reorderedList = reorderList(avpList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
+		setDropOverIndex(null); // reset drop over index on drag end
+		setDropFromTop(null); // reset drop over direction on drag end
+	};
+
+	/**
+	 * update drop over index & direction on drag update
+	 * this allows to apply visual indicators to UI elements based on dragging behaviours
+	 */
+	const handleDragUpdate = (update: any) => {
+		const sourceIndex: number | null = update.source.index;
+		const destinationIndex: number | null = update.destination.index;
+		const dropOverIndex: number | null = destinationIndex;
+		let dropFromTop: boolean | null = null;
+		if (sourceIndex !== null && destinationIndex !== null) {
+			if (sourceIndex > destinationIndex) {
+				dropFromTop = false;
+			} else if (sourceIndex < destinationIndex) {
+				dropFromTop = true;
+			}
+		}
+		setDropOverIndex(dropOverIndex);
+		setDropFromTop(dropFromTop);
+	};
+
+	const getId = () => {
+		return id ? id : name;
 	};
 
 	return (
-		<DragDropContext onDragEnd={handleDragEnd}>
-			<Droppable droppableId="avpForm">
+		<DragDropContext onDragEnd={handleDragEnd} onDragUpdate={handleDragUpdate}>
+			<Droppable droppableId={getId()}>
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
 						<SolaceAVPFormLabel>
@@ -116,6 +161,9 @@ const SolaceAttributeValuePairForm = ({
 								onAVPListUpdate={handleListUpdate}
 								avpKeyValidationCallback={avpKeyValidationCallback}
 								avpValueValidationCallback={avpValueValidationCallback}
+								dropOverIndex={dropOverIndex}
+								dropFromTop={dropFromTop}
+								readOnly={readOnly}
 							/>
 						</SolaceAVPListContainer>
 						{provided.placeholder}

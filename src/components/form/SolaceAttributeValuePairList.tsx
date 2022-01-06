@@ -12,6 +12,10 @@ export interface AVPItem {
 
 export interface AVPListProps {
 	/**
+	 * read only flag
+	 */
+	readOnly?: boolean;
+	/**
 	 * TODO: implementation required
 	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
 	 */
@@ -32,6 +36,18 @@ export interface AVPListProps {
 	 * validate individual AVP values, the function is triggered by onBlur event
 	 */
 	avpValueValidationCallback?: (input: string, values: Array<AVPItem>) => string;
+	/**
+	 * index of the element that is being dragged over with
+	 * the index is updated on dragging
+	 */
+	dropOverIndex: number | null;
+	/**
+	 * dropping over state with three possible values:
+	 * true: dropping from top to bottom
+	 * false: dropping from bottom to top
+	 * null: dropping back to the same position or outside of the droppable container
+	 */
+	dropFromTop: boolean | null;
 }
 
 enum AVPNavigationKeys {
@@ -56,11 +72,14 @@ const handleNavigateAVPList = (key: string, index: number, enumList: NodeListOf<
 };
 
 const SolaceAttributeValuePairList = ({
+	readOnly,
 	type,
 	initialAVPList,
 	onAVPListUpdate,
 	avpKeyValidationCallback,
-	avpValueValidationCallback
+	avpValueValidationCallback,
+	dropOverIndex,
+	dropFromTop
 }: AVPListProps): JSX.Element => {
 	const [avpList, setAVPList] = useState<AVPItem[]>(initialAVPList);
 	const [errorCount, setErrorCount] = useState(0);
@@ -178,8 +197,8 @@ const SolaceAttributeValuePairList = ({
 			{avpList.map((item, index) => {
 				return (
 					<SolaceAttributeValuePair
-						key={index}
-						id={`${index}-${item.key}`}
+						key={`${index}`}
+						id={`${index}`}
 						index={index}
 						avpKey={item.key}
 						avpValue={item.value}
@@ -192,6 +211,9 @@ const SolaceAttributeValuePairList = ({
 						onBlur={handleInputOnBlur}
 						keyErrorText={item.keyErrorText}
 						valueErrorText={item.valueErrorText}
+						dropOverIndex={dropOverIndex}
+						dropFromTop={dropFromTop}
+						readOnly={readOnly}
 					/>
 				);
 			})}
