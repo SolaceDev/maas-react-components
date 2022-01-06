@@ -1,5 +1,5 @@
 import { TextField, useTheme } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -78,6 +78,22 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
 	onChange?: (event: SolaceTextFieldChangeEvent) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` loses focus
+	 */
+	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` receives key down event
+	 */
+	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` receives key up event
+	 */
+	onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` is focused
+	 */
+	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 function SolaceTextField({
@@ -98,15 +114,14 @@ function SolaceTextField({
 	disabled = false,
 	readOnly = false,
 	onChange,
+	onBlur,
+	onKeyDown,
+	onKeyUp,
+	onFocus,
 	dataQa,
 	dataTags
 }: SolaceTextFieldProps): JSX.Element {
 	const theme = useTheme();
-	const [textValue, setTextValue] = useState(value);
-
-	useEffect(() => {
-		setTextValue(value);
-	}, [value]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (onChange) {
@@ -149,8 +164,12 @@ function SolaceTextField({
 			}}
 			margin="dense"
 			placeholder={placeholder}
-			value={textValue}
+			value={value}
 			onChange={handleChange}
+			onBlur={onBlur}
+			onKeyDown={onKeyDown}
+			onKeyUp={onKeyUp}
+			onFocus={onFocus}
 		/>
 	);
 

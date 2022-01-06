@@ -20,6 +20,8 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	children?: string | JSX.Element;
 }
 
+// Todo: Refactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed
+// eslint-disable-next-line sonarjs/cognitive-complexity
 function SolaceButton({
 	id,
 	variant = "text",
@@ -45,7 +47,7 @@ function SolaceButton({
 
 	if (variant === "icon") {
 		return (
-			<Tooltip title={title} arial-lable={title}>
+			<Tooltip title={title} arial-label={title}>
 				<IconButton
 					data-qa={dataQa}
 					data-tags={dataTags}
@@ -75,7 +77,7 @@ function SolaceButton({
 			};
 		}
 		return (
-			<Tooltip title={title} arial-lable={title}>
+			<Tooltip title={title} arial-label={title}>
 				<Link
 					id={id}
 					data-qa={dataQa}
@@ -115,7 +117,7 @@ function SolaceButton({
 		}
 
 		return (
-			<Tooltip title={title} arial-lable={title}>
+			<Tooltip title={title} arial-label={title}>
 				<Button
 					id={id}
 					data-qa={dataQa}

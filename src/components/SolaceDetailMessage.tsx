@@ -29,7 +29,7 @@ const Container = styled("div")(({ theme }) => ({
 	flexDirection: "column",
 	alignItems: "center",
 	fontFamily: theme.typography.fontFamily,
-	"& :not(:first-child)": {
+	"& :not(:first-of-type)": {
 		marginLeft: theme.spacing(1.5)
 	}
 }));
@@ -64,7 +64,9 @@ const ButtonGroup = styled("div")(() => ({
 function SolaceDetailMessage({ msgImg, title, details, actions }: SolaceDetailMessageProps): JSX.Element {
 	const buildActionButtons = () => {
 		const buttons: JSX.Element[] = [];
-		actions?.forEach((action: SolaceButtonProps) => buttons.push(<SolaceButton key={action.id} {...action} />));
+		actions?.forEach((action: SolaceButtonProps) =>
+			buttons.push(<SolaceButton data-qa={action.id} key={action.id} {...action} />)
+		);
 		return buttons;
 	};
 

@@ -1,4 +1,4 @@
-name: "On Push"
+name: "On Push to Main"
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
         with:
           tag-prefix: ""
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
   deploy-to-pages:

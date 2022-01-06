@@ -2,6 +2,8 @@ import { ThemeOptions } from "@material-ui/core";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
+const noneImportant = "none !important";
+
 // A custom theme for this app
 const theme: ThemeOptions = {
 	breakpoints: {
@@ -197,16 +199,25 @@ const theme: ThemeOptions = {
 				},
 				root: {
 					color: BASE_COLORS.greys.grey14,
-					fontSize: "0.875rem",
+					fontSize: "14px",
 					fontWeight: 400,
 					lineHeight: 1.5,
 					"&.Mui-error": {
 						color: BASE_COLORS.greys.grey11
 					},
-					"&.Mui-disabled": {
+					"&.light-sub-text": {
 						color: BASE_COLORS.greys.grey9
 					},
-					"&.SolaceStackLabel-bold": {
+					"&.Mui-disabled": {
+						color: BASE_COLORS.greys.grey9,
+						"&.check-box-label": {
+							color: BASE_COLORS.greys.grey5
+						},
+						"&.radio-btn-label": {
+							color: BASE_COLORS.greys.grey5
+						}
+					},
+					"&.bold-label": {
 						fontWeight: 500
 					},
 					"&.read-only": {
@@ -242,8 +253,14 @@ const theme: ThemeOptions = {
 						marginRight: "20px",
 						display: "inline-table", // this ensures helper text is below textarea
 						minWidth: "354px",
+						backgroundColor: "transparent", // set background transparent on TextArea input container
 						".MuiOutlinedInput-notchedOutline": {
 							border: "none"
+						},
+						"&.inline-label": {
+							".MuiOutlinedInput-input:read-only": {
+								padding: "1px" // top align with label in ready-only & inline state
+							}
 						}
 					},
 					".MuiOutlinedInput-input": {
@@ -254,8 +271,9 @@ const theme: ThemeOptions = {
 					"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
 						{
 							border: "none",
-							padding: "0px",
-							cursor: "default"
+							padding: "7px 0 0 0",
+							cursor: "default",
+							backgroundColor: "transparent" // set background transparent on TextArea input container in readonly state
 						},
 					"&:hover": {
 						".MuiOutlinedInput-input": {
@@ -484,7 +502,7 @@ const theme: ThemeOptions = {
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 						// remove MenuList open/close animation
 						// currently applied to SolaceSelect component
-						transition: "none !important",
+						transition: noneImportant,
 						".MuiMenuItem-root": {
 							fontSize: "14px",
 							"&.Mui-selected": {
@@ -496,8 +514,8 @@ const theme: ThemeOptions = {
 								// remove all ripple effect from MenuList Items
 								// currently applied to SolaceSelect component
 								"*,*::before,*::after": {
-									transition: "none !important",
-									animation: "none !important"
+									transition: noneImportant,
+									animation: noneImportant
 								}
 							},
 							".MuiGrid-root.MuiGrid-container": {
@@ -543,7 +561,7 @@ const theme: ThemeOptions = {
 						backgroundColor: BASE_COLORS.greys.grey2
 					},
 					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused ": {
-						backgroundColor: getRGBA(BASE_COLORS.greens["green1-rgb"], 0.1)
+						backgroundColor: getRGBA(BASE_COLORS.greens.green1_rgb, 0.1)
 					},
 					boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 					color: BASE_COLORS.greys.grey14,
@@ -571,7 +589,7 @@ const theme: ThemeOptions = {
 								transform: "translate(22px)"
 							},
 							"&.Mui-checked + .MuiSwitch-track": {
-								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
+								backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
 								opacity: 1
 							},
 							"&.Mui-disabled + .MuiSwitch-track": {
@@ -583,13 +601,13 @@ const theme: ThemeOptions = {
 								borderColor: BASE_COLORS.greys.grey2
 							},
 							"&:hover": {
-								backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35)
+								backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35)
 							}
 						},
 						".MuiSwitch-thumb": {
 							width: "16px",
 							height: "16px",
-							border: `solid 2px ${getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35)}`,
+							border: `solid 2px ${getRGBA(BASE_COLORS.greens.green2_rgb, 0.35)}`,
 							boxShadow: "none"
 						}
 					},
@@ -597,7 +615,7 @@ const theme: ThemeOptions = {
 						height: "12px",
 						width: "36px",
 						transform: "translateY(1px)",
-						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
+						backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
 						opacity: 1
 					}
 				},
@@ -605,7 +623,7 @@ const theme: ThemeOptions = {
 					"&.MuiChecked .MuiSwitch-track": {
 						height: "12px",
 						transform: "translateY(1px)",
-						backgroundColor: getRGBA(BASE_COLORS.greens["green2-rgb"], 0.35),
+						backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
 						opacity: 1
 					}
 				}
@@ -639,7 +657,7 @@ const theme: ThemeOptions = {
 						},
 						".MuiDialogActions-root": {
 							padding: "24px 0px 0px 0px",
-							"& > :not(:nth-child(1))": {
+							"& > :not(:nth-of-type(1))": {
 								marginLeft: "16px"
 							}
 						}
@@ -703,31 +721,33 @@ const theme: ThemeOptions = {
 	},
 	mixins: {
 		/** SolaceSidePanelLayout Component */
-		sidePanelLayout_mainPanel: {
-			height: "100%",
-			width: "100%",
-			padding: "0px",
-			display: "grid",
-			backgroundColor: BASE_COLORS.whites.white1,
-			overflowY: "auto"
-		},
-		sidePanelLayout_contentPanelSection: {
-			display: "flex",
-			height: "100%",
-			overflowY: "auto",
-			flexDirection: "column",
-			alignItems: "left",
-			padding: "0px"
-		},
-		sidePanelLayout_rightSidePanelSection: {
-			height: "100%",
-			overflowY: "auto",
-			borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`
-		},
-		sidePanelLayout_leftSidePanelSection: {
-			height: "100%",
-			overflowY: "auto",
-			borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+		sidePanelLayout: {
+			wrapper: {
+				height: "100%",
+				width: "100%",
+				padding: "0px",
+				display: "grid",
+				backgroundColor: BASE_COLORS.whites.white1,
+				overflowY: "auto"
+			},
+			content: {
+				display: "flex",
+				height: "100%",
+				overflowY: "auto",
+				flexDirection: "column",
+				alignItems: "left",
+				padding: "0px"
+			},
+			left: {
+				height: "100%",
+				overflowY: "auto",
+				borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+			},
+			right: {
+				height: "100%",
+				overflowY: "auto",
+				borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`
+			}
 		},
 		/** ErrorText for form components */
 		formComponent_ErrorText: {
@@ -735,13 +755,59 @@ const theme: ThemeOptions = {
 				display: "flex",
 				flexDirection: "row",
 				justifyContent: "flex-start",
-				alignItems: "center",
-				marginTop: "12px"
+				marginTop: "2px"
 			},
 			label: {
 				color: BASE_COLORS.reds.red1,
 				fontSize: BASE_FONT_PX_SIZES.xs,
 				marginLeft: "8px"
+			}
+		},
+		/** Attribute Value Pair (AVP) for form components */
+		formComponent_AVPItem: {
+			container: {
+				display: "grid",
+				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
+				gridTemplateRows: "auto",
+				padding: "4px 0px"
+			},
+			moveButton: {
+				paddingTop: "4px",
+				paddingLeft: "4px",
+				justifyItems: "end"
+			},
+			deleteButton: {
+				paddingTop: "4px",
+				paddingLeft: "4px",
+				borderRadius: "4px",
+				justifyItems: "start"
+			},
+			inputWrapperForKey: {
+				gridColumnStart: 2,
+				gridColumnEnd: 3
+			},
+			inputWrapperForValue: {
+				gridColumnStart: 4,
+				gridColumnEnd: 5
+			}
+		},
+		formComponent_AVPForm: {
+			container: {
+				backgroundColor: "transparent",
+				minWidth: "500px",
+				maxWidth: "900px"
+			},
+			listWrapper: {
+				display: "grid",
+				gridTemplateColumns: "auto",
+				gridTemplateRows: "auto",
+				rowGap: "0px"
+			},
+			labelWrapper: {
+				padding: "2px 0px",
+				display: "grid",
+				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
+				gridTemplateRows: "auto"
 			}
 		}
 	},
@@ -793,13 +859,27 @@ const theme: ThemeOptions = {
 
 declare module "@material-ui/core/styles/createMixins" {
 	interface Mixins {
-		sidePanelLayout_leftSidePanelSection: React.CSSProperties;
-		sidePanelLayout_rightSidePanelSection: React.CSSProperties;
-		sidePanelLayout_contentPanelSection: React.CSSProperties;
-		sidePanelLayout_mainPanel: React.CSSProperties;
+		sidePanelLayout: {
+			wrapper: CSSProperties;
+			content: CSSProperties;
+			left: CSSProperties;
+			right: CSSProperties;
+		};
 		formComponent_ErrorText: {
 			container: CSSProperties;
 			label: CSSProperties;
+		};
+		formComponent_AVPItem: {
+			container: CSSProperties;
+			moveButton: CSSProperties;
+			deleteButton: CSSProperties;
+			inputWrapperForKey: CSSProperties;
+			inputWrapperForValue: CSSProperties;
+		};
+		formComponent_AVPForm: {
+			container: CSSProperties;
+			listWrapper: CSSProperties;
+			labelWrapper: CSSProperties;
 		};
 	}
 }

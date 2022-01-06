@@ -1,12 +1,10 @@
-# .github/workflows/chromatic.yml
+name: "Deploy Chromatic"
 
-# Workflow name
-name: "Chromatic"
+on:
+  push:
+    branches:
+      - "main"
 
-# Event for the workflow
-on: push
-
-# List of jobs
 jobs:
   chromatic-deployment:
     name: "Deploy Storybook to Chromatic"

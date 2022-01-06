@@ -81,7 +81,7 @@ interface TablePropType extends SolaceComponentProps {
 const TableWrapper = styled("div")(({ theme }) => ({
 	display: "flex",
 	flexDirection: "column",
-	border: `1px solid ${BASE_COLORS.greys.grey2}`,
+	border: `1px solid ${BASE_COLORS.greys.grey24}`,
 	width: "100%",
 	height: "100%",
 	minHeight: "200px",
@@ -108,6 +108,7 @@ const EmptyState = styled("div")(() => ({
 const DEFAULT_EMPTY_MESSAGE = "No Items Found";
 
 function SolaceTable({
+	id,
 	rows,
 	columns,
 	selectionType,
@@ -152,7 +153,7 @@ function SolaceTable({
 
 	return (
 		<TableWrapper>
-			<StyledTable>
+			<StyledTable data-qa={id}>
 				<thead>{columnNodes}</thead>
 				<tbody>{!!rows.length && rowNodes}</tbody>
 			</StyledTable>

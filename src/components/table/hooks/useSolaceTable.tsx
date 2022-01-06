@@ -16,24 +16,29 @@ import { styled } from "@material-ui/core";
 import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 import { BASE_COLORS } from "../../../resources/colorPallette";
+import clsx from "clsx";
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
-	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
-	marginLeft: theme.spacing(0.5),
+	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
 	height: "32px",
 	"&.selected": {
 		backgroundColor: "#e8f9f4"
 	},
+	"&.clickable": {
+		cursor: "pointer"
+	},
 	"&:hover": {
-		background: "#e5e5e5",
+		background: `${BASE_COLORS.greys.grey24}`,
 		"&.header": {
 			background: "transparent"
 		}
 	},
 	"&:hover + tr td table": {
-		background: "#e5e5e5"
+		background: `${BASE_COLORS.greys.grey24}`
+	},
+	"td:first-of-type, th:first-of-type": {
+		paddingLeft: `${theme.spacing(2)}`
 	}
 }));
 
@@ -88,6 +93,8 @@ export const useSolaceTable = (
 	rowHoverCallback?: (row: TableRow) => void,
 	hasColumnHiding?: boolean,
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void
+	// TODO: Refactor this function to reduce its Cognitive Complexity from 107 to the 15 allowed
+	// eslint-disable-next-line sonarjs/cognitive-complexity
 ): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
 	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
@@ -194,7 +201,11 @@ export const useSolaceTable = (
 				key={row.id}
 				onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
 				onClick={() => updateSelection(row)}
-				className={row.rowSelected ? "selected" : ""}
+				className={clsx({
+					selected: row.rowSelected,
+					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
+				})}
+				data-qa={row.id}
 			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
@@ -237,7 +248,10 @@ export const useSolaceTable = (
 				key={row.id}
 				onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
 				onClick={() => updateSelection(row)}
-				className={row.rowSelected ? "selected" : ""}
+				className={clsx({
+					selected: row.rowSelected,
+					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
+				})}
 			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),

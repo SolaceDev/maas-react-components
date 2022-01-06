@@ -13,6 +13,7 @@ export { default as SolaceRadio } from "./components/form/SolaceRadio";
 export { default as SolaceRadioGroup } from "./components/form/SolaceRadioGroup";
 export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceChip } from "./components/SolaceChip";
+export { default as SolaceErrorBox } from "./components/SolaceErrorBox";
 export { default as SolaceTabs } from "./components/layout/SolaceTabs";
 export { default as SolaceSidePanelLayout } from "./components/layout/SolaceSidePanelLayout";
 export { PANEL_POSITION as SolacePanelPosition } from "./components/layout/SolaceSidePanelLayout";
@@ -35,5 +36,6 @@ export { useExpandableRows } from "./components/table/hooks/useExpandableRows";
 export { default as SolacePagination } from "./components/SolacePagination";
 export { default as SolaceCodeEditor } from "./components/form/SolaceCodeEditor";
 export { default as SolacePopover } from "./components/form/SolacePopover";
+export { default as SolaceAttributeValuePairForm } from "./components/form/SolaceAttributeValuePairForm";
 
 export { default as SolaceTheme } from "./resources/theme";

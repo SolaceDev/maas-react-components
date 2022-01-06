@@ -1,5 +1,5 @@
 import { TextField, useTheme } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -102,11 +102,6 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	dataTags
 }) => {
 	const theme = useTheme();
-	const [textValue, setTextValue] = useState(value);
-
-	useEffect(() => {
-		setTextValue(value);
-	}, [value]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (onChange) {
@@ -145,11 +140,12 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 			InputProps={{
 				sx: { height: theme.spacing(4) },
 				disabled: disabled,
-				required: required
+				required: required,
+				className: inlineLabel ? "inline-label" : ""
 			}}
 			margin="dense"
 			placeholder={placeholder}
-			value={textValue}
+			value={value}
 			onChange={handleChange}
 		/>
 	);
