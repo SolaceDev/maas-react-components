@@ -61,7 +61,7 @@ export interface SolaceRadioProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag to set the radio to readOnly
 	 */
-	readOnly: boolean;
+	readOnly?: boolean;
 }
 
 interface LabelElementProps {
