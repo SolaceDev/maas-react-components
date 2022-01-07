@@ -6,10 +6,16 @@ import { BASE_FONT_PX_SIZES } from "./typography";
 const noneImportant = "none !important";
 // These colorMappings would replace hardcoded colors in the theme specified below.
 // https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
-// const themeMappings = getThemeMappings();
+// this eslint tag can be removed once we start using themeMappings.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getTheme = (_theme: "sap" | "solace") => {
+	// const themeMappings = getThemeMappings(theme);
+	// console.log(themeMappings);
+	return themeConfig;
+};
 
 // A custom theme for this app
-const theme: ThemeOptions = {
+const themeConfig: ThemeOptions = {
 	breakpoints: {
 		values: {
 			// desktop
@@ -45,6 +51,7 @@ const theme: ThemeOptions = {
 				containedPrimary: {
 					color: BASE_COLORS.whites.white1,
 					"&:hover": {
+						// example: Theme usage will change this to backgroundColor: themeMappings.hoverBG
 						backgroundColor: BASE_COLORS.greens.green5
 					},
 					"&:disabled": {
@@ -899,4 +906,4 @@ declare module "@material-ui/core/styles/createMixins" {
 		};
 	}
 }
-export default theme;
+export default getTheme;
