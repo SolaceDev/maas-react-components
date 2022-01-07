@@ -1,7 +1,6 @@
 import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography } from "@material-ui/core";
-import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 import { Fragment, useState } from "react";
-import SolaceButton from "./form/SolaceButton";
+import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { groupBy, flatten } from "lodash";
 import clsx from "clsx";
@@ -46,6 +45,10 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 interface SolaceMenuProps extends SolaceComponentProps {
 	index: number;
 	/**
+	 * Attributes to customize menu button
+	 */
+	buttonProps: SolaceButtonProps;
+	/**
 	 * An array of options when using default menu
 	 */
 	items?: SolaceMenuItemProps[];
@@ -53,8 +56,6 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 * Header of menu when using default menu
 	 */
 	header?: string;
-
-	disableButton?: boolean;
 	/**
 	 * optional attribute to change the position of menu popper only for default menu
 	 */
@@ -74,9 +75,9 @@ interface SolaceMenuProps extends SolaceComponentProps {
 export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	const {
 		index,
+		buttonProps,
 		items,
 		header,
-		disableButton,
 		multiline = false,
 		anchorOrigin = { vertical: "bottom", horizontal: "left" },
 		renderCustomMenuItems,
@@ -152,21 +153,12 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 
 	return (
 		<Fragment>
-			<SolaceButton
-				id={`moreButton-${index}`}
-				key={`key-moreButton-${index}`}
-				onClick={handleMenuClick}
-				isDisabled={disableButton}
-				variant={"icon"}
-				data-qa={dataQa}
-				data-tags={dataTags}
-			>
-				<MoreHorizOutlinedIcon />
-			</SolaceButton>
-
+			<SolaceButton {...buttonProps} onClick={handleMenuClick} />
 			<Menu
 				id={`menu-${index}`}
 				key={`key-menu-${index}`}
+				data-qa={dataQa}
+				data-tags={dataTags}
 				anchorEl={anchorEl}
 				open={Boolean(anchorEl)}
 				anchorOrigin={anchorOrigin}

@@ -501,6 +501,7 @@ const theme: ThemeOptions = {
 					".MuiPaper-root": {
 						overflowY: "auto",
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
+						margin: "4px",
 
 						".MuiMenuItem-root": {
 							display: "flex",

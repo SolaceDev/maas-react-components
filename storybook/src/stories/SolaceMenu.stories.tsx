@@ -1,10 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceMenu, SolaceButton } from "@SolaceDev/maas-react-components";
+import { SolaceMenu, SolaceButton, SolaceCheckBox, DeleteIcon } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-// import LaunchIcon from "@material-ui/icons/Launch";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import { MoreHorizOutlinedIcon } from "../../../src/resources/icons/MoreHorizOutlinedIcon";
 import {
 	MenuList,
 	MenuItem,
@@ -14,15 +12,8 @@ import {
 	Typography,
 	ListItem,
 	List,
-	Checkbox,
-	ListItemButton,
-	IconButton
+	ListItemButton
 } from "@material-ui/core";
-import ContentCut from "@material-ui/icons/ContentCut";
-import ContentCopy from "@material-ui/icons/ContentCopy";
-import Cloud from "@material-ui/icons/Cloud";
-import ContentPaste from "@material-ui/icons/ContentPaste";
-import CommentIcon from "@material-ui/icons/Comment";
 
 export default {
 	title: "Under Construction/SolaceMenu",
@@ -35,10 +26,44 @@ const Template: ComponentStory<typeof SolaceMenu> = (args) => <SolaceMenu {...ar
 
 const SUBTEXT = "Subtext subtext";
 const SUPPLEMENTALText = "Supplemental text";
+const TITLE = "More actions!";
 
 export const DefaultSolaceMenu = Template.bind({});
 DefaultSolaceMenu.args = {
 	index: 1,
+	buttonProps: {
+		title: TITLE,
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
+	dataQa: "testDataProp",
+	dataTags: "testDataTag1",
+	items: [
+		{
+			name: "Option 1",
+			onMenuItemClick: action("callback"),
+			dataQa: "testDataProp2",
+			dataTags: "testDataTag2"
+		},
+		{
+			name: "Option 2",
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 3",
+			onMenuItemClick: action("callback")
+		}
+	]
+};
+
+export const TextMenuButton = Template.bind({});
+TextMenuButton.args = {
+	index: 1,
+	buttonProps: {
+		title: TITLE,
+		variant: "text",
+		children: "Click"
+	},
 	dataQa: "testDataProp",
 	dataTags: "testDataTag1",
 	items: [
@@ -62,6 +87,11 @@ DefaultSolaceMenu.args = {
 export const MultilineSolaceMenu = Template.bind({});
 MultilineSolaceMenu.args = {
 	index: 1,
+	buttonProps: {
+		title: TITLE,
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
 	items: [
 		{
 			name: "Option 1",
@@ -88,6 +118,11 @@ MultilineSolaceMenu.args = {
 export const SecondaryActionSolaceMenu = Template.bind({});
 SecondaryActionSolaceMenu.args = {
 	index: 1,
+	buttonProps: {
+		title: TITLE,
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
 	items: [
 		{
 			name: "Option 1",
@@ -110,6 +145,11 @@ SecondaryActionSolaceMenu.args = {
 export const DisabledMenuItem = Template.bind({});
 DisabledMenuItem.args = {
 	index: 1,
+	buttonProps: {
+		title: TITLE,
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
 	items: [
 		{
 			name: "Option 1",
@@ -137,27 +177,32 @@ DisabledMenuItem.args = {
 export const IconMenuItem = Template.bind({});
 IconMenuItem.args = {
 	index: 1,
+	buttonProps: {
+		title: TITLE,
+		variant: "text",
+		children: "Click"
+	},
 	items: [
 		{
 			name: "Option 1",
 			subText: SUBTEXT,
 			supplementalText: SUPPLEMENTALText,
 			onMenuItemClick: action("callback"),
-			icon: <EditOutlinedIcon fontSize="small" />
+			icon: <DeleteIcon />
 		},
 		{
 			name: "Option 2",
 			subText: SUBTEXT,
 			supplementalText: SUPPLEMENTALText,
 			onMenuItemClick: action("callback"),
-			icon: <EditOutlinedIcon fontSize="small" />
+			icon: <DeleteIcon />
 		},
 		{
 			name: "Option 3",
 			subText: SUBTEXT,
 			supplementalText: SUPPLEMENTALText,
 			onMenuItemClick: action("callback"),
-			icon: <DeleteOutlineOutlinedIcon fontSize="small" />
+			icon: <DeleteIcon />
 		}
 	],
 	multiline: true
@@ -166,6 +211,11 @@ IconMenuItem.args = {
 export const CustomPositionMenu = Template.bind({});
 CustomPositionMenu.args = {
 	index: 1,
+	buttonProps: {
+		title: TITLE,
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
 	items: [
 		{
 			name: "Option 1",
@@ -193,6 +243,11 @@ CustomPositionMenu.args = {
 export const HeaderAndCategoryHeading = Template.bind({});
 HeaderAndCategoryHeading.args = {
 	index: 1,
+	buttonProps: {
+		title: TITLE,
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
 	items: [
 		{
 			name: "Option 1",
@@ -226,27 +281,18 @@ export const CustomMenuItems = (): JSX.Element => {
 		return (
 			<MenuList id={`${index}`}>
 				<MenuItem>
-					<ListItemIcon>
-						<ContentCut fontSize="small" />
-					</ListItemIcon>
 					<ListItemText>Cut</ListItemText>
 					<Typography variant="body2" color="text.secondary">
 						⌘X
 					</Typography>
 				</MenuItem>
 				<MenuItem>
-					<ListItemIcon>
-						<ContentCopy fontSize="small" />
-					</ListItemIcon>
 					<ListItemText>Copy</ListItemText>
 					<Typography variant="body2" color="text.secondary">
 						⌘C
 					</Typography>
 				</MenuItem>
 				<MenuItem>
-					<ListItemIcon>
-						<ContentPaste fontSize="small" />
-					</ListItemIcon>
 					<ListItemText>Paste</ListItemText>
 					<Typography variant="body2" color="text.secondary">
 						⌘V
@@ -254,20 +300,27 @@ export const CustomMenuItems = (): JSX.Element => {
 				</MenuItem>
 				<Divider />
 				<MenuItem>
-					<ListItemIcon>
-						<Cloud fontSize="small" />
-					</ListItemIcon>
 					<ListItemText>Web Clipboard</ListItemText>
 				</MenuItem>
 			</MenuList>
 		);
 	}
 
-	return <SolaceMenu index={1} renderCustomMenuItems={renderCustomMenuItems}></SolaceMenu>;
+	return (
+		<SolaceMenu
+			index={1}
+			buttonProps={{
+				title: TITLE,
+				variant: "icon",
+				children: <MoreHorizOutlinedIcon />
+			}}
+			renderCustomMenuItems={renderCustomMenuItems}
+		></SolaceMenu>
+	);
 };
 
 export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
-	const [checked, setChecked] = React.useState([0]);
+	const [checked, setChecked] = React.useState([]);
 
 	const handleToggle = (value: number) => () => {
 		const currentIndex = checked.indexOf(value);
@@ -291,20 +344,14 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 						<ListItem
 							key={value}
 							secondaryAction={
-								<IconButton edge="end" aria-label="comments">
-									<CommentIcon />
-								</IconButton>
+								<SolaceButton title="Delete" variant="icon">
+									<DeleteIcon />
+								</SolaceButton>
 							}
 						>
 							<ListItemButton role={undefined} onClick={handleToggle(value)} dense>
 								<ListItemIcon>
-									<Checkbox
-										edge="start"
-										checked={checked.indexOf(value) !== -1}
-										tabIndex={-1}
-										disableRipple
-										inputProps={{ "aria-labelledby": labelId }}
-									/>
+									<SolaceCheckBox name={labelId} checked={checked.indexOf(value) !== -1} />
 								</ListItemIcon>
 								<ListItemText id={labelId} primary={`Line item ${value + 1}`} />
 							</ListItemButton>
@@ -315,5 +362,15 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 		);
 	}
 
-	return <SolaceMenu index={1} renderCustomMenuItems={renderCustomMenuItems}></SolaceMenu>;
+	return (
+		<SolaceMenu
+			index={1}
+			buttonProps={{
+				title: TITLE,
+				variant: "icon",
+				children: <MoreHorizOutlinedIcon />
+			}}
+			renderCustomMenuItems={renderCustomMenuItems}
+		></SolaceMenu>
+	);
 };
