@@ -99,6 +99,37 @@ export const WithData = () => {
 	);
 };
 
+export const UpdateData = () => {
+	const [currentList, setCurrentList] = useState([]);
+
+	// useEffect(() => {
+	// 	console.log(`#use effect`);
+	// 	setCurrentList(currentList);
+	// }, [currentList]);
+
+	const handleListUpdate = (updatedList: Array<AVPItem>) => {
+		console.log(`#handle list update: ${updatedList.length}`);
+		setCurrentList(updatedList);
+	};
+	console.log(`#render: currentList: ${currentList.length}`);
+	return (
+		<div>
+			<SolaceAttributeValuePairForm
+				name="updateAVPForm"
+				labelForKeys="Keys"
+				labelForValues="Values"
+				initialAVPList={currentList}
+				onAVPListUpdate={handleListUpdate}
+			/>
+			<button onClick={() => handleListUpdate(SAMPLE_AVP_LIST)}>Update Data</button>
+			<div style={{ marginTop: 20 }}>
+				<div>Current data:</div>
+				<div>{JSON.stringify(currentList)}</div>
+			</div>
+		</div>
+	);
+};
+
 export const ReadOnly = () => {
 	const [currentList, setCurrentList] = useState(SAMPLE_AVP_LIST);
 	return (

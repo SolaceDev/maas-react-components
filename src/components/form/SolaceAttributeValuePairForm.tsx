@@ -75,11 +75,17 @@ const SolaceAttributeValuePairForm = ({
 	const [avpList, setAVPList] = useState(initialAVPList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
+
+	useEffect(() => {
+		setAVPList(initialAVPList);
+	}, [initialAVPList.length]);
 	/**
 	 * add append empty key/value pair on initial rendering, works as componentDidMount
 	 */
+	// TODO:
 	useEffect(() => {
-		const list = [...avpList, { key: "", value: "" }];
+		const list = avpList.map((item) => ({ ...item }));
+		list.push({ key: "", value: "" });
 		setAVPList(list);
 	}, []);
 
@@ -89,7 +95,9 @@ const SolaceAttributeValuePairForm = ({
 	useEffect(() => {
 		if (onAVPListUpdate) {
 			const list = [...avpList];
-			list.splice(-1);
+			// TODO:
+			// const list = avpList.map((item) => ({ ...item }));
+			// list.splice(-1);
 			onAVPListUpdate(list);
 		}
 	}, [avpList]);
