@@ -4,6 +4,10 @@ import { ThemeMapping } from "./ThemeMapping";
 
 export let appTheme: "sap" | "solace" | undefined;
 
+/**
+ * To retrieve theme mappings in components simply call getThemeMappings()
+ * appTheme would be initialized in the first theme retrieval step, so don't need to pass it down everytime.
+ */
 export const getThemeMappings = (theme: "sap" | "solace" | undefined): ThemeMapping => {
 	if (theme) appTheme = theme;
 	if (appTheme == "sap") {
