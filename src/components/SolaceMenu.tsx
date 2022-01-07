@@ -1,4 +1,4 @@
-import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader } from "@material-ui/core";
+import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography } from "@material-ui/core";
 import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 import { Fragment, useState } from "react";
 import SolaceButton from "./form/SolaceButton";
@@ -122,7 +122,9 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				{item?.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
 				<Grid container direction={"column"} justifyContent="center">
 					<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
-						<Grid item>{item.name}</Grid>
+						<Typography variant="body1" noWrap>
+							{item.name}
+						</Typography>
 						{item?.supplementalText && (
 							<Grid className="supplementalText" item>
 								{item?.supplementalText}

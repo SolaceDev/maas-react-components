@@ -499,9 +499,8 @@ const theme: ThemeOptions = {
 			styleOverrides: {
 				root: {
 					".MuiPaper-root": {
-						overflowY: "scroll",
+						overflowY: "auto",
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
-						width: "fit-content",
 
 						".MuiMenuItem-root": {
 							display: "flex",
@@ -509,6 +508,8 @@ const theme: ThemeOptions = {
 							fontSize: "14px",
 							minHeight: "38px",
 							alignItems: "center",
+							whiteSpace: "normal",
+							maxWidth: "320px",
 							"&:hover": {
 								backgroundColor: BASE_COLORS.greys.grey2
 							},
@@ -553,7 +554,7 @@ const theme: ThemeOptions = {
 									marginRight: "24px",
 									width: "100%"
 								},
-								".suplementalText": {
+								".supplementalText": {
 									fontSize: BASE_FONT_PX_SIZES.xs,
 									color: BASE_COLORS.greys.grey9,
 									marginLeft: "24px"
