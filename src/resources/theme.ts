@@ -1,8 +1,12 @@
 import { ThemeOptions } from "@material-ui/core";
+// import { getThemeMappings } from "../theming/themeUtils";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
+// These colorMappings would replace hardcoded colors in the theme specified below.
+// https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
+// const themeMappings = getThemeMappings();
 
 // A custom theme for this app
 const theme: ThemeOptions = {
