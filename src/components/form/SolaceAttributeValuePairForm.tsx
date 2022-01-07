@@ -152,7 +152,6 @@ const SolaceAttributeValuePairForm = ({
 						<SolaceAVPFormLabel>
 							<SolaceLabel id="avpLabelForKeys">{labelForKeys}</SolaceLabel>
 							<SolaceLabel id="avpLabelForValues">{labelForValues}</SolaceLabel>
-							<div>List:{avpList.length}</div>
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
 							<SolaceAttributeValuePairList
