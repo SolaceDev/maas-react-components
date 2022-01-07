@@ -49,7 +49,7 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 */
 	buttonProps: SolaceButtonProps;
 	/**
-	 * An array of options when using default menu
+	 * An array of options when using default menu (TODO: nested menus )
 	 */
 	items?: SolaceMenuItemProps[];
 	/**
@@ -95,8 +95,11 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	const handleMenuClose = () => {
 		setAnchorEl(null);
 	};
+
+	// group items based on categoryHeading if provided
 	const groupedItems = groupBy(items, (item: SolaceMenuItemProps) => item.categoryHeading);
 
+	//creating itemsList under each categoryHeading, if no categoryheadig is provided it will be just list of menuItems
 	const menuItemsList = Object.keys(groupedItems).map((categoryHeading) => {
 		const list = [];
 		const categoryheader =
