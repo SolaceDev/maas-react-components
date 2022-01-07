@@ -94,9 +94,10 @@ const SolaceAttributeValuePairList = ({
 	/**
 	 * on current avpList updated
 	 */
-	useEffect(() => {
-		onAVPListUpdate(avpList);
-	}, [avpList]);
+	// useEffect(() => {
+	// 	console.log(`@List: update effect: avpList: ${avpList.length}`);
+	// 	// onAVPListUpdate(avpList);
+	// }, [avpList]);
 
 	/**
 	 * run a full validation process when error total counts change
@@ -148,6 +149,7 @@ const SolaceAttributeValuePairList = ({
 			list.push({ key: "", value: "" });
 		}
 		setAVPList(list);
+		onAVPListUpdate(list); //TODO:
 	};
 
 	const handleDeleteItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
@@ -155,6 +157,7 @@ const SolaceAttributeValuePairList = ({
 			const list = [...avpList];
 			list.splice(index, 1);
 			setAVPList(list);
+			onAVPListUpdate(list); //TODO:
 		}
 	};
 
@@ -195,8 +198,11 @@ const SolaceAttributeValuePairList = ({
 			}
 			setErrorCount(count);
 			setAVPList(list);
+			onAVPListUpdate(list); //TODO:
 		}
 	};
+
+	console.log(`@List: render(): avpList: ${avpList.length}`);
 
 	return (
 		<React.Fragment>

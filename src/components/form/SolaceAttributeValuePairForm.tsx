@@ -76,34 +76,45 @@ const SolaceAttributeValuePairForm = ({
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
 
+	console.log(`@form:${initialAVPList.length}`);
+	console.log(`@form:${avpList.length}`);
+
 	useEffect(() => {
-		setAVPList(initialAVPList);
-	}, [initialAVPList.length]);
+		const list = initialAVPList.map((item) => ({ ...item }));
+		list.push({ key: "", value: "" });
+		setAVPList(list);
+	}, [initialAVPList]);
 	/**
 	 * add append empty key/value pair on initial rendering, works as componentDidMount
 	 */
 	// TODO:
-	useEffect(() => {
-		const list = avpList.map((item) => ({ ...item }));
-		list.push({ key: "", value: "" });
-		setAVPList(list);
-	}, []);
+	// useEffect(() => {
+	// 	const list = avpList.map((item) => ({ ...item }));
+	// 	list.push({ key: "", value: "" });
+	// 	setAVPList(list);
+	// }, []);
 
 	/**
 	 * remove the empty key/value pair in each callback
 	 */
-	useEffect(() => {
-		if (onAVPListUpdate) {
-			const list = [...avpList];
-			// TODO:
-			// const list = avpList.map((item) => ({ ...item }));
-			// list.splice(-1);
-			onAVPListUpdate(list);
-		}
-	}, [avpList]);
+	// useEffect(() => {
+	// 	if (onAVPListUpdate) {
+	// 		// TODO:
+	// 		const list = avpList.map((item) => ({ ...item }));
+	// 		list.splice(-1);
+	// 		onAVPListUpdate(list);
+	// 	}
+	// }, [avpList]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
+		console.log("handle list update!!");
 		setAVPList(list);
+		// TODO:
+		if (onAVPListUpdate) {
+			const _list = list.map((item) => ({ ...item }));
+			_list.splice(-1);
+			onAVPListUpdate(_list);
+		}
 	};
 
 	/**
@@ -126,6 +137,11 @@ const SolaceAttributeValuePairForm = ({
 		const reorderedList = reorderList(avpList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
+		if (onAVPListUpdate) {
+			const _list = reorderedList.map((item) => ({ ...item }));
+			_list.splice(-1);
+			onAVPListUpdate(_list);
+		}
 		setDropOverIndex(null); // reset drop over index on drag end
 		setDropFromTop(null); // reset drop over direction on drag end
 	};
@@ -153,7 +169,8 @@ const SolaceAttributeValuePairForm = ({
 	const getId = () => {
 		return id ? id : name;
 	};
-
+	console.log("###");
+	console.log(avpList);
 	return (
 		<DragDropContext onDragEnd={handleDragEnd} onDragUpdate={handleDragUpdate}>
 			<Droppable droppableId={getId()}>
@@ -162,6 +179,7 @@ const SolaceAttributeValuePairForm = ({
 						<SolaceAVPFormLabel>
 							<SolaceLabel id="avpLabelForKeys">{labelForKeys}</SolaceLabel>
 							<SolaceLabel id="avpLabelForValues">{labelForValues}</SolaceLabel>
+							<div>List:{avpList.length}</div>
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
 							<SolaceAttributeValuePairList
