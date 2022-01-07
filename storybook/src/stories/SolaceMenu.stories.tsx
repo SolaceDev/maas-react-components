@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceMenu, SolaceButton } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-import LaunchIcon from "@material-ui/icons/Launch";
+// import LaunchIcon from "@material-ui/icons/Launch";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import {
 	MenuList,
@@ -39,10 +39,14 @@ const SUPPLEMENTALText = "Supplemental text";
 export const DefaultSolaceMenu = Template.bind({});
 DefaultSolaceMenu.args = {
 	index: 1,
+	dataQa: "testDataProp",
+	dataTags: "testDataTag1",
 	items: [
 		{
 			name: "Option 1",
-			onMenuItemClick: action("callback")
+			onMenuItemClick: action("callback"),
+			dataQa: "testDataProp2",
+			dataTags: "testDataTag2"
 		},
 		{
 			name: "Option 2",
@@ -87,29 +91,17 @@ SecondaryActionSolaceMenu.args = {
 	items: [
 		{
 			name: "Option 1",
-			secondaryAction: (
-				<SolaceButton onClick={action("callback")} variant="icon">
-					<LaunchIcon />
-				</SolaceButton>
-			),
+			secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
 			onMenuItemClick: action("callback")
 		},
 		{
 			name: "Option 2",
-			secondaryAction: (
-				<SolaceButton onClick={action("callback")} variant="icon">
-					<LaunchIcon />
-				</SolaceButton>
-			),
+			secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
 			onMenuItemClick: action("callback")
 		},
 		{
 			name: "Option 3",
-			secondaryAction: (
-				<SolaceButton onClick={action("callback")} variant="icon">
-					<LaunchIcon />
-				</SolaceButton>
-			),
+			secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
 			onMenuItemClick: action("callback")
 		}
 	]

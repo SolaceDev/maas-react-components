@@ -2,10 +2,11 @@ import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader } from "@material-ui/
 import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 import { Fragment, useState } from "react";
 import SolaceButton from "./form/SolaceButton";
+import SolaceComponentProps from "./SolaceComponentProps";
 import { groupBy, flatten } from "lodash";
 import clsx from "clsx";
 
-export interface SolaceMenuItemProps {
+export interface SolaceMenuItemProps extends SolaceComponentProps {
 	/**
 	 * name attribute to show as menu item label
 	 */
@@ -42,7 +43,7 @@ export interface SolaceMenuItemProps {
 	categoryHeading?: string;
 }
 
-interface SolaceMenuProps {
+interface SolaceMenuProps extends SolaceComponentProps {
 	index: number;
 	/**
 	 * An array of options when using default menu
@@ -78,7 +79,9 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		disableButton,
 		multiline = false,
 		anchorOrigin = { vertical: "bottom", horizontal: "left" },
-		renderCustomMenuItems
+		renderCustomMenuItems,
+		dataQa,
+		dataTags
 	} = props;
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -106,6 +109,8 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 			<MenuItem
 				id={`${item.name}-${index}`}
 				key={`${item.name}-${index}`}
+				data-qa={item?.dataQa}
+				data-tags={item?.dataTags}
 				onClick={() => {
 					handleMenuClose();
 					item.onMenuItemClick(index);
@@ -150,7 +155,9 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				key={`key-moreButton-${index}`}
 				onClick={handleMenuClick}
 				isDisabled={disableButton}
-				variant="icon"
+				variant={"icon"}
+				data-qa={dataQa}
+				data-tags={dataTags}
 			>
 				<MoreHorizOutlinedIcon />
 			</SolaceButton>
