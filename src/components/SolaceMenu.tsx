@@ -1,4 +1,4 @@
-import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography } from "@material-ui/core";
+import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography, useTheme } from "@material-ui/core";
 import { Fragment, useState } from "react";
 import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 import SolaceComponentProps from "./SolaceComponentProps";
@@ -85,6 +85,8 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		dataTags
 	} = props;
 
+	const theme = useTheme();
+
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
 	const itemHeight = multiline ? 58 : 38;
@@ -144,7 +146,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				</Grid>
 
 				{item?.secondaryAction && (
-					<Grid item sx={{ marginLeft: "24px" }}>
+					<Grid item sx={{ marginLeft: theme.spacing(3) }}>
 						{item.secondaryAction}
 					</Grid>
 				)}

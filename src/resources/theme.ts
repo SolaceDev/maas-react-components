@@ -542,12 +542,6 @@ const theme: ThemeOptions = {
 									animation: noneImportant
 								}
 							},
-							".MuiGrid-root.MuiGrid-item": {
-								".secondaryAction": {
-									marginLeft: "24px",
-									color: "red"
-								}
-							},
 							".MuiGrid-root.MuiGrid-container": {
 								color: BASE_COLORS.greys.grey14,
 								".subtext": {
@@ -594,11 +588,6 @@ const theme: ThemeOptions = {
 					},
 					".MuiListItemText-secondary": {
 						color: BASE_COLORS.greys.grey9
-					},
-					".MuiListItemSecondaryAction-root": {
-						display: "flex",
-						alignSelf: "center",
-						marginLeft: "24px"
 					}
 				}
 			}
