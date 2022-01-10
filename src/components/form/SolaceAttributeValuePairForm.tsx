@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { styled } from "@material-ui/core";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import SolaceLabel from "./SolaceLabel";
@@ -83,10 +83,13 @@ const SolaceAttributeValuePairForm = ({
 		setAVPList(list);
 	}, [avpList]);
 
-	const handleListUpdate = (list: Array<AVPItem>) => {
-		setAVPList(list);
-		if (onAVPListUpdate) onAVPListUpdate(list.slice(0, -1));
-	};
+	const handleListUpdate = useCallback(
+		(list: Array<AVPItem>) => {
+			setAVPList(list);
+			if (onAVPListUpdate) onAVPListUpdate(list.slice(0, -1));
+		},
+		[onAVPListUpdate]
+	);
 
 	/**
 	 * All the things to do when a drag action ended
