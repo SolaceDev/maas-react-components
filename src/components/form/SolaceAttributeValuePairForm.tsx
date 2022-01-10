@@ -87,10 +87,9 @@ const SolaceAttributeValuePairForm = ({
 	}, [initialAVPList]);
 
 	// on avp list updated
-	const avpListString = JSON.stringify(avpList);
 	useEffect(() => {
 		if (onAVPListUpdate) onAVPListUpdate(avpList.slice(0, -1));
-	}, [avpListString]);
+	}, [avpList, onAVPListUpdate]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
 		setAVPList(list);

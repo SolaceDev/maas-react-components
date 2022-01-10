@@ -58,6 +58,9 @@ export const WithoutInitialData = () => {
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
 		setCurrentList(updatedList);
 	};
+
+	const onUpdate = useCallback(handleListUpdate, []);
+
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
@@ -65,7 +68,7 @@ export const WithoutInitialData = () => {
 				labelForKeys="Keys"
 				labelForValues="Values"
 				initialAVPList={[]}
-				onAVPListUpdate={handleListUpdate}
+				onAVPListUpdate={onUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
@@ -82,6 +85,9 @@ export const WithData = () => {
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
 		setCurrentList(updatedList);
 	};
+
+	const onUpdate = useCallback(handleListUpdate, []);
+
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
@@ -89,7 +95,7 @@ export const WithData = () => {
 				labelForKeys="Keys"
 				labelForValues="Values"
 				initialAVPList={SAMPLE_AVP_LIST}
-				onAVPListUpdate={handleListUpdate}
+				onAVPListUpdate={onUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
@@ -112,6 +118,8 @@ export const UpdateData = () => {
 		setCurrentList(updatedList);
 	};
 
+	const onUpdate = useCallback(handleListUpdate, []);
+
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
@@ -119,7 +127,7 @@ export const UpdateData = () => {
 				labelForKeys="Keys"
 				labelForValues="Values"
 				initialAVPList={initialList}
-				onAVPListUpdate={handleListUpdate}
+				onAVPListUpdate={onUpdate}
 			/>
 			<button onClick={() => updateInitialAVPList(SAMPLE_AVP_LIST)}>Update Data</button>
 			<div style={{ marginTop: 20 }}>
@@ -168,13 +176,16 @@ export const WithValidation = () => {
 		setCurrentList(updatedList);
 	};
 
+	const validation = useCallback(validateEnumInput, [currentList]);
+	const onUpdate = useCallback(handleListUpdate, []);
+
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
 				name="avpForm"
-				initialAVPList={currentList}
-				onAVPListUpdate={handleListUpdate}
-				avpKeyValidationCallback={validateEnumInput}
+				initialAVPList={SAMPLE_AVP_LIST_WITH_FALSE_VALUES}
+				onAVPListUpdate={onUpdate}
+				avpKeyValidationCallback={validation}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>
