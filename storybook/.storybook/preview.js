@@ -3,7 +3,8 @@ import { withDesign } from "storybook-addon-designs";
 
 export const decorators = [
 	(Story) => (
-		<ThemeProvider theme={createTheme(SolaceTheme)}>
+		// Change passed theme here for eg to "sap" for testing
+		<ThemeProvider theme={createTheme(SolaceTheme("solace"))}>
 			<Story />
 		</ThemeProvider>
 	),
