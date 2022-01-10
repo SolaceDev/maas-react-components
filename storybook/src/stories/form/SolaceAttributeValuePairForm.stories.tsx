@@ -52,7 +52,7 @@ const SAMPLE_AVP_LIST = [
 ];
 
 export const WithoutInitialData = () => {
-	const [avpList, setAVPList] = useState([]);
+	const [currentAVPList, setAVPList] = useState([]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
 		setAVPList(updatedList);
@@ -64,12 +64,12 @@ export const WithoutInitialData = () => {
 				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={avpList}
+				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(avpList)}</div>
+				<div>{JSON.stringify(currentAVPList)}</div>
 			</div>
 		</div>
 	);
@@ -77,7 +77,7 @@ export const WithoutInitialData = () => {
 
 export const WithData = () => {
 	const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
-	const [avpList, setAVPList] = useState(list);
+	const [currentAVPList, setAVPList] = useState(list);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
 		setAVPList(updatedList);
@@ -89,12 +89,12 @@ export const WithData = () => {
 				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={avpList}
+				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(avpList)}</div>
+				<div>{JSON.stringify(currentAVPList)}</div>
 			</div>
 		</div>
 	);
@@ -102,7 +102,7 @@ export const WithData = () => {
 
 export const UpdateData = () => {
 	const data = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
-	const [avpList, setAVPList] = useState([]);
+	const [currentAVPList, setAVPList] = useState([]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
 		setAVPList(updatedList);
@@ -114,13 +114,13 @@ export const UpdateData = () => {
 				name="updateAVPForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={avpList}
+				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
 			/>
 			<button onClick={() => handleListUpdate(data)}>Update Data</button>
 			<div style={{ marginTop: 20 }}>
 				<div>Current data:</div>
-				<div>{JSON.stringify(avpList)}</div>
+				<div>{JSON.stringify(currentAVPList)}</div>
 			</div>
 		</div>
 	);
@@ -135,7 +135,7 @@ export const ReadOnly = () => {
 				readOnly={true}
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={data}
+				avpList={data}
 			/>
 		</div>
 	);
@@ -149,17 +149,18 @@ const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
 ];
 
 export const WithValidation = () => {
-	const [avpList, setAVPList] = useState<Array<AVPItem>>(SAMPLE_AVP_LIST_WITH_FALSE_VALUES);
+	const data = SAMPLE_AVP_LIST_WITH_FALSE_VALUES.map((item) => ({ ...item }));
+	const [currentAVPList, setAVPList] = useState<Array<AVPItem>>(data);
 	const [enumValidated, setEnumValidated] = useState(true);
 
 	useEffect(() => {
-		const errors = avpList.filter((item) => item.keyErrorText || item.valueErrorText);
+		const errors = currentAVPList.filter((item) => item.keyErrorText || item.valueErrorText);
 		if (errors.length > 0) {
 			setEnumValidated(false);
 		} else {
 			setEnumValidated(true);
 		}
-	}, [avpList]);
+	}, [currentAVPList]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
 		setAVPList(updatedList);
@@ -169,7 +170,7 @@ export const WithValidation = () => {
 		<div>
 			<SolaceAttributeValuePairForm
 				name="avpForm"
-				initialAVPList={SAMPLE_AVP_LIST_WITH_FALSE_VALUES}
+				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
 				avpKeyValidationCallback={validateEnumInput}
 			/>
@@ -178,7 +179,7 @@ export const WithValidation = () => {
 					Is form OK: <b>{enumValidated ? "Yes" : "No"}</b>
 				</div>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(avpList)}</div>
+				<div>{JSON.stringify(currentAVPList)}</div>
 			</div>
 		</div>
 	);

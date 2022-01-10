@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { styled } from "@material-ui/core";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-// import _ from "lodash";
 import SolaceLabel from "./SolaceLabel";
 import { valueInputTypes } from "./SolaceAttributeValuePair";
 import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePairList";
@@ -47,7 +46,7 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
 	 */
-	initialAVPList?: Array<AVPItem>;
+	avpList?: Array<AVPItem>;
 	/**
 	 * callback function that returns the current AVP list
 	 */
@@ -68,21 +67,21 @@ const SolaceAttributeValuePairForm = ({
 	readOnly,
 	labelForKeys = "Name",
 	labelForValues = "DisplayName",
-	initialAVPList = [],
+	avpList = [],
 	onAVPListUpdate,
 	avpKeyValidationCallback,
 	avpValueValidationCallback
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
-	const [currentAVPList, setAVPList] = useState(initialAVPList);
+	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
 
 	// on avp list update
 	useEffect(() => {
-		const list = [...initialAVPList];
+		const list = [...avpList];
 		list.push({ key: "", value: "" });
 		setAVPList(list);
-	}, [initialAVPList]);
+	}, [avpList]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
 		setAVPList(list);
