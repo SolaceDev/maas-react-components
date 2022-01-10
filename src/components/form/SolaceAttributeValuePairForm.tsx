@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { styled } from "@material-ui/core";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import _ from "lodash";
+// import _ from "lodash";
 import SolaceLabel from "./SolaceLabel";
 import { valueInputTypes } from "./SolaceAttributeValuePair";
 import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePairList";
@@ -47,7 +47,7 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
 	 */
-	initialAVPList: Array<AVPItem>;
+	initialAVPList?: Array<AVPItem>;
 	/**
 	 * callback function that returns the current AVP list
 	 */
@@ -73,23 +73,16 @@ const SolaceAttributeValuePairForm = ({
 	avpKeyValidationCallback,
 	avpValueValidationCallback
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
-	const [avpList, setAVPList] = useState([...initialAVPList, { key: "", value: "" }]);
+	const [currentAVPList, setAVPList] = useState(initialAVPList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
 
-	// on init list updated
+	// on avp list update
 	useEffect(() => {
-		if (initialAVPList.length > 0) {
-			const list = _.cloneDeep(initialAVPList);
-			list.push({ key: "", value: "" });
-			setAVPList(list);
-		}
+		const list = [...initialAVPList];
+		list.push({ key: "", value: "" });
+		setAVPList(list);
 	}, [initialAVPList]);
-
-	// on avp list updated
-	useEffect(() => {
-		if (onAVPListUpdate) onAVPListUpdate(avpList.slice(0, -1));
-	}, [avpList, onAVPListUpdate]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
 		setAVPList(list);
@@ -109,11 +102,11 @@ const SolaceAttributeValuePairForm = ({
 			return;
 		}
 		// drag and drop on the last item e.g. ghost item
-		if (result.destination.index === avpList.length - 1) {
+		if (result.destination.index === currentAVPList.length - 1) {
 			return;
 		}
 
-		const reorderedList = reorderList(avpList, result.source.index, result.destination.index);
+		const reorderedList = reorderList(currentAVPList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
 		if (onAVPListUpdate) onAVPListUpdate(reorderedList.slice(0, -1));
@@ -156,7 +149,7 @@ const SolaceAttributeValuePairForm = ({
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
 							<SolaceAttributeValuePairList
-								initialAVPList={avpList}
+								initialAVPList={currentAVPList}
 								onAVPListUpdate={handleListUpdate}
 								avpKeyValidationCallback={avpKeyValidationCallback}
 								avpValueValidationCallback={avpValueValidationCallback}

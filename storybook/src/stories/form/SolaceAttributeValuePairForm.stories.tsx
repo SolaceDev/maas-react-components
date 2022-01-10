@@ -51,15 +51,12 @@ const SAMPLE_AVP_LIST = [
 	{ key: "Apr", value: "April" }
 ];
 
-// eslint-disable-next-line sonarjs/no-identical-functions
 export const WithoutInitialData = () => {
-	const [currentList, setCurrentList] = useState([]);
+	const [avpList, setAVPList] = useState([]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setCurrentList(updatedList);
+		setAVPList(updatedList);
 	};
-
-	const onUpdate = useCallback(handleListUpdate, []);
 
 	return (
 		<div>
@@ -67,26 +64,24 @@ export const WithoutInitialData = () => {
 				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={[]}
-				onAVPListUpdate={onUpdate}
+				initialAVPList={avpList}
+				onAVPListUpdate={handleListUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(currentList)}</div>
+				<div>{JSON.stringify(avpList)}</div>
 			</div>
 		</div>
 	);
 };
 
-// eslint-disable-next-line sonarjs/no-identical-functions
 export const WithData = () => {
-	const [currentList, setCurrentList] = useState([]);
+	const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
+	const [avpList, setAVPList] = useState(list);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setCurrentList(updatedList);
+		setAVPList(updatedList);
 	};
-
-	const onUpdate = useCallback(handleListUpdate, []);
 
 	return (
 		<div>
@@ -94,31 +89,24 @@ export const WithData = () => {
 				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={SAMPLE_AVP_LIST}
-				onAVPListUpdate={onUpdate}
+				initialAVPList={avpList}
+				onAVPListUpdate={handleListUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(currentList)}</div>
+				<div>{JSON.stringify(avpList)}</div>
 			</div>
 		</div>
 	);
 };
 
 export const UpdateData = () => {
-	const [initialList, setInitialList] = useState([]);
-	const [currentList, setCurrentList] = useState([]);
-
-	// or this can be an async function that fetches the data to update initialList
-	const updateInitialAVPList = (updatedInitList: Array<AVPItem>) => {
-		setInitialList(updatedInitList);
-	};
+	const data = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
+	const [avpList, setAVPList] = useState([]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setCurrentList(updatedList);
+		setAVPList(updatedList);
 	};
-
-	const onUpdate = useCallback(handleListUpdate, []);
 
 	return (
 		<div>
@@ -126,19 +114,20 @@ export const UpdateData = () => {
 				name="updateAVPForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={initialList}
-				onAVPListUpdate={onUpdate}
+				initialAVPList={avpList}
+				onAVPListUpdate={handleListUpdate}
 			/>
-			<button onClick={() => updateInitialAVPList(SAMPLE_AVP_LIST)}>Update Data</button>
+			<button onClick={() => handleListUpdate(data)}>Update Data</button>
 			<div style={{ marginTop: 20 }}>
 				<div>Current data:</div>
-				<div>{JSON.stringify(currentList)}</div>
+				<div>{JSON.stringify(avpList)}</div>
 			</div>
 		</div>
 	);
 };
 
 export const ReadOnly = () => {
+	const data = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
@@ -146,7 +135,7 @@ export const ReadOnly = () => {
 				readOnly={true}
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={SAMPLE_AVP_LIST}
+				initialAVPList={data}
 			/>
 		</div>
 	);
@@ -160,39 +149,36 @@ const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
 ];
 
 export const WithValidation = () => {
-	const [currentList, setCurrentList] = useState<Array<AVPItem>>(SAMPLE_AVP_LIST_WITH_FALSE_VALUES);
+	const [avpList, setAVPList] = useState<Array<AVPItem>>(SAMPLE_AVP_LIST_WITH_FALSE_VALUES);
 	const [enumValidated, setEnumValidated] = useState(true);
 
 	useEffect(() => {
-		const errors = currentList.filter((item) => item.keyErrorText || item.valueErrorText);
+		const errors = avpList.filter((item) => item.keyErrorText || item.valueErrorText);
 		if (errors.length > 0) {
 			setEnumValidated(false);
 		} else {
 			setEnumValidated(true);
 		}
-	}, [currentList]);
+	}, [avpList]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setCurrentList(updatedList);
+		setAVPList(updatedList);
 	};
-
-	const validation = useCallback(validateEnumInput, [currentList]);
-	const onUpdate = useCallback(handleListUpdate, []);
 
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
 				name="avpForm"
 				initialAVPList={SAMPLE_AVP_LIST_WITH_FALSE_VALUES}
-				onAVPListUpdate={onUpdate}
-				avpKeyValidationCallback={validation}
+				onAVPListUpdate={handleListUpdate}
+				avpKeyValidationCallback={validateEnumInput}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>
 					Is form OK: <b>{enumValidated ? "Yes" : "No"}</b>
 				</div>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(currentList)}</div>
+				<div>{JSON.stringify(avpList)}</div>
 			</div>
 		</div>
 	);
