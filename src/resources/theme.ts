@@ -511,16 +511,40 @@ const themeConfig: ThemeOptions = {
 			styleOverrides: {
 				root: {
 					".MuiPaper-root": {
+						overflowY: "auto",
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
-						// remove MenuList open/close animation
-						// currently applied to SolaceSelect component
-						transition: noneImportant,
+						margin: "4px",
+
 						".MuiMenuItem-root": {
+							display: "flex",
+							padding: "0px 16px 0px 16px",
 							fontSize: "14px",
+							minHeight: "38px",
+							alignItems: "center",
+							whiteSpace: "normal",
+							maxWidth: "320px",
+							"&:hover": {
+								backgroundColor: BASE_COLORS.greys.grey2
+							},
+							"&.multiline": {
+								height: "58px"
+							},
+							"&.wideMenu": {
+								minWidth: "320px"
+							},
+
 							"&.Mui-selected": {
 								backgroundColor: BASE_COLORS.greens.green9
+							},
+							".MuiListItemIcon-root": {
+								width: "48px",
+								".MuiSvgIcon-root": {
+									width: "24px",
+									height: "24px"
+								}
 							}
 						},
+
 						".MuiList-root.MuiMenu-list": {
 							".MuiMenuItem-root.MuiButtonBase-root": {
 								// remove all ripple effect from MenuList Items
@@ -531,15 +555,51 @@ const themeConfig: ThemeOptions = {
 								}
 							},
 							".MuiGrid-root.MuiGrid-container": {
+								color: BASE_COLORS.greys.grey14,
 								".subtext": {
-									color: BASE_COLORS.greys.grey9
+									color: BASE_COLORS.greys.grey9,
+									marginRight: "24px",
+									width: "100%"
 								},
-								".suplementalText": {
+								".supplementalText": {
 									fontSize: BASE_FONT_PX_SIZES.xs,
-									color: BASE_COLORS.greys.grey9
+									color: BASE_COLORS.greys.grey9,
+									marginLeft: "24px"
+								},
+								"&.Mui-disabled": {
+									color: BASE_COLORS.greys.grey5
 								}
 							}
 						}
+					}
+				}
+			}
+		},
+		MuiList: {
+			styleOverrides: {
+				root: {
+					".MuiListSubheader-root": {
+						lineHeight: 1.5,
+						color: BASE_COLORS.greys.grey9,
+						fontSize: BASE_FONT_PX_SIZES.sm,
+						fontWeight: 400,
+						height: "32px",
+						display: "flex",
+						alignItems: "center",
+						"&.categoryHeader": {
+							color: BASE_COLORS.greys.grey14,
+							fontSize: BASE_FONT_PX_SIZES.xs,
+							fontWeight: 500
+						}
+					},
+					".MuiListItemText-multiline": {
+						height: "58px",
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "center"
+					},
+					".MuiListItemText-secondary": {
+						color: BASE_COLORS.greys.grey9
 					}
 				}
 			}
