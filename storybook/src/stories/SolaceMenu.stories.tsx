@@ -30,7 +30,7 @@ const TITLE = "More actions!";
 
 export const DefaultSolaceMenu = Template.bind({});
 DefaultSolaceMenu.args = {
-	index: 1,
+	id: "demo-solace-menu",
 	buttonProps: {
 		title: TITLE,
 		variant: "icon",
@@ -58,7 +58,6 @@ DefaultSolaceMenu.args = {
 
 export const TextMenuButton = Template.bind({});
 TextMenuButton.args = {
-	index: 1,
 	buttonProps: {
 		title: TITLE,
 		variant: "text",
@@ -86,7 +85,6 @@ TextMenuButton.args = {
 
 export const MultilineSolaceMenu = Template.bind({});
 MultilineSolaceMenu.args = {
-	index: 1,
 	buttonProps: {
 		title: TITLE,
 		variant: "icon",
@@ -117,7 +115,6 @@ MultilineSolaceMenu.args = {
 
 export const SecondaryActionSolaceMenu = Template.bind({});
 SecondaryActionSolaceMenu.args = {
-	index: 1,
 	buttonProps: {
 		title: TITLE,
 		variant: "icon",
@@ -144,7 +141,6 @@ SecondaryActionSolaceMenu.args = {
 
 export const DisabledMenuItem = Template.bind({});
 DisabledMenuItem.args = {
-	index: 1,
 	buttonProps: {
 		title: TITLE,
 		variant: "icon",
@@ -176,7 +172,6 @@ DisabledMenuItem.args = {
 
 export const IconMenuItem = Template.bind({});
 IconMenuItem.args = {
-	index: 1,
 	buttonProps: {
 		title: TITLE,
 		variant: "text",
@@ -210,7 +205,6 @@ IconMenuItem.args = {
 
 export const CustomPositionMenu = Template.bind({});
 CustomPositionMenu.args = {
-	index: 1,
 	buttonProps: {
 		title: TITLE,
 		variant: "icon",
@@ -242,7 +236,6 @@ CustomPositionMenu.args = {
 
 export const HeaderAndCategoryHeading = Template.bind({});
 HeaderAndCategoryHeading.args = {
-	index: 1,
 	buttonProps: {
 		title: TITLE,
 		variant: "icon",
@@ -277,9 +270,9 @@ HeaderAndCategoryHeading.args = {
 };
 
 export const CustomMenuItems = (): JSX.Element => {
-	function renderCustomMenuItems(index: number) {
+	function renderCustomMenuItems(id: string) {
 		return (
-			<MenuList id={`${index}`}>
+			<MenuList id={id}>
 				<MenuItem>
 					<ListItemText>Cut</ListItemText>
 					<Typography variant="body2" color="text.secondary">
@@ -308,7 +301,7 @@ export const CustomMenuItems = (): JSX.Element => {
 
 	return (
 		<SolaceMenu
-			index={1}
+			id={"custom-solace-menu"}
 			buttonProps={{
 				title: TITLE,
 				variant: "icon",
@@ -334,11 +327,11 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 
 		setChecked(newChecked);
 	};
-	function renderCustomMenuItems(index: number) {
+	function renderCustomMenuItems(id: string) {
 		return (
 			<List sx={{ width: "100%", bgcolor: "background.paper" }}>
 				{[0, 1, 2, 3].map((value) => {
-					const labelId = `checkbox-list-label-${value}-${index}`;
+					const labelId = `checkbox-list-label-${value}-${id}`;
 
 					return (
 						<ListItem
@@ -364,7 +357,7 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 
 	return (
 		<SolaceMenu
-			index={1}
+			id={"custom-solace-menu"}
 			buttonProps={{
 				title: TITLE,
 				variant: "icon",

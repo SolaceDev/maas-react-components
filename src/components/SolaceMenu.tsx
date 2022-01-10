@@ -27,7 +27,7 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 	 */
 	secondaryAction?: JSX.Element | HTMLElement;
 
-	onMenuItemClick: (id: number) => void;
+	onMenuItemClick: (id: string) => void;
 	/**
 	 * Adds a divider to the bottom of menuItem
 	 */
@@ -43,7 +43,7 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 }
 
 interface SolaceMenuProps extends SolaceComponentProps {
-	id: number;
+	id?: string;
 	/**
 	 * Attributes to customize menu button
 	 */
@@ -69,12 +69,12 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 * (note1: this is to cover special cases where we need checkbox or radio button added to menu items
 	 * note2:if CustomMenuItems is provided, the items prop is nolonger valid)
 	 */
-	renderCustomMenuItems?: (id: number) => React.ReactNode;
+	renderCustomMenuItems?: (id: string) => React.ReactNode;
 }
 
 export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	const {
-		id,
+		id = "solace-menu",
 		buttonProps,
 		items,
 		header,
@@ -160,8 +160,8 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		<Fragment>
 			<SolaceButton {...buttonProps} onClick={handleMenuClick} />
 			<Menu
-				id={`menu-${id}`}
-				key={`key-menu-${id}`}
+				id={id}
+				key={`key-${id}`}
 				data-qa={dataQa}
 				data-tags={dataTags}
 				anchorEl={anchorEl}
