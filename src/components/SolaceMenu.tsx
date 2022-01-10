@@ -27,7 +27,7 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 	 */
 	secondaryAction?: JSX.Element | HTMLElement;
 
-	onMenuItemClick: (index: number) => void;
+	onMenuItemClick: (id: number) => void;
 	/**
 	 * Adds a divider to the bottom of menuItem
 	 */
@@ -43,7 +43,7 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 }
 
 interface SolaceMenuProps extends SolaceComponentProps {
-	index: number;
+	id: number;
 	/**
 	 * Attributes to customize menu button
 	 */
@@ -69,12 +69,12 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 * (note1: this is to cover special cases where we need checkbox or radio button added to menu items
 	 * note2:if CustomMenuItems is provided, the items prop is nolonger valid)
 	 */
-	renderCustomMenuItems?: (index: number) => React.ReactNode;
+	renderCustomMenuItems?: (id: number) => React.ReactNode;
 }
 
 export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	const {
-		index,
+		id,
 		buttonProps,
 		items,
 		header,
@@ -113,13 +113,13 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		list.push(categoryheader);
 		const itemsList = groupedItems[categoryHeading].map((item) => (
 			<MenuItem
-				id={`${item.name}-${index}`}
-				key={`${item.name}-${index}`}
+				id={`${item.name}-${id}`}
+				key={`${item.name}-${id}`}
 				data-qa={item?.dataQa}
 				data-tags={item?.dataTags}
 				onClick={() => {
 					handleMenuClose();
-					item.onMenuItemClick(index);
+					item.onMenuItemClick(id);
 				}}
 				divider={!!item?.divider}
 				disabled={!!item?.disabled}
@@ -160,8 +160,8 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		<Fragment>
 			<SolaceButton {...buttonProps} onClick={handleMenuClick} />
 			<Menu
-				id={`menu-${index}`}
-				key={`key-menu-${index}`}
+				id={`menu-${id}`}
+				key={`key-menu-${id}`}
 				data-qa={dataQa}
 				data-tags={dataTags}
 				anchorEl={anchorEl}
@@ -175,7 +175,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				}}
 			>
 				{header && <ListSubheader>{header}</ListSubheader>}
-				{renderCustomMenuItems ? renderCustomMenuItems(index) : flatten(menuItemsList)}
+				{renderCustomMenuItems ? renderCustomMenuItems(id) : flatten(menuItemsList)}
 			</Menu>
 		</Fragment>
 	);
