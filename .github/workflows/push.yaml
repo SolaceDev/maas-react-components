@@ -6,7 +6,30 @@ on:
       - "main"
 
 jobs:
+ chromatic-deployment:
+    name: "Deploy Storybook to Chromatic"
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: npm install && cd ./storybook && npm install
+        # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        # publish
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          token: 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
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: 10e61b689d33
+          # storybook directory
+          workingDir: storybook
+          exitZeroOnChanges: false
+
   bump-version:
+    needs: chromatic-deployment
     name: "Bump Version on main"
     runs-on: ubuntu-latest
 
@@ -29,7 +52,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
+        
   deploy-to-pages:
+    needs: chromatic-deployment
     name: "Deploy Storybook to Github Pages"
     runs-on: ubuntu-latest
     steps:
