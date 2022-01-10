@@ -87,6 +87,8 @@ const SolaceAttributeValuePairForm = ({
 		(list: Array<AVPItem>) => {
 			setAVPList(list);
 			if (onAVPListUpdate) onAVPListUpdate(list.slice(0, -1));
+			setDropOverIndex(null); // reset drop over index on drag end
+			setDropFromTop(null); // reset drop over direction on drag end
 		},
 		[onAVPListUpdate]
 	);
