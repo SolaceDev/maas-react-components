@@ -123,7 +123,7 @@ const SolaceAttributeValuePairList = ({
 			}
 		});
 		setErrorCount(count);
-	}, [errorCount, avpList.length]);
+	}, [errorCount, avpList.length, avpList, avpKeyValidationCallback, avpValueValidationCallback]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = (index: number): boolean => {
@@ -133,6 +133,7 @@ const SolaceAttributeValuePairList = ({
 	const handleInputChange = (event: SolaceTextFieldChangeEvent, index: number) => {
 		const name: string = event.name;
 		const value: string = event.value;
+
 		const list = [...avpList];
 		list[index][name] = value.trim();
 

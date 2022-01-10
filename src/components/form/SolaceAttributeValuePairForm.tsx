@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { styled } from "@material-ui/core";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import _ from "lodash";
 import SolaceLabel from "./SolaceLabel";
 import { valueInputTypes } from "./SolaceAttributeValuePair";
 import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePairList";
@@ -46,7 +47,7 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
 	 */
-	initialAVPList?: Array<AVPItem>;
+	initialAVPList: Array<AVPItem>;
 	/**
 	 * callback function that returns the current AVP list
 	 */
@@ -72,23 +73,31 @@ const SolaceAttributeValuePairForm = ({
 	avpKeyValidationCallback,
 	avpValueValidationCallback
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
-	const [avpList, setAVPList] = useState(initialAVPList);
+	const [avpList, setAVPList] = useState([...initialAVPList, { key: "", value: "" }]);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
 
 	useEffect(() => {
-		const list = initialAVPList.map((item) => ({ ...item }));
-		list.push({ key: "", value: "" });
-		setAVPList(list);
+		if (initialAVPList.length > 0) {
+			const list = _.cloneDeep(initialAVPList);
+			list.push({ key: "", value: "" });
+			setAVPList(list);
+		}
 	}, [initialAVPList]);
+
+	// TODO: useCallback?
+	// useEffect(() => {
+	// 	if (onAVPListUpdate) onAVPListUpdate(avpList.slice(0, -1));
+	// }, [avpList, onAVPListUpdate]);
+	// one solution, not great tho
+	const avpDeepString = JSON.stringify(avpList);
+	useEffect(() => {
+		if (onAVPListUpdate) onAVPListUpdate(avpList.slice(0, -1));
+	}, [avpDeepString]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
 		setAVPList(list);
-		if (onAVPListUpdate) {
-			const _list = list.map((item) => ({ ...item }));
-			_list.splice(-1);
-			onAVPListUpdate(_list);
-		}
+		if (onAVPListUpdate) onAVPListUpdate(list.slice(0, -1));
 	};
 
 	/**
@@ -111,11 +120,7 @@ const SolaceAttributeValuePairForm = ({
 		const reorderedList = reorderList(avpList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
-		if (onAVPListUpdate) {
-			const _list = reorderedList.map((item) => ({ ...item }));
-			_list.splice(-1);
-			onAVPListUpdate(_list);
-		}
+		if (onAVPListUpdate) onAVPListUpdate(reorderedList.slice(0, -1));
 		setDropOverIndex(null); // reset drop over index on drag end
 		setDropFromTop(null); // reset drop over direction on drag end
 	};

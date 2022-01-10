@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { ComponentMeta } from "@storybook/react";
 import { SolaceAttributeValuePairForm } from "@SolaceDev/maas-react-components";
 import { useEffect } from "react";
@@ -64,7 +64,7 @@ export const WithoutInitialData = () => {
 				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={currentList}
+				initialAVPList={[]}
 				onAVPListUpdate={handleListUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
@@ -77,7 +77,7 @@ export const WithoutInitialData = () => {
 
 // eslint-disable-next-line sonarjs/no-identical-functions
 export const WithData = () => {
-	const [currentList, setCurrentList] = useState(SAMPLE_AVP_LIST);
+	const [currentList, setCurrentList] = useState([]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
 		setCurrentList(updatedList);
@@ -88,7 +88,7 @@ export const WithData = () => {
 				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={currentList}
+				initialAVPList={SAMPLE_AVP_LIST}
 				onAVPListUpdate={handleListUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
@@ -100,21 +100,28 @@ export const WithData = () => {
 };
 
 export const UpdateData = () => {
+	const [initialList, setInitialList] = useState([]);
 	const [currentList, setCurrentList] = useState([]);
+
+	// or this can be an async function that fetches the data to update initialList
+	const updateInitialAVPList = (updatedInitList: Array<AVPItem>) => {
+		setInitialList(updatedInitList);
+	};
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
 		setCurrentList(updatedList);
 	};
+
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
 				name="updateAVPForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={currentList}
+				initialAVPList={initialList}
 				onAVPListUpdate={handleListUpdate}
 			/>
-			<button onClick={() => handleListUpdate(SAMPLE_AVP_LIST)}>Update Data</button>
+			<button onClick={() => updateInitialAVPList(SAMPLE_AVP_LIST)}>Update Data</button>
 			<div style={{ marginTop: 20 }}>
 				<div>Current data:</div>
 				<div>{JSON.stringify(currentList)}</div>
@@ -124,7 +131,6 @@ export const UpdateData = () => {
 };
 
 export const ReadOnly = () => {
-	const [currentList, setCurrentList] = useState(SAMPLE_AVP_LIST);
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
@@ -132,7 +138,7 @@ export const ReadOnly = () => {
 				readOnly={true}
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={currentList}
+				initialAVPList={SAMPLE_AVP_LIST}
 			/>
 		</div>
 	);
