@@ -46,7 +46,7 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
 	 */
-	initialAVPList?: Array<AVPItem>;
+	avpList?: Array<AVPItem>;
 	/**
 	 * callback function that returns the current AVP list
 	 */
@@ -67,35 +67,25 @@ const SolaceAttributeValuePairForm = ({
 	readOnly,
 	labelForKeys = "Name",
 	labelForValues = "DisplayName",
-	initialAVPList = [],
+	avpList = [],
 	onAVPListUpdate,
 	avpKeyValidationCallback,
 	avpValueValidationCallback
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
-	const [avpList, setAVPList] = useState(initialAVPList);
+	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
-	/**
-	 * add append empty key/value pair on initial rendering, works as componentDidMount
-	 */
-	useEffect(() => {
-		const list = [...avpList, { key: "", value: "" }];
-		setAVPList(list);
-	}, []);
 
-	/**
-	 * remove the empty key/value pair in each callback
-	 */
+	// on avp list update
 	useEffect(() => {
-		if (onAVPListUpdate) {
-			const list = [...avpList];
-			list.splice(-1);
-			onAVPListUpdate(list);
-		}
+		const list = [...avpList];
+		list.push({ key: "", value: "" });
+		setAVPList(list);
 	}, [avpList]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
 		setAVPList(list);
+		if (onAVPListUpdate) onAVPListUpdate(list.slice(0, -1));
 	};
 
 	/**
@@ -111,13 +101,14 @@ const SolaceAttributeValuePairForm = ({
 			return;
 		}
 		// drag and drop on the last item e.g. ghost item
-		if (result.destination.index === avpList.length - 1) {
+		if (result.destination.index === currentAVPList.length - 1) {
 			return;
 		}
 
-		const reorderedList = reorderList(avpList, result.source.index, result.destination.index);
+		const reorderedList = reorderList(currentAVPList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
+		if (onAVPListUpdate) onAVPListUpdate(reorderedList.slice(0, -1));
 		setDropOverIndex(null); // reset drop over index on drag end
 		setDropFromTop(null); // reset drop over direction on drag end
 	};
@@ -157,7 +148,7 @@ const SolaceAttributeValuePairForm = ({
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
 							<SolaceAttributeValuePairList
-								initialAVPList={avpList}
+								initialAVPList={currentAVPList}
 								onAVPListUpdate={handleListUpdate}
 								avpKeyValidationCallback={avpKeyValidationCallback}
 								avpValueValidationCallback={avpValueValidationCallback}

@@ -92,13 +92,6 @@ const SolaceAttributeValuePairList = ({
 	}, [initialAVPList]);
 
 	/**
-	 * on current avpList updated
-	 */
-	useEffect(() => {
-		onAVPListUpdate(avpList);
-	}, [avpList]);
-
-	/**
 	 * run a full validation process when error total counts change
 	 */
 	// eslint-disable-next-line sonarjs/cognitive-complexity
@@ -130,7 +123,7 @@ const SolaceAttributeValuePairList = ({
 			}
 		});
 		setErrorCount(count);
-	}, [errorCount, avpList.length]);
+	}, [errorCount, avpList.length, avpList, avpKeyValidationCallback, avpValueValidationCallback]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = (index: number): boolean => {
@@ -140,6 +133,7 @@ const SolaceAttributeValuePairList = ({
 	const handleInputChange = (event: SolaceTextFieldChangeEvent, index: number) => {
 		const name: string = event.name;
 		const value: string = event.value;
+
 		const list = [...avpList];
 		list[index][name] = value.trim();
 
@@ -148,6 +142,7 @@ const SolaceAttributeValuePairList = ({
 			list.push({ key: "", value: "" });
 		}
 		setAVPList(list);
+		onAVPListUpdate(list);
 	};
 
 	const handleDeleteItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
@@ -155,6 +150,7 @@ const SolaceAttributeValuePairList = ({
 			const list = [...avpList];
 			list.splice(index, 1);
 			setAVPList(list);
+			onAVPListUpdate(list);
 		}
 	};
 
@@ -195,6 +191,7 @@ const SolaceAttributeValuePairList = ({
 			}
 			setErrorCount(count);
 			setAVPList(list);
+			onAVPListUpdate(list);
 		}
 	};
 
