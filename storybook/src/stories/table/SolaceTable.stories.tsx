@@ -21,7 +21,7 @@ const rows = [
 	{
 		id: "1",
 		first_name: "Fern",
-		last_name: "Vanstone",
+		last_name: "Fern",
 		email: "fvanstone0@ft.com",
 		gender: "Agender"
 	},
@@ -144,7 +144,7 @@ const schemaRows = [
 	},
 	{
 		id: "3",
-		name: "schema3",
+		name: "binary",
 		shared: false,
 		version_count: 4,
 		schemaType: "avro",
@@ -464,11 +464,11 @@ export const CustomSchemaRowTable = (): JSX.Element => {
 				onClick={() => updateSelection(row)}
 				className={row.rowSelected ? "selected" : ""}
 			>
-				<td>{row.name}</td>
-				<td>{getSharedContent(row.shared)}</td>
-				<td>{row.version_count}</td>
-				<td>{getSchemaTypeContent(row.schemaType)}</td>
-				<td>{getContentTypeContent(row.schemaType, row.contentType)}</td>
+				<td key={row.name + "_name"}>{row.name}</td>
+				<td key={row.shared + "_shared"}>{getSharedContent(row.shared)}</td>
+				<td key={row.version_count + "_version_count"}>{row.version_count}</td>
+				<td key={row.schemaType + "_schemaType"}>{getSchemaTypeContent(row.schemaType)}</td>
+				<td key={row.contentType + "_contentType"}>{getContentTypeContent(row.schemaType, row.contentType)}</td>
 			</StyledTableRow>
 		));
 	};
@@ -529,19 +529,23 @@ export const CustomSchemaRowWithActionsTable = (): JSX.Element => {
 		(row: TableRow): JSX.Element[] => {
 			const cells: JSX.Element[] = [];
 			if (!columnsHiddenInfo?.name) {
-				cells.push(<td>{row.name}</td>);
+				cells.push(<td key={row.name + "_name"}>{row.name}</td>);
 			}
 			if (!columnsHiddenInfo?.shared) {
-				cells.push(<td>{row.shared ? SharedTypes.shared : SharedTypes.notShared}</td>);
+				cells.push(<td key={row.shared + "_shared"}>{row.shared ? SharedTypes.shared : SharedTypes.notShared}</td>);
 			}
 			if (!columnsHiddenInfo?.version_count) {
-				cells.push(<td>{row.version_count}</td>);
+				cells.push(<td key={row.version_count + "_version_count"}>{row.version_count}</td>);
 			}
 			if (!columnsHiddenInfo?.schemaType) {
-				cells.push(<td>{schemaTypeLabel[row.schemaType] ?? row.schemaType}</td>);
+				cells.push(<td key={row.schemaType + "_schemaType"}>{schemaTypeLabel[row.schemaType] ?? row.schemaType}</td>);
 			}
 			if (!columnsHiddenInfo?.contentType) {
-				cells.push(<td>{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}</td>);
+				cells.push(
+					<td key={row.contentType + "_contentType"}>
+						{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}
+					</td>
+				);
 			}
 
 			return cells;

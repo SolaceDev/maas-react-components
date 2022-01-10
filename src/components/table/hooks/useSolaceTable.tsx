@@ -211,8 +211,9 @@ export const useSolaceTable = (
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 					displayedColumns.map((col) => {
 						if (!col.hasNoCell && !col.isHidden) {
+							const key = row[col.field] + "_" + col.field;
 							return (
-								<StyledTableData key={row[col.field]}>
+								<StyledTableData key={key}>
 									<span>{row[col.field]}</span>
 								</StyledTableData>
 							);
