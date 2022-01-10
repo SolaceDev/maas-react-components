@@ -77,6 +77,7 @@ const SolaceAttributeValuePairForm = ({
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
 
+	// on init list updated
 	useEffect(() => {
 		if (initialAVPList.length > 0) {
 			const list = _.cloneDeep(initialAVPList);
@@ -85,15 +86,11 @@ const SolaceAttributeValuePairForm = ({
 		}
 	}, [initialAVPList]);
 
-	// TODO: useCallback?
-	// useEffect(() => {
-	// 	if (onAVPListUpdate) onAVPListUpdate(avpList.slice(0, -1));
-	// }, [avpList, onAVPListUpdate]);
-	// one solution, not great tho
-	const avpDeepString = JSON.stringify(avpList);
+	// on avp list updated
+	const avpListString = JSON.stringify(avpList);
 	useEffect(() => {
 		if (onAVPListUpdate) onAVPListUpdate(avpList.slice(0, -1));
-	}, [avpDeepString]);
+	}, [avpListString]);
 
 	const handleListUpdate = (list: Array<AVPItem>) => {
 		setAVPList(list);
