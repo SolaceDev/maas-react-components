@@ -1,5 +1,6 @@
 import { ThemeOptions } from "@material-ui/core";
-// import { getThemeMappings } from "../theming/themeUtils";
+import { SupportedThemes } from "../theming/themeUtils";
+// import getThemeMappings from "../theming/themeUtils";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
@@ -8,8 +9,8 @@ const noneImportant = "none !important";
 // https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
 // this eslint tag can be removed once we start using themeMappings.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getTheme = (_theme: "sap" | "solace") => {
-	// const themeMappings = getThemeMappings(theme);
+const getTheme = (_themeName: SupportedThemes) => {
+	// const themeMappings = getThemeMappings(themeName);
 	// console.log(themeMappings);
 	return themeConfig;
 };
