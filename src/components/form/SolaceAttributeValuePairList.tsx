@@ -96,34 +96,36 @@ const SolaceAttributeValuePairList = ({
 	 */
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 	useEffect(() => {
-		const list = [...avpList];
-		let count = 0;
-		list.forEach((value, index) => {
-			if (index !== list.length - 1) {
-				if (avpKeyValidationCallback) {
-					const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
-					if (error) {
-						list[index]["keyErrorText"] = error;
-						count++;
-					} else if (!error && list[index]["keyErrorText"]) {
-						delete list[index]["keyErrorText"];
-						count--;
+		if ((avpKeyValidationCallback || avpValueValidationCallback) && !readOnly) {
+			const list = [...avpList];
+			let count = 0;
+			list.forEach((value, index) => {
+				if (index !== list.length - 1) {
+					if (avpKeyValidationCallback) {
+						const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
+						if (error) {
+							list[index]["keyErrorText"] = error;
+							count++;
+						} else if (!error && list[index]["keyErrorText"]) {
+							delete list[index]["keyErrorText"];
+							count--;
+						}
+					}
+					if (avpValueValidationCallback) {
+						const error = avpValueValidationCallback(value.value, list.slice(0, -1));
+						if (error) {
+							list[index]["valueErrorText"] = error;
+							count++;
+						} else if (!error && list[index]["valueErrorText"]) {
+							delete list[index]["valueErrorText"];
+							count--;
+						}
 					}
 				}
-				if (avpValueValidationCallback) {
-					const error = avpValueValidationCallback(value.value, list.slice(0, -1));
-					if (error) {
-						list[index]["valueErrorText"] = error;
-						count++;
-					} else if (!error && list[index]["valueErrorText"]) {
-						delete list[index]["valueErrorText"];
-						count--;
-					}
-				}
-			}
-		});
-		setErrorCount(count);
-	}, [errorCount, avpList.length, avpList, avpKeyValidationCallback, avpValueValidationCallback]);
+			});
+			setErrorCount(count);
+		}
+	}, [errorCount, avpList.length, avpList, avpKeyValidationCallback, avpValueValidationCallback, readOnly]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = useCallback(
