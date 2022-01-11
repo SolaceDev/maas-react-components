@@ -17,10 +17,12 @@ interface SolaceAVPContainerProps {
 interface SolaceAVPMoveButtonProps {
 	isDragging: boolean;
 	ghostItem: boolean;
+	readOnly: boolean;
 }
 interface SolaceAVPDeleteButtonProps {
 	cursor: string;
 	background: string;
+	readOnly: boolean;
 }
 
 // conditionally display a drop line as a visual indicator for droppable position
@@ -44,14 +46,16 @@ const SolaceAVPContainer = styled("div")<SolaceAVPContainerProps>(
 const SolaceAVPInputForKey = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForKey);
 const SolaceAVPInputForValue = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForValue);
 
-const SolaceAVPMoveButton = styled("div")<SolaceAVPMoveButtonProps>(({ theme, ghostItem, isDragging }) => ({
+const SolaceAVPMoveButton = styled("div")<SolaceAVPMoveButtonProps>(({ theme, ghostItem, isDragging, readOnly }) => ({
 	...theme.mixins.formComponent_AVPItem.moveButton,
-	cursor: ghostItem ? "default" : isDragging ? "move" : "pointer"
+	cursor: ghostItem ? "default" : isDragging ? "move" : "pointer",
+	display: readOnly ? "none" : "inherit"
 }));
 
-const SolaceAVPDeleteButton = styled("div")<SolaceAVPDeleteButtonProps>(({ theme, cursor, background }) => ({
+const SolaceAVPDeleteButton = styled("div")<SolaceAVPDeleteButtonProps>(({ theme, cursor, background, readOnly }) => ({
 	...theme.mixins.formComponent_AVPItem.deleteButton,
 	cursor: cursor,
+	display: readOnly ? "none" : "inherit",
 	":hover": {
 		backgroundColor: background
 	}
@@ -163,11 +167,14 @@ export const SolaceAttributeValuePair = ({
 					dropFromTop={dropFromTop}
 					index={index}
 				>
-					{!readOnly && (
-						<SolaceAVPMoveButton {...provided.dragHandleProps} isDragging={snapshot.isDragging} ghostItem={ghostItem}>
-							<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-						</SolaceAVPMoveButton>
-					)}
+					<SolaceAVPMoveButton
+						{...provided.dragHandleProps}
+						isDragging={snapshot.isDragging}
+						ghostItem={ghostItem}
+						readOnly={readOnly ? readOnly : false}
+					>
+						<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+					</SolaceAVPMoveButton>
 
 					<SolaceAVPInputForKey>
 						<SolaceTextField
@@ -199,16 +206,15 @@ export const SolaceAttributeValuePair = ({
 						/>
 					</SolaceAVPInputForValue>
 
-					{!readOnly && (
-						<SolaceAVPDeleteButton
-							onClick={(e) => onDelete(e, index)}
-							tabIndex={0}
-							cursor={ghostItem ? "default" : "pointer"}
-							background={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
-						>
-							<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-						</SolaceAVPDeleteButton>
-					)}
+					<SolaceAVPDeleteButton
+						onClick={(e) => onDelete(e, index)}
+						tabIndex={0}
+						cursor={ghostItem ? "default" : "pointer"}
+						background={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
+						readOnly={readOnly ? readOnly : false}
+					>
+						<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+					</SolaceAVPDeleteButton>
 				</SolaceAVPContainer>
 			)}
 		</Draggable>
