@@ -1,5 +1,5 @@
-import React from "react";
-import { Popover } from "@material-ui/core";
+import React, { useState } from "react";
+import { Popover, styled } from "@material-ui/core";
 
 export interface SolacePopoverProps {
 	/**
@@ -33,12 +33,40 @@ export interface SolacePopoverProps {
 	/**
 	 * The React component that displays the popover when hovered over
 	 */
-	anchorElement: JSX.Element;
+	anchorElement: Element | ((element: Element) => Element) | null | undefined;
 	/**
 	 * The content of the Popover component.
 	 */
 	children: JSX.Element;
 }
+
+const MyPopover = styled(Popover)(({ theme }) => ({
+	color: theme.palette.error.main,
+	pointerEvents: "none",
+	".MuiPaper-root.MuiPopover-paper": {
+		pointerEvents: "auto",
+		color: "orange"
+	}
+}));
+
+// const MyPopover = styled(Popover, {
+// 	shouldForwardProp: (prop) => prop !== "color"
+// })<{ color?: string }>(({ color }) => ({
+// 	pointerEvents: "none",
+// 	color: color,
+// 	".MuiPaper-root.MuiPopover-paper": {
+// 		pointerEvents: "auto",
+// 		color: color
+// 	}
+// }));
+
+// interface PopoverContentProps{
+
+// }
+
+// const PopoverContent = styled("div")(({theme})=>({
+
+// }))
 
 const SolacePopover = ({
 	id,
@@ -50,43 +78,53 @@ const SolacePopover = ({
 	anchorElement,
 	children
 }: SolacePopoverProps): JSX.Element => {
-	const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+	// const [popoverOpen, setPopoverOpen] = useState(false);
+	const [anchorEl, setAnchorEl] = useState<any>(null);
+	// const popoverAnchor = useRef(null);
+	// console.log(popoverAnchor);
 
-	const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+	const handlePopoverOpen = (event: any) => {
 		console.log(event.currentTarget);
-		setAnchorEl(event.currentTarget);
+		// setAnchorEl(event.currentTarget);
+		setAnchorEl(anchorElement);
+		// setPopoverOpen(true);
 	};
 
-	const handlePopoverClose = () => {
+	const handlePopoverClose = (event: any) => {
+		console.log("close");
+		console.log(event.target);
 		setAnchorEl(null);
+		// setPopoverOpen(false);
 	};
 
-	const open = Boolean(anchorEl);
+	const popoverOpen = Boolean(anchorEl);
 
 	return (
 		<React.Fragment>
 			<div
 				id={id}
-				aria-owns={open ? "mouse-over-popover" : undefined}
+				// ref={popoverAnchor}
+				aria-owns={popoverOpen ? "mouse-over-popover" : undefined}
 				aria-haspopup="true"
 				onMouseEnter={handlePopoverOpen}
 				onMouseLeave={handlePopoverClose}
 			>
 				{anchorElement}
 			</div>
-			<Popover
-				sx={{
-					pointerEvents: "none"
-				}}
-				open={open}
-				anchorEl={anchorEl}
+			<MyPopover
+				color="orange"
+				// sx={{
+				// 	pointerEvents: "none"
+				// }}
+				open={popoverOpen}
+				anchorEl={anchorEl} // this is critical
 				anchorReference={anchorReference}
 				anchorOrigin={anchorOrigin}
 				anchorPosition={anchorPosition}
 				transformOrigin={transformOrigin}
-				onClose={handlePopoverClose}
 				disableRestoreFocus
 				marginThreshold={marginThreshold}
+				PaperProps={{ onMouseEnter: handlePopoverOpen, onMouseLeave: handlePopoverClose }}
 			>
 				<div
 					style={{
@@ -98,7 +136,8 @@ const SolacePopover = ({
 				>
 					{children}
 				</div>
-			</Popover>
+				{/* {children} */}
+			</MyPopover>
 		</React.Fragment>
 	);
 };

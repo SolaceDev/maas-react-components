@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentMeta } from "@storybook/react";
 
-import { SolaceButton, SolacePopover } from "@SolaceDev/maas-react-components";
+import { SolaceButton, SolacePopper } from "@SolaceDev/maas-react-components";
 
 export default {
-	title: "Forms/SolacePopover",
-	component: SolacePopover,
+	title: "Forms/SolacePopper",
+	component: SolacePopper,
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -48,41 +48,48 @@ export default {
 			description: ""
 		}
 	}
-} as ComponentMeta<typeof SolacePopover>;
+} as ComponentMeta<typeof SolacePopper>;
 
-export const DefaultButtonPopover = () => {
+export const SimplePopover = () => {
+	const [anchorEl, setAnchorEl] = useState(null);
+
+	const handleClick = (event) => {
+		setAnchorEl(anchorEl ? null : event.currentTarget);
+	};
+
 	const renderPopoverContent = () => {
 		return <div>Popover content</div>;
 	};
+	const open = Boolean(anchorEl);
 	return (
 		<div>
-			<SolacePopover
-				anchorElement={<SolaceButton variant="text">Hover to show Popover</SolaceButton>}
-				marginThreshold={0}
-			>
+			<SolaceButton variant="outline" onClick={handleClick}>
+				Toggle Popper
+			</SolaceButton>
+			<SolacePopper open={open} anchorEl={anchorEl}>
 				{renderPopoverContent()}
-			</SolacePopover>
+			</SolacePopper>
 		</div>
 	);
 };
 
-export const PositionedButtonPopover = () => {
-	const renderPopoverContent = () => {
-		return <div>Popover content is now positioned to the bottom left of the button</div>;
-	};
-	return (
-		<div style={{ border: "1px solid orange" }}>
-			<SolacePopover
-				anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
-				transformOrigin={{ horizontal: "left", vertical: "top" }}
-				marginThreshold={0}
-				anchorElement={<div style={{ border: "1px solid red" }}>Hover to show Popover</div>}
-			>
-				{renderPopoverContent()}
-			</SolacePopover>
-		</div>
-	);
-};
+// export const PositionedButtonPopover = () => {
+// 	const renderPopoverContent = () => {
+// 		return <div>Popover content is now positioned to the bottom left of the button</div>;
+// 	};
+// 	return (
+// 		<div style={{ border: "1px solid orange" }}>
+// 			<SolacePopover
+// 				anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
+// 				transformOrigin={{ horizontal: "left", vertical: "top" }}
+// 				marginThreshold={0}
+// 				anchorElement={<div style={{ border: "1px solid red" }}>Hover to show Popover</div>}
+// 			>
+// 				{renderPopoverContent()}
+// 			</SolacePopover>
+// 		</div>
+// 	);
+// };
 
 // export const ScrollPopover = () => {
 // 	const renderPopoverContent = () => {
