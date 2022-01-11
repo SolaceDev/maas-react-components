@@ -1,5 +1,5 @@
 import { ThemeOptions } from "@material-ui/core";
-import { SupportedThemes } from "../theming/themeUtils";
+import { SupportedThemes } from "../types";
 // import getThemeMappings from "../theming/themeUtils";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";

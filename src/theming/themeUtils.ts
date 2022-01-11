@@ -1,13 +1,10 @@
 import { sapTheme } from "./sapTheme";
 import { solaceTheme } from "./solaceTheme";
-import { ThemeMapping } from "./ThemeMapping";
+import { ThemeMapping } from "../types/ThemeMapping";
+import { SupportedThemes } from "../types/supportedThemes";
 
 export let appTheme: SupportedThemes | undefined;
 
-export enum SupportedThemes {
-	sap = "sap",
-	solace = "solace"
-}
 /**
  * To retrieve theme mappings in components simply call getThemeMappings()
  * appTheme would be initialized in the first theme retrieval step, so don't need to pass it down everytime.

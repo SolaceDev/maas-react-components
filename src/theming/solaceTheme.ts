@@ -1,7 +1,7 @@
 import { alpha } from "@material-ui/system";
 
 import { solaceColors } from "./solaceColors";
-import { ThemeMapping } from "./ThemeMapping";
+import { ThemeMapping } from "../types/ThemeMapping";
 
 export const solaceTheme: ThemeMapping = {
 	pallete: {
