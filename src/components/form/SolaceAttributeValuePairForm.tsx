@@ -17,6 +17,10 @@ const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number)
 	return result;
 };
 
+const ghostItemAtIndex = (list: Array<AVPItem>, index: number) => {
+	return list[index]["key"] === "" && list[index]["value"] === "";
+};
+
 export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * Unique identifier, if `id` is not specified, `name` value will be used
@@ -86,7 +90,7 @@ const SolaceAttributeValuePairForm = ({
 	const handleListUpdate = useCallback(
 		(list: Array<AVPItem>) => {
 			setAVPList(list);
-			if (onAVPListUpdate) onAVPListUpdate(list.slice(0, -1));
+			if (onAVPListUpdate && ghostItemAtIndex(list, list.length - 1)) onAVPListUpdate(list.slice(0, -1));
 			setDropOverIndex(null); // reset drop over index on drag end
 			setDropFromTop(null); // reset drop over direction on drag end
 		},
@@ -113,7 +117,9 @@ const SolaceAttributeValuePairForm = ({
 		const reorderedList = reorderList(currentAVPList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
-		if (onAVPListUpdate) onAVPListUpdate(reorderedList.slice(0, -1));
+
+		if (onAVPListUpdate && ghostItemAtIndex(reorderedList, reorderedList.length - 1))
+			onAVPListUpdate(reorderedList.slice(0, -1));
 		setDropOverIndex(null); // reset drop over index on drag end
 		setDropFromTop(null); // reset drop over direction on drag end
 	};
