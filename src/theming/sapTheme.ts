@@ -1,7 +1,7 @@
 import { alpha, lighten } from "@material-ui/core";
 
 import { sapColors } from "./sapColors";
-import { ThemeMapping } from "./ThemeMapping";
+import { ThemeMapping } from "../types/ThemeMapping";
 
 export const sapTheme: ThemeMapping = {
 	pallete: {
