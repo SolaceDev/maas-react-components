@@ -23,7 +23,7 @@ export interface AVPListProps {
 	/**
 	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
 	 */
-	initialAVPList: Array<AVPItem>;
+	avpList: Array<AVPItem>;
 	/**
 	 * callback function that returns the updated AVP list
 	 */
@@ -74,22 +74,22 @@ const handleNavigateAVPList = (key: string, index: number, enumList: NodeListOf<
 const SolaceAttributeValuePairList = ({
 	readOnly,
 	type,
-	initialAVPList,
+	avpList,
 	onAVPListUpdate,
 	avpKeyValidationCallback,
 	avpValueValidationCallback,
 	dropOverIndex,
 	dropFromTop
 }: AVPListProps): JSX.Element => {
-	const [avpList, setAVPList] = useState<AVPItem[]>(initialAVPList);
+	const [currentAVPList, setAVPList] = useState<AVPItem[]>(avpList);
 	const [errorCount, setErrorCount] = useState(0);
 
 	/**
-	 * on initialAVPList updated
+	 * on avpList updated
 	 */
 	useEffect(() => {
-		setAVPList(initialAVPList);
-	}, [initialAVPList]);
+		setAVPList(avpList);
+	}, [avpList]);
 
 	/**
 	 * run a full validation process when error total counts change
@@ -97,7 +97,7 @@ const SolaceAttributeValuePairList = ({
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 	useEffect(() => {
 		if ((avpKeyValidationCallback || avpValueValidationCallback) && !readOnly) {
-			const list = [...avpList];
+			const list = [...currentAVPList];
 			let count = 0;
 			list.forEach((value, index) => {
 				if (index !== list.length - 1) {
@@ -125,14 +125,21 @@ const SolaceAttributeValuePairList = ({
 			});
 			setErrorCount(count);
 		}
-	}, [errorCount, avpList.length, avpList, avpKeyValidationCallback, avpValueValidationCallback, readOnly]);
+	}, [
+		errorCount,
+		currentAVPList.length,
+		currentAVPList,
+		avpKeyValidationCallback,
+		avpValueValidationCallback,
+		readOnly
+	]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = useCallback(
 		(index: number): boolean => {
-			return index === avpList.length - 1 ? true : false;
+			return index === currentAVPList.length - 1 ? true : false;
 		},
-		[avpList.length]
+		[currentAVPList.length]
 	);
 
 	const handleInputChange = useCallback(
@@ -140,7 +147,7 @@ const SolaceAttributeValuePairList = ({
 			const name: string = event.name;
 			const value: string = event.value;
 
-			const list = [...avpList];
+			const list = [...currentAVPList];
 			list[index][name] = value.trim();
 
 			// add a new row at the end of the list upon input changes
@@ -150,19 +157,19 @@ const SolaceAttributeValuePairList = ({
 			setAVPList(list);
 			onAVPListUpdate(list);
 		},
-		[avpList, onAVPListUpdate]
+		[currentAVPList, onAVPListUpdate]
 	);
 
 	const handleDeleteItem = useCallback(
 		(event: React.MouseEvent<HTMLElement>, index: number) => {
-			if (event.type === "click" && !ghostItem(index) && avpList.length > 1) {
-				const list = [...avpList];
+			if (event.type === "click" && !ghostItem(index) && currentAVPList.length > 1) {
+				const list = [...currentAVPList];
 				list.splice(index, 1);
 				setAVPList(list);
 				onAVPListUpdate(list);
 			}
 		},
-		[avpList, onAVPListUpdate, ghostItem]
+		[currentAVPList, onAVPListUpdate, ghostItem]
 	);
 
 	const handleKeyUp = useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -179,8 +186,8 @@ const SolaceAttributeValuePairList = ({
 	const handleInputOnBlur = useCallback(
 		// eslint-disable-next-line sonarjs/cognitive-complexity
 		(event: React.FocusEvent<HTMLInputElement>, index: number) => {
-			if (index !== avpList.length - 1) {
-				const list = [...avpList];
+			if (index !== currentAVPList.length - 1) {
+				const list = [...currentAVPList];
 				let count = 0;
 				if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
 					const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
@@ -206,12 +213,12 @@ const SolaceAttributeValuePairList = ({
 				onAVPListUpdate(list);
 			}
 		},
-		[avpList, onAVPListUpdate, avpKeyValidationCallback, avpValueValidationCallback]
+		[currentAVPList, onAVPListUpdate, avpKeyValidationCallback, avpValueValidationCallback]
 	);
 
 	return (
 		<React.Fragment>
-			{avpList.map((item, index) => {
+			{currentAVPList.map((item, index) => {
 				return (
 					<SolaceAttributeValuePair
 						key={`${index}`}

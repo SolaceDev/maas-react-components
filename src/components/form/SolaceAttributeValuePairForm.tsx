@@ -159,7 +159,7 @@ const SolaceAttributeValuePairForm = ({
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
 							<SolaceAttributeValuePairList
-								initialAVPList={currentAVPList}
+								avpList={currentAVPList}
 								onAVPListUpdate={handleListUpdate}
 								avpKeyValidationCallback={avpKeyValidationCallback}
 								avpValueValidationCallback={avpValueValidationCallback}
