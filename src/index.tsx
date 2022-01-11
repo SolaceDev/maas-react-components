@@ -18,7 +18,8 @@ export { default as SolaceTabs } from "./components/layout/SolaceTabs";
 export { default as SolaceSidePanelLayout } from "./components/layout/SolaceSidePanelLayout";
 export { PANEL_POSITION as SolacePanelPosition } from "./components/layout/SolaceSidePanelLayout";
 export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceConfirmationDialog";
-export { default as SolaceMenuPopper } from "./components/SolaceMenuPopper";
+export { default as SolaceMenu } from "./components/SolaceMenu";
+export type { SolaceMenuItemProps } from "./components/SolaceMenu";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";
 export { default as SolaceSelect } from "./components/form/SolaceSelect";
 export { default as SolaceSelectAutocomplete } from "./components/form/SolaceSelectAutocomplete";
@@ -36,5 +37,7 @@ export { useExpandableRows } from "./components/table/hooks/useExpandableRows";
 export { default as SolacePagination } from "./components/SolacePagination";
 export { default as SolaceCodeEditor } from "./components/form/SolaceCodeEditor";
 export { default as SolaceAttributeValuePairForm } from "./components/form/SolaceAttributeValuePairForm";
+export { default as getThemeMappings } from "./theming/themeUtils";
+export * from "./types";
 
 export { default as SolaceTheme } from "./resources/theme";

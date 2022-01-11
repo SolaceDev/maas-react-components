@@ -94,8 +94,9 @@ export const useExpandableRows = ({
 						addChevronToRows(row, rowIndex),
 						displayedColumns.map((col: TableColumn) => {
 							if (!col.hasNoCell && !col.isHidden) {
+								const key = row[col.field] + "_" + col.field;
 								return (
-									<StyledTableData key={row[col.field]}>
+									<StyledTableData key={key}>
 										<span>{row[col.field]}</span>
 									</StyledTableData>
 								);
