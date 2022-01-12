@@ -10,38 +10,6 @@ export default {
 			control: { type: "text" },
 			description: "Unique identifier for the popover"
 		},
-		anchorOrigin: {
-			description: "The anchoring position where the popover's anchorEl will attach to",
-			table: {
-				defaultValue: {
-					vertical: "top",
-					horizontal: "left"
-				}
-			}
-		},
-		anchorPosition: {
-			description: "",
-			table: {
-				defaultValue: {}
-			}
-		},
-		transformOrigin: {
-			description: "",
-			table: {
-				defaultValue: {}
-			}
-		},
-		anchorReference: {
-			description: ""
-		},
-		marginThreshold: {
-			control: { type: "number" },
-			description: ""
-		},
-		anchorElement: {
-			control: { type: "object" },
-			description: ""
-		},
 		children: {
 			control: { type: "object" },
 			description: ""
@@ -80,6 +48,16 @@ export const CustomComponent = () => {
 	);
 };
 
+// TODO:
+export const ControlledTooltip = () => {
+	return <div></div>;
+};
+
+/**
+ * Using Enum version list as an example to demonstrate how to customize both the hover over element and the Popover component
+ */
+
+// mock-up data
 const enumVersionList = [
 	{
 		version: "1.1.0",
@@ -89,12 +67,12 @@ const enumVersionList = [
 	{
 		version: "1.1.1",
 		desc: "description for version 1.1.1",
-		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9", "value10"]
+		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9"]
 	},
 	{
 		version: "1.1.2",
 		desc: "description for version 1.1.2",
-		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9", "value10"]
+		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8"]
 	},
 	{
 		version: "1.1.3",
@@ -108,7 +86,8 @@ const enumVersionList = [
 	}
 ];
 
-const EnumDescComponent = ({ desc, values }) => {
+// custom Popover component
+const EnumVersionPopover = ({ desc, values }) => {
 	return (
 		<div>
 			<h3>Description</h3>
@@ -121,18 +100,58 @@ const EnumDescComponent = ({ desc, values }) => {
 	);
 };
 
-export const EnumVersionList = () => {
+interface EnumVersionItemProps {
+	item: any;
+}
+
+// custom hover over element, in this case, an Enum list item
+const EnumVersionItem = ({ item, itemRef, ...props }) => {
 	return (
-		<div style={{ width: "100px", border: "1px solid orange" }}>
-			{enumVersionList.map((item, index) => {
-				return (
-					<div key={index}>
-						<SolaceTooltip title={<EnumDescComponent desc={item.desc} values={item.values} />}>
-							<div style={{ padding: "10px", border: "1px solid skyblue" }}>{item.version}</div>
-						</SolaceTooltip>
-					</div>
-				);
-			})}
+		<div
+			{...props}
+			ref={itemRef}
+			style={{ width: "200px", height: "auto", padding: "10px", border: "1px solid lightgrey" }}
+		>
+			{item.version}
+		</div>
+	);
+};
+
+export const EnumVersionList = () => {
+	// to properly apply ref
+	// use forwardRef
+	const EnumVersionItemForwardRef = React.forwardRef<HTMLElement, React.PropsWithChildren<EnumVersionItemProps>>(
+		(props, ref) => {
+			return <EnumVersionItem {...props} item={props.item} itemRef={ref} />;
+		}
+	);
+	return (
+		<div
+			style={{
+				width: "250px",
+				height: "250px",
+				padding: "10px",
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+				alignItems: "flex-start"
+			}}
+		>
+			<div>Enum versions</div>
+			<div>
+				{enumVersionList.map((item, index) => {
+					return (
+						<div key={index}>
+							<SolaceTooltip
+								title={<EnumVersionPopover desc={item.desc} values={item.values} />}
+								placement="right-start"
+							>
+								<EnumVersionItemForwardRef item={item} />
+							</SolaceTooltip>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 };
