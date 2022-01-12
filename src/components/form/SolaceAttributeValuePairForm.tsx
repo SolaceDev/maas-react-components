@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { styled } from "@material-ui/core";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import SolaceLabel from "./SolaceLabel";
@@ -15,6 +15,10 @@ const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number)
 	result.splice(endIndex, 0, removed);
 
 	return result;
+};
+
+const ghostItemAtIndex = (list: Array<AVPItem>, index: number) => {
+	return list[index]["key"] === "" && list[index]["value"] === "";
 };
 
 export interface SolaceAttributeValuePairFormProps {
@@ -83,10 +87,15 @@ const SolaceAttributeValuePairForm = ({
 		setAVPList(list);
 	}, [avpList]);
 
-	const handleListUpdate = (list: Array<AVPItem>) => {
-		setAVPList(list);
-		if (onAVPListUpdate) onAVPListUpdate(list.slice(0, -1));
-	};
+	const handleListUpdate = useCallback(
+		(list: Array<AVPItem>) => {
+			setAVPList(list);
+			if (onAVPListUpdate && ghostItemAtIndex(list, list.length - 1)) onAVPListUpdate(list.slice(0, -1));
+			setDropOverIndex(null); // reset drop over index on drag end
+			setDropFromTop(null); // reset drop over direction on drag end
+		},
+		[onAVPListUpdate]
+	);
 
 	/**
 	 * All the things to do when a drag action ended
@@ -108,7 +117,9 @@ const SolaceAttributeValuePairForm = ({
 		const reorderedList = reorderList(currentAVPList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
-		if (onAVPListUpdate) onAVPListUpdate(reorderedList.slice(0, -1));
+
+		if (onAVPListUpdate && ghostItemAtIndex(reorderedList, reorderedList.length - 1))
+			onAVPListUpdate(reorderedList.slice(0, -1));
 		setDropOverIndex(null); // reset drop over index on drag end
 		setDropFromTop(null); // reset drop over direction on drag end
 	};
@@ -148,7 +159,7 @@ const SolaceAttributeValuePairForm = ({
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
 							<SolaceAttributeValuePairList
-								initialAVPList={currentAVPList}
+								avpList={currentAVPList}
 								onAVPListUpdate={handleListUpdate}
 								avpKeyValidationCallback={avpKeyValidationCallback}
 								avpValueValidationCallback={avpValueValidationCallback}

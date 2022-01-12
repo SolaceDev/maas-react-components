@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
 import { SolaceAttributeValuePair, valueInputTypes } from "./SolaceAttributeValuePair";
 
@@ -23,7 +23,7 @@ export interface AVPListProps {
 	/**
 	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
 	 */
-	initialAVPList: Array<AVPItem>;
+	avpList: Array<AVPItem>;
 	/**
 	 * callback function that returns the updated AVP list
 	 */
@@ -74,87 +74,105 @@ const handleNavigateAVPList = (key: string, index: number, enumList: NodeListOf<
 const SolaceAttributeValuePairList = ({
 	readOnly,
 	type,
-	initialAVPList,
+	avpList,
 	onAVPListUpdate,
 	avpKeyValidationCallback,
 	avpValueValidationCallback,
 	dropOverIndex,
 	dropFromTop
 }: AVPListProps): JSX.Element => {
-	const [avpList, setAVPList] = useState<AVPItem[]>(initialAVPList);
+	const [currentAVPList, setAVPList] = useState<AVPItem[]>(avpList);
 	const [errorCount, setErrorCount] = useState(0);
 
 	/**
-	 * on initialAVPList updated
+	 * on avpList updated
 	 */
 	useEffect(() => {
-		setAVPList(initialAVPList);
-	}, [initialAVPList]);
+		setAVPList(avpList);
+	}, [avpList]);
 
 	/**
 	 * run a full validation process when error total counts change
 	 */
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 	useEffect(() => {
-		const list = [...avpList];
-		let count = 0;
-		list.forEach((value, index) => {
-			if (index !== list.length - 1) {
-				if (avpKeyValidationCallback) {
-					const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
-					if (error) {
-						list[index]["keyErrorText"] = error;
-						count++;
-					} else if (!error && list[index]["keyErrorText"]) {
-						delete list[index]["keyErrorText"];
-						count--;
+		if ((avpKeyValidationCallback || avpValueValidationCallback) && !readOnly) {
+			const list = [...currentAVPList];
+			let count = 0;
+			list.forEach((value, index) => {
+				if (index !== list.length - 1) {
+					if (avpKeyValidationCallback) {
+						const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
+						if (error) {
+							list[index]["keyErrorText"] = error;
+							count++;
+						} else if (!error && list[index]["keyErrorText"]) {
+							delete list[index]["keyErrorText"];
+							count--;
+						}
+					}
+					if (avpValueValidationCallback) {
+						const error = avpValueValidationCallback(value.value, list.slice(0, -1));
+						if (error) {
+							list[index]["valueErrorText"] = error;
+							count++;
+						} else if (!error && list[index]["valueErrorText"]) {
+							delete list[index]["valueErrorText"];
+							count--;
+						}
 					}
 				}
-				if (avpValueValidationCallback) {
-					const error = avpValueValidationCallback(value.value, list.slice(0, -1));
-					if (error) {
-						list[index]["valueErrorText"] = error;
-						count++;
-					} else if (!error && list[index]["valueErrorText"]) {
-						delete list[index]["valueErrorText"];
-						count--;
-					}
-				}
-			}
-		});
-		setErrorCount(count);
-	}, [errorCount, avpList.length, avpList, avpKeyValidationCallback, avpValueValidationCallback]);
+			});
+			setErrorCount(count);
+		}
+	}, [
+		errorCount,
+		currentAVPList.length,
+		currentAVPList,
+		avpKeyValidationCallback,
+		avpValueValidationCallback,
+		readOnly
+	]);
 
 	// determine whether an enum item is a ghost item
-	const ghostItem = (index: number): boolean => {
-		return index === avpList.length - 1 ? true : false;
-	};
+	const ghostItem = useCallback(
+		(index: number): boolean => {
+			return index === currentAVPList.length - 1 ? true : false;
+		},
+		[currentAVPList.length]
+	);
 
-	const handleInputChange = (event: SolaceTextFieldChangeEvent, index: number) => {
-		const name: string = event.name;
-		const value: string = event.value;
+	const handleInputChange = useCallback(
+		(event: SolaceTextFieldChangeEvent, index: number) => {
+			const name: string = event.name;
+			const value: string = event.value;
 
-		const list = [...avpList];
-		list[index][name] = value.trim();
+			const list = [...currentAVPList];
+			list[index][name] = value.trim();
 
-		// add a new row at the end of the list upon input changes
-		if (name && list.length - 1 === index) {
-			list.push({ key: "", value: "" });
-		}
-		setAVPList(list);
-		onAVPListUpdate(list);
-	};
-
-	const handleDeleteItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
-		if (event.type === "click" && !ghostItem(index) && avpList.length > 1) {
-			const list = [...avpList];
-			list.splice(index, 1);
+			// add a new row at the end of the list upon input changes
+			if (name && list.length - 1 === index) {
+				list.push({ key: "", value: "" });
+			}
 			setAVPList(list);
 			onAVPListUpdate(list);
-		}
-	};
+		},
+		[currentAVPList, onAVPListUpdate]
+	);
 
-	const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+	const handleDeleteItem = useCallback(
+		(event: React.MouseEvent<HTMLElement>, index: number) => {
+			if (event.type === "click" && !ghostItem(index) && currentAVPList.length > 1) {
+				const list = [...currentAVPList];
+				list.splice(index, 1);
+				setAVPList(list);
+				onAVPListUpdate(list);
+			}
+		},
+		[currentAVPList, onAVPListUpdate, ghostItem]
+	);
+
+	const handleKeyUp = useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
 		const inputEleList = document.querySelectorAll("[data-tags='avpInput']");
 		const focusedEle = document.activeElement;
 
@@ -163,41 +181,44 @@ const SolaceAttributeValuePairList = ({
 				handleNavigateAVPList(event.key, i, inputEleList);
 			}
 		}
-	};
+	}, []);
 
-	// eslint-disable-next-line sonarjs/cognitive-complexity
-	const handleInputOnBlur = (event: React.FocusEvent<HTMLInputElement>, index: number) => {
-		if (index !== avpList.length - 1) {
-			const list = [...avpList];
-			let count = 0;
-			if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
-				const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
-				if (error) {
-					list[index]["keyErrorText"] = error;
-					count++;
-				} else if (!error && list[index]["keyErrorText"]) {
-					delete list[index]["keyErrorText"];
-					count--;
+	const handleInputOnBlur = useCallback(
+		// eslint-disable-next-line sonarjs/cognitive-complexity
+		(event: React.FocusEvent<HTMLInputElement>, index: number) => {
+			if (index !== currentAVPList.length - 1) {
+				const list = [...currentAVPList];
+				let count = 0;
+				if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
+					const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
+					if (error) {
+						list[index]["keyErrorText"] = error;
+						count++;
+					} else if (!error && list[index]["keyErrorText"]) {
+						delete list[index]["keyErrorText"];
+						count--;
+					}
+				} else if (event.target.getAttribute("name") === "value" && avpValueValidationCallback) {
+					const error = avpValueValidationCallback(event.target.value, list.slice(0, -1));
+					if (error) {
+						list[index]["valueErrorText"] = error;
+						count++;
+					} else if (!error && list[index]["valueErrorText"]) {
+						delete list[index]["valueErrorText"];
+						count--;
+					}
 				}
-			} else if (event.target.getAttribute("name") === "value" && avpValueValidationCallback) {
-				const error = avpValueValidationCallback(event.target.value, list.slice(0, -1));
-				if (error) {
-					list[index]["valueErrorText"] = error;
-					count++;
-				} else if (!error && list[index]["valueErrorText"]) {
-					delete list[index]["valueErrorText"];
-					count--;
-				}
+				setErrorCount(count);
+				setAVPList(list);
+				onAVPListUpdate(list);
 			}
-			setErrorCount(count);
-			setAVPList(list);
-			onAVPListUpdate(list);
-		}
-	};
+		},
+		[currentAVPList, onAVPListUpdate, avpKeyValidationCallback, avpValueValidationCallback]
+	);
 
 	return (
 		<React.Fragment>
-			{avpList.map((item, index) => {
+			{currentAVPList.map((item, index) => {
 				return (
 					<SolaceAttributeValuePair
 						key={`${index}`}
