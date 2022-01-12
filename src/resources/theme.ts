@@ -717,40 +717,6 @@ const theme: ThemeOptions = {
 					}
 				}
 			}
-		},
-		MuiTooltip: {
-			/** SolacePopover Component */ //TODO:
-			styleOverrides: {
-				// wrapper container of the Popover
-				// popper: {
-				// 	zIndex: 1500, // default z-index value for MuiTooltip
-				// 	// the gap between the hovered over element and the Popover
-				// 	"&.MuiTooltip-popper": {
-				// 		".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight": {
-				// 			marginLeft: "14px"
-				// 		},
-				// 		".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft": {
-				// 			marginRight: "14px"
-				// 		},
-				// 		".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementTop": {
-				// 			marginBottom: "14px"
-				// 		},
-				// 		".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementBottom": {
-				// 			marginTop: "14px"
-				// 		}
-				// 	}
-				// },
-				// // Popover content container
-				// tooltip: {
-				// 	backgroundColor: BASE_COLORS.whites.white1,
-				// 	color: BASE_COLORS.greys.grey14,
-				// 	fontSize: BASE_FONT_PX_SIZES.sm,
-				// 	fontWeight: 400,
-				// 	padding: "16px",
-				// 	borderRadius: "4px",
-				// 	boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey25}`
-				// }
-			}
 		}
 	},
 	mixins: {
@@ -844,9 +810,12 @@ const theme: ThemeOptions = {
 				gridTemplateRows: "auto"
 			}
 		},
+		/** SolacePopover Component (MuiTooltip underneath)*/
 		formComponent_SolacePopover: {
+			// outside wrapper of the Popover
 			"&.MuiTooltip-popper": {
 				zIndex: 1500, // default z-index value for MuiTooltip
+				// Popover content container
 				".MuiTooltip-tooltip": {
 					backgroundColor: BASE_COLORS.whites.white1,
 					color: BASE_COLORS.greys.grey14,
@@ -856,6 +825,7 @@ const theme: ThemeOptions = {
 					borderRadius: "4px",
 					boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey25}`
 				},
+				// apply a gap between the hovered over element and the Popover
 				".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight": {
 					marginLeft: "14px"
 				},

@@ -1,144 +1,150 @@
-import React, { useState } from "react";
-import { Popover, styled } from "@material-ui/core";
+import { Tooltip, Fade, styled, TooltipProps } from "@material-ui/core";
+import React, { ReactChild, ReactFragment, ReactPortal } from "react";
 
-export interface SolacePopoverProps {
+const ToBeStyledTooltip = ({ className, ...props }: TooltipProps) => (
+	<Tooltip {...props} classes={{ popper: className, tooltip: className }} />
+);
+const StyledTooltip = styled(ToBeStyledTooltip)(({ theme }) => theme.mixins.formComponent_SolacePopover);
+
+interface SolacePopoverProps {
 	/**
-	 * unique identifier for the component
+	 * This prop is used to help implement the accessibility logic. If you don't provide this prop. It falls back to a randomly generated id by Mui
 	 */
 	id?: string;
 	/**
-	 * This is the point on the anchor where the popover's anchorEl will attach to.
+	 * If true, the component is shown.
 	 */
-	anchorOrigin?: { horizontal: "center" | "left" | "right" | number; vertical: "bottom" | "center" | "top" | number };
+	open?: boolean;
 	/**
-	 * This is the position that may be used to set the position of the popover.
-	 * The coordinates are relative to the application's client area.
+	 * 	Popover title. Zero-length titles string are never displayed.
 	 */
-	anchorPosition?: { left: number; top: number };
+	title: boolean | ReactChild | ReactFragment | ReactPortal;
 	/**
-	 * This is the point on the popover which will attach to the anchor's origin.
-	 */
-	transformOrigin?: {
-		horizontal: "center" | "left" | "right" | number;
-		vertical: "bottom" | "center" | "top" | number;
-	};
-	/**
-	 * This determines which anchor prop to refer to when setting the position of the popover. Default to "anchorEl"
-	 */
-	anchorReference?: "anchorEl" | "anchorPosition" | "none";
-	/**
-	 * Specifies how close to the edge of the window the popover can appear.
-	 */
-	marginThreshold?: number;
-	/**
-	 * The React component that displays the popover when hovered over
-	 */
-	anchorElement: Element | ((element: Element) => Element) | null | undefined;
-	/**
-	 * The content of the Popover component.
+	 * Popover reference element. Note: Needs to be able to hold a ref.
 	 */
 	children: JSX.Element;
+	/**
+	 * 	If true, adds an arrow to the Popover.
+	 */
+	arrow?: boolean;
+	/**
+	 * Set to true if the title acts as an accessible description. By default the title acts as an accessible label for the child.
+	 */
+	describeChild?: boolean;
+	/**
+	 * Do not respond to focus-visible events.
+	 */
+	disableFocusListener?: boolean;
+	/**
+	 * Do not respond to hover events.
+	 */
+	disableHoverListener?: boolean;
+	/**
+	 * Makes a Popover not interactive, i.e. it will close when the user hovers over the Popover before the leaveDelay is expired.
+	 */
+	disableInteractive?: boolean;
+	/**
+	 * Do not respond to long press touch events.
+	 */
+	disableTouchListener?: boolean;
+	/**
+	 * The number of milliseconds to wait before showing the Popover. This prop won't impact the enter touch delay (enterTouchDelay).
+	 */
+	enterDelay: number;
+	/**
+	 * The number of milliseconds to wait before showing the Popover when one was already recently opened.
+	 */
+	enterNextDelay: number;
+	/**
+	 * The number of milliseconds a user must touch the element before showing the Popover.
+	 */
+	enterTouchDelay?: number;
+	/**
+	 * 	If true, the Popover follow the cursor over the wrapped element.
+	 */
+	followCursor?: boolean;
+	/**
+	 * The number of milliseconds to wait before hiding the Popover. This prop won't impact the leave touch delay (leaveTouchDelay).
+	 */
+	leaveDelay: number;
+	/**
+	 * 	The number of milliseconds after the user stops touching an element before hiding the Popover.
+	 */
+	leaveTouchDelay?: number;
+	/**
+	 * 	Callback fired when the component requests to be closed.
+	 */
+	onClose?: (event: Event | React.SyntheticEvent) => void;
+	/**
+	 * 	Callback fired when the component requests to be open.
+	 */
+	onOpen?: (event: Event | React.SyntheticEvent) => void;
+	/**
+	 * 	Popover placement.
+	 */
+	placement?:
+		| "bottom-end"
+		| "bottom-start"
+		| "bottom"
+		| "left-end"
+		| "left-start"
+		| "left"
+		| "right-end"
+		| "right-start"
+		| "right"
+		| "top-end"
+		| "top-start"
+		| "top";
 }
-
-const MyPopover = styled(Popover)(({ theme }) => ({
-	color: theme.palette.error.main,
-	pointerEvents: "none",
-	".MuiPaper-root.MuiPopover-paper": {
-		pointerEvents: "auto",
-		color: "orange"
-	}
-}));
-
-// const MyPopover = styled(Popover, {
-// 	shouldForwardProp: (prop) => prop !== "color"
-// })<{ color?: string }>(({ color }) => ({
-// 	pointerEvents: "none",
-// 	color: color,
-// 	".MuiPaper-root.MuiPopover-paper": {
-// 		pointerEvents: "auto",
-// 		color: color
-// 	}
-// }));
-
-// interface PopoverContentProps{
-
-// }
-
-// const PopoverContent = styled("div")(({theme})=>({
-
-// }))
 
 const SolacePopover = ({
 	id,
-	anchorOrigin,
-	anchorPosition,
-	transformOrigin,
-	anchorReference,
-	marginThreshold,
-	anchorElement,
+	open,
+	title,
+	arrow,
+	describeChild,
+	disableFocusListener,
+	disableHoverListener,
+	disableInteractive,
+	disableTouchListener,
+	enterDelay = 500, //Popover appears with 500ms delay
+	enterNextDelay = 500,
+	enterTouchDelay,
+	followCursor,
+	leaveDelay,
+	leaveTouchDelay,
+	placement,
+	onOpen,
+	onClose,
 	children
-}: SolacePopoverProps): JSX.Element => {
-	// const [popoverOpen, setPopoverOpen] = useState(false);
-	const [anchorEl, setAnchorEl] = useState<any>(null);
-	// const popoverAnchor = useRef(null);
-	// console.log(popoverAnchor);
-
-	const handlePopoverOpen = (event: any) => {
-		console.log(event.currentTarget);
-		// setAnchorEl(event.currentTarget);
-		setAnchorEl(anchorElement);
-		// setPopoverOpen(true);
-	};
-
-	const handlePopoverClose = (event: any) => {
-		console.log("close");
-		console.log(event.target);
-		setAnchorEl(null);
-		// setPopoverOpen(false);
-	};
-
-	const popoverOpen = Boolean(anchorEl);
-
+}: SolacePopoverProps) => {
 	return (
-		<React.Fragment>
-			<div
-				id={id}
-				// ref={popoverAnchor}
-				aria-owns={popoverOpen ? "mouse-over-popover" : undefined}
-				aria-haspopup="true"
-				onMouseEnter={handlePopoverOpen}
-				onMouseLeave={handlePopoverClose}
-			>
-				{anchorElement}
-			</div>
-			<MyPopover
-				color="orange"
-				// sx={{
-				// 	pointerEvents: "none"
-				// }}
-				open={popoverOpen}
-				anchorEl={anchorEl} // this is critical
-				anchorReference={anchorReference}
-				anchorOrigin={anchorOrigin}
-				anchorPosition={anchorPosition}
-				transformOrigin={transformOrigin}
-				disableRestoreFocus
-				marginThreshold={marginThreshold}
-				PaperProps={{ onMouseEnter: handlePopoverOpen, onMouseLeave: handlePopoverClose }}
-			>
-				<div
-					style={{
-						padding: "16px",
-						borderRadius: "4px",
-						backgroundColor: "#fff",
-						boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.15)"
-					}}
-				>
-					{children}
-				</div>
-				{/* {children} */}
-			</MyPopover>
-		</React.Fragment>
+		<StyledTooltip
+			id={id}
+			open={open}
+			title={title}
+			arrow={arrow}
+			describeChild={describeChild}
+			disableFocusListener={disableFocusListener}
+			disableHoverListener={disableHoverListener}
+			disableInteractive={disableInteractive}
+			disableTouchListener={disableTouchListener}
+			enterDelay={enterDelay}
+			enterNextDelay={enterNextDelay}
+			enterTouchDelay={enterTouchDelay}
+			followCursor={followCursor}
+			leaveDelay={leaveDelay}
+			leaveTouchDelay={leaveTouchDelay}
+			onClose={onOpen}
+			onOpen={onClose}
+			placement={placement}
+			// fade-in & fade-out
+			TransitionComponent={Fade}
+			// Popover fade in duration 150ms, fade out duration 1000ms
+			TransitionProps={{ timeout: { enter: 150, exit: 1000 } }}
+		>
+			{children}
+		</StyledTooltip>
 	);
 };
 
