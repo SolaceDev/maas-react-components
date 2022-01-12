@@ -815,6 +815,7 @@ const theme: ThemeOptions = {
 			// outside wrapper of the Popover
 			"&.MuiTooltip-popper": {
 				zIndex: 1500, // default z-index value for MuiTooltip
+				cursor: "pointer", // this only applies to the Popover
 				// Popover content container
 				".MuiTooltip-tooltip": {
 					backgroundColor: BASE_COLORS.whites.white1,

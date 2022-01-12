@@ -15,11 +15,9 @@ export default {
 
 export const DefaultPopover = () => {
 	return (
-		<div>
-			<SolacePopover title="simple text">
-				<span>Hover content</span>
-			</SolacePopover>
-		</div>
+		<SolacePopover title="simple text">
+			<span>Hover content</span>
+		</SolacePopover>
 	);
 };
 
@@ -28,7 +26,7 @@ const MyComp = ({ myRef, ...props }) => {
 		<div
 			{...props}
 			ref={myRef}
-			style={{ width: "180px", backgroundColor: "skyblue", padding: "20px", textAlign: "center" }}
+			style={{ width: "180px", backgroundColor: "skyblue", padding: "20px", textAlign: "center", cursor: "pointer" }}
 		>
 			Custom Component
 		</div>
@@ -105,7 +103,7 @@ const EnumVersionItem = ({ item, itemRef, ...props }) => {
 		<div
 			{...props}
 			ref={itemRef}
-			style={{ width: "200px", height: "auto", padding: "10px", border: "1px solid lightgrey" }}
+			style={{ width: "200px", height: "auto", padding: "10px", border: "1px solid lightgrey", cursor: "pointer" }}
 		>
 			{item.version}
 		</div>
