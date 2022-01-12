@@ -63,6 +63,14 @@ export interface SolaceAttributeValuePairFormProps {
 	 * validate individual AVP values, the function is triggered onBlur event
 	 */
 	avpValueValidationCallback?: (input: string, values: Array<AVPItem>) => string;
+	/**
+	 * Boolean flag used to display an indicator of whether or not `input` for key field is mandatory
+	 */
+	enableRequiredKeyFieldIndicator?: boolean;
+	/**
+	 * Boolean flag used to display an indicator of whether or not `input` for value field is mandatory
+	 */
+	enableRequiredValueFieldIndicator?: boolean;
 }
 
 const SolaceAttributeValuePairForm = ({
@@ -74,7 +82,9 @@ const SolaceAttributeValuePairForm = ({
 	avpList = [],
 	onAVPListUpdate,
 	avpKeyValidationCallback,
-	avpValueValidationCallback
+	avpValueValidationCallback,
+	enableRequiredKeyFieldIndicator,
+	enableRequiredValueFieldIndicator
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
@@ -154,8 +164,12 @@ const SolaceAttributeValuePairForm = ({
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
 						<SolaceAVPFormLabel>
-							<SolaceLabel id="avpLabelForKeys">{labelForKeys}</SolaceLabel>
-							<SolaceLabel id="avpLabelForValues">{labelForValues}</SolaceLabel>
+							<SolaceLabel id="avpLabelForKeys" required={enableRequiredKeyFieldIndicator}>
+								{labelForKeys}
+							</SolaceLabel>
+							<SolaceLabel id="avpLabelForValues" required={enableRequiredValueFieldIndicator}>
+								{labelForValues}
+							</SolaceLabel>
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
 							<SolaceAttributeValuePairList
