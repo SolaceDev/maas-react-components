@@ -16,6 +16,7 @@ export { default as SolaceChip } from "./components/SolaceChip";
 export { default as SolaceErrorBox } from "./components/SolaceErrorBox";
 export { default as SolaceTabs } from "./components/layout/SolaceTabs";
 export { default as SolaceSidePanelLayout } from "./components/layout/SolaceSidePanelLayout";
+export { default as SolaceNewSidePanel } from "./components/layout/SolaceNewSidePanel";
 export { PANEL_POSITION as SolacePanelPosition } from "./components/layout/SolaceSidePanelLayout";
 export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceConfirmationDialog";
 export { default as SolaceMenu } from "./components/SolaceMenu";
