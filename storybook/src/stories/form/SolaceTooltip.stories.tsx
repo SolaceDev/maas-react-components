@@ -17,40 +17,39 @@ export default {
 	}
 } as ComponentMeta<typeof SolaceTooltip>;
 
-export const SimpleTooltip = () => {
+export const DefaultPopover = () => {
 	return (
 		<div>
 			<SolaceTooltip title="simple text">
-				<div>Hover Tooltip</div>
+				<span>Hover content</span>
 			</SolaceTooltip>
 		</div>
 	);
 };
 
-const MyComp = ({ buttonRef, ...props }) => {
+const MyComp = ({ myRef, ...props }) => {
 	return (
-		<button {...props} ref={buttonRef}>
-			My Custom Button
-		</button>
+		<div
+			{...props}
+			ref={myRef}
+			style={{ width: "180px", backgroundColor: "skyblue", padding: "20px", textAlign: "center" }}
+		>
+			Custom Component
+		</div>
 	);
 };
 
 export const CustomComponent = () => {
 	const MyCompForwardRef = React.forwardRef((props, ref) => {
-		return <MyComp {...props} buttonRef={ref} />;
+		return <MyComp {...props} myRef={ref} />;
 	});
 	return (
 		<div>
-			<SolaceTooltip title="simple text">
+			<SolaceTooltip title="simple text" placement="bottom-end">
 				<MyCompForwardRef />
 			</SolaceTooltip>
 		</div>
 	);
-};
-
-// TODO:
-export const ControlledTooltip = () => {
-	return <div></div>;
 };
 
 /**
