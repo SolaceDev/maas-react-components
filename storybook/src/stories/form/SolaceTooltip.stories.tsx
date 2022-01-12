@@ -9,10 +9,6 @@ export default {
 		id: {
 			control: { type: "text" },
 			description: "Unique identifier for the popover"
-		},
-		children: {
-			control: { type: "object" },
-			description: ""
 		}
 	}
 } as ComponentMeta<typeof SolaceTooltip>;

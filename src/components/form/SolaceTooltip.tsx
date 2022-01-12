@@ -1,5 +1,11 @@
-import { Tooltip, Fade } from "@material-ui/core";
+import { Tooltip, Fade, styled, TooltipProps } from "@material-ui/core";
 import React, { ReactChild, ReactFragment, ReactPortal, useState } from "react";
+
+const ToBeStyledTooltip = ({ className, ...props }: TooltipProps) => (
+	<Tooltip {...props} classes={{ popper: className, tooltip: className }} />
+);
+const StyledTooltip = styled(ToBeStyledTooltip)(({ theme }) => theme.mixins.formComponent_SolacePopover);
+
 interface SolaceTooltipProps {
 	/**
 	 * This prop is used to help implement the accessibility logic. If you don't provide this prop. It falls back to a randomly generated id by Mui
@@ -118,7 +124,7 @@ const SolaceTooltip = ({
 		setOpen(false);
 	};
 	return (
-		<Tooltip
+		<StyledTooltip
 			id={id}
 			open={open}
 			title={title}
@@ -143,7 +149,7 @@ const SolaceTooltip = ({
 			TransitionProps={{ timeout: { enter: 150, exit: 1000 } }}
 		>
 			{children}
-		</Tooltip>
+		</StyledTooltip>
 	);
 };
 
