@@ -9,7 +9,7 @@ interface SolacePopoverProps extends SolaceComponentProps {
 	/**
 	 * 	Popover title. Zero-length titles string are never displayed.
 	 */
-	title?: JSX.Element;
+	title?: string | JSX.Element;
 	/**
 	 * Popover reference element. Note: Needs to be able to hold a ref.
 	 */
