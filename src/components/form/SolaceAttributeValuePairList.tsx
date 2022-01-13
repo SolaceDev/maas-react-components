@@ -82,7 +82,6 @@ const SolaceAttributeValuePairList = ({
 	dropFromTop
 }: AVPListProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState<AVPItem[]>(avpList);
-	const [errorCount, setErrorCount] = useState(0);
 
 	/**
 	 * on avpList updated
@@ -90,49 +89,6 @@ const SolaceAttributeValuePairList = ({
 	useEffect(() => {
 		setAVPList(avpList);
 	}, [avpList]);
-
-	/**
-	 * run a full validation process when error total counts change
-	 */
-	// eslint-disable-next-line sonarjs/cognitive-complexity
-	useEffect(() => {
-		if ((avpKeyValidationCallback || avpValueValidationCallback) && !readOnly) {
-			const list = [...currentAVPList];
-			let count = 0;
-			list.forEach((value, index) => {
-				if (index !== list.length - 1) {
-					if (avpKeyValidationCallback) {
-						const error = avpKeyValidationCallback(value.key, list.slice(0, -1));
-						if (error) {
-							list[index]["keyErrorText"] = error;
-							count++;
-						} else if (!error && list[index]["keyErrorText"]) {
-							delete list[index]["keyErrorText"];
-							count--;
-						}
-					}
-					if (avpValueValidationCallback) {
-						const error = avpValueValidationCallback(value.value, list.slice(0, -1));
-						if (error) {
-							list[index]["valueErrorText"] = error;
-							count++;
-						} else if (!error && list[index]["valueErrorText"]) {
-							delete list[index]["valueErrorText"];
-							count--;
-						}
-					}
-				}
-			});
-			setErrorCount(count);
-		}
-	}, [
-		errorCount,
-		currentAVPList.length,
-		currentAVPList,
-		avpKeyValidationCallback,
-		avpValueValidationCallback,
-		readOnly
-	]);
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = useCallback(
@@ -186,29 +142,23 @@ const SolaceAttributeValuePairList = ({
 	const handleInputOnBlur = useCallback(
 		// eslint-disable-next-line sonarjs/cognitive-complexity
 		(event: React.FocusEvent<HTMLInputElement>, index: number) => {
-			if (index !== currentAVPList.length - 1) {
+			if (index !== currentAVPList.length - 1 && (avpKeyValidationCallback || avpValueValidationCallback)) {
 				const list = [...currentAVPList];
-				let count = 0;
 				if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
 					const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
 					if (error) {
 						list[index]["keyErrorText"] = error;
-						count++;
 					} else if (!error && list[index]["keyErrorText"]) {
 						delete list[index]["keyErrorText"];
-						count--;
 					}
 				} else if (event.target.getAttribute("name") === "value" && avpValueValidationCallback) {
 					const error = avpValueValidationCallback(event.target.value, list.slice(0, -1));
 					if (error) {
 						list[index]["valueErrorText"] = error;
-						count++;
 					} else if (!error && list[index]["valueErrorText"]) {
 						delete list[index]["valueErrorText"];
-						count--;
 					}
 				}
-				setErrorCount(count);
 				setAVPList(list);
 				onAVPListUpdate(list);
 			}

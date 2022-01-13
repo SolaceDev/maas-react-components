@@ -173,6 +173,7 @@ export const WithValidation = () => {
 				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
 				avpKeyValidationCallback={validateEnumInput}
+				enableRequiredKeyFieldIndicator={true}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>
