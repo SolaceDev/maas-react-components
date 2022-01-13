@@ -514,6 +514,9 @@ const themeConfig: ThemeOptions = {
 						overflowY: "auto",
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 						margin: "4px",
+						// remove animation effect on MuiPaper
+						transition: noneImportant,
+						animation: noneImportant,
 
 						".MuiMenuItem-root": {
 							display: "flex",
