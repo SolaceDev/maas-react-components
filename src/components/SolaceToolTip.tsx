@@ -13,9 +13,9 @@ export interface SolaceTooltipProps extends SolaceComponentProps {
 	 */
 	title?: string | JSX.Element;
 	/**
-	 * Different type of tooltip
+	 * Different type of tooltip, default to `text`
 	 */
-	variant: "text" | "overflow" | "html";
+	variant?: "text" | "overflow" | "html";
 	/**
 	 * Tooltip referenced element.
 	 */
@@ -71,6 +71,7 @@ function SolaceTooltip({
 			<Tooltip
 				id={id}
 				title={title ?? ""}
+				arial-label={title}
 				placement={placement}
 				data-qa={dataQa}
 				data-tags={dataTags}

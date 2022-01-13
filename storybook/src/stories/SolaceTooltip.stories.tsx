@@ -86,27 +86,27 @@ CustomPlacement.args = {
 export const LongTitle = Template.bind({});
 LongTitle.args = {
 	title: LONG_TEXT,
-	children: <DeleteIcon />
+	children: <HelpOutlineOutlinedIcon />
 };
 
 export const CustomMediumWidth = Template.bind({});
 CustomMediumWidth.args = {
 	title: LONG_TEXT,
-	children: <DeleteIcon />,
+	children: <HelpOutlineOutlinedIcon />,
 	maxWidth: "medium"
 };
 
 export const CustomFullWidth = Template.bind({});
 CustomFullWidth.args = {
 	title: LONG_TEXT,
-	children: <DeleteIcon />,
+	children: <HelpOutlineOutlinedIcon />,
 	maxWidth: "full"
 };
 
 export const DisableHoverListener = Template.bind({});
 DisableHoverListener.args = {
 	title: LONG_TEXT,
-	children: <DeleteIcon />,
+	children: <HelpOutlineOutlinedIcon />,
 	disableHoverListener: true
 };
 
@@ -161,7 +161,7 @@ export const TooltipGroup = (): ReactNode => {
 			<SolaceTooltip variant="text" title={"Delete"}>
 				<DeleteIcon />
 			</SolaceTooltip>
-			<SolaceTooltip variant="text" title={"Error"}>
+			<SolaceTooltip variant="text" title={"Hint"}>
 				<HelpOutlineOutlinedIcon />
 			</SolaceTooltip>
 		</div>
