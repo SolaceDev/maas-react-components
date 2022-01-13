@@ -5,9 +5,17 @@ import {
 	SolaceSidePanelLayout,
 	SolacePanelPosition,
 	SolaceDetailMessage,
-	styled
+	styled,
+	SolaceButton,
+	ListSubheader
 } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../../resources/images/NoAccessBook";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+
+const btnID = "catalog-btn";
+const VARIANT = "call-to-action";
+const CLOSEPANEL = "Close Panel";
+const OPENPANEL = "Open Panel";
 
 const StoryContainer = styled("div")(() => ({
 	height: "500px",
@@ -56,7 +64,23 @@ export default {
 	title: "Layout/SolaceSidePanelLayout",
 	component: SolaceSidePanelLayout,
 	parameters: {},
-	argTypes: {}
+	argTypes: {
+		showSidePanel: {
+			control: { type: "boolean" }
+		},
+		sidePanelPosition: {
+			options: ["right", "left"],
+			control: { type: "select" }
+		},
+		sidePanelWidth: {
+			control: {
+				type: "number"
+			}
+		},
+		overlayContent: {
+			control: { type: "boolean" }
+		}
+	}
 } as ComponentMeta<typeof SolaceSidePanelLayout>;
 
 export const DefaultSidePanel = (): JSX.Element => {
@@ -68,17 +92,49 @@ export const DefaultSidePanel = (): JSX.Element => {
 
 	return (
 		<StoryContainer>
-			<SolaceSidePanelLayout sidePanelContent={sidePanelMessage} showSidePanel={panelOpen}>
+			<SolaceSidePanelLayout showSidePanel={panelOpen} sidePanelContent={sidePanelMessage}>
+				<SolaceDetailMessage
+					msgImg={<NoAccessImg />}
+					title="Side Panel Layout Demo"
+					details={<span>Click the buton to toggle the side panel</span>}
+					actions={[
+						{
+							id: btnID,
+							variant: VARIANT,
+							children: panelOpen ? CLOSEPANEL : OPENPANEL,
+							onClick: HandlePanelToggle
+						}
+					]}
+				/>
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
+};
+
+export const LeftSidePane = (): JSX.Element => {
+	const [panelOpen, setPanelOpen] = useState(true);
+
+	const HandlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout
+				sidePanelContent={sidePanelMessage}
+				showSidePanel={panelOpen}
+				sidePanelPosition={SolacePanelPosition.LEFT}
+			>
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
 						msgImg={<NoAccessImg />}
-						title="Side Panel Layout Demo"
+						title="Left Side Panel Layout Demo"
 						details={<span>Click the buton to toggle the side panel</span>}
 						actions={[
 							{
-								id: "catalog-btn",
-								variant: "call-to-action",
-								children: panelOpen ? "Close Panel" : "Open Panel",
+								id: btnID,
+								variant: VARIANT,
+								children: panelOpen ? CLOSEPANEL : OPENPANEL,
 								onClick: HandlePanelToggle
 							}
 						]}
@@ -89,7 +145,7 @@ export const DefaultSidePanel = (): JSX.Element => {
 	);
 };
 
-export const CustomSidePanelSize = (): JSX.Element => {
+export const CustomWidthSidePanel = (): JSX.Element => {
 	const [panelOpen, setPanelOpen] = useState(true);
 
 	const HandlePanelToggle = () => {
@@ -102,13 +158,13 @@ export const CustomSidePanelSize = (): JSX.Element => {
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
 						msgImg={<NoAccessImg />}
-						title="Side Panel Layout Demo"
+						title="Custom Width Side Panel Layout Demo"
 						details={<span>Click the buton to toggle the side panel</span>}
 						actions={[
 							{
-								id: "catalog-btn",
-								variant: "call-to-action",
-								children: panelOpen ? "Close Panel" : "Open Panel",
+								id: btnID,
+								variant: VARIANT,
+								children: panelOpen ? CLOSEPANEL : OPENPANEL,
 								onClick: HandlePanelToggle
 							}
 						]}
@@ -119,20 +175,68 @@ export const CustomSidePanelSize = (): JSX.Element => {
 	);
 };
 
-export const LeftSidePanelSize = (): JSX.Element => {
-	const [panelOpen, setPanelOpen] = useState(true);
-
+export const SelfClosingSidePanel = (): JSX.Element => {
 	const HandlePanelToggle = () => {
 		setPanelOpen(!panelOpen);
 	};
+	const [panelOpen, setPanelOpen] = useState(true);
+	const sidePanelContent = (
+		<React.Fragment>
+			<ListSubheader>
+				<SolaceButton onClick={HandlePanelToggle} title="Close" variant="icon">
+					<ChevronRightIcon />
+				</SolaceButton>
+			</ListSubheader>
+			{sidePanelMessage}
+		</React.Fragment>
+	);
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout sidePanelContent={sidePanelContent} showSidePanel={panelOpen}>
+				<div style={{ margin: "auto" }}>
+					<SolaceDetailMessage
+						msgImg={<NoAccessImg />}
+						title="Self-Closing Side Panel Layout Demo"
+						details={<span>Click the buton to toggle the side panel</span>}
+						actions={[
+							{
+								id: btnID,
+								variant: VARIANT,
+								children: panelOpen ? CLOSEPANEL : OPENPANEL,
+								onClick: HandlePanelToggle
+							}
+						]}
+					/>
+				</div>
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
+};
+
+export const OverlaySidePanel = (): JSX.Element => {
+	const HandlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+	const [panelOpen, setPanelOpen] = useState(true);
+	const sidePanelContent = (
+		<React.Fragment>
+			<ListSubheader>
+				<SolaceButton onClick={HandlePanelToggle} title="Close" variant="icon">
+					<ChevronRightIcon />
+				</SolaceButton>
+			</ListSubheader>
+			{sidePanelMessage}
+		</React.Fragment>
+	);
 
 	return (
 		<StoryContainer>
 			<SolaceSidePanelLayout
-				sidePanelContent={sidePanelMessage}
+				sidePanelContent={sidePanelContent}
 				showSidePanel={panelOpen}
+				overlayContent={true}
 				sidePanelWidth={400}
-				sidePanelPosition={SolacePanelPosition.LEFT}
 			>
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
@@ -141,9 +245,9 @@ export const LeftSidePanelSize = (): JSX.Element => {
 						details={<span>Click the buton to toggle the side panel</span>}
 						actions={[
 							{
-								id: "catalog-btn",
-								variant: "call-to-action",
-								children: panelOpen ? "Close Panel" : "Open Panel",
+								id: btnID,
+								variant: VARIANT,
+								children: panelOpen ? CLOSEPANEL : OPENPANEL,
 								onClick: HandlePanelToggle
 							}
 						]}

@@ -792,35 +792,6 @@ const themeConfig: ThemeOptions = {
 		}
 	},
 	mixins: {
-		/** SolaceSidePanelLayout Component */
-		sidePanelLayout: {
-			wrapper: {
-				height: "100%",
-				width: "100%",
-				padding: "0px",
-				display: "grid",
-				backgroundColor: BASE_COLORS.whites.white1,
-				overflowY: "auto"
-			},
-			content: {
-				display: "flex",
-				height: "100%",
-				overflowY: "auto",
-				flexDirection: "column",
-				alignItems: "left",
-				padding: "0px"
-			},
-			left: {
-				height: "100%",
-				overflowY: "auto",
-				borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
-			},
-			right: {
-				height: "100%",
-				overflowY: "auto",
-				borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`
-			}
-		},
 		/** ErrorText for form components */
 		formComponent_ErrorText: {
 			container: {
