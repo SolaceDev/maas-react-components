@@ -1,6 +1,12 @@
 import React, { ReactNode } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceTooltip, DeleteIcon, SolaceButton } from "@SolaceDev/maas-react-components";
+import {
+	SolaceTooltip,
+	DeleteIcon,
+	SolaceButton,
+	HelpOutlineOutlinedIcon,
+	AddCircleOutlineOutlinedIcon
+} from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceTooltip",
@@ -114,7 +120,7 @@ HtmlTooltip.args = {
 			</SolaceButton>
 		</div>
 	),
-	children: <DeleteIcon />,
+	children: <HelpOutlineOutlinedIcon />,
 	variant: "html"
 };
 
@@ -133,6 +139,30 @@ export const OverflowTooltipShortText = (): ReactNode => {
 		<div style={{ width: "400px" }}>
 			<SolaceTooltip variant="overflow" title={TITLE}>
 				<span style={{ fontStyle: "italic" }}>{TITLE}</span>
+			</SolaceTooltip>
+		</div>
+	);
+};
+
+export const TooltipGroup = (): ReactNode => {
+	return (
+		<div
+			style={{
+				width: "400px",
+				display: "grid",
+				gridTemplateColumns: "32px 32px 32px",
+				gridTemplateRows: "auto",
+				columnGap: "8px"
+			}}
+		>
+			<SolaceTooltip variant="text" title={"Add"}>
+				<AddCircleOutlineOutlinedIcon />
+			</SolaceTooltip>
+			<SolaceTooltip variant="text" title={"Delete"}>
+				<DeleteIcon />
+			</SolaceTooltip>
+			<SolaceTooltip variant="text" title={"Error"}>
+				<HelpOutlineOutlinedIcon />
 			</SolaceTooltip>
 		</div>
 	);

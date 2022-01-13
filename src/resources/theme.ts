@@ -983,8 +983,7 @@ const themeConfig: ThemeOptions = {
 			lineHeight: 1.5
 		},
 		fontFamily: "Rubik,sans-serif"
-	},
-	transitions: {}
+	}
 };
 
 declare module "@material-ui/core/styles/createMixins" {
