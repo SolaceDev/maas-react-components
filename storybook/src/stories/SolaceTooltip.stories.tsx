@@ -70,12 +70,6 @@ DefaultTooltip.args = {
 	children: <DeleteIcon />
 };
 
-// export const CustomChildren = Template.bind({});
-// CustomChildren.args = {
-// 	title: "Delete",
-// 	children: <DeleteIcon />
-// };
-
 export const CustomPlacement = Template.bind({});
 CustomPlacement.args = {
 	title: TITLE,
