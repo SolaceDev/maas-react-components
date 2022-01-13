@@ -49,7 +49,7 @@ export default {
 
 const Template: ComponentStory<typeof SolaceTooltip> = (args) => <SolaceTooltip {...args} />;
 
-const TITLE = "Add";
+const TITLE = "Sample Tooltip";
 const LONG_TEXT =
 	"Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus. Praesent non nunc mollis, fermentum neque at, semper arcu. Nullam eget est sed sem iaculis gravida eget vitae justo.";
 
@@ -67,7 +67,7 @@ CustomChildren.args = {
 export const CustomPlacement = Template.bind({});
 CustomPlacement.args = {
 	title: TITLE,
-	children: <HelpOutlineOutlined style={{ margin: "30px 60px" }} fontSize="large" />,
+	children: <HelpOutlineOutlined style={{ margin: "40px 100px" }} fontSize="large" />,
 	placement: "left-start"
 };
 
@@ -101,11 +101,21 @@ HtmlTooltip.args = {
 	variant: "html"
 };
 
-export const OverflowTooltip = (): ReactNode => {
+export const OverflowTooltipLongText = (): ReactNode => {
 	return (
 		<div style={{ width: "400px" }}>
 			<SolaceTooltip variant="overflow" title={LONG_TEXT}>
 				<span style={{ fontStyle: "italic" }}>{LONG_TEXT}</span>
+			</SolaceTooltip>
+		</div>
+	);
+};
+
+export const OverflowTooltipShortText = (): ReactNode => {
+	return (
+		<div style={{ width: "400px" }}>
+			<SolaceTooltip variant="overflow" title={TITLE}>
+				<span style={{ fontStyle: "italic" }}>{TITLE}</span>
 			</SolaceTooltip>
 		</div>
 	);
