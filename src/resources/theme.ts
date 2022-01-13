@@ -3,6 +3,7 @@ import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
+const tooltipPlacementMargin = "14px !important";
 
 // A custom theme for this app
 const theme: ThemeOptions = {
@@ -717,6 +718,37 @@ const theme: ThemeOptions = {
 					}
 				}
 			}
+		},
+		MuiTooltip: {
+			styleOverrides: {
+				tooltip: {
+					/**
+					 * style for SolacePopover
+					 */
+					"&.SolacePopover": {
+						backgroundColor: BASE_COLORS.whites.white1,
+						color: BASE_COLORS.greys.grey14,
+						fontSize: BASE_FONT_PX_SIZES.sm,
+						fontWeight: 400,
+						padding: "16px",
+						borderRadius: "4px",
+						boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey25}`,
+						cursor: "pointer"
+					},
+					"&.MuiTooltip-tooltipPlacementRight": {
+						marginLeft: tooltipPlacementMargin
+					},
+					"&.MuiTooltip-tooltipPlacementLeft": {
+						marginRight: tooltipPlacementMargin
+					},
+					"&.MuiTooltip-tooltipPlacementTop": {
+						marginBottom: tooltipPlacementMargin
+					},
+					"&.MuiTooltip-tooltipPlacementBottom": {
+						marginTop: tooltipPlacementMargin
+					}
+				}
+			}
 		}
 	},
 	mixins: {
@@ -809,37 +841,6 @@ const theme: ThemeOptions = {
 				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
 				gridTemplateRows: "auto"
 			}
-		},
-		/** SolacePopover Component (MuiTooltip underneath)*/
-		formComponent_SolacePopover: {
-			// outside wrapper of the Popover
-			"&.MuiTooltip-popper": {
-				zIndex: 1500, // default z-index value for MuiTooltip
-				cursor: "pointer", // this only applies to the Popover
-				// Popover content container
-				".MuiTooltip-tooltip": {
-					backgroundColor: BASE_COLORS.whites.white1,
-					color: BASE_COLORS.greys.grey14,
-					fontSize: BASE_FONT_PX_SIZES.sm,
-					fontWeight: 400,
-					padding: "16px",
-					borderRadius: "4px",
-					boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey25}`
-				},
-				// apply a gap between the hovered over element and the Popover
-				".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight": {
-					marginLeft: "14px"
-				},
-				".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft": {
-					marginRight: "14px"
-				},
-				".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementTop": {
-					marginBottom: "14px"
-				},
-				".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementBottom": {
-					marginTop: "14px"
-				}
-			}
 		}
 	},
 	palette: {
@@ -912,7 +913,6 @@ declare module "@material-ui/core/styles/createMixins" {
 			listWrapper: CSSProperties;
 			labelWrapper: CSSProperties;
 		};
-		formComponent_SolacePopover: CSSProperties;
 	}
 }
 export default theme;

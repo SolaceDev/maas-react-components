@@ -1,10 +1,5 @@
-import { Tooltip, Fade, styled, TooltipProps } from "@material-ui/core";
+import { Tooltip, Fade } from "@material-ui/core";
 import SolaceComponentProps from "./SolaceComponentProps";
-
-const ToBeStyledTooltip = ({ className, ...props }: TooltipProps) => (
-	<Tooltip {...props} classes={{ popper: className, tooltip: className }} />
-);
-const StyledTooltip = styled(ToBeStyledTooltip)(({ theme }) => theme.mixins.formComponent_SolacePopover);
 
 interface SolacePopoverProps extends SolaceComponentProps {
 	/**
@@ -51,9 +46,10 @@ const SolacePopover = ({
 	children
 }: SolacePopoverProps) => {
 	return (
-		<StyledTooltip
+		<Tooltip
 			id={id}
 			title={title || ""}
+			classes={{ tooltip: "SolacePopover" }}
 			data-qa={dataQa}
 			data-tags={dataTags}
 			disableHoverListener={disableHoverListener}
@@ -65,7 +61,7 @@ const SolacePopover = ({
 			TransitionProps={{ timeout: { enter: 150, exit: 500 } }}
 		>
 			{children}
-		</StyledTooltip>
+		</Tooltip>
 	);
 };
 
