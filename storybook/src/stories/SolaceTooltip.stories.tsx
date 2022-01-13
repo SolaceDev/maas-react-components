@@ -43,6 +43,9 @@ export default {
 		maxWidth: {
 			options: ["small", "medium", "full"],
 			control: { type: "select" }
+		},
+		disableHoverListener: {
+			control: { type: "boolean" }
 		}
 	}
 } as ComponentMeta<typeof SolaceTooltip>;
@@ -86,6 +89,12 @@ export const CustomFullWidth = Template.bind({});
 CustomFullWidth.args = {
 	title: LONG_TEXT,
 	maxWidth: "full"
+};
+
+export const DisableHoverListener = Template.bind({});
+CustomFullWidth.args = {
+	title: LONG_TEXT,
+	disableHoverListener: true
 };
 
 export const HtmlTooltip = Template.bind({});

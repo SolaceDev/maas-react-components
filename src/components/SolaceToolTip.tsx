@@ -80,7 +80,7 @@ function SolaceTooltip({
 				enterNextDelay={0}
 				leaveDelay={150}
 				TransitionComponent={Fade}
-				TransitionProps={{ timeout: { enter: 150, exit: 150 } }}
+				TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
 			>
 				<div
 					ref={textElementRef}
@@ -108,7 +108,7 @@ function SolaceTooltip({
 				enterNextDelay={0}
 				leaveDelay={150}
 				TransitionComponent={Fade}
-				TransitionProps={{ timeout: 150 }}
+				TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
 			>
 				{children ? children : <HelpOutlineOutlinedIcon fontSize="small" />}
 			</Tooltip>
