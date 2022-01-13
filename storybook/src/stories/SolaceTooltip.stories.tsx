@@ -1,13 +1,21 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceTooltip, DeleteIcon, SolaceButton } from "@SolaceDev/maas-react-components";
-import { HelpOutlineOutlined } from "@material-ui/icons";
-import { ReactNode } from "react";
 
 export default {
 	title: "Under Construction/SolaceTooltip",
 	component: SolaceTooltip,
-	parameters: {},
+	parameters: {
+		design: {
+			type: "figma",
+			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=4434%3A30917"
+		},
+		docs: {
+			description: {
+				component: "Tooltip component for reuse in all Solace based applications"
+			}
+		}
+	},
 	argTypes: {
 		id: {
 			control: { type: "text" }
@@ -58,42 +66,47 @@ const LONG_TEXT =
 
 export const DefaultTooltip = Template.bind({});
 DefaultTooltip.args = {
-	title: TITLE
-};
-
-export const CustomChildren = Template.bind({});
-CustomChildren.args = {
-	title: "Delete",
+	title: TITLE,
 	children: <DeleteIcon />
 };
+
+// export const CustomChildren = Template.bind({});
+// CustomChildren.args = {
+// 	title: "Delete",
+// 	children: <DeleteIcon />
+// };
 
 export const CustomPlacement = Template.bind({});
 CustomPlacement.args = {
 	title: TITLE,
-	children: <HelpOutlineOutlined style={{ margin: "40px 100px" }} fontSize="large" />,
+	children: <DeleteIcon style={{ margin: "40px 100px" }} fontSize="large" />,
 	placement: "left-start"
 };
 
 export const LongTitle = Template.bind({});
 LongTitle.args = {
-	title: LONG_TEXT
+	title: LONG_TEXT,
+	children: <DeleteIcon />
 };
 
 export const CustomMediumWidth = Template.bind({});
 CustomMediumWidth.args = {
 	title: LONG_TEXT,
+	children: <DeleteIcon />,
 	maxWidth: "medium"
 };
 
 export const CustomFullWidth = Template.bind({});
 CustomFullWidth.args = {
 	title: LONG_TEXT,
+	children: <DeleteIcon />,
 	maxWidth: "full"
 };
 
 export const DisableHoverListener = Template.bind({});
-CustomFullWidth.args = {
+DisableHoverListener.args = {
 	title: LONG_TEXT,
+	children: <DeleteIcon />,
 	disableHoverListener: true
 };
 
@@ -107,6 +120,7 @@ HtmlTooltip.args = {
 			</SolaceButton>
 		</div>
 	),
+	children: <DeleteIcon />,
 	variant: "html"
 };
 

@@ -1,7 +1,6 @@
 import { Tooltip } from "@material-ui/core";
 import { Fade } from "@material-ui/core";
 import SolaceComponentProps from "./SolaceComponentProps";
-import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
 import { useEffect, useRef, useState } from "react";
 
 export interface SolaceTooltipProps extends SolaceComponentProps {
@@ -12,15 +11,15 @@ export interface SolaceTooltipProps extends SolaceComponentProps {
 	/**
 	 * Tooltip title
 	 */
-	title?: JSX.Element;
+	title?: string | JSX.Element;
 	/**
 	 * Different type of tooltip
 	 */
 	variant: "text" | "overflow" | "html";
 	/**
-	 * Tooltip referenced element, default to question mark icon.
+	 * Tooltip referenced element.
 	 */
-	children?: JSX.Element;
+	children: JSX.Element;
 	/**
 	 * Tooltip placement, default to `bottom`
 	 */
@@ -90,7 +89,7 @@ function SolaceTooltip({
 						textOverflow: "ellipsis"
 					}}
 				>
-					{children ? children : ""}
+					{children}
 				</div>
 			</Tooltip>
 		);
@@ -110,7 +109,7 @@ function SolaceTooltip({
 				TransitionComponent={Fade}
 				TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
 			>
-				{children ? children : <HelpOutlineOutlinedIcon fontSize="small" />}
+				{children}
 			</Tooltip>
 		);
 	}
