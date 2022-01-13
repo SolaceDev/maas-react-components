@@ -5,6 +5,8 @@ import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
+const tooltipPlacementMargin = "14px !important";
+
 // These colorMappings would replace hardcoded colors in the theme specified below.
 // https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
 // this eslint tag can be removed once we start using themeMappings.
@@ -786,6 +788,49 @@ const themeConfig: ThemeOptions = {
 					".MuiButtonBase-root.MuiPaginationItem-root.Mui-selected": {
 						background: "none",
 						color: BASE_COLORS.greys.grey14
+					}
+				}
+			}
+		},
+		MuiTooltip: {
+			styleOverrides: {
+				tooltip: {
+					borderRadius: "4px",
+					maxWidth: "300px",
+					margin: 0,
+					wordWrap: "break-word",
+					fontWeight: 400,
+					padding: "6px 8px",
+					fontSize: BASE_FONT_PX_SIZES.xs,
+					lineHeight: "18px",
+					backgroundColor: BASE_COLORS.greys.grey25,
+					color: BASE_COLORS.whites.white2,
+					boxShadow: "0 2px 2px rgba(0,0,0,0.12)",
+					"&.htmlContent": {
+						padding: "12px 16px",
+						fontSize: BASE_FONT_PX_SIZES.sm,
+						lineHeight: "21px",
+						backgroundColor: BASE_COLORS.whites.white1,
+						color: BASE_COLORS.greys.grey14,
+						boxShadow: "0 2px 5px rgba(0,0,0,0.15)"
+					},
+					"&.mediumWidth": {
+						maxWidth: "500px"
+					},
+					"&.fullWidth": {
+						maxWidth: "100%"
+					},
+					"&.MuiTooltip-tooltipPlacementRight": {
+						marginLeft: tooltipPlacementMargin
+					},
+					"&.MuiTooltip-tooltipPlacementLeft": {
+						marginRight: tooltipPlacementMargin
+					},
+					"&.MuiTooltip-tooltipPlacementTop": {
+						marginBottom: tooltipPlacementMargin
+					},
+					"&.MuiTooltip-tooltipPlacementBottom": {
+						marginTop: tooltipPlacementMargin
 					}
 				}
 			}
