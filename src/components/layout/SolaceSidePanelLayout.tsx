@@ -12,7 +12,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
 }>(({ theme, open, sidePanelPosition, drawerWidth, overlay }) => ({
 	flexGrow: 1,
 	transition: theme.transitions.create("margin", {
-		easing: theme.transitions.easing.sharp,
+		easing: theme.transitions.easing.easeIn,
 		duration: theme.transitions.duration.leavingScreen
 	}),
 	...(sidePanelPosition === PANEL_POSITION.RIGHT && { marginRight: `-${drawerWidth}px` }),
