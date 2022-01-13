@@ -7,8 +7,29 @@ export default {
 	component: SolacePopover,
 	argTypes: {
 		id: {
-			control: { type: "text" },
-			description: "Unique identifier for the popover"
+			control: { type: "text" }
+		},
+		placement: {
+			options: [
+				"bottom-end",
+				"bottom-start",
+				"bottom",
+				"left-end",
+				"left-start",
+				"left",
+				"right-end",
+				"right-start",
+				"right",
+				"top-end",
+				"top-start",
+				"top"
+			],
+			control: {
+				type: "select"
+			}
+		},
+		disableHoverListener: {
+			control: { type: "boolean" }
 		}
 	}
 } as ComponentMeta<typeof SolacePopover>;
