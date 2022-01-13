@@ -64,7 +64,23 @@ export default {
 	title: "Layout/SolaceSidePanelLayout",
 	component: SolaceSidePanelLayout,
 	parameters: {},
-	argTypes: {}
+	argTypes: {
+		showSidePanel: {
+			control: { type: "boolean" }
+		},
+		sidePanelPosition: {
+			options: ["right", "left"],
+			control: { type: "select" }
+		},
+		sidePanelWidth: {
+			control: {
+				type: "number"
+			}
+		},
+		overlayContent: {
+			control: { type: "boolean" }
+		}
+	}
 } as ComponentMeta<typeof SolaceSidePanelLayout>;
 
 export const DefaultSidePanel = (): JSX.Element => {
@@ -167,7 +183,7 @@ export const SelfClosingSidePanel = (): JSX.Element => {
 	const sidePanelContent = (
 		<React.Fragment>
 			<ListSubheader>
-				<SolaceButton onClick={HandlePanelToggle} title="Delete" variant="icon">
+				<SolaceButton onClick={HandlePanelToggle} title="Close" variant="icon">
 					<ChevronRightIcon />
 				</SolaceButton>
 			</ListSubheader>
@@ -206,7 +222,7 @@ export const OverlaySidePanel = (): JSX.Element => {
 	const sidePanelContent = (
 		<React.Fragment>
 			<ListSubheader>
-				<SolaceButton onClick={HandlePanelToggle} title="Delete" variant="icon">
+				<SolaceButton onClick={HandlePanelToggle} title="Close" variant="icon">
 					<ChevronRightIcon />
 				</SolaceButton>
 			</ListSubheader>
