@@ -51,56 +51,83 @@ const SAMPLE_AVP_LIST = [
 	{ key: "Apr", value: "April" }
 ];
 
-// eslint-disable-next-line sonarjs/no-identical-functions
 export const WithoutInitialData = () => {
-	const [currentList, setCurrentList] = useState([]);
+	const [currentAVPList, setAVPList] = useState([]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setCurrentList(updatedList);
+		setAVPList(updatedList);
 	};
+
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
 				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={currentList}
+				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(currentList)}</div>
+				<div>{JSON.stringify(currentAVPList)}</div>
 			</div>
 		</div>
 	);
 };
 
-// eslint-disable-next-line sonarjs/no-identical-functions
 export const WithData = () => {
-	const [currentList, setCurrentList] = useState(SAMPLE_AVP_LIST);
+	const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
+	const [currentAVPList, setAVPList] = useState(list);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setCurrentList(updatedList);
+		setAVPList(updatedList);
 	};
+
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
 				name="avpForm"
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={currentList}
+				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(currentList)}</div>
+				<div>{JSON.stringify(currentAVPList)}</div>
+			</div>
+		</div>
+	);
+};
+
+export const UpdateData = () => {
+	const data = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
+	const [currentAVPList, setAVPList] = useState([]);
+
+	const handleListUpdate = (updatedList: Array<AVPItem>) => {
+		setAVPList(updatedList);
+	};
+
+	return (
+		<div>
+			<SolaceAttributeValuePairForm
+				name="updateAVPForm"
+				labelForKeys="Keys"
+				labelForValues="Values"
+				avpList={currentAVPList}
+				onAVPListUpdate={handleListUpdate}
+			/>
+			<button onClick={() => handleListUpdate(data)}>Update Data</button>
+			<div style={{ marginTop: 20 }}>
+				<div>Current data:</div>
+				<div>{JSON.stringify(currentAVPList)}</div>
 			</div>
 		</div>
 	);
 };
 
 export const ReadOnly = () => {
-	const [currentList, setCurrentList] = useState(SAMPLE_AVP_LIST);
+	const data = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
@@ -108,7 +135,7 @@ export const ReadOnly = () => {
 				readOnly={true}
 				labelForKeys="Keys"
 				labelForValues="Values"
-				initialAVPList={currentList}
+				avpList={data}
 			/>
 		</div>
 	);
@@ -122,36 +149,38 @@ const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
 ];
 
 export const WithValidation = () => {
-	const [currentList, setCurrentList] = useState<Array<AVPItem>>(SAMPLE_AVP_LIST_WITH_FALSE_VALUES);
+	const data = SAMPLE_AVP_LIST_WITH_FALSE_VALUES.map((item) => ({ ...item }));
+	const [currentAVPList, setAVPList] = useState<Array<AVPItem>>(data);
 	const [enumValidated, setEnumValidated] = useState(true);
 
 	useEffect(() => {
-		const errors = currentList.filter((item) => item.keyErrorText || item.valueErrorText);
+		const errors = currentAVPList.filter((item) => item.keyErrorText || item.valueErrorText);
 		if (errors.length > 0) {
 			setEnumValidated(false);
 		} else {
 			setEnumValidated(true);
 		}
-	}, [currentList]);
+	}, [currentAVPList]);
 
 	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setCurrentList(updatedList);
+		setAVPList(updatedList);
 	};
 
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
 				name="avpForm"
-				initialAVPList={currentList}
+				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
 				avpKeyValidationCallback={validateEnumInput}
+				enableRequiredKeyFieldIndicator={true}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>
 					Is form OK: <b>{enumValidated ? "Yes" : "No"}</b>
 				</div>
 				<div>Show me the data:</div>
-				<div>{JSON.stringify(currentList)}</div>
+				<div>{JSON.stringify(currentAVPList)}</div>
 			</div>
 		</div>
 	);

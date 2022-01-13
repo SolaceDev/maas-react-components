@@ -1,31 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { styled } from "@material-ui/core";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import SolaceLabel from "./SolaceLabel";
 import { valueInputTypes } from "./SolaceAttributeValuePair";
 import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePairList";
-import { BASE_COLORS } from "../../resources/colorPallette";
-
-interface SolaceAVPFormLabelProps {
-	readonly: boolean | undefined;
-}
 
 const SolaceAVPFormContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.container);
-const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(({ theme, readonly }) => ({
-	...theme.mixins.formComponent_AVPForm.labelWrapper,
-	label: {
-		color: readonly ? `${BASE_COLORS.greys.grey11}` : `${BASE_COLORS.greys.grey14}`,
-		fontWeight: readonly ? "medium" : "regular",
-		":first-of-type": {
-			gridColumnStart: 2,
-			gridColumnEnd: 3
-		},
-		":last-of-type": {
-			gridColumnStart: 4,
-			gridColumnEnd: 5
-		}
-	}
-}));
+const SolaceAVPFormLabel = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.labelWrapper);
 const SolaceAVPListContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.listWrapper);
 
 const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number): Array<AVPItem> => {
@@ -34,6 +15,10 @@ const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number)
 	result.splice(endIndex, 0, removed);
 
 	return result;
+};
+
+const ghostItemAtIndex = (list: Array<AVPItem>, index: number) => {
+	return list[index]["key"] === "" && list[index]["value"] === "";
 };
 
 export interface SolaceAttributeValuePairFormProps {
@@ -65,7 +50,7 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * initial AVP list of key/value pairs, it can be an empty array e.g.[]
 	 */
-	initialAVPList?: Array<AVPItem>;
+	avpList?: Array<AVPItem>;
 	/**
 	 * callback function that returns the current AVP list
 	 */
@@ -78,6 +63,14 @@ export interface SolaceAttributeValuePairFormProps {
 	 * validate individual AVP values, the function is triggered onBlur event
 	 */
 	avpValueValidationCallback?: (input: string, values: Array<AVPItem>) => string;
+	/**
+	 * Boolean flag used to display an indicator of whether or not `input` for key field is mandatory
+	 */
+	enableRequiredKeyFieldIndicator?: boolean;
+	/**
+	 * Boolean flag used to display an indicator of whether or not `input` for value field is mandatory
+	 */
+	enableRequiredValueFieldIndicator?: boolean;
 }
 
 const SolaceAttributeValuePairForm = ({
@@ -86,36 +79,33 @@ const SolaceAttributeValuePairForm = ({
 	readOnly,
 	labelForKeys = "Name",
 	labelForValues = "DisplayName",
-	initialAVPList = [],
+	avpList = [],
 	onAVPListUpdate,
 	avpKeyValidationCallback,
-	avpValueValidationCallback
+	avpValueValidationCallback,
+	enableRequiredKeyFieldIndicator,
+	enableRequiredValueFieldIndicator
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
-	const [avpList, setAVPList] = useState(initialAVPList);
+	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
-	/**
-	 * add append empty key/value pair on initial rendering, works as componentDidMount
-	 */
-	useEffect(() => {
-		const list = [...avpList, { key: "", value: "" }];
-		setAVPList(list);
-	}, []);
 
-	/**
-	 * remove the empty key/value pair in each callback
-	 */
+	// on avp list update
 	useEffect(() => {
-		if (onAVPListUpdate) {
-			const list = [...avpList];
-			list.splice(-1);
-			onAVPListUpdate(list);
-		}
+		const list = [...avpList];
+		list.push({ key: "", value: "" });
+		setAVPList(list);
 	}, [avpList]);
 
-	const handleListUpdate = (list: Array<AVPItem>) => {
-		setAVPList(list);
-	};
+	const handleListUpdate = useCallback(
+		(list: Array<AVPItem>) => {
+			setAVPList(list);
+			if (onAVPListUpdate && ghostItemAtIndex(list, list.length - 1)) onAVPListUpdate(list.slice(0, -1));
+			setDropOverIndex(null); // reset drop over index on drag end
+			setDropFromTop(null); // reset drop over direction on drag end
+		},
+		[onAVPListUpdate]
+	);
 
 	/**
 	 * All the things to do when a drag action ended
@@ -130,13 +120,16 @@ const SolaceAttributeValuePairForm = ({
 			return;
 		}
 		// drag and drop on the last item e.g. ghost item
-		if (result.destination.index === avpList.length - 1) {
+		if (result.destination.index === currentAVPList.length - 1) {
 			return;
 		}
 
-		const reorderedList = reorderList(avpList, result.source.index, result.destination.index);
+		const reorderedList = reorderList(currentAVPList, result.source.index, result.destination.index);
 
 		setAVPList(reorderedList);
+
+		if (onAVPListUpdate && ghostItemAtIndex(reorderedList, reorderedList.length - 1))
+			onAVPListUpdate(reorderedList.slice(0, -1));
 		setDropOverIndex(null); // reset drop over index on drag end
 		setDropFromTop(null); // reset drop over direction on drag end
 	};
@@ -170,13 +163,17 @@ const SolaceAttributeValuePairForm = ({
 			<Droppable droppableId={getId()}>
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
-						<SolaceAVPFormLabel readonly={readOnly}>
-							<SolaceLabel id="avpLabelForKeys">{labelForKeys}</SolaceLabel>
-							<SolaceLabel id="avpLabelForValues">{labelForValues}</SolaceLabel>
+						<SolaceAVPFormLabel>
+							<SolaceLabel id="avpLabelForKeys" required={enableRequiredKeyFieldIndicator}>
+								{labelForKeys}
+							</SolaceLabel>
+							<SolaceLabel id="avpLabelForValues" required={enableRequiredValueFieldIndicator}>
+								{labelForValues}
+							</SolaceLabel>
 						</SolaceAVPFormLabel>
 						<SolaceAVPListContainer>
 							<SolaceAttributeValuePairList
-								initialAVPList={avpList}
+								avpList={currentAVPList}
 								onAVPListUpdate={handleListUpdate}
 								avpKeyValidationCallback={avpKeyValidationCallback}
 								avpValueValidationCallback={avpValueValidationCallback}
