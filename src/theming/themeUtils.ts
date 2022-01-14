@@ -12,7 +12,7 @@ export let appTheme: SupportedThemes | undefined;
  */
 const getThemeMappings = (theme?: SupportedThemes): ThemeMapping => {
 	if (theme) appTheme = theme;
-	if (appTheme == SupportedThemes.sap) {
+	if (appTheme === SupportedThemes.sap) {
 		return sapTheme;
 	} else {
 		return solaceTheme;
