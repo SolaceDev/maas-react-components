@@ -59,7 +59,6 @@ DefaultSolaceMenu.args = {
 export const TextMenuButton = Template.bind({});
 TextMenuButton.args = {
 	buttonProps: {
-		title: TITLE,
 		variant: "text",
 		children: "Click"
 	},
@@ -86,7 +85,6 @@ TextMenuButton.args = {
 export const MultilineSolaceMenu = Template.bind({});
 MultilineSolaceMenu.args = {
 	buttonProps: {
-		title: TITLE,
 		variant: "icon",
 		children: <MoreHorizOutlinedIcon />
 	},
@@ -116,7 +114,6 @@ MultilineSolaceMenu.args = {
 export const SecondaryActionSolaceMenu = Template.bind({});
 SecondaryActionSolaceMenu.args = {
 	buttonProps: {
-		title: TITLE,
 		variant: "icon",
 		children: <MoreHorizOutlinedIcon />
 	},
@@ -142,7 +139,6 @@ SecondaryActionSolaceMenu.args = {
 export const DisabledMenuItem = Template.bind({});
 DisabledMenuItem.args = {
 	buttonProps: {
-		title: TITLE,
 		variant: "icon",
 		children: <MoreHorizOutlinedIcon />
 	},
@@ -173,7 +169,6 @@ DisabledMenuItem.args = {
 export const IconMenuItem = Template.bind({});
 IconMenuItem.args = {
 	buttonProps: {
-		title: TITLE,
 		variant: "text",
 		children: "Click"
 	},
@@ -206,7 +201,6 @@ IconMenuItem.args = {
 export const CustomPositionMenu = Template.bind({});
 CustomPositionMenu.args = {
 	buttonProps: {
-		title: TITLE,
 		variant: "icon",
 		children: <MoreHorizOutlinedIcon />
 	},
@@ -237,7 +231,6 @@ CustomPositionMenu.args = {
 export const HeaderAndCategoryHeading = Template.bind({});
 HeaderAndCategoryHeading.args = {
 	buttonProps: {
-		title: TITLE,
 		variant: "icon",
 		children: <MoreHorizOutlinedIcon />
 	},
@@ -303,7 +296,6 @@ export const CustomMenuItems = (): JSX.Element => {
 		<SolaceMenu
 			id={"custom-solace-menu"}
 			buttonProps={{
-				title: TITLE,
 				variant: "icon",
 				children: <MoreHorizOutlinedIcon />
 			}}
@@ -337,7 +329,7 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 						<ListItem
 							key={value}
 							secondaryAction={
-								<SolaceButton title="Delete" variant="icon">
+								<SolaceButton variant="icon">
 									<DeleteIcon />
 								</SolaceButton>
 							}
@@ -359,7 +351,6 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 		<SolaceMenu
 			id={"custom-solace-menu"}
 			buttonProps={{
-				title: TITLE,
 				variant: "icon",
 				children: <MoreHorizOutlinedIcon />
 			}}

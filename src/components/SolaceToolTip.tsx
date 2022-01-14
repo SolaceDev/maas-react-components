@@ -1,24 +1,119 @@
-import { Tooltip, TooltipProps } from "@material-ui/core";
-import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
+import { Tooltip } from "@material-ui/core";
+import { Fade } from "@material-ui/core";
+import SolaceComponentProps from "./SolaceComponentProps";
+import { useEffect, useRef, useState } from "react";
 
-interface SolaceToolTip extends Omit<TooltipProps, "children"> {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	children?: React.ReactElement<any, any>;
+export interface SolaceTooltipProps extends SolaceComponentProps {
+	/**
+	 * Unique identifier ... if `id` is not specified, a randomly generated value will be used in order to make it accessible for screen readers
+	 */
+	id?: string;
+	/**
+	 * Tooltip title
+	 */
+	title?: string | JSX.Element;
+	/**
+	 * Different type of tooltip, default to `text`
+	 */
+	variant?: "text" | "overflow" | "html";
+	/**
+	 * Tooltip referenced element.
+	 */
+	children: JSX.Element;
+	/**
+	 * Tooltip placement, default to `bottom`
+	 */
+	placement?:
+		| "bottom-end"
+		| "bottom-start"
+		| "bottom"
+		| "left-end"
+		| "left-start"
+		| "left"
+		| "right-end"
+		| "right-start"
+		| "right"
+		| "top-end"
+		| "top-start"
+		| "top";
+	/**
+	 * Tooltip maximum width, default to small
+	 */
+	maxWidth?: "small" | "medium" | "full";
+	/**
+	 * Disable listener to show tooltip when referenced element is hovered, default to false
+	 */
+	disableHoverListener?: boolean;
 }
 
-/**
- * SolaceToolTip Component
- * This component provides question mark icon by default to be used as tooltip.
- * If custom children element is passed the default icon would be replaced by that.
- * @interface SolaceToolTip
- * @param props
- * @returns JSX.Element
- *
- */
-export default function SolaceToolTip(props: SolaceToolTip): JSX.Element {
-	return <Tooltip {...props}>{props?.children ?? <HelpOutlineOutlinedIcon fontSize="small" />}</Tooltip>;
+function SolaceTooltip({
+	id,
+	title,
+	variant = "text",
+	children,
+	placement = "bottom",
+	maxWidth,
+	disableHoverListener = false,
+	dataQa,
+	dataTags
+}: SolaceTooltipProps) {
+	const [isOverflowed, setIsOverflow] = useState(false);
+	const textElementRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (textElementRef.current) {
+			setIsOverflow(textElementRef.current.scrollWidth > textElementRef.current.clientWidth);
+		}
+	}, []);
+
+	if (variant === "overflow") {
+		return (
+			<Tooltip
+				id={id}
+				title={title ?? ""}
+				arial-label={title}
+				placement={placement}
+				data-qa={dataQa}
+				data-tags={dataTags}
+				disableHoverListener={disableHoverListener || !isOverflowed}
+				enterDelay={500}
+				enterNextDelay={0}
+				leaveDelay={0}
+				TransitionComponent={Fade}
+				TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
+			>
+				<div
+					ref={textElementRef}
+					style={{
+						whiteSpace: "nowrap",
+						overflow: "hidden",
+						textOverflow: "ellipsis"
+					}}
+				>
+					{children}
+				</div>
+			</Tooltip>
+		);
+	} else {
+		return (
+			<Tooltip
+				id={id}
+				title={title ?? ""}
+				classes={{ tooltip: `${variant === "html" ? "htmlContent" : ""} ${maxWidth + "Width" ?? ""}` }}
+				placement={placement}
+				data-qa={dataQa}
+				data-tags={dataTags}
+				disableHoverListener={disableHoverListener}
+				enterDelay={500}
+				enterNextDelay={0}
+				leaveDelay={150}
+				TransitionComponent={Fade}
+				TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
+			>
+				{children}
+			</Tooltip>
+		);
+	}
 }
 
-SolaceToolTip.defaultProps = {
-	placement: "right"
-};
+export default SolaceTooltip;
