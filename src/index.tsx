@@ -4,6 +4,7 @@ export { default as DeleteIcon } from "@material-ui/icons/Delete";
 export { default as ErrorOutlineOutlinedIcon } from "@material-ui/icons/ErrorOutlineOutlined";
 export { default as AddCircleOutlineOutlinedIcon } from "@material-ui/icons/AddCircleOutlineOutlined";
 export { default as HelpOutlineOutlinedIcon } from "@material-ui/icons/HelpOutlineOutlined";
+export { default as ChevronRightIcon } from "@material-ui/icons/ChevronRight";
 
 export { default as SolaceToasts } from "./components/SolaceToasts";
 export { default as NoAccess } from "./components/NoAccess";
