@@ -7,10 +7,10 @@ import {
 	SolaceDetailMessage,
 	styled,
 	SolaceButton,
-	ListSubheader
+	ListSubheader,
+	ChevronRightIcon
 } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../../resources/images/NoAccessBook";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 const btnID = "catalog-btn";
 const VARIANT = "call-to-action";
@@ -111,7 +111,7 @@ export const DefaultSidePanel = (): JSX.Element => {
 	);
 };
 
-export const LeftSidePane = (): JSX.Element => {
+export const LeftSidePanel = (): JSX.Element => {
 	const [panelOpen, setPanelOpen] = useState(true);
 
 	const HandlePanelToggle = () => {

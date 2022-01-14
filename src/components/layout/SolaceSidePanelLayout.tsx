@@ -4,32 +4,32 @@ export enum PANEL_POSITION {
 	RIGHT = "right"
 }
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
-	open?: boolean;
-	overlay: boolean;
+const Main = styled("main")<{
+	showSidePanel: boolean;
+	overlayContent: boolean;
 	sidePanelPosition: PANEL_POSITION;
-	drawerWidth: number;
-}>(({ theme, open, sidePanelPosition, drawerWidth, overlay }) => ({
+	sidePanelWidth: number;
+}>(({ theme, showSidePanel, sidePanelPosition, sidePanelWidth, overlayContent }) => ({
 	flexGrow: 1,
 	transition: theme.transitions.create("margin", {
 		easing: theme.transitions.easing.easeIn,
 		duration: theme.transitions.duration.leavingScreen
 	}),
-	...(sidePanelPosition === PANEL_POSITION.RIGHT && { marginRight: `-${drawerWidth}px` }),
+	...(sidePanelPosition === PANEL_POSITION.RIGHT && { marginRight: `-${sidePanelWidth}px` }),
 
-	...(open &&
+	...(showSidePanel &&
 		sidePanelPosition === PANEL_POSITION.RIGHT &&
-		!overlay && {
+		!overlayContent && {
 			transition: theme.transitions.create("margin", {
 				easing: theme.transitions.easing.easeOut,
 				duration: theme.transitions.duration.enteringScreen
 			}),
 			marginRight: 0
 		}),
-	...(sidePanelPosition === PANEL_POSITION.LEFT && { marginLeft: `-${drawerWidth}px` }),
-	...(open &&
+	...(sidePanelPosition === PANEL_POSITION.LEFT && { marginLeft: `-${sidePanelWidth}px` }),
+	...(showSidePanel &&
 		sidePanelPosition === PANEL_POSITION.LEFT &&
-		!overlay && {
+		!overlayContent && {
 			transition: theme.transitions.create("margin", {
 				easing: theme.transitions.easing.easeOut,
 				duration: theme.transitions.duration.enteringScreen
@@ -109,10 +109,10 @@ function SolaceSidePanelLayout({
 				{sidePanelContent}
 			</Drawer>
 			<Main
-				open={showSidePanel}
+				showSidePanel={showSidePanel}
 				sidePanelPosition={sidePanelPosition}
-				drawerWidth={sidePanelWidth}
-				overlay={overlayContent}
+				sidePanelWidth={sidePanelWidth}
+				overlayContent={overlayContent}
 			>
 				{children}
 			</Main>
