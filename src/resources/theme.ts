@@ -842,7 +842,7 @@ const themeConfig: ThemeOptions = {
 						color: BASE_COLORS.greys.grey14,
 						fontSize: BASE_FONT_PX_SIZES.sm,
 						fontWeight: 400,
-						padding: "16px",
+						padding: "12px 16px", // considering line height
 						borderRadius: "4px",
 						boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey26}`,
 						cursor: "pointer"

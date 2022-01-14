@@ -55,10 +55,10 @@ const SolacePopover = ({
 			disableHoverListener={disableHoverListener}
 			enterDelay={500}
 			enterNextDelay={0}
-			leaveDelay={150}
+			leaveDelay={0}
 			placement={placement}
 			TransitionComponent={Fade}
-			TransitionProps={{ timeout: { enter: 150, exit: 500 } }}
+			TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
 		>
 			{children}
 		</Tooltip>
