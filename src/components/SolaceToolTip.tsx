@@ -78,7 +78,7 @@ function SolaceTooltip({
 				disableHoverListener={disableHoverListener || !isOverflowed}
 				enterDelay={500}
 				enterNextDelay={0}
-				leaveDelay={150}
+				leaveDelay={0}
 				TransitionComponent={Fade}
 				TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
 			>
