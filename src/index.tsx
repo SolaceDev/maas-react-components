@@ -2,6 +2,8 @@ export * from "@material-ui/core";
 export * from "@material-ui/core/colors";
 export { default as DeleteIcon } from "@material-ui/icons/Delete";
 export { default as ErrorOutlineOutlinedIcon } from "@material-ui/icons/ErrorOutlineOutlined";
+export { default as AddCircleOutlineOutlinedIcon } from "@material-ui/icons/AddCircleOutlineOutlined";
+export { default as HelpOutlineOutlinedIcon } from "@material-ui/icons/HelpOutlineOutlined";
 
 export { default as SolaceToasts } from "./components/SolaceToasts";
 export { default as NoAccess } from "./components/NoAccess";
@@ -38,6 +40,7 @@ export { default as SolacePagination } from "./components/SolacePagination";
 export { default as SolaceCodeEditor } from "./components/form/SolaceCodeEditor";
 export { default as SolacePopover } from "./components/SolacePopover";
 export { default as SolaceAttributeValuePairForm } from "./components/form/SolaceAttributeValuePairForm";
+export { default as SolaceTooltip } from "./components/SolaceToolTip";
 export { default as getThemeMappings } from "./theming/themeUtils";
 export * from "./types";
 

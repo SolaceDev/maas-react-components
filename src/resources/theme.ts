@@ -5,10 +5,8 @@ import { BASE_COLORS, getRGBA } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
-const tooltipPlacementMargin = "14px !important";
-// These colorMappings would replace hardcoded colors in the theme specified below.
+
 // https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
-// this eslint tag can be removed once we start using themeMappings.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getTheme = (_themeName: SupportedThemes) => {
 	// const themeMappings = getThemeMappings(themeName);
@@ -793,7 +791,49 @@ const themeConfig: ThemeOptions = {
 		},
 		MuiTooltip: {
 			styleOverrides: {
+				popper: {
+					// the gap between the hovered over element and the Popover/Tooltip
+					"&.MuiTooltip-popper": {
+						".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight": {
+							marginLeft: "14px"
+						},
+						".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft": {
+							marginRight: "14px"
+						},
+						".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementTop": {
+							marginBottom: "14px"
+						},
+						".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementBottom": {
+							marginTop: "14px"
+						}
+					}
+				},
 				tooltip: {
+					borderRadius: "4px",
+					maxWidth: "300px",
+					margin: 0,
+					wordWrap: "break-word",
+					fontWeight: 400,
+					padding: "6px 8px",
+					fontSize: BASE_FONT_PX_SIZES.xs,
+					lineHeight: "18px",
+					backgroundColor: BASE_COLORS.greys.grey25,
+					color: BASE_COLORS.whites.white2,
+					boxShadow: "0 2px 2px rgba(0,0,0,0.12)",
+					"&.htmlContent": {
+						padding: "12px 16px",
+						fontSize: BASE_FONT_PX_SIZES.sm,
+						lineHeight: "21px",
+						backgroundColor: BASE_COLORS.whites.white1,
+						color: BASE_COLORS.greys.grey14,
+						boxShadow: "0 2px 5px rgba(0,0,0,0.15)"
+					},
+					"&.mediumWidth": {
+						maxWidth: "500px"
+					},
+					"&.fullWidth": {
+						maxWidth: "100%"
+					},
 					/**
 					 * style for SolacePopover
 					 */
@@ -804,20 +844,8 @@ const themeConfig: ThemeOptions = {
 						fontWeight: 400,
 						padding: "16px",
 						borderRadius: "4px",
-						boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey25}`,
+						boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey26}`,
 						cursor: "pointer"
-					},
-					"&.MuiTooltip-tooltipPlacementRight": {
-						marginLeft: tooltipPlacementMargin
-					},
-					"&.MuiTooltip-tooltipPlacementLeft": {
-						marginRight: tooltipPlacementMargin
-					},
-					"&.MuiTooltip-tooltipPlacementTop": {
-						marginBottom: tooltipPlacementMargin
-					},
-					"&.MuiTooltip-tooltipPlacementBottom": {
-						marginTop: tooltipPlacementMargin
 					}
 				}
 			}

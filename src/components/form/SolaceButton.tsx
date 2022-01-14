@@ -1,7 +1,8 @@
-import { Button, IconButton, Link, Tooltip } from "@material-ui/core";
+import { Button, IconButton, Link } from "@material-ui/core";
 import { useTheme } from "@material-ui/core";
 import { Box } from "@material-ui/system";
 import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
+import SolaceTooltip from "../SolaceToolTip";
 
 import SolaceComponentProps from "../SolaceComponentProps";
 
@@ -47,7 +48,7 @@ function SolaceButton({
 
 	if (variant === "icon") {
 		return (
-			<Tooltip title={title} arial-label={title}>
+			<SolaceTooltip title={title}>
 				<IconButton
 					data-qa={dataQa}
 					data-tags={dataTags}
@@ -58,7 +59,7 @@ function SolaceButton({
 				>
 					{children}
 				</IconButton>
-			</Tooltip>
+			</SolaceTooltip>
 		);
 	} else if (variant === "link") {
 		let styles;
@@ -77,7 +78,7 @@ function SolaceButton({
 			};
 		}
 		return (
-			<Tooltip title={title} arial-label={title}>
+			<SolaceTooltip title={title}>
 				<Link
 					id={id}
 					data-qa={dataQa}
@@ -95,7 +96,7 @@ function SolaceButton({
 					</Box>
 					{href && <OpenExternalIcon></OpenExternalIcon>}
 				</Link>
-			</Tooltip>
+			</SolaceTooltip>
 		);
 	} else {
 		enum MATERIAL_VARIANTS {
@@ -117,7 +118,7 @@ function SolaceButton({
 		}
 
 		return (
-			<Tooltip title={title} arial-label={title}>
+			<SolaceTooltip title={title}>
 				<Button
 					id={id}
 					data-qa={dataQa}
@@ -133,7 +134,7 @@ function SolaceButton({
 				>
 					{children}
 				</Button>
-			</Tooltip>
+			</SolaceTooltip>
 		);
 	}
 }
