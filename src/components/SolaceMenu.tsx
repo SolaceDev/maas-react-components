@@ -173,6 +173,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 						maxHeight: `${itemHeight * 9.5}px`
 					}
 				}}
+				className="SolaceMenu"
 			>
 				{header && <ListSubheader>{header}</ListSubheader>}
 				{renderCustomMenuItems ? renderCustomMenuItems(id) : flatten(menuItemsList)}
