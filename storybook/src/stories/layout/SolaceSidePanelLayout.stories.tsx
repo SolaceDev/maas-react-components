@@ -10,7 +10,7 @@ import {
 	ListSubheader,
 	ChevronRightIcon
 } from "@SolaceDev/maas-react-components";
-// import NoAccessImg from "../../resources/images/NoAccessBook"; note: removing this image since getting an err on docs page
+import NoAccessImg from "../../resources/images/NoAccessBook";
 
 const btnID = "catalog-btn";
 const VARIANT = "call-to-action";
@@ -94,7 +94,7 @@ export const DefaultSidePanel = (): JSX.Element => {
 		<StoryContainer>
 			<SolaceSidePanelLayout showSidePanel={panelOpen} sidePanelContent={sidePanelMessage}>
 				<SolaceDetailMessage
-					// msgImg={<NoAccessImg />}
+					msgImg={<NoAccessImg />}
 					title="Side Panel Layout Demo"
 					details={<span>Click the buton to toggle the side panel</span>}
 					actions={[
@@ -111,7 +111,7 @@ export const DefaultSidePanel = (): JSX.Element => {
 	);
 };
 
-export const LeftSidePane = (): JSX.Element => {
+export const LeftSidePanel = (): JSX.Element => {
 	const [panelOpen, setPanelOpen] = useState(true);
 
 	const HandlePanelToggle = () => {
@@ -127,7 +127,7 @@ export const LeftSidePane = (): JSX.Element => {
 			>
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
-						// msgImg={<NoAccessImg />}
+						msgImg={<NoAccessImg />}
 						title="Left Side Panel Layout Demo"
 						details={<span>Click the buton to toggle the side panel</span>}
 						actions={[
@@ -157,7 +157,7 @@ export const CustomWidthSidePanel = (): JSX.Element => {
 			<SolaceSidePanelLayout sidePanelContent={sidePanelMessage} showSidePanel={panelOpen} sidePanelWidth={500}>
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
-						// msgImg={<NoAccessImg />}
+						msgImg={<NoAccessImg />}
 						title="Custom Width Side Panel Layout Demo"
 						details={<span>Click the buton to toggle the side panel</span>}
 						actions={[
@@ -196,7 +196,7 @@ export const SelfClosingSidePanel = (): JSX.Element => {
 			<SolaceSidePanelLayout sidePanelContent={sidePanelContent} showSidePanel={panelOpen}>
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
-						// msgImg={<NoAccessImg />}
+						msgImg={<NoAccessImg />}
 						title="Self-Closing Side Panel Layout Demo"
 						details={<span>Click the buton to toggle the side panel</span>}
 						actions={[
@@ -240,7 +240,7 @@ export const OverlaySidePanel = (): JSX.Element => {
 			>
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
-						// msgImg={<NoAccessImg />}
+						msgImg={<NoAccessImg />}
 						title="Side Panel Layout Demo"
 						details={<span>Click the buton to toggle the side panel</span>}
 						actions={[
