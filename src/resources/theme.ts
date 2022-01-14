@@ -512,10 +512,20 @@ const themeConfig: ThemeOptions = {
 		MuiMenu: {
 			styleOverrides: {
 				root: {
+					"&.SolaceMenu": {
+						".MuiPaper-root": {
+							margin: "4px",
+							".MuiMenuItem-root": {
+								maxWidth: "320px",
+								"&.wideMenu": {
+									minWidth: "320px"
+								}
+							}
+						}
+					},
 					".MuiPaper-root": {
 						overflowY: "auto",
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
-						margin: "4px",
 
 						".MuiMenuItem-root": {
 							display: "flex",
@@ -524,15 +534,12 @@ const themeConfig: ThemeOptions = {
 							minHeight: "38px",
 							alignItems: "center",
 							whiteSpace: "normal",
-							maxWidth: "320px",
+
 							"&:hover": {
 								backgroundColor: BASE_COLORS.greys.grey2
 							},
 							"&.multiline": {
 								height: "58px"
-							},
-							"&.wideMenu": {
-								minWidth: "320px"
 							},
 
 							"&.Mui-selected": {
