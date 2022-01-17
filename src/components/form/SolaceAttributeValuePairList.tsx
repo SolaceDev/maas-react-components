@@ -148,7 +148,7 @@ const SolaceAttributeValuePairList = ({
 		// eslint-disable-next-line sonarjs/cognitive-complexity
 		(event: React.FocusEvent<HTMLInputElement>, index: number) => {
 			const list = [...currentAVPList];
-			if (!allowKeyValueToBeEmpty && event.target.getAttribute("value") && !list[index]["key"]) {
+			if (!allowKeyValueToBeEmpty && event.target.getAttribute("name") === "value" && !list[index]["key"]) {
 				list[index]["keyErrorText"] = "Cannot be blank";
 			}
 			if (index !== currentAVPList.length - 1 && (avpKeyValidationCallback || avpValueValidationCallback)) {
