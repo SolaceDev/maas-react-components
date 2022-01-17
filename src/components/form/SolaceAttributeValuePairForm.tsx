@@ -89,7 +89,7 @@ const SolaceAttributeValuePairForm = ({
 	avpValueValidationCallback,
 	enableRequiredKeyFieldIndicator,
 	enableRequiredValueFieldIndicator,
-	allowKeyValueToBeEmpty
+	allowKeyValueToBeEmpty = false
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);

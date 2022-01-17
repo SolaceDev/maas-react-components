@@ -84,7 +84,7 @@ const SolaceAttributeValuePairList = ({
 	avpValueValidationCallback,
 	dropOverIndex,
 	dropFromTop,
-	allowKeyValueToBeEmpty
+	allowKeyValueToBeEmpty = false
 }: AVPListProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState<AVPItem[]>(avpList);
 
