@@ -149,7 +149,6 @@ const SolaceAttributeValuePairList = ({
 		(event: React.FocusEvent<HTMLInputElement>, index: number) => {
 			const list = [...currentAVPList];
 			if (!allowKeyValueToBeEmpty && event.target.getAttribute("value") && !list[index]["key"]) {
-				console.log(list[index]["key"]);
 				list[index]["keyErrorText"] = "Cannot be blank";
 			}
 			if (index !== currentAVPList.length - 1 && (avpKeyValidationCallback || avpValueValidationCallback)) {
@@ -172,7 +171,7 @@ const SolaceAttributeValuePairList = ({
 				onAVPListUpdate(list);
 			}
 		},
-		[currentAVPList, onAVPListUpdate, avpKeyValidationCallback, avpValueValidationCallback]
+		[currentAVPList, onAVPListUpdate, avpKeyValidationCallback, avpValueValidationCallback, allowKeyValueToBeEmpty]
 	);
 
 	return (
