@@ -48,6 +48,10 @@ export interface AVPListProps {
 	 * null: dropping back to the same position or outside of the droppable container
 	 */
 	dropFromTop: boolean | null;
+	/**
+	 * skip key empty check
+	 */
+	allowKeyValueToBeEmpty?: boolean;
 }
 
 enum AVPNavigationKeys {
@@ -79,7 +83,8 @@ const SolaceAttributeValuePairList = ({
 	avpKeyValidationCallback,
 	avpValueValidationCallback,
 	dropOverIndex,
-	dropFromTop
+	dropFromTop,
+	allowKeyValueToBeEmpty
 }: AVPListProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState<AVPItem[]>(avpList);
 
@@ -142,8 +147,12 @@ const SolaceAttributeValuePairList = ({
 	const handleInputOnBlur = useCallback(
 		// eslint-disable-next-line sonarjs/cognitive-complexity
 		(event: React.FocusEvent<HTMLInputElement>, index: number) => {
+			const list = [...currentAVPList];
+			if (!allowKeyValueToBeEmpty && event.target.getAttribute("value") && !list[index]["key"]) {
+				console.log(list[index]["key"]);
+				list[index]["keyErrorText"] = "Cannot be blank";
+			}
 			if (index !== currentAVPList.length - 1 && (avpKeyValidationCallback || avpValueValidationCallback)) {
-				const list = [...currentAVPList];
 				if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
 					const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
 					if (error) {

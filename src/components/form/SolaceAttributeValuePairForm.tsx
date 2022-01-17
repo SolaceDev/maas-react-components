@@ -71,6 +71,10 @@ export interface SolaceAttributeValuePairFormProps {
 	 * Boolean flag used to display an indicator of whether or not `input` for value field is mandatory
 	 */
 	enableRequiredValueFieldIndicator?: boolean;
+	/**
+	 * skip key empty check
+	 */
+	allowKeyValueToBeEmpty?: boolean;
 }
 
 const SolaceAttributeValuePairForm = ({
@@ -84,7 +88,8 @@ const SolaceAttributeValuePairForm = ({
 	avpKeyValidationCallback,
 	avpValueValidationCallback,
 	enableRequiredKeyFieldIndicator,
-	enableRequiredValueFieldIndicator
+	enableRequiredValueFieldIndicator,
+	allowKeyValueToBeEmpty
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
@@ -180,6 +185,7 @@ const SolaceAttributeValuePairForm = ({
 								dropOverIndex={dropOverIndex}
 								dropFromTop={dropFromTop}
 								readOnly={readOnly}
+								allowKeyValueToBeEmpty={allowKeyValueToBeEmpty}
 							/>
 						</SolaceAVPListContainer>
 						{provided.placeholder}
