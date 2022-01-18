@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { within, userEvent } from "@storybook/testing-library";
 
 import { SolaceTextField } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
@@ -182,4 +183,21 @@ Controlled.args = {
 	label: "Controlled Text Field",
 	value: "Initial value",
 	helperText: "The value of the text field is controlled by the change handler in the story."
+};
+
+export const Interaction = Template.bind({});
+Interaction.args = {
+	onChange: action("callback"),
+	id: "interactionTextField",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
+	dataQa: "interactionTextField"
+};
+Interaction.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+
+	await userEvent.type(canvas.getByTestId("interactionTextField"), "This is a test", {
+		delay: 100
+	});
 };

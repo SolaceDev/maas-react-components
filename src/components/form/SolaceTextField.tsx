@@ -145,6 +145,7 @@ function SolaceTextField({
 				size: size,
 				"data-qa": dataQa,
 				"data-tags": dataTags,
+				"data-testid": dataQa,
 				"data-lpignore": true,
 				readOnly: readOnly,
 				"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
