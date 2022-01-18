@@ -652,10 +652,12 @@ const themeConfig: ThemeOptions = {
 					}
 				},
 				popupIndicator: {
+					padding: "0px 0px 0px 8px",
 					top: "8px",
 					right: "0px"
 				},
 				popupIndicatorOpen: {
+					padding: "0px 8px 0px 0px",
 					top: "-6px",
 					right: "12px"
 				}
