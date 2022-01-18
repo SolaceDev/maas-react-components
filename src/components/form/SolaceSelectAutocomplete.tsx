@@ -2,6 +2,7 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Box, Autocomplete, TextField, useTheme } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
+import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
@@ -187,6 +188,7 @@ function SolaceSelectAutocomplete<T, V>({
 				fetchOptionsCallback(inputValue);
 			}}
 			onChange={handleChange}
+			popupIcon={<SelectDropdownIcon />}
 			renderInput={(params) => (
 				<TextField
 					{...params}

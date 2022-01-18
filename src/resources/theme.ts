@@ -650,6 +650,14 @@ const themeConfig: ThemeOptions = {
 						fontSize: BASE_FONT_PX_SIZES.xs,
 						color: BASE_COLORS.greys.grey8
 					}
+				},
+				popupIndicator: {
+					top: "8px",
+					right: "0px"
+				},
+				popupIndicatorOpen: {
+					top: "-6px",
+					right: "12px"
 				}
 			}
 		},
