@@ -7,9 +7,13 @@ module.exports = {
 		"@storybook/addon-essentials",
 		"storybook-addon-designs",
 		"@storybook/addon-actions",
+		"@storybook/addon-interactions",
 		"@storybook/addon-a11y",
 		"storybook-addon-mock/register"
 	],
+	features: {
+		interactionsDebugger: true
+	},
 	/**
 	 * The following webpack config overrides have been put in place to address a Storybook bug where
 	 * it utilizes it's own version of emotion rather than the installed one ... this was causing
