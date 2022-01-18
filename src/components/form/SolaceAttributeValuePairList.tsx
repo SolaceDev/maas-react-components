@@ -158,7 +158,7 @@ const SolaceAttributeValuePairList = ({
 			if (keyRequired && !list[index]["key"]) {
 				list[index]["keyErrorText"] = keyIsRequiredMessage;
 				mandatoryKeyValidationFailed = true;
-			} else {
+			} else if (list[index]["keyErrorText"] === keyIsRequiredMessage) {
 				delete list[index]["keyErrorText"];
 				mandatoryKeyValidationFailed = false;
 			}
