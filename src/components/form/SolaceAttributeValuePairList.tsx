@@ -48,6 +48,15 @@ export interface AVPListProps {
 	 * null: dropping back to the same position or outside of the droppable container
 	 */
 	dropFromTop: boolean | null;
+	/**
+	 *
+	 * This boolean allows user to toggle whether keys are mandatory or not (i.e. if set to false, you can have a value without an associated key)
+	 */
+	keyRequired?: boolean;
+	/**
+	 * String message to display if an AVP value is specified without an associated key (unless allowedKeyToBeEmpty is true, then no validation check done)
+	 */
+	keyIsRequiredMessage?: string;
 }
 
 enum AVPNavigationKeys {
@@ -79,7 +88,9 @@ const SolaceAttributeValuePairList = ({
 	avpKeyValidationCallback,
 	avpValueValidationCallback,
 	dropOverIndex,
-	dropFromTop
+	dropFromTop,
+	keyRequired = true, // by default, key is considered mandatory for every AVP (i.e. you can have a key with no value, but you cannot have a value with no key)
+	keyIsRequiredMessage = "Required"
 }: AVPListProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState<AVPItem[]>(avpList);
 
@@ -142,9 +153,21 @@ const SolaceAttributeValuePairList = ({
 	const handleInputOnBlur = useCallback(
 		// eslint-disable-next-line sonarjs/cognitive-complexity
 		(event: React.FocusEvent<HTMLInputElement>, index: number) => {
+			const list = [...currentAVPList];
+			let mandatoryKeyValidationFailed = false;
+			if (keyRequired && !list[index]["key"]) {
+				list[index]["keyErrorText"] = keyIsRequiredMessage;
+				mandatoryKeyValidationFailed = true;
+			} else if (list[index]["keyErrorText"] === keyIsRequiredMessage) {
+				delete list[index]["keyErrorText"];
+				mandatoryKeyValidationFailed = false;
+			}
 			if (index !== currentAVPList.length - 1 && (avpKeyValidationCallback || avpValueValidationCallback)) {
-				const list = [...currentAVPList];
-				if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
+				if (
+					event.target.getAttribute("name") === "key" &&
+					!mandatoryKeyValidationFailed && // only validate against external key rules if mandatory key validation passed
+					avpKeyValidationCallback
+				) {
 					const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
 					if (error) {
 						list[index]["keyErrorText"] = error;
@@ -159,11 +182,18 @@ const SolaceAttributeValuePairList = ({
 						delete list[index]["valueErrorText"];
 					}
 				}
-				setAVPList(list);
-				onAVPListUpdate(list);
 			}
+			setAVPList(list);
+			onAVPListUpdate(list);
 		},
-		[currentAVPList, onAVPListUpdate, avpKeyValidationCallback, avpValueValidationCallback]
+		[
+			currentAVPList,
+			keyRequired,
+			avpKeyValidationCallback,
+			avpValueValidationCallback,
+			keyIsRequiredMessage,
+			onAVPListUpdate
+		]
 	);
 
 	return (

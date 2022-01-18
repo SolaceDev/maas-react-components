@@ -21,16 +21,19 @@
 	"devDependencies": {
 		"@babel/core": "^7.15.0",
 		"@sambego/storybook-state": "^2.0.1",
-		"@storybook/addon-a11y": "^6.3.12",
-		"@storybook/addon-actions": "^6.3.12",
-		"@storybook/addon-essentials": "^6.3.12",
-		"@storybook/addon-links": "^6.3.12",
-		"@storybook/addons": "^6.3.12",
-		"@storybook/react": "^6.3.12",
-		"@storybook/theming": "^6.3.12",
+		"@storybook/addon-a11y": "^6.4.13",
+		"@storybook/addon-actions": "^6.4.13",
+		"@storybook/addon-essentials": "^6.4.13",
+		"@storybook/addon-interactions": "^6.4.13",
+		"@storybook/addon-links": "^6.4.13",
+		"@storybook/addons": "^6.4.13",
+		"@storybook/jest": "0.0.5",
+		"@storybook/react": "^6.4.13",
+		"@storybook/testing-library": "0.0.8",
+		"@storybook/theming": "^6.4.13",
 		"babel-loader": "^8.2.2",
 		"chromatic": "^6.1.0",
-		"storybook-addon-designs": "^6.2.0",
-		"storybook-addon-mock": "^1.6.0"
+		"storybook-addon-designs": "^6.2.1",
+		"storybook-addon-mock": "^2.0.2"
 	}
 }

@@ -71,6 +71,15 @@ export interface SolaceAttributeValuePairFormProps {
 	 * Boolean flag used to display an indicator of whether or not `input` for value field is mandatory
 	 */
 	enableRequiredValueFieldIndicator?: boolean;
+	/**
+	 *
+	 * This boolean allows user to toggle whether keys are mandatory or not (i.e. if set to false, you can have a value without an associated key)
+	 */
+	keyRequired?: boolean;
+	/**
+	 * String message to display if an AVP value is specified without an associated key (unless allowedKeyToBeEmpty is true, then no validation check done)
+	 */
+	keyIsRequiredMessage?: string;
 }
 
 const SolaceAttributeValuePairForm = ({
@@ -84,7 +93,9 @@ const SolaceAttributeValuePairForm = ({
 	avpKeyValidationCallback,
 	avpValueValidationCallback,
 	enableRequiredKeyFieldIndicator,
-	enableRequiredValueFieldIndicator
+	enableRequiredValueFieldIndicator,
+	keyRequired = true, // by default, key is considered mandatory for every AVP (i.e. you can have a key with no value, but you cannot have a value with no key)
+	keyIsRequiredMessage = "Required"
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
@@ -180,6 +191,8 @@ const SolaceAttributeValuePairForm = ({
 								dropOverIndex={dropOverIndex}
 								dropFromTop={dropFromTop}
 								readOnly={readOnly}
+								keyRequired={keyRequired}
+								keyIsRequiredMessage={keyIsRequiredMessage}
 							/>
 						</SolaceAVPListContainer>
 						{provided.placeholder}
