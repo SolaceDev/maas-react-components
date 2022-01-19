@@ -2,7 +2,7 @@ import { Drawer, styled, Box } from "@material-ui/core";
 import { useState, useCallback, useRef } from "react";
 import { VerticalDotsIcon } from "../resources/icons/VerticalDotsIcon";
 
-export enum ANCHOR {
+enum ANCHOR {
 	LEFT = "left",
 	RIGHT = "right"
 }
@@ -114,6 +114,8 @@ function SolaceDrawer({
 					boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.3)"
 				}
 			}}
+			PaperProps={{ style: { position: "absolute" } }}
+			BackdropProps={{ style: { position: "absolute" } }}
 			variant="persistent"
 			anchor={anchor}
 			open={open}

@@ -3,10 +3,10 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceDrawer, SolaceDetailMessage } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../resources/images/NoAccessBook";
 
-const btnID = "catalog-btn";
-const VARIANT = "call-to-action";
-const CLOSEPANEL = "Close Drawer";
-const OPENPANEL = "Open Drawer";
+enum ANCHOR {
+	LEFT = "left",
+	RIGHT = "right"
+}
 
 const drawerMessage = (
 	<div style={{ margin: "15px" }}>
@@ -79,29 +79,54 @@ ResizableRightDrawer.args = {
 
 export const WithParentAndContent = (): ReactNode => {
 	const [open, setOpen] = useState(true);
-	const handleClick = () => {
+	const [anchor, setAnchor] = useState(ANCHOR.RIGHT);
+	const handleOpenChange = () => {
 		setOpen(!open);
 	};
+	const handleAnchorChange = () => {
+		setAnchor(anchor === ANCHOR.RIGHT ? ANCHOR.LEFT : ANCHOR.RIGHT);
+	};
 	return (
-		<>
-			<div style={{ margin: "auto" }}>
-				<SolaceDetailMessage
-					msgImg={<NoAccessImg />}
-					title="Drawer Demo"
-					details={<span>Click the buton to toggle the drawer</span>}
-					actions={[
-						{
-							id: btnID,
-							variant: VARIANT,
-							children: open ? CLOSEPANEL : OPENPANEL,
-							onClick: handleClick
-						}
-					]}
-				/>
+		<div style={{ height: "100vh - 40px" }}>
+			<div style={{ height: "80px", borderBottom: "1px solid rgba(0, 0, 0, 0.2)" }}>
+				<div style={{ paddingTop: "30px", textAlign: "center" }}>Header</div>
 			</div>
-			<SolaceDrawer open={open} resizable={true}>
-				{drawerMessage}
-			</SolaceDrawer>
-		</>
+			<div style={{ height: "calc(100vh - 160px - 34px)", position: "relative" }}>
+				<div style={{ margin: "auto" }}>
+					<SolaceDetailMessage
+						msgImg={<NoAccessImg />}
+						title="Drawer Demo"
+						details={<span>Click the buton to toggle the drawer</span>}
+						actions={[
+							{
+								id: "open-button",
+								variant: "call-to-action",
+								children: open ? "Close Drawer" : "Open Drawer",
+								onClick: handleOpenChange
+							},
+							{
+								id: "anchor-button",
+								variant: "call-to-action",
+								children: anchor === ANCHOR.RIGHT ? "Change to Left" : "Change to Right",
+								onClick: handleAnchorChange
+							}
+						]}
+					/>
+				</div>
+				<SolaceDrawer open={open} resizable={true} anchor={anchor}>
+					{drawerMessage}
+				</SolaceDrawer>
+			</div>
+			<div
+				style={{
+					height: "80px",
+					bottom: "0px",
+					position: "sticky",
+					borderTop: "1px solid rgba(0, 0, 0, 0.2)"
+				}}
+			>
+				<div style={{ paddingTop: "30px", textAlign: "center" }}>Footer</div>
+			</div>
+		</div>
 	);
 };
