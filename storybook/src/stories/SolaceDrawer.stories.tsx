@@ -1,12 +1,14 @@
 import React, { ReactNode, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceDrawer, SolaceDetailMessage } from "@SolaceDev/maas-react-components";
+import { SolaceDrawer, SolaceDetailMessage, styled } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../resources/images/NoAccessBook";
 
 enum ANCHOR {
 	LEFT = "left",
 	RIGHT = "right"
 }
+
+const CALL_TO_ACTION = "call-to-action";
 
 const drawerMessage = (
 	<div style={{ margin: "15px" }}>
@@ -77,22 +79,32 @@ ResizableRightDrawer.args = {
 	resizable: true
 };
 
+const DirectParent = styled("div", { shouldForwardProp: (prop) => prop !== "contained" })<{
+	contained: boolean;
+}>(({ contained }) => ({
+	// To have the SolaceDrawer contained within the parent, a relative position is required.
+	...(contained && { position: "relative" })
+}));
+
 export const WithParentAndContent = (): ReactNode => {
 	const [open, setOpen] = useState(true);
 	const [anchor, setAnchor] = useState(ANCHOR.RIGHT);
+	const [contained, setContained] = useState(false);
 	const handleOpenChange = () => {
 		setOpen(!open);
 	};
 	const handleAnchorChange = () => {
 		setAnchor(anchor === ANCHOR.RIGHT ? ANCHOR.LEFT : ANCHOR.RIGHT);
 	};
+	const handleContainedChange = () => {
+		setContained(!contained);
+	};
 	return (
 		<div style={{ height: "100vh - 40px" }}>
 			<div style={{ height: "80px", borderBottom: "1px solid rgba(0, 0, 0, 0.2)" }}>
 				<div style={{ paddingTop: "30px", textAlign: "center" }}>Header</div>
 			</div>
-			{/* To have the SolaceDrawer contained within the parent, a relative position is required. */}
-			<div style={{ height: "calc(100vh - 160px - 34px)", position: "relative" }}>
+			<DirectParent sx={{ height: "calc(100vh - 160px - 34px)" }} contained={contained}>
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
 						msgImg={<NoAccessImg />}
@@ -101,15 +113,21 @@ export const WithParentAndContent = (): ReactNode => {
 						actions={[
 							{
 								id: "open-button",
-								variant: "call-to-action",
+								variant: CALL_TO_ACTION,
 								children: open ? "Close Drawer" : "Open Drawer",
 								onClick: handleOpenChange
 							},
 							{
 								id: "anchor-button",
-								variant: "call-to-action",
+								variant: CALL_TO_ACTION,
 								children: anchor === ANCHOR.RIGHT ? "Change to Left" : "Change to Right",
 								onClick: handleAnchorChange
+							},
+							{
+								id: "contained-button",
+								variant: CALL_TO_ACTION,
+								children: contained ? "Change to Float" : "Change to Contained",
+								onClick: handleContainedChange
 							}
 						]}
 					/>
@@ -117,7 +135,7 @@ export const WithParentAndContent = (): ReactNode => {
 				<SolaceDrawer open={open} resizable={true} anchor={anchor}>
 					{drawerMessage}
 				</SolaceDrawer>
-			</div>
+			</DirectParent>
 			<div
 				style={{
 					height: "80px",
