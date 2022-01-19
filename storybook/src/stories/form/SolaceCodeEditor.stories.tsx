@@ -115,10 +115,10 @@ export const FullScreenEditor = (): JSX.Element => {
 	);
 };
 
-export const ControlledEditor = () => {
-	const [value, setValue] = useState("");
+export const ControlledEditor = ({ value: initialValue, ...args }): JSX.Element => {
+	const [value, setValue] = useState(initialValue);
 	const handleChange = (_editor: any, _data: any, value: string) => {
 		setValue(value);
 	};
-	return <SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} />;
+	return <SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} {...args} />;
 };
