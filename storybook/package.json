@@ -16,7 +16,8 @@
 	"license": "ISC",
 	"dependencies": {
 		"@SolaceDev/maas-react-components": "file:..",
-		"gh-pages": "^3.2.3"
+		"gh-pages": "^3.2.3",
+		"react-hook-form": "^7.24.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.0",

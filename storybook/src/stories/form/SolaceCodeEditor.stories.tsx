@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { SolaceCodeEditor, SolaceCheckBox } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
+import { Controller, useForm } from "react-hook-form";
 
 export default {
 	title: "Forms/SolaceCodeEditor",
@@ -56,15 +57,17 @@ DefaultEditor.args = {
 	onChange: action("callback")
 };
 
+const NAME = "schemaVersion[content]";
+
 export const EmptyEditor = Template.bind({});
 EmptyEditor.args = {
-	id: "schemaVersion[content]",
-	name: "schemaVersion[content]",
+	id: NAME,
+	name: NAME,
 	value: "",
 	hasErrors: undefined,
 	helperText: null,
 	onChange: (editor, data, value) => action(value),
-	dataQa: "schemaVersion[content]"
+	dataQa: NAME
 };
 
 export const JSONEditor = Template.bind({});
@@ -110,5 +113,29 @@ export const FullScreenEditor = (): JSX.Element => {
 				onChange={action("callback")}
 			/>
 		</>
+	);
+};
+
+export const FooEditor = () => {
+	const [value, setValue] = useState("");
+	const formMethods = useForm({
+		mode: "onChange"
+	});
+	const { control } = formMethods;
+	return (
+		<Controller
+			control={control}
+			name="foo"
+			render={({ field: { value, onChange } }) => (
+				<SolaceCodeEditor
+					id="foo"
+					value={value || ""}
+					mode="json"
+					onChange={(e, b, value) => {
+						onChange(value);
+					}}
+				/>
+			)}
+		></Controller>
 	);
 };
