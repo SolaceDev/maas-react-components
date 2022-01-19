@@ -91,6 +91,7 @@ export const WithParentAndContent = (): ReactNode => {
 			<div style={{ height: "80px", borderBottom: "1px solid rgba(0, 0, 0, 0.2)" }}>
 				<div style={{ paddingTop: "30px", textAlign: "center" }}>Header</div>
 			</div>
+			{/* To have the SolaceDrawer contained within the parent, a relative position is required. */}
 			<div style={{ height: "calc(100vh - 160px - 34px)", position: "relative" }}>
 				<div style={{ margin: "auto" }}>
 					<SolaceDetailMessage
