@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { SolaceCodeEditor, SolaceCheckBox } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { Controller, useForm } from "react-hook-form";
 
 export default {
 	title: "Forms/SolaceCodeEditor",
@@ -116,26 +115,10 @@ export const FullScreenEditor = (): JSX.Element => {
 	);
 };
 
-export const FooEditor = () => {
+export const ControlledEditor = () => {
 	const [value, setValue] = useState("");
-	const formMethods = useForm({
-		mode: "onChange"
-	});
-	const { control } = formMethods;
-	return (
-		<Controller
-			control={control}
-			name="foo"
-			render={({ field: { value, onChange } }) => (
-				<SolaceCodeEditor
-					id="foo"
-					value={value || ""}
-					mode="json"
-					onChange={(e, b, value) => {
-						onChange(value);
-					}}
-				/>
-			)}
-		></Controller>
-	);
+	const handleChange = (_editor: any, _data: any, value: string) => {
+		setValue(value);
+	};
+	return <SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} />;
 };
