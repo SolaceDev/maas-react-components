@@ -1,4 +1,5 @@
-import { UnControlled as CodeMirror } from "react-codemirror2";
+import { useState } from "react";
+import { Controlled as CodeMirror } from "react-codemirror2";
 
 import SolaceComponentProps from "../SolaceComponentProps";
 
@@ -45,10 +46,15 @@ function SolaceCodeEditor({
 	readOnly = false,
 	onChange
 }: SolaceCodeEditorProps): JSX.Element {
+	const [val, setVal] = useState(value || "");
+	const handleChange = (_editor: CodeMirror, _data: any, value: string) => {
+		setVal(value);
+	};
 	return (
 		<CodeMirror
 			key={id}
-			value={value}
+			value={val}
+			onBeforeChange={handleChange}
 			options={{
 				theme: "default",
 				mode: mode === "json" ? "application/ld+json" : "application/xml",
