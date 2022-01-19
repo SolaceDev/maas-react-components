@@ -4,7 +4,8 @@ export enum PANEL_POSITION {
 	RIGHT = "right"
 }
 
-const Main = styled("main")<{
+// Use `shouldForwardProp` to get rid of the warning that React does not recognize the custom prop on a DOM element.
+const Main = styled("main", { shouldForwardProp: (prop) => prop === "children" })<{
 	showSidePanel: boolean;
 	overlayContent: boolean;
 	sidePanelPosition: PANEL_POSITION;

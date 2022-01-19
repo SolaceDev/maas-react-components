@@ -42,6 +42,7 @@ export { default as SolaceCodeEditor } from "./components/form/SolaceCodeEditor"
 export { default as SolacePopover } from "./components/SolacePopover";
 export { default as SolaceAttributeValuePairForm } from "./components/form/SolaceAttributeValuePairForm";
 export { default as SolaceTooltip } from "./components/SolaceToolTip";
+export { default as SolaceDrawer } from "./components/SolaceDrawer";
 export { default as getThemeMappings } from "./theming/themeUtils";
 export * from "./types";
 
