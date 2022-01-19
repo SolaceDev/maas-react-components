@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import withMock from "storybook-addon-mock";
@@ -163,8 +164,8 @@ StackedLabelFormat.args = {
 	onCloseCallback: () => store.set({ options: [] })
 };
 
-export const InlineLabeleFormat = Template.bind({});
-InlineLabeleFormat.parameters = {
+export const InlineLabelFormat = Template.bind({});
+InlineLabelFormat.parameters = {
 	mockData: [
 		{
 			url: "http://someOtherExample.com/filterOptions",
@@ -177,7 +178,7 @@ InlineLabeleFormat.parameters = {
 		}
 	]
 };
-InlineLabeleFormat.args = {
+InlineLabelFormat.args = {
 	onChange: action("callback"),
 	itemComponent: SolaceSelectAutocompleteItem,
 	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
