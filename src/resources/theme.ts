@@ -617,6 +617,9 @@ const themeConfig: ThemeOptions = {
 					".MuiOutlinedInput-root .MuiAutocomplete-input": {
 						padding: "0px"
 					},
+					".MuiOutlinedInput-root .MuiAutocomplete-endAdornment": {
+						right: "0px"
+					},
 					".MuiOutlinedInput-root": {
 						padding: "0px 0px 0px 8px",
 						height: "32px"
@@ -653,13 +656,13 @@ const themeConfig: ThemeOptions = {
 				},
 				popupIndicator: {
 					padding: "0px 0px 0px 8px",
-					top: "8px",
-					right: "0px"
+					top: "7px",
+					right: "0px",
+					marginRight: "0px",
+					height: "28px"
 				},
 				popupIndicatorOpen: {
-					padding: "0px 8px 0px 0px",
-					top: "-6px",
-					right: "12px"
+					transform: "none"
 				}
 			}
 		},
