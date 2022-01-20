@@ -29,7 +29,7 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 	/**
 	 * The callback function runs when the user clicks on a menu item (note: made this function as generic as possible since we want to flexibility to pass any type of parameter)
 	 */
-	onMenuItemClick: (input: any) => void;
+	onMenuItemClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 	/**
 	 * Adds a divider to the bottom of menuItem
 	 */
@@ -122,9 +122,9 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				key={`${item.name}-${id}`}
 				data-qa={item?.dataQa}
 				data-tags={item?.dataTags}
-				onClick={() => {
+				onClick={(e) => {
 					handleMenuClose();
-					item.onMenuItemClick(id);
+					item.onMenuItemClick(e);
 				}}
 				divider={!!item?.divider}
 				disabled={!!item?.disabled}
