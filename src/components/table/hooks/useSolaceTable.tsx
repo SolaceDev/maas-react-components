@@ -253,6 +253,7 @@ export const useSolaceTable = (
 					selected: row.rowSelected,
 					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
 				})}
+				data-qa={row.id}
 			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
