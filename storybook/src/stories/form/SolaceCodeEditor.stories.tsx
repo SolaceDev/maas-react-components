@@ -120,5 +120,34 @@ export const ControlledEditor = ({ value: initialValue, ...args }): JSX.Element 
 	const handleChange = (_editor: any, _data: any, value: string) => {
 		setValue(value);
 	};
-	return <SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} {...args} />;
+	return (
+		<div>
+			<SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} {...args} />
+			<div>Returned Data:</div>
+			<div>{JSON.stringify(value)}</div>
+		</div>
+	);
+};
+
+const SAMPLE_DATA = '{\n\t"name": "jason",\n \t"address": "123 road"\n}';
+
+export const UpdateData = ({ value: initialValue, ...args }): JSX.Element => {
+	const [value, setValue] = useState(initialValue);
+	const handleChange = (_editor: any, _data: any, value: string) => {
+		setValue(value);
+	};
+	return (
+		<div>
+			<SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} {...args} />
+			<button
+				onClick={() => {
+					setValue(SAMPLE_DATA);
+				}}
+			>
+				Update data
+			</button>
+			<div>Returned Data:</div>
+			<div>{JSON.stringify(value)}</div>
+		</div>
+	);
 };
