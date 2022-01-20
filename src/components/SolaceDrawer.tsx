@@ -42,6 +42,10 @@ export interface SolaceDrawerProps {
 	 */
 	resizable?: boolean;
 	/**
+	 * Optional callback to pass new width back after the action of resizing is completed.
+	 */
+	onResizeDone?: (newWidth: number) => void;
+	/**
 	 * Optional value to control the range of drawer width. Needs resizable to be true. default is set to 100.
 	 */
 	minWidth?: number;
@@ -63,6 +67,7 @@ function SolaceDrawer({
 	open,
 	width = 320,
 	resizable = false,
+	onResizeDone,
 	minWidth = 100,
 	maxWidth = 800,
 	anchor = ANCHOR.RIGHT,
@@ -70,6 +75,9 @@ function SolaceDrawer({
 }: SolaceDrawerProps): JSX.Element {
 	const initialClientX = useRef<number>(0);
 	const [drawerWidth, setDrawerWidth] = useState(width);
+	// Create ref to track the value of drawerWidth state, as the state will be stale in callback function handleMouseUp().
+	const widthRef = useRef<number>(width);
+	widthRef.current = drawerWidth;
 
 	const handleMouseMove = useCallback(
 		(e) => {
@@ -88,7 +96,9 @@ function SolaceDrawer({
 		document.removeEventListener("mouseup", handleMouseUp, true);
 		document.removeEventListener("mousemove", handleMouseMove, true);
 		initialClientX.current = 0;
-	}, [handleMouseMove]);
+		// Pass the new width back only after mouse up. Using ref to get the latest state.
+		onResizeDone?.(widthRef.current);
+	}, [handleMouseMove, onResizeDone]);
 
 	const handleMouseDown = useCallback(
 		(e) => {
