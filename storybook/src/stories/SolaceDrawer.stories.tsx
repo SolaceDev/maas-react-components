@@ -8,6 +8,8 @@ enum ANCHOR {
 	RIGHT = "right"
 }
 
+const INITIAL_WIDTH = 320;
+
 const CALL_TO_ACTION = "call-to-action";
 
 const drawerMessage = (
@@ -90,6 +92,7 @@ export const WithParentAndContent = (): ReactNode => {
 	const [open, setOpen] = useState(true);
 	const [anchor, setAnchor] = useState(ANCHOR.RIGHT);
 	const [contained, setContained] = useState(false);
+	const [currentWidth, setCurrentWidth] = useState(INITIAL_WIDTH);
 	const handleOpenChange = () => {
 		setOpen(!open);
 	};
@@ -98,6 +101,9 @@ export const WithParentAndContent = (): ReactNode => {
 	};
 	const handleContainedChange = () => {
 		setContained(!contained);
+	};
+	const handleResizeDone = (newWidth: number) => {
+		setCurrentWidth(newWidth);
 	};
 	return (
 		<div style={{ height: "100vh - 40px" }}>
@@ -131,8 +137,19 @@ export const WithParentAndContent = (): ReactNode => {
 							}
 						]}
 					/>
+					<div style={{ textAlign: "center", marginTop: "32px" }}>
+						{currentWidth === INITIAL_WIDTH ? "Initial Width: " : "New Width: "}
+						{currentWidth}
+						<p>*Only update after the action of resizing is completed.</p>
+					</div>
 				</div>
-				<SolaceDrawer open={open} resizable={true} anchor={anchor}>
+				<SolaceDrawer
+					open={open}
+					resizable={true}
+					anchor={anchor}
+					width={INITIAL_WIDTH}
+					onResizeDone={handleResizeDone}
+				>
 					{drawerMessage}
 				</SolaceDrawer>
 			</DirectParent>
