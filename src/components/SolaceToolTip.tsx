@@ -19,7 +19,7 @@ export interface SolaceTooltipProps extends SolaceComponentProps {
 	/**
 	 * Tooltip referenced element.
 	 */
-	children: JSX.Element;
+	children: string | JSX.Element;
 	/**
 	 * Tooltip placement, default to `bottom`
 	 */
@@ -52,7 +52,7 @@ function SolaceTooltip({
 	variant = "text",
 	children,
 	placement = "bottom",
-	maxWidth,
+	maxWidth = "small",
 	disableHoverListener = false,
 	dataQa,
 	dataTags
@@ -60,28 +60,30 @@ function SolaceTooltip({
 	const [isOverflowed, setIsOverflow] = useState(false);
 	const textElementRef = useRef<HTMLDivElement>(null);
 
+	// re-evaluate textElementRef's scrollWidth and clientWidth when children is changed
 	useEffect(() => {
 		if (textElementRef.current) {
 			setIsOverflow(textElementRef.current.scrollWidth > textElementRef.current.clientWidth);
 		}
-	}, []);
+	}, [children]);
 
-	if (variant === "overflow") {
-		return (
-			<Tooltip
-				id={id}
-				title={title ?? ""}
-				arial-label={title}
-				placement={placement}
-				data-qa={dataQa}
-				data-tags={dataTags}
-				disableHoverListener={disableHoverListener || !isOverflowed}
-				enterDelay={500}
-				enterNextDelay={0}
-				leaveDelay={0}
-				TransitionComponent={Fade}
-				TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
-			>
+	return (
+		<Tooltip
+			id={id}
+			title={title ?? ""}
+			arial-label={title}
+			classes={{ tooltip: `${variant === "html" ? "htmlContent" : ""} ${maxWidth ? maxWidth + "Width" : ""}` }}
+			placement={placement}
+			data-qa={dataQa}
+			data-tags={dataTags}
+			disableHoverListener={disableHoverListener || (variant === "overflow" && !isOverflowed)}
+			enterDelay={500}
+			enterNextDelay={0}
+			leaveDelay={0}
+			TransitionComponent={Fade}
+			TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
+		>
+			{variant === "overflow" ? (
 				<div
 					ref={textElementRef}
 					style={{
@@ -92,28 +94,13 @@ function SolaceTooltip({
 				>
 					{children}
 				</div>
-			</Tooltip>
-		);
-	} else {
-		return (
-			<Tooltip
-				id={id}
-				title={title ?? ""}
-				classes={{ tooltip: `${variant === "html" ? "htmlContent" : ""} ${maxWidth + "Width" ?? ""}` }}
-				placement={placement}
-				data-qa={dataQa}
-				data-tags={dataTags}
-				disableHoverListener={disableHoverListener}
-				enterDelay={500}
-				enterNextDelay={0}
-				leaveDelay={150}
-				TransitionComponent={Fade}
-				TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
-			>
-				{children}
-			</Tooltip>
-		);
-	}
+			) : typeof children === "string" ? (
+				<span>{children}</span>
+			) : (
+				children
+			)}
+		</Tooltip>
+	);
 }
 
 export default SolaceTooltip;

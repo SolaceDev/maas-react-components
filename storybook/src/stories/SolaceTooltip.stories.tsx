@@ -124,7 +124,52 @@ HtmlTooltip.args = {
 	variant: "html"
 };
 
+export const HtmlTooltipMediumWidth = Template.bind({});
+HtmlTooltipMediumWidth.args = {
+	title: (
+		<div>
+			<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
+			<SolaceButton variant="link" href="https://semver.org">
+				Semantic versioning best practices
+			</SolaceButton>
+		</div>
+	),
+	children: <HelpOutlineOutlinedIcon />,
+	variant: "html",
+	maxWidth: "medium"
+};
+
 export const OverflowTooltipLongText = (): ReactNode => {
+	return (
+		<div style={{ width: "400px" }}>
+			<SolaceTooltip variant="overflow" title={LONG_TEXT}>
+				{LONG_TEXT}
+			</SolaceTooltip>
+		</div>
+	);
+};
+
+export const OverflowTooltipShortText = (): ReactNode => {
+	return (
+		<div style={{ width: "400px" }}>
+			<SolaceTooltip variant="overflow" title={TITLE}>
+				{TITLE}
+			</SolaceTooltip>
+		</div>
+	);
+};
+
+export const OverflowTooltipLongTextMediumWidth = (): ReactNode => {
+	return (
+		<div style={{ width: "400px" }}>
+			<SolaceTooltip variant="overflow" title={LONG_TEXT} maxWidth="medium">
+				{LONG_TEXT}
+			</SolaceTooltip>
+		</div>
+	);
+};
+
+export const OverflowTooltipLongTextElement = (): ReactNode => {
 	return (
 		<div style={{ width: "400px" }}>
 			<SolaceTooltip variant="overflow" title={LONG_TEXT}>
@@ -134,7 +179,7 @@ export const OverflowTooltipLongText = (): ReactNode => {
 	);
 };
 
-export const OverflowTooltipShortText = (): ReactNode => {
+export const OverflowTooltipShortTextElement = (): ReactNode => {
 	return (
 		<div style={{ width: "400px" }}>
 			<SolaceTooltip variant="overflow" title={TITLE}>
