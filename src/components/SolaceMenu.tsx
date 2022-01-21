@@ -26,8 +26,10 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 	 * Adds a secondary action (ex. more info icon button) to the right end of menu item
 	 */
 	secondaryAction?: JSX.Element | HTMLElement;
-
-	onMenuItemClick: (id: string) => void;
+	/**
+	 * The callback function runs when the user clicks on a menu item (note: made this function as generic as possible since we want to flexibility to pass any type of parameter)
+	 */
+	onMenuItemClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 	/**
 	 * Adds a divider to the bottom of menuItem
 	 */
@@ -91,7 +93,10 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 
 	const itemHeight = multiline ? 58 : 38;
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-		setAnchorEl(event.currentTarget);
+		//when items is passed down as empty [] this condition makes sure that menu doesn't open with empty paper.
+		if (items?.length || renderCustomMenuItems) {
+			setAnchorEl(event.currentTarget);
+		}
 	};
 
 	const handleMenuClose = () => {
@@ -117,9 +122,9 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				key={`${item.name}-${id}`}
 				data-qa={item?.dataQa}
 				data-tags={item?.dataTags}
-				onClick={() => {
+				onClick={(e) => {
 					handleMenuClose();
-					item.onMenuItemClick(id);
+					item.onMenuItemClick(e);
 				}}
 				divider={!!item?.divider}
 				disabled={!!item?.disabled}
