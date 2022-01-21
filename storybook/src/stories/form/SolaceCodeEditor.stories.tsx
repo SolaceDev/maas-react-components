@@ -129,19 +129,29 @@ export const ControlledEditor = (): JSX.Element => {
 	);
 };
 
-const SAMPLE_DATA = '{\n\t"name": "jason",\n \t"address": "123 road"\n}';
+const DATA = [
+	'{\n\t"name": "jason",\n \t"address": "123 road"\n}',
+	'{\n\t"name": "peter",\n \t"address": "456 road"\n}',
+	'{\n\t"name": "jane",\n \t"address": "789 road"\n}'
+];
+
+const fetchRandomDataSet = (array) => {
+	const n = Math.floor(Math.random() * 3);
+	return array[n];
+};
 
 export const UpdateData = (): JSX.Element => {
+	const [initValue, setInitValue] = useState("");
 	const [value, setValue] = useState("");
 	const handleChange = (_editor: any, _data: any, value: string) => {
 		setValue(value);
 	};
 	return (
 		<div>
-			<SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} />
+			<SolaceCodeEditor id="controlledEditor" value={initValue} mode="json" onChange={handleChange} />
 			<button
 				onClick={() => {
-					setValue(SAMPLE_DATA);
+					setInitValue(fetchRandomDataSet(DATA));
 				}}
 			>
 				Update data
