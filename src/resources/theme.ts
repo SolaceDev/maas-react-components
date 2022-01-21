@@ -561,6 +561,9 @@ const themeConfig: ThemeOptions = {
 								}
 							},
 							".MuiGrid-root.MuiGrid-container": {
+								"&.multiline": {
+									height: "58px"
+								},
 								color: BASE_COLORS.greys.grey14,
 								".subtext": {
 									color: BASE_COLORS.greys.grey9,
@@ -635,6 +638,16 @@ const themeConfig: ThemeOptions = {
 					}
 				},
 				popper: {
+					".MuiAutocomplete-listbox .MuiAutocomplete-option": {
+						paddingTop: 0,
+						paddingBottom: 0,
+						minHeight: "38px",
+						".MuiGrid-root.MuiGrid-container": {
+							"&.multiline": {
+								height: "58px"
+							}
+						}
+					},
 					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='false'].Mui-focused ": {
 						backgroundColor: BASE_COLORS.greys.grey2
 					},
