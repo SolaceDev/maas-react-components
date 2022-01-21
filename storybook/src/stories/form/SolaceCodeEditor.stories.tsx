@@ -115,14 +115,14 @@ export const FullScreenEditor = (): JSX.Element => {
 	);
 };
 
-export const ControlledEditor = ({ value: initialValue, ...args }): JSX.Element => {
-	const [value, setValue] = useState(initialValue);
+export const ControlledEditor = (): JSX.Element => {
+	const [value, setValue] = useState("");
 	const handleChange = (_editor: any, _data: any, value: string) => {
 		setValue(value);
 	};
 	return (
 		<div>
-			<SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} {...args} />
+			<SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} />
 			<div>Returned Data:</div>
 			<div>{JSON.stringify(value)}</div>
 		</div>
@@ -131,14 +131,14 @@ export const ControlledEditor = ({ value: initialValue, ...args }): JSX.Element 
 
 const SAMPLE_DATA = '{\n\t"name": "jason",\n \t"address": "123 road"\n}';
 
-export const UpdateData = ({ value: initialValue, ...args }): JSX.Element => {
-	const [value, setValue] = useState(initialValue);
+export const UpdateData = (): JSX.Element => {
+	const [value, setValue] = useState("");
 	const handleChange = (_editor: any, _data: any, value: string) => {
 		setValue(value);
 	};
 	return (
 		<div>
-			<SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} {...args} />
+			<SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} />
 			<button
 				onClick={() => {
 					setValue(SAMPLE_DATA);
