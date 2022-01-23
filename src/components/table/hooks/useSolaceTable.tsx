@@ -13,29 +13,12 @@ import {
 	StyledTableData,
 	StyledTableHeader
 } from "../table-utils";
-import { useExpandableRows } from "./useExpandableRows";
+import { ChevronIcon } from "../../../resources/icons/ChevronIcon";
 import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 
 import clsx from "clsx";
 
-export interface CustomTableRowProps {
-	rows: TableRow[];
-	displayedColumns: TableColumn[];
-	selectionType: SELECTION_TYPE;
-	updateSelection: (row: TableRow) => void;
-	handleCheckboxClick: (row: TableRow) => void;
-	renderCustomRow: () => {
-		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
-		renderChildren: (row: TableRow) => React.ReactNode;
-	};
-	renderCustomRowCells?: (row: TableRow) => JSX.Element[];
-	rowActionMenuItems?: TableActionMenuItem[];
-	headerHoverCallback?: () => void;
-	rowHoverCallback?: (row: TableRow) => void;
-	hasColumnHiding?: boolean;
-	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
-}
 export interface CustomTableColumnProps {
 	columns: TableColumn[];
 	sortedColumn: TableColumn | undefined;
@@ -107,6 +90,12 @@ export const useSolaceTable = ({
 			setSelectAll(false);
 		}
 	}, [selectedRows, rows.length, selectedRows.length, selectionChangedCallback]);
+
+	useEffect(() => {
+		if (displayedColumnsChangedCallback) {
+			displayedColumnsChangedCallback(displayedColumns);
+		}
+	}, [rows, displayedColumnsChangedCallback, displayedColumns]);
 
 	function updateSelection(row: TableRow) {
 		handleSelectionChanged(row);
@@ -180,6 +169,31 @@ export const useSolaceTable = ({
 					onChange={() => handleCheckboxClick(row)}
 					checked={!!row.rowSelected}
 				/>
+			</StyledTableData>
+		);
+	}
+
+	function addChevronToRows(row: TableRow): React.ReactNode | void {
+		const rowExpanded = expandedRowIds && expandedRowIds.findIndex((id) => id === row.id) >= 0;
+		return (
+			<StyledTableData
+				key={`${row.id}_chevron`}
+				className={"expand-icon"}
+				onClick={(e) => {
+					e.stopPropagation();
+					if (expandedRowIds) {
+						const foundIndex = expandedRowIds.findIndex((id) => id === row.id);
+						if (foundIndex >= 0) {
+							const newState = expandedRowIds.slice(0);
+							newState.splice(foundIndex, 1);
+							setExpandedRowIds?.(newState);
+						} else {
+							setExpandedRowIds?.([...expandedRowIds, row.id]);
+						}
+					}
+				}}
+			>
+				<ChevronIcon className={`cursor-pointer chevron ${rowExpanded ? "expanded" : ""}`} />
 			</StyledTableData>
 		);
 	}
@@ -310,23 +324,28 @@ export const useSolaceTable = ({
 		));
 	}
 
-	const expandableRows = useExpandableRows({
-		rows,
-		displayedColumns,
-		selectionType,
-		updateSelection,
-		handleCheckboxClick,
-		renderConfiguredRowCells,
-		renderExpandedRowContent,
-		renderRowActionItems,
-		rowHoverCallback,
-		displayedColumnsChangedCallback,
-		expandedRowIds,
-		setExpandedRowIds
-	});
+	function createExpandableRowNodes(): React.ReactNode[] {
+		return rows.map((row: TableRow) => (
+			<React.Fragment key={`${row.id}_wrapper`}>
+				<StyledTableRow
+					onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
+					onClick={() => updateSelection(row)}
+					className={row.rowSelected ? "selected" : ""}
+				>
+					{[
+						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
+						addChevronToRows(row),
+						...renderConfiguredRowCells(row),
+						...renderRowActionItems(row)
+					]}
+				</StyledTableRow>
+				{expandedRowIds?.find((id) => id === row.id) && renderExpandedRowContent ? renderExpandedRowContent(row) : null}
+			</React.Fragment>
+		));
+	}
 
 	// if hasExpandedRow then create expanded row nodes, otherwise createRowNodes
-	const rowNodes = hasExpandedRow ? expandableRows.createRowNodes() : createRowNodes();
+	const rowNodes = hasExpandedRow ? createExpandableRowNodes() : createRowNodes();
 
 	const columnNodes = renderCustomHeader
 		? renderCustomHeader({

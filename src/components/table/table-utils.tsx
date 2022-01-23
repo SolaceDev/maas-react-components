@@ -85,8 +85,11 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	"&.checkbox": {
 		textAlign: "center"
 	},
-	"&.expand-data": {
+	"&.expand-icon": {
 		padding: "10px 8px 6px 0"
+	},
+	"&.expanded": {
+		borderBottom: `1px solid transparent`
 	},
 	maxWidth: "0",
 	overflow: "hidden",
@@ -189,7 +192,7 @@ export const addActionMenuIcon = (
 	setRowWithOpenActionMenu: (value: React.SetStateAction<string | null | undefined>) => void
 ): React.ReactNode => {
 	return (
-		<StyledRelativeTableData key={`${row.id}_ActionMenu`}>
+		<StyledRelativeTableData key={`${row.id}_ActionMenu`} style={{ paddingTop: "4px", paddingBottom: "4px" }}>
 			<SolaceButton variant={"icon"} onClick={(e) => openRowActionMenu(e, row)}>
 				<MoreHorizIcon />
 			</SolaceButton>

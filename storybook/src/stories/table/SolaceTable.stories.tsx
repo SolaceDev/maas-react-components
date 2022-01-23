@@ -445,35 +445,35 @@ export const ExpandableRowTableSelectMulti = (): JSX.Element => {
 	);
 };
 
+const schemaTypeLabel = {
+	jsonSchema: "JSON Schema",
+	xsd: "XSD",
+	dtd: "DTD",
+	avro: "AVRO"
+};
+
+const schemaContentTypeLabel = {
+	jsonSchema: {
+		json: "JSON"
+	},
+	xsd: {
+		xml: "XML"
+	},
+	dtd: {
+		xml: "XML"
+	},
+	avro: {
+		binary: "Binary",
+		json: "JSON"
+	}
+};
+
 export const CustomSchemaRowTable = (): JSX.Element => {
 	const data = cloneDeep(schemaRows);
 	const [tableRows, setRows] = useState([...sortData(schemaColumns[0], data)]);
 	const handleSort = useCallback((selectedColumn) => {
 		setRows([...sortData(selectedColumn, data)]);
 	}, []);
-
-	const schemaTypeLabel = {
-		jsonSchema: "JSON Schema",
-		xsd: "XSD",
-		dtd: "DTD",
-		avro: "AVRO"
-	};
-
-	const schemaContentTypeLabel = {
-		jsonSchema: {
-			json: "JSON"
-		},
-		xsd: {
-			xml: "XML"
-		},
-		dtd: {
-			xml: "XML"
-		},
-		avro: {
-			binary: "Binary",
-			json: "JSON"
-		}
-	};
 
 	const renderSchemaRowCells = useCallback((row: TableRow): JSX.Element[] => {
 		const cells: JSX.Element[] = [];
@@ -512,6 +512,79 @@ export const CustomSchemaRowTable = (): JSX.Element => {
 	);
 };
 
+const handleShowHideColumns = (columns, setColumnsHiddenInfo) => {
+	const columnsHiddenInfo = columns?.reduce((prev, curr) => {
+		prev[curr.field] = curr.isHidden;
+		return prev;
+	}, {});
+	setColumnsHiddenInfo(columnsHiddenInfo);
+};
+
+const createSchemaCells = (row, columnsHiddenInfo): JSX.Element[] => {
+	const cells: JSX.Element[] = [];
+	if (!columnsHiddenInfo?.name) {
+		cells.push(<StyledTableData key={row.id + "_name"}>{row.name}</StyledTableData>);
+	}
+	if (!columnsHiddenInfo?.shared) {
+		cells.push(
+			<StyledTableData key={row.id + "_shared"}>
+				{row.shared ? SharedTypes.shared : SharedTypes.notShared}
+			</StyledTableData>
+		);
+	}
+	if (!columnsHiddenInfo?.version_count) {
+		cells.push(<StyledTableData key={row.id + "_version_count"}>{row.version_count}</StyledTableData>);
+	}
+	if (!columnsHiddenInfo?.schemaType) {
+		cells.push(
+			<StyledTableData key={row.id + "_schemaType"}>
+				{schemaTypeLabel[row.schemaType] ?? row.schemaType}
+			</StyledTableData>
+		);
+	}
+	if (!columnsHiddenInfo?.contentType) {
+		cells.push(
+			<StyledTableData key={row.id + "_contentType"}>
+				{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}
+			</StyledTableData>
+		);
+	}
+
+	return cells;
+};
+
+const renderExpandedSchemaRowContentHelper = (row, displayedColumnsCount) => {
+	return (
+		<StyledExpandedTableRow className={row.rowSelected ? "selected" : ""}>
+			<StyledExpandedTableData colSpan={displayedColumnsCount}>
+				<table style={{ display: "block", width: "100%", padding: "12px 0 12px 60px" }}>
+					<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }}>{row.name}</td>
+						</tr>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }}>
+								{row.shared ? SharedTypes.shared : SharedTypes.notShared}
+							</td>
+						</tr>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }}>{row.version_count}</td>
+						</tr>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }}>{schemaTypeLabel[row.schemaType] ?? row.schemaType}</td>
+						</tr>
+						<tr style={{ display: "block", width: "100%" }}>
+							<td style={{ display: "block", width: "100%" }}>
+								{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</StyledExpandedTableData>
+		</StyledExpandedTableRow>
+	);
+};
+
 export const CustomSchemaRowWithActionsTable = (): JSX.Element => {
 	const data = cloneDeep(schemaRows);
 	const [tableRows, setRows] = useState([...sortData(schemaColumns[0], data)]);
@@ -520,70 +593,12 @@ export const CustomSchemaRowWithActionsTable = (): JSX.Element => {
 		setRows([...sortData(selectedColumn, data)]);
 	}, []);
 
-	const schemaTypeLabel = {
-		jsonSchema: "JSON Schema",
-		xsd: "XSD",
-		dtd: "DTD",
-		avro: "AVRO"
-	};
-
-	const schemaContentTypeLabel = {
-		jsonSchema: {
-			json: "JSON"
-		},
-		xsd: {
-			xml: "XML"
-		},
-		dtd: {
-			xml: "XML"
-		},
-		avro: {
-			binary: "Binary",
-			json: "JSON"
-		}
-	};
-
 	const displayedColumnsChanged = useCallback((columns) => {
-		const columnsHiddenInfo = columns?.reduce((prev, curr) => {
-			prev[curr.field] = curr.isHidden;
-			return prev;
-		}, {});
-		setColumnsHiddenInfo(columnsHiddenInfo);
+		handleShowHideColumns(columns, setColumnsHiddenInfo);
 	}, []);
 
 	const renderSchemaRowCells = useCallback(
-		(row: TableRow): JSX.Element[] => {
-			const cells: JSX.Element[] = [];
-			if (!columnsHiddenInfo?.name) {
-				cells.push(<StyledTableData key={row.id + "_name"}>{row.name}</StyledTableData>);
-			}
-			if (!columnsHiddenInfo?.shared) {
-				cells.push(
-					<StyledTableData key={row.id + "_shared"}>
-						{row.shared ? SharedTypes.shared : SharedTypes.notShared}
-					</StyledTableData>
-				);
-			}
-			if (!columnsHiddenInfo?.version_count) {
-				cells.push(<StyledTableData key={row.id + "_version_count"}>{row.version_count}</StyledTableData>);
-			}
-			if (!columnsHiddenInfo?.schemaType) {
-				cells.push(
-					<StyledTableData key={row.id + "_schemaType"}>
-						{schemaTypeLabel[row.schemaType] ?? row.schemaType}
-					</StyledTableData>
-				);
-			}
-			if (!columnsHiddenInfo?.contentType) {
-				cells.push(
-					<StyledTableData key={row.id + "_contentType"}>
-						{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}
-					</StyledTableData>
-				);
-			}
-
-			return cells;
-		},
+		(row: TableRow): JSX.Element[] => createSchemaCells(row, columnsHiddenInfo),
 		[columnsHiddenInfo]
 	);
 
@@ -599,6 +614,52 @@ export const CustomSchemaRowWithActionsTable = (): JSX.Element => {
 				renderCustomRowCells={renderSchemaRowCells}
 				hasColumnHiding={true}
 				displayedColumnsChangedCallback={displayedColumnsChanged}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const ExpandableCustomSchemaRowWithActionsTable = (): JSX.Element => {
+	const data = cloneDeep(schemaRows);
+	const [tableRows, setRows] = useState([...sortData(schemaColumns[0], data)]);
+	const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
+	const [displayedColumnsCount, setDisplayedColumnsCount] = useState<number>();
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	const displayedColumnsChanged = useCallback((columns) => {
+		handleShowHideColumns(columns, setColumnsHiddenInfo);
+		handleDisplayColumnsChanged(columns, true, true, SELECTION_TYPE.SINGLE, setDisplayedColumnsCount);
+	}, []);
+
+	const renderSchemaRowCells = useCallback(
+		(row: TableRow): JSX.Element[] => createSchemaCells(row, columnsHiddenInfo),
+		[columnsHiddenInfo]
+	);
+
+	const renderExpandedRowContent = useCallback(
+		(row) => renderExpandedSchemaRowContentHelper(row, displayedColumnsCount),
+		[displayedColumnsCount]
+	);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={[...schemaColumns]}
+				selectionType={SELECTION_TYPE.SINGLE}
+				rowActionMenuItems={rowActionMenuItems}
+				renderCustomRowCells={renderSchemaRowCells}
+				hasColumnHiding={true}
+				displayedColumnsChangedCallback={displayedColumnsChanged}
+				hasExpandedRow={true}
+				renderExpandedRowContent={renderExpandedRowContent}
+				expandedRowIds={expandedRowIds}
+				setExpandedRowIds={setExpandedRowIds}
 			></SolaceTable>
 		</div>
 	);
