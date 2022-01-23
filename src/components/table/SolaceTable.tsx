@@ -1,4 +1,4 @@
-import { useSolaceTable, CustomTableRowProps, CustomTableColumnProps } from "./hooks/useSolaceTable";
+import { useSolaceTable, CustomTableColumnProps } from "./hooks/useSolaceTable";
 import { styled } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
@@ -54,14 +54,7 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	sortCallback: (column: TableColumn | undefined) => void;
 	/**
-	 * Renders a custom row. Has two parts: renderRow is to render the row itself, and render children for creating the children
-	 */
-	renderCustomRow?: () => {
-		renderRow: (customRowProps: CustomTableRowProps) => React.ReactNode;
-		renderChildren: (row: TableRow) => React.ReactNode;
-	};
-	/**
-	 *
+	 * Renders a custom row without predefined columns, such as checkbox column, expand/collapse column
 	 */
 	renderCustomRowCells?: (row: TableRow) => JSX.Element[];
 	/**
@@ -76,6 +69,22 @@ interface TablePropType extends SolaceComponentProps {
 	 * Row hover callback
 	 */
 	rowHoverCallback?: (row: TableRow) => void;
+	/**
+	 * Enable expanded rows
+	 */
+	hasExpandedRow?: boolean;
+	/**
+	 * Renders expanded content in a table row
+	 */
+	renderExpandedRowContent?: (row: TableRow) => React.ReactNode;
+	/**
+	 * Expanded row ids
+	 */
+	expandedRowIds?: string[];
+	/**
+	 * Set expanded row ids
+	 */
+	setExpandedRowIds?: (rowIds: string[]) => void;
 }
 
 const TableWrapper = styled("div")(({ theme }) => ({
@@ -115,33 +124,39 @@ function SolaceTable({
 	selectionChangedCallback,
 	sortedColumn,
 	sortCallback,
-	renderCustomRow,
 	renderCustomRowCells,
+	renderCustomHeader,
 	emptyStateMessage,
 	renderCustomEmptyState,
-	renderCustomHeader,
 	rowActionMenuItems,
 	headerHoverCallback,
 	rowHoverCallback,
 	hasColumnHiding,
-	displayedColumnsChangedCallback
+	displayedColumnsChangedCallback,
+	hasExpandedRow = false,
+	renderExpandedRowContent,
+	expandedRowIds,
+	setExpandedRowIds
 }: TablePropType): JSX.Element {
-	const [columnNodes, rowNodes] = useSolaceTable(
+	const [columnNodes, rowNodes] = useSolaceTable({
 		rows,
 		columns,
 		selectionType,
 		selectionChangedCallback,
 		sortCallback,
-		sortedColumn,
-		renderCustomRow,
+		initSortedColumn: sortedColumn,
 		renderCustomRowCells,
 		renderCustomHeader,
 		rowActionMenuItems,
 		headerHoverCallback,
 		rowHoverCallback,
 		hasColumnHiding,
-		displayedColumnsChangedCallback
-	);
+		displayedColumnsChangedCallback,
+		hasExpandedRow,
+		renderExpandedRowContent,
+		expandedRowIds,
+		setExpandedRowIds
+	});
 
 	function showEmptyStateMessage(): React.ReactNode {
 		if (renderCustomEmptyState) {

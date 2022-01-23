@@ -1,16 +1,22 @@
-import React, { useState, useEffect } from "react";
-import {
-	SELECTION_TYPE,
-	TableRow,
-	addActionMenuIcon,
-	TableColumn,
-	addEmptyRowCell,
-	StyledTableData
-} from "../table-utils";
-import { CustomTableRowProps, StyledTableRow } from "./useSolaceTable";
-import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import React, { useEffect } from "react";
+import { SELECTION_TYPE, TableRow, TableColumn, StyledTableData, StyledTableRow } from "../table-utils";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
+import { ChevronIcon } from "../../../resources/icons/ChevronIcon";
+
+export interface ExpandableTableRowProps {
+	rows: TableRow[];
+	displayedColumns: TableColumn[];
+	selectionType: SELECTION_TYPE;
+	updateSelection: (row: TableRow) => void;
+	handleCheckboxClick: (row: TableRow) => void;
+	renderConfiguredRowCells: (row: TableRow) => React.ReactNode[];
+	renderExpandedRowContent?: (row: TableRow) => React.ReactNode;
+	renderRowActionItems: (row: TableRow) => React.ReactNode[];
+	rowHoverCallback?: (row: TableRow) => void;
+	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
+	expandedRowIds?: string[];
+	setExpandedRowIds?: (rowIds: string[]) => void;
+}
 
 export const useExpandableRows = ({
 	rows,
@@ -18,17 +24,15 @@ export const useExpandableRows = ({
 	selectionType,
 	updateSelection,
 	handleCheckboxClick,
-	renderCustomRow,
-	rowActionMenuItems,
+	renderConfiguredRowCells,
+	renderExpandedRowContent,
+	renderRowActionItems,
 	rowHoverCallback,
-	hasColumnHiding,
-	displayedColumnsChangedCallback
-}: CustomTableRowProps): React.ReactNode[] => {
-	const [expansionState, setExpansionState] = useState<Array<number>>([]);
-	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string | null | undefined>();
-
+	displayedColumnsChangedCallback,
+	expandedRowIds,
+	setExpandedRowIds
+}: ExpandableTableRowProps) => {
 	useEffect(() => {
-		setExpansionState([]);
 		if (displayedColumnsChangedCallback) {
 			displayedColumnsChangedCallback(displayedColumns);
 		}
@@ -36,7 +40,7 @@ export const useExpandableRows = ({
 
 	function addCheckBoxToRows(row: TableRow): React.ReactNode {
 		return (
-			<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
+			<StyledTableData key={`${row.id}_rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
 				<span style={{ display: "flex", maxWidth: "40px" }}>
 					<SolaceCheckBox
 						name={`${row.id}rowCheckbox`}
@@ -48,41 +52,37 @@ export const useExpandableRows = ({
 		);
 	}
 
-	function addChevronToRows(row: TableRow, rowIndex: number): React.ReactNode | void {
-		return expansionState.includes(rowIndex) ? (
-			<StyledTableData key={`${row.id}chevronDown`}>
-				<KeyboardArrowDown
-					fontSize="large"
-					className="cursor-pointer"
-					onClick={(e) => {
-						e.stopPropagation();
-						setExpansionState(expansionState.filter((index) => index !== rowIndex));
-					}}
-				/>
-			</StyledTableData>
-		) : (
-			<StyledTableData key={`${row.id}chevronRight`}>
-				<KeyboardArrowRight
-					fontSize="large"
-					className="cursor-pointer"
-					onClick={(e) => {
-						e.stopPropagation();
-						setExpansionState([...expansionState, rowIndex]);
-					}}
+	function addChevronToRows(row: TableRow): React.ReactNode | void {
+		return (
+			<StyledTableData
+				key={`${row.id}_chevron`}
+				className={"expand-data"}
+				onClick={(e) => {
+					e.stopPropagation();
+					if (expandedRowIds) {
+						const foundIndex = expandedRowIds.findIndex((id) => id === row.id);
+						console.log("foundIndex", foundIndex);
+						if (foundIndex >= 0) {
+							const newState = expandedRowIds.slice(0);
+							newState.splice(foundIndex, 1);
+							console.log("remove", row.id, newState);
+							setExpandedRowIds?.(newState);
+						} else {
+							console.log("add", row.id, [...expandedRowIds, row.id], setExpandedRowIds);
+							setExpandedRowIds?.([...expandedRowIds, row.id]);
+						}
+					}
+				}}
+			>
+				<ChevronIcon
+					className={`cursor-pointer chevron ${expandedRowIds?.find((id) => id === row.id) ? "expanded" : ""}`}
 				/>
 			</StyledTableData>
 		);
 	}
 
-	function openRowActionMenu(e: React.MouseEvent<HTMLElement>, row: TableRow) {
-		e.stopPropagation();
-		setRowWithOpenActionMenu(row.id);
-	}
-
-	// TODO: Refactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed
-	// eslint-disable-next-line sonarjs/cognitive-complexity
 	function createExpandableRowNodes(): React.ReactNode[] {
-		return rows.map((row: TableRow, rowIndex) => (
+		return rows.map((row: TableRow) => (
 			<React.Fragment key={`${row.id}_wrapper`}>
 				<StyledTableRow
 					onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
@@ -91,34 +91,17 @@ export const useExpandableRows = ({
 				>
 					{[
 						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
-						addChevronToRows(row, rowIndex),
-						displayedColumns.map((col: TableColumn) => {
-							if (!col.hasNoCell && !col.isHidden) {
-								const key = row[col.field] + "_" + col.field;
-								return (
-									<StyledTableData key={key}>
-										<span>{row[col.field]}</span>
-									</StyledTableData>
-								);
-							} else {
-								return;
-							}
-						}),
-						!!rowActionMenuItems &&
-							addActionMenuIcon(
-								row,
-								rowWithOpenActionMenu === row.id,
-								openRowActionMenu,
-								rowActionMenuItems,
-								setRowWithOpenActionMenu
-							),
-						!rowActionMenuItems && hasColumnHiding && addEmptyRowCell()
+						addChevronToRows(row),
+						...renderConfiguredRowCells(row),
+						...renderRowActionItems(row)
 					]}
 				</StyledTableRow>
-				{expansionState.includes(rowIndex) ? renderCustomRow().renderChildren(row) : null}
+				{expandedRowIds?.find((id) => id === row.id) && renderExpandedRowContent ? renderExpandedRowContent(row) : null}
 			</React.Fragment>
 		));
 	}
 
-	return createExpandableRowNodes();
+	return {
+		createRowNodes: createExpandableRowNodes
+	};
 };

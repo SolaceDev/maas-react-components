@@ -4,7 +4,7 @@ import { styled } from "@material-ui/core";
 import { BASE_COLORS } from "./../../resources/colorPallette";
 import ActionMenu from "./components/ActionMenu";
 import ColumnHidingControlMenu from "./components/ColumnHidingControlMenu";
-import SettingsIcon from "@material-ui/icons/Settings";
+import TuneIcon from "@material-ui/icons/Tune";
 
 export interface TableColumn {
 	field: string;
@@ -44,6 +44,30 @@ export enum SORT_DIRECTION {
 	DCS = "desc"
 }
 
+export const StyledTableRow = styled("tr")(({ theme }) => ({
+	borderCollapse: "collapse",
+	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
+	height: "32px",
+	"&.selected": {
+		backgroundColor: `${BASE_COLORS.greens.green10}`
+	},
+	"&.clickable": {
+		cursor: "pointer"
+	},
+	"&:hover": {
+		background: `${BASE_COLORS.greys.grey24}`,
+		"&.header": {
+			background: "transparent"
+		}
+	},
+	"&:hover + tr td table": {
+		background: `${BASE_COLORS.greys.grey24}`
+	},
+	"td:first-of-type, th:first-of-type": {
+		paddingLeft: `${theme.spacing(2)}`
+	}
+}));
+
 export const StyledTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
@@ -52,15 +76,41 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	".cursor-pointer": {
 		cursor: "pointer"
 	},
+	".chevron": {
+		transform: "rotate(180deg)",
+		"&.expanded": {
+			transform: "rotate(270deg)"
+		}
+	},
 	"&.checkbox": {
 		textAlign: "center"
+	},
+	"&.expand-data": {
+		padding: "10px 8px 6px 0"
 	},
 	maxWidth: "0",
 	overflow: "hidden",
 	textOverflow: "ellipsis",
 	whiteSpace: "nowrap",
-	borderRadius: "none"
+	borderRadius: 0
 }));
+
+export const StyledExpandedTableRow = styled("tr")(() => ({
+	"&.selected": {
+		backgroundColor: `${BASE_COLORS.greens.green10}`
+	}
+}));
+
+export const StyledExpandedTableData = styled("td")({
+	borderCollapse: "collapse",
+	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
+	padding: 0,
+	maxWidth: "0",
+	overflow: "hidden",
+	textOverflow: "ellipsis",
+	whiteSpace: "nowrap",
+	borderRadius: 0
+});
 
 export const StyledTableHeader = styled("th")(({ theme }) => ({
 	borderCollapse: "collapse",
@@ -75,10 +125,20 @@ export const StyledTableHeader = styled("th")(({ theme }) => ({
 		cursor: "pointer",
 		marginTop: theme.spacing(0.5)
 	},
+	"&.checkbox-column": {
+		width: "40px",
+		textAlign: "center",
+		position: "relative"
+	},
 	"&.icon-column": {
 		width: "50px",
 		textAlign: "center",
 		position: "relative"
+	},
+	"&.expand-column": {
+		width: "36px",
+		paddingLeft: 0,
+		paddingRight: 0
 	}
 }));
 
@@ -151,7 +211,7 @@ export const addColumnHidingControl = (
 	return (
 		<StyledTableHeader key={"column-hiding-control"} className="icon-column">
 			<SolaceButton variant={"icon"} onClick={(e) => openColumnHidingControl(e)}>
-				<SettingsIcon />
+				<TuneIcon />
 			</SolaceButton>
 			{isColumnHidingControlOpen && (
 				<ColumnHidingControlMenu
