@@ -1,124 +1,142 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	SELECTION_TYPE,
 	TableRow,
-	addActionMenuIcon,
 	TableColumn,
-	addEmptyRowCell,
-	StyledTableData
+	StyledTableData,
+	StyledTableRow,
+	StyledExpandedTableRow,
+	StyledExpandedTableData
 } from "../table-utils";
-import { CustomTableRowProps, StyledTableRow } from "./useSolaceTable";
-import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import SolaceCheckBox from "../../form/SolaceCheckBox";
+import { ChevronIcon } from "../../../resources/icons/ChevronIcon";
+
+export interface ExpandableTableRowProps {
+	rows: TableRow[];
+	displayedColumns: TableColumn[];
+	selectionType: SELECTION_TYPE;
+	updateSelection: (row: TableRow) => void;
+	addCheckBoxToRows: (row: TableRow) => React.ReactNode;
+	renderConfiguredRowCells: (row: TableRow) => React.ReactNode[];
+	renderRowActionItems: (row: TableRow) => React.ReactNode[];
+	rowHoverCallback?: (row: TableRow) => void;
+	hasColumnHiding?: boolean;
+	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
+	allowToggle?: boolean;
+	selectRowWhenClickOnChildren?: boolean;
+	renderChildren?: (row: TableRow) => React.ReactNode;
+	expandedRowIds?: string[];
+	setExpandedRowIds?: (rowIds: string[]) => void;
+}
 
 export const useExpandableRows = ({
 	rows,
 	displayedColumns,
 	selectionType,
 	updateSelection,
-	handleCheckboxClick,
-	renderCustomRow,
-	rowActionMenuItems,
+	addCheckBoxToRows,
+	renderConfiguredRowCells,
+	renderRowActionItems,
 	rowHoverCallback,
 	hasColumnHiding,
-	displayedColumnsChangedCallback
-}: CustomTableRowProps): React.ReactNode[] => {
-	const [expansionState, setExpansionState] = useState<Array<number>>([]);
-	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string | null | undefined>();
+	displayedColumnsChangedCallback,
+	allowToggle = true,
+	selectRowWhenClickOnChildren = true,
+	renderChildren,
+	expandedRowIds,
+	setExpandedRowIds
+}: ExpandableTableRowProps) => {
+	const [displayedColumnsCount, setDisplayedColumnsCount] = useState<number>();
 
-	useEffect(() => {
-		setExpansionState([]);
-		if (displayedColumnsChangedCallback) {
-			displayedColumnsChangedCallback(displayedColumns);
+	useEffect(
+		() => {
+			let numberOfDisplayedDataCols = 0;
+			displayedColumns.forEach((col) => {
+				if (!col.isHidden) {
+					numberOfDisplayedDataCols++;
+				}
+			});
+			let numberOfNonDataCols = 0;
+
+			if (hasColumnHiding) numberOfNonDataCols++;
+			if (allowToggle) numberOfNonDataCols++;
+			if (selectionType === SELECTION_TYPE.MULTI) numberOfNonDataCols++;
+			setDisplayedColumnsCount(numberOfDisplayedDataCols + numberOfNonDataCols);
+			if (displayedColumnsChangedCallback) {
+				displayedColumnsChangedCallback(displayedColumns);
+			}
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[rows, displayedColumnsChangedCallback, displayedColumns]
+	);
+
+	function addChevronToRows(row: TableRow): React.ReactNode | void {
+		if (!allowToggle) {
+			return;
 		}
-	}, [rows, displayedColumnsChangedCallback, displayedColumns]);
-
-	function addCheckBoxToRows(row: TableRow): React.ReactNode {
+		const rowExpanded = expandedRowIds && expandedRowIds?.findIndex((id) => id === row.id) >= 0;
 		return (
-			<StyledTableData key={`${row.id}rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
-				<span style={{ display: "flex", maxWidth: "40px" }}>
-					<SolaceCheckBox
-						name={`${row.id}rowCheckbox`}
-						onChange={() => handleCheckboxClick(row)}
-						checked={!!row.rowSelected}
-					/>
-				</span>
+			<StyledTableData
+				key={`${row.id}_chevron`}
+				className={"expand-icon"}
+				onClick={(e) => {
+					e.stopPropagation();
+					if (expandedRowIds) {
+						const foundIndex = expandedRowIds.findIndex((id) => id === row.id);
+						if (foundIndex >= 0) {
+							const newState = expandedRowIds.slice(0);
+							newState.splice(foundIndex, 1);
+							setExpandedRowIds?.(newState);
+						} else {
+							setExpandedRowIds?.([...expandedRowIds, row.id]);
+						}
+					}
+				}}
+			>
+				<ChevronIcon className={`cursor-pointer chevron ${rowExpanded ? "expanded" : ""}`} />
 			</StyledTableData>
 		);
 	}
 
-	function addChevronToRows(row: TableRow, rowIndex: number): React.ReactNode | void {
-		return expansionState.includes(rowIndex) ? (
-			<StyledTableData key={`${row.id}chevronDown`}>
-				<KeyboardArrowDown
-					fontSize="large"
-					className="cursor-pointer"
-					onClick={(e) => {
-						e.stopPropagation();
-						setExpansionState(expansionState.filter((index) => index !== rowIndex));
+	function renderChildrenSection(row: TableRow, expanded: boolean): React.ReactNode {
+		return (
+			expanded &&
+			renderChildren && (
+				<StyledExpandedTableRow
+					className={row.rowSelected ? "selected expanded" : "expanded"}
+					onClick={() => {
+						if (selectRowWhenClickOnChildren) updateSelection(row);
 					}}
-				/>
-			</StyledTableData>
-		) : (
-			<StyledTableData key={`${row.id}chevronRight`}>
-				<KeyboardArrowRight
-					fontSize="large"
-					className="cursor-pointer"
-					onClick={(e) => {
-						e.stopPropagation();
-						setExpansionState([...expansionState, rowIndex]);
-					}}
-				/>
-			</StyledTableData>
-		);
-	}
-
-	function openRowActionMenu(e: React.MouseEvent<HTMLElement>, row: TableRow) {
-		e.stopPropagation();
-		setRowWithOpenActionMenu(row.id);
-	}
-
-	// TODO: Refactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed
-	// eslint-disable-next-line sonarjs/cognitive-complexity
-	function createExpandableRowNodes(): React.ReactNode[] {
-		return rows.map((row: TableRow, rowIndex) => (
-			<React.Fragment key={`${row.id}_wrapper`}>
-				<StyledTableRow
-					onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
-					onClick={() => updateSelection(row)}
-					className={row.rowSelected ? "selected" : ""}
 				>
-					{[
-						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
-						addChevronToRows(row, rowIndex),
-						displayedColumns.map((col: TableColumn) => {
-							if (!col.hasNoCell && !col.isHidden) {
-								const key = row[col.field] + "_" + col.field;
-								return (
-									<StyledTableData key={key}>
-										<span>{row[col.field]}</span>
-									</StyledTableData>
-								);
-							} else {
-								return;
-							}
-						}),
-						!!rowActionMenuItems &&
-							addActionMenuIcon(
-								row,
-								rowWithOpenActionMenu === row.id,
-								openRowActionMenu,
-								rowActionMenuItems,
-								setRowWithOpenActionMenu
-							),
-						!rowActionMenuItems && hasColumnHiding && addEmptyRowCell()
-					]}
-				</StyledTableRow>
-				{expansionState.includes(rowIndex) ? renderCustomRow().renderChildren(row) : null}
-			</React.Fragment>
-		));
+					<StyledExpandedTableData colSpan={displayedColumnsCount}>{renderChildren(row)}</StyledExpandedTableData>
+				</StyledExpandedTableRow>
+			)
+		);
 	}
 
-	return createExpandableRowNodes();
+	function createExpandableRowNodes(): React.ReactNode[] {
+		return rows.map((row: TableRow) => {
+			const expanded = !allowToggle || !!expandedRowIds?.find((id) => id === row.id);
+			return (
+				<React.Fragment key={`${row.id}_wrapper`}>
+					<StyledTableRow
+						onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
+						onClick={() => updateSelection(row)}
+						className={`${row.rowSelected ? "selected" : ""} ${expanded ? "expanded" : ""}`}
+					>
+						{[
+							selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
+							addChevronToRows(row),
+							...renderConfiguredRowCells(row),
+							...renderRowActionItems(row)
+						]}
+					</StyledTableRow>
+					{renderChildrenSection(row, expanded)}
+				</React.Fragment>
+			);
+		});
+	}
+
+	return {
+		createRowNodes: createExpandableRowNodes
+	};
 };
