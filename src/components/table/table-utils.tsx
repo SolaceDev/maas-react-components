@@ -50,11 +50,6 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	"&.expanded": {
 		borderBottom: "none"
 	},
-	"&:not(.header)": {
-		"&:last-of-type": {
-			borderBottom: "none"
-		}
-	},
 
 	height: "32px",
 	"&.header": {
@@ -120,10 +115,7 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 
 export const StyledExpandedTableRow = styled("tr")(() => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
-	"&:last-of-type": {
-		borderBottom: "none"
-	}
+	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`
 }));
 
 export const StyledExpandedTableData = styled("td")({
