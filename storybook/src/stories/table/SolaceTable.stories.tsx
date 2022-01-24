@@ -6,8 +6,6 @@ import {
 	SELECTION_TYPE,
 	SORT_DIRECTION,
 	StyledTableData,
-	StyledExpandedTableRow,
-	StyledExpandedTableData,
 	TableColumn,
 	TableRow
 } from "../../../../src/components/table/table-utils";
@@ -313,75 +311,40 @@ export const SingleSelectionTable = (): JSX.Element => {
 	);
 };
 
-const renderExpandedRowContentHelper = (row, displayedColumnsCount) => {
+const renderExpandedRowContentHelper = (row, allowToggle, selectionType) => {
+	// different padding left depending on whether there is expand/collapse column or checkbox
+	let paddingLeft = "55px";
+	if (!allowToggle && selectionType !== SELECTION_TYPE.MULTI) {
+		paddingLeft = "14px";
+	} else if (allowToggle && selectionType === SELECTION_TYPE.MULTI) {
+		paddingLeft = "104px";
+	}
 	return (
-		<StyledExpandedTableRow className={row.rowSelected ? "selected" : ""}>
-			<StyledExpandedTableData colSpan={displayedColumnsCount}>
-				<table style={{ display: "block", width: "100%", padding: "12px 0 12px 60px" }}>
-					<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>{row.first_name}</td>
-						</tr>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>{row.last_name}</td>
-						</tr>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>{row.email}</td>
-						</tr>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>{row.gender}</td>
-						</tr>
-					</tbody>
-				</table>
-			</StyledExpandedTableData>
-		</StyledExpandedTableRow>
+		<table style={{ width: "100%", padding: `4px 0 16px ${paddingLeft}` }}>
+			<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
+				<tr>
+					<td>{row.first_name}</td>
+					<td style={{ paddingLeft: "16px" }}>{row.last_name}</td>
+				</tr>
+				<tr>
+					<td>{row.email}</td>
+					<td style={{ paddingLeft: "16px" }}>{row.gender}</td>
+				</tr>
+			</tbody>
+		</table>
 	);
-};
-
-const handleDisplayColumnsChanged = (
-	columns,
-	hasColumnHiding,
-	hasExpandedRow,
-	selectionType,
-	setDisplayedColumnsCount
-) => {
-	let numberOfDisplayedDataCols = 0;
-	columns.forEach((col) => {
-		if (!col.isHidden) {
-			numberOfDisplayedDataCols++;
-		}
-	});
-	let numberOfNonDataCols = 0;
-
-	if (hasColumnHiding) numberOfNonDataCols++;
-	if (hasExpandedRow) numberOfNonDataCols++;
-	if (selectionType === SELECTION_TYPE.MULTI) numberOfNonDataCols++;
-	setDisplayedColumnsCount(numberOfDisplayedDataCols + numberOfNonDataCols);
 };
 
 export const ExpandableRowTableSelectNone = (): JSX.Element => {
 	const data = cloneDeep(rows);
 	const [tableRows, setRows] = useState([...sortData(columns[0], data)]);
-	const [displayedColumnsCount, setDisplayedColumnsCount] = useState<number>();
 	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
 	const handleSort = useCallback((selectedColumn) => {
 		setRows([...sortData(selectedColumn, data)]);
 	}, []);
-	const hasColumnHiding = true;
-	const hasExpandedRow = true;
+
 	const selectionType = SELECTION_TYPE.NONE;
-
-	const renderExpandedRowContent = useCallback(
-		(row) => renderExpandedRowContentHelper(row, displayedColumnsCount),
-		[displayedColumnsCount]
-	);
-
-	const displayedColumnsChanged = useCallback(
-		(columns) => {
-			handleDisplayColumnsChanged(columns, hasColumnHiding, hasExpandedRow, selectionType, setDisplayedColumnsCount);
-		},
-		[hasColumnHiding, hasExpandedRow, selectionType]
-	);
+	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, true, selectionType), []);
 
 	return (
 		<div>
@@ -391,12 +354,13 @@ export const ExpandableRowTableSelectNone = (): JSX.Element => {
 				rows={tableRows}
 				columns={columns}
 				selectionType={selectionType}
-				hasColumnHiding={hasColumnHiding}
-				displayedColumnsChangedCallback={displayedColumnsChanged}
-				hasExpandedRow={hasExpandedRow}
-				renderExpandedRowContent={renderExpandedRowContent}
-				expandedRowIds={expandedRowIds}
-				setExpandedRowIds={setExpandedRowIds}
+				hasColumnHiding={true}
+				expandableRowOptions={{
+					allowToggle: true,
+					renderChildren: renderExpandedRowContent,
+					expandedRowIds: expandedRowIds,
+					setExpandedRowIds: setExpandedRowIds
+				}}
 			></SolaceTable>
 		</div>
 	);
@@ -405,26 +369,13 @@ export const ExpandableRowTableSelectNone = (): JSX.Element => {
 export const ExpandableRowTableSelectMulti = (): JSX.Element => {
 	const data = cloneDeep(rows);
 	const [tableRows, setRows] = useState([...sortData(columns[0], data)]);
-	const [displayedColumnsCount, setDisplayedColumnsCount] = useState<number>();
 	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
 	const handleSort = useCallback((selectedColumn) => {
 		setRows([...sortData(selectedColumn, data)]);
 	}, []);
-	const hasColumnHiding = true;
-	const hasExpandedRow = true;
 	const selectionType = SELECTION_TYPE.MULTI;
 
-	const renderExpandedRowContent = useCallback(
-		(row) => renderExpandedRowContentHelper(row, displayedColumnsCount),
-		[displayedColumnsCount]
-	);
-
-	const displayedColumnsChanged = useCallback(
-		(columns) => {
-			handleDisplayColumnsChanged(columns, hasColumnHiding, hasExpandedRow, selectionType, setDisplayedColumnsCount);
-		},
-		[hasColumnHiding, hasExpandedRow, selectionType]
-	);
+	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, true, selectionType), []);
 
 	return (
 		<div>
@@ -434,12 +385,75 @@ export const ExpandableRowTableSelectMulti = (): JSX.Element => {
 				rows={tableRows}
 				columns={columns}
 				selectionType={selectionType}
-				hasColumnHiding={hasColumnHiding}
-				displayedColumnsChangedCallback={displayedColumnsChanged}
-				hasExpandedRow={hasExpandedRow}
-				renderExpandedRowContent={renderExpandedRowContent}
-				expandedRowIds={expandedRowIds}
-				setExpandedRowIds={setExpandedRowIds}
+				hasColumnHiding={true}
+				expandableRowOptions={{
+					allowToggle: true,
+					renderChildren: renderExpandedRowContent,
+					expandedRowIds: expandedRowIds,
+					setExpandedRowIds: setExpandedRowIds
+				}}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const ExpandableRowNoToggleTableSelectSingle = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const [tableRows, setRows] = useState([...sortData(columns[0], data)]);
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	const selectionType = SELECTION_TYPE.SINGLE;
+	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, false, selectionType), []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columns}
+				selectionType={selectionType}
+				hasColumnHiding={true}
+				expandableRowOptions={{
+					allowToggle: false,
+					renderChildren: renderExpandedRowContent,
+					expandedRowIds: expandedRowIds,
+					setExpandedRowIds: setExpandedRowIds
+				}}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const ExpandableRowTableSelectNoneInitialExpandedRows = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const [tableRows, setRows] = useState([...sortData(columns[0], data)]);
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(["2", "3"]);
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	const selectionType = SELECTION_TYPE.NONE;
+	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, true, selectionType), []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columns}
+				selectionType={selectionType}
+				hasColumnHiding={true}
+				expandableRowOptions={{
+					allowToggle: true,
+					renderChildren: renderExpandedRowContent,
+					expandedRowIds: expandedRowIds,
+					setExpandedRowIds: setExpandedRowIds
+				}}
 			></SolaceTable>
 		</div>
 	);
@@ -553,35 +567,31 @@ const createSchemaCells = (row, columnsHiddenInfo): JSX.Element[] => {
 	return cells;
 };
 
-const renderExpandedSchemaRowContentHelper = (row, displayedColumnsCount) => {
+const renderExpandedSchemaRowContentHelper = (row, allowToggle, selectionType) => {
+	// different padding left depending on whether there is expand/collapse column or checkbox
+	let paddingLeft = "55px";
+	if (!allowToggle && selectionType !== SELECTION_TYPE.MULTI) {
+		paddingLeft = "14px";
+	} else if (allowToggle && selectionType === SELECTION_TYPE.MULTI) {
+		paddingLeft = "104px";
+	}
 	return (
-		<StyledExpandedTableRow className={row.rowSelected ? "selected" : ""}>
-			<StyledExpandedTableData colSpan={displayedColumnsCount}>
-				<table style={{ display: "block", width: "100%", padding: "12px 0 12px 60px" }}>
-					<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>{row.name}</td>
-						</tr>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>
-								{row.shared ? SharedTypes.shared : SharedTypes.notShared}
-							</td>
-						</tr>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>{row.version_count}</td>
-						</tr>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>{schemaTypeLabel[row.schemaType] ?? row.schemaType}</td>
-						</tr>
-						<tr style={{ display: "block", width: "100%" }}>
-							<td style={{ display: "block", width: "100%" }}>
-								{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</StyledExpandedTableData>
-		</StyledExpandedTableRow>
+		<table style={{ width: "100%", padding: `4px 0 16px ${paddingLeft}` }}>
+			<tbody key={`${row.id}_expansion`} style={{ width: "100%", display: "block" }}>
+				<tr>
+					<td>{row.name}</td>
+					<td style={{ paddingLeft: "16px" }}>{row.shared ? SharedTypes.shared : SharedTypes.notShared}</td>
+					<td style={{ paddingLeft: "16px" }}>{row.version_count}</td>
+				</tr>
+				<tr>
+					<td>{schemaTypeLabel[row.schemaType] ?? row.schemaType}</td>
+					<td style={{ paddingLeft: "16px" }}>
+						{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}
+					</td>
+					<td style={{ paddingLeft: "16px" }}></td>
+				</tr>
+			</tbody>
+		</table>
 	);
 };
 
@@ -623,15 +633,15 @@ export const ExpandableCustomSchemaRowWithActionsTable = (): JSX.Element => {
 	const data = cloneDeep(schemaRows);
 	const [tableRows, setRows] = useState([...sortData(schemaColumns[0], data)]);
 	const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
-	const [displayedColumnsCount, setDisplayedColumnsCount] = useState<number>();
 	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
 	const handleSort = useCallback((selectedColumn) => {
 		setRows([...sortData(selectedColumn, data)]);
 	}, []);
 
+	const selectionType = SELECTION_TYPE.SINGLE;
+
 	const displayedColumnsChanged = useCallback((columns) => {
 		handleShowHideColumns(columns, setColumnsHiddenInfo);
-		handleDisplayColumnsChanged(columns, true, true, SELECTION_TYPE.SINGLE, setDisplayedColumnsCount);
 	}, []);
 
 	const renderSchemaRowCells = useCallback(
@@ -640,8 +650,8 @@ export const ExpandableCustomSchemaRowWithActionsTable = (): JSX.Element => {
 	);
 
 	const renderExpandedRowContent = useCallback(
-		(row) => renderExpandedSchemaRowContentHelper(row, displayedColumnsCount),
-		[displayedColumnsCount]
+		(row) => renderExpandedSchemaRowContentHelper(row, true, selectionType),
+		[]
 	);
 
 	return (
@@ -651,15 +661,17 @@ export const ExpandableCustomSchemaRowWithActionsTable = (): JSX.Element => {
 				sortCallback={handleSort}
 				rows={tableRows}
 				columns={[...schemaColumns]}
-				selectionType={SELECTION_TYPE.SINGLE}
+				selectionType={selectionType}
 				rowActionMenuItems={rowActionMenuItems}
 				renderCustomRowCells={renderSchemaRowCells}
 				hasColumnHiding={true}
 				displayedColumnsChangedCallback={displayedColumnsChanged}
-				hasExpandedRow={true}
-				renderExpandedRowContent={renderExpandedRowContent}
-				expandedRowIds={expandedRowIds}
-				setExpandedRowIds={setExpandedRowIds}
+				expandableRowOptions={{
+					allowToggle: true,
+					renderChildren: renderExpandedRowContent,
+					expandedRowIds: expandedRowIds,
+					setExpandedRowIds: setExpandedRowIds
+				}}
 			></SolaceTable>
 		</div>
 	);

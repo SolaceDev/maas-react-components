@@ -70,21 +70,32 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	rowHoverCallback?: (row: TableRow) => void;
 	/**
-	 * Enable expanded rows
+	 * If option is set, the table row is expandable.
 	 */
-	hasExpandedRow?: boolean;
+	expandableRowOptions?: ExpandableRowOptions;
+}
+
+export interface ExpandableRowOptions {
 	/**
-	 * Renders expanded content in a table row
+	 * Show expand/collapse icon
 	 */
-	renderExpandedRowContent?: (row: TableRow) => React.ReactNode;
+	allowToggle: boolean;
+	/**
+	 * Whether clicking on children will select the parent row, default is true
+	 */
+	selectRowWhenClickOnChildren?: boolean;
+	/**
+	 * Renders expanded content
+	 */
+	renderChildren: (row: TableRow) => React.ReactNode;
 	/**
 	 * Expanded row ids
 	 */
-	expandedRowIds?: string[];
+	expandedRowIds: string[];
 	/**
 	 * Set expanded row ids
 	 */
-	setExpandedRowIds?: (rowIds: string[]) => void;
+	setExpandedRowIds: (rowIds: string[]) => void;
 }
 
 const TableWrapper = styled("div")(({ theme }) => ({
@@ -133,10 +144,7 @@ function SolaceTable({
 	rowHoverCallback,
 	hasColumnHiding,
 	displayedColumnsChangedCallback,
-	hasExpandedRow = false,
-	renderExpandedRowContent,
-	expandedRowIds,
-	setExpandedRowIds
+	expandableRowOptions
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable({
 		rows,
@@ -152,10 +160,7 @@ function SolaceTable({
 		rowHoverCallback,
 		hasColumnHiding,
 		displayedColumnsChangedCallback,
-		hasExpandedRow,
-		renderExpandedRowContent,
-		expandedRowIds,
-		setExpandedRowIds
+		expandableRowOptions
 	});
 
 	function showEmptyStateMessage(): React.ReactNode {

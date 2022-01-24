@@ -13,11 +13,12 @@ import {
 	StyledTableData,
 	StyledTableHeader
 } from "../table-utils";
-import { ChevronIcon } from "../../../resources/icons/ChevronIcon";
+import { useExpandableRows } from "./useExpandableRows";
 import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 
 import clsx from "clsx";
+import { ExpandableRowOptions } from "../SolaceTable";
 
 export interface CustomTableColumnProps {
 	columns: TableColumn[];
@@ -48,10 +49,7 @@ export const useSolaceTable = ({
 	rowHoverCallback,
 	hasColumnHiding,
 	displayedColumnsChangedCallback,
-	hasExpandedRow,
-	renderExpandedRowContent,
-	expandedRowIds,
-	setExpandedRowIds
+	expandableRowOptions
 }: {
 	rows: TableRow[];
 	columns: TableColumn[];
@@ -66,10 +64,7 @@ export const useSolaceTable = ({
 	rowHoverCallback?: (row: TableRow) => void;
 	hasColumnHiding?: boolean;
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
-	hasExpandedRow?: boolean;
-	renderExpandedRowContent?: (row: TableRow) => React.ReactNode;
-	expandedRowIds?: string[];
-	setExpandedRowIds?: (rowIds: string[]) => void;
+	expandableRowOptions?: ExpandableRowOptions;
 	// TODO: Refactor this function to reduce its Cognitive Complexity from 107 to the 15 allowed
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 }): React.ReactNode[] => {
@@ -91,17 +86,7 @@ export const useSolaceTable = ({
 		}
 	}, [selectedRows, rows.length, selectedRows.length, selectionChangedCallback]);
 
-	useEffect(() => {
-		if (displayedColumnsChangedCallback) {
-			displayedColumnsChangedCallback(displayedColumns);
-		}
-	}, [rows, displayedColumnsChangedCallback, displayedColumns]);
-
 	function updateSelection(row: TableRow) {
-		handleSelectionChanged(row);
-	}
-
-	function handleSelectionChanged(row: TableRow) {
 		if (selectionType !== SELECTION_TYPE.NONE) {
 			handleSingleSelection(row);
 		}
@@ -154,12 +139,12 @@ export const useSolaceTable = ({
 	}, [selectAll, handleSelectAllClick, selectionType]);
 
 	const addChevronToHeader = useCallback((): React.ReactNode | void => {
-		if (hasExpandedRow) {
+		if (expandableRowOptions?.allowToggle) {
 			return <StyledTableHeader key={"expandHeader"} className="expand-column"></StyledTableHeader>;
 		} else {
 			return;
 		}
-	}, [hasExpandedRow]);
+	}, [expandableRowOptions?.allowToggle]);
 
 	function addCheckBoxToRows(row: TableRow): React.ReactNode {
 		return (
@@ -169,31 +154,6 @@ export const useSolaceTable = ({
 					onChange={() => handleCheckboxClick(row)}
 					checked={!!row.rowSelected}
 				/>
-			</StyledTableData>
-		);
-	}
-
-	function addChevronToRows(row: TableRow): React.ReactNode | void {
-		const rowExpanded = expandedRowIds && expandedRowIds.findIndex((id) => id === row.id) >= 0;
-		return (
-			<StyledTableData
-				key={`${row.id}_chevron`}
-				className={"expand-icon"}
-				onClick={(e) => {
-					e.stopPropagation();
-					if (expandedRowIds) {
-						const foundIndex = expandedRowIds.findIndex((id) => id === row.id);
-						if (foundIndex >= 0) {
-							const newState = expandedRowIds.slice(0);
-							newState.splice(foundIndex, 1);
-							setExpandedRowIds?.(newState);
-						} else {
-							setExpandedRowIds?.([...expandedRowIds, row.id]);
-						}
-					}
-				}}
-			>
-				<ChevronIcon className={`cursor-pointer chevron ${rowExpanded ? "expanded" : ""}`} />
 			</StyledTableData>
 		);
 	}
@@ -324,28 +284,26 @@ export const useSolaceTable = ({
 		));
 	}
 
-	function createExpandableRowNodes(): React.ReactNode[] {
-		return rows.map((row: TableRow) => (
-			<React.Fragment key={`${row.id}_wrapper`}>
-				<StyledTableRow
-					onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
-					onClick={() => updateSelection(row)}
-					className={row.rowSelected ? "selected" : ""}
-				>
-					{[
-						selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
-						addChevronToRows(row),
-						...renderConfiguredRowCells(row),
-						...renderRowActionItems(row)
-					]}
-				</StyledTableRow>
-				{expandedRowIds?.find((id) => id === row.id) && renderExpandedRowContent ? renderExpandedRowContent(row) : null}
-			</React.Fragment>
-		));
-	}
+	const expandableRows = useExpandableRows({
+		rows,
+		displayedColumns,
+		selectionType,
+		updateSelection,
+		addCheckBoxToRows,
+		renderConfiguredRowCells,
+		renderRowActionItems,
+		rowHoverCallback,
+		hasColumnHiding,
+		displayedColumnsChangedCallback,
+		allowToggle: expandableRowOptions?.allowToggle,
+		selectRowWhenClickOnChildren: expandableRowOptions?.selectRowWhenClickOnChildren,
+		renderChildren: expandableRowOptions?.renderChildren,
+		expandedRowIds: expandableRowOptions?.expandedRowIds,
+		setExpandedRowIds: expandableRowOptions?.setExpandedRowIds
+	});
 
-	// if hasExpandedRow then create expanded row nodes, otherwise createRowNodes
-	const rowNodes = hasExpandedRow ? createExpandableRowNodes() : createRowNodes();
+	// if expandableRowOptions is set, then create expanded row nodes, otherwise createRowNodes
+	const rowNodes = expandableRowOptions ? expandableRows.createRowNodes() : createRowNodes();
 
 	const columnNodes = renderCustomHeader
 		? renderCustomHeader({

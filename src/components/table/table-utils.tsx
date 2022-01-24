@@ -47,22 +47,46 @@ export enum SORT_DIRECTION {
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
-	height: "32px",
-	"&.selected": {
-		backgroundColor: `${BASE_COLORS.greens.green10}`
+	"&.expanded": {
+		borderBottom: "none"
 	},
+	"&:not(.header)": {
+		"&:last-of-type": {
+			borderBottom: "none"
+		}
+	},
+
+	height: "32px",
+	"&.header": {
+		height: "48px"
+	},
+
 	"&.clickable": {
 		cursor: "pointer"
 	},
+
+	"&.selected": {
+		backgroundColor: `${BASE_COLORS.greens.green10}`,
+		// selected effect for expanded sibling row
+		"+ tr.expanded.selected": {
+			backgroundColor: `${BASE_COLORS.greens.green10}`
+		}
+	},
+
 	"&:hover": {
 		background: `${BASE_COLORS.greys.grey24}`,
 		"&.header": {
 			background: "transparent"
+		},
+		// hover effect for expanded sibling row
+		"+ tr.expanded": {
+			background: `${BASE_COLORS.greys.grey24}`
+		},
+		"&.selected + tr.expanded": {
+			background: `${BASE_COLORS.greys.grey24}`
 		}
 	},
-	"&:hover + tr td table": {
-		background: `${BASE_COLORS.greys.grey24}`
-	},
+
 	"td:first-of-type, th:first-of-type": {
 		paddingLeft: `${theme.spacing(2)}`
 	}
@@ -70,26 +94,22 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 
 export const StyledTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
 	padding: theme.spacing(),
-	height: "22px",
+	height: "24px",
 	".cursor-pointer": {
 		cursor: "pointer"
-	},
-	".chevron": {
-		transform: "rotate(180deg)",
-		"&.expanded": {
-			transform: "rotate(270deg)"
-		}
 	},
 	"&.checkbox": {
 		textAlign: "center"
 	},
 	"&.expand-icon": {
-		padding: "10px 8px 6px 0"
-	},
-	"&.expanded": {
-		borderBottom: `1px solid transparent`
+		padding: "10px 8px 6px 0",
+		".chevron": {
+			transform: "rotate(180deg)",
+			"&.expanded": {
+				transform: "rotate(270deg)"
+			}
+		}
 	},
 	maxWidth: "0",
 	overflow: "hidden",
@@ -99,14 +119,15 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 }));
 
 export const StyledExpandedTableRow = styled("tr")(() => ({
-	"&.selected": {
-		backgroundColor: `${BASE_COLORS.greens.green10}`
+	borderCollapse: "collapse",
+	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
+	"&:last-of-type": {
+		borderBottom: "none"
 	}
 }));
 
 export const StyledExpandedTableData = styled("td")({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
 	padding: 0,
 	maxWidth: "0",
 	overflow: "hidden",
@@ -117,8 +138,8 @@ export const StyledExpandedTableData = styled("td")({
 
 export const StyledTableHeader = styled("th")(({ theme }) => ({
 	borderCollapse: "collapse",
-	padding: `${theme.spacing(0.5)} ${theme.spacing()}`,
-	fontSize: "16px", // need to pull form theme once we set the theme up to support this
+	padding: `0 ${theme.spacing()}`,
+	fontSize: theme.typography.subtitle1.fontSize, // need to pull form theme once we set the theme up to support this
 	fontWeight: 500,
 	minWidth: "30px",
 	height: "48px",
@@ -161,7 +182,6 @@ export const ActionMenuContainer = styled("div")(({ theme }) => ({
 
 export const StyledRelativeTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
 	padding: theme.spacing(),
 	position: "relative",
 	textAlign: "center"
