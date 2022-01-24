@@ -1,6 +1,12 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceMenu, SolaceButton, SolaceCheckBox, DeleteIcon } from "@SolaceDev/maas-react-components";
+import {
+	SolaceMenu,
+	SolaceMenuItemProps,
+	SolaceButton,
+	SolaceCheckBox,
+	DeleteIcon
+} from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MoreHorizOutlinedIcon } from "../../../src/resources/icons/MoreHorizOutlinedIcon";
 import {
@@ -260,6 +266,20 @@ HeaderAndCategoryHeading.args = {
 	],
 	multiline: true,
 	header: "Menu Header"
+};
+
+export const EmptyMenuItems = (): JSX.Element => {
+	const emptyItems: SolaceMenuItemProps[] = [];
+	return (
+		<SolaceMenu
+			id={"custom-solace-menu2"}
+			buttonProps={{
+				variant: "icon",
+				children: <MoreHorizOutlinedIcon />
+			}}
+			items={emptyItems}
+		></SolaceMenu>
+	);
 };
 
 export const CustomMenuItems = (): JSX.Element => {

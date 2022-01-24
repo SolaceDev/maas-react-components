@@ -1,5 +1,5 @@
 import { Grid } from "@material-ui/core";
-
+import clsx from "clsx";
 export interface SolaceSelectAutocompleteItemProps {
 	name: string;
 	value: string;
@@ -22,7 +22,7 @@ function SolaceSelectAutocompleteItem({
 	supplementalText
 }: SolaceSelectAutocompleteItemProps): JSX.Element {
 	return (
-		<Grid container justifyContent="space-between">
+		<Grid container justifyContent="space-between" alignItems={"center"} className={clsx({ multiline: !!subText })}>
 			<Grid item>
 				{name}
 				{subText && (
