@@ -139,7 +139,7 @@ export const StyledExpandedTableData = styled("td")({
 export const StyledTableHeader = styled("th")(({ theme }) => ({
 	borderCollapse: "collapse",
 	padding: `0 ${theme.spacing()}`,
-	fontSize: theme.typography.subtitle1.fontSize, // need to pull form theme once we set the theme up to support this
+	fontSize: theme.typography.subtitle1.fontSize,
 	fontWeight: 500,
 	minWidth: "30px",
 	height: "48px",
