@@ -318,6 +318,8 @@ const renderExpandedRowContentHelper = (row, allowToggle, selectionType) => {
 		paddingLeft = "14px";
 	} else if (allowToggle && selectionType === SELECTION_TYPE.MULTI) {
 		paddingLeft = "104px";
+	} else if (!allowToggle && selectionType === SELECTION_TYPE.MULTI) {
+		paddingLeft = "68px";
 	}
 	return (
 		<table style={{ width: "100%", padding: `4px 0 16px ${paddingLeft}` }}>
@@ -406,6 +408,37 @@ export const ExpandableRowNoToggleTableSelectSingle = (): JSX.Element => {
 	}, []);
 
 	const selectionType = SELECTION_TYPE.SINGLE;
+	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, false, selectionType), []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columns}
+				selectionType={selectionType}
+				hasColumnHiding={true}
+				expandableRowOptions={{
+					allowToggle: false,
+					renderChildren: renderExpandedRowContent,
+					expandedRowIds: expandedRowIds,
+					setExpandedRowIds: setExpandedRowIds
+				}}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const ExpandableRowNoToggleTableSelectMulti = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const [tableRows, setRows] = useState([...sortData(columns[0], data)]);
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	const selectionType = SELECTION_TYPE.MULTI;
 	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, false, selectionType), []);
 
 	return (
@@ -574,6 +607,8 @@ const renderExpandedSchemaRowContentHelper = (row, allowToggle, selectionType) =
 		paddingLeft = "14px";
 	} else if (allowToggle && selectionType === SELECTION_TYPE.MULTI) {
 		paddingLeft = "104px";
+	} else if (!allowToggle && selectionType === SELECTION_TYPE.MULTI) {
+		paddingLeft = "68px";
 	}
 	return (
 		<table style={{ width: "100%", padding: `4px 0 16px ${paddingLeft}` }}>
