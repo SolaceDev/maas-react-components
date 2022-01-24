@@ -56,15 +56,17 @@ DefaultEditor.args = {
 	onChange: action("callback")
 };
 
+const NAME = "schemaVersion[content]";
+
 export const EmptyEditor = Template.bind({});
 EmptyEditor.args = {
-	id: "schemaVersion[content]",
-	name: "schemaVersion[content]",
+	id: NAME,
+	name: NAME,
 	value: "",
 	hasErrors: undefined,
 	helperText: null,
 	onChange: (editor, data, value) => action(value),
-	dataQa: "schemaVersion[content]"
+	dataQa: NAME
 };
 
 export const JSONEditor = Template.bind({});
@@ -110,5 +112,52 @@ export const FullScreenEditor = (): JSX.Element => {
 				onChange={action("callback")}
 			/>
 		</>
+	);
+};
+
+export const ControlledEditor = (): JSX.Element => {
+	const [value, setValue] = useState("");
+	const handleChange = (_editor: any, _data: any, value: string) => {
+		setValue(value);
+	};
+	return (
+		<div>
+			<SolaceCodeEditor id="controlledEditor" value={value} mode="json" onChange={handleChange} />
+			<div>Returned Data:</div>
+			<div>{JSON.stringify(value)}</div>
+		</div>
+	);
+};
+
+const DATA = [
+	'{\n\t"name": "jason",\n \t"address": "123 road"\n}',
+	'{\n\t"name": "peter",\n \t"address": "456 road"\n}',
+	'{\n\t"name": "jane",\n \t"address": "789 road"\n}'
+];
+
+const fetchRandomDataSet = (array) => {
+	const n = Math.floor(Math.random() * 3);
+	return array[n];
+};
+
+export const UpdateData = (): JSX.Element => {
+	const [initValue, setInitValue] = useState("");
+	const [value, setValue] = useState("");
+	const handleChange = (_editor: any, _data: any, value: string) => {
+		setValue(value);
+	};
+	return (
+		<div>
+			<SolaceCodeEditor id="controlledEditor" value={initValue} mode="json" onChange={handleChange} />
+			<button
+				onClick={() => {
+					setInitValue(fetchRandomDataSet(DATA));
+				}}
+			>
+				Update data
+			</button>
+			<div>Returned Data:</div>
+			<div>{JSON.stringify(value)}</div>
+		</div>
 	);
 };
