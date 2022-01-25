@@ -26,9 +26,21 @@ RADIOS.push(<SolaceRadio key="option3" name="option3" value="option3" label="Opt
 export const DefaultRadioGroup = Template.bind({});
 DefaultRadioGroup.args = {
 	onChange: action("callback"),
+	// eslint-disable-next-line sonarjs/no-duplicate-string
 	title: "Demo RadioGroup",
 	name: "demoRadioGroup",
 	value: "option1",
+	children: RADIOS
+};
+
+export const InlineRadioGroup = Template.bind({});
+InlineRadioGroup.args = {
+	onChange: action("callback"),
+	// eslint-disable-next-line sonarjs/no-duplicate-string
+	title: "Demo RadioGroup",
+	name: "demoRadioGroup",
+	value: "option1",
+	inline: true,
 	children: RADIOS
 };
 
@@ -38,6 +50,7 @@ StackedLabelFormat.args = {
 	title: "Demo RadioGroup",
 	id: "demoRadioGroupId",
 	name: "demoRadioGroup",
+	// eslint-disable-next-line sonarjs/no-duplicate-string
 	label: "Some Label",
 	stackLabel: true,
 	value: "option1",
