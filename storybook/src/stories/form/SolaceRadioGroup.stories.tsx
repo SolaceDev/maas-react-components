@@ -23,76 +23,50 @@ RADIOS.push(<SolaceRadio key="option1" name="option1" value="option1" label="Opt
 RADIOS.push(<SolaceRadio key="option2" name="option2" value="option2" label="Option 2" readOnly={false} />);
 RADIOS.push(<SolaceRadio key="option3" name="option3" value="option3" label="Option 3" readOnly={false} />);
 
-export const DefaultRadioGroup = Template.bind({});
-DefaultRadioGroup.args = {
-	onChange: action("callback"),
-	// eslint-disable-next-line sonarjs/no-duplicate-string
+const RADIO_GROUP = {
 	title: "Demo RadioGroup",
 	name: "demoRadioGroup",
+	id: "demoRadioGroupId",
 	value: "option1",
-	children: RADIOS
+	children: RADIOS,
+	onChange: action("callback")
 };
 
-export const InlineRadioGroup = Template.bind({});
-InlineRadioGroup.args = {
-	onChange: action("callback"),
-	// eslint-disable-next-line sonarjs/no-duplicate-string
-	title: "Demo RadioGroup",
-	name: "demoRadioGroup",
-	value: "option1",
-	inline: true,
-	children: RADIOS
+const LABELLED_RADIO_GROUP = {
+	...RADIO_GROUP,
+	label: "Some Label"
 };
+
+export const DefaultRadioGroup = Template.bind({});
+DefaultRadioGroup.args = { ...RADIO_GROUP };
+
+export const InlineRadioGroup = Template.bind({});
+InlineRadioGroup.args = { ...RADIO_GROUP, inline: true };
 
 export const StackedLabelFormat = Template.bind({});
 StackedLabelFormat.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
-	// eslint-disable-next-line sonarjs/no-duplicate-string
-	label: "Some Label",
-	stackLabel: true,
-	value: "option1",
-	children: RADIOS
+	...LABELLED_RADIO_GROUP,
+	stackLabel: true
 };
 
 export const WithLargeStackLabel = Template.bind({});
 WithLargeStackLabel.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
-	label: "Some Label",
+	...LABELLED_RADIO_GROUP,
 	stackLabel: true,
-	large: true,
-	value: "option1",
-	children: RADIOS
+	large: true
 };
 
 export const WithBoldStackLabel = Template.bind({});
 WithBoldStackLabel.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
-	label: "Some Label",
+	...LABELLED_RADIO_GROUP,
 	stackLabel: true,
-	bold: true,
-	value: "option1",
-	children: RADIOS
+	bold: true
 };
 
 export const InlineLabelFormat = Template.bind({});
 InlineLabelFormat.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
-	label: "Some Label",
-	inlineLabel: true,
-	value: "option1",
-	children: RADIOS
+	...LABELLED_RADIO_GROUP,
+	inlineLabel: true
 };
 
 function buildSubText() {
@@ -132,13 +106,9 @@ RADIOS_WITH_HELPER.push(
 
 export const HelperText = Template.bind({});
 HelperText.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
+	...LABELLED_RADIO_GROUP,
 	label: "Select the discovery type and fill the form to start a scan",
 	helperText: "Some group helper text here",
-	value: "option1",
 	children: RADIOS_WITH_HELPER
 };
 
@@ -168,37 +138,22 @@ RADIOS_WITH_LIGHT_SUBTEXT.push(
 );
 export const LightSubtext = Template.bind({});
 LightSubtext.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
+	...LABELLED_RADIO_GROUP,
 	label: "Select the discovery type and fill the form to start a scan",
-	value: "option1",
 	children: RADIOS_WITH_LIGHT_SUBTEXT
 };
 
 export const WithErrors = Template.bind({});
 WithErrors.args = {
-	onChange: action("callback"),
-	title: "Demo RadioGroup",
-	id: "demoRadioGroupId",
-	name: "demoRadioGroup",
-	label: "Some Label",
+	...LABELLED_RADIO_GROUP,
 	hasErrors: true,
-	helperText: "Some error occured",
-	value: "option1",
-	children: RADIOS
+	helperText: "Some error occured"
 };
 
 export const Required = Template.bind({});
 Required.args = {
-	onChange: action("callback"),
-	name: "demoRadioGroup",
-	title: "Demo RadioGroup",
-	label: "Some Label",
-	value: "option1",
-	required: true,
-	children: RADIOS
+	...LABELLED_RADIO_GROUP,
+	required: true
 };
 
 const DISABLED_RADIOS: Array<React.ReactNode> = [];
@@ -214,10 +169,7 @@ DISABLED_RADIOS.push(
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-	onChange: action("callback"),
-	name: "demoRadioGroup",
-	title: "Demo RadioGroup",
-	label: "Some Label",
+	...LABELLED_RADIO_GROUP,
 	value: "option2",
 	disabled: true,
 	children: DISABLED_RADIOS
