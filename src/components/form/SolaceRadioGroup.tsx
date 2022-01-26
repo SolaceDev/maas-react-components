@@ -51,6 +51,10 @@ export interface SolaceRadioGroupProps extends SolaceComponentProps {
 	 */
 	inlineLabel?: boolean;
 	/**
+	 * Boolean flag to control whether to arrange the `input` elements horizontally
+	 */
+	inline?: boolean;
+	/**
 	 * Boolean flag used to display an indicator of whether or not this `radio group` is mandatory
 	 */
 	required?: boolean;
@@ -86,6 +90,7 @@ function SolaceRadioGroup({
 	required = false,
 	disabled = false,
 	inlineLabel = false,
+	inline = false,
 	onChange,
 	children
 }: SolaceRadioGroupProps): JSX.Element {
@@ -120,7 +125,7 @@ function SolaceRadioGroup({
 		return (
 			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
 				<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
-					<Grid container spacing={1.5} direction="column">
+					<Grid container spacing={1.5} direction={inline ? "row" : "column"}>
 						{childItems}
 					</Grid>
 				</RadioGroup>
