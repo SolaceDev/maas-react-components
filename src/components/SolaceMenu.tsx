@@ -151,7 +151,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				</Grid>
 
 				{item?.secondaryAction && (
-					<Grid item sx={{ marginLeft: theme.spacing(3) }}>
+					<Grid container sx={{ marginLeft: theme.spacing(3) }} alignItems={"center"}>
 						{item.secondaryAction}
 					</Grid>
 				)}
