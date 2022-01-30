@@ -92,7 +92,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 
 	const itemHeight = multiline ? 58 : 38;
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-		// Depending on UX decision stop click event on the menu item from being bubble up to parent
+		// stop click event on the menu item from being bubble up to parent
 		event.stopPropagation();
 		//when items is passed down as empty [] this condition makes sure that menu doesn't open with empty paper.
 		if (items?.length || renderCustomMenuItems) {
@@ -101,7 +101,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	};
 
 	const handleMenuClose = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-		// don't bubble click event on
+		// don't bubble click event on menu closed by user clicking on any area in the window
 		event.stopPropagation();
 		setAnchorEl(null);
 	};
