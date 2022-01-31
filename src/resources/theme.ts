@@ -957,6 +957,33 @@ const themeConfig: ThemeOptions = {
 					}
 				}
 			}
+		},
+		/** SolaceMessageBox component */
+		component_MessageBox: {
+			container: {
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "space-between",
+				height: "100%",
+				borderRadius: "2px",
+				paddingRight: "4px",
+				"&.info": {
+					backgroundColor: BASE_COLORS.blues.blue1,
+					borderLeft: `3px solid ${BASE_COLORS.blues.blue2}`,
+					color: BASE_COLORS.blues.blue2
+				},
+				"&.error": {
+					backgroundColor: BASE_COLORS.reds.red2,
+					borderLeft: `3px solid ${BASE_COLORS.reds.red1}`,
+					color: BASE_COLORS.reds.red1
+				}
+			},
+			message: {
+				display: "flex",
+				alignItems: "center",
+				gap: "8px",
+				padding: "8px 0px 8px 8px"
+			}
 		}
 	},
 	palette: {
@@ -1028,6 +1055,10 @@ declare module "@material-ui/core/styles/createMixins" {
 			container: CSSProperties;
 			listWrapper: CSSProperties;
 			labelWrapper: CSSProperties;
+		};
+		component_MessageBox: {
+			container: CSSProperties;
+			message: CSSProperties;
 		};
 	}
 }
