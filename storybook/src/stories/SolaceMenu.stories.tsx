@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import {
 	SolaceMenu,
@@ -33,6 +33,22 @@ const Template: ComponentStory<typeof SolaceMenu> = (args) => <SolaceMenu {...ar
 const SUBTEXT = "Subtext subtext";
 const SUPPLEMENTALText = "Supplemental text";
 const TITLE = "More actions!";
+const DEFAULT_MENU_ITEMS = [
+	{
+		name: "Option 1",
+		onMenuItemClick: action("callback"),
+		dataQa: "testDataProp2",
+		dataTags: "testDataTag2"
+	},
+	{
+		name: "Option 2",
+		onMenuItemClick: action("callback")
+	},
+	{
+		name: "Option 3",
+		onMenuItemClick: action("callback")
+	}
+];
 
 export const DefaultSolaceMenu = Template.bind({});
 DefaultSolaceMenu.args = {
@@ -44,22 +60,7 @@ DefaultSolaceMenu.args = {
 	},
 	dataQa: "testDataProp",
 	dataTags: "testDataTag1",
-	items: [
-		{
-			name: "Option 1",
-			onMenuItemClick: action("callback"),
-			dataQa: "testDataProp2",
-			dataTags: "testDataTag2"
-		},
-		{
-			name: "Option 2",
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 3",
-			onMenuItemClick: action("callback")
-		}
-	]
+	items: DEFAULT_MENU_ITEMS
 };
 
 export const TextMenuButton = Template.bind({});
@@ -70,22 +71,7 @@ TextMenuButton.args = {
 	},
 	dataQa: "testDataProp",
 	dataTags: "testDataTag1",
-	items: [
-		{
-			name: "Option 1",
-			onMenuItemClick: action("callback"),
-			dataQa: "testDataProp2",
-			dataTags: "testDataTag2"
-		},
-		{
-			name: "Option 2",
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 3",
-			onMenuItemClick: action("callback")
-		}
-	]
+	items: DEFAULT_MENU_ITEMS
 };
 
 export const MultilineSolaceMenu = Template.bind({});
@@ -376,5 +362,50 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 			}}
 			renderCustomMenuItems={renderCustomMenuItems}
 		></SolaceMenu>
+	);
+};
+
+export const ClickNotPropagateToParent = (): JSX.Element => {
+	const [clickCount, setClickCount] = useState(0);
+	return (
+		<>
+			<div
+				style={{ display: "flex", alignItems: "center", padding: "8px", border: "1px solid rgba(0,0,0, 0.1)" }}
+				onClick={() => setClickCount(clickCount + 1)}
+			>
+				<span style={{ marginRight: "16px" }}>Hello World!</span>
+				<SolaceMenu
+					buttonProps={{
+						variant: "icon",
+						children: <MoreHorizOutlinedIcon />
+					}}
+					items={DEFAULT_MENU_ITEMS}
+				></SolaceMenu>
+			</div>
+			<div style={{ paddingTop: "16px" }}>Parent Clicked {clickCount}</div>
+		</>
+	);
+};
+
+export const ClickPropagateToParent = (): JSX.Element => {
+	const [clickCount, setClickCount] = useState(0);
+	return (
+		<>
+			<div
+				style={{ display: "flex", alignItems: "center", padding: "8px", border: "1px solid rgba(0,0,0, 0.1)" }}
+				onClick={() => setClickCount(clickCount + 1)}
+			>
+				<span style={{ marginRight: "16px" }}>Hello World!</span>
+				<SolaceMenu
+					buttonProps={{
+						variant: "icon",
+						children: <MoreHorizOutlinedIcon />
+					}}
+					items={DEFAULT_MENU_ITEMS}
+					propagateMenuClick={true}
+				></SolaceMenu>
+			</div>
+			<div style={{ paddingTop: "16px" }}>Parent Clicked {clickCount}</div>
+		</>
 	);
 };
