@@ -125,7 +125,7 @@ function SolaceRadioGroup({
 		return (
 			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
 				<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
-					<Grid container spacing={1.5} direction={inline ? "row" : "column"}>
+					<Grid container spacing={inline ? 4.5 : 1.5} direction={inline ? "row" : "column"}>
 						{childItems}
 					</Grid>
 				</RadioGroup>
