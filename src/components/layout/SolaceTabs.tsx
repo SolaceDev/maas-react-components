@@ -6,7 +6,7 @@ interface TabProps {
 	/**
 	 * Label of the tab
 	 */
-	label: string;
+	label: string | JSX.Element;
 	/**
 	 * Unique identifier of the tab
 	 */
