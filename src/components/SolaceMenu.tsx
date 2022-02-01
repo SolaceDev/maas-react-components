@@ -67,6 +67,10 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 */
 	multiline?: boolean;
 	/**
+	 * optional attribute to propagate menu button click event to parent
+	 */
+	propagateMenuClick?: boolean;
+	/**
 	 * To render custom menuItems
 	 * (note1: this is to cover special cases where we need checkbox or radio button added to menu items
 	 * note2:if CustomMenuItems is provided, the items prop is nolonger valid)
@@ -81,6 +85,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		items,
 		header,
 		multiline = false,
+		propagateMenuClick = false,
 		anchorOrigin = { vertical: "bottom", horizontal: "left" },
 		renderCustomMenuItems,
 		dataQa,
@@ -88,18 +93,23 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	} = props;
 
 	const theme = useTheme();
-
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
 	const itemHeight = multiline ? 58 : 38;
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+		if (!propagateMenuClick) {
+			// stop click event on the menu item from being bubble up to parent
+			event.stopPropagation();
+		}
 		//when items is passed down as empty [] this condition makes sure that menu doesn't open with empty paper.
 		if (items?.length || renderCustomMenuItems) {
 			setAnchorEl(event.currentTarget);
 		}
 	};
 
-	const handleMenuClose = () => {
+	const handleMenuClose = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+		// don't bubble click event on menu closed by user clicking on any area in the window
+		event.stopPropagation();
 		setAnchorEl(null);
 	};
 
@@ -123,7 +133,9 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				data-qa={item?.dataQa}
 				data-tags={item?.dataTags}
 				onClick={(e) => {
-					handleMenuClose();
+					// stop click event on the menu item from being bubbled up to parent, causing unexpected extra click event
+					e.stopPropagation();
+					handleMenuClose(e);
 					item.onMenuItemClick(e);
 				}}
 				divider={!!item?.divider}

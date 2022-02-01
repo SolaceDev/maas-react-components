@@ -66,12 +66,9 @@ export default function Example() {
 
 ## Development
 
-Follow the following steps to start component development on your local machines:
+### Making a commit
 
-1.  Run `npm run install:dev`. This will install required packages both for storybook and component library.
-2.  Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
-
-**Note for developers** : Don't forget to include one of the following values in a commit, before pushing your branch to master. This would trigger a automated package version update.
+Include one of the following values in a commit, before pushing your branch to master. This would trigger a automated package version update.
 
 | Value | Defintition                                                               |
 | ----- | ------------------------------------------------------------------------- |
@@ -80,6 +77,13 @@ Follow the following steps to start component development on your local machines
 | patch | PATCH version when you make backwards compatible bug fixes                |
 
 [Semantic Versioning](https://semver.org/)
+
+### Run locally
+
+Follow the following steps to start component development on your local machines:
+
+1.  Run `npm run install:dev`. This will install required packages both for storybook and component library.
+2.  Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
 
 ## View Storybook
 
