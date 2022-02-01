@@ -1,6 +1,5 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 
 import { SolaceMessageBox } from "@SolaceDev/maas-react-components";
 
@@ -85,11 +84,14 @@ WithCloseButton.args = {
 };
 
 export const WithCloseAction = Template.bind({});
+const handleClose = () => {
+	alert("message box will be closed");
+};
 WithCloseAction.args = {
 	message: "helpful information with onClose callback",
 	showCloseButton: true,
 	variant: "info",
-	onClose: action("callback")
+	onClose: handleClose
 };
 
 export const WithinContainer = ({ message, ...args }): JSX.Element => {

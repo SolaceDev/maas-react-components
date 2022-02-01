@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "@material-ui/core";
 import SolaceButton from "./form/SolaceButton";
 import { ErrorIcon } from "../resources/icons/ErrorIcon";
+import { InfoIcon } from "../resources/icons/InfoIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 
 const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.container);
@@ -25,9 +26,15 @@ interface SolaceInfoBoxProps {
 	 */
 	onClose?: () => void;
 	/**
-	 * Variants, currently supports error and info, can be expanded as needed
+	 * Variants, currently supports error and info, default to info, can be expanded as needed
 	 */
 	variant: "info" | "error";
+}
+
+function renderIcons(variant: "info" | "error"): JSX.Element {
+	if (variant === "info") return <InfoIcon size={20} fill="" />;
+	else if (variant === "error") return <ErrorIcon size={20} fill="" />;
+	return <InfoIcon size={20} fill="" />;
 }
 
 function SolaceMessageBox({
@@ -47,7 +54,7 @@ function SolaceMessageBox({
 	return open ? (
 		<InfoBoxContainer className={variant}>
 			<InfoBoxMessage>
-				{showIcon && <ErrorIcon size={20} fill="" />}
+				{showIcon && renderIcons(variant)}
 				{message}
 			</InfoBoxMessage>
 			{showCloseButton && (
