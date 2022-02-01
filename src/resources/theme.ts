@@ -762,7 +762,7 @@ const themeConfig: ThemeOptions = {
 						".MuiDialogActions-root": {
 							padding: "24px 0px 0px 0px",
 							"& > :not(:nth-of-type(1))": {
-								marginLeft: "16px"
+								marginLeft: "8px"
 							}
 						}
 					}
