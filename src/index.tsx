@@ -49,6 +49,8 @@ export { default as SolacePopover } from "./components/SolacePopover";
 export { default as SolaceAttributeValuePairForm } from "./components/form/SolaceAttributeValuePairForm";
 export { default as SolaceTooltip } from "./components/SolaceToolTip";
 export { default as SolaceDrawer } from "./components/SolaceDrawer";
+export { default as SolaceGridList } from "./components/layout/SolaceGridList";
+export { default as SolaceBadge } from "./components/SolaceBadge";
 export { default as getThemeMappings } from "./theming/themeUtils";
 export * from "./types";
 

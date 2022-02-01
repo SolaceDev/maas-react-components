@@ -994,6 +994,42 @@ const themeConfig: ThemeOptions = {
 				gap: "8px",
 				padding: "8px 0px 8px 8px"
 			}
+		},
+		layoutComponent_GridList: {
+			row: {
+				display: "grid",
+				placeItems: "center left",
+				padding: "10px 16px",
+				lineHeight: "32px",
+				"&.headerRow": {
+					height: "30px",
+					fontWeight: "500",
+					color: BASE_COLORS.greys.grey11,
+					cursor: "auto",
+					padding: "0px 16px",
+					":hover": {
+						background: "unset"
+					}
+				},
+				borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
+				cursor: "pointer",
+				":hover": {
+					background: BASE_COLORS.greys.grey1
+				},
+				":focus-visible": {
+					background: BASE_COLORS.greys.grey1,
+					outline: "none"
+				},
+				"&.selected": {
+					background: BASE_COLORS.greens.green9
+				}
+			},
+			list: {
+				border: `1px solid ${BASE_COLORS.greys.grey2}`,
+				borderTop: "unset",
+				overflow: "auto",
+				height: "100%"
+			}
 		}
 	},
 	palette: {
@@ -1044,11 +1080,9 @@ const themeConfig: ThemeOptions = {
 
 declare module "@material-ui/core/styles/createMixins" {
 	interface Mixins {
-		sidePanelLayout: {
-			wrapper: CSSProperties;
-			content: CSSProperties;
-			left: CSSProperties;
-			right: CSSProperties;
+		layoutComponent_GridList: {
+			row: CSSProperties;
+			list: CSSProperties;
 		};
 		formComponent_ErrorText: {
 			container: CSSProperties;
