@@ -6,10 +6,11 @@ import { groupBy, flatten } from "lodash";
 import clsx from "clsx";
 
 export interface SolaceMenuItemProps extends SolaceComponentProps {
+	id?: string;
 	/**
-	 * name attribute to show as menu item label
+	 * Name attribute to show as menu item label for default menuItems,for custom menu items JSX.Element type is passed.
 	 */
-	name: string;
+	name: string | JSX.Element;
 	/**
 	 * Content to display as supportive/explanitory text
 	 */
@@ -27,9 +28,9 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 	 */
 	secondaryAction?: JSX.Element | HTMLElement;
 	/**
-	 * The callback function runs when the user clicks on a menu item (note: made this function as generic as possible since we want to flexibility to pass any type of parameter)
+	 * The callback function runs when the user clicks on a menu item
 	 */
-	onMenuItemClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+	onMenuItemClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 	/**
 	 * Adds a divider to the bottom of menuItem
 	 */
@@ -71,11 +72,9 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 */
 	propagateMenuClick?: boolean;
 	/**
-	 * To render custom menuItems
-	 * (note1: this is to cover special cases where we need checkbox or radio button added to menu items
-	 * note2:if CustomMenuItems is provided, the items prop is nolonger valid)
+	 * Optional flag to close the menu on menuItemClick, the default is set to true.
 	 */
-	renderCustomMenuItems?: (id: string) => React.ReactNode;
+	closeOnSelect?: boolean;
 }
 
 export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
@@ -86,8 +85,8 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		header,
 		multiline = false,
 		propagateMenuClick = false,
+		closeOnSelect = true,
 		anchorOrigin = { vertical: "bottom", horizontal: "left" },
-		renderCustomMenuItems,
 		dataQa,
 		dataTags
 	} = props;
@@ -102,7 +101,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 			event.stopPropagation();
 		}
 		//when items is passed down as empty [] this condition makes sure that menu doesn't open with empty paper.
-		if (items?.length || renderCustomMenuItems) {
+		if (items?.length) {
 			setAnchorEl(event.currentTarget);
 		}
 	};
@@ -126,46 +125,59 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				</ListSubheader>
 			);
 		list.push(categoryheader);
-		const itemsList = groupedItems[categoryHeading].map((item) => (
+		const itemsList = groupedItems[categoryHeading].map((item, index) => (
 			<MenuItem
-				id={`${item.name}-${id}`}
-				key={`${item.name}-${id}`}
+				id={item.id}
+				key={index}
 				data-qa={item?.dataQa}
 				data-tags={item?.dataTags}
 				onClick={(e) => {
 					// stop click event on the menu item from being bubbled up to parent, causing unexpected extra click event
 					e.stopPropagation();
-					handleMenuClose(e);
-					item.onMenuItemClick(e);
+					if (closeOnSelect) {
+						handleMenuClose(e);
+					}
+					if (item.onMenuItemClick) {
+						item.onMenuItemClick(e);
+					}
 				}}
 				divider={!!item?.divider}
 				disabled={!!item?.disabled}
-				className={clsx({ multiline: !!item?.subText, wideMenu: !!item?.supplementalText })}
+				className={clsx({
+					multiline: !!item?.subText && typeof item.name === "string",
+					wideMenu: !!item?.supplementalText && typeof item.name === "string"
+				})}
 			>
-				{item?.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
-				<Grid container direction={"column"} justifyContent="center">
-					<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
-						<Typography variant="body1" noWrap>
-							{item.name}
-						</Typography>
-						{item?.supplementalText && (
-							<Grid className="supplementalText" item>
-								{item?.supplementalText}
+				{typeof item.name === "string" ? (
+					<>
+						{item?.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
+						<Grid container direction={"column"} justifyContent="center">
+							<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
+								<Typography variant="body1" noWrap>
+									{item.name}
+								</Typography>
+								{item?.supplementalText && (
+									<Grid className="supplementalText" item>
+										{item?.supplementalText}
+									</Grid>
+								)}
+							</Grid>
+
+							{item?.subText && (
+								<Grid className="subtext" item>
+									<span className="subtext">{item?.subText}</span>
+								</Grid>
+							)}
+						</Grid>
+
+						{item?.secondaryAction && (
+							<Grid container sx={{ marginLeft: theme.spacing(3) }} alignItems={"center"}>
+								{item.secondaryAction}
 							</Grid>
 						)}
-					</Grid>
-
-					{item?.subText && (
-						<Grid className="subtext" item>
-							<span className="subtext">{item?.subText}</span>
-						</Grid>
-					)}
-				</Grid>
-
-				{item?.secondaryAction && (
-					<Grid container sx={{ marginLeft: theme.spacing(3) }} alignItems={"center"}>
-						{item.secondaryAction}
-					</Grid>
+					</>
+				) : (
+					item.name
 				)}
 			</MenuItem>
 		));
@@ -193,7 +205,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				className="SolaceMenu"
 			>
 				{header && <ListSubheader>{header}</ListSubheader>}
-				{renderCustomMenuItems ? renderCustomMenuItems(id) : flatten(menuItemsList)}
+				{flatten(menuItemsList)}
 			</Menu>
 		</Fragment>
 	);
