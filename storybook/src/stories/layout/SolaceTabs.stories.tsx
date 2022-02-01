@@ -1,7 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceTabs, SolaceBadge, SolaceButton } from "@SolaceDev/maas-react-components";
-import PhoneIcon from "@material-ui/icons/AccountBalanceOutlined";
 
 export default {
 	title: "Layout/SolaceTabs",
