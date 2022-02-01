@@ -3,7 +3,7 @@ import { styled, Theme } from "@material-ui/core";
 import { useState } from "react";
 
 export interface SolaceBadgeProps {
-	value: "";
+	value: string | number;
 	show?: boolean;
 	size?: number;
 	showAnimationLengthInMs?: number;
