@@ -2,6 +2,7 @@ import { keyframes } from "@emotion/react";
 import { styled, Theme } from "@material-ui/core";
 import { useEffect, useRef, useState } from "react";
 import { SolaceTooltip } from "..";
+import { BASE_COLORS } from "../resources/colorPallette";
 
 export interface SolaceBadgeProps {
 	/**
@@ -17,30 +18,34 @@ export interface SolaceBadgeProps {
 	 */
 	size?: number;
 	/**
+	 * Font size of the text value
+	 */
+	fontSize?: number;
+	/**
 	 * Tooltip
 	 */
 	title?: string;
 	/**
-	 * Badge animation duration. If set to 0, then no animation.
+	 * Badge animation duration in milliseconds. If set to 0, then no animation.
 	 */
-	animationDurationInMs?: number;
+	animationDuration?: number;
 	/**
 	 * The number of animation repeats when making the text visible
 	 */
-	showAnimationRepeats?: number;
+	showAnimationRepetitions?: number;
 	/**
 	 * The number of animation repeats when the text is updated
 	 */
-	changeAnimationRepeats?: number;
+	changeAnimationRepetitions?: number;
 }
 
-const Badge = styled("div")(({ size }: { theme?: Theme; size: number }) => ({
+const Badge = styled("div")(({ size, fontSize }: { theme?: Theme; size: number; fontSize: number }) => ({
 	width: `${size}px`,
 	height: `${size}px`,
-	fontSize: `${(size / 3) * 2}px`,
+	fontSize: `${fontSize ? fontSize : (size / 3) * 2}px`,
 	borderRadius: "50%",
-	background: "#0079FF",
-	color: "white",
+	background: BASE_COLORS.blues.blue2,
+	color: BASE_COLORS.whites.white1,
 	textAlign: "center",
 	lineHeight: `${size + 1}px`,
 	verticalAlign: "middle"
@@ -72,10 +77,11 @@ function SolaceBadge({
 	value,
 	show = true,
 	size = 21,
+	fontSize = 14,
 	title,
-	animationDurationInMs = 1000,
-	showAnimationRepeats = 1,
-	changeAnimationRepeats = 3
+	animationDuration = 1000,
+	showAnimationRepetitions = 1,
+	changeAnimationRepetitions = 3
 }: SolaceBadgeProps): JSX.Element {
 	const [lastValue, setLastValue] = useState(value);
 	const [showState, setShowState] = useState(show);
@@ -89,7 +95,7 @@ function SolaceBadge({
 		if (show !== showState) {
 			if (show) {
 				// if the timer started, then no need to start another timer
-				if (animationDurationInMs > 0 && !showTimer.current) {
+				if (animationDuration > 0 && !showTimer.current) {
 					setShowing(true);
 					setPulsing(true);
 					showTimer.current = setTimeout(
@@ -98,7 +104,7 @@ function SolaceBadge({
 							setPulsing(false);
 							showTimer.current = null;
 						},
-						showAnimationRepeats > 0 ? showAnimationRepeats * animationDurationInMs : animationDurationInMs
+						showAnimationRepetitions > 0 ? showAnimationRepetitions * animationDuration : animationDuration
 					);
 				} else {
 					setShowing(false);
@@ -106,24 +112,24 @@ function SolaceBadge({
 			}
 			setShowState(show);
 		}
-	}, [animationDurationInMs, show, showAnimationRepeats, showState]);
+	}, [animationDuration, show, showAnimationRepetitions, showState]);
 
 	useEffect(() => {
 		if (value !== lastValue) {
 			// if the timer started, then no need to start another timer
-			if (value && animationDurationInMs > 0 && !changeTimer.current) {
+			if (value && animationDuration > 0 && !changeTimer.current) {
 				setPulsing(true);
 				changeTimer.current = setTimeout(
 					() => {
 						setPulsing(false);
 						changeTimer.current = null;
 					},
-					changeAnimationRepeats > 0 ? changeAnimationRepeats * animationDurationInMs : animationDurationInMs
+					changeAnimationRepetitions > 0 ? changeAnimationRepetitions * animationDuration : animationDuration
 				);
 			}
 			setLastValue(value);
 		}
-	}, [animationDurationInMs, changeAnimationRepeats, lastValue, value]);
+	}, [animationDuration, changeAnimationRepetitions, lastValue, value]);
 
 	if (!showState) {
 		return <></>;
@@ -132,7 +138,8 @@ function SolaceBadge({
 		<SolaceTooltip title={title}>
 			<Badge
 				size={size}
-				sx={pulsing && animationDurationInMs ? { animation: `${pulse} ${animationDurationInMs}ms ease infinite;` } : {}}
+				fontSize={fontSize}
+				sx={pulsing && animationDuration ? { animation: `${pulse} ${animationDuration}ms ease infinite;` } : {}}
 			>
 				<Value sx={{ opacity: showing ? 0 : 1 }}>{value}</Value>
 			</Badge>

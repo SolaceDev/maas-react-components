@@ -32,16 +32,17 @@ export const NoAnimationBadge = Template.bind({});
 NoAnimationBadge.args = {
 	value: "1",
 	show: false,
-	animationDurationInMs: 0
+	animationDuration: 0
 };
 
 export const CustomBadge = Template.bind({});
 CustomBadge.args = {
-	value: "1",
+	value: "99+",
+	fontSize: 11,
 	show: false,
-	animationDurationInMs: 1500,
-	showAnimationRepeats: 1,
-	changeAnimationRepeats: 2
+	animationDuration: 1500,
+	showAnimationRepetitions: 1,
+	changeAnimationRepetitions: 2
 };
 
 export const BadgeWithTooltip = Template.bind({});
