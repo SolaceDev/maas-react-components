@@ -58,6 +58,17 @@ export default {
 					summary: "text"
 				}
 			}
+		},
+		color: {
+			control: {
+				type: "text"
+			},
+			description: "specify the message text color",
+			table: {
+				defaultValue: {
+					summary: "text"
+				}
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceMessageBox>;
@@ -73,7 +84,8 @@ InfoBox.args = {
 export const ErrorBox = Template.bind({});
 ErrorBox.args = {
 	message: "this is an error message",
-	variant: "error"
+	variant: "error",
+	color: "#D0021B"
 };
 
 export const WithCloseButton = Template.bind({});

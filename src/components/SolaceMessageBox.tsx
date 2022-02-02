@@ -6,7 +6,12 @@ import { InfoIcon } from "../resources/icons/InfoIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 
 const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.container);
-const InfoBoxMessage = styled("div")(({ theme }) => theme.mixins.component_MessageBox.message);
+const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
+	({ theme, color }) => ({
+		...theme.mixins.component_MessageBox.message,
+		color: color
+	})
+);
 
 interface SolaceInfoBoxProps {
 	/**
@@ -29,6 +34,10 @@ interface SolaceInfoBoxProps {
 	 * Variants, currently supports error and info, default to info, can be expanded as needed
 	 */
 	variant: "info" | "error";
+	/**
+	 * message text color
+	 */
+	color?: string;
 }
 
 function renderIcons(variant: "info" | "error"): JSX.Element {
@@ -42,7 +51,8 @@ function SolaceMessageBox({
 	showIcon = true,
 	showCloseButton = false,
 	onClose,
-	variant = "info"
+	variant = "info",
+	color
 }: SolaceInfoBoxProps): JSX.Element | null {
 	const [open, setOpen] = React.useState(true);
 
@@ -53,7 +63,7 @@ function SolaceMessageBox({
 
 	return open ? (
 		<InfoBoxContainer className={variant}>
-			<InfoBoxMessage>
+			<InfoBoxMessage color={color}>
 				{showIcon && renderIcons(variant)}
 				{message}
 			</InfoBoxMessage>
