@@ -27,3 +27,27 @@ DefaultBadge.args = {
 	show: false,
 	size: 21
 };
+
+export const NoAnimationBadge = Template.bind({});
+NoAnimationBadge.args = {
+	value: "1",
+	show: false,
+	animationDuration: 0
+};
+
+export const CustomBadge = Template.bind({});
+CustomBadge.args = {
+	value: "99+",
+	fontSize: 11,
+	show: false,
+	animationDuration: 1500,
+	animationRepeatsInitialCount: 1,
+	animationRepeatsUpdateCount: 2
+};
+
+export const BadgeWithTooltip = Template.bind({});
+BadgeWithTooltip.args = {
+	value: "3",
+	show: true,
+	title: "3 new events"
+};
