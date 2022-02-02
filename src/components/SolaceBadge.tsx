@@ -32,11 +32,11 @@ export interface SolaceBadgeProps {
 	/**
 	 * The number of animation repeats when making the text visible
 	 */
-	showAnimationRepetitions?: number;
+	animationRepeatsInitialCount?: number;
 	/**
 	 * The number of animation repeats when the text is updated
 	 */
-	changeAnimationRepetitions?: number;
+	animationRepeatsUpdateCount?: number;
 }
 
 const Badge = styled("div")(({ size, fontSize }: { theme?: Theme; size: number; fontSize: number }) => ({
@@ -80,8 +80,8 @@ function SolaceBadge({
 	fontSize = 14,
 	title,
 	animationDuration = 1000,
-	showAnimationRepetitions = 1,
-	changeAnimationRepetitions = 3
+	animationRepeatsInitialCount = 1,
+	animationRepeatsUpdateCount = 3
 }: SolaceBadgeProps): JSX.Element {
 	const [lastValue, setLastValue] = useState(value);
 	const [showState, setShowState] = useState(show);
@@ -104,7 +104,7 @@ function SolaceBadge({
 							setPulsing(false);
 							showTimer.current = null;
 						},
-						showAnimationRepetitions > 0 ? showAnimationRepetitions * animationDuration : animationDuration
+						animationRepeatsInitialCount > 0 ? animationRepeatsInitialCount * animationDuration : animationDuration
 					);
 				} else {
 					setShowing(false);
@@ -112,7 +112,7 @@ function SolaceBadge({
 			}
 			setShowState(show);
 		}
-	}, [animationDuration, show, showAnimationRepetitions, showState]);
+	}, [animationDuration, show, animationRepeatsInitialCount, showState]);
 
 	useEffect(() => {
 		if (value !== lastValue) {
@@ -124,12 +124,12 @@ function SolaceBadge({
 						setPulsing(false);
 						changeTimer.current = null;
 					},
-					changeAnimationRepetitions > 0 ? changeAnimationRepetitions * animationDuration : animationDuration
+					animationRepeatsUpdateCount > 0 ? animationRepeatsUpdateCount * animationDuration : animationDuration
 				);
 			}
 			setLastValue(value);
 		}
-	}, [animationDuration, changeAnimationRepetitions, lastValue, value]);
+	}, [animationDuration, animationRepeatsUpdateCount, lastValue, value]);
 
 	if (!showState) {
 		return <></>;

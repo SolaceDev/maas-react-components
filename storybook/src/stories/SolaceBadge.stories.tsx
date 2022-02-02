@@ -41,8 +41,8 @@ CustomBadge.args = {
 	fontSize: 11,
 	show: false,
 	animationDuration: 1500,
-	showAnimationRepetitions: 1,
-	changeAnimationRepetitions: 2
+	animationRepeatsInitialCount: 1,
+	animationRepeatsUpdateCount: 2
 };
 
 export const BadgeWithTooltip = Template.bind({});
