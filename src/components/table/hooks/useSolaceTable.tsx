@@ -237,7 +237,7 @@ export const useSolaceTable = ({
 					!!rowActionMenuItems && !hasColumnHiding && addEmptyHeaderCell(),
 					hasColumnHiding &&
 						addColumnHidingControl(
-							columns,
+							displayedColumns,
 							openColumnHidingControl,
 							isColumnHidingControlOpen,
 							setIsColumnHidingControlOpen,
@@ -259,7 +259,6 @@ export const useSolaceTable = ({
 		isColumnHidingControlOpen,
 		setIsColumnHidingControlOpen,
 		openColumnHidingControl,
-		columns,
 		displayedColumnsChangedCallback
 	]);
 

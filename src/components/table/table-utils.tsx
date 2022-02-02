@@ -72,13 +72,6 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 		background: `${BASE_COLORS.greys.grey24}`,
 		"&.header": {
 			background: "transparent"
-		},
-		// hover effect for expanded sibling row
-		"+ tr.expanded": {
-			background: `${BASE_COLORS.greys.grey24}`
-		},
-		"&.selected + tr.expanded": {
-			background: `${BASE_COLORS.greys.grey24}`
 		}
 	},
 
