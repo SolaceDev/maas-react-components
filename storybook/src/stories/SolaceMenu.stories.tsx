@@ -5,21 +5,11 @@ import {
 	SolaceMenuItemProps,
 	SolaceButton,
 	SolaceCheckBox,
-	DeleteIcon
+	DeleteIcon,
+	SolaceRadio
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MoreHorizOutlinedIcon } from "../../../src/resources/icons/MoreHorizOutlinedIcon";
-import {
-	MenuList,
-	MenuItem,
-	ListItemIcon,
-	ListItemText,
-	Divider,
-	Typography,
-	ListItem,
-	List,
-	ListItemButton
-} from "@material-ui/core";
 
 export default {
 	title: "Under Construction/SolaceMenu",
@@ -268,35 +258,19 @@ export const EmptyMenuItems = (): JSX.Element => {
 	);
 };
 
-export const CustomMenuItems = (): JSX.Element => {
-	function renderCustomMenuItems(id: string) {
-		return (
-			<MenuList id={id}>
-				<MenuItem>
-					<ListItemText>Cut</ListItemText>
-					<Typography variant="body2" color="text.secondary">
-						⌘X
-					</Typography>
-				</MenuItem>
-				<MenuItem>
-					<ListItemText>Copy</ListItemText>
-					<Typography variant="body2" color="text.secondary">
-						⌘C
-					</Typography>
-				</MenuItem>
-				<MenuItem>
-					<ListItemText>Paste</ListItemText>
-					<Typography variant="body2" color="text.secondary">
-						⌘V
-					</Typography>
-				</MenuItem>
-				<Divider />
-				<MenuItem>
-					<ListItemText>Web Clipboard</ListItemText>
-				</MenuItem>
-			</MenuList>
-		);
-	}
+export const CustomMenuItemsWithRadioButton = (): JSX.Element => {
+	const [selected, setSelected] = React.useState(null);
+	const handleChange = (e) => {
+		setSelected(e.name);
+	};
+	const itemsArray = [
+		{ label: "Option 1", name: "option1" },
+		{ label: "Option 2", name: "option2" },
+		{ label: "Option 3", name: "option3" }
+	];
+	const customItems = itemsArray.map((item) => ({
+		name: <SolaceRadio label={item.label} name={item.name} checked={selected === item.name} onChange={handleChange} />
+	}));
 
 	return (
 		<SolaceMenu
@@ -305,7 +279,7 @@ export const CustomMenuItems = (): JSX.Element => {
 				variant: "icon",
 				children: <MoreHorizOutlinedIcon />
 			}}
-			renderCustomMenuItems={renderCustomMenuItems}
+			items={customItems}
 		></SolaceMenu>
 	);
 };
@@ -313,45 +287,22 @@ export const CustomMenuItems = (): JSX.Element => {
 export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 	const [checked, setChecked] = React.useState([]);
 
-	const handleToggle = (value: number) => () => {
-		const currentIndex = checked.indexOf(value);
+	const handleToggle = (item) => {
+		const currentIndex = checked.indexOf(item.name);
 		const newChecked = [...checked];
 
 		if (currentIndex === -1) {
-			newChecked.push(value);
+			newChecked.push(item.name);
 		} else {
 			newChecked.splice(currentIndex, 1);
 		}
 
 		setChecked(newChecked);
 	};
-	function renderCustomMenuItems(id: string) {
-		return (
-			<List sx={{ width: "100%", bgcolor: "background.paper" }}>
-				{[0, 1, 2, 3].map((value) => {
-					const labelId = `checkbox-list-label-${value}-${id}`;
 
-					return (
-						<ListItem
-							key={value}
-							secondaryAction={
-								<SolaceButton variant="icon">
-									<DeleteIcon />
-								</SolaceButton>
-							}
-						>
-							<ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-								<ListItemIcon>
-									<SolaceCheckBox name={labelId} checked={checked.indexOf(value) !== -1} />
-								</ListItemIcon>
-								<ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-							</ListItemButton>
-						</ListItem>
-					);
-				})}
-			</List>
-		);
-	}
+	const customItems = ["Option 1", "Option 2", "Option 3"].map((value) => ({
+		name: <SolaceCheckBox name={value} label={value} checked={checked.indexOf(value) !== -1} onChange={handleToggle} />
+	}));
 
 	return (
 		<SolaceMenu
@@ -360,7 +311,8 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 				variant: "icon",
 				children: <MoreHorizOutlinedIcon />
 			}}
-			renderCustomMenuItems={renderCustomMenuItems}
+			items={customItems}
+			closeOnSelect={false}
 		></SolaceMenu>
 	);
 };
