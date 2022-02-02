@@ -1,13 +1,37 @@
 import { keyframes } from "@emotion/react";
 import { styled, Theme } from "@material-ui/core";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { SolaceTooltip } from "..";
 
 export interface SolaceBadgeProps {
+	/**
+	 * Text inside the badge
+	 */
 	value: string | number;
+	/**
+	 * Whether to show text inside the badge
+	 */
 	show?: boolean;
+	/**
+	 * Size of the badge
+	 */
 	size?: number;
-	showAnimationLengthInMs?: number;
-	changeAnimationLengthInMs?: number;
+	/**
+	 * Tooltip
+	 */
+	title?: string;
+	/**
+	 * Badge animation duration. If set to 0, then no animation.
+	 */
+	animationDurationInMs?: number;
+	/**
+	 * The number of animation repeats when making the text visible
+	 */
+	showAnimationRepeats?: number;
+	/**
+	 * The number of animation repeats when the text is updated
+	 */
+	changeAnimationRepeats?: number;
 }
 
 const Badge = styled("div")(({ size }: { theme?: Theme; size: number }) => ({
@@ -23,7 +47,8 @@ const Badge = styled("div")(({ size }: { theme?: Theme; size: number }) => ({
 }));
 
 const Value = styled("span")({
-	transition: "opacity 300ms"
+	transition: "opacity 300ms",
+	cursor: "default"
 });
 
 const pulse = keyframes`
@@ -47,42 +72,71 @@ function SolaceBadge({
 	value,
 	show = true,
 	size = 21,
-	showAnimationLengthInMs = 1500,
-	changeAnimationLengthInMs = 4500
+	title,
+	animationDurationInMs = 1000,
+	showAnimationRepeats = 1,
+	changeAnimationRepeats = 3
 }: SolaceBadgeProps): JSX.Element {
 	const [lastValue, setLastValue] = useState(value);
 	const [showState, setShowState] = useState(show);
 	const [showing, setShowing] = useState(false);
 	const [pulsing, setPulsing] = useState(false);
 
-	if (show !== showState) {
-		if (show) {
-			setShowing(true);
-			setPulsing(true);
-			setTimeout(() => {
-				setShowing(false);
-				setPulsing(false);
-			}, showAnimationLengthInMs);
-		}
-		setShowState(show);
-	}
+	const showTimer = useRef<NodeJS.Timeout | null>(null);
+	const changeTimer = useRef<NodeJS.Timeout | null>(null);
 
-	if (value !== lastValue) {
-		if (value) {
-			setPulsing(true);
-			setTimeout(() => {
-				setPulsing(false);
-			}, changeAnimationLengthInMs);
+	useEffect(() => {
+		if (show !== showState) {
+			if (show) {
+				// if the timer started, then no need to start another timer
+				if (animationDurationInMs > 0 && !showTimer.current) {
+					setShowing(true);
+					setPulsing(true);
+					showTimer.current = setTimeout(
+						() => {
+							setShowing(false);
+							setPulsing(false);
+							showTimer.current = null;
+						},
+						showAnimationRepeats > 0 ? showAnimationRepeats * animationDurationInMs : animationDurationInMs
+					);
+				} else {
+					setShowing(false);
+				}
+			}
+			setShowState(show);
 		}
-		setLastValue(value);
-	}
-	if (!show) {
+	}, [animationDurationInMs, show, showAnimationRepeats, showState]);
+
+	useEffect(() => {
+		if (value !== lastValue) {
+			// if the timer started, then no need to start another timer
+			if (value && animationDurationInMs > 0 && !changeTimer.current) {
+				setPulsing(true);
+				changeTimer.current = setTimeout(
+					() => {
+						setPulsing(false);
+						changeTimer.current = null;
+					},
+					changeAnimationRepeats > 0 ? changeAnimationRepeats * animationDurationInMs : animationDurationInMs
+				);
+			}
+			setLastValue(value);
+		}
+	}, [animationDurationInMs, changeAnimationRepeats, lastValue, value]);
+
+	if (!showState) {
 		return <></>;
 	}
 	return (
-		<Badge size={size} sx={pulsing ? { animation: `${pulse} 1500ms ease infinite;` } : {}}>
-			<Value sx={{ opacity: showing ? 0 : 1 }}>{value}</Value>
-		</Badge>
+		<SolaceTooltip title={title}>
+			<Badge
+				size={size}
+				sx={pulsing && animationDurationInMs ? { animation: `${pulse} ${animationDurationInMs}ms ease infinite;` } : {}}
+			>
+				<Value sx={{ opacity: showing ? 0 : 1 }}>{value}</Value>
+			</Badge>
+		</SolaceTooltip>
 	);
 }
 
