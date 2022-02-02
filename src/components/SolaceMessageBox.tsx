@@ -4,6 +4,7 @@ import SolaceButton from "./form/SolaceButton";
 import { ErrorIcon } from "../resources/icons/ErrorIcon";
 import { InfoIcon } from "../resources/icons/InfoIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
+import { BASE_COLORS } from "../resources/colorPallette";
 
 const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.container);
 const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
@@ -41,9 +42,9 @@ interface SolaceInfoBoxProps {
 }
 
 function renderIcons(variant: "info" | "error"): JSX.Element {
-	if (variant === "info") return <InfoIcon size={20} fill="" />;
-	else if (variant === "error") return <ErrorIcon size={20} fill="" />;
-	return <InfoIcon size={20} fill="" />;
+	if (variant === "info") return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
+	else if (variant === "error") return <ErrorIcon size={20} fill={BASE_COLORS.reds.red1} />;
+	return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
 }
 
 function SolaceMessageBox({

@@ -971,7 +971,6 @@ const themeConfig: ThemeOptions = {
 					backgroundColor: BASE_COLORS.blues.blue1,
 					borderLeft: `3px solid ${BASE_COLORS.blues.blue2}`,
 					svg: {
-						fill: BASE_COLORS.blues.blue2,
 						width: "20px",
 						height: "20px"
 					}
@@ -980,7 +979,6 @@ const themeConfig: ThemeOptions = {
 					backgroundColor: BASE_COLORS.reds.red2,
 					borderLeft: `3px solid ${BASE_COLORS.reds.red1}`,
 					svg: {
-						fill: BASE_COLORS.reds.red1,
 						width: "20px",
 						height: "20px"
 					}
