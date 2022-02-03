@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceMessageBox } from "@SolaceDev/maas-react-components";
+import { SolaceMessageBox, SolaceButton } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceMessageBox",
@@ -58,6 +58,17 @@ export default {
 					summary: "text"
 				}
 			}
+		},
+		color: {
+			control: {
+				type: "text"
+			},
+			description: "specify the message text color",
+			table: {
+				defaultValue: {
+					summary: "text"
+				}
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceMessageBox>;
@@ -73,7 +84,21 @@ InfoBox.args = {
 export const ErrorBox = Template.bind({});
 ErrorBox.args = {
 	message: "this is an error message",
-	variant: "error"
+	variant: "error",
+	color: "#D0021B"
+};
+
+export const MessageWithIcon = Template.bind({});
+MessageWithIcon.args = {
+	message: (
+		<div>
+			<span>Learn more in </span>
+			<SolaceButton variant="link" href="https://#">
+				documentations
+			</SolaceButton>
+		</div>
+	),
+	variant: "info"
 };
 
 export const WithCloseButton = Template.bind({});
