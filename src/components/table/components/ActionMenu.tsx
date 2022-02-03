@@ -52,18 +52,15 @@ const ActionMenu = ({ actionMenuItems, row, setRowWithOpenActionMenu }: ActionMe
 
 	return (
 		<ActionMenuContainer onClick={(e) => e.stopPropagation()} ref={actionMenuRef}>
-			{actionMenuItems.map(
-				(item: TableActionMenuItem) =>
-					!item.hidden && (
-						<StyledActionItem
-							key={item.name}
-							className={item.disabled ? "disabled-item" : ""}
-							onClick={() => handleActionMenuClick(item)}
-						>
-							{item.name}
-						</StyledActionItem>
-					)
-			)}
+			{actionMenuItems.map((item: TableActionMenuItem, index) => (
+				<StyledActionItem
+					key={index}
+					className={item.disabled ? "disabled-item" : ""}
+					onClick={() => handleActionMenuClick(item)}
+				>
+					{item.name}
+				</StyledActionItem>
+			))}
 		</ActionMenuContainer>
 	);
 };

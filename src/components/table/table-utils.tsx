@@ -1,8 +1,8 @@
 import SolaceButton from "./../form/SolaceButton";
+import SolaceMenu, { SolaceMenuItemProps } from "../SolaceMenu";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { styled } from "@material-ui/core";
 import { BASE_COLORS } from "./../../resources/colorPallette";
-import ActionMenu from "./components/ActionMenu";
 import ColumnHidingControlMenu from "./components/ColumnHidingControlMenu";
 import TuneIcon from "@material-ui/icons/Tune";
 
@@ -24,13 +24,8 @@ export interface TableRow {
 	[key: string]: any;
 }
 
-export interface TableActionMenuItem {
-	name: string;
+export interface TableActionMenuItem extends SolaceMenuItemProps {
 	callback: (row: TableRow) => void;
-	disabled?: boolean;
-	hidden?: boolean;
-	dataQa?: string;
-	id?: string;
 }
 
 export enum SELECTION_TYPE {
@@ -189,22 +184,28 @@ export const addEmptyRowCell = (): React.ReactNode => {
 	return <StyledTableData key={"emptyRowCell"}></StyledTableData>;
 };
 
-export const addActionMenuIcon = (
-	row: TableRow,
-	isActionMenuOpen: boolean,
-	openRowActionMenu: (e: React.MouseEvent<HTMLElement>, row: TableRow) => void,
-	actionMenuItems: TableActionMenuItem[],
-	setRowWithOpenActionMenu: (value: React.SetStateAction<string | null | undefined>) => void
-): React.ReactNode => {
+export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMenuItem[]): React.ReactNode => {
+	const menuItems = actionMenuItems
+		? actionMenuItems.map((item) => ({
+				...item,
+				onMenuItemClick: () => {
+					item.callback(row);
+				}
+		  }))
+		: [];
 	return (
-		<StyledRelativeTableData key={`${row.id}_ActionMenu`} style={{ paddingTop: "4px", paddingBottom: "4px" }}>
-			<SolaceButton variant={"icon"} onClick={(e) => openRowActionMenu(e, row)}>
-				<MoreHorizIcon />
-			</SolaceButton>
-			{isActionMenuOpen && (
-				<ActionMenu actionMenuItems={actionMenuItems} row={row} setRowWithOpenActionMenu={setRowWithOpenActionMenu} />
-			)}
-		</StyledRelativeTableData>
+		<SolaceMenu
+			buttonProps={{ variant: "icon", children: <MoreHorizIcon /> }}
+			items={menuItems}
+			anchorOrigin={{
+				vertical: "center",
+				horizontal: "left"
+			}}
+			transformOrigin={{
+				vertical: "top",
+				horizontal: "right"
+			}}
+		/>
 	);
 };
 

@@ -74,7 +74,6 @@ export const useSolaceTable = ({
 	);
 	const [displayedColumns, setDisplayedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
-	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string | null>();
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
 
 	useEffect(() => {
@@ -158,11 +157,6 @@ export const useSolaceTable = ({
 		);
 	}
 
-	function openRowActionMenu(e: React.MouseEvent<HTMLElement>, row: TableRow) {
-		e.stopPropagation();
-		setRowWithOpenActionMenu(row.id);
-	}
-
 	const openColumnHidingControl = useCallback(
 		(e: React.MouseEvent<HTMLElement>): void => {
 			e.stopPropagation();
@@ -173,14 +167,7 @@ export const useSolaceTable = ({
 
 	const renderRowActionItems = (row: TableRow): React.ReactNode[] => {
 		return [
-			!!rowActionMenuItems &&
-				addActionMenuIcon(
-					row,
-					rowWithOpenActionMenu === row.id,
-					openRowActionMenu,
-					rowActionMenuItems,
-					setRowWithOpenActionMenu
-				),
+			!!rowActionMenuItems && addActionMenuIcon(row, rowActionMenuItems),
 			!rowActionMenuItems && hasColumnHiding && addEmptyRowCell()
 		];
 	};
