@@ -1,7 +1,7 @@
 import { keyframes } from "@emotion/react";
 import { styled, Theme } from "@material-ui/core";
 import { useEffect, useRef, useState } from "react";
-import { SolaceTooltip } from "..";
+import SolaceTooltip from "./SolaceToolTip";
 import { BASE_COLORS } from "../resources/colorPallette";
 
 export interface SolaceBadgeProps {
