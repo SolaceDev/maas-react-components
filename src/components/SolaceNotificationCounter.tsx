@@ -1,8 +1,7 @@
 import { keyframes } from "@emotion/react";
-import { styled, Theme } from "@material-ui/core";
+import { styled } from "@material-ui/core";
 import { useEffect, useRef, useState } from "react";
 import SolaceTooltip from "./SolaceToolTip";
-import { BASE_COLORS } from "../resources/colorPallette";
 import SolaceComponentProps from "./SolaceComponentProps";
 
 export interface SolaceNotificationCounterProps extends SolaceComponentProps {
@@ -40,22 +39,26 @@ export interface SolaceNotificationCounterProps extends SolaceComponentProps {
 	animationRepeatsUpdateCount?: number;
 }
 
-const Badge = styled("div")(({ size, fontSize }: { theme?: Theme; size: number; fontSize: number }) => ({
+const Badge = styled("div", { shouldForwardProp: (prop) => prop !== "size" && prop !== "fontSize" })<{
+	size: number;
+	fontSize: number;
+}>(({ theme, size, fontSize }) => ({
+	...theme.mixins.component_NotificationCounter.container,
 	width: `${size}px`,
 	height: `${size}px`,
 	fontSize: `${fontSize ? fontSize : (size / 3) * 2}px`,
-	borderRadius: "50%",
-	background: BASE_COLORS.blues.blue2,
-	color: BASE_COLORS.whites.white1,
-	textAlign: "center",
-	lineHeight: `${size + 1}px`,
-	verticalAlign: "middle"
+	lineHeight: `${size + 1}px`
 }));
 
-const Value = styled("span")({
-	transition: "opacity 300ms",
-	cursor: "default"
-});
+// const Badge = styled("div")(({ theme, size, fontSize }: { theme: Theme; size: number; fontSize: number }) => ({
+// 	...theme.mixins.component_NotificationCounter.container,
+// 	width: `${size}px`,
+// 	height: `${size}px`,
+// 	fontSize: `${fontSize ? fontSize : (size / 3) * 2}px`,
+// 	lineHeight: `${size + 1}px`
+// }));
+
+const Value = styled("span")(({ theme }) => theme.mixins.component_NotificationCounter.value);
 
 const pulse = keyframes`
 	0% {

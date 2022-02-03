@@ -994,6 +994,7 @@ const themeConfig: ThemeOptions = {
 				padding: "8px 0px 8px 8px"
 			}
 		},
+		/** SolaceGridList */
 		layoutComponent_GridList: {
 			row: {
 				display: "grid",
@@ -1028,6 +1029,20 @@ const themeConfig: ThemeOptions = {
 				borderTop: "unset",
 				overflow: "auto",
 				height: "100%"
+			}
+		},
+		/** SolaceNotification Count */
+		component_NotificationCounter: {
+			container: {
+				borderRadius: "50%",
+				textAlign: "center",
+				verticalAlign: "middle",
+				background: BASE_COLORS.blues.blue2,
+				color: BASE_COLORS.whites.white1
+			},
+			value: {
+				transition: "opacity 300ms",
+				cursor: "default"
 			}
 		}
 	},
@@ -1102,6 +1117,10 @@ declare module "@material-ui/core/styles/createMixins" {
 		component_MessageBox: {
 			container: CSSProperties;
 			message: CSSProperties;
+		};
+		component_NotificationCounter: {
+			container: CSSProperties;
+			value: CSSProperties;
 		};
 	}
 }
