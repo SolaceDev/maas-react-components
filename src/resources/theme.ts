@@ -778,7 +778,10 @@ const themeConfig: ThemeOptions = {
 					}
 				},
 				filled: {
-					backgroundColor: BASE_COLORS.greys.grey2
+					backgroundColor: BASE_COLORS.greys.grey2,
+					"&:hover": {
+						backgroundColor: BASE_COLORS.greys.grey3
+					}
 				}
 			}
 		},

@@ -31,3 +31,9 @@ OutlinedChip.args = {
 	label: "Outlined Chip",
 	variant: "outlined"
 };
+
+export const EllipsisContentChip = Template.bind({});
+EllipsisContentChip.args = {
+	label: "Chip With Long Content",
+	maxWidth: "100"
+};
