@@ -194,18 +194,20 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 		  }))
 		: [];
 	return (
-		<SolaceMenu
-			buttonProps={{ variant: "icon", children: <MoreHorizIcon /> }}
-			items={menuItems}
-			anchorOrigin={{
-				vertical: "center",
-				horizontal: "left"
-			}}
-			transformOrigin={{
-				vertical: "top",
-				horizontal: "right"
-			}}
-		/>
+		<StyledTableData>
+			<SolaceMenu
+				buttonProps={{ variant: "icon", children: <MoreHorizIcon /> }}
+				items={menuItems}
+				anchorOrigin={{
+					vertical: "center",
+					horizontal: "left"
+				}}
+				transformOrigin={{
+					vertical: "top",
+					horizontal: "right"
+				}}
+			/>
+		</StyledTableData>
 	);
 };
 
