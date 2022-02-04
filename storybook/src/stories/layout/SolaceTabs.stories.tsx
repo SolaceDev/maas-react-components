@@ -74,7 +74,7 @@ export const WithIconTabs = (): ReactNode => {
 	const renderStyledTab2 = () => (
 		<div style={{ display: "flex", gap: "4px" }}>
 			<div>Published</div>
-			<SolaceNotificationCounter value={2} size={18} />
+			<SolaceNotificationCounter value={2} size={18} animationDuration={0} />
 		</div>
 	);
 

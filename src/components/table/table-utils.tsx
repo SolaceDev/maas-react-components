@@ -121,35 +121,38 @@ export const StyledExpandedTableData = styled("td")({
 	borderRadius: 0
 });
 
-export const StyledTableHeader = styled("th")(({ theme }) => ({
-	borderCollapse: "collapse",
-	padding: `0 ${theme.spacing()}`,
-	fontSize: theme.typography.subtitle1.fontSize,
-	fontWeight: 500,
-	minWidth: "30px",
-	height: "48px",
-	textAlign: "left",
-	"& .sortable": {
-		position: "relative",
-		cursor: "pointer",
-		marginTop: theme.spacing(0.5)
-	},
-	"&.checkbox-column": {
-		width: "40px",
-		textAlign: "center",
-		position: "relative"
-	},
-	"&.icon-column": {
-		width: "50px",
-		textAlign: "center",
-		position: "relative"
-	},
-	"&.expand-column": {
-		width: "36px",
-		paddingLeft: 0,
-		paddingRight: 0
-	}
-}));
+export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => prop !== "width" })<{ width?: string }>(
+	({ theme, width }) => ({
+		borderCollapse: "collapse",
+		padding: `0 ${theme.spacing()}`,
+		fontSize: theme.typography.subtitle1.fontSize,
+		fontWeight: 500,
+		minWidth: "30px",
+		height: "48px",
+		textAlign: "left",
+		width: width,
+		"& .sortable": {
+			position: "relative",
+			cursor: "pointer",
+			marginTop: theme.spacing(0.5)
+		},
+		"&.checkbox-column": {
+			width: "40px",
+			textAlign: "center",
+			position: "relative"
+		},
+		"&.icon-column": {
+			width: "50px",
+			textAlign: "center",
+			position: "relative"
+		},
+		"&.expand-column": {
+			width: "36px",
+			paddingLeft: 0,
+			paddingRight: 0
+		}
+	})
+);
 
 export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	position: "absolute",

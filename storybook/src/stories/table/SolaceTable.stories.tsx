@@ -311,6 +311,32 @@ export const SingleSelectionTable = (): JSX.Element => {
 	);
 };
 
+export const CustomColumnWidthTable = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const customColumns = cloneDeep(columns);
+	customColumns[0].width = 140;
+	customColumns[1].width = 140;
+	customColumns[3].width = 130;
+	const [tableRows, setRows] = useState([...sortData(columns[0], data)]);
+
+	const handleSort = useCallback((selectedColumn) => {
+		action("columnSort");
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={customColumns}
+				selectionType={SELECTION_TYPE.SINGLE}
+			></SolaceTable>
+		</div>
+	);
+};
+
 const renderExpandedRowContentHelper = (row, allowToggle, selectionType) => {
 	// different padding left depending on whether there is expand/collapse column or checkbox
 	let paddingLeft = "55px";
@@ -664,6 +690,43 @@ export const CustomSchemaRowWithActionsTable = (): JSX.Element => {
 	);
 };
 
+export const CustomSchemaRowWithActionsCustomColumnWidthTable = (): JSX.Element => {
+	const data = cloneDeep(schemaRows);
+	const customColumns = cloneDeep(schemaColumns);
+	customColumns[1].width = 120;
+	customColumns[2].width = 120;
+	const [tableRows, setRows] = useState([...sortData(customColumns[0], data)]);
+	const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	const displayedColumnsChanged = useCallback((columns) => {
+		handleShowHideColumns(columns, setColumnsHiddenInfo);
+	}, []);
+
+	const renderSchemaRowCells = useCallback(
+		(row: TableRow): JSX.Element[] => createSchemaCells(row, columnsHiddenInfo),
+		[columnsHiddenInfo]
+	);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={customColumns}
+				selectionType={SELECTION_TYPE.SINGLE}
+				rowActionMenuItems={rowActionMenuItems}
+				renderCustomRowCells={renderSchemaRowCells}
+				hasColumnHiding={true}
+				displayedColumnsChangedCallback={displayedColumnsChanged}
+			></SolaceTable>
+		</div>
+	);
+};
+
 export const ExpandableCustomSchemaRowWithActionsTable = (): JSX.Element => {
 	const data = cloneDeep(schemaRows);
 	const [tableRows, setRows] = useState([...sortData(schemaColumns[0], data)]);
@@ -696,6 +759,57 @@ export const ExpandableCustomSchemaRowWithActionsTable = (): JSX.Element => {
 				sortCallback={handleSort}
 				rows={tableRows}
 				columns={[...schemaColumns]}
+				selectionType={selectionType}
+				rowActionMenuItems={rowActionMenuItems}
+				renderCustomRowCells={renderSchemaRowCells}
+				hasColumnHiding={true}
+				displayedColumnsChangedCallback={displayedColumnsChanged}
+				expandableRowOptions={{
+					allowToggle: true,
+					renderChildren: renderExpandedRowContent,
+					expandedRowIds: expandedRowIds,
+					setExpandedRowIds: setExpandedRowIds
+				}}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const ExpandableCustomSchemaRowWithActionsCustomWidthTable = (): JSX.Element => {
+	const data = cloneDeep(schemaRows);
+	const customColumns = cloneDeep(schemaColumns);
+	customColumns[1].width = 120;
+	customColumns[2].width = 120;
+	const [tableRows, setRows] = useState([...sortData(customColumns[0], data)]);
+	const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	const selectionType = SELECTION_TYPE.SINGLE;
+
+	const displayedColumnsChanged = useCallback((columns) => {
+		handleShowHideColumns(columns, setColumnsHiddenInfo);
+	}, []);
+
+	const renderSchemaRowCells = useCallback(
+		(row: TableRow): JSX.Element[] => createSchemaCells(row, columnsHiddenInfo),
+		[columnsHiddenInfo]
+	);
+
+	const renderExpandedRowContent = useCallback(
+		(row) => renderExpandedSchemaRowContentHelper(row, true, selectionType),
+		[]
+	);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={customColumns}
 				selectionType={selectionType}
 				rowActionMenuItems={rowActionMenuItems}
 				renderCustomRowCells={renderSchemaRowCells}

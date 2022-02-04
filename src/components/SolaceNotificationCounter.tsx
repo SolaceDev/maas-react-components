@@ -50,14 +50,6 @@ const Badge = styled("div", { shouldForwardProp: (prop) => prop !== "size" && pr
 	lineHeight: `${size + 1}px`
 }));
 
-// const Badge = styled("div")(({ theme, size, fontSize }: { theme: Theme; size: number; fontSize: number }) => ({
-// 	...theme.mixins.component_NotificationCounter.container,
-// 	width: `${size}px`,
-// 	height: `${size}px`,
-// 	fontSize: `${fontSize ? fontSize : (size / 3) * 2}px`,
-// 	lineHeight: `${size + 1}px`
-// }));
-
 const Value = styled("span")(({ theme }) => theme.mixins.component_NotificationCounter.value);
 
 const pulse = keyframes`
