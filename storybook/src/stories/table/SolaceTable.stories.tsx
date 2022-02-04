@@ -311,6 +311,32 @@ export const SingleSelectionTable = (): JSX.Element => {
 	);
 };
 
+export const CustomColumnWidthTable = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const customColumns = cloneDeep(columns);
+	customColumns[0].width = 140;
+	customColumns[1].width = 140;
+	customColumns[3].width = 120;
+	const [tableRows, setRows] = useState([...sortData(columns[0], data)]);
+
+	const handleSort = useCallback((selectedColumn) => {
+		action("columnSort");
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={customColumns}
+				selectionType={SELECTION_TYPE.SINGLE}
+			></SolaceTable>
+		</div>
+	);
+};
+
 const renderExpandedRowContentHelper = (row, allowToggle, selectionType) => {
 	// different padding left depending on whether there is expand/collapse column or checkbox
 	let paddingLeft = "55px";

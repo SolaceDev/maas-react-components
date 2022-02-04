@@ -216,6 +216,7 @@ export const useSolaceTable = ({
 								<StyledTableHeader
 									key={col.headerName}
 									className={`${col.hasNoCell ? "icon-column" : ""} ${col.class ? col.class : ""}`}
+									width={col.width ? col.width + "px" : "auto"}
 								>
 									<span
 										className={`${col.sortable ? "sortable" : ""}`}
