@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceTabs, SolaceBadge, SolaceButton } from "@SolaceDev/maas-react-components";
+import { SolaceTabs, SolaceNotificationCounter, SolaceButton } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Layout/SolaceTabs",
@@ -64,10 +64,17 @@ export const WithIconTabs = (): ReactNode => {
 		setCount(count + 1);
 	};
 
-	const renderStyledTab = () => (
+	const renderStyledTab1 = () => (
 		<div style={{ display: "flex", gap: "4px" }}>
 			<div>Subscribed</div>
-			<SolaceBadge value={count} show={count !== 0} size={18} />
+			<SolaceNotificationCounter value={count} show={count !== 0} size={18} />
+		</div>
+	);
+
+	const renderStyledTab2 = () => (
+		<div style={{ display: "flex", gap: "4px" }}>
+			<div>Published</div>
+			<SolaceNotificationCounter value={2} size={18} />
 		</div>
 	);
 
@@ -76,8 +83,8 @@ export const WithIconTabs = (): ReactNode => {
 			<SolaceTabs
 				activeTabValue={activeTabValue}
 				tabs={[
-					{ label: renderStyledTab(), value: "tab_one", onTabClick: handleTabClick },
-					{ label: "Tab Two", value: "tab_two", onTabClick: handleTabClick },
+					{ label: renderStyledTab1(), value: "tab_one", onTabClick: handleTabClick },
+					{ label: renderStyledTab2(), value: "tab_two", onTabClick: handleTabClick },
 					{ label: "Tab Three", value: "tab_three", onTabClick: handleTabClick }
 				]}
 			/>
