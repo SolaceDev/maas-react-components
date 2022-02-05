@@ -995,6 +995,8 @@ const themeConfig: ThemeOptions = {
 		layoutComponent_GridList: {
 			row: {
 				display: "grid",
+				gridColumnGap: "32px",
+				whiteSpace: "nowrap",
 				placeItems: "center left",
 				padding: "10px 16px",
 				lineHeight: "32px",
