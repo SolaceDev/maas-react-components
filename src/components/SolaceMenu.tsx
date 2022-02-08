@@ -64,6 +64,10 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 */
 	anchorOrigin?: { vertical: "top" | "center" | "bottom"; horizontal: "left" | "center" | "right" };
 	/**
+	 * optional attribute to change the position of menu popper only for default menu
+	 */
+	transformOrigin?: { vertical: "top" | "center" | "bottom"; horizontal: "left" | "center" | "right" };
+	/**
 	 * optional boolean flag to adjust the maxHeight of menu default is set to false
 	 */
 	multiline?: boolean;
@@ -87,6 +91,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		propagateMenuClick = false,
 		closeOnSelect = true,
 		anchorOrigin = { vertical: "bottom", horizontal: "left" },
+		transformOrigin = { vertical: "top", horizontal: "left" },
 		dataQa,
 		dataTags
 	} = props;
@@ -196,6 +201,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				anchorEl={anchorEl}
 				open={Boolean(anchorEl)}
 				anchorOrigin={anchorOrigin}
+				transformOrigin={transformOrigin}
 				onClose={handleMenuClose}
 				PaperProps={{
 					style: {
