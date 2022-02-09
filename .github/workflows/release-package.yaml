@@ -13,6 +13,8 @@ jobs:
         with:
           node-version: 14
       - run: npm ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
       - run: npm test
 
   publish-gpr:
@@ -29,6 +31,8 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: "@solacedev"
       - run: npm ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
