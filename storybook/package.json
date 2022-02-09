@@ -15,25 +15,27 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@SolaceDev/maas-react-components": "file:..",
-		"gh-pages": "^3.2.3"
+		"@solacedev/maas-icons": "0.0.6",
+		"@solacedev/maas-react-components": "file:..",
+		"gh-pages": "^3.2.3",
+		"storybook-addon-react-docgen": "^1.2.42"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.0",
 		"@sambego/storybook-state": "^2.0.1",
-		"@storybook/addon-a11y": "^6.4.13",
-		"@storybook/addon-actions": "^6.4.13",
-		"@storybook/addon-essentials": "^6.4.13",
-		"@storybook/addon-interactions": "^6.4.13",
-		"@storybook/addon-links": "^6.4.13",
-		"@storybook/addons": "^6.4.13",
-		"@storybook/jest": "0.0.5",
-		"@storybook/react": "^6.4.13",
-		"@storybook/testing-library": "0.0.8",
-		"@storybook/theming": "^6.4.13",
+		"@storybook/addon-a11y": "^6.4.18",
+		"@storybook/addon-actions": "^6.4.18",
+		"@storybook/addon-essentials": "^6.4.18",
+		"@storybook/addon-interactions": "^6.4.18",
+		"@storybook/addon-links": "^6.4.18",
+		"@storybook/addons": "^6.4.18",
+		"@storybook/jest": "0.0.6",
+		"@storybook/react": "^6.4.18",
+		"@storybook/testing-library": "0.0.9",
+		"@storybook/theming": "^6.4.18",
 		"babel-loader": "^8.2.2",
 		"chromatic": "^6.1.0",
 		"storybook-addon-designs": "^6.2.1",
-		"storybook-addon-mock": "^2.0.2"
+		"storybook-addon-mock": "^2.1.0"
 	}
 }

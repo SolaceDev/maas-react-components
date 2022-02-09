@@ -1,7 +1,7 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceDetailMessage } from "@SolaceDev/maas-react-components";
+import { SolaceDetailMessage } from "@solacedev/maas-react-components";
 import NoAccessImg from "../resources/images/NoAccessBook";
 import FailedFetch from "../resources/images/FailedFetch";
 import ApiProducts from "../resources/images/ApiProducts";

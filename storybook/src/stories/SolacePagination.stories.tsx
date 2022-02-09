@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import { SolacePagination } from "@SolaceDev/maas-react-components";
+import { SolacePagination } from "@solacedev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolacePagination",

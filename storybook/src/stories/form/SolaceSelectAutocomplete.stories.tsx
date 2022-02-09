@@ -10,7 +10,7 @@ import {
 	getSolaceSelectAutocompleteOptionLabel,
 	isSolaceSelectAutocompleteOptionEqual,
 	SolaceSelectAutocompleteItemProps
-} from "@SolaceDev/maas-react-components";
+} from "@solacedev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 const store = new Store({
