@@ -8,6 +8,11 @@ import { SolaceIconProps } from "../types/solaceIcon";
  * @param props SolaceIcon
  * @returns JSX.Element
  */
+
+/**
+ * Note: To use this component make sure the svg sprite has been loaded in parent project via maas-icons library.
+ * see storybook/.storybook/preview.js for an example.
+ */
 export default function SolaceIcon(props: SolaceIconProps): JSX.Element {
 	const { name, ...rest } = props;
 	return (
