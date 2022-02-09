@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceChip } from "@SolaceDev/maas-react-components";
+import { SolaceChip } from "@solacedev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceChip",

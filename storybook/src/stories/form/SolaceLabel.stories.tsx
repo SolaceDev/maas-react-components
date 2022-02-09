@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceLabel } from "@SolaceDev/maas-react-components";
+import { SolaceLabel } from "@solacedev/maas-react-components";
 
 export default {
 	title: "Forms/SolaceLabel",

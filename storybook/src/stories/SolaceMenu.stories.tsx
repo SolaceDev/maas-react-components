@@ -6,7 +6,7 @@ import {
 	SolaceButton,
 	SolaceCheckBox,
 	DeleteIcon
-} from "@SolaceDev/maas-react-components";
+} from "@solacedev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MoreHorizOutlinedIcon } from "../../../src/resources/icons/MoreHorizOutlinedIcon";
 import {

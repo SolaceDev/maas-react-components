@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceRadio, SolaceRadioGroup } from "@SolaceDev/maas-react-components";
+import { SolaceRadio, SolaceRadioGroup } from "@solacedev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 
-import { SolaceTextField } from "@SolaceDev/maas-react-components";
+import { SolaceTextField } from "@solacedev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {

@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import { SolaceErrorBox } from "@SolaceDev/maas-react-components";
+import { SolaceErrorBox } from "@solacedev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceErrorBox",

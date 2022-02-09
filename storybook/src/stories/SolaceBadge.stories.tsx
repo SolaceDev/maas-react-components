@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { SolaceBadge } from "@SolaceDev/maas-react-components";
+import { SolaceBadge } from "@solacedev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceBadge",

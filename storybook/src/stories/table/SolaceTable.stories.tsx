@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentMeta } from "@storybook/react";
-import { SolaceTable } from "@SolaceDev/maas-react-components";
+import { SolaceTable } from "@solacedev/maas-react-components";
 import {
 	SELECTION_TYPE,
 	SORT_DIRECTION,

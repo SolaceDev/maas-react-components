@@ -2,7 +2,7 @@
 
 > React component library designed for Solace.
 
-[![NPM](https://img.shields.io/npm/v/maas-react-components.svg)](https://github.com/SolaceDev/maas-react-components/packages/944783) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/maas-react-components.svg)](https://github.com/solacedev/maas-react-components/packages/944783) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Setup npm registry
 
@@ -12,7 +12,7 @@ You can authenticate to GitHub Packages with npm by creating a npmrc file in you
 
 ```
 
-@SolaceDev:registry=https://npm.pkg.github.com
+@solacedev:registry=https://npm.pkg.github.com
 
 //npm.pkg.github.com/:_authToken=GITHUB_TOKEN
 
@@ -28,7 +28,7 @@ See this [link](https://docs.github.com/en/github/authenticating-to-github/keepi
 
 
 
-npm install --save @SolaceDev/maas-react-components
+npm install --save @solacedev/maas-react-components
 
 
 
@@ -42,7 +42,7 @@ For e.g. If a team wants to use the package named as common-components, install 
 
 ```
 
-npm i common-components@SolaceDev/maas-react-components
+npm i common-components@solacedev/maas-react-components
 
 ```
 
@@ -53,7 +53,7 @@ See usage example below to see how it would impact the imports.
 ```tsx
 import React, { Component } from "react";
 
-import { SolaceButton } from "@SolaceDev/maas-react-components";
+import { SolaceButton } from "@solacedev/maas-react-components";
 
 //With custom named package
 
