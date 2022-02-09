@@ -52,6 +52,10 @@ export const BASE_COLORS = {
 	},
 	yellows: {
 		yellow1: "#F3AA24"
+	},
+	blues: {
+		blue1: "#E6F2FF",
+		blue2: "#0079FF"
 	}
 };
 

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { SolaceGridList, SolaceChip, SolaceMenu } from "@solacedev/maas-react-components";
+import { SolaceGridList, SolaceChip, SolaceMenu, SolaceTooltip } from "@solacedev/maas-react-components";
 import { useState } from "react";
 import { MoreHorizOutlinedIcon } from "../../../../src/resources/icons/MoreHorizOutlinedIcon";
 
@@ -129,8 +129,8 @@ const testListItems = [
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
 		id: 4,
-		name: "Event Mesh 4",
-		description: "More borring description text",
+		name: "Event Mesh 4 with super loooooooong name",
+		description: "A Modeled Event Mesh with a really long name (40 characters which is the max)",
 		environmentId: "environment1",
 		type: "eventMesh",
 		environment: {
@@ -189,33 +189,79 @@ const createActionMenu = (item) => {
 
 const basicRowMapping = (testItem) => {
 	const itemCells = [];
-	itemCells.push(<div key={`${testItem.id}-${testItem.name}`}>{testItem.name}</div>);
+	itemCells.push(
+		<div
+			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
+			key={`${testItem.id}-${testItem.name}`}
+		>
+			<SolaceTooltip variant="overflow" title={testItem.name}>
+				{testItem.name}
+			</SolaceTooltip>
+		</div>
+	);
 	itemCells.push(<div key={`${testItem.id}-${testItem.environment.name}`}>{testItem.environment.name}</div>);
-	itemCells.push(<div key={`${testItem.id}-${testItem.description}`}>{testItem.description}</div>);
+	itemCells.push(
+		<div
+			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
+			key={`${testItem.id}-${testItem.description}`}
+		>
+			<SolaceTooltip variant="overflow" title={testItem.description}>
+				{testItem.description}
+			</SolaceTooltip>
+		</div>
+	);
 	return itemCells;
 };
 
 const customCellMapping = (testItem) => {
 	const itemCells = [];
-	itemCells.push(<div key={`${testItem.id}-${testItem.name}`}>{testItem.name}</div>);
+	itemCells.push(
+		<div
+			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
+			key={`${testItem.id}-${testItem.name}`}
+		>
+			{testItem.name}
+		</div>
+	);
 	itemCells.push(
 		<div key={`${testItem.id}-${testItem.environment.name}`}>
 			<SolaceChip label={testItem.environment.name} />
 		</div>
 	);
-	itemCells.push(<div key={`${testItem.id}-${testItem.description}`}>{testItem.description}</div>);
+	itemCells.push(
+		<div
+			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
+			key={`${testItem.id}-${testItem.description}`}
+		>
+			{testItem.description}
+		</div>
+	);
 	return itemCells;
 };
 
 const withActionColumnMapping = (testItem) => {
 	const itemCells = [];
-	itemCells.push(<div key={`${testItem.id}-${testItem.name}`}>{testItem.name}</div>);
+	itemCells.push(
+		<div
+			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
+			key={`${testItem.id}-${testItem.name}`}
+		>
+			{testItem.name}
+		</div>
+	);
 	itemCells.push(
 		<div key={`${testItem.id}-${testItem.environment.name}`}>
 			<SolaceChip label={testItem.environment.name} />
 		</div>
 	);
-	itemCells.push(<div key={`${testItem.id}-${testItem.description}`}>{testItem.description}</div>);
+	itemCells.push(
+		<div
+			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
+			key={`${testItem.id}-${testItem.description}`}
+		>
+			{testItem.description}
+		</div>
+	);
 	itemCells.push(<div style={{ justifySelf: "center" }}>{createActionMenu(testItem)}</div>);
 	return itemCells;
 };
@@ -235,7 +281,7 @@ export const DefaultList = (): JSX.Element => {
 			onSelection={handleRowSelection}
 			rowMapping={basicRowMapping}
 			selectedItemId={selectedId}
-			gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
+			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
 			dataQa="demoDefaultList"
 		/>
 	);

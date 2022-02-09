@@ -58,6 +58,14 @@ export interface SolaceDrawerProps {
 	 */
 	anchor?: ANCHOR;
 	/**
+	 * 	CSS property of position top.
+	 */
+	top?: string;
+	/**
+	 * 	CSS property of position height.
+	 */
+	height?: string;
+	/**
 	 * The content that is in the drawer.
 	 */
 	children?: JSX.Element;
@@ -71,6 +79,8 @@ function SolaceDrawer({
 	minWidth = 100,
 	maxWidth = 800,
 	anchor = ANCHOR.RIGHT,
+	top = "0px",
+	height = "100%",
 	children
 }: SolaceDrawerProps): JSX.Element {
 	const initialClientX = useRef<number>(0);
@@ -123,11 +133,11 @@ function SolaceDrawer({
 					boxSizing: "border-box",
 					borderRadius: "2px",
 					border: BORDER_STYLE,
-					boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.3)"
+					boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)"
 				}
 			}}
-			PaperProps={{ style: { position: "absolute" } }}
-			BackdropProps={{ style: { position: "absolute" } }}
+			PaperProps={{ style: { top, height } }}
+			BackdropProps={{ style: { top, height } }}
 			variant="persistent"
 			anchor={anchor}
 			open={open}

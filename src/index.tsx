@@ -18,6 +18,7 @@ export { default as SolaceRadioGroup } from "./components/form/SolaceRadioGroup"
 export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceChip } from "./components/SolaceChip";
 export { default as SolaceErrorBox } from "./components/SolaceErrorBox";
+export { default as SolaceMessageBox } from "./components/SolaceMessageBox";
 export { default as SolaceTabs } from "./components/layout/SolaceTabs";
 export { default as SolaceSidePanelLayout } from "./components/layout/SolaceSidePanelLayout";
 export { PANEL_POSITION as SolacePanelPosition } from "./components/layout/SolaceSidePanelLayout";
@@ -49,7 +50,7 @@ export { default as SolaceAttributeValuePairForm } from "./components/form/Solac
 export { default as SolaceTooltip } from "./components/SolaceToolTip";
 export { default as SolaceDrawer } from "./components/SolaceDrawer";
 export { default as SolaceGridList } from "./components/layout/SolaceGridList";
-export { default as SolaceBadge } from "./components/SolaceBadge";
+export { default as SolaceNotificationCounter } from "./components/SolaceNotificationCounter";
 export { default as getThemeMappings } from "./theming/themeUtils";
 export { default as SolaceIcon } from "./components/SolaceIcon";
 export * from "./types";

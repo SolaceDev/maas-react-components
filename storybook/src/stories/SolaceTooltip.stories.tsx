@@ -189,6 +189,16 @@ export const OverflowTooltipShortTextElement = (): ReactNode => {
 	);
 };
 
+export const OverflowTooltipLongTextElementRespondToResize = (): ReactNode => {
+	return (
+		<div style={{ width: "100%" }}>
+			<SolaceTooltip variant="overflow" title={LONG_TEXT}>
+				<span style={{ fontStyle: "italic" }}>{LONG_TEXT}</span>
+			</SolaceTooltip>
+		</div>
+	);
+};
+
 export const TooltipGroup = (): ReactNode => {
 	return (
 		<div

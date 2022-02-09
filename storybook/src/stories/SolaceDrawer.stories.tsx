@@ -81,84 +81,89 @@ ResizableRightDrawer.args = {
 	resizable: true
 };
 
-const DirectParent = styled("div", { shouldForwardProp: (prop) => prop !== "contained" })<{
-	contained: boolean;
-}>(({ contained }) => ({
-	// To have the SolaceDrawer contained within the parent, a relative position is required.
-	...(contained && { position: "relative" })
-}));
+const ContentBlock = styled("div")({
+	height: "250px",
+	width: "100%",
+	backgroundColor: "rgba(0, 0, 0, 0.2)",
+	marginTop: "24px",
+	padding: "24px"
+});
 
 export const WithParentAndContent = (): ReactNode => {
 	const [open, setOpen] = useState(true);
 	const [anchor, setAnchor] = useState(ANCHOR.RIGHT);
-	const [contained, setContained] = useState(false);
 	const [currentWidth, setCurrentWidth] = useState(INITIAL_WIDTH);
+
 	const handleOpenChange = () => {
 		setOpen(!open);
 	};
 	const handleAnchorChange = () => {
 		setAnchor(anchor === ANCHOR.RIGHT ? ANCHOR.LEFT : ANCHOR.RIGHT);
 	};
-	const handleContainedChange = () => {
-		setContained(!contained);
-	};
 	const handleResizeDone = (newWidth: number) => {
 		setCurrentWidth(newWidth);
 	};
+
 	return (
-		<div style={{ height: "100vh - 40px" }}>
-			<div style={{ height: "80px", borderBottom: "1px solid rgba(0, 0, 0, 0.2)" }}>
+		<div style={{ display: "flex", flexDirection: "column", margin: "-16px" }}>
+			<div
+				style={{
+					width: "100%",
+					height: "80px",
+					position: "fixed",
+					borderBottom: "1px solid rgba(0, 0, 0, 0.2)",
+					backgroundColor: "white"
+				}}
+			>
 				<div style={{ paddingTop: "30px", textAlign: "center" }}>Header</div>
 			</div>
-			<DirectParent sx={{ height: "calc(100vh - 160px - 34px)" }} contained={contained}>
-				<div style={{ margin: "auto" }}>
-					<SolaceDetailMessage
-						msgImg={<NoAccessImg />}
-						title="Drawer Demo"
-						details={<span>Click the buton to toggle the drawer</span>}
-						actions={[
-							{
-								id: "open-button",
-								variant: CALL_TO_ACTION,
-								children: open ? "Close Drawer" : "Open Drawer",
-								onClick: handleOpenChange
-							},
-							{
-								id: "anchor-button",
-								variant: CALL_TO_ACTION,
-								children: anchor === ANCHOR.RIGHT ? "Change to Left" : "Change to Right",
-								onClick: handleAnchorChange
-							},
-							{
-								id: "contained-button",
-								variant: CALL_TO_ACTION,
-								children: contained ? "Change to Float" : "Change to Contained",
-								onClick: handleContainedChange
-							}
-						]}
-					/>
-					<div style={{ textAlign: "center", marginTop: "32px" }}>
-						{currentWidth === INITIAL_WIDTH ? "Initial Width: " : "New Width: "}
-						{currentWidth}
-						<p>*Only update after the action of resizing is completed.</p>
-					</div>
+			<div style={{ overflowY: "hidden", marginTop: "80px" }}>
+				<SolaceDetailMessage
+					msgImg={<NoAccessImg />}
+					title="Drawer Demo"
+					details={<span>Click the buton to toggle the drawer</span>}
+					actions={[
+						{
+							id: "open-button",
+							variant: CALL_TO_ACTION,
+							children: open ? "Close Drawer" : "Open Drawer",
+							onClick: handleOpenChange
+						},
+						{
+							id: "anchor-button",
+							variant: CALL_TO_ACTION,
+							children: anchor === ANCHOR.RIGHT ? "Change to Left" : "Change to Right",
+							onClick: handleAnchorChange
+						}
+					]}
+				/>
+				<div style={{ textAlign: "center", marginTop: "32px" }}>
+					{currentWidth === INITIAL_WIDTH ? "Initial Width: " : "New Width: "}
+					{currentWidth}
+					<p>*Only update after the action of resizing is completed.</p>
 				</div>
-				<SolaceDrawer
-					open={open}
-					resizable={true}
-					anchor={anchor}
-					width={INITIAL_WIDTH}
-					onResizeDone={handleResizeDone}
-				>
-					{drawerMessage}
-				</SolaceDrawer>
-			</DirectParent>
+				<ContentBlock>Content Block 1</ContentBlock>
+				<ContentBlock>Content Block 2</ContentBlock>
+			</div>
+			<SolaceDrawer
+				open={open}
+				resizable={true}
+				anchor={anchor}
+				width={INITIAL_WIDTH}
+				onResizeDone={handleResizeDone}
+				top="80px"
+				height="calc(100vh - 160px)"
+			>
+				{drawerMessage}
+			</SolaceDrawer>
 			<div
 				style={{
 					height: "80px",
 					bottom: "0px",
 					position: "sticky",
-					borderTop: "1px solid rgba(0, 0, 0, 0.2)"
+					borderTop: "1px solid rgba(0, 0, 0, 0.2)",
+					backgroundColor: "white",
+					zIndex: 100
 				}}
 			>
 				<div style={{ paddingTop: "30px", textAlign: "center" }}>Footer</div>

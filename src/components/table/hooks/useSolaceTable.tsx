@@ -74,7 +74,6 @@ export const useSolaceTable = ({
 	);
 	const [displayedColumns, setDisplayedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
-	const [rowWithOpenActionMenu, setRowWithOpenActionMenu] = useState<string | null>();
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
 
 	useEffect(() => {
@@ -158,11 +157,6 @@ export const useSolaceTable = ({
 		);
 	}
 
-	function openRowActionMenu(e: React.MouseEvent<HTMLElement>, row: TableRow) {
-		e.stopPropagation();
-		setRowWithOpenActionMenu(row.id);
-	}
-
 	const openColumnHidingControl = useCallback(
 		(e: React.MouseEvent<HTMLElement>): void => {
 			e.stopPropagation();
@@ -173,14 +167,7 @@ export const useSolaceTable = ({
 
 	const renderRowActionItems = (row: TableRow): React.ReactNode[] => {
 		return [
-			!!rowActionMenuItems &&
-				addActionMenuIcon(
-					row,
-					rowWithOpenActionMenu === row.id,
-					openRowActionMenu,
-					rowActionMenuItems,
-					setRowWithOpenActionMenu
-				),
+			!!rowActionMenuItems && addActionMenuIcon(row, rowActionMenuItems),
 			!rowActionMenuItems && hasColumnHiding && addEmptyRowCell()
 		];
 	};
@@ -216,6 +203,7 @@ export const useSolaceTable = ({
 								<StyledTableHeader
 									key={col.headerName}
 									className={`${col.hasNoCell ? "icon-column" : ""} ${col.class ? col.class : ""}`}
+									width={col.width ? col.width + "px" : "auto"}
 								>
 									<span
 										className={`${col.sortable ? "sortable" : ""}`}
@@ -237,7 +225,7 @@ export const useSolaceTable = ({
 					!!rowActionMenuItems && !hasColumnHiding && addEmptyHeaderCell(),
 					hasColumnHiding &&
 						addColumnHidingControl(
-							columns,
+							displayedColumns,
 							openColumnHidingControl,
 							isColumnHidingControlOpen,
 							setIsColumnHidingControlOpen,
@@ -259,7 +247,6 @@ export const useSolaceTable = ({
 		isColumnHidingControlOpen,
 		setIsColumnHidingControlOpen,
 		openColumnHidingControl,
-		columns,
 		displayedColumnsChangedCallback
 	]);
 

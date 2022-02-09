@@ -762,7 +762,7 @@ const themeConfig: ThemeOptions = {
 						".MuiDialogActions-root": {
 							padding: "24px 0px 0px 0px",
 							"& > :not(:nth-of-type(1))": {
-								marginLeft: "16px"
+								marginLeft: "8px"
 							}
 						}
 					}
@@ -772,13 +772,13 @@ const themeConfig: ThemeOptions = {
 		MuiChip: {
 			styleOverrides: {
 				root: {
-					borderRadius: "40px",
-					"& .MuiChip-label": {
-						fontSize: BASE_FONT_PX_SIZES.sm
-					}
+					borderRadius: "40px"
 				},
 				filled: {
-					backgroundColor: BASE_COLORS.greys.grey2
+					backgroundColor: BASE_COLORS.greys.grey2,
+					"&:hover": {
+						backgroundColor: BASE_COLORS.greys.grey3
+					}
 				}
 			}
 		},
@@ -958,9 +958,45 @@ const themeConfig: ThemeOptions = {
 				}
 			}
 		},
+		/** SolaceMessageBox component */
+		component_MessageBox: {
+			container: {
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "space-between",
+				height: "100%",
+				borderRadius: "2px",
+				paddingRight: "4px",
+				"&.info": {
+					backgroundColor: BASE_COLORS.blues.blue1,
+					borderLeft: `3px solid ${BASE_COLORS.blues.blue2}`,
+					svg: {
+						width: "20px",
+						height: "20px"
+					}
+				},
+				"&.error": {
+					backgroundColor: BASE_COLORS.reds.red2,
+					borderLeft: `3px solid ${BASE_COLORS.reds.red1}`,
+					svg: {
+						width: "20px",
+						height: "20px"
+					}
+				}
+			},
+			message: {
+				display: "flex",
+				alignItems: "center",
+				gap: "8px",
+				padding: "8px 0px 8px 8px"
+			}
+		},
+		/** SolaceGridList */
 		layoutComponent_GridList: {
 			row: {
 				display: "grid",
+				gridColumnGap: "32px",
+				whiteSpace: "nowrap",
 				placeItems: "center left",
 				padding: "10px 16px",
 				lineHeight: "32px",
@@ -992,6 +1028,20 @@ const themeConfig: ThemeOptions = {
 				borderTop: "unset",
 				overflow: "auto",
 				height: "100%"
+			}
+		},
+		/** SolaceNotification Count */
+		component_NotificationCounter: {
+			container: {
+				borderRadius: "50%",
+				textAlign: "center",
+				verticalAlign: "middle",
+				background: BASE_COLORS.blues.blue2,
+				color: BASE_COLORS.whites.white1
+			},
+			value: {
+				transition: "opacity 300ms",
+				cursor: "default"
 			}
 		}
 	},
@@ -1062,6 +1112,14 @@ declare module "@material-ui/core/styles/createMixins" {
 			container: CSSProperties;
 			listWrapper: CSSProperties;
 			labelWrapper: CSSProperties;
+		};
+		component_MessageBox: {
+			container: CSSProperties;
+			message: CSSProperties;
+		};
+		component_NotificationCounter: {
+			container: CSSProperties;
+			value: CSSProperties;
 		};
 	}
 }

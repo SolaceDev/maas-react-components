@@ -69,13 +69,16 @@ function SolaceGridList<T extends SolaceGridListItem>({
 			);
 		}
 		return null;
-	}, [headers]);
+	}, [gridTemplate, headers]);
 
-	const handleRowClick = useCallback((id: string) => {
-		if (onSelection) {
-			onSelection(items.find((item) => item.id === id));
-		}
-	}, []);
+	const handleRowClick = useCallback(
+		(id: string) => {
+			if (onSelection) {
+				onSelection(items.find((item) => item.id === id));
+			}
+		},
+		[items, onSelection]
+	);
 
 	return (
 		<div key={id} data-qa={dataQa} style={{ height: "100%" }}>
