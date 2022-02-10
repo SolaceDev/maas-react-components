@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceCheckBox } from "@SolaceDev/maas-react-components";
+import { SolaceCheckBox } from "@solacedev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 const LABEL = "Some Label";

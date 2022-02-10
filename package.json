@@ -1,13 +1,13 @@
 {
-	"name": "@SolaceDev/maas-react-components",
+	"name": "@solacedev/maas-react-components",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/SolaceDev/maas-react-components"
+		"url": "https://github.com/solacedev/maas-react-components"
 	},
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/SolaceDev"
+		"registry": "https://npm.pkg.github.com/solacedev"
 	},
-	"version": "3.8.2",
+	"version": "3.9.0",
 	"description": "React component library designed for Solace.",
 	"author": "",
 	"license": "MIT",
@@ -20,7 +20,7 @@
 	},
 	"scripts": {
 		"install:dev": "npm install && cd storybook/ && npm i",
-		"dev:link": "npm link && cd storybook && npm link @SolaceDev/maas-react-components",
+		"dev:link": "npm link && cd storybook && npm link @solacedev/maas-react-components",
 		"build": "microbundle --compress --jsx React.createElement --format cjs,modern --define process.env.NODE_ENV=production",
 		"build:dev": "microbundle watch --jsx React.createElement --no-compress --format cjs --define process.env.NODE_ENV=development",
 		"start": "./scripts/start.sh",
@@ -76,11 +76,13 @@
 		"@emotion/styled": "^11.3.0",
 		"@material-ui/core": "^5.0.0-beta.3",
 		"@material-ui/icons": "^5.0.0-beta.1",
+		"@solacedev/maas-icons": "0.0.6",
 		"@types/react-beautiful-dnd": "^13.1.2",
 		"codemirror": "^5.63.3",
 		"lodash": "^4.17.21",
 		"react-beautiful-dnd": "^13.1.0",
-		"react-codemirror2": "^7.2.1"
+		"react-codemirror2": "^7.2.1",
+		"react-resize-aware": "^3.1.1"
 	},
 	"files": [
 		"dist"

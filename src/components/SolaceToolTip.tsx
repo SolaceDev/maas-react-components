@@ -2,6 +2,7 @@ import { Tooltip } from "@material-ui/core";
 import { Fade } from "@material-ui/core";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { useEffect, useRef, useState } from "react";
+import useResizeAware from "react-resize-aware";
 
 export interface SolaceTooltipProps extends SolaceComponentProps {
 	/**
@@ -59,13 +60,14 @@ function SolaceTooltip({
 }: SolaceTooltipProps) {
 	const [isOverflowed, setIsOverflow] = useState(false);
 	const textElementRef = useRef<HTMLDivElement>(null);
+	const [resizeListener, sizes] = useResizeAware();
 
-	// re-evaluate textElementRef's scrollWidth and clientWidth when children is changed
 	useEffect(() => {
+		// listen to container resize event and then reevaluate whether to show tooltip
 		if (textElementRef.current) {
 			setIsOverflow(textElementRef.current.scrollWidth > textElementRef.current.clientWidth);
 		}
-	}, [children]);
+	}, [sizes]);
 
 	return (
 		<Tooltip
@@ -89,9 +91,11 @@ function SolaceTooltip({
 					style={{
 						whiteSpace: "nowrap",
 						overflow: "hidden",
-						textOverflow: "ellipsis"
+						textOverflow: "ellipsis",
+						position: "relative"
 					}}
 				>
+					{resizeListener}
 					{children}
 				</div>
 			) : typeof children === "string" ? (

@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceChip, SolaceTooltip } from "@SolaceDev/maas-react-components";
+import { SolaceChip, SolaceTooltip } from "@solacedev/maas-react-components";
 import { BASE_COLORS } from "../../../src/resources/colorPallette";
 
 export default {

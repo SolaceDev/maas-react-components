@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ComponentMeta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 
-import { SolaceAttributeValuePairForm } from "@SolaceDev/maas-react-components";
+import { SolaceAttributeValuePairForm } from "@solacedev/maas-react-components";
 import { useEffect } from "react";
 
 export default {

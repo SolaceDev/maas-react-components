@@ -7,7 +7,7 @@ import {
 	SolaceCheckBox,
 	DeleteIcon,
 	SolaceRadio
-} from "@SolaceDev/maas-react-components";
+} from "@solacedev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MoreHorizOutlinedIcon } from "../../../src/resources/icons/MoreHorizOutlinedIcon";
 
@@ -180,34 +180,30 @@ IconMenuItem.args = {
 	multiline: true
 };
 
-export const CustomPositionMenu = Template.bind({});
-CustomPositionMenu.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		}
-	],
-	multiline: true,
-	anchorOrigin: { vertical: "top", horizontal: "right" }
+export const CustomPositionMenu = (): JSX.Element => {
+	return (
+		<div
+			style={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				border: "2px solid rgba(0,0,0, 0.1)",
+				height: "100px",
+				width: "20%"
+			}}
+		>
+			<SolaceMenu
+				buttonProps={{
+					variant: "icon",
+					children: <MoreHorizOutlinedIcon />
+				}}
+				items={DEFAULT_MENU_ITEMS}
+				multiline={true}
+				anchorOrigin={{ vertical: "center", horizontal: "left" }}
+				transformOrigin={{ vertical: "top", horizontal: "right" }}
+			></SolaceMenu>
+		</div>
+	);
 };
 
 export const HeaderAndCategoryHeading = Template.bind({});

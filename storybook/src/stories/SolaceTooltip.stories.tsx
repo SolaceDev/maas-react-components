@@ -6,7 +6,7 @@ import {
 	SolaceButton,
 	HelpOutlineOutlinedIcon,
 	AddCircleOutlineOutlinedIcon
-} from "@SolaceDev/maas-react-components";
+} from "@solacedev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceTooltip",
@@ -184,6 +184,16 @@ export const OverflowTooltipShortTextElement = (): ReactNode => {
 		<div style={{ width: "400px" }}>
 			<SolaceTooltip variant="overflow" title={TITLE}>
 				<span style={{ fontStyle: "italic" }}>{TITLE}</span>
+			</SolaceTooltip>
+		</div>
+	);
+};
+
+export const OverflowTooltipLongTextElementRespondToResize = (): ReactNode => {
+	return (
+		<div style={{ width: "100%" }}>
+			<SolaceTooltip variant="overflow" title={LONG_TEXT}>
+				<span style={{ fontStyle: "italic" }}>{LONG_TEXT}</span>
 			</SolaceTooltip>
 		</div>
 	);

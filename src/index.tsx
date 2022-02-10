@@ -52,6 +52,7 @@ export { default as SolaceDrawer } from "./components/SolaceDrawer";
 export { default as SolaceGridList } from "./components/layout/SolaceGridList";
 export { default as SolaceNotificationCounter } from "./components/SolaceNotificationCounter";
 export { default as getThemeMappings } from "./theming/themeUtils";
+export { default as SolaceIcon } from "./components/SolaceIcon";
 export * from "./types";
 
 export { default as SolaceTheme } from "./resources/theme";

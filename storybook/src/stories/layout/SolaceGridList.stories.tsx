@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { SolaceGridList, SolaceChip, SolaceMenu, SolaceTooltip } from "@SolaceDev/maas-react-components";
+import { SolaceGridList, SolaceChip, SolaceMenu, SolaceTooltip } from "@solacedev/maas-react-components";
 import { useState } from "react";
 import { MoreHorizOutlinedIcon } from "../../../../src/resources/icons/MoreHorizOutlinedIcon";
 
