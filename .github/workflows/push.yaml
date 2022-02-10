@@ -10,8 +10,6 @@ jobs:
     name: "Deploy Storybook to Chromatic"
     # Operating System
     runs-on: ubuntu-latest
-    container:
-      image: node:14.15.0-alpine
     # Job steps
     steps:
       - uses: actions/checkout@v1
