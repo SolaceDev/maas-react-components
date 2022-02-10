@@ -27,9 +27,18 @@ interface SolaceGridListRowProps extends SolaceComponentProps {
 	gridTemplate: string;
 	selected?: boolean;
 	onClick: (id: string) => void;
+	dataQa?: string;
 }
 
-function SolaceGridListRow({ id, index, items, gridTemplate, selected, onClick }: SolaceGridListRowProps): JSX.Element {
+function SolaceGridListRow({
+	id,
+	index,
+	items,
+	gridTemplate,
+	selected,
+	onClick,
+	dataQa
+}: SolaceGridListRowProps): JSX.Element {
 	const handleKeyPress = (e: any) => {
 		if (e.key === "Enter") {
 			onClick(id);
@@ -44,6 +53,7 @@ function SolaceGridListRow({ id, index, items, gridTemplate, selected, onClick }
 			onKeyPress={(e) => handleKeyPress(e)}
 			style={{ gridTemplateColumns: gridTemplate }}
 			tabIndex={index}
+			data-qa={`${dataQa}-row-${id}`}
 		>
 			{items}
 		</Row>
