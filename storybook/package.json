@@ -15,8 +15,8 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@SolaceDev/maas-icons": "0.0.14",
 		"@SolaceDev/maas-react-components": "file:..",
+		"@solacedev/maas-icons": "0.0.14",
 		"gh-pages": "^3.2.3",
 		"storybook-addon-react-docgen": "^1.2.42"
 	},
