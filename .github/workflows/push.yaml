@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm install && cd ./storybook && npm install
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }} #need this for npm package.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} #need this for npm package.
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         # publish
@@ -64,7 +64,7 @@ jobs:
       - name: install
         run: npm install
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
