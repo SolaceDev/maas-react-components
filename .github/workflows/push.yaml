@@ -51,7 +51,7 @@ jobs:
         with:
           tag-prefix: ""
         env:
-          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
 
@@ -71,5 +71,3 @@ jobs:
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           cd ./storybook && npm install && npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
