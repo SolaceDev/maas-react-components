@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - "main"
-    pull_request:
 
 jobs:
   chromatic-deployment:
@@ -19,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: npm install && cd ./storybook && npm install
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} #need this for npm package.
+          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }} #need this for npm package.
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         # publish
@@ -55,7 +54,7 @@ jobs:
         with:
           tag-prefix: ""
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
 
@@ -70,10 +69,10 @@ jobs:
       - name: install
         run: npm install
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
       - name: deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           cd ./storybook && npm install && npm run deploy
