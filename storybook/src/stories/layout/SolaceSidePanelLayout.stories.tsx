@@ -9,7 +9,7 @@ import {
 	SolaceButton,
 	ListSubheader,
 	ChevronRightIcon
-} from "@solacedev/maas-react-components";
+} from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../../resources/images/NoAccessBook";
 
 const btnID = "catalog-btn";

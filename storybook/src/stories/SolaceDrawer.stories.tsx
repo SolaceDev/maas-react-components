@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceDrawer, SolaceDetailMessage, styled } from "@solacedev/maas-react-components";
+import { SolaceDrawer, SolaceDetailMessage, styled } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../resources/images/NoAccessBook";
 
 enum ANCHOR {
