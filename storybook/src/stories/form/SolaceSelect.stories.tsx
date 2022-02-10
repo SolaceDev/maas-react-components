@@ -1,10 +1,10 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceSelect } from "@solacedev/maas-react-components";
+import { SolaceSelect } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@material-ui/core";
-import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@solacedev/maas-react-components";
+import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Forms/SolaceSelect",

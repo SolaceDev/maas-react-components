@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceTextArea } from "@solacedev/maas-react-components";
+import { SolaceTextArea } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
-import { SolaceNotificationCounter, SolaceButton } from "@solacedev/maas-react-components";
+import { SolaceNotificationCounter, SolaceButton } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceNotificationCounter",

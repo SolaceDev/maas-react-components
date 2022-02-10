@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider, SolaceTheme, SupportedThemes } from "@solacedev/maas-react-components";
+import { createTheme, ThemeProvider, SolaceTheme, SupportedThemes } from "@SolaceDev/maas-react-components";
 import { withDesign } from "storybook-addon-designs";
 import { ReactComponent as SolaceSvgs } from "@solacedev/maas-icons/dist/svg/sprite.symbol.svg";
 
