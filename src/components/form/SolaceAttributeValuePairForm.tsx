@@ -5,8 +5,15 @@ import SolaceLabel from "./SolaceLabel";
 import { valueInputTypes } from "./SolaceAttributeValuePair";
 import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePairList";
 
+interface SolaceAVPFormLabelProps {
+	readOnly: boolean;
+}
+
 const SolaceAVPFormContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.container);
-const SolaceAVPFormLabel = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.labelWrapper);
+const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(({ theme, readOnly }) => ({
+	...theme.mixins.formComponent_AVPForm.labelWrapper,
+	gridTemplateColumns: readOnly ? "0px 3fr 8px 5fr 0px" : "32px 1fr 8px 1fr 32px"
+}));
 const SolaceAVPListContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.listWrapper);
 
 const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number): Array<AVPItem> => {
@@ -174,7 +181,9 @@ const SolaceAttributeValuePairForm = ({
 			<Droppable droppableId={getId()}>
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
-						<SolaceAVPFormLabel>
+						<SolaceAVPFormLabel
+							readOnly={readOnly ? readOnly : false}
+						>
 							<SolaceLabel id="avpLabelForKeys" required={enableRequiredKeyFieldIndicator}>
 								{labelForKeys}
 							</SolaceLabel>

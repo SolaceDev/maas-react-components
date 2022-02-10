@@ -12,6 +12,7 @@ interface SolaceAVPContainerProps {
 	dropOverIndex: number | null;
 	dropFromTop: boolean | null;
 	index: number;
+	readOnly: boolean;
 }
 
 interface SolaceAVPMoveButtonProps {
@@ -37,10 +38,11 @@ const displayDropLine = (dropFromTop: boolean | null, dropOverIndex: number | nu
 };
 
 const SolaceAVPContainer = styled("div")<SolaceAVPContainerProps>(
-	({ theme, isDragging, dropOverIndex, index, dropFromTop }) => ({
+	({ theme, isDragging, dropOverIndex, index, dropFromTop, readOnly }) => ({
 		...theme.mixins.formComponent_AVPItem.container,
 		backgroundColor: isDragging ? BASE_COLORS.greens.green9 : "inherit",
-		borderTop: displayDropLine(dropFromTop, dropOverIndex, index)
+		borderTop: displayDropLine(dropFromTop, dropOverIndex, index),
+		gridTemplateColumns: readOnly ? "0px 3fr 8px 5fr 0px" : "32px 1fr 8px 1fr 32px"
 	})
 );
 const SolaceAVPInputForKey = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForKey);
@@ -166,6 +168,7 @@ export const SolaceAttributeValuePair = ({
 					dropOverIndex={dropOverIndex}
 					dropFromTop={dropFromTop}
 					index={index}
+					readOnly={readOnly ? readOnly : false}
 				>
 					<SolaceAVPMoveButton
 						{...provided.dragHandleProps}
