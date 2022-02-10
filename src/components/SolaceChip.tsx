@@ -6,7 +6,7 @@ export interface SolaceChipProps {
 	/**
 	 * 	The content of the component.
 	 */
-	label?: string | Node;
+	label?: string | JSX.Element;
 	/**
 	 * 	The variant to use.
 	 */
