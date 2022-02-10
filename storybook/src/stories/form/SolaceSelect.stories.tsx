@@ -4,7 +4,11 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceSelect } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@material-ui/core";
-import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
+import {
+	SolaceSelectAutocompleteItem,
+	SolaceSelectAutocompleteItemProps,
+	SolaceChip
+} from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Forms/SolaceSelect",
@@ -44,6 +48,11 @@ export default {
 			}
 		},
 		readOnly: {
+			control: {
+				type: "boolean"
+			}
+		},
+		multiple: {
 			control: {
 				type: "boolean"
 			}
@@ -105,12 +114,15 @@ function generateSelectOptionsWithSubtext(): Array<JSX.Element> {
 	});
 }
 
+const TITLE = "Demo Select";
+const LABEL = "Some Label";
+
 const Template: ComponentStory<typeof SolaceSelect> = (args) => <SolaceSelect {...args} />;
 
 export const DefaultTextfield = Template.bind({});
 DefaultTextfield.args = {
 	onChange: action("callback"),
-	title: "Demo Select",
+	title: TITLE,
 	id: "demoSelectId",
 	name: "demoSelect",
 	children: SELECT_OPTIONS
@@ -119,9 +131,9 @@ DefaultTextfield.args = {
 export const StackedLabelFormat = Template.bind({});
 StackedLabelFormat.args = {
 	onChange: action("callback"),
-	title: "Demo Select",
+	title: TITLE,
 	name: "demoSelect",
-	label: "Some Label",
+	label: LABEL,
 	children: SELECT_OPTIONS
 };
 
@@ -129,8 +141,8 @@ export const InlineLabelFormat = Template.bind({});
 InlineLabelFormat.args = {
 	onChange: action("callback"),
 	name: "demoSelect",
-	title: "Demo Select",
-	label: "Some Label",
+	title: TITLE,
+	label: LABEL,
 	children: SELECT_OPTIONS,
 	inlineLabel: true
 };
@@ -143,8 +155,8 @@ Subtext.args = {
 		return match ? match.name : "";
 	},
 	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
+	title: TITLE,
+	label: LABEL,
 	children: generateSelectOptionsWithSubtext()
 };
 
@@ -152,8 +164,8 @@ export const HelperText = Template.bind({});
 HelperText.args = {
 	onChange: action("callback"),
 	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
+	title: TITLE,
+	label: LABEL,
 	children: SELECT_OPTIONS,
 	helperText: "Some helper text"
 };
@@ -162,8 +174,8 @@ export const WithErrors = Template.bind({});
 WithErrors.args = {
 	onChange: action("callback"),
 	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
+	title: TITLE,
+	label: LABEL,
 	children: SELECT_OPTIONS,
 	helperText: "The text you entered was invalid",
 	hasErrors: true
@@ -173,8 +185,8 @@ export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),
 	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
+	title: TITLE,
+	label: LABEL,
 	children: SELECT_OPTIONS,
 	required: true
 };
@@ -183,8 +195,8 @@ export const Disabled = Template.bind({});
 Disabled.args = {
 	onChange: action("callback"),
 	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
+	title: TITLE,
+	label: LABEL,
 	children: SELECT_OPTIONS,
 	value: "option2",
 	disabled: true
@@ -194,9 +206,72 @@ export const ReadOnly = Template.bind({});
 ReadOnly.args = {
 	onChange: action("callback"),
 	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
+	title: TITLE,
+	label: LABEL,
 	children: SELECT_OPTIONS,
 	value: "option3",
 	readOnly: true
+};
+
+export const MultipleSelection = Template.bind({});
+MultipleSelection.args = {
+	onChange: action("callback"),
+	name: "demoSelect",
+	title: TITLE,
+	label: LABEL,
+	children: SELECT_OPTIONS,
+	value: ["option3"],
+	multiple: true
+};
+
+/**
+ * render selected items as SolaceChip
+ */
+
+const OPTIONS = [
+	{
+		name: "Option #1",
+		value: "option1"
+	},
+	{
+		name: "Option #2",
+		value: "option2"
+	},
+	{
+		name: "Option #3",
+		value: "option3"
+	},
+	{
+		name: "Option #4",
+		value: "option4"
+	}
+];
+
+function generateChippedOptions() {
+	return OPTIONS.map((option) => {
+		return (
+			<MenuItem key={option.value} value={option.value}>
+				{option.name}
+			</MenuItem>
+		);
+	});
+}
+
+function getOptionDisplayValueAsChip(selected) {
+	return selected.map((value, index) => {
+		const displayName = OPTIONS.filter((item) => item.value === value)[0].name || "";
+		return <SolaceChip key={index} label={displayName} />;
+	});
+}
+
+export const MultipleChip = Template.bind({});
+MultipleChip.args = {
+	onChange: action("callback"),
+	name: "demoSelect",
+	title: TITLE,
+	label: LABEL,
+	children: generateChippedOptions(),
+	getOptionDisplayValue: (selected) => getOptionDisplayValueAsChip(selected),
+	value: ["option3"],
+	multiple: true
 };

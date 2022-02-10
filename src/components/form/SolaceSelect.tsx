@@ -54,6 +54,10 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 */
 	readOnly?: boolean;
 	/**
+	 * 	If true, `value` must be an array and the menu will support multiple selections.
+	 */
+	multiple?: boolean;
+	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
 	onChange?: (event: SolaceSelectChangeEvent) => void;
@@ -78,6 +82,7 @@ function SolaceSelect({
 	required = false,
 	disabled = false,
 	readOnly = false,
+	multiple = false,
 	inlineLabel = false,
 	onChange,
 	getOptionDisplayValue,
@@ -135,6 +140,7 @@ function SolaceSelect({
 			value={selectedValue}
 			onChange={handleChange}
 			SelectProps={{
+				multiple: multiple,
 				IconComponent: () => <SelectDropdownIcon />,
 				renderValue: getOptionDisplayValue
 					? (value: unknown) => {
