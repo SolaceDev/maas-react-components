@@ -10,6 +10,8 @@ jobs:
     name: "Deploy Storybook to Chromatic"
     # Operating System
     runs-on: ubuntu-latest
+    container:
+      image: node:14.15.0-alpine
     # Job steps
     steps:
       - uses: actions/checkout@v1
@@ -34,7 +36,8 @@ jobs:
     needs: chromatic-deployment
     name: "Bump Version on main"
     runs-on: ubuntu-latest
-
+    container:
+      image: node:14.15.0-alpine
     steps:
       - name: "Checkout source code"
         uses: "actions/checkout@v2"
@@ -59,6 +62,8 @@ jobs:
     needs: chromatic-deployment
     name: "Deploy Storybook to Github Pages"
     runs-on: ubuntu-latest
+    container:
+      image: node:14.15.0-alpine
     steps:
       - uses: "actions/checkout@v2"
       - name: install
