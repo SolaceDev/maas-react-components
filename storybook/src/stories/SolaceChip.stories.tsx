@@ -10,6 +10,7 @@ export default {
 	argTypes: {
 		label: {},
 		variant: {
+			options: ["outlined", "filled"],
 			control: { type: "radio" }
 		},
 		disabled: {
@@ -22,6 +23,9 @@ export default {
 			}
 		},
 		compressed: {
+			control: { type: "boolean" }
+		},
+		clickable: {
 			control: { type: "boolean" }
 		}
 	}
@@ -38,6 +42,12 @@ export const OutlinedChip = Template.bind({});
 OutlinedChip.args = {
 	label: "Outlined Chip",
 	variant: "outlined"
+};
+
+export const ClickableChip = Template.bind({});
+ClickableChip.args = {
+	label: "Clickable Chip",
+	clickable: true
 };
 
 export const EllipsisContentChip = Template.bind({});

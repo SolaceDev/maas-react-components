@@ -775,7 +775,9 @@ const themeConfig: ThemeOptions = {
 					borderRadius: "40px"
 				},
 				filled: {
-					backgroundColor: BASE_COLORS.greys.grey2,
+					backgroundColor: BASE_COLORS.greys.grey2
+				},
+				clickable: {
 					"&:hover": {
 						backgroundColor: BASE_COLORS.greys.grey3
 					}
@@ -1006,6 +1008,8 @@ const themeConfig: ThemeOptions = {
 					color: BASE_COLORS.greys.grey11,
 					cursor: "auto",
 					padding: "0px 16px",
+					position: "sticky",
+					top: 0,
 					":hover": {
 						background: "unset"
 					}
@@ -1025,7 +1029,6 @@ const themeConfig: ThemeOptions = {
 			},
 			list: {
 				border: `1px solid ${BASE_COLORS.greys.grey2}`,
-				borderTop: "unset",
 				overflow: "auto",
 				height: "100%"
 			}
