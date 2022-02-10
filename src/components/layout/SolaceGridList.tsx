@@ -1,5 +1,6 @@
 import { styled } from "@material-ui/core";
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { BASE_COLORS } from "../../resources/colorPallette";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 const Row = styled("div")(({ theme }) => theme.mixins.layoutComponent_GridList.row);
@@ -37,6 +38,7 @@ function SolaceGridListRow({ id, index, items, gridTemplate, selected, onClick }
 
 	return (
 		<Row
+			key={`row${id}`}
 			className={selected ? "selected" : ""}
 			onClick={() => onClick(id)}
 			onKeyPress={(e) => handleKeyPress(e)}
@@ -58,10 +60,35 @@ function SolaceGridList<T extends SolaceGridListItem>({
 	gridTemplate,
 	dataQa
 }: SolaceGridListProps<T>): JSX.Element {
+	const [headerBGC, setHeaderBGC] = useState("");
+
+	useEffect(() => {
+		const getBackgroundColour = (element: Element): string => {
+			let backgroundColor = window.getComputedStyle(element).backgroundColor;
+			if (backgroundColor !== "rgba(0, 0, 0, 0)") {
+				return backgroundColor;
+			} else if (element.parentElement) {
+				backgroundColor = getBackgroundColour(element.parentElement);
+			} else {
+				// fall through case (no background color defined in any parent element)
+				backgroundColor = BASE_COLORS.whites.white1;
+			}
+
+			return backgroundColor;
+		};
+
+		const currentBase = document.getElementById("listComponent");
+		const parentElement = currentBase?.parentElement;
+		if (parentElement) {
+			const bkColor = getBackgroundColour(parentElement);
+			setHeaderBGC(bkColor);
+		}
+	}, []);
+
 	const getListHeader = useMemo(() => {
 		if (headers) {
 			return (
-				<Row className="headerRow" style={{ gridTemplateColumns: gridTemplate }}>
+				<Row className="headerRow" style={{ gridTemplateColumns: gridTemplate, backgroundColor: headerBGC }}>
 					{headers.map((label, index) => (
 						<span key={index}>{label}</span>
 					))}
@@ -69,7 +96,7 @@ function SolaceGridList<T extends SolaceGridListItem>({
 			);
 		}
 		return null;
-	}, [gridTemplate, headers]);
+	}, [gridTemplate, headerBGC, headers]);
 
 	const handleRowClick = useCallback(
 		(id: string) => {
@@ -81,9 +108,9 @@ function SolaceGridList<T extends SolaceGridListItem>({
 	);
 
 	return (
-		<div key={id} data-qa={dataQa} style={{ height: "100%" }}>
-			{headers && getListHeader}
+		<div id="listComponent" key={id} data-qa={dataQa} style={{ height: "100%" }}>
 			<List>
+				{headers && getListHeader}
 				{items?.map((item, index) => (
 					<SolaceGridListRow
 						key={`solaceGridListRow-${item.id}`}

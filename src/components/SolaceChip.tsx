@@ -27,6 +27,10 @@ export interface SolaceChipProps {
 	 * Flag for controlling the size of the chip component
 	 */
 	compressed?: boolean;
+	/**
+	 * If true, the chip will appear clickable, and will raise when pressed
+	 */
+	clickable?: boolean;
 }
 
 export default function SolaceChip({
@@ -35,7 +39,8 @@ export default function SolaceChip({
 	disabled = false,
 	maxWidth = 200,
 	size = "sm",
-	compressed = true
+	compressed = true,
+	clickable = false
 }: SolaceChipProps): JSX.Element {
 	return (
 		<Chip
@@ -44,6 +49,7 @@ export default function SolaceChip({
 			variant={variant}
 			size={compressed ? "small" : "medium"}
 			disabled={disabled}
+			clickable={clickable}
 			deleteIcon={<CloseIcon />}
 		/>
 	);

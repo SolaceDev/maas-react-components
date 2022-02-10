@@ -262,7 +262,11 @@ const withActionColumnMapping = (testItem) => {
 			{testItem.description}
 		</div>
 	);
-	itemCells.push(<div style={{ justifySelf: "center" }}>{createActionMenu(testItem)}</div>);
+	itemCells.push(
+		<div key={`${testItem.id}-actionMenu`} style={{ justifySelf: "center" }}>
+			{createActionMenu(testItem)}
+		</div>
+	);
 	return itemCells;
 };
 
