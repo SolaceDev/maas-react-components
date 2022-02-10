@@ -34,8 +34,6 @@ jobs:
     needs: chromatic-deployment
     name: "Bump Version on main"
     runs-on: ubuntu-latest
-    container:
-      image: node:14.15.0-alpine
     steps:
       - name: "Checkout source code"
         uses: "actions/checkout@v2"
@@ -46,7 +44,7 @@ jobs:
       - name: "Setup Node.js"
         uses: "actions/setup-node@v1"
         with:
-          node-version: 12
+          node-version: 14
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
@@ -60,8 +58,6 @@ jobs:
     needs: chromatic-deployment
     name: "Deploy Storybook to Github Pages"
     runs-on: ubuntu-latest
-    container:
-      image: node:14.15.0-alpine
     steps:
       - uses: "actions/checkout@v2"
       - name: install
