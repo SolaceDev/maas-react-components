@@ -6,7 +6,7 @@ import {
 	SolaceButton,
 	HelpOutlineOutlinedIcon,
 	AddCircleOutlineOutlinedIcon
-} from "@solacedev/maas-react-components";
+} from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceTooltip",

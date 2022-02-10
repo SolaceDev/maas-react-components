@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceTabs, SolaceNotificationCounter, SolaceButton } from "@solacedev/maas-react-components";
+import { SolaceTabs, SolaceNotificationCounter, SolaceButton } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Layout/SolaceTabs",

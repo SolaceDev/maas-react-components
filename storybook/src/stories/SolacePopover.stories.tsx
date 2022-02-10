@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentMeta } from "@storybook/react";
-import { SolacePopover } from "@solacedev/maas-react-components";
+import { SolacePopover } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolacePopover",

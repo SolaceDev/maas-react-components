@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceButton, DeleteIcon } from "@solacedev/maas-react-components";
+import { SolaceButton, DeleteIcon } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Forms/SolaceButton",
