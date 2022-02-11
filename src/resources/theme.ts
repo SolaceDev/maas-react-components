@@ -1012,7 +1012,8 @@ const themeConfig: ThemeOptions = {
 					top: 0,
 					":hover": {
 						background: "unset"
-					}
+					},
+					zIndex: 1
 				},
 				borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
 				cursor: "pointer",
