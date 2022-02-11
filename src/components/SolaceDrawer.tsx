@@ -50,7 +50,7 @@ export interface SolaceDrawerProps {
 	 */
 	minWidth?: number;
 	/**
-	 * Optional value to control the range of the drawer width. Needs resizable to be true. default is set to 800.
+	 * Optional value to control the range of the drawer width. Needs resizable to be true. default is set to 1000.
 	 */
 	maxWidth?: number;
 	/**
@@ -77,7 +77,7 @@ function SolaceDrawer({
 	resizable = false,
 	onResizeDone,
 	minWidth = 100,
-	maxWidth = 800,
+	maxWidth = 1000,
 	anchor = ANCHOR.RIGHT,
 	top = "0px",
 	height = "100%",
@@ -92,12 +92,14 @@ function SolaceDrawer({
 	const handleMouseMove = useCallback(
 		(e) => {
 			e.preventDefault();
-			const newWidth =
-				anchor === ANCHOR.RIGHT
-					? drawerWidth + initialClientX.current - e.clientX
-					: drawerWidth + e.clientX - initialClientX.current;
-			if (newWidth > minWidth && newWidth < maxWidth) {
+			const delta = e.clientX - initialClientX.current;
+			const newWidth = anchor === ANCHOR.RIGHT ? drawerWidth - delta : drawerWidth + delta;
+			if (newWidth >= minWidth && newWidth <= maxWidth) {
 				setDrawerWidth(newWidth);
+			} else if (newWidth < minWidth) {
+				setDrawerWidth(minWidth);
+			} else {
+				setDrawerWidth(maxWidth);
 			}
 		},
 		[maxWidth, minWidth, anchor, drawerWidth]
