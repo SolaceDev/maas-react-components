@@ -91,6 +91,62 @@ To see the storybook visit: https://solid-garbanzo-f65ff422.pages.github.io/
 
 You do need access to this repo to see the storybook.
 
+## Test locally on maas-ui
+
+Make sure maas-react-components and maas-ui are using the same node version ( `node -v` ).
+
+### In `maas-react-components`:
+
+In `package.json`, change `module` to load `dist/index.js` so that you can debug with unminimized code.
+
+Then, run `npm link`.
+
+### In `maas-ui`:
+
+`cd` into the micro-frontend folder (e.g. `ep` or `saas`) you want to test on.
+
+```
+npm uninstall @SolaceDev/maas-react-components
+```
+
+Make sure `@SolaceDev/maas-react-components` is no longer in the `node_modules` folder, then return to the micro-frontend folder you are testing.
+
+```
+npm link @SolaceDev/maas-react-components
+```
+
+Open `webpack.config.js`, and comment out
+
+```
+			alias: {
+				"react-dom": "@hot-loader/react-dom"
+			}
+```
+
+Go to `localhost:9000` to make sure your `maas-react-component` changes are reflected.
+
+To view the global link:
+
+```
+ls /Users/<your user name>/.nvm/versions/node/<node version>/lib/node_modules/
+```
+
+To remove the link:
+
+```
+npm rm --global @SolaceDev/maas-react-components
+```
+
+If getting react runtime or react-dom not found when loading pages, then do:
+
+```
+npm install -g react
+npm install -g react-dom
+```
+### Switching back to the latest official `maas-react-components`
+
+Remove @SolaceDev/maas-react-components from node_modules and run `npm install @SolaceDev/maas-react-components`.
+
 ## License
 
 MIT © [](https://github.com/)

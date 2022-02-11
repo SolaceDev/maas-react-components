@@ -905,7 +905,6 @@ const themeConfig: ThemeOptions = {
 		formComponent_AVPItem: {
 			container: {
 				display: "grid",
-				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
 				gridTemplateRows: "auto",
 				padding: "4px 0px"
 			},
@@ -944,7 +943,6 @@ const themeConfig: ThemeOptions = {
 			labelWrapper: {
 				padding: "2px 0px",
 				display: "grid",
-				gridTemplateColumns: "32px 1fr 8px 1fr 32px",
 				gridTemplateRows: "auto",
 				label: {
 					color: BASE_COLORS.greys.grey11,
