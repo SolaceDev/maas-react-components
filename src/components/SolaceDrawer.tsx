@@ -1,5 +1,5 @@
 import { Drawer, styled, Box } from "@material-ui/core";
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { VerticalDotsIcon } from "../resources/icons/VerticalDotsIcon";
 
 enum ANCHOR {
@@ -88,6 +88,13 @@ function SolaceDrawer({
 	// Create ref to track the value of drawerWidth state, as the state will be stale in callback function handleMouseUp().
 	const widthRef = useRef<number>(width);
 	widthRef.current = drawerWidth;
+
+	// If prop maxWidth is changed and is smaller than the current width, set width to the new maxWidth
+	useEffect(() => {
+		if (drawerWidth > maxWidth) {
+			setDrawerWidth(maxWidth);
+		}
+	}, [drawerWidth, maxWidth]);
 
 	const handleMouseMove = useCallback(
 		(e) => {
