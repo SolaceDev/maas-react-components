@@ -536,7 +536,8 @@ const themeConfig: ThemeOptions = {
 								backgroundColor: BASE_COLORS.greys.grey2
 							},
 							"&.multiline": {
-								height: "58px"
+								paddingTop: "8px",
+								paddingBottom: "8px"
 							},
 
 							"&.Mui-selected": {
@@ -562,7 +563,8 @@ const themeConfig: ThemeOptions = {
 							},
 							".MuiGrid-root.MuiGrid-container": {
 								"&.multiline": {
-									height: "58px"
+									paddingTop: "8px",
+									paddingBottom: "8px"
 								},
 								color: BASE_COLORS.greys.grey14,
 								".subtext": {
@@ -602,7 +604,8 @@ const themeConfig: ThemeOptions = {
 						}
 					},
 					".MuiListItemText-multiline": {
-						height: "58px",
+						paddingTop: "8px",
+						paddingBottom: "8px",
 						display: "flex",
 						flexDirection: "column",
 						justifyContent: "center"
@@ -647,7 +650,8 @@ const themeConfig: ThemeOptions = {
 						minHeight: "38px",
 						".MuiGrid-root.MuiGrid-container": {
 							"&.multiline": {
-								height: "58px"
+								paddingTop: "8px",
+								paddingBottom: "8px"
 							}
 						}
 					},
