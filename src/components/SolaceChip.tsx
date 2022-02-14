@@ -31,6 +31,10 @@ export interface SolaceChipProps {
 	 * If true, the chip will appear clickable, and will raise when pressed
 	 */
 	clickable?: boolean;
+	/**
+	 * if the callback function is set, the chip will show the delete button
+	 */
+	onDelete?: () => void;
 }
 
 export default function SolaceChip({
@@ -40,7 +44,8 @@ export default function SolaceChip({
 	maxWidth = 200,
 	size = "sm",
 	compressed = true,
-	clickable = false
+	clickable = false,
+	onDelete
 }: SolaceChipProps): JSX.Element {
 	return (
 		<Chip
@@ -50,6 +55,7 @@ export default function SolaceChip({
 			size={compressed ? "small" : "medium"}
 			disabled={disabled}
 			clickable={clickable}
+			onDelete={onDelete}
 			deleteIcon={<CloseIcon />}
 		/>
 	);

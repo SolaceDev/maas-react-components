@@ -447,6 +447,7 @@ const themeConfig: ThemeOptions = {
 		MuiRadio: {
 			styleOverrides: {
 				root: {
+					/* eslint-disable sonarjs/no-duplicate-string */
 					alignItems: "flex-start",
 					marginRight: "16px",
 					".MuiFormHelperText-root": {
@@ -625,7 +626,16 @@ const themeConfig: ThemeOptions = {
 					},
 					".MuiOutlinedInput-root": {
 						padding: "0px 0px 0px 8px",
-						height: "32px"
+						// TODO:?
+						minHeight: "32px"
+						// height: "auto"
+					},
+					".MuiOutlinedInput-root.MuiInputBase-root": {
+						display: "flex",
+						flexDirection: "row",
+						flexWrap: "wrap",
+						justifyContent: "flex-start",
+						alignItems: "center"
 					},
 					".MuiOutlinedInput-root.readOnlySelect": {
 						padding: "0px"
@@ -638,6 +648,17 @@ const themeConfig: ThemeOptions = {
 					},
 					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
 						fill: BASE_COLORS.greys.grey14
+					},
+					".MuiButtonBase-root.MuiChip-root": {
+						height: "24px",
+						margin: "4px 3px 2px 3px",
+						borderRadius: "40px",
+						fontSize: "14px",
+						svg: {
+							width: "17px",
+							height: "17px",
+							fill: BASE_COLORS.greys.grey8
+						}
 					}
 				},
 				popper: {

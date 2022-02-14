@@ -357,3 +357,41 @@ ReadOnly.args = {
 	},
 	readOnly: true
 };
+
+export const MultipleSelection = Template.bind({});
+MultipleSelection.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS
+			},
+			delay: 500
+		}
+	]
+};
+MultipleSelection.args = {
+	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
+	name: "demoSelect",
+	title: "Demo Select Field",
+	label: "Some Label",
+	options: store.get("options") || null,
+	fetchOptionsCallback: async (searchTerm: string) => {
+		await fetchOptions(searchTerm);
+	},
+	onCloseCallback: () => store.set({ options: [] }),
+	value: [
+		{
+			name: "Option #2",
+			value: "option2",
+			subText: "Some sub text",
+			suplementalText: "opt2"
+		}
+	],
+	multiple: true
+};
