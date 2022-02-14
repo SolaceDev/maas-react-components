@@ -120,7 +120,7 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 	({ theme, width }) => ({
 		borderCollapse: "collapse",
 		padding: `0 ${theme.spacing()}`,
-		fontSize: theme.typography.subtitle1.fontSize,
+		fontSize: theme.typography.fontSize,
 		fontWeight: 500,
 		minWidth: "30px",
 		height: "48px",
