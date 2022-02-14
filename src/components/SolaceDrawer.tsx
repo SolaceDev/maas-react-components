@@ -1,5 +1,5 @@
 import { Drawer, styled, Box } from "@material-ui/core";
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { VerticalDotsIcon } from "../resources/icons/VerticalDotsIcon";
 
 enum ANCHOR {
@@ -50,7 +50,7 @@ export interface SolaceDrawerProps {
 	 */
 	minWidth?: number;
 	/**
-	 * Optional value to control the range of the drawer width. Needs resizable to be true. default is set to 800.
+	 * Optional value to control the range of the drawer width. Needs resizable to be true. default is set to 1000.
 	 */
 	maxWidth?: number;
 	/**
@@ -77,7 +77,7 @@ function SolaceDrawer({
 	resizable = false,
 	onResizeDone,
 	minWidth = 100,
-	maxWidth = 800,
+	maxWidth = 1000,
 	anchor = ANCHOR.RIGHT,
 	top = "0px",
 	height = "100%",
@@ -89,15 +89,24 @@ function SolaceDrawer({
 	const widthRef = useRef<number>(width);
 	widthRef.current = drawerWidth;
 
+	// If prop maxWidth is changed and is smaller than the current width, set width to the new maxWidth
+	useEffect(() => {
+		if (drawerWidth > maxWidth) {
+			setDrawerWidth(maxWidth);
+		}
+	}, [drawerWidth, maxWidth]);
+
 	const handleMouseMove = useCallback(
 		(e) => {
 			e.preventDefault();
-			const newWidth =
-				anchor === ANCHOR.RIGHT
-					? drawerWidth + initialClientX.current - e.clientX
-					: drawerWidth + e.clientX - initialClientX.current;
-			if (newWidth > minWidth && newWidth < maxWidth) {
+			const delta = e.clientX - initialClientX.current;
+			const newWidth = anchor === ANCHOR.RIGHT ? drawerWidth - delta : drawerWidth + delta;
+			if (newWidth >= minWidth && newWidth <= maxWidth) {
 				setDrawerWidth(newWidth);
+			} else if (newWidth < minWidth) {
+				setDrawerWidth(minWidth);
+			} else {
+				setDrawerWidth(maxWidth);
 			}
 		},
 		[maxWidth, minWidth, anchor, drawerWidth]

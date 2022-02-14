@@ -89,10 +89,29 @@ const ContentBlock = styled("div")({
 	padding: "24px"
 });
 
+function useWindowWidth({ offset }) {
+	const [width, setWidth] = React.useState(window.innerWidth - offset);
+
+	React.useEffect(() => {
+		const handleResize = () => {
+			setWidth(window.innerWidth - offset);
+		};
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	});
+
+	// Return the width with debounce to reduce the frequency of re-rendering
+	return width;
+}
+
 export const WithParentAndContent = (): ReactNode => {
 	const [open, setOpen] = useState(true);
 	const [anchor, setAnchor] = useState(ANCHOR.RIGHT);
 	const [currentWidth, setCurrentWidth] = useState(INITIAL_WIDTH);
+	const maxWidth = useWindowWidth({ offset: 0 });
 
 	const handleOpenChange = () => {
 		setOpen(!open);
@@ -150,6 +169,7 @@ export const WithParentAndContent = (): ReactNode => {
 				resizable={true}
 				anchor={anchor}
 				width={INITIAL_WIDTH}
+				maxWidth={maxWidth}
 				onResizeDone={handleResizeDone}
 				top="80px"
 				height="calc(100vh - 160px)"
