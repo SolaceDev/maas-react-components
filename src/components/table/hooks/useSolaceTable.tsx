@@ -20,34 +20,20 @@ import SolaceCheckBox from "../../form/SolaceCheckBox";
 import clsx from "clsx";
 import { ExpandableRowOptions } from "../SolaceTable";
 
-export interface CustomTableColumnProps {
-	columns: TableColumn[];
-	sortedColumn: TableColumn | undefined;
-	selectAll: boolean;
-	handleSort: (column: TableColumn) => void;
-	handleSelectAllClick: () => void;
-	addColumnHidingControl: (
-		columns: TableColumn[],
-		openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void,
-		isColumnHidingControlOpen: boolean,
-		setIsColumnHidingControlOpen: () => void,
-		setDisplayedColumns: (displayedColumns: TableColumn[]) => void
-	) => React.ReactNode;
-}
-
 export const useSolaceTable = ({
 	rows,
 	columns,
 	selectionType,
 	selectionChangedCallback,
+	sortedColumn,
 	sortCallback,
-	initSortedColumn,
 	renderCustomRowCells,
-	renderCustomHeader,
 	rowActionMenuItems,
+	renderCustomRowActionItem,
 	headerHoverCallback,
 	rowHoverCallback,
 	hasColumnHiding,
+	displayedColumns,
 	displayedColumnsChangedCallback,
 	expandableRowOptions
 }: {
@@ -55,26 +41,35 @@ export const useSolaceTable = ({
 	columns: TableColumn[];
 	selectionType: SELECTION_TYPE;
 	selectionChangedCallback: (row: TableRow[]) => void;
+	sortedColumn: TableColumn | undefined;
 	sortCallback: (column: TableColumn | undefined) => void;
-	initSortedColumn: TableColumn | undefined;
 	renderCustomRowCells?: (row: TableRow) => JSX.Element[];
-	renderCustomHeader?: (customColumnProps: CustomTableColumnProps) => React.ReactNode;
 	rowActionMenuItems?: TableActionMenuItem[];
+	renderCustomRowActionItem?: (row: TableRow) => TableActionMenuItem[];
 	headerHoverCallback?: () => void;
 	rowHoverCallback?: (row: TableRow) => void;
 	hasColumnHiding?: boolean;
+	displayedColumns?: TableColumn[];
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
 	expandableRowOptions?: ExpandableRowOptions;
 	// TODO: Refactor this function to reduce its Cognitive Complexity from 107 to the 15 allowed
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 }): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
-	const [sortedColumn, setSortedColumn] = useState<TableColumn | undefined>(
-		initSortedColumn ? initSortedColumn : columns.find((col) => col.sortable)
-	);
-	const [displayedColumns, setDisplayedColumns] = useState(columns);
 	const [selectAll, setSelectAll] = useState(false);
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
+
+	// Applicable if sortedColumn is not set
+	const [internalSortedColumn, setInternalSortedColumn] = useState<TableColumn | undefined>(
+		columns.find((col) => col.sortable)
+	);
+	// Applicable if displayedColumns is not set
+	const [internalDisplayedColumns, setInternalDisplayedColumns] = useState(columns);
+
+	useEffect(() => {
+		const newSelected = rows.filter((row) => row.rowSelected);
+		setSelectedRows(newSelected);
+	}, [rows]);
 
 	useEffect(() => {
 		selectionChangedCallback(selectedRows);
@@ -83,36 +78,40 @@ export const useSolaceTable = ({
 		} else {
 			setSelectAll(false);
 		}
-	}, [selectedRows, rows.length, selectedRows.length, selectionChangedCallback]);
+	}, [selectedRows, selectionChangedCallback]);
 
-	function updateSelection(row: TableRow) {
+	function updateSelection(clickedRow: TableRow) {
 		if (selectionType !== SELECTION_TYPE.NONE) {
-			handleSingleSelection(row);
+			clickedRow.rowSelected = selectedRows.length > 1 ? true : !clickedRow.rowSelected;
+			setSelectAll(false);
+			rows.map((row) => {
+				if (clickedRow.id !== row.id) {
+					row.rowSelected = false;
+				}
+			});
+			setSelectedRows(clickedRow.rowSelected ? [clickedRow] : []);
 		}
-	}
-
-	function handleSingleSelection(clickedRow: TableRow) {
-		clickedRow.rowSelected = selectedRows.length > 1 ? true : !clickedRow.rowSelected;
-		setSelectAll(false);
-		rows.map((row) => {
-			if (clickedRow.id !== row.id) {
-				row.rowSelected = false;
-			}
-		});
-		setSelectedRows(clickedRow.rowSelected ? [clickedRow] : []);
 	}
 
 	const handleSort = useCallback(
 		(col: TableColumn) => {
-			if (sortedColumn?.field === col.field) {
-				col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
+			if (sortedColumn) {
+				if (sortedColumn.field === col.field) {
+					col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
+				} else {
+					col.sortDirection = SORT_DIRECTION.ASC;
+				}
 			} else {
-				col.sortDirection = SORT_DIRECTION.ASC;
+				if (internalSortedColumn?.field === col.field) {
+					col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
+				} else {
+					col.sortDirection = SORT_DIRECTION.ASC;
+				}
+				setInternalSortedColumn(col);
 			}
-			setSortedColumn(col);
 			sortCallback(col);
 		},
-		[sortedColumn, sortCallback]
+		[internalSortedColumn, sortCallback, sortedColumn]
 	);
 
 	const handleSelectAllClick = useCallback(() => {
@@ -166,17 +165,22 @@ export const useSolaceTable = ({
 	);
 
 	const renderRowActionItems = (row: TableRow): React.ReactNode[] => {
-		return [
-			!!rowActionMenuItems && addActionMenuIcon(row, rowActionMenuItems),
-			!rowActionMenuItems && hasColumnHiding && addEmptyRowCell()
-		];
+		if (renderCustomRowActionItem) {
+			return [addActionMenuIcon(row, renderCustomRowActionItem(row))];
+		} else if (rowActionMenuItems && rowActionMenuItems.length > 0) {
+			return [addActionMenuIcon(row, rowActionMenuItems)];
+		} else if (!rowActionMenuItems && hasColumnHiding) {
+			return [addEmptyRowCell()];
+		}
+		return [];
 	};
 
 	const renderConfiguredRowCells = (row: TableRow): React.ReactNode[] => {
 		if (renderCustomRowCells) {
 			return renderCustomRowCells(row);
 		} else {
-			return displayedColumns.map((col) => {
+			const columnsToDisplay = displayedColumns ? displayedColumns : internalDisplayedColumns;
+			return columnsToDisplay.map((col) => {
 				if (!col.hasNoCell && !col.isHidden) {
 					const key = row.id + "_" + col.field;
 					return (
@@ -192,12 +196,14 @@ export const useSolaceTable = ({
 	};
 
 	const createHeaderNodes = useCallback(() => {
+		const columnToSort = sortedColumn ? sortedColumn : internalSortedColumn;
+		const columnsToDisplay = displayedColumns ? displayedColumns : internalDisplayedColumns;
 		return (
 			<StyledTableRow className="header" onMouseEnter={headerHoverCallback ? () => headerHoverCallback() : undefined}>
 				{[
 					addCheckBoxToHeader(),
 					addChevronToHeader(),
-					...displayedColumns.map(
+					...columnsToDisplay.map(
 						(col) =>
 							!col.isHidden && (
 								<StyledTableHeader
@@ -210,44 +216,46 @@ export const useSolaceTable = ({
 										onClick={() => (col.sortable ? handleSort(col) : undefined)}
 									>
 										{col.headerName}
-										{sortedColumn?.field === col.field &&
+										{columnToSort?.field === col.field &&
 											col.sortable &&
 											(col.sortDirection === SORT_DIRECTION.ASC ? (
 												<AscendingSortIcon opacity={0.8} />
 											) : (
 												<DescendingSortIcon opacity={0.8} />
 											))}
-										{sortedColumn?.field !== col.field && col.sortable && <UnsortedIcon />}
+										{columnToSort?.field !== col.field && col.sortable && <UnsortedIcon />}
 									</span>
 								</StyledTableHeader>
 							)
 					),
 					!!rowActionMenuItems && !hasColumnHiding && addEmptyHeaderCell(),
 					hasColumnHiding &&
-						addColumnHidingControl(
-							displayedColumns,
+						addColumnHidingControl({
+							columns: columnsToDisplay,
 							openColumnHidingControl,
 							isColumnHidingControlOpen,
 							setIsColumnHidingControlOpen,
-							setDisplayedColumns,
+							setDisplayedColumns: displayedColumns ? undefined : setInternalDisplayedColumns,
 							displayedColumnsChangedCallback
-						)
+						})
 				]}
 			</StyledTableRow>
 		);
 	}, [
-		sortedColumn,
 		addCheckBoxToHeader,
 		addChevronToHeader,
-		displayedColumns,
+		sortedColumn,
+		internalSortedColumn,
 		handleSort,
 		rowActionMenuItems,
 		hasColumnHiding,
-		headerHoverCallback,
+		displayedColumns,
+		internalDisplayedColumns,
+		displayedColumnsChangedCallback,
 		isColumnHidingControlOpen,
 		setIsColumnHidingControlOpen,
 		openColumnHidingControl,
-		displayedColumnsChangedCallback
+		headerHoverCallback
 	]);
 
 	function createRowNodes(): React.ReactNode[] {
@@ -273,7 +281,7 @@ export const useSolaceTable = ({
 
 	const expandableRows = useExpandableRows({
 		rows,
-		displayedColumns,
+		displayedColumns: displayedColumns ? displayedColumns : internalDisplayedColumns,
 		selectionType,
 		updateSelection,
 		addCheckBoxToRows,
@@ -291,17 +299,7 @@ export const useSolaceTable = ({
 
 	// if expandableRowOptions is set, then create expanded row nodes, otherwise createRowNodes
 	const rowNodes = expandableRowOptions ? expandableRows.createRowNodes() : createRowNodes();
-
-	const columnNodes = renderCustomHeader
-		? renderCustomHeader({
-				columns,
-				sortedColumn,
-				selectAll,
-				handleSort,
-				handleSelectAllClick,
-				addColumnHidingControl
-		  })
-		: createHeaderNodes();
+	const columnNodes = createHeaderNodes();
 
 	return [columnNodes, rowNodes];
 };

@@ -31,7 +31,7 @@ interface ColumnHidingControlMenu extends SolaceComponentProps {
 	id?: string;
 	columns: TableColumn[];
 	onCloseCallback: (value: React.SetStateAction<boolean>) => void;
-	setDisplayedColumns: (displayedColumns: TableColumn[]) => void;
+	setDisplayedColumns?: (displayedColumns: TableColumn[]) => void;
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
 }
 
@@ -53,7 +53,7 @@ const ColumnHidingControlMenu = ({
 		const columnIndex = columns.findIndex((col) => col.field === column.field);
 		const newColumns = columns.slice();
 		newColumns[columnIndex].isHidden = !newColumns[columnIndex].isHidden;
-		setDisplayedColumns(newColumns);
+		setDisplayedColumns?.(newColumns);
 		if (displayedColumnsChangedCallback) {
 			displayedColumnsChangedCallback(newColumns);
 		}

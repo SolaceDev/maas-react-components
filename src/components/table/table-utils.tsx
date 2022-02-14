@@ -86,7 +86,7 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 		textAlign: "center"
 	},
 	"&.expand-icon": {
-		padding: "10px 8px 6px 0",
+		padding: "10px 6px 6px 0",
 		".chevron": {
 			transform: "rotate(180deg)",
 			"&.expanded": {
@@ -142,7 +142,7 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 			position: "relative"
 		},
 		"&.expand-column": {
-			width: "36px",
+			width: "32px",
 			paddingLeft: 0,
 			paddingRight: 0
 		}
@@ -188,40 +188,52 @@ export const addEmptyRowCell = (): React.ReactNode => {
 };
 
 export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMenuItem[]): React.ReactNode => {
-	const menuItems = actionMenuItems
-		? actionMenuItems.map((item) => ({
-				...item,
-				onMenuItemClick: () => {
-					item.callback(row);
-				}
-		  }))
-		: [];
+	const menuItems =
+		actionMenuItems && actionMenuItems.length > 0
+			? actionMenuItems.map((item) => ({
+					...item,
+					onMenuItemClick: () => {
+						item.callback(row);
+					}
+			  }))
+			: null;
 	return (
-		<StyledTableData>
-			<SolaceMenu
-				buttonProps={{ variant: "icon", children: <MoreHorizIcon /> }}
-				items={menuItems}
-				anchorOrigin={{
-					vertical: "center",
-					horizontal: "left"
-				}}
-				transformOrigin={{
-					vertical: "top",
-					horizontal: "right"
-				}}
-			/>
+		<StyledTableData style={{ textAlign: "center" }}>
+			{menuItems && (
+				<SolaceMenu
+					buttonProps={{ variant: "icon", children: <MoreHorizIcon /> }}
+					items={menuItems}
+					anchorOrigin={{
+						vertical: "center",
+						horizontal: "left"
+					}}
+					transformOrigin={{
+						vertical: "top",
+						horizontal: "right"
+					}}
+				/>
+			)}
 		</StyledTableData>
 	);
 };
 
-export const addColumnHidingControl = (
-	columns: TableColumn[],
-	openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void,
-	isColumnHidingControlOpen: boolean,
-	setIsColumnHidingControlOpen: (value: React.SetStateAction<boolean>) => void,
-	setDisplayedColumns: (displayedColumns: TableColumn[]) => void,
-	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void
-): React.ReactNode => {
+export interface ColumnHidingControlProps {
+	columns: TableColumn[];
+	openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void;
+	isColumnHidingControlOpen: boolean;
+	setIsColumnHidingControlOpen: (value: React.SetStateAction<boolean>) => void;
+	setDisplayedColumns?: (displayedColumns: TableColumn[]) => void;
+	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
+}
+
+export const addColumnHidingControl = ({
+	columns,
+	openColumnHidingControl,
+	isColumnHidingControlOpen,
+	setIsColumnHidingControlOpen,
+	setDisplayedColumns,
+	displayedColumnsChangedCallback
+}: ColumnHidingControlProps): React.ReactNode => {
 	return (
 		<StyledTableHeader key={"column-hiding-control"} className="icon-column">
 			<SolaceButton variant={"icon"} onClick={(e) => openColumnHidingControl(e)}>
