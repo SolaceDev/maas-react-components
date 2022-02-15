@@ -18,7 +18,11 @@ export interface ExpandableTableRowProps {
 	selectionType: SELECTION_TYPE;
 	updateSelection: (row: TableRow) => void;
 	addCheckBoxToRows: (row: TableRow) => React.ReactNode;
-	renderConfiguredRowCells: (row: TableRow) => React.ReactNode[];
+	renderConfiguredRowCells: (
+		row: TableRow,
+		displayedColumns: TableColumn[] | undefined,
+		internalDisplayedColumns: TableColumn[] | undefined
+	) => React.ReactNode[];
 	renderRowActionItems: (row: TableRow) => React.ReactNode[];
 	rowHoverCallback?: (row: TableRow) => void;
 	hasColumnHiding?: boolean;
@@ -69,11 +73,17 @@ export const useExpandableRows = ({
 			if (allowToggle) numberOfNonDataCols++;
 			if (selectionType === SELECTION_TYPE.MULTI) numberOfNonDataCols++;
 			setDisplayedColumnsCount(numberOfDisplayedDataCols + numberOfNonDataCols);
-			if (displayedColumnsChangedCallback) {
-				displayedColumnsChangedCallback(columnsToDisplay);
-			}
 		}
-	}, [rows, enabled, displayedColumns, internalDisplayedColumns, displayedColumnsChangedCallback]);
+	}, [
+		rows,
+		enabled,
+		displayedColumns,
+		internalDisplayedColumns,
+		displayedColumnsChangedCallback,
+		hasColumnHiding,
+		allowToggle,
+		selectionType
+	]);
 
 	function addChevronToRows(row: TableRow): React.ReactNode | void {
 		if (!allowToggle) {
@@ -136,7 +146,7 @@ export const useExpandableRows = ({
 						{[
 							selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 							addChevronToRows(row),
-							...renderConfiguredRowCells(row),
+							...renderConfiguredRowCells(row, displayedColumns, internalDisplayedColumns),
 							...renderRowActionItems(row)
 						]}
 					</StyledTableRow>

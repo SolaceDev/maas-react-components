@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentMeta } from "@storybook/react";
 import {
@@ -644,12 +644,11 @@ export const CustomSchemaRowTable = (): JSX.Element => {
 	);
 };
 
-const handleShowHideColumns = (columns, setColumnsHiddenInfo) => {
-	const columnsHiddenInfo = columns?.reduce((prev, curr) => {
+const getColumnHiddenInfo = (columns) => {
+	return columns?.reduce((prev, curr) => {
 		prev[curr.field] = curr.isHidden;
 		return prev;
 	}, {});
-	setColumnsHiddenInfo(columnsHiddenInfo);
 };
 
 const createSchemaCells = (row, columnsHiddenInfo): JSX.Element[] => {
@@ -727,7 +726,7 @@ export const CustomSchemaRowWithActionsTable = (): JSX.Element => {
 	}, []);
 
 	const displayedColumnsChanged = useCallback((columns) => {
-		handleShowHideColumns(columns, setColumnsHiddenInfo);
+		setColumnsHiddenInfo(getColumnHiddenInfo(columns));
 	}, []);
 
 	const renderSchemaRowCells = useCallback(
@@ -764,7 +763,7 @@ export const CustomSchemaRowWithCustomActionsTable = (): JSX.Element => {
 	}, []);
 
 	const displayedColumnsChanged = useCallback((columns) => {
-		handleShowHideColumns(columns, setColumnsHiddenInfo);
+		setColumnsHiddenInfo(getColumnHiddenInfo(columns));
 	}, []);
 
 	const renderSchemaRowCells = useCallback(
@@ -813,7 +812,7 @@ export const CustomSchemaRowWithActionsCustomColumnWidthTable = (): JSX.Element 
 	}, []);
 
 	const displayedColumnsChanged = useCallback((columns) => {
-		handleShowHideColumns(columns, setColumnsHiddenInfo);
+		setColumnsHiddenInfo(getColumnHiddenInfo(columns));
 	}, []);
 
 	const renderSchemaRowCells = useCallback(
@@ -853,7 +852,7 @@ export const ExpandableCustomSchemaRowWithActionsTable = (): JSX.Element => {
 	const selectionType = SolaceTableSelectionType.SINGLE;
 
 	const displayedColumnsChanged = useCallback((columns) => {
-		handleShowHideColumns(columns, setColumnsHiddenInfo);
+		setColumnsHiddenInfo(getColumnHiddenInfo(columns));
 	}, []);
 
 	const renderSchemaRowCells = useCallback(
@@ -906,7 +905,7 @@ export const ExpandableCustomSchemaRowWithActionsCustomWidthTable = (): JSX.Elem
 	const selectionType = SolaceTableSelectionType.SINGLE;
 
 	const displayedColumnsChanged = useCallback((columns) => {
-		handleShowHideColumns(columns, setColumnsHiddenInfo);
+		setColumnsHiddenInfo(getColumnHiddenInfo(columns));
 	}, []);
 
 	const renderSchemaRowCells = useCallback(
@@ -1068,7 +1067,7 @@ export const ExpandableCustomSchemaRowControlledStateTable = (): JSX.Element => 
 	const [sortedColumn, setSortedColumn] = useState(columnToSort);
 	const [tableRows, setRows] = useState([...sortData(columnToSort, data)]);
 	const [displayedColumns, setDisplayedColumns] = useState(columnsDef);
-	const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
+	const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(getColumnHiddenInfo(columnsDef));
 	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
 	const handleSort = useCallback((selectedColumn) => {
 		setSortedColumn(selectedColumn);
@@ -1079,7 +1078,7 @@ export const ExpandableCustomSchemaRowControlledStateTable = (): JSX.Element => 
 
 	const displayedColumnsChanged = useCallback((columns) => {
 		setDisplayedColumns(columns);
-		handleShowHideColumns(columns, setColumnsHiddenInfo);
+		setColumnsHiddenInfo(getColumnHiddenInfo(columns));
 	}, []);
 
 	const renderSchemaRowCells = useCallback(

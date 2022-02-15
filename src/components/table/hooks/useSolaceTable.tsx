@@ -107,7 +107,6 @@ export const useSolaceTable = ({
 	);
 
 	const handleSort = useCallback(
-		// eslint-disable-next-line sonarjs/cognitive-complexity
 		(newColumn: TableColumn, sortedColumn: TableColumn | undefined, internalSortedColumn: TableColumn | undefined) => {
 			const columnInfo = columnsRef.current.find((column) => column.field === newColumn.field);
 			if (columnInfo && columnInfo.sortable) {
@@ -203,36 +202,46 @@ export const useSolaceTable = ({
 		[isColumnHidingControlOpen]
 	);
 
-	const renderRowActionItems = (row: TableRow): React.ReactNode[] => {
-		if (renderCustomRowActionItem) {
-			return [addActionMenuIcon(row, renderCustomRowActionItem(row))];
-		} else if (rowActionMenuItems && rowActionMenuItems.length > 0) {
-			return [addActionMenuIcon(row, rowActionMenuItems)];
-		} else if (!rowActionMenuItems && hasColumnHiding) {
-			return [addEmptyRowCell(row)];
-		}
-		return [];
-	};
+	const renderRowActionItems = useCallback(
+		(row: TableRow): React.ReactNode[] => {
+			if (renderCustomRowActionItem) {
+				return [addActionMenuIcon(row, renderCustomRowActionItem(row))];
+			} else if (rowActionMenuItems && rowActionMenuItems.length > 0) {
+				return [addActionMenuIcon(row, rowActionMenuItems)];
+			} else if (!rowActionMenuItems && hasColumnHiding) {
+				return [addEmptyRowCell(row)];
+			}
+			return [];
+		},
+		[hasColumnHiding, renderCustomRowActionItem, rowActionMenuItems]
+	);
 
-	const renderConfiguredRowCells = (row: TableRow): React.ReactNode[] => {
-		if (renderCustomRowCells) {
-			return renderCustomRowCells(row);
-		} else {
-			const columnsToDisplay = (displayedColumns ? displayedColumns : internalDisplayedColumns) ?? [];
-			return columnsToDisplay.map((col) => {
-				if (!col.hasNoCell && !col.isHidden) {
-					const key = row.id + "_" + col.field;
-					return (
-						<StyledTableData key={key}>
-							<span>{row[col.field]}</span>
-						</StyledTableData>
-					);
-				} else {
-					return;
-				}
-			});
-		}
-	};
+	const renderConfiguredRowCells = useCallback(
+		(
+			row: TableRow,
+			displayedColumns: TableColumn[] | undefined,
+			internalDisplayedColumns: TableColumn[] | undefined
+		): React.ReactNode[] => {
+			if (renderCustomRowCells) {
+				return renderCustomRowCells(row);
+			} else {
+				const columnsToDisplay = (displayedColumns ? displayedColumns : internalDisplayedColumns) ?? [];
+				return columnsToDisplay.map((col) => {
+					if (!col.hasNoCell && !col.isHidden) {
+						const key = row.id + "_" + col.field;
+						return (
+							<StyledTableData key={key}>
+								<span>{row[col.field]}</span>
+							</StyledTableData>
+						);
+					} else {
+						return;
+					}
+				});
+			}
+		},
+		[renderCustomRowCells]
+	);
 
 	const addConfigureColumnHeader = useCallback(
 		// eslint-disable-next-line sonarjs/cognitive-complexity
@@ -321,12 +330,22 @@ export const useSolaceTable = ({
 			>
 				{[
 					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
-					...renderConfiguredRowCells(row),
+					...renderConfiguredRowCells(row, displayedColumns, internalDisplayedColumns),
 					...renderRowActionItems(row)
 				]}
 			</StyledTableRow>
 		));
-	}, [addCheckBoxToRows, renderConfiguredRowCells, renderRowActionItems, rowHoverCallback, rows, updateSelection]);
+	}, [
+		addCheckBoxToRows,
+		displayedColumns,
+		internalDisplayedColumns,
+		renderConfiguredRowCells,
+		renderRowActionItems,
+		rowHoverCallback,
+		rows,
+		selectionType,
+		updateSelection
+	]);
 
 	const expandableRows = useExpandableRows({
 		enabled: expandableRowOptions !== undefined && expandableRowOptions !== null,
