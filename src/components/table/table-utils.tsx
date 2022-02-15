@@ -198,7 +198,10 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 			  }))
 			: null;
 	return (
-		<StyledTableData key={row.id + "_actionMenu"} style={{ textAlign: "center" }}>
+		<StyledTableData
+			key={row.id + "_actionMenu"}
+			style={{ textAlign: "center", paddingTop: "4px", paddingBottom: "4px" }}
+		>
 			{menuItems && (
 				<SolaceMenu
 					buttonProps={{ variant: "icon", children: <MoreHorizIcon /> }}
