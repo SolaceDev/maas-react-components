@@ -73,7 +73,6 @@ function SolaceTooltip({
 		<Tooltip
 			id={id}
 			title={title ?? ""}
-			arial-label={title}
 			classes={{ tooltip: `${variant === "html" ? "htmlContent" : ""} ${maxWidth ? maxWidth + "Width" : ""}` }}
 			placement={placement}
 			data-qa={dataQa}

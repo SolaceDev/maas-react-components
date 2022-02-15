@@ -513,6 +513,7 @@ const themeConfig: ThemeOptions = {
 						".MuiPaper-root": {
 							margin: "4px",
 							".MuiMenuItem-root": {
+								minWidth: "80px",
 								maxWidth: "320px",
 								"&.wideMenu": {
 									minWidth: "320px"

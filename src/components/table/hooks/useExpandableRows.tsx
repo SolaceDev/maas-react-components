@@ -11,12 +11,18 @@ import {
 import { ChevronIcon } from "../../../resources/icons/ChevronIcon";
 
 export interface ExpandableTableRowProps {
+	enabled: boolean;
 	rows: TableRow[];
-	displayedColumns: TableColumn[];
+	displayedColumns?: TableColumn[];
+	internalDisplayedColumns?: TableColumn[];
 	selectionType: SELECTION_TYPE;
 	updateSelection: (row: TableRow) => void;
 	addCheckBoxToRows: (row: TableRow) => React.ReactNode;
-	renderConfiguredRowCells: (row: TableRow) => React.ReactNode[];
+	renderConfiguredRowCells: (
+		row: TableRow,
+		displayedColumns: TableColumn[] | undefined,
+		internalDisplayedColumns: TableColumn[] | undefined
+	) => React.ReactNode[];
 	renderRowActionItems: (row: TableRow) => React.ReactNode[];
 	rowHoverCallback?: (row: TableRow) => void;
 	hasColumnHiding?: boolean;
@@ -29,8 +35,10 @@ export interface ExpandableTableRowProps {
 }
 
 export const useExpandableRows = ({
+	enabled,
 	rows,
 	displayedColumns,
+	internalDisplayedColumns,
 	selectionType,
 	updateSelection,
 	addCheckBoxToRows,
@@ -47,10 +55,14 @@ export const useExpandableRows = ({
 }: ExpandableTableRowProps) => {
 	const [displayedColumnsCount, setDisplayedColumnsCount] = useState<number>();
 
-	useEffect(
-		() => {
-			let numberOfDisplayedDataCols = 0;
-			displayedColumns.forEach((col) => {
+	useEffect(() => {
+		if (!enabled) {
+			return;
+		}
+		let numberOfDisplayedDataCols = 0;
+		const columnsToDisplay = displayedColumns ? displayedColumns : internalDisplayedColumns;
+		if (columnsToDisplay && columnsToDisplay.length > 0) {
+			columnsToDisplay.forEach((col) => {
 				if (!col.isHidden) {
 					numberOfDisplayedDataCols++;
 				}
@@ -61,13 +73,17 @@ export const useExpandableRows = ({
 			if (allowToggle) numberOfNonDataCols++;
 			if (selectionType === SELECTION_TYPE.MULTI) numberOfNonDataCols++;
 			setDisplayedColumnsCount(numberOfDisplayedDataCols + numberOfNonDataCols);
-			if (displayedColumnsChangedCallback) {
-				displayedColumnsChangedCallback(displayedColumns);
-			}
-		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[rows, displayedColumnsChangedCallback, displayedColumns]
-	);
+		}
+	}, [
+		rows,
+		enabled,
+		displayedColumns,
+		internalDisplayedColumns,
+		displayedColumnsChangedCallback,
+		hasColumnHiding,
+		allowToggle,
+		selectionType
+	]);
 
 	function addChevronToRows(row: TableRow): React.ReactNode | void {
 		if (!allowToggle) {
@@ -102,12 +118,15 @@ export const useExpandableRows = ({
 			expanded &&
 			renderChildren && (
 				<StyledExpandedTableRow
+					key={`${row.id}_childrenTr`}
 					className={row.rowSelected ? "selected expanded" : "expanded"}
 					onClick={() => {
 						if (selectRowWhenClickOnChildren) updateSelection(row);
 					}}
 				>
-					<StyledExpandedTableData colSpan={displayedColumnsCount}>{renderChildren(row)}</StyledExpandedTableData>
+					<StyledExpandedTableData key={`${row.id}_childrenTd`} colSpan={displayedColumnsCount}>
+						{renderChildren(row)}
+					</StyledExpandedTableData>
 				</StyledExpandedTableRow>
 			)
 		);
@@ -119,6 +138,7 @@ export const useExpandableRows = ({
 			return (
 				<React.Fragment key={`${row.id}_wrapper`}>
 					<StyledTableRow
+						key={row.id}
 						onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
 						onClick={() => updateSelection(row)}
 						className={`${row.rowSelected ? "selected" : ""} ${expanded ? "expanded" : ""}`}
@@ -126,7 +146,7 @@ export const useExpandableRows = ({
 						{[
 							selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
 							addChevronToRows(row),
-							...renderConfiguredRowCells(row),
+							...renderConfiguredRowCells(row, displayedColumns, internalDisplayedColumns),
 							...renderRowActionItems(row)
 						]}
 					</StyledTableRow>

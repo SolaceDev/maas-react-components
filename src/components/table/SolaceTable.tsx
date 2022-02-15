@@ -1,4 +1,4 @@
-import { useSolaceTable, CustomTableColumnProps } from "./hooks/useSolaceTable";
+import { useSolaceTable } from "./hooks/useSolaceTable";
 import { styled } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
@@ -26,17 +26,25 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	hasColumnHiding?: boolean;
 	/**
-	 * Function that is called on displayed columns change
+	 * Controlled state for columns show and hide information
+	 */
+	displayedColumns?: TableColumn[];
+	/**
+	 * Function that is called when displayed columns change is requested
 	 */
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
 	/**
-	 * has row action menu items
+	 * Action menu items that apply to all rows
 	 */
 	rowActionMenuItems?: TableActionMenuItem[];
 	/**
-	 * Selected column. If not passed in, will default to the first column
+	 * Controlled state for sorted column.
 	 */
 	sortedColumn?: TableColumn | undefined;
+	/**
+	 * Sort callback when sorted column change is requested
+	 */
+	sortCallback: (column: TableColumn | undefined) => void;
 	/**
 	 * Empty state message
 	 */
@@ -50,17 +58,13 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	selectionChangedCallback: (row: TableRow[]) => void;
 	/**
-	 * Sort callback
-	 */
-	sortCallback: (column: TableColumn | undefined) => void;
-	/**
 	 * Renders a custom row without predefined columns, such as checkbox column, expand/collapse column
 	 */
 	renderCustomRowCells?: (row: TableRow) => JSX.Element[];
 	/**
-	 * Renders a custom header
+	 * Renders action items for a row. If set at the same time as rowActionMenuItems, this callback takes precedence.
 	 */
-	renderCustomHeader?: (customTableColumnProps: CustomTableColumnProps) => React.ReactNode;
+	renderCustomRowActionItem?: (row: TableRow) => TableActionMenuItem[];
 	/**
 	 * Header hover callback
 	 */
@@ -136,13 +140,14 @@ function SolaceTable({
 	sortedColumn,
 	sortCallback,
 	renderCustomRowCells,
-	renderCustomHeader,
 	emptyStateMessage,
 	renderCustomEmptyState,
 	rowActionMenuItems,
+	renderCustomRowActionItem,
 	headerHoverCallback,
 	rowHoverCallback,
 	hasColumnHiding,
+	displayedColumns,
 	displayedColumnsChangedCallback,
 	expandableRowOptions
 }: TablePropType): JSX.Element {
@@ -152,13 +157,14 @@ function SolaceTable({
 		selectionType,
 		selectionChangedCallback,
 		sortCallback,
-		initSortedColumn: sortedColumn,
+		sortedColumn,
 		renderCustomRowCells,
-		renderCustomHeader,
 		rowActionMenuItems,
+		renderCustomRowActionItem,
 		headerHoverCallback,
 		rowHoverCallback,
 		hasColumnHiding,
+		displayedColumns,
 		displayedColumnsChangedCallback,
 		expandableRowOptions
 	});
