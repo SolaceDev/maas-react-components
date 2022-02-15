@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import {
 	TableColumn,
 	TableRow,
@@ -19,6 +19,7 @@ import SolaceCheckBox from "../../form/SolaceCheckBox";
 
 import clsx from "clsx";
 import { ExpandableRowOptions } from "../SolaceTable";
+import { cloneDeep } from "lodash";
 
 export const useSolaceTable = ({
 	rows,
@@ -60,11 +61,20 @@ export const useSolaceTable = ({
 	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
 
 	// Applicable if sortedColumn is not set
-	const [internalSortedColumn, setInternalSortedColumn] = useState<TableColumn | undefined>(
-		columns.find((col) => col.sortable)
-	);
+	const [internalSortedColumn, setInternalSortedColumn] = useState<TableColumn>();
 	// Applicable if displayedColumns is not set
-	const [internalDisplayedColumns, setInternalDisplayedColumns] = useState(columns);
+	const [internalDisplayedColumns, setInternalDisplayedColumns] = useState<TableColumn[]>();
+
+	const columnsRef = useRef<TableColumn[]>([]);
+
+	useEffect(() => {
+		if (columns) {
+			const internalColumns = cloneDeep(columns);
+			columnsRef.current = internalColumns;
+			setInternalSortedColumn(internalColumns.find((col) => col.sortable));
+			setInternalDisplayedColumns(internalColumns);
+		}
+	}, [columns]);
 
 	useEffect(() => {
 		const newSelected = rows.filter((row) => row.rowSelected);
@@ -80,38 +90,61 @@ export const useSolaceTable = ({
 		}
 	}, [selectedRows, selectionChangedCallback]);
 
-	function updateSelection(clickedRow: TableRow) {
-		if (selectionType !== SELECTION_TYPE.NONE) {
-			clickedRow.rowSelected = selectedRows.length > 1 ? true : !clickedRow.rowSelected;
-			setSelectAll(false);
-			rows.map((row) => {
-				if (clickedRow.id !== row.id) {
-					row.rowSelected = false;
-				}
-			});
-			setSelectedRows(clickedRow.rowSelected ? [clickedRow] : []);
-		}
-	}
+	const updateSelection = useCallback(
+		(clickedRow: TableRow) => {
+			if (selectionType !== SELECTION_TYPE.NONE) {
+				clickedRow.rowSelected = selectedRows.length > 1 ? true : !clickedRow.rowSelected;
+				setSelectAll(false);
+				rows.map((row) => {
+					if (clickedRow.id !== row.id) {
+						row.rowSelected = false;
+					}
+				});
+				setSelectedRows(clickedRow.rowSelected ? [clickedRow] : []);
+			}
+		},
+		[rows, selectedRows.length]
+	);
 
 	const handleSort = useCallback(
-		(col: TableColumn) => {
-			if (sortedColumn) {
-				if (sortedColumn.field === col.field) {
-					col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
+		// eslint-disable-next-line sonarjs/cognitive-complexity
+		(newColumn: TableColumn, sortedColumn: TableColumn | undefined, internalSortedColumn: TableColumn | undefined) => {
+			const columnInfo = columnsRef.current.find((column) => column.field === newColumn.field);
+			if (columnInfo && columnInfo.sortable) {
+				if (sortedColumn) {
+					if (sortedColumn.field === columnInfo.field) {
+						columnInfo.sortDirection =
+							columnInfo.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
+					} else {
+						columnInfo.sortDirection = SORT_DIRECTION.ASC;
+					}
+					sortCallback(columnInfo);
 				} else {
-					col.sortDirection = SORT_DIRECTION.ASC;
+					if (internalSortedColumn?.field === columnInfo.field) {
+						columnInfo.sortDirection =
+							columnInfo.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
+					} else {
+						columnInfo.sortDirection = SORT_DIRECTION.ASC;
+					}
+					setInternalSortedColumn(columnInfo);
+					sortCallback(columnInfo);
 				}
-			} else {
-				if (internalSortedColumn?.field === col.field) {
-					col.sortDirection = col.sortDirection === SORT_DIRECTION.DCS ? SORT_DIRECTION.ASC : SORT_DIRECTION.DCS;
-				} else {
-					col.sortDirection = SORT_DIRECTION.ASC;
-				}
-				setInternalSortedColumn(col);
 			}
-			sortCallback(col);
 		},
-		[internalSortedColumn, sortCallback, sortedColumn]
+		[sortCallback]
+	);
+
+	const handleDisplayColumnsChanged = useCallback(
+		(cols: TableColumn[]) => {
+			columnsRef.current?.forEach((column, index) => {
+				if (cols && cols[index]) {
+					column.isHidden = cols[index].isHidden;
+				}
+			});
+			setInternalDisplayedColumns(cols);
+			displayedColumnsChangedCallback?.(cols);
+		},
+		[displayedColumnsChangedCallback]
 	);
 
 	const handleSelectAllClick = useCallback(() => {
@@ -119,10 +152,13 @@ export const useSolaceTable = ({
 		setSelectedRows(selectAll ? [] : rows);
 	}, [rows, selectAll]);
 
-	function handleCheckboxClick(row: TableRow) {
-		row.rowSelected = !row.rowSelected;
-		setSelectedRows(row.rowSelected ? [...selectedRows, row] : selectedRows.filter((item) => row.id !== item.id));
-	}
+	const handleCheckboxClick = useCallback(
+		(row: TableRow) => {
+			row.rowSelected = !row.rowSelected;
+			setSelectedRows(row.rowSelected ? [...selectedRows, row] : selectedRows.filter((item) => row.id !== item.id));
+		},
+		[selectedRows]
+	);
 
 	const addCheckBoxToHeader = useCallback((): React.ReactNode | void => {
 		if (selectionType === SELECTION_TYPE.MULTI) {
@@ -144,17 +180,20 @@ export const useSolaceTable = ({
 		}
 	}, [expandableRowOptions?.allowToggle]);
 
-	function addCheckBoxToRows(row: TableRow): React.ReactNode {
-		return (
-			<StyledTableData key={`${row.id}_rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
-				<SolaceCheckBox
-					name={`${row.id}rowCheckbox`}
-					onChange={() => handleCheckboxClick(row)}
-					checked={!!row.rowSelected}
-				/>
-			</StyledTableData>
-		);
-	}
+	const addCheckBoxToRows = useCallback(
+		(row: TableRow): React.ReactNode => {
+			return (
+				<StyledTableData key={`${row.id}_rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
+					<SolaceCheckBox
+						name={`${row.id}rowCheckbox`}
+						onChange={() => handleCheckboxClick(row)}
+						checked={!!row.rowSelected}
+					/>
+				</StyledTableData>
+			);
+		},
+		[handleCheckboxClick]
+	);
 
 	const openColumnHidingControl = useCallback(
 		(e: React.MouseEvent<HTMLElement>): void => {
@@ -170,7 +209,7 @@ export const useSolaceTable = ({
 		} else if (rowActionMenuItems && rowActionMenuItems.length > 0) {
 			return [addActionMenuIcon(row, rowActionMenuItems)];
 		} else if (!rowActionMenuItems && hasColumnHiding) {
-			return [addEmptyRowCell()];
+			return [addEmptyRowCell(row)];
 		}
 		return [];
 	};
@@ -179,7 +218,7 @@ export const useSolaceTable = ({
 		if (renderCustomRowCells) {
 			return renderCustomRowCells(row);
 		} else {
-			const columnsToDisplay = displayedColumns ? displayedColumns : internalDisplayedColumns;
+			const columnsToDisplay = (displayedColumns ? displayedColumns : internalDisplayedColumns) ?? [];
 			return columnsToDisplay.map((col) => {
 				if (!col.hasNoCell && !col.isHidden) {
 					const key = row.id + "_" + col.field;
@@ -195,39 +234,51 @@ export const useSolaceTable = ({
 		}
 	};
 
+	const addConfigureColumnHeader = useCallback(
+		// eslint-disable-next-line sonarjs/cognitive-complexity
+		(columnsToDisplay: TableColumn[], columnToSort: TableColumn | undefined): React.ReactNode | void => {
+			return columnsToDisplay.map(
+				(col) =>
+					!col.isHidden && (
+						<StyledTableHeader
+							key={col.headerName}
+							className={`${col.hasNoCell ? "icon-column" : ""} ${col.class ? col.class : ""}`}
+							width={col.width ? col.width + "px" : "auto"}
+						>
+							<span
+								className={`${col.sortable ? "sortable" : ""}`}
+								onClick={() => (col.sortable ? handleSort(col, sortedColumn, internalSortedColumn) : undefined)}
+							>
+								{col.headerName}
+								{columnToSort?.field === col.field &&
+									col.sortable &&
+									(columnToSort.sortDirection === SORT_DIRECTION.ASC ? (
+										<AscendingSortIcon opacity={0.8} />
+									) : (
+										<DescendingSortIcon opacity={0.8} />
+									))}
+								{columnToSort?.field !== col.field && col.sortable && <UnsortedIcon />}
+							</span>
+						</StyledTableHeader>
+					)
+			);
+		},
+		[handleSort, internalSortedColumn, sortedColumn]
+	);
+
 	const createHeaderNodes = useCallback(() => {
 		const columnToSort = sortedColumn ? sortedColumn : internalSortedColumn;
-		const columnsToDisplay = displayedColumns ? displayedColumns : internalDisplayedColumns;
+		const columnsToDisplay = cloneDeep((displayedColumns ? displayedColumns : internalDisplayedColumns) ?? []);
 		return (
-			<StyledTableRow className="header" onMouseEnter={headerHoverCallback ? () => headerHoverCallback() : undefined}>
+			<StyledTableRow
+				key="headerRow"
+				className="header"
+				onMouseEnter={headerHoverCallback ? () => headerHoverCallback() : undefined}
+			>
 				{[
 					addCheckBoxToHeader(),
 					addChevronToHeader(),
-					...columnsToDisplay.map(
-						(col) =>
-							!col.isHidden && (
-								<StyledTableHeader
-									key={col.headerName}
-									className={`${col.hasNoCell ? "icon-column" : ""} ${col.class ? col.class : ""}`}
-									width={col.width ? col.width + "px" : "auto"}
-								>
-									<span
-										className={`${col.sortable ? "sortable" : ""}`}
-										onClick={() => (col.sortable ? handleSort(col) : undefined)}
-									>
-										{col.headerName}
-										{columnToSort?.field === col.field &&
-											col.sortable &&
-											(col.sortDirection === SORT_DIRECTION.ASC ? (
-												<AscendingSortIcon opacity={0.8} />
-											) : (
-												<DescendingSortIcon opacity={0.8} />
-											))}
-										{columnToSort?.field !== col.field && col.sortable && <UnsortedIcon />}
-									</span>
-								</StyledTableHeader>
-							)
-					),
+					addConfigureColumnHeader(columnsToDisplay, columnToSort),
 					!!rowActionMenuItems && !hasColumnHiding && addEmptyHeaderCell(),
 					hasColumnHiding &&
 						addColumnHidingControl({
@@ -235,30 +286,28 @@ export const useSolaceTable = ({
 							openColumnHidingControl,
 							isColumnHidingControlOpen,
 							setIsColumnHidingControlOpen,
-							setDisplayedColumns: displayedColumns ? undefined : setInternalDisplayedColumns,
-							displayedColumnsChangedCallback
+							displayedColumnsChangedCallback: handleDisplayColumnsChanged
 						})
 				]}
 			</StyledTableRow>
 		);
 	}, [
-		addCheckBoxToHeader,
-		addChevronToHeader,
 		sortedColumn,
 		internalSortedColumn,
-		handleSort,
-		rowActionMenuItems,
-		hasColumnHiding,
 		displayedColumns,
 		internalDisplayedColumns,
-		displayedColumnsChangedCallback,
-		isColumnHidingControlOpen,
-		setIsColumnHidingControlOpen,
+		headerHoverCallback,
+		addCheckBoxToHeader,
+		addChevronToHeader,
+		addConfigureColumnHeader,
+		rowActionMenuItems,
+		hasColumnHiding,
 		openColumnHidingControl,
-		headerHoverCallback
+		isColumnHidingControlOpen,
+		handleDisplayColumnsChanged
 	]);
 
-	function createRowNodes(): React.ReactNode[] {
+	const createRowNodes = useCallback((): React.ReactNode[] => {
 		return rows.map((row: TableRow) => (
 			<StyledTableRow
 				key={row.id}
@@ -277,11 +326,13 @@ export const useSolaceTable = ({
 				]}
 			</StyledTableRow>
 		));
-	}
+	}, [addCheckBoxToRows, renderConfiguredRowCells, renderRowActionItems, rowHoverCallback, rows, updateSelection]);
 
 	const expandableRows = useExpandableRows({
+		enabled: expandableRowOptions !== undefined && expandableRowOptions !== null,
 		rows,
-		displayedColumns: displayedColumns ? displayedColumns : internalDisplayedColumns,
+		displayedColumns: displayedColumns,
+		internalDisplayedColumns: internalDisplayedColumns,
 		selectionType,
 		updateSelection,
 		addCheckBoxToRows,
@@ -289,7 +340,7 @@ export const useSolaceTable = ({
 		renderRowActionItems,
 		rowHoverCallback,
 		hasColumnHiding,
-		displayedColumnsChangedCallback,
+		displayedColumnsChangedCallback: handleDisplayColumnsChanged,
 		allowToggle: expandableRowOptions?.allowToggle,
 		selectRowWhenClickOnChildren: expandableRowOptions?.selectRowWhenClickOnChildren,
 		renderChildren: expandableRowOptions?.renderChildren,

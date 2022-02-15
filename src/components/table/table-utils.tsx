@@ -183,8 +183,8 @@ export const addEmptyHeaderCell = (): React.ReactNode => {
 	return <StyledTableHeader className="icon-column" key={"emptyHeaderCell"}></StyledTableHeader>;
 };
 
-export const addEmptyRowCell = (): React.ReactNode => {
-	return <StyledTableData key={"emptyRowCell"}></StyledTableData>;
+export const addEmptyRowCell = (row: TableRow): React.ReactNode => {
+	return <StyledTableData key={row.id + "_emptyRowCell"}></StyledTableData>;
 };
 
 export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMenuItem[]): React.ReactNode => {
@@ -198,7 +198,7 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 			  }))
 			: null;
 	return (
-		<StyledTableData style={{ textAlign: "center" }}>
+		<StyledTableData key={row.id + "_actionMenu"} style={{ textAlign: "center" }}>
 			{menuItems && (
 				<SolaceMenu
 					buttonProps={{ variant: "icon", children: <MoreHorizIcon /> }}
@@ -222,7 +222,6 @@ export interface ColumnHidingControlProps {
 	openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void;
 	isColumnHidingControlOpen: boolean;
 	setIsColumnHidingControlOpen: (value: React.SetStateAction<boolean>) => void;
-	setDisplayedColumns?: (displayedColumns: TableColumn[]) => void;
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
 }
 
@@ -231,7 +230,6 @@ export const addColumnHidingControl = ({
 	openColumnHidingControl,
 	isColumnHidingControlOpen,
 	setIsColumnHidingControlOpen,
-	setDisplayedColumns,
 	displayedColumnsChangedCallback
 }: ColumnHidingControlProps): React.ReactNode => {
 	return (
@@ -243,7 +241,6 @@ export const addColumnHidingControl = ({
 				<ColumnHidingControlMenu
 					columns={columns}
 					onCloseCallback={setIsColumnHidingControlOpen}
-					setDisplayedColumns={setDisplayedColumns}
 					displayedColumnsChangedCallback={displayedColumnsChangedCallback}
 				/>
 			)}
