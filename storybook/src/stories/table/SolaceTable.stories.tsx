@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentMeta } from "@storybook/react";
 import {
@@ -322,14 +322,46 @@ export const SingleSelectionTable = (): JSX.Element => {
 	);
 };
 
-export const CustomColumnWidthTable = (): JSX.Element => {
+export const ColumnWithTooltipTable = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const columnsDef = useMemo(() => {
+		return columns.map((column) => {
+			const col = cloneDeep(column);
+			col.tooltip = true;
+			return col;
+		});
+	}, []);
+	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
+
+	const handleSort = useCallback(
+		(selectedColumn) => {
+			setRows([...sortData(selectedColumn, data)]);
+		},
+		[data]
+	);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columnsDef}
+				selectionType={SolaceTableSelectionType.MULTI}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const CustomColumnWidthAndTooltipTable = (): JSX.Element => {
 	const data = cloneDeep(rows);
 	const columnsDef = useMemo(() => {
 		return cloneDeep(columns);
 	}, []);
-	columnsDef[0].width = 140;
-	columnsDef[1].width = 140;
-	columnsDef[3].width = 130;
+	columnsDef[0].width = "15%";
+	columnsDef[1].width = "15%";
+	columnsDef[2].tooltip = true;
+	columnsDef[3].width = "15%";
 	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
 
 	const handleSort = useCallback((selectedColumn) => {
@@ -345,34 +377,6 @@ export const CustomColumnWidthTable = (): JSX.Element => {
 				rows={tableRows}
 				columns={columnsDef}
 				selectionType={SolaceTableSelectionType.SINGLE}
-			></SolaceTable>
-		</div>
-	);
-};
-
-export const ControlledSortedColumnTable = (): JSX.Element => {
-	const data = cloneDeep(rows);
-	const columnsDef = useMemo(() => {
-		return cloneDeep(columns);
-	}, []);
-	const columnToSort = cloneDeep(columnsDef[3]);
-	const [sortedColumn, setSortedColumn] = useState(columnToSort);
-	const [tableRows, setRows] = useState([...sortData(columnToSort, data)]);
-
-	const handleSort = useCallback((selectedColumn) => {
-		setRows([...sortData(selectedColumn, data)]);
-		setSortedColumn(selectedColumn);
-	}, []);
-
-	return (
-		<div>
-			<SolaceTable
-				selectionChangedCallback={action(selectionCallback)}
-				sortedColumn={sortedColumn}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={SolaceTableSelectionType.MULTI}
 			></SolaceTable>
 		</div>
 	);
@@ -1018,6 +1022,34 @@ export const ColumnHidingTable = (): JSX.Element => {
 				selectionType={SolaceTableSelectionType.MULTI}
 				rowActionMenuItems={rowActionMenuItems}
 				hasColumnHiding={true}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const ControlledSortedColumnTable = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const columnsDef = useMemo(() => {
+		return cloneDeep(columns);
+	}, []);
+	const columnToSort = cloneDeep(columnsDef[3]);
+	const [sortedColumn, setSortedColumn] = useState(columnToSort);
+	const [tableRows, setRows] = useState([...sortData(columnToSort, data)]);
+
+	const handleSort = useCallback((selectedColumn) => {
+		setRows([...sortData(selectedColumn, data)]);
+		setSortedColumn(selectedColumn);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortedColumn={sortedColumn}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columnsDef}
+				selectionType={SolaceTableSelectionType.MULTI}
 			></SolaceTable>
 		</div>
 	);

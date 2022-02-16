@@ -10,13 +10,14 @@ export interface TableColumn {
 	field: string;
 	headerName: string;
 	class?: string;
-	width?: number;
+	width?: number | string;
 	sortable: boolean;
 	sortDirection?: SORT_DIRECTION;
 	disableHiding: boolean;
 	resizable?: boolean;
 	hasNoCell?: boolean;
 	isHidden?: boolean;
+	tooltip?: boolean;
 }
 
 export interface TableRow {
@@ -126,10 +127,14 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 		height: "48px",
 		textAlign: "left",
 		width: width,
-		"& .sortable": {
-			position: "relative",
-			cursor: "pointer",
-			marginTop: theme.spacing(0.5)
+		"& .header": {
+			minWidth: "50px",
+			display: "flex",
+			alignItems: "center",
+			"&.sortable": {
+				position: "relative",
+				cursor: "pointer"
+			}
 		},
 		"&.checkbox-column": {
 			width: "40px",
