@@ -322,6 +322,37 @@ export const SingleSelectionTable = (): JSX.Element => {
 	);
 };
 
+export const ColumnWithTooltipTable = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const columnsDef = useMemo(() => {
+		return columns.map((column) => {
+			const col = cloneDeep(column);
+			col.tooltip = true;
+			return col;
+		});
+	}, []);
+	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
+
+	const handleSort = useCallback(
+		(selectedColumn) => {
+			setRows([...sortData(selectedColumn, data)]);
+		},
+		[data]
+	);
+
+	return (
+		<div>
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columnsDef}
+				selectionType={SolaceTableSelectionType.MULTI}
+			></SolaceTable>
+		</div>
+	);
+};
+
 export const CustomColumnWidthTable = (): JSX.Element => {
 	const data = cloneDeep(rows);
 	const columnsDef = useMemo(() => {

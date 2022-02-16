@@ -17,6 +17,7 @@ export interface TableColumn {
 	resizable?: boolean;
 	hasNoCell?: boolean;
 	isHidden?: boolean;
+	tooltip?: boolean;
 }
 
 export interface TableRow {
@@ -133,11 +134,6 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 			"&.sortable": {
 				position: "relative",
 				cursor: "pointer"
-			},
-			"& .header-label": {
-				whiteSpace: "nowrap",
-				overflow: "hidden",
-				textOverflow: "ellipsis"
 			}
 		},
 		"&.checkbox-column": {

@@ -20,6 +20,7 @@ import SolaceCheckBox from "../../form/SolaceCheckBox";
 import clsx from "clsx";
 import { ExpandableRowOptions } from "../SolaceTable";
 import { cloneDeep } from "lodash";
+import { SolaceTooltip } from "../../..";
 
 export const useSolaceTable = ({
 	rows,
@@ -231,7 +232,12 @@ export const useSolaceTable = ({
 						const key = row.id + "_" + col.field;
 						return (
 							<StyledTableData key={key}>
-								<span>{row[col.field]}</span>
+								{col.tooltip && (
+									<SolaceTooltip variant="overflow" title={row[col.field]} placement={"bottom-end"}>
+										{row[col.field]}
+									</SolaceTooltip>
+								)}
+								{!col.tooltip && <span>{row[col.field]}</span>}
 							</StyledTableData>
 						);
 					} else {
@@ -258,7 +264,9 @@ export const useSolaceTable = ({
 								className={`${col.sortable ? "sortable header" : "header"}`}
 								onClick={() => (col.sortable ? handleSort(col, sortedColumn, internalSortedColumn) : undefined)}
 							>
-								<span className="header-label">{col.headerName}</span>
+								<SolaceTooltip variant="overflow" title={col.headerName} placement={"bottom-end"}>
+									{col.headerName}
+								</SolaceTooltip>
 								{columnToSort?.field === col.field &&
 									col.sortable &&
 									(columnToSort.sortDirection === SORT_DIRECTION.ASC ? (
