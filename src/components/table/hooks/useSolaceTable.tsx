@@ -252,13 +252,13 @@ export const useSolaceTable = ({
 						<StyledTableHeader
 							key={col.headerName}
 							className={`${col.hasNoCell ? "icon-column" : ""} ${col.class ? col.class : ""}`}
-							width={col.width ? col.width + "px" : "auto"}
+							width={col.width ? (typeof col.width === "number" ? col.width + "px" : col.width) : "auto"}
 						>
 							<span
-								className={`${col.sortable ? "sortable" : ""}`}
+								className={`${col.sortable ? "sortable header" : "header"}`}
 								onClick={() => (col.sortable ? handleSort(col, sortedColumn, internalSortedColumn) : undefined)}
 							>
-								{col.headerName}
+								<span className="header-label">{col.headerName}</span>
 								{columnToSort?.field === col.field &&
 									col.sortable &&
 									(columnToSort.sortDirection === SORT_DIRECTION.ASC ? (
