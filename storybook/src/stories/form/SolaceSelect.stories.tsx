@@ -4,11 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceSelect } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@material-ui/core";
-import {
-	SolaceSelectAutocompleteItem,
-	SolaceSelectAutocompleteItemProps,
-	SolaceChip
-} from "@SolaceDev/maas-react-components";
+import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Forms/SolaceSelect",
@@ -48,11 +44,6 @@ export default {
 			}
 		},
 		readOnly: {
-			control: {
-				type: "boolean"
-			}
-		},
-		multiple: {
 			control: {
 				type: "boolean"
 			}
@@ -211,67 +202,4 @@ ReadOnly.args = {
 	children: SELECT_OPTIONS,
 	value: "option3",
 	readOnly: true
-};
-
-export const MultipleSelection = Template.bind({});
-MultipleSelection.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: SELECT_OPTIONS,
-	value: ["option3"],
-	multiple: true
-};
-
-/**
- * render selected items as SolaceChip
- */
-
-const OPTIONS = [
-	{
-		name: "Option #1",
-		value: "option1"
-	},
-	{
-		name: "Option #2",
-		value: "option2"
-	},
-	{
-		name: "Option #3",
-		value: "option3"
-	},
-	{
-		name: "Option #4",
-		value: "option4"
-	}
-];
-
-function generateChippedOptions() {
-	return OPTIONS.map((option) => {
-		return (
-			<MenuItem key={option.value} value={option.value}>
-				{option.name}
-			</MenuItem>
-		);
-	});
-}
-
-function getOptionDisplayValueAsChip(selected) {
-	return selected.map((value, index) => {
-		const displayName = OPTIONS.filter((item) => item.value === value)[0].name || "";
-		return <SolaceChip key={index} label={displayName} />;
-	});
-}
-
-export const MultipleChip = Template.bind({});
-MultipleChip.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: generateChippedOptions(),
-	getOptionDisplayValue: (selected) => getOptionDisplayValueAsChip(selected),
-	value: ["option3"],
-	multiple: true
 };
