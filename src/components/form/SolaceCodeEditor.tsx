@@ -48,7 +48,7 @@ function SolaceCodeEditor({
 }: SolaceCodeEditorProps): JSX.Element {
 	const [val, setVal] = useState(value || "");
 	useEffect(() => {
-		if (value) setVal(value);
+		if (value !== undefined) setVal(value);
 	}, [value]);
 	const handleChange = (_editor: CodeMirror, _data: any, value: string) => {
 		setVal(value);
