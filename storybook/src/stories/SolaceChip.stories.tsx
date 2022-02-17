@@ -80,3 +80,10 @@ WithColorTextChip.args = {
 	label: <span style={{ color: BASE_COLORS.whites.white1 }}>White Text</span>,
 	maxWidth: "100"
 };
+
+export const WithDeleteButtonChip = () => {
+	const handleDelete = () => {
+		alert("delete acton triggered");
+	};
+	return <SolaceChip label="Chip Text" onDelete={handleDelete} />;
+};

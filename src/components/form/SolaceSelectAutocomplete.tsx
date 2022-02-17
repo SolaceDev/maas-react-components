@@ -2,7 +2,9 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Box, Autocomplete, TextField, useTheme } from "@material-ui/core";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
+import CloseIcon from "@material-ui/icons/Close";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
+
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
 	/**
 	 * Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers
@@ -19,9 +21,9 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	/**
 	 * The value of the autocomplete
 	 */
-	value?: V;
+	value?: V | V[];
 	/**
-	 * Content to display as supportive/explanitory text
+	 * Content to display as supportive/explanatory text
 	 */
 	helperText?: string | JSX.Element;
 	/**
@@ -49,9 +51,13 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	readOnly?: boolean;
 	/**
+	 * allow multiple selection
+	 */
+	multiple?: boolean;
+	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
-	onChange?: (event: { name: string; value: V | null }) => void;
+	onChange?: (event: { name: string; value: V | V[] | null }) => void;
 	/**
 	 * The component type to use for rendering all option instances
 	 */
@@ -61,7 +67,7 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	itemMappingCallback: (item: V) => T;
 	/**
-	 * The callback function which generates the display lable for the selected option
+	 * The callback function which generates the display label for the selected option
 	 */
 	optionsLabelCallback: (item: T) => string;
 	/**
@@ -80,6 +86,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * Used to determine if the option represents the given value.
 	 */
 	isOptionEqualToValueCallback?: (option: V, value: V) => boolean;
+	/**
+	 * Used to determine the disabled state for a given option.
+	 */
+	getOptionDisabledCallback?: (option: V) => boolean;
 }
 
 function SolaceSelectAutocomplete<T, V>({
@@ -94,6 +104,7 @@ function SolaceSelectAutocomplete<T, V>({
 	inlineLabel = false,
 	disabled = false,
 	readOnly = false,
+	multiple = false,
 	onChange,
 	itemComponent,
 	itemMappingCallback,
@@ -103,7 +114,8 @@ function SolaceSelectAutocomplete<T, V>({
 	options,
 	fetchOptionsCallback,
 	onCloseCallback,
-	isOptionEqualToValueCallback
+	isOptionEqualToValueCallback,
+	getOptionDisabledCallback
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -132,15 +144,15 @@ function SolaceSelectAutocomplete<T, V>({
 		setIsFetching(false);
 	}, [options]);
 
-	const handleChange = (_event: SyntheticEvent<Element, Event>, value: V | null) => {
+	const handleChange = (_event: SyntheticEvent<Element, Event>, _value: V | V[] | null) => {
 		// set internal state for selected value
-		setSelectedValue(value || null);
+		setSelectedValue(_value || null);
 
 		// notify externally
 		if (onChange) {
 			onChange({
 				name: name,
-				value: value
+				value: _value
 			});
 		}
 	};
@@ -178,6 +190,7 @@ function SolaceSelectAutocomplete<T, V>({
 			disabled={disabled || readOnly}
 			loading={loading}
 			open={open}
+			multiple={multiple}
 			onClose={() => {
 				onCloseCallback && onCloseCallback(); // notify parent select closed
 				setOpen(false);
@@ -214,6 +227,10 @@ function SolaceSelectAutocomplete<T, V>({
 				/>
 			)}
 			isOptionEqualToValue={isOptionEqualToValueCallback}
+			getOptionDisabled={getOptionDisabledCallback}
+			ChipProps={{
+				deleteIcon: <CloseIcon />
+			}}
 		/>
 	);
 
