@@ -626,16 +626,12 @@ const themeConfig: ThemeOptions = {
 					},
 					".MuiOutlinedInput-root": {
 						padding: "0px 0px 0px 8px",
-						// TODO:?
-						minHeight: "32px"
-						// height: "auto"
+						height: "32px"
 					},
+					// allow the container to grow when there are more than one line
 					".MuiOutlinedInput-root.MuiInputBase-root": {
-						display: "flex",
-						flexDirection: "row",
-						flexWrap: "wrap",
-						justifyContent: "flex-start",
-						alignItems: "center"
+						height: "auto",
+						flexWrap: "wrap"
 					},
 					".MuiOutlinedInput-root.readOnlySelect": {
 						padding: "0px"
@@ -649,9 +645,10 @@ const themeConfig: ThemeOptions = {
 					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
 						fill: BASE_COLORS.greys.grey14
 					},
+					// styles specifically applied when autocomplete allows multiple lines with chips
 					".MuiButtonBase-root.MuiChip-root": {
 						height: "24px",
-						margin: "4px 3px 2px 3px",
+						margin: "3px 6px 3px 0px",
 						borderRadius: "40px",
 						fontSize: "14px",
 						svg: {
@@ -660,6 +657,10 @@ const themeConfig: ThemeOptions = {
 							fill: BASE_COLORS.greys.grey8
 						}
 					}
+				},
+				input: {
+					// allow 'input' element to be inline with chips instead of taking its own line
+					width: 0
 				},
 				popper: {
 					".MuiAutocomplete-listbox .MuiAutocomplete-option": {
@@ -672,10 +673,13 @@ const themeConfig: ThemeOptions = {
 							}
 						}
 					},
-					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='false'].Mui-focused ": {
+					".MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused ": {
 						backgroundColor: BASE_COLORS.greys.grey2
 					},
-					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused ": {
+					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
+						backgroundColor: getRGBA(BASE_COLORS.greens.green1_rgb, 0.1)
+					},
+					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
 						backgroundColor: getRGBA(BASE_COLORS.greens.green1_rgb, 0.1)
 					},
 					boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,

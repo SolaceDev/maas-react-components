@@ -61,6 +61,11 @@ export default {
 			control: {
 				type: "boolean"
 			}
+		},
+		multiple: {
+			control: {
+				type: "boolean"
+			}
 		}
 	},
 	decorators: [withMock, withState()]
@@ -385,13 +390,79 @@ MultipleSelection.args = {
 		await fetchOptions(searchTerm);
 	},
 	onCloseCallback: () => store.set({ options: [] }),
-	value: [
-		{
-			name: "Option #2",
-			value: "option2",
-			subText: "Some sub text",
-			suplementalText: "opt2"
-		}
-	],
+	value: [],
 	multiple: true
+};
+
+const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
+	{
+		name: "MEM #1",
+		value: "mem1",
+		supplementalText: "Already added"
+	},
+	{
+		name: "MEM #2",
+		value: "mem2",
+		supplementalText: ""
+	},
+	{
+		name: "MEM #3",
+		value: "mem3",
+		supplementalText: ""
+	},
+	{
+		name: "MEM #4",
+		value: "mem4",
+		supplementalText: "Already added"
+	},
+	{
+		name: "MEM With Long Name #1",
+		value: "mem5",
+		supplementalText: ""
+	},
+	{
+		name: "MEM With Long Name #2",
+		value: "mem6",
+		supplementalText: ""
+	}
+];
+
+export const MultipleWithDisabled = () => {
+	const [values, setValues] = React.useState([]);
+	const [matchingValues, setMatchingValues] = React.useState([]);
+
+	const handleChange = (evt) => {
+		setValues(evt.value);
+	};
+
+	const handleFetchOptionsCallback = React.useCallback((searchTerm: string) => {
+		if (searchTerm) {
+			setMatchingValues(SAMPLE_EVENT_MESHES.filter((option) => option["name"].includes(searchTerm)));
+		} else {
+			setMatchingValues(SAMPLE_EVENT_MESHES);
+		}
+	}, []);
+
+	const handleOptionDisabled = (option) => {
+		return option["supplementalText"] === "Already added";
+	};
+
+	return (
+		<div>
+			<SolaceSelectAutocomplete
+				name="modeledEventMesh"
+				label="Modeled Event Mesh"
+				required
+				multiple={true}
+				value={values}
+				options={matchingValues}
+				itemComponent={SolaceSelectAutocompleteItem}
+				itemMappingCallback={(option) => option}
+				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				onChange={handleChange}
+				fetchOptionsCallback={handleFetchOptionsCallback}
+				getOptionDisabledCallback={handleOptionDisabled}
+			></SolaceSelectAutocomplete>
+		</div>
+	);
 };

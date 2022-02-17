@@ -86,6 +86,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * Used to determine if the option represents the given value.
 	 */
 	isOptionEqualToValueCallback?: (option: V, value: V) => boolean;
+	/**
+	 * Used to determine the disabled state for a given option.
+	 */
+	getOptionDisabledCallback?: (option: V) => boolean;
 }
 
 function SolaceSelectAutocomplete<T, V>({
@@ -110,7 +114,8 @@ function SolaceSelectAutocomplete<T, V>({
 	options,
 	fetchOptionsCallback,
 	onCloseCallback,
-	isOptionEqualToValueCallback
+	isOptionEqualToValueCallback,
+	getOptionDisabledCallback
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -222,6 +227,7 @@ function SolaceSelectAutocomplete<T, V>({
 				/>
 			)}
 			isOptionEqualToValue={isOptionEqualToValueCallback}
+			getOptionDisabled={getOptionDisabledCallback}
 			ChipProps={{
 				deleteIcon: <CloseIcon />
 			}}
