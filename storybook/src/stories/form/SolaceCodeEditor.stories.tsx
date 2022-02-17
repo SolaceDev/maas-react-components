@@ -163,13 +163,3 @@ export const UpdateData = (): JSX.Element => {
 		</div>
 	);
 };
-
-//TODO:
-export const SwitchEditors = () => {
-	return (
-		<div>
-			<div>open new</div>
-			<SolaceCodeEditor />
-		</div>
-	);
-};
