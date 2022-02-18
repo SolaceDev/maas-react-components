@@ -22,7 +22,7 @@ const themeConfig: ThemeOptions = {
 			lg: 1200,
 
 			// small laptop
-			md: 900,
+			md: 800,
 
 			// tablets
 			sm: 600,
@@ -746,7 +746,6 @@ const themeConfig: ThemeOptions = {
 					},
 					".MuiPaper-root": {
 						minWidth: "400px",
-						maxWidth: "80%",
 						maxHeight: "80%",
 						boxShadow: `0px 2px 8px ${BASE_COLORS.greys.grey4}`,
 						padding: "24px",
