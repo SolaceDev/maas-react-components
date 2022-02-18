@@ -132,11 +132,13 @@ export const ControlledEditor = (): JSX.Element => {
 const DATA = [
 	'{\n\t"name": "jason",\n \t"address": "123 road"\n}',
 	'{\n\t"name": "peter",\n \t"address": "456 road"\n}',
-	'{\n\t"name": "jane",\n \t"address": "789 road"\n}'
+	'{\n\t"name": "jane",\n \t"address": "789 road"\n}',
+	"{}",
+	""
 ];
 
 const fetchRandomDataSet = (array) => {
-	const n = Math.floor(Math.random() * 3);
+	const n = Math.floor(Math.random() * 5);
 	return array[n];
 };
 
