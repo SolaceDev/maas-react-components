@@ -16,11 +16,11 @@ import {
 import { useExpandableRows } from "./useExpandableRows";
 import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
+import SolaceTooltip from "../../SolaceToolTip";
+import { ExpandableRowOptions } from "../SolaceTable";
 
 import clsx from "clsx";
-import { ExpandableRowOptions } from "../SolaceTable";
 import { cloneDeep } from "lodash";
-import { SolaceTooltip } from "../../..";
 
 export const useSolaceTable = ({
 	rows,

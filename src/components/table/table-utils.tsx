@@ -133,7 +133,20 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 			alignItems: "center",
 			"&.sortable": {
 				position: "relative",
-				cursor: "pointer"
+				cursor: "pointer",
+				"&:hover": {
+					color: BASE_COLORS.greys.grey16,
+					"svg.asc, svg.desc": {
+						path: {
+							fillOpacity: 1
+						}
+					},
+					"svg.unsorted": {
+						path: {
+							fillOpacity: 0.65
+						}
+					}
+				}
 			}
 		},
 		"&.checkbox-column": {
