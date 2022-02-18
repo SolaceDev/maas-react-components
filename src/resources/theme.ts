@@ -22,7 +22,10 @@ const themeConfig: ThemeOptions = {
 			lg: 1200,
 
 			// small laptop
-			md: 800,
+			md: 900,
+
+			// default dialog
+			dialogMd: 800,
 
 			// tablets
 			sm: 600,
@@ -1096,6 +1099,12 @@ const themeConfig: ThemeOptions = {
 		fontFamily: "Rubik,sans-serif"
 	}
 };
+
+declare module "@material-ui/core/styles" {
+	interface BreakpointOverrides {
+		dialogMd: true;
+	}
+}
 
 declare module "@material-ui/core/styles/createMixins" {
 	interface Mixins {

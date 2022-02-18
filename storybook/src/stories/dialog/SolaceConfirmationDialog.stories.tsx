@@ -13,7 +13,18 @@ export default {
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/UI-Library%3A-Patterns?node-id=1%3A3"
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		maxWidth: {
+			options: ["sm", "md", "dialogMd", "lg", "xl"],
+			control: { type: "select" },
+			description: "Determine the max-width of the dialog.",
+			table: {
+				defaultValue: {
+					summary: "dialogMd"
+				}
+			}
+		}
+	}
 } as ComponentMeta<typeof SolaceConfirmationDialog>;
 
 const SELECT_OPTIONS: Array<React.ReactNode> = [];

@@ -19,7 +19,7 @@ function SolaceConfirmationDialog({
 	contentText,
 	actions,
 	isOpen = false,
-	maxWidth = "md",
+	maxWidth = "dialogMd",
 	children
 }: SolaceConfirmationDialogProps): JSX.Element {
 	return (
