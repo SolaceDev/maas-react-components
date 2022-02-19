@@ -164,7 +164,6 @@ function SolaceSelectAutocomplete<T, V>({
 	const select = () => (
 		<Autocomplete
 			id={getId()}
-			sx={{ width: 300 }}
 			filterOptions={(x) => x}
 			onInputChange={(_event, newInputValue) => {
 				setInputValue(newInputValue);
