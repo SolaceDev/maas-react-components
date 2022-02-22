@@ -179,7 +179,7 @@ const createActionMenu = (item) => {
 				}
 			]}
 			buttonProps={{
-				title: "More actions",
+				title: "More Actions",
 				variant: "icon",
 				children: <MoreHorizOutlinedIcon />
 			}}
