@@ -59,7 +59,6 @@ export const useSolaceTable = ({
 }): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
 	const [selectAll, setSelectAll] = useState(false);
-	const [isColumnHidingControlOpen, setIsColumnHidingControlOpen] = useState(false);
 
 	// Applicable if sortedColumn is not set
 	const [internalSortedColumn, setInternalSortedColumn] = useState<TableColumn>();
@@ -195,14 +194,6 @@ export const useSolaceTable = ({
 		[handleCheckboxClick]
 	);
 
-	const openColumnHidingControl = useCallback(
-		(e: React.MouseEvent<HTMLElement>): void => {
-			e.stopPropagation();
-			setIsColumnHidingControlOpen(!isColumnHidingControlOpen);
-		},
-		[isColumnHidingControlOpen]
-	);
-
 	const renderRowActionItems = useCallback(
 		(row: TableRow): React.ReactNode[] => {
 			if (renderCustomRowActionItem) {
@@ -250,7 +241,6 @@ export const useSolaceTable = ({
 	);
 
 	const addConfigureColumnHeader = useCallback(
-		// eslint-disable-next-line sonarjs/cognitive-complexity
 		(columnsToDisplay: TableColumn[], columnToSort: TableColumn | undefined): React.ReactNode | void => {
 			return columnsToDisplay.map(
 				(col) =>
@@ -296,13 +286,10 @@ export const useSolaceTable = ({
 					addCheckBoxToHeader(),
 					addChevronToHeader(),
 					addConfigureColumnHeader(columnsToDisplay, columnToSort),
-					!!rowActionMenuItems && !hasColumnHiding && addEmptyHeaderCell(),
+					(!!rowActionMenuItems || renderCustomRowActionItem) && !hasColumnHiding && addEmptyHeaderCell(),
 					hasColumnHiding &&
 						addColumnHidingControl({
 							columns: columnsToDisplay,
-							openColumnHidingControl,
-							isColumnHidingControlOpen,
-							setIsColumnHidingControlOpen,
 							displayedColumnsChangedCallback: handleDisplayColumnsChanged
 						})
 				]}
@@ -318,9 +305,8 @@ export const useSolaceTable = ({
 		addChevronToHeader,
 		addConfigureColumnHeader,
 		rowActionMenuItems,
+		renderCustomRowActionItem,
 		hasColumnHiding,
-		openColumnHidingControl,
-		isColumnHidingControlOpen,
 		handleDisplayColumnsChanged
 	]);
 
