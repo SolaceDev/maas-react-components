@@ -1,4 +1,4 @@
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
+import { Breakpoint, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
 import { ReactNode } from "react";
 
 import SolaceButton, { SolaceButtonProps } from "../form/SolaceButton";
@@ -10,6 +10,7 @@ export interface SolaceConfirmationDialogProps {
 	contentText?: string;
 	actions: actionProps[];
 	isOpen: boolean;
+	maxWidth?: Breakpoint;
 	children?: ReactNode;
 }
 
@@ -18,10 +19,11 @@ function SolaceConfirmationDialog({
 	contentText,
 	actions,
 	isOpen = false,
+	maxWidth = "dialogMd",
 	children
 }: SolaceConfirmationDialogProps): JSX.Element {
 	return (
-		<Dialog open={isOpen}>
+		<Dialog open={isOpen} maxWidth={maxWidth}>
 			<DialogTitle>
 				<div data-qa="title">{title}</div>
 			</DialogTitle>

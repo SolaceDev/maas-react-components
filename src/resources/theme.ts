@@ -24,6 +24,9 @@ const themeConfig: ThemeOptions = {
 			// small laptop
 			md: 900,
 
+			// default dialog
+			dialogMd: 800,
+
 			// tablets
 			sm: 600,
 
@@ -771,7 +774,6 @@ const themeConfig: ThemeOptions = {
 					},
 					".MuiPaper-root": {
 						minWidth: "400px",
-						maxWidth: "80%",
 						maxHeight: "80%",
 						boxShadow: `0px 2px 8px ${BASE_COLORS.greys.grey4}`,
 						padding: "24px",
@@ -1122,6 +1124,12 @@ const themeConfig: ThemeOptions = {
 		fontFamily: "Rubik,sans-serif"
 	}
 };
+
+declare module "@material-ui/core/styles" {
+	interface BreakpointOverrides {
+		dialogMd: true;
+	}
+}
 
 declare module "@material-ui/core/styles/createMixins" {
 	interface Mixins {
