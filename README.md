@@ -78,6 +78,10 @@ Include one of the following values in a commit, before pushing your branch to m
 
 [Semantic Versioning](https://semver.org/)
 
+### Publishing Your Changes
+
+Please see read [this resource](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to learn how to publish your changes (please note, you should always publish a new release whenever you merge changes to the repository.)
+
 ### Run locally
 
 Follow the following steps to start component development on your local machines:
@@ -143,6 +147,7 @@ If getting react runtime or react-dom not found when loading pages, then do:
 npm install -g react
 npm install -g react-dom
 ```
+
 ### Switching back to the latest official `maas-react-components`
 
 Remove @SolaceDev/maas-react-components from node_modules and run `npm install @SolaceDev/maas-react-components`.
