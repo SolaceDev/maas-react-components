@@ -1,10 +1,8 @@
-import SolaceButton from "./../form/SolaceButton";
 import SolaceMenu, { SolaceMenuItemProps } from "../SolaceMenu";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { styled } from "@material-ui/core";
 import { BASE_COLORS } from "./../../resources/colorPallette";
-import ColumnHidingControlMenu from "./components/ColumnHidingControlMenu";
-import TuneIcon from "@material-ui/icons/Tune";
+import ColumnControlMenu, { ColumnControProps } from "./components/ColumnControlMenu";
 
 export interface TableColumn {
 	field: string;
@@ -222,7 +220,7 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 		>
 			{menuItems && (
 				<SolaceMenu
-					buttonProps={{ variant: "icon", children: <MoreHorizIcon /> }}
+					buttonProps={{ variant: "icon", children: <MoreHorizIcon />, title: "More Actions" }}
 					items={menuItems}
 					anchorOrigin={{
 						vertical: "center",
@@ -238,33 +236,17 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 	);
 };
 
-export interface ColumnHidingControlProps {
-	columns: TableColumn[];
-	openColumnHidingControl: (e: React.MouseEvent<HTMLElement>) => void;
-	isColumnHidingControlOpen: boolean;
-	setIsColumnHidingControlOpen: (value: React.SetStateAction<boolean>) => void;
-	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
-}
-
 export const addColumnHidingControl = ({
 	columns,
-	openColumnHidingControl,
-	isColumnHidingControlOpen,
-	setIsColumnHidingControlOpen,
 	displayedColumnsChangedCallback
-}: ColumnHidingControlProps): React.ReactNode => {
+}: ColumnControProps): React.ReactNode => {
 	return (
 		<StyledTableHeader key={"column-hiding-control"} className="icon-column">
-			<SolaceButton variant={"icon"} onClick={(e) => openColumnHidingControl(e)}>
-				<TuneIcon />
-			</SolaceButton>
-			{isColumnHidingControlOpen && (
-				<ColumnHidingControlMenu
-					columns={columns}
-					onCloseCallback={setIsColumnHidingControlOpen}
-					displayedColumnsChangedCallback={displayedColumnsChangedCallback}
-				/>
-			)}
+			<ColumnControlMenu
+				id={"column-hiding-control"}
+				columns={columns}
+				displayedColumnsChangedCallback={displayedColumnsChangedCallback}
+			/>
 		</StyledTableHeader>
 	);
 };
