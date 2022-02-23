@@ -164,6 +164,7 @@ function SolaceSelectAutocomplete<T, V>({
 	const select = () => (
 		<Autocomplete
 			id={getId()}
+			data-qa={dataQa}
 			filterOptions={(x) => x}
 			onInputChange={(_event, newInputValue) => {
 				setInputValue(newInputValue);
@@ -207,7 +208,7 @@ function SolaceSelectAutocomplete<T, V>({
 					title={title}
 					inputProps={{
 						...params.inputProps,
-						"data-qa": dataQa,
+						"data-qa": `${dataQa}-input`,
 						"data-tags": dataTags,
 						"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
 						"aria-labelledby": label ? `${getId()}-label` : "",
