@@ -797,6 +797,44 @@ const themeConfig: ThemeOptions = {
 								marginLeft: "8px"
 							}
 						}
+					},
+					/**
+					 * apply an indeterminate linear progress indicator at the bottom of the dialog
+					 */
+					"&.linearProgressIndicator": {
+						".MuiPaper-root": {
+							position: "absolute",
+							overflowX: "hidden"
+						},
+						// the light background of the progress bar
+						".MuiPaper-root::before": {
+							content: '""',
+							position: "absolute",
+							bottom: 0,
+							left: 0,
+							width: "100%",
+							height: "4px",
+							backgroundColor: BASE_COLORS.greens.green11
+						},
+						// the dark sliding part of the progress bar
+						".MuiPaper-root::after": {
+							content: '""',
+							position: "absolute",
+							bottom: 0,
+							left: 0,
+							width: "100%",
+							height: "4px",
+							background: `linear-gradient(90deg, ${BASE_COLORS.greens.green1_rgb} 0% 40%, transparent 40% 100%)`,
+							animation: "animation 2s linear infinite"
+						},
+						"@keyframes animation": {
+							"0%": {
+								left: "0%"
+							},
+							"100%": {
+								left: "100%"
+							}
+						}
 					}
 				}
 			}

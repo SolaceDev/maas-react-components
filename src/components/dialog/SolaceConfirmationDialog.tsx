@@ -10,6 +10,10 @@ export interface SolaceConfirmationDialogProps {
 	contentText?: string;
 	actions: actionProps[];
 	isOpen: boolean;
+	/**
+	 * whether to show an indeterminate linear progress indicator at the bottom border of the dialog
+	 */
+	linearProgressIndicator?: boolean;
 	maxWidth?: Breakpoint;
 	children?: ReactNode;
 }
@@ -20,10 +24,11 @@ function SolaceConfirmationDialog({
 	actions,
 	isOpen = false,
 	maxWidth = "dialogMd",
+	linearProgressIndicator = false,
 	children
 }: SolaceConfirmationDialogProps): JSX.Element {
 	return (
-		<Dialog open={isOpen} maxWidth={maxWidth}>
+		<Dialog open={isOpen} maxWidth={maxWidth} className={linearProgressIndicator ? "linearProgressIndicator" : ""}>
 			<DialogTitle>
 				<div data-qa="title">{title}</div>
 			</DialogTitle>

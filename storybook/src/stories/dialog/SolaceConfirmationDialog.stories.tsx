@@ -65,12 +65,14 @@ DefaultDialog.args = {
 	]
 };
 
+const BUTTON_CLICK_ACTION_CALLBACK = "button-clicked-callback";
+
 export const WithChildrenComponents = (): JSX.Element => (
 	<SolaceConfirmationDialog
 		title="Children"
 		contentText="Some content text sitting above dialog child components (form elements in this case)"
 		isOpen={true}
-		actions={[{ label: "Ok", onClick: action("button-clicked-callback"), variant: "outline" }]}
+		actions={[{ label: "Ok", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), variant: "outline" }]}
 	>
 		<SolaceTextField
 			onChange={action("textfield-change-callback")}
@@ -90,6 +92,16 @@ export const WithNoChildren = (): JSX.Element => (
 		title="No Children"
 		contentText="Some content text sitting above dialog child components (form elements in this case)"
 		isOpen={true}
-		actions={[{ label: "Ok", onClick: action("button-clicked-callback"), variant: "outline" }]}
+		actions={[{ label: "Ok", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), variant: "outline" }]}
+	/>
+);
+
+export const WithLinearProgressIndicator = (): JSX.Element => (
+	<SolaceConfirmationDialog
+		title="Simple Form"
+		contentText="Submission in progress"
+		isOpen={true}
+		linearProgressIndicator={true}
+		actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), isDisabled: true }]}
 	/>
 );
