@@ -31,30 +31,38 @@ interface SolaceTabsProps extends SolaceComponentProps {
 	 * The value of the active tab
 	 */
 	activeTabValue: string;
+	/**
+	 * Callback fired when the value changes.
+	 */
+	onTabClick?: (value: string) => void;
 }
 
 function AnchorTab(props: TabProps) {
+	const { onTabClick, ...rest } = props;
 	return (
 		<Tab
 			component="a"
 			onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 				event.preventDefault();
-				if (props.onTabClick) {
+				if (onTabClick) {
 					// The unique tab value is passed back to the callback function
-					props.onTabClick(props.value);
+					onTabClick(props.value);
 				}
 			}}
 			disableRipple={true}
 			sx={{ height: "100%" }}
-			{...props}
+			{...rest}
 		/>
 	);
 }
 
-function SolaceTabs({ tabs, activeTabValue }: SolaceTabsProps): JSX.Element {
+function SolaceTabs({ tabs, activeTabValue, onTabClick }: SolaceTabsProps): JSX.Element {
+	const handleChange = (_e: React.SyntheticEvent, value: string) => {
+		onTabClick?.(value);
+	};
 	return (
 		<Box sx={{ width: "100%" }}>
-			<Tabs value={activeTabValue}>
+			<Tabs value={activeTabValue} onChange={handleChange}>
 				{tabs.map((item: TabProps) => (
 					<AnchorTab {...item} key={`anchroTab-${item.value}`} />
 				))}

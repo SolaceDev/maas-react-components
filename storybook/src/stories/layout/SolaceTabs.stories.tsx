@@ -8,13 +8,14 @@ export default {
 	parameters: {},
 	argTypes: {
 		activeTabValue: {
-			control: { type: "string" }
+			control: { type: "text" }
 		}
 	}
 } as ComponentMeta<typeof SolaceTabs>;
 
 const Template: ComponentStory<typeof SolaceTabs> = (args) => <SolaceTabs {...args} />;
 
+// The tabValue is a controlled state. The tab won't change if no callback is defined.
 export const DefaultTabs = Template.bind({});
 DefaultTabs.args = {
 	tabs: [
@@ -28,25 +29,26 @@ DefaultTabs.args = {
 export const DisabledTabs = Template.bind({});
 DisabledTabs.args = {
 	tabs: [
-		{ label: "Tab One", value: "tab_one", disabled: true, href: "#" },
-		{ label: "Tab Two", value: "tab_two", href: "#" },
-		{ label: "Tab Three", value: "tab_three", href: "#" }
+		{ label: "Tab One", value: "tab_one", disabled: true },
+		{ label: "Tab Two", value: "tab_two" },
+		{ label: "Tab Three", value: "tab_three" }
 	],
 	activeTabValue: "tab_two"
 };
 
 export const WithCallbackTabs = (): ReactNode => {
 	const [activeTabValue, setActiveTabValue] = useState("tab_one");
-	const handleClick = (tabValue: string) => {
+	const handleTabClick = (tabValue: string) => {
 		setActiveTabValue(tabValue);
 	};
 	return (
 		<SolaceTabs
 			activeTabValue={activeTabValue}
+			onTabClick={handleTabClick}
 			tabs={[
-				{ label: "Tab One", value: "tab_one", onTabClick: handleClick },
-				{ label: "Tab Two", value: "tab_two", onTabClick: handleClick },
-				{ label: "Tab Three", value: "tab_three", onTabClick: handleClick }
+				{ label: "Tab One", value: "tab_one" },
+				{ label: "Tab Two", value: "tab_two" },
+				{ label: "Tab Three", value: "tab_three" }
 			]}
 		/>
 	);
@@ -82,10 +84,11 @@ export const WithIconTabs = (): ReactNode => {
 		<>
 			<SolaceTabs
 				activeTabValue={activeTabValue}
+				onTabClick={handleTabClick}
 				tabs={[
-					{ label: renderStyledTab1(), value: "tab_one", onTabClick: handleTabClick },
-					{ label: renderStyledTab2(), value: "tab_two", onTabClick: handleTabClick },
-					{ label: "Tab Three", value: "tab_three", onTabClick: handleTabClick }
+					{ label: renderStyledTab1(), value: "tab_one" },
+					{ label: renderStyledTab2(), value: "tab_two" },
+					{ label: "Tab Three", value: "tab_three" }
 				]}
 			/>
 			<div style={{ marginTop: "24px" }}>
