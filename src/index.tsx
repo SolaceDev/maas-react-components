@@ -1,5 +1,6 @@
 export * from "@material-ui/core";
 export * from "@material-ui/core/colors";
+export * from "react-split-pane";
 export { default as DeleteIcon } from "@material-ui/icons/Delete";
 export { default as ErrorOutlineOutlinedIcon } from "@material-ui/icons/ErrorOutlineOutlined";
 export { default as AddCircleOutlineOutlinedIcon } from "@material-ui/icons/AddCircleOutlineOutlined";
@@ -53,6 +54,7 @@ export { default as SolaceGridList } from "./components/layout/SolaceGridList";
 export { default as SolaceNotificationCounter } from "./components/SolaceNotificationCounter";
 export { default as getThemeMappings } from "./theming/themeUtils";
 export { default as SolaceIcon } from "./components/SolaceIcon";
+export { default as SolaceSplitPane } from "./components/layout/SolaceSplitPane";
 export * from "./types";
 
 export { default as SolaceTheme } from "./resources/theme";
