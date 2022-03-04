@@ -1,7 +1,12 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SolaceSelect } from "@SolaceDev/maas-react-components";
+import {
+	SolaceSelect,
+	DeleteIcon,
+	AddCircleOutlineOutlinedIcon,
+	HelpOutlineOutlinedIcon
+} from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@material-ui/core";
 import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
@@ -105,6 +110,68 @@ function generateSelectOptionsWithSubtext(): Array<JSX.Element> {
 	});
 }
 
+const SELECT_OPTIONS_WITH_ICON: Array<any> = [
+	{
+		name: "Option #1",
+		value: "option1",
+		icon: <DeleteIcon />
+	},
+	{
+		name: "Option #2",
+		value: "option2",
+		icon: <AddCircleOutlineOutlinedIcon />
+	},
+	{
+		name: "Option #3",
+		value: "option3",
+		icon: <HelpOutlineOutlinedIcon />
+	}
+];
+function generateSelectOptionsWithIcon(): Array<JSX.Element> {
+	return SELECT_OPTIONS_WITH_ICON.map((option) => {
+		return (
+			<MenuItem key={option.value} value={option.value}>
+				<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+					{option.icon}
+					{option.name}
+				</div>
+			</MenuItem>
+		);
+	});
+}
+
+const SELECT_OPTIONS_WITH_ICON_TEXT: Array<any> = [
+	{
+		name: "Solace",
+		value: "solace",
+		delimiter: "use /"
+	},
+	{
+		name: "Kafka",
+		value: "kafka",
+		delimiter: "use ."
+	},
+	{
+		name: "Unknown",
+		value: "unknown",
+		delimiter: ""
+	}
+];
+function generateSelectOptionsWithIconAndText(): Array<JSX.Element> {
+	return SELECT_OPTIONS_WITH_ICON_TEXT.map((option) => {
+		return (
+			<MenuItem key={option.value} value={option.value}>
+				<div
+					style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px", width: "100%" }}
+				>
+					{option.name}
+					{option.delimiter ? <span>{option.delimiter}</span> : <HelpOutlineOutlinedIcon fontSize="small" />}
+				</div>
+			</MenuItem>
+		);
+	});
+}
+
 const TITLE = "Demo Select";
 const LABEL = "Some Label";
 
@@ -202,4 +269,44 @@ ReadOnly.args = {
 	children: SELECT_OPTIONS,
 	value: "option3",
 	readOnly: true
+};
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+	onChange: action("callback"),
+	name: "demoSelect",
+	title: TITLE,
+	label: LABEL,
+	children: generateSelectOptionsWithIcon()
+};
+
+export const WithIconDisabled = Template.bind({});
+WithIconDisabled.args = {
+	onChange: action("callback"),
+	name: "demoSelect",
+	title: TITLE,
+	label: LABEL,
+	value: "option2",
+	children: generateSelectOptionsWithIcon(),
+	disabled: true
+};
+
+export const WithIconReadonly = Template.bind({});
+WithIconReadonly.args = {
+	onChange: action("callback"),
+	name: "demoSelect",
+	title: TITLE,
+	label: LABEL,
+	value: "option3",
+	children: generateSelectOptionsWithIcon(),
+	readOnly: true
+};
+
+export const WithIconAndText = Template.bind({});
+WithIconAndText.args = {
+	onChange: action("callback"),
+	name: "demoSelect",
+	title: TITLE,
+	label: LABEL,
+	children: generateSelectOptionsWithIconAndText()
 };

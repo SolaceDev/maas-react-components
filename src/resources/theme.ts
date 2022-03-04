@@ -125,6 +125,7 @@ const themeConfig: ThemeOptions = {
 							position: "absolute",
 							top: "12px",
 							right: "0",
+							// eslint-disable-next-line sonarjs/no-duplicate-string
 							display: "inline-block",
 							pointerEvents: "none",
 							color: BASE_COLORS.greys.grey8 // dropdown icon color in resting/focused/error states
@@ -135,7 +136,20 @@ const themeConfig: ThemeOptions = {
 							}
 						},
 						"&.readOnlySelect": {
-							backgroundColor: "transparent" // apply transparent bg color in readonly state
+							backgroundColor: "transparent", // apply transparent bg color in readonly state
+							".MuiSelect-select": {
+								// reset svg inside selected area which is sibling to the svg icon for dropdown caret
+								".MuiSvgIcon-root": {
+									display: "inline-block"
+								}
+							}
+						},
+						".MuiSelect-select": {
+							// reset svg inside selected area which is sibling to the svg icon for dropdown caret
+							".MuiSvgIcon-root": {
+								position: "relative",
+								top: "0"
+							}
 						}
 					}
 				}
@@ -1052,13 +1066,21 @@ const themeConfig: ThemeOptions = {
 						width: "20px",
 						height: "20px"
 					}
+				},
+				"&.warn": {
+					backgroundColor: BASE_COLORS.yellows.yellow2,
+					borderLeft: `3px solid ${BASE_COLORS.yellows.yellow1}`,
+					svg: {
+						width: "20px",
+						height: "20px"
+					}
 				}
 			},
 			message: {
 				display: "flex",
 				alignItems: "center",
 				gap: "8px",
-				padding: "8px 0px 8px 8px"
+				padding: "8px 8px 8px 8px"
 			}
 		},
 		/** SolaceGridList */

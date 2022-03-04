@@ -5,6 +5,7 @@ import { ErrorIcon } from "../resources/icons/ErrorIcon";
 import { InfoIcon } from "../resources/icons/InfoIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 import { BASE_COLORS } from "../resources/colorPallette";
+import { WarnIcon } from "../resources/icons/WarnIcon";
 
 const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.container);
 const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
@@ -32,18 +33,19 @@ interface SolaceInfoBoxProps {
 	 */
 	onClose?: () => void;
 	/**
-	 * Variants, currently supports error and info, default to info, can be expanded as needed
+	 * Variants, currently supports error, info and warn, default to info, can be expanded as needed
 	 */
-	variant: "info" | "error";
+	variant: "info" | "error" | "warn";
 	/**
 	 * message text color
 	 */
 	color?: string;
 }
 
-function renderIcons(variant: "info" | "error"): JSX.Element {
+function renderIcons(variant: "info" | "error" | "warn"): JSX.Element {
 	if (variant === "info") return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
 	else if (variant === "error") return <ErrorIcon size={20} fill={BASE_COLORS.reds.red1} />;
+	else if (variant === "warn") return <WarnIcon size={20} fill={BASE_COLORS.yellows.yellow1} />;
 	return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
 }
 

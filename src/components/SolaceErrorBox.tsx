@@ -22,7 +22,7 @@ const MessageSection = styled("div")(({ theme }) => ({
 	display: "flex",
 	alignItems: "center",
 	gap: theme.spacing(),
-	padding: `${theme.spacing()} 0 ${theme.spacing()} ${theme.spacing()} `
+	padding: theme.spacing()
 }));
 
 export interface SolaceErrorBoxProps extends SolaceComponentProps {

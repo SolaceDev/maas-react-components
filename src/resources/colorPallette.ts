@@ -52,7 +52,8 @@ export const BASE_COLORS = {
 		white2: "rgba(255, 255, 255, 0.9)"
 	},
 	yellows: {
-		yellow1: "#F3AA24"
+		yellow1: "#F3AA24",
+		yellow2: "#FEF7E9"
 	},
 	blues: {
 		blue1: "#E6F2FF",

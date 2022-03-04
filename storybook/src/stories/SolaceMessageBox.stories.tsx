@@ -48,7 +48,7 @@ export default {
 			}
 		},
 		variant: {
-			options: ["info", "error"],
+			options: ["info", "error", "warn"],
 			control: {
 				type: "select"
 			},
@@ -88,6 +88,12 @@ ErrorBox.args = {
 	color: "#D0021B"
 };
 
+export const WarnBox = Template.bind({});
+WarnBox.args = {
+	message: "this is a warn message",
+	variant: "warn"
+};
+
 export const MessageWithIcon = Template.bind({});
 MessageWithIcon.args = {
 	message: (
@@ -122,11 +128,23 @@ WithCloseAction.args = {
 export const WithinContainer = ({ message, ...args }): JSX.Element => {
 	return (
 		<div style={{ width: "300px" }}>
-			<SolaceMessageBox message={message} {...args} />
+			<SolaceMessageBox variant="info" message={message} {...args} />
 		</div>
 	);
 };
 WithinContainer.args = {
 	message: "Helpful information. The info box is in a small container.",
+	showCloseButton: true
+};
+
+export const WarnWithinContainer = ({ message, ...args }): JSX.Element => {
+	return (
+		<div style={{ width: "300px" }}>
+			<SolaceMessageBox variant="warn" message={message} {...args} />
+		</div>
+	);
+};
+WarnWithinContainer.args = {
+	message: "Helpful information. The warn box is in a small container.",
 	showCloseButton: true
 };
