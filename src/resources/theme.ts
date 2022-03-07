@@ -1109,19 +1109,28 @@ const themeConfig: ThemeOptions = {
 		},
 		/** SolaceGridList */
 		layoutComponent_GridList: {
+			header: {
+				display: "flex",
+				justifyContent: "space-between",
+				padding: "8px 16px 8px 24px",
+				alignItems: "center",
+				borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`,
+				borderTop: `1px solid ${BASE_COLORS.greys.grey2}`,
+				borderRight: `1px solid ${BASE_COLORS.greys.grey2}`
+			},
 			row: {
 				display: "grid",
-				gridColumnGap: "32px",
+				gridColumnGap: "8px",
 				whiteSpace: "nowrap",
 				placeItems: "center left",
-				padding: "10px 16px",
+				padding: "10px 24px",
 				lineHeight: "32px",
 				"&.headerRow": {
 					height: "30px",
 					fontWeight: "500",
 					color: BASE_COLORS.greys.grey11,
 					cursor: "auto",
-					padding: "0px 16px",
+					padding: "0px 24px",
 					position: "sticky",
 					top: 0,
 					":hover": {
@@ -1131,6 +1140,9 @@ const themeConfig: ThemeOptions = {
 				},
 				borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
 				cursor: "pointer",
+				":last-child": {
+					borderBottom: "none"
+				},
 				":hover": {
 					background: BASE_COLORS.greys.grey1
 				},
@@ -1139,7 +1151,8 @@ const themeConfig: ThemeOptions = {
 					outline: "none"
 				},
 				"&.selected": {
-					background: BASE_COLORS.greens.green9
+					background: BASE_COLORS.greens.green9,
+					cursor: "default"
 				}
 			},
 			list: {
@@ -1218,6 +1231,7 @@ declare module "@material-ui/core/styles" {
 declare module "@material-ui/core/styles/createMixins" {
 	interface Mixins {
 		layoutComponent_GridList: {
+			header: CSSProperties;
 			row: CSSProperties;
 			list: CSSProperties;
 		};

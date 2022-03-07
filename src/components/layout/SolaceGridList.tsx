@@ -6,24 +6,21 @@ import SolaceComponentProps from "../SolaceComponentProps";
 const Row = styled("div")(({ theme }) => theme.mixins.layoutComponent_GridList.row);
 const List = styled("div")(({ theme }) => theme.mixins.layoutComponent_GridList.list);
 
-interface SolaceGridListItem {
-	id: string;
-}
-
-interface SolaceGridListProps<T extends SolaceGridListItem> extends SolaceComponentProps {
+interface SolaceGridListProps<T> extends SolaceComponentProps {
 	id?: string;
 	items: T[];
+	objectIdentifier?: string;
 	headers?: string[];
-	selectedItemId?: string;
-	onSelection?: (item: T | undefined) => void;
-	rowMapping: (item: T) => HTMLDivElement[];
+	selectedItemId?: string | number;
+	onSelection?: (item: T) => void;
+	rowMapping: (item: T) => JSX.Element[];
 	gridTemplate: string;
 }
 
 interface SolaceGridListRowProps extends SolaceComponentProps {
 	id: string;
 	index: number;
-	items: HTMLDivElement[];
+	items: JSX.Element[];
 	gridTemplate: string;
 	selected?: boolean;
 	onClick: (id: string) => void;
@@ -60,9 +57,10 @@ function SolaceGridListRow({
 	);
 }
 
-function SolaceGridList<T extends SolaceGridListItem>({
+function SolaceGridList<T>({
 	id,
 	items,
+	objectIdentifier = "id",
 	headers,
 	selectedItemId,
 	onSelection,
@@ -111,10 +109,13 @@ function SolaceGridList<T extends SolaceGridListItem>({
 	const handleRowClick = useCallback(
 		(id: string) => {
 			if (onSelection) {
-				onSelection(items.find((item) => item.id === id));
+				const selectedRow = items.find((item) => item[objectIdentifier] === id);
+				if (selectedRow && selectedRow[objectIdentifier] !== selectedItemId) {
+					onSelection(selectedRow);
+				}
 			}
 		},
-		[items, onSelection]
+		[items, objectIdentifier, onSelection, selectedItemId]
 	);
 
 	return (
@@ -123,11 +124,11 @@ function SolaceGridList<T extends SolaceGridListItem>({
 				{headers && getListHeader}
 				{items?.map((item, index) => (
 					<SolaceGridListRow
-						key={`solaceGridListRow-${item.id}`}
-						id={item.id}
+						key={`solaceGridListRow-${item[objectIdentifier]}`}
+						id={item[objectIdentifier]}
 						index={index + 1}
 						items={rowMapping(item)}
-						selected={item.id === selectedItemId}
+						selected={item[objectIdentifier] === selectedItemId}
 						gridTemplate={gridTemplate}
 						onClick={handleRowClick}
 						dataQa={dataQa}

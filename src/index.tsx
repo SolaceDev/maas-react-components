@@ -2,6 +2,7 @@ export * from "@material-ui/core";
 export * from "@material-ui/core/colors";
 export * from "react-split-pane";
 export { default as DeleteIcon } from "@material-ui/icons/Delete";
+export { SelectDropdownIcon } from "./resources/icons/SelectIcons";
 export { default as ErrorOutlineOutlinedIcon } from "@material-ui/icons/ErrorOutlineOutlined";
 export { default as AddCircleOutlineOutlinedIcon } from "@material-ui/icons/AddCircleOutlineOutlined";
 export { default as HelpOutlineOutlinedIcon } from "@material-ui/icons/HelpOutlineOutlined";
@@ -51,6 +52,7 @@ export { default as SolaceAttributeValuePairForm } from "./components/form/Solac
 export { default as SolaceTooltip } from "./components/SolaceToolTip";
 export { default as SolaceDrawer } from "./components/SolaceDrawer";
 export { default as SolaceGridList } from "./components/layout/SolaceGridList";
+export { default as SolaceGridListMultiSelect } from "./components/layout/SolaceGridListMultiSelect";
 export { default as SolaceNotificationCounter } from "./components/SolaceNotificationCounter";
 export { default as getThemeMappings } from "./theming/themeUtils";
 export { default as SolaceIcon } from "./components/SolaceIcon";
