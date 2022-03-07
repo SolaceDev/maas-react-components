@@ -856,6 +856,30 @@ const themeConfig: ThemeOptions = {
 		MuiChip: {
 			styleOverrides: {
 				root: {
+					"&.defaultStateStyle": {
+						maxWidth: `200px`,
+						fontSize: BASE_FONT_PX_SIZES["xs"],
+						fontWeight: 500,
+						paddingX: "2px"
+					},
+					"&.Draft": {
+						color: BASE_COLORS.blues.blue3,
+						backgroundColor: BASE_COLORS.greys.grey27,
+						border: `1px dashed ${BASE_COLORS.blues.blue5}`
+					},
+					"&.Released": {
+						color: BASE_COLORS.blues.blue3,
+						backgroundColor: BASE_COLORS.greys.grey27,
+						border: `1px solid ${BASE_COLORS.blues.blue5}`
+					},
+					"&.Deprecated": {
+						color: BASE_COLORS.blues.blue4,
+						backgroundColor: BASE_COLORS.greys.grey28
+					},
+					"&.Retired": {
+						color: BASE_COLORS.blues.blue4,
+						backgroundColor: BASE_COLORS.greys.grey28
+					},
 					borderRadius: "40px"
 				},
 				filled: {

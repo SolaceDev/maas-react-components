@@ -22,6 +22,12 @@ export default {
 				type: "select"
 			}
 		},
+		lifecycleState: {
+			options: ["Draft", "Released", "Deprecated", "Retired"],
+			control: {
+				type: "radio"
+			}
+		},
 		compressed: {
 			control: { type: "boolean" }
 		},
@@ -67,6 +73,11 @@ NonCompressedChip.args = {
 	label: "Non Compressed Chip",
 	size: "xs",
 	compressed: false
+};
+
+export const LifecycleStateChip = Template.bind({});
+LifecycleStateChip.args = {
+	lifecycleState: "Draft"
 };
 
 export const WithTooltipChip = Template.bind({});
