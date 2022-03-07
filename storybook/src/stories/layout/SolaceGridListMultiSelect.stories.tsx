@@ -7,7 +7,7 @@ import {
 	SolaceButton,
 	SelectDropdownIcon
 } from "@SolaceDev/maas-react-components";
-import { useMemo, useState } from "react";
+import { useState, useEffect } from "react";
 
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
 const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
@@ -62,6 +62,7 @@ export default {
 				"A callback function which is triggered on row is highlighted (row is clicked),  will pass the data object associated with the highlighted row"
 		},
 		selectedRowIds: {
+			control: { type: "array" },
 			description: "The ids of all the items currenlty selected (checkbox selected) in the list",
 			table: {
 				defaultValue: {
@@ -200,6 +201,7 @@ const DEFAULT_MENU_ITEMS = [
 		onMenuItemClick: action("callback")
 	}
 ];
+const DEFAULT_GRID_TEMPALTE = "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)";
 
 const basicRowMapping = (testItem) => {
 	const itemCells = [];
@@ -227,8 +229,9 @@ const basicRowMapping = (testItem) => {
 	return itemCells;
 };
 
-const getActions = () => {
-	return (
+const getActions = (): JSX.Element[] => {
+	const actionList = [];
+	actionList.push(
 		<SolaceMenu
 			id={"custom-solace-menu"}
 			buttonProps={{
@@ -249,234 +252,109 @@ const getActions = () => {
 			items={DEFAULT_MENU_ITEMS}
 		></SolaceMenu>
 	);
+	return actionList;
 };
 
-export const DefaultList = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState();
-	const [selectedRowIds, setSelectedRowIds] = useState([]);
+const SolaceGridListMultiSelectStory = ({ selectedRowIds, highlightedRowId, ...args }) => {
+	const [highlightedId, setHighlightedId] = useState(highlightedRowId || undefined);
+	const [selectedIds, setSelectedIds] = useState(selectedRowIds || []);
+
+	useEffect(() => {
+		setHighlightedId(highlightedRowId);
+	}, [highlightedRowId]);
+
+	useEffect(() => {
+		setSelectedIds(selectedRowIds);
+	}, [selectedRowIds]);
 
 	const handleRowHighlight = (selectedItem) => {
 		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
+		setHighlightedId(selectedItem.id);
 	};
 
 	const handleRowSelection = (selectedItems) => {
 		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
+		setSelectedIds(selectedItems.map((item) => item.id));
 	};
-
 	return (
 		<SolaceGridListMultiSelect
-			items={testListItems}
-			rowMapping={basicRowMapping}
-			highlightedRowId={highlightedRowId}
+			{...args}
+			highlightedRowId={highlightedId}
 			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedRowIds}
+			selectedRowIds={selectedIds}
 			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			dataQa="demoDefaultList"
 		/>
 	);
 };
 
-export const NoSelectAll = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState();
-	const [selectedRowIds, setSelectedRowIds] = useState([]);
-
-	const handleRowHighlight = (selectedItem) => {
-		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
-	};
-
-	const handleRowSelection = (selectedItems) => {
-		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
-	};
-
-	return (
-		<SolaceGridListMultiSelect
-			items={testListItems}
-			rowMapping={basicRowMapping}
-			highlightedRowId={highlightedRowId}
-			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedRowIds}
-			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			selectAll={false}
-			dataQa="demoDefaultList"
-		/>
-	);
+export const DefaultList = SolaceGridListMultiSelectStory.bind({});
+DefaultList.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	dataQa: "demoDefaultList"
 };
 
-export const WithCustomSelectAllText = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState();
-	const [selectedRowIds, setSelectedRowIds] = useState([]);
-
-	const handleRowHighlight = (selectedItem) => {
-		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
-	};
-
-	const handleRowSelection = (selectedItems) => {
-		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
-	};
-
-	return (
-		<SolaceGridListMultiSelect
-			items={testListItems}
-			rowMapping={basicRowMapping}
-			highlightedRowId={highlightedRowId}
-			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedRowIds}
-			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			selectAllLabel="Choose All"
-			dataQa="demoDefaultList"
-		/>
-	);
+export const NoSelectAll = SolaceGridListMultiSelectStory.bind({});
+NoSelectAll.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	selectAll: false,
+	dataQa: "demoDefaultList"
 };
 
-export const WithDefaultHighlight = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState(2);
-	const [selectedRowIds, setSelectedRowIds] = useState([]);
-
-	const handleRowHighlight = (selectedItem) => {
-		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
-	};
-
-	const handleRowSelection = (selectedItems) => {
-		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
-	};
-
-	return (
-		<SolaceGridListMultiSelect
-			items={testListItems}
-			rowMapping={basicRowMapping}
-			highlightedRowId={highlightedRowId}
-			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedRowIds}
-			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			dataQa="demoDefaultList"
-		/>
-	);
+export const WithCustomSelectAllText = SolaceGridListMultiSelectStory.bind({});
+WithCustomSelectAllText.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	selectAllLabel: "Choose All",
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	dataQa: "demoDefaultList"
 };
 
-export const WithDefaultSelections = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState();
-	const [selectedRowIds, setSelectedRowIds] = useState([2, 3, 5]);
-
-	const handleRowHighlight = (selectedItem) => {
-		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
-	};
-
-	const handleRowSelection = (selectedItems) => {
-		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
-	};
-
-	return (
-		<SolaceGridListMultiSelect
-			items={testListItems}
-			rowMapping={basicRowMapping}
-			highlightedRowId={highlightedRowId}
-			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedRowIds}
-			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			dataQa="demoDefaultList"
-		/>
-	);
+export const WithDefaultHighlight = SolaceGridListMultiSelectStory.bind({});
+WithDefaultHighlight.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	highlightedRowId: 2,
+	dataQa: "demoDefaultList"
 };
 
-export const WithActionMenus = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState();
-	const [selectedRowIds, setSelectedRowIds] = useState([]);
-
-	const handleRowHighlight = (selectedItem) => {
-		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
-	};
-
-	const handleRowSelection = (selectedItems) => {
-		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
-	};
-
-	return (
-		<SolaceGridListMultiSelect
-			items={testListItems}
-			rowMapping={basicRowMapping}
-			highlightedRowId={highlightedRowId}
-			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedRowIds}
-			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			actions={getActions()}
-			dataQa="demoDefaultList"
-		/>
-	);
+export const WithDefaultSelections = SolaceGridListMultiSelectStory.bind({});
+WithDefaultSelections.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	selectedRowIds: [2, 3, 5],
+	dataQa: "demoDefaultList"
 };
 
-export const WithOnlyActionMenus = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState();
-	const [selectedRowIds, setSelectedRowIds] = useState([]);
-
-	const handleRowHighlight = (selectedItem) => {
-		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
-	};
-
-	const handleRowSelection = (selectedItems) => {
-		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
-	};
-
-	return (
-		<SolaceGridListMultiSelect
-			items={testListItems}
-			rowMapping={basicRowMapping}
-			highlightedRowId={highlightedRowId}
-			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedRowIds}
-			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			actions={getActions()}
-			selectAll={false}
-			dataQa="demoDefaultList"
-		/>
-	);
+export const WithActionMenus = SolaceGridListMultiSelectStory.bind({});
+WithActionMenus.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	actions: getActions(),
+	dataQa: "demoDefaultList"
 };
 
-export const WithHeaders = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState();
-	const [selectedRowIds, setSelectedRowIds] = useState([]);
+export const WithOnlyActionMenus = SolaceGridListMultiSelectStory.bind({});
+WithOnlyActionMenus.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	actions: getActions(),
+	selectAll: false,
+	dataQa: "demoDefaultList"
+};
 
-	const handleRowHighlight = (selectedItem) => {
-		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
-	};
-
-	const handleRowSelection = (selectedItems) => {
-		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
-	};
-
-	return (
-		<SolaceGridListMultiSelect
-			items={testListItems}
-			rowMapping={basicRowMapping}
-			headers={testHeaders}
-			highlightedRowId={highlightedRowId}
-			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedRowIds}
-			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			dataQa="demoDefaultList"
-		/>
-	);
+export const WithHeaders = SolaceGridListMultiSelectStory.bind({});
+WithHeaders.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	headers: testHeaders,
+	dataQa: "demoDefaultList"
 };

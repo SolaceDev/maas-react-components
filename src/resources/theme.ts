@@ -1120,7 +1120,7 @@ const themeConfig: ThemeOptions = {
 			},
 			row: {
 				display: "grid",
-				gridColumnGap: "8px",
+				gridColumnGap: "16px",
 				whiteSpace: "nowrap",
 				placeItems: "center left",
 				padding: "10px 24px",

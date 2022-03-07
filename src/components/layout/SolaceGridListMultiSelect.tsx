@@ -39,7 +39,9 @@ function SolaceGridListMultiSelect<T>({
 	actions,
 	dataQa
 }: SolaceGridListMultiSelectProps<T>): JSX.Element {
-	const CHECKBOX_GRID_STRING = "min(40px)";
+	// checkbox is 25px wide, column gap is 16px, setting a min width of 17px
+	// gives a gap of 8px between checkbox and first column (as per UX design)
+	const CHECKBOX_GRID_STRING = "min(17px)";
 
 	const [allSelected, setAllSelected] = useState(false);
 
