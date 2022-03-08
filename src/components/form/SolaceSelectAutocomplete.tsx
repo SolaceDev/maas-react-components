@@ -206,6 +206,7 @@ function SolaceSelectAutocomplete<T, V>({
 				<TextField
 					{...params}
 					title={title}
+					autoComplete="off"
 					inputProps={{
 						...params.inputProps,
 						"data-qa": `${dataQa}-input`,

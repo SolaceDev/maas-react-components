@@ -78,6 +78,22 @@ export interface SolaceTextAreaProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
 	onChange?: (event: SolaceTextAreaChangeEvent) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` loses focus
+	 */
+	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` receives key down event
+	 */
+	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` receives key up event
+	 */
+	onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	/**
+	 * Callback function to trigger whenever the element of the `input` is focused
+	 */
+	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
@@ -98,6 +114,10 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	disabled = false,
 	readOnly = false,
 	onChange,
+	onBlur,
+	onKeyDown,
+	onKeyUp,
+	onFocus,
 	dataQa,
 	dataTags
 }) => {
@@ -147,6 +167,10 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 			placeholder={placeholder}
 			value={value}
 			onChange={handleChange}
+			onBlur={onBlur}
+			onKeyDown={onKeyDown}
+			onKeyUp={onKeyUp}
+			onFocus={onFocus}
 		/>
 	);
 

@@ -140,6 +140,16 @@ AutoFocus.args = {
 	autoFocus: true
 };
 
+export const WithOnBlurOnFocus = Template.bind({});
+WithOnBlurOnFocus.args = {
+	onChange: action("callback"),
+	onBlur: action("blur"),
+	onFocus: action("focus"),
+	title: DEMO_TITLE,
+	id: "demoTextFieldId",
+	name: "demoTextField"
+};
+
 export const Required = Template.bind({});
 Required.args = {
 	onChange: action("callback"),
