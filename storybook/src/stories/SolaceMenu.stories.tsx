@@ -6,7 +6,9 @@ import {
 	SolaceButton,
 	SolaceCheckBox,
 	DeleteIcon,
-	SolaceRadio
+	SolaceRadio,
+	SelectDropdownIcon,
+	SolaceToggle
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MoreHorizOutlinedIcon } from "../../../src/resources/icons/MoreHorizOutlinedIcon";
@@ -146,6 +148,39 @@ DisabledMenuItem.args = {
 		}
 	],
 	multiline: true
+};
+
+export const DisabledMenu = (): JSX.Element => {
+	const [disabled, setDisabled] = useState(false);
+
+	return (
+		<div style={{ display: "flex", alignItems: "center", padding: "8px", border: "1px solid rgba(0,0,0, 0.1)" }}>
+			<div style={{ marginRight: "24px" }}>
+				<SolaceToggle
+					id="demoToggleId"
+					label="Disable"
+					onChange={() => {
+						setDisabled(!disabled);
+					}}
+					stateText
+					title="Disable Toggle"
+				/>
+			</div>
+			<SolaceMenu
+				buttonProps={{
+					variant: "outline",
+					isDisabled: disabled,
+					endIcon: (
+						<span style={{ marginTop: "5px" }}>
+							<SelectDropdownIcon />
+						</span>
+					),
+					children: "Actions"
+				}}
+				items={DEFAULT_MENU_ITEMS}
+			></SolaceMenu>
+		</div>
+	);
 };
 
 export const IconMenuItem = Template.bind({});
@@ -340,7 +375,7 @@ export const ClickPropagateToParent = (): JSX.Element => {
 	return (
 		<>
 			<div
-				style={{ display: "flex", alignItems: "center", padding: "8px", border: "1px solid rgba(0,0,0, 0.1)" }}
+				style={{ display: "flex", alignItems: "center", padding: "8px", border: "2px solid rgba(0,0,0, 0.1)" }}
 				onClick={() => setClickCount(clickCount + 1)}
 			>
 				<span style={{ marginRight: "16px" }}>Hello World!</span>
