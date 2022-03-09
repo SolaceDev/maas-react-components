@@ -235,22 +235,16 @@ const getActions = (): JSX.Element[] => {
 		<SolaceMenu
 			id={"custom-solace-menu"}
 			buttonProps={{
-				variant: "icon",
-				children: (
-					<SolaceButton
-						variant="outline"
-						endIcon={
-							<span style={{ marginTop: "5px" }}>
-								<SelectDropdownIcon />
-							</span>
-						}
-					>
-						Actions
-					</SolaceButton>
-				)
+				variant: "outline",
+				endIcon: (
+					<span style={{ marginTop: "5px" }}>
+						<SelectDropdownIcon />
+					</span>
+				),
+				children: "Actions"
 			}}
 			items={DEFAULT_MENU_ITEMS}
-		></SolaceMenu>
+		/>
 	);
 	return actionList;
 };

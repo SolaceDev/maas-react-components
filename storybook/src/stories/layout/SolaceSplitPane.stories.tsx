@@ -91,6 +91,20 @@ const content = [
 	<div key="rightDiv">This is another pragraph</div>
 ];
 
+const wideContent = [
+	<div key="leftDiv" style={{ minWidth: "1000px" }}>
+		<p>This containing div is 1000px wide...</p>
+		<p>
+			This is a pragraph in a Pane with really long text. This is a pragraph in a Pane with really long text. This is a
+			pragraph in a Pane with really long text. This is a pragraph in a Pane with really long text. This is a pragraph
+			in a Pane with really long text. This is a pragraph in a Pane with really long text. This is a pragraph in a Pane
+			with really long text. This is a pragraph in a Pane with really long text. This is a pragraph in a Pane with
+			really long text. This is a pragraph in a Pane with really long text.
+		</p>
+	</div>,
+	<div key="rightDiv">This is another pragraph</div>
+];
+
 export const DefaultSplitPane = Template.bind({});
 DefaultSplitPane.args = {
 	children: content,
@@ -115,6 +129,12 @@ export const HorizontalSplitPane = Template.bind({});
 HorizontalSplitPane.args = {
 	split: "horizontal",
 	children: content
+};
+
+export const WithScrollbars = Template.bind({});
+WithScrollbars.args = {
+	defaultSize: 300,
+	children: wideContent
 };
 
 export const NoResizeSplitPane = Template.bind({});

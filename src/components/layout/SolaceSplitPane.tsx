@@ -109,7 +109,7 @@ function SolaceSplitPane({
 			{children &&
 				children.map((content: JSX.Element, index: number) => {
 					return (
-						<Pane key={`pane${index}`} size="100%">
+						<Pane key={`pane${index}`} size="100%" style={{ overflow: "auto" }}>
 							{content}
 						</Pane>
 					);
