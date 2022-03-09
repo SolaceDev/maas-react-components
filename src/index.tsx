@@ -58,6 +58,7 @@ export { default as SolaceNotificationCounter } from "./components/SolaceNotific
 export { default as getThemeMappings } from "./theming/themeUtils";
 export { default as SolaceIcon } from "./components/SolaceIcon";
 export { default as SolaceSplitPane } from "./components/layout/SolaceSplitPane";
+export { default as SolaceAccordion } from "./components/SolaceAccordion";
 export * from "./types";
 
 export { default as SolaceTheme } from "./resources/theme";

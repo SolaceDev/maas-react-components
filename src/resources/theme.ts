@@ -992,6 +992,54 @@ const themeConfig: ThemeOptions = {
 					}
 				}
 			}
+		},
+		MuiAccordion: {
+			styleOverrides: {
+				root: {
+					border: `1px solid ${BASE_COLORS.greys.grey2}`,
+					boxShadow: "none",
+					"&:not(:last-child)": {
+						borderBottom: 0
+					},
+					"&:before": {
+						display: "none"
+					}
+				}
+			}
+		},
+		MuiAccordionSummary: {
+			styleOverrides: {
+				root: {
+					flexDirection: "row-reverse",
+					":hover": {
+						backgroundColor: BASE_COLORS.greys.grey2
+					},
+					".MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+						transform: "rotate(90deg)"
+					}
+				},
+				expandIconWrapper: {
+					padding: "0px 8px 0px 8px",
+					svg: {
+						fill: BASE_COLORS.greys.grey8,
+						":hover": {
+							fill: BASE_COLORS.greys.grey14
+						}
+					}
+				}
+			}
+		},
+		MuiAccordionDetails: {
+			styleOverrides: {
+				root: {
+					/**
+					 * To left align the title with the content:
+					 * padding left of the content is calculated based on the elements in the title:
+					 * so, 16+8+24+8 = 56px
+					 */
+					padding: "8px 16px 16px 56px"
+				}
+			}
 		}
 	},
 	mixins: {
