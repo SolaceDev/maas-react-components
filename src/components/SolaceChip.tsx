@@ -1,7 +1,21 @@
 import { Chip } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
+import { CHIP_COLORS, CHIP_COLOR_MAP } from "../resources/colorPallette";
+import { BASE_SIZE_TYPES } from "../resources/sizing";
 import { BASE_FONT_PX_SIZE_TYPES, BASE_FONT_PX_SIZES } from "../resources/typography";
 import SolaceComponentProps from "./SolaceComponentProps";
+
+const CHIP_PX_HEIGHTS: BASE_SIZE_TYPES = {
+	sm: 18,
+	md: 24,
+	lg: 30
+};
+
+const CHIP_PX_BORDER_RADIUS: BASE_SIZE_TYPES = {
+	sm: 30,
+	md: 40,
+	lg: 50
+};
 
 export interface SolaceChipProps extends SolaceComponentProps {
 	/**
@@ -21,9 +35,33 @@ export interface SolaceChipProps extends SolaceComponentProps {
 	 */
 	maxWidth?: number;
 	/**
-	 * 	Overrides all other props and styles the chip according to the lifecycle state
+	 * Sets the border color of the component
 	 */
-	lifecycleState?: "Draft" | "Released" | "Deprecated" | "Retired";
+	borderColor?: CHIP_COLORS;
+	/**
+	 * Sets the border radius of the component
+	 */
+	borderRadius?: keyof BASE_SIZE_TYPES;
+	/**
+	 * Flag to change the border to dashed for the outlined chip variant
+	 */
+	dashedBorder?: boolean;
+	/**
+	 * Sets the fill color of the chip
+	 */
+	fillColor?: CHIP_COLORS;
+	/**
+	 * Flag to set the label font weight to bold
+	 */
+	boldLabel?: boolean;
+	/**
+	 * Sets the text color of the label
+	 */
+	labelColor?: CHIP_COLORS;
+	/**
+	 * Sets the vertical size of the chip
+	 */
+	height?: keyof BASE_SIZE_TYPES;
 	/**
 	 * Font size
 	 */
@@ -47,7 +85,13 @@ export default function SolaceChip({
 	variant = "filled",
 	disabled = false,
 	maxWidth = 200,
-	lifecycleState,
+	dashedBorder = false,
+	borderColor,
+	labelColor,
+	borderRadius,
+	fillColor,
+	boldLabel = false,
+	height = "md",
 	dataQa,
 	size = "sm",
 	compressed = true,
@@ -56,16 +100,25 @@ export default function SolaceChip({
 }: SolaceChipProps): JSX.Element {
 	return (
 		<Chip
-			className={lifecycleState ? `defaultStateStyle ${lifecycleState}` : ""}
-			sx={{ maxWidth: `${maxWidth}px`, fontSize: BASE_FONT_PX_SIZES[size] }}
-			label={lifecycleState ? lifecycleState : label}
+			sx={{
+				maxWidth: `${maxWidth}px`,
+				fontSize: BASE_FONT_PX_SIZES[size],
+				borderColor: `${borderColor && CHIP_COLOR_MAP[borderColor]}`,
+				borderStyle: `${dashedBorder && "dashed"}`,
+				borderRadius: `${borderRadius && CHIP_PX_BORDER_RADIUS[borderRadius]}`,
+				fontWeight: `${boldLabel ? 500 : 400}`,
+				height: `${CHIP_PX_HEIGHTS[height]}px`,
+				backgroundColor: `${fillColor && CHIP_COLOR_MAP[fillColor]}`,
+				color: `${labelColor && CHIP_COLOR_MAP[labelColor]}`
+			}}
+			label={label}
 			variant={variant}
-			size={compressed || lifecycleState ? "small" : "medium"}
+			size={compressed ? "small" : "medium"}
 			disabled={disabled}
 			clickable={clickable}
 			onDelete={onDelete}
-			data-qa={dataQa}
 			deleteIcon={<CloseIcon />}
+			data-qa={dataQa}
 		/>
 	);
 }

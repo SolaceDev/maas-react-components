@@ -69,3 +69,21 @@ export const BASE_COLORS = {
 export const getRGBA = (rgbValue: string, opacity: number): string => {
 	return rgbValue.replace("rgb", "rgba").replace(")", `, ${opacity})`);
 };
+
+export enum CHIP_COLORS {
+	ROYAL_BLUE = "royalBlue",
+	DARK_BLUE = "darkBlue",
+	OPAQUE_BLUE = "opaqueBlue",
+	LIGHT_GREY = "lightGrey",
+	SMOKE_GREY = "smokeGrey",
+	WHITE = "white"
+}
+
+export const CHIP_COLOR_MAP = {
+	royalBlue: BASE_COLORS.blues.blue3,
+	darkBlue: BASE_COLORS.blues.blue4,
+	opaqueBlue: BASE_COLORS.blues.blue5,
+	lightGrey: BASE_COLORS.greys.grey27,
+	smokeGrey: BASE_COLORS.greys.grey28,
+	white: BASE_COLORS.whites.white1
+};

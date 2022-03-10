@@ -22,10 +22,44 @@ export default {
 				type: "select"
 			}
 		},
-		lifecycleState: {
-			options: ["Draft", "Released", "Deprecated", "Retired"],
+		borderColor: {
+			options: ["royalBlue", "darkBlue", "opaqueBlue", "lightGrey", "smokeGrey"],
 			control: {
-				type: "radio"
+				type: "select"
+			}
+		},
+		borderRadius: {
+			options: ["sm", "md", "lg"],
+			control: {
+				type: "select"
+			}
+		},
+		dashedBorder: {
+			control: {
+				type: "boolean"
+			}
+		},
+		fillColor: {
+			options: ["royalBlue", "darkBlue", "opaqueBlue", "lightGrey", "smokeGrey"],
+			control: {
+				type: "select"
+			}
+		},
+		boldLabel: {
+			control: {
+				type: "boolean"
+			}
+		},
+		labelColor: {
+			options: ["royalBlue", "darkBlue", "opaqueBlue", "lightGrey", "smokeGrey"],
+			control: {
+				type: "select"
+			}
+		},
+		height: {
+			options: ["sm", "md", "lg"],
+			control: {
+				type: "select"
 			}
 		},
 		compressed: {
@@ -68,16 +102,17 @@ LargeFontSizeChip.args = {
 	size: "lg"
 };
 
+export const BoldLabelChip = Template.bind({});
+BoldLabelChip.args = {
+	label: "Bold Label Chip",
+	boldLabel: true
+};
+
 export const NonCompressedChip = Template.bind({});
 NonCompressedChip.args = {
 	label: "Non Compressed Chip",
 	size: "xs",
 	compressed: false
-};
-
-export const LifecycleStateChip = Template.bind({});
-LifecycleStateChip.args = {
-	lifecycleState: "Draft"
 };
 
 export const WithTooltipChip = Template.bind({});
@@ -90,6 +125,19 @@ export const WithColorTextChip = Template.bind({});
 WithColorTextChip.args = {
 	label: <span style={{ color: BASE_COLORS.whites.white1 }}>White Text</span>,
 	maxWidth: "100"
+};
+
+export const WithDashedBorderChip = Template.bind({});
+WithDashedBorderChip.args = {
+	label: "Dashed Border Chip",
+	variant: "outlined",
+	dashedBorder: true
+};
+
+export const WithFillColorChip = Template.bind({});
+WithFillColorChip.args = {
+	label: "Fill Color Chip",
+	fillColor: "opaqueBlue"
 };
 
 export const WithDeleteButtonChip = () => {
