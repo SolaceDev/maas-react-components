@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@SolaceDev/maas-react-components";
 
 const ApiProducts = (): JSX.Element => (
 	<SvgIcon sx={{ width: "130px", height: "130px" }} viewBox="0 0 130 130" fill="none">

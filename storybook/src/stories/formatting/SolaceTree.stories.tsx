@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import SolaceTree from "../../../../src/components/SolaceTree";
-import { Card, Typography } from "@material-ui/core";
+import { Card, Typography } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceTree",

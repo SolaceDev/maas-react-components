@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@SolaceDev/maas-react-components";
 
 const NoAccessImg = (): JSX.Element => (
 	<SvgIcon sx={{ width: "131px", height: "131px" }} viewBox="0 0 131 131" fill="none">

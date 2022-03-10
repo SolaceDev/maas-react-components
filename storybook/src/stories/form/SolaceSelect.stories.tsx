@@ -8,7 +8,7 @@ import {
 	HelpOutlineOutlinedIcon
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { MenuItem } from "@material-ui/core";
+import { MenuItem } from "@SolaceDev/maas-react-components";
 import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
 
 export default {

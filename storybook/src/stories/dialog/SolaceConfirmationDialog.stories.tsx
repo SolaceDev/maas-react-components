@@ -1,8 +1,7 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceConfirmationDialog, SolaceSelect, SolaceTextField } from "@SolaceDev/maas-react-components";
-import { MenuItem } from "@material-ui/core";
+import { SolaceConfirmationDialog, SolaceSelect, SolaceTextField, MenuItem } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Dialogs/SolaceConfirmationDialog",
