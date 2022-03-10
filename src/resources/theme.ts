@@ -1011,8 +1011,10 @@ const themeConfig: ThemeOptions = {
 			styleOverrides: {
 				root: {
 					flexDirection: "row-reverse",
-					":hover": {
-						backgroundColor: BASE_COLORS.greys.grey2
+					"&.hasHoverEffect": {
+						":hover": {
+							backgroundColor: BASE_COLORS.greys.grey2
+						}
 					},
 					".MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
 						transform: "rotate(90deg)"

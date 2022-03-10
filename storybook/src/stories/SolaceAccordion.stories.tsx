@@ -46,8 +46,26 @@ export default {
 				}
 			}
 		},
+		hover: {
+			control: { type: "boolean" },
+			description: "If true, the Accordion component is has hover effect.",
+			table: {
+				defaultValue: {
+					summary: false
+				}
+			}
+		},
 		onChange: {
 			description: "A callback function that fires when the expand/collapse state of the Accordion component is changed"
+		},
+		backgroundColor: {
+			control: { type: "color" },
+			description: "Background color of the accordion",
+			table: {
+				defaultValue: {
+					summary: "white"
+				}
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceAccordion>;
@@ -156,4 +174,22 @@ const SolaceAccordionListStory = ({ ...args }) => {
 export const MultipleAccordions = SolaceAccordionListStory.bind({});
 MultipleAccordions.args = {
 	dataQa: "demoAccordionList"
+};
+
+export const AccordionWithHoverEffect = SolaceAccordionStory.bind({});
+AccordionWithHoverEffect.args = {
+	dataQa: testItem.id,
+	summary: testItem.summary,
+	details: testItem.details,
+	expanded: false,
+	hover: true
+};
+
+export const AccordionWithCustomColor = SolaceAccordionStory.bind({});
+AccordionWithCustomColor.args = {
+	dataQa: testItem.id,
+	summary: testItem.summary,
+	details: testItem.details,
+	expanded: false,
+	backgroundColor: "#F9F9F9"
 };

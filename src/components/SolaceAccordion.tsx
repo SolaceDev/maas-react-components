@@ -2,6 +2,8 @@ import { Accordion, AccordionSummary, AccordionDetails } from "@material-ui/core
 import SolaceComponentProps from "./SolaceComponentProps";
 import { ArrowRightIcon } from "../resources/icons/ArrowRight";
 import React from "react";
+import clsx from "clsx";
+import { BASE_COLORS } from "../resources/colorPallette";
 
 export interface SolaceAccordionProps extends SolaceComponentProps {
 	/**
@@ -30,6 +32,14 @@ export interface SolaceAccordionProps extends SolaceComponentProps {
 	 * expanded: the expanded state of the Accordion component
 	 */
 	onChange: (event: React.SyntheticEvent, expanded: boolean) => void;
+	/**
+	 * If true, the Accordion component is has hover effect.
+	 */
+	hover?: boolean;
+	/**
+	 * Background color of the accordion
+	 */
+	backgroundColor?: string;
 }
 
 const SolaceAccordion = ({
@@ -38,9 +48,11 @@ const SolaceAccordion = ({
 	details,
 	disabled = false,
 	expanded = false,
+	hover = false,
 	onChange,
 	dataQa,
-	dataTags
+	dataTags,
+	backgroundColor
 }: SolaceAccordionProps) => {
 	return (
 		<Accordion
@@ -52,8 +64,11 @@ const SolaceAccordion = ({
 			onChange={onChange}
 			data-qa={dataQa}
 			data-tags={dataTags}
+			sx={{ backgroundColor: backgroundColor ?? BASE_COLORS.greys.grey0 }}
 		>
-			<AccordionSummary expandIcon={<ArrowRightIcon />}>{summary}</AccordionSummary>
+			<AccordionSummary expandIcon={<ArrowRightIcon />} className={clsx({ hasHoverEffect: hover })}>
+				{summary}
+			</AccordionSummary>
 			<AccordionDetails>{details}</AccordionDetails>
 		</Accordion>
 	);
