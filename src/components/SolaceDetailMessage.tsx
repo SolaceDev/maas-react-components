@@ -28,10 +28,7 @@ const Container = styled("div")(({ theme }) => ({
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
-	fontFamily: theme.typography.fontFamily,
-	"& :not(:first-of-type)": {
-		marginLeft: theme.spacing(1.5)
-	}
+	fontFamily: theme.typography.fontFamily
 }));
 
 const ImgContainer = styled("div")(() => ({
@@ -42,7 +39,7 @@ const ImgContainer = styled("div")(() => ({
 const TitleText = styled("p")(() => ({
 	// need to move this styled componet definition into the theme file once we figure out how
 	margin: "0px 0px 14px 0px",
-	fontSize: BASE_FONT_PX_SIZES.xxl,
+	fontSize: BASE_FONT_PX_SIZES.xl,
 	color: BASE_COLORS.greys.grey14,
 	textAlign: "center"
 }));

@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
-
 import SolaceCheckBox, { SolaceCheckboxChangeEvent } from "../form/SolaceCheckBox";
+
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceGridList from "./SolaceGridList";
 
