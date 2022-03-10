@@ -1,8 +1,8 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import { Box, Autocomplete, TextField, useTheme } from "@material-ui/core";
+import { Box, Autocomplete, TextField, useTheme } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
-import CloseIcon from "@material-ui/icons/Close";
+import CloseIcon from "@mui/icons-material/Close";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {

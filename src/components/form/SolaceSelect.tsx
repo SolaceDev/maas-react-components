@@ -1,9 +1,8 @@
-import { TextField, useTheme } from "@material-ui/core";
+import { TextField, useTheme } from "@mui/material";
 import React, { ReactNode, useEffect, useState } from "react";
+import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
-import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
-
 export interface SolaceSelectChangeEvent {
 	name: string;
 	value: string;
@@ -135,7 +134,7 @@ function SolaceSelect({
 			value={selectedValue}
 			onChange={handleChange}
 			SelectProps={{
-				IconComponent: () => <SelectDropdownIcon />,
+				IconComponent: SelectDropdownIcon,
 				renderValue: getOptionDisplayValue
 					? (value: unknown) => {
 							return getOptionDisplayValue(value);

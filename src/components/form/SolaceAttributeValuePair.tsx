@@ -1,6 +1,6 @@
 import React from "react";
 import SolaceTextField, { SolaceTextFieldChangeEvent } from "./SolaceTextField";
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 import { Draggable } from "react-beautiful-dnd";
 import { DeleteIcon } from "../../resources/icons/DeleteIcon";
 import { MoveIcon } from "../../resources/icons/MoveIcon";
@@ -29,7 +29,7 @@ interface SolaceAVPDeleteButtonProps {
 // conditionally display a drop line as a visual indicator for droppable position
 const displayDropLine = (dropFromTop: boolean | null, dropOverIndex: number | null, index: number): string => {
 	let dropLine = "";
-	if (dropFromTop != null && dropOverIndex !== null) {
+	if (dropFromTop !== null && dropOverIndex !== null) {
 		if (dropFromTop && dropOverIndex + 1 === index) {
 			dropLine = `1px solid ${BASE_COLORS.greens.green2}`;
 		} else if (!dropFromTop && dropOverIndex === index) dropLine = `1px solid ${BASE_COLORS.greens.green2}`;

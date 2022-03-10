@@ -1,4 +1,4 @@
-import { Breakpoint, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
+import { Breakpoint, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import { ReactNode } from "react";
 
 import SolaceButton, { SolaceButtonProps } from "../form/SolaceButton";

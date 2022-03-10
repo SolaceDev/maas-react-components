@@ -1,4 +1,4 @@
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@mui/material";
 
 export const MoreHorizOutlinedIcon = (): JSX.Element => {
 	return (

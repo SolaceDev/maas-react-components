@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Theme, useTheme } from "@material-ui/core";
+import { Box, Grid, Stack, Theme, useTheme } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 
 const TreeConnector = (config: { borderWidth: number; borderRadius: number; color: string; theme: Theme }) => {
@@ -32,7 +32,7 @@ export const createHeightCalculation = (
 	index: number
 ): number => {
 	if (!node) {
-		return index != 0 ? rowHeight : rowHeight - connectorOffset;
+		return index !== 0 ? rowHeight : rowHeight - connectorOffset;
 	} else {
 		return countNodes(node) * rowHeight;
 	}

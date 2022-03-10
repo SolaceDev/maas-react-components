@@ -1,4 +1,4 @@
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 
 import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 import { BASE_COLORS } from "../resources/colorPallette";

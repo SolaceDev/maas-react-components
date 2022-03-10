@@ -1,4 +1,4 @@
-import { Backdrop, BackdropProps, CircularProgress, styled } from "@material-ui/core";
+import { Backdrop, BackdropProps, CircularProgress, styled } from "@mui/material";
 
 const StyledBackDrop = styled(Backdrop)(({ theme }) => ({ zIndex: theme.zIndex.drawer + 1, color: "#fff" }));
 

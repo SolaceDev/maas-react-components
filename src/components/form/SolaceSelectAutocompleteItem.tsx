@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 import clsx from "clsx";
 export interface SolaceSelectAutocompleteItemProps {
 	name: string;

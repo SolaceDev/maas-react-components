@@ -1,5 +1,5 @@
 import { useSolaceTable } from "./hooks/useSolaceTable";
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
 import { BASE_COLORS } from "./../../resources/colorPallette";

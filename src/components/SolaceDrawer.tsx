@@ -1,4 +1,4 @@
-import { Drawer, styled, Box } from "@material-ui/core";
+import { Drawer, styled, Box } from "@mui/material";
 import { useState, useCallback, useRef, useEffect } from "react";
 import { VerticalDotsIcon } from "../resources/icons/VerticalDotsIcon";
 

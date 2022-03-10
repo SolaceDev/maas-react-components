@@ -1,11 +1,11 @@
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
-import { SolaceCheckBox } from "../..";
-import { SolaceCheckboxChangeEvent } from "../form/SolaceCheckBox";
+
+import SolaceCheckBox, { SolaceCheckboxChangeEvent } from "../form/SolaceCheckBox";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceGridList from "./SolaceGridList";
 
-const GridListHeader = styled("div")(({ theme }) => theme.mixins.layoutComponent_GridList.header);
+const ImageListHeader = styled("div")(({ theme }) => theme.mixins.layoutComponent_ImageList.header);
 
 interface SolaceGridListMultiSelectProps<T> extends SolaceComponentProps {
 	id?: string;
@@ -124,11 +124,11 @@ function SolaceGridListMultiSelect<T>({
 	return (
 		<div data-qa={dataQa}>
 			{(selectAll || actions) && (
-				<GridListHeader>
+				<ImageListHeader>
 					{selectAll && (
 						<SolaceCheckBox
 							label={selectAllLabel}
-							name={"GridListSelectAllCheckbox"}
+							name={"ImageListSelectAllCheckbox"}
 							onChange={handleSelectAll}
 							checked={allSelected}
 							dataQa={`${dataQa}-selectAll`}
@@ -140,7 +140,7 @@ function SolaceGridListMultiSelect<T>({
 						) /*this is to ensure 'actions' are right aligned when there is no 'Select All' checkbox */
 					}
 					{actions}
-				</GridListHeader>
+				</ImageListHeader>
 			)}
 			<SolaceGridList
 				id={id}

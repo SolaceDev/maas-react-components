@@ -1,12 +1,12 @@
-export * from "@material-ui/core";
-export * from "@material-ui/core/colors";
+export * from "@mui/material";
+export * from "@mui/material/colors";
 export * from "react-split-pane";
-export { default as DeleteIcon } from "@material-ui/icons/Delete";
+export { default as DeleteIcon } from "@mui/icons-material/Delete";
 export { SelectDropdownIcon } from "./resources/icons/SelectIcons";
-export { default as ErrorOutlineOutlinedIcon } from "@material-ui/icons/ErrorOutlineOutlined";
-export { default as AddCircleOutlineOutlinedIcon } from "@material-ui/icons/AddCircleOutlineOutlined";
-export { default as HelpOutlineOutlinedIcon } from "@material-ui/icons/HelpOutlineOutlined";
-export { default as ChevronRightIcon } from "@material-ui/icons/ChevronRight";
+export { default as ErrorOutlineOutlinedIcon } from "@mui/icons-material/ErrorOutlineOutlined";
+export { default as AddCircleOutlineOutlinedIcon } from "@mui/icons-material/AddCircleOutlineOutlined";
+export { default as HelpOutlineOutlinedIcon } from "@mui/icons-material/HelpOutlineOutlined";
+export { default as ChevronRightIcon } from "@mui/icons-material/ChevronRight";
 
 export { default as SolaceToasts } from "./components/SolaceToasts";
 export { default as NoAccess } from "./components/NoAccess";

@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 import SolaceButton from "./form/SolaceButton";
 import { ErrorIcon } from "../resources/icons/ErrorIcon";
 import { InfoIcon } from "../resources/icons/InfoIcon";

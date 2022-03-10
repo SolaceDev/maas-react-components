@@ -1,6 +1,6 @@
 import SolaceMenu, { SolaceMenuItemProps } from "../SolaceMenu";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { styled } from "@material-ui/core";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { styled } from "@mui/material";
 import { BASE_COLORS } from "./../../resources/colorPallette";
 import ColumnControlMenu, { ColumnControProps } from "./components/ColumnControlMenu";
 

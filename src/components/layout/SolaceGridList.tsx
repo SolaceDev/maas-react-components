@@ -1,10 +1,10 @@
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { BASE_COLORS } from "../../resources/colorPallette";
 import SolaceComponentProps from "../SolaceComponentProps";
 
-const Row = styled("div")(({ theme }) => theme.mixins.layoutComponent_GridList.row);
-const List = styled("div")(({ theme }) => theme.mixins.layoutComponent_GridList.list);
+const Row = styled("div")(({ theme }) => theme.mixins.layoutComponent_ImageList.row);
+const List = styled("div")(({ theme }) => theme.mixins.layoutComponent_ImageList.list);
 
 interface SolaceGridListProps<T> extends SolaceComponentProps {
 	id?: string;

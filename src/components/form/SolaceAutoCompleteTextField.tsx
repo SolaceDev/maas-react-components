@@ -1,5 +1,5 @@
-import { Box, FormHelperText, InputLabel, styled, TextField, TextFieldProps, useTheme } from "@material-ui/core";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import { Box, FormHelperText, InputLabel, styled, TextField, TextFieldProps, useTheme } from "@mui/material";
+import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 
 type CommonAutoCompleteTextFieldProps = TextFieldProps;
 

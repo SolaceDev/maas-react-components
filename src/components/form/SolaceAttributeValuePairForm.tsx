@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import SolaceLabel from "./SolaceLabel";
 import { valueInputTypes } from "./SolaceAttributeValuePair";
@@ -181,9 +181,7 @@ const SolaceAttributeValuePairForm = ({
 			<Droppable droppableId={getId()}>
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
-						<SolaceAVPFormLabel
-							readOnly={readOnly ? readOnly : false}
-						>
+						<SolaceAVPFormLabel readOnly={readOnly ? readOnly : false}>
 							<SolaceLabel id="avpLabelForKeys" required={enableRequiredKeyFieldIndicator}>
 								{labelForKeys}
 							</SolaceLabel>

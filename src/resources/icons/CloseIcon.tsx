@@ -1,4 +1,4 @@
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@mui/material";
 
 export const CloseIcon = ({ size = 24, fill = "rgba(0, 0, 0, 0.5)" }): JSX.Element => {
 	return (

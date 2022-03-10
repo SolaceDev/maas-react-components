@@ -3,7 +3,7 @@ import { TableColumn } from "../table-utils";
 import SolaceComponentProps from "../../SolaceComponentProps";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 import SolaceMenu from "../../SolaceMenu";
-import TuneIcon from "@material-ui/icons/Tune";
+import TuneIcon from "@mui/icons-material/Tune";
 
 export interface ColumnControProps extends SolaceComponentProps {
 	id?: string;

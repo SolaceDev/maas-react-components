@@ -1,4 +1,4 @@
-import { FormLabel, useTheme } from "@material-ui/core";
+import { FormLabel, useTheme } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface HelperTextProps extends SolaceComponentProps {

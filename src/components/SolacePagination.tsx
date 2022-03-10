@@ -1,4 +1,4 @@
-import { Pagination, styled } from "@material-ui/core";
+import { Pagination, styled } from "@mui/material";
 
 export interface SolacePaginationProps {
 	/**

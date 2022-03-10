@@ -1,5 +1,5 @@
-import { FormLabel, useTheme, styled } from "@material-ui/core";
-import { Box } from "@material-ui/system";
+import { FormLabel, useTheme, styled } from "@mui/material";
+import { Box } from "@mui/system";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { ErrorIcon } from "../../resources/icons/ErrorIcon";
 import { BASE_FONT_PX_SIZES } from "../../resources/typography";

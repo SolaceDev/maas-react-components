@@ -1,5 +1,5 @@
-import { Box, Checkbox, FormHelperText, useTheme, FormLabel } from "@material-ui/core";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import { Box, Checkbox, FormHelperText, useTheme, FormLabel } from "@mui/material";
+import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";

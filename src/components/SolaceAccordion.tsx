@@ -1,9 +1,9 @@
-import { Accordion, AccordionSummary, AccordionDetails } from "@material-ui/core";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { ArrowRightIcon } from "../resources/icons/ArrowRight";
 import React from "react";
 import clsx from "clsx";
 import { BASE_COLORS } from "../resources/colorPallette";
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 
 export interface SolaceAccordionProps extends SolaceComponentProps {
 	/**

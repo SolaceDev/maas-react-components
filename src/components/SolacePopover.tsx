@@ -1,4 +1,4 @@
-import { Tooltip, Fade } from "@material-ui/core";
+import { Tooltip, Fade } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 
 interface SolacePopoverProps extends SolaceComponentProps {

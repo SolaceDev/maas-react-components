@@ -1,11 +1,11 @@
-import { IconButton, Snackbar, styled } from "@material-ui/core";
-import Alert from "@material-ui/core/Alert";
-import { green, grey } from "@material-ui/core/colors";
-import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import CloseIcon from "@material-ui/icons/Close";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
+import { IconButton, Snackbar, styled } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import { green, grey } from "@mui/material/colors";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CloseIcon from "@mui/icons-material/Close";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
 
 export type SolaceToasts = {
 	severity?: "success" | "info" | "warning" | "error";
@@ -35,7 +35,7 @@ const StyledAlert = styled(Alert)(() => ({ backgroundColor: grey[800], color: "w
 
 export default function SolaceToasts(props: SolaceToasts): JSX.Element {
 	const defaultAction = props.action ?? (
-		<IconButton aria-label="delete" onClick={props.onClose}>
+		<IconButton aria-label="delete" onClick={props.onClose} size="large">
 			<CloseIcon />
 		</IconButton>
 	);

@@ -1,4 +1,4 @@
-import { alpha } from "@material-ui/system";
+import { alpha } from "@mui/system";
 
 import { solaceColors } from "./solaceColors";
 import { ThemeMapping } from "../types/ThemeMapping";

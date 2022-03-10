@@ -1,5 +1,5 @@
 import React, { isValidElement } from "react";
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 import SolaceButton from "./form/SolaceButton";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 import SolaceComponentProps from "./SolaceComponentProps";

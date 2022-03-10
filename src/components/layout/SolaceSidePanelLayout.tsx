@@ -1,4 +1,4 @@
-import { Box, Drawer, styled } from "@material-ui/core";
+import { Box, Drawer, styled } from "@mui/material";
 export enum PANEL_POSITION {
 	LEFT = "left",
 	RIGHT = "right"

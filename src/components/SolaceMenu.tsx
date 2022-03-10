@@ -1,4 +1,4 @@
-import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography, useTheme } from "@material-ui/core";
+import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography, useTheme } from "@mui/material";
 import { Fragment, useState } from "react";
 import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 import SolaceComponentProps from "./SolaceComponentProps";

@@ -1,4 +1,4 @@
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@mui/material";
 
 export const ChevronIcon = ({ size = 16, stroke = "rgba(0, 0, 0, 0.5)", className = "" }): JSX.Element => {
 	return (

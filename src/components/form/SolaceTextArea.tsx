@@ -1,4 +1,4 @@
-import { TextField, useTheme } from "@material-ui/core";
+import { TextField, useTheme } from "@mui/material";
 import React from "react";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";

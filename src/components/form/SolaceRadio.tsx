@@ -1,4 +1,4 @@
-import { Box, FormLabel, InputLabel, Radio, useRadioGroup, useTheme } from "@material-ui/core";
+import { Box, FormLabel, InputLabel, Radio, useRadioGroup, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";

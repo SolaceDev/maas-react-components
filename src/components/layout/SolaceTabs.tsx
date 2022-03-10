@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Tabs, Tab } from "@material-ui/core";
+import { Box, Tabs, Tab } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 interface TabProps {

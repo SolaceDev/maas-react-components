@@ -1,4 +1,4 @@
-import { FormLabel } from "@material-ui/core";
+import { FormLabel } from "@mui/material";
 import clsx from "clsx";
 
 export interface SolaceLabelProps {

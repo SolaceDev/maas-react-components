@@ -1,5 +1,5 @@
-import { Box, Grid, styled, Typography } from "@material-ui/core";
-import BlockIcon from "@material-ui/icons/Block";
+import { Box, Grid, styled, Typography } from "@mui/material";
+import BlockIcon from "@mui/icons-material/Block";
 
 const StyledGrid = styled(Grid)(() => ({ minHeight: "calc(100vh - 108px)" }));
 

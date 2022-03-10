@@ -1,6 +1,6 @@
-import { Button, IconButton, Link } from "@material-ui/core";
-import { useTheme } from "@material-ui/core";
-import { Box } from "@material-ui/system";
+import { Button, IconButton, Link } from "@mui/material";
+import { useTheme } from "@mui/material";
+import { Box } from "@mui/system";
 import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
 import SolaceTooltip from "../SolaceToolTip";
 
@@ -56,6 +56,7 @@ function SolaceButton({
 					id={id}
 					disabled={isDisabled}
 					onClick={handleClick}
+					size="large"
 				>
 					{children}
 				</IconButton>

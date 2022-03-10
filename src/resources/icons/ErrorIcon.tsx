@@ -1,5 +1,5 @@
 import { IconProps } from "./IconProps";
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@mui/material";
 
 export function ErrorIcon({ size, fill }: IconProps): JSX.Element {
 	return (

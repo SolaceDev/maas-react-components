@@ -1,4 +1,4 @@
-import { styled, useTheme } from "@material-ui/core";
+import { styled, useTheme } from "@mui/material";
 import React from "react";
 import SolaceButton from "./form/SolaceButton";
 import SolaceComponentProps from "./SolaceComponentProps";

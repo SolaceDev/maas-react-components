@@ -1,4 +1,4 @@
-import { ThemeOptions } from "@material-ui/core";
+import { ThemeOptions } from "@mui/material";
 import { SupportedThemes } from "../types";
 // import getThemeMappings from "../theming/themeUtils";
 import { BASE_COLORS, getRGBA } from "./colorPallette";
@@ -715,9 +715,7 @@ const themeConfig: ThemeOptions = {
 					}
 				},
 				popupIndicator: {
-					padding: "0px 0px 0px 8px",
-					top: "7px",
-					right: "0px",
+					padding: "0px 4px 0px 8px",
 					marginRight: "0px",
 					height: "28px"
 				},
@@ -1134,7 +1132,7 @@ const themeConfig: ThemeOptions = {
 			}
 		},
 		/** SolaceGridList */
-		layoutComponent_GridList: {
+		layoutComponent_ImageList: {
 			header: {
 				display: "flex",
 				justifyContent: "space-between",
@@ -1248,15 +1246,15 @@ const themeConfig: ThemeOptions = {
 	}
 };
 
-declare module "@material-ui/core/styles" {
+declare module "@mui/material/styles" {
 	interface BreakpointOverrides {
 		dialogMd: true;
 	}
 }
 
-declare module "@material-ui/core/styles/createMixins" {
+declare module "@mui/material/styles/createMixins" {
 	interface Mixins {
-		layoutComponent_GridList: {
+		layoutComponent_ImageList: {
 			header: CSSProperties;
 			row: CSSProperties;
 			list: CSSProperties;

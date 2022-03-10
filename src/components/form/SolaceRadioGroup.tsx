@@ -1,5 +1,5 @@
-import { Box, RadioGroup, Grid } from "@material-ui/core";
-import { useTheme } from "@material-ui/system";
+import { Box, RadioGroup, Grid } from "@mui/material";
+import { useTheme } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";

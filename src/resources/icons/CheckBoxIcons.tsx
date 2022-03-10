@@ -1,4 +1,4 @@
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon } from "@mui/material";
 
 const CheckboxIcon = (props: { children?: React.ReactNode }) => (
 	<SvgIcon width="24" height="24" viewBox="0 0 24 24" fill="none">

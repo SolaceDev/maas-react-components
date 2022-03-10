@@ -1,5 +1,5 @@
-import { Tooltip } from "@material-ui/core";
-import { Fade } from "@material-ui/core";
+import { Tooltip } from "@mui/material";
+import { Fade } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { useEffect, useRef, useState } from "react";
 import useResizeAware from "react-resize-aware";

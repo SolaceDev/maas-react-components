@@ -1,5 +1,5 @@
 import { keyframes } from "@emotion/react";
-import { styled } from "@material-ui/core";
+import { styled } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import SolaceTooltip from "./SolaceToolTip";
 import SolaceComponentProps from "./SolaceComponentProps";
