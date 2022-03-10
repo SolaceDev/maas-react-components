@@ -1,7 +1,7 @@
 import { Chip } from "@mui/material";
-import { CHIP_COLORS, CHIP_COLOR_MAP } from "../resources/colorPallette";
 import { BASE_SIZE_TYPES } from "../resources/sizing";
 import { BASE_FONT_PX_SIZE_TYPES, BASE_FONT_PX_SIZES } from "../resources/typography";
+import { CHIP_COLORS, CHIP_COLOR_MAP } from "../types/solaceChip";
 import SolaceComponentProps from "./SolaceComponentProps";
 import CloseIcon from "@mui/icons-material/Close";
 
