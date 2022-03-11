@@ -1183,7 +1183,10 @@ const themeConfig: ThemeOptions = {
 			list: {
 				border: `1px solid ${BASE_COLORS.greys.grey2}`,
 				overflow: "overlay",
-				height: "100%"
+				height: "100%",
+				"@-moz-document url-prefix()": {
+					overflow: "auto"
+				}
 			}
 		},
 		/** SolaceNotification Count */
