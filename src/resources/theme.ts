@@ -1182,7 +1182,7 @@ const themeConfig: ThemeOptions = {
 			},
 			list: {
 				border: `1px solid ${BASE_COLORS.greys.grey2}`,
-				overflow: "auto",
+				overflow: "overlay",
 				height: "100%"
 			}
 		},
