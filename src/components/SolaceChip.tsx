@@ -33,7 +33,7 @@ export interface SolaceChipProps extends SolaceComponentProps {
 	/**
 	 * If the content exceeds the maxWidth (in px), ellipsis will be shown within the chip.
 	 */
-	maxWidth?: number;
+	maxWidth?: string | number;
 	/**
 	 * Sets the border color of the component
 	 */
@@ -84,7 +84,7 @@ export default function SolaceChip({
 	label,
 	variant = "filled",
 	disabled = false,
-	maxWidth = 200,
+	maxWidth = "100%",
 	dashedBorder = false,
 	borderColor,
 	labelColor,
@@ -101,7 +101,7 @@ export default function SolaceChip({
 	return (
 		<Chip
 			sx={{
-				maxWidth: `${maxWidth}px`,
+				maxWidth: typeof maxWidth === "number" ? `${maxWidth}px` : maxWidth,
 				fontSize: BASE_FONT_PX_SIZES[size],
 				borderColor: `${borderColor && CHIP_COLOR_MAP[borderColor]}`,
 				borderStyle: `${dashedBorder && "dashed"}`,

@@ -4,7 +4,6 @@ import {
 	SolaceGridListMultiSelect,
 	SolaceTooltip,
 	SolaceMenu,
-	SolaceButton,
 	SelectDropdownIcon
 } from "@SolaceDev/maas-react-components";
 import { useState, useEffect } from "react";
@@ -237,7 +236,7 @@ const getActions = (): JSX.Element[] => {
 			buttonProps={{
 				variant: "outline",
 				endIcon: (
-					<span style={{ marginTop: "5px" }}>
+					<span style={{ marginTop: "-2px" }}>
 						<SelectDropdownIcon />
 					</span>
 				),
@@ -249,7 +248,7 @@ const getActions = (): JSX.Element[] => {
 	return actionList;
 };
 
-const SolaceGridListMultiSelectStory = ({ selectedRowIds, highlightedRowId, ...args }) => {
+const SolaceGridListMultiSelectStory = ({ contained = false, selectedRowIds, highlightedRowId, ...args }) => {
 	const [highlightedId, setHighlightedId] = useState(highlightedRowId || undefined);
 	const [selectedIds, setSelectedIds] = useState(selectedRowIds || []);
 
@@ -271,13 +270,15 @@ const SolaceGridListMultiSelectStory = ({ selectedRowIds, highlightedRowId, ...a
 		setSelectedIds(selectedItems.map((item) => item.id));
 	};
 	return (
-		<SolaceGridListMultiSelect
-			{...args}
-			highlightedRowId={highlightedId}
-			onRowHighlight={handleRowHighlight}
-			selectedRowIds={selectedIds}
-			onSelection={handleRowSelection}
-		/>
+		<div style={{ height: contained ? "200px" : "" }}>
+			<SolaceGridListMultiSelect
+				{...args}
+				highlightedRowId={highlightedId}
+				onRowHighlight={handleRowHighlight}
+				selectedRowIds={selectedIds}
+				onSelection={handleRowSelection}
+			/>
+		</div>
 	);
 };
 
@@ -351,4 +352,24 @@ WithHeaders.args = {
 	gridTemplate: DEFAULT_GRID_TEMPALTE,
 	headers: testHeaders,
 	dataQa: "demoDefaultList"
+};
+
+export const ContainedList = SolaceGridListMultiSelectStory.bind({});
+ContainedList.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	actions: getActions(),
+	dataQa: "demoDefaultList",
+	contained: true
+};
+
+export const ContainedListNoHeader = SolaceGridListMultiSelectStory.bind({});
+ContainedListNoHeader.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	dataQa: "demoDefaultList",
+	contained: true,
+	selectAll: false
 };

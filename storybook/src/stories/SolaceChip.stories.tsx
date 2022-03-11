@@ -93,7 +93,7 @@ ClickableChip.args = {
 export const EllipsisContentChip = Template.bind({});
 EllipsisContentChip.args = {
 	label: "Chip With Long Content",
-	maxWidth: "100"
+	maxWidth: 100
 };
 
 export const LargeFontSizeChip = Template.bind({});
@@ -118,13 +118,12 @@ NonCompressedChip.args = {
 export const WithTooltipChip = Template.bind({});
 WithTooltipChip.args = {
 	label: <SolaceTooltip title="Chip With Long Content">Chip With Long Content</SolaceTooltip>,
-	maxWidth: "100"
+	maxWidth: 100
 };
 
 export const WithColorTextChip = Template.bind({});
 WithColorTextChip.args = {
-	label: <span style={{ color: BASE_COLORS.whites.white1 }}>White Text</span>,
-	maxWidth: "100"
+	label: <span style={{ color: BASE_COLORS.whites.white1 }}>White Text</span>
 };
 
 export const WithDashedBorderChip = Template.bind({});

@@ -42,6 +42,7 @@ function SolaceGridListMultiSelect<T>({
 	// checkbox is 25px wide, column gap is 16px, setting a min width of 17px
 	// gives a gap of 8px between checkbox and first column (as per UX design)
 	const CHECKBOX_GRID_STRING = "min(17px)";
+	const HEADER_HEIGHT = "49px";
 
 	const [allSelected, setAllSelected] = useState(false);
 
@@ -121,9 +122,13 @@ function SolaceGridListMultiSelect<T>({
 		[handleRowSelection, objectIdentifier, rowMapping, selectedRowIds]
 	);
 
+	const isHeaderDisplayed = useMemo(() => {
+		return selectAll || actions;
+	}, [actions, selectAll]);
+
 	return (
-		<div data-qa={dataQa}>
-			{(selectAll || actions) && (
+		<div data-qa={dataQa} style={{ height: isHeaderDisplayed ? `calc(100% - ${HEADER_HEIGHT})` : "100%" }}>
+			{isHeaderDisplayed && (
 				<ImageListHeader>
 					{selectAll && (
 						<SolaceCheckBox
