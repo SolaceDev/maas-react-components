@@ -131,13 +131,15 @@ function SolaceGridListMultiSelect<T>({
 			{isHeaderDisplayed && (
 				<ImageListHeader>
 					{selectAll && (
-						<SolaceCheckBox
-							label={selectAllLabel}
-							name={"ImageListSelectAllCheckbox"}
-							onChange={handleSelectAll}
-							checked={allSelected}
-							dataQa={`${dataQa}-selectAll`}
-						/>
+						<div className="selectAll">
+							<SolaceCheckBox
+								name={"ImageListSelectAllCheckbox"}
+								onChange={handleSelectAll}
+								checked={allSelected}
+								dataQa={`${dataQa}-selectAll`}
+							/>
+							<span className="selectAllText">{selectAllLabel}</span>
+						</div>
 					)}
 					{
 						!selectAll && (

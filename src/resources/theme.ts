@@ -1141,7 +1141,14 @@ const themeConfig: ThemeOptions = {
 				borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`,
 				borderTop: `1px solid ${BASE_COLORS.greys.grey2}`,
 				borderRight: `1px solid ${BASE_COLORS.greys.grey2}`,
-				boxShadow: "0px 2px 4px -1px rgba(0, 0, 0, 0.2)"
+				boxShadow: "0px 2px 4px -1px rgba(0, 0, 0, 0.2)",
+				"& .selectAll": {
+					display: "flex",
+					alignItems: "center"
+				},
+				"& .selectAllText": {
+					marginLeft: "-8px"
+				}
 			},
 			row: {
 				display: "grid",
