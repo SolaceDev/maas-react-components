@@ -73,7 +73,7 @@ function SolaceCodeEditor({
 				lineWrapping: true,
 				lineNumbers: true,
 				foldGutter: true,
-				readOnly: readOnly,
+				readOnly: readOnly ? "nocursor" : false,
 				gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"]
 			}}
 			onChange={onChange}
