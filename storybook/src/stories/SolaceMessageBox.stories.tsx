@@ -107,6 +107,23 @@ MessageWithIcon.args = {
 	variant: "info"
 };
 
+export const CompactBoxWithCustomButton = Template.bind({});
+CompactBoxWithCustomButton.args = {
+	message: (
+		<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexGrow: 1 }}>
+			<div>
+				<span>Learn more in </span>
+				<SolaceButton variant="link" href="https://#">
+					documentations
+				</SolaceButton>
+			</div>
+			<SolaceButton variant="text">Set Preferences</SolaceButton>
+		</div>
+	),
+	variant: "info",
+	dense: true
+};
+
 export const WithCloseButton = Template.bind({});
 WithCloseButton.args = {
 	message: "helpful information that can be closed",

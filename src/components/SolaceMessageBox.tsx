@@ -40,6 +40,10 @@ interface SolaceInfoBoxProps {
 	 * message text color
 	 */
 	color?: string;
+	/**
+	 *  If true, compact vertical padding is used
+	 */
+	dense?: boolean;
 }
 
 function renderIcons(variant: "info" | "error" | "warn"): JSX.Element {
@@ -55,7 +59,8 @@ function SolaceMessageBox({
 	showCloseButton = false,
 	onClose,
 	variant = "info",
-	color
+	color,
+	dense = false
 }: SolaceInfoBoxProps): JSX.Element | null {
 	const [open, setOpen] = React.useState(true);
 
@@ -66,7 +71,7 @@ function SolaceMessageBox({
 
 	return open ? (
 		<InfoBoxContainer className={variant}>
-			<InfoBoxMessage color={color}>
+			<InfoBoxMessage color={color} className={`${dense ? "dense" : ""}`}>
 				{showIcon && renderIcons(variant)}
 				{message}
 			</InfoBoxMessage>

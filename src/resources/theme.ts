@@ -1126,9 +1126,13 @@ const themeConfig: ThemeOptions = {
 			},
 			message: {
 				display: "flex",
+				width: "100%",
 				alignItems: "center",
 				gap: "8px",
-				padding: "8px 8px 8px 8px"
+				padding: "6px 8px",
+				"&.dense": {
+					padding: "0 8px"
+				}
 			}
 		},
 		/** SolaceGridList */
