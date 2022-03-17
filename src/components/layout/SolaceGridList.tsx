@@ -44,7 +44,7 @@ function SolaceGridListRow({
 
 	return (
 		<Row
-			key={`row${id}`}
+			key={`row-${id}`}
 			className={selected ? "selected" : ""}
 			onClick={() => onClick(id)}
 			onKeyPress={(e) => handleKeyPress(e)}
@@ -96,7 +96,11 @@ function SolaceGridList<T>({
 	const getListHeader = useMemo(() => {
 		if (headers) {
 			return (
-				<Row className="headerRow" style={{ gridTemplateColumns: gridTemplate, backgroundColor: headerBGC }}>
+				<Row
+					key="headerRow"
+					className="headerRow"
+					style={{ gridTemplateColumns: gridTemplate, backgroundColor: headerBGC }}
+				>
 					{headers.map((label, index) => (
 						<span key={index}>{label}</span>
 					))}

@@ -59,7 +59,8 @@ function SolaceCard({
 	showCloseButton = false,
 	onClose,
 	backgroundColor,
-	dataQa
+	dataQa,
+	dataTags
 }: SolaceCardProps): JSX.Element | null {
 	const [open, setOpen] = React.useState(true);
 
@@ -69,7 +70,7 @@ function SolaceCard({
 	};
 
 	return open ? (
-		<CardContainer backgroundColor={backgroundColor} hasTitle={!!title} data-qa={dataQa}>
+		<CardContainer backgroundColor={backgroundColor} hasTitle={!!title} data-qa={dataQa} data-tags={dataTags}>
 			{title && (
 				<>
 					<TitleRow>

@@ -6,6 +6,7 @@ import { InfoIcon } from "../resources/icons/InfoIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 import { BASE_COLORS } from "../resources/colorPallette";
 import { WarnIcon } from "../resources/icons/WarnIcon";
+import SolaceComponentProps from "./SolaceComponentProps";
 
 const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.container);
 const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
@@ -15,7 +16,7 @@ const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "co
 	})
 );
 
-interface SolaceInfoBoxProps {
+interface SolaceInfoBoxProps extends SolaceComponentProps {
 	/**
 	 * the info message to display in the info box
 	 */
@@ -60,7 +61,9 @@ function SolaceMessageBox({
 	onClose,
 	variant = "info",
 	color,
-	dense = false
+	dense = false,
+	dataQa,
+	dataTags
 }: SolaceInfoBoxProps): JSX.Element | null {
 	const [open, setOpen] = React.useState(true);
 
@@ -70,7 +73,7 @@ function SolaceMessageBox({
 	};
 
 	return open ? (
-		<InfoBoxContainer className={variant}>
+		<InfoBoxContainer className={variant} data-qa={dataQa} data-tags={dataTags}>
 			<InfoBoxMessage color={color} className={`${dense ? "dense" : ""}`}>
 				{showIcon && renderIcons(variant)}
 				{message}

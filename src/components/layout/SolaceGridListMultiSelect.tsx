@@ -131,7 +131,7 @@ function SolaceGridListMultiSelect<T>({
 			{isHeaderDisplayed && (
 				<ImageListHeader>
 					{selectAll && (
-						<div className="selectAll">
+						<div className="selectAll" key="selectAll">
 							<SolaceCheckBox
 								name={"ImageListSelectAllCheckbox"}
 								onChange={handleSelectAll}
@@ -143,7 +143,7 @@ function SolaceGridListMultiSelect<T>({
 					)}
 					{
 						!selectAll && (
-							<span></span>
+							<span key="selectAllPlaceholder"></span>
 						) /*this is to ensure 'actions' are right aligned when there is no 'Select All' checkbox */
 					}
 					{actions}
