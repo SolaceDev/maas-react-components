@@ -15,8 +15,8 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	href?: string;
 	component?: "button" | "span";
 	type?: "button" | "submit" | "reset";
-	startIcon?: symbol;
-	endIcon?: symbol;
+	startIcon?: symbol | JSX.Element;
+	endIcon?: symbol | JSX.Element;
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 	children?: string | JSX.Element;
 }
