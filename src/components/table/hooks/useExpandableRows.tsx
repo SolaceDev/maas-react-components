@@ -8,7 +8,7 @@ import {
 	StyledExpandedTableRow,
 	StyledExpandedTableData
 } from "../table-utils";
-import { ChevronIcon } from "../../../resources/icons/ChevronIcon";
+import { ArrowRightIcon } from "../../../resources/icons/ArrowRight";
 
 export interface ExpandableTableRowProps {
 	enabled: boolean;
@@ -108,7 +108,7 @@ export const useExpandableRows = ({
 					}
 				}}
 			>
-				<ChevronIcon className={`cursor-pointer chevron ${rowExpanded ? "expanded" : ""}`} />
+				<ArrowRightIcon className={`cursor-pointer chevron ${rowExpanded ? "expanded" : ""}`} />
 			</StyledTableData>
 		);
 	}

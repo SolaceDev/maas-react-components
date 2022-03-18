@@ -87,9 +87,9 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	"&.expand-icon": {
 		padding: "10px 6px 6px 0",
 		".chevron": {
-			transform: "rotate(180deg)",
+			fill: `${BASE_COLORS.greys.grey8}`,
 			"&.expanded": {
-				transform: "rotate(270deg)"
+				transform: "rotate(90deg)"
 			}
 		}
 	},
