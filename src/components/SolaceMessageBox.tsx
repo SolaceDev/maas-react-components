@@ -9,6 +9,8 @@ import { WarnIcon } from "../resources/icons/WarnIcon";
 import SolaceComponentProps from "./SolaceComponentProps";
 
 const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.container);
+const InfoBoxMessageContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.messageContainer);
+const DetailsContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.detailsContainer);
 const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
 	({ theme, color }) => ({
 		...theme.mixins.component_MessageBox.message,
@@ -45,6 +47,10 @@ interface SolaceInfoBoxProps extends SolaceComponentProps {
 	 *  If true, compact vertical padding is used
 	 */
 	dense?: boolean;
+	/**
+	 * To display further details about the message
+	 */
+	details?: string | JSX.Element;
 }
 
 function renderIcons(variant: "info" | "error" | "warn"): JSX.Element {
@@ -62,6 +68,7 @@ function SolaceMessageBox({
 	variant = "info",
 	color,
 	dense = false,
+	details,
 	dataQa,
 	dataTags
 }: SolaceInfoBoxProps): JSX.Element | null {
@@ -73,17 +80,22 @@ function SolaceMessageBox({
 	};
 
 	return open ? (
-		<InfoBoxContainer className={variant} data-qa={dataQa} data-tags={dataTags}>
-			<InfoBoxMessage color={color} className={`${dense ? "dense" : ""}`}>
-				{showIcon && renderIcons(variant)}
-				{message}
-			</InfoBoxMessage>
-			{showCloseButton && (
-				<SolaceButton variant="icon" onClick={handleClose}>
-					<CloseIcon size={20} />
-				</SolaceButton>
-			)}
-		</InfoBoxContainer>
+		<React.Fragment>
+			<InfoBoxContainer className={variant} data-qa={dataQa} data-tags={dataTags}>
+				<InfoBoxMessageContainer>
+					<InfoBoxMessage color={color} className={`${dense ? "dense" : ""}`}>
+						{showIcon && renderIcons(variant)}
+						{message}
+					</InfoBoxMessage>
+					{showCloseButton && (
+						<SolaceButton variant="icon" onClick={handleClose}>
+							<CloseIcon size={20} />
+						</SolaceButton>
+					)}
+				</InfoBoxMessageContainer>
+				{!!details && <DetailsContainer>{details}</DetailsContainer>}
+			</InfoBoxContainer>
+		</React.Fragment>
 	) : null;
 }
 

@@ -117,7 +117,9 @@ CompactBoxWithCustomButton.args = {
 					documentations
 				</SolaceButton>
 			</div>
-			<SolaceButton variant="text">Set Preferences</SolaceButton>
+			<div style={{ whiteSpace: "nowrap" }}>
+				<SolaceButton variant="text">Set Preferences</SolaceButton>
+			</div>
 		</div>
 	),
 	variant: "info",
@@ -164,4 +166,18 @@ export const WarnWithinContainer = ({ message, ...args }): JSX.Element => {
 WarnWithinContainer.args = {
 	message: "Helpful information. The warn box is in a small container.",
 	showCloseButton: true
+};
+
+export const ErrorWithDetailsWithinContainer = ({ message, ...args }): JSX.Element => {
+	return (
+		<div style={{ width: "300px" }}>
+			<SolaceMessageBox variant="error" message={message} {...args} />
+		</div>
+	);
+};
+ErrorWithDetailsWithinContainer.args = {
+	message: "Helpful information. The error box is in a small container.",
+	showCloseButton: true,
+	color: "#D0021B",
+	details: <div style={{ backgroundColor: "#F9F9F9" }}>More Details</div>
 };

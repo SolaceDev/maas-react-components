@@ -1093,46 +1093,48 @@ const themeConfig: ThemeOptions = {
 		/** SolaceMessageBox component */
 		component_MessageBox: {
 			container: {
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "space-between",
 				height: "100%",
 				borderRadius: "2px",
-				paddingRight: "4px",
 				"&.info": {
 					backgroundColor: BASE_COLORS.blues.blue1,
-					borderLeft: `3px solid ${BASE_COLORS.blues.blue2}`,
-					svg: {
-						width: "20px",
-						height: "20px"
-					}
+					borderLeft: `3px solid ${BASE_COLORS.blues.blue2}`
 				},
 				"&.error": {
 					backgroundColor: BASE_COLORS.reds.red2,
-					borderLeft: `3px solid ${BASE_COLORS.reds.red1}`,
-					svg: {
-						width: "20px",
-						height: "20px"
-					}
+					borderLeft: `3px solid ${BASE_COLORS.reds.red1}`
 				},
 				"&.warn": {
 					backgroundColor: BASE_COLORS.yellows.yellow2,
-					borderLeft: `3px solid ${BASE_COLORS.yellows.yellow1}`,
-					svg: {
-						width: "20px",
-						height: "20px"
-					}
+					borderLeft: `3px solid ${BASE_COLORS.yellows.yellow1}`
+				}
+			},
+			messageContainer: {
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "space-between",
+				paddingRight: "4px",
+				button: {
+					width: "28px",
+					height: "28px"
+				},
+				svg: {
+					width: "20px",
+					height: "20px"
 				}
 			},
 			message: {
 				display: "flex",
 				width: "100%",
-				alignItems: "center",
+				alignItems: "flex-start",
 				gap: "8px",
 				padding: "6px 8px",
 				"&.dense": {
 					padding: "0 8px"
 				}
+			},
+			detailsContainer: {
+				// 10px on top because the message will have 6px padding bottom
+				padding: "10px 16px 16px 16px"
 			}
 		},
 		/** SolaceGridList */
@@ -1292,7 +1294,9 @@ declare module "@mui/material/styles/createMixins" {
 		};
 		component_MessageBox: {
 			container: CSSProperties;
+			messageContainer: CSSProperties;
 			message: CSSProperties;
+			detailsContainer: CSSProperties;
 		};
 		component_NotificationCounter: {
 			container: CSSProperties;
