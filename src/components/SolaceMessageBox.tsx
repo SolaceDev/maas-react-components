@@ -11,6 +11,7 @@ import SolaceComponentProps from "./SolaceComponentProps";
 const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.container);
 const InfoBoxMessageContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.messageContainer);
 const DetailsContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.detailsContainer);
+const MessageTextContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.messageTextContainer);
 const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
 	({ theme, color }) => ({
 		...theme.mixins.component_MessageBox.message,
@@ -85,7 +86,7 @@ function SolaceMessageBox({
 				<InfoBoxMessageContainer>
 					<InfoBoxMessage color={color} className={`${dense ? "dense" : ""}`}>
 						{showIcon && renderIcons(variant)}
-						{message}
+						<MessageTextContainer>{message}</MessageTextContainer>
 					</InfoBoxMessage>
 					{showCloseButton && (
 						<SolaceButton variant="icon" onClick={handleClose}>

@@ -1,6 +1,5 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-
 import { SolaceMessageBox, SolaceButton } from "@SolaceDev/maas-react-components";
 
 export default {

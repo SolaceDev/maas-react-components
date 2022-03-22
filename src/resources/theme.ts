@@ -1129,8 +1129,15 @@ const themeConfig: ThemeOptions = {
 				gap: "8px",
 				padding: "6px 8px",
 				"&.dense": {
-					padding: "0 8px"
+					padding: "0 8px",
+					svg: {
+						paddingTop: "2px"
+					}
 				}
+			},
+			messageTextContainer: {
+				width: "100%",
+				paddingTop: "2px"
 			},
 			detailsContainer: {
 				// 10px on top because the message will have 6px padding bottom
@@ -1296,6 +1303,7 @@ declare module "@mui/material/styles/createMixins" {
 			container: CSSProperties;
 			messageContainer: CSSProperties;
 			message: CSSProperties;
+			messageTextContainer: CSSProperties;
 			detailsContainer: CSSProperties;
 		};
 		component_NotificationCounter: {
