@@ -19,6 +19,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	endIcon?: symbol | JSX.Element;
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 	children?: string | JSX.Element;
+	dense?: boolean; // only applicable to link variant
 }
 
 // Todo: Refactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed
@@ -37,7 +38,8 @@ function SolaceButton({
 	onClick,
 	dataQa,
 	dataTags,
-	children
+	children,
+	dense = false
 }: SolaceButtonProps): JSX.Element {
 	const handleClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (onClick) {
@@ -64,7 +66,7 @@ function SolaceButton({
 		);
 	} else if (variant === "link") {
 		let styles;
-		if (!href) {
+		if (!href && !dense) {
 			styles = {
 				padding: `${theme.spacing(6 / 8)} ${theme.spacing(16 / 8)}`,
 				borderRadius: theme.spacing(4 / 8),
@@ -75,7 +77,8 @@ function SolaceButton({
 			styles = {
 				padding: "0",
 				display: "inline-flex",
-				alignItems: "center"
+				alignItems: "center",
+				verticalAlign: "inherit"
 			};
 		}
 		return (
@@ -91,8 +94,9 @@ function SolaceButton({
 					disabled={isDisabled}
 					underline={isDisabled ? "none" : underline ?? "hover"}
 					sx={styles}
+					onClick={handleClick}
 				>
-					<Box sx={{ marginRight: theme.spacing(6 / 8) }} component="span">
+					<Box sx={{ marginRight: href ? theme.spacing(6 / 8) : 0 }} component="span">
 						{children}
 					</Box>
 					{href && <OpenExternalIcon></OpenExternalIcon>}

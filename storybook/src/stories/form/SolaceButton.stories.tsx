@@ -3,6 +3,14 @@ import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceButton, DeleteIcon } from "@SolaceDev/maas-react-components";
 
+enum VARIANT {
+	ACTION = "call-to-action",
+	OUTLINE = "outline",
+	TEXT = "text",
+	ICON = "icon",
+	LINK = "link"
+}
+
 export default {
 	title: "Forms/SolaceButton",
 	component: SolaceButton,
@@ -61,6 +69,15 @@ export default {
 			control: { type: "text" },
 			description: "URL to navigate to on click"
 		},
+		dense: {
+			control: { type: "boolean" },
+			description: "Removes spacing from link button",
+			table: {
+				defaultValue: {
+					summary: false
+				}
+			}
+		},
 		component: {
 			options: ["button", "span"],
 			control: { type: "select" },
@@ -111,28 +128,28 @@ DefaultButton.args = {
 export const CallToActionButton = Template.bind({});
 CallToActionButton.args = {
 	onClick: action("callback"),
-	variant: "call-to-action",
+	variant: VARIANT.ACTION,
 	children: "Click Me!"
 };
 
 export const OutlineButton = Template.bind({});
 OutlineButton.args = {
 	onClick: action("callback"),
-	variant: "outline",
+	variant: VARIANT.OUTLINE,
 	children: "Click Me!"
 };
 
 export const TextButton = Template.bind({});
 TextButton.args = {
 	onClick: action("callback"),
-	variant: "text",
+	variant: VARIANT.TEXT,
 	children: "Click Me!"
 };
 
 export const IconButton = Template.bind({});
 IconButton.args = {
 	onClick: action("callback"),
-	variant: "icon",
+	variant: VARIANT.ICON,
 	title: "Delete",
 	children: <DeleteIcon />
 };
@@ -140,8 +157,20 @@ IconButton.args = {
 export const LinkButton = Template.bind({});
 LinkButton.args = {
 	onClick: action("callback"),
-	variant: "link",
+	variant: VARIANT.LINK,
 	children: "Click Me!"
+};
+
+export const LinkButtonWithDenseStyle = (): JSX.Element => {
+	return (
+		<div>
+			This is a{" "}
+			<SolaceButton variant="link" dense onClick={action("callback")}>
+				link button
+			</SolaceButton>{" "}
+			without spacing.
+		</div>
+	);
 };
 
 export const ExternalLinkButton = Template.bind({});
@@ -166,7 +195,7 @@ export const ExternaLinkWithText = (): ReactNode => {
 export const WithStartIcon = Template.bind({});
 WithStartIcon.args = {
 	onClick: action("callback"),
-	variant: "call-to-action",
+	variant: VARIANT.ACTION,
 	startIcon: <DeleteIcon />,
 	children: "Delete"
 };
@@ -174,7 +203,7 @@ WithStartIcon.args = {
 export const WithEndIcon = Template.bind({});
 WithEndIcon.args = {
 	onClick: action("callback"),
-	variant: "call-to-action",
+	variant: VARIANT.ACTION,
 	endIcon: <DeleteIcon />,
 	children: "Delete"
 };
