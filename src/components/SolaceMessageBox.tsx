@@ -12,6 +12,7 @@ const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_Mes
 const InfoBoxMessageContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.messageContainer);
 const DetailsContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.detailsContainer);
 const MessageTextContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.messageTextContainer);
+const IconContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.iconContainer);
 const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
 	({ theme, color }) => ({
 		...theme.mixins.component_MessageBox.message,
@@ -85,7 +86,9 @@ function SolaceMessageBox({
 			<InfoBoxContainer className={variant} data-qa={dataQa} data-tags={dataTags}>
 				<InfoBoxMessageContainer>
 					<InfoBoxMessage color={color} className={`${dense ? "dense" : ""}`}>
-						{showIcon && renderIcons(variant)}
+						{showIcon && (
+							<IconContainer className={`iconContainer ${dense ? "dense" : ""}`}>{renderIcons(variant)}</IconContainer>
+						)}
 						<MessageTextContainer>{message}</MessageTextContainer>
 					</InfoBoxMessage>
 					{showCloseButton && (

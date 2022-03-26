@@ -1114,8 +1114,7 @@ const themeConfig: ThemeOptions = {
 				justifyContent: "space-between",
 				paddingRight: "4px",
 				button: {
-					width: "28px",
-					height: "28px"
+					width: "auto"
 				},
 				svg: {
 					width: "20px",
@@ -1125,19 +1124,23 @@ const themeConfig: ThemeOptions = {
 			message: {
 				display: "flex",
 				width: "100%",
-				alignItems: "flex-start",
+				alignItems: "center",
 				gap: "8px",
 				padding: "6px 8px",
 				"&.dense": {
-					padding: "0 8px",
-					svg: {
-						paddingTop: "2px"
-					}
+					padding: "0 8px"
+				}
+			},
+			iconContainer: {
+				alignSelf: "flex-start",
+				width: "20px",
+				height: "20px",
+				"&.dense": {
+					paddingTop: "6px"
 				}
 			},
 			messageTextContainer: {
-				width: "100%",
-				paddingTop: "2px"
+				width: "100%"
 			},
 			detailsContainer: {
 				// 10px on top because the message will have 6px padding bottom
@@ -1303,6 +1306,7 @@ declare module "@mui/material/styles/createMixins" {
 			container: CSSProperties;
 			messageContainer: CSSProperties;
 			message: CSSProperties;
+			iconContainer: CSSProperties;
 			messageTextContainer: CSSProperties;
 			detailsContainer: CSSProperties;
 		};
