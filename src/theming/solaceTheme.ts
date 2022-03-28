@@ -20,6 +20,7 @@ export const solaceTheme: ThemeMapping = {
 		//toasts
 		toastText: solaceColors.white2,
 		toastBackground: solaceColors.charcoal1,
+		toastSuccessIcon: solaceColors.caribbeanGreen5,
 
 		//chips
 		nonadminPill: alpha(solaceColors.baseBlack, 0.1),

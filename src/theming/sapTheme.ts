@@ -20,7 +20,7 @@ export const sapTheme: ThemeMapping = {
 		//toasts
 		toastText: sapColors.primary6,
 		toastBackground: lighten(sapColors.primary2, 0.9),
-
+		toastSuccessIcon: sapColors.positive,
 		//chips
 		nonadminPill: alpha(sapColors.primary7, 0.1),
 		adminPill: sapColors.primary7,

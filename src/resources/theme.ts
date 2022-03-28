@@ -294,7 +294,8 @@ const themeConfig: ThemeOptions = {
 					".MuiOutlinedInput-input": {
 						border: `solid 1px ${BASE_COLORS.greys.grey3}`,
 						borderRadius: "4px",
-						padding: "8px"
+						padding: "8px",
+						boxSizing: "border-box"
 					},
 					"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
 						{
@@ -798,10 +799,10 @@ const themeConfig: ThemeOptions = {
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
 							color: BASE_COLORS.greys.grey14,
-							padding: "0px",
-							".MuiBox-root": {
-								display: "grid"
-							}
+							padding: "0px"
+							// ".MuiBox-root": {
+							// 	display: "grid"
+							// }
 						},
 						".MuiDialogActions-root": {
 							padding: "24px 0px 0px 0px",

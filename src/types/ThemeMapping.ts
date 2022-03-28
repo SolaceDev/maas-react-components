@@ -17,6 +17,7 @@ export type ThemeMapping = {
 		textSecondary: string;
 		toastText: string;
 		toastBackground: string;
+		toastSuccessIcon: string;
 		warning: string;
 		white: string;
 	};

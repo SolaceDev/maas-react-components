@@ -45,6 +45,7 @@ export const solaceColors = {
 	caribbeanGreen2: "#00d29e",
 	caribbeanGreen3: "#00ccad",
 	caribbeanGreen4: "#05bda1",
+	caribbeanGreen5: "#94EAD4",
 	caribbeanGreen: "#03c28c",
 	catskillWhite1: "#e6ebf2",
 	catskillWhite2: "#f7f9fb",

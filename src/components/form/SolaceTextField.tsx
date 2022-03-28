@@ -1,6 +1,7 @@
 import { TextField, useTheme } from "@mui/material";
 import React from "react";
 import { constants } from "../../constants";
+import { SX } from "../../types/sx";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 
@@ -25,7 +26,7 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	/**
 	 * The value of the `input` element, required for controlled component
 	 */
-	value?: string;
+	value?: string | number;
 	/**
 	 * Content to display as supportive/explanitory text
 	 */
@@ -94,6 +95,15 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the element of the `input` is focused
 	 */
 	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	/**
+	 * The system prop that allows defining system overrides as well as additional CSS styles. See the `sx` page for more details.
+	 * This would be passed down to FormChildBase component.
+	 */
+	sx?: SX;
+	/**
+	 * If true, the input will take up the full width of its container.
+	 */
+	fullWidth?: boolean;
 }
 
 function SolaceTextField({
@@ -119,7 +129,9 @@ function SolaceTextField({
 	onKeyUp,
 	onFocus,
 	dataQa,
-	dataTags
+	dataTags,
+	fullWidth = false,
+	sx
 }: SolaceTextFieldProps): JSX.Element {
 	const theme = useTheme();
 
@@ -152,7 +164,8 @@ function SolaceTextField({
 				"aria-labelledby": label ? `${getId()}-label` : "",
 				"aria-readonly": readOnly,
 				role: "textbox",
-				title: title
+				title: title,
+				min: 0
 			}}
 			type={type}
 			error={hasErrors}
@@ -171,6 +184,7 @@ function SolaceTextField({
 			onKeyDown={onKeyDown}
 			onKeyUp={onKeyUp}
 			onFocus={onFocus}
+			fullWidth={fullWidth}
 		/>
 	);
 
@@ -185,6 +199,7 @@ function SolaceTextField({
 			required={required}
 			inlineLabel={inlineLabel}
 			centerInlineLabel={inlineLabel}
+			sx={sx}
 		>
 			{textField()}
 		</FormChildBase>

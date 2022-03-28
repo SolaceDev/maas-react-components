@@ -32,11 +32,9 @@ function SolaceConfirmationDialog({
 			<DialogTitle>
 				<div data-qa="title">{title}</div>
 			</DialogTitle>
-			<DialogContent>
-				<div data-qa="content">
-					{contentText && <DialogContentText>{contentText}</DialogContentText>}
-					{children}
-				</div>
+			<DialogContent data-qa="content">
+				{contentText && <DialogContentText>{contentText}</DialogContentText>}
+				{children}
 			</DialogContent>
 			<DialogActions>
 				{actions.map((action) => (

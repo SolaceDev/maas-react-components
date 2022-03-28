@@ -4,6 +4,7 @@ import SolaceStackLabel from "./SolaceStackLabel";
 import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
 import SolaceComponentProps from "../SolaceComponentProps";
+import { SX } from "../../types/sx";
 
 export interface FormChildBaseProps extends SolaceComponentProps {
 	/**
@@ -60,6 +61,10 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	centerInlineLabel?: boolean;
 
 	children: JSX.Element;
+	/**
+	 * The system prop that allows defining system overrides as well as additional CSS styles. See the `sx` page for more details.
+	 */
+	sx?: SX;
 }
 
 function FormChildBase({
@@ -75,14 +80,16 @@ function FormChildBase({
 	centerInlineLabel,
 	helperText,
 	errorText,
-	children
+	children,
+	sx
 }: FormChildBaseProps): JSX.Element {
 	return (
 		<Box
 			display="flex"
 			flexDirection={inlineLabel ? "row" : "column"}
 			justifyContent="space-between"
-			alignItems={centerInlineLabel ? "center" : "flex-start"}
+			alignItems={centerInlineLabel ? "center" : ""}
+			sx={sx}
 		>
 			{stackLabel && label && (
 				<SolaceStackLabel
@@ -102,7 +109,7 @@ function FormChildBase({
 					{label}
 				</SolaceLabel>
 			)}
-			<Box display="flex" flexDirection="column">
+			<Box display={"flex"} flexDirection="column">
 				{children}
 				{helperText && !errorText && <HelperText>{helperText}</HelperText>}
 				{errorText && <ErrorText>{errorText}</ErrorText>}

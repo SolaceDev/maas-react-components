@@ -13,7 +13,7 @@ interface SolaceGridListProps<T> extends SolaceComponentProps {
 	headers?: string[];
 	selectedItemId?: string | number;
 	onSelection?: (item: T) => void;
-	rowMapping: (item: T) => JSX.Element[];
+	rowMapping: (item: T, index: number) => JSX.Element[];
 	gridTemplate: string;
 }
 
@@ -128,11 +128,11 @@ function SolaceGridList<T>({
 				{headers && getListHeader}
 				{items?.map((item, index) => (
 					<SolaceGridListRow
-						key={`solaceGridListRow-${item[objectIdentifier]}`}
+						key={`solaceGridListRow-${item[objectIdentifier] ?? index}`}
 						id={item[objectIdentifier]}
 						index={index + 1}
-						items={rowMapping(item)}
-						selected={item[objectIdentifier] === selectedItemId}
+						items={rowMapping(item, index)}
+						selected={selectedItemId ? item[objectIdentifier] === selectedItemId : false}
 						gridTemplate={gridTemplate}
 						onClick={handleRowClick}
 						dataQa={dataQa}
