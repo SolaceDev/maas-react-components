@@ -9,9 +9,11 @@ import {
 	SolaceSelectAutocompleteItem,
 	getSolaceSelectAutocompleteOptionLabel,
 	isSolaceSelectAutocompleteOptionEqual,
-	SolaceSelectAutocompleteItemProps
+	SolaceSelectAutocompleteItemProps,
+	SolaceChip
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
+import { cloneDeep } from "lodash";
 
 const store = new Store({
 	options: []
@@ -33,6 +35,11 @@ export default {
 			}
 		},
 		helperText: {
+			control: {
+				type: "text"
+			}
+		},
+		placeholder: {
 			control: {
 				type: "text"
 			}
@@ -65,6 +72,11 @@ export default {
 		multiple: {
 			control: {
 				type: "boolean"
+			}
+		},
+		limitTags: {
+			control: {
+				type: "number"
 			}
 		}
 	},
@@ -137,7 +149,8 @@ DefaultAutocomplete.args = {
 	fetchOptionsCallback: async (searchTerm: string) => {
 		await fetchOptions(searchTerm);
 	},
-	onCloseCallback: () => store.set({ options: [] })
+	onCloseCallback: () => store.set({ options: [] }),
+	placeholder: "select an option"
 };
 
 export const StackedLabelFormat = Template.bind({});
@@ -394,6 +407,38 @@ MultipleSelection.args = {
 	multiple: true
 };
 
+export const MultipleSelectionWithLimitedTag = Template.bind({});
+MultipleSelectionWithLimitedTag.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS
+			},
+			delay: 500
+		}
+	]
+};
+MultipleSelectionWithLimitedTag.args = {
+	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
+	name: "demoSelect",
+	title: "Demo Select Field",
+	label: "Some Label",
+	options: store.get("options") || null,
+	fetchOptionsCallback: async (searchTerm: string) => {
+		await fetchOptions(searchTerm);
+	},
+	onCloseCallback: () => store.set({ options: [] }),
+	value: [],
+	multiple: true,
+	limitTags: 2
+};
+
 const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "MEM #1",
@@ -437,7 +482,9 @@ export const MultipleWithDisabled = () => {
 
 	const handleFetchOptionsCallback = React.useCallback((searchTerm: string) => {
 		if (searchTerm) {
-			setMatchingValues(SAMPLE_EVENT_MESHES.filter((option) => option["name"].includes(searchTerm)));
+			setMatchingValues(
+				SAMPLE_EVENT_MESHES.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()))
+			);
 		} else {
 			setMatchingValues(SAMPLE_EVENT_MESHES);
 		}
@@ -463,6 +510,111 @@ export const MultipleWithDisabled = () => {
 				fetchOptionsCallback={handleFetchOptionsCallback}
 				getOptionDisabledCallback={handleOptionDisabled}
 			></SolaceSelectAutocomplete>
+		</div>
+	);
+};
+
+const SAMPLE_APPLICATION_DOMAINS: Array<SolaceSelectAutocompleteItemProps> = [
+	{
+		name: "Domain A",
+		value: "domainA"
+	},
+	{
+		name: "Domain B",
+		value: "domainB"
+	},
+	{
+		name: "Domain C",
+		value: "domainC"
+	},
+	{
+		name: "Domain D",
+		value: "domainD"
+	},
+	{
+		name: "Domain With Long Name #1",
+		value: "domain1"
+	},
+	{
+		name: "Domain With Long Name #2",
+		value: "domain2"
+	}
+];
+
+export const MultipleWithCustomTagRenderer = () => {
+	const [values, setValues] = React.useState([]);
+	const [matchingValues, setMatchingValues] = React.useState([]);
+
+	const handleChange = (evt) => {
+		setValues(evt.value);
+	};
+
+	const handleDelete = (item) => {
+		let updatedValues = cloneDeep(values);
+		updatedValues = updatedValues.filter((value) => value.value !== item);
+		setValues(updatedValues);
+	};
+
+	const handleFetchOptionsCallback = React.useCallback(async (searchTerm: string) => {
+		if (searchTerm) {
+			setMatchingValues(
+				SAMPLE_APPLICATION_DOMAINS.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()))
+			);
+		} else {
+			setMatchingValues(SAMPLE_APPLICATION_DOMAINS);
+		}
+	}, []);
+
+	return (
+		<div>
+			<SolaceSelectAutocomplete
+				name="applicationDomain"
+				placeholder={values.length ? "" : "Application Domain"}
+				multiple={true}
+				value={values}
+				options={matchingValues}
+				itemComponent={SolaceSelectAutocompleteItem}
+				itemMappingCallback={(option) => option}
+				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				onChange={handleChange}
+				fetchOptionsCallback={handleFetchOptionsCallback}
+				renderTags={() => (
+					<div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+						<span>Application Domain: </span>
+
+						<span
+							style={{
+								display: "inline-block",
+								backgroundColor: "rgba(0, 0, 0, 0.1)",
+								borderRadius: "50%",
+								lineHeight: "0px"
+							}}
+						>
+							<span
+								style={{
+									display: "inline-block",
+									paddingBottom: "50%",
+									paddingTop: "50%",
+									marginLeft: "5px",
+									marginRight: "5px",
+									textAlign: "center"
+								}}
+							>
+								{values.length}
+							</span>
+						</span>
+					</div>
+				)}
+			></SolaceSelectAutocomplete>
+			<div style={{ marginBlock: "10px", display: "flex", flexWrap: "wrap" }}>
+				{values.map((value) => {
+					return (
+						<div style={{ marginRight: "8px", marginBottom: "8px" }} key={value.value}>
+							<SolaceChip label={`Application Domain: ${value.name}`} onDelete={() => handleDelete(value.value)} />
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 };

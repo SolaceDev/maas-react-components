@@ -77,7 +77,7 @@ export interface SolaceChipProps extends SolaceComponentProps {
 	/**
 	 * if the callback function is set, the chip will show the delete button
 	 */
-	onDelete?: () => void;
+	onDelete?: (id: string | number) => void;
 }
 
 export default function SolaceChip({

@@ -31,6 +31,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	title?: string;
 	/**
+	 * The text to display as the input placeholder
+	 */
+	placeholder?: string;
+	/**
 	 * Boolean flag to mark the `input` in error state
 	 */
 	hasErrors?: boolean;
@@ -75,6 +79,14 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	options: Array<V>;
 	/**
+	 * Custom renderer for selected values when we have multi-selection
+	 */
+	renderTags?: (value: V[]) => React.ReactNode;
+	/**
+	 * The maximum number of tags that will be visible when not focused. Set -1 to disable the limit.
+	 */
+	limitTags?: number;
+	/**
 	 * Fetch updated list of options
 	 */
 	fetchOptionsCallback: (searchTerm: string) => void;
@@ -99,6 +111,7 @@ function SolaceSelectAutocomplete<T, V>({
 	value,
 	helperText,
 	title,
+	placeholder,
 	hasErrors = false,
 	required = false,
 	inlineLabel = false,
@@ -112,6 +125,8 @@ function SolaceSelectAutocomplete<T, V>({
 	dataQa,
 	dataTags,
 	options,
+	renderTags,
+	limitTags,
 	fetchOptionsCallback,
 	onCloseCallback,
 	isOptionEqualToValueCallback,
@@ -191,6 +206,7 @@ function SolaceSelectAutocomplete<T, V>({
 			loading={loading}
 			open={open}
 			multiple={multiple}
+			disableCloseOnSelect={multiple}
 			onClose={() => {
 				onCloseCallback && onCloseCallback(); // notify parent select closed
 				setOpen(false);
@@ -207,6 +223,7 @@ function SolaceSelectAutocomplete<T, V>({
 					{...params}
 					title={title}
 					autoComplete="off"
+					placeholder={placeholder}
 					inputProps={{
 						...params.inputProps,
 						"data-qa": `${dataQa}-input`,
@@ -229,6 +246,8 @@ function SolaceSelectAutocomplete<T, V>({
 			)}
 			isOptionEqualToValue={isOptionEqualToValueCallback}
 			getOptionDisabled={getOptionDisabledCallback}
+			renderTags={renderTags}
+			limitTags={limitTags}
 			ChipProps={{
 				deleteIcon: <CloseIcon />
 			}}
