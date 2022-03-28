@@ -96,7 +96,7 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 */
 	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 	/**
-	 * The system prop that allows defining system overrides as well as additional CSS styles. See the `sx` page for more details.
+	 * The system prop that allows defining system overrides as well as additional CSS styles.
 	 * This would be passed down to FormChildBase component.
 	 */
 	sx?: SX;
