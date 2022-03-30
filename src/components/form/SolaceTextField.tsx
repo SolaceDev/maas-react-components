@@ -1,4 +1,4 @@
-import { TextField, useTheme } from "@mui/material";
+import { InputAdornment, IconButton, TextField, useTheme } from "@mui/material";
 import React from "react";
 import { constants } from "../../constants";
 import { SX } from "../../types/sx";
@@ -68,6 +68,14 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 */
 	inlineLabel?: boolean;
 	/**
+	 * Allows custom icon to be set at the beginning/end of the field.
+	 */
+	customIcon?: {
+		icon: React.ReactNode;
+		position: "end" | "start";
+		handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+	};
+	/**
 	 * Boolean flag to disable the `input`
 	 */
 	disabled?: boolean;
@@ -121,6 +129,7 @@ function SolaceTextField({
 	hasErrors = false,
 	required = false,
 	inlineLabel = false,
+	customIcon,
 	disabled = false,
 	readOnly = false,
 	onChange,
@@ -134,6 +143,22 @@ function SolaceTextField({
 	sx
 }: SolaceTextFieldProps): JSX.Element {
 	const theme = useTheme();
+
+	const iconProps = customIcon
+		? {
+				endAdornment: (
+					<InputAdornment position={customIcon.position}>
+						<IconButton onClick={customIcon.handleClick}>{customIcon.icon}</IconButton>
+					</InputAdornment>
+				)
+		  }
+		: {};
+
+	const defaultInputProps = {
+		sx: { height: theme.spacing(4) },
+		disabled: disabled,
+		required: required
+	};
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (onChange) {
@@ -171,11 +196,7 @@ function SolaceTextField({
 			error={hasErrors}
 			autoComplete="off"
 			autoFocus={autoFocus}
-			InputProps={{
-				sx: { height: theme.spacing(4) },
-				disabled: disabled,
-				required: required
-			}}
+			InputProps={{ ...defaultInputProps, ...iconProps }}
 			margin="dense"
 			placeholder={placeholder}
 			value={value}

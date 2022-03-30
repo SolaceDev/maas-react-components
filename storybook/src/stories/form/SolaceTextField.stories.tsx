@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
-
+import { Search } from "@mui/icons-material";
 import { SolaceTextField } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
@@ -130,6 +130,16 @@ WithErrors.args = {
 	label: DEMO_LABEL,
 	helperText: "The text you entered was invalid",
 	hasErrors: true
+};
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+	onChange: action("callback"),
+	name: "demoTextField",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
+	helperText: "Text field with search icon",
+	customIcon: { position: "end", icon: <Search /> }
 };
 
 export const AutoFocus = Template.bind({});
