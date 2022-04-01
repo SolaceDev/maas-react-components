@@ -109,7 +109,7 @@ function FormChildBase({
 					{label}
 				</SolaceLabel>
 			)}
-			<Box display={"flex"} flexDirection="column">
+			<Box display={"flex"} flexDirection="column" flexGrow={1} sx={{ paddingLeft: inlineLabel ? "36px" : "0px" }}>
 				{children}
 				{helperText && !errorText && <HelperText>{helperText}</HelperText>}
 				{errorText && <ErrorText>{errorText}</ErrorText>}

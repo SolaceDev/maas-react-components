@@ -516,7 +516,7 @@ const themeConfig: ThemeOptions = {
 				select: {
 					"&.MuiOutlinedInput-input": {
 						padding: "7px 34px 5px 8px",
-						minWidth: "330px"
+						width: "100%"
 					}
 				},
 				iconOpen: {
@@ -639,7 +639,6 @@ const themeConfig: ThemeOptions = {
 		MuiAutocomplete: {
 			styleOverrides: {
 				root: {
-					minWidth: "372px",
 					".MuiOutlinedInput-root .MuiAutocomplete-input": {
 						padding: "0px"
 					},
