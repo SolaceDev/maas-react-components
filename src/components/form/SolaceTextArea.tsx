@@ -1,7 +1,6 @@
 import { TextField, useTheme } from "@mui/material";
 import React from "react";
 import { constants } from "../../constants";
-import { SX } from "../../types/sx";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 
@@ -96,10 +95,9 @@ export interface SolaceTextAreaProps extends SolaceComponentProps {
 	 */
 	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 	/**
-	 * The system prop that allows defining system overrides as well as additional CSS styles. See the `sx` page for more details.
-	 * This would be passed down to FormChildBase component.
+	 * Custom Width of the component.
 	 */
-	sx?: SX;
+	width?: string;
 	/**
 	 * If true, the input will take up the full width of its container.
 	 */
@@ -131,7 +129,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	dataQa,
 	dataTags,
 	fullWidth = false,
-	sx
+	width
 }) => {
 	const theme = useTheme();
 
@@ -197,7 +195,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 			readOnly={readOnly}
 			required={required}
 			inlineLabel={inlineLabel}
-			sx={sx}
+			sx={{ width }}
 		>
 			{textField()}
 		</FormChildBase>

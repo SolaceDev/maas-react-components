@@ -1,0 +1,126 @@
+// SolaceStack.stories.tsx
+
+import React from "react";
+
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+
+import { SolaceStack, SolaceSelect, SolaceTextField } from "@SolaceDev/maas-react-components";
+import { SELECT_OPTIONS } from "../form/SolaceSelect.stories";
+import { Divider } from "@mui/material";
+
+export default {
+	title: "Layout/SolaceStack",
+	component: SolaceStack,
+	argTypes: {
+		spacing: {
+			control: { type: "range", min: 1, max: 10, step: 1 },
+			description:
+				"If customSpacing is passed in the default 16px would be replaced by the appropriate value. eg: if 3 is passed in the result would be theme.spacing(3) = 24px between all elements.If 0 is passed in all spacing is disabled.For detailed documentation please refer to https://mui.com/api/stack/",
+			table: {
+				defaultValue: {
+					summary: 2
+				}
+			}
+		},
+		direction: {
+			options: ["column-reverse", "column", "row-reverse", "row", "column-reverse", "column", "row-reverse", "row"],
+			control: { type: "select" },
+			table: {
+				defaultValue: {
+					summary: "column"
+				}
+			},
+			description:
+				"To align child elements in vertical or horizontal direction.For detailed documentation please refer to https://mui.com/api/stack/"
+		},
+		divider: {
+			control: { type: "text" },
+
+			description:
+				"Add an element between each child.For detailed documentation please refer to https://mui.com/api/stack/"
+		},
+		sx: { control: { type: "object" } }
+	}
+} as ComponentMeta<typeof SolaceStack>;
+
+const Template: ComponentStory<typeof SolaceStack> = (args) => <SolaceStack {...args} />;
+
+const defaultContent = (
+	<>
+		<SolaceTextField label="default spacing1" name={"1"} />
+		<SolaceTextField label="default spacing2" name={"2"} />
+		<SolaceSelect label="default spacing3" name={"3"}>
+			{SELECT_OPTIONS}
+		</SolaceSelect>
+	</>
+);
+
+export const DefaultSolaceStack = Template.bind({});
+DefaultSolaceStack.args = {
+	children: defaultContent
+};
+
+export const DisabledSpacing = Template.bind({});
+DisabledSpacing.args = {
+	children: defaultContent,
+	spacing: 0
+};
+
+export const Direction = Template.bind({});
+Direction.args = {
+	children: defaultContent,
+	direction: "row"
+};
+
+export const WithDivider = (): JSX.Element => {
+	return (
+		<SolaceStack direction="row" divider={<Divider orientation="vertical" flexItem />}>
+			<SolaceTextField label="default spacing1" name={"1"} />
+			<SolaceTextField label="default spacing2" name={"2"} />
+			<SolaceSelect label="default spacing3" name={"3"}>
+				{SELECT_OPTIONS}
+			</SolaceSelect>
+		</SolaceStack>
+	);
+};
+
+export const MultipleChildren = (): JSX.Element => {
+	return (
+		<>
+			<SolaceStack>
+				<SolaceTextField label="default spacing1" name={"1"} />
+				<SolaceTextField label="default spacing2" name={"2"} />
+				<SolaceSelect label="default spacing3" name={"3"}>
+					{SELECT_OPTIONS}
+				</SolaceSelect>
+			</SolaceStack>
+
+			<SolaceStack sx={{ marginTop: 5 }}>
+				<SolaceTextField label="MarginTop5 - 1" name={"1"} />
+				<SolaceTextField label="MarginTop5 - 2" name={"2"} />
+			</SolaceStack>
+
+			<SolaceStack direction="row" sx={{ marginTop: 1 }}>
+				<SolaceTextField label="MarginTop1-1" name={"1"} />
+				<SolaceTextField label="MarginTop1-2" name={"2"} />
+			</SolaceStack>
+
+			<SolaceStack direction="row" sx={{ marginTop: 1 }} disableSpacing>
+				<SolaceTextField label="MarginTop1-noSpacing-1" name={"1"} />
+				<SolaceTextField label="MarginTop1-noSpacing-2" name={"2"} />
+			</SolaceStack>
+
+			<SolaceStack sx={{ marginTop: 6 }} customSpacing={3}>
+				<SolaceTextField label="MarginTop6-customSpacing3-1" name={"1"} />
+				<SolaceTextField label="MarginTop6-customSpacing3-2" name={"2"} />
+			</SolaceStack>
+
+			<SolaceStack sx={{ marginTop: 10 }} direction="row">
+				<SolaceTextField label="customWidthText-1" name={"1"} width="150px" />
+				<SolaceTextField label="MarginTop10-2" name={"2"} />
+				<SolaceTextField label="MarginTop10-3" name={"3"} />
+				<SolaceTextField label="MarginTop10-4" name={"4"} />
+			</SolaceStack>
+		</>
+	);
+};

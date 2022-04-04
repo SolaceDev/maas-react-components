@@ -1,7 +1,6 @@
 import { TextField, useTheme } from "@mui/material";
 import React, { ReactNode, useEffect, useState } from "react";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
-import { SX } from "../../types/sx";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 export interface SolaceSelectChangeEvent {
@@ -66,10 +65,9 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 */
 	children: Array<JSX.Element>;
 	/**
-	 * The system prop that allows defining system overrides as well as additional CSS styles. See the `sx` page for more details.
-	 * This would be passed down to FormChildBase component.
+	 * Custom Width of the component.
 	 */
-	sx?: SX;
+	width?: string;
 }
 
 function SolaceSelect({
@@ -89,7 +87,7 @@ function SolaceSelect({
 	dataQa,
 	dataTags,
 	children,
-	sx
+	width
 }: SolaceSelectProps): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value);
@@ -164,7 +162,7 @@ function SolaceSelect({
 			required={required}
 			inlineLabel={inlineLabel}
 			centerInlineLabel={inlineLabel}
-			sx={sx}
+			sx={{ width }}
 		>
 			{select()}
 		</FormChildBase>

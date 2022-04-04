@@ -61,7 +61,7 @@ export default {
 	}
 } as ComponentMeta<typeof SolaceSelect>;
 
-const SELECT_OPTIONS: Array<any> = [];
+export const SELECT_OPTIONS: Array<any> = [];
 SELECT_OPTIONS.push(
 	<MenuItem key="option1" value="option1">
 		Menu Option #1

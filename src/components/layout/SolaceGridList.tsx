@@ -129,7 +129,7 @@ function SolaceGridList<T>({
 				{items?.map((item, index) => (
 					<SolaceGridListRow
 						key={`solaceGridListRow-${item[objectIdentifier] ?? index}`}
-						id={item[objectIdentifier]}
+						id={item[objectIdentifier] ?? index}
 						index={index + 1}
 						items={rowMapping(item, index)}
 						selected={selectedItemId ? item[objectIdentifier] === selectedItemId : false}

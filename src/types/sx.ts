@@ -1,17 +1,18 @@
 export type Globals = "-moz-initial" | "inherit" | "initial" | "revert" | "unset";
+export type SpacingValues = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export type SX = {
-	marginTop?: string | number;
-	marginBottom?: string | number;
-	margin?: string | number;
-	marginLeft?: string | number;
-	marginRight?: string | number;
+	marginTop?: SpacingValues;
+	marginBottom?: SpacingValues;
+	margin?: SpacingValues;
+	marginLeft?: SpacingValues;
+	marginRight?: SpacingValues;
 
-	paddingTop?: string | number;
-	paddingBottom?: string | number;
-	padding?: string | number;
-	paddingLeft?: string | number;
-	paddingRight?: string | number;
+	paddingTop?: SpacingValues;
+	paddingBottom?: SpacingValues;
+	padding?: SpacingValues;
+	paddingLeft?: SpacingValues;
+	paddingRight?: SpacingValues;
 
 	width?:
 		| Globals
