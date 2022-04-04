@@ -45,6 +45,30 @@ export interface SolaceTooltipProps extends SolaceComponentProps {
 	 * Disable listener to show tooltip when referenced element is hovered, default to false
 	 */
 	disableHoverListener?: boolean;
+	/**
+	 * The number of milliseconds to wait before showing the tooltip. Default is 500ms
+	 */
+	enterDelay?: number;
+	/**
+	 * The number of milliseconds to wait before showing the tooltip when one was already recently opened. Default is 0ms
+	 */
+	enterNextDelay?: number;
+	/**
+	 * The number of milliseconds to wait before hiding the tooltip. Default is 0ms
+	 */
+	leaveDelay?: number;
+	/**
+	 * Controlled open state for tooltip. If `true`, the component is shown
+	 */
+	open?: boolean;
+	/**
+	 * Callback fired when the component requests to be open. Used in conjunction with `open` and `onClose`
+	 */
+	onOpen?: (event: React.SyntheticEvent) => void;
+	/**
+	 * Callback fired when the component requests to be closed. Used in conjunction with `open` and `onOpen`
+	 */
+	onClose?: (event: Event | React.SyntheticEvent<Element, Event>) => void;
 }
 
 function SolaceTooltip({
@@ -55,6 +79,12 @@ function SolaceTooltip({
 	placement = "bottom",
 	maxWidth = "small",
 	disableHoverListener = false,
+	enterDelay = 500,
+	enterNextDelay = 0,
+	leaveDelay = 0,
+	open,
+	onOpen,
+	onClose,
 	dataQa,
 	dataTags
 }: SolaceTooltipProps) {
@@ -78,11 +108,14 @@ function SolaceTooltip({
 			data-qa={dataQa}
 			data-tags={dataTags}
 			disableHoverListener={disableHoverListener || (variant === "overflow" && !isOverflowed)}
-			enterDelay={500}
-			enterNextDelay={0}
-			leaveDelay={0}
+			enterDelay={enterDelay}
+			enterNextDelay={enterNextDelay}
+			leaveDelay={leaveDelay}
 			TransitionComponent={Fade}
 			TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
+			open={open}
+			onOpen={onOpen}
+			onClose={onClose}
 		>
 			{variant === "overflow" ? (
 				<div

@@ -1,11 +1,13 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState, useRef } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import {
 	SolaceTooltip,
 	DeleteIcon,
 	SolaceButton,
+	SolaceTextField,
 	HelpOutlineOutlinedIcon,
-	AddCircleOutlineOutlinedIcon
+	AddCircleOutlineOutlinedIcon,
+	SolaceLabel
 } from "@SolaceDev/maas-react-components";
 
 export default {
@@ -219,6 +221,80 @@ export const TooltipGroup = (): ReactNode => {
 			<SolaceTooltip variant="text" title={"Hint"}>
 				<HelpOutlineOutlinedIcon />
 			</SolaceTooltip>
+		</div>
+	);
+};
+
+// For the input field with tooltip support,
+// - the tooltip  only shows up when the field is not focused
+// - when tooltip is visible, clicking on the field will close the tooltip
+export const ControlledTooltip = (): ReactNode => {
+	const [actionOpen, setActionOpen] = useState(false);
+	const [inputWithTooltip, setInputWithTooltip] = useState("");
+	const [inputFocused, setInputFocused] = useState(false);
+	const [inputWithoutTooltip, setInputWithoutTooltip] = useState("");
+
+	function handleFocus() {
+		setInputFocused(true);
+		setActionOpen(false);
+	}
+
+	function handleBlur() {
+		setInputFocused(false);
+	}
+
+	function handleOpen() {
+		if (inputFocused) {
+			return;
+		}
+		setActionOpen(true);
+	}
+
+	function handleClose() {
+		setActionOpen(false);
+	}
+
+	function handleChange(e) {
+		if (e.name === "inputWithTooltip") {
+			setInputWithTooltip(e.value);
+		} else if (e.name === "inputWithoutTooltip") {
+			setInputWithoutTooltip(e.value);
+		}
+	}
+
+	return (
+		<div
+			style={{
+				display: "grid",
+				gridTemplateColumns: "100px 200px 100px 200px",
+				gridTemplateRows: "auto",
+				columnGap: "8px",
+				rowGap: "8px",
+				alignItems: "center"
+			}}
+		>
+			<SolaceLabel id="inputWithTooltipLabel">With Toolip</SolaceLabel>
+			<SolaceTooltip
+				variant="text"
+				title={"Input Something"}
+				open={actionOpen}
+				onOpen={handleOpen}
+				onClose={handleClose}
+				enterDelay={800}
+				enterNextDelay={800}
+			>
+				<span>
+					<SolaceTextField
+						name="inputWithTooltip"
+						value={inputWithTooltip}
+						onFocus={handleFocus}
+						onBlur={handleBlur}
+						onChange={handleChange}
+					/>
+				</span>
+			</SolaceTooltip>
+			<SolaceLabel id="inputWithTooltipLabel">Without Toolip</SolaceLabel>
+			<SolaceTextField name="inputWithoutTooltip" value={inputWithoutTooltip} onChange={handleChange} />
 		</div>
 	);
 };

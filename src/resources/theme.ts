@@ -136,7 +136,6 @@ const themeConfig: ThemeOptions = {
 							}
 						},
 						"&.readOnlySelect": {
-							backgroundColor: "transparent", // apply transparent bg color in readonly state
 							".MuiSelect-select": {
 								// reset svg inside selected area which is sibling to the svg icon for dropdown caret
 								".MuiSvgIcon-root": {
@@ -150,6 +149,11 @@ const themeConfig: ThemeOptions = {
 								position: "relative",
 								top: "0"
 							}
+						}
+					},
+					".MuiOutlinedInput-root": {
+						"&.readOnlySelect": {
+							backgroundColor: "transparent" // set background transparent in readonly state
 						}
 					}
 				}
@@ -278,9 +282,7 @@ const themeConfig: ThemeOptions = {
 					display: "inline-block",
 					"&.MuiOutlinedInput-root": {
 						padding: "0px",
-						marginRight: "20px",
 						display: "inline-table", // this ensures helper text is below textarea
-						minWidth: "354px",
 						backgroundColor: "transparent", // set background transparent on TextArea input container
 						".MuiOutlinedInput-notchedOutline": {
 							border: "none"
