@@ -59,6 +59,10 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 */
 	hasErrors?: boolean;
 	/**
+	 * Boolean flag to mark the `input` in warn state
+	 */
+	hasWarnings?: boolean;
+	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
 	required?: boolean;
@@ -125,6 +129,7 @@ function SolaceTextField({
 	title,
 	autoFocus = false,
 	hasErrors = false,
+	hasWarnings = false,
 	required = false,
 	inlineLabel = false,
 	customIcon,
@@ -213,6 +218,7 @@ function SolaceTextField({
 			label={label}
 			helperText={helperText}
 			errorText={hasErrors ? helperText : undefined}
+			warningText={hasWarnings ? helperText : undefined}
 			disabled={disabled}
 			readOnly={readOnly}
 			required={required}

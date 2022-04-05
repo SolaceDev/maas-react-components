@@ -1,10 +1,29 @@
-import { Box } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import SolaceLabel from "./SolaceLabel";
 import SolaceStackLabel from "./SolaceStackLabel";
 import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
+import WarningText from "./WarningText";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { SX } from "../../types/sx";
+
+interface ChildrenContainerProps {
+	inlineLabel: boolean;
+}
+
+const ChildrenContainer = styled("div", {
+	shouldForwardProp: (prop) => prop !== "inlineLabel"
+})<ChildrenContainerProps>(({ theme, inlineLabel }) => ({
+	display: "flex",
+	flexDirection: "column",
+	flexGrow: 1,
+	sx: { paddingLeft: inlineLabel ? "36px" : "0px" },
+	"&.hasWarnings": {
+		"fieldset.MuiOutlinedInput-notchedOutline, fieldset.MuiInputBase-inputMultiline": {
+			borderColor: `${theme.palette.warning.main}`
+		}
+	}
+}));
 
 export interface FormChildBaseProps extends SolaceComponentProps {
 	/**
@@ -36,9 +55,13 @@ export interface FormChildBaseProps extends SolaceComponentProps {
 	 */
 	helperText?: string | JSX.Element;
 	/**
-	 * Boolean flag to mark the `input` in error state
+	 * HelperText when the `input` in error state
 	 */
 	errorText?: string | JSX.Element;
+	/**
+	 * HelperText when the `input` in warning state
+	 */
+	warningText?: string | JSX.Element;
 	/**
 	 * Boolean flag used to display an indicator of whether or not this `input` is mandatory
 	 */
@@ -80,6 +103,7 @@ function FormChildBase({
 	centerInlineLabel,
 	helperText,
 	errorText,
+	warningText,
 	children,
 	sx
 }: FormChildBaseProps): JSX.Element {
@@ -109,11 +133,12 @@ function FormChildBase({
 					{label}
 				</SolaceLabel>
 			)}
-			<Box display={"flex"} flexDirection="column" flexGrow={1} sx={{ paddingLeft: inlineLabel ? "36px" : "0px" }}>
+			<ChildrenContainer inlineLabel={inlineLabel} className={warningText ? "hasWarnings" : ""}>
 				{children}
-				{helperText && !errorText && <HelperText>{helperText}</HelperText>}
+				{helperText && !errorText && !warningText && <HelperText>{helperText}</HelperText>}
+				{warningText && !errorText && <WarningText>{warningText}</WarningText>}
 				{errorText && <ErrorText>{errorText}</ErrorText>}
-			</Box>
+			</ChildrenContainer>
 		</Box>
 	);
 }

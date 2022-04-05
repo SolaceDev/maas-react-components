@@ -1,0 +1,26 @@
+import { FormLabel, useTheme, styled } from "@mui/material";
+import { Box } from "@mui/system";
+import SolaceComponentProps from "../SolaceComponentProps";
+import { WarnIcon } from "../../resources/icons/WarnIcon";
+import { BASE_FONT_PX_SIZES } from "../../resources/typography";
+
+const WarningTextContainer = styled(Box)(({ theme }) => theme.mixins.formComponent_WarningText.container);
+
+const WarningTextLabel = styled(FormLabel)(({ theme }) => theme.mixins.formComponent_WarningText.label);
+
+export interface WarningTextProps extends SolaceComponentProps {
+	children: string | JSX.Element;
+}
+
+function WarningText({ children }: WarningTextProps): JSX.Element {
+	const theme = useTheme();
+	const size = theme.typography.subtitle1.fontSize?.toString();
+	return (
+		<WarningTextContainer>
+			<WarnIcon size={size ? parseInt(size) : BASE_FONT_PX_SIZES.md} fill={theme.palette.warning.main}></WarnIcon>
+			<WarningTextLabel>{children}</WarningTextLabel>
+		</WarningTextContainer>
+	);
+}
+
+export default WarningText;

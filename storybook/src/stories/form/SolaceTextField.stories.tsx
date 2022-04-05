@@ -132,6 +132,16 @@ WithErrors.args = {
 	hasErrors: true
 };
 
+export const WithWarning = Template.bind({});
+WithWarning.args = {
+	onChange: action("callback"),
+	name: "demoTextField",
+	title: DEMO_TITLE,
+	label: DEMO_LABEL,
+	helperText: "The text you entered triggered a warning",
+	hasWarnings: true
+};
+
 export const WithIcon = Template.bind({});
 WithIcon.args = {
 	onChange: action("callback"),

@@ -1035,6 +1035,19 @@ const themeConfig: ThemeOptions = {
 				marginLeft: "8px"
 			}
 		},
+		/** ErrorText for form components */
+		formComponent_WarningText: {
+			container: {
+				display: "flex",
+				flexDirection: "row",
+				justifyContent: "flex-start",
+				marginTop: "2px"
+			},
+			label: {
+				fontSize: BASE_FONT_PX_SIZES.xs,
+				marginLeft: "8px"
+			}
+		},
 		/** Attribute Value Pair (AVP) for form components */
 		formComponent_AVPItem: {
 			container: {
@@ -1236,6 +1249,9 @@ const themeConfig: ThemeOptions = {
 		error: {
 			main: BASE_COLORS.reds.red1
 		},
+		warning: {
+			main: BASE_COLORS.yellows.yellow1
+		},
 		primary: {
 			contrastText: BASE_COLORS.greys.grey0,
 			dark: BASE_COLORS.greens.green5,
@@ -1289,6 +1305,10 @@ declare module "@mui/material/styles/createMixins" {
 			list: CSSProperties;
 		};
 		formComponent_ErrorText: {
+			container: CSSProperties;
+			label: CSSProperties;
+		};
+		formComponent_WarningText: {
 			container: CSSProperties;
 			label: CSSProperties;
 		};
