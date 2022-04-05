@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import { Box, Autocomplete, TextField, useTheme } from "@mui/material";
+import { Box, Autocomplete, TextField, useTheme, styled } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 import CloseIcon from "@mui/icons-material/Close";
@@ -103,6 +103,12 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	getOptionDisabledCallback?: (option: V) => boolean;
 }
+
+const CustomHeightTextField = styled(TextField)`
+	& .MuiOutlinedInput-input {
+		height: 32px;
+	}
+`;
 
 function SolaceSelectAutocomplete<T, V>({
 	id,
@@ -219,7 +225,7 @@ function SolaceSelectAutocomplete<T, V>({
 			onChange={handleChange}
 			popupIcon={<SelectDropdownIcon />}
 			renderInput={(params) => (
-				<TextField
+				<CustomHeightTextField
 					{...params}
 					title={title}
 					autoComplete="off"
