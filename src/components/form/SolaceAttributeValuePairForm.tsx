@@ -79,6 +79,10 @@ export interface SolaceAttributeValuePairFormProps {
 	 */
 	enableRequiredValueFieldIndicator?: boolean;
 	/**
+	 * An optional string to be displayed when an AVP key or value is empty when set to read-only.
+	 */
+	emptyFieldDisplayValue?: string;
+	/**
 	 *
 	 * This boolean allows user to toggle whether keys are mandatory or not (i.e. if set to false, you can have a value without an associated key)
 	 */
@@ -101,6 +105,7 @@ const SolaceAttributeValuePairForm = ({
 	avpValueValidationCallback,
 	enableRequiredKeyFieldIndicator,
 	enableRequiredValueFieldIndicator,
+	emptyFieldDisplayValue = "",
 	keyRequired = true, // by default, key is considered mandatory for every AVP (i.e. you can have a key with no value, but you cannot have a value with no key)
 	keyIsRequiredMessage = "Required"
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
@@ -200,6 +205,7 @@ const SolaceAttributeValuePairForm = ({
 								readOnly={readOnly}
 								keyRequired={keyRequired}
 								keyIsRequiredMessage={keyIsRequiredMessage}
+								emptyFieldDisplayValue={emptyFieldDisplayValue}
 							/>
 						</SolaceAVPListContainer>
 						{provided.placeholder}

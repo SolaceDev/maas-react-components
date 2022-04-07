@@ -49,6 +49,10 @@ export interface AVPListProps {
 	 */
 	dropFromTop: boolean | null;
 	/**
+	 * An optional string to be displayed when an AVP key or value is empty when set to read-only.
+	 */
+	emptyFieldDisplayValue?: string;
+	/**
 	 *
 	 * This boolean allows user to toggle whether keys are mandatory or not (i.e. if set to false, you can have a value without an associated key)
 	 */
@@ -89,6 +93,7 @@ const SolaceAttributeValuePairList = ({
 	avpValueValidationCallback,
 	dropOverIndex,
 	dropFromTop,
+	emptyFieldDisplayValue = "",
 	keyRequired = true, // by default, key is considered mandatory for every AVP (i.e. you can have a key with no value, but you cannot have a value with no key)
 	keyIsRequiredMessage = "Required"
 }: AVPListProps): JSX.Element => {
@@ -115,7 +120,7 @@ const SolaceAttributeValuePairList = ({
 			const value: string = event.value;
 
 			const list = [...currentAVPList];
-			list[index][name] = value.trim();
+			list[index][name] = value;
 
 			// add a new row at the end of the list upon input changes
 			if (name && list.length - 1 === index) {
@@ -155,6 +160,8 @@ const SolaceAttributeValuePairList = ({
 		(event: React.FocusEvent<HTMLInputElement>, index: number) => {
 			const list = [...currentAVPList];
 			let mandatoryKeyValidationFailed = false;
+			list[index]["key"] = list[index]["key"].trim(); // trim leading and trailing whitespace
+			list[index]["value"] = list[index]["value"].trim();
 			if (keyRequired && !list[index]["key"]) {
 				list[index]["keyErrorText"] = keyIsRequiredMessage;
 				mandatoryKeyValidationFailed = true;
@@ -218,6 +225,7 @@ const SolaceAttributeValuePairList = ({
 						dropOverIndex={dropOverIndex}
 						dropFromTop={dropFromTop}
 						readOnly={readOnly}
+						emptyFieldDisplayValue={emptyFieldDisplayValue}
 					/>
 				);
 			})}

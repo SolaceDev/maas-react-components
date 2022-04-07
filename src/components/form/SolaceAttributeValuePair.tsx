@@ -68,6 +68,11 @@ const SolaceAVPDeleteButton = styled("div", {
 	}
 }));
 
+const ValueWrapper = styled("div")({
+	paddingTop: "7px",
+	color: BASE_COLORS.greys.grey11
+});
+
 export enum valueInputTypes {
 	textfield = "textfield",
 	select = "select",
@@ -129,6 +134,10 @@ export interface SolaceAttributeValuePairProps {
 	 */
 	valueErrorText?: string;
 	/**
+	 * An optional string to be displayed when an AVP key or value is empty when set to read-only.
+	 */
+	emptyFieldDisplayValue?: string;
+	/**
 	 * index of the element that is being dragged over with
 	 * the index is updated on dragging
 	 */
@@ -161,7 +170,8 @@ export const SolaceAttributeValuePair = ({
 	valueErrorText,
 	dropOverIndex,
 	dropFromTop,
-	readOnly
+	readOnly,
+	emptyFieldDisplayValue = ""
 }: SolaceAttributeValuePairProps) => {
 	return (
 		<Draggable draggableId={id} index={index} isDragDisabled={ghostItem}>
@@ -185,33 +195,43 @@ export const SolaceAttributeValuePair = ({
 					</SolaceAVPMoveButton>
 
 					<SolaceAVPInputForKey>
-						<SolaceTextField
-							name="key"
-							dataQa={`avpKey-${index}`}
-							dataTags={dataTags}
-							value={avpKey}
-							onChange={(e) => onChange(e, index)}
-							onKeyUp={onKeyUp}
-							onBlur={(e) => onBlur(e, index)}
-							hasErrors={ghostItem ? false : !!keyErrorText}
-							helperText={ghostItem ? "" : keyErrorText}
-							readOnly={readOnly}
-						/>
+						{!avpKey && avpValue && readOnly && (
+							<ValueWrapper data-qa={`avpKey-${index}`}>{emptyFieldDisplayValue}</ValueWrapper>
+						)}
+						{(avpKey || (!avpKey && !readOnly)) && (
+							<SolaceTextField
+								name="key"
+								dataQa={`avpKey-${index}`}
+								dataTags={dataTags}
+								value={avpKey}
+								onChange={(e) => onChange(e, index)}
+								onKeyUp={onKeyUp}
+								onBlur={(e) => onBlur(e, index)}
+								hasErrors={ghostItem ? false : !!keyErrorText}
+								helperText={ghostItem ? "" : keyErrorText}
+								readOnly={readOnly}
+							/>
+						)}
 					</SolaceAVPInputForKey>
 
 					<SolaceAVPInputForValue>
-						<SolaceTextField
-							name="value"
-							dataQa={`avpValue-${index}`}
-							dataTags={dataTags}
-							value={avpValue}
-							onChange={(e) => onChange(e, index)}
-							onKeyUp={onKeyUp}
-							onBlur={(e) => onBlur(e, index)}
-							hasErrors={ghostItem ? false : !!valueErrorText}
-							helperText={ghostItem ? "" : valueErrorText}
-							readOnly={readOnly}
-						/>
+						{avpKey && !avpValue && readOnly && (
+							<ValueWrapper data-qa={`avpValue-${index}`}>{emptyFieldDisplayValue}</ValueWrapper>
+						)}
+						{(avpValue || (!avpValue && !readOnly)) && (
+							<SolaceTextField
+								name="value"
+								dataQa={`avpValue-${index}`}
+								dataTags={dataTags}
+								value={avpValue}
+								onChange={(e) => onChange(e, index)}
+								onKeyUp={onKeyUp}
+								onBlur={(e) => onBlur(e, index)}
+								hasErrors={ghostItem ? false : !!valueErrorText}
+								helperText={ghostItem ? "" : valueErrorText}
+								readOnly={readOnly}
+							/>
+						)}
 					</SolaceAVPInputForValue>
 
 					<SolaceAVPDeleteButton

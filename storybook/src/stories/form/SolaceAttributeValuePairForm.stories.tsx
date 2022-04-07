@@ -44,7 +44,22 @@ const SAMPLE_AVP_LIST = [
 	{ key: "Jan", value: "January" },
 	{ key: "Feb", value: "February" },
 	{ key: "Mar", value: "March" },
+	{ key: "Apr", value: "    April" },
+	{ key: "May", value: "  May Again  " }
+];
+
+const SAMPLE_AVP_LIST_READ_ONLY = [
+	{ key: "Jan", value: "January" },
+	{ key: "Feb", value: "February" },
+	{ key: "Mar", value: "March" },
 	{ key: "Apr", value: "April" }
+];
+
+const SAMPLE_AVP_LIST_MISSING_VALUES = [
+	{ key: "Jan", value: "January" },
+	{ key: "Feb", value: "" },
+	{ key: "Mar", value: "March" },
+	{ key: "Apr", value: undefined }
 ];
 
 const AVP_KEY = "avpKey";
@@ -100,7 +115,7 @@ export const WithInitialData = () => {
 };
 
 export const ReadOnly = () => {
-	const data = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
+	const data = SAMPLE_AVP_LIST_READ_ONLY.map((item) => ({ ...item }));
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
@@ -109,6 +124,22 @@ export const ReadOnly = () => {
 				labelForKeys="Keys"
 				labelForValues="Values"
 				avpList={data}
+			/>
+		</div>
+	);
+};
+
+export const ReadOnlyWithEmptyFieldDisplayValue = () => {
+	const data = SAMPLE_AVP_LIST_MISSING_VALUES.map((item) => ({ ...item }));
+	return (
+		<div>
+			<SolaceAttributeValuePairForm
+				name="avpForm"
+				readOnly={true}
+				labelForKeys="Keys"
+				labelForValues="Values"
+				avpList={data}
+				emptyFieldDisplayValue="-"
 			/>
 		</div>
 	);
@@ -182,7 +213,17 @@ UpdateData.play = async ({ canvasElement }) => {
 		delay: 100
 	});
 
+	// input fifth AVP data
 	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-4`));
+	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-4`), SAMPLE_AVP_LIST[4].key, {
+		delay: 100
+	});
+	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-4`));
+	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-4`), SAMPLE_AVP_LIST[4].value, {
+		delay: 100
+	});
+
+	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-5`));
 };
 
 export const MissingMandatoryKeyValidation = () => {
