@@ -3,6 +3,7 @@ import { styled } from "@mui/material";
 import SolaceButton from "./form/SolaceButton";
 import { ErrorIcon } from "../resources/icons/ErrorIcon";
 import { InfoIcon } from "../resources/icons/InfoIcon";
+import { SuccessIcon } from "../resources/icons/SuccessIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 import { BASE_COLORS } from "../resources/colorPallette";
 import { WarnIcon } from "../resources/icons/WarnIcon";
@@ -38,9 +39,9 @@ interface SolaceInfoBoxProps extends SolaceComponentProps {
 	 */
 	onClose?: () => void;
 	/**
-	 * Variants, currently supports error, info and warn, default to info, can be expanded as needed
+	 * Variants, currently supports error, info, warn and success, default to info, can be expanded as needed
 	 */
-	variant: "info" | "error" | "warn";
+	variant: "info" | "error" | "warn" | "success";
 	/**
 	 * message text color
 	 */
@@ -55,10 +56,11 @@ interface SolaceInfoBoxProps extends SolaceComponentProps {
 	details?: string | JSX.Element;
 }
 
-function renderIcons(variant: "info" | "error" | "warn"): JSX.Element {
+function renderIcons(variant: "info" | "error" | "warn" | "success"): JSX.Element {
 	if (variant === "info") return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
 	else if (variant === "error") return <ErrorIcon size={20} fill={BASE_COLORS.reds.red1} />;
 	else if (variant === "warn") return <WarnIcon size={20} fill={BASE_COLORS.yellows.yellow1} />;
+	else if (variant === "success") return <SuccessIcon size={20} fill={BASE_COLORS.greens.green7} />;
 	return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
 }
 

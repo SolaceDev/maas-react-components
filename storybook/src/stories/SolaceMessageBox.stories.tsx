@@ -47,7 +47,7 @@ export default {
 			}
 		},
 		variant: {
-			options: ["info", "error", "warn"],
+			options: ["info", "error", "warn", "success"],
 			control: {
 				type: "select"
 			},
@@ -91,6 +91,12 @@ export const WarnBox = Template.bind({});
 WarnBox.args = {
 	message: "this is a warn message",
 	variant: "warn"
+};
+
+export const SuccessBox = Template.bind({});
+SuccessBox.args = {
+	message: "this is a success message",
+	variant: "success"
 };
 
 export const MessageWithIcon = Template.bind({});

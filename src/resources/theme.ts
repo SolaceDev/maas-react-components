@@ -1121,6 +1121,10 @@ const themeConfig: ThemeOptions = {
 				"&.warn": {
 					backgroundColor: BASE_COLORS.yellows.yellow2,
 					borderLeft: `3px solid ${BASE_COLORS.yellows.yellow1}`
+				},
+				"&.success": {
+					backgroundColor: BASE_COLORS.greens.green12,
+					borderLeft: `3px solid ${BASE_COLORS.greens.green7}`
 				}
 			},
 			messageContainer: {
