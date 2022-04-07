@@ -36,6 +36,7 @@
 		"babel-loader": "^8.2.2",
 		"chromatic": "^6.1.0",
 		"storybook-addon-designs": "^6.2.1",
-		"storybook-addon-mock": "^2.1.0"
+		"storybook-addon-mock": "^2.1.0",
+		"storybook-addon-themes": "^6.1.0"
 	}
 }

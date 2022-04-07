@@ -1,1303 +1,1309 @@
-import { ThemeOptions } from "@mui/material";
-import { SupportedThemes } from "../types";
-// import getThemeMappings from "../theming/themeUtils";
-import { BASE_COLORS, getRGBA } from "./colorPallette";
+import { alpha, hexToRgb, ThemeOptions } from "@mui/material";
+import { SupportedThemes, ThemeMapping } from "../types";
+import getThemeMappings from "../theming/themeUtils";
+import { BASE_COLORS } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
 
 // https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getTheme = (_themeName: SupportedThemes) => {
-	// const themeMappings = getThemeMappings(themeName);
-	// console.log(themeMappings);
-	return themeConfig;
-};
+const getThemeOptions = (_themeName: SupportedThemes) => {
+	const themeMapping = getThemeMappings(_themeName);
 
-// A custom theme for this app
-const themeConfig: ThemeOptions = {
-	breakpoints: {
-		values: {
-			// desktop
-			lg: 1200,
+	// A custom theme option for this app
+	const themeOptions: ThemeOptions = {
+		breakpoints: {
+			values: {
+				// desktop
+				lg: 1200,
 
-			// small laptop
-			md: 900,
+				// small laptop
+				md: 900,
 
-			// default dialog
-			dialogMd: 800,
+				// default dialog
+				dialogMd: 800,
 
-			// tablets
-			sm: 600,
+				// tablets
+				sm: 600,
 
-			// large screens
-			xl: 1536,
+				// large screens
+				xl: 1536,
 
-			//mobile
-			xs: 0
-		}
-	},
-	components: {
-		MuiAppBar: {
-			styleOverrides: {
-				colorPrimary: {
-					backgroundColor: "#474747"
-				}
+				//mobile
+				xs: 0
 			}
 		},
-		MuiButton: {
-			defaultProps: {
-				disableRipple: true,
-				disableElevation: true
+		components: {
+			MuiAppBar: {
+				styleOverrides: {
+					colorPrimary: {
+						backgroundColor: BASE_COLORS.greys.grey21
+					}
+				}
 			},
-			styleOverrides: {
-				containedPrimary: {
-					color: BASE_COLORS.whites.white1,
-					"&:hover": {
-						// example: Theme usage will change this to backgroundColor: themeMappings.hoverBG
-						backgroundColor: BASE_COLORS.greens.green5
-					},
-					"&:disabled": {
-						color: BASE_COLORS.whites.white1,
-						backgroundColor: BASE_COLORS.greys.grey3
-					},
-					"&:active": {
-						backgroundColor: BASE_COLORS.greens.green6
-					}
+			MuiButton: {
+				defaultProps: {
+					disableRipple: true,
+					disableElevation: true
 				},
-				outlinedPrimary: {
-					borderWidth: "1px",
-					borderStyle: "solid",
-					"&:disabled": {
-						color: BASE_COLORS.greys.grey3,
-						borderColor: BASE_COLORS.greys.grey3
+				styleOverrides: {
+					containedPrimary: {
+						color: themeMapping.palette.text.primary.contrast,
+						"&:hover": {
+							backgroundColor: themeMapping.palette.action.variation1.hover
+						},
+						"&:disabled": {
+							backgroundColor: themeMapping.palette.action.disabled,
+							color: themeMapping.palette.text.primary.contrast
+						},
+						"&:active": {
+							backgroundColor: themeMapping.palette.action.variation1.active
+						}
 					},
-					"&:hover": {
-						backgroundColor: BASE_COLORS.greys.grey18
+					outlinedPrimary: {
+						borderWidth: "1px",
+						borderStyle: "solid",
+						"&:disabled": {
+							borderColor: themeMapping.palette.action.disabled,
+							color: themeMapping.palette.action.disabled
+						},
+						"&:hover": {
+							backgroundColor: themeMapping.palette.action.variation2.hover
+						},
+						"&:active": {
+							backgroundColor: themeMapping.palette.action.variation2.active
+						}
 					},
-					"&:active": {
-						backgroundColor: BASE_COLORS.greys.grey19
-					}
-				},
-				root: {
-					textTransform: "none",
-					borderRadius: "4px",
-					minWidth: "100px",
-					height: "32px"
-				},
-				startIcon: {
-					width: "24px",
-					height: "24px",
-					marginLeft: "-12px",
-					">*:nth-of-type(1)": {
-						fontSize: "24px"
-					}
-				},
-				endIcon: {
-					width: "24px",
-					height: "24px",
-					marginRight: "-12px",
-					">*:nth-of-type(1)": {
-						fontSize: "24px"
-					}
-				},
-				textPrimary: {
-					borderRadius: "4px",
-					"&:disabled": {
-						color: BASE_COLORS.greys.grey3
+					root: {
+						textTransform: "none",
+						borderRadius: "4px",
+						minWidth: "100px",
+						height: "32px"
 					},
-					"&:hover": {
-						backgroundColor: BASE_COLORS.greys.grey1
+					startIcon: {
+						width: "24px",
+						height: "24px",
+						marginLeft: "-12px",
+						">*:nth-of-type(1)": {
+							fontSize: "24px"
+						}
 					},
-					"&:active": {
-						backgroundColor: BASE_COLORS.greys.grey19
+					endIcon: {
+						width: "24px",
+						height: "24px",
+						marginRight: "-12px",
+						">*:nth-of-type(1)": {
+							fontSize: "24px"
+						}
+					},
+					textPrimary: {
+						borderRadius: "4px",
+						"&:disabled": {
+							color: themeMapping.palette.action.disabled
+						},
+						"&:hover": {
+							backgroundColor: themeMapping.palette.action.variation3.hover
+						},
+						"&:active": {
+							backgroundColor: themeMapping.palette.action.variation3.active
+						}
 					}
 				}
-			}
-		},
-		MuiFormControl: {
-			styleOverrides: {
-				root: {
-					margin: "0px",
-					// re-position the Solace Dropdown icon inside Select input element
-					".MuiOutlinedInput-root.MuiSelect-root": {
-						".MuiSvgIcon-root": {
-							position: "absolute",
-							top: "12px",
-							right: "0",
-							// eslint-disable-next-line sonarjs/no-duplicate-string
-							display: "inline-block",
-							pointerEvents: "none",
-							color: BASE_COLORS.greys.grey8 // dropdown icon color in resting/focused/error states
-						},
-						"&.Mui-disabled": {
+			},
+			MuiFormControl: {
+				styleOverrides: {
+					root: {
+						margin: "0px",
+						// re-position the Solace Dropdown icon inside Select input element
+						".MuiOutlinedInput-root.MuiSelect-root": {
 							".MuiSvgIcon-root": {
-								color: BASE_COLORS.greys.grey3 // dropdown icon color in disabled state
-							}
-						},
-						"&.readOnlySelect": {
+								position: "absolute",
+								top: "12px",
+								right: "0",
+								// eslint-disable-next-line sonarjs/no-duplicate-string
+								display: "inline-block",
+								pointerEvents: "none",
+								color: BASE_COLORS.greys.grey8 // dropdown icon color in resting/focused/error states
+							},
+							"&.Mui-disabled": {
+								".MuiSvgIcon-root": {
+									color: BASE_COLORS.greys.grey3 // dropdown icon color in disabled state
+								}
+							},
+							"&.readOnlySelect": {
+								".MuiSelect-select": {
+									// reset svg inside selected area which is sibling to the svg icon for dropdown caret
+									".MuiSvgIcon-root": {
+										display: "inline-block"
+									}
+								}
+							},
 							".MuiSelect-select": {
 								// reset svg inside selected area which is sibling to the svg icon for dropdown caret
 								".MuiSvgIcon-root": {
-									display: "inline-block"
+									position: "relative",
+									top: "0"
 								}
 							}
 						},
-						".MuiSelect-select": {
-							// reset svg inside selected area which is sibling to the svg icon for dropdown caret
-							".MuiSvgIcon-root": {
-								position: "relative",
-								top: "0"
+						".MuiOutlinedInput-root": {
+							"&.readOnlySelect": {
+								backgroundColor: "transparent" // set background transparent in readonly state
 							}
 						}
-					},
-					".MuiOutlinedInput-root": {
-						"&.readOnlySelect": {
-							backgroundColor: "transparent" // set background transparent in readonly state
+					}
+				}
+			},
+			MuiFormGroup: {
+				styleOverrides: {
+					root: {
+						".MuiBox-root:not(:last-child) .MuiRadio-root": {
+							marginBottom: "12px"
 						}
 					}
 				}
-			}
-		},
-		MuiFormGroup: {
-			styleOverrides: {
-				root: {
-					".MuiBox-root:not(:last-child) .MuiRadio-root": {
-						marginBottom: "12px"
-					}
-				}
-			}
-		},
-		MuiFormHelperText: {
-			styleOverrides: {
-				root: {
-					fontSize: "0.75rem",
-					color: BASE_COLORS.greys.grey11,
-					lineHeight: 1.5,
-					marginLeft: "0px",
-					marginTop: "2px",
-					".MuiSvgIcon-root": {
-						width: "18px",
-						height: "18px"
-					}
-				}
-			}
-		},
-		MuiIconButton: {
-			defaultProps: { disableRipple: true },
-			styleOverrides: {
-				root: {
-					padding: "4px",
-					borderRadius: "5px",
-					"&:disabled": {
-						color: BASE_COLORS.greys.grey3
-					},
-					"&:hover": {
-						backgroundColor: BASE_COLORS.greys.grey2,
-						color: BASE_COLORS.greys.grey14
-					},
-					"&:active": {
-						backgroundColor: BASE_COLORS.greys.grey1
-					},
-					".MuiSvgIcon-root": {
-						fill: BASE_COLORS.greys.grey8
-					}
-				}
-			}
-		},
-		MuiInputLabel: {
-			styleOverrides: {
-				asterisk: {
-					color: BASE_COLORS.greens.green2
-				},
-				root: {
-					color: BASE_COLORS.greys.grey14,
-					fontSize: "0.875rem",
-					fontWeight: 400,
-					lineHeight: 1.5,
-					"&.Mui-error": {
-						color: BASE_COLORS.greys.grey11
-					},
-					"&.Mui-disabled": {
-						color: BASE_COLORS.greys.grey8
-					}
-				}
-			}
-		},
-		MuiFormLabel: {
-			styleOverrides: {
-				asterisk: {
-					color: BASE_COLORS.greens.green2
-				},
-				root: {
-					color: BASE_COLORS.greys.grey14,
-					fontSize: "14px",
-					fontWeight: 400,
-					lineHeight: 1.5,
-					"&.Mui-error": {
-						color: BASE_COLORS.greys.grey11
-					},
-					"&.light-sub-text": {
-						color: BASE_COLORS.greys.grey9
-					},
-					"&.Mui-disabled": {
-						color: BASE_COLORS.greys.grey9,
-						"&.check-box-label": {
-							color: BASE_COLORS.greys.grey5
-						},
-						"&.radio-btn-label": {
-							color: BASE_COLORS.greys.grey5
+			},
+			MuiFormHelperText: {
+				styleOverrides: {
+					root: {
+						fontSize: "0.75rem",
+						color: BASE_COLORS.greys.grey11,
+						lineHeight: 1.5,
+						marginLeft: "0px",
+						marginTop: "2px",
+						".MuiSvgIcon-root": {
+							width: "18px",
+							height: "18px"
 						}
-					},
-					"&.bold-label": {
-						fontWeight: 500
-					},
-					"&.read-only": {
-						color: BASE_COLORS.greys.grey9
 					}
 				}
-			}
-		},
-		MuiLink: {
-			styleOverrides: {
-				root: {
-					lineHeight: 1.5,
-					fontSize: "14px",
-					"&[disabled]": {
-						color: BASE_COLORS.greys.grey3
-					},
-					".SolaceOpenExternalIcon": {
-						width: "16px",
-						height: "16px",
-						fill: "#00ad93",
-						marginBottom: "2px"
-					}
-				}
-			}
-		},
-		MuiInputBase: {
-			styleOverrides: {
-				multiline: {
-					// TextArea Component
-					display: "inline-block",
-					"&.MuiOutlinedInput-root": {
-						padding: "0px",
-						display: "inline-table", // this ensures helper text is below textarea
-						backgroundColor: "transparent", // set background transparent on TextArea input container
-						".MuiOutlinedInput-notchedOutline": {
-							border: "none"
-						},
-						"&.inline-label": {
-							".MuiOutlinedInput-input:read-only": {
-								padding: "1px" // top align with label in ready-only & inline state
-							}
-						}
-					},
-					".MuiOutlinedInput-input": {
-						border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-						borderRadius: "4px",
-						padding: "8px",
-						boxSizing: "border-box"
-					},
-					"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
-						{
-							border: "none",
-							padding: "7px 0 0 0",
-							cursor: "default",
-							backgroundColor: "transparent" // set background transparent on TextArea input container in readonly state
-						},
-					"&:hover": {
-						".MuiOutlinedInput-input": {
-							border: `solid 1px ${BASE_COLORS.greys.grey5}`
-						},
-						"&.MuiOutlinedInput-root": {
-							".MuiOutlinedInput-notchedOutline": {
-								border: "none"
-							}
-						}
-					},
-					"&.Mui-focused": {
-						".MuiOutlinedInput-input": {
-							border: `solid 1px ${BASE_COLORS.greens.green1}`
-						},
-						"&.MuiOutlinedInput-root": {
-							".MuiOutlinedInput-notchedOutline": {
-								border: "none"
-							}
-						}
-					},
-					".Mui-disabled.MuiOutlinedInput-input, &:hover .Mui-disabled.MuiOutlinedInput-input": {
-						backgroundColor: BASE_COLORS.greys.grey19,
-						padding: "8px",
-						border: `solid 1px ${BASE_COLORS.greys.grey2}`
-					},
-					"&.Mui-disabled .MuiOutlinedInput-input:read-only.Mui-disabled + .MuiOutlinedInput-notchedOutline": {
-						border: "none"
-					},
-					".MuiInputBase-inputMultiline": {
-						backgroundColor: BASE_COLORS.whites.white1
-					}
-				}
-			}
-		},
-		MuiTextField: {
-			// Textfield component
-			styleOverrides: {
-				root: {
-					".MuiOutlinedInput-root": {
-						backgroundColor: BASE_COLORS.whites.white1,
-						".MuiOutlinedInput-notchedOutline": {
-							border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-							backgroundColor: BASE_COLORS.greys.grey0
+			},
+			MuiIconButton: {
+				defaultProps: { disableRipple: true },
+				styleOverrides: {
+					root: {
+						padding: "4px",
+						borderRadius: "5px",
+						"&:disabled": {
+							color: themeMapping.palette.action.disabled
 						},
 						"&:hover": {
-							".MuiOutlinedInput-notchedOutline": {
-								border: `solid 1px ${BASE_COLORS.greys.grey5}`,
-								backgroundColor: BASE_COLORS.greys.grey0
+							backgroundColor: themeMapping.palette.action.variation4.hover,
+							color: themeMapping.palette.action.variation4.default
+						},
+						"&:active": {
+							backgroundColor: themeMapping.palette.action.variation4.active
+						},
+						".MuiSvgIcon-root": {
+							fill: BASE_COLORS.greys.grey8
+						}
+					}
+				}
+			},
+			MuiInputLabel: {
+				styleOverrides: {
+					asterisk: {
+						color: BASE_COLORS.greens.green2
+					},
+					root: {
+						color: BASE_COLORS.greys.grey14,
+						fontSize: "0.875rem",
+						fontWeight: 400,
+						lineHeight: 1.5,
+						"&.Mui-error": {
+							color: BASE_COLORS.greys.grey11
+						},
+						"&.Mui-disabled": {
+							color: BASE_COLORS.greys.grey8
+						}
+					}
+				}
+			},
+			MuiFormLabel: {
+				styleOverrides: {
+					asterisk: {
+						color: themeMapping.palette.brand.brand3
+					},
+					root: {
+						color: BASE_COLORS.greys.grey14,
+						fontSize: "14px",
+						fontWeight: 400,
+						lineHeight: 1.5,
+						"&.Mui-error": {
+							color: BASE_COLORS.greys.grey11
+						},
+						"&.light-sub-text": {
+							color: BASE_COLORS.greys.grey9
+						},
+						"&.Mui-disabled": {
+							color: BASE_COLORS.greys.grey9,
+							"&.check-box-label": {
+								color: BASE_COLORS.greys.grey5
+							},
+							"&.radio-btn-label": {
+								color: BASE_COLORS.greys.grey5
 							}
 						},
-						"&:hover .MuiOutlinedInput-input:read-only": {
-							".MuiOutlinedInput-notchedOutline": {
-								border: "none"
-							}
+						"&.bold-label": {
+							fontWeight: 500
 						},
-						"&.readOnlySelect, .MuiOutlinedInput-root.readOnlySelect.Mui-focused": {
+						"&.read-only": {
+							color: BASE_COLORS.greys.grey9
+						}
+					}
+				}
+			},
+			MuiLink: {
+				styleOverrides: {
+					root: {
+						lineHeight: 1.5,
+						fontSize: "14px",
+						"&[disabled]": {
+							color: themeMapping.palette.action.disabled
+						},
+						".SolaceOpenExternalIcon": {
+							width: "16px",
+							height: "16px",
+							fill: themeMapping.palette.action.variation3.default,
+							marginBottom: "2px"
+						}
+					}
+				}
+			},
+			MuiInputBase: {
+				styleOverrides: {
+					multiline: {
+						// TextArea Component
+						display: "inline-block",
+						"&.MuiOutlinedInput-root": {
+							padding: "0px",
+							display: "inline-table", // this ensures helper text is below textarea
+							backgroundColor: "transparent", // set background transparent on TextArea input container
 							".MuiOutlinedInput-notchedOutline": {
 								border: "none"
 							},
-							".MuiSvgIcon-root": {
-								display: "none"
-							},
-							".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
+							"&.inline-label": {
+								".MuiOutlinedInput-input:read-only": {
+									padding: "1px" // top align with label in ready-only & inline state
+								}
+							}
+						},
+						".MuiOutlinedInput-input": {
+							border: `solid 1px ${BASE_COLORS.greys.grey3}`,
+							borderRadius: "4px",
+							padding: "8px",
+							boxSizing: "border-box"
+						},
+						"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
+							{
+								border: "none",
+								padding: "7px 0 0 0",
 								cursor: "default",
-								padding: "0px"
+								backgroundColor: "transparent" // set background transparent on TextArea input container in readonly state
+							},
+						"&:hover": {
+							".MuiOutlinedInput-input": {
+								border: `solid 1px ${BASE_COLORS.greys.grey5}`
+							},
+							"&.MuiOutlinedInput-root": {
+								".MuiOutlinedInput-notchedOutline": {
+									border: "none"
+								}
 							}
 						},
 						"&.Mui-focused": {
-							".MuiOutlinedInput-notchedOutline": {
-								border: `solid 1px ${BASE_COLORS.greens.green1}`
+							".MuiOutlinedInput-input": {
+								border: `solid 1px ${themeMapping.palette.brand.active2}`
+							},
+							"&.MuiOutlinedInput-root": {
+								".MuiOutlinedInput-notchedOutline": {
+									border: "none"
+								}
 							}
 						},
-						"&.Mui-error": {
-							".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
-								borderColor: `${BASE_COLORS.reds.red1}`
-							}
-						},
-						"&.Mui-disabled": {
+						".Mui-disabled.MuiOutlinedInput-input, &:hover .Mui-disabled.MuiOutlinedInput-input": {
 							backgroundColor: BASE_COLORS.greys.grey19,
-							".MuiOutlinedInput-notchedOutline": {
-								border: `solid 1px ${BASE_COLORS.greys.grey2}`
-							},
-							".MuiOutlinedInput-input:read-only + .MuiOutlinedInput-notchedOutline": {
-								border: `solid 1px ${BASE_COLORS.greys.grey2}`
-							},
-							input: {
-								WebkitTextFillColor: BASE_COLORS.greys.grey5,
-								color: BASE_COLORS.greys.grey5,
-								padding: "8px"
-							}
-						}
-					},
-					".MuiOutlinedInput-input": {
-						fontSize: BASE_FONT_PX_SIZES.sm,
-						color: BASE_COLORS.greys.grey14,
-						padding: "0px 8px",
-						height: "34px",
-						"&:read-only": {
-							padding: "0px"
+							padding: "8px",
+							border: `solid 1px ${BASE_COLORS.greys.grey2}`
 						},
-						"&:read-only + .MuiOutlinedInput-notchedOutline": {
+						"&.Mui-disabled .MuiOutlinedInput-input:read-only.Mui-disabled + .MuiOutlinedInput-notchedOutline": {
 							border: "none"
+						},
+						".MuiInputBase-inputMultiline": {
+							backgroundColor: BASE_COLORS.whites.white1
 						}
 					}
 				}
-			}
-		},
-		MuiCheckbox: {
-			styleOverrides: {
-				root: {
-					"&:hover": {
-						".MuiSvgIcon-root rect": {
-							strokeOpacity: "0.35"
-						}
-					},
-					".MuiSvgIcon-root path": {
-						fill: BASE_COLORS.greens.green1
-					},
-					"&.Mui-disabled .MuiSvgIcon-root path": {
-						fillOpacity: "0.35",
-						fill: "white"
-					},
-					".MuiSvgIcon-root line": {
-						stroke: BASE_COLORS.greens.green1
-					},
-					"&.Mui-disabled .MuiSvgIcon-root": {
-						rect: {
-							fillOpacity: 0.35,
-							fill: "white",
-							stroke: BASE_COLORS.greys.grey2,
-							strokeOpacity: 1
-						},
-						path: {
-							fillOpacity: 0.35
-						}
-					},
-					"+.MuiFormLabel-root": {
-						marginLeft: "16px",
-						color: BASE_COLORS.greys.grey14,
-						"&.Mui-disabled": {
-							color: BASE_COLORS.greys.grey5
-						}
-					},
-					"&.readOnly .MuiSvgIcon-root": {
-						".SolaceCheckboxContainer": {
-							fill: BASE_COLORS.greys.grey19,
-							stroke: BASE_COLORS.greys.grey3,
-							strokeOpacity: 1
-						},
-						".SolaceCheckboxCheckmark": {
-							fill: BASE_COLORS.greys.grey5,
-							fillOpacity: 1
-						}
-					},
-					padding: "0px"
-				}
-			}
-		},
-		MuiRadio: {
-			styleOverrides: {
-				root: {
-					/* eslint-disable sonarjs/no-duplicate-string */
-					alignItems: "flex-start",
-					marginRight: "16px",
-					".MuiFormHelperText-root": {
-						marginLeft: "0px"
-					},
-					".MuiSvgIcon-root .SolaceRadioContainer": {
-						strokeOpacity: "0.2",
-						stroke: "black",
-						fill: "white"
-					},
-					"&:hover": {
-						".MuiSvgIcon-root .SolaceRadioContainer": {
-							strokeOpacity: "0.35"
-						}
-					},
-					"&.Mui-checked": {
-						".SolaceRadioSelection": {
-							fill: BASE_COLORS.greens.green1
-						}
-					},
-					"&.Mui-disabled .MuiSvgIcon-root": {
-						".SolaceRadioContainer": {
-							stroke: BASE_COLORS.greys.grey2,
-							strokeOpacity: 1
-						},
-						".SolaceRadioSelection": {
-							opacity: 0.35
-						}
-					},
-					"&.readOnly .MuiSvgIcon-root": {
-						".SolaceRadioContainer": {
-							fill: BASE_COLORS.greys.grey19,
-							stroke: BASE_COLORS.greys.grey3,
-							opacity: 1
-						},
-						".SolaceRadioSelection": {
-							fill: BASE_COLORS.greys.grey5,
-							opacity: 1
-						}
-					},
-					padding: "0px"
-				}
-			}
-		},
-		MuiSelect: {
-			// Select component
-			styleOverrides: {
-				select: {
-					"&.MuiOutlinedInput-input": {
-						padding: "7px 34px 5px 8px",
-						width: "100%"
-					}
-				},
-				iconOpen: {
-					// remove dropdown icon flip animation when Select menu opens/closes
-					transform: "none"
-				}
-			}
-		},
-		MuiMenu: {
-			styleOverrides: {
-				root: {
-					"&.SolaceMenu": {
-						".MuiPaper-root": {
-							margin: "4px",
-							".MuiMenuItem-root": {
-								minWidth: "80px",
-								maxWidth: "320px",
-								"&.wideMenu": {
-									minWidth: "320px"
-								}
-							}
-						}
-					},
-					".MuiPaper-root": {
-						overflowY: "auto",
-						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
-
-						".MuiMenuItem-root": {
-							display: "flex",
-							padding: "0px 16px 0px 16px",
-							fontSize: "14px",
-							minHeight: "38px",
-							alignItems: "center",
-							whiteSpace: "normal",
-
+			},
+			MuiTextField: {
+				// Textfield component
+				styleOverrides: {
+					root: {
+						".MuiOutlinedInput-root": {
+							backgroundColor: BASE_COLORS.whites.white1,
+							".MuiOutlinedInput-notchedOutline": {
+								border: `solid 1px ${BASE_COLORS.greys.grey3}`,
+								backgroundColor: BASE_COLORS.greys.grey0
+							},
 							"&:hover": {
-								backgroundColor: BASE_COLORS.greys.grey2
+								".MuiOutlinedInput-notchedOutline": {
+									border: `solid 1px ${BASE_COLORS.greys.grey5}`,
+									backgroundColor: BASE_COLORS.greys.grey0
+								}
 							},
-							"&.multiline": {
-								paddingTop: "8px",
-								paddingBottom: "8px"
+							"&:hover .MuiOutlinedInput-input:read-only": {
+								".MuiOutlinedInput-notchedOutline": {
+									border: "none"
+								}
 							},
-
-							"&.Mui-selected": {
-								backgroundColor: BASE_COLORS.greens.green9
-							},
-							".MuiListItemIcon-root": {
-								width: "48px",
+							"&.readOnlySelect, .MuiOutlinedInput-root.readOnlySelect.Mui-focused": {
+								".MuiOutlinedInput-notchedOutline": {
+									border: "none"
+								},
 								".MuiSvgIcon-root": {
-									width: "24px",
-									height: "24px"
+									display: "none"
+								},
+								".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
+									cursor: "default",
+									padding: "0px"
+								}
+							},
+							"&.Mui-focused": {
+								".MuiOutlinedInput-notchedOutline": {
+									border: `solid 1px ${themeMapping.palette.brand.active2}`
+								}
+							},
+							"&.Mui-error": {
+								".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
+									borderColor: `${BASE_COLORS.reds.red1}`
+								}
+							},
+							"&.Mui-disabled": {
+								backgroundColor: BASE_COLORS.greys.grey19,
+								".MuiOutlinedInput-notchedOutline": {
+									border: `solid 1px ${BASE_COLORS.greys.grey2}`
+								},
+								".MuiOutlinedInput-input:read-only + .MuiOutlinedInput-notchedOutline": {
+									border: `solid 1px ${BASE_COLORS.greys.grey2}`
+								},
+								input: {
+									WebkitTextFillColor: BASE_COLORS.greys.grey5,
+									color: BASE_COLORS.greys.grey5,
+									padding: "8px"
 								}
 							}
 						},
-
-						".MuiList-root.MuiMenu-list": {
-							".MuiMenuItem-root.MuiButtonBase-root": {
-								// remove all ripple effect from MenuList Items
-								// currently applied to SolaceSelect component
-								"*,*::before,*::after": {
-									transition: noneImportant,
-									animation: noneImportant
-								}
+						".MuiOutlinedInput-input": {
+							fontSize: BASE_FONT_PX_SIZES.sm,
+							color: BASE_COLORS.greys.grey14,
+							padding: "0px 8px",
+							height: "34px",
+							"&:read-only": {
+								padding: "0px"
 							},
-							".MuiGrid-root.MuiGrid-container": {
+							"&:read-only + .MuiOutlinedInput-notchedOutline": {
+								border: "none"
+							}
+						}
+					}
+				}
+			},
+			MuiCheckbox: {
+				styleOverrides: {
+					root: {
+						"&:hover": {
+							".MuiSvgIcon-root rect": {
+								strokeOpacity: "0.35"
+							}
+						},
+						".MuiSvgIcon-root path": {
+							fill: themeMapping.palette.brand.active2
+						},
+						"&.Mui-disabled .MuiSvgIcon-root path": {
+							fillOpacity: "0.35",
+							fill: "white"
+						},
+						".MuiSvgIcon-root line": {
+							stroke: themeMapping.palette.brand.active2
+						},
+						"&.Mui-disabled .MuiSvgIcon-root": {
+							rect: {
+								fillOpacity: 0.35,
+								fill: "white",
+								stroke: BASE_COLORS.greys.grey2,
+								strokeOpacity: 1
+							},
+							path: {
+								fillOpacity: 0.35
+							}
+						},
+						"+.MuiFormLabel-root": {
+							marginLeft: "16px",
+							color: BASE_COLORS.greys.grey14,
+							"&.Mui-disabled": {
+								color: BASE_COLORS.greys.grey5
+							}
+						},
+						"&.readOnly .MuiSvgIcon-root": {
+							".SolaceCheckboxContainer": {
+								fill: BASE_COLORS.greys.grey19,
+								stroke: BASE_COLORS.greys.grey3,
+								strokeOpacity: 1
+							},
+							".SolaceCheckboxCheckmark": {
+								fill: BASE_COLORS.greys.grey5,
+								fillOpacity: 1
+							}
+						},
+						padding: "0px"
+					}
+				}
+			},
+			MuiRadio: {
+				styleOverrides: {
+					root: {
+						/* eslint-disable sonarjs/no-duplicate-string */
+						alignItems: "flex-start",
+						marginRight: "16px",
+						".MuiFormHelperText-root": {
+							marginLeft: "0px"
+						},
+						".MuiSvgIcon-root .SolaceRadioContainer": {
+							strokeOpacity: "0.2",
+							stroke: "black",
+							fill: "white"
+						},
+						"&:hover": {
+							".MuiSvgIcon-root .SolaceRadioContainer": {
+								strokeOpacity: "0.35"
+							}
+						},
+						"&.Mui-checked": {
+							".SolaceRadioSelection": {
+								fill: themeMapping.palette.brand.active2
+							}
+						},
+						"&.Mui-disabled .MuiSvgIcon-root": {
+							".SolaceRadioContainer": {
+								stroke: BASE_COLORS.greys.grey2,
+								strokeOpacity: 1
+							},
+							".SolaceRadioSelection": {
+								opacity: 0.35
+							}
+						},
+						"&.readOnly .MuiSvgIcon-root": {
+							".SolaceRadioContainer": {
+								fill: BASE_COLORS.greys.grey19,
+								stroke: BASE_COLORS.greys.grey3,
+								opacity: 1
+							},
+							".SolaceRadioSelection": {
+								fill: BASE_COLORS.greys.grey5,
+								opacity: 1
+							}
+						},
+						padding: "0px"
+					}
+				}
+			},
+			MuiSelect: {
+				// Select component
+				styleOverrides: {
+					select: {
+						"&.MuiOutlinedInput-input": {
+							padding: "7px 34px 5px 8px",
+							width: "100%"
+						}
+					},
+					iconOpen: {
+						// remove dropdown icon flip animation when Select menu opens/closes
+						transform: "none"
+					}
+				}
+			},
+			MuiMenu: {
+				styleOverrides: {
+					root: {
+						"&.SolaceMenu": {
+							".MuiPaper-root": {
+								margin: "4px",
+								".MuiMenuItem-root": {
+									minWidth: "80px",
+									maxWidth: "320px",
+									"&.wideMenu": {
+										minWidth: "320px"
+									}
+								}
+							}
+						},
+						".MuiPaper-root": {
+							overflowY: "auto",
+							boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
+
+							".MuiMenuItem-root": {
+								display: "flex",
+								padding: "0px 16px 0px 16px",
+								fontSize: "14px",
+								minHeight: "38px",
+								alignItems: "center",
+								whiteSpace: "normal",
+
+								"&:hover": {
+									backgroundColor: BASE_COLORS.greys.grey2
+								},
 								"&.multiline": {
 									paddingTop: "8px",
 									paddingBottom: "8px"
 								},
-								color: BASE_COLORS.greys.grey14,
-								".subtext": {
-									color: BASE_COLORS.greys.grey9,
-									marginRight: "24px",
-									width: "100%"
+
+								"&.Mui-selected": {
+									backgroundColor: themeMapping.palette.brand.brand4
 								},
-								".supplementalText": {
-									fontSize: BASE_FONT_PX_SIZES.xs,
-									color: BASE_COLORS.greys.grey9,
-									marginLeft: "24px"
+								".MuiListItemIcon-root": {
+									width: "48px",
+									".MuiSvgIcon-root": {
+										width: "24px",
+										height: "24px"
+									}
+								}
+							},
+
+							".MuiList-root.MuiMenu-list": {
+								".MuiMenuItem-root.MuiButtonBase-root": {
+									// remove all ripple effect from MenuList Items
+									// currently applied to SolaceSelect component
+									"*,*::before,*::after": {
+										transition: noneImportant,
+										animation: noneImportant
+									}
 								},
-								"&.Mui-disabled": {
-									color: BASE_COLORS.greys.grey5
+								".MuiGrid-root.MuiGrid-container": {
+									"&.multiline": {
+										paddingTop: "8px",
+										paddingBottom: "8px"
+									},
+									color: BASE_COLORS.greys.grey14,
+									".subtext": {
+										color: BASE_COLORS.greys.grey9,
+										marginRight: "24px",
+										width: "100%"
+									},
+									".supplementalText": {
+										fontSize: BASE_FONT_PX_SIZES.xs,
+										color: BASE_COLORS.greys.grey9,
+										marginLeft: "24px"
+									},
+									"&.Mui-disabled": {
+										color: BASE_COLORS.greys.grey5
+									}
 								}
 							}
 						}
 					}
 				}
-			}
-		},
-		MuiList: {
-			styleOverrides: {
-				root: {
-					".MuiListSubheader-root": {
-						lineHeight: 1.5,
-						color: BASE_COLORS.greys.grey9,
-						fontSize: BASE_FONT_PX_SIZES.sm,
-						fontWeight: 400,
-						height: "32px",
-						display: "flex",
-						alignItems: "center",
-						"&.categoryHeader": {
-							color: BASE_COLORS.greys.grey14,
-							fontSize: BASE_FONT_PX_SIZES.xs,
-							fontWeight: 500
+			},
+			MuiList: {
+				styleOverrides: {
+					root: {
+						".MuiListSubheader-root": {
+							lineHeight: 1.5,
+							color: BASE_COLORS.greys.grey9,
+							fontSize: BASE_FONT_PX_SIZES.sm,
+							fontWeight: 400,
+							height: "32px",
+							display: "flex",
+							alignItems: "center",
+							"&.categoryHeader": {
+								color: BASE_COLORS.greys.grey14,
+								fontSize: BASE_FONT_PX_SIZES.xs,
+								fontWeight: 500
+							}
+						},
+						".MuiListItemText-multiline": {
+							paddingTop: "8px",
+							paddingBottom: "8px",
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center"
+						},
+						".MuiListItemText-secondary": {
+							color: BASE_COLORS.greys.grey9
 						}
-					},
-					".MuiListItemText-multiline": {
-						paddingTop: "8px",
-						paddingBottom: "8px",
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "center"
-					},
-					".MuiListItemText-secondary": {
-						color: BASE_COLORS.greys.grey9
 					}
 				}
-			}
-		},
-		MuiAutocomplete: {
-			styleOverrides: {
-				root: {
-					".MuiOutlinedInput-root .MuiAutocomplete-input": {
-						padding: "0px"
-					},
-					".MuiOutlinedInput-root .MuiAutocomplete-endAdornment": {
-						right: "0px"
-					},
-					".MuiOutlinedInput-root": {
-						padding: "0px 0px 0px 8px",
-						height: "32px"
-					},
-					// allow the container to grow when there are more than one line
-					".MuiOutlinedInput-root.MuiInputBase-root": {
-						height: "auto",
-						flexWrap: "wrap"
-					},
-					".MuiOutlinedInput-root.readOnlySelect": {
-						padding: "0px"
-					},
-					".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
-						padding: "0px"
-					},
-					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
-						background: "transparent"
-					},
-					".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
-						fill: BASE_COLORS.greys.grey14
-					},
-					// styles specifically applied when autocomplete allows multiple lines with chips
-					".MuiButtonBase-root.MuiChip-root": {
-						height: "24px",
-						margin: "3px 6px 3px 0px",
-						borderRadius: "40px",
-						fontSize: "14px",
-						svg: {
-							width: "17px",
-							height: "17px",
-							fill: BASE_COLORS.greys.grey8
-						}
-					}
-				},
-				input: {
-					// allow 'input' element to be inline with chips instead of taking its own line
-					width: 0
-				},
-				popper: {
-					".MuiAutocomplete-listbox .MuiAutocomplete-option": {
-						paddingTop: 0,
-						paddingBottom: 0,
-						minHeight: "38px",
-						".MuiGrid-root.MuiGrid-container": {
-							"&.multiline": {
-								paddingTop: "8px",
-								paddingBottom: "8px"
+			},
+			MuiAutocomplete: {
+				styleOverrides: {
+					root: {
+						".MuiOutlinedInput-root .MuiAutocomplete-input": {
+							padding: "0px"
+						},
+						".MuiOutlinedInput-root .MuiAutocomplete-endAdornment": {
+							right: "0px"
+						},
+						".MuiOutlinedInput-root": {
+							padding: "0px 0px 0px 8px",
+							height: "32px"
+						},
+						// allow the container to grow when there are more than one line
+						".MuiOutlinedInput-root.MuiInputBase-root": {
+							height: "auto",
+							flexWrap: "wrap"
+						},
+						".MuiOutlinedInput-root.readOnlySelect": {
+							padding: "0px"
+						},
+						".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
+							padding: "0px"
+						},
+						".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
+							background: "transparent"
+						},
+						".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
+							fill: BASE_COLORS.greys.grey14
+						},
+						// styles specifically applied when autocomplete allows multiple lines with chips
+						".MuiButtonBase-root.MuiChip-root": {
+							height: "24px",
+							margin: "3px 6px 3px 0px",
+							borderRadius: "40px",
+							fontSize: "14px",
+							svg: {
+								width: "17px",
+								height: "17px",
+								fill: BASE_COLORS.greys.grey8
 							}
 						}
 					},
-					".MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused ": {
+					input: {
+						// allow 'input' element to be inline with chips instead of taking its own line
+						width: 0
+					},
+					popper: {
+						".MuiAutocomplete-listbox .MuiAutocomplete-option": {
+							paddingTop: 0,
+							paddingBottom: 0,
+							minHeight: "38px",
+							".MuiGrid-root.MuiGrid-container": {
+								"&.multiline": {
+									paddingTop: "8px",
+									paddingBottom: "8px"
+								}
+							}
+						},
+						".MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused ": {
+							backgroundColor: BASE_COLORS.greys.grey2
+						},
+						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
+							backgroundColor: alpha(BASE_COLORS.greens.green1, 0.1)
+						},
+						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
+							backgroundColor: alpha(BASE_COLORS.greens.green1, 0.1)
+						},
+						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
+						color: BASE_COLORS.greys.grey14,
+						".subtext": {
+							color: BASE_COLORS.greys.grey9
+						},
+						".suplementalText": {
+							fontSize: BASE_FONT_PX_SIZES.xs,
+							color: BASE_COLORS.greys.grey8
+						}
+					},
+					popupIndicator: {
+						padding: "0px 4px 0px 8px",
+						marginRight: "0px",
+						height: "28px"
+					},
+					popupIndicatorOpen: {
+						transform: "none"
+					}
+				}
+			},
+			MuiSwitch: {
+				styleOverrides: {
+					root: {
+						marginTop: "3px",
+						width: "50px",
+						height: "30px",
+						marginRight: "8px",
+						paddingBottom: "0px",
+						".MuiButtonBase-root": {
+							"&.MuiSwitch-switchBase": {
+								"&.Mui-checked": {
+									transform: "translate(22px)"
+								},
+								"&.Mui-checked + .MuiSwitch-track": {
+									backgroundColor: alpha(BASE_COLORS.greens.green2, 0.35),
+									opacity: 1
+								},
+								"&.Mui-disabled + .MuiSwitch-track": {
+									backgroundColor: BASE_COLORS.greys.grey2,
+									opacity: 1
+								},
+								"&.Mui-disabled .MuiSwitch-thumb": {
+									backgroundColor: BASE_COLORS.greys.grey19,
+									borderColor: BASE_COLORS.greys.grey2
+								},
+								"&:hover": {
+									backgroundColor: alpha(BASE_COLORS.greens.green2, 0.35)
+								}
+							},
+							".MuiSwitch-thumb": {
+								width: "16px",
+								height: "16px",
+								border: `solid 2px ${alpha(BASE_COLORS.greens.green2, 0.35)}`,
+								boxShadow: "none"
+							}
+						},
+						".MuiSwitch-track": {
+							height: "12px",
+							width: "36px",
+							transform: "translateY(1px)",
+							backgroundColor: alpha(BASE_COLORS.greens.green2, 0.35),
+							opacity: 1
+						}
+					},
+					switchBase: {
+						"&.MuiChecked .MuiSwitch-track": {
+							height: "12px",
+							transform: "translateY(1px)",
+							backgroundColor: alpha(BASE_COLORS.greens.green2, 0.35),
+							opacity: 1
+						}
+					}
+				}
+			},
+			MuiDialog: {
+				styleOverrides: {
+					root: {
+						".MuiBackdrop-root": {
+							backgroundColor: BASE_COLORS.greys.grey5
+						},
+						".MuiPaper-root": {
+							minWidth: "400px",
+							maxHeight: "80%",
+							boxShadow: `0px 2px 8px ${BASE_COLORS.greys.grey4}`,
+							padding: "24px",
+							".MuiDialogTitle-root": {
+								fontSize: BASE_FONT_PX_SIZES.xl,
+								color: BASE_COLORS.greys.grey14,
+								padding: "0px 0px 24px 0px"
+							},
+							".MuiDialogContent-root": {
+								fontSize: BASE_FONT_PX_SIZES.sm,
+								lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
+								color: BASE_COLORS.greys.grey14,
+								padding: "0px"
+								// ".MuiBox-root": {
+								// 	display: "grid"
+								// }
+							},
+							".MuiDialogActions-root": {
+								padding: "24px 0px 0px 0px",
+								"& > :not(:nth-of-type(1))": {
+									marginLeft: "8px"
+								}
+							}
+						},
+						/**
+						 * apply an indeterminate linear progress indicator at the bottom of the dialog
+						 */
+						"&.linearProgressIndicator": {
+							".MuiPaper-root": {
+								position: "absolute",
+								overflowX: "hidden"
+							},
+							// the light background of the progress bar
+							".MuiPaper-root::before": {
+								content: '""',
+								position: "absolute",
+								bottom: 0,
+								left: 0,
+								width: "100%",
+								height: "4px",
+								backgroundColor: themeMapping.palette.brand.brand5
+							},
+							// the dark sliding part of the progress bar
+							".MuiPaper-root::after": {
+								content: '""',
+								position: "absolute",
+								bottom: 0,
+								left: 0,
+								width: "100%",
+								height: "4px",
+								background: `linear-gradient(90deg, ${hexToRgb(
+									BASE_COLORS.greens.green1
+								)} 0% 40%, transparent 40% 100%)`,
+								animation: "animation 2s linear infinite"
+							},
+							"@keyframes animation": {
+								"0%": {
+									left: "0%"
+								},
+								"100%": {
+									left: "100%"
+								}
+							}
+						}
+					}
+				}
+			},
+			MuiChip: {
+				styleOverrides: {
+					root: {
+						borderRadius: "40px"
+					},
+					filled: {
 						backgroundColor: BASE_COLORS.greys.grey2
 					},
-					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
-						backgroundColor: getRGBA(BASE_COLORS.greens.green1_rgb, 0.1)
-					},
-					".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
-						backgroundColor: getRGBA(BASE_COLORS.greens.green1_rgb, 0.1)
-					},
-					boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
-					color: BASE_COLORS.greys.grey14,
-					".subtext": {
-						color: BASE_COLORS.greys.grey9
-					},
-					".suplementalText": {
-						fontSize: BASE_FONT_PX_SIZES.xs,
-						color: BASE_COLORS.greys.grey8
-					}
-				},
-				popupIndicator: {
-					padding: "0px 4px 0px 8px",
-					marginRight: "0px",
-					height: "28px"
-				},
-				popupIndicatorOpen: {
-					transform: "none"
-				}
-			}
-		},
-		MuiSwitch: {
-			styleOverrides: {
-				root: {
-					marginTop: "3px",
-					width: "50px",
-					height: "30px",
-					marginRight: "8px",
-					paddingBottom: "0px",
-					".MuiButtonBase-root": {
-						"&.MuiSwitch-switchBase": {
-							"&.Mui-checked": {
-								transform: "translate(22px)"
-							},
-							"&.Mui-checked + .MuiSwitch-track": {
-								backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
-								opacity: 1
-							},
-							"&.Mui-disabled + .MuiSwitch-track": {
-								backgroundColor: BASE_COLORS.greys.grey2,
-								opacity: 1
-							},
-							"&.Mui-disabled .MuiSwitch-thumb": {
-								backgroundColor: BASE_COLORS.greys.grey19,
-								borderColor: BASE_COLORS.greys.grey2
-							},
-							"&:hover": {
-								backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35)
-							}
-						},
-						".MuiSwitch-thumb": {
-							width: "16px",
-							height: "16px",
-							border: `solid 2px ${getRGBA(BASE_COLORS.greens.green2_rgb, 0.35)}`,
-							boxShadow: "none"
-						}
-					},
-					".MuiSwitch-track": {
-						height: "12px",
-						width: "36px",
-						transform: "translateY(1px)",
-						backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
-						opacity: 1
-					}
-				},
-				switchBase: {
-					"&.MuiChecked .MuiSwitch-track": {
-						height: "12px",
-						transform: "translateY(1px)",
-						backgroundColor: getRGBA(BASE_COLORS.greens.green2_rgb, 0.35),
-						opacity: 1
-					}
-				}
-			}
-		},
-		MuiDialog: {
-			styleOverrides: {
-				root: {
-					".MuiBackdrop-root": {
-						backgroundColor: BASE_COLORS.greys.grey5
-					},
-					".MuiPaper-root": {
-						minWidth: "400px",
-						maxHeight: "80%",
-						boxShadow: `0px 2px 8px ${BASE_COLORS.greys.grey4}`,
-						padding: "24px",
-						".MuiDialogTitle-root": {
-							fontSize: BASE_FONT_PX_SIZES.xl,
-							color: BASE_COLORS.greys.grey14,
-							padding: "0px 0px 24px 0px"
-						},
-						".MuiDialogContent-root": {
-							fontSize: BASE_FONT_PX_SIZES.sm,
-							lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
-							color: BASE_COLORS.greys.grey14,
-							padding: "0px"
-							// ".MuiBox-root": {
-							// 	display: "grid"
-							// }
-						},
-						".MuiDialogActions-root": {
-							padding: "24px 0px 0px 0px",
-							"& > :not(:nth-of-type(1))": {
-								marginLeft: "8px"
-							}
-						}
-					},
-					/**
-					 * apply an indeterminate linear progress indicator at the bottom of the dialog
-					 */
-					"&.linearProgressIndicator": {
-						".MuiPaper-root": {
-							position: "absolute",
-							overflowX: "hidden"
-						},
-						// the light background of the progress bar
-						".MuiPaper-root::before": {
-							content: '""',
-							position: "absolute",
-							bottom: 0,
-							left: 0,
-							width: "100%",
-							height: "4px",
-							backgroundColor: BASE_COLORS.greens.green11
-						},
-						// the dark sliding part of the progress bar
-						".MuiPaper-root::after": {
-							content: '""',
-							position: "absolute",
-							bottom: 0,
-							left: 0,
-							width: "100%",
-							height: "4px",
-							background: `linear-gradient(90deg, ${BASE_COLORS.greens.green1_rgb} 0% 40%, transparent 40% 100%)`,
-							animation: "animation 2s linear infinite"
-						},
-						"@keyframes animation": {
-							"0%": {
-								left: "0%"
-							},
-							"100%": {
-								left: "100%"
-							}
+					clickable: {
+						"&:hover": {
+							backgroundColor: BASE_COLORS.greys.grey3
 						}
 					}
 				}
-			}
-		},
-		MuiChip: {
-			styleOverrides: {
-				root: {
-					borderRadius: "40px"
-				},
-				filled: {
-					backgroundColor: BASE_COLORS.greys.grey2
-				},
-				clickable: {
-					"&:hover": {
-						backgroundColor: BASE_COLORS.greys.grey3
-					}
-				}
-			}
-		},
-		MuiTab: {
-			styleOverrides: {
-				root: {
-					textTransform: "none",
-					fontWeight: 400,
-					"&.Mui-selected, :hover": {
-						color: BASE_COLORS.greys.grey14
-					}
-				}
-			}
-		},
-		MuiTabs: {
-			styleOverrides: {
-				root: {
-					a: {
-						color: BASE_COLORS.greys.grey11
-					}
-				}
-			}
-		},
-		MuiPagination: {
-			styleOverrides: {
-				root: {
-					".MuiTouchRipple-root": {
-						display: "none"
-					},
-					".MuiButtonBase-root.MuiPaginationItem-root": {
-						color: BASE_COLORS.greens.green2,
-						fontSize: BASE_FONT_PX_SIZES.md
-					},
-					".MuiButtonBase-root.MuiPaginationItem-root:hover": {
-						background: "none"
-					},
-					".MuiButtonBase-root.MuiPaginationItem-root.Mui-selected": {
-						background: "none",
-						color: BASE_COLORS.greys.grey14
-					}
-				}
-			}
-		},
-		MuiTooltip: {
-			styleOverrides: {
-				popper: {
-					// the gap between the hovered over element and the Popover/Tooltip
-					"&.MuiTooltip-popper": {
-						".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight": {
-							marginLeft: "14px"
-						},
-						".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft": {
-							marginRight: "14px"
-						},
-						".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementTop": {
-							marginBottom: "14px"
-						},
-						".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementBottom": {
-							marginTop: "14px"
-						}
-					}
-				},
-				tooltip: {
-					borderRadius: "4px",
-					maxWidth: "300px",
-					margin: 0,
-					wordWrap: "break-word",
-					fontWeight: 400,
-					padding: "6px 8px",
-					fontSize: BASE_FONT_PX_SIZES.xs,
-					lineHeight: "18px",
-					backgroundColor: BASE_COLORS.greys.grey25,
-					color: BASE_COLORS.whites.white2,
-					boxShadow: "0 2px 2px rgba(0,0,0,0.12)",
-					"&.htmlContent": {
-						padding: "12px 16px",
-						fontSize: BASE_FONT_PX_SIZES.sm,
-						lineHeight: "21px",
-						backgroundColor: BASE_COLORS.whites.white1,
-						color: BASE_COLORS.greys.grey14,
-						boxShadow: "0 2px 5px rgba(0,0,0,0.15)"
-					},
-					"&.mediumWidth": {
-						maxWidth: "500px"
-					},
-					"&.fullWidth": {
-						maxWidth: "100%"
-					},
-					/**
-					 * style for SolacePopover
-					 */
-					"&.SolacePopover": {
-						backgroundColor: BASE_COLORS.whites.white1,
-						color: BASE_COLORS.greys.grey14,
-						fontSize: BASE_FONT_PX_SIZES.sm,
+			},
+			MuiTab: {
+				styleOverrides: {
+					root: {
+						textTransform: "none",
 						fontWeight: 400,
-						padding: "12px 16px", // considering line height
+						"&.Mui-selected, :hover": {
+							color: BASE_COLORS.greys.grey14
+						}
+					}
+				}
+			},
+			MuiTabs: {
+				styleOverrides: {
+					root: {
+						a: {
+							color: BASE_COLORS.greys.grey11
+						}
+					}
+				}
+			},
+			MuiPagination: {
+				styleOverrides: {
+					root: {
+						".MuiTouchRipple-root": {
+							display: "none"
+						},
+						".MuiButtonBase-root.MuiPaginationItem-root": {
+							color: themeMapping.palette.brand.brand3,
+							fontSize: BASE_FONT_PX_SIZES.md
+						},
+						".MuiButtonBase-root.MuiPaginationItem-root:hover": {
+							background: "none"
+						},
+						".MuiButtonBase-root.MuiPaginationItem-root.Mui-selected": {
+							background: "none",
+							color: BASE_COLORS.greys.grey14
+						}
+					}
+				}
+			},
+			MuiTooltip: {
+				styleOverrides: {
+					popper: {
+						// the gap between the hovered over element and the Popover/Tooltip
+						"&.MuiTooltip-popper": {
+							".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight": {
+								marginLeft: "14px"
+							},
+							".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft": {
+								marginRight: "14px"
+							},
+							".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementTop": {
+								marginBottom: "14px"
+							},
+							".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementBottom": {
+								marginTop: "14px"
+							}
+						}
+					},
+					tooltip: {
 						borderRadius: "4px",
-						boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey26}`,
-						cursor: "pointer"
-					}
-				}
-			}
-		},
-		MuiAccordion: {
-			styleOverrides: {
-				root: {
-					border: `1px solid ${BASE_COLORS.greys.grey2}`,
-					boxShadow: "none",
-					"&:not(:last-child)": {
-						borderBottom: 0
-					},
-					"&:before": {
-						display: "none"
-					}
-				}
-			}
-		},
-		MuiAccordionSummary: {
-			styleOverrides: {
-				root: {
-					flexDirection: "row-reverse",
-					"&.hasHoverEffect": {
-						":hover": {
-							backgroundColor: BASE_COLORS.greys.grey2
-						}
-					},
-					".MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
-						transform: "rotate(90deg)"
-					}
-				},
-				expandIconWrapper: {
-					padding: "0px 8px 0px 8px",
-					svg: {
-						fill: BASE_COLORS.greys.grey8,
-						":hover": {
-							fill: BASE_COLORS.greys.grey14
+						maxWidth: "300px",
+						margin: 0,
+						wordWrap: "break-word",
+						fontWeight: 400,
+						padding: "6px 8px",
+						fontSize: BASE_FONT_PX_SIZES.xs,
+						lineHeight: "18px",
+						backgroundColor: BASE_COLORS.greys.grey25,
+						color: BASE_COLORS.whites.white2,
+						boxShadow: "0 2px 2px rgba(0,0,0,0.12)",
+						"&.htmlContent": {
+							padding: "12px 16px",
+							fontSize: BASE_FONT_PX_SIZES.sm,
+							lineHeight: "21px",
+							backgroundColor: BASE_COLORS.whites.white1,
+							color: BASE_COLORS.greys.grey14,
+							boxShadow: "0 2px 5px rgba(0,0,0,0.15)"
+						},
+						"&.mediumWidth": {
+							maxWidth: "500px"
+						},
+						"&.fullWidth": {
+							maxWidth: "100%"
+						},
+						/**
+						 * style for SolacePopover
+						 */
+						"&.SolacePopover": {
+							backgroundColor: BASE_COLORS.whites.white1,
+							color: BASE_COLORS.greys.grey14,
+							fontSize: BASE_FONT_PX_SIZES.sm,
+							fontWeight: 400,
+							padding: "12px 16px", // considering line height
+							borderRadius: "4px",
+							boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey26}`,
+							cursor: "pointer"
 						}
 					}
 				}
-			}
-		},
-		MuiAccordionDetails: {
-			styleOverrides: {
-				root: {
-					/**
-					 * To left align the title with the content:
-					 * padding left of the content is calculated based on the elements in the title:
-					 * so, 16+8+24+8 = 56px
-					 */
-					padding: "8px 16px 16px 56px"
+			},
+			MuiAccordion: {
+				styleOverrides: {
+					root: {
+						border: `1px solid ${BASE_COLORS.greys.grey2}`,
+						boxShadow: "none",
+						"&:not(:last-child)": {
+							borderBottom: 0
+						},
+						"&:before": {
+							display: "none"
+						}
+					}
 				}
-			}
-		}
-	},
-	mixins: {
-		/** ErrorText for form components */
-		formComponent_ErrorText: {
-			container: {
-				display: "flex",
-				flexDirection: "row",
-				justifyContent: "flex-start",
-				marginTop: "2px"
 			},
-			label: {
-				color: BASE_COLORS.reds.red1,
-				fontSize: BASE_FONT_PX_SIZES.xs,
-				marginLeft: "8px"
-			}
-		},
-		/** ErrorText for form components */
-		formComponent_WarningText: {
-			container: {
-				display: "flex",
-				flexDirection: "row",
-				justifyContent: "flex-start",
-				marginTop: "2px"
-			},
-			label: {
-				fontSize: BASE_FONT_PX_SIZES.xs,
-				marginLeft: "8px"
-			}
-		},
-		/** Attribute Value Pair (AVP) for form components */
-		formComponent_AVPItem: {
-			container: {
-				display: "grid",
-				gridTemplateRows: "auto",
-				padding: "4px 0px"
-			},
-			moveButton: {
-				paddingTop: "4px",
-				paddingLeft: "4px",
-				justifyItems: "end"
-			},
-			deleteButton: {
-				paddingTop: "4px",
-				paddingLeft: "4px",
-				borderRadius: "4px",
-				justifyItems: "start"
-			},
-			inputWrapperForKey: {
-				gridColumnStart: 2,
-				gridColumnEnd: 3
-			},
-			inputWrapperForValue: {
-				gridColumnStart: 4,
-				gridColumnEnd: 5
-			}
-		},
-		formComponent_AVPForm: {
-			container: {
-				backgroundColor: "transparent",
-				minWidth: "500px",
-				maxWidth: "900px"
-			},
-			listWrapper: {
-				display: "grid",
-				gridTemplateColumns: "auto",
-				gridTemplateRows: "auto",
-				rowGap: "0px"
-			},
-			labelWrapper: {
-				padding: "2px 0px",
-				display: "grid",
-				gridTemplateRows: "auto",
-				label: {
-					color: BASE_COLORS.greys.grey11,
-					fontWeight: "medium",
-					":first-of-type": {
-						gridColumnStart: 2,
-						gridColumnEnd: 3
+			MuiAccordionSummary: {
+				styleOverrides: {
+					root: {
+						flexDirection: "row-reverse",
+						"&.hasHoverEffect": {
+							":hover": {
+								backgroundColor: BASE_COLORS.greys.grey2
+							}
+						},
+						".MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+							transform: "rotate(90deg)"
+						}
 					},
-					":last-of-type": {
-						gridColumnStart: 4,
-						gridColumnEnd: 5
+					expandIconWrapper: {
+						padding: "0px 8px 0px 8px",
+						svg: {
+							fill: BASE_COLORS.greys.grey8,
+							":hover": {
+								fill: BASE_COLORS.greys.grey14
+							}
+						}
+					}
+				}
+			},
+			MuiAccordionDetails: {
+				styleOverrides: {
+					root: {
+						/**
+						 * To left align the title with the content:
+						 * padding left of the content is calculated based on the elements in the title:
+						 * so, 16+8+24+8 = 56px
+						 */
+						padding: "8px 16px 16px 56px"
 					}
 				}
 			}
 		},
-		/** SolaceMessageBox component */
-		component_MessageBox: {
-			container: {
-				height: "100%",
-				borderRadius: "2px",
-				"&.info": {
-					backgroundColor: BASE_COLORS.blues.blue1,
-					borderLeft: `3px solid ${BASE_COLORS.blues.blue2}`
-				},
-				"&.error": {
-					backgroundColor: BASE_COLORS.reds.red2,
-					borderLeft: `3px solid ${BASE_COLORS.reds.red1}`
-				},
-				"&.warn": {
-					backgroundColor: BASE_COLORS.yellows.yellow2,
-					borderLeft: `3px solid ${BASE_COLORS.yellows.yellow1}`
-				},
-				"&.success": {
-					backgroundColor: BASE_COLORS.greens.green12,
-					borderLeft: `3px solid ${BASE_COLORS.greens.green7}`
-				}
-			},
-			messageContainer: {
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "space-between",
-				paddingRight: "4px",
-				button: {
-					width: "auto"
-				},
-				svg: {
-					width: "20px",
-					height: "20px"
-				}
-			},
-			message: {
-				display: "flex",
-				width: "100%",
-				alignItems: "center",
-				gap: "8px",
-				padding: "6px 8px",
-				"&.dense": {
-					padding: "0 8px"
-				}
-			},
-			iconContainer: {
-				alignSelf: "flex-start",
-				width: "20px",
-				height: "20px",
-				"&.dense": {
-					paddingTop: "6px"
-				}
-			},
-			messageTextContainer: {
-				width: "100%"
-			},
-			detailsContainer: {
-				// 10px on top because the message will have 6px padding bottom
-				padding: "10px 16px 16px 16px"
-			}
-		},
-		/** SolaceGridList */
-		layoutComponent_ImageList: {
-			header: {
-				display: "flex",
-				justifyContent: "space-between",
-				padding: "8px 24px 8px 24px",
-				alignItems: "center",
-				borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`,
-				borderTop: `1px solid ${BASE_COLORS.greys.grey2}`,
-				borderRight: `1px solid ${BASE_COLORS.greys.grey2}`,
-				boxShadow: "0px 2px 4px -1px rgba(0, 0, 0, 0.2)",
-				"& .selectAll": {
+		mixins: {
+			/** ErrorText for form components */
+			formComponent_ErrorText: {
+				container: {
 					display: "flex",
-					alignItems: "center"
+					flexDirection: "row",
+					justifyContent: "flex-start",
+					marginTop: "2px"
 				},
-				"& .selectAllText": {
-					marginLeft: "-8px"
+				label: {
+					color: BASE_COLORS.reds.red1,
+					fontSize: BASE_FONT_PX_SIZES.xs,
+					marginLeft: "8px"
 				}
 			},
-			row: {
-				display: "grid",
-				gridColumnGap: "16px",
-				whiteSpace: "nowrap",
-				placeItems: "center left",
-				padding: "10px 24px",
-				lineHeight: "32px",
-				"&.headerRow": {
-					height: "30px",
-					fontWeight: "500",
-					color: BASE_COLORS.greys.grey11,
-					cursor: "auto",
-					padding: "0px 24px",
-					position: "sticky",
-					top: 0,
-					":hover": {
-						background: "unset"
+			/** ErrorText for form components */
+			formComponent_WarningText: {
+				container: {
+					display: "flex",
+					flexDirection: "row",
+					justifyContent: "flex-start",
+					marginTop: "2px"
+				},
+				label: {
+					fontSize: BASE_FONT_PX_SIZES.xs,
+					marginLeft: "8px"
+				}
+			},
+			/** Attribute Value Pair (AVP) for form components */
+			formComponent_AVPItem: {
+				container: {
+					display: "grid",
+					gridTemplateRows: "auto",
+					padding: "4px 0px"
+				},
+				moveButton: {
+					paddingTop: "4px",
+					paddingLeft: "4px",
+					justifyItems: "end"
+				},
+				deleteButton: {
+					paddingTop: "4px",
+					paddingLeft: "4px",
+					borderRadius: "4px",
+					justifyItems: "start"
+				},
+				inputWrapperForKey: {
+					gridColumnStart: 2,
+					gridColumnEnd: 3
+				},
+				inputWrapperForValue: {
+					gridColumnStart: 4,
+					gridColumnEnd: 5
+				}
+			},
+			formComponent_AVPForm: {
+				container: {
+					backgroundColor: "transparent",
+					minWidth: "500px",
+					maxWidth: "900px"
+				},
+				listWrapper: {
+					display: "grid",
+					gridTemplateColumns: "auto",
+					gridTemplateRows: "auto",
+					rowGap: "0px"
+				},
+				labelWrapper: {
+					padding: "2px 0px",
+					display: "grid",
+					gridTemplateRows: "auto",
+					label: {
+						color: BASE_COLORS.greys.grey11,
+						fontWeight: "medium",
+						":first-of-type": {
+							gridColumnStart: 2,
+							gridColumnEnd: 3
+						},
+						":last-of-type": {
+							gridColumnStart: 4,
+							gridColumnEnd: 5
+						}
+					}
+				}
+			},
+			/** SolaceMessageBox component */
+			component_MessageBox: {
+				container: {
+					height: "100%",
+					borderRadius: "2px",
+					"&.info": {
+						backgroundColor: BASE_COLORS.blues.blue1,
+						borderLeft: `3px solid ${BASE_COLORS.blues.blue2}`
 					},
-					zIndex: 1
+					"&.error": {
+						backgroundColor: BASE_COLORS.reds.red2,
+						borderLeft: `3px solid ${BASE_COLORS.reds.red1}`
+					},
+					"&.warn": {
+						backgroundColor: BASE_COLORS.yellows.yellow2,
+						borderLeft: `3px solid ${BASE_COLORS.yellows.yellow1}`
+					},
+					"&.success": {
+						backgroundColor: BASE_COLORS.greens.green12,
+						borderLeft: `3px solid ${BASE_COLORS.greens.green7}`
+					}
 				},
-				borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
-				cursor: "pointer",
-				":last-child": {
-					borderBottom: "none"
+				messageContainer: {
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-between",
+					paddingRight: "4px",
+					button: {
+						width: "auto"
+					},
+					svg: {
+						width: "20px",
+						height: "20px"
+					}
 				},
-				":hover": {
-					background: BASE_COLORS.greys.grey1
+				message: {
+					display: "flex",
+					width: "100%",
+					alignItems: "center",
+					gap: "8px",
+					padding: "6px 8px",
+					"&.dense": {
+						padding: "0 8px"
+					}
 				},
-				":focus-visible": {
-					background: BASE_COLORS.greys.grey1,
-					outline: "none"
+				iconContainer: {
+					alignSelf: "flex-start",
+					width: "20px",
+					height: "20px",
+					"&.dense": {
+						paddingTop: "6px"
+					}
 				},
-				"&.selected": {
-					background: BASE_COLORS.greens.green9,
+				messageTextContainer: {
+					width: "100%"
+				},
+				detailsContainer: {
+					// 10px on top because the message will have 6px padding bottom
+					padding: "10px 16px 16px 16px"
+				}
+			},
+			/** SolaceGridList */
+			layoutComponent_ImageList: {
+				header: {
+					display: "flex",
+					justifyContent: "space-between",
+					padding: "8px 24px 8px 24px",
+					alignItems: "center",
+					borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`,
+					borderTop: `1px solid ${BASE_COLORS.greys.grey2}`,
+					borderRight: `1px solid ${BASE_COLORS.greys.grey2}`,
+					boxShadow: "0px 2px 4px -1px rgba(0, 0, 0, 0.2)",
+					"& .selectAll": {
+						display: "flex",
+						alignItems: "center"
+					},
+					"& .selectAllText": {
+						marginLeft: "-8px"
+					}
+				},
+				row: {
+					display: "grid",
+					gridColumnGap: "16px",
+					whiteSpace: "nowrap",
+					placeItems: "center left",
+					padding: "10px 24px",
+					lineHeight: "32px",
+					"&.headerRow": {
+						height: "30px",
+						fontWeight: "500",
+						color: BASE_COLORS.greys.grey11,
+						cursor: "auto",
+						padding: "0px 24px",
+						position: "sticky",
+						top: 0,
+						":hover": {
+							background: "unset"
+						},
+						zIndex: 1
+					},
+					borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
+					cursor: "pointer",
+					":last-child": {
+						borderBottom: "none"
+					},
+					":hover": {
+						background: BASE_COLORS.greys.grey1
+					},
+					":focus-visible": {
+						background: BASE_COLORS.greys.grey1,
+						outline: "none"
+					},
+					"&.selected": {
+						background: BASE_COLORS.greens.green9,
+						cursor: "default"
+					}
+				},
+				list: {
+					border: `1px solid ${BASE_COLORS.greys.grey2}`,
+					overflow: "overlay",
+					height: "100%",
+					"@-moz-document url-prefix()": {
+						overflow: "auto"
+					}
+				}
+			},
+			/** SolaceNotification Count */
+			component_NotificationCounter: {
+				container: {
+					borderRadius: "50%",
+					textAlign: "center",
+					verticalAlign: "middle",
+					background: BASE_COLORS.blues.blue2,
+					color: BASE_COLORS.whites.white1
+				},
+				value: {
+					transition: "opacity 300ms",
 					cursor: "default"
 				}
-			},
-			list: {
-				border: `1px solid ${BASE_COLORS.greys.grey2}`,
-				overflow: "overlay",
-				height: "100%",
-				"@-moz-document url-prefix()": {
-					overflow: "auto"
-				}
 			}
 		},
-		/** SolaceNotification Count */
-		component_NotificationCounter: {
-			container: {
-				borderRadius: "50%",
-				textAlign: "center",
-				verticalAlign: "middle",
-				background: BASE_COLORS.blues.blue2,
-				color: BASE_COLORS.whites.white1
+		custom: themeMapping,
+		palette: {
+			background: {
+				default: themeMapping.palette.container.default
 			},
-			value: {
-				transition: "opacity 300ms",
-				cursor: "default"
+			error: {
+				main: BASE_COLORS.reds.red1
+			},
+			warning: {
+				main: BASE_COLORS.yellows.yellow1
+			},
+			primary: {
+				contrastText: themeMapping.palette.text.primary.contrast,
+				dark: themeMapping.palette.brand.brand1,
+				main: themeMapping.palette.brand.brand3
+			},
+			secondary: {
+				contrastText: themeMapping.palette.text.primary.contrast,
+				main: themeMapping.palette.brand.brand2
+			},
+			text: {
+				primary: BASE_COLORS.greys.grey14,
+				secondary: BASE_COLORS.greys.grey11,
+				disabled: BASE_COLORS.greys.grey5
 			}
-		}
-	},
-	palette: {
-		background: {
-			default: BASE_COLORS.greys.grey19
 		},
-		error: {
-			main: BASE_COLORS.reds.red1
-		},
-		warning: {
-			main: BASE_COLORS.yellows.yellow1
-		},
-		primary: {
-			contrastText: BASE_COLORS.greys.grey0,
-			dark: BASE_COLORS.greens.green5,
-			main: BASE_COLORS.greens.green2
-		},
-		secondary: {
-			contrastText: BASE_COLORS.greys.grey0,
-			main: BASE_COLORS.greens.green3
-		},
-		text: {
-			primary: BASE_COLORS.greys.grey14,
-			secondary: BASE_COLORS.greys.grey11,
-			disabled: BASE_COLORS.greys.grey5
-		}
-	},
-	spacing: 8,
-	typography: {
-		fontSize: BASE_FONT_PX_SIZES.sm,
-		body1: {
+		spacing: 8,
+		typography: {
 			fontSize: BASE_FONT_PX_SIZES.sm,
-			lineHeight: 1.5
-		},
-		button: {
-			lineHeight: 1.5,
-			fontSize: BASE_FONT_PX_SIZES.sm,
-			fontWeight: 500
-		},
-		caption: {
-			fontSize: BASE_FONT_PX_SIZES.xs,
-			lineHeight: 1.5
-		},
-		subtitle1: {
-			fontSize: BASE_FONT_PX_SIZES.md,
-			lineHeight: 1.5
-		},
-		fontFamily: "Rubik,sans-serif"
-	}
+			body1: {
+				fontSize: BASE_FONT_PX_SIZES.sm,
+				lineHeight: 1.5
+			},
+			button: {
+				lineHeight: 1.5,
+				fontSize: BASE_FONT_PX_SIZES.sm,
+				fontWeight: 500
+			},
+			caption: {
+				fontSize: BASE_FONT_PX_SIZES.xs,
+				lineHeight: 1.5
+			},
+			subtitle1: {
+				fontSize: BASE_FONT_PX_SIZES.md,
+				lineHeight: 1.5
+			},
+			fontFamily: "Rubik,sans-serif"
+		}
+	};
+	return themeOptions;
 };
 
 declare module "@mui/material/styles" {
 	interface BreakpointOverrides {
 		dialogMd: true;
+	}
+	interface Theme {
+		custom: ThemeMapping;
+	}
+	interface ThemeOptions {
+		custom: ThemeMapping;
 	}
 }
 
@@ -1342,4 +1348,5 @@ declare module "@mui/material/styles/createMixins" {
 		};
 	}
 }
-export default getTheme;
+
+export default getThemeOptions;

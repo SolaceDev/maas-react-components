@@ -10,7 +10,8 @@ module.exports = {
 		"@storybook/addon-actions",
 		"@storybook/addon-interactions",
 		"@storybook/addon-a11y",
-		"storybook-addon-mock/register"
+		"storybook-addon-mock/register",
+		'storybook-addon-themes'
 	],
 	features: {
 		interactionsDebugger: true

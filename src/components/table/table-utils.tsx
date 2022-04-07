@@ -55,10 +55,10 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	},
 
 	"&.selected": {
-		backgroundColor: `${BASE_COLORS.greens.green10}`,
+		backgroundColor: theme.custom.palette.brand.active1,
 		// selected effect for expanded sibling row
 		"+ tr.expanded.selected": {
-			backgroundColor: `${BASE_COLORS.greens.green10}`
+			backgroundColor: theme.custom.palette.brand.active1
 		}
 	},
 

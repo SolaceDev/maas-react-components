@@ -1,4 +1,8 @@
+import { baseColors } from "../base/colors";
+
 export const sapColors = {
+	...baseColors,
+
 	//primary
 	primary1: "#354a5f",
 	primary2: "#0a6ed1",

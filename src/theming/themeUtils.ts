@@ -1,5 +1,5 @@
-import { sapTheme } from "./sapTheme";
-import { solaceTheme } from "./solaceTheme";
+import { sapThemeMapping } from "./sap/themeMapping";
+import { solaceThemeMapping } from "./solace/themeMapping";
 import { ThemeMapping } from "../types/ThemeMapping";
 import { SupportedThemes } from "../types/supportedThemes";
 
@@ -13,9 +13,9 @@ export let appTheme: SupportedThemes | undefined;
 const getThemeMappings = (theme?: SupportedThemes): ThemeMapping => {
 	if (theme) appTheme = theme;
 	if (appTheme === SupportedThemes.sap) {
-		return sapTheme;
+		return sapThemeMapping;
 	} else {
-		return solaceTheme;
+		return solaceThemeMapping;
 	}
 };
 
