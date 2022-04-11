@@ -2,11 +2,18 @@
 
 import React from "react";
 
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { ComponentStory, Meta } from "@storybook/react";
 
-import { SolaceStack, SolaceSelect, SolaceTextField } from "@SolaceDev/maas-react-components";
+import {
+	SolaceStack,
+	SolaceSelect,
+	SolaceTextField,
+	Divider,
+	Link,
+	Typography
+} from "@SolaceDev/maas-react-components";
 import { SELECT_OPTIONS } from "../form/SolaceSelect.stories";
-import { Divider } from "@mui/material";
+import { Title, Primary, ArgsTable, Stories, PRIMARY_STORY } from "@storybook/addon-docs";
 
 export default {
 	title: "Layout/SolaceStack",
@@ -40,8 +47,27 @@ export default {
 				"Add an element between each child.For detailed documentation please refer to https://mui.com/api/stack/"
 		},
 		sx: { control: { type: "object" } }
+	},
+	parameters: {
+		docs: {
+			page: () => (
+				<>
+					<Title />
+					<Typography sx={{ marginBottom: 2 }}>
+						For more examples and documentation please refer to {""}
+						<Link href="https://mui.com/components/stack/">https://mui.com/components/stack/</Link>
+					</Typography>
+					<Typography sx={{ marginBottom: 2 }}>
+						SolaceStack is concerned with one-dimensional layouts, while SolaceGrid handles two-dimensional layouts.
+					</Typography>
+					<Primary />
+					<ArgsTable story={PRIMARY_STORY} />
+					<Stories />
+				</>
+			)
+		}
 	}
-} as ComponentMeta<typeof SolaceStack>;
+} as Meta;
 
 const Template: ComponentStory<typeof SolaceStack> = (args) => <SolaceStack {...args} />;
 
@@ -105,12 +131,12 @@ export const MultipleChildren = (): JSX.Element => {
 				<SolaceTextField label="MarginTop1-2" name={"2"} />
 			</SolaceStack>
 
-			<SolaceStack direction="row" sx={{ marginTop: 1 }} disableSpacing>
+			<SolaceStack direction="row" sx={{ marginTop: 1 }} spacing={0}>
 				<SolaceTextField label="MarginTop1-noSpacing-1" name={"1"} />
 				<SolaceTextField label="MarginTop1-noSpacing-2" name={"2"} />
 			</SolaceStack>
 
-			<SolaceStack sx={{ marginTop: 6 }} customSpacing={3}>
+			<SolaceStack sx={{ marginTop: 6 }} spacing={3}>
 				<SolaceTextField label="MarginTop6-customSpacing3-1" name={"1"} />
 				<SolaceTextField label="MarginTop6-customSpacing3-2" name={"2"} />
 			</SolaceStack>

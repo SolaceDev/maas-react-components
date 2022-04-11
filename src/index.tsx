@@ -60,6 +60,8 @@ export { default as SolaceIcon } from "./components/SolaceIcon";
 export { default as SolaceSplitPane } from "./components/layout/SolaceSplitPane";
 export { default as SolaceAccordion } from "./components/SolaceAccordion";
 export { default as SolaceStack } from "./components/layout/SolaceStack";
+export { default as SolaceGrid } from "./components/layout/SolaceGrid";
+
 export * from "./types";
 
 export { default as SolaceTheme } from "./resources/theme";
