@@ -16,6 +16,7 @@ export interface TableColumn {
 	hasNoCell?: boolean;
 	isHidden?: boolean;
 	tooltip?: boolean;
+	isNumerical?: boolean;
 }
 
 export interface TableRow {
@@ -76,7 +77,7 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 
 export const StyledTableData = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
-	padding: theme.spacing(),
+	padding: `${theme.spacing()} ${theme.spacing(2)}`,
 	height: "24px",
 	".cursor-pointer": {
 		cursor: "pointer"
@@ -100,6 +101,10 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	borderRadius: 0
 }));
 
+export const StyledTableNumberData = styled(StyledTableData)(() => ({
+	textAlign: "right"
+}));
+
 export const StyledExpandedTableRow = styled("tr")(() => ({
 	borderCollapse: "collapse",
 	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`
@@ -118,7 +123,7 @@ export const StyledExpandedTableData = styled("td")({
 export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => prop !== "width" })<{ width?: string }>(
 	({ theme, width }) => ({
 		borderCollapse: "collapse",
-		padding: `0 ${theme.spacing()}`,
+		padding: `0 ${theme.spacing(2)}`,
 		fontSize: theme.typography.fontSize,
 		fontWeight: 500,
 		minWidth: "30px",
@@ -161,6 +166,9 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 			width: "32px",
 			paddingLeft: 0,
 			paddingRight: 0
+		},
+		"&.number-column .header": {
+			justifyContent: "flex-end"
 		}
 	})
 );

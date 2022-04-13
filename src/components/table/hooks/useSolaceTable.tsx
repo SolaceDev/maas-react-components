@@ -247,7 +247,9 @@ export const useSolaceTable = ({
 					!col.isHidden && (
 						<StyledTableHeader
 							key={col.headerName}
-							className={`${col.hasNoCell ? "icon-column" : ""} ${col.class ? col.class : ""}`}
+							className={`${
+								(col.hasNoCell && "icon-column") || (col.isNumerical && "number-column") || col.class || ""
+							}`}
 							width={col.width ? (typeof col.width === "number" ? col.width + "px" : col.width) : "auto"}
 						>
 							<span

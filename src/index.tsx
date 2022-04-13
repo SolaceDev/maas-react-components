@@ -43,6 +43,8 @@ export { default as SolaceStackLabel } from "./components/form/SolaceStackLabel"
 export { default as SolaceTable } from "./components/table/SolaceTable";
 export { SELECTION_TYPE as SolaceTableSelectionType } from "./components/table/table-utils";
 export { SORT_DIRECTION as SolaceTableSortDirection } from "./components/table/table-utils";
+export { StyledTableData as SolaceTableData } from "./components/table/table-utils";
+export { StyledTableNumberData as SolaceTableNumberData } from "./components/table/table-utils";
 export type { TableRow as SolaceTableRow } from "./components/table/table-utils";
 export type { TableColumn as SolaceTableColumn } from "./components/table/table-utils";
 export type { TableActionMenuItem as SolaceTableActionMenuItem } from "./components/table/table-utils";

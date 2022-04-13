@@ -9,7 +9,7 @@ import {
 	SolaceTableColumn,
 	SolaceTableRow
 } from "@SolaceDev/maas-react-components";
-import { StyledTableData } from "../../../../src/components/table/table-utils";
+import { StyledTableData, StyledTableNumberData } from "../../../../src/components/table/table-utils";
 import { cloneDeep } from "lodash";
 import { useMemo } from "react";
 
@@ -755,7 +755,8 @@ const schemaColumns: SolaceTableColumn[] = [
 		sortable: false,
 		disableHiding: false,
 		sortDirection: SolaceTableSortDirection.DCS,
-		isHidden: false
+		isHidden: false,
+		isNumerical: true
 	},
 	{
 		headerName: "Schema Type",
@@ -822,7 +823,7 @@ export const CustomSchemaRowTable = (): JSX.Element => {
 				{row.shared ? SharedTypes.shared : SharedTypes.notShared}
 			</StyledTableData>
 		);
-		cells.push(<StyledTableData key={row.id + "_version_count"}>{row.version_count}</StyledTableData>);
+		cells.push(<StyledTableNumberData key={row.id + "_version_count"}>{row.version_count}</StyledTableNumberData>);
 		cells.push(
 			<StyledTableData key={row.id + "_schemaType"}>
 				{schemaTypeLabel[row.schemaType] ?? row.schemaType}
@@ -871,7 +872,7 @@ const createSchemaCells = (row, columnsHiddenInfo): JSX.Element[] => {
 		);
 	}
 	if (!columnsHiddenInfo?.version_count) {
-		cells.push(<StyledTableData key={row.id + "_version_count"}>{row.version_count}</StyledTableData>);
+		cells.push(<StyledTableNumberData key={row.id + "_version_count"}>{row.version_count}</StyledTableNumberData>);
 	}
 	if (!columnsHiddenInfo?.schemaType) {
 		cells.push(
