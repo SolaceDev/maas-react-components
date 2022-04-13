@@ -44,6 +44,11 @@ export default {
 				type: "text"
 			}
 		},
+		width: {
+			control: {
+				type: "text"
+			}
+		},
 		hasErrors: {
 			control: {
 				type: "boolean"
@@ -180,6 +185,36 @@ StackedLabelFormat.args = {
 		await fetchOptions(searchTerm);
 	},
 	onCloseCallback: () => store.set({ options: [] })
+};
+
+export const StackedLabelFormatWithCustomWidth = Template.bind({});
+StackedLabelFormat.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS
+			},
+			delay: 500
+		}
+	]
+};
+StackedLabelFormatWithCustomWidth.args = {
+	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
+	title: "Demo Select",
+	name: "demoSelect",
+	label: "Some Label",
+	options: store.get("options") || null,
+	fetchOptionsCallback: async (searchTerm: string) => {
+		await fetchOptions(searchTerm);
+	},
+	onCloseCallback: () => store.set({ options: [] }),
+	width: "50%"
 };
 
 export const InlineLabelFormat = Template.bind({});

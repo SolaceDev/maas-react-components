@@ -57,6 +57,11 @@ export default {
 			control: {
 				type: "text"
 			}
+		},
+		width: {
+			control: {
+				type: "text"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceSelect>;
@@ -184,6 +189,16 @@ DefaultTextfield.args = {
 	id: "demoSelectId",
 	name: "demoSelect",
 	children: SELECT_OPTIONS
+};
+
+export const CustomWidth = Template.bind({});
+CustomWidth.args = {
+	onChange: action("callback"),
+	title: TITLE,
+	id: "demoSelectId",
+	name: "demoSelect",
+	children: SELECT_OPTIONS,
+	width: "350px"
 };
 
 export const StackedLabelFormat = Template.bind({});

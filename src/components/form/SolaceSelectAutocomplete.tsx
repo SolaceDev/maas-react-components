@@ -102,6 +102,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * Used to determine the disabled state for a given option.
 	 */
 	getOptionDisabledCallback?: (option: V) => boolean;
+	/**
+	 * Custom Width of the component.
+	 */
+	width?: string;
 }
 
 const CustomHeightTextField = styled(TextField)`
@@ -136,7 +140,8 @@ function SolaceSelectAutocomplete<T, V>({
 	fetchOptionsCallback,
 	onCloseCallback,
 	isOptionEqualToValueCallback,
-	getOptionDisabledCallback
+	getOptionDisabledCallback,
+	width
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -271,6 +276,7 @@ function SolaceSelectAutocomplete<T, V>({
 			required={required}
 			inlineLabel={inlineLabel}
 			centerInlineLabel={inlineLabel}
+			sx={{ width }}
 		>
 			{select()}
 		</FormChildBase>

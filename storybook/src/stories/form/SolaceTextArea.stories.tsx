@@ -69,6 +69,11 @@ export default {
 			control: {
 				type: "number"
 			}
+		},
+		width: {
+			control: {
+				type: "text"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceTextArea>;
@@ -84,6 +89,15 @@ DefaultTextfield.args = {
 	title: DEMO_TITLE,
 	id: "demoTextFieldId",
 	name: "demoTextField"
+};
+
+export const CustomWidth = Template.bind({});
+CustomWidth.args = {
+	onChange: action("callback"),
+	title: DEMO_TITLE,
+	id: "demoTextFieldId",
+	name: "demoTextField",
+	width: "40%"
 };
 
 export const StackedLabeleFormat = Template.bind({});
