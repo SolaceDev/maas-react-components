@@ -39,6 +39,18 @@ export type ThemeMapping = {
 			default: string;
 			contrast: string;
 			overlay: string;
+			variation1: {
+				default: string;
+			};
+			variation2: {
+				default: string;
+			};
+			variation3: {
+				default: string;
+			};
+			variation4: {
+				default: string;
+			};
 		};
 
 		neutral: {
@@ -60,8 +72,43 @@ export type ThemeMapping = {
 		};
 
 		semantic: {
-			// TODO: Once format is confirmed, add warn, info and success
 			error: {
+				variation1: {
+					default: string;
+					background: string;
+				};
+				variation2: {
+					default: string;
+				};
+				variation3: {
+					default: string;
+				};
+			};
+			warn: {
+				variation1: {
+					default: string;
+					background: string;
+				};
+				variation2: {
+					default: string;
+				};
+				variation3: {
+					default: string;
+				};
+			};
+			info: {
+				variation1: {
+					default: string;
+					background: string;
+				};
+				variation2: {
+					default: string;
+				};
+				variation3: {
+					default: string;
+				};
+			};
+			success: {
 				variation1: {
 					default: string;
 					background: string;

@@ -18,24 +18,24 @@ export const baseThemeMapping: ThemeMapping = {
 		action: {
 			disabled: baseColors.greys.grey3,
 			variation1: {
-				default: toReplace,
+				default: baseColors.baseGreen,
 				active: baseColors.greens.green6,
 				hover: baseColors.greens.green5
 			},
 			variation2: {
-				default: toReplace,
+				default: baseColors.caribbeanGreen3,
 				active: baseColors.greys.grey19,
 				hover: baseColors.greys.grey18
 			},
 			variation3: {
 				default: baseColors.baseGreen,
 				active: baseColors.greys.grey19,
-				hover: baseColors.greys.grey1
+				hover: alpha(baseColors.baseBlack, 0.05)
 			},
 			variation4: {
-				default: baseColors.greys.grey14,
-				active: baseColors.greys.grey1,
-				hover: baseColors.greys.grey2
+				default: alpha(baseColors.baseBlack, 0.8),
+				active: alpha(baseColors.baseBlack, 0.05),
+				hover: alpha(baseColors.baseBlack, 0.1)
 			}
 		},
 
@@ -52,35 +52,83 @@ export const baseThemeMapping: ThemeMapping = {
 		container: {
 			default: baseColors.greys.grey19,
 			contrast: toReplace,
-			overlay: toReplace
+			overlay: toReplace,
+			variation1: {
+				default: alpha(baseColors.baseBlack, 0.35)
+			},
+			variation2: {
+				default: alpha(baseColors.baseBlack, 0.1)
+			},
+			variation3: {
+				default: baseColors.whiteSmoke2
+			},
+			variation4: {
+				default: baseColors.charcoal1
+			}
 		},
 
 		neutral: {
-			default: toReplace,
-			contrast: toReplace // white?
+			default: baseColors.whiteSmoke2,
+			contrast: baseColors.whites.white1
 		},
 
 		text: {
 			disabled: baseColors.whites.white1,
 			primary: {
-				default: toReplace,
+				default: alpha(baseColors.baseBlack, 0.8),
 				contrast: baseColors.whites.white1,
-				label: toReplace
+				label: alpha(baseColors.baseBlack, 0.65)
 			},
 			secondary: {
-				default: toReplace,
-				contrast: toReplace
+				default: alpha(baseColors.baseBlack, 0.55),
+				contrast: baseColors.whites.white1
 			}
 		},
 
 		semantic: {
 			error: {
 				variation1: {
-					default: toReplace,
-					background: toReplace
+					default: baseColors.reds.red1,
+					background: alpha(baseColors.reds.red1, 0.1)
 				},
 				variation2: {
 					default: toReplace
+				},
+				variation3: {
+					default: toReplace
+				}
+			},
+			warn: {
+				variation1: {
+					default: baseColors.yellows.yellow1,
+					background: baseColors.yellows.yellow2
+				},
+				variation2: {
+					default: toReplace
+				},
+				variation3: {
+					default: toReplace
+				}
+			},
+			info: {
+				variation1: {
+					default: baseColors.blues.blue2,
+					background: baseColors.blues.blue1
+				},
+				variation2: {
+					default: toReplace
+				},
+				variation3: {
+					default: toReplace
+				}
+			},
+			success: {
+				variation1: {
+					default: baseColors.greens.green7,
+					background: baseColors.greens.green12
+				},
+				variation2: {
+					default: baseColors.caribbeanGreen5
 				},
 				variation3: {
 					default: toReplace
@@ -130,31 +178,31 @@ export const baseThemeMapping: ThemeMapping = {
 	 * @deprecated This scheme is deprecated and will be removed when no longer used.
 	 */
 	pallete: {
-		error: baseColors.baseRed,
-		greyBackgroundLight: baseColors.whiteSmoke2,
-		info: baseColors.azureRadiance,
-		primary: baseColors.baseGreen,
-		secondary: baseColors.caribbeanGreen3,
-		success: baseColors.baseLightGreen,
-		text: alpha(baseColors.baseBlack, 0.8),
-		labelText: alpha(baseColors.baseBlack, 0.65),
-		textSecondary: alpha(baseColors.baseBlack, 0.55),
-		warning: baseColors.butterCupYellow3,
-		white: baseColors.white2,
+		error: baseColors.baseRed, // semantic.error.variation1.default
+		greyBackgroundLight: baseColors.whiteSmoke2, // container.variation3.default
+		info: baseColors.azureRadiance, // semantic.info.variation1.default
+		primary: baseColors.baseGreen, // action.variation1.default
+		secondary: baseColors.caribbeanGreen3, // action.variation2.default
+		success: baseColors.baseLightGreen, // semantic.success.variation1.default
+		text: alpha(baseColors.baseBlack, 0.8), // text.primary.default
+		labelText: alpha(baseColors.baseBlack, 0.65), // text.primary.label
+		textSecondary: alpha(baseColors.baseBlack, 0.55), // text.secondary.default
+		warning: baseColors.butterCupYellow3, // semantic.warn.variation1.default
+		white: baseColors.white2, // text.primary.contrast
 
 		//toasts
-		toastText: baseColors.white2,
-		toastBackground: baseColors.charcoal1,
-		toastSuccessIcon: baseColors.caribbeanGreen5,
+		toastText: baseColors.white2, // text.secondary.contrast
+		toastBackground: baseColors.charcoal1, // container.variation4.default
+		toastSuccessIcon: baseColors.caribbeanGreen5, // semantic.success.variation2.default
 
 		//chips
-		nonadminPill: alpha(baseColors.baseBlack, 0.1),
-		adminPill: alpha(baseColors.baseBlack, 0.35),
+		nonadminPill: alpha(baseColors.baseBlack, 0.1), // container.variation2.default
+		adminPill: alpha(baseColors.baseBlack, 0.35), // container.variation1.default
 
-		//Button
-		buttonTextHoverBG: alpha(baseColors.baseBlack, 0.05),
-		buttonOutlinedHoverBG: baseColors.wildSandGrey2,
-		buttonLinkDisabled: alpha(baseColors.baseBlack, 0.2),
-		buttonIconBG: baseColors.white1
+		//Button - these seem more inconsistent with others, can other variations be used?
+		buttonTextHoverBG: alpha(baseColors.baseBlack, 0.05), // action.variation3.hover
+		buttonOutlinedHoverBG: baseColors.wildSandGrey2, // ? can we align with something else
+		buttonLinkDisabled: alpha(baseColors.baseBlack, 0.2), // action.disabled
+		buttonIconBG: baseColors.white1 // ? can we align with something else
 	}
 };

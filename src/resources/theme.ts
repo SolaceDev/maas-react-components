@@ -203,10 +203,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiInputLabel: {
 				styleOverrides: {
 					asterisk: {
-						color: BASE_COLORS.greens.green2
+						color: themeMapping.palette.brand.brand3
 					},
 					root: {
-						color: BASE_COLORS.greys.grey14,
+						color: themeMapping.palette.text.primary.default,
 						fontSize: "0.875rem",
 						fontWeight: 400,
 						lineHeight: 1.5,
@@ -225,7 +225,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						color: themeMapping.palette.brand.brand3
 					},
 					root: {
-						color: BASE_COLORS.greys.grey14,
+						color: themeMapping.palette.text.primary.default,
 						fontSize: "14px",
 						fontWeight: 400,
 						lineHeight: 1.5,
@@ -375,7 +375,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							},
 							"&.Mui-error": {
 								".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
-									borderColor: `${BASE_COLORS.reds.red1}`
+									borderColor: `${themeMapping.palette.semantic.error.variation1.default}`
 								}
 							},
 							"&.Mui-disabled": {
@@ -395,7 +395,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						".MuiOutlinedInput-input": {
 							fontSize: BASE_FONT_PX_SIZES.sm,
-							color: BASE_COLORS.greys.grey14,
+							color: themeMapping.palette.text.primary.default,
 							padding: "0px 8px",
 							height: "34px",
 							"&:read-only": {
@@ -439,7 +439,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"+.MuiFormLabel-root": {
 							marginLeft: "16px",
-							color: BASE_COLORS.greys.grey14,
+							color: themeMapping.palette.text.primary.default,
 							"&.Mui-disabled": {
 								color: BASE_COLORS.greys.grey5
 							}
@@ -583,7 +583,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 										paddingTop: "8px",
 										paddingBottom: "8px"
 									},
-									color: BASE_COLORS.greys.grey14,
+									color: themeMapping.palette.text.primary.default,
 									".subtext": {
 										color: BASE_COLORS.greys.grey9,
 										marginRight: "24px",
@@ -615,7 +615,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							display: "flex",
 							alignItems: "center",
 							"&.categoryHeader": {
-								color: BASE_COLORS.greys.grey14,
+								color: themeMapping.palette.text.primary.default,
 								fontSize: BASE_FONT_PX_SIZES.xs,
 								fontWeight: 500
 							}
@@ -696,13 +696,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							backgroundColor: BASE_COLORS.greys.grey2
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
-							backgroundColor: alpha(BASE_COLORS.greens.green1, 0.1)
+							backgroundColor: alpha(themeMapping.palette.brand.active2, 0.1)
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
-							backgroundColor: alpha(BASE_COLORS.greens.green1, 0.1)
+							backgroundColor: alpha(themeMapping.palette.brand.active2, 0.1)
 						},
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
-						color: BASE_COLORS.greys.grey14,
+						color: themeMapping.palette.text.primary.default,
 						".subtext": {
 							color: BASE_COLORS.greys.grey9
 						},
@@ -735,7 +735,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 									transform: "translate(22px)"
 								},
 								"&.Mui-checked + .MuiSwitch-track": {
-									backgroundColor: alpha(BASE_COLORS.greens.green2, 0.35),
+									backgroundColor: alpha(themeMapping.palette.brand.brand3, 0.35),
 									opacity: 1
 								},
 								"&.Mui-disabled + .MuiSwitch-track": {
@@ -747,13 +747,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 									borderColor: BASE_COLORS.greys.grey2
 								},
 								"&:hover": {
-									backgroundColor: alpha(BASE_COLORS.greens.green2, 0.35)
+									backgroundColor: alpha(themeMapping.palette.brand.brand3, 0.35)
 								}
 							},
 							".MuiSwitch-thumb": {
 								width: "16px",
 								height: "16px",
-								border: `solid 2px ${alpha(BASE_COLORS.greens.green2, 0.35)}`,
+								border: `solid 2px ${alpha(themeMapping.palette.brand.brand3, 0.35)}`,
 								boxShadow: "none"
 							}
 						},
@@ -761,7 +761,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							height: "12px",
 							width: "36px",
 							transform: "translateY(1px)",
-							backgroundColor: alpha(BASE_COLORS.greens.green2, 0.35),
+							backgroundColor: alpha(themeMapping.palette.brand.brand3, 0.35),
 							opacity: 1
 						}
 					},
@@ -769,7 +769,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						"&.MuiChecked .MuiSwitch-track": {
 							height: "12px",
 							transform: "translateY(1px)",
-							backgroundColor: alpha(BASE_COLORS.greens.green2, 0.35),
+							backgroundColor: alpha(themeMapping.palette.brand.brand3, 0.35),
 							opacity: 1
 						}
 					}
@@ -788,13 +788,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							padding: "24px",
 							".MuiDialogTitle-root": {
 								fontSize: BASE_FONT_PX_SIZES.xl,
-								color: BASE_COLORS.greys.grey14,
+								color: themeMapping.palette.text.primary.default,
 								padding: "0px 0px 24px 0px"
 							},
 							".MuiDialogContent-root": {
 								fontSize: BASE_FONT_PX_SIZES.sm,
 								lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
-								color: BASE_COLORS.greys.grey14,
+								color: themeMapping.palette.text.primary.default,
 								padding: "0px"
 								// ".MuiBox-root": {
 								// 	display: "grid"
@@ -834,7 +834,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								width: "100%",
 								height: "4px",
 								background: `linear-gradient(90deg, ${hexToRgb(
-									BASE_COLORS.greens.green1
+									themeMapping.palette.brand.active2
 								)} 0% 40%, transparent 40% 100%)`,
 								animation: "animation 2s linear infinite"
 							},
@@ -871,7 +871,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						textTransform: "none",
 						fontWeight: 400,
 						"&.Mui-selected, :hover": {
-							color: BASE_COLORS.greys.grey14
+							color: themeMapping.palette.text.primary.default
 						}
 					}
 				}
@@ -900,7 +900,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root.Mui-selected": {
 							background: "none",
-							color: BASE_COLORS.greys.grey14
+							color: themeMapping.palette.text.primary.default
 						}
 					}
 				}
@@ -941,7 +941,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							lineHeight: "21px",
 							backgroundColor: BASE_COLORS.whites.white1,
-							color: BASE_COLORS.greys.grey14,
+							color: themeMapping.palette.text.primary.default,
 							boxShadow: "0 2px 5px rgba(0,0,0,0.15)"
 						},
 						"&.mediumWidth": {
@@ -955,7 +955,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						 */
 						"&.SolacePopover": {
 							backgroundColor: BASE_COLORS.whites.white1,
-							color: BASE_COLORS.greys.grey14,
+							color: themeMapping.palette.text.primary.default,
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							fontWeight: 400,
 							padding: "12px 16px", // considering line height
@@ -1027,7 +1027,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					marginTop: "2px"
 				},
 				label: {
-					color: BASE_COLORS.reds.red1,
+					color: themeMapping.palette.semantic.error.variation1.default,
 					fontSize: BASE_FONT_PX_SIZES.xs,
 					marginLeft: "8px"
 				}
@@ -1108,20 +1108,20 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					height: "100%",
 					borderRadius: "2px",
 					"&.info": {
-						backgroundColor: BASE_COLORS.blues.blue1,
-						borderLeft: `3px solid ${BASE_COLORS.blues.blue2}`
+						backgroundColor: themeMapping.palette.semantic.info.variation1.background,
+						borderLeft: `3px solid ${themeMapping.palette.semantic.info.variation1.default}`
 					},
 					"&.error": {
-						backgroundColor: BASE_COLORS.reds.red2,
-						borderLeft: `3px solid ${BASE_COLORS.reds.red1}`
+						backgroundColor: themeMapping.palette.semantic.error.variation1.background,
+						borderLeft: `3px solid ${themeMapping.palette.semantic.error.variation1.default}`
 					},
 					"&.warn": {
-						backgroundColor: BASE_COLORS.yellows.yellow2,
-						borderLeft: `3px solid ${BASE_COLORS.yellows.yellow1}`
+						backgroundColor: themeMapping.palette.semantic.warn.variation1.background,
+						borderLeft: `3px solid ${themeMapping.palette.semantic.warn.variation1.default}`
 					},
 					"&.success": {
-						backgroundColor: BASE_COLORS.greens.green12,
-						borderLeft: `3px solid ${BASE_COLORS.greens.green7}`
+						backgroundColor: themeMapping.palette.semantic.success.variation1.background,
+						borderLeft: `3px solid ${themeMapping.palette.semantic.success.variation1.default}`
 					}
 				},
 				messageContainer: {
@@ -1215,7 +1215,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						outline: "none"
 					},
 					"&.selected": {
-						background: BASE_COLORS.greens.green9,
+						background: themeMapping.palette.brand.brand4,
 						cursor: "default"
 					}
 				},
@@ -1249,10 +1249,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				default: themeMapping.palette.container.default
 			},
 			error: {
-				main: BASE_COLORS.reds.red1
+				main: themeMapping.palette.semantic.error.variation1.default
 			},
 			warning: {
-				main: BASE_COLORS.yellows.yellow1
+				main: themeMapping.palette.semantic.warn.variation1.default
 			},
 			primary: {
 				contrastText: themeMapping.palette.text.primary.contrast,
@@ -1264,9 +1264,9 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				main: themeMapping.palette.brand.brand2
 			},
 			text: {
-				primary: BASE_COLORS.greys.grey14,
-				secondary: BASE_COLORS.greys.grey11,
-				disabled: BASE_COLORS.greys.grey5
+				primary: themeMapping.palette.text.primary.default,
+				secondary: themeMapping.palette.text.primary.label,
+				disabled: BASE_COLORS.greys.grey5 // differs from other disabled text with 0.65?
 			}
 		},
 		spacing: 8,
