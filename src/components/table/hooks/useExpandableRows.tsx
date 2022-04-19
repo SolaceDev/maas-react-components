@@ -69,9 +69,9 @@ export const useExpandableRows = ({
 			});
 			let numberOfNonDataCols = 0;
 
-			if (hasColumnHiding) numberOfNonDataCols++;
 			if (allowToggle) numberOfNonDataCols++;
 			if (selectionType === SELECTION_TYPE.MULTI) numberOfNonDataCols++;
+			if (renderRowActionItems.length) numberOfNonDataCols++;
 			setDisplayedColumnsCount(numberOfDisplayedDataCols + numberOfNonDataCols);
 		}
 	}, [
@@ -82,7 +82,8 @@ export const useExpandableRows = ({
 		displayedColumnsChangedCallback,
 		hasColumnHiding,
 		allowToggle,
-		selectionType
+		selectionType,
+		renderRowActionItems
 	]);
 
 	function addChevronToRows(row: TableRow): React.ReactNode | void {

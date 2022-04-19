@@ -65,6 +65,12 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 
 	"&:hover": {
 		background: `${BASE_COLORS.greys.grey24}`,
+		"+ tr.expanded": {
+			backgroundColor: `${BASE_COLORS.greys.grey24}`
+		},
+		"+ tr.expanded.selected": {
+			backgroundColor: `${BASE_COLORS.greys.grey24}`
+		},
 		"&.header": {
 			background: "transparent"
 		}

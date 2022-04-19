@@ -614,6 +614,7 @@ export const ExpandableRowNoToggleTableSelectSingle = (): JSX.Element => {
 					expandedRowIds: expandedRowIds,
 					setExpandedRowIds: setExpandedRowIds
 				}}
+				rowActionMenuItems={rowActionMenuItems}
 			></SolaceTable>
 		</div>
 	);
