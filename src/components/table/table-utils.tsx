@@ -88,16 +88,13 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	".cursor-pointer": {
 		cursor: "pointer"
 	},
-	"&.checkbox": {
-		textAlign: "center"
+	"&.checkbox, &.expand-icon": {
+		paddingRight: 0
 	},
-	"&.expand-icon": {
-		padding: "10px 6px 6px 0",
-		".chevron": {
-			fill: `${BASE_COLORS.greys.grey8}`,
-			"&.expanded": {
-				transform: "rotate(90deg)"
-			}
+	"&.expand-icon .chevron": {
+		fill: `${BASE_COLORS.greys.grey8}`,
+		"&.expanded": {
+			transform: "rotate(90deg)"
 		}
 	},
 	maxWidth: "0",
@@ -158,20 +155,15 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 				}
 			}
 		},
-		"&.checkbox-column": {
-			width: "40px",
-			textAlign: "center",
-			position: "relative"
+		"&.checkbox-column, &.expand-column": {
+			minWidth: 0, // For Firefox support, see: https://developer.mozilla.org/en-US/docs/Web/CSS/min-width
+			paddingRight: 0,
+			width: "24px"
 		},
 		"&.icon-column": {
 			width: "50px",
 			textAlign: "center",
 			position: "relative"
-		},
-		"&.expand-column": {
-			width: "32px",
-			paddingLeft: 0,
-			paddingRight: 0
 		},
 		"&.number-column .header": {
 			justifyContent: "flex-end"

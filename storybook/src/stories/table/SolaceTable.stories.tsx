@@ -489,14 +489,11 @@ export const CustomEmptyStateTable = (): JSX.Element => {
 };
 
 const renderExpandedRowContentHelper = (row, allowToggle, selectionType) => {
-	// different padding left depending on whether there is expand/collapse column or checkbox
 	let paddingLeft = "51px";
 	if (!allowToggle && selectionType !== SolaceTableSelectionType.MULTI) {
 		paddingLeft = "12px";
 	} else if (allowToggle && selectionType === SolaceTableSelectionType.MULTI) {
-		paddingLeft = "100px";
-	} else if (!allowToggle && selectionType === SolaceTableSelectionType.MULTI) {
-		paddingLeft = "68px";
+		paddingLeft = "92px";
 	}
 	return (
 		<table style={{ width: "100%", padding: `4px 0 16px ${paddingLeft}` }}>
