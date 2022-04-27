@@ -206,7 +206,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						color: themeMapping.palette.brand.brand3
 					},
 					root: {
-						color: themeMapping.palette.text.primary.default,
+						color: themeMapping.palette.text.primary.label,
 						fontSize: "0.875rem",
 						fontWeight: 400,
 						lineHeight: 1.5,
@@ -225,7 +225,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						color: themeMapping.palette.brand.brand3
 					},
 					root: {
-						color: themeMapping.palette.text.primary.default,
+						color: themeMapping.palette.text.primary.label,
 						fontSize: "14px",
 						fontWeight: 400,
 						lineHeight: 1.5,
@@ -439,7 +439,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"+.MuiFormLabel-root": {
 							marginLeft: "16px",
-							color: themeMapping.palette.text.primary.default,
+							color: themeMapping.palette.text.primary.label,
 							"&.Mui-disabled": {
 								color: BASE_COLORS.greys.grey5
 							}
