@@ -976,6 +976,18 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"&:before": {
 							display: "none"
+						},
+						"&.indicator-info": {
+							background: `linear-gradient(${themeMapping.palette.semantic.info.variation1.default} , ${themeMapping.palette.semantic.info.variation1.default}) left/3px 90% no-repeat`
+						},
+						"&.indicator-error": {
+							background: `linear-gradient(${themeMapping.palette.semantic.error.variation1.default} , ${themeMapping.palette.semantic.error.variation1.default}) left/3px 90% no-repeat`
+						},
+						"&.indicator-warn": {
+							background: `linear-gradient(${themeMapping.palette.semantic.warn.variation1.default} , ${themeMapping.palette.semantic.warn.variation1.default}) left/3px 90% no-repeat`
+						},
+						"&.indicator-success": {
+							background: `linear-gradient(${themeMapping.palette.semantic.success.variation1.default} , ${themeMapping.palette.semantic.success.variation1.default}) left/3px 90% no-repeat`
 						}
 					}
 				}
@@ -984,6 +996,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						flexDirection: "row-reverse",
+						margin: "6px 0",
 						"&.hasHoverEffect": {
 							":hover": {
 								backgroundColor: BASE_COLORS.greys.grey2

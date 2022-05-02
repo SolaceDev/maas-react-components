@@ -28,6 +28,18 @@ export default {
 		details: {
 			description: "The details (e.g. expandable) section of the Accordion component"
 		},
+		indicatorVariant: {
+			options: ["info", "error", "warn", "success"],
+			control: {
+				type: "select"
+			},
+			description: "The variant of the colored vertical bar displayed inside the left border",
+			table: {
+				defaultValue: {
+					summary: ""
+				}
+			}
+		},
 		disabled: {
 			control: { type: "boolean" },
 			description: "If true, the Accordion expands by default",
@@ -192,4 +204,13 @@ AccordionWithCustomColor.args = {
 	details: testItem.details,
 	expanded: false,
 	backgroundColor: "#F9F9F9"
+};
+
+export const AccordionWithIndicator = SolaceAccordionStory.bind({});
+AccordionWithIndicator.args = {
+	dataQa: testItem.id,
+	summary: testItem.summary,
+	details: testItem.details,
+	expanded: false,
+	indicatorVariant: "info"
 };

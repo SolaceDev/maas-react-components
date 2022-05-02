@@ -19,6 +19,10 @@ export interface SolaceAccordionProps extends SolaceComponentProps {
 	 */
 	details: string | JSX.Element;
 	/**
+	 * A colored vertical bar displayed inside the left border to indicate the variant
+	 */
+	indicatorVariant?: "info" | "error" | "warn" | "success";
+	/**
 	 * If true, the Accordion component is disabled.
 	 */
 	disabled?: boolean;
@@ -46,6 +50,7 @@ const SolaceAccordion = ({
 	id,
 	summary,
 	details,
+	indicatorVariant,
 	disabled = false,
 	expanded = false,
 	hover = false,
@@ -65,6 +70,7 @@ const SolaceAccordion = ({
 			data-qa={dataQa}
 			data-tags={dataTags}
 			sx={{ backgroundColor: backgroundColor ?? BASE_COLORS.greys.grey0 }}
+			className={indicatorVariant ? `indicator-${indicatorVariant}` : ""}
 		>
 			<AccordionSummary expandIcon={<ArrowRightIcon />} className={clsx({ hasHoverEffect: hover })}>
 				{summary}
