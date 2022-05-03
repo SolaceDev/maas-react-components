@@ -996,7 +996,6 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						flexDirection: "row-reverse",
-						margin: "6px 0",
 						"&.hasHoverEffect": {
 							":hover": {
 								backgroundColor: BASE_COLORS.greys.grey2
@@ -1005,6 +1004,9 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						".MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
 							transform: "rotate(90deg)"
 						}
+					},
+					content: {
+						margin: "6px 0" // default is "12px 0"
 					},
 					expandIconWrapper: {
 						padding: "0px 8px 0px 8px",
