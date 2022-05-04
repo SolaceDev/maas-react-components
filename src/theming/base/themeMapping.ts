@@ -38,7 +38,7 @@ export const baseThemeMapping: ThemeMapping = {
 
 		background: {
 			primary: {
-				default: "",
+				default: "#F9F9F9",
 				highlight: ""
 			},
 			secondary: {
