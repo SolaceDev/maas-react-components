@@ -839,7 +839,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								width: "100%",
 								height: "4px",
 								background: `linear-gradient(90deg, ${hexToRgb(
-									themeMapping.palette.brandHighlightHeavy
+									themeMapping.palette.brandHighlight
 								)} 0% 40%, transparent 40% 100%)`,
 								animation: "animation 2s linear infinite"
 							},
@@ -1235,7 +1235,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						outline: "none"
 					},
 					"&.selected": {
-						background: themeMapping.palette.brand,
+						background: themeMapping.palette.brandHighlight,
 						cursor: "default"
 					}
 				},
