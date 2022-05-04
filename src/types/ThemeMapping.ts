@@ -1,164 +1,199 @@
-export type ThemeMapping = {
-	palette: {
-		action: {
-			disabled: string;
-			variation1: {
-				default: string;
-				active: string;
-				hover: string;
-			};
-			variation2: {
-				default: string;
-				active: string;
-				hover: string;
-			};
-			variation3: {
-				default: string;
-				active: string;
-				hover: string;
-			};
-			variation4: {
-				default: string;
-				active: string;
-				hover: string;
-			};
-		};
+export type ThemeMappingPalette = {
+	// main brand colour
+	brand: string;
+	// selection
+	brandHighlight: string;
+	// strong/heavy selection
+	brandHighlightHeavy: string;
+	// brand icon
+	brandIcon: string;
 
-		brand: {
-			// TODO: can we do better here? too many variations?
-			brand1: string;
-			brand2: string;
-			brand3: string;
-			brand4: string;
-			brand5: string;
-			active1: string;
-			active2: string;
-		};
-
-		container: {
+	action: {
+		// eg. cta, link
+		primary: {
 			default: string;
-			contrast: string;
-			overlay: string;
-			variation1: {
-				default: string;
-			};
-			variation2: {
-				default: string;
-			};
-			variation3: {
-				default: string;
-			};
-			variation4: {
-				default: string;
-			};
-		};
-
-		neutral: {
-			default: string;
-			contrast: string; // white?
-		};
-
-		text: {
+			active: string;
+			hover: string;
 			disabled: string;
+		};
+		// eg. outline, text
+		secondary: {
+			default: string;
+			active: string;
+			hover: string;
+			disabled: string;
+		};
+		// eg. icon background
+		icon: {
+			default: string;
+			active: string;
+			hover: string;
+			disabled: string;
+		};
+	};
+
+	background: {
+		// eg. main, text fields, menus
+		primary: {
+			default: string;
+			// eg. divider / border
+			highlight: string;
+		};
+		// eg. nav bar, toast
+		secondary: {
+			default: string;
+			// eg. divider
+			highlight: string;
+		};
+	};
+
+	neutral: {
+		// eg. mixed (Secondary Primary)
+		primary: {
+			default: string;
+		};
+		// eg. mixed (Secondary 40)
+		secondary: {
+			default: string;
+		};
+		// eg. mixed (Secondary 20)
+		tertiary: {
+			default: string;
+		};
+		// eg. mixed, white
+		constrast: string;
+	};
+
+	text: {
+		// eg. mixed text
+		primary: {
+			default: string;
+			disabled: string;
+		};
+		// eg. labels
+		secondary: {
+			default: string;
+			disabled: string;
+		};
+		// eg. mixed, white
+		contrast: string;
+	};
+
+	semantic: {
+		error: {
+			// eg. chip, banner
 			primary: {
 				default: string;
-				contrast: string;
-				label: string;
+				background: string;
+				active: string;
+				hover: string;
 			};
+			// eg. textfield, dropdown
 			secondary: {
 				default: string;
-				contrast: string;
+			};
+			// eg. toast icon
+			tertiary: {
+				default: string;
 			};
 		};
-
-		semantic: {
-			error: {
-				variation1: {
-					default: string;
-					background: string;
-				};
-				variation2: {
-					default: string;
-				};
-				variation3: {
-					default: string;
-				};
+		warn: {
+			// eg. banner
+			primary: {
+				default: string;
+				background: string;
+				active: string;
+				hover: string;
 			};
-			warn: {
-				variation1: {
-					default: string;
-					background: string;
-				};
-				variation2: {
-					default: string;
-				};
-				variation3: {
-					default: string;
-				};
+			// eg. textfield, dropdown icons and borders
+			secondary: {
+				default: string;
 			};
-			info: {
-				variation1: {
-					default: string;
-					background: string;
-				};
-				variation2: {
-					default: string;
-				};
-				variation3: {
-					default: string;
-				};
-			};
-			success: {
-				variation1: {
-					default: string;
-					background: string;
-				};
-				variation2: {
-					default: string;
-				};
-				variation3: {
-					default: string;
-				};
+			// eg. toast icon
+			tertiary: {
+				default: string;
 			};
 		};
-
-		graph: {
-			accent1: {
+		info: {
+			// eg. badge, banner
+			primary: {
 				default: string;
-				contrast1: string;
-				constrast2: string;
+				background: string;
+				active: string;
+				hover: string;
 			};
-			accent2: {
-				default: string;
-			};
-			accent3: {
-				default: string;
-				contrast1: string;
-				constrast2: string;
-			};
-			accent4: {
-				default: string;
-				contrast1: string;
-				constrast2: string;
-			};
-			accent5: {
+			// eg. unused?
+			secondary: {
 				default: string;
 			};
-			accent6: {
+			// eg. toast
+			tertiary: {
 				default: string;
 			};
-			accent7: {
+		};
+		success: {
+			// eg. badge
+			primary: {
+				default: string;
+				background: string;
+			};
+			// eg. unused?
+			secondary: {
 				default: string;
 			};
-			accent8: {
+			// eg. toast
+			tertiary: {
 				default: string;
-			};
-			accent9: {
-				default: string;
-				contrast1: string;
 			};
 		};
 	};
+
+	graph: {
+		path: {
+			default: string;
+			active: string;
+			hover: string;
+			disabled: string;
+		};
+		accent1: {
+			default: string;
+			contrast1: string;
+			constrast2: string;
+		};
+		accent2: {
+			default: string;
+		};
+		accent3: {
+			default: string;
+			contrast1: string;
+			constrast2: string;
+		};
+		accent4: {
+			default: string;
+			contrast1: string;
+			constrast2: string;
+		};
+		accent5: {
+			default: string;
+		};
+		accent6: {
+			default: string;
+		};
+		accent7: {
+			default: string;
+		};
+		accent8: {
+			default: string;
+		};
+		accent9: {
+			default: string;
+			contrast1: string;
+		};
+	};
+};
+
+export type ThemeMapping = {
+	palette: ThemeMappingPalette;
 
 	/**
 	 * @deprecated This scheme is deprecated and will be removed when no longer used.

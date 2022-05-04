@@ -1,5 +1,5 @@
 import { alpha, hexToRgb, ThemeOptions } from "@mui/material";
-import { SupportedThemes, ThemeMapping } from "../types";
+import { SupportedThemes, ThemeMappingPalette } from "../types";
 import getThemeMappings from "../theming/themeUtils";
 import { BASE_COLORS } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
@@ -48,30 +48,33 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				},
 				styleOverrides: {
 					containedPrimary: {
-						color: themeMapping.palette.text.primary.contrast,
+						color: themeMapping.palette.text.contrast,
+						backgroundColor: themeMapping.palette.action.primary.default,
 						"&:hover": {
-							backgroundColor: themeMapping.palette.action.variation1.hover
+							backgroundColor: themeMapping.palette.action.primary.hover
 						},
 						"&:disabled": {
-							backgroundColor: themeMapping.palette.action.disabled,
-							color: themeMapping.palette.text.primary.contrast
+							backgroundColor: themeMapping.palette.action.primary.disabled,
+							color: themeMapping.palette.text.contrast
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.action.variation1.active
+							backgroundColor: themeMapping.palette.action.primary.active
 						}
 					},
 					outlinedPrimary: {
 						borderWidth: "1px",
 						borderStyle: "solid",
+						borderColor: themeMapping.palette.action.secondary.default,
+						color: themeMapping.palette.action.secondary.default,
 						"&:disabled": {
-							borderColor: themeMapping.palette.action.disabled,
-							color: themeMapping.palette.action.disabled
+							borderColor: themeMapping.palette.action.secondary.disabled,
+							color: themeMapping.palette.action.secondary.disabled
 						},
 						"&:hover": {
-							backgroundColor: themeMapping.palette.action.variation2.hover
+							backgroundColor: themeMapping.palette.action.secondary.hover
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.action.variation2.active
+							backgroundColor: themeMapping.palette.action.secondary.active
 						}
 					},
 					root: {
@@ -98,14 +101,15 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					},
 					textPrimary: {
 						borderRadius: "4px",
+						color: themeMapping.palette.action.secondary.default,
 						"&:disabled": {
-							color: themeMapping.palette.action.disabled
+							color: themeMapping.palette.action.secondary.disabled
 						},
 						"&:hover": {
-							backgroundColor: themeMapping.palette.action.variation3.hover
+							backgroundColor: themeMapping.palette.action.secondary.hover
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.action.variation3.active
+							backgroundColor: themeMapping.palette.action.secondary.active
 						}
 					}
 				}
@@ -185,14 +189,14 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						padding: "4px",
 						borderRadius: "5px",
 						"&:disabled": {
-							color: themeMapping.palette.action.disabled
+							color: themeMapping.palette.action.icon.disabled
 						},
 						"&:hover": {
-							backgroundColor: themeMapping.palette.action.variation4.hover,
-							color: themeMapping.palette.action.variation4.default
+							backgroundColor: themeMapping.palette.action.icon.hover,
+							color: themeMapping.palette.action.icon.default
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.action.variation4.active
+							backgroundColor: themeMapping.palette.action.icon.active
 						},
 						".MuiSvgIcon-root": {
 							fill: BASE_COLORS.greys.grey8
@@ -203,10 +207,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiInputLabel: {
 				styleOverrides: {
 					asterisk: {
-						color: themeMapping.palette.brand.brand3
+						color: themeMapping.palette.brand
 					},
 					root: {
-						color: themeMapping.palette.text.primary.label,
+						color: themeMapping.palette.text.secondary.default,
 						fontSize: "0.875rem",
 						fontWeight: 400,
 						lineHeight: 1.5,
@@ -222,10 +226,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiFormLabel: {
 				styleOverrides: {
 					asterisk: {
-						color: themeMapping.palette.brand.brand3
+						color: themeMapping.palette.brand
 					},
 					root: {
-						color: themeMapping.palette.text.primary.label,
+						color: themeMapping.palette.text.secondary.default,
 						fontSize: "14px",
 						fontWeight: 400,
 						lineHeight: 1.5,
@@ -258,13 +262,14 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					root: {
 						lineHeight: 1.5,
 						fontSize: "14px",
+						color: themeMapping.palette.action.secondary.default,
 						"&[disabled]": {
-							color: themeMapping.palette.action.disabled
+							color: themeMapping.palette.action.secondary.disabled
 						},
 						".SolaceOpenExternalIcon": {
 							width: "16px",
 							height: "16px",
-							fill: themeMapping.palette.action.variation3.default,
+							fill: themeMapping.palette.action.secondary.default,
 							marginBottom: "2px"
 						}
 					}
@@ -313,7 +318,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"&.Mui-focused": {
 							".MuiOutlinedInput-input": {
-								border: `solid 1px ${themeMapping.palette.brand.active2}`
+								border: `solid 1px ${themeMapping.palette.brandHighlightHeavy}`
 							},
 							"&.MuiOutlinedInput-root": {
 								".MuiOutlinedInput-notchedOutline": {
@@ -370,12 +375,12 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							},
 							"&.Mui-focused": {
 								".MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${themeMapping.palette.brand.active2}`
+									border: `solid 1px ${themeMapping.palette.brandHighlightHeavy}`
 								}
 							},
 							"&.Mui-error": {
 								".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
-									borderColor: `${themeMapping.palette.semantic.error.variation1.default}`
+									borderColor: `${themeMapping.palette.semantic.error.secondary.default}`
 								}
 							},
 							"&.Mui-disabled": {
@@ -417,14 +422,14 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							}
 						},
 						".MuiSvgIcon-root path": {
-							fill: themeMapping.palette.brand.active2
+							fill: themeMapping.palette.brandHighlightHeavy
 						},
 						"&.Mui-disabled .MuiSvgIcon-root path": {
 							fillOpacity: "0.35",
 							fill: "white"
 						},
 						".MuiSvgIcon-root line": {
-							stroke: themeMapping.palette.brand.active2
+							stroke: themeMapping.palette.brandHighlightHeavy
 						},
 						"&.Mui-disabled .MuiSvgIcon-root": {
 							rect: {
@@ -439,7 +444,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"+.MuiFormLabel-root": {
 							marginLeft: "16px",
-							color: themeMapping.palette.text.primary.label,
+							color: themeMapping.palette.text.secondary.default,
 							"&.Mui-disabled": {
 								color: BASE_COLORS.greys.grey5
 							}
@@ -480,7 +485,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"&.Mui-checked": {
 							".SolaceRadioSelection": {
-								fill: themeMapping.palette.brand.active2
+								fill: themeMapping.palette.brandHighlightHeavy
 							}
 						},
 						"&.Mui-disabled .MuiSvgIcon-root": {
@@ -558,7 +563,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								},
 
 								"&.Mui-selected": {
-									backgroundColor: themeMapping.palette.brand.brand4
+									backgroundColor: themeMapping.palette.brandHighlight
 								},
 								".MuiListItemIcon-root": {
 									width: "48px",
@@ -696,10 +701,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							backgroundColor: BASE_COLORS.greys.grey2
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
-							backgroundColor: alpha(themeMapping.palette.brand.active2, 0.1)
+							backgroundColor: alpha(themeMapping.palette.brandHighlightHeavy, 0.1)
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
-							backgroundColor: alpha(themeMapping.palette.brand.active2, 0.1)
+							backgroundColor: alpha(themeMapping.palette.brandHighlightHeavy, 0.1)
 						},
 						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
 						color: themeMapping.palette.text.primary.default,
@@ -735,7 +740,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 									transform: "translate(22px)"
 								},
 								"&.Mui-checked + .MuiSwitch-track": {
-									backgroundColor: alpha(themeMapping.palette.brand.brand3, 0.35),
+									backgroundColor: alpha(themeMapping.palette.brand, 0.35),
 									opacity: 1
 								},
 								"&.Mui-disabled + .MuiSwitch-track": {
@@ -747,13 +752,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 									borderColor: BASE_COLORS.greys.grey2
 								},
 								"&:hover": {
-									backgroundColor: alpha(themeMapping.palette.brand.brand3, 0.35)
+									backgroundColor: alpha(themeMapping.palette.brand, 0.35)
 								}
 							},
 							".MuiSwitch-thumb": {
 								width: "16px",
 								height: "16px",
-								border: `solid 2px ${alpha(themeMapping.palette.brand.brand3, 0.35)}`,
+								border: `solid 2px ${alpha(themeMapping.palette.brand, 0.35)}`,
 								boxShadow: "none"
 							}
 						},
@@ -761,7 +766,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							height: "12px",
 							width: "36px",
 							transform: "translateY(1px)",
-							backgroundColor: alpha(themeMapping.palette.brand.brand3, 0.35),
+							backgroundColor: alpha(themeMapping.palette.brand, 0.35),
 							opacity: 1
 						}
 					},
@@ -769,7 +774,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						"&.MuiChecked .MuiSwitch-track": {
 							height: "12px",
 							transform: "translateY(1px)",
-							backgroundColor: alpha(themeMapping.palette.brand.brand3, 0.35),
+							backgroundColor: alpha(themeMapping.palette.brand, 0.35),
 							opacity: 1
 						}
 					}
@@ -823,7 +828,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								left: 0,
 								width: "100%",
 								height: "4px",
-								backgroundColor: themeMapping.palette.brand.brand5
+								backgroundColor: themeMapping.palette.brand
 							},
 							// the dark sliding part of the progress bar
 							".MuiPaper-root::after": {
@@ -834,7 +839,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								width: "100%",
 								height: "4px",
 								background: `linear-gradient(90deg, ${hexToRgb(
-									themeMapping.palette.brand.active2
+									themeMapping.palette.brandHighlightHeavy
 								)} 0% 40%, transparent 40% 100%)`,
 								animation: "animation 2s linear infinite"
 							},
@@ -892,7 +897,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							display: "none"
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root": {
-							color: themeMapping.palette.brand.brand3,
+							color: themeMapping.palette.brand,
 							fontSize: BASE_FONT_PX_SIZES.md
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root:hover": {
@@ -978,16 +983,16 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							display: "none"
 						},
 						"&.indicator-info": {
-							background: `linear-gradient(${themeMapping.palette.semantic.info.variation1.default} , ${themeMapping.palette.semantic.info.variation1.default}) left/3px 90% no-repeat`
+							background: `linear-gradient(${themeMapping.palette.semantic.info.primary.default} , ${themeMapping.palette.semantic.info.primary.default}) left/3px 90% no-repeat`
 						},
 						"&.indicator-error": {
-							background: `linear-gradient(${themeMapping.palette.semantic.error.variation1.default} , ${themeMapping.palette.semantic.error.variation1.default}) left/3px 90% no-repeat`
+							background: `linear-gradient(${themeMapping.palette.semantic.error.primary.default} , ${themeMapping.palette.semantic.error.primary.default}) left/3px 90% no-repeat`
 						},
 						"&.indicator-warn": {
-							background: `linear-gradient(${themeMapping.palette.semantic.warn.variation1.default} , ${themeMapping.palette.semantic.warn.variation1.default}) left/3px 90% no-repeat`
+							background: `linear-gradient(${themeMapping.palette.semantic.warn.primary.default} , ${themeMapping.palette.semantic.warn.primary.default}) left/3px 90% no-repeat`
 						},
 						"&.indicator-success": {
-							background: `linear-gradient(${themeMapping.palette.semantic.success.variation1.default} , ${themeMapping.palette.semantic.success.variation1.default}) left/3px 90% no-repeat`
+							background: `linear-gradient(${themeMapping.palette.semantic.success.primary.default} , ${themeMapping.palette.semantic.success.primary.default}) left/3px 90% no-repeat`
 						}
 					}
 				}
@@ -1042,7 +1047,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					marginTop: "2px"
 				},
 				label: {
-					color: themeMapping.palette.semantic.error.variation1.default,
+					color: themeMapping.palette.semantic.error.primary.default,
 					fontSize: BASE_FONT_PX_SIZES.xs,
 					marginLeft: "8px"
 				}
@@ -1123,20 +1128,20 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					height: "100%",
 					borderRadius: "2px",
 					"&.info": {
-						backgroundColor: themeMapping.palette.semantic.info.variation1.background,
-						borderLeft: `3px solid ${themeMapping.palette.semantic.info.variation1.default}`
+						backgroundColor: themeMapping.palette.semantic.info.primary.background,
+						borderLeft: `3px solid ${themeMapping.palette.semantic.info.primary.default}`
 					},
 					"&.error": {
-						backgroundColor: themeMapping.palette.semantic.error.variation1.background,
-						borderLeft: `3px solid ${themeMapping.palette.semantic.error.variation1.default}`
+						backgroundColor: themeMapping.palette.semantic.error.primary.background,
+						borderLeft: `3px solid ${themeMapping.palette.semantic.error.primary.default}`
 					},
 					"&.warn": {
-						backgroundColor: themeMapping.palette.semantic.warn.variation1.background,
-						borderLeft: `3px solid ${themeMapping.palette.semantic.warn.variation1.default}`
+						backgroundColor: themeMapping.palette.semantic.warn.primary.background,
+						borderLeft: `3px solid ${themeMapping.palette.semantic.warn.primary.default}`
 					},
 					"&.success": {
-						backgroundColor: themeMapping.palette.semantic.success.variation1.background,
-						borderLeft: `3px solid ${themeMapping.palette.semantic.success.variation1.default}`
+						backgroundColor: themeMapping.palette.semantic.success.primary.background,
+						borderLeft: `3px solid ${themeMapping.palette.semantic.success.primary.default}`
 					}
 				},
 				messageContainer: {
@@ -1230,7 +1235,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						outline: "none"
 					},
 					"&.selected": {
-						background: themeMapping.palette.brand.brand4,
+						background: themeMapping.palette.brand,
 						cursor: "default"
 					}
 				},
@@ -1258,29 +1263,29 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				}
 			}
 		},
-		custom: themeMapping,
 		palette: {
+			custom: themeMapping.palette,
 			background: {
-				default: themeMapping.palette.container.default
+				default: themeMapping.palette.background.primary.default
 			},
 			error: {
-				main: themeMapping.palette.semantic.error.variation1.default
+				main: themeMapping.palette.semantic.error.primary.default
 			},
 			warning: {
-				main: themeMapping.palette.semantic.warn.variation1.default
+				main: themeMapping.palette.semantic.warn.primary.default
 			},
 			primary: {
-				contrastText: themeMapping.palette.text.primary.contrast,
-				dark: themeMapping.palette.brand.brand1,
-				main: themeMapping.palette.brand.brand3
+				contrastText: themeMapping.palette.text.contrast,
+				dark: themeMapping.palette.brand,
+				main: themeMapping.palette.brand
 			},
 			secondary: {
-				contrastText: themeMapping.palette.text.primary.contrast,
-				main: themeMapping.palette.brand.brand2
+				contrastText: themeMapping.palette.text.contrast,
+				main: themeMapping.palette.brand
 			},
 			text: {
 				primary: themeMapping.palette.text.primary.default,
-				secondary: themeMapping.palette.text.primary.label,
+				secondary: themeMapping.palette.text.secondary.default,
 				disabled: BASE_COLORS.greys.grey5 // differs from other disabled text with 0.65?
 			}
 		},
@@ -1314,11 +1319,11 @@ declare module "@mui/material/styles" {
 	interface BreakpointOverrides {
 		dialogMd: true;
 	}
-	interface Theme {
-		custom: ThemeMapping;
+	interface Palette {
+		custom: ThemeMappingPalette;
 	}
-	interface ThemeOptions {
-		custom: ThemeMapping;
+	interface PaletteOptions {
+		custom: ThemeMappingPalette;
 	}
 }
 

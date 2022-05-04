@@ -4,7 +4,12 @@ import { ReactComponent as SolaceSvgs } from "@solacedev/maas-icons/dist/svg/spr
 
 export const decorators = [
 	(Story) => {
-		const themeName = document.body.classList.contains('sap') ? SupportedThemes.sap : SupportedThemes.solace;
+		let themeName = SupportedThemes.solace;
+		if (document.body.classList.contains('sap')) {
+			themeName = SupportedThemes.sap;
+		} else if (document.body.classList.contains('new-solace')) {
+			themeName = SupportedThemes.newSolace;
+		}
 		return <ThemeProvider theme={createTheme(SolaceTheme(themeName))}>
 			<div style={{ display: "none" }}>
 				<SolaceSvgs />
@@ -23,7 +28,8 @@ export const parameters = {
 		default: 'solace',
 		list: [
 		  { name: 'Solace', color: '#00CCAD' },
-		  { name: 'SAP', class: 'sap', color: '#0a6ed1' }
+		  { name: 'SAP', class: 'sap', color: '#0a6ed1' },
+		  { name: 'New Solace', class: 'new-solace', color: '#00C895' }
 		],
 	  }
 };

@@ -1,175 +1,174 @@
 import { alpha } from "@mui/system";
 import { ThemeMapping } from "../../types/ThemeMapping";
-import { baseColors } from "./colors";
 
 /**
- * TODO: Theming todos
+ * Base ThemeMapping for the Solace palette
+ * TODO: finish mapping keys to colours as usage increases
  *
- * - confirm Solace palette to use, mapping to current colours which may not fit theme schema well
- * - expand theme usage throughout MRC
- *   - replace all "toReplace" colours with correct theme colours (both base and SAP)
- *   - consider conflating colors.ts and themeMapping.ts to one file of type ThemeMapping
- * - expand theme usage throught maas-ui
- * - clean up (e.g. remove deprecated pallete object )
+ * When the new colour palette is in place, this palette can be removed and it can take
+ * its place as the base theme mapping.
  */
-const toReplace = "#FF5F00";
 export const baseThemeMapping: ThemeMapping = {
 	palette: {
+		brand: "#00AD93",
+		brandHighlight: "#e8f9f4",
+		brandHighlightHeavy: "#00C895",
+		brandIcon: alpha("#00AD93", 0.3),
+
 		action: {
-			disabled: baseColors.greys.grey3,
-			variation1: {
-				default: baseColors.baseGreen,
-				active: baseColors.greens.green6,
-				hover: baseColors.greens.green5
+			primary: {
+				default: "#00AD93",
+				active: "#05BDA1",
+				hover: "#00CCAD",
+				disabled: alpha("#000000", 0.2)
 			},
-			variation2: {
-				default: baseColors.caribbeanGreen3,
-				active: baseColors.greys.grey19,
-				hover: baseColors.greys.grey18
+			secondary: {
+				default: "#00ad93",
+				active: "#F9F9F9",
+				hover: alpha("#000000", 0.05),
+				disabled: alpha("#000000", 0.2)
 			},
-			variation3: {
-				default: baseColors.baseGreen,
-				active: baseColors.greys.grey19,
-				hover: alpha(baseColors.baseBlack, 0.05)
-			},
-			variation4: {
-				default: alpha(baseColors.baseBlack, 0.8),
-				active: alpha(baseColors.baseBlack, 0.05),
-				hover: alpha(baseColors.baseBlack, 0.1)
+			icon: {
+				default: alpha("#000000", 0.8),
+				active: alpha("#000000", 0.05),
+				hover: alpha("#000000", 0.1),
+				disabled: alpha("#000000", 0.2)
 			}
 		},
 
-		brand: {
-			brand1: baseColors.greens.green5,
-			brand2: baseColors.greens.green3,
-			brand3: baseColors.greens.green2,
-			brand4: baseColors.greens.green9,
-			brand5: baseColors.greens.green11,
-			active1: baseColors.greens.green10,
-			active2: baseColors.greens.green1
-		},
-
-		container: {
-			default: baseColors.greys.grey19,
-			contrast: toReplace,
-			overlay: toReplace,
-			variation1: {
-				default: alpha(baseColors.baseBlack, 0.35)
+		background: {
+			primary: {
+				default: "",
+				highlight: ""
 			},
-			variation2: {
-				default: alpha(baseColors.baseBlack, 0.1)
-			},
-			variation3: {
-				default: baseColors.whiteSmoke2
-			},
-			variation4: {
-				default: baseColors.charcoal1
+			secondary: {
+				default: "",
+				highlight: ""
 			}
 		},
 
 		neutral: {
-			default: baseColors.whiteSmoke2,
-			contrast: baseColors.whites.white1
+			primary: {
+				default: ""
+			},
+			secondary: {
+				default: ""
+			},
+			tertiary: {
+				default: ""
+			},
+			constrast: "#FFFFFF"
 		},
 
 		text: {
-			disabled: baseColors.whites.white1,
 			primary: {
-				default: alpha(baseColors.baseBlack, 0.8),
-				contrast: baseColors.whites.white1,
-				label: alpha(baseColors.baseBlack, 0.65)
+				default: alpha("#000000", 0.8),
+				disabled: "#eeeeee"
 			},
 			secondary: {
-				default: alpha(baseColors.baseBlack, 0.55),
-				contrast: baseColors.whites.white1
-			}
+				default: alpha("#000000", 0.65),
+				disabled: "#eeeeee"
+			},
+			contrast: "#FFFFFF"
 		},
 
 		semantic: {
 			error: {
-				variation1: {
-					default: baseColors.reds.red1,
-					background: alpha(baseColors.reds.red1, 0.1)
+				primary: {
+					default: "#C33135",
+					background: "#FDEDED",
+					active: "",
+					hover: ""
 				},
-				variation2: {
-					default: toReplace
+				secondary: {
+					default: ""
 				},
-				variation3: {
-					default: toReplace
+				tertiary: {
+					default: ""
 				}
 			},
 			warn: {
-				variation1: {
-					default: baseColors.yellows.yellow1,
-					background: baseColors.yellows.yellow2
+				primary: {
+					default: "#F3AA24",
+					background: alpha("#F3AA24", 0.1),
+					active: "",
+					hover: ""
 				},
-				variation2: {
-					default: toReplace
+				secondary: {
+					default: ""
 				},
-				variation3: {
-					default: toReplace
+				tertiary: {
+					default: ""
 				}
 			},
 			info: {
-				variation1: {
-					default: baseColors.blues.blue2,
-					background: baseColors.blues.blue1
+				primary: {
+					default: "#0079FF",
+					background: "#E6F2FF",
+					active: "",
+					hover: ""
 				},
-				variation2: {
-					default: toReplace
+				secondary: {
+					default: ""
 				},
-				variation3: {
-					default: toReplace
+				tertiary: {
+					default: ""
 				}
 			},
 			success: {
-				variation1: {
-					default: baseColors.greens.green7,
-					background: baseColors.greens.green12
+				primary: {
+					default: "#7ED321",
+					background: alpha("#53AE0F", 0.1)
 				},
-				variation2: {
-					default: baseColors.caribbeanGreen5
+				secondary: {
+					default: ""
 				},
-				variation3: {
-					default: toReplace
+				tertiary: {
+					default: "#6FCCBC"
 				}
 			}
 		},
 
 		graph: {
+			path: {
+				default: "",
+				active: "",
+				hover: "",
+				disabled: ""
+			},
 			accent1: {
-				default: toReplace,
-				contrast1: toReplace,
-				constrast2: toReplace
+				default: "",
+				contrast1: "",
+				constrast2: ""
 			},
 			accent2: {
-				default: toReplace
+				default: ""
 			},
 			accent3: {
-				default: toReplace,
-				contrast1: toReplace,
-				constrast2: toReplace
+				default: "",
+				contrast1: "",
+				constrast2: ""
 			},
 			accent4: {
-				default: toReplace,
-				contrast1: toReplace,
-				constrast2: toReplace
+				default: "",
+				contrast1: "",
+				constrast2: ""
 			},
 			accent5: {
-				default: toReplace
+				default: ""
 			},
 			accent6: {
-				default: toReplace
+				default: ""
 			},
 			accent7: {
-				default: toReplace
+				default: ""
 			},
 			accent8: {
-				default: toReplace
+				default: ""
 			},
 			accent9: {
-				default: toReplace,
-				contrast1: toReplace
+				default: "",
+				contrast1: ""
 			}
 		}
 	},
@@ -178,31 +177,31 @@ export const baseThemeMapping: ThemeMapping = {
 	 * @deprecated This scheme is deprecated and will be removed when no longer used.
 	 */
 	pallete: {
-		error: baseColors.baseRed, // semantic.error.variation1.default
-		greyBackgroundLight: baseColors.whiteSmoke2, // container.variation3.default
-		info: baseColors.azureRadiance, // semantic.info.variation1.default
-		primary: baseColors.baseGreen, // action.variation1.default
-		secondary: baseColors.caribbeanGreen3, // action.variation2.default
-		success: baseColors.baseLightGreen, // semantic.success.variation1.default
-		text: alpha(baseColors.baseBlack, 0.8), // text.primary.default
-		labelText: alpha(baseColors.baseBlack, 0.65), // text.primary.label
-		textSecondary: alpha(baseColors.baseBlack, 0.55), // text.secondary.default
-		warning: baseColors.butterCupYellow3, // semantic.warn.variation1.default
-		white: baseColors.white2, // text.primary.contrast
+		error: "#d0021b",
+		greyBackgroundLight: "#f9f9f9",
+		info: "#0079ff",
+		primary: "#00ad93",
+		secondary: "#00ccad",
+		success: "#7ed321",
+		text: alpha("#000000", 0.8),
+		labelText: alpha("#000000", 0.65),
+		textSecondary: alpha("#000000", 0.55),
+		warning: "#f3aa24",
+		white: "#FFFFFF",
 
 		//toasts
-		toastText: baseColors.white2, // text.secondary.contrast
-		toastBackground: baseColors.charcoal1, // container.variation4.default
-		toastSuccessIcon: baseColors.caribbeanGreen5, // semantic.success.variation2.default
+		toastText: "#FFFFFF",
+		toastBackground: "#474747",
+		toastSuccessIcon: "#94EAD4",
 
 		//chips
-		nonadminPill: alpha(baseColors.baseBlack, 0.1), // container.variation2.default
-		adminPill: alpha(baseColors.baseBlack, 0.35), // container.variation1.default
+		nonadminPill: alpha("#000000", 0.1),
+		adminPill: alpha("#000000", 0.35),
 
 		//Button - these seem more inconsistent with others, can other variations be used?
-		buttonTextHoverBG: alpha(baseColors.baseBlack, 0.05), // action.variation3.hover
-		buttonOutlinedHoverBG: baseColors.wildSandGrey2, // ? can we align with something else
-		buttonLinkDisabled: alpha(baseColors.baseBlack, 0.2), // action.disabled
-		buttonIconBG: baseColors.white1 // ? can we align with something else
+		buttonTextHoverBG: alpha("#000000", 0.05),
+		buttonOutlinedHoverBG: "#f4f5f5",
+		buttonLinkDisabled: alpha("#000000", 0.2),
+		buttonIconBG: "EEEEEE"
 	}
 };

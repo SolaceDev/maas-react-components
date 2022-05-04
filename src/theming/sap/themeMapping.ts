@@ -1,141 +1,105 @@
 import { alpha, lighten } from "@mui/material";
 
-import { sapColors } from "./colors";
-import { baseThemeMapping } from "../base/themeMapping";
 import { ThemeMapping } from "../../types/ThemeMapping";
+import { Palette } from "../../types/Palette";
+import getThemeMappingPalette from "../getThemeMappingPalette";
 
+const palette: Palette = {
+	brandPrimary: "#0A6ED1",
+	brand30: "#B6D4F1",
+	brand10: "#E7F1FA",
+
+	primary100: "#07529C",
+	primary90: "#0961B9",
+	primaryPrimary: "#0A6ED1",
+	primary60: "#6CA8E3",
+	primary40: "#9DC5ED",
+	primary20: "#CEE2F6",
+	primary10: "#E7F1FA",
+
+	secondaryPrimary: "#89919A",
+	secondary40: "#D0D3D7",
+	secondary20: "#E7E9EB",
+	secondary10: "#F3F4F5",
+
+	darkBackground100: "#2A3B4C",
+	darkBackgroundPrimary: "#354A5F",
+	darkBackground80: "#5D6E7F",
+	darkBackground30: "#C2C9CF",
+
+	lightBackgroundPrimary: "#EDEFF0",
+
+	primaryTextPrimary: "#32363A",
+
+	secondaryTextPrimary: "#6A6D70",
+	secondaryText50: "#D2D3D4",
+
+	white: "#FFFFFF",
+
+	info100: "#0964BE",
+	infoPrimary: "#0A6ED1",
+	info70: "#91C8F6",
+	info30: "#C6DEF6",
+	info20: "#DDECFA",
+	info10: "#F5FAFF",
+
+	error100: "#9E0000",
+	errorPrimary: "#BB0000",
+	error70: "#FF8888",
+	error30: "#F1BCBC",
+	error20: "#F8D4D4",
+	error10: "#FFEBEB",
+
+	warning100: "#D16100",
+	warningPrimary: "#E9730C",
+	warning70: "#FABD64",
+	warning30: "#FADDC3",
+	warning20: "#FCEADA",
+	warning10: "#FEF7F1",
+
+	success100: "#006B53",
+	successPrimary: "#107E3E",
+	success70: "#ABE2AB",
+	success30: "#C4E4D1",
+	success20: "#DAF0E4",
+	success10: "#F1FDF6"
+};
+
+/**
+ * ThemeMapping for the SAP palette
+ */
 export const sapThemeMapping: ThemeMapping = {
-	...baseThemeMapping,
-	palette: {
-		...baseThemeMapping.palette,
-		action: {
-			disabled: alpha(sapColors.primary2, 0.2),
-			variation1: {
-				default: sapColors.primary2,
-				active: alpha(sapColors.primary2, 0.3),
-				hover: alpha(sapColors.primary2, 0.5)
-			},
-			variation2: {
-				default: sapColors.primary2,
-				active: alpha(sapColors.primary2, 0.1),
-				hover: alpha(sapColors.primary2, 0.05)
-			},
-			variation3: {
-				default: sapColors.primary2,
-				active: alpha(sapColors.primary2, 0.1),
-				hover: sapColors.greys.grey1
-			},
-			variation4: {
-				default: sapColors.greys.grey4,
-				active: sapColors.greys.grey19,
-				hover: sapColors.greys.grey1
-			}
-		},
-
-		brand: {
-			brand1: sapColors.primary2,
-			brand2: sapColors.primary2,
-			brand3: sapColors.primary2,
-			brand4: alpha(sapColors.primary2, 0.1),
-			brand5: sapColors.primary2,
-			active1: alpha(sapColors.primary2, 0.1),
-			active2: alpha(sapColors.primary2, 0.4)
-		},
-
-		container: {
-			...baseThemeMapping.palette.container,
-			variation1: {
-				default: sapColors.primary7
-			},
-			variation2: {
-				default: alpha(sapColors.primary7, 0.1)
-			},
-			variation3: {
-				default: sapColors.primary4
-			},
-			variation4: {
-				default: lighten(sapColors.primary2, 0.9)
-			}
-		},
-
-		text: {
-			...baseThemeMapping.palette.text,
-			primary: {
-				default: sapColors.primary6,
-				contrast: sapColors.primary3,
-				label: sapColors.primary7
-			},
-			secondary: {
-				default: sapColors.primary7,
-				contrast: sapColors.primary6
-			}
-		},
-
-		semantic: {
-			...baseThemeMapping.palette.semantic,
-			error: {
-				...baseThemeMapping.palette.semantic.error,
-				variation1: {
-					default: sapColors.negative,
-					background: alpha(sapColors.negative, 0.1)
-				}
-			},
-			warn: {
-				...baseThemeMapping.palette.semantic.warn,
-				variation1: {
-					default: sapColors.critical,
-					background: alpha(sapColors.critical, 0.1)
-				}
-			},
-			info: {
-				...baseThemeMapping.palette.semantic.info,
-				variation1: {
-					default: sapColors.information,
-					background: alpha(sapColors.information, 0.1)
-				}
-			},
-			success: {
-				...baseThemeMapping.palette.semantic.success,
-				variation1: {
-					default: sapColors.positive,
-					background: alpha(sapColors.positive, 0.1)
-				},
-				variation2: {
-					default: sapColors.positive
-				}
-			}
-		}
-	},
+	palette: getThemeMappingPalette(palette),
 
 	/**
 	 * @deprecated This scheme is deprecated and will be removed when no longer used.
 	 */
 	pallete: {
-		error: sapColors.negative, // semantic.error.variation1.default
-		greyBackgroundLight: sapColors.primary4, // container.variation3.default
-		info: sapColors.information, // semantic.info.variation1.default
-		primary: sapColors.primary2, // action.variation1.default
-		secondary: sapColors.primary2, // action.variation2.default
-		success: sapColors.positive, // semantic.success.variation1.default
-		text: sapColors.primary6, // text.primary.default
-		labelText: sapColors.primary7, // text.primary.label
-		textSecondary: sapColors.primary7, // text.secondary.default
-		warning: sapColors.critical, // semantic.warn.variation1.default
-		white: sapColors.primary3, // text.primary.contrast
+		error: palette.errorPrimary,
+		greyBackgroundLight: palette.lightBackgroundPrimary,
+		info: palette.brandPrimary,
+		primary: palette.brandPrimary,
+		secondary: palette.brandPrimary,
+		success: palette.successPrimary,
+		text: palette.primaryTextPrimary,
+		labelText: palette.secondaryTextPrimary,
+		textSecondary: palette.secondaryTextPrimary,
+		warning: palette.warningPrimary,
+		white: palette.white,
 
 		//toasts
-		toastText: sapColors.primary6, // text.secondary.contrast
-		toastBackground: lighten(sapColors.primary2, 0.9), // container.variation4.default
-		toastSuccessIcon: sapColors.positive, // semantic.success.variation2.default
+		toastText: palette.primaryTextPrimary,
+		toastBackground: lighten(palette.brandPrimary, 0.9),
+		toastSuccessIcon: palette.successPrimary,
 
 		//chips
-		nonadminPill: alpha(sapColors.primary7, 0.1), // container.variation2.default
-		adminPill: sapColors.primary7, // container.variation1.default
+		nonadminPill: alpha(palette.secondaryTextPrimary, 0.1),
+		adminPill: palette.secondaryTextPrimary,
 
 		//Button
-		buttonTextHoverBG: alpha(sapColors.primary2, 0.1), // action.variation3.hover
-		buttonOutlinedHoverBG: alpha(sapColors.primary2, 0.1), // ? can we align with something else
-		buttonLinkDisabled: alpha(sapColors.primary2, 0.2), // action.disabled
-		buttonIconBG: alpha(sapColors.primary2, 0.1) // ? can we align with something else
+		buttonTextHoverBG: alpha(palette.brandPrimary, 0.1),
+		buttonOutlinedHoverBG: alpha(palette.brandPrimary, 0.1),
+		buttonLinkDisabled: alpha(palette.brandPrimary, 0.2),
+		buttonIconBG: alpha(palette.brandPrimary, 0.1)
 	}
 };

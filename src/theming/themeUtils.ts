@@ -1,5 +1,6 @@
 import { sapThemeMapping } from "./sap/themeMapping";
-import { solaceThemeMapping } from "./solace/themeMapping";
+import { baseThemeMapping } from "./base/themeMapping";
+import { solaceNewThemeMapping } from "./solace/themeMapping";
 import { ThemeMapping } from "../types/ThemeMapping";
 import { SupportedThemes } from "../types/supportedThemes";
 
@@ -14,8 +15,10 @@ const getThemeMappings = (theme?: SupportedThemes): ThemeMapping => {
 	if (theme) appTheme = theme;
 	if (appTheme === SupportedThemes.sap) {
 		return sapThemeMapping;
+	} else if (appTheme === SupportedThemes.newSolace) {
+		return solaceNewThemeMapping;
 	} else {
-		return solaceThemeMapping;
+		return baseThemeMapping;
 	}
 };
 

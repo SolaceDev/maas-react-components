@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@mui/material";
+import { styled, Theme, useTheme } from "@mui/material";
 import SolaceButton from "./form/SolaceButton";
 import { ErrorIcon } from "../resources/icons/ErrorIcon";
 import { InfoIcon } from "../resources/icons/InfoIcon";
@@ -56,11 +56,13 @@ interface SolaceInfoBoxProps extends SolaceComponentProps {
 	details?: string | JSX.Element;
 }
 
-function renderIcons(variant: "info" | "error" | "warn" | "success"): JSX.Element {
-	if (variant === "info") return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
-	else if (variant === "error") return <ErrorIcon size={20} fill={BASE_COLORS.reds.red1} />;
-	else if (variant === "warn") return <WarnIcon size={20} fill={BASE_COLORS.yellows.yellow1} />;
-	else if (variant === "success") return <SuccessIcon size={20} fill={BASE_COLORS.greens.green7} />;
+function renderIcons(theme: Theme, variant: "info" | "error" | "warn" | "success"): JSX.Element {
+	if (variant === "info") return <InfoIcon size={20} fill={theme.palette.custom.semantic.info.primary.default} />;
+	else if (variant === "error")
+		return <ErrorIcon size={20} fill={theme.palette.custom.semantic.error.primary.default} />;
+	else if (variant === "warn") return <WarnIcon size={20} fill={theme.palette.custom.semantic.warn.primary.default} />;
+	else if (variant === "success")
+		return <SuccessIcon size={20} fill={theme.palette.custom.semantic.success.primary.default} />;
 	return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
 }
 
@@ -77,7 +79,7 @@ function SolaceMessageBox({
 	dataTags
 }: SolaceInfoBoxProps): JSX.Element | null {
 	const [open, setOpen] = React.useState(true);
-
+	const theme = useTheme();
 	const handleClose = () => {
 		setOpen(false);
 		onClose?.();
@@ -89,7 +91,9 @@ function SolaceMessageBox({
 				<InfoBoxMessageContainer>
 					<InfoBoxMessage color={color} className={`${dense ? "dense" : ""}`}>
 						{showIcon && (
-							<IconContainer className={`iconContainer ${dense ? "dense" : ""}`}>{renderIcons(variant)}</IconContainer>
+							<IconContainer className={`iconContainer ${dense ? "dense" : ""}`}>
+								{renderIcons(theme, variant)}
+							</IconContainer>
 						)}
 						<MessageTextContainer>{message}</MessageTextContainer>
 					</InfoBoxMessage>

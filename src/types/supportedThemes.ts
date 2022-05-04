@@ -1,4 +1,5 @@
 export enum SupportedThemes {
 	sap = "sap",
-	solace = "solace"
+	solace = "solace",
+	newSolace = "new-solace"
 }
