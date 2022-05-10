@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { Search } from "@mui/icons-material";
-import { SolaceTextField } from "@SolaceDev/maas-react-components";
+import { SolaceTextField, SolaceButton } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
+import { CloseIcon } from "../../../../src/resources/icons/CloseIcon";
 
 export default {
 	title: "Forms/SolaceTextfield",
@@ -164,6 +165,47 @@ WithIcon.args = {
 	label: DEMO_LABEL,
 	helperText: "Text field with search icon",
 	customIcon: { position: "end", icon: <Search /> }
+};
+
+export const WithClearButton = (): JSX.Element => {
+	const [value, setValue] = useState("");
+	const handleChange = (e) => {
+		setValue(e.value);
+	};
+	const handleClearInput = () => {
+		setValue("");
+	};
+	const endAdornment = [
+		value ? (
+			<SolaceButton key={"closeIcon"} variant="icon" onClick={handleClearInput}>
+				<CloseIcon />
+			</SolaceButton>
+		) : null,
+		<Search key="search" />
+	];
+
+	return (
+		<SolaceTextField
+			value={value}
+			name="demoTextField"
+			onChange={handleChange}
+			endAdornment={endAdornment}
+			title={DEMO_TITLE}
+			label={DEMO_LABEL}
+			helperText="Text field with clear button"
+			dataQa="textfieldWithClearButton"
+		/>
+	);
+};
+WithClearButton.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+
+	await userEvent.type(canvas.getByTestId("textfieldWithClearButton"), "This is a test ", {
+		delay: 400
+	});
+	//click on clear button
+	await userEvent.click(await canvas.findByRole("button"));
 };
 
 export const AutoFocus = Template.bind({});

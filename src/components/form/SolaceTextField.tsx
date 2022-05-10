@@ -114,6 +114,10 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * If true, the input will take up the full width of its container.
 	 */
 	fullWidth?: boolean;
+	/**
+	 * optional prop to pass an array of icon or button at the end of textfield
+	 */
+	endAdornment?: (React.ReactNode | JSX.Element)[];
 }
 
 function SolaceTextField({
@@ -143,19 +147,37 @@ function SolaceTextField({
 	dataQa,
 	dataTags,
 	fullWidth = false,
-	width
+	width,
+	endAdornment
 }: SolaceTextFieldProps): JSX.Element {
 	const theme = useTheme();
 
-	const iconProps = customIcon
-		? {
-				endAdornment: (
-					<InputAdornment position={customIcon.position}>
-						<IconButton onClick={customIcon.handleClick}>{customIcon.icon}</IconButton>
-					</InputAdornment>
-				)
-		  }
-		: {};
+	const endIconProps =
+		customIcon && customIcon.position === "end" ? (
+			<IconButton onClick={customIcon.handleClick}>{customIcon.icon}</IconButton>
+		) : null;
+
+	const inputEndAdornment =
+		endIconProps || endAdornment
+			? {
+					endAdornment: (
+						<InputAdornment position="end">
+							{endAdornment}
+							{endIconProps}
+						</InputAdornment>
+					)
+			  }
+			: {};
+	const inputStartAdornment =
+		customIcon && customIcon.position === "start"
+			? {
+					startAdornment: (
+						<InputAdornment position={customIcon.position}>
+							<IconButton onClick={customIcon.handleClick}>{customIcon.icon}</IconButton>
+						</InputAdornment>
+					)
+			  }
+			: {};
 
 	const defaultInputProps = {
 		sx: { height: theme.spacing(4) },
@@ -199,7 +221,7 @@ function SolaceTextField({
 			error={hasErrors}
 			autoComplete="off"
 			autoFocus={autoFocus}
-			InputProps={{ ...defaultInputProps, ...iconProps }}
+			InputProps={{ ...defaultInputProps, ...inputEndAdornment, ...inputStartAdornment }}
 			margin="dense"
 			placeholder={placeholder}
 			value={value}
