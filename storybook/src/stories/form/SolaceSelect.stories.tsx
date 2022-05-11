@@ -62,11 +62,21 @@ export default {
 			control: {
 				type: "text"
 			}
+		},
+		displayEmpty: {
+			control: {
+				type: "boolean"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceSelect>;
 
 export const SELECT_OPTIONS: Array<any> = [];
+SELECT_OPTIONS.push(
+	<MenuItem key="no option" value="">
+		No Option
+	</MenuItem>
+);
 SELECT_OPTIONS.push(
 	<MenuItem key="option1" value="option1">
 		Menu Option #1
@@ -231,6 +241,16 @@ Subtext.args = {
 	title: TITLE,
 	label: LABEL,
 	children: generateSelectOptionsWithSubtext()
+};
+
+export const DisplayEmpty = Template.bind({});
+DisplayEmpty.args = {
+	onChange: action("callback"),
+	title: TITLE,
+	id: "demoSelectId",
+	name: "demoSelect",
+	children: SELECT_OPTIONS,
+	displayEmpty: true
 };
 
 export const HelperText = Template.bind({});

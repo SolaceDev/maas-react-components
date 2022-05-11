@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
+import clsx from "clsx";
 export interface SolaceSelectChangeEvent {
 	name: string;
 	value: string;
@@ -68,6 +69,10 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 * Custom Width of the component.
 	 */
 	width?: string;
+	/**
+	 * Boolean flag to show the select option that has empty value
+	 */
+	displayEmpty?: boolean;
 }
 
 function SolaceSelect({
@@ -82,6 +87,7 @@ function SolaceSelect({
 	disabled = false,
 	readOnly = false,
 	inlineLabel = false,
+	displayEmpty = false,
 	onChange,
 	getOptionDisplayValue,
 	dataQa,
@@ -126,7 +132,7 @@ function SolaceSelect({
 			select
 			InputProps={{
 				sx: { height: theme.spacing(4) },
-				className: readOnly ? "readOnlySelect" : "",
+				className: clsx({ readOnlySelect: readOnly, emptySelect: !selectedValue }),
 				disabled: disabled,
 				readOnly: readOnly,
 				required: required
@@ -144,7 +150,8 @@ function SolaceSelect({
 					? (value: unknown) => {
 							return getOptionDisplayValue(value);
 					  }
-					: undefined
+					: undefined,
+				displayEmpty: displayEmpty
 			}}
 		>
 			{children}

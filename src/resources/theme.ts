@@ -373,6 +373,11 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 									padding: "0px"
 								}
 							},
+							"&.emptySelect, .MuiOutlinedInput-root.readOnlySelect.Mui-focused": {
+								".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
+									color: BASE_COLORS.greys.grey5
+								}
+							},
 							"&.Mui-focused": {
 								".MuiOutlinedInput-notchedOutline": {
 									border: `solid 1px ${themeMapping.palette.brandHighlightHeavy}`

@@ -9,6 +9,7 @@ import {
 	StyledExpandedTableData
 } from "../table-utils";
 import { ArrowRightIcon } from "../../../resources/icons/ArrowRight";
+import clsx from "clsx";
 
 export interface ExpandableTableRowProps {
 	enabled: boolean;
@@ -120,7 +121,11 @@ export const useExpandableRows = ({
 			renderChildren && (
 				<StyledExpandedTableRow
 					key={`${row.id}_childrenTr`}
-					className={row.rowSelected ? "selected expanded" : "expanded"}
+					className={clsx({
+						selected: row.rowSelected,
+						clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
+						expanded: expanded
+					})}
 					onClick={() => {
 						if (selectRowWhenClickOnChildren) updateSelection(row);
 					}}
@@ -142,7 +147,11 @@ export const useExpandableRows = ({
 						key={row.id}
 						onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
 						onClick={() => updateSelection(row)}
-						className={`${row.rowSelected ? "selected" : ""} ${expanded ? "expanded" : ""}`}
+						className={clsx({
+							selected: row.rowSelected,
+							clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
+							expanded: expanded
+						})}
 					>
 						{[
 							selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),

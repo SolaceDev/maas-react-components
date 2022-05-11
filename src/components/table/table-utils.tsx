@@ -110,7 +110,10 @@ export const StyledTableNumberData = styled(StyledTableData)(() => ({
 
 export const StyledExpandedTableRow = styled("tr")(() => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`
+	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
+	"&.clickable": {
+		cursor: "pointer"
+	}
 }));
 
 export const StyledExpandedTableData = styled("td")({
