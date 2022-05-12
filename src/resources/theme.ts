@@ -1166,9 +1166,11 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					width: "100%",
 					alignItems: "center",
 					gap: "8px",
-					padding: "6px 8px",
+					padding: "6px 8px 5px 8px",
+					lineHeight: "1.5",
 					"&.dense": {
-						padding: "0 8px"
+						padding: "0 8px",
+						lineHeight: "normal"
 					}
 				},
 				iconContainer: {
@@ -1180,7 +1182,8 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					}
 				},
 				messageTextContainer: {
-					width: "100%"
+					width: "100%",
+					color: themeMapping.palette.text.primary.default
 				},
 				detailsContainer: {
 					// 10px on top because the message will have 6px padding bottom
