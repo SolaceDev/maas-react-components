@@ -1212,7 +1212,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					whiteSpace: "nowrap",
 					placeItems: "center left",
 					padding: "10px 24px",
-					lineHeight: "32px",
+					minHeight: "32px",
 					"&.headerRow": {
 						height: "30px",
 						fontWeight: "500",
