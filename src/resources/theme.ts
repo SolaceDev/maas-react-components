@@ -430,8 +430,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							fill: themeMapping.palette.brandHighlightHeavy
 						},
 						"&.Mui-disabled .MuiSvgIcon-root path": {
-							fillOpacity: "0.35",
-							fill: "white"
+							fillOpacity: "0.35"
 						},
 						".MuiSvgIcon-root line": {
 							stroke: themeMapping.palette.brandHighlightHeavy
