@@ -10,7 +10,8 @@ import {
 	getSolaceSelectAutocompleteOptionLabel,
 	isSolaceSelectAutocompleteOptionEqual,
 	SolaceSelectAutocompleteItemProps,
-	SolaceChip
+	SolaceChip,
+	SolaceButton
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { cloneDeep } from "lodash";
@@ -650,6 +651,61 @@ export const MultipleWithCustomTagRenderer = () => {
 					);
 				})}
 			</div>
+		</div>
+	);
+};
+
+export const OpenDropDownOnButtonClick = () => {
+	const [values, setValues] = React.useState([]);
+	const [matchingValues, setMatchingValues] = React.useState([]);
+	let demoInputRef;
+
+	const handleChange = (evt) => {
+		setValues(evt.value);
+	};
+
+	const handleFetchOptionsCallback = React.useCallback((searchTerm: string) => {
+		if (searchTerm) {
+			setMatchingValues(
+				SELECT_OPTIONS.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()))
+			);
+		} else {
+			setMatchingValues(SELECT_OPTIONS);
+		}
+	}, []);
+
+	const handleOptionDisabled = (option) => {
+		return option["supplementalText"] === "Already added";
+	};
+
+	return (
+		<div style={{ display: "flex", columnGap: "10px", alignItems: "end" }}>
+			<SolaceSelectAutocomplete
+				name="demoOptions"
+				label="Demo Select Options"
+				multiple={true}
+				value={values}
+				options={matchingValues}
+				itemComponent={SolaceSelectAutocompleteItem}
+				itemMappingCallback={(option) => option}
+				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				onChange={handleChange}
+				fetchOptionsCallback={handleFetchOptionsCallback}
+				getOptionDisabledCallback={handleOptionDisabled}
+				inputRef={(input) => {
+					demoInputRef = input;
+				}}
+				openOnFocus
+				width="300px"
+			></SolaceSelectAutocomplete>
+			<SolaceButton
+				variant="outline"
+				onClick={() => {
+					demoInputRef.focus();
+				}}
+			>
+				open the dropdown
+			</SolaceButton>
 		</div>
 	);
 };

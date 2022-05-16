@@ -106,6 +106,14 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * Custom Width of the component.
 	 */
 	width?: string;
+	/**
+	 * for adding a reference to the TextField component
+	 */
+	inputRef?: (input: HTMLInputElement) => void;
+	/**
+	 * Boolean flag to open the dropdown on focus
+	 */
+	openOnFocus?: boolean;
 }
 
 const CustomHeightTextField = styled(TextField)`
@@ -141,7 +149,9 @@ function SolaceSelectAutocomplete<T, V>({
 	onCloseCallback,
 	isOptionEqualToValueCallback,
 	getOptionDisabledCallback,
-	width
+	width,
+	inputRef,
+	openOnFocus = false
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -222,6 +232,7 @@ function SolaceSelectAutocomplete<T, V>({
 				onCloseCallback && onCloseCallback(); // notify parent select closed
 				setOpen(false);
 			}}
+			openOnFocus={openOnFocus}
 			onOpen={() => {
 				setIsFetching(true);
 				setOpen(true);
@@ -253,6 +264,7 @@ function SolaceSelectAutocomplete<T, V>({
 						readOnly: readOnly,
 						required: required
 					}}
+					inputRef={inputRef}
 				/>
 			)}
 			isOptionEqualToValue={isOptionEqualToValueCallback}
