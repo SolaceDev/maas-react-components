@@ -39,7 +39,7 @@ function SolaceConfirmationDialog({
 			<DialogActions>
 				{actions.map((action) => (
 					<SolaceButton
-						data-qa={action.id}
+						dataQa={action.dataQa}
 						key={action.label}
 						onClick={action.onClick}
 						variant={action.variant ?? "text"}

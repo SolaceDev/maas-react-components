@@ -62,7 +62,7 @@ function SolaceDetailMessage({ msgImg, title, details, actions }: SolaceDetailMe
 	const buildActionButtons = () => {
 		const buttons: JSX.Element[] = [];
 		actions?.forEach((action: SolaceButtonProps) =>
-			buttons.push(<SolaceButton data-qa={action.id} key={action.id} {...action} />)
+			buttons.push(<SolaceButton dataQa={action.dataQa} key={action.id} {...action} />)
 		);
 		return buttons;
 	};
