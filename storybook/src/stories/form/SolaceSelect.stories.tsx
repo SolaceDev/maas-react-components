@@ -5,7 +5,8 @@ import {
 	SolaceSelect,
 	DeleteIcon,
 	AddCircleOutlineOutlinedIcon,
-	HelpOutlineOutlinedIcon
+	HelpOutlineOutlinedIcon,
+	SolaceButton
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@SolaceDev/maas-react-components";
@@ -344,4 +345,48 @@ WithIconAndText.args = {
 	title: TITLE,
 	label: LABEL,
 	children: generateSelectOptionsWithIconAndText()
+};
+
+export const OpenDropDownOnButtonClick = () => {
+	const [selectedSharedType, setSelectedSharedType] = React.useState("");
+	const [openDropdown, setOpenDropdown] = React.useState(false);
+
+	const handleSharedTypeChange = (evt) => {
+		setSelectedSharedType(evt.value);
+	};
+	const handleClose = () => {
+		setOpenDropdown(false);
+	};
+
+	const handleOpen = () => {
+		setOpenDropdown(true);
+	};
+
+	return (
+		<div style={{ display: "flex", columnGap: "10px", alignItems: "end" }}>
+			<SolaceSelect
+				id="sharedTypeSelect"
+				name="sharedTypeSelect"
+				dataQa="sharedTypeSelect"
+				label={"Shared"}
+				onChange={handleSharedTypeChange}
+				value={selectedSharedType}
+				width={"30%"}
+				displayEmpty
+				open={openDropdown}
+				onClose={handleClose}
+				onOpen={handleOpen}
+			>
+				{SELECT_OPTIONS}
+			</SolaceSelect>
+			<SolaceButton
+				variant="outline"
+				onClick={() => {
+					setOpenDropdown(true);
+				}}
+			>
+				open the dropdown
+			</SolaceButton>
+		</div>
+	);
 };

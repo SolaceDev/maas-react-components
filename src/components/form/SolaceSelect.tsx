@@ -73,6 +73,18 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 * Boolean flag to show the select option that has empty value
 	 */
 	displayEmpty?: boolean;
+	/**
+	 * Boolean flag to show the select options
+	 */
+	open?: boolean;
+	/**
+	 * Callback function to trigger whenever the dropdown opens
+	 */
+	onOpen?: () => void;
+	/**
+	 * Callback function to trigger whenever the dropdown closes
+	 */
+	onClose?: () => void;
 }
 
 function SolaceSelect({
@@ -93,7 +105,10 @@ function SolaceSelect({
 	dataQa,
 	dataTags,
 	children,
-	width
+	width,
+	open,
+	onOpen,
+	onClose
 }: SolaceSelectProps): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value);
@@ -151,7 +166,10 @@ function SolaceSelect({
 							return getOptionDisplayValue(value);
 					  }
 					: undefined,
-				displayEmpty: displayEmpty
+				displayEmpty: displayEmpty,
+				onOpen: onOpen,
+				onClose: onClose,
+				open: open
 			}}
 		>
 			{children}
