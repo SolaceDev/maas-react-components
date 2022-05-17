@@ -42,6 +42,10 @@ export interface SolaceTooltipProps extends SolaceComponentProps {
 	 */
 	maxWidth?: "small" | "medium" | "full";
 	/**
+	 * Disable listener to show tooltip when referenced element is focused, default to false
+	 */
+	disableFocusListener?: boolean;
+	/**
 	 * Disable listener to show tooltip when referenced element is hovered, default to false
 	 */
 	disableHoverListener?: boolean;
@@ -78,6 +82,7 @@ function SolaceTooltip({
 	children,
 	placement = "bottom",
 	maxWidth = "small",
+	disableFocusListener = false,
 	disableHoverListener = false,
 	enterDelay = 500,
 	enterNextDelay = 0,
@@ -107,6 +112,7 @@ function SolaceTooltip({
 			placement={placement}
 			data-qa={dataQa}
 			data-tags={dataTags}
+			disableFocusListener={disableFocusListener}
 			disableHoverListener={disableHoverListener || (variant === "overflow" && !isOverflowed)}
 			enterDelay={enterDelay}
 			enterNextDelay={enterNextDelay}

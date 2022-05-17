@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useRef } from "react";
+import React, { ReactNode, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import {
 	SolaceTooltip,
@@ -295,6 +295,30 @@ export const ControlledTooltip = (): ReactNode => {
 			</SolaceTooltip>
 			<SolaceLabel id="inputWithTooltipLabel">Without Toolip</SolaceLabel>
 			<SolaceTextField name="inputWithoutTooltip" value={inputWithoutTooltip} onChange={handleChange} />
+		</div>
+	);
+};
+
+export const TooltipWithAndWithoutFocusListener = (): ReactNode => {
+	return (
+		<div
+			style={{
+				width: "400px",
+				display: "grid",
+				gridTemplateColumns: "auto auto auto",
+				gridTemplateRows: "auto",
+				columnGap: "8px"
+			}}
+		>
+			<SolaceTooltip variant="text" title={"Add"}>
+				<SolaceTextField name="input1" value={"add"} autoFocus={true} />
+			</SolaceTooltip>
+			<SolaceTooltip variant="text" title={"Delete"} disableFocusListener={true}>
+				<SolaceTextField name="input2" value={"delete"} />
+			</SolaceTooltip>
+			<SolaceTooltip variant="text" title={"Hint"}>
+				<SolaceTextField name="input3" value={"hint"} />
+			</SolaceTooltip>
 		</div>
 	);
 };
