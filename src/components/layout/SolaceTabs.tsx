@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Box, Tabs, Tab } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
+import { BASE_FONT_PX_SIZES, BASE_FONT_PX_SIZE_TYPES } from "../../resources/typography";
 
 interface TabProps {
 	/**
@@ -23,6 +24,7 @@ interface TabProps {
 	 * If the tab is disabled
 	 */
 	disabled?: boolean;
+	size?: keyof BASE_FONT_PX_SIZE_TYPES;
 }
 
 interface SolaceTabsProps extends SolaceComponentProps {
@@ -38,7 +40,7 @@ interface SolaceTabsProps extends SolaceComponentProps {
 }
 
 function AnchorTab(props: TabProps) {
-	const { onTabClick, ...rest } = props;
+	const { onTabClick, size = "sm", ...rest } = props;
 	return (
 		<Tab
 			component="a"
@@ -50,7 +52,7 @@ function AnchorTab(props: TabProps) {
 				}
 			}}
 			disableRipple={true}
-			sx={{ height: "100%" }}
+			sx={{ height: "100%", fontSize: BASE_FONT_PX_SIZES[size] }}
 			{...rest}
 		/>
 	);
