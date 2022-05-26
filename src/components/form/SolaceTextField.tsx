@@ -219,7 +219,7 @@ function SolaceTextField({
 			}}
 			type={type}
 			error={hasErrors}
-			autoComplete="off"
+			autoComplete={`dummy-field-${name}`}
 			autoFocus={autoFocus}
 			InputProps={{ ...defaultInputProps, ...inputEndAdornment, ...inputStartAdornment }}
 			margin="dense"
