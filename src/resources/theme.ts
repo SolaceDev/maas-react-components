@@ -1024,7 +1024,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					expandIconWrapper: {
 						padding: "0px 8px 0px 8px",
 						svg: {
-							fill: themeMapping.palette.deprecated.secondary.text.wMain,
+							fill: themeMapping.palette.deprecated.secondary.wMain,
 							":hover": {
 								fill: themeMapping.palette.secondary.wMain
 							}
