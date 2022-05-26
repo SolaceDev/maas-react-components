@@ -33,7 +33,7 @@ function SolaceSelectAutocompleteItem({
 				)}
 			</Grid>
 			{supplementalText && (
-				<Grid className="suplementalText" item>
+				<Grid className="supplementalText" item>
 					{supplementalText}
 				</Grid>
 			)}

@@ -23,7 +23,7 @@ function SolaceToggleLabel({ children, bold, large, disabled }: SolaceToggleLabe
 		<Typography
 			variant={large ? "subtitle1" : "body1"}
 			sx={{
-				color: disabled ? theme.palette.text.disabled : theme.palette.text.primary,
+				color: disabled ? theme.palette.ux.secondary.text.w50 : theme.palette.ux.primary.text.wMain,
 				fontWeight: bold ? "medium" : "regular",
 				alignSelf: "center"
 			}}
@@ -159,7 +159,7 @@ function SolaceToggle({
 							htmlFor={`${id}-toggle`}
 							required={required}
 							disabled={disabled}
-							sx={{ color: theme.palette.text.primary, cursor: disabled ? "auto" : "pointer" }}
+							sx={{ color: theme.palette.ux.primary.text.wMain, cursor: disabled ? "auto" : "pointer" }}
 						>
 							<SolaceToggleLabel bold={false} large={largeLabel} disabled={disabled}>
 								{`${label}${stateText ? ": " : ""}`}

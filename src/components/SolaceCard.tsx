@@ -10,7 +10,7 @@ const CardContainer = styled("div", {
 	backgroundColor?: string;
 	hasTitle: boolean;
 }>(({ backgroundColor, hasTitle, theme }) => ({
-	backgroundColor: backgroundColor ?? theme.palette.background.default,
+	backgroundColor: backgroundColor ?? theme.palette.ux.background.w20,
 	borderRadius: "4px",
 	display: "flex",
 	flexDirection: hasTitle ? "column" : "row",

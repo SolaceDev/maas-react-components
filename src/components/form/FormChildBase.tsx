@@ -20,7 +20,7 @@ const ChildrenContainer = styled("div", {
 	sx: { paddingLeft: inlineLabel ? "36px" : "0px" },
 	"&.hasWarnings": {
 		"fieldset.MuiOutlinedInput-notchedOutline, fieldset.MuiInputBase-inputMultiline": {
-			borderColor: `${theme.palette.warning.main}`
+			borderColor: `${theme.palette.ux.warning.w100}`
 		}
 	}
 }));

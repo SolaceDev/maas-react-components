@@ -1,4 +1,7 @@
-// TODO: theming, remove this file when BASE_COLORS is no longer used
+/**
+ * Colours should be read from the theme
+ * @deprecated
+ */
 export const BASE_COLORS = {
 	greens: {
 		green1: "#00C895",

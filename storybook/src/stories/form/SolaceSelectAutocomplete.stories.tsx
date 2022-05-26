@@ -371,7 +371,7 @@ Disabled.args = {
 		name: "Option #2",
 		value: "option2",
 		subText: "Some sub text",
-		suplementalText: "opt2"
+		supplementalText: "opt2"
 	},
 	disabled: true
 };
@@ -407,7 +407,7 @@ ReadOnly.args = {
 		name: "Option #2",
 		value: "option2",
 		subText: "Some sub text",
-		suplementalText: "opt2"
+		supplementalText: "opt2"
 	},
 	readOnly: true
 };

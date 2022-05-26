@@ -1,7 +1,6 @@
 import { alpha, hexToRgb, ThemeOptions } from "@mui/material";
 import { SupportedThemes, ThemeMappingPalette } from "../types";
 import getThemeMappings from "../theming/themeUtils";
-import { BASE_COLORS } from "./colorPallette";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
@@ -37,7 +36,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiAppBar: {
 				styleOverrides: {
 					colorPrimary: {
-						backgroundColor: BASE_COLORS.greys.grey21
+						backgroundColor: themeMapping.palette.deprecated.background.wMain
 					}
 				}
 			},
@@ -48,33 +47,33 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				},
 				styleOverrides: {
 					containedPrimary: {
-						color: themeMapping.palette.text.contrast,
-						backgroundColor: themeMapping.palette.action.primary.default,
+						color: themeMapping.palette.primary.text.w10,
+						backgroundColor: themeMapping.palette.primary.wMain,
 						"&:hover": {
-							backgroundColor: themeMapping.palette.action.primary.hover
+							backgroundColor: themeMapping.palette.primary.w90
 						},
 						"&:disabled": {
-							backgroundColor: themeMapping.palette.action.primary.disabled,
-							color: themeMapping.palette.text.contrast
+							backgroundColor: themeMapping.palette.secondary.w40,
+							color: themeMapping.palette.primary.text.w10
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.action.primary.active
+							backgroundColor: themeMapping.palette.primary.w100
 						}
 					},
 					outlinedPrimary: {
 						borderWidth: "1px",
 						borderStyle: "solid",
-						borderColor: themeMapping.palette.action.secondary.default,
-						color: themeMapping.palette.action.secondary.default,
+						borderColor: themeMapping.palette.primary.wMain,
+						color: themeMapping.palette.primary.wMain,
 						"&:disabled": {
-							borderColor: themeMapping.palette.action.secondary.disabled,
-							color: themeMapping.palette.action.secondary.disabled
+							borderColor: themeMapping.palette.secondary.w40,
+							color: themeMapping.palette.secondary.w40
 						},
 						"&:hover": {
-							backgroundColor: themeMapping.palette.action.secondary.hover
+							backgroundColor: themeMapping.palette.primary.w10
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.action.secondary.active
+							backgroundColor: themeMapping.palette.primary.w20
 						}
 					},
 					root: {
@@ -101,15 +100,15 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					},
 					textPrimary: {
 						borderRadius: "4px",
-						color: themeMapping.palette.action.secondary.default,
+						color: themeMapping.palette.primary.wMain,
 						"&:disabled": {
-							color: themeMapping.palette.action.secondary.disabled
+							color: themeMapping.palette.secondary.w40
 						},
 						"&:hover": {
-							backgroundColor: themeMapping.palette.action.secondary.hover
+							backgroundColor: themeMapping.palette.primary.w10
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.action.secondary.active
+							backgroundColor: themeMapping.palette.primary.w20
 						}
 					}
 				}
@@ -127,11 +126,11 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								// eslint-disable-next-line sonarjs/no-duplicate-string
 								display: "inline-block",
 								pointerEvents: "none",
-								color: BASE_COLORS.greys.grey8 // dropdown icon color in resting/focused/error states
+								color: themeMapping.palette.deprecated.secondary.wMain // dropdown icon color in resting/focused/error states
 							},
 							"&.Mui-disabled": {
 								".MuiSvgIcon-root": {
-									color: BASE_COLORS.greys.grey3 // dropdown icon color in disabled state
+									color: themeMapping.palette.secondary.w40 // dropdown icon color in disabled state
 								}
 							},
 							"&.readOnlySelect": {
@@ -171,7 +170,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						fontSize: "0.75rem",
-						color: BASE_COLORS.greys.grey11,
+						color: themeMapping.palette.deprecated.secondary.text.wMain,
 						lineHeight: 1.5,
 						marginLeft: "0px",
 						marginTop: "2px",
@@ -189,17 +188,17 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						padding: "4px",
 						borderRadius: "5px",
 						"&:disabled": {
-							color: themeMapping.palette.action.icon.disabled
+							color: themeMapping.palette.secondary.w40
 						},
 						"&:hover": {
-							backgroundColor: themeMapping.palette.action.icon.hover,
-							color: themeMapping.palette.action.icon.default
+							backgroundColor: themeMapping.palette.secondary.w10,
+							color: themeMapping.palette.secondary.wMain
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.action.icon.active
+							backgroundColor: themeMapping.palette.secondary.w20
 						},
 						".MuiSvgIcon-root": {
-							fill: BASE_COLORS.greys.grey8
+							fill: themeMapping.palette.deprecated.secondary.wMain
 						}
 					}
 				}
@@ -207,18 +206,18 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiInputLabel: {
 				styleOverrides: {
 					asterisk: {
-						color: themeMapping.palette.brand
+						color: themeMapping.palette.brand.wMain
 					},
 					root: {
-						color: themeMapping.palette.text.secondary.default,
+						color: themeMapping.palette.secondary.text.wMain,
 						fontSize: "0.875rem",
 						fontWeight: 400,
 						lineHeight: 1.5,
 						"&.Mui-error": {
-							color: BASE_COLORS.greys.grey11
+							color: themeMapping.palette.deprecated.secondary.text.wMain
 						},
 						"&.Mui-disabled": {
-							color: BASE_COLORS.greys.grey8
+							color: themeMapping.palette.deprecated.secondary.text.w50
 						}
 					}
 				}
@@ -226,33 +225,33 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiFormLabel: {
 				styleOverrides: {
 					asterisk: {
-						color: themeMapping.palette.brand
+						color: themeMapping.palette.brand.wMain
 					},
 					root: {
-						color: themeMapping.palette.text.secondary.default,
+						color: themeMapping.palette.secondary.text.wMain,
 						fontSize: "14px",
 						fontWeight: 400,
 						lineHeight: 1.5,
 						"&.Mui-error": {
-							color: BASE_COLORS.greys.grey11
+							color: themeMapping.palette.deprecated.secondary.text.wMain
 						},
 						"&.light-sub-text": {
-							color: BASE_COLORS.greys.grey9
+							color: themeMapping.palette.deprecated.secondary.text.w50
 						},
 						"&.Mui-disabled": {
-							color: BASE_COLORS.greys.grey9,
+							color: themeMapping.palette.deprecated.secondary.text.w50,
 							"&.check-box-label": {
-								color: BASE_COLORS.greys.grey5
+								color: themeMapping.palette.secondary.text.w50
 							},
 							"&.radio-btn-label": {
-								color: BASE_COLORS.greys.grey5
+								color: themeMapping.palette.secondary.text.w50
 							}
 						},
 						"&.bold-label": {
 							fontWeight: 500
 						},
 						"&.read-only": {
-							color: BASE_COLORS.greys.grey9
+							color: themeMapping.palette.deprecated.secondary.text.w50
 						}
 					}
 				}
@@ -262,14 +261,14 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					root: {
 						lineHeight: 1.5,
 						fontSize: "14px",
-						color: themeMapping.palette.action.secondary.default,
+						color: themeMapping.palette.primary.wMain,
 						"&[disabled]": {
-							color: themeMapping.palette.action.secondary.disabled
+							color: themeMapping.palette.secondary.w40
 						},
 						".SolaceOpenExternalIcon": {
 							width: "16px",
 							height: "16px",
-							fill: themeMapping.palette.action.secondary.default,
+							fill: themeMapping.palette.primary.wMain,
 							marginBottom: "2px"
 						}
 					}
@@ -294,7 +293,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							}
 						},
 						".MuiOutlinedInput-input": {
-							border: `solid 1px ${BASE_COLORS.greys.grey3}`,
+							border: `solid 1px ${themeMapping.palette.secondary.w40}`,
 							borderRadius: "4px",
 							padding: "8px",
 							boxSizing: "border-box"
@@ -308,7 +307,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							},
 						"&:hover": {
 							".MuiOutlinedInput-input": {
-								border: `solid 1px ${BASE_COLORS.greys.grey5}`
+								border: `solid 1px ${themeMapping.palette.secondary.text.w50}`
 							},
 							"&.MuiOutlinedInput-root": {
 								".MuiOutlinedInput-notchedOutline": {
@@ -318,7 +317,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"&.Mui-focused": {
 							".MuiOutlinedInput-input": {
-								border: `solid 1px ${themeMapping.palette.brandHighlightHeavy}`
+								border: `solid 1px ${themeMapping.palette.brand.w30}`
 							},
 							"&.MuiOutlinedInput-root": {
 								".MuiOutlinedInput-notchedOutline": {
@@ -327,15 +326,15 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							}
 						},
 						".Mui-disabled.MuiOutlinedInput-input, &:hover .Mui-disabled.MuiOutlinedInput-input": {
-							backgroundColor: BASE_COLORS.greys.grey19,
+							backgroundColor: themeMapping.palette.background.w20,
 							padding: "8px",
-							border: `solid 1px ${BASE_COLORS.greys.grey2}`
+							border: `solid 1px ${themeMapping.palette.secondary.w10}`
 						},
 						"&.Mui-disabled .MuiOutlinedInput-input:read-only.Mui-disabled + .MuiOutlinedInput-notchedOutline": {
 							border: "none"
 						},
 						".MuiInputBase-inputMultiline": {
-							backgroundColor: BASE_COLORS.whites.white1
+							backgroundColor: themeMapping.palette.background.w10
 						}
 					}
 				}
@@ -345,15 +344,15 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						".MuiOutlinedInput-root": {
-							backgroundColor: BASE_COLORS.whites.white1,
+							backgroundColor: themeMapping.palette.background.w10,
 							".MuiOutlinedInput-notchedOutline": {
-								border: `solid 1px ${BASE_COLORS.greys.grey3}`,
-								backgroundColor: BASE_COLORS.greys.grey0
+								border: `solid 1px ${themeMapping.palette.secondary.w40}`,
+								backgroundColor: "transparent"
 							},
 							"&:hover": {
 								".MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${BASE_COLORS.greys.grey5}`,
-									backgroundColor: BASE_COLORS.greys.grey0
+									border: `solid 1px ${themeMapping.palette.secondary.text.w50}`,
+									backgroundColor: "transparent"
 								}
 							},
 							"&:hover .MuiOutlinedInput-input:read-only": {
@@ -375,37 +374,37 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							},
 							"&.emptySelect, .MuiOutlinedInput-root.readOnlySelect.Mui-focused": {
 								".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
-									color: BASE_COLORS.greys.grey5
+									color: themeMapping.palette.secondary.text.w50
 								}
 							},
 							"&.Mui-focused": {
 								".MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${themeMapping.palette.brandHighlightHeavy}`
+									border: `solid 1px ${themeMapping.palette.brand.w30}`
 								}
 							},
 							"&.Mui-error": {
 								".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
-									borderColor: `${themeMapping.palette.semantic.error.secondary.default}`
+									borderColor: `${themeMapping.palette.error.wMain}`
 								}
 							},
 							"&.Mui-disabled": {
-								backgroundColor: BASE_COLORS.greys.grey19,
+								backgroundColor: themeMapping.palette.background.w20,
 								".MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${BASE_COLORS.greys.grey2}`
+									border: `solid 1px ${themeMapping.palette.secondary.w10}`
 								},
 								".MuiOutlinedInput-input:read-only + .MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${BASE_COLORS.greys.grey2}`
+									border: `solid 1px ${themeMapping.palette.secondary.w10}`
 								},
 								input: {
-									WebkitTextFillColor: BASE_COLORS.greys.grey5,
-									color: BASE_COLORS.greys.grey5,
+									WebkitTextFillColor: themeMapping.palette.secondary.text.w50,
+									color: themeMapping.palette.secondary.text.w50,
 									padding: "8px"
 								}
 							}
 						},
 						".MuiOutlinedInput-input": {
 							fontSize: BASE_FONT_PX_SIZES.sm,
-							color: themeMapping.palette.text.primary.default,
+							color: themeMapping.palette.primary.text.wMain,
 							padding: "0px 8px",
 							height: "34px",
 							"&:read-only": {
@@ -427,19 +426,19 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							}
 						},
 						".MuiSvgIcon-root path": {
-							fill: themeMapping.palette.brandHighlightHeavy
+							fill: themeMapping.palette.brand.w30
 						},
 						"&.Mui-disabled .MuiSvgIcon-root path": {
 							fillOpacity: "0.35"
 						},
 						".MuiSvgIcon-root line": {
-							stroke: themeMapping.palette.brandHighlightHeavy
+							stroke: themeMapping.palette.brand.w30
 						},
 						"&.Mui-disabled .MuiSvgIcon-root": {
 							rect: {
 								fillOpacity: 0.35,
 								fill: "white",
-								stroke: BASE_COLORS.greys.grey2,
+								stroke: themeMapping.palette.secondary.w10,
 								strokeOpacity: 1
 							},
 							path: {
@@ -448,19 +447,19 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"+.MuiFormLabel-root": {
 							marginLeft: "16px",
-							color: themeMapping.palette.text.secondary.default,
+							color: themeMapping.palette.secondary.text.wMain,
 							"&.Mui-disabled": {
-								color: BASE_COLORS.greys.grey5
+								color: themeMapping.palette.secondary.text.w50
 							}
 						},
 						"&.readOnly .MuiSvgIcon-root": {
 							".SolaceCheckboxContainer": {
-								fill: BASE_COLORS.greys.grey19,
-								stroke: BASE_COLORS.greys.grey3,
+								fill: themeMapping.palette.background.w20,
+								stroke: themeMapping.palette.secondary.w40,
 								strokeOpacity: 1
 							},
 							".SolaceCheckboxCheckmark": {
-								fill: BASE_COLORS.greys.grey5,
+								fill: themeMapping.palette.secondary.text.w50,
 								fillOpacity: 1
 							}
 						},
@@ -489,12 +488,12 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"&.Mui-checked": {
 							".SolaceRadioSelection": {
-								fill: themeMapping.palette.brandHighlightHeavy
+								fill: themeMapping.palette.brand.w30
 							}
 						},
 						"&.Mui-disabled .MuiSvgIcon-root": {
 							".SolaceRadioContainer": {
-								stroke: BASE_COLORS.greys.grey2,
+								stroke: themeMapping.palette.secondary.w10,
 								strokeOpacity: 1
 							},
 							".SolaceRadioSelection": {
@@ -503,12 +502,12 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"&.readOnly .MuiSvgIcon-root": {
 							".SolaceRadioContainer": {
-								fill: BASE_COLORS.greys.grey19,
-								stroke: BASE_COLORS.greys.grey3,
+								fill: themeMapping.palette.background.w20,
+								stroke: themeMapping.palette.secondary.w40,
 								opacity: 1
 							},
 							".SolaceRadioSelection": {
-								fill: BASE_COLORS.greys.grey5,
+								fill: themeMapping.palette.secondary.text.w50,
 								opacity: 1
 							}
 						},
@@ -548,7 +547,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						".MuiPaper-root": {
 							overflowY: "auto",
-							boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
+							boxShadow: `0px 1px 4px ${themeMapping.palette.secondary.w40}`,
 
 							".MuiMenuItem-root": {
 								display: "flex",
@@ -559,7 +558,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								whiteSpace: "normal",
 
 								"&:hover": {
-									backgroundColor: BASE_COLORS.greys.grey2
+									backgroundColor: themeMapping.palette.secondary.w10
 								},
 								"&.multiline": {
 									paddingTop: "8px",
@@ -567,7 +566,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								},
 
 								"&.Mui-selected": {
-									backgroundColor: themeMapping.palette.brandHighlight
+									backgroundColor: themeMapping.palette.brand.w10
 								},
 								".MuiListItemIcon-root": {
 									width: "48px",
@@ -592,19 +591,19 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 										paddingTop: "8px",
 										paddingBottom: "8px"
 									},
-									color: themeMapping.palette.text.primary.default,
+									color: themeMapping.palette.primary.text.wMain,
 									".subtext": {
-										color: BASE_COLORS.greys.grey9,
+										color: themeMapping.palette.deprecated.secondary.text.w50,
 										marginRight: "24px",
 										width: "100%"
 									},
 									".supplementalText": {
 										fontSize: BASE_FONT_PX_SIZES.xs,
-										color: BASE_COLORS.greys.grey9,
+										color: themeMapping.palette.deprecated.secondary.text.w50,
 										marginLeft: "24px"
 									},
 									"&.Mui-disabled": {
-										color: BASE_COLORS.greys.grey5
+										color: themeMapping.palette.secondary.text.w50
 									}
 								}
 							}
@@ -617,14 +616,14 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					root: {
 						".MuiListSubheader-root": {
 							lineHeight: 1.5,
-							color: BASE_COLORS.greys.grey9,
+							color: themeMapping.palette.deprecated.secondary.text.w50,
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							fontWeight: 400,
 							height: "32px",
 							display: "flex",
 							alignItems: "center",
 							"&.categoryHeader": {
-								color: themeMapping.palette.text.primary.default,
+								color: themeMapping.palette.primary.text.wMain,
 								fontSize: BASE_FONT_PX_SIZES.xs,
 								fontWeight: 500
 							}
@@ -637,7 +636,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							justifyContent: "center"
 						},
 						".MuiListItemText-secondary": {
-							color: BASE_COLORS.greys.grey9
+							color: themeMapping.palette.deprecated.secondary.text.w50
 						}
 					}
 				}
@@ -670,7 +669,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							background: "transparent"
 						},
 						".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
-							fill: BASE_COLORS.greys.grey14
+							fill: themeMapping.palette.secondary.wMain
 						},
 						// styles specifically applied when autocomplete allows multiple lines with chips
 						".MuiButtonBase-root.MuiChip-root": {
@@ -681,7 +680,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							svg: {
 								width: "17px",
 								height: "17px",
-								fill: BASE_COLORS.greys.grey8
+								fill: themeMapping.palette.deprecated.secondary.wMain
 							}
 						}
 					},
@@ -702,22 +701,22 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							}
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused ": {
-							backgroundColor: BASE_COLORS.greys.grey2
+							backgroundColor: themeMapping.palette.secondary.w10
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
-							backgroundColor: alpha(themeMapping.palette.brandHighlightHeavy, 0.1)
+							backgroundColor: themeMapping.palette.brand.w10
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
-							backgroundColor: alpha(themeMapping.palette.brandHighlightHeavy, 0.1)
+							backgroundColor: themeMapping.palette.brand.w10
 						},
-						boxShadow: `0px 1px 4px ${BASE_COLORS.greys.grey3}`,
-						color: themeMapping.palette.text.primary.default,
+						boxShadow: `0px 1px 4px ${themeMapping.palette.secondary.w40}`,
+						color: themeMapping.palette.primary.text.wMain,
 						".subtext": {
-							color: BASE_COLORS.greys.grey9
+							color: themeMapping.palette.deprecated.secondary.text.w50
 						},
-						".suplementalText": {
+						".supplementalText": {
 							fontSize: BASE_FONT_PX_SIZES.xs,
-							color: BASE_COLORS.greys.grey8
+							color: themeMapping.palette.deprecated.secondary.wMain
 						}
 					},
 					popupIndicator: {
@@ -744,33 +743,38 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 									transform: "translate(22px)"
 								},
 								"&.Mui-checked + .MuiSwitch-track": {
-									backgroundColor: alpha(themeMapping.palette.brand, 0.35),
+									backgroundColor: themeMapping.palette.primary.w40,
 									opacity: 1
 								},
 								"&.Mui-disabled + .MuiSwitch-track": {
-									backgroundColor: BASE_COLORS.greys.grey2,
+									backgroundColor: themeMapping.palette.secondary.w10,
 									opacity: 1
 								},
 								"&.Mui-disabled .MuiSwitch-thumb": {
-									backgroundColor: BASE_COLORS.greys.grey19,
-									borderColor: BASE_COLORS.greys.grey2
+									backgroundColor: themeMapping.palette.background.w20,
+									borderColor: themeMapping.palette.secondary.w10
 								},
 								"&:hover": {
-									backgroundColor: alpha(themeMapping.palette.brand, 0.35)
+									// TODO: change to brand.wMain 30% for new theme
+									backgroundColor: themeMapping.palette.primary.w40
 								}
 							},
 							".MuiSwitch-thumb": {
 								width: "16px",
 								height: "16px",
-								border: `solid 2px ${alpha(themeMapping.palette.brand, 0.35)}`,
+								border: `solid 2px ${themeMapping.palette.primary.w40}`,
 								boxShadow: "none"
+							},
+							"&.Mui-checked .MuiSwitch-thumb": {
+								backgroundColor: themeMapping.palette.primary.wMain,
+								borderColor: themeMapping.palette.primary.wMain
 							}
 						},
 						".MuiSwitch-track": {
 							height: "12px",
 							width: "36px",
 							transform: "translateY(1px)",
-							backgroundColor: alpha(themeMapping.palette.brand, 0.35),
+							backgroundColor: themeMapping.palette.primary.w40,
 							opacity: 1
 						}
 					},
@@ -778,7 +782,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						"&.MuiChecked .MuiSwitch-track": {
 							height: "12px",
 							transform: "translateY(1px)",
-							backgroundColor: alpha(themeMapping.palette.brand, 0.35),
+							backgroundColor: themeMapping.palette.primary.w40,
 							opacity: 1
 						}
 					}
@@ -788,22 +792,22 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						".MuiBackdrop-root": {
-							backgroundColor: BASE_COLORS.greys.grey5
+							backgroundColor: themeMapping.palette.secondary.text.w50
 						},
 						".MuiPaper-root": {
 							minWidth: "400px",
 							maxHeight: "80%",
-							boxShadow: `0px 2px 8px ${BASE_COLORS.greys.grey4}`,
+							boxShadow: `0px 2px 8px ${alpha("#000000", 0.3)}`, // TODO: theme
 							padding: "24px",
 							".MuiDialogTitle-root": {
 								fontSize: BASE_FONT_PX_SIZES.xl,
-								color: themeMapping.palette.text.primary.default,
+								color: themeMapping.palette.primary.text.wMain,
 								padding: "0px 0px 24px 0px"
 							},
 							".MuiDialogContent-root": {
 								fontSize: BASE_FONT_PX_SIZES.sm,
 								lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
-								color: themeMapping.palette.text.primary.default,
+								color: themeMapping.palette.primary.text.wMain,
 								padding: "0px"
 								// ".MuiBox-root": {
 								// 	display: "grid"
@@ -832,7 +836,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								left: 0,
 								width: "100%",
 								height: "4px",
-								backgroundColor: themeMapping.palette.brand
+								backgroundColor: themeMapping.palette.brand.wMain
 							},
 							// the dark sliding part of the progress bar
 							".MuiPaper-root::after": {
@@ -843,7 +847,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								width: "100%",
 								height: "4px",
 								background: `linear-gradient(90deg, ${hexToRgb(
-									themeMapping.palette.brandHighlight
+									themeMapping.palette.brand.w10
 								)} 0% 40%, transparent 40% 100%)`,
 								animation: "animation 2s linear infinite"
 							},
@@ -865,11 +869,11 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						borderRadius: "40px"
 					},
 					filled: {
-						backgroundColor: BASE_COLORS.greys.grey2
+						backgroundColor: themeMapping.palette.secondary.w10
 					},
 					clickable: {
 						"&:hover": {
-							backgroundColor: BASE_COLORS.greys.grey3
+							backgroundColor: themeMapping.palette.secondary.w40
 						}
 					}
 				}
@@ -880,7 +884,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						textTransform: "none",
 						fontWeight: 400,
 						"&.Mui-selected, :hover": {
-							color: themeMapping.palette.text.primary.default
+							color: themeMapping.palette.primary.text.wMain
 						}
 					}
 				}
@@ -889,7 +893,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						a: {
-							color: BASE_COLORS.greys.grey11
+							color: themeMapping.palette.deprecated.secondary.text.wMain
 						}
 					}
 				}
@@ -901,7 +905,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							display: "none"
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root": {
-							color: themeMapping.palette.brand,
+							color: themeMapping.palette.brand.wMain,
 							fontSize: BASE_FONT_PX_SIZES.md
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root:hover": {
@@ -909,7 +913,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root.Mui-selected": {
 							background: "none",
-							color: themeMapping.palette.text.primary.default
+							color: themeMapping.palette.primary.text.wMain
 						}
 					}
 				}
@@ -942,16 +946,16 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						padding: "6px 8px",
 						fontSize: BASE_FONT_PX_SIZES.xs,
 						lineHeight: "18px",
-						backgroundColor: BASE_COLORS.greys.grey25,
-						color: BASE_COLORS.whites.white2,
-						boxShadow: "0 2px 2px rgba(0,0,0,0.12)",
+						backgroundColor: themeMapping.palette.background.wMain,
+						color: alpha("#FFFFFF", 0.9), // TODO: theme
+						boxShadow: "0 2px 2px rgba(0,0,0,0.12)", // TODO: theme
 						"&.htmlContent": {
 							padding: "12px 16px",
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							lineHeight: "21px",
-							backgroundColor: BASE_COLORS.whites.white1,
-							color: themeMapping.palette.text.primary.default,
-							boxShadow: "0 2px 5px rgba(0,0,0,0.15)"
+							backgroundColor: themeMapping.palette.background.w10,
+							color: themeMapping.palette.primary.text.wMain,
+							boxShadow: "0 2px 5px rgba(0,0,0,0.15)" // TODO: theme
 						},
 						"&.mediumWidth": {
 							maxWidth: "500px"
@@ -963,13 +967,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						 * style for SolacePopover
 						 */
 						"&.SolacePopover": {
-							backgroundColor: BASE_COLORS.whites.white1,
-							color: themeMapping.palette.text.primary.default,
+							backgroundColor: themeMapping.palette.background.w10,
+							color: themeMapping.palette.primary.text.wMain,
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							fontWeight: 400,
 							padding: "12px 16px", // considering line height
 							borderRadius: "4px",
-							boxShadow: `0px 2px 5px ${BASE_COLORS.greys.grey26}`,
+							boxShadow: `0px 2px 5px ${alpha("#000000", 0.15)}`, // TODO: theme
 							cursor: "pointer"
 						}
 					}
@@ -978,7 +982,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiAccordion: {
 				styleOverrides: {
 					root: {
-						border: `1px solid ${BASE_COLORS.greys.grey2}`,
+						border: `1px solid ${themeMapping.palette.secondary.w10}`,
 						boxShadow: "none",
 						"&:not(:last-child)": {
 							borderBottom: 0
@@ -987,16 +991,16 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							display: "none"
 						},
 						"&.indicator-info": {
-							background: `linear-gradient(${themeMapping.palette.semantic.info.primary.default} , ${themeMapping.palette.semantic.info.primary.default}) left/3px 90% no-repeat`
+							background: `linear-gradient(${themeMapping.palette.info.w100} , ${themeMapping.palette.info.w100}) left/3px 90% no-repeat`
 						},
 						"&.indicator-error": {
-							background: `linear-gradient(${themeMapping.palette.semantic.error.primary.default} , ${themeMapping.palette.semantic.error.primary.default}) left/3px 90% no-repeat`
+							background: `linear-gradient(${themeMapping.palette.error.w100} , ${themeMapping.palette.error.w100}) left/3px 90% no-repeat`
 						},
 						"&.indicator-warn": {
-							background: `linear-gradient(${themeMapping.palette.semantic.warn.primary.default} , ${themeMapping.palette.semantic.warn.primary.default}) left/3px 90% no-repeat`
+							background: `linear-gradient(${themeMapping.palette.warning.w100} , ${themeMapping.palette.warning.w100}) left/3px 90% no-repeat`
 						},
 						"&.indicator-success": {
-							background: `linear-gradient(${themeMapping.palette.semantic.success.primary.default} , ${themeMapping.palette.semantic.success.primary.default}) left/3px 90% no-repeat`
+							background: `linear-gradient(${themeMapping.palette.success.w100} , ${themeMapping.palette.success.w100}) left/3px 90% no-repeat`
 						}
 					}
 				}
@@ -1007,7 +1011,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						flexDirection: "row-reverse",
 						"&.hasHoverEffect": {
 							":hover": {
-								backgroundColor: BASE_COLORS.greys.grey2
+								backgroundColor: themeMapping.palette.secondary.w10
 							}
 						},
 						".MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
@@ -1020,9 +1024,9 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					expandIconWrapper: {
 						padding: "0px 8px 0px 8px",
 						svg: {
-							fill: BASE_COLORS.greys.grey8,
+							fill: themeMapping.palette.deprecated.secondary.text.wMain,
 							":hover": {
-								fill: BASE_COLORS.greys.grey14
+								fill: themeMapping.palette.secondary.wMain
 							}
 						}
 					}
@@ -1051,7 +1055,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					marginTop: "2px"
 				},
 				label: {
-					color: themeMapping.palette.semantic.error.primary.default,
+					color: themeMapping.palette.error.w100,
 					fontSize: BASE_FONT_PX_SIZES.xs,
 					marginLeft: "8px"
 				}
@@ -1113,7 +1117,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					display: "grid",
 					gridTemplateRows: "auto",
 					label: {
-						color: BASE_COLORS.greys.grey11,
+						color: themeMapping.palette.deprecated.secondary.text.wMain,
 						fontWeight: "medium",
 						":first-of-type": {
 							gridColumnStart: 2,
@@ -1132,20 +1136,20 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					height: "100%",
 					borderRadius: "2px",
 					"&.info": {
-						backgroundColor: themeMapping.palette.semantic.info.primary.background,
-						borderLeft: `3px solid ${themeMapping.palette.semantic.info.primary.default}`
+						backgroundColor: themeMapping.palette.info.w10,
+						borderLeft: `3px solid ${themeMapping.palette.info.w100}`
 					},
 					"&.error": {
-						backgroundColor: themeMapping.palette.semantic.error.primary.background,
-						borderLeft: `3px solid ${themeMapping.palette.semantic.error.primary.default}`
+						backgroundColor: themeMapping.palette.error.w10,
+						borderLeft: `3px solid ${themeMapping.palette.error.w100}`
 					},
 					"&.warn": {
-						backgroundColor: themeMapping.palette.semantic.warn.primary.background,
-						borderLeft: `3px solid ${themeMapping.palette.semantic.warn.primary.default}`
+						backgroundColor: themeMapping.palette.warning.w10,
+						borderLeft: `3px solid ${themeMapping.palette.warning.w100}`
 					},
 					"&.success": {
-						backgroundColor: themeMapping.palette.semantic.success.primary.background,
-						borderLeft: `3px solid ${themeMapping.palette.semantic.success.primary.default}`
+						backgroundColor: themeMapping.palette.success.w10,
+						borderLeft: `3px solid ${themeMapping.palette.success.w100}`
 					}
 				},
 				messageContainer: {
@@ -1183,7 +1187,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				},
 				messageTextContainer: {
 					width: "100%",
-					color: themeMapping.palette.text.primary.default
+					color: themeMapping.palette.primary.text.wMain
 				},
 				detailsContainer: {
 					// 10px on top because the message will have 6px padding bottom
@@ -1197,10 +1201,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					justifyContent: "space-between",
 					padding: "8px 24px 8px 24px",
 					alignItems: "center",
-					borderLeft: `1px solid ${BASE_COLORS.greys.grey2}`,
-					borderTop: `1px solid ${BASE_COLORS.greys.grey2}`,
-					borderRight: `1px solid ${BASE_COLORS.greys.grey2}`,
-					boxShadow: "0px 2px 4px -1px rgba(0, 0, 0, 0.2)",
+					borderLeft: `1px solid ${themeMapping.palette.secondary.w10}`,
+					borderTop: `1px solid ${themeMapping.palette.secondary.w10}`,
+					borderRight: `1px solid ${themeMapping.palette.secondary.w10}`,
+					boxShadow: `0px 2px 4px -1px ${themeMapping.palette.secondary.w40}`,
 					"& .selectAll": {
 						display: "flex",
 						alignItems: "center"
@@ -1219,7 +1223,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					"&.headerRow": {
 						height: "30px",
 						fontWeight: "500",
-						color: BASE_COLORS.greys.grey11,
+						color: themeMapping.palette.deprecated.secondary.text.wMain,
 						cursor: "auto",
 						padding: "0px 24px",
 						position: "sticky",
@@ -1229,25 +1233,25 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						zIndex: 1
 					},
-					borderBottom: `1px solid ${BASE_COLORS.greys.grey2}`,
+					borderBottom: `1px solid ${themeMapping.palette.secondary.w10}`,
 					cursor: "pointer",
 					":last-child": {
 						borderBottom: "none"
 					},
 					":hover": {
-						background: BASE_COLORS.greys.grey1
+						background: themeMapping.palette.secondary.w20
 					},
 					":focus-visible": {
-						background: BASE_COLORS.greys.grey1,
+						background: themeMapping.palette.secondary.w20,
 						outline: "none"
 					},
 					"&.selected": {
-						background: themeMapping.palette.brandHighlight,
+						background: themeMapping.palette.brand.w10,
 						cursor: "default"
 					}
 				},
 				list: {
-					border: `1px solid ${BASE_COLORS.greys.grey2}`,
+					border: `1px solid ${themeMapping.palette.secondary.w10}`,
 					overflow: "overlay",
 					height: "100%",
 					"@-moz-document url-prefix()": {
@@ -1261,8 +1265,8 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					borderRadius: "50%",
 					textAlign: "center",
 					verticalAlign: "middle",
-					background: BASE_COLORS.blues.blue2,
-					color: BASE_COLORS.whites.white1
+					background: themeMapping.palette.info.w100,
+					color: themeMapping.palette.primary.text.w10
 				},
 				value: {
 					transition: "opacity 300ms",
@@ -1271,29 +1275,40 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			}
 		},
 		palette: {
-			custom: themeMapping.palette,
+			ux: themeMapping.palette,
 			background: {
-				default: themeMapping.palette.background.primary.default
+				/** @deprecated */
+				default: themeMapping.palette.background.w20
 			},
 			error: {
-				main: themeMapping.palette.semantic.error.primary.default
+				/** @deprecated */
+				main: themeMapping.palette.error.w100
 			},
 			warning: {
-				main: themeMapping.palette.semantic.warn.primary.default
+				/** @deprecated */
+				main: themeMapping.palette.warning.w100
 			},
 			primary: {
-				contrastText: themeMapping.palette.text.contrast,
-				dark: themeMapping.palette.brand,
-				main: themeMapping.palette.brand
+				/** @deprecated */
+				contrastText: themeMapping.palette.primary.text.w10,
+				/** @deprecated */
+				dark: themeMapping.palette.brand.wMain,
+				/** @deprecated */
+				main: themeMapping.palette.brand.wMain
 			},
 			secondary: {
-				contrastText: themeMapping.palette.text.contrast,
-				main: themeMapping.palette.brand
+				/** @deprecated */
+				contrastText: themeMapping.palette.primary.text.w10,
+				/** @deprecated */
+				main: themeMapping.palette.brand.wMain
 			},
 			text: {
-				primary: themeMapping.palette.text.primary.default,
-				secondary: themeMapping.palette.text.secondary.default,
-				disabled: BASE_COLORS.greys.grey5 // differs from other disabled text with 0.65?
+				/** @deprecated */
+				primary: themeMapping.palette.primary.text.wMain,
+				/** @deprecated */
+				secondary: themeMapping.palette.secondary.text.wMain,
+				/** @deprecated */
+				disabled: themeMapping.palette.secondary.text.w50
 			}
 		},
 		spacing: 8,
@@ -1326,11 +1341,12 @@ declare module "@mui/material/styles" {
 	interface BreakpointOverrides {
 		dialogMd: true;
 	}
+
 	interface Palette {
-		custom: ThemeMappingPalette;
+		ux: ThemeMappingPalette;
 	}
 	interface PaletteOptions {
-		custom: ThemeMappingPalette;
+		ux: ThemeMappingPalette;
 	}
 }
 

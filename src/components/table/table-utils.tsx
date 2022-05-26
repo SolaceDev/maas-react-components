@@ -56,10 +56,10 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	},
 
 	"&.selected": {
-		backgroundColor: theme.palette.custom.brandHighlight,
+		backgroundColor: theme.palette.ux.brand.w10,
 		// selected effect for expanded sibling row
 		"+ tr.expanded.selected": {
-			backgroundColor: theme.palette.custom.brandHighlight
+			backgroundColor: theme.palette.ux.brand.w10
 		}
 	},
 
@@ -184,7 +184,7 @@ export const ActionMenuContainer = styled("div")(({ theme }) => ({
 	borderRadius: "5px",
 	minHeight: "32px",
 	minWidth: "60px",
-	background: theme.palette.background.default,
+	background: theme.palette.ux.background.w20,
 	zIndex: 999
 }));
 

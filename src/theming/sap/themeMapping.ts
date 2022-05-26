@@ -1,105 +1,176 @@
 import { alpha, lighten } from "@mui/material";
 
-import { ThemeMapping } from "../../types/ThemeMapping";
-import { Palette } from "../../types/Palette";
-import getThemeMappingPalette from "../getThemeMappingPalette";
+import { ThemeMapping, ThemeMappingPalette } from "../../types/ThemeMapping";
 
-const palette: Palette = {
-	brandPrimary: "#0A6ED1",
-	brand30: "#B6D4F1",
-	brand10: "#E7F1FA",
+const palette: ThemeMappingPalette = {
+	brand: {
+		wMain: "#0A6ED1",
+		w30: "#B6D4F1",
+		w10: "#E7F1FA"
+	},
 
-	primary100: "#07529C",
-	primary90: "#0961B9",
-	primaryPrimary: "#0A6ED1",
-	primary60: "#6CA8E3",
-	primary40: "#9DC5ED",
-	primary20: "#CEE2F6",
-	primary10: "#E7F1FA",
+	primary: {
+		w100: "#07529C",
+		w90: "#0961B9",
+		wMain: "#0A6ED1",
+		w60: "#6CA8E3",
+		w40: "#9DC5ED",
+		w20: "#CEE2F6",
+		w10: "#E7F1FA",
 
-	secondaryPrimary: "#89919A",
-	secondary40: "#D0D3D7",
-	secondary20: "#E7E9EB",
-	secondary10: "#F3F4F5",
+		text: {
+			wMain: "#32363A",
+			w10: "#FFFFFF"
+		}
+	},
 
-	darkBackground100: "#2A3B4C",
-	darkBackgroundPrimary: "#354A5F",
-	darkBackground80: "#5D6E7F",
-	darkBackground30: "#C2C9CF",
+	secondary: {
+		wMain: "#89919A",
+		w40: "#D0D3D7",
+		w20: "#E7E9EB",
+		w10: "#F3F4F5",
 
-	lightBackgroundPrimary: "#EDEFF0",
+		text: {
+			wMain: "#6A6D70",
+			w50: "#D2D3D4"
+		}
+	},
 
-	primaryTextPrimary: "#32363A",
+	background: {
+		w100: "#2A3B4C",
+		wMain: "#354A5F",
+		w20: "#EDEFF0",
+		w10: "#FFFFFF"
+	},
 
-	secondaryTextPrimary: "#6A6D70",
-	secondaryText50: "#D2D3D4",
+	info: {
+		w100: "#0964BE",
+		wMain: "#0A6ED1",
+		w70: "#91C8F6",
+		w30: "#C6DEF6",
+		w20: "#DDECFA",
+		w10: "#F5FAFF"
+	},
 
-	white: "#FFFFFF",
+	error: {
+		w100: "#9E0000",
+		wMain: "#BB0000",
+		w70: "#FF8888",
+		w30: "#F1BCBC",
+		w20: "#F8D4D4",
+		w10: "#FFEBEB"
+	},
 
-	info100: "#0964BE",
-	infoPrimary: "#0A6ED1",
-	info70: "#91C8F6",
-	info30: "#C6DEF6",
-	info20: "#DDECFA",
-	info10: "#F5FAFF",
+	warning: {
+		w100: "#D16100",
+		wMain: "#E9730C",
+		w70: "#FABD64",
+		w30: "#FADDC3",
+		w20: "#FCEADA",
+		w10: "#FEF7F1"
+	},
 
-	error100: "#9E0000",
-	errorPrimary: "#BB0000",
-	error70: "#FF8888",
-	error30: "#F1BCBC",
-	error20: "#F8D4D4",
-	error10: "#FFEBEB",
+	success: {
+		w100: "#0D6431",
+		wMain: "#107E3E",
+		w70: "#ABE2AB",
+		w30: "#C4E4D1",
+		w20: "#DAF0E4",
+		w10: "#F1FDF6"
+	},
 
-	warning100: "#D16100",
-	warningPrimary: "#E9730C",
-	warning70: "#FABD64",
-	warning30: "#FADDC3",
-	warning20: "#FCEADA",
-	warning10: "#FEF7F1",
+	accent: {
+		n0: {
+			w100: "#4044BA",
+			wMain: "#6367DE",
+			w30: "#D0D1F5",
+			w10: "#EFF0FC"
+		},
+		n1: {
+			wMain: "#286EB4",
+			w60: "#7EA8D2",
+			w10: "#EAF1F7"
+		},
+		n2: {
+			w100: "#0C656F",
+			wMain: "#0F828F",
+			w30: "#B7DADD",
+			w10: "#E7F3F4"
+		},
+		n3: {
+			w100: "#6E33AD",
+			wMain: "#925ACE",
+			w30: "#DECEF0",
+			w10: "#F4EFFA"
+		},
+		n4: {
+			wMain: "#DB1F77"
+		},
+		n5: {
+			wMain: "#D04343"
+		},
+		n6: {
+			wMain: "#D08014",
+			w30: alpha("#D08014", 0.3)
+		},
+		n7: {
+			wMain: "#7CA10C"
+		},
+		n8: {
+			wMain: "#647987",
+			w30: "#D1D7DB"
+		}
+	},
 
-	success100: "#006B53",
-	successPrimary: "#107E3E",
-	success70: "#ABE2AB",
-	success30: "#C4E4D1",
-	success20: "#DAF0E4",
-	success10: "#F1FDF6"
+	deprecated: {
+		background: {
+			wMain: "#354A5F"
+		},
+		secondary: {
+			wMain: "#89919A",
+			text: {
+				wMain: "#6A6D70",
+				w50: "#D2D3D4"
+			}
+		}
+	}
 };
 
 /**
  * ThemeMapping for the SAP palette
  */
 export const sapThemeMapping: ThemeMapping = {
-	palette: getThemeMappingPalette(palette),
+	palette: palette,
 
 	/**
 	 * @deprecated This scheme is deprecated and will be removed when no longer used.
 	 */
 	pallete: {
-		error: palette.errorPrimary,
-		greyBackgroundLight: palette.lightBackgroundPrimary,
-		info: palette.brandPrimary,
-		primary: palette.brandPrimary,
-		secondary: palette.brandPrimary,
-		success: palette.successPrimary,
-		text: palette.primaryTextPrimary,
-		labelText: palette.secondaryTextPrimary,
-		textSecondary: palette.secondaryTextPrimary,
-		warning: palette.warningPrimary,
-		white: palette.white,
+		error: palette.error.wMain,
+		greyBackgroundLight: palette.background.w10,
+		info: palette.brand.wMain,
+		primary: palette.brand.wMain,
+		secondary: palette.brand.wMain,
+		success: palette.success.wMain,
+		text: palette.primary.text.wMain,
+		labelText: palette.secondary.text.wMain,
+		textSecondary: palette.secondary.text.wMain,
+		warning: palette.warning.wMain,
+		white: palette.background.w10,
 
 		//toasts
-		toastText: palette.primaryTextPrimary,
-		toastBackground: lighten(palette.brandPrimary, 0.9),
-		toastSuccessIcon: palette.successPrimary,
+		toastText: palette.primary.text.wMain,
+		toastBackground: lighten(palette.brand.wMain, 0.9),
+		toastSuccessIcon: palette.success.wMain,
 
 		//chips
-		nonadminPill: alpha(palette.secondaryTextPrimary, 0.1),
-		adminPill: palette.secondaryTextPrimary,
+		nonadminPill: alpha(palette.secondary.text.wMain, 0.1),
+		adminPill: palette.secondary.text.wMain,
 
 		//Button
-		buttonTextHoverBG: alpha(palette.brandPrimary, 0.1),
-		buttonOutlinedHoverBG: alpha(palette.brandPrimary, 0.1),
-		buttonLinkDisabled: alpha(palette.brandPrimary, 0.2),
-		buttonIconBG: alpha(palette.brandPrimary, 0.1)
+		buttonTextHoverBG: alpha(palette.brand.wMain, 0.1),
+		buttonOutlinedHoverBG: alpha(palette.brand.wMain, 0.1),
+		buttonLinkDisabled: alpha(palette.brand.wMain, 0.2),
+		buttonIconBG: alpha(palette.brand.wMain, 0.1)
 	}
 };

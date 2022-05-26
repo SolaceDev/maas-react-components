@@ -1,73 +1,144 @@
-import { Palette } from "../../types/Palette";
-import { ThemeMapping } from "../../types/ThemeMapping";
+import { ThemeMapping, ThemeMappingPalette } from "../../types/ThemeMapping";
 import { baseThemeMapping } from "../base/themeMapping";
-import getThemeMappingPalette from "../getThemeMappingPalette";
 
-const palette: Palette = {
-	brandPrimary: "#00C895",
-	brand30: "#B3EFDF",
-	brand10: "#E6FAF4",
+const palette: ThemeMappingPalette = {
+	brand: {
+		wMain: "#00C895",
+		w30: "#B3EFDF",
+		w10: "#E6FAF4"
+	},
 
-	primary100: "#01374E",
-	primary90: "#014968",
-	primaryPrimary: "#015B82",
-	primary60: "#679DB4",
-	primary40: "#99BDCD",
-	primary20: "#CCDEE6",
-	primary10: "#E6EFF2",
+	primary: {
+		w100: "#01374E",
+		w90: "#014968",
+		wMain: "#015B82",
+		w60: "#679DB4",
+		w40: "#99BDCD",
+		w20: "#CCDEE6",
+		w10: "#E6EFF2",
 
-	secondaryPrimary: "#8790A0",
-	secondary40: "#CFD3D9",
-	secondary20: "#E7E9EC",
-	secondary10: "#F3F4F6",
+		text: {
+			wMain: "#273749",
+			w10: "#FFFFFF"
+		}
+	},
 
-	darkBackground100: "#021B2F",
-	darkBackgroundPrimary: "#03223B",
-	darkBackground80: "#354E62",
-	darkBackground30: "#B3BDC4",
+	secondary: {
+		wMain: "#8790A0",
+		w40: "#CFD3D9",
+		w20: "#E7E9EC",
+		w10: "#F3F4F6",
 
-	lightBackgroundPrimary: "#F7F8F9",
+		text: {
+			wMain: "#687886",
+			w50: "#B3BBC2"
+		}
+	},
 
-	primaryTextPrimary: "#273749",
+	background: {
+		w100: "#021B2F",
+		wMain: "#03223B",
+		w20: "#F7F8F9",
+		w10: "#FFFFFF"
+	},
 
-	secondaryTextPrimary: "#687886",
-	secondaryText50: "#B3BBC2",
+	info: {
+		w100: "#2C75B7",
+		wMain: "#0591D3",
+		w70: "#7CD3F6",
+		w30: "#B4DEF2",
+		w20: "#CDE9F6",
+		w10: "#E6F4FB"
+	},
 
-	white: "#FFFFFF",
+	error: {
+		w100: "#C33135",
+		wMain: "#E94C4E",
+		w70: "#ED9B9D",
+		w30: "#F8C9CA",
+		w20: "#FBDBDC",
+		w10: "#FDEDED"
+	},
 
-	info100: "#2C75B7",
-	infoPrimary: "#0591D3",
-	info70: "#7CD3F6",
-	info30: "#B4DEF2",
-	info20: "#CDE9F6",
-	info10: "#E6F4FB",
+	warning: {
+		w100: "#E1681F",
+		wMain: "#FF8E2B",
+		w70: "#F8C785",
+		w30: "#FFDDBF",
+		w20: "#FFE8D5",
+		w10: "#FFF4EA"
+	},
 
-	error100: "#C33135",
-	errorPrimary: "#E94C4E",
-	error70: "#ED9B9D",
-	error30: "#F8C9CA",
-	error20: "#FBDBDC",
-	error10: "#FDEDED",
+	success: {
+		w100: "#006B53",
+		wMain: "#009A80",
+		w70: "#6FCCBC",
+		w30: "#B3E1D9",
+		w20: "#CCEBE6",
+		w10: "#E6F5F2"
+	},
 
-	warning100: "#E1681F",
-	warningPrimary: "#FF8E2B",
-	warning70: "#F8C785",
-	warning30: "#FFDDBF",
-	warning20: "#FFE8D5",
-	warning10: "#FFF4EA",
+	accent: {
+		n0: {
+			w100: "#2F51AD",
+			wMain: "#3C69E1",
+			w30: "#C5D2F6",
+			w10: "#ECF0FC"
+		},
+		n1: {
+			wMain: "#3A4880",
+			w60: "#8991B3",
+			w10: "#EBEDF2"
+		},
+		n2: {
+			w100: "#165E64",
+			wMain: "#009193",
+			w30: "#B3DEDF",
+			w10: "#E6F4F4"
+		},
+		n3: {
+			w100: "#542D75",
+			wMain: "#7841A8",
+			w30: "#D7C6E5",
+			w10: "#F2ECF6"
+		},
+		n4: {
+			wMain: "#E53170"
+		},
+		n5: {
+			wMain: "#F66651"
+		},
+		n6: {
+			wMain: "#FCA829",
+			w30: "#FEE5BF"
+		},
+		n7: {
+			wMain: "#5ECCEE"
+		},
+		n8: {
+			wMain: "#86939E",
+			w30: "#DBDFE2"
+		}
+	},
 
-	success100: "#006B53",
-	successPrimary: "#009A80",
-	success70: "#6FCCBC",
-	success30: "#B3E1D9",
-	success20: "#CCEBE6",
-	success10: "#E6F5F2"
+	deprecated: {
+		background: {
+			wMain: "#03223B"
+		},
+		secondary: {
+			wMain: "#8790A0",
+			text: {
+				wMain: "#687886",
+				w50: "#B3BBC2"
+			}
+		}
+	}
 };
 
 /**
  * ThemeMapping for a new Solace palette
  */
 export const solaceNewThemeMapping: ThemeMapping = {
-	...baseThemeMapping,
-	palette: getThemeMappingPalette(palette)
+	...baseThemeMapping, // for deprecated key support
+	palette: palette
 };

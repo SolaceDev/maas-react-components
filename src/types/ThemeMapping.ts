@@ -1,193 +1,143 @@
+/**
+ * The colour palette for Solace theming
+ */
 export type ThemeMappingPalette = {
-	// main brand colour
-	brand: string;
-	// selection
-	brandHighlight: string;
-	// strong/heavy selection
-	brandHighlightHeavy: string;
-	// brand icon
-	brandIcon: string;
+	brand: {
+		wMain: string;
+		w30: string;
+		w10: string;
+	};
 
-	action: {
-		// eg. cta, link
-		primary: {
-			default: string;
-			active: string;
-			hover: string;
-			disabled: string;
+	primary: {
+		w100: string;
+		w90: string;
+		wMain: string;
+		w60: string;
+		w40: string;
+		w20: string;
+		w10: string;
+
+		text: {
+			wMain: string;
+			w10: string;
 		};
-		// eg. outline, text
-		secondary: {
-			default: string;
-			active: string;
-			hover: string;
-			disabled: string;
-		};
-		// eg. icon background
-		icon: {
-			default: string;
-			active: string;
-			hover: string;
-			disabled: string;
+	};
+
+	secondary: {
+		wMain: string;
+		w40: string;
+		w20: string;
+		w10: string;
+
+		text: {
+			wMain: string;
+			w50: string;
 		};
 	};
 
 	background: {
-		// eg. main, text fields, menus
-		primary: {
-			default: string;
-			// eg. divider / border
-			highlight: string;
+		w100: string;
+		wMain: string;
+		w20: string;
+		w10: string;
+	};
+
+	info: {
+		w100: string;
+		wMain: string;
+		w70: string;
+		w30: string;
+		w20: string;
+		w10: string;
+	};
+
+	error: {
+		w100: string;
+		wMain: string;
+		w70: string;
+		w30: string;
+		w20: string;
+		w10: string;
+	};
+
+	warning: {
+		w100: string;
+		wMain: string;
+		w70: string;
+		w30: string;
+		w20: string;
+		w10: string;
+	};
+
+	success: {
+		w100: string;
+		wMain: string;
+		w70: string;
+		w30: string;
+		w20: string;
+		w10: string;
+	};
+
+	accent: {
+		n0: {
+			w100: string;
+			wMain: string;
+			w30: string;
+			w10: string;
 		};
-		// eg. nav bar, toast
+		n1: {
+			wMain: string;
+			w60: string;
+			w10: string;
+		};
+		n2: {
+			w100: string;
+			wMain: string;
+			w30: string;
+			w10: string;
+		};
+		n3: {
+			w100: string;
+			wMain: string;
+			w30: string;
+			w10: string;
+		};
+		n4: {
+			wMain: string;
+		};
+		n5: {
+			wMain: string;
+		};
+		n6: {
+			wMain: string;
+			w30: string;
+		};
+		n7: {
+			wMain: string;
+		};
+		n8: {
+			wMain: string;
+			w30: string;
+		};
+	};
+
+	/**
+	 * This section is for variations in colour that appear in the current Solace theme, but can be
+	 * removed once the new theme is adopted.
+	 *
+	 * To do so, delete the deprecated section from all the theme mappings and remove the "deprecated" term from any usages.
+	 * E.g. deprecated.background.wMain => background.wMain
+	 */
+	deprecated: {
+		background: {
+			wMain: string;
+		};
 		secondary: {
-			default: string;
-			// eg. divider
-			highlight: string;
-		};
-	};
-
-	neutral: {
-		// eg. mixed (Secondary Primary)
-		primary: {
-			default: string;
-		};
-		// eg. mixed (Secondary 40)
-		secondary: {
-			default: string;
-		};
-		// eg. mixed (Secondary 20)
-		tertiary: {
-			default: string;
-		};
-		// eg. mixed, white
-		constrast: string;
-	};
-
-	text: {
-		// eg. mixed text
-		primary: {
-			default: string;
-			disabled: string;
-		};
-		// eg. labels
-		secondary: {
-			default: string;
-			disabled: string;
-		};
-		// eg. mixed, white
-		contrast: string;
-	};
-
-	semantic: {
-		error: {
-			// eg. chip, banner
-			primary: {
-				default: string;
-				background: string;
-				active: string;
-				hover: string;
+			wMain: string;
+			text: {
+				wMain: string;
+				w50: string;
 			};
-			// eg. textfield, dropdown
-			secondary: {
-				default: string;
-			};
-			// eg. toast icon
-			tertiary: {
-				default: string;
-			};
-		};
-		warn: {
-			// eg. banner
-			primary: {
-				default: string;
-				background: string;
-				active: string;
-				hover: string;
-			};
-			// eg. textfield, dropdown icons and borders
-			secondary: {
-				default: string;
-			};
-			// eg. toast icon
-			tertiary: {
-				default: string;
-			};
-		};
-		info: {
-			// eg. badge, banner
-			primary: {
-				default: string;
-				background: string;
-				active: string;
-				hover: string;
-			};
-			// eg. unused?
-			secondary: {
-				default: string;
-			};
-			// eg. toast
-			tertiary: {
-				default: string;
-			};
-		};
-		success: {
-			// eg. badge
-			primary: {
-				default: string;
-				background: string;
-			};
-			// eg. unused?
-			secondary: {
-				default: string;
-			};
-			// eg. toast
-			tertiary: {
-				default: string;
-			};
-		};
-	};
-
-	graph: {
-		path: {
-			default: string;
-			active: string;
-			hover: string;
-			disabled: string;
-		};
-		accent1: {
-			default: string;
-			contrast1: string;
-			constrast2: string;
-		};
-		accent2: {
-			default: string;
-		};
-		accent3: {
-			default: string;
-			contrast1: string;
-			constrast2: string;
-		};
-		accent4: {
-			default: string;
-			contrast1: string;
-			constrast2: string;
-		};
-		accent5: {
-			default: string;
-		};
-		accent6: {
-			default: string;
-		};
-		accent7: {
-			default: string;
-		};
-		accent8: {
-			default: string;
-		};
-		accent9: {
-			default: string;
-			contrast1: string;
 		};
 	};
 };

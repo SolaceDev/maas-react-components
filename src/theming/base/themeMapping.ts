@@ -3,172 +3,139 @@ import { ThemeMapping } from "../../types/ThemeMapping";
 
 /**
  * Base ThemeMapping for the Solace palette
- * TODO: finish mapping keys to colours as usage increases
- *
- * When the new colour palette is in place, this palette can be removed and it can take
- * its place as the base theme mapping.
+ * TODO: replace with new palette at maas-react-components/src/theming/solace/themeMapping.ts
  */
 export const baseThemeMapping: ThemeMapping = {
 	palette: {
-		brand: "#00AD93",
-		brandHighlight: "#e8f9f4",
-		brandHighlightHeavy: "#00C895",
-		brandIcon: alpha("#00AD93", 0.3),
+		brand: {
+			wMain: "#00AD93",
+			w30: "#00C895",
+			w10: "#e8f9f4"
+		},
 
-		action: {
-			primary: {
-				default: "#00AD93",
-				active: "#05BDA1",
-				hover: "#00CCAD",
-				disabled: alpha("#000000", 0.2)
-			},
-			secondary: {
-				default: "#00ad93",
-				active: "#F9F9F9",
-				hover: alpha("#000000", 0.05),
-				disabled: alpha("#000000", 0.2)
-			},
-			icon: {
-				default: alpha("#000000", 0.8),
-				active: alpha("#000000", 0.05),
-				hover: alpha("#000000", 0.1),
-				disabled: alpha("#000000", 0.2)
+		primary: {
+			w100: "#05BDA1",
+			w90: "#00CCAD",
+			wMain: "#00AD93",
+			w60: "",
+			w40: alpha("#00AD93", 0.35),
+			w20: "#F9F9F9",
+			w10: alpha("#000000", 0.05),
+
+			text: {
+				wMain: alpha("#000000", 0.8),
+				w10: "#FFFFFF"
+			}
+		},
+
+		secondary: {
+			wMain: alpha("#000000", 0.8),
+			w40: alpha("#000000", 0.2),
+			w20: alpha("#000000", 0.05),
+			w10: alpha("#000000", 0.1),
+
+			text: {
+				wMain: alpha("#000000", 0.65),
+				w50: alpha("#000000", 0.35)
 			}
 		},
 
 		background: {
-			primary: {
-				default: "#F9F9F9",
-				highlight: ""
+			w100: "",
+			wMain: "#3f3f3f",
+			w20: "#F9F9F9",
+			w10: "#FFFFFF"
+		},
+
+		info: {
+			w100: "#0079FF",
+			wMain: "",
+			w70: "",
+			w30: "",
+			w20: "",
+			w10: "#E6F2FF"
+		},
+
+		error: {
+			w100: "#C33135",
+			wMain: "",
+			w70: "",
+			w30: "",
+			w20: "",
+			w10: "#FDEDED"
+		},
+
+		warning: {
+			w100: "#F3AA24",
+			wMain: "",
+			w70: "",
+			w30: "",
+			w20: "",
+			w10: alpha("#F3AA24", 0.1)
+		},
+
+		success: {
+			w100: "#7ED321",
+			wMain: "#6FCCBC",
+			w70: "",
+			w30: "",
+			w20: "",
+			w10: alpha("#53AE0F", 0.1)
+		},
+
+		accent: {
+			n0: {
+				w100: "",
+				wMain: "",
+				w30: "",
+				w10: ""
 			},
-			secondary: {
-				default: "",
-				highlight: ""
+			n1: {
+				wMain: "",
+				w60: "",
+				w10: ""
+			},
+			n2: {
+				w100: "",
+				wMain: "",
+				w30: "",
+				w10: ""
+			},
+			n3: {
+				w100: "",
+				wMain: "",
+				w30: "",
+				w10: ""
+			},
+			n4: {
+				wMain: ""
+			},
+			n5: {
+				wMain: ""
+			},
+			n6: {
+				wMain: "",
+				w30: ""
+			},
+			n7: {
+				wMain: ""
+			},
+			n8: {
+				wMain: "",
+				w30: ""
 			}
 		},
 
-		neutral: {
-			primary: {
-				default: ""
+		deprecated: {
+			background: {
+				wMain: "#474747"
 			},
 			secondary: {
-				default: ""
-			},
-			tertiary: {
-				default: ""
-			},
-			constrast: "#FFFFFF"
-		},
-
-		text: {
-			primary: {
-				default: alpha("#000000", 0.8),
-				disabled: "#eeeeee"
-			},
-			secondary: {
-				default: alpha("#000000", 0.65),
-				disabled: "#eeeeee"
-			},
-			contrast: "#FFFFFF"
-		},
-
-		semantic: {
-			error: {
-				primary: {
-					default: "#C33135",
-					background: "#FDEDED",
-					active: "",
-					hover: ""
-				},
-				secondary: {
-					default: ""
-				},
-				tertiary: {
-					default: ""
+				wMain: alpha("#000000", 0.5),
+				text: {
+					wMain: alpha("#000000", 0.65),
+					w50: alpha("#000000", 0.55)
 				}
-			},
-			warn: {
-				primary: {
-					default: "#F3AA24",
-					background: alpha("#F3AA24", 0.1),
-					active: "",
-					hover: ""
-				},
-				secondary: {
-					default: ""
-				},
-				tertiary: {
-					default: ""
-				}
-			},
-			info: {
-				primary: {
-					default: "#0079FF",
-					background: "#E6F2FF",
-					active: "",
-					hover: ""
-				},
-				secondary: {
-					default: ""
-				},
-				tertiary: {
-					default: ""
-				}
-			},
-			success: {
-				primary: {
-					default: "#7ED321",
-					background: alpha("#53AE0F", 0.1)
-				},
-				secondary: {
-					default: ""
-				},
-				tertiary: {
-					default: "#6FCCBC"
-				}
-			}
-		},
-
-		graph: {
-			path: {
-				default: "",
-				active: "",
-				hover: "",
-				disabled: ""
-			},
-			accent1: {
-				default: "",
-				contrast1: "",
-				constrast2: ""
-			},
-			accent2: {
-				default: ""
-			},
-			accent3: {
-				default: "",
-				contrast1: "",
-				constrast2: ""
-			},
-			accent4: {
-				default: "",
-				contrast1: "",
-				constrast2: ""
-			},
-			accent5: {
-				default: ""
-			},
-			accent6: {
-				default: ""
-			},
-			accent7: {
-				default: ""
-			},
-			accent8: {
-				default: ""
-			},
-			accent9: {
-				default: "",
-				contrast1: ""
 			}
 		}
 	},

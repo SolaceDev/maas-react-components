@@ -21,7 +21,7 @@ const Dragger = styled("div", { shouldForwardProp: (prop) => prop !== "anchor" }
 	bottom: 0,
 	...(anchor === ANCHOR.LEFT && { right: 0 }),
 	...(anchor === ANCHOR.RIGHT && { left: 0 }),
-	backgroundColor: `${theme.palette.background.default}`,
+	backgroundColor: `${theme.palette.ux.background.w20}`,
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "space-around",

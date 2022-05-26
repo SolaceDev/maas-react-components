@@ -17,7 +17,7 @@ function WarningText({ children }: WarningTextProps): JSX.Element {
 	const size = theme.typography.subtitle1.fontSize?.toString();
 	return (
 		<WarningTextContainer>
-			<WarnIcon size={size ? parseInt(size) : BASE_FONT_PX_SIZES.md} fill={theme.palette.warning.main}></WarnIcon>
+			<WarnIcon size={size ? parseInt(size) : BASE_FONT_PX_SIZES.md} fill={theme.palette.ux.warning.w100}></WarnIcon>
 			<WarningTextLabel>{children}</WarningTextLabel>
 		</WarningTextContainer>
 	);

@@ -13,9 +13,9 @@ const Container = styled("div")(({ theme }) => ({
 	height: "100%",
 	backgroundColor: BASE_COLORS.reds.red2,
 	borderRadius: "2px",
-	borderLeft: `3px solid ${theme.palette.error.main}`,
+	borderLeft: `3px solid ${theme.palette.ux.error.w100}`,
 	paddingRight: "4px",
-	color: theme.palette.error.main
+	color: theme.palette.ux.error.w100
 }));
 
 const MessageSection = styled("div")(({ theme }) => ({
@@ -61,7 +61,7 @@ function SolaceErrorBox({
 	return open ? (
 		<Container>
 			<MessageSection>
-				{showErrorIcon && <ErrorIcon size={20} fill={theme.palette.error.main} />}
+				{showErrorIcon && <ErrorIcon size={20} fill={theme.palette.ux.error.w100} />}
 				{message}
 			</MessageSection>
 			{showCloseButton && (

@@ -84,7 +84,7 @@ function LabelElement({ children, bold, large, disabled }: LabelElementProps): J
 				fontSize: typography.fontSize,
 				lineHeight: "24px",
 				fontWeight: bold ? "medium" : "regular",
-				color: disabled ? theme.palette.text.disabled : theme.palette.text.primary
+				color: disabled ? theme.palette.ux.secondary.text.w50 : theme.palette.ux.primary.text.wMain
 			}}
 		>
 			{children}
@@ -167,7 +167,7 @@ function SolaceRadio({
 						htmlFor={`${id}-radio`}
 						required={required}
 						disabled={disabled}
-						sx={{ color: theme.palette.text.primary, cursor: disabled ? "auto" : "pointer" }}
+						sx={{ color: theme.palette.ux.primary.text.wMain, cursor: disabled ? "auto" : "pointer" }}
 					>
 						<LabelElement bold={largeLabel || subText !== undefined} large={largeLabel} disabled={disabled}>
 							{label}

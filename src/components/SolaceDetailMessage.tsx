@@ -1,7 +1,6 @@
 import { styled } from "@mui/material";
 
 import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
-import { BASE_COLORS } from "../resources/colorPallette";
 import { BASE_FONT_PX_SIZES } from "../resources/typography";
 
 export interface SolaceDetailMessageProps {
@@ -36,19 +35,19 @@ const ImgContainer = styled("div")(() => ({
 	margin: "0px 0px 40px 0px"
 }));
 
-const TitleText = styled("p")(() => ({
+const TitleText = styled("p")(({ theme }) => ({
 	// need to move this styled componet definition into the theme file once we figure out how
 	margin: "0px 0px 14px 0px",
 	fontSize: BASE_FONT_PX_SIZES.xl,
-	color: BASE_COLORS.greys.grey14,
+	color: theme.palette.ux.secondary.wMain,
 	textAlign: "center"
 }));
 
-const DetailsContainer = styled("div")(() => ({
+const DetailsContainer = styled("div")(({ theme }) => ({
 	// need to move this styled componet definition into the theme file once we figure out how
 	margin: "0px 0px 14px 0px",
 	fontSize: BASE_FONT_PX_SIZES.sm,
-	color: BASE_COLORS.greys.grey14
+	color: theme.palette.ux.secondary.wMain
 }));
 
 const ButtonGroup = styled("div")(() => ({
