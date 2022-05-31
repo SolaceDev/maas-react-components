@@ -4,6 +4,9 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import SolaceLabel from "./SolaceLabel";
 import { valueInputTypes } from "./SolaceAttributeValuePair";
 import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePairList";
+import HelperText from "./HelperText";
+import ErrorText from "./ErrorText";
+import WarningText from "./WarningText";
 
 interface SolaceAVPFormLabelProps {
 	readOnly: boolean;
@@ -91,6 +94,18 @@ export interface SolaceAttributeValuePairFormProps {
 	 * String message to display if an AVP value is specified without an associated key (unless allowedKeyToBeEmpty is true, then no validation check done)
 	 */
 	keyIsRequiredMessage?: string;
+	/**
+	 * Content to display as supportive/explanitory text
+	 */
+	helperText?: string | JSX.Element;
+	/**
+	 * Boolean flag to mark the `input` in error state
+	 */
+	hasErrors?: boolean;
+	/**
+	 * Boolean flag to mark the `input` in warn state
+	 */
+	hasWarnings?: boolean;
 }
 
 const SolaceAttributeValuePairForm = ({
@@ -107,7 +122,10 @@ const SolaceAttributeValuePairForm = ({
 	enableRequiredValueFieldIndicator,
 	emptyFieldDisplayValue = "",
 	keyRequired = true, // by default, key is considered mandatory for every AVP (i.e. you can have a key with no value, but you cannot have a value with no key)
-	keyIsRequiredMessage = "Required"
+	keyIsRequiredMessage = "Required",
+	helperText = "",
+	hasErrors = false,
+	hasWarnings = false
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
@@ -212,6 +230,13 @@ const SolaceAttributeValuePairForm = ({
 					</SolaceAVPFormContainer>
 				)}
 			</Droppable>
+			{helperText && (
+				<div style={{ paddingLeft: "16px" }}>
+					{helperText && !hasWarnings && !hasErrors && <HelperText>{helperText}</HelperText>}
+					{helperText && !hasErrors && hasWarnings && <WarningText>{helperText}</WarningText>}
+					{helperText && hasErrors && <ErrorText>{helperText}</ErrorText>}
+				</div>
+			)}
 		</DragDropContext>
 	);
 };

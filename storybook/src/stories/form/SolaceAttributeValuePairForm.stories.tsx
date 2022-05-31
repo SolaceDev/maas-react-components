@@ -89,7 +89,7 @@ export const Default = () => {
 	);
 };
 
-export const WithInitialData = () => {
+export const WithInitialData = ({ hasWarnings = false, hasErrors = false, helperText = "" }) => {
 	const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
 	const [currentAVPList, setAVPList] = useState(list);
 
@@ -105,6 +105,9 @@ export const WithInitialData = () => {
 				labelForValues="Values"
 				avpList={currentAVPList}
 				onAVPListUpdate={handleListUpdate}
+				hasWarnings={hasWarnings}
+				hasErrors={hasErrors}
+				helperText={helperText}
 			/>
 			<div style={{ marginTop: 20 }}>
 				<div>Returned Data:</div>
@@ -113,6 +116,15 @@ export const WithInitialData = () => {
 		</div>
 	);
 };
+
+export const WithHelperText = () => <WithInitialData helperText="This Attribute Value Pair Form has helper texgt" />;
+
+export const WithWarnings = () => (
+	<WithInitialData hasWarnings={true} helperText="This Attribute Value Pair Form has warnings" />
+);
+export const WithErrors = () => (
+	<WithInitialData hasErrors={true} helperText="This Attribute Value Pair Form has errors" />
+);
 
 export const ReadOnly = () => {
 	const data = SAMPLE_AVP_LIST_READ_ONLY.map((item) => ({ ...item }));
