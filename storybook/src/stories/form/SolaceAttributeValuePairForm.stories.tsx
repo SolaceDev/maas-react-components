@@ -117,7 +117,7 @@ export const WithInitialData = ({ hasWarnings = false, hasErrors = false, helper
 	);
 };
 
-export const WithHelperText = () => <WithInitialData helperText="This Attribute Value Pair Form has helper texgt" />;
+export const WithHelperText = () => <WithInitialData helperText="This Attribute Value Pair Form has helper text" />;
 
 export const WithWarnings = () => (
 	<WithInitialData hasWarnings={true} helperText="This Attribute Value Pair Form has warnings" />

@@ -37,6 +37,7 @@ interface SolaceTabsProps extends SolaceComponentProps {
 	 * Callback fired when the value changes.
 	 */
 	onTabClick?: (value: string) => void;
+	size?: keyof BASE_FONT_PX_SIZE_TYPES;
 }
 
 function AnchorTab(props: TabProps) {
@@ -58,15 +59,15 @@ function AnchorTab(props: TabProps) {
 	);
 }
 
-function SolaceTabs({ tabs, activeTabValue, onTabClick }: SolaceTabsProps): JSX.Element {
+function SolaceTabs({ tabs, activeTabValue, onTabClick, size = "sm" }: SolaceTabsProps): JSX.Element {
 	const handleChange = (_e: React.SyntheticEvent, value: string) => {
 		onTabClick?.(value);
 	};
 	return (
-		<Box sx={{ width: "100%" }}>
+		<Box sx={{ width: "100%", fontSize: BASE_FONT_PX_SIZES[size] }}>
 			<Tabs value={activeTabValue} onChange={handleChange}>
 				{tabs.map((item: TabProps) => (
-					<AnchorTab {...item} key={`anchroTab-${item.value}`} />
+					<AnchorTab {...item} key={`anchroTab-${item.value}`} size={size} />
 				))}
 			</Tabs>
 		</Box>

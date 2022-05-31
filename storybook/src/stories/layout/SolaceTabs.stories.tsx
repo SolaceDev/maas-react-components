@@ -28,11 +28,12 @@ DefaultTabs.args = {
 export const IncreaseFontTabs = Template.bind({});
 IncreaseFontTabs.args = {
 	tabs: [
-		{ label: "Tab One", value: "tab_one", size: "md" },
-		{ label: "Tab Two", value: "tab_two", size: "md" },
-		{ label: "Tab Three", value: "tab_three", size: "md" }
+		{ label: "Tab One", value: "tab_one" },
+		{ label: "Tab Two", value: "tab_two" },
+		{ label: "Tab Three", value: "tab_three" }
 	],
-	activeTabValue: "tab_one"
+	activeTabValue: "tab_one",
+	size: "md"
 };
 export const DisabledTabs = Template.bind({});
 DisabledTabs.args = {
