@@ -94,6 +94,36 @@ ReadOnlyEditor.args = {
 	readOnly: true
 };
 
+export const ExpandableEditor = Template.bind({});
+ExpandableEditor.args = {
+	onChange: action("callback"),
+	id: "demoCodeEditorId",
+	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+	mode: "json",
+	expandable: true
+};
+
+export const WithHelperText = Template.bind({});
+WithHelperText.args = {
+	onChange: action("callback"),
+	id: "demoCodeEditorId",
+	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+	mode: "json",
+	expandable: true,
+	helperText: "This is a demo helper text"
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+	onChange: action("callback"),
+	id: "demoCodeEditorId",
+	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+	mode: "json",
+	expandable: true,
+	helperText: "this is a demo error text",
+	hasErrors: true
+};
+
 export const FullScreenEditor = (): JSX.Element => {
 	const [fullScreen, setFullScreen] = useState(false);
 

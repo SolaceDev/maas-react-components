@@ -1145,6 +1145,57 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					}
 				}
 			},
+			/** Solace CodeEditor */
+			formComponent_CodeEditor: {
+				OuterWrapper: {
+					"&.codeEditor-expanded--backdrop": {
+						position: "fixed",
+						top: 0,
+						left: 0,
+						width: "100%",
+						height: "100%",
+						// TODO: the color will be #015B82 40% in the theme
+						backgroundColor: "rgba(0, 0, 0, 0.35)",
+						display: "block",
+						zIndex: 1200
+					}
+				},
+				InnerWrapper: {
+					position: "relative",
+					"&.codeEditor-expanded--main": {
+						position: "fixed",
+						backgroundColor: themeMapping.palette.background.w10,
+						borderRadius: "4px",
+						padding: "4px",
+						width: "95%",
+						height: "auto",
+						minWidth: "1000px",
+						minHeight: "800px",
+						top: "50%",
+						left: "50%",
+						transform: "translate(-50%,-50%)",
+						".CodeMirror": {
+							minHeight: "800px"
+						}
+					}
+				},
+				EditorWrapper: {
+					"&.codeEditor-border": {
+						border: `solid 1px ${themeMapping.palette.secondary.w40}`
+					}
+				},
+				IconWrapper: {
+					boxShadow: `0px 1px 4px ${themeMapping.palette.secondary.w40}`,
+					borderRadius: "5px",
+					backgroundColor: themeMapping.palette.background.w10,
+					// position is relative to its parent with position: relative
+					position: "absolute",
+					top: 16,
+					right: 24,
+					// the z-index of the buttons should be higher than the z-index of the CodeMirror, which is 9
+					zIndex: 20
+				}
+			},
 			/** SolaceMessageBox component */
 			component_MessageBox: {
 				container: {
@@ -1391,6 +1442,12 @@ declare module "@mui/material/styles/createMixins" {
 			container: CSSProperties;
 			listWrapper: CSSProperties;
 			labelWrapper: CSSProperties;
+		};
+		formComponent_CodeEditor: {
+			OuterWrapper: CSSProperties;
+			InnerWrapper: CSSProperties;
+			EditorWrapper: CSSProperties;
+			IconWrapper: CSSProperties;
 		};
 		component_MessageBox: {
 			container: CSSProperties;

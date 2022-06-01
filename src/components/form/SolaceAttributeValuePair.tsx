@@ -175,76 +175,80 @@ export const SolaceAttributeValuePair = ({
 }: SolaceAttributeValuePairProps) => {
 	return (
 		<Draggable draggableId={id} index={index} isDragDisabled={ghostItem}>
-			{(provided, snapshot) => (
-				<SolaceAVPContainer
-					ref={provided.innerRef}
-					{...provided.draggableProps}
-					isDragging={snapshot.isDragging}
-					dropOverIndex={dropOverIndex}
-					dropFromTop={dropFromTop}
-					index={index}
-					readOnly={readOnly ? readOnly : false}
-				>
-					<SolaceAVPMoveButton
-						{...provided.dragHandleProps}
+			{
+				// TODO: Refactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed
+				// eslint-disable-next-line sonarjs/cognitive-complexity
+				(provided, snapshot) => (
+					<SolaceAVPContainer
+						ref={provided.innerRef}
+						{...provided.draggableProps}
 						isDragging={snapshot.isDragging}
-						ghostItem={ghostItem}
+						dropOverIndex={dropOverIndex}
+						dropFromTop={dropFromTop}
+						index={index}
 						readOnly={readOnly ? readOnly : false}
 					>
-						<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-					</SolaceAVPMoveButton>
+						<SolaceAVPMoveButton
+							{...provided.dragHandleProps}
+							isDragging={snapshot.isDragging}
+							ghostItem={ghostItem}
+							readOnly={readOnly ? readOnly : false}
+						>
+							<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+						</SolaceAVPMoveButton>
 
-					<SolaceAVPInputForKey>
-						{!avpKey && avpValue && readOnly && (
-							<ValueWrapper data-qa={`avpKey-${index}`}>{emptyFieldDisplayValue}</ValueWrapper>
-						)}
-						{(avpKey || (!avpKey && !readOnly)) && (
-							<SolaceTextField
-								name="key"
-								dataQa={`avpKey-${index}`}
-								dataTags={dataTags}
-								value={avpKey}
-								onChange={(e) => onChange(e, index)}
-								onKeyUp={onKeyUp}
-								onBlur={(e) => onBlur(e, index)}
-								hasErrors={ghostItem ? false : !!keyErrorText}
-								helperText={ghostItem ? "" : keyErrorText}
-								readOnly={readOnly}
-							/>
-						)}
-					</SolaceAVPInputForKey>
+						<SolaceAVPInputForKey>
+							{!avpKey && avpValue && readOnly && (
+								<ValueWrapper data-qa={`avpKey-${index}`}>{emptyFieldDisplayValue}</ValueWrapper>
+							)}
+							{(avpKey || (!avpKey && !readOnly)) && (
+								<SolaceTextField
+									name="key"
+									dataQa={`avpKey-${index}`}
+									dataTags={dataTags}
+									value={avpKey}
+									onChange={(e) => onChange(e, index)}
+									onKeyUp={onKeyUp}
+									onBlur={(e) => onBlur(e, index)}
+									hasErrors={ghostItem ? false : !!keyErrorText}
+									helperText={ghostItem ? "" : keyErrorText}
+									readOnly={readOnly}
+								/>
+							)}
+						</SolaceAVPInputForKey>
 
-					<SolaceAVPInputForValue>
-						{avpKey && !avpValue && readOnly && (
-							<ValueWrapper data-qa={`avpValue-${index}`}>{emptyFieldDisplayValue}</ValueWrapper>
-						)}
-						{(avpValue || (!avpValue && !readOnly)) && (
-							<SolaceTextField
-								name="value"
-								dataQa={`avpValue-${index}`}
-								dataTags={dataTags}
-								value={avpValue}
-								onChange={(e) => onChange(e, index)}
-								onKeyUp={onKeyUp}
-								onBlur={(e) => onBlur(e, index)}
-								hasErrors={ghostItem ? false : !!valueErrorText}
-								helperText={ghostItem ? "" : valueErrorText}
-								readOnly={readOnly}
-							/>
-						)}
-					</SolaceAVPInputForValue>
+						<SolaceAVPInputForValue>
+							{avpKey && !avpValue && readOnly && (
+								<ValueWrapper data-qa={`avpValue-${index}`}>{emptyFieldDisplayValue}</ValueWrapper>
+							)}
+							{(avpValue || (!avpValue && !readOnly)) && (
+								<SolaceTextField
+									name="value"
+									dataQa={`avpValue-${index}`}
+									dataTags={dataTags}
+									value={avpValue}
+									onChange={(e) => onChange(e, index)}
+									onKeyUp={onKeyUp}
+									onBlur={(e) => onBlur(e, index)}
+									hasErrors={ghostItem ? false : !!valueErrorText}
+									helperText={ghostItem ? "" : valueErrorText}
+									readOnly={readOnly}
+								/>
+							)}
+						</SolaceAVPInputForValue>
 
-					<SolaceAVPDeleteButton
-						onClick={(e) => onDelete(e, index)}
-						tabIndex={0}
-						cursor={ghostItem ? "default" : "pointer"}
-						background={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
-						readOnly={readOnly ? readOnly : false}
-					>
-						<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
-					</SolaceAVPDeleteButton>
-				</SolaceAVPContainer>
-			)}
+						<SolaceAVPDeleteButton
+							onClick={(e) => onDelete(e, index)}
+							tabIndex={0}
+							cursor={ghostItem ? "default" : "pointer"}
+							background={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
+							readOnly={readOnly ? readOnly : false}
+						>
+							<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+						</SolaceAVPDeleteButton>
+					</SolaceAVPContainer>
+				)
+			}
 		</Draggable>
 	);
 };
