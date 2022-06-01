@@ -25,7 +25,7 @@ jobs:
         with:
           token: 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
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: 10e61b689d33
+          projectToken: 3c6be3f5528f
           # storybook directory
           workingDir: storybook
           exitZeroOnChanges: false
