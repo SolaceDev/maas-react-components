@@ -63,6 +63,7 @@ export { default as SolaceSplitPane } from "./components/layout/SolaceSplitPane"
 export { default as SolaceAccordion } from "./components/SolaceAccordion";
 export { default as SolaceStack } from "./components/layout/SolaceStack";
 export { default as SolaceGrid } from "./components/layout/SolaceGrid";
+export { default as SolaceBreadcrumb } from "./components/SolaceBreadcrumb";
 
 export * from "./types";
 

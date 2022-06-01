@@ -878,6 +878,21 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					}
 				}
 			},
+			MuiBreadcrumbs: {
+				styleOverrides: {
+					root: {
+						".MuiBreadcrumbs-separator": {
+							marginLeft: "0px",
+							marginRight: "0px"
+						},
+						".MuiBreadcrumbs-li": {
+							".MuiLink-underlineNone": {
+								color: themeMapping.palette.secondary.text.wMain
+							}
+						}
+					}
+				}
+			},
 			MuiTab: {
 				styleOverrides: {
 					root: {
