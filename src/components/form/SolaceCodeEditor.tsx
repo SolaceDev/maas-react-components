@@ -4,6 +4,7 @@ import SolaceButton from "./SolaceButton";
 import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
 import ExpandIcon from "../../resources/icons/ExpandIcon";
+import { CloseFullscreen } from "@mui/icons-material";
 import { styled, useTheme } from "@mui/material";
 
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -80,22 +81,11 @@ function SolaceCodeEditor({
 
 	const [val, setVal] = useState(value || "");
 	const [editorExpanded, setEditorExpanded] = useState(false);
-	const [editorFocused, setEditorFocused] = useState(false);
 	useEffect(() => {
 		if (value !== undefined) setVal(value);
 	}, [value]);
 	const handleChange = (_editor: CodeMirror, _data: any, value: string) => {
 		setVal(value);
-	};
-
-	const handleOnFocus = () => {
-		setEditorFocused(true);
-	};
-
-	const handleOnBlur = () => {
-		setTimeout(() => {
-			setEditorFocused(false);
-		}, 200);
 	};
 
 	const toggleExpandedMode = () => {
@@ -107,24 +97,27 @@ function SolaceCodeEditor({
 			{expandable && (
 				<StyledOuterWrapper className={editorExpanded ? "codeEditor-expanded--backdrop" : ""}>
 					<StyledInnerWrapper className={editorExpanded ? "codeEditor-expanded--main" : ""}>
-						{editorFocused && (
-							<IconWrapper>
-								{editorExpanded ? (
-									<SolaceButton variant="text" dataQa="buttonCloseCodeEditor" onClick={toggleExpandedMode}>
-										Close
-									</SolaceButton>
-								) : (
-									<SolaceButton
-										variant="icon"
-										dataQa="buttonExpandCodeEditor"
-										onClick={toggleExpandedMode}
-										title="Expand"
-									>
-										<ExpandIcon fill={theme.palette.ux.deprecated.secondary.wMain} size={24} />
-									</SolaceButton>
-								)}
-							</IconWrapper>
-						)}
+						<IconWrapper className={editorExpanded ? "codeEditor-expanded--icon" : "codeEditor-collapsed--icon"}>
+							{editorExpanded ? (
+								<SolaceButton
+									variant="icon"
+									dataQa="buttonCollapseCodeEditor"
+									onClick={toggleExpandedMode}
+									title="Collapse"
+								>
+									<CloseFullscreen />
+								</SolaceButton>
+							) : (
+								<SolaceButton
+									variant="icon"
+									dataQa="buttonExpandCodeEditor"
+									onClick={toggleExpandedMode}
+									title="Expand"
+								>
+									<ExpandIcon fill={theme.palette.ux.deprecated.secondary.wMain} size={24} />
+								</SolaceButton>
+							)}
+						</IconWrapper>
 						<StyledEditorWrapper className={!editorExpanded ? "codeEditor-border" : ""}>
 							<CodeMirror
 								key={id}
@@ -148,8 +141,6 @@ function SolaceCodeEditor({
 									gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"]
 								}}
 								onChange={onChange}
-								onFocus={handleOnFocus}
-								onBlur={handleOnBlur}
 							/>
 						</StyledEditorWrapper>
 						{helperText && renderHelperText(helperText, hasErrors)}

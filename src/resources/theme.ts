@@ -1190,10 +1190,16 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					backgroundColor: themeMapping.palette.background.w10,
 					// position is relative to its parent with position: relative
 					position: "absolute",
-					top: 16,
-					right: 24,
 					// the z-index of the buttons should be higher than the z-index of the CodeMirror, which is 9
-					zIndex: 20
+					zIndex: 20,
+					"&.codeEditor-expanded--icon": {
+						top: -12,
+						right: -12
+					},
+					"&.codeEditor-collapsed--icon": {
+						top: 16,
+						right: 24
+					}
 				}
 			},
 			/** SolaceMessageBox component */

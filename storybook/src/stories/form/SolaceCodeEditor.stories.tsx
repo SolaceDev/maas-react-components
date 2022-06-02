@@ -110,7 +110,7 @@ WithHelperText.args = {
 	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
 	mode: "json",
 	expandable: true,
-	helperText: "This is a demo helper text"
+	helperText: "A sample helper text"
 };
 
 export const WithError = Template.bind({});
@@ -120,7 +120,7 @@ WithError.args = {
 	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
 	mode: "json",
 	expandable: true,
-	helperText: "this is a demo error text",
+	helperText: "A sample error text",
 	hasErrors: true
 };
 
