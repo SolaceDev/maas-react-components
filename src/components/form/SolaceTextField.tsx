@@ -3,6 +3,8 @@ import React from "react";
 import { constants } from "../../constants";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
+import SolaceTooltip from "../SolaceToolTip";
+import { styled } from "@mui/material";
 
 export interface SolaceTextFieldChangeEvent {
 	name: string;
@@ -198,41 +200,60 @@ function SolaceTextField({
 		return id ? id : name;
 	};
 
-	const textField = () => (
-		<TextField
-			id={`${getId()}`}
-			name={name}
-			inputProps={{
-				maxLength: maxLength,
-				size: size,
-				"data-qa": dataQa,
-				"data-tags": dataTags,
-				"data-testid": dataQa,
-				"data-lpignore": true,
-				readOnly: readOnly,
-				"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
-				"aria-labelledby": label ? `${getId()}-label` : "",
-				"aria-readonly": readOnly,
-				role: "textbox",
-				title: title,
-				min: 0
-			}}
-			type={type}
-			error={hasErrors}
-			autoComplete={`dummy-field-${name}`}
-			autoFocus={autoFocus}
-			InputProps={{ ...defaultInputProps, ...inputEndAdornment, ...inputStartAdornment }}
-			margin="dense"
-			placeholder={placeholder}
-			value={value}
-			onChange={handleChange}
-			onBlur={onBlur}
-			onKeyDown={onKeyDown}
-			onKeyUp={onKeyUp}
-			onFocus={onFocus}
-			fullWidth={fullWidth}
-		/>
-	);
+	const TooltipContainer = styled("div")({
+		height: "32px",
+		display: "inline-flex",
+		alignItems: "center"
+	});
+
+	const textField = () => {
+		/* read-only behaviour */
+		if (readOnly) {
+			return (
+				<TooltipContainer>
+					<SolaceTooltip variant="overflow" title={typeof value !== "undefined" && value !== null ? value + "" : ""}>
+						{typeof value !== "undefined" && value !== null ? value + "" : ""}
+					</SolaceTooltip>
+				</TooltipContainer>
+			);
+		} else {
+			return (
+				<TextField
+					id={`${getId()}`}
+					name={name}
+					inputProps={{
+						maxLength: maxLength,
+						size: size,
+						"data-qa": dataQa,
+						"data-tags": dataTags,
+						"data-testid": dataQa,
+						"data-lpignore": true,
+						readOnly: readOnly,
+						"aria-describedby": helperText ? `${getId()}-textfield-helper-text` : "",
+						"aria-labelledby": label ? `${getId()}-label` : "",
+						"aria-readonly": readOnly,
+						role: "textbox",
+						title: title,
+						min: 0
+					}}
+					type={type}
+					error={hasErrors}
+					autoComplete={`dummy-field-${name}`}
+					autoFocus={autoFocus}
+					InputProps={{ ...defaultInputProps, ...inputEndAdornment, ...inputStartAdornment }}
+					margin="dense"
+					placeholder={placeholder}
+					value={value}
+					onChange={handleChange}
+					onBlur={onBlur}
+					onKeyDown={onKeyDown}
+					onKeyUp={onKeyUp}
+					onFocus={onFocus}
+					fullWidth={fullWidth}
+				/>
+			);
+		}
+	};
 
 	return (
 		<FormChildBase

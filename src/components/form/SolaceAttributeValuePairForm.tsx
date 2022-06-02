@@ -15,7 +15,7 @@ interface SolaceAVPFormLabelProps {
 const SolaceAVPFormContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.container);
 const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(({ theme, readOnly }) => ({
 	...theme.mixins.formComponent_AVPForm.labelWrapper,
-	gridTemplateColumns: readOnly ? "0px 3fr 8px 5fr 0px" : "32px 1fr 8px 1fr 32px"
+	gridTemplateColumns: readOnly ? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px" : "32px 1fr 8px 1fr 32px"
 }));
 const SolaceAVPListContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.listWrapper);
 

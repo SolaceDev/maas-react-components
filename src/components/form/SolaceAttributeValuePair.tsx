@@ -4,7 +4,6 @@ import { styled } from "@mui/material";
 import { Draggable } from "react-beautiful-dnd";
 import { DeleteIcon } from "../../resources/icons/DeleteIcon";
 import { MoveIcon } from "../../resources/icons/MoveIcon";
-
 import { BASE_COLORS } from "../../resources/colorPallette";
 
 interface SolaceAVPContainerProps {
@@ -44,7 +43,7 @@ const SolaceAVPContainer = styled("div", {
 	...theme.mixins.formComponent_AVPItem.container,
 	backgroundColor: isDragging ? BASE_COLORS.greens.green9 : "inherit",
 	borderTop: displayDropLine(dropFromTop, dropOverIndex, index),
-	gridTemplateColumns: readOnly ? "0px 3fr 8px 5fr 0px" : "32px 1fr 8px 1fr 32px"
+	gridTemplateColumns: readOnly ? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px" : "32px 1fr 8px 1fr 32px"
 }));
 const SolaceAVPInputForKey = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForKey);
 const SolaceAVPInputForValue = styled("div")(({ theme }) => theme.mixins.formComponent_AVPItem.inputWrapperForValue);

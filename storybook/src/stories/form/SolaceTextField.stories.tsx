@@ -256,6 +256,35 @@ ReadOnly.args = {
 	readOnly: true
 };
 
+export const ReadOnlyLongTextOverflowWithTooltip = (): JSX.Element => {
+	return (
+		<div style={{ width: "400px" }}>
+			<SolaceTextField
+				name={"demoTextField"}
+				title={DEMO_TITLE}
+				label={DEMO_LABEL}
+				value={"Some long value that will be truncated by ellipsis along with a tooltip upon hover!"}
+				readOnly={true}
+			/>
+		</div>
+	);
+};
+
+export const ReadOnlyInlineLabelLongTextOverflowWithTooltip = (): JSX.Element => {
+	return (
+		<div style={{ width: "400px" }}>
+			<SolaceTextField
+				name={"demoTextField"}
+				title={DEMO_TITLE}
+				label={DEMO_LABEL}
+				value={"Some long value that will be truncated by ellipsis along with a tooltip upon hover!"}
+				inlineLabel={true}
+				readOnly={true}
+			/>
+		</div>
+	);
+};
+
 export const Controlled = ({ value: initialValue, name, ...args }): JSX.Element => {
 	const [value, setValue] = useState(initialValue);
 	const handleChange = (e) => {

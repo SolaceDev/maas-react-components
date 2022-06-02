@@ -17,7 +17,8 @@ const ChildrenContainer = styled("div", {
 	display: "flex",
 	flexDirection: "column",
 	flexGrow: 1,
-	sx: { paddingLeft: inlineLabel ? "36px" : "0px" },
+	maxWidth: "100%",
+	paddingLeft: inlineLabel ? "36px" : "0px",
 	"&.hasWarnings": {
 		"fieldset.MuiOutlinedInput-notchedOutline, fieldset.MuiInputBase-inputMultiline": {
 			borderColor: `${theme.palette.ux.warning.w100}`
