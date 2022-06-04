@@ -211,7 +211,11 @@ function SolaceTextField({
 		if (readOnly) {
 			return (
 				<TooltipContainer>
-					<SolaceTooltip variant="overflow" title={typeof value !== "undefined" && value !== null ? value + "" : ""}>
+					<SolaceTooltip
+						variant="overflow"
+						title={typeof value !== "undefined" && value !== null ? value + "" : ""}
+						dataQa={dataQa}
+					>
 						{typeof value !== "undefined" && value !== null ? value + "" : ""}
 					</SolaceTooltip>
 				</TooltipContainer>
