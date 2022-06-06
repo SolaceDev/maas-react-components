@@ -17,6 +17,6 @@ updates:
     ignore:
       # Ignore major updates to 'raect' and 'react-dom' packages ... will manual update these when ready
       - dependency-name: "react"
-        update-types: "major"
+        update-types: ["version-update:semver-major"]
       - dependency-name: "react-dom"
-        update-types: "major"
+        update-types: ["version-update:semver-major"]
