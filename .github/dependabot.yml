@@ -15,8 +15,9 @@ updates:
       prefix: "dependabot-prod"
       prefix-development: "dependabot-dev"
     ignore:
-      # Ignore major updates to 'raect' and 'react-dom' packages ... will manual update these when ready
+      # Ignore major updates to various packages ... will manual update these when ready
       - dependency-name: "react"
         update-types: ["version-update:semver-major"]
       - dependency-name: "react-dom"
         update-types: ["version-update:semver-major"]
+      - dependency-name: "husky" # updating the version causes pre commit hooks to not run

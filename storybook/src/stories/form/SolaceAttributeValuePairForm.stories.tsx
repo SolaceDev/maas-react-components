@@ -374,7 +374,6 @@ WithCustomValidation.play = async ({ canvasElement }) => {
 
 	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-4`));
 };
-
 WithCustomValidation.parameters = {
 	// Delay snapshot 5 seconds until all interactions are done
 	chromatic: { delay: 5000 }
