@@ -265,6 +265,10 @@ MissingMandatoryKeyValidation.play = async ({ canvasElement }) => {
 	});
 	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-1`));
 };
+MissingMandatoryKeyValidation.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
 
 export const MissingMandatoryKeyWithCustomMessage = () => {
 	const data = [];
@@ -293,6 +297,10 @@ MissingMandatoryKeyWithCustomMessage.play = async ({ canvasElement }) => {
 		delay: 100
 	});
 	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-1`));
+};
+MissingMandatoryKeyWithCustomMessage.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
 };
 
 const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
@@ -365,4 +373,9 @@ WithCustomValidation.play = async ({ canvasElement }) => {
 	});
 
 	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-4`));
+};
+
+WithCustomValidation.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
 };

@@ -316,3 +316,7 @@ Interaction.play = async ({ canvasElement }) => {
 		delay: 100
 	});
 };
+Interaction.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
