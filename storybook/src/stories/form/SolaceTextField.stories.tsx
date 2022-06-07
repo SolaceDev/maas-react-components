@@ -207,6 +207,10 @@ WithClearButton.play = async ({ canvasElement }) => {
 	//click on clear button
 	await userEvent.click(await canvas.findByRole("button"));
 };
+WithClearButton.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
 
 export const AutoFocus = Template.bind({});
 AutoFocus.args = {

@@ -125,6 +125,10 @@ DefaultNotificationCounter.play = async ({ canvasElement }) => {
 	await userEvent.click(await canvas.findByText("Increment"));
 	await userEvent.click(await canvas.findByText("Decrement"));
 };
+DefaultNotificationCounter.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
 
 export const CustomAnimationNotificationCounter = () => {
 	return <NotificationCounterDemo animiationDuration={500} animationRepeatsUpdateCount={2} />;
@@ -137,6 +141,10 @@ CustomAnimationNotificationCounter.play = async ({ canvasElement }) => {
 	await userEvent.click(await canvas.findByText("Increment"));
 	await userEvent.click(await canvas.findByText("Increment"));
 	await userEvent.click(await canvas.findByText("Decrement"));
+};
+CustomAnimationNotificationCounter.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
 };
 
 export const NoAnimationNotificationCounter = () => {
@@ -152,6 +160,10 @@ NoAnimationNotificationCounter.play = async ({ canvasElement }) => {
 	await userEvent.click(await canvas.findByText("Increment"));
 	await userEvent.click(await canvas.findByText("Decrement"));
 };
+NoAnimationNotificationCounter.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
 
 export const NotificationCounterWithTooltip = () => {
 	return <NotificationCounterDemo animiationDuration={0} title={"new events"} />;
@@ -161,6 +173,10 @@ NotificationCounterWithTooltip.play = async ({ canvasElement }) => {
 	// Starts querying the component from it's root element
 	const canvas = within(canvasElement);
 	await userEvent.click(await canvas.findByText("1"));
+};
+NotificationCounterWithTooltip.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
 };
 
 export const CustomNotificationCounter = Template.bind({});
