@@ -31,6 +31,10 @@ export interface SolaceStackLabelProps {
 	 */
 	bold?: boolean;
 	/**
+	 * Boolean flag to suppress line breaks (text wrapping) within the label
+	 */
+	noWrap?: boolean;
+	/**
 	 *
 	 */
 	children?: React.ReactNode;
@@ -44,6 +48,7 @@ function SolaceStackLabel({
 	large = false,
 	bold = false,
 	readOnly = false,
+	noWrap = false,
 	children
 }: SolaceStackLabelProps): JSX.Element {
 	const theme = useTheme();
@@ -56,7 +61,8 @@ function SolaceStackLabel({
 			className={clsx({ "bold-label": bold, "read-only": readOnly })}
 			sx={{
 				display: "block",
-				fontSize: large ? theme.typography.subtitle1 : theme.typography.body1
+				fontSize: large ? theme.typography.subtitle1 : theme.typography.body1,
+				whiteSpace: noWrap ? "nowrap" : "normal"
 			}}
 		>
 			{children}

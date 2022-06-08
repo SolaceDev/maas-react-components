@@ -23,6 +23,10 @@ export interface SolaceLabelProps {
 	 */
 	readOnly?: boolean;
 	/**
+	 * Boolean flag to suppress line breaks (text wrapping) within the label
+	 */
+	noWrap?: boolean;
+	/**
 	 *
 	 */
 	children?: React.ReactNode;
@@ -34,6 +38,7 @@ function SolaceLabel({
 	required = false,
 	disabled = false,
 	readOnly = false,
+	noWrap = false,
 	children
 }: SolaceLabelProps): JSX.Element {
 	return (
@@ -43,7 +48,8 @@ function SolaceLabel({
 			required={required}
 			disabled={disabled}
 			sx={{
-				display: "block"
+				display: "block",
+				whiteSpace: noWrap ? "nowrap" : "normal"
 			}}
 			className={clsx({ "read-only": readOnly })}
 		>
