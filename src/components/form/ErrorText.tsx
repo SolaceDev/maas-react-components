@@ -3,10 +3,15 @@ import { Box } from "@mui/system";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { ErrorIcon } from "../../resources/icons/ErrorIcon";
 import { BASE_FONT_PX_SIZES } from "../../resources/typography";
+import { CSSProperties } from "@mui/styled-engine";
 
-const ErrorTextContainer = styled(Box)(({ theme }) => ({ ...(theme.mixins.formComponent_ErrorText.container as any) }));
+const ErrorTextContainer = styled(Box)(({ theme }) => ({
+	...(theme.mixins.formComponent_ErrorText.container as CSSProperties)
+}));
 
-const ErrorTextLabel = styled(FormLabel)(({ theme }) => ({ ...(theme.mixins.formComponent_ErrorText.label as any) }));
+const ErrorTextLabel = styled(FormLabel)(({ theme }) => ({
+	...(theme.mixins.formComponent_ErrorText.label as CSSProperties)
+}));
 
 export interface ErrorTextProps extends SolaceComponentProps {
 	children: string | JSX.Element;
