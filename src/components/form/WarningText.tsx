@@ -4,9 +4,13 @@ import SolaceComponentProps from "../SolaceComponentProps";
 import { WarnIcon } from "../../resources/icons/WarnIcon";
 import { BASE_FONT_PX_SIZES } from "../../resources/typography";
 
-const WarningTextContainer = styled(Box)(({ theme }) => theme.mixins.formComponent_WarningText.container);
+const WarningTextContainer = styled(Box)(({ theme }) => ({
+	...(theme.mixins.formComponent_WarningText.container as any)
+}));
 
-const WarningTextLabel = styled(FormLabel)(({ theme }) => theme.mixins.formComponent_WarningText.label);
+const WarningTextLabel = styled(FormLabel)(({ theme }) => ({
+	...(theme.mixins.formComponent_WarningText.label as any)
+}));
 
 export interface WarningTextProps extends SolaceComponentProps {
 	children: string | JSX.Element;

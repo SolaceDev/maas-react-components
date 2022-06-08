@@ -18,10 +18,16 @@ import "codemirror/keymap/sublime";
 import "codemirror/addon/display/fullscreen";
 import "codemirror/addon/display/fullscreen.css"; // apply fullscreen to CodeEditor
 
-const StyledOuterWrapper = styled("div")(({ theme }) => theme.mixins.formComponent_CodeEditor.OuterWrapper);
-const StyledInnerWrapper = styled("div")(({ theme }) => theme.mixins.formComponent_CodeEditor.InnerWrapper);
-const StyledEditorWrapper = styled("div")(({ theme }) => theme.mixins.formComponent_CodeEditor.EditorWrapper);
-const IconWrapper = styled("div")(({ theme }) => theme.mixins.formComponent_CodeEditor.IconWrapper);
+const StyledOuterWrapper = styled("div")(({ theme }) => ({
+	...(theme.mixins.formComponent_CodeEditor.OuterWrapper as any)
+}));
+const StyledInnerWrapper = styled("div")(({ theme }) => ({
+	...(theme.mixins.formComponent_CodeEditor.InnerWrapper as any)
+}));
+const StyledEditorWrapper = styled("div")(({ theme }) => ({
+	...(theme.mixins.formComponent_CodeEditor.EditorWrapper as any)
+}));
+const IconWrapper = styled("div")(({ theme }) => ({ ...(theme.mixins.formComponent_CodeEditor.IconWrapper as any) }));
 
 export interface SolaceCodeEditorProps extends SolaceComponentProps {
 	/**

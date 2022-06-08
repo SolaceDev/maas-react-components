@@ -12,12 +12,16 @@ interface SolaceAVPFormLabelProps {
 	readOnly: boolean;
 }
 
-const SolaceAVPFormContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.container);
+const SolaceAVPFormContainer = styled("div")(({ theme }) => ({
+	...(theme.mixins.formComponent_AVPForm.container as any)
+}));
 const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(({ theme, readOnly }) => ({
-	...theme.mixins.formComponent_AVPForm.labelWrapper,
+	...(theme.mixins.formComponent_AVPForm.labelWrapper as any),
 	gridTemplateColumns: readOnly ? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px" : "32px 1fr 8px 1fr 32px"
 }));
-const SolaceAVPListContainer = styled("div")(({ theme }) => theme.mixins.formComponent_AVPForm.listWrapper);
+const SolaceAVPListContainer = styled("div")(({ theme }) => ({
+	...(theme.mixins.formComponent_AVPForm.listWrapper as any)
+}));
 
 const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number): Array<AVPItem> => {
 	const result = Array.from(list);

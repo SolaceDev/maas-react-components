@@ -9,14 +9,20 @@ import { BASE_COLORS } from "../resources/colorPallette";
 import { WarnIcon } from "../resources/icons/WarnIcon";
 import SolaceComponentProps from "./SolaceComponentProps";
 
-const InfoBoxContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.container);
-const InfoBoxMessageContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.messageContainer);
-const DetailsContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.detailsContainer);
-const MessageTextContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.messageTextContainer);
-const IconContainer = styled("div")(({ theme }) => theme.mixins.component_MessageBox.iconContainer);
+const InfoBoxContainer = styled("div")(({ theme }) => ({ ...(theme.mixins.component_MessageBox.container as any) }));
+const InfoBoxMessageContainer = styled("div")(({ theme }) => ({
+	...(theme.mixins.component_MessageBox.messageContainer as any)
+}));
+const DetailsContainer = styled("div")(({ theme }) => ({
+	...(theme.mixins.component_MessageBox.detailsContainer as any)
+}));
+const MessageTextContainer = styled("div")(({ theme }) => ({
+	...(theme.mixins.component_MessageBox.messageTextContainer as any)
+}));
+const IconContainer = styled("div")(({ theme }) => ({ ...(theme.mixins.component_MessageBox.iconContainer as any) }));
 const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
 	({ theme, color }) => ({
-		...theme.mixins.component_MessageBox.message,
+		...(theme.mixins.component_MessageBox.message as any),
 		color: color
 	})
 );

@@ -5,7 +5,7 @@ import SolaceCheckBox, { SolaceCheckboxChangeEvent } from "../form/SolaceCheckBo
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceGridList from "./SolaceGridList";
 
-const ImageListHeader = styled("div")(({ theme }) => theme.mixins.layoutComponent_ImageList.header);
+const ImageListHeader = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.header as any) }));
 
 interface SolaceGridListMultiSelectProps<T> extends SolaceComponentProps {
 	id?: string;
