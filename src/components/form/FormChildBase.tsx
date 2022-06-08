@@ -130,7 +130,14 @@ function FormChildBase({
 				</SolaceStackLabel>
 			)}
 			{!stackLabel && label && (
-				<SolaceLabel id={`${id}-label`} htmlForId={`${id}`} required={required} disabled={disabled} readOnly={readOnly}>
+				<SolaceLabel
+					id={`${id}-label`}
+					htmlForId={`${id}`}
+					required={required}
+					disabled={disabled}
+					readOnly={readOnly}
+					noWrap={inlineLabel}
+				>
 					{label}
 				</SolaceLabel>
 			)}
