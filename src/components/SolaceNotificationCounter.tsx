@@ -3,6 +3,7 @@ import { styled } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import SolaceTooltip from "./SolaceToolTip";
 import SolaceComponentProps from "./SolaceComponentProps";
+import { CSSProperties } from "@mui/styled-engine";
 
 export interface SolaceNotificationCounterProps extends SolaceComponentProps {
 	/**
@@ -43,14 +44,16 @@ const Badge = styled("div", { shouldForwardProp: (prop) => prop !== "size" && pr
 	size: number;
 	fontSize: number;
 }>(({ theme, size, fontSize }) => ({
-	...(theme.mixins.component_NotificationCounter.container as any),
+	...(theme.mixins.component_NotificationCounter.container as CSSProperties),
 	width: `${size}px`,
 	height: `${size}px`,
 	fontSize: `${fontSize ? fontSize : (size / 3) * 2}px`,
 	lineHeight: `${size + 1}px`
 }));
 
-const Value = styled("span")(({ theme }) => ({ ...(theme.mixins.component_NotificationCounter.value as any) }));
+const Value = styled("span")(({ theme }) => ({
+	...(theme.mixins.component_NotificationCounter.value as CSSProperties)
+}));
 
 const pulse = keyframes`
 	0% {

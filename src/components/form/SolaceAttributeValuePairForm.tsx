@@ -7,20 +7,21 @@ import SolaceAttributeValuePairList, { AVPItem } from "./SolaceAttributeValuePai
 import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
 import WarningText from "./WarningText";
+import { CSSProperties } from "@mui/styled-engine";
 
 interface SolaceAVPFormLabelProps {
 	readOnly: boolean;
 }
 
 const SolaceAVPFormContainer = styled("div")(({ theme }) => ({
-	...(theme.mixins.formComponent_AVPForm.container as any)
+	...(theme.mixins.formComponent_AVPForm.container as CSSProperties)
 }));
 const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(({ theme, readOnly }) => ({
-	...(theme.mixins.formComponent_AVPForm.labelWrapper as any),
+	...(theme.mixins.formComponent_AVPForm.labelWrapper as CSSProperties),
 	gridTemplateColumns: readOnly ? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px" : "32px 1fr 8px 1fr 32px"
 }));
 const SolaceAVPListContainer = styled("div")(({ theme }) => ({
-	...(theme.mixins.formComponent_AVPForm.listWrapper as any)
+	...(theme.mixins.formComponent_AVPForm.listWrapper as CSSProperties)
 }));
 
 const reorderList = (list: Array<AVPItem>, startIndex: number, endIndex: number): Array<AVPItem> => {

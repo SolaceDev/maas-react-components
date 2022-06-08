@@ -3,13 +3,14 @@ import { Box } from "@mui/system";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { WarnIcon } from "../../resources/icons/WarnIcon";
 import { BASE_FONT_PX_SIZES } from "../../resources/typography";
+import { CSSProperties } from "@mui/styled-engine";
 
 const WarningTextContainer = styled(Box)(({ theme }) => ({
-	...(theme.mixins.formComponent_WarningText.container as any)
+	...(theme.mixins.formComponent_WarningText.container as CSSProperties)
 }));
 
 const WarningTextLabel = styled(FormLabel)(({ theme }) => ({
-	...(theme.mixins.formComponent_WarningText.label as any)
+	...(theme.mixins.formComponent_WarningText.label as CSSProperties)
 }));
 
 export interface WarningTextProps extends SolaceComponentProps {

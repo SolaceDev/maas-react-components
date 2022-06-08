@@ -5,6 +5,7 @@ import { Draggable } from "react-beautiful-dnd";
 import { DeleteIcon } from "../../resources/icons/DeleteIcon";
 import { MoveIcon } from "../../resources/icons/MoveIcon";
 import { BASE_COLORS } from "../../resources/colorPallette";
+import { CSSProperties } from "@mui/styled-engine";
 
 interface SolaceAVPContainerProps {
 	isDragging: boolean;
@@ -40,22 +41,22 @@ const SolaceAVPContainer = styled("div", {
 	shouldForwardProp: (prop) =>
 		prop !== "isDragging" && prop !== "dropOverIndex" && prop !== "dropFromTop" && prop !== "readOnly"
 })<SolaceAVPContainerProps>(({ theme, isDragging, dropOverIndex, index, dropFromTop, readOnly }) => ({
-	...(theme.mixins.formComponent_AVPItem.container as any),
+	...(theme.mixins.formComponent_AVPItem.container as CSSProperties),
 	backgroundColor: isDragging ? BASE_COLORS.greens.green9 : "inherit",
 	borderTop: displayDropLine(dropFromTop, dropOverIndex, index),
 	gridTemplateColumns: readOnly ? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px" : "32px 1fr 8px 1fr 32px"
 }));
 const SolaceAVPInputForKey = styled("div")(({ theme }) => ({
-	...(theme.mixins.formComponent_AVPItem.inputWrapperForKey as any)
+	...(theme.mixins.formComponent_AVPItem.inputWrapperForKey as CSSProperties)
 }));
 const SolaceAVPInputForValue = styled("div")(({ theme }) => ({
-	...(theme.mixins.formComponent_AVPItem.inputWrapperForValue as any)
+	...(theme.mixins.formComponent_AVPItem.inputWrapperForValue as CSSProperties)
 }));
 
 const SolaceAVPMoveButton = styled("div", {
 	shouldForwardProp: (prop) => prop !== "ghostItem" && prop !== "isDragging" && prop !== "readOnly"
 })<SolaceAVPMoveButtonProps>(({ theme, ghostItem, isDragging, readOnly }) => ({
-	...(theme.mixins.formComponent_AVPItem.moveButton as any),
+	...(theme.mixins.formComponent_AVPItem.moveButton as CSSProperties),
 	cursor: ghostItem ? "default" : isDragging ? "move" : "pointer",
 	display: readOnly ? "none" : "inherit"
 }));
@@ -63,7 +64,7 @@ const SolaceAVPMoveButton = styled("div", {
 const SolaceAVPDeleteButton = styled("div", {
 	shouldForwardProp: (prop) => prop !== "cursor" && prop !== "background" && prop !== "readOnly"
 })<SolaceAVPDeleteButtonProps>(({ theme, cursor, background, readOnly }) => ({
-	...(theme.mixins.formComponent_AVPItem.deleteButton as any),
+	...(theme.mixins.formComponent_AVPItem.deleteButton as CSSProperties),
 	cursor: cursor,
 	display: readOnly ? "none" : "inherit",
 	":hover": {

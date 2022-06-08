@@ -1,11 +1,14 @@
 import { styled } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
 import SolaceCheckBox, { SolaceCheckboxChangeEvent } from "../form/SolaceCheckBox";
+import { CSSProperties } from "@mui/styled-engine";
 
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceGridList from "./SolaceGridList";
 
-const ImageListHeader = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.header as any) }));
+const ImageListHeader = styled("div")(({ theme }) => ({
+	...(theme.mixins.layoutComponent_ImageList.header as CSSProperties)
+}));
 
 interface SolaceGridListMultiSelectProps<T> extends SolaceComponentProps {
 	id?: string;

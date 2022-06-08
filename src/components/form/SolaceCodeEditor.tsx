@@ -17,17 +17,20 @@ import "codemirror/addon/lint/json-lint";
 import "codemirror/keymap/sublime";
 import "codemirror/addon/display/fullscreen";
 import "codemirror/addon/display/fullscreen.css"; // apply fullscreen to CodeEditor
+import { CSSProperties } from "@mui/styled-engine";
 
 const StyledOuterWrapper = styled("div")(({ theme }) => ({
-	...(theme.mixins.formComponent_CodeEditor.OuterWrapper as any)
+	...(theme.mixins.formComponent_CodeEditor.OuterWrapper as CSSProperties)
 }));
 const StyledInnerWrapper = styled("div")(({ theme }) => ({
-	...(theme.mixins.formComponent_CodeEditor.InnerWrapper as any)
+	...(theme.mixins.formComponent_CodeEditor.InnerWrapper as CSSProperties)
 }));
 const StyledEditorWrapper = styled("div")(({ theme }) => ({
-	...(theme.mixins.formComponent_CodeEditor.EditorWrapper as any)
+	...(theme.mixins.formComponent_CodeEditor.EditorWrapper as CSSProperties)
 }));
-const IconWrapper = styled("div")(({ theme }) => ({ ...(theme.mixins.formComponent_CodeEditor.IconWrapper as any) }));
+const IconWrapper = styled("div")(({ theme }) => ({
+	...(theme.mixins.formComponent_CodeEditor.IconWrapper as CSSProperties)
+}));
 
 export interface SolaceCodeEditorProps extends SolaceComponentProps {
 	/**
