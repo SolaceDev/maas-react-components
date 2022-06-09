@@ -30,7 +30,9 @@ function SolaceConfirmationDialog({
 	return (
 		<Dialog open={isOpen} maxWidth={maxWidth} className={linearProgressIndicator ? "linearProgressIndicator" : ""}>
 			<DialogTitle>
-				<div data-qa="title">{title}</div>
+				<div data-qa="title" style={{ wordBreak: "break-word" }}>
+					{title}
+				</div>
 			</DialogTitle>
 			<DialogContent data-qa="content">
 				{contentText && <DialogContentText>{contentText}</DialogContentText>}

@@ -21,9 +21,11 @@ function SolaceSelectAutocompleteItem({
 	subText,
 	supplementalText
 }: SolaceSelectAutocompleteItemProps): JSX.Element {
+	const sizeOfColumn = supplementalText ? 8 : 12;
+	const middlePadding = supplementalText ? "16px" : "0px";
 	return (
-		<Grid container justifyContent="space-between" alignItems={"center"} className={clsx({ multiline: !!subText })}>
-			<Grid item>
+		<Grid container className={clsx({ multiline: !!subText })}>
+			<Grid item xs={sizeOfColumn} zeroMinWidth style={{ wordBreak: "break-word", paddingRight: middlePadding }} py={1}>
 				{name}
 				{subText && (
 					<span className="subtext">
@@ -33,7 +35,16 @@ function SolaceSelectAutocompleteItem({
 				)}
 			</Grid>
 			{supplementalText && (
-				<Grid className="supplementalText" item>
+				<Grid
+					container
+					className="supplementalText"
+					item
+					xs={4}
+					direction="column"
+					alignItems="flex-end"
+					justifyContent="flex-start"
+					py={1}
+				>
 					{supplementalText}
 				</Grid>
 			)}
