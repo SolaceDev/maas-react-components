@@ -48,7 +48,7 @@ npm install --save @SolaceDev/maas-react-components
 
 npm gives you the ability to import this package with a custom package name, which makes it easier to import components and use smaller names if that is a preference.
 
-For e.g. If a team wants to use the package named as common-components, install the package like this
+For e.g. If a team wants to use the package named as common-components, install the package like this:
 
 ```
 
