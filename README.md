@@ -12,9 +12,15 @@ You can authenticate to GitHub Packages with npm by creating a npmrc file in you
 
 ```
 
+
+
 @SolaceDev:registry=https://npm.pkg.github.com
 
+
+
 //npm.pkg.github.com/:_authToken=GITHUB_TOKEN
+
+
 
 ```
 
@@ -28,7 +34,11 @@ See this [link](https://docs.github.com/en/github/authenticating-to-github/keepi
 
 
 
+
+
 npm install --save @SolaceDev/maas-react-components
+
+
 
 
 
@@ -42,7 +52,11 @@ For e.g. If a team wants to use the package named as common-components, install 
 
 ```
 
+
+
 npm i common-components@SolaceDev/maas-react-components
+
+
 
 ```
 
@@ -70,11 +84,11 @@ export default function Example() {
 
 Include one of the following values in a commit, before pushing your branch to master. This would trigger a automated package version update.
 
-| Value | Defintition                                                               |
-| ----- | ------------------------------------------------------------------------- |
-| major | MAJOR version when you make incompatible API changes                      |
-| minor | MINOR version when you add functionality in a backwards compatible manner |
-| patch | PATCH version when you make backwards compatible bug fixes                |
+| Value                                     | Definition                                                                |
+| ----------------------------------------- | ------------------------------------------------------------------------- |
+| solacemajor Or SolaceMajor Or SOLACEMAJOR | MAJOR version when you make incompatible API changes                      |
+| solaceminor Or SolaceMinor Or SOLACEMINOR | MINOR version when you add functionality in a backwards compatible manner |
+| solacepatch Or SolacePatch Or SOLACEPATCH | PATCH version when you make backwards compatible bug fixes                |
 
 [Semantic Versioning](https://semver.org/)
 
@@ -86,8 +100,9 @@ Please see read [this resource](https://docs.github.com/en/repositories/releasin
 
 Follow the following steps to start component development on your local machines:
 
-1.  Run `npm run install:dev`. This will install required packages both for storybook and component library.
-2.  Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
+1. Run `npm run install:dev`. This will install required packages both for storybook and component library.
+
+2. Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
 
 ## View Storybook
 
@@ -110,21 +125,29 @@ Then, run `npm link`.
 `cd` into the micro-frontend folder (e.g. `ep` or `saas`) you want to test on.
 
 ```
+
 npm uninstall @SolaceDev/maas-react-components
+
 ```
 
 Make sure `@SolaceDev/maas-react-components` is no longer in the `node_modules` folder, then return to the micro-frontend folder you are testing.
 
 ```
+
 npm link @SolaceDev/maas-react-components
+
 ```
 
 Open `webpack.config.js`, and comment out
 
 ```
-			alias: {
-				"react-dom": "@hot-loader/react-dom"
-			}
+
+alias: {
+
+"react-dom": "@hot-loader/react-dom"
+
+}
+
 ```
 
 Go to `localhost:9000` to make sure your `maas-react-component` changes are reflected.
@@ -132,20 +155,27 @@ Go to `localhost:9000` to make sure your `maas-react-component` changes are refl
 To view the global link:
 
 ```
+
 ls /Users/<your user name>/.nvm/versions/node/<node version>/lib/node_modules/
+
 ```
 
 To remove the link:
 
 ```
+
 npm rm --global @SolaceDev/maas-react-components
+
 ```
 
 If getting react runtime or react-dom not found when loading pages, then do:
 
 ```
+
 npm install -g react
+
 npm install -g react-dom
+
 ```
 
 ### Switching back to the latest official `maas-react-components`

@@ -48,6 +48,9 @@ jobs:
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
+          minor-wording: "solaceminor,SolaceMinor,SOLACEMINOR"
+          major-wording: "solacemajor,SolaceMajor,SOLACEMAJOR"
+          patch-wording: "solacepatch,SolacePatch,SOLACEPATCH"
           tag-prefix: ""
         env:
           GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
