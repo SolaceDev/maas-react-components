@@ -39,6 +39,14 @@ const DEFAULT_MENU_ITEMS = [
 	{
 		name: "Option 3",
 		onMenuItemClick: action("callback")
+	},
+	{
+		name: "Option 4",
+		onMenuItemClick: action("callback")
+	},
+	{
+		name: "Option 5",
+		onMenuItemClick: action("callback")
 	}
 ];
 
@@ -52,7 +60,8 @@ DefaultSolaceMenu.args = {
 	},
 	dataQa: "testDataProp",
 	dataTags: "testDataTag1",
-	items: DEFAULT_MENU_ITEMS
+	items: DEFAULT_MENU_ITEMS,
+	numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
 };
 
 export const TextMenuButton = Template.bind({});
@@ -90,9 +99,22 @@ MultilineSolaceMenu.args = {
 			subText: SUBTEXT,
 			supplementalText: SUPPLEMENTALText,
 			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 4",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 5",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
 		}
 	],
-	multiline: true
+	multiline: true,
+	numOfMenuItemDisplayed: 4 // default to 9 if this number is not specified
 };
 
 export const SecondaryActionSolaceMenu = Template.bind({});

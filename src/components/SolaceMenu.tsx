@@ -1,9 +1,10 @@
-import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography, useTheme } from "@mui/material";
-import { Fragment, useState } from "react";
+import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography, useTheme, Popover } from "@mui/material";
+import { useState, Fragment } from "react";
 import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { groupBy, flatten } from "lodash";
 import clsx from "clsx";
+import { useScrollIndicator } from "../hooks/useScrollIndicator";
 
 export interface SolaceMenuItemProps extends SolaceComponentProps {
 	id?: string;
@@ -79,7 +80,14 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 * Optional flag to close the menu on menuItemClick, the default is set to true.
 	 */
 	closeOnSelect?: boolean;
+	/**
+	 * optional flag to specify the number of menu items to be displayed, the number is currently default to 9.
+	 * Note: the total number of items exceeding this number will make the list scrollable with fade style applied based on the scroll positions.
+	 */
+	numOfMenuItemDisplayed?: number;
 }
+
+const DEFAULT_NUM_OF_MENUITEM_DISPLAYED = 9;
 
 export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	const {
@@ -87,6 +95,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		buttonProps,
 		items,
 		header,
+		numOfMenuItemDisplayed = DEFAULT_NUM_OF_MENUITEM_DISPLAYED,
 		multiline = false,
 		propagateMenuClick = false,
 		closeOnSelect = true,
@@ -97,9 +106,14 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	} = props;
 
 	const theme = useTheme();
-	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
+	const { maskImage, onScrollHandler, resetScrollPosition } = useScrollIndicator();
 	const itemHeight = multiline ? 58 : 38;
+
+	// states
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [menuPopoverRef, setMenuPopoverRef] = useState<null | HTMLElement>(null);
+
+	// handlers
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (!propagateMenuClick) {
 			// stop click event on the menu item from being bubble up to parent
@@ -115,6 +129,8 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		// don't bubble click event on menu closed by user clicking on any area in the window
 		event.stopPropagation();
 		setAnchorEl(null);
+		// reset scroll position onClose
+		resetScrollPosition();
 	};
 
 	// group items based on categoryHeading if provided
@@ -193,6 +209,28 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	return (
 		<Fragment>
 			<SolaceButton {...buttonProps} onClick={handleMenuClick} />
+
+			{/* 
+				Popover is used to sit right underneath of <Menu /> to give the desired box-shadow style after maskImage effect is applied.
+				The component has the same width/height, anchor position, transformOrigin & onClose trigger as <Menu />, so to keep the two component synced in style and behaviour.
+			*/}
+			{items && items.length > numOfMenuItemDisplayed && (
+				<Popover
+					anchorEl={anchorEl}
+					open={Boolean(anchorEl)}
+					anchorOrigin={anchorOrigin}
+					transformOrigin={transformOrigin}
+					onClose={handleMenuClose}
+					className="SolaceMenuPopover"
+					PaperProps={{
+						style: {
+							width: menuPopoverRef?.offsetWidth,
+							height: menuPopoverRef?.offsetHeight
+						}
+					}}
+					transitionDuration={303} // to match the transitionDuration value of <Menu />
+				/>
+			)}
 			<Menu
 				id={id}
 				key={`key-${id}`}
@@ -203,9 +241,21 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				anchorOrigin={anchorOrigin}
 				transformOrigin={transformOrigin}
 				onClose={handleMenuClose}
+				onScroll={onScrollHandler}
 				PaperProps={{
 					style: {
-						maxHeight: `${itemHeight * 9.5}px`
+						/**
+						 * the maxHeight is calculated based on how many items to be displayed,
+						 * for example, 9 is the default value numOfMenuItemDisplayed, in this case
+						 * maxHeight = itemHeight * 9 + 4.5 (half itemHeight) + 8 (top/bottom padding)
+						 * so the bottom stops at exactly 9.5 item position
+						 */
+						maxHeight: `${itemHeight * numOfMenuItemDisplayed + itemHeight / 2 + 8}px`,
+						maskImage: items && items.length > numOfMenuItemDisplayed ? maskImage : "none",
+						WebkitMaskImage: items && items.length > numOfMenuItemDisplayed ? maskImage : "none"
+					},
+					ref: (ref) => {
+						setMenuPopoverRef(ref); // ref setter on the Paper component
 					}
 				}}
 				className="SolaceMenu"

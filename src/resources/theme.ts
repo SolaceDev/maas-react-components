@@ -530,9 +530,35 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					}
 				}
 			},
+			MuiPopover: {
+				styleOverrides: {
+					root: {
+						/**
+						 * styles applied to .SolaceMenuPopover should match exactly these applied to .SolaceMenu
+						 */
+						"&.SolaceMenuPopover": {
+							".MuiPaper-root": {
+								margin: "4px",
+								overflowY: "auto",
+								boxShadow: `0px 1px 4px ${themeMapping.palette.secondary.w40}`,
+								".MuiMenuItem-root": {
+									minWidth: "80px",
+									maxWidth: "320px",
+									"&.wideMenu": {
+										minWidth: "320px"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
 			MuiMenu: {
 				styleOverrides: {
 					root: {
+						/**
+						 * any style update inside .SolaceMenu should also be applied to .SolaceMenuPopover
+						 */
 						"&.SolaceMenu": {
 							".MuiPaper-root": {
 								margin: "4px",
