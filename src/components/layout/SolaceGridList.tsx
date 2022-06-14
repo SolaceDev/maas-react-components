@@ -16,6 +16,7 @@ interface SolaceGridListProps<T> extends SolaceComponentProps {
 	onSelection?: (item: T) => void;
 	rowMapping: (item: T, index: number) => JSX.Element[];
 	gridTemplate: string;
+	background?: string;
 }
 
 interface SolaceGridListRowProps extends SolaceComponentProps {
@@ -26,6 +27,7 @@ interface SolaceGridListRowProps extends SolaceComponentProps {
 	selected?: boolean;
 	onClick: (id: string) => void;
 	dataQa?: string;
+	background?: string;
 }
 
 function SolaceGridListRow({
@@ -35,7 +37,8 @@ function SolaceGridListRow({
 	gridTemplate,
 	selected,
 	onClick,
-	dataQa
+	dataQa,
+	background
 }: SolaceGridListRowProps): JSX.Element {
 	const handleKeyPress = (e: any) => {
 		if (e.key === "Enter") {
@@ -49,7 +52,7 @@ function SolaceGridListRow({
 			className={selected ? "selected" : ""}
 			onClick={() => onClick(id)}
 			onKeyPress={(e) => handleKeyPress(e)}
-			style={{ gridTemplateColumns: gridTemplate }}
+			style={{ gridTemplateColumns: gridTemplate, backgroundColor: background }}
 			tabIndex={index}
 			data-qa={`${dataQa}-row-${id}`}
 		>
@@ -67,7 +70,8 @@ function SolaceGridList<T>({
 	onSelection,
 	rowMapping,
 	gridTemplate,
-	dataQa
+	dataQa,
+	background
 }: SolaceGridListProps<T>): JSX.Element {
 	const [headerBGC, setHeaderBGC] = useState("");
 
@@ -137,6 +141,7 @@ function SolaceGridList<T>({
 						gridTemplate={gridTemplate}
 						onClick={handleRowClick}
 						dataQa={dataQa}
+						background={background}
 					/>
 				))}
 			</List>

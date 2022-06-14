@@ -315,6 +315,29 @@ export const ContainedList = (): JSX.Element => {
 	);
 };
 
+export const ColoredList = (): JSX.Element => {
+	const [selectedId, setSelectedId] = useState();
+
+	const handleRowSelection = (selectedItem) => {
+		action("rowSelected")(selectedItem);
+		setSelectedId(selectedItem.id);
+	};
+
+	return (
+		<div style={{ height: "200px" }}>
+			<SolaceGridList
+				items={testListItems}
+				headers={testHeaders}
+				onSelection={handleRowSelection}
+				rowMapping={basicRowMapping}
+				selectedItemId={selectedId}
+				gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
+				dataQa="demoDefaultList"
+				background="rgba(0, 0, 0, 0.03)"
+			/>
+		</div>
+	);
+};
 export const CustomRenderer = (): JSX.Element => {
 	const [selectedId, setSelectedId] = useState();
 
