@@ -128,7 +128,7 @@ function SolaceGridList<T>({
 	);
 
 	return (
-		<div id="listComponent" key={id} data-qa={dataQa} style={{ height: "100%" }}>
+		<div id="listComponent" key={id} data-qa={dataQa} style={{ height: "100%", backgroundColor: background }}>
 			<List>
 				{headers && getListHeader}
 				{items?.map((item, index) => (

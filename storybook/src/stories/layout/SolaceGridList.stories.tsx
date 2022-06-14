@@ -68,6 +68,10 @@ export default {
 		onSelection: {
 			description:
 				"A callback function which is triggered on row selection (will pass the data object associated wit hthat row)"
+		},
+		background: {
+			control: { type: "text" },
+			description: "Text used to set the background color of the list"
 		}
 	}
 } as ComponentMeta<typeof SolaceGridList>;
