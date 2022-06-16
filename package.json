@@ -73,7 +73,7 @@
 	"dependencies": {
 		"@emotion/react": "^11.9.0",
 		"@emotion/styled": "^11.8.1",
-		"@mui/icons-material": "^5.8.2",
+		"@mui/icons-material": "^5.8.4",
 		"@mui/material": "^5.8.3",
 		"@types/react-beautiful-dnd": "^13.1.2",
 		"codemirror": "^5.65.5",
