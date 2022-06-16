@@ -40,7 +40,7 @@
 		"react": "^17.0.2"
 	},
 	"devDependencies": {
-		"@testing-library/jest-dom": "^5.16.1",
+		"@testing-library/jest-dom": "^5.16.4",
 		"@testing-library/react": "^12.1.5",
 		"@testing-library/user-event": "^13.5.0",
 		"@types/jest": "^28.1.1",
@@ -73,7 +73,7 @@
 	"dependencies": {
 		"@emotion/react": "^11.9.0",
 		"@emotion/styled": "^11.8.1",
-		"@mui/icons-material": "^5.8.2",
+		"@mui/icons-material": "^5.8.4",
 		"@mui/material": "^5.8.3",
 		"@types/react-beautiful-dnd": "^13.1.2",
 		"codemirror": "^5.65.5",
