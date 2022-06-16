@@ -12,8 +12,12 @@ updates:
     target-branch: "main"
     commit-message:
       # Prefix all commit messages with "dependabot"
-      prefix: "dependabot-prod"
-      prefix-development: "dependabot-dev"
+      prefix: "(maas-react-components) dependabot-prod"
+      prefix-development: "(maas-react-components) dependabot-dev"
+    # Specify labels for npm pull requests
+    labels:
+      - "dependabot"
+      - "dependencies"
     ignore:
       # Ignore major updates to various packages ... will manual update these when ready
       - dependency-name: "react"
