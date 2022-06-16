@@ -104,6 +104,14 @@ Follow the following steps to start component development on your local machines
 
 2. Run `npm start`. This should run the component and storybook library, all changes made to the components would be quickly reflected in component references created in storybook.
 
+### Package Dependencies
+
+Dependabot shall automatically raise PRs for outdated package versions ... those PRs shall:
+
+- have commit messages prefixed with "(maas-react-components) dependabot-prod" & "(maas-react-components) dependabot-dev"
+- PRs labeled with a "dependabot" label
+- Slack channel #maas-react-components shall receive a Github notification
+
 ## View Storybook
 
 To see the storybook visit: https://solid-garbanzo-f65ff422.pages.github.io/
