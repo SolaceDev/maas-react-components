@@ -193,5 +193,3 @@ Remove @SolaceDev/maas-react-components from node_modules and run `npm install @
 ## License
 
 MIT © [](https://github.com/)
-
-# Final Test I hope
