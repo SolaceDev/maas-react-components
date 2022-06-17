@@ -1,4 +1,4 @@
-import { Drawer, styled, Box } from "@mui/material";
+import { Drawer, styled, Box, useTheme } from "@mui/material";
 import { useState, useCallback, useRef, useEffect } from "react";
 import { VerticalDotsIcon } from "../resources/icons/VerticalDotsIcon";
 
@@ -7,15 +7,13 @@ enum ANCHOR {
 	RIGHT = "right"
 }
 
-const BORDER_STYLE = "1px solid rgba(0, 0, 0, 0.2)";
-
 const Dragger = styled("div", { shouldForwardProp: (prop) => prop !== "anchor" })<{
 	anchor: ANCHOR;
 }>(({ anchor, theme }) => ({
 	width: "8px",
 	cursor: "ew-resize",
-	...(anchor === ANCHOR.LEFT && { borderLeft: BORDER_STYLE }),
-	...(anchor === ANCHOR.RIGHT && { borderRight: BORDER_STYLE }),
+	...(anchor === ANCHOR.LEFT && { borderLeft: `1px solid ${theme.palette.ux.secondary.w40}` }),
+	...(anchor === ANCHOR.RIGHT && { borderRight: `1px solid ${theme.palette.ux.secondary.w40}` }),
 	position: "absolute",
 	top: 0,
 	bottom: 0,
@@ -83,6 +81,7 @@ function SolaceDrawer({
 	height = "100%",
 	children
 }: SolaceDrawerProps): JSX.Element {
+	const theme = useTheme();
 	const initialClientX = useRef<number>(0);
 	const [drawerWidth, setDrawerWidth] = useState(width);
 	// Create ref to track the value of drawerWidth state, as the state will be stale in callback function handleMouseUp().
@@ -141,8 +140,8 @@ function SolaceDrawer({
 					width: drawerWidth,
 					boxSizing: "border-box",
 					borderRadius: "2px",
-					border: BORDER_STYLE,
-					boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)"
+					border: `1px solid ${theme.palette.ux.secondary.w40}`,
+					boxShadow: `0px 2px 4px ${theme.palette.ux.secondary.w40}`
 				}
 			}}
 			PaperProps={{ style: { top, height } }}

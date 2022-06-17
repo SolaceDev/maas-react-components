@@ -39,7 +39,7 @@ const TitleText = styled("p")(({ theme }) => ({
 	// need to move this styled componet definition into the theme file once we figure out how
 	margin: "0px 0px 14px 0px",
 	fontSize: BASE_FONT_PX_SIZES.xl,
-	color: theme.palette.ux.secondary.wMain,
+	color: theme.palette.ux.primary.text.wMain,
 	textAlign: "center"
 }));
 
@@ -47,7 +47,7 @@ const DetailsContainer = styled("div")(({ theme }) => ({
 	// need to move this styled componet definition into the theme file once we figure out how
 	margin: "0px 0px 14px 0px",
 	fontSize: BASE_FONT_PX_SIZES.sm,
-	color: theme.palette.ux.secondary.wMain
+	color: theme.palette.ux.primary.text.wMain
 }));
 
 const ButtonGroup = styled("div")(() => ({

@@ -1,6 +1,5 @@
-import { styled } from "@mui/material";
+import { styled, useTheme } from "@mui/material";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { BASE_COLORS } from "../../resources/colorPallette";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { CSSProperties } from "@mui/styled-engine";
 
@@ -73,6 +72,7 @@ function SolaceGridList<T>({
 	background
 }: SolaceGridListProps<T>): JSX.Element {
 	const [headerBGC, setHeaderBGC] = useState("");
+	const theme = useTheme();
 
 	useEffect(() => {
 		const getBackgroundColour = (element: Element): string => {
@@ -83,7 +83,7 @@ function SolaceGridList<T>({
 				backgroundColor = getBackgroundColour(element.parentElement);
 			} else {
 				// fall through case (no background color defined in any parent element)
-				backgroundColor = BASE_COLORS.whites.white1;
+				backgroundColor = theme.palette.ux.background.w10;
 			}
 
 			return backgroundColor;
@@ -95,7 +95,7 @@ function SolaceGridList<T>({
 			const bkColor = getBackgroundColour(parentElement);
 			setHeaderBGC(bkColor);
 		}
-	}, []);
+	}, [theme.palette.ux.background.w10]); // will not change
 
 	const getListHeader = useMemo(() => {
 		if (headers) {
@@ -103,7 +103,11 @@ function SolaceGridList<T>({
 				<Row
 					key="headerRow"
 					className="headerRow"
-					style={{ gridTemplateColumns: gridTemplate, backgroundColor: headerBGC }}
+					style={{
+						gridTemplateColumns: gridTemplate,
+						backgroundColor: headerBGC,
+						color: theme.palette.ux.secondary.text.wMain
+					}}
 				>
 					{headers.map((label, index) => (
 						<span key={index}>{label}</span>
@@ -112,7 +116,7 @@ function SolaceGridList<T>({
 			);
 		}
 		return null;
-	}, [gridTemplate, headerBGC, headers]);
+	}, [gridTemplate, headerBGC, headers, theme.palette.ux.secondary.text.wMain]);
 
 	const handleRowClick = useCallback(
 		(id: string) => {
@@ -127,7 +131,12 @@ function SolaceGridList<T>({
 	);
 
 	return (
-		<div id="listComponent" key={id} data-qa={dataQa} style={{ height: "100%" }}>
+		<div
+			id="listComponent"
+			key={id}
+			data-qa={dataQa}
+			style={{ height: "100%", color: theme.palette.ux.primary.text.wMain }}
+		>
 			<List style={{ backgroundColor: background }}>
 				{headers && getListHeader}
 				{items?.map((item, index) => (

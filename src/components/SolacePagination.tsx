@@ -44,10 +44,10 @@ const PageListContainer = styled("div")(() => ({
 	margin: "0px"
 }));
 
-const MessageContainer = styled("p")(() => ({
+const MessageContainer = styled("p")(({ theme }) => ({
 	margin: "0px",
 	fontSize: "13px",
-	color: "rgba(0, 0, 0, 0.5)"
+	color: theme.palette.ux.deprecated.secondary.text.wMain
 }));
 
 function SolacePagination({

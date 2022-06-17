@@ -9,6 +9,7 @@ export const baseThemeMapping: ThemeMapping = {
 	palette: {
 		brand: {
 			wMain: "#00AD93",
+			wMain30: alpha("#00AD93", 0.35),
 			w30: "#00C895",
 			w10: "#e8f9f4"
 		},
@@ -17,7 +18,8 @@ export const baseThemeMapping: ThemeMapping = {
 			w100: "#05BDA1",
 			w90: "#00CCAD",
 			wMain: "#00AD93",
-			w60: "",
+			wMain40: alpha("#000000", 0.35),
+			w60: alpha("#00AD93", 0.35),
 			w40: alpha("#00AD93", 0.35),
 			w20: "#F9F9F9",
 			w10: alpha("#000000", 0.05),
@@ -29,9 +31,10 @@ export const baseThemeMapping: ThemeMapping = {
 		},
 
 		secondary: {
-			wMain: alpha("#000000", 0.8),
+			w80: alpha("#FFFFFF", 0.2),
+			wMain: alpha("#000000", 0.5),
 			w40: alpha("#000000", 0.2),
-			w20: alpha("#000000", 0.05),
+			w20: alpha("#000000", 0.1),
 			w10: alpha("#000000", 0.1),
 
 			text: {
@@ -62,7 +65,7 @@ export const baseThemeMapping: ThemeMapping = {
 			w70: "",
 			w30: "",
 			w20: "",
-			w10: "#FDEDED"
+			w10: "#FAE6E8"
 		},
 
 		warning: {
@@ -97,9 +100,9 @@ export const baseThemeMapping: ThemeMapping = {
 			},
 			n2: {
 				w100: "",
-				wMain: "",
-				w30: "",
-				w10: ""
+				wMain: "#00AD93",
+				w30: alpha("#00AD93", 0.35),
+				w10: alpha("#009193", 0.1)
 			},
 			n3: {
 				w100: "",
@@ -121,21 +124,44 @@ export const baseThemeMapping: ThemeMapping = {
 				wMain: ""
 			},
 			n8: {
-				wMain: "",
+				wMain: "#6A6A6A",
 				w30: ""
 			}
 		},
 
 		deprecated: {
-			background: {
-				wMain: "#474747"
+			primary: {
+				wMain: alpha("#000000", 0.8),
+				w20: alpha("#000000", 0.1),
+				text: {
+					w10: alpha("#FFFFFF", 0.9)
+				}
 			},
 			secondary: {
-				wMain: alpha("#000000", 0.5),
+				w80: alpha("#000000", 0.8),
+				wMain: alpha("#000000", 0.35),
+				w20: alpha("#000000", 0.05),
+				w10: alpha("#000000", 0.05),
 				text: {
-					wMain: alpha("#000000", 0.65),
+					wMain: alpha("#000000", 0.55),
 					w50: alpha("#000000", 0.55)
 				}
+			},
+			accent: {
+				n2: {
+					wMain: "#00C895"
+				}
+			},
+			// new chip colours are TBD in UX
+			chip: {
+				royalBlue: "#3A4880",
+				darkBlue: "#273749",
+				opaqueBlue: "rgba(58, 72, 128, 0.5)",
+				lightGrey: "#EBEDF2",
+				smokeGrey: "#DBDFE2",
+				white: "#FFF",
+				fill: "rgba(0, 0, 0, 0.1)",
+				hover: "rgba(0, 0, 0, 0.2)"
 			}
 		}
 	},

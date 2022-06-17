@@ -162,7 +162,7 @@ Indeterminate.args = {
 	title: TITLE,
 	name: "demoCheckbox",
 	label: LABEL,
-	checked: false,
+	checked: true,
 	indeterminate: true
 };
 

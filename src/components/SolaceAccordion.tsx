@@ -2,7 +2,6 @@ import SolaceComponentProps from "./SolaceComponentProps";
 import { ArrowRightIcon } from "../resources/icons/ArrowRight";
 import React from "react";
 import clsx from "clsx";
-import { BASE_COLORS } from "../resources/colorPallette";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 
 export interface SolaceAccordionProps extends SolaceComponentProps {
@@ -69,7 +68,7 @@ const SolaceAccordion = ({
 			onChange={onChange}
 			data-qa={dataQa}
 			data-tags={dataTags}
-			sx={{ backgroundColor: backgroundColor ?? BASE_COLORS.greys.grey0 }}
+			sx={{ backgroundColor: backgroundColor ?? "transparent" }}
 			className={indicatorVariant ? `indicator-${indicatorVariant}` : ""}
 		>
 			<AccordionSummary expandIcon={<ArrowRightIcon />} className={clsx({ hasHoverEffect: hover })}>

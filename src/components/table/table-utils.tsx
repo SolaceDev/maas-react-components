@@ -2,7 +2,6 @@ import SolaceMenu from "../SolaceMenu";
 import { SolaceMenuItemProps } from "../SolaceMenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { styled } from "@mui/material";
-import { BASE_COLORS } from "./../../resources/colorPallette";
 import ColumnControlMenu, { ColumnControProps } from "./components/ColumnControlMenu";
 
 export interface TableColumn {
@@ -42,7 +41,7 @@ export enum SORT_DIRECTION {
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
+	borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`,
 	"&.expanded": {
 		borderBottom: "none"
 	},
@@ -65,12 +64,12 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	},
 
 	"&:hover": {
-		background: `${BASE_COLORS.greys.grey24}`,
+		background: theme.palette.ux.secondary.w10,
 		"+ tr.expanded": {
-			backgroundColor: `${BASE_COLORS.greys.grey24}`
+			backgroundColor: theme.palette.ux.secondary.w10
 		},
 		"+ tr.expanded.selected": {
-			backgroundColor: `${BASE_COLORS.greys.grey24}`
+			backgroundColor: theme.palette.ux.secondary.w10
 		},
 		"&.header": {
 			background: "transparent"
@@ -93,10 +92,13 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 		paddingRight: 0
 	},
 	"&.expand-icon .chevron": {
-		fill: `${BASE_COLORS.greys.grey8}`,
+		fill: theme.palette.ux.secondary.wMain,
 		"&.expanded": {
 			transform: "rotate(90deg)"
 		}
+	},
+	"button:hover": {
+		backgroundColor: theme.palette.ux.deprecated.primary.w20
 	},
 	maxWidth: "0",
 	overflow: "hidden",
@@ -109,9 +111,9 @@ export const StyledTableNumberData = styled(StyledTableData)(() => ({
 	textAlign: "right"
 }));
 
-export const StyledExpandedTableRow = styled("tr")(() => ({
+export const StyledExpandedTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${BASE_COLORS.greys.grey24}`,
+	borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`,
 	"&.clickable": {
 		cursor: "pointer"
 	}
@@ -141,19 +143,21 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 			minWidth: "50px",
 			display: "flex",
 			alignItems: "center",
+			color: theme.palette.ux.primary.text.wMain,
 			"&.sortable": {
 				position: "relative",
 				cursor: "pointer",
 				"&:hover": {
-					color: BASE_COLORS.greys.grey16,
-					"svg.asc, svg.desc": {
+					"svg.asc, svg.desc, svg.unsorted": {
 						path: {
-							fillOpacity: 1
+							fill: theme.palette.ux.secondary.wMain
 						}
-					},
-					"svg.unsorted": {
+					}
+				},
+				"&:active": {
+					"svg.asc, svg.desc, svg.unsorted": {
 						path: {
-							fillOpacity: 0.65
+							fill: theme.palette.ux.deprecated.secondary.w80
 						}
 					}
 				}
@@ -174,36 +178,6 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 		}
 	})
 );
-
-export const ActionMenuContainer = styled("div")(({ theme }) => ({
-	position: "absolute",
-	display: "block",
-	top: "10px",
-	right: "10px",
-	padding: `${theme.spacing()} 0`,
-	border: `1px solid ${BASE_COLORS.greys.grey1}`,
-	borderRadius: "5px",
-	minHeight: "32px",
-	minWidth: "60px",
-	background: theme.palette.ux.background.w20,
-	zIndex: 999
-}));
-
-export const StyledRelativeTableData = styled("td")(({ theme }) => ({
-	borderCollapse: "collapse",
-	padding: theme.spacing(),
-	position: "relative",
-	textAlign: "center"
-}));
-
-export const StyledActionItem = styled("div")(({ theme }) => ({
-	minWidth: "60px",
-	padding: `${theme.spacing()} ${theme.spacing(2)}`,
-	cursor: "pointer",
-	"&:hover": {
-		background: "#e5e5e5"
-	}
-}));
 
 export const addEmptyHeaderCell = (): React.ReactNode => {
 	return <StyledTableHeader className="icon-column" key={"emptyHeaderCell"}></StyledTableHeader>;

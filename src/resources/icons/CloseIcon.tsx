@@ -1,11 +1,12 @@
-import { SvgIcon } from "@mui/material";
+import { SvgIcon, useTheme } from "@mui/material";
 
-export const CloseIcon = ({ size = 24, fill = "rgba(0, 0, 0, 0.5)" }): JSX.Element => {
+export const CloseIcon = ({ size = 24, fill = "" }): JSX.Element => {
+	const theme = useTheme();
 	return (
 		<SvgIcon sx={{ width: `${size}px`, height: `${size}px` }} viewBox="0 0 24 24">
 			<path
 				d="M18.0899 16.4598C18.4804 16.8503 18.4804 17.4834 18.0899 17.874C17.6994 18.2645 17.0662 18.2645 16.6757 17.874L11.9331 12.7171L7.19041 17.874C6.79988 18.2645 6.16672 18.2645 5.77619 17.874C5.38567 17.4834 5.38567 16.8503 5.77619 16.4598L10.5188 11.3029L5.77619 6.56026C5.38567 6.16973 5.38567 5.53657 5.77619 5.14604C6.16672 4.75552 6.79988 4.75552 7.19041 5.14604L11.9331 9.88869L16.6757 5.14604C17.0662 4.75552 17.6994 4.75552 18.0899 5.14604C18.4804 5.53657 18.4804 6.16973 18.0899 6.56026L13.3473 11.3029L18.0899 16.4598Z"
-				fill={fill}
+				fill={fill || theme.palette.ux.secondary.wMain}
 			/>
 		</SvgIcon>
 	);

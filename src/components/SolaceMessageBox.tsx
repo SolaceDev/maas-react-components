@@ -5,7 +5,6 @@ import { ErrorIcon } from "../resources/icons/ErrorIcon";
 import { InfoIcon } from "../resources/icons/InfoIcon";
 import { SuccessIcon } from "../resources/icons/SuccessIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
-import { BASE_COLORS } from "../resources/colorPallette";
 import { WarnIcon } from "../resources/icons/WarnIcon";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { CSSProperties } from "@mui/styled-engine";
@@ -19,18 +18,18 @@ const InfoBoxMessageContainer = styled("div")(({ theme }) => ({
 const DetailsContainer = styled("div")(({ theme }) => ({
 	...(theme.mixins.component_MessageBox.detailsContainer as CSSProperties)
 }));
-const MessageTextContainer = styled("div")(({ theme }) => ({
-	...(theme.mixins.component_MessageBox.messageTextContainer as CSSProperties)
-}));
-const IconContainer = styled("div")(({ theme }) => ({
-	...(theme.mixins.component_MessageBox.iconContainer as CSSProperties)
-}));
-const InfoBoxMessage = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
+const MessageTextContainer = styled("div", { shouldForwardProp: (prop) => prop !== "color" })<{ color?: string }>(
 	({ theme, color }) => ({
-		...(theme.mixins.component_MessageBox.message as CSSProperties),
+		...(theme.mixins.component_MessageBox.messageTextContainer as CSSProperties),
 		color: color
 	})
 );
+const IconContainer = styled("div")(({ theme }) => ({
+	...(theme.mixins.component_MessageBox.iconContainer as CSSProperties)
+}));
+const InfoBoxMessage = styled("div")(({ theme }) => ({
+	...(theme.mixins.component_MessageBox.message as CSSProperties)
+}));
 
 interface SolaceInfoBoxProps extends SolaceComponentProps {
 	/**
@@ -72,7 +71,7 @@ function renderIcons(theme: Theme, variant: "info" | "error" | "warn" | "success
 	else if (variant === "error") return <ErrorIcon size={20} fill={theme.palette.ux.error.w100} />;
 	else if (variant === "warn") return <WarnIcon size={20} fill={theme.palette.ux.warning.w100} />;
 	else if (variant === "success") return <SuccessIcon size={20} fill={theme.palette.ux.success.w100} />;
-	return <InfoIcon size={20} fill={BASE_COLORS.blues.blue2} />;
+	return <InfoIcon size={20} fill={theme.palette.ux.info.w100} />;
 }
 
 function SolaceMessageBox({
@@ -93,18 +92,34 @@ function SolaceMessageBox({
 		setOpen(false);
 		onClose?.();
 	};
+	const getColor = () => {
+		const colorOverride = color || theme.mixins.component_MessageBox.messageTextContainer.color;
+		if (colorOverride) {
+			return colorOverride;
+		}
+		switch (variant) {
+			case "error":
+				return theme.palette.ux.error.w100;
+			case "warn":
+				return theme.palette.ux.warning.w100;
+			case "success":
+				return theme.palette.ux.success.w100;
+			case "info":
+				return theme.palette.ux.info.w100;
+		}
+	};
 
 	return open ? (
 		<React.Fragment>
 			<InfoBoxContainer className={variant} data-qa={dataQa} data-tags={dataTags}>
 				<InfoBoxMessageContainer>
-					<InfoBoxMessage color={color} className={`${dense ? "dense" : ""}`}>
+					<InfoBoxMessage className={`${dense ? "dense" : ""}`}>
 						{showIcon && (
 							<IconContainer className={`iconContainer ${dense ? "dense" : ""}`}>
 								{renderIcons(theme, variant)}
 							</IconContainer>
 						)}
-						<MessageTextContainer>{message}</MessageTextContainer>
+						<MessageTextContainer color={getColor()}>{message}</MessageTextContainer>
 					</InfoBoxMessage>
 					{showCloseButton && (
 						<SolaceButton variant="icon" onClick={handleClose}>

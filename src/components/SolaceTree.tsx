@@ -49,7 +49,7 @@ const countNodes = (node: TreeNode): number => {
 	}
 };
 
-interface SolaceTree extends SolaceComponentProps {
+interface SolaceTreeProps extends SolaceComponentProps {
 	components: TreeNode[];
 	rowHeight: number; // height of 1 row
 	connectorOffset: number; // offset of the child display stack from the connector stack
@@ -57,7 +57,7 @@ interface SolaceTree extends SolaceComponentProps {
 	leftOffset: number; // distance from the left margin
 	connectorBorderRadius: number; // radius of the corner on the connector
 	connectorStroke: number; // size of connector stroke
-	connectorColor: string;
+	connectorColor?: string;
 }
 /**
  *  SolaceDataTree Component
@@ -72,7 +72,7 @@ interface SolaceTree extends SolaceComponentProps {
  * @returns JSX.Element
  *
  */
-export default function SolaceTree(props: SolaceTree): JSX.Element {
+export default function SolaceTree(props: SolaceTreeProps): JSX.Element {
 	const {
 		rowHeight,
 		connectorOffset,
@@ -120,7 +120,7 @@ export default function SolaceTree(props: SolaceTree): JSX.Element {
 											<TreeConnector
 												borderWidth={connectorStroke}
 												borderRadius={connectorBorderRadius}
-												color={connectorColor}
+												color={connectorColor ?? theme.palette.ux.secondary.w40}
 												theme={theme}
 											/>
 										</Box>
@@ -152,6 +152,5 @@ SolaceTree.defaultProps = {
 	connectorWidth: 2,
 	leftOffset: 2,
 	connectorBorderRadius: 0.1,
-	connectorStroke: 0.1,
-	connectorColor: "#808080"
+	connectorStroke: 0.1
 };

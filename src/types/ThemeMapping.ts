@@ -4,6 +4,7 @@
 export type ThemeMappingPalette = {
 	brand: {
 		wMain: string;
+		wMain30: string;
 		w30: string;
 		w10: string;
 	};
@@ -12,6 +13,7 @@ export type ThemeMappingPalette = {
 		w100: string;
 		w90: string;
 		wMain: string;
+		wMain40: string; // for overlays, needs opacity
 		w60: string;
 		w40: string;
 		w20: string;
@@ -24,6 +26,7 @@ export type ThemeMappingPalette = {
 	};
 
 	secondary: {
+		w80: string;
 		wMain: string;
 		w40: string;
 		w20: string;
@@ -121,23 +124,43 @@ export type ThemeMappingPalette = {
 		};
 	};
 
-	/**
-	 * This section is for variations in colour that appear in the current Solace theme, but can be
-	 * removed once the new theme is adopted.
-	 *
-	 * To do so, delete the deprecated section from all the theme mappings and remove the "deprecated" term from any usages.
-	 * E.g. deprecated.background.wMain => background.wMain
-	 */
 	deprecated: {
-		background: {
+		// The primary, secondary and accent sections are for variations in colour that appear in the current Solace theme, but
+		// can be removed once the new theme is adopted. To do so, delete these two sections from all the theme mappings
+		// and remove the "deprecated" term from any usages. E.g. ux.deprecated.background.wMain => ux.background.wMain
+		primary: {
 			wMain: string;
+			w20: string;
+			text: {
+				w10: string;
+			};
 		};
 		secondary: {
+			w80: string;
 			wMain: string;
+			w20: string;
+			w10: string;
 			text: {
 				wMain: string;
 				w50: string;
 			};
+		};
+		accent: {
+			n2: {
+				wMain: string;
+			};
+		};
+
+		// New chip colours are TBD in UX and should be added with new keys above once complete
+		chip: {
+			royalBlue: string;
+			darkBlue: string;
+			opaqueBlue: string;
+			lightGrey: string;
+			smokeGrey: string;
+			white: string;
+			fill: string;
+			hover: string;
 		};
 	};
 };

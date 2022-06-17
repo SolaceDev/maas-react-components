@@ -261,11 +261,7 @@ export const useSolaceTable = ({
 								</SolaceTooltip>
 								{columnToSort?.field === col.field &&
 									col.sortable &&
-									(columnToSort.sortDirection === SORT_DIRECTION.ASC ? (
-										<AscendingSortIcon opacity={0.8} />
-									) : (
-										<DescendingSortIcon opacity={0.8} />
-									))}
+									(columnToSort.sortDirection === SORT_DIRECTION.ASC ? <AscendingSortIcon /> : <DescendingSortIcon />)}
 								{columnToSort?.field !== col.field && col.sortable && <UnsortedIcon />}
 							</span>
 						</StyledTableHeader>

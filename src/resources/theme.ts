@@ -5,9 +5,21 @@ import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
 
+// TBD: theme box shadows?
+const boxShadow = {
+	w0: "none",
+	w12: alpha("#000000", 0.12),
+	w15: alpha("#000000", 0.15),
+	w20: alpha("#000000", 0.2),
+	w30: alpha("#000000", 0.3),
+	w50: alpha("#000000", 0.5)
+};
+
 // https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
-const getThemeOptions = (_themeName: SupportedThemes) => {
-	const themeMapping = getThemeMappings(_themeName);
+// eslint-disable-next-line sonarjs/cognitive-complexity
+const getThemeOptions = (themeName: SupportedThemes) => {
+	const themeMapping = getThemeMappings(themeName);
+	const isCurrentSolace = themeName === SupportedThemes.solace;
 
 	// A custom theme option for this app
 	const themeOptions: ThemeOptions = {
@@ -36,7 +48,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiAppBar: {
 				styleOverrides: {
 					colorPrimary: {
-						backgroundColor: themeMapping.palette.deprecated.background.wMain
+						backgroundColor: themeMapping.palette.background.wMain // unused?
 					}
 				}
 			},
@@ -52,12 +64,12 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						"&:hover": {
 							backgroundColor: themeMapping.palette.primary.w90
 						},
+						"&:active": {
+							backgroundColor: themeMapping.palette.primary.w100
+						},
 						"&:disabled": {
 							backgroundColor: themeMapping.palette.secondary.w40,
 							color: themeMapping.palette.primary.text.w10
-						},
-						"&:active": {
-							backgroundColor: themeMapping.palette.primary.w100
 						}
 					},
 					outlinedPrimary: {
@@ -65,15 +77,17 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						borderStyle: "solid",
 						borderColor: themeMapping.palette.primary.wMain,
 						color: themeMapping.palette.primary.wMain,
+						"&:hover": {
+							backgroundColor: themeMapping.palette.primary.w10,
+							borderColor: themeMapping.palette.primary.wMain
+						},
+						"&:active": {
+							backgroundColor: themeMapping.palette.primary.w20,
+							borderColor: themeMapping.palette.primary.wMain
+						},
 						"&:disabled": {
 							borderColor: themeMapping.palette.secondary.w40,
 							color: themeMapping.palette.secondary.w40
-						},
-						"&:hover": {
-							backgroundColor: themeMapping.palette.primary.w10
-						},
-						"&:active": {
-							backgroundColor: themeMapping.palette.primary.w20
 						}
 					},
 					root: {
@@ -101,14 +115,14 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					textPrimary: {
 						borderRadius: "4px",
 						color: themeMapping.palette.primary.wMain,
-						"&:disabled": {
-							color: themeMapping.palette.secondary.w40
-						},
 						"&:hover": {
 							backgroundColor: themeMapping.palette.primary.w10
 						},
 						"&:active": {
 							backgroundColor: themeMapping.palette.primary.w20
+						},
+						"&:disabled": {
+							color: themeMapping.palette.secondary.w40
 						}
 					}
 				}
@@ -116,7 +130,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiFormControl: {
 				styleOverrides: {
 					root: {
-						margin: "0px",
+						margin: "0",
 						// re-position the Solace Dropdown icon inside Select input element
 						".MuiOutlinedInput-root.MuiSelect-root": {
 							".MuiSvgIcon-root": {
@@ -126,7 +140,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								// eslint-disable-next-line sonarjs/no-duplicate-string
 								display: "inline-block",
 								pointerEvents: "none",
-								color: themeMapping.palette.deprecated.secondary.wMain // dropdown icon color in resting/focused/error states
+								color: themeMapping.palette.secondary.wMain // dropdown icon color in resting/focused/error states
 							},
 							"&.Mui-disabled": {
 								".MuiSvgIcon-root": {
@@ -170,13 +184,20 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						fontSize: "0.75rem",
-						color: themeMapping.palette.deprecated.secondary.text.wMain,
+						color: themeMapping.palette.secondary.text.wMain,
 						lineHeight: 1.5,
-						marginLeft: "0px",
+						marginLeft: "0",
 						marginTop: "2px",
 						".MuiSvgIcon-root": {
 							width: "18px",
 							height: "18px"
+						},
+						"&.Mui-error": {
+							// TODO: remove "solace" option when new theme is adopted
+							color: isCurrentSolace ? themeMapping.palette.error.w100 : themeMapping.palette.secondary.text.wMain,
+							svg: {
+								color: themeMapping.palette.error.w100
+							}
 						}
 					}
 				}
@@ -187,18 +208,27 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					root: {
 						padding: "4px",
 						borderRadius: "5px",
-						"&:disabled": {
-							color: themeMapping.palette.secondary.w40
+						".MuiSvgIcon-root": {
+							fill: themeMapping.palette.secondary.wMain
 						},
 						"&:hover": {
 							backgroundColor: themeMapping.palette.secondary.w10,
-							color: themeMapping.palette.secondary.wMain
+							".MuiSvgIcon-root": {
+								color: themeMapping.palette.deprecated.primary.wMain,
+								fill: themeMapping.palette.deprecated.primary.wMain
+							}
 						},
 						"&:active": {
-							backgroundColor: themeMapping.palette.secondary.w20
+							backgroundColor: themeMapping.palette.deprecated.secondary.w20,
+							".MuiSvgIcon-root": {
+								color: themeMapping.palette.deprecated.primary.wMain,
+								fill: themeMapping.palette.deprecated.primary.wMain
+							}
 						},
-						".MuiSvgIcon-root": {
-							fill: themeMapping.palette.deprecated.secondary.wMain
+						"&:disabled": {
+							".MuiSvgIcon-root": {
+								fill: themeMapping.palette.secondary.w40
+							}
 						}
 					}
 				}
@@ -206,7 +236,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiInputLabel: {
 				styleOverrides: {
 					asterisk: {
-						color: themeMapping.palette.brand.wMain
+						color: themeMapping.palette.accent.n2.wMain
 					},
 					root: {
 						color: themeMapping.palette.secondary.text.wMain,
@@ -214,10 +244,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						fontWeight: 400,
 						lineHeight: 1.5,
 						"&.Mui-error": {
-							color: themeMapping.palette.deprecated.secondary.text.wMain
+							color: themeMapping.palette.secondary.text.wMain
 						},
 						"&.Mui-disabled": {
-							color: themeMapping.palette.deprecated.secondary.text.w50
+							color: themeMapping.palette.secondary.text.w50
 						}
 					}
 				}
@@ -225,7 +255,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiFormLabel: {
 				styleOverrides: {
 					asterisk: {
-						color: themeMapping.palette.brand.wMain
+						color: themeMapping.palette.accent.n2.wMain
 					},
 					root: {
 						color: themeMapping.palette.secondary.text.wMain,
@@ -233,10 +263,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						fontWeight: 400,
 						lineHeight: 1.5,
 						"&.Mui-error": {
-							color: themeMapping.palette.deprecated.secondary.text.wMain
+							color: themeMapping.palette.secondary.text.wMain
 						},
 						"&.light-sub-text": {
-							color: themeMapping.palette.deprecated.secondary.text.w50
+							color: themeMapping.palette.deprecated.secondary.text.wMain
 						},
 						"&.Mui-disabled": {
 							color: themeMapping.palette.deprecated.secondary.text.w50,
@@ -262,6 +292,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						lineHeight: 1.5,
 						fontSize: "14px",
 						color: themeMapping.palette.primary.wMain,
+						"&:hover": {
+							// TODO: remove "solace" options when new theme is adopted
+							color: isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.primary.w90
+						},
+						"&:active": {
+							color: isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.primary.w100
+						},
 						"&[disabled]": {
 							color: themeMapping.palette.secondary.w40
 						},
@@ -280,7 +317,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						// TextArea Component
 						display: "inline-block",
 						"&.MuiOutlinedInput-root": {
-							padding: "0px",
+							padding: "0",
 							display: "inline-table", // this ensures helper text is below textarea
 							backgroundColor: "transparent", // set background transparent on TextArea input container
 							".MuiOutlinedInput-notchedOutline": {
@@ -317,7 +354,9 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"&.Mui-focused": {
 							".MuiOutlinedInput-input": {
-								border: `solid 1px ${themeMapping.palette.brand.w30}`
+								border: `solid 1px ${
+									isCurrentSolace ? themeMapping.palette.brand.w30 : themeMapping.palette.accent.n2.wMain
+								}`
 							},
 							"&.MuiOutlinedInput-root": {
 								".MuiOutlinedInput-notchedOutline": {
@@ -328,7 +367,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						".Mui-disabled.MuiOutlinedInput-input, &:hover .Mui-disabled.MuiOutlinedInput-input": {
 							backgroundColor: themeMapping.palette.background.w20,
 							padding: "8px",
-							border: `solid 1px ${themeMapping.palette.secondary.w10}`
+							border: `solid 1px ${themeMapping.palette.secondary.w20}`
 						},
 						"&.Mui-disabled .MuiOutlinedInput-input:read-only.Mui-disabled + .MuiOutlinedInput-notchedOutline": {
 							border: "none"
@@ -369,7 +408,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								},
 								".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
 									cursor: "default",
-									padding: "0px"
+									padding: "0"
 								}
 							},
 							"&.emptySelect, .MuiOutlinedInput-root.readOnlySelect.Mui-focused": {
@@ -379,7 +418,9 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							},
 							"&.Mui-focused": {
 								".MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${themeMapping.palette.brand.w30}`
+									border: `solid 1px ${
+										isCurrentSolace ? themeMapping.palette.brand.w30 : themeMapping.palette.accent.n2.wMain
+									}`
 								}
 							},
 							"&.Mui-error": {
@@ -405,10 +446,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						".MuiOutlinedInput-input": {
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							color: themeMapping.palette.primary.text.wMain,
-							padding: "0px 8px",
+							padding: "0 8px",
 							height: "34px",
 							"&:read-only": {
-								padding: "0px"
+								padding: "0"
 							},
 							"&:read-only + .MuiOutlinedInput-notchedOutline": {
 								border: "none"
@@ -420,50 +461,48 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 			MuiCheckbox: {
 				styleOverrides: {
 					root: {
-						"&:hover": {
-							".MuiSvgIcon-root rect": {
-								strokeOpacity: "0.35"
+						"&.Mui-checked .MuiSvgIcon-root": {
+							".SolaceCheckboxCheckmark": {
+								fill: themeMapping.palette.deprecated.accent.n2.wMain
+							},
+							".SolaceCheckboxIndeterminant": {
+								stroke: themeMapping.palette.deprecated.accent.n2.wMain
 							}
 						},
-						".MuiSvgIcon-root path": {
-							fill: themeMapping.palette.brand.w30
-						},
-						"&.Mui-disabled .MuiSvgIcon-root path": {
-							fillOpacity: "0.35"
-						},
-						".MuiSvgIcon-root line": {
-							stroke: themeMapping.palette.brand.w30
+						"&:hover .MuiSvgIcon-root rect.SolaceCheckboxContainer": {
+							stroke: themeMapping.palette.deprecated.secondary.wMain
 						},
 						"&.Mui-disabled .MuiSvgIcon-root": {
-							rect: {
-								fillOpacity: 0.35,
-								fill: "white",
-								stroke: themeMapping.palette.secondary.w10,
-								strokeOpacity: 1
+							".SolaceCheckboxContainer": {
+								stroke: themeMapping.palette.secondary.w20
 							},
-							path: {
-								fillOpacity: 0.35
-							}
-						},
-						"+.MuiFormLabel-root": {
-							marginLeft: "16px",
-							color: themeMapping.palette.secondary.text.wMain,
-							"&.Mui-disabled": {
-								color: themeMapping.palette.secondary.text.w50
+							".SolaceCheckboxCheckmark": {
+								fill: themeMapping.palette.accent.n2.w30
+							},
+							".SolaceCheckboxIndeterminant": {
+								stroke: themeMapping.palette.accent.n2.w30
 							}
 						},
 						"&.readOnly .MuiSvgIcon-root": {
-							".SolaceCheckboxContainer": {
-								fill: themeMapping.palette.background.w20,
-								stroke: themeMapping.palette.secondary.w40,
-								strokeOpacity: 1
+							rect: {
+								fill: themeMapping.palette.background.w20
 							},
 							".SolaceCheckboxCheckmark": {
-								fill: themeMapping.palette.secondary.text.w50,
-								fillOpacity: 1
+								fill: themeMapping.palette.deprecated.secondary.wMain
+							},
+							".SolaceCheckboxIndeterminant": {
+								stroke: themeMapping.palette.deprecated.secondary.wMain
 							}
 						},
-						padding: "0px"
+						// other
+						"+.MuiFormLabel-root": {
+							marginLeft: "16px",
+							color: themeMapping.palette.secondary.wMain,
+							"&.Mui-disabled": {
+								color: themeMapping.palette.secondary.w40
+							}
+						},
+						padding: "0"
 					}
 				}
 			},
@@ -474,44 +513,40 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						alignItems: "flex-start",
 						marginRight: "16px",
 						".MuiFormHelperText-root": {
-							marginLeft: "0px"
+							marginLeft: "0"
 						},
 						".MuiSvgIcon-root .SolaceRadioContainer": {
-							strokeOpacity: "0.2",
-							stroke: "black",
-							fill: "white"
+							fill: themeMapping.palette.background.w10,
+							stroke: themeMapping.palette.secondary.w40
 						},
 						"&:hover": {
 							".MuiSvgIcon-root .SolaceRadioContainer": {
-								strokeOpacity: "0.35"
+								stroke: themeMapping.palette.deprecated.secondary.wMain
 							}
 						},
 						"&.Mui-checked": {
 							".SolaceRadioSelection": {
-								fill: themeMapping.palette.brand.w30
+								fill: themeMapping.palette.deprecated.accent.n2.wMain
 							}
 						},
 						"&.Mui-disabled .MuiSvgIcon-root": {
 							".SolaceRadioContainer": {
-								stroke: themeMapping.palette.secondary.w10,
-								strokeOpacity: 1
+								stroke: themeMapping.palette.secondary.w20
 							},
 							".SolaceRadioSelection": {
-								opacity: 0.35
+								fill: themeMapping.palette.accent.n2.w30
 							}
 						},
 						"&.readOnly .MuiSvgIcon-root": {
 							".SolaceRadioContainer": {
 								fill: themeMapping.palette.background.w20,
-								stroke: themeMapping.palette.secondary.w40,
-								opacity: 1
+								stroke: themeMapping.palette.secondary.w40
 							},
 							".SolaceRadioSelection": {
-								fill: themeMapping.palette.secondary.text.w50,
-								opacity: 1
+								fill: themeMapping.palette.deprecated.secondary.wMain
 							}
 						},
-						padding: "0px"
+						padding: "0"
 					}
 				}
 			},
@@ -540,7 +575,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							".MuiPaper-root": {
 								margin: "4px",
 								overflowY: "auto",
-								boxShadow: `0px 1px 4px ${themeMapping.palette.secondary.w40}`,
+								boxShadow: `0 1px 4px ${boxShadow.w20}`,
 								".MuiMenuItem-root": {
 									minWidth: "80px",
 									maxWidth: "320px",
@@ -573,11 +608,11 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						".MuiPaper-root": {
 							overflowY: "auto",
-							boxShadow: `0px 1px 4px ${themeMapping.palette.secondary.w40}`,
+							boxShadow: `0 1px 4px ${boxShadow.w20}`,
 
 							".MuiMenuItem-root": {
 								display: "flex",
-								padding: "0px 16px 0px 16px",
+								padding: "0 16px 0 16px",
 								fontSize: "14px",
 								minHeight: "38px",
 								alignItems: "center",
@@ -619,13 +654,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 									},
 									color: themeMapping.palette.primary.text.wMain,
 									".subtext": {
-										color: themeMapping.palette.deprecated.secondary.text.w50,
+										color: themeMapping.palette.deprecated.secondary.text.wMain,
 										marginRight: "24px",
 										width: "100%"
 									},
 									".supplementalText": {
 										fontSize: BASE_FONT_PX_SIZES.xs,
-										color: themeMapping.palette.deprecated.secondary.text.w50,
+										color: themeMapping.palette.deprecated.secondary.text.wMain,
 										marginLeft: "24px"
 									},
 									"&.Mui-disabled": {
@@ -642,7 +677,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					root: {
 						".MuiListSubheader-root": {
 							lineHeight: 1.5,
-							color: themeMapping.palette.deprecated.secondary.text.w50,
+							color: themeMapping.palette.deprecated.secondary.text.wMain,
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							fontWeight: 400,
 							height: "32px",
@@ -662,7 +697,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							justifyContent: "center"
 						},
 						".MuiListItemText-secondary": {
-							color: themeMapping.palette.deprecated.secondary.text.w50
+							color: themeMapping.palette.secondary.text.w50
 						}
 					}
 				}
@@ -671,13 +706,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						".MuiOutlinedInput-root .MuiAutocomplete-input": {
-							padding: "0px"
+							padding: "0"
 						},
 						".MuiOutlinedInput-root .MuiAutocomplete-endAdornment": {
-							right: "0px"
+							right: "0"
 						},
 						".MuiOutlinedInput-root": {
-							padding: "0px 0px 0px 8px",
+							padding: "0 0 0 8px",
 							height: "32px"
 						},
 						// allow the container to grow when there are more than one line
@@ -686,10 +721,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							flexWrap: "wrap"
 						},
 						".MuiOutlinedInput-root.readOnlySelect": {
-							padding: "0px"
+							padding: "0"
 						},
 						".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
-							padding: "0px"
+							padding: "0"
 						},
 						".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
 							background: "transparent"
@@ -700,13 +735,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						// styles specifically applied when autocomplete allows multiple lines with chips
 						".MuiButtonBase-root.MuiChip-root": {
 							height: "24px",
-							margin: "3px 6px 3px 0px",
+							margin: "3px 6px 3px 0",
 							borderRadius: "40px",
 							fontSize: "14px",
 							svg: {
 								width: "17px",
 								height: "17px",
-								fill: themeMapping.palette.deprecated.secondary.wMain
+								fill: themeMapping.palette.secondary.wMain
 							}
 						}
 					},
@@ -735,19 +770,19 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
 							backgroundColor: themeMapping.palette.brand.w10
 						},
-						boxShadow: `0px 1px 4px ${themeMapping.palette.secondary.w40}`,
+						boxShadow: `0 1px 4px ${boxShadow.w20}`,
 						color: themeMapping.palette.primary.text.wMain,
 						".subtext": {
-							color: themeMapping.palette.deprecated.secondary.text.w50
+							color: themeMapping.palette.deprecated.secondary.text.wMain
 						},
 						".supplementalText": {
 							fontSize: BASE_FONT_PX_SIZES.xs,
-							color: themeMapping.palette.deprecated.secondary.wMain
+							color: themeMapping.palette.deprecated.secondary.text.wMain
 						}
 					},
 					popupIndicator: {
-						padding: "0px 4px 0px 8px",
-						marginRight: "0px",
+						padding: "0 4px 0 8px",
+						marginRight: "0",
 						height: "28px"
 					},
 					popupIndicatorOpen: {
@@ -762,7 +797,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						width: "50px",
 						height: "30px",
 						marginRight: "8px",
-						paddingBottom: "0px",
+						paddingBottom: "0",
 						".MuiButtonBase-root": {
 							"&.MuiSwitch-switchBase": {
 								"&.Mui-checked": {
@@ -777,19 +812,21 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 									opacity: 1
 								},
 								"&.Mui-disabled .MuiSwitch-thumb": {
-									backgroundColor: themeMapping.palette.background.w20,
-									borderColor: themeMapping.palette.secondary.w10
+									// TODO: remove "solace" options when new theme is adopted
+									backgroundColor: isCurrentSolace
+										? themeMapping.palette.background.w20
+										: themeMapping.palette.secondary.w40,
+									borderColor: isCurrentSolace ? themeMapping.palette.secondary.w10 : themeMapping.palette.secondary.w40
 								},
 								"&:hover": {
-									// TODO: change to brand.wMain 30% for new theme
-									backgroundColor: themeMapping.palette.primary.w40
+									backgroundColor: themeMapping.palette.brand.wMain30
 								}
 							},
 							".MuiSwitch-thumb": {
 								width: "16px",
 								height: "16px",
-								border: `solid 2px ${themeMapping.palette.primary.w40}`,
-								boxShadow: "none"
+								border: `solid 2px ${themeMapping.palette.primary.w60}`,
+								boxShadow: boxShadow.w0
 							},
 							"&.Mui-checked .MuiSwitch-thumb": {
 								backgroundColor: themeMapping.palette.primary.wMain,
@@ -823,24 +860,24 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						".MuiPaper-root": {
 							minWidth: "400px",
 							maxHeight: "80%",
-							boxShadow: `0px 2px 8px ${alpha("#000000", 0.3)}`, // TODO: theme
+							boxShadow: `0 2px 8px ${boxShadow.w30}`,
 							padding: "24px",
 							".MuiDialogTitle-root": {
 								fontSize: BASE_FONT_PX_SIZES.xl,
 								color: themeMapping.palette.primary.text.wMain,
-								padding: "0px 0px 24px 0px"
+								padding: "0 0 24px 0"
 							},
 							".MuiDialogContent-root": {
 								fontSize: BASE_FONT_PX_SIZES.sm,
 								lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
 								color: themeMapping.palette.primary.text.wMain,
-								padding: "0px"
+								padding: "0"
 								// ".MuiBox-root": {
 								// 	display: "grid"
 								// }
 							},
 							".MuiDialogActions-root": {
-								padding: "24px 0px 0px 0px",
+								padding: "24px 0 0 0",
 								"& > :not(:nth-of-type(1))": {
 									marginLeft: "8px"
 								}
@@ -862,7 +899,9 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								left: 0,
 								width: "100%",
 								height: "4px",
-								backgroundColor: themeMapping.palette.brand.wMain
+								backgroundColor: isCurrentSolace
+									? themeMapping.palette.primary.wMain
+									: themeMapping.palette.accent.n2.w10
 							},
 							// the dark sliding part of the progress bar
 							".MuiPaper-root::after": {
@@ -873,7 +912,8 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 								width: "100%",
 								height: "4px",
 								background: `linear-gradient(90deg, ${hexToRgb(
-									themeMapping.palette.brand.w10
+									// TODO: remove "solace" option when new theme is adopted
+									isCurrentSolace ? themeMapping.palette.brand.w10 : themeMapping.palette.accent.n2.wMain
 								)} 0% 40%, transparent 40% 100%)`,
 								animation: "animation 2s linear infinite"
 							},
@@ -895,11 +935,11 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						borderRadius: "40px"
 					},
 					filled: {
-						backgroundColor: themeMapping.palette.secondary.w10
+						backgroundColor: themeMapping.palette.deprecated.chip.fill
 					},
 					clickable: {
 						"&:hover": {
-							backgroundColor: themeMapping.palette.secondary.w40
+							backgroundColor: themeMapping.palette.deprecated.chip.hover
 						}
 					}
 				}
@@ -934,7 +974,19 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						a: {
-							color: themeMapping.palette.deprecated.secondary.text.wMain
+							color: themeMapping.palette.secondary.text.wMain,
+							boxSizing: "border-box",
+							borderBottom: "2px solid transparent",
+							// TODO: remove "solace" options when new theme is adopted
+							":active": {
+								borderBottomColor: isCurrentSolace ? "transparent" : themeMapping.palette.primary.w20
+							},
+							":hover": {
+								borderBottomColor: isCurrentSolace ? "transparent" : themeMapping.palette.primary.w10
+							}
+						},
+						".MuiTabs-indicator": {
+							backgroundColor: themeMapping.palette.accent.n2.wMain
 						}
 					}
 				}
@@ -946,7 +998,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							display: "none"
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root": {
-							color: themeMapping.palette.brand.wMain,
+							color: themeMapping.palette.primary.wMain,
 							fontSize: BASE_FONT_PX_SIZES.md
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root:hover": {
@@ -988,15 +1040,15 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						fontSize: BASE_FONT_PX_SIZES.xs,
 						lineHeight: "18px",
 						backgroundColor: themeMapping.palette.background.wMain,
-						color: alpha("#FFFFFF", 0.9), // TODO: theme
-						boxShadow: "0 2px 2px rgba(0,0,0,0.12)", // TODO: theme
+						color: themeMapping.palette.deprecated.primary.text.w10,
+						boxShadow: `0 2px 2px ${boxShadow.w12}`,
 						"&.htmlContent": {
 							padding: "12px 16px",
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							lineHeight: "21px",
 							backgroundColor: themeMapping.palette.background.w10,
 							color: themeMapping.palette.primary.text.wMain,
-							boxShadow: "0 2px 5px rgba(0,0,0,0.15)" // TODO: theme
+							boxShadow: `0 2px 5px ${boxShadow.w15}`
 						},
 						"&.mediumWidth": {
 							maxWidth: "500px"
@@ -1014,7 +1066,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 							fontWeight: 400,
 							padding: "12px 16px", // considering line height
 							borderRadius: "4px",
-							boxShadow: `0px 2px 5px ${alpha("#000000", 0.15)}`, // TODO: theme
+							boxShadow: `0 2px 5px ${boxShadow.w15}`,
 							cursor: "pointer"
 						}
 					}
@@ -1024,7 +1076,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						border: `1px solid ${themeMapping.palette.secondary.w10}`,
-						boxShadow: "none",
+						boxShadow: boxShadow.w0,
 						"&:not(:last-child)": {
 							borderBottom: 0
 						},
@@ -1042,6 +1094,15 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						"&.indicator-success": {
 							background: `linear-gradient(${themeMapping.palette.success.w100} , ${themeMapping.palette.success.w100}) left/3px 90% no-repeat`
+						},
+						"&.Mui-disabled": {
+							backgroundColor: themeMapping.palette.background.w20,
+							color: themeMapping.palette.secondary.text.w50,
+							".MuiAccordionSummary-expandIconWrapper": {
+								svg: {
+									fill: themeMapping.palette.secondary.w40
+								}
+							}
 						}
 					}
 				}
@@ -1057,17 +1118,20 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						".MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
 							transform: "rotate(90deg)"
+						},
+						"&.Mui-disabled": {
+							opacity: 1
 						}
 					},
 					content: {
 						margin: "6px 0" // default is "12px 0"
 					},
 					expandIconWrapper: {
-						padding: "0px 8px 0px 8px",
+						padding: "0 8px 0 8px",
 						svg: {
-							fill: themeMapping.palette.deprecated.secondary.wMain,
+							fill: themeMapping.palette.secondary.wMain,
 							":hover": {
-								fill: themeMapping.palette.secondary.wMain
+								fill: themeMapping.palette.deprecated.secondary.w80
 							}
 						}
 					}
@@ -1096,7 +1160,8 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					marginTop: "2px"
 				},
 				label: {
-					color: themeMapping.palette.error.w100,
+					// TODO: remove "solace" option when new theme is adopted
+					color: isCurrentSolace ? themeMapping.palette.error.w100 : themeMapping.palette.secondary.text.wMain,
 					fontSize: BASE_FONT_PX_SIZES.xs,
 					marginLeft: "8px"
 				}
@@ -1119,7 +1184,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				container: {
 					display: "grid",
 					gridTemplateRows: "auto",
-					padding: "4px 0px"
+					padding: "4px 0"
 				},
 				moveButton: {
 					paddingTop: "4px",
@@ -1151,14 +1216,14 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					display: "grid",
 					gridTemplateColumns: "auto",
 					gridTemplateRows: "auto",
-					rowGap: "0px"
+					rowGap: "0"
 				},
 				labelWrapper: {
-					padding: "2px 0px",
+					padding: "2px 0",
 					display: "grid",
 					gridTemplateRows: "auto",
 					label: {
-						color: themeMapping.palette.deprecated.secondary.text.wMain,
+						color: themeMapping.palette.secondary.text.wMain,
 						fontWeight: "medium",
 						":first-of-type": {
 							gridColumnStart: 2,
@@ -1180,8 +1245,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						left: 0,
 						width: "100%",
 						height: "100%",
-						// TODO: the color will be #015B82 40% in the theme
-						backgroundColor: "rgba(0, 0, 0, 0.35)",
+						backgroundColor: themeMapping.palette.primary.wMain40,
 						display: "block",
 						zIndex: 1200
 					}
@@ -1211,7 +1275,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					}
 				},
 				IconWrapper: {
-					boxShadow: `0px 1px 4px ${themeMapping.palette.secondary.w40}`,
+					boxShadow: `0px 1px 4px ${boxShadow.w20}`,
 					borderRadius: "5px",
 					backgroundColor: themeMapping.palette.background.w10,
 					// position is relative to its parent with position: relative
@@ -1235,19 +1299,67 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					borderRadius: "2px",
 					"&.info": {
 						backgroundColor: themeMapping.palette.info.w10,
-						borderLeft: `3px solid ${themeMapping.palette.info.w100}`
+						borderLeft: `3px solid ${themeMapping.palette.info.w100}`,
+						".MuiButtonBase-root.MuiIconButton-root": {
+							".MuiSvgIcon-root path": {
+								// TODO: remove "solace" option when new theme is adopted
+								fill: isCurrentSolace ? themeMapping.palette.secondary.wMain : themeMapping.palette.info.w100
+							},
+							":hover": {
+								backgroundColor: themeMapping.palette.info.w20
+							},
+							":active": {
+								backgroundColor: themeMapping.palette.info.w30
+							}
+						}
 					},
 					"&.error": {
 						backgroundColor: themeMapping.palette.error.w10,
-						borderLeft: `3px solid ${themeMapping.palette.error.w100}`
+						borderLeft: `3px solid ${themeMapping.palette.error.w100}`,
+						".MuiButtonBase-root.MuiIconButton-root": {
+							".MuiSvgIcon-root path": {
+								// TODO: remove "solace" options when new theme is adopted
+								fill: isCurrentSolace ? themeMapping.palette.secondary.wMain : themeMapping.palette.error.w100
+							},
+							":hover": {
+								backgroundColor: themeMapping.palette.error.w20
+							},
+							":active": {
+								backgroundColor: themeMapping.palette.error.w30
+							}
+						}
 					},
 					"&.warn": {
 						backgroundColor: themeMapping.palette.warning.w10,
-						borderLeft: `3px solid ${themeMapping.palette.warning.w100}`
+						borderLeft: `3px solid ${themeMapping.palette.warning.w100}`,
+						".MuiButtonBase-root.MuiIconButton-root": {
+							".MuiSvgIcon-root path": {
+								// TODO: remove "solace" options when new theme is adopted
+								fill: isCurrentSolace ? themeMapping.palette.secondary.wMain : themeMapping.palette.warning.w100
+							},
+							":hover": {
+								backgroundColor: themeMapping.palette.warning.w20
+							},
+							":active": {
+								backgroundColor: themeMapping.palette.warning.w30
+							}
+						}
 					},
 					"&.success": {
 						backgroundColor: themeMapping.palette.success.w10,
-						borderLeft: `3px solid ${themeMapping.palette.success.w100}`
+						borderLeft: `3px solid ${themeMapping.palette.success.w100}`,
+						".MuiButtonBase-root.MuiIconButton-root": {
+							".MuiSvgIcon-root path": {
+								// TODO: remove "solace" options when new theme is adopted
+								fill: isCurrentSolace ? themeMapping.palette.secondary.wMain : themeMapping.palette.success.w100
+							},
+							":hover": {
+								backgroundColor: themeMapping.palette.success.w20
+							},
+							":active": {
+								backgroundColor: themeMapping.palette.success.w30
+							}
+						}
 					}
 				},
 				messageContainer: {
@@ -1285,11 +1397,13 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				},
 				messageTextContainer: {
 					width: "100%",
-					color: themeMapping.palette.primary.text.wMain
+					// TODO: remove "solace" option when new theme is adopted
+					color: isCurrentSolace ? themeMapping.palette.primary.text.wMain : ""
 				},
 				detailsContainer: {
 					// 10px on top because the message will have 6px padding bottom
-					padding: "10px 16px 16px 16px"
+					padding: "10px 16px 16px 16px",
+					color: themeMapping.palette.primary.text.wMain
 				}
 			},
 			/** SolaceGridList */
@@ -1299,16 +1413,17 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					justifyContent: "space-between",
 					padding: "8px 24px 8px 24px",
 					alignItems: "center",
-					borderLeft: `1px solid ${themeMapping.palette.secondary.w10}`,
-					borderTop: `1px solid ${themeMapping.palette.secondary.w10}`,
-					borderRight: `1px solid ${themeMapping.palette.secondary.w10}`,
-					boxShadow: `0px 2px 4px -1px ${themeMapping.palette.secondary.w40}`,
+					borderLeft: `1px solid ${themeMapping.palette.secondary.w20}`,
+					borderTop: `1px solid ${themeMapping.palette.secondary.w20}`,
+					borderRight: `1px solid ${themeMapping.palette.secondary.w20}`,
+					boxShadow: `0 2px 4px -1px ${boxShadow.w20}`,
 					"& .selectAll": {
 						display: "flex",
 						alignItems: "center"
 					},
 					"& .selectAllText": {
-						marginLeft: "-8px"
+						marginLeft: "-8px",
+						color: themeMapping.palette.primary.text.wMain
 					}
 				},
 				row: {
@@ -1321,9 +1436,9 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					"&.headerRow": {
 						height: "30px",
 						fontWeight: "500",
-						color: themeMapping.palette.deprecated.secondary.text.wMain,
+						color: themeMapping.palette.secondary.text.wMain,
 						cursor: "auto",
-						padding: "0px 24px",
+						padding: "0 24px",
 						position: "sticky",
 						top: 0,
 						":hover": {
@@ -1331,16 +1446,16 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 						},
 						zIndex: 1
 					},
-					borderBottom: `1px solid ${themeMapping.palette.secondary.w10}`,
+					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`,
 					cursor: "pointer",
 					":last-child": {
 						borderBottom: "none"
 					},
 					":hover": {
-						background: themeMapping.palette.secondary.w20
+						background: themeMapping.palette.deprecated.secondary.w10
 					},
 					":focus-visible": {
-						background: themeMapping.palette.secondary.w20,
+						background: themeMapping.palette.secondary.w10,
 						outline: "none"
 					},
 					"&.selected": {
@@ -1349,7 +1464,7 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 					}
 				},
 				list: {
-					border: `1px solid ${themeMapping.palette.secondary.w10}`,
+					border: `1px solid ${themeMapping.palette.secondary.w20}`,
 					overflow: "overlay",
 					height: "100%",
 					"@-moz-document url-prefix()": {
@@ -1400,12 +1515,10 @@ const getThemeOptions = (_themeName: SupportedThemes) => {
 				/** @deprecated */
 				main: themeMapping.palette.brand.wMain
 			},
+			// TBD: Do we want to keep these defaults via <Typography...?
 			text: {
-				/** @deprecated */
 				primary: themeMapping.palette.primary.text.wMain,
-				/** @deprecated */
 				secondary: themeMapping.palette.secondary.text.wMain,
-				/** @deprecated */
 				disabled: themeMapping.palette.secondary.text.w50
 			}
 		},

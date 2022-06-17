@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, useTheme } from "@mui/material";
 import { SolaceGridProps } from "../../types/solaceGrid";
 
 /**
@@ -15,8 +15,9 @@ export default function SolaceGrid(props: SolaceGridProps) {
 		spacing = 2;
 	}
 
+	const theme = useTheme();
 	return (
-		<Grid container={container} spacing={spacing} {...rest}>
+		<Grid container={container} spacing={spacing} color={theme.palette.ux.primary.wMain} {...rest}>
 			{children}
 		</Grid>
 	);

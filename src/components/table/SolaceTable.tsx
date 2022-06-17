@@ -2,7 +2,6 @@ import { useSolaceTable } from "./hooks/useSolaceTable";
 import { styled } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
-import { BASE_COLORS } from "./../../resources/colorPallette";
 
 interface TablePropType extends SolaceComponentProps {
 	/**
@@ -105,7 +104,8 @@ export interface ExpandableRowOptions {
 const TableWrapper = styled("div")(({ theme }) => ({
 	display: "flex",
 	flexDirection: "column",
-	border: `1px solid ${BASE_COLORS.greys.grey24}`,
+	color: theme.palette.ux.primary.text.wMain,
+	border: `1px solid ${theme.palette.ux.secondary.w40}`,
 	width: "100%",
 	height: "100%",
 	minHeight: "200px",
@@ -113,7 +113,7 @@ const TableWrapper = styled("div")(({ theme }) => ({
 	overflow: "auto",
 	fontFamily: theme.typography.fontFamily,
 	fontSize: theme.typography.body1.fontSize,
-	background: "white"
+	background: theme.palette.ux.background.w10
 }));
 
 const StyledTable = styled("table")(() => ({

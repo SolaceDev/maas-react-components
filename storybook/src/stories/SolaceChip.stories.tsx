@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceChip, SolaceTooltip } from "@SolaceDev/maas-react-components";
-import { BASE_COLORS } from "../../../src/resources/colorPallette";
 
 export default {
 	title: "Under Construction/SolaceChip",
@@ -123,7 +122,7 @@ WithTooltipChip.args = {
 
 export const WithColorTextChip = Template.bind({});
 WithColorTextChip.args = {
-	label: <span style={{ color: BASE_COLORS.whites.white1 }}>White Text</span>
+	label: <span style={{ color: "#FFFFFF" }}>White Text</span>
 };
 
 export const WithDashedBorderChip = Template.bind({});

@@ -1,13 +1,12 @@
-import { IconButton, Snackbar, styled } from "@mui/material";
+import { IconButton, Snackbar, styled, useTheme } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import { green, grey } from "@mui/material/colors";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import CloseIcon from "@mui/icons-material/Close";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
 
-export type SolaceToasts = {
+export type SolaceToastsProps = {
 	severity?: "success" | "info" | "warning" | "error";
 	message?: string;
 	open?: boolean;
@@ -15,14 +14,10 @@ export type SolaceToasts = {
 	onClose: (event: React.SyntheticEvent<Element, Event>) => void;
 };
 
-const iconMapping = {
-	success: <CheckCircleOutlineIcon sx={{ color: green[500] }} />,
-	error: <CancelOutlinedIcon color="error" fontSize="inherit" />,
-	info: <InfoOutlinedIcon fontSize="inherit" />,
-	warning: <ReportProblemOutlinedIcon fontSize="inherit" />
-};
-
-const StyledAlert = styled(Alert)(() => ({ backgroundColor: grey[800], color: "white" }));
+const StyledAlert = styled(Alert)(({ theme }) => ({
+	backgroundColor: theme.palette.ux.background.wMain,
+	color: theme.palette.ux.background.w10
+}));
 
 /**
  * Provides toasts that match solace ui guidelines.
@@ -32,13 +27,19 @@ const StyledAlert = styled(Alert)(() => ({ backgroundColor: grey[800], color: "w
  * @param props
  * @returns JSX.Element
  */
-
-export default function SolaceToasts(props: SolaceToasts): JSX.Element {
+export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
+	const theme = useTheme();
 	const defaultAction = props.action ?? (
 		<IconButton aria-label="delete" onClick={props.onClose} size="large">
 			<CloseIcon />
 		</IconButton>
 	);
+	const iconMapping = {
+		success: <CheckCircleOutlineIcon sx={{ color: theme.palette.ux.success.w100 }} />,
+		error: <CancelOutlinedIcon sx={{ color: theme.palette.ux.error.w100 }} fontSize="inherit" />,
+		info: <InfoOutlinedIcon sx={{ color: theme.palette.ux.info.w100 }} fontSize="inherit" />,
+		warning: <ReportProblemOutlinedIcon sx={{ color: theme.palette.ux.warning.w100 }} fontSize="inherit" />
+	};
 
 	const { message, severity } = props;
 

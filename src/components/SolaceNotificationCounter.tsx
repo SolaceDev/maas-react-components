@@ -1,5 +1,5 @@
 import { keyframes } from "@emotion/react";
-import { styled } from "@mui/material";
+import { alpha, styled, useTheme } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import SolaceTooltip from "./SolaceToolTip";
 import SolaceComponentProps from "./SolaceComponentProps";
@@ -55,23 +55,6 @@ const Value = styled("span")(({ theme }) => ({
 	...(theme.mixins.component_NotificationCounter.value as CSSProperties)
 }));
 
-const pulse = keyframes`
-	0% {
-		transform: scale(1);
-		box-shadow: 0 0 0 0 rgba(0, 128, 255, 0.3);
-	}
-
-	70% {
-		transform: scale(1.05);
-		box-shadow: 0 0 0 6px rgba(0, 128, 255, 0.2);
-	}
-
-	100% {
-		transform: scale(1);
-		box-shadow: 0 0 0 0 rgba(0, 128, 255, 0);
-	}
-`;
-
 function SolaceNotificationCounter({
 	value,
 	show = true,
@@ -92,6 +75,24 @@ function SolaceNotificationCounter({
 	const showTimer = useRef<NodeJS.Timeout | null>(null);
 	const changeTimer = useRef<NodeJS.Timeout | null>(null);
 
+	const theme = useTheme();
+
+	const pulse = keyframes`
+		0% {
+			transform: scale(1);
+			box-shadow: 0 0 0 0 ${alpha(theme.palette.ux.info.w100, 0.3)};
+		}
+
+		70% {
+			transform: scale(1.05);
+			box-shadow: 0 0 0 6px ${alpha(theme.palette.ux.info.w100, 0.2)};
+		}
+
+		100% {
+			transform: scale(1);
+			box-shadow: 0 0 0 0 ${alpha(theme.palette.ux.info.w100, 0)};
+		}
+	`;
 	useEffect(() => {
 		if (show !== showState) {
 			if (show) {

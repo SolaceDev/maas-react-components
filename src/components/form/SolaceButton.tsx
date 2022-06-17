@@ -1,5 +1,4 @@
-import { Button, IconButton, Link } from "@mui/material";
-import { useTheme } from "@mui/material";
+import { Button, IconButton, Link, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
 import SolaceTooltip from "../SolaceToolTip";

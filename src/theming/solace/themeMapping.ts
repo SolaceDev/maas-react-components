@@ -1,9 +1,11 @@
+import { alpha } from "@mui/material";
 import { ThemeMapping, ThemeMappingPalette } from "../../types/ThemeMapping";
 import { baseThemeMapping } from "../base/themeMapping";
 
 const palette: ThemeMappingPalette = {
 	brand: {
 		wMain: "#00C895",
+		wMain30: alpha("#00C895", 0.3),
 		w30: "#B3EFDF",
 		w10: "#E6FAF4"
 	},
@@ -12,6 +14,7 @@ const palette: ThemeMappingPalette = {
 		w100: "#01374E",
 		w90: "#014968",
 		wMain: "#015B82",
+		wMain40: alpha("#015B82", 0.4),
 		w60: "#679DB4",
 		w40: "#99BDCD",
 		w20: "#CCDEE6",
@@ -24,6 +27,7 @@ const palette: ThemeMappingPalette = {
 	},
 
 	secondary: {
+		w80: "#354E62",
 		wMain: "#8790A0",
 		w40: "#CFD3D9",
 		w20: "#E7E9EC",
@@ -43,7 +47,7 @@ const palette: ThemeMappingPalette = {
 	},
 
 	info: {
-		w100: "#2C75B7",
+		w100: "#2B71B1",
 		wMain: "#0591D3",
 		w70: "#7CD3F6",
 		w30: "#B4DEF2",
@@ -122,15 +126,38 @@ const palette: ThemeMappingPalette = {
 	},
 
 	deprecated: {
-		background: {
-			wMain: "#03223B"
+		primary: {
+			wMain: "#015B82",
+			w20: "#CCDEE6",
+			text: {
+				w10: "#FFFFFF"
+			}
 		},
 		secondary: {
+			w80: "#354E62",
 			wMain: "#8790A0",
+			w20: "#E7E9EC",
+			w10: "#F3F4F6",
 			text: {
 				wMain: "#687886",
 				w50: "#B3BBC2"
 			}
+		},
+		accent: {
+			n2: {
+				wMain: "#009193"
+			}
+		},
+		// new chip colours are TBD in UX
+		chip: {
+			royalBlue: "#3A4880",
+			darkBlue: "#273749",
+			opaqueBlue: "rgba(58, 72, 128, 0.5)",
+			lightGrey: "#EBEDF2",
+			smokeGrey: "#DBDFE2",
+			white: "#FFF",
+			fill: "rgba(0, 0, 0, 0.1)",
+			hover: "rgba(0, 0, 0, 0.2)"
 		}
 	}
 };

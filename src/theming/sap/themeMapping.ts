@@ -5,6 +5,7 @@ import { ThemeMapping, ThemeMappingPalette } from "../../types/ThemeMapping";
 const palette: ThemeMappingPalette = {
 	brand: {
 		wMain: "#0A6ED1",
+		wMain30: alpha("#0A6ED1", 0.3),
 		w30: "#B6D4F1",
 		w10: "#E7F1FA"
 	},
@@ -13,6 +14,7 @@ const palette: ThemeMappingPalette = {
 		w100: "#07529C",
 		w90: "#0961B9",
 		wMain: "#0A6ED1",
+		wMain40: alpha("#0A6ED1", 0.4),
 		w60: "#6CA8E3",
 		w40: "#9DC5ED",
 		w20: "#CEE2F6",
@@ -25,6 +27,7 @@ const palette: ThemeMappingPalette = {
 	},
 
 	secondary: {
+		w80: "#5D6E7F",
 		wMain: "#89919A",
 		w40: "#D0D3D7",
 		w20: "#E7E9EB",
@@ -81,21 +84,21 @@ const palette: ThemeMappingPalette = {
 
 	accent: {
 		n0: {
-			w100: "#4044BA",
-			wMain: "#6367DE",
-			w30: "#D0D1F5",
-			w10: "#EFF0FC"
-		},
-		n1: {
-			wMain: "#286EB4",
-			w60: "#7EA8D2",
-			w10: "#EAF1F7"
-		},
-		n2: {
 			w100: "#0C656F",
 			wMain: "#0F828F",
 			w30: "#B7DADD",
 			w10: "#E7F3F4"
+		},
+		n1: {
+			wMain: "#6367DE",
+			w60: "#D0D1F5",
+			w10: "#EFF0FC"
+		},
+		n2: {
+			w100: "#205992",
+			wMain: "#286EB4",
+			w30: "#7EA8D2",
+			w10: "#EAF1F7"
 		},
 		n3: {
 			w100: "#6E33AD",
@@ -123,15 +126,38 @@ const palette: ThemeMappingPalette = {
 	},
 
 	deprecated: {
-		background: {
-			wMain: "#354A5F"
+		primary: {
+			wMain: "#0A6ED1",
+			w20: "#CEE2F6",
+			text: {
+				w10: "#FFFFFF"
+			}
 		},
 		secondary: {
+			w80: "#5D6E7F",
 			wMain: "#89919A",
+			w20: "#E7E9EB",
+			w10: "#F3F4F5",
 			text: {
 				wMain: "#6A6D70",
 				w50: "#D2D3D4"
 			}
+		},
+		accent: {
+			n2: {
+				wMain: "#286EB4"
+			}
+		},
+		// new chip colours are TBD in UX
+		chip: {
+			royalBlue: "#3A4880",
+			darkBlue: "#273749",
+			opaqueBlue: "rgba(58, 72, 128, 0.5)",
+			lightGrey: "#EBEDF2",
+			smokeGrey: "#DBDFE2",
+			white: "#FFF",
+			fill: "rgba(0, 0, 0, 0.1)",
+			hover: "rgba(0, 0, 0, 0.2)"
 		}
 	}
 };

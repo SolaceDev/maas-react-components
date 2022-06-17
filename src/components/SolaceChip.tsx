@@ -1,7 +1,7 @@
-import { Chip } from "@mui/material";
+import { Chip, useTheme } from "@mui/material";
 import { BASE_SIZE_TYPES } from "../resources/sizing";
 import { BASE_FONT_PX_SIZE_TYPES, BASE_FONT_PX_SIZES } from "../resources/typography";
-import { CHIP_COLORS, CHIP_COLOR_MAP } from "../types/solaceChip";
+import { CHIP_COLORS } from "../types/solaceChip";
 import SolaceComponentProps from "./SolaceComponentProps";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -98,6 +98,7 @@ export default function SolaceChip({
 	clickable = false,
 	onDelete
 }: SolaceChipProps): JSX.Element {
+	const CHIP_COLOR_MAP = useTheme().palette.ux.deprecated.chip;
 	return (
 		<Chip
 			sx={{

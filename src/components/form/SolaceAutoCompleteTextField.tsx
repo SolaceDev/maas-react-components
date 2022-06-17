@@ -7,7 +7,7 @@ const StyledAutoCompleteTextField = styled(TextField)(({ theme }) => ({
 	marginTop: theme.spacing(),
 	marginBottom: theme.spacing(0.5),
 	".MuiInputBase-root.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-		borderColor: "rgba(0, 0, 0, 0.35)"
+		borderColor: theme.palette.ux.deprecated.secondary.wMain
 	}
 })) as unknown as React.ComponentType<TextFieldProps>;
 
@@ -25,7 +25,7 @@ export default function SolaceAutoCompleteTextField(props: CommonAutoCompleteTex
 				color="primary"
 				disabled={props.disabled}
 				error={props.error}
-				sx={{ color: "rgba(0, 0, 0, 0.65)" }}
+				sx={{ color: theme.palette.ux.secondary.text.wMain }}
 			>
 				{label}
 			</InputLabel>

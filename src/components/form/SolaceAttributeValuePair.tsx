@@ -1,10 +1,9 @@
 import React from "react";
 import SolaceTextField, { SolaceTextFieldChangeEvent } from "./SolaceTextField";
-import { styled } from "@mui/material";
+import { styled, Theme, useTheme } from "@mui/material";
 import { Draggable } from "react-beautiful-dnd";
 import { DeleteIcon } from "../../resources/icons/DeleteIcon";
 import { MoveIcon } from "../../resources/icons/MoveIcon";
-import { BASE_COLORS } from "../../resources/colorPallette";
 import { CSSProperties } from "@mui/styled-engine";
 
 interface SolaceAVPContainerProps {
@@ -21,18 +20,26 @@ interface SolaceAVPMoveButtonProps {
 	readOnly: boolean;
 }
 interface SolaceAVPDeleteButtonProps {
+	ghostItem: boolean;
 	cursor: string;
 	background: string;
 	readOnly: boolean;
 }
 
 // conditionally display a drop line as a visual indicator for droppable position
-const displayDropLine = (dropFromTop: boolean | null, dropOverIndex: number | null, index: number): string => {
+const displayDropLine = (
+	theme: Theme,
+	dropFromTop: boolean | null,
+	dropOverIndex: number | null,
+	index: number
+): string => {
 	let dropLine = "";
-	if (dropFromTop !== null && dropOverIndex !== null) {
-		if (dropFromTop && dropOverIndex + 1 === index) {
-			dropLine = `1px solid ${BASE_COLORS.greens.green2}`;
-		} else if (!dropFromTop && dropOverIndex === index) dropLine = `1px solid ${BASE_COLORS.greens.green2}`;
+	if (
+		dropFromTop !== null &&
+		dropOverIndex !== null &&
+		((dropFromTop && dropOverIndex + 1 === index) || (!dropFromTop && dropOverIndex === index))
+	) {
+		dropLine = `1px solid ${theme.palette.ux.accent.n2.wMain}`;
 	}
 	return dropLine;
 };
@@ -42,8 +49,8 @@ const SolaceAVPContainer = styled("div", {
 		prop !== "isDragging" && prop !== "dropOverIndex" && prop !== "dropFromTop" && prop !== "readOnly"
 })<SolaceAVPContainerProps>(({ theme, isDragging, dropOverIndex, index, dropFromTop, readOnly }) => ({
 	...(theme.mixins.formComponent_AVPItem.container as CSSProperties),
-	backgroundColor: isDragging ? BASE_COLORS.greens.green9 : "inherit",
-	borderTop: displayDropLine(dropFromTop, dropOverIndex, index),
+	backgroundColor: isDragging ? theme.palette.ux.brand.w10 : "inherit",
+	borderTop: displayDropLine(theme, dropFromTop, dropOverIndex, index),
 	gridTemplateColumns: readOnly ? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px" : "32px 1fr 8px 1fr 32px"
 }));
 const SolaceAVPInputForKey = styled("div")(({ theme }) => ({
@@ -62,20 +69,25 @@ const SolaceAVPMoveButton = styled("div", {
 }));
 
 const SolaceAVPDeleteButton = styled("div", {
-	shouldForwardProp: (prop) => prop !== "cursor" && prop !== "background" && prop !== "readOnly"
-})<SolaceAVPDeleteButtonProps>(({ theme, cursor, background, readOnly }) => ({
+	shouldForwardProp: (prop) => prop !== "ghostItem" && prop !== "cursor" && prop !== "background" && prop !== "readOnly"
+})<SolaceAVPDeleteButtonProps>(({ theme, ghostItem, cursor, background, readOnly }) => ({
 	...(theme.mixins.formComponent_AVPItem.deleteButton as CSSProperties),
 	cursor: cursor,
 	display: readOnly ? "none" : "inherit",
 	":hover": {
-		backgroundColor: background
+		backgroundColor: background,
+		svg: {
+			path: {
+				fill: ghostItem ? theme.palette.ux.secondary.w40 : theme.palette.ux.deprecated.primary.wMain
+			}
+		}
 	}
 }));
 
-const ValueWrapper = styled("div")({
+const ValueWrapper = styled("div")(({ theme }) => ({
 	paddingTop: "7px",
-	color: BASE_COLORS.greys.grey11
-});
+	color: theme.palette.ux.secondary.text.wMain
+}));
 
 export enum valueInputTypes {
 	textfield = "textfield",
@@ -177,6 +189,7 @@ export const SolaceAttributeValuePair = ({
 	readOnly,
 	emptyFieldDisplayValue = ""
 }: SolaceAttributeValuePairProps) => {
+	const theme = useTheme();
 	return (
 		<Draggable draggableId={id} index={index} isDragDisabled={ghostItem}>
 			{
@@ -198,7 +211,10 @@ export const SolaceAttributeValuePair = ({
 							ghostItem={ghostItem}
 							readOnly={readOnly ? readOnly : false}
 						>
-							<MoveIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+							<MoveIcon
+								fill={ghostItem ? theme.palette.ux.secondary.w40 : theme.palette.ux.secondary.wMain}
+								opacity={1}
+							/>
 						</SolaceAVPMoveButton>
 
 						<SolaceAVPInputForKey>
@@ -244,11 +260,15 @@ export const SolaceAttributeValuePair = ({
 						<SolaceAVPDeleteButton
 							onClick={(e) => onDelete(e, index)}
 							tabIndex={0}
+							ghostItem={ghostItem}
 							cursor={ghostItem ? "default" : "pointer"}
-							background={ghostItem ? "inherit" : BASE_COLORS.greys.grey23}
+							background={ghostItem ? "inherit" : theme.palette.ux.secondary.w10}
 							readOnly={readOnly ? readOnly : false}
 						>
-							<DeleteIcon fill={ghostItem ? BASE_COLORS.greys.grey3 : BASE_COLORS.greys.grey11} opacity={1} />
+							<DeleteIcon
+								fill={ghostItem ? theme.palette.ux.secondary.w40 : theme.palette.ux.secondary.wMain}
+								opacity={1}
+							/>
 						</SolaceAVPDeleteButton>
 					</SolaceAVPContainer>
 				)

@@ -123,7 +123,7 @@ function SolaceCodeEditor({
 									onClick={toggleExpandedMode}
 									title="Expand"
 								>
-									<ExpandIcon fill={theme.palette.ux.deprecated.secondary.wMain} size={24} />
+									<ExpandIcon fill={theme.palette.ux.secondary.wMain} size={24} />
 								</SolaceButton>
 							)}
 						</IconWrapper>

@@ -1,22 +1,24 @@
-import { SvgIcon } from "@mui/material";
+import { SvgIcon, useTheme } from "@mui/material";
 
-const CheckboxIcon = (props: { children?: React.ReactNode }) => (
-	<SvgIcon width="24" height="24" viewBox="0 0 24 24" fill="none">
-		<rect width="24" height="24" rx="4" fill="white" />
-		<rect
-			x={0.5}
-			y={0.5}
-			width={23}
-			height={23}
-			rx={3.5}
-			stroke="black"
-			strokeOpacity={0.2}
-			fillOpacity={0}
-			className="SolaceCheckboxContainer"
-		/>
-		{props.children}
-	</SvgIcon>
-);
+const CheckboxIcon = (props: { children?: React.ReactNode }) => {
+	const theme = useTheme();
+	return (
+		<SvgIcon width="24" height="24" viewBox="0 0 24 24" fill="none">
+			<rect width="24" height="24" rx="4" fill={theme.palette.ux.background.w10} />
+			<rect
+				x={0.5}
+				y={0.5}
+				width={23}
+				height={23}
+				rx={3.5}
+				stroke={theme.palette.ux.secondary.w40}
+				fillOpacity={0}
+				className="SolaceCheckboxContainer"
+			/>
+			{props.children}
+		</SvgIcon>
+	);
+};
 
 export const RestingCheckBoxIcon = <CheckboxIcon />;
 
@@ -32,6 +34,14 @@ export const SelectedCheckBoxIcon = (
 
 export const IndeterminateCheckBoxIcon = (
 	<CheckboxIcon>
-		<line x1="6" y1="12" x2="18" y2="12" strokeWidth="3" strokeLinecap="round" />
+		<line
+			x1="6"
+			y1="12"
+			x2="18"
+			y2="12"
+			strokeWidth="3"
+			strokeLinecap="round"
+			className="SolaceCheckboxIndeterminant"
+		/>
 	</CheckboxIcon>
 );

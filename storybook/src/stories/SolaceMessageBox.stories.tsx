@@ -83,8 +83,7 @@ InfoBox.args = {
 export const ErrorBox = Template.bind({});
 ErrorBox.args = {
 	message: "this is an error message",
-	variant: "error",
-	color: "#D0021B"
+	variant: "error"
 };
 
 export const WarnBox = Template.bind({});
@@ -181,8 +180,8 @@ export const ErrorWithDetailsWithinContainer = ({ message, ...args }): JSX.Eleme
 	);
 };
 ErrorWithDetailsWithinContainer.args = {
-	message: "Helpful information. The error box is in a small container.",
+	message: "The error box is in a small container with font color overridden and details.",
 	showCloseButton: true,
-	color: "#D0021B",
+	color: "#778899",
 	details: <div style={{ backgroundColor: "#F9F9F9" }}>More Details</div>
 };
