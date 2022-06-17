@@ -1,4 +1,5 @@
-import SolaceMenu, { SolaceMenuItemProps } from "../SolaceMenu";
+import SolaceMenu from "../SolaceMenu";
+import { SolaceMenuItemProps } from "../SolaceMenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { styled } from "@mui/material";
 import { BASE_COLORS } from "./../../resources/colorPallette";

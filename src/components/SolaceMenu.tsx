@@ -1,50 +1,10 @@
-import { ListItemIcon, Menu, MenuItem, Grid, ListSubheader, Typography, useTheme, Popover } from "@mui/material";
-import { useState, Fragment } from "react";
-import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
-import SolaceComponentProps from "./SolaceComponentProps";
+import React, { Fragment, useState } from "react";
+import { Menu, ListSubheader, Popover } from "@mui/material";
 import { groupBy, flatten } from "lodash";
-import clsx from "clsx";
+import SolaceComponentProps from "./SolaceComponentProps";
+import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
+import SolaceMenuItem, { SolaceMenuItemProps } from "./SolaceMenuItem";
 import { useScrollIndicator } from "../hooks/useScrollIndicator";
-
-export interface SolaceMenuItemProps extends SolaceComponentProps {
-	id?: string;
-	/**
-	 * Name attribute to show as menu item label for default menuItems,for custom menu items JSX.Element type is passed.
-	 */
-	name: string | JSX.Element;
-	/**
-	 * Content to display as supportive/explanitory text
-	 */
-	subText?: string;
-	/**
-	 * Content to display as supportive/explanitory text
-	 */
-	supplementalText?: string;
-	/**
-	 * Adds an Icon to left handside of the menu item label for Supporting visuals and helping differentiate between menu options
-	 */
-	icon?: JSX.Element | HTMLElement;
-	/**
-	 * Adds a secondary action (ex. more info icon button) to the right end of menu item
-	 */
-	secondaryAction?: JSX.Element | HTMLElement;
-	/**
-	 * The callback function runs when the user clicks on a menu item
-	 */
-	onMenuItemClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-	/**
-	 * Adds a divider to the bottom of menuItem
-	 */
-	divider?: boolean;
-	/**
-	 * Boolean flag to disable the menuItem
-	 */
-	disabled?: boolean;
-	/**
-	 * Optional attribute to group Menu items and show categoryHeading
-	 */
-	categoryHeading?: string;
-}
 
 interface SolaceMenuProps extends SolaceComponentProps {
 	id?: string;
@@ -53,7 +13,7 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 */
 	buttonProps: SolaceButtonProps;
 	/**
-	 * An array of options when using default menu (TODO: nested menus )
+	 * An array of options when using default menu
 	 */
 	items?: SolaceMenuItemProps[];
 	/**
@@ -81,6 +41,10 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 */
 	closeOnSelect?: boolean;
 	/**
+	 * The callback function runs when the user clicks on a menu item
+	 */
+	onMenuItemClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+	/**
 	 * optional flag to specify the number of menu items to be displayed, the number is currently default to 9.
 	 * Note: the total number of items exceeding this number will make the list scrollable with fade style applied based on the scroll positions.
 	 */
@@ -99,13 +63,13 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		multiline = false,
 		propagateMenuClick = false,
 		closeOnSelect = true,
+		onMenuItemClick,
 		anchorOrigin = { vertical: "bottom", horizontal: "left" },
 		transformOrigin = { vertical: "top", horizontal: "left" },
 		dataQa,
 		dataTags
 	} = props;
 
-	const theme = useTheme();
 	const { maskImage, onScrollHandler, resetScrollPosition } = useScrollIndicator();
 	const itemHeight = multiline ? 58 : 38;
 
@@ -136,7 +100,8 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	// group items based on categoryHeading if provided
 	const groupedItems = groupBy(items, (item: SolaceMenuItemProps) => item.categoryHeading);
 
-	//creating itemsList under each categoryHeading, if no categoryheadig is provided it will be just list of menuItems
+	// render Menu Items
+	// creating itemsList under each categoryHeading, if no categoryheadig is provided it will be just list of menuItems
 	const menuItemsList = Object.keys(groupedItems).map((categoryHeading) => {
 		const list = [];
 		const categoryheader =
@@ -146,61 +111,26 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				</ListSubheader>
 			);
 		list.push(categoryheader);
+
 		const itemsList = groupedItems[categoryHeading].map((item, index) => (
-			<MenuItem
+			<SolaceMenuItem
 				id={item.id}
 				key={index}
-				data-qa={item?.dataQa}
-				data-tags={item?.dataTags}
-				onClick={(e) => {
-					// stop click event on the menu item from being bubbled up to parent, causing unexpected extra click event
-					e.stopPropagation();
-					if (closeOnSelect) {
-						handleMenuClose(e);
-					}
-					if (item.onMenuItemClick) {
-						item.onMenuItemClick(e);
-					}
-				}}
+				name={item?.name}
+				subText={item?.subText}
+				supplementalText={item?.supplementalText}
+				dataQa={item?.dataQa}
+				dataTags={item?.dataTags}
+				closeOnSelect={closeOnSelect}
 				divider={!!item?.divider}
 				disabled={!!item?.disabled}
-				className={clsx({
-					multiline: !!item?.subText && typeof item.name === "string",
-					wideMenu: !!item?.supplementalText && typeof item.name === "string"
-				})}
-			>
-				{typeof item.name === "string" ? (
-					<>
-						{item?.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
-						<Grid container direction={"column"} justifyContent="center">
-							<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
-								<Typography variant="body1" noWrap>
-									{item.name}
-								</Typography>
-								{item?.supplementalText && (
-									<Grid className="supplementalText" item>
-										{item?.supplementalText}
-									</Grid>
-								)}
-							</Grid>
-
-							{item?.subText && (
-								<Grid className="subtext" item>
-									<span className="subtext">{item?.subText}</span>
-								</Grid>
-							)}
-						</Grid>
-
-						{item?.secondaryAction && (
-							<Grid container sx={{ marginLeft: theme.spacing(3) }} alignItems={"center"}>
-								{item.secondaryAction}
-							</Grid>
-						)}
-					</>
-				) : (
-					item.name
-				)}
-			</MenuItem>
+				icon={item?.icon}
+				secondaryAction={item?.secondaryAction}
+				onMenuItemClick={onMenuItemClick}
+				onMenuClose={handleMenuClose}
+				subMenuItems={item?.subMenuItems}
+				itemHeight={itemHeight}
+			/>
 		));
 		list.push(itemsList);
 		return list;

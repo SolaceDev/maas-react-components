@@ -414,3 +414,86 @@ export const ClickPropagateToParent = (): JSX.Element => {
 		</>
 	);
 };
+
+const MENU_WITH_NESTED_ITEMS = [
+	{
+		name: "Option 1",
+		onMenuItemClick: action("callback"),
+		dataQa: "testDataProp2",
+		dataTags: "testDataTag2",
+		subMenuItems: [
+			{ name: "Option 1-1", onMenuItemClick: action("callback") },
+			{ name: "Option 1-2", onMenuItemClick: action("callback") }
+		]
+	},
+	{
+		name: "Option 2",
+		subText: SUBTEXT,
+		onMenuItemClick: action("callback")
+	},
+	{
+		name: "Option 3",
+		onMenuItemClick: action("callback")
+	},
+	{
+		name: "Option 4",
+		subText: SUBTEXT,
+		supplementalText: SUPPLEMENTALText,
+		subMenuItems: [
+			{
+				name: "SubOption 4-1",
+				disabled: true,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "SubOption 4-2",
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "SubOption 4-3",
+				subText: SUBTEXT,
+				subMenuItems: [
+					{
+						name: "SubSubOption 4-3-1",
+						subText: SUBTEXT,
+						supplementalText: SUPPLEMENTALText,
+						onMenuItemClick: action("callback"),
+						categoryHeading: "Category1"
+					},
+					{
+						name: "SubSubOption 4-3-2",
+						subText: SUBTEXT,
+						supplementalText: SUPPLEMENTALText,
+						onMenuItemClick: action("callback"),
+						categoryHeading: "Category1",
+						divider: true
+					},
+					{
+						name: "SubSubOption 4-3-3",
+						subText: SUBTEXT,
+						onMenuItemClick: action("callback"),
+						categoryHeading: "Category2"
+					},
+					{
+						name: "SubSubOption 4-3-4",
+						subText: SUBTEXT,
+						onMenuItemClick: action("callback"),
+						categoryHeading: "Category2"
+					}
+				]
+			}
+		]
+	}
+];
+
+export const NestedMenuItems = (): JSX.Element => {
+	return (
+		<SolaceMenu
+			buttonProps={{
+				variant: "icon",
+				children: <MoreHorizOutlinedIcon />
+			}}
+			items={MENU_WITH_NESTED_ITEMS}
+		/>
+	);
+};

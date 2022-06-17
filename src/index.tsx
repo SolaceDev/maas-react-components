@@ -27,7 +27,7 @@ export { default as SolaceSidePanelLayout } from "./components/layout/SolaceSide
 export { PANEL_POSITION as SolacePanelPosition } from "./components/layout/SolaceSidePanelLayout";
 export { default as SolaceConfirmationDialog } from "./components/dialog/SolaceConfirmationDialog";
 export { default as SolaceMenu } from "./components/SolaceMenu";
-export type { SolaceMenuItemProps } from "./components/SolaceMenu";
+export type { SolaceMenuItemProps } from "./components/SolaceMenuItem";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";
 export { default as SolaceSelect } from "./components/form/SolaceSelect";
 export { default as SolaceSelectAutocomplete } from "./components/form/SolaceSelectAutocomplete";
