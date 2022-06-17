@@ -1,5 +1,6 @@
 import ReactDOMServer from "react-dom/server";
-import SplitPane, { Pane } from "react-split-pane";
+import SplitPane from "react-split-pane";
+import Pane from "react-split-pane";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { VerticalDotsIcon } from "../../resources/icons/VerticalDotsIcon";
 import { EllipsisIcon } from "../../resources/icons/EllipsisIcon";
@@ -116,7 +117,7 @@ function SolaceSplitPane({
 			{children &&
 				children.map((content: JSX.Element, index: number) => {
 					return (
-						<Pane key={`pane${index}`} size="100%" style={{ overflow: "auto" }} className="">
+						<Pane key={`pane${index}`} size="100%" style={{ overflow: "auto" }}>
 							{content}
 						</Pane>
 					);
