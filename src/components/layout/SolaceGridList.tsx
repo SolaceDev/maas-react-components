@@ -37,8 +37,7 @@ function SolaceGridListRow({
 	gridTemplate,
 	selected,
 	onClick,
-	dataQa,
-	background
+	dataQa
 }: SolaceGridListRowProps): JSX.Element {
 	const handleKeyPress = (e: any) => {
 		if (e.key === "Enter") {
@@ -52,7 +51,7 @@ function SolaceGridListRow({
 			className={selected ? "selected" : ""}
 			onClick={() => onClick(id)}
 			onKeyPress={(e) => handleKeyPress(e)}
-			style={{ gridTemplateColumns: gridTemplate, backgroundColor: background }}
+			style={{ gridTemplateColumns: gridTemplate }}
 			tabIndex={index}
 			data-qa={`${dataQa}-row-${id}`}
 		>
@@ -128,8 +127,8 @@ function SolaceGridList<T>({
 	);
 
 	return (
-		<div id="listComponent" key={id} data-qa={dataQa} style={{ height: "100%", backgroundColor: background }}>
-			<List>
+		<div id="listComponent" key={id} data-qa={dataQa} style={{ height: "100%" }}>
+			<List style={{ backgroundColor: background }}>
 				{headers && getListHeader}
 				{items?.map((item, index) => (
 					<SolaceGridListRow
@@ -141,7 +140,6 @@ function SolaceGridList<T>({
 						gridTemplate={gridTemplate}
 						onClick={handleRowClick}
 						dataQa={dataQa}
-						background={background}
 					/>
 				))}
 			</List>

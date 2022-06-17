@@ -320,7 +320,7 @@ export const ContainedList = (): JSX.Element => {
 };
 
 export const ColoredList = (): JSX.Element => {
-	const [selectedId, setSelectedId] = useState();
+	const [selectedId, setSelectedId] = useState(1);
 
 	const handleRowSelection = (selectedItem) => {
 		action("rowSelected")(selectedItem);
