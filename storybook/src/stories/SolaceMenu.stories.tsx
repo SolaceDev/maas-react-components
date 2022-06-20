@@ -180,6 +180,7 @@ export const DisabledMenu = (): JSX.Element => {
 			<div style={{ marginRight: "24px" }}>
 				<SolaceToggle
 					id="demoToggleId"
+					name="demoToggleId"
 					label="Disable"
 					onChange={() => {
 						setDisabled(!disabled);

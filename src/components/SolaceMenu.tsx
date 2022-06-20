@@ -63,7 +63,6 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		multiline = false,
 		propagateMenuClick = false,
 		closeOnSelect = true,
-		onMenuItemClick,
 		anchorOrigin = { vertical: "bottom", horizontal: "left" },
 		transformOrigin = { vertical: "top", horizontal: "left" },
 		dataQa,
@@ -126,7 +125,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				disabled={!!item?.disabled}
 				icon={item?.icon}
 				secondaryAction={item?.secondaryAction}
-				onMenuItemClick={onMenuItemClick}
+				onMenuItemClick={item?.onMenuItemClick}
 				onMenuClose={handleMenuClose}
 				subMenuItems={item?.subMenuItems}
 				itemHeight={itemHeight}
