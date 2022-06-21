@@ -872,9 +872,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								lineHeight: `${BASE_FONT_PX_SIZES.lg}px`,
 								color: themeMapping.palette.primary.text.wMain,
 								padding: "0"
-								// ".MuiBox-root": {
-								// 	display: "grid"
-								// }
+							},
+							".MuiDialogContentText-root": {
+								color: themeMapping.palette.primary.text.wMain
 							},
 							".MuiDialogActions-root": {
 								padding: "24px 0 0 0",

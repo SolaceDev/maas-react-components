@@ -1,4 +1,5 @@
 import React from "react";
+import { Stack } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceConfirmationDialog, SolaceSelect, SolaceTextField, MenuItem } from "@SolaceDev/maas-react-components";
@@ -73,16 +74,23 @@ export const WithChildrenComponents = (): JSX.Element => (
 		isOpen={true}
 		actions={[{ label: "Ok", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), variant: "outline" }]}
 	>
-		<SolaceTextField
-			onChange={action("textfield-change-callback")}
-			title="Demo Text Field"
-			id="demoTextFieldId"
-			name="demoTextField"
-			label="Some Label"
-		/>
-		<SolaceSelect onChange={action("select-change-callback")} title="Demo Select" name="demoSelect" label="Some Label">
-			{SELECT_OPTIONS}
-		</SolaceSelect>
+		<Stack direction="column" justifyContent="flex-start" alignItems="stretch" spacing={2} sx={{ marginTop: "24px" }}>
+			<SolaceTextField
+				onChange={action("textfield-change-callback")}
+				title="Demo Text Field"
+				id="demoTextFieldId"
+				name="demoTextField"
+				label="Some Label"
+			/>
+			<SolaceSelect
+				onChange={action("select-change-callback")}
+				title="Demo Select"
+				name="demoSelect"
+				label="Some Label"
+			>
+				{SELECT_OPTIONS}
+			</SolaceSelect>
+		</Stack>
 	</SolaceConfirmationDialog>
 );
 
