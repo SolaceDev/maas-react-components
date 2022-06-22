@@ -17,7 +17,7 @@ export default function SolaceGrid(props: SolaceGridProps) {
 
 	const theme = useTheme();
 	return (
-		<Grid container={container} spacing={spacing} color={theme.palette.ux.primary.wMain} {...rest}>
+		<Grid container={container} spacing={spacing} color={theme.palette.ux.primary.text.wMain} {...rest}>
 			{children}
 		</Grid>
 	);

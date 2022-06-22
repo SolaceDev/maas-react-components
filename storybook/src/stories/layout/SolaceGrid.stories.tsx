@@ -118,3 +118,14 @@ export const AutoLayoutGrid = Template.bind({});
 AutoLayoutGrid.args = {
 	children: defaultContent
 };
+
+export const TextGrid = Template.bind({});
+TextGrid.args = {
+	children: (
+		<>
+			<SolaceGrid item>{"Item 1"}</SolaceGrid>
+			<SolaceGrid item>{"Item 2"}</SolaceGrid>
+			<SolaceGrid item>{"Item 3"}</SolaceGrid>
+		</>
+	)
+};
