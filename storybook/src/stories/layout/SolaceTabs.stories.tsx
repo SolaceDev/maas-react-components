@@ -78,14 +78,27 @@ export const WithIconTabs = (): ReactNode => {
 	const renderStyledTab1 = () => (
 		<div style={{ display: "flex", gap: "4px" }}>
 			<div>Subscribed</div>
-			<SolaceNotificationCounter value={count} show={count !== 0} size={18} />
+			<SolaceNotificationCounter
+				value={count}
+				show={count !== 0}
+				size={18}
+				animationRepeatsInitialCount={1}
+				animationRepeatsUpdateCount={1}
+				title={`${count} new event${count > 1 ? "s" : ""}`}
+			/>
 		</div>
 	);
 
 	const renderStyledTab2 = () => (
 		<div style={{ display: "flex", gap: "4px" }}>
 			<div>Published</div>
-			<SolaceNotificationCounter value={2} size={18} animationDuration={0} />
+			<SolaceNotificationCounter
+				value={2}
+				size={18}
+				animationRepeatsInitialCount={1}
+				animationRepeatsUpdateCount={1}
+				title="2 new events"
+			/>
 		</div>
 	);
 

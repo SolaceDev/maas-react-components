@@ -145,6 +145,7 @@ function SolaceNotificationCounter({
 					size={size}
 					fontSize={fontSize}
 					sx={pulsing && animationDuration > 0 ? { animation: `${pulse} ${animationDuration}ms ease infinite;` } : {}}
+					className="notificationCounter"
 				>
 					<Value
 						sx={{ opacity: showing ? 0 : 1 }}

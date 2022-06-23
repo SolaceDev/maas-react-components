@@ -964,7 +964,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					root: {
 						textTransform: "none",
 						fontWeight: 400,
-						"&.Mui-selected, :hover": {
+						"&.Mui-selected": {
+							color: themeMapping.palette.primary.text.wMain,
+							fontWeight: 500,
+							".notificationCounter": {
+								fontWeight: 400
+							}
+						},
+						":hover": {
 							color: themeMapping.palette.primary.text.wMain
 						}
 					}
