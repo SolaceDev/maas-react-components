@@ -181,7 +181,9 @@ export const WithClearButton = (): JSX.Element => {
 				<CloseIcon />
 			</SolaceButton>
 		) : null,
-		<Search key="search" />
+		<SolaceButton key={"searchIcon"} variant="icon" onClick={handleClearInput}>
+			<Search key="search" />
+		</SolaceButton>
 	];
 
 	return (

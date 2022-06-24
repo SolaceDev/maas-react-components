@@ -5,6 +5,7 @@ import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 import SolaceTooltip from "../SolaceToolTip";
 import { styled } from "@mui/material";
+import { CSSProperties } from "@mui/styled-engine";
 
 export interface SolaceTextFieldChangeEvent {
 	name: string;
@@ -200,11 +201,9 @@ function SolaceTextField({
 		return id ? id : name;
 	};
 
-	const TooltipContainer = styled("div")({
-		height: "32px",
-		display: "inline-flex",
-		alignItems: "center"
-	});
+	const TooltipContainer = styled("div")(({ theme }) => ({
+		...(theme.mixins.formComponent_ReadOnlyToolTipContainer.container as CSSProperties)
+	}));
 
 	const textField = () => {
 		/* read-only behaviour */

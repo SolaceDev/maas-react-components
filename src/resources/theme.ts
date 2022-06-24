@@ -441,13 +441,29 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									color: themeMapping.palette.secondary.text.w50,
 									padding: "8px"
 								}
+							},
+							"&.MuiInputBase-adornedEnd": {
+								paddingRight: "0px"
+							},
+							".MuiInputAdornment-root": {
+								".MuiIconButton-root": {
+									padding: "0px",
+									marginRight: "8px"
+								},
+								".MuiIconButton-root:hover, .MuiIconButton-root:active": {
+									".MuiSvgIcon-root": {
+										path: {
+											fill: themeMapping.palette.primary.text.wMain
+										}
+									}
+								}
 							}
 						},
 						".MuiOutlinedInput-input": {
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							color: themeMapping.palette.primary.text.wMain,
 							padding: "0 8px",
-							height: "34px",
+							height: "32px",
 							"&:read-only": {
 								padding: "0"
 							},
@@ -1173,6 +1189,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					marginLeft: "8px"
 				}
 			},
+			formComponent_ReadOnlyToolTipContainer: {
+				container: {
+					height: "32px",
+					display: "inline-flex",
+					alignItems: "center",
+					color: themeMapping.palette.primary.text.wMain
+				}
+			},
 			/** ErrorText for form components */
 			formComponent_WarningText: {
 				container: {
@@ -1578,6 +1602,9 @@ declare module "@mui/material/styles/createMixins" {
 		formComponent_ErrorText: {
 			container: CSSProperties;
 			label: CSSProperties;
+		};
+		formComponent_ReadOnlyToolTipContainer: {
+			container: CSSProperties;
 		};
 		formComponent_WarningText: {
 			container: CSSProperties;
