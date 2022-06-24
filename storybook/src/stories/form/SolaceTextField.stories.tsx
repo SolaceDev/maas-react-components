@@ -177,7 +177,7 @@ export const WithClearButton = (): JSX.Element => {
 	};
 	const endAdornment = [
 		value ? (
-			<SolaceButton key={"closeIcon"} variant="icon" onClick={handleClearInput}>
+			<SolaceButton key={"closeIcon"} dataQa="clearButton" variant="icon" onClick={handleClearInput}>
 				<CloseIcon />
 			</SolaceButton>
 		) : null,
@@ -207,7 +207,8 @@ WithClearButton.play = async ({ canvasElement }) => {
 		delay: 400
 	});
 	//click on clear button
-	await userEvent.click(await canvas.findByRole("button"));
+	const buttons = canvas.getAllByRole("button");
+	await userEvent.click(buttons[0]);
 };
 WithClearButton.parameters = {
 	// Delay snapshot 10 seconds until all interactions are done
