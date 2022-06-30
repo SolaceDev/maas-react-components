@@ -114,6 +114,11 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * Boolean flag to open the dropdown on focus
 	 */
 	openOnFocus?: boolean;
+	/**
+	 * Custom max-height of the expanded dropdown,
+	 * MaxHeight supports standard css units (px,rems, etc.)
+	 */
+	maxHeight?: string;
 }
 
 const CustomHeightTextField = styled(TextField)`
@@ -151,7 +156,8 @@ function SolaceSelectAutocomplete<T, V>({
 	getOptionDisabledCallback,
 	width,
 	inputRef,
-	openOnFocus = false
+	openOnFocus = false,
+	maxHeight
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -199,6 +205,7 @@ function SolaceSelectAutocomplete<T, V>({
 
 	const select = () => (
 		<Autocomplete
+			ListboxProps={{ style: { maxHeight: maxHeight } }}
 			id={getId()}
 			data-qa={dataQa}
 			filterOptions={(x) => x}

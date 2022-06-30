@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import withMock from "storybook-addon-mock";
 import { withState, Store } from "@sambego/storybook-state";
 
+import { within, userEvent } from "@storybook/testing-library";
 import {
 	SolaceSelectAutocomplete,
 	SolaceSelectAutocompleteItem,
@@ -83,6 +84,11 @@ export default {
 		limitTags: {
 			control: {
 				type: "number"
+			}
+		},
+		maxHeight: {
+			control: {
+				type: "text"
 			}
 		}
 	},
@@ -708,4 +714,40 @@ export const OpenDropDownOnButtonClick = () => {
 			</SolaceButton>
 		</div>
 	);
+};
+
+export const CustomHeight = Template.bind({});
+CustomHeight.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS
+			},
+			delay: 500
+		}
+	]
+};
+CustomHeight.args = {
+	maxHeight: "7.4rem",
+	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	itemMappingCallback: (option) => option,
+	title: "Demo Select",
+	name: "demoSelect",
+	label: "Some Label",
+	dataQa: "customHeight",
+	options: store.get("options") || null,
+	fetchOptionsCallback: async (searchTerm: string) => {
+		await fetchOptions(searchTerm);
+	},
+	onCloseCallback: () => store.set({ options: [] })
+};
+CustomHeight.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByRole("select"));
 };
