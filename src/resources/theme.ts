@@ -871,7 +871,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						".MuiBackdrop-root": {
-							backgroundColor: themeMapping.palette.secondary.text.w50
+							backgroundColor: themeMapping.palette.primary.wMain40
 						},
 						".MuiPaper-root": {
 							minWidth: "400px",
