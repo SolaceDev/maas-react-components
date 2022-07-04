@@ -751,3 +751,9 @@ CustomHeight.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	await userEvent.click(await canvas.findByRole("select"));
 };
+
+CustomHeight.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
+
