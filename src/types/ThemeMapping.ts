@@ -156,6 +156,10 @@ export type ThemeMappingPalette = {
 			royalBlue: string;
 			darkBlue: string;
 			opaqueBlue: string;
+			infoBlue: string;
+			infoBgBlue: string;
+			warnYellow: string;
+			warnBgYellow: string;
 			lightGrey: string;
 			smokeGrey: string;
 			white: string;
