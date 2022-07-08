@@ -43,7 +43,15 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`,
 	"&.expanded": {
-		borderBottom: "none"
+		borderBottom: "none",
+		"&:hover": {
+			"+ tr.expanded": {
+				backgroundColor: theme.palette.ux.secondary.w10
+			},
+			"+ tr.expanded.selected": {
+				backgroundColor: theme.palette.ux.secondary.w10
+			}
+		}
 	},
 
 	height: "32px",
@@ -65,12 +73,6 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 
 	"&:hover": {
 		background: theme.palette.ux.secondary.w10,
-		"+ tr.expanded": {
-			backgroundColor: theme.palette.ux.secondary.w10
-		},
-		"+ tr.expanded.selected": {
-			backgroundColor: theme.palette.ux.secondary.w10
-		},
 		"&.header": {
 			background: "transparent"
 		}
