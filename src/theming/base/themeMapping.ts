@@ -134,6 +134,7 @@ export const baseThemeMapping: ThemeMapping = {
 				wMain: alpha("#000000", 0.8),
 				w20: alpha("#000000", 0.1),
 				text: {
+					wMain: "#00AD93",
 					w10: alpha("#FFFFFF", 0.9)
 				}
 			},

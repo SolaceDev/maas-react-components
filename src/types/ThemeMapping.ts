@@ -132,6 +132,7 @@ export type ThemeMappingPalette = {
 			wMain: string;
 			w20: string;
 			text: {
+				wMain: string;
 				w10: string;
 			};
 		};

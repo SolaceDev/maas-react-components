@@ -130,6 +130,7 @@ const palette: ThemeMappingPalette = {
 			wMain: "#015B82",
 			w20: "#CCDEE6",
 			text: {
+				wMain: "#273749",
 				w10: "#FFFFFF"
 			}
 		},

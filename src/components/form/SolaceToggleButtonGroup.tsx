@@ -1,4 +1,6 @@
 import { styled, ToggleButtonGroup, ToggleButton } from "@mui/material";
+import { appTheme } from "../../theming/themeUtils";
+import { SupportedThemes } from "../../types/supportedThemes";
 import SolaceComponentProps from "../SolaceComponentProps";
 
 export interface SolaceToggleButtonGroupProps extends SolaceComponentProps {
@@ -17,10 +19,10 @@ const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => 
 	// override here to match specificity of default mui styles
 	".MuiToggleButtonGroup-grouped:not(:first-of-type)": {
 		marginLeft: 0,
-		borderLeftColor: theme.palette.ux.secondary.w20,
+		borderLeft: `solid 1px transparent`,
 
 		"&:focus-visible": {
-			borderLeftColor: theme.palette.ux.accent.n2.wMain
+			borderLeftColor: theme.palette.ux.deprecated.accent.n2.wMain
 		}
 	},
 
@@ -28,24 +30,29 @@ const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => 
 		height: theme.spacing(4),
 		padding: theme.spacing(0, 2),
 
-		color: theme.palette.ux.secondary.text.wMain,
+		color: theme.palette.ux.deprecated.secondary.text.wMain,
 		fontWeight: theme.typography.fontWeightRegular,
 		textTransform: "none",
 		backgroundColor: theme.palette.ux.background.w10,
-		borderColor: theme.palette.ux.secondary.w20,
+		borderColor: theme.palette.ux.secondary.w40,
 
 		"&:hover": {
-			backgroundColor: theme.palette.ux.deprecated.secondary.w20,
-			borderColor: theme.palette.ux.secondary.w20
+			backgroundColor: theme.palette.ux.secondary.w10,
+			borderColor: theme.palette.ux.secondary.w40,
+			// remove "solace" option when new palette is adopted
+			color:
+				appTheme === SupportedThemes.solace
+					? theme.palette.ux.deprecated.secondary.text.wMain
+					: theme.palette.ux.primary.text.wMain
 		},
 
 		"&.Mui-selected": {
-			color: theme.palette.ux.accent.n2.wMain,
+			color: theme.palette.ux.deprecated.primary.text.wMain,
 			fontWeight: theme.typography.fontWeightMedium,
-			backgroundColor: theme.palette.ux.accent.n2.w10,
+			backgroundColor: theme.palette.ux.brand.w10,
 
 			"&:hover": {
-				backgroundColor: theme.palette.ux.accent.n2.w10
+				backgroundColor: theme.palette.ux.brand.w10
 			},
 
 			"&.Mui-disabled": {
@@ -54,11 +61,11 @@ const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => 
 		},
 
 		"&:focus-visible, &.Mui-selected:focus-visible": {
-			borderColor: theme.palette.ux.accent.n2.wMain
+			borderColor: theme.palette.ux.deprecated.accent.n2.wMain
 		},
 
 		"&.Mui-disabled, &.Mui-selected.Mui-disabled": {
-			borderColor: theme.palette.ux.secondary.w20,
+			borderColor: theme.palette.ux.secondary.w40,
 			color: theme.palette.ux.secondary.text.w50
 		}
 	}
