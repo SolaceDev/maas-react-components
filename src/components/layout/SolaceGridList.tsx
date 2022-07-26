@@ -48,7 +48,9 @@ function SolaceGridListRow({
 		<Row
 			key={`row-${id}`}
 			className={selected ? "selected" : ""}
-			onClick={() => onClick(id)}
+			onClick={(e) => {
+				if (e.target === e.currentTarget) onClick(id);
+			}}
 			onKeyPress={(e) => handleKeyPress(e)}
 			style={{ gridTemplateColumns: gridTemplate }}
 			tabIndex={index}
