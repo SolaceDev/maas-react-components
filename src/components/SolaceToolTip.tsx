@@ -1,8 +1,7 @@
 import { Tooltip } from "@mui/material";
 import { Fade } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
-import { useEffect, useRef, useState } from "react";
-import useResizeAware from "react-resize-aware";
+import { useCallback, useRef, useState } from "react";
 
 export interface SolaceTooltipProps extends SolaceComponentProps {
 	/**
@@ -93,16 +92,38 @@ function SolaceTooltip({
 	dataQa,
 	dataTags
 }: SolaceTooltipProps) {
-	const [isOverflowed, setIsOverflow] = useState(false);
+	const [internalOpen, setInternalOpen] = useState(false);
 	const textElementRef = useRef<HTMLDivElement>(null);
-	const [resizeListener, sizes] = useResizeAware();
 
-	useEffect(() => {
-		// listen to container resize event and then reevaluate whether to show tooltip
-		if (textElementRef.current) {
-			setIsOverflow(textElementRef.current.scrollWidth > textElementRef.current.clientWidth);
-		}
-	}, [sizes]);
+	const handleOpen = useCallback(
+		(event: React.SyntheticEvent) => {
+			let shouldOpen = true;
+			if (
+				variant === "overflow" &&
+				textElementRef.current &&
+				textElementRef.current.scrollWidth <= textElementRef.current.clientWidth
+			) {
+				shouldOpen = false;
+			}
+			if (shouldOpen) {
+				setInternalOpen(true);
+				if (onOpen) {
+					onOpen(event);
+				}
+			}
+		},
+		[onOpen, variant]
+	);
+
+	const handleClose = useCallback(
+		(event: Event | React.SyntheticEvent<Element, Event>) => {
+			setInternalOpen(false);
+			if (onClose) {
+				onClose(event);
+			}
+		},
+		[onClose]
+	);
 
 	return (
 		<Tooltip
@@ -113,15 +134,15 @@ function SolaceTooltip({
 			data-qa={dataQa}
 			data-tags={dataTags}
 			disableFocusListener={disableFocusListener}
-			disableHoverListener={disableHoverListener || (variant === "overflow" && !isOverflowed)}
+			disableHoverListener={disableHoverListener}
 			enterDelay={enterDelay}
 			enterNextDelay={enterNextDelay}
 			leaveDelay={leaveDelay}
 			TransitionComponent={Fade}
 			TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
-			open={open}
-			onOpen={onOpen}
-			onClose={onClose}
+			open={open ?? internalOpen}
+			onOpen={handleOpen}
+			onClose={handleClose}
 		>
 			{variant === "overflow" ? (
 				<div
@@ -133,7 +154,6 @@ function SolaceTooltip({
 						position: "relative"
 					}}
 				>
-					{resizeListener}
 					{children}
 				</div>
 			) : typeof children === "string" ? (
