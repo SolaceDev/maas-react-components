@@ -34,8 +34,8 @@ const palette: ThemeMappingPalette = {
 		w10: "#F3F4F6",
 
 		text: {
-			wMain: "#687886",
-			w50: "#B3BBC2"
+			wMain: "#647481",
+			w50: "#B1B9C0"
 		}
 	},
 
@@ -140,8 +140,8 @@ const palette: ThemeMappingPalette = {
 			w20: "#E7E9EC",
 			w10: "#F3F4F6",
 			text: {
-				wMain: "#687886",
-				w50: "#B3BBC2"
+				wMain: "#647481",
+				w50: "#B1B9C0"
 			}
 		},
 		accent: {
