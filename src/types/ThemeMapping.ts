@@ -166,6 +166,12 @@ export type ThemeMappingPalette = {
 			white: string;
 			fill: string;
 			hover: string;
+			infoLightBgBlue: string;
+			errorBgRed: string;
+			successBgGreen: string;
+			infoLightLabelBlue: string;
+			errorLabel: string;
+			successLabel: string;
 		};
 	};
 };

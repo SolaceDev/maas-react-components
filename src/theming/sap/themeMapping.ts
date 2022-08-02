@@ -162,7 +162,13 @@ const palette: ThemeMappingPalette = {
 			smokeGrey: "#DBDFE2",
 			white: "#FFF",
 			fill: "rgba(0, 0, 0, 0.1)",
-			hover: "rgba(0, 0, 0, 0.2)"
+			hover: "rgba(0, 0, 0, 0.2)",
+			infoLightBgBlue: "#E0F5FD",
+			errorBgRed: "#FDEDED",
+			successBgGreen: "#DDF2EF",
+			infoLightLabelBlue: "#2C75B7",
+			errorLabel: "#C33135",
+			successLabel: "#006B53"
 		}
 	}
 };

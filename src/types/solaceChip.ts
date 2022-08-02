@@ -8,5 +8,11 @@ export enum CHIP_COLORS {
 	warnBgYellow = "warnBgYellow",
 	LIGHT_GREY = "lightGrey",
 	SMOKE_GREY = "smokeGrey",
-	WHITE = "white"
+	WHITE = "white",
+	INFO_LIGHT_BG_BLUE = "infoLightBgBlue",
+	ERROR_BG_RED = "errorBgRed",
+	SUCCESS_BG_GREEN = "successBgGreen",
+	INFO_BLUE_LABEL = "infoLightLabelBlue",
+	ERROR_RED_LABEL = "errorLabel",
+	SUCCESS_GREEN_LABEL = "successLabel"
 }
