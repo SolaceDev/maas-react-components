@@ -1,4 +1,4 @@
-import { Tooltip } from "@mui/material";
+import { styled, Tooltip } from "@mui/material";
 import { Fade } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { useCallback, useRef, useState } from "react";
@@ -74,6 +74,18 @@ export interface SolaceTooltipProps extends SolaceComponentProps {
 	onClose?: (event: Event | React.SyntheticEvent<Element, Event>) => void;
 }
 
+const OverflowDiv = styled("div")(() => ({
+	whiteSpace: "nowrap",
+	overflow: "hidden",
+	textOverflow: "ellipsis",
+	position: "relative",
+	// adding this empty block to prevent showing tooltip twice on Safari
+	"&::after": {
+		content: '""',
+		display: "block"
+	}
+}));
+
 function SolaceTooltip({
 	id,
 	title,
@@ -145,17 +157,7 @@ function SolaceTooltip({
 			onClose={handleClose}
 		>
 			{variant === "overflow" ? (
-				<div
-					ref={textElementRef}
-					style={{
-						whiteSpace: "nowrap",
-						overflow: "hidden",
-						textOverflow: "ellipsis",
-						position: "relative"
-					}}
-				>
-					{children}
-				</div>
+				<OverflowDiv ref={textElementRef}>{children}</OverflowDiv>
 			) : typeof children === "string" ? (
 				<span>{children}</span>
 			) : (
