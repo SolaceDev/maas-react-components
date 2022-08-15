@@ -14,7 +14,7 @@ const palette: ThemeMappingPalette = {
 		w100: "#07529C",
 		w90: "#0961B9",
 		wMain: "#0A6ED1",
-		wMain40: alpha("#0A6ED1", 0.4),
+		wMain40: alpha("#015B82", 0.4),
 		w60: "#6CA8E3",
 		w40: "#9DC5ED",
 		w20: "#CEE2F6",
@@ -40,7 +40,7 @@ const palette: ThemeMappingPalette = {
 	},
 
 	background: {
-		w100: "#2A3B4C",
+		w100: "#021B2F",
 		wMain: "#354A5F",
 		w20: "#EDEFF0",
 		w10: "#FFFFFF"

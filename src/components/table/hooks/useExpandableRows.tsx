@@ -152,6 +152,7 @@ export const useExpandableRows = ({
 							clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
 							expanded: expanded
 						})}
+						data-qa={row.id}
 					>
 						{[
 							selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),

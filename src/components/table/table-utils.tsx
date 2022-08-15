@@ -3,6 +3,8 @@ import { SolaceMenuItemProps } from "../SolaceMenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { styled } from "@mui/material";
 import ColumnControlMenu, { ColumnControProps } from "./components/ColumnControlMenu";
+import { appTheme } from "../../theming/themeUtils";
+import { SupportedThemes } from "../../types/supportedThemes";
 
 export interface TableColumn {
 	field: string;
@@ -64,10 +66,13 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	},
 
 	"&.selected": {
-		backgroundColor: theme.palette.ux.brand.w10,
+		// remove "solace" option when new palette is adopted
+		backgroundColor: appTheme === SupportedThemes.solace ? theme.palette.ux.brand.w10 : theme.palette.ux.secondary.w20,
 		// selected effect for expanded sibling row
 		"+ tr.expanded.selected": {
-			backgroundColor: theme.palette.ux.brand.w10
+			backgroundColor:
+				// remove "solace" option when new palette is adopted
+				appTheme === SupportedThemes.solace ? theme.palette.ux.brand.w10 : theme.palette.ux.secondary.w20
 		}
 	},
 

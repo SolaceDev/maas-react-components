@@ -247,7 +247,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							color: themeMapping.palette.secondary.text.wMain
 						},
 						"&.Mui-disabled": {
-							color: themeMapping.palette.secondary.text.w50
+							color: isCurrentSolace
+								? themeMapping.palette.secondary.text.w50
+								: themeMapping.palette.secondary.text.wMain
 						}
 					}
 				}
@@ -269,7 +271,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							color: themeMapping.palette.deprecated.secondary.text.wMain
 						},
 						"&.Mui-disabled": {
-							color: themeMapping.palette.deprecated.secondary.text.w50,
+							color: themeMapping.palette.deprecated.secondary.text.wMain,
 							"&.check-box-label": {
 								color: themeMapping.palette.secondary.text.w50
 							},
@@ -281,7 +283,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							fontWeight: 500
 						},
 						"&.read-only": {
-							color: themeMapping.palette.deprecated.secondary.text.w50
+							color: themeMapping.palette.deprecated.secondary.text.wMain
 						}
 					}
 				}
@@ -633,7 +635,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								minHeight: "38px",
 								alignItems: "center",
 								whiteSpace: "normal",
-
 								"&:hover": {
 									backgroundColor: themeMapping.palette.secondary.w10
 								},
@@ -641,16 +642,16 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									paddingTop: "8px",
 									paddingBottom: "8px"
 								},
-
-								"&.Mui-selected": {
-									backgroundColor: themeMapping.palette.brand.w10
-								},
 								".MuiListItemIcon-root": {
 									width: "48px",
 									".MuiSvgIcon-root": {
 										width: "24px",
 										height: "24px"
 									}
+								},
+								// select styles
+								".MuiTouchRipple-child": {
+									backgroundColor: themeMapping.palette.secondary.w20
 								}
 							},
 
