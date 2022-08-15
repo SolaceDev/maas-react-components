@@ -14,7 +14,7 @@ export const decorators = [
 			<div style={{ display: "none" }}>
 				<SolaceSvgs />
 			</div>
-			<Story />
+			{Story()}
 		</ThemeProvider>
 	},
 	withDesign

@@ -65,7 +65,7 @@ function SolaceTabs({ tabs, activeTabValue, onTabClick, size = "sm" }: SolaceTab
 	};
 	return (
 		<Box sx={{ width: "100%", fontSize: BASE_FONT_PX_SIZES[size] }}>
-			<Tabs value={activeTabValue} onChange={handleChange}>
+			<Tabs value={activeTabValue} onChange={handleChange} className={tabs.length === 1 ? "singleTab" : ""}>
 				{tabs.map((item: TabProps) => (
 					<AnchorTab {...item} key={`anchroTab-${item.value}`} size={size} />
 				))}

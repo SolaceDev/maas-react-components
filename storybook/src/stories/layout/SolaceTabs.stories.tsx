@@ -25,6 +25,7 @@ DefaultTabs.args = {
 	],
 	activeTabValue: "tab_one"
 };
+
 export const IncreaseFontTabs = Template.bind({});
 IncreaseFontTabs.args = {
 	tabs: [
@@ -35,6 +36,7 @@ IncreaseFontTabs.args = {
 	activeTabValue: "tab_one",
 	size: "md"
 };
+
 export const DisabledTabs = Template.bind({});
 DisabledTabs.args = {
 	tabs: [
@@ -120,4 +122,10 @@ export const WithIconTabs = (): ReactNode => {
 			</div>
 		</>
 	);
+};
+
+export const WithSingleTab = Template.bind({});
+WithSingleTab.args = {
+	tabs: [{ label: "Tab One", value: "tab_one", href: "#" }],
+	activeTabValue: "tab_one"
 };

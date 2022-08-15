@@ -1011,6 +1011,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						".MuiTabs-indicator": {
 							backgroundColor: themeMapping.palette.accent.n2.wMain
+						},
+						"&.singleTab": {
+							a: {
+								cursor: "inherit"
+							},
+							".MuiTabs-indicator": {
+								backgroundColor: "transparent"
+							}
 						}
 					}
 				}
