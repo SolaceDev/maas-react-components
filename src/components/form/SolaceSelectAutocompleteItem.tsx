@@ -43,6 +43,7 @@ function SolaceSelectAutocompleteItem({
 					direction="column"
 					alignItems="flex-end"
 					justifyContent="flex-start"
+					style={{ marginLeft: "0px" }}
 					py={1}
 				>
 					{supplementalText}

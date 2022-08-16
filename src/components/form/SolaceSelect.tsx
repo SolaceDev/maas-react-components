@@ -70,6 +70,10 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 */
 	width?: string;
 	/**
+	 * Custom maxHeight of the component.
+	 */
+	maxHeight?: string;
+	/**
 	 * Boolean flag to show the select option that has empty value
 	 */
 	displayEmpty?: boolean;
@@ -106,6 +110,7 @@ function SolaceSelect({
 	dataTags,
 	children,
 	width,
+	maxHeight,
 	open,
 	onOpen,
 	onClose
@@ -161,6 +166,10 @@ function SolaceSelect({
 			onChange={handleChange}
 			SelectProps={{
 				IconComponent: SelectDropdownIcon,
+				MenuProps: {
+					sx: { maxHeight: maxHeight }
+				},
+
 				renderValue: getOptionDisplayValue
 					? (value: unknown) => {
 							return getOptionDisplayValue(value);

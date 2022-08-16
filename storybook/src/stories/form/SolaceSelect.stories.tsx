@@ -64,6 +64,11 @@ export default {
 				type: "text"
 			}
 		},
+		maxHeight: {
+			control: {
+				type: "text"
+			}
+		},
 		displayEmpty: {
 			control: {
 				type: "boolean"
@@ -210,6 +215,16 @@ CustomWidth.args = {
 	name: "demoSelect",
 	children: SELECT_OPTIONS,
 	width: "350px"
+};
+export const CustomMaxHeight = Template.bind({});
+CustomMaxHeight.args = {
+	onChange: action("callback"),
+	title: TITLE,
+	id: "demoSelectId",
+	name: "demoSelect",
+	children: SELECT_OPTIONS,
+	width: "350px",
+	maxHeight: "10em"
 };
 
 export const StackedLabelFormat = Template.bind({});
