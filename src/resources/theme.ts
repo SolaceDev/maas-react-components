@@ -1311,7 +1311,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				},
 				EditorWrapper: {
 					"&.codeEditor-border": {
-						border: `solid 1px ${themeMapping.palette.secondary.w40}`
+						border: `solid 1px ${themeMapping.palette.secondary.w40}`,
+						"&.codeEditor-readonly": {
+							".CodeMirror-cursor": { display: "none" } // hide the cursor when in readOnly mode
+						}
 					}
 				},
 				IconWrapper: {

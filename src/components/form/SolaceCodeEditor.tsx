@@ -127,7 +127,9 @@ function SolaceCodeEditor({
 								</SolaceButton>
 							)}
 						</IconWrapper>
-						<StyledEditorWrapper className={!editorExpanded ? "codeEditor-border" : ""}>
+						<StyledEditorWrapper
+							className={`${!editorExpanded ? "codeEditor-border" : ""} ${readOnly ? "codeEditor-readonly" : ""}`}
+						>
 							<CodeMirror
 								key={id}
 								value={val}
@@ -146,7 +148,7 @@ function SolaceCodeEditor({
 									lineWrapping: true,
 									lineNumbers: true,
 									foldGutter: true,
-									readOnly: readOnly ? "nocursor" : false,
+									readOnly: readOnly,
 									gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"]
 								}}
 								onChange={onChange}
@@ -158,7 +160,9 @@ function SolaceCodeEditor({
 			)}
 			{!expandable && (
 				<>
-					<StyledEditorWrapper className={!editorExpanded ? "codeEditor-border" : ""}>
+					<StyledEditorWrapper
+						className={`${!editorExpanded ? "codeEditor-border" : ""} ${readOnly ? "codeEditor-readonly" : ""}`}
+					>
 						<CodeMirror
 							key={id}
 							value={val}
@@ -177,7 +181,7 @@ function SolaceCodeEditor({
 								lineWrapping: true,
 								lineNumbers: true,
 								foldGutter: true,
-								readOnly: readOnly ? "nocursor" : false,
+								readOnly: readOnly,
 								gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"]
 							}}
 							onChange={onChange}
