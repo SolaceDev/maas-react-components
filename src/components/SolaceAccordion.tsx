@@ -43,6 +43,10 @@ export interface SolaceAccordionProps extends SolaceComponentProps {
 	 * Background color of the accordion
 	 */
 	backgroundColor?: string;
+	/**
+	 * If `false`, rounded corners are enabled. The default is `true`.
+	 */
+	square?: boolean;
 }
 
 const SolaceAccordion = ({
@@ -56,12 +60,13 @@ const SolaceAccordion = ({
 	onChange,
 	dataQa,
 	dataTags,
-	backgroundColor
+	backgroundColor,
+	square = true
 }: SolaceAccordionProps) => {
 	return (
 		<Accordion
 			id={id}
-			square={true}
+			square={square}
 			disableGutters={true}
 			disabled={disabled}
 			expanded={expanded}

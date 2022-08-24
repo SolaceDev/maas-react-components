@@ -2,6 +2,7 @@ import React from "react";
 import { ComponentMeta } from "@storybook/react";
 import { SolaceAccordion } from "@SolaceDev/maas-react-components";
 import { useEffect, useState } from "@storybook/addons";
+import { SolaceAccordionProps } from "../../../dist/components/SolaceAccordion";
 
 export default {
 	title: "Under Construction/SolaceAccordion",
@@ -43,6 +44,15 @@ export default {
 		disabled: {
 			control: { type: "boolean" },
 			description: "If true, the Accordion expands by default",
+			table: {
+				defaultValue: {
+					summary: false
+				}
+			}
+		},
+		round: {
+			control: { type: "boolean" },
+			description: "If true, square corners are enabled",
 			table: {
 				defaultValue: {
 					summary: false
@@ -183,6 +193,31 @@ const SolaceAccordionListStory = ({ ...args }) => {
 	);
 };
 
+/**
+ * Accordion List story: demo in a list of Accordions with only one Accordion expanded at a time
+ */
+const RoundedAccordionStory = ({ expanded, ...args }: SolaceAccordionProps) => {
+	const [isExpanded, setIsExpanded] = useState(expanded);
+
+	useEffect(() => {
+		setIsExpanded(isExpanded);
+	}, [isExpanded]);
+
+	const handleChange = () => {
+		setIsExpanded(!isExpanded);
+	};
+
+	return (
+		<div
+			style={{
+				borderRadius: "2px"
+			}}
+		>
+			<SolaceAccordion {...args} expanded={isExpanded} onChange={handleChange} />
+		</div>
+	);
+};
+
 export const MultipleAccordions = SolaceAccordionListStory.bind({});
 MultipleAccordions.args = {
 	dataQa: "demoAccordionList"
@@ -213,4 +248,12 @@ AccordionWithIndicator.args = {
 	details: testItem.details,
 	expanded: false,
 	indicatorVariant: "info"
+};
+
+export const RoundedAccordion = RoundedAccordionStory.bind({});
+RoundedAccordion.args = {
+	dataQa: testItem.id,
+	summary: testItem.summary,
+	details: testItem.details,
+	square: false
 };
