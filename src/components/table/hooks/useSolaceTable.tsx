@@ -59,6 +59,7 @@ export const useSolaceTable = ({
 }): React.ReactNode[] => {
 	const [selectedRows, setSelectedRows] = useState<TableRow[]>([]);
 	const [selectAll, setSelectAll] = useState(false);
+	const [indeterminate, setIndeterminate] = useState(false);
 
 	// Applicable if sortedColumn is not set
 	const [internalSortedColumn, setInternalSortedColumn] = useState<TableColumn>();
@@ -89,6 +90,14 @@ export const useSolaceTable = ({
 			setSelectAll(false);
 		}
 	}, [selectedRows, selectionChangedCallback]);
+
+	useEffect(() => {
+		if (selectedRows.length > 0 && selectedRows.length < rows.length) {
+			setIndeterminate(true);
+		} else {
+			setIndeterminate(false);
+		}
+	}, [rows?.length, selectedRows?.length]);
 
 	const updateSelection = useCallback(
 		(clickedRow: TableRow) => {
@@ -147,9 +156,9 @@ export const useSolaceTable = ({
 	);
 
 	const handleSelectAllClick = useCallback(() => {
-		rows.map((row) => (row.rowSelected = !selectAll));
-		setSelectedRows(selectAll ? [] : rows);
-	}, [rows, selectAll]);
+		rows.map((row) => (row.rowSelected = selectAll || indeterminate ? false : true));
+		setSelectedRows(selectAll || indeterminate ? [] : rows);
+	}, [rows, selectAll, indeterminate]);
 
 	const handleCheckboxClick = useCallback(
 		(row: TableRow) => {
@@ -163,13 +172,18 @@ export const useSolaceTable = ({
 		if (selectionType === SELECTION_TYPE.MULTI) {
 			return (
 				<StyledTableHeader key={"selectAllCheckbox"} className="checkbox-column">
-					<SolaceCheckBox name={"selectAllCheckbox"} onChange={() => handleSelectAllClick()} checked={selectAll} />
+					<SolaceCheckBox
+						name={"selectAllCheckbox"}
+						onChange={() => handleSelectAllClick()}
+						checked={selectAll || indeterminate}
+						indeterminate={indeterminate}
+					/>
 				</StyledTableHeader>
 			);
 		} else {
 			return;
 		}
-	}, [selectAll, handleSelectAllClick, selectionType]);
+	}, [selectAll, handleSelectAllClick, selectionType, indeterminate]);
 
 	const addChevronToHeader = useCallback((): React.ReactNode | void => {
 		if (expandableRowOptions?.allowToggle) {
