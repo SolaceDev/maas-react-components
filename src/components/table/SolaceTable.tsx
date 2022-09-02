@@ -106,7 +106,6 @@ const TableWrapper = styled("div")(({ theme }) => ({
 	flexDirection: "column",
 	color: theme.palette.ux.primary.text.wMain,
 	border: `1px solid ${theme.palette.ux.secondary.w40}`,
-	borderRadius: "4px",
 	width: "100%",
 	height: "100%",
 	minHeight: "200px",
