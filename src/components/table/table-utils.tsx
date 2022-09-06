@@ -154,17 +154,31 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 			"&.sortable": {
 				position: "relative",
 				cursor: "pointer",
+				// resting/active
+				"svg.asc, svg.desc": {
+					path: {
+						fill: theme.palette.ux.secondary.wMain
+					}
+				},
+				// resting/inactive
+				"svg.unsorted": {
+					path: {
+						fill: theme.palette.ux.secondary.w40
+					}
+				},
+				// hover
 				"&:hover": {
 					"svg.asc, svg.desc, svg.unsorted": {
 						path: {
-							fill: theme.palette.ux.secondary.wMain
+							fill: theme.palette.ux.primary.text.wMain
 						}
 					}
 				},
+				// pressed
 				"&:active": {
 					"svg.asc, svg.desc, svg.unsorted": {
 						path: {
-							fill: theme.palette.ux.deprecated.secondary.w80
+							fill: theme.palette.ux.primary.text.wMain
 						}
 					}
 				}

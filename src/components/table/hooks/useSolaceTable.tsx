@@ -22,6 +22,8 @@ import { ExpandableRowOptions } from "../SolaceTable";
 import clsx from "clsx";
 import { cloneDeep } from "lodash";
 
+const DEFAULT_TOOLTIP_PLACEMENT = "bottom-end";
+
 export const useSolaceTable = ({
 	rows,
 	columns,
@@ -224,7 +226,7 @@ export const useSolaceTable = ({
 						return (
 							<StyledTableData key={key}>
 								{col.tooltip && (
-									<SolaceTooltip variant="overflow" title={row[col.field]} placement={"bottom-end"}>
+									<SolaceTooltip variant="overflow" title={row[col.field]} placement={DEFAULT_TOOLTIP_PLACEMENT}>
 										{row[col.field]}
 									</SolaceTooltip>
 								)}
@@ -256,13 +258,27 @@ export const useSolaceTable = ({
 								className={`${col.sortable ? "sortable header" : "header"}`}
 								onClick={() => (col.sortable ? handleSort(col, sortedColumn, internalSortedColumn) : undefined)}
 							>
-								<SolaceTooltip variant="overflow" title={col.headerName} placement={"bottom-end"}>
+								<SolaceTooltip variant="overflow" title={col.headerName} placement={DEFAULT_TOOLTIP_PLACEMENT}>
 									{col.headerName}
 								</SolaceTooltip>
-								{columnToSort?.field === col.field &&
-									col.sortable &&
-									(columnToSort.sortDirection === SORT_DIRECTION.ASC ? <AscendingSortIcon /> : <DescendingSortIcon />)}
-								{columnToSort?.field !== col.field && col.sortable && <UnsortedIcon />}
+								{columnToSort?.field === col.field && col.sortable && (
+									<SolaceTooltip title="Sort" placement={DEFAULT_TOOLTIP_PLACEMENT}>
+										<div>
+											{columnToSort.sortDirection === SORT_DIRECTION.ASC ? (
+												<AscendingSortIcon />
+											) : (
+												<DescendingSortIcon />
+											)}
+										</div>
+									</SolaceTooltip>
+								)}
+								{columnToSort?.field !== col.field && col.sortable && (
+									<SolaceTooltip title="Sort" placement={DEFAULT_TOOLTIP_PLACEMENT}>
+										<div>
+											<UnsortedIcon />
+										</div>
+									</SolaceTooltip>
+								)}
 							</span>
 						</StyledTableHeader>
 					)
