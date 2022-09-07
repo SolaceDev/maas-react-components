@@ -43,22 +43,29 @@ export enum SORT_DIRECTION {
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`,
+	":not(:last-child)": {
+		borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`
+	},
 	"&.expanded": {
 		borderBottom: "none",
 		"&:hover": {
 			"+ tr.expanded": {
-				backgroundColor: theme.palette.ux.secondary.w10
+				":not(.selected)": {
+					backgroundColor: theme.palette.ux.secondary.w10
+				}
 			},
 			"+ tr.expanded.selected": {
-				backgroundColor: theme.palette.ux.secondary.w10
+				":not(.selected)": {
+					backgroundColor: theme.palette.ux.secondary.w10
+				}
 			}
 		}
 	},
 
-	height: "32px",
+	height: "40px",
 	"&.header": {
-		height: "48px"
+		height: "56px",
+		borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`
 	},
 
 	"&.clickable": {
@@ -77,7 +84,10 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	},
 
 	"&:hover": {
-		background: theme.palette.ux.secondary.w10,
+		":not(.selected)": {
+			background: theme.palette.ux.secondary.w10
+		},
+
 		"&.header": {
 			background: "transparent"
 		}
