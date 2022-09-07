@@ -65,7 +65,7 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	height: "40px",
 	"&.header": {
 		height: "56px",
-		borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`
+		borderBottom: "none"
 	},
 
 	"&.clickable": {
@@ -156,6 +156,12 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 		height: "48px",
 		textAlign: "left",
 		width: width,
+		// allow table header to be sticky
+		position: "sticky",
+		top: 0,
+		zIndex: 20,
+		backgroundColor: theme.palette.ux.background.w10,
+		boxShadow: `inset 0 -1px 0 ${theme.palette.ux.secondary.w20}`,
 		"& .header": {
 			minWidth: "50px",
 			display: "flex",
