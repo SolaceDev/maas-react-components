@@ -1,4 +1,5 @@
 import { Pagination, styled } from "@mui/material";
+import { BASE_FONT_PX_SIZES } from "../resources/typography";
 
 export interface SolacePaginationProps {
 	/**
@@ -45,8 +46,8 @@ const PageListContainer = styled("div")(() => ({
 }));
 
 const MessageContainer = styled("p")(({ theme }) => ({
-	margin: "0px",
-	fontSize: "13px",
+	margin: `${theme.spacing(0.5)} 0px 0px 0px`,
+	fontSize: BASE_FONT_PX_SIZES.xs,
 	color: theme.palette.ux.deprecated.secondary.text.wMain
 }));
 

@@ -1030,11 +1030,18 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							display: "none"
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root": {
+							margin: "0px",
+							padding: "0px",
+							height: "24px",
+							minWidth: "24px",
 							color: themeMapping.palette.primary.wMain,
-							fontSize: BASE_FONT_PX_SIZES.md
+							fontSize: BASE_FONT_PX_SIZES.sm
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root:hover": {
-							background: "none"
+							background: "none",
+							textDecoration: "underline",
+							// TODO: remove "solace" options when new theme is adopted
+							color: isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.primary.w90
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root.Mui-selected": {
 							background: "none",
