@@ -427,16 +427,20 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							},
 							"&.Mui-error": {
 								".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
-									borderColor: `${themeMapping.palette.error.wMain}`
+									borderColor: `${themeMapping.palette.error.w100}`
 								}
 							},
 							"&.Mui-disabled": {
 								backgroundColor: themeMapping.palette.background.w20,
 								".MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${themeMapping.palette.secondary.w10}`
+									border: `solid 1px ${
+										isCurrentSolace ? themeMapping.palette.secondary.w10 : themeMapping.palette.secondary.w20
+									}`
 								},
 								".MuiOutlinedInput-input:read-only + .MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${themeMapping.palette.secondary.w10}`
+									border: `solid 1px ${
+										isCurrentSolace ? themeMapping.palette.secondary.w10 : themeMapping.palette.secondary.w20
+									}`
 								},
 								input: {
 									WebkitTextFillColor: themeMapping.palette.secondary.text.w50,
