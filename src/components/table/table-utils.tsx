@@ -43,9 +43,7 @@ export enum SORT_DIRECTION {
 
 export const StyledTableRow = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
-	":not(:last-child)": {
-		borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`
-	},
+	borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`,
 	"&.expanded": {
 		borderBottom: "none",
 		"&:hover": {
@@ -207,8 +205,7 @@ export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => pro
 		},
 		"&.icon-column": {
 			width: "50px",
-			textAlign: "center",
-			position: "relative"
+			textAlign: "center"
 		},
 		"&.number-column .header": {
 			justifyContent: "flex-end"

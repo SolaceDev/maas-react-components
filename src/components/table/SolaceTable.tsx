@@ -53,6 +53,10 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	renderCustomEmptyState?: () => React.ReactNode;
 	/**
+	 * Show emptyStateMessage or cunstomEmptyState when set to true
+	 */
+	showEmptyState?: boolean;
+	/**
 	 * Selection changed callback
 	 */
 	selectionChangedCallback: (row: TableRow[]) => void;
@@ -143,6 +147,7 @@ function SolaceTable({
 	renderCustomRowCells,
 	emptyStateMessage,
 	renderCustomEmptyState,
+	showEmptyState,
 	rowActionMenuItems,
 	renderCustomRowActionItem,
 	headerHoverCallback,
@@ -181,10 +186,11 @@ function SolaceTable({
 	return (
 		<TableWrapper>
 			<StyledTable data-qa={id}>
-				<thead>{columnNodes}</thead>
+				{/* The border style of thead is set in table-utils on th with boxShadow */}
+				<thead style={{ borderBottom: 0 }}>{columnNodes}</thead>
 				<tbody>{!!rows.length && rowNodes}</tbody>
 			</StyledTable>
-			{!rows.length && showEmptyStateMessage()}
+			{showEmptyState !== false && !rows.length && showEmptyStateMessage()}
 		</TableWrapper>
 	);
 }

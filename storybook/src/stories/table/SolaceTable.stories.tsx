@@ -7,11 +7,13 @@ import {
 	SolaceTableSortDirection,
 	SolaceTableActionMenuItem,
 	SolaceTableColumn,
-	SolaceTableRow
+	SolaceTableRow,
+	SolaceCircularProgress
 } from "@SolaceDev/maas-react-components";
 import { StyledTableData, StyledTableNumberData } from "../../../../src/components/table/table-utils";
 import { cloneDeep } from "lodash";
 import { useMemo } from "react";
+import { useEffect } from "@storybook/addons";
 
 const rows = [
 	{
@@ -459,6 +461,18 @@ export const CustomColumnWidthAndTooltipTable = (): JSX.Element => {
 	);
 };
 
+export const TableWithOnlyOneRow = (): JSX.Element => {
+	return (
+		<SolaceTable
+			selectionChangedCallback={action(selectionCallback)}
+			sortCallback={action(sortCallback)}
+			rows={rows.slice(-1)}
+			columns={columns}
+			selectionType={SolaceTableSelectionType.MULTI}
+		></SolaceTable>
+	);
+};
+
 export const EmptyStateTable = (): JSX.Element => {
 	return (
 		<div>
@@ -468,6 +482,39 @@ export const EmptyStateTable = (): JSX.Element => {
 				rows={[]}
 				columns={columns}
 				selectionType={SolaceTableSelectionType.MULTI}
+			></SolaceTable>
+		</div>
+	);
+};
+
+export const EmptyStateTableWithLoadingState = (): JSX.Element => {
+	const [dataFetched, setDataFetched] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+
+	useEffect(() => {
+		setIsLoading(true);
+		setTimeout(() => {
+			setDataFetched(true);
+			setIsLoading(false);
+		}, 3000);
+	}, []);
+
+	return (
+		<div style={{ height: "400px" }}>
+			{isLoading && (
+				<div
+					style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: 1000 }}
+				>
+					<SolaceCircularProgress />
+				</div>
+			)}
+			<SolaceTable
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={action(sortCallback)}
+				rows={[]}
+				columns={columns}
+				selectionType={SolaceTableSelectionType.MULTI}
+				showEmptyState={dataFetched} // only show empty state (if empty) after data is fetched
 			></SolaceTable>
 		</div>
 	);
@@ -1175,13 +1222,14 @@ export const ScrollableTable = (): JSX.Element => {
 	);
 
 	return (
-		<div style={{ height: "200px" }}>
+		<div style={{ height: "300px" }}>
 			<SolaceTable
 				selectionChangedCallback={action(selectionCallback)}
 				sortCallback={handleSort}
 				rows={tableRows}
 				columns={columnsDef}
 				selectionType={SolaceTableSelectionType.MULTI}
+				rowActionMenuItems={rowActionMenuItems}
 			></SolaceTable>
 		</div>
 	);
