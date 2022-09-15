@@ -12,6 +12,7 @@ const boxShadow = {
 	w15: alpha("#000000", 0.15),
 	w20: alpha("#000000", 0.2),
 	w30: alpha("#000000", 0.3),
+	w40: alpha("#000000", 0.4),
 	w50: alpha("#000000", 0.5)
 };
 
@@ -881,7 +882,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiPaper-root": {
 							minWidth: "400px",
 							maxHeight: "80%",
-							boxShadow: `0 2px 8px ${boxShadow.w30}`,
+							boxShadow: `0 2px 8px ${isCurrentSolace ? boxShadow.w30 : boxShadow.w40}`,
 							padding: "24px",
 							".MuiDialogTitle-root": {
 								fontSize: BASE_FONT_PX_SIZES.xl,
@@ -920,9 +921,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								left: 0,
 								width: "100%",
 								height: "4px",
-								backgroundColor: isCurrentSolace
-									? themeMapping.palette.primary.wMain
-									: themeMapping.palette.accent.n2.w10
+								backgroundColor: isCurrentSolace ? themeMapping.palette.brand.w10 : themeMapping.palette.accent.n2.w10
 							},
 							// the dark sliding part of the progress bar
 							".MuiPaper-root::after": {
@@ -934,13 +933,13 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								height: "4px",
 								background: `linear-gradient(90deg, ${hexToRgb(
 									// TODO: remove "solace" option when new theme is adopted
-									isCurrentSolace ? themeMapping.palette.brand.w10 : themeMapping.palette.accent.n2.wMain
+									isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.accent.n2.wMain
 								)} 0% 40%, transparent 40% 100%)`,
 								animation: "animation 2s linear infinite"
 							},
 							"@keyframes animation": {
 								"0%": {
-									left: "0%"
+									left: "-40%"
 								},
 								"100%": {
 									left: "100%"
