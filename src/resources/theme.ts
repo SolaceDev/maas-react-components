@@ -347,7 +347,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							},
 						"&:hover": {
 							".MuiOutlinedInput-input": {
-								border: `solid 1px ${themeMapping.palette.secondary.text.w50}`
+								border: `solid 1px ${
+									isCurrentSolace ? themeMapping.palette.secondary.text.w50 : themeMapping.palette.secondary.wMain
+								}`
 							},
 							"&.MuiOutlinedInput-root": {
 								".MuiOutlinedInput-notchedOutline": {
@@ -364,6 +366,20 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							"&.MuiOutlinedInput-root": {
 								".MuiOutlinedInput-notchedOutline": {
 									border: "none"
+								}
+							}
+						},
+						"&.Mui-error": {
+							".MuiOutlinedInput-input": {
+								border: `solid 1px ${
+									isCurrentSolace ? themeMapping.palette.error.w100 : themeMapping.palette.error.wMain
+								}`
+							},
+							"&.Mui-focused": {
+								".MuiOutlinedInput-input": {
+									border: `solid 1px ${
+										isCurrentSolace ? themeMapping.palette.brand.w30 : themeMapping.palette.accent.n2.wMain
+									}`
 								}
 							}
 						},
@@ -393,7 +409,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							},
 							"&:hover": {
 								".MuiOutlinedInput-notchedOutline": {
-									border: `solid 1px ${themeMapping.palette.secondary.text.w50}`,
+									border: `solid 1px ${
+										isCurrentSolace ? themeMapping.palette.secondary.text.w50 : themeMapping.palette.secondary.wMain
+									}`,
 									backgroundColor: "transparent"
 								}
 							},
@@ -428,7 +446,16 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							},
 							"&.Mui-error": {
 								".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
-									borderColor: `${themeMapping.palette.error.w100}`
+									border: `solid 1px ${
+										isCurrentSolace ? themeMapping.palette.error.w100 : themeMapping.palette.error.wMain
+									}`
+								},
+								"&.Mui-focused": {
+									".MuiOutlinedInput-notchedOutline": {
+										border: `solid 1px ${
+											isCurrentSolace ? themeMapping.palette.brand.w30 : themeMapping.palette.accent.n2.wMain
+										}`
+									}
 								}
 							},
 							"&.Mui-disabled": {

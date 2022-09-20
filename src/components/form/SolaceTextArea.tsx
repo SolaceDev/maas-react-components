@@ -164,6 +164,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 			type="text"
 			autoComplete="off"
 			autoFocus={autoFocus}
+			error={hasErrors}
 			minRows={minRows}
 			maxRows={maxRows}
 			multiline={true}

@@ -493,10 +493,11 @@ export const EmptyStateTableWithLoadingState = (): JSX.Element => {
 
 	useEffect(() => {
 		setIsLoading(true);
-		setTimeout(() => {
+		const dateQueryTimeout = setTimeout(() => {
 			setDataFetched(true);
 			setIsLoading(false);
 		}, 3000);
+		return () => clearTimeout(dateQueryTimeout);
 	}, []);
 
 	return (
