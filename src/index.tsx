@@ -35,6 +35,7 @@ export { default as SolaceSelectAutocomplete } from "./components/form/SolaceSel
 export { default as SolaceSelectAutocompleteItem } from "./components/form/SolaceSelectAutocompleteItem";
 export { default as SolaceDetailMessage } from "./components/SolaceDetailMessage";
 export { getOptionLabel as getSolaceSelectAutocompleteOptionLabel } from "./components/form/SolaceSelectAutocompleteItem";
+export { getShowOptionDivider as getShowSolaceSelectAutocompleteOptionDivider } from "./components/form/SolaceSelectAutocompleteItem";
 export { isOptionEqual as isSolaceSelectAutocompleteOptionEqual } from "./components/form/SolaceSelectAutocompleteItem";
 export type { SolaceSelectAutocompleteItemProps } from "./components/form/SolaceSelectAutocompleteItem";
 export { default as SolaceTextArea } from "./components/form/SolaceTextArea";

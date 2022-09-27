@@ -5,9 +5,12 @@ export interface SolaceSelectAutocompleteItemProps {
 	value: string;
 	subText?: string;
 	supplementalText?: string;
+	divider?: boolean;
 }
 
 export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option?.name;
+
+export const getShowOptionDivider = (option: SolaceSelectAutocompleteItemProps): boolean => option?.divider ?? false;
 
 export const isOptionEqual = (
 	option: SolaceSelectAutocompleteItemProps,
@@ -24,29 +27,29 @@ function SolaceSelectAutocompleteItem({
 	const sizeOfColumn = supplementalText ? 8 : 12;
 	const middlePadding = supplementalText ? "16px" : "0px";
 	return (
-		<Grid container className={clsx({ multiline: !!subText })}>
-			<Grid item xs={sizeOfColumn} zeroMinWidth style={{ wordBreak: "break-word", paddingRight: middlePadding }} py={1}>
-				{name}
-				{subText && (
-					<span className="subtext">
-						<br />
-						{subText}
-					</span>
+		<Grid container direction={"column"} className={clsx({ multiline: !!subText })} py={0.5}>
+			<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"flex-start"}>
+				<Grid item xs={sizeOfColumn} zeroMinWidth style={{ wordBreak: "break-word", paddingRight: middlePadding }}>
+					{name}
+				</Grid>
+				{supplementalText && (
+					<Grid
+						container
+						className="supplementalText"
+						item
+						xs={4}
+						direction="column"
+						alignItems="flex-end"
+						justifyContent="flex-start"
+						style={{ marginLeft: "0px" }}
+					>
+						{supplementalText}
+					</Grid>
 				)}
 			</Grid>
-			{supplementalText && (
-				<Grid
-					container
-					className="supplementalText"
-					item
-					xs={4}
-					direction="column"
-					alignItems="flex-end"
-					justifyContent="flex-start"
-					style={{ marginLeft: "0px" }}
-					py={1}
-				>
-					{supplementalText}
+			{subText && (
+				<Grid className="subtext" item>
+					<span className="subtext">{subText}</span>
 				</Grid>
 			)}
 		</Grid>

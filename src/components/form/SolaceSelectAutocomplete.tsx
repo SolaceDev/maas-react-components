@@ -103,6 +103,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	getOptionDisabledCallback?: (option: V) => boolean;
 	/**
+	 * Whether there should be a divider after the option
+	 */
+	getShowOptionDividerCallback?: (option: V) => boolean;
+	/**
 	 * Custom Width of the component.
 	 */
 	width?: string;
@@ -145,6 +149,7 @@ function SolaceSelectAutocomplete<T, V>({
 	itemComponent,
 	itemMappingCallback,
 	optionsLabelCallback,
+	getShowOptionDividerCallback,
 	dataQa,
 	dataTags,
 	options,
@@ -222,8 +227,14 @@ function SolaceSelectAutocomplete<T, V>({
 			renderOption={(props, option) => {
 				if (option) {
 					const mappedOption = itemMappingCallback(option);
+					const showDivider = getShowOptionDividerCallback?.(option) ?? false;
+
 					return (
-						<Box component="li" {...props}>
+						<Box
+							component="li"
+							{...props}
+							style={{ borderBottom: showDivider ? `1px solid ${theme.palette.ux.secondary.w20}` : "none" }}
+						>
 							{itemComponent(mappedOption)}
 						</Box>
 					);

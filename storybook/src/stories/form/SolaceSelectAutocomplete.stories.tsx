@@ -9,6 +9,7 @@ import {
 	SolaceSelectAutocomplete,
 	SolaceSelectAutocompleteItem,
 	getSolaceSelectAutocompleteOptionLabel,
+	getShowSolaceSelectAutocompleteOptionDivider,
 	isSolaceSelectAutocompleteOptionEqual,
 	SolaceSelectAutocompleteItemProps,
 	SolaceChip,
@@ -105,7 +106,7 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "Option #2",
 		value: "option2",
-		subText: "Some sub text for option 2"
+		subText: "Some sub text for option 2, should be taking up the whole 2nd row"
 	},
 	{
 		name: "Option #3",
@@ -152,6 +153,46 @@ DefaultAutocomplete.args = {
 	onChange: action("callback"),
 	itemComponent: SolaceSelectAutocompleteItem,
 	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
+	itemMappingCallback: (option) => option,
+	title: "Demo Select",
+	id: "demoSelectId",
+	name: "demoSelect",
+	options: store.get("options") || null,
+	fetchOptionsCallback: async (searchTerm: string) => {
+		await fetchOptions(searchTerm);
+	},
+	onCloseCallback: () => store.set({ options: [] }),
+	placeholder: "select an option"
+};
+
+export const WithDividers = Template.bind({});
+WithDividers.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS.map((option) => {
+					if (option.value === "option1" || option.value === "option3") {
+						return {
+							...option,
+							divider: true
+						};
+					}
+					return option;
+				})
+			},
+			delay: 500
+		}
+	]
+};
+WithDividers.args = {
+	onChange: action("callback"),
+	itemComponent: SolaceSelectAutocompleteItem,
+	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+	getShowOptionDividerCallback: getShowSolaceSelectAutocompleteOptionDivider,
 	isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
 	itemMappingCallback: (option) => option,
 	title: "Demo Select",
@@ -702,7 +743,7 @@ export const OpenDropDownOnButtonClick = () => {
 					demoInputRef = input;
 				}}
 				openOnFocus
-				width="300px"
+				width="500px"
 			></SolaceSelectAutocomplete>
 			<SolaceButton
 				variant="outline"
@@ -756,4 +797,3 @@ CustomHeight.parameters = {
 	// Delay snapshot 5 seconds until all interactions are done
 	chromatic: { delay: 5000 }
 };
-
