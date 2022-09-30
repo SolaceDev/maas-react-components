@@ -75,9 +75,11 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	// states
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [menuPopoverRef, setMenuPopoverRef] = useState<null | HTMLElement>(null);
+	const [pressedButton, setPressedButton] = useState<DOMTokenList>();
 
 	// handlers
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+		setPressedButton(event.currentTarget.classList);
 		if (!propagateMenuClick) {
 			// stop click event on the menu item from being bubble up to parent
 			event.stopPropagation();
@@ -86,9 +88,14 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		if (items?.length) {
 			setAnchorEl(event.currentTarget);
 		}
+		// maintain the pressed state when the menu is open
+		event.currentTarget.classList.toggle("pressed");
 	};
 
 	const handleMenuClose = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+		// remove the pressed state when menu is closed
+		pressedButton?.remove("pressed");
+		setPressedButton(pressedButton);
 		// don't bubble click event on menu closed by user clicking on any area in the window
 		event.stopPropagation();
 		setAnchorEl(null);

@@ -12,6 +12,7 @@ import {
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MoreHorizOutlinedIcon } from "../../../src/resources/icons/MoreHorizOutlinedIcon";
+import { userEvent, within } from "@storybook/testing-library";
 
 export default {
 	title: "Under Construction/SolaceMenu",
@@ -62,6 +63,27 @@ DefaultSolaceMenu.args = {
 	dataTags: "testDataTag1",
 	items: DEFAULT_MENU_ITEMS,
 	numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+};
+
+export const DefaultSolaceMenuPressed = Template.bind({});
+DefaultSolaceMenuPressed.args = {
+	id: "demo-solace-menu",
+	buttonProps: {
+		title: TITLE,
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
+	dataQa: "testDataProp",
+	dataTags: "testDataTag1",
+	items: DEFAULT_MENU_ITEMS,
+	numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+};
+
+DefaultSolaceMenuPressed.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+
+	await userEvent.click(canvas.getByRole("button"));
 };
 
 export const TextMenuButton = Template.bind({});

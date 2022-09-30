@@ -68,6 +68,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&:active": {
 							backgroundColor: themeMapping.palette.primary.w100
 						},
+						"&.pressed": {
+							backgroundColor: themeMapping.palette.primary.w100
+						},
 						"&:disabled": {
 							backgroundColor: themeMapping.palette.secondary.w40,
 							color: themeMapping.palette.primary.text.w10
@@ -83,6 +86,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							borderColor: themeMapping.palette.primary.wMain
 						},
 						"&:active": {
+							backgroundColor: themeMapping.palette.primary.w20,
+							borderColor: themeMapping.palette.primary.wMain
+						},
+						"&.pressed": {
 							backgroundColor: themeMapping.palette.primary.w20,
 							borderColor: themeMapping.palette.primary.wMain
 						},
@@ -120,6 +127,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							backgroundColor: themeMapping.palette.primary.w10
 						},
 						"&:active": {
+							backgroundColor: themeMapping.palette.primary.w20
+						},
+						"&.pressed": {
 							backgroundColor: themeMapping.palette.primary.w20
 						},
 						"&:disabled": {
@@ -220,6 +230,13 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							}
 						},
 						"&:active": {
+							backgroundColor: themeMapping.palette.deprecated.secondary.w20,
+							".MuiSvgIcon-root": {
+								color: themeMapping.palette.deprecated.primary.wMain,
+								fill: themeMapping.palette.deprecated.primary.wMain
+							}
+						},
+						"&.pressed": {
 							backgroundColor: themeMapping.palette.deprecated.secondary.w20,
 							".MuiSvgIcon-root": {
 								color: themeMapping.palette.deprecated.primary.wMain,
