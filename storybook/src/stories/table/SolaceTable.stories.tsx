@@ -129,11 +129,39 @@ export default {
 	parameters: {
 		design: {
 			type: "figma",
-			url: ""
+			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2558%3A9993"
 		},
-		args: {
-			rows,
-			columns
+		docs: {
+			description: {
+				component: "Table component for reuse in all Solace based applications"
+			}
+		},
+		argTypes: {
+			id: {
+				control: { type: "text" },
+				description: "Unique identifier for the Table component"
+			},
+			rows: {
+				control: { type: "array" },
+				description: "Array of items to be displayed"
+			},
+			columns: {
+				control: { type: "array" },
+				description: "Array of columns to be rendered"
+			},
+			selectionType: {
+				options: [SolaceTableSelectionType.NONE, SolaceTableSelectionType.SINGLE, SolaceTableSelectionType.MULTI],
+				control: { type: "select" },
+				description: "Table selection types"
+			},
+			selectionChangedCallback: {
+				control: false,
+				description: "Selection changed callback"
+			},
+			sortCallback: {
+				control: false,
+				description: "Sort callback when sorted column change is requested"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceTable>;
@@ -186,7 +214,7 @@ const selectionCallback = "selection callback";
 
 const sortCallback = "sort callback";
 
-export const DefaultTable = (): JSX.Element => {
+const TableTemplate = ({ rows, columns, selectionType, ...args }): JSX.Element => {
 	const data = cloneDeep(rows);
 	const columnsDef = useMemo(() => {
 		return cloneDeep(columns);
@@ -202,42 +230,52 @@ export const DefaultTable = (): JSX.Element => {
 	);
 
 	return (
-		<div>
-			<SolaceTable
-				selectionChangedCallback={action(selectionCallback)}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={SolaceTableSelectionType.MULTI}
-			></SolaceTable>
-		</div>
+		<SolaceTable
+			{...args}
+			selectionChangedCallback={action(selectionCallback)}
+			sortCallback={handleSort}
+			rows={tableRows}
+			columns={columnsDef}
+			selectionType={selectionType}
+		></SolaceTable>
 	);
 };
 
-export const SingleSelectionTable = (): JSX.Element => {
-	const data = cloneDeep(rows);
-	const columnsDef = useMemo(() => {
-		return cloneDeep(columns);
-	}, []);
-	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-
-	const handleSort = useCallback((selectedColumn) => {
-		action(sortCallback);
-		setRows([...sortData(selectedColumn, data)]);
-	}, []);
-
-	return (
-		<div>
-			<SolaceTable
-				selectionChangedCallback={action(selectionCallback)}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={SolaceTableSelectionType.SINGLE}
-			></SolaceTable>
-		</div>
-	);
+export const DefaultTable = TableTemplate.bind({});
+DefaultTable.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.NONE
 };
+
+export const SingleSelectionTable = TableTemplate.bind({});
+SingleSelectionTable.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.SINGLE
+};
+
+export const MultiSelectionTable = TableTemplate.bind({});
+MultiSelectionTable.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI
+};
+
+export const ScrollableTable = TableTemplate.bind({});
+ScrollableTable.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI
+};
+ScrollableTable.decorators = [
+	(Story) => (
+		<div style={{ height: "300px" }}>
+			<h3>Table header becomes sticky when table content is scrollable</h3>
+			<Story />
+		</div>
+	)
+];
 
 export const RowActionMenuTable = (): JSX.Element => {
 	const data = cloneDeep(rows);
@@ -1202,35 +1240,6 @@ export const ExpandableCustomSchemaRowControlledStateTable = (): JSX.Element => 
 					expandedRowIds: expandedRowIds,
 					setExpandedRowIds: setExpandedRowIds
 				}}
-			></SolaceTable>
-		</div>
-	);
-};
-
-export const ScrollableTable = (): JSX.Element => {
-	const data = cloneDeep(rows);
-	const columnsDef = useMemo(() => {
-		return cloneDeep(columns);
-	}, []);
-	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-
-	const handleSort = useCallback(
-		(selectedColumn) => {
-			action(sortCallback);
-			setRows([...sortData(selectedColumn, data)]);
-		},
-		[data]
-	);
-
-	return (
-		<div style={{ height: "300px" }}>
-			<SolaceTable
-				selectionChangedCallback={action(selectionCallback)}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={SolaceTableSelectionType.MULTI}
-				rowActionMenuItems={rowActionMenuItems}
 			></SolaceTable>
 		</div>
 	);

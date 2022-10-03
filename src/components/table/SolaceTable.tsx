@@ -184,7 +184,7 @@ function SolaceTable({
 	}
 
 	return (
-		<TableWrapper>
+		<TableWrapper className="tableWrapper">
 			<StyledTable data-qa={id}>
 				{/* The border style of thead is set in table-utils on th with boxShadow */}
 				<thead style={{ borderBottom: 0 }}>{columnNodes}</thead>

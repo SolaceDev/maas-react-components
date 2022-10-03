@@ -2,7 +2,14 @@ import React from "react";
 import { Stack } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceConfirmationDialog, SolaceSelect, SolaceTextField, MenuItem } from "@SolaceDev/maas-react-components";
+import {
+	SolaceConfirmationDialog,
+	SolaceSelect,
+	SolaceTextField,
+	MenuItem,
+	styled
+} from "@SolaceDev/maas-react-components";
+import { DefaultTable } from "../table/SolaceTable.stories";
 
 export default {
 	title: "Dialogs/SolaceConfirmationDialog",
@@ -14,6 +21,14 @@ export default {
 		}
 	},
 	argTypes: {
+		title: {
+			control: { type: "text" },
+			description: "Title of the dialog"
+		},
+		isOpen: {
+			control: { type: "boolean" },
+			description: "Open/Close the dialog window"
+		},
 		maxWidth: {
 			options: ["sm", "md", "dialogMd", "lg", "xl"],
 			control: { type: "select" },
@@ -21,6 +36,20 @@ export default {
 			table: {
 				defaultValue: {
 					summary: "dialogMd"
+				}
+			}
+		},
+		contentText: {
+			control: { type: "text" },
+			description: "Text to be displayed in the dialog content section"
+		},
+		contentLayout: {
+			options: ["block", "contents", "flex"],
+			control: { type: "select" },
+			description: "To override the display attribute of the dialog content section",
+			table: {
+				defaultValue: {
+					summary: "block"
 				}
 			}
 		}
@@ -112,3 +141,35 @@ export const WithLinearProgressIndicator = (): JSX.Element => (
 		actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), isDisabled: true }]}
 	/>
 );
+
+const CustomContentWrapper = styled("div")(() => ({
+	display: "flex",
+	flexDirection: "column",
+	overflow: "auto",
+	rowGap: 16,
+	maxHeight: 450,
+	// set box-sizing to border-box so that
+	// the 1px border applied to table wrapper will be neglected from width & height
+	// this is to simulate the global style applied in maas-ui/ep
+	".tableWrapper": {
+		boxSizing: "border-box"
+	}
+}));
+
+const TableWrapper = (props) => {
+	return <CustomContentWrapper>{props.children}</CustomContentWrapper>;
+};
+
+export const TableAsChildComponent = Template.bind({});
+TableAsChildComponent.args = {
+	title: "Dialog contains a scrollable table",
+	isOpen: true,
+	maxWidth: "sm",
+	contentLayout: "contents",
+	actions: [{ label: "Close", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), variant: "outline" }],
+	children: (
+		<TableWrapper>
+			<DefaultTable {...DefaultTable.args} />
+		</TableWrapper>
+	)
+};

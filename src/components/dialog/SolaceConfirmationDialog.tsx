@@ -14,6 +14,11 @@ export interface SolaceConfirmationDialogProps {
 	 * whether to show an indeterminate linear progress indicator at the bottom border of the dialog
 	 */
 	linearProgressIndicator?: boolean;
+	/**
+	 * To override the display attribute of DialogContent, default: block
+	 * currently supports block, contents, and flex
+	 */
+	contentLayout?: "block" | "contents" | "flex";
 	maxWidth?: Breakpoint;
 	children?: ReactNode;
 }
@@ -24,6 +29,7 @@ function SolaceConfirmationDialog({
 	actions,
 	isOpen = false,
 	maxWidth = "dialogMd",
+	contentLayout = "block",
 	linearProgressIndicator = false,
 	children
 }: SolaceConfirmationDialogProps): JSX.Element {
@@ -34,7 +40,7 @@ function SolaceConfirmationDialog({
 					{title}
 				</div>
 			</DialogTitle>
-			<DialogContent data-qa="content">
+			<DialogContent data-qa="content" sx={{ display: contentLayout }}>
 				{contentText && <DialogContentText>{contentText}</DialogContentText>}
 				{children}
 			</DialogContent>
