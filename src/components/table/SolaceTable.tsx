@@ -2,6 +2,7 @@ import { useSolaceTable } from "./hooks/useSolaceTable";
 import { styled } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
+import SolaceCircularProgress from "../SolaceCircularProgress";
 
 interface TablePropType extends SolaceComponentProps {
 	/**
@@ -80,6 +81,14 @@ interface TablePropType extends SolaceComponentProps {
 	 * If option is set, the table row is expandable.
 	 */
 	expandableRowOptions?: ExpandableRowOptions;
+	/**
+	 * loading state
+	 */
+	loading?: boolean;
+	/**
+	 * loading state messaging
+	 */
+	loadingMessage?: string;
 }
 
 export interface ExpandableRowOptions {
@@ -118,7 +127,8 @@ const TableWrapper = styled("div")(({ theme }) => ({
 	overflow: "auto",
 	fontFamily: theme.typography.fontFamily,
 	fontSize: theme.typography.body1.fontSize,
-	background: theme.palette.ux.background.w10
+	background: theme.palette.ux.background.w10,
+	position: "relative" // to allow loading indicators to position relatively
 }));
 
 const StyledTable = styled("table")(() => ({
@@ -128,10 +138,68 @@ const StyledTable = styled("table")(() => ({
 }));
 
 const EmptyState = styled("div")(() => ({
+	position: "relative", // to allow loading overlay to position relatively
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
 	flex: "1"
+}));
+
+/**
+ * styled loading overlays & loading indicators
+ */
+const TableHeaderLoadingOverlay = styled("tr")(() => ({
+	position: "absolute",
+	width: "100%",
+	height: "100%",
+	top: 0,
+	left: 0,
+	backgroundColor: "rgba(255, 255, 255, 0.45)", // temp decision on the color by uiux, not available from theme, will update once finalized
+	zIndex: 20
+}));
+
+// as HTML doesn't allow <div> or <span> to be directly wrapped inside <tbody>
+// <tr> is required to construct the overlay for tbody
+const TableBodyLoadingOverlay = styled("tr")(({ theme }) => ({
+	position: "absolute",
+	width: "100%",
+	height: "100%",
+	top: 0,
+	left: 0,
+	backgroundColor: theme.palette.ux.deprecated.primary.text.w10,
+	zIndex: 2
+}));
+
+// eslint-disable-next-line  sonarjs/no-identical-functions
+const EmptyStateLoadingOverlay = styled("div")(({ theme }) => ({
+	position: "absolute",
+	width: "100%",
+	height: "100%",
+	top: 0,
+	left: 0,
+	backgroundColor: theme.palette.ux.deprecated.primary.text.w10,
+	zIndex: 2
+}));
+
+const LoadingIndicatorWrapper = styled("div")(({ theme }) => ({
+	position: "absolute",
+	width: "100%",
+	// To allow vertically center the loading indicators inside the table body (e.g. table body + empty state)
+	height: "calc(100% - 56px)", // table height (e.g. header + body + empty state) - header height
+	top: 56, // height of the header
+	left: 0,
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "center",
+	alignItems: "center",
+	rowGap: theme.spacing(2),
+	zIndex: 3
+}));
+
+const LoadingMessage = styled("div")(({ theme }) => ({
+	fontSize: theme.typography.body1.fontSize,
+	fontWeight: theme.typography.fontWeightRegular,
+	color: theme.palette.text.primary
 }));
 
 const DEFAULT_EMPTY_MESSAGE = "No Items Found";
@@ -155,7 +223,9 @@ function SolaceTable({
 	hasColumnHiding,
 	displayedColumns,
 	displayedColumnsChangedCallback,
-	expandableRowOptions
+	expandableRowOptions,
+	loading,
+	loadingMessage
 }: TablePropType): JSX.Element {
 	const [columnNodes, rowNodes] = useSolaceTable({
 		rows,
@@ -175,22 +245,41 @@ function SolaceTable({
 		expandableRowOptions
 	});
 
+	function renderEmptyStateMessage(): string {
+		return emptyStateMessage ? emptyStateMessage : DEFAULT_EMPTY_MESSAGE;
+	}
+
 	function showEmptyStateMessage(): React.ReactNode {
-		if (renderCustomEmptyState) {
-			return <EmptyState>{renderCustomEmptyState()}</EmptyState>;
-		} else {
-			return <EmptyState>{emptyStateMessage ? emptyStateMessage : DEFAULT_EMPTY_MESSAGE}</EmptyState>;
-		}
+		return <>{renderCustomEmptyState ? renderCustomEmptyState() : renderEmptyStateMessage()}</>;
+	}
+
+	function showLoadingIndicators(): React.ReactNode {
+		return (
+			<LoadingIndicatorWrapper>
+				<SolaceCircularProgress />
+				{loadingMessage && <LoadingMessage>{loadingMessage}</LoadingMessage>}
+			</LoadingIndicatorWrapper>
+		);
 	}
 
 	return (
 		<TableWrapper className="tableWrapper">
 			<StyledTable data-qa={id}>
 				{/* The border style of thead is set in table-utils on th with boxShadow */}
-				<thead style={{ borderBottom: 0 }}>{columnNodes}</thead>
-				<tbody>{!!rows.length && rowNodes}</tbody>
+				<thead style={{ borderBottom: 0, position: "relative" }}>
+					{columnNodes}
+					{loading && <TableHeaderLoadingOverlay />}
+				</thead>
+				<tbody style={{ position: "relative" }}>
+					{!!rows.length && rowNodes}
+					{loading && <TableBodyLoadingOverlay />}
+				</tbody>
 			</StyledTable>
-			{showEmptyState !== false && !rows.length && showEmptyStateMessage()}
+			<EmptyState>
+				{showEmptyState !== false && !rows.length && showEmptyStateMessage()}
+				{loading && <EmptyStateLoadingOverlay />}
+			</EmptyState>
+			{loading && showLoadingIndicators()}
 		</TableWrapper>
 	);
 }

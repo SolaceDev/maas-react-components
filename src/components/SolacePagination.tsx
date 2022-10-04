@@ -31,6 +31,10 @@ export interface SolacePaginationProps {
 	 * Callback function to notify which page was clicked/selected by the end user
 	 */
 	onPageSelection?: (selectedPage: number) => void;
+	/**
+	 * loading state (renders a half transparent overlay on top of the pagination component, currently is designed to use along with table component's loading state)
+	 */
+	loading?: boolean;
 }
 
 const PaginationContainer = styled("div")(() => ({
@@ -38,7 +42,8 @@ const PaginationContainer = styled("div")(() => ({
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
-	margin: "0px"
+	margin: "0px",
+	position: "relative"
 }));
 
 const PageListContainer = styled("div")(() => ({
@@ -51,11 +56,22 @@ const MessageContainer = styled("p")(({ theme }) => ({
 	color: theme.palette.ux.deprecated.secondary.text.wMain
 }));
 
+const LoadingOverlay = styled("div")(() => ({
+	position: "absolute",
+	width: "100%",
+	height: "100%",
+	top: 0,
+	left: 0,
+	backgroundColor: "rgba(255, 255, 255, 0.45)", // temp decision on the color by uiux, not available from theme, will update once finalized
+	zIndex: 2
+}));
+
 function SolacePagination({
 	activePage = 1,
 	pageSize = 10,
 	displayText = "Showing ${firstItemIndex}-${lastItemIndex} of ${totalResults} results",
 	totalResults,
+	loading = false,
 	onPageSelection
 }: SolacePaginationProps): JSX.Element {
 	const totalPages = Math.ceil(totalResults / pageSize);
@@ -90,6 +106,7 @@ function SolacePagination({
 				/>
 			</PageListContainer>
 			<MessageContainer>{substituteMessageValues()}</MessageContainer>
+			{loading && <LoadingOverlay />}
 		</PaginationContainer>
 	);
 }

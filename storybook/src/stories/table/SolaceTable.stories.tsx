@@ -8,7 +8,8 @@ import {
 	SolaceTableActionMenuItem,
 	SolaceTableColumn,
 	SolaceTableRow,
-	SolaceCircularProgress
+	SolacePagination,
+	styled
 } from "@SolaceDev/maas-react-components";
 import { StyledTableData, StyledTableNumberData } from "../../../../src/components/table/table-utils";
 import { cloneDeep } from "lodash";
@@ -154,6 +155,14 @@ export default {
 				control: { type: "select" },
 				description: "Table selection types"
 			},
+			loading: {
+				control: { type: "boolean" },
+				description: "Whether the table is in loading state, if true, a loading spinner will be displayed"
+			},
+			loadingMessage: {
+				control: { type: "text" },
+				description: "Specify a loading message if the table is in loading state"
+			},
 			selectionChangedCallback: {
 				control: false,
 				description: "Selection changed callback"
@@ -262,6 +271,31 @@ MultiSelectionTable.args = {
 	selectionType: SolaceTableSelectionType.MULTI
 };
 
+const CustomContentWrapper = styled("div")(() => ({
+	// remove the border on table
+	".tableWrapper": {
+		border: "none"
+	}
+}));
+
+const TableWrapper = (props) => {
+	return <CustomContentWrapper>{props.children}</CustomContentWrapper>;
+};
+
+export const TableWithNoBorder = TableTemplate.bind({});
+TableWithNoBorder.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI
+};
+TableWithNoBorder.decorators = [
+	(Story) => (
+		<TableWrapper>
+			<Story />
+		</TableWrapper>
+	)
+];
+
 export const ScrollableTable = TableTemplate.bind({});
 ScrollableTable.args = {
 	rows: rows,
@@ -273,6 +307,46 @@ ScrollableTable.decorators = [
 		<div style={{ height: "300px" }}>
 			<h3>Table header becomes sticky when table content is scrollable</h3>
 			<Story />
+		</div>
+	)
+];
+
+export const TableWithOnlyOneRow = TableTemplate.bind({});
+TableWithOnlyOneRow.args = {
+	rows: rows.slice(-1),
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI
+};
+
+export const LoadingTableWithOnlyOneRow = TableTemplate.bind({});
+LoadingTableWithOnlyOneRow.args = {
+	rows: rows.slice(-1),
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI,
+	loading: true,
+	loadingMessage: "loading..."
+};
+
+export const LoadingTableWithPagination = TableTemplate.bind({});
+LoadingTableWithPagination.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI,
+	loading: true,
+	loadingMessage: "loading..."
+};
+LoadingTableWithPagination.decorators = [
+	(Story) => (
+		<div style={{ padding: 16 }}>
+			<h3>A loading table with (loading) pagination</h3>
+			<div style={{ border: "1px solid lightgray" }}>
+				<TableWrapper>
+					<Story />
+				</TableWrapper>
+				<div style={{ padding: "8px 0px" }}>
+					<SolacePagination totalResults={rows.length} loading={true} />
+				</div>
+			</div>
 		</div>
 	)
 ];
@@ -499,18 +573,6 @@ export const CustomColumnWidthAndTooltipTable = (): JSX.Element => {
 	);
 };
 
-export const TableWithOnlyOneRow = (): JSX.Element => {
-	return (
-		<SolaceTable
-			selectionChangedCallback={action(selectionCallback)}
-			sortCallback={action(sortCallback)}
-			rows={rows.slice(-1)}
-			columns={columns}
-			selectionType={SolaceTableSelectionType.MULTI}
-		></SolaceTable>
-	);
-};
-
 export const EmptyStateTable = (): JSX.Element => {
 	return (
 		<div>
@@ -540,19 +602,13 @@ export const EmptyStateTableWithLoadingState = (): JSX.Element => {
 
 	return (
 		<div style={{ height: "400px" }}>
-			{isLoading && (
-				<div
-					style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: 1000 }}
-				>
-					<SolaceCircularProgress />
-				</div>
-			)}
 			<SolaceTable
 				selectionChangedCallback={action(selectionCallback)}
 				sortCallback={action(sortCallback)}
 				rows={[]}
 				columns={columns}
 				selectionType={SolaceTableSelectionType.MULTI}
+				loading={isLoading}
 				showEmptyState={dataFetched} // only show empty state (if empty) after data is fetched
 			></SolaceTable>
 		</div>

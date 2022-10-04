@@ -26,6 +26,12 @@ export default {
 				type: "text",
 				defaultValue: "Showing ${firstItemIndex}-${lastItemIndex} of ${totalResults} results"
 			}
+		},
+		loading: {
+			control: {
+				type: "boolean",
+				description: "The loading state flag for pagination component, default to false"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolacePagination>;
