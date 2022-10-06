@@ -141,7 +141,7 @@ function SolaceDrawer({
 					boxSizing: "border-box",
 					borderRadius: "2px",
 					border: `1px solid ${theme.palette.ux.secondary.w40}`,
-					boxShadow: `0px 2px 4px ${theme.palette.ux.secondary.w40}`
+					boxShadow: `0px 2px 4px ${theme.palette.ux.deprecated.secondary.w8040}`
 				}
 			}}
 			PaperProps={{ style: { top, height } }}

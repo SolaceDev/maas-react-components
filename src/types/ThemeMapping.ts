@@ -13,7 +13,6 @@ export type ThemeMappingPalette = {
 		w100: string;
 		w90: string;
 		wMain: string;
-		wMain40: string; // for overlays, needs opacity
 		w60: string;
 		w40: string;
 		w20: string;
@@ -27,6 +26,7 @@ export type ThemeMappingPalette = {
 
 	secondary: {
 		w80: string;
+		w8040: string; // 40% of w80 for overlays and box-shadows
 		wMain: string;
 		w40: string;
 		w20: string;
@@ -138,6 +138,7 @@ export type ThemeMappingPalette = {
 		};
 		secondary: {
 			w80: string;
+			w8040: string;
 			wMain: string;
 			w20: string;
 			w10: string;

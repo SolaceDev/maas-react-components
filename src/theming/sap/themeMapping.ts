@@ -14,7 +14,6 @@ const palette: ThemeMappingPalette = {
 		w100: "#07529C",
 		w90: "#0961B9",
 		wMain: "#0A6ED1",
-		wMain40: alpha("#015B82", 0.4),
 		w60: "#6CA8E3",
 		w40: "#9DC5ED",
 		w20: "#CEE2F6",
@@ -28,6 +27,7 @@ const palette: ThemeMappingPalette = {
 
 	secondary: {
 		w80: "#5D6E7F",
+		w8040: alpha("#5D6E7F", 0.4),
 		wMain: "#89919A",
 		w40: "#D0D3D7",
 		w20: "#E7E9EB",
@@ -136,6 +136,7 @@ const palette: ThemeMappingPalette = {
 		},
 		secondary: {
 			w80: "#5D6E7F",
+			w8040: alpha("#5D6E7F", 0.4),
 			wMain: "#89919A",
 			w20: "#E7E9EB",
 			w10: "#F3F4F5",

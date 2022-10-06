@@ -18,7 +18,6 @@ export const baseThemeMapping: ThemeMapping = {
 			w100: "#05BDA1",
 			w90: "#00CCAD",
 			wMain: "#00AD93",
-			wMain40: alpha("#000000", 0.35),
 			w60: alpha("#00AD93", 0.35),
 			w40: alpha("#00AD93", 0.35),
 			w20: "#F9F9F9",
@@ -32,6 +31,7 @@ export const baseThemeMapping: ThemeMapping = {
 
 		secondary: {
 			w80: alpha("#FFFFFF", 0.2),
+			w8040: alpha("#000000", 0.35),
 			wMain: alpha("#000000", 0.5),
 			w40: alpha("#000000", 0.2),
 			w20: alpha("#000000", 0.1),
@@ -140,6 +140,7 @@ export const baseThemeMapping: ThemeMapping = {
 			},
 			secondary: {
 				w80: alpha("#000000", 0.8),
+				w8040: alpha("#000000", 0.2),
 				wMain: alpha("#000000", 0.35),
 				w20: alpha("#000000", 0.05),
 				w10: alpha("#000000", 0.05),

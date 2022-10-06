@@ -5,15 +5,11 @@ import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
 
-// TBD: theme box shadows?
-const boxShadow = {
-	w0: "none",
+const deprecatedBoxShadows = {
 	w12: alpha("#000000", 0.12),
 	w15: alpha("#000000", 0.15),
 	w20: alpha("#000000", 0.2),
-	w30: alpha("#000000", 0.3),
-	w40: alpha("#000000", 0.4),
-	w50: alpha("#000000", 0.5)
+	w30: alpha("#000000", 0.3)
 };
 
 // https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
@@ -21,6 +17,13 @@ const boxShadow = {
 const getThemeOptions = (themeName: SupportedThemes) => {
 	const themeMapping = getThemeMappings(themeName);
 	const isCurrentSolace = themeName === SupportedThemes.solace;
+
+	const getBoxShadow = (currentKey: string) => {
+		if (isCurrentSolace) {
+			return deprecatedBoxShadows[currentKey];
+		}
+		return themeMapping.palette.secondary.w8040;
+	};
 
 	// A custom theme option for this app
 	const themeOptions: ThemeOptions = {
@@ -642,7 +645,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							".MuiPaper-root": {
 								margin: "4px",
 								overflowY: "auto",
-								boxShadow: `0 1px 4px ${boxShadow.w20}`,
+								boxShadow: `0 1px 4px ${getBoxShadow("w20")}`,
 								".MuiMenuItem-root": {
 									minWidth: "80px",
 									maxWidth: "320px",
@@ -675,7 +678,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						".MuiPaper-root": {
 							overflowY: "auto",
-							boxShadow: `0 1px 4px ${boxShadow.w20}`,
+							boxShadow: `0 1px 4px ${getBoxShadow("w20")}`,
 
 							".MuiMenuItem-root": {
 								display: "flex",
@@ -836,7 +839,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
 							backgroundColor: themeMapping.palette.brand.w10
 						},
-						boxShadow: `0 1px 4px ${boxShadow.w20}`,
+						boxShadow: `0 1px 4px ${getBoxShadow("w20")}`,
 						color: themeMapping.palette.primary.text.wMain,
 						".subtext": {
 							color: themeMapping.palette.deprecated.secondary.text.wMain
@@ -892,7 +895,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								width: "16px",
 								height: "16px",
 								border: `solid 2px ${themeMapping.palette.primary.w60}`,
-								boxShadow: boxShadow.w0
+								boxShadow: "none"
 							},
 							"&.Mui-checked .MuiSwitch-thumb": {
 								backgroundColor: themeMapping.palette.primary.wMain,
@@ -921,12 +924,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						".MuiBackdrop-root": {
-							backgroundColor: themeMapping.palette.primary.wMain40
+							backgroundColor: themeMapping.palette.secondary.w8040
 						},
 						".MuiPaper-root": {
 							minWidth: "400px",
 							maxHeight: "80%",
-							boxShadow: `0 2px 8px ${isCurrentSolace ? boxShadow.w30 : boxShadow.w40}`,
+							boxShadow: `0 2px 8px ${getBoxShadow("w30")}`,
 							padding: "24px",
 							".MuiDialogTitle-root": {
 								fontSize: BASE_FONT_PX_SIZES.xl,
@@ -1128,14 +1131,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						lineHeight: "18px",
 						backgroundColor: themeMapping.palette.background.wMain,
 						color: themeMapping.palette.deprecated.primary.text.w10,
-						boxShadow: `0 2px 2px ${boxShadow.w12}`,
+						boxShadow: `0 2px 2px ${getBoxShadow("w12")}`,
 						"&.htmlContent": {
 							padding: "12px 16px",
 							fontSize: BASE_FONT_PX_SIZES.sm,
 							lineHeight: "21px",
 							backgroundColor: themeMapping.palette.background.w10,
 							color: themeMapping.palette.primary.text.wMain,
-							boxShadow: `0 2px 5px ${boxShadow.w15}`
+							boxShadow: `0 2px 5px ${getBoxShadow("w15")}`
 						},
 						"&.mediumWidth": {
 							maxWidth: "500px"
@@ -1153,7 +1156,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							fontWeight: 400,
 							padding: "12px 16px", // considering line height
 							borderRadius: "4px",
-							boxShadow: `0 2px 5px ${boxShadow.w15}`,
+							boxShadow: `0 2px 5px ${getBoxShadow("w15")}`,
 							cursor: "pointer"
 						}
 					}
@@ -1163,7 +1166,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						border: `1px solid ${themeMapping.palette.secondary.w10}`,
-						boxShadow: boxShadow.w0,
+						boxShadow: "none",
 						"&:not(:last-child)": {
 							borderBottom: 0
 						},
@@ -1340,7 +1343,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						left: 0,
 						width: "100%",
 						height: "100%",
-						backgroundColor: themeMapping.palette.primary.wMain40,
+						backgroundColor: themeMapping.palette.secondary.w8040,
 						display: "block",
 						zIndex: 1200
 					}
@@ -1373,7 +1376,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					}
 				},
 				IconWrapper: {
-					boxShadow: `0px 1px 4px ${boxShadow.w20}`,
+					boxShadow: `0px 1px 4px ${getBoxShadow("w20")}`,
 					borderRadius: "5px",
 					backgroundColor: themeMapping.palette.background.w10,
 					// position is relative to its parent with position: relative
@@ -1514,7 +1517,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					borderLeft: `1px solid ${themeMapping.palette.secondary.w20}`,
 					borderTop: `1px solid ${themeMapping.palette.secondary.w20}`,
 					borderRight: `1px solid ${themeMapping.palette.secondary.w20}`,
-					boxShadow: `0 2px 4px -1px ${boxShadow.w20}`,
+					boxShadow: `0 2px 4px -1px ${getBoxShadow("w20")}`,
 					"& .selectAll": {
 						display: "flex",
 						alignItems: "center"
