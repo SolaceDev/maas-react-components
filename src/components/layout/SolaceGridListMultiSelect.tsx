@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import SolaceCheckBox, { SolaceCheckboxChangeEvent } from "../form/SolaceCheckBox";
 import { CSSProperties } from "@mui/styled-engine";
 
@@ -48,10 +48,20 @@ function SolaceGridListMultiSelect<T>({
 	const HEADER_HEIGHT = "49px";
 
 	const [allSelected, setAllSelected] = useState(false);
+	const [indeterminate, setIndeterminate] = useState(false);
 
 	const getGridTemplate = useMemo(() => {
 		return CHECKBOX_GRID_STRING.concat(" ", gridTemplate);
 	}, [gridTemplate]);
+
+	//set indeterminate state for select all checkbox
+	useEffect(() => {
+		if (selectedRowIds.length > 0 && selectedRowIds.length < items.length) {
+			setIndeterminate(true);
+		} else {
+			setIndeterminate(false);
+		}
+	}, [items?.length, selectedRowIds?.length]);
 
 	const handleRowSelection = useCallback(
 		(event: SolaceCheckboxChangeEvent) => {
@@ -138,7 +148,8 @@ function SolaceGridListMultiSelect<T>({
 							<SolaceCheckBox
 								name={"ImageListSelectAllCheckbox"}
 								onChange={handleSelectAll}
-								checked={allSelected}
+								checked={allSelected || indeterminate}
+								indeterminate={indeterminate}
 								dataQa={`${dataQa}-selectAll`}
 							/>
 							<span className="selectAllText">{selectAllLabel}</span>
