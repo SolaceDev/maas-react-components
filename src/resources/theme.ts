@@ -1032,8 +1032,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						textTransform: "none",
 						fontWeight: 400,
 						"&.Mui-selected": {
-							// TODO: remove "solace" option when new theme is adopted
-							color: isCurrentSolace ? themeMapping.palette.primary.text.wMain : themeMapping.palette.primary.w20,
+							color: themeMapping.palette.primary.text.wMain,
 							fontWeight: 500,
 							".notificationCounter": {
 								fontWeight: 400
