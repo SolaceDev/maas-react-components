@@ -466,9 +466,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							},
 							"&.Mui-error": {
 								".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
-									border: `solid 1px ${
-										isCurrentSolace ? themeMapping.palette.error.w100 : themeMapping.palette.error.wMain
-									}`
+									border: `solid 1px ${themeMapping.palette.error.w100}`
 								},
 								"&.Mui-focused": {
 									".MuiOutlinedInput-notchedOutline": {
