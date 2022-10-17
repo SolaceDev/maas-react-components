@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { Menu, ListSubheader, Popover } from "@mui/material";
 import { groupBy, flatten } from "lodash";
 import SolaceComponentProps from "./SolaceComponentProps";
@@ -52,6 +52,8 @@ interface SolaceMenuProps extends SolaceComponentProps {
 }
 
 const DEFAULT_NUM_OF_MENUITEM_DISPLAYED = 9;
+// defined in theme file under .MuiListSubheader-root
+const HEADING_HEIGHT = 32;
 
 export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	const {
@@ -106,6 +108,34 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 	// group items based on categoryHeading if provided
 	const groupedItems = groupBy(items, (item: SolaceMenuItemProps) => item.categoryHeading);
 
+	const groupCount = useMemo(() => {
+		return Object.keys(groupedItems).filter((key) => key !== "undefined").length;
+	}, [groupedItems]);
+
+	/**
+	 * The maxHeight is calculated based on how many items to be displayed, how many group headings to be displayed, whether there is main header,
+	 * for example, 9 is the default value numOfMenuItemDisplayed, in this case
+	 * maxHeight = itemHeight * 9 + 4.5 (half itemHeight) + 8 (top/bottom padding) + groupHeadingCount * HEADING_HEIGHT + header * HEADING_HEIGHT
+	 * so the bottom stops at exactly 9.5 item position
+	 */
+	const maxHeight = useMemo(() => {
+		return (
+			itemHeight * numOfMenuItemDisplayed +
+			itemHeight / 2 +
+			groupCount * HEADING_HEIGHT +
+			(header ? 1 : 0) * HEADING_HEIGHT +
+			8
+		);
+	}, [groupCount, header, itemHeight, numOfMenuItemDisplayed]);
+
+	const hasMoreItems = useMemo(() => {
+		if (items) {
+			return items.length > numOfMenuItemDisplayed;
+		}
+
+		return false;
+	}, [items, numOfMenuItemDisplayed]);
+
 	// render Menu Items
 	// creating itemsList under each categoryHeading, if no categoryheadig is provided it will be just list of menuItems
 	const menuItemsList = Object.keys(groupedItems).map((categoryHeading) => {
@@ -142,6 +172,14 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		return list;
 	});
 
+	useEffect(() => {
+		const menuElement = menuPopoverRef;
+		menuElement?.addEventListener("scroll", onScrollHandler);
+		return () => {
+			menuElement?.removeEventListener("scroll", onScrollHandler);
+		};
+	}, [menuPopoverRef, onScrollHandler]);
+
 	return (
 		<Fragment>
 			<SolaceButton {...buttonProps} onClick={handleMenuClick} />
@@ -150,7 +188,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				Popover is used to sit right underneath of <Menu /> to give the desired box-shadow style after maskImage effect is applied.
 				The component has the same width/height, anchor position, transformOrigin & onClose trigger as <Menu />, so to keep the two component synced in style and behaviour.
 			*/}
-			{items && items.length > numOfMenuItemDisplayed && (
+			{hasMoreItems && (
 				<Popover
 					anchorEl={anchorEl}
 					open={Boolean(anchorEl)}
@@ -177,18 +215,11 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				anchorOrigin={anchorOrigin}
 				transformOrigin={transformOrigin}
 				onClose={handleMenuClose}
-				onScroll={onScrollHandler}
 				PaperProps={{
 					style: {
-						/**
-						 * the maxHeight is calculated based on how many items to be displayed,
-						 * for example, 9 is the default value numOfMenuItemDisplayed, in this case
-						 * maxHeight = itemHeight * 9 + 4.5 (half itemHeight) + 8 (top/bottom padding)
-						 * so the bottom stops at exactly 9.5 item position
-						 */
-						maxHeight: `${itemHeight * numOfMenuItemDisplayed + itemHeight / 2 + 8}px`,
-						maskImage: items && items.length > numOfMenuItemDisplayed ? maskImage : "none",
-						WebkitMaskImage: items && items.length > numOfMenuItemDisplayed ? maskImage : "none"
+						maxHeight: `${maxHeight}px`,
+						maskImage: hasMoreItems ? maskImage : "none",
+						WebkitMaskImage: hasMoreItems ? maskImage : "none"
 					},
 					ref: (ref) => {
 						setMenuPopoverRef(ref); // ref setter on the Paper component

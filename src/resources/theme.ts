@@ -753,7 +753,8 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							"&.categoryHeader": {
 								color: themeMapping.palette.primary.text.wMain,
 								fontSize: BASE_FONT_PX_SIZES.xs,
-								fontWeight: 500
+								fontWeight: 500,
+								position: "unset"
 							}
 						},
 						".MuiListItemText-multiline": {

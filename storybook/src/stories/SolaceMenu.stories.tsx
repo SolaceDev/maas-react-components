@@ -320,6 +320,41 @@ HeaderAndCategoryHeading.args = {
 	header: "Menu Header"
 };
 
+export const HeaderAndCategoryHeadingAndNumberOfItemsDisplayed = Template.bind({});
+HeaderAndCategoryHeadingAndNumberOfItemsDisplayed.args = {
+	buttonProps: {
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
+	items: [
+		{
+			name: "Option 1",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback"),
+			categoryHeading: "Category1"
+		},
+		{
+			name: "Option 2",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback"),
+			categoryHeading: "Category1",
+			divider: true
+		},
+		{
+			name: "Option 3",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback"),
+			categoryHeading: "Category2"
+		}
+	],
+	multiline: true,
+	header: "Menu Header",
+	numOfMenuItemDisplayed: 2
+};
+
 export const EmptyMenuItems = (): JSX.Element => {
 	const emptyItems: SolaceMenuItemProps[] = [];
 	return (

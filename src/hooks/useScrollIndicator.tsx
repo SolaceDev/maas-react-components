@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 // after attach the hook's onScrollHandler to onScroll event handler of any html element,
 // this custom hook returns mask-image styles and scroll positions in one of following scroll position values: isTop, isBottom or isBetween
 export function useScrollIndicator() {
 	const [scrollTop, setScrollTop] = useState(0);
 	const [scrollHeight, setScrollHeight] = useState(0);
-	const [clientHeight, setClientHeight] = useState(0);
+	const [offsetHeight, setOffsetHeight] = useState(0);
 	const [scrollReset, setScrollReset] = useState(false);
 
 	// scroll event handler
-	const onScrollHandler = (event: React.SyntheticEvent) => {
-		setScrollTop((event.target as HTMLElement).scrollTop);
+	const onScrollHandler = useCallback((event: Event) => {
+		setScrollTop(Math.round((event.target as HTMLElement).scrollTop));
 		setScrollHeight((event.target as HTMLElement).scrollHeight);
-		setClientHeight((event.target as HTMLElement).clientHeight);
-	};
+		setOffsetHeight((event.target as HTMLElement).offsetHeight);
+	}, []);
 
 	useEffect(() => {
 		if (scrollReset && scrollTop > 0) {
@@ -23,15 +23,32 @@ export function useScrollIndicator() {
 	}, [scrollReset, scrollTop]);
 
 	// reset scrollTop, scrollHeight, and clientHeight to 0
-	function resetScrollPosition() {
+	const resetScrollPosition = useCallback(() => {
 		setScrollReset(true);
 		setScrollTop(0);
 		setScrollHeight(0);
-		setClientHeight(0);
-	}
+		setOffsetHeight(0);
+	}, []);
+
+	// returns the scroll position in one of following string values: isTop, isBottom or isBetween
+	const getScrollPosition = useCallback(() => {
+		const isBottom = offsetHeight === scrollHeight - scrollTop;
+		const isTop = scrollTop === 0;
+		const isBetween = scrollTop > 0 && offsetHeight < scrollHeight - scrollTop;
+
+		let scrollPosition = "";
+		if (isTop) {
+			scrollPosition = "isTop";
+		} else if (isBetween) {
+			scrollPosition = "isBetween";
+		} else if (isBottom) {
+			scrollPosition = "isBottom";
+		}
+		return scrollPosition;
+	}, [offsetHeight, scrollHeight, scrollTop]);
 
 	// returns the maskImage style based on one of following scroll positions: isTop, isBottom or isBetween
-	function getMaskImage() {
+	const getMaskImage = useCallback(() => {
 		const scrollPosition = getScrollPosition();
 
 		// apply fade effect using mask-image
@@ -48,24 +65,7 @@ export function useScrollIndicator() {
 			maskImage = topFade;
 		}
 		return maskImage;
-	}
-
-	// returns the scroll position in one of following string values: isTop, isBottom or isBetween
-	function getScrollPosition() {
-		const isBottom = clientHeight === scrollHeight - scrollTop;
-		const isTop = scrollTop === 0;
-		const isBetween = scrollTop > 0 && clientHeight < scrollHeight - scrollTop;
-
-		let scrollPosition = "";
-		if (isTop) {
-			scrollPosition = "isTop";
-		} else if (isBetween) {
-			scrollPosition = "isBetween";
-		} else if (isBottom) {
-			scrollPosition = "isBottom";
-		}
-		return scrollPosition;
-	}
+	}, [getScrollPosition]);
 
 	return {
 		maskImage: getMaskImage(),
