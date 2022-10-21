@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import withMock from "storybook-addon-mock";
 import { withState, Store } from "@sambego/storybook-state";
@@ -13,10 +13,10 @@ import {
 	isSolaceSelectAutocompleteOptionEqual,
 	SolaceSelectAutocompleteItemProps,
 	SolaceChip,
-	SolaceButton
+	SolaceButton,
+	SolaceSelectAutocompleteResponsiveTags
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { cloneDeep } from "lodash";
 
 const store = new Store({
 	options: []
@@ -556,8 +556,8 @@ const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
 ];
 
 export const MultipleWithDisabled = () => {
-	const [values, setValues] = React.useState([]);
-	const [matchingValues, setMatchingValues] = React.useState([]);
+	const [values, setValues] = useState([]);
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 
 	const handleChange = (evt) => {
 		setValues(evt.value);
@@ -625,17 +625,20 @@ const SAMPLE_APPLICATION_DOMAINS: Array<SolaceSelectAutocompleteItemProps> = [
 ];
 
 export const MultipleWithCustomTagRenderer = () => {
-	const [values, setValues] = React.useState([]);
-	const [matchingValues, setMatchingValues] = React.useState([]);
+	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>([
+		SAMPLE_APPLICATION_DOMAINS[0],
+		SAMPLE_APPLICATION_DOMAINS[2]
+	]);
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 
 	const handleChange = (evt) => {
 		setValues(evt.value);
 	};
 
 	const handleDelete = (item) => {
-		let updatedValues = cloneDeep(values);
-		updatedValues = updatedValues.filter((value) => value.value !== item);
-		setValues(updatedValues);
+		setValues((prevValues) => {
+			return prevValues.filter((value) => value.value !== item);
+		});
 	};
 
 	const handleFetchOptionsCallback = React.useCallback(async (searchTerm: string) => {
@@ -664,7 +667,6 @@ export const MultipleWithCustomTagRenderer = () => {
 				renderTags={() => (
 					<div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
 						<span>Application Domain: </span>
-
 						<span
 							style={{
 								display: "inline-block",
@@ -689,7 +691,7 @@ export const MultipleWithCustomTagRenderer = () => {
 					</div>
 				)}
 			></SolaceSelectAutocomplete>
-			<div style={{ marginBlock: "10px", display: "flex", flexWrap: "wrap" }}>
+			<div style={{ marginBlock: "24px", display: "flex", flexWrap: "wrap" }}>
 				{values.map((value) => {
 					return (
 						<div style={{ marginRight: "8px", marginBottom: "8px" }} key={value.value}>
@@ -702,9 +704,98 @@ export const MultipleWithCustomTagRenderer = () => {
 	);
 };
 
+export const MultipleWithResponsiveTagRenderer = () => {
+	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>(SAMPLE_APPLICATION_DOMAINS.slice(1));
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
+	const [selectedTags, setSelectedTags] = useState<{ id: string; label: string }[]>([]);
+
+	const handleChange = (evt) => {
+		setValues(evt.value);
+	};
+
+	// eslint-disable-next-line sonarjs/no-identical-functions
+	const handleDelete = useCallback((item) => {
+		setValues((prevValues) => {
+			return prevValues.filter((value) => value.value !== item);
+		});
+	}, []);
+
+	const handleDeleteTag = useCallback(
+		(id: string) => {
+			setValues((prevValues) => {
+				return prevValues.filter((preValue) => preValue.value !== id);
+			});
+		},
+		[setValues]
+	);
+
+	useEffect(() => {
+		const tags = values?.map((selectedItemValue) => {
+			return {
+				id: selectedItemValue.value,
+				label: selectedItemValue.name
+			};
+		});
+
+		setSelectedTags(tags);
+	}, [values]);
+
+	// eslint-disable-next-line sonarjs/no-identical-functions
+	const handleFetchOptionsCallback = React.useCallback(async (searchTerm: string) => {
+		if (searchTerm) {
+			setMatchingValues(
+				SAMPLE_APPLICATION_DOMAINS.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()))
+			);
+		} else {
+			setMatchingValues(SAMPLE_APPLICATION_DOMAINS);
+		}
+	}, []);
+
+	return (
+		<div style={{ width: "500px", height: "32px" }}>
+			<SolaceSelectAutocomplete
+				name="applicationDomain"
+				placeholder={values.length ? "" : "Application Domain"}
+				multiple={true}
+				value={values}
+				options={matchingValues}
+				itemComponent={SolaceSelectAutocompleteItem}
+				itemMappingCallback={(option) => option}
+				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				onChange={handleChange}
+				fetchOptionsCallback={handleFetchOptionsCallback}
+				renderTags={() => (
+					<>
+						{values && values.length > 0 && (
+							<SolaceSelectAutocompleteResponsiveTags
+								containerWidth={500}
+								tags={selectedTags}
+								tagMaxWidth={"300px"}
+								onDelete={handleDeleteTag}
+								overflowIndicatorLabel={"Filters"}
+								overflowIndicatorLabelSingular={"Filter"}
+								dataQa={"applicationDomainSelect-tags"}
+							/>
+						)}
+					</>
+				)}
+			></SolaceSelectAutocomplete>
+			<div style={{ marginBlock: "24px", display: "flex", flexWrap: "wrap" }}>
+				{values.map((value) => {
+					return (
+						<div style={{ marginRight: "8px", marginBottom: "8px" }} key={value.value}>
+							<SolaceChip label={`${value.name}`} onDelete={() => handleDelete(value.value)} />
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	);
+};
+
 export const OpenDropDownOnButtonClick = () => {
-	const [values, setValues] = React.useState([]);
-	const [matchingValues, setMatchingValues] = React.useState([]);
+	const [values, setValues] = useState([]);
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 	let demoInputRef;
 
 	const handleChange = (evt) => {

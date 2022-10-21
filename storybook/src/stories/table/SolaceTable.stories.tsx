@@ -227,7 +227,7 @@ const TableTemplate = ({ rows, columns, selectionType, ...args }): JSX.Element =
 	const data = cloneDeep(rows);
 	const columnsDef = useMemo(() => {
 		return cloneDeep(columns);
-	}, []);
+	}, [columns]);
 	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
 
 	const handleSort = useCallback(

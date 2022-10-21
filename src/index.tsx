@@ -38,6 +38,8 @@ export { getOptionLabel as getSolaceSelectAutocompleteOptionLabel } from "./comp
 export { getShowOptionDivider as getShowSolaceSelectAutocompleteOptionDivider } from "./components/form/SolaceSelectAutocompleteItem";
 export { isOptionEqual as isSolaceSelectAutocompleteOptionEqual } from "./components/form/SolaceSelectAutocompleteItem";
 export type { SolaceSelectAutocompleteItemProps } from "./components/form/SolaceSelectAutocompleteItem";
+export { default as SolaceSelectAutocompleteResponsiveTags } from "./components/form/SolaceSelectAutocompleteResponsiveTags";
+export type { SolaceSelectAutocompleteResponsiveTagsProps } from "./components/form/SolaceSelectAutocompleteResponsiveTags";
 export { default as SolaceTextArea } from "./components/form/SolaceTextArea";
 export { default as SolaceToggle } from "./components/form/SolaceToggle";
 export { default as SolaceLabel } from "./components/form/SolaceLabel";
@@ -68,6 +70,8 @@ export { default as SolaceGrid } from "./components/layout/SolaceGrid";
 export { default as SolaceBreadcrumb } from "./components/SolaceBreadcrumb";
 export { default as SolaceToggleButtonGroup } from "./components/form/SolaceToggleButtonGroup";
 export { default as SolaceCircularProgress } from "./components/SolaceCircularProgress";
+export { default as SolaceResponsiveItemList } from "./components/SolaceResponsiveItemList";
+export type { SolaceResponsiveItem } from "./components/SolaceResponsiveItemList";
 
 export * from "./types";
 
