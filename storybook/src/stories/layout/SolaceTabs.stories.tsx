@@ -129,3 +129,38 @@ WithSingleTab.args = {
 	tabs: [{ label: "Tab One", value: "tab_one", href: "#" }],
 	activeTabValue: "tab_one"
 };
+
+export const FullWidthTabs = Template.bind({});
+FullWidthTabs.args = {
+	tabs: [
+		{ label: "Tab One", value: "tab_one", href: "#" },
+		{ label: "Tab Two", value: "tab_two", href: "#" },
+		{ label: "Tab Three", value: "tab_three", href: "#" }
+	],
+	activeTabValue: "tab_one",
+	variant: "fullWidth"
+};
+
+export const ScrollableTabs = (): ReactNode => {
+	const [activeTabValue, setActiveTabValue] = useState("tab_one");
+	const handleTabClick = (tabValue: string) => {
+		setActiveTabValue(tabValue);
+	};
+	return (
+		<div style={{ width: "800px" }}>
+			<SolaceTabs
+				activeTabValue={activeTabValue}
+				onTabClick={handleTabClick}
+				variant="scrollable"
+				tabs={[
+					{ label: "Tab One with Long Name", value: "tab_one", href: "#" },
+					{ label: "Tab Two with Long Name", value: "tab_two", href: "#" },
+					{ label: "Tab Three with Long Name", value: "tab_three", href: "#" },
+					{ label: "Tab Four", value: "tab_four", href: "#" },
+					{ label: "Tab Five with Long Name", value: "tab_five", href: "#" },
+					{ label: "Tab Six", value: "tab_six", href: "#" }
+				]}
+			/>
+		</div>
+	);
+};

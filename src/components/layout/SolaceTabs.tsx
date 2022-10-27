@@ -38,6 +38,12 @@ interface SolaceTabsProps extends SolaceComponentProps {
 	 */
 	onTabClick?: (value: string) => void;
 	size?: keyof BASE_FONT_PX_SIZE_TYPES;
+	/**
+	 * scrollable will invoke scrolling properties and allow for horizontally scrolling of the tab bar.
+	 * fullWidth will make the tabs grow to use all the available space.
+	 * standard will render the default state.
+	 */
+	variant?: "fullWidth" | "scrollable" | "standard";
 }
 
 function AnchorTab(props: TabProps) {
@@ -59,13 +65,24 @@ function AnchorTab(props: TabProps) {
 	);
 }
 
-function SolaceTabs({ tabs, activeTabValue, onTabClick, size = "sm" }: SolaceTabsProps): JSX.Element {
+function SolaceTabs({
+	tabs,
+	activeTabValue,
+	onTabClick,
+	size = "sm",
+	variant = "standard"
+}: SolaceTabsProps): JSX.Element {
 	const handleChange = (_e: React.SyntheticEvent, value: string) => {
 		onTabClick?.(value);
 	};
 	return (
 		<Box sx={{ width: "100%", fontSize: BASE_FONT_PX_SIZES[size] }}>
-			<Tabs value={activeTabValue} onChange={handleChange} className={tabs.length === 1 ? "singleTab" : ""}>
+			<Tabs
+				value={activeTabValue}
+				onChange={handleChange}
+				className={tabs.length === 1 ? "singleTab" : ""}
+				variant={variant}
+			>
 				{tabs.map((item: TabProps) => (
 					<AnchorTab {...item} key={`anchroTab-${item.value}`} size={size} />
 				))}
