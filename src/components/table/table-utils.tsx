@@ -225,12 +225,13 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 	const menuItems =
 		actionMenuItems && actionMenuItems.length > 0
 			? actionMenuItems.map((item) => ({
-					...item,
-					onMenuItemClick: () => {
-						item.callback(row);
-					}
-			  }))
+				...item,
+				onMenuItemClick: () => {
+					item.callback(row);
+				}
+			}))
 			: null;
+	const isDisabled = row.disabledRowActionMenu;
 	return (
 		<StyledTableData
 			key={row.id + "_actionMenu"}
@@ -238,7 +239,7 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 		>
 			{menuItems && (
 				<SolaceMenu
-					buttonProps={{ variant: "icon", children: <MoreHorizIcon />, title: "More Actions" }}
+					buttonProps={{ isDisabled: isDisabled, variant: "icon", children: <MoreHorizIcon />, title: "More Actions" }}
 					items={menuItems}
 					anchorOrigin={{
 						vertical: "center",
