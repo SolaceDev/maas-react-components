@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { SolaceGridList, SolaceChip, SolaceMenu, SolaceTooltip } from "@SolaceDev/maas-react-components";
-import { useState } from "react";
 import { MoreHorizOutlinedIcon } from "../../../../src/resources/icons/MoreHorizOutlinedIcon";
 
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
@@ -83,6 +82,7 @@ export default {
 const ENV_1_NAME = "Environment 1";
 const ENV_DESCRIPTION = "The dev environment";
 const testHeaders = ["Modeled Event Mesh", "Environment", "Description"];
+const DEFAULT_GRID_TEMPALTE = "minmax(120px, 1fr) minmax(120px, 1fr) 300px";
 const testListItems = [
 	{
 		createdTime: 1635527600270,
@@ -289,221 +289,149 @@ const withActionColumnMapping = (testItem) => {
 
 const Template: ComponentStory<typeof SolaceGridList> = (args) => <SolaceGridList {...args} />;
 
-export const DefaultList = (args): JSX.Element => {
-	const [selectedId, setSelectedId] = useState();
-
-	const handleRowSelection = (selectedItem) => {
-		action("rowSelected")(selectedItem);
-		setSelectedId(selectedItem.id);
-	};
-
-	return (
-		<SolaceGridList
-			items={testListItems}
-			headers={testHeaders}
-			onSelection={handleRowSelection}
-			rowMapping={basicRowMapping}
-			selectedItemId={selectedId}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
-			dataQa="demoDefaultList"
-		/>
-	);
+export const DefaultList = Template.bind({});
+DefaultList.args = {
+	items: testListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)",
+	dataQa: "demoDefaultList"
 };
 
-export const ContainedList = (args): JSX.Element => {
-	const [selectedId, setSelectedId] = useState();
-
-	const handleRowSelection = (selectedItem) => {
-		action("rowSelected")(selectedItem);
-		setSelectedId(selectedItem.id);
-	};
-
-	return (
-		<div style={{ height: "200px" }}>
-			<SolaceGridList
-				items={testListItems}
-				headers={testHeaders}
-				onSelection={handleRowSelection}
-				rowMapping={basicRowMapping}
-				selectedItemId={selectedId}
-				gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
-				dataQa="demoDefaultList"
-				numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
-			/>
-		</div>
-	);
+export const ContainedList = Template.bind({});
+ContainedList.args = {
+	items: testListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	dataQa: "demoDefaultList",
+	numOfGridListItemDisplayed: 3
 };
 
-export const ColoredList = (args): JSX.Element => {
-	const [selectedId, setSelectedId] = useState(1);
-
-	const handleRowSelection = (selectedItem) => {
-		action("rowSelected")(selectedItem);
-		setSelectedId(selectedItem.id);
-	};
-
-	return (
-		<div style={{ height: "200px" }}>
-			<SolaceGridList
-				items={testListItems}
-				headers={testHeaders}
-				onSelection={handleRowSelection}
-				rowMapping={basicRowMapping}
-				selectedItemId={selectedId}
-				gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
-				dataQa="demoDefaultList"
-				background="rgba(0, 0, 0, 0.03)"
-				numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
-			/>
-		</div>
-	);
-};
-export const CustomRenderer = (args): JSX.Element => {
-	const [selectedId, setSelectedId] = useState();
-
-	const handleRowSelection = (selectedItem) => {
-		action("rowSelected")(selectedItem);
-		setSelectedId(selectedItem.id);
-	};
-
-	return (
-		<SolaceGridList
-			items={testListItems}
-			headers={testHeaders}
-			onSelection={handleRowSelection}
-			rowMapping={customCellMapping}
-			selectedItemId={selectedId}
-			gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
-			dataQa="demoDefaultList"
-			numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
-		/>
-	);
+export const ColoredList = Template.bind({});
+ColoredList.args = {
+	items: testListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	dataQa: "demoDefaultList",
+	background: "rgba(0, 0, 0, 0.03)"
 };
 
-export const CustomObjectIdentifier = (args): JSX.Element => {
-	const [selectedId, setSelectedId] = useState();
-	// the following list of objects no longer have an "id" attribute (which was used as the object identifier), but rather "customId"
-	const customListItems = [
-		{
-			createdTime: 1635527600270,
-			updatedTime: 1635527600270,
-			createdBy: "10lota8vwsr",
-			changedBy: "10lota8vwsr",
-			customId: 1,
-			name: "Event Mesh 1",
-			description: LIST_ITEM_DESCRIPTION,
-			environmentId: "environment1",
-			type: "eventMesh",
-			environment: {
-				id: "environment1",
-				name: ENV_1_NAME,
-				description: ENV_DESCRIPTION
-			}
-		},
-		{
-			createdTime: 1635527600270,
-			updatedTime: 1635527600270,
-			createdBy: "10lota8vwsr",
-			changedBy: "10lota8vwsr",
-			customId: 2,
-			name: "Event Mesh 2",
-			description: "Another fun and exciting mesh",
-			environmentId: "environment1",
-			type: "eventMesh",
-			environment: {
-				id: "environment1",
-				name: ENV_1_NAME,
-				description: ENV_DESCRIPTION
-			}
-		},
-		{
-			createdTime: 1635527600270,
-			updatedTime: 1635527600270,
-			createdBy: "10lota8vwsr",
-			changedBy: "10lota8vwsr",
-			customId: 3,
-			name: "Event Mesh 3",
-			description: "Coolest MEM around",
-			environmentId: "environment2",
-			type: "eventMesh",
-			environment: {
-				id: "environment2",
-				name: ANOTHER_ENVIRONMENT_NAME,
-				description: ENV_DESCRIPTION
-			}
-		},
-		{
-			createdTime: 1635527600270,
-			updatedTime: 1635527600270,
-			createdBy: "10lota8vwsr",
-			changedBy: "10lota8vwsr",
-			customId: 4,
-			name: "Event Mesh 4 with super loooooooong name",
-			description: "A Modeled Event Mesh with a really long name (40 characters which is the max)",
-			environmentId: "environment1",
-			type: "eventMesh",
-			environment: {
-				id: "environment1",
-				name: ENV_1_NAME,
-				description: ENV_DESCRIPTION
-			}
-		},
-		{
-			createdTime: 1635527600270,
-			updatedTime: 1635527600270,
-			createdBy: "10lota8vwsr",
-			changedBy: "10lota8vwsr",
-			customId: 5,
-			name: "Event Mesh 5",
-			description: LIST_ITEM_DESCRIPTION,
-			environmentId: "environment2",
-			type: "eventMesh",
-			environment: {
-				id: "environment2",
-				name: ANOTHER_ENVIRONMENT_NAME,
-				description: ENV_DESCRIPTION
-			}
+export const CustomRenderer = Template.bind({});
+CustomRenderer.args = {
+	items: testListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: customCellMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	dataQa: "demoDefaultList"
+};
+
+export const CustomObjectIdentifier = Template.bind({});
+// the following list of objects no longer have an "id" attribute (which was used as the object identifier), but rather "customId"
+const customListItems = [
+	{
+		createdTime: 1635527600270,
+		updatedTime: 1635527600270,
+		createdBy: "10lota8vwsr",
+		changedBy: "10lota8vwsr",
+		customId: 1,
+		name: "Event Mesh 1",
+		description: LIST_ITEM_DESCRIPTION,
+		environmentId: "environment1",
+		type: "eventMesh",
+		environment: {
+			id: "environment1",
+			name: ENV_1_NAME,
+			description: ENV_DESCRIPTION
 		}
-	];
+	},
+	{
+		createdTime: 1635527600270,
+		updatedTime: 1635527600270,
+		createdBy: "10lota8vwsr",
+		changedBy: "10lota8vwsr",
+		customId: 2,
+		name: "Event Mesh 2",
+		description: "Another fun and exciting mesh",
+		environmentId: "environment1",
+		type: "eventMesh",
+		environment: {
+			id: "environment1",
+			name: ENV_1_NAME,
+			description: ENV_DESCRIPTION
+		}
+	},
+	{
+		createdTime: 1635527600270,
+		updatedTime: 1635527600270,
+		createdBy: "10lota8vwsr",
+		changedBy: "10lota8vwsr",
+		customId: 3,
+		name: "Event Mesh 3",
+		description: "Coolest MEM around",
+		environmentId: "environment2",
+		type: "eventMesh",
+		environment: {
+			id: "environment2",
+			name: ANOTHER_ENVIRONMENT_NAME,
+			description: ENV_DESCRIPTION
+		}
+	},
+	{
+		createdTime: 1635527600270,
+		updatedTime: 1635527600270,
+		createdBy: "10lota8vwsr",
+		changedBy: "10lota8vwsr",
+		customId: 4,
+		name: "Event Mesh 4 with super loooooooong name",
+		description: "A Modeled Event Mesh with a really long name (40 characters which is the max)",
+		environmentId: "environment1",
+		type: "eventMesh",
+		environment: {
+			id: "environment1",
+			name: ENV_1_NAME,
+			description: ENV_DESCRIPTION
+		}
+	},
+	{
+		createdTime: 1635527600270,
+		updatedTime: 1635527600270,
+		createdBy: "10lota8vwsr",
+		changedBy: "10lota8vwsr",
+		customId: 5,
+		name: "Event Mesh 5",
+		description: LIST_ITEM_DESCRIPTION,
+		environmentId: "environment2",
+		type: "eventMesh",
+		environment: {
+			id: "environment2",
+			name: ANOTHER_ENVIRONMENT_NAME,
+			description: ENV_DESCRIPTION
+		}
+	}
+];
 
-	const handleRowSelection = (selectedItem) => {
-		action("rowSelected")(selectedItem);
-		setSelectedId(selectedItem.customId);
-	};
-
-	return (
-		<SolaceGridList
-			items={customListItems}
-			objectIdentifier="customId" // testing the custom identifier
-			headers={testHeaders}
-			onSelection={handleRowSelection}
-			rowMapping={customCellMapping}
-			selectedItemId={selectedId}
-			gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
-			dataQa="demoDefaultList"
-			numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
-		/>
-	);
+CustomObjectIdentifier.args = {
+	items: customListItems,
+	objectIdentifier: "customId", // testing the custom identifier
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: customCellMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	dataQa: "demoDefaultList"
 };
 
-export const WithActionMenus = (args): JSX.Element => {
-	const [selectedId, setSelectedId] = useState();
-
-	const handleRowSelection = (selectedItem) => {
-		action("rowSelected")(selectedItem);
-		setSelectedId(selectedItem.id);
-	};
-
-	return (
-		<SolaceGridList
-			items={testListItems}
-			headers={testHeaders}
-			onSelection={handleRowSelection}
-			rowMapping={withActionColumnMapping}
-			selectedItemId={selectedId}
-			gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px 40px"
-			dataQa="demoDefaultList"
-			numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
-		/>
-	);
+export const WithActionMenus = Template.bind({});
+WithActionMenus.args = {
+	items: testListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: withActionColumnMapping,
+	gridTemplate: "minmax(120px, 1fr) minmax(120px, 1fr) 300px 40px",
+	dataQa: "demoDefaultList"
 };

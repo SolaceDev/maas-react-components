@@ -7,6 +7,7 @@ import { useScrollIndicator } from "../../hooks/useScrollIndicator";
 
 const Row = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.row as CSSProperties) }));
 const List = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.list as CSSProperties) }));
+const Border = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.border as CSSProperties) }));
 
 interface SolaceGridListProps<T> extends SolaceComponentProps {
 	id?: string;
@@ -139,55 +140,56 @@ function SolaceGridList<T>({
 	const { maskImage, onScrollHandler } = useScrollIndicator();
 	const itemHeight = getGridListItemHeight();
 
+	const maskImageEffect = () => {
+		return numOfGridListItemDisplayed
+			? items && items.length > numOfGridListItemDisplayed
+				? maskImage
+				: "none"
+			: "none";
+	};
+
 	return (
 		<div
 			id="listComponent"
 			key={id}
 			data-qa={dataQa}
 			style={{
-				// height: "100%",  // now the maxHeight is being calculated in the list
 				color: theme.palette.ux.primary.text.wMain
 			}}
 		>
 			{headers && getListHeader}
-			<List
-				onScroll={onScrollHandler}
-				style={{
-					backgroundColor: background,
-					/**
-					 * the maxHeight is calculated based on how many items to be displayed,
-					 * for example, 9 is the default value numOfGridListItemDisplayed, in this case
-					 * maxHeight = itemHeight * 9 + 4.5 (half itemHeight) + 8 (top/bottom padding)
-					 * so the bottom stops at exactly 9.5 item position
-					 */
-					maxHeight: numOfGridListItemDisplayed
-						? `${itemHeight * numOfGridListItemDisplayed + itemHeight / 2}px`
-						: "none",
-					maskImage: numOfGridListItemDisplayed
-						? items && items.length > numOfGridListItemDisplayed
-							? maskImage
-							: "none"
-						: "none",
-					WebkitMaskImage: numOfGridListItemDisplayed
-						? items && items.length > numOfGridListItemDisplayed
-							? maskImage
-							: "none"
-						: "none"
-				}}
-			>
-				{items?.map((item, index) => (
-					<SolaceGridListRow
-						key={`solaceGridListRow-${item[objectIdentifier] ?? index}`}
-						id={item[objectIdentifier] ?? index}
-						index={index + 1}
-						items={rowMapping(item, index)}
-						selected={selectedItemId ? item[objectIdentifier] === selectedItemId : false}
-						gridTemplate={gridTemplate}
-						onClick={handleRowClick}
-						dataQa={dataQa}
-					/>
-				))}
-			</List>
+			<Border>
+				<List
+					{...onScrollHandler}
+					style={{
+						backgroundColor: background,
+						/**
+						 * the maxHeight is calculated based on how many items to be displayed,
+						 * for example, 9 is the default value numOfGridListItemDisplayed, in this case
+						 * maxHeight = itemHeight * 9 + 4.5 (half itemHeight) + 8 (top/bottom padding)
+						 * so the bottom stops at exactly 9.5 item position
+						 */
+						maxHeight: numOfGridListItemDisplayed
+							? `${itemHeight * numOfGridListItemDisplayed + itemHeight / 2}px`
+							: "none",
+						maskImage: maskImageEffect(),
+						WebkitMaskImage: maskImageEffect()
+					}}
+				>
+					{items?.map((item, index) => (
+						<SolaceGridListRow
+							key={`solaceGridListRow-${item[objectIdentifier] ?? index}`}
+							id={item[objectIdentifier] ?? index}
+							index={index + 1}
+							items={rowMapping(item, index)}
+							selected={selectedItemId ? item[objectIdentifier] === selectedItemId : false}
+							gridTemplate={gridTemplate}
+							onClick={handleRowClick}
+							dataQa={dataQa}
+						/>
+					))}
+				</List>
+			</Border>
 		</div>
 	);
 }

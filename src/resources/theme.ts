@@ -1507,6 +1507,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			},
 			/** SolaceGridList */
 			layoutComponent_ImageList: {
+				border: {
+					border: `1px solid ${themeMapping.palette.secondary.w20}`
+				},
 				header: {
 					display: "flex",
 					justifyContent: "space-between",
@@ -1554,14 +1557,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						}
 					},
 					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`,
-					borderLeft: `1px solid ${themeMapping.palette.secondary.w20}`,
-					borderRight: `1px solid ${themeMapping.palette.secondary.w20}`,
 					cursor: "pointer",
 					":last-child": {
 						borderBottom: "none"
-					},
-					":first-of-type": {
-						borderTop: `1px solid ${themeMapping.palette.secondary.w20}`
 					},
 					":hover": {
 						background: themeMapping.palette.deprecated.secondary.w10
@@ -1576,7 +1574,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					}
 				},
 				list: {
-					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`,
 					overflow: "overlay",
 					height: "100%",
 					"@-moz-document url-prefix()": {
@@ -1679,6 +1676,7 @@ declare module "@mui/material/styles/createMixins" {
 			header: CSSProperties;
 			row: CSSProperties;
 			list: CSSProperties;
+			border: CSSProperties;
 		};
 		formComponent_ErrorText: {
 			container: CSSProperties;
