@@ -1510,7 +1510,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				header: {
 					display: "flex",
 					justifyContent: "space-between",
-					padding: "8px 24px 8px 24px",
+					padding: "8px 16px 8px 16px",
 					alignItems: "center",
 					borderLeft: `1px solid ${themeMapping.palette.secondary.w20}`,
 					borderTop: `1px solid ${themeMapping.palette.secondary.w20}`,
@@ -1521,34 +1521,47 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						alignItems: "center"
 					},
 					"& .selectAllText": {
-						marginLeft: "-8px",
+						marginLeft: "8px",
 						color: themeMapping.palette.primary.text.wMain
+					},
+					"& .countItemsText": {
+						marginRight: "16px",
+						color: themeMapping.palette.secondary.text.wMain
 					}
 				},
 				row: {
 					display: "grid",
-					gridColumnGap: "16px",
+					gridColumnGap: "32px",
 					whiteSpace: "nowrap",
 					placeItems: "center left",
-					padding: "10px 24px",
+					padding: "10px 16px",
 					minHeight: "32px",
 					"&.headerRow": {
+						border: "none",
 						height: "30px",
 						fontWeight: "500",
 						color: themeMapping.palette.secondary.text.wMain,
 						cursor: "auto",
-						padding: "0 24px",
+						padding: "0 16px",
 						position: "sticky",
 						top: 0,
 						":hover": {
 							background: "unset"
 						},
-						zIndex: 1
+						zIndex: 1,
+						":first-child": {
+							borderTop: "none"
+						}
 					},
 					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`,
+					borderLeft: `1px solid ${themeMapping.palette.secondary.w20}`,
+					borderRight: `1px solid ${themeMapping.palette.secondary.w20}`,
 					cursor: "pointer",
 					":last-child": {
 						borderBottom: "none"
+					},
+					":first-of-type": {
+						borderTop: `1px solid ${themeMapping.palette.secondary.w20}`
 					},
 					":hover": {
 						background: themeMapping.palette.deprecated.secondary.w10
@@ -1563,7 +1576,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					}
 				},
 				list: {
-					border: `1px solid ${themeMapping.palette.secondary.w20}`,
+					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`,
 					overflow: "overlay",
 					height: "100%",
 					"@-moz-document url-prefix()": {

@@ -1,4 +1,4 @@
-import { ComponentMeta } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { SolaceGridList, SolaceChip, SolaceMenu, SolaceTooltip } from "@SolaceDev/maas-react-components";
 import { useState } from "react";
@@ -72,6 +72,10 @@ export default {
 		background: {
 			control: { type: "text" },
 			description: "Text used to set the background color of the list"
+		},
+		numOfGridListItemDisplayed: {
+			control: { type: "number" },
+			description: "Number of items to be displayed in the List"
 		}
 	}
 } as ComponentMeta<typeof SolaceGridList>;
@@ -188,6 +192,14 @@ const createActionMenu = (item) => {
 				variant: "icon",
 				children: <MoreHorizOutlinedIcon />
 			}}
+			anchorOrigin={{
+				vertical: "bottom",
+				horizontal: "right"
+			}}
+			transformOrigin={{
+				vertical: "top",
+				horizontal: "right"
+			}}
 		/>
 	);
 };
@@ -275,7 +287,9 @@ const withActionColumnMapping = (testItem) => {
 	return itemCells;
 };
 
-export const DefaultList = (): JSX.Element => {
+const Template: ComponentStory<typeof SolaceGridList> = (args) => <SolaceGridList {...args} />;
+
+export const DefaultList = (args): JSX.Element => {
 	const [selectedId, setSelectedId] = useState();
 
 	const handleRowSelection = (selectedItem) => {
@@ -296,7 +310,7 @@ export const DefaultList = (): JSX.Element => {
 	);
 };
 
-export const ContainedList = (): JSX.Element => {
+export const ContainedList = (args): JSX.Element => {
 	const [selectedId, setSelectedId] = useState();
 
 	const handleRowSelection = (selectedItem) => {
@@ -314,12 +328,13 @@ export const ContainedList = (): JSX.Element => {
 				selectedItemId={selectedId}
 				gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
 				dataQa="demoDefaultList"
+				numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
 			/>
 		</div>
 	);
 };
 
-export const ColoredList = (): JSX.Element => {
+export const ColoredList = (args): JSX.Element => {
 	const [selectedId, setSelectedId] = useState(1);
 
 	const handleRowSelection = (selectedItem) => {
@@ -338,11 +353,12 @@ export const ColoredList = (): JSX.Element => {
 				gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
 				dataQa="demoDefaultList"
 				background="rgba(0, 0, 0, 0.03)"
+				numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
 			/>
 		</div>
 	);
 };
-export const CustomRenderer = (): JSX.Element => {
+export const CustomRenderer = (args): JSX.Element => {
 	const [selectedId, setSelectedId] = useState();
 
 	const handleRowSelection = (selectedItem) => {
@@ -359,11 +375,12 @@ export const CustomRenderer = (): JSX.Element => {
 			selectedItemId={selectedId}
 			gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
 			dataQa="demoDefaultList"
+			numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
 		/>
 	);
 };
 
-export const CustomObjectIdentifier = (): JSX.Element => {
+export const CustomObjectIdentifier = (args): JSX.Element => {
 	const [selectedId, setSelectedId] = useState();
 	// the following list of objects no longer have an "id" attribute (which was used as the object identifier), but rather "customId"
 	const customListItems = [
@@ -464,11 +481,12 @@ export const CustomObjectIdentifier = (): JSX.Element => {
 			selectedItemId={selectedId}
 			gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px"
 			dataQa="demoDefaultList"
+			numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
 		/>
 	);
 };
 
-export const WithActionMenus = (): JSX.Element => {
+export const WithActionMenus = (args): JSX.Element => {
 	const [selectedId, setSelectedId] = useState();
 
 	const handleRowSelection = (selectedItem) => {
@@ -485,6 +503,7 @@ export const WithActionMenus = (): JSX.Element => {
 			selectedItemId={selectedId}
 			gridTemplate="minmax(120px, 1fr) minmax(120px, 1fr) 300px 40px"
 			dataQa="demoDefaultList"
+			numOfGridListItemDisplayed={args.numOfGridListItemDisplayed}
 		/>
 	);
 };

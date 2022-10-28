@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled, useTheme } from "@mui/material";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import SolaceCheckBox, { SolaceCheckboxChangeEvent } from "../form/SolaceCheckBox";
 import { CSSProperties } from "@mui/styled-engine";
@@ -9,6 +9,7 @@ import SolaceGridList from "./SolaceGridList";
 const ImageListHeader = styled("div")(({ theme }) => ({
 	...(theme.mixins.layoutComponent_ImageList.header as CSSProperties)
 }));
+const Row = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.row as CSSProperties) }));
 
 interface SolaceGridListMultiSelectProps<T> extends SolaceComponentProps {
 	id?: string;
@@ -24,6 +25,9 @@ interface SolaceGridListMultiSelectProps<T> extends SolaceComponentProps {
 	selectAll?: boolean;
 	selectAllLabel?: string;
 	actions?: JSX.Element[];
+	numOfGridListItemDisplayed?: number;
+	showCount?: boolean;
+	itemsType?: string;
 }
 
 function SolaceGridListMultiSelect<T>({
@@ -40,7 +44,10 @@ function SolaceGridListMultiSelect<T>({
 	selectAllLabel = "Select All",
 	selectAll = true,
 	actions,
-	dataQa
+	dataQa,
+	numOfGridListItemDisplayed,
+	showCount = false,
+	itemsType = ""
 }: SolaceGridListMultiSelectProps<T>): JSX.Element {
 	// checkbox is 25px wide, column gap is 16px, setting a min width of 17px
 	// gives a gap of 8px between checkbox and first column (as per UX design)
@@ -48,6 +55,8 @@ function SolaceGridListMultiSelect<T>({
 	const HEADER_HEIGHT = "49px";
 
 	const [allSelected, setAllSelected] = useState(false);
+	const [headerBGC, setHeaderBGC] = useState("");
+	const theme = useTheme();
 	const [indeterminate, setIndeterminate] = useState(false);
 
 	const getGridTemplate = useMemo(() => {
@@ -135,12 +144,58 @@ function SolaceGridListMultiSelect<T>({
 		[handleRowSelection, objectIdentifier, rowMapping, selectedRowIds]
 	);
 
+	useEffect(() => {
+		const getBackgroundColour = (element: Element): string => {
+			let backgroundColor = window.getComputedStyle(element).backgroundColor;
+			if (backgroundColor !== "rgba(0, 0, 0, 0)") {
+				return backgroundColor;
+			} else if (element.parentElement) {
+				backgroundColor = getBackgroundColour(element.parentElement);
+			} else {
+				// fall through case (no background color defined in any parent element)
+				backgroundColor = theme.palette.ux.background.w10;
+			}
+
+			return backgroundColor;
+		};
+
+		const currentBase = document.getElementById("listComponent");
+		const parentElement = currentBase?.parentElement;
+		if (parentElement) {
+			const bkColor = getBackgroundColour(parentElement);
+			setHeaderBGC(bkColor);
+		}
+	}, [theme.palette.ux.background.w10]); // will not change
+
+	const getListHeader = useMemo(() => {
+		if (headers) {
+			return (
+				<Row
+					key="headerRow"
+					className="headerRow"
+					style={{
+						padding: "0 64px",
+						gridTemplateColumns: gridTemplate,
+						backgroundColor: headerBGC,
+						color: theme.palette.ux.secondary.text.wMain
+					}}
+				>
+					{headers.map((label, index) => (
+						<span key={index}>{label}</span>
+					))}
+				</Row>
+			);
+		}
+		return null;
+	}, [gridTemplate, headerBGC, headers, theme.palette.ux.secondary.text.wMain]);
+
 	const isHeaderDisplayed = useMemo(() => {
 		return selectAll || actions;
 	}, [actions, selectAll]);
 
 	return (
 		<div data-qa={dataQa} style={{ height: isHeaderDisplayed ? `calc(100% - ${HEADER_HEIGHT})` : "100%" }}>
+			{getListHeader}
 			{isHeaderDisplayed && (
 				<ImageListHeader>
 					{selectAll && (
@@ -160,19 +215,26 @@ function SolaceGridListMultiSelect<T>({
 							<span key="selectAllPlaceholder"></span>
 						) /*this is to ensure 'actions' are right aligned when there is no 'Select All' checkbox */
 					}
-					{actions}
+					{
+						<span>
+							{showCount && actions && (
+								<span className="countItemsText">{`${selectedRowIds.length} ${itemsType} Selected`}</span>
+							)}
+							{actions}
+						</span>
+					}
 				</ImageListHeader>
 			)}
 			<SolaceGridList
 				id={id}
 				items={items}
-				headers={headers ? ["", ...headers] : undefined}
 				objectIdentifier={objectIdentifier}
 				selectedItemId={highlightedRowId}
 				onSelection={onRowHighlight}
 				rowMapping={getRowMapping}
 				gridTemplate={getGridTemplate}
 				dataQa={`${dataQa}-gridlist`}
+				numOfGridListItemDisplayed={numOfGridListItemDisplayed}
 			/>
 		</div>
 	);

@@ -95,6 +95,18 @@ export default {
 					summary: true
 				}
 			}
+		},
+		numOfGridListItemDisplayed: {
+			control: { type: "number" },
+			description: "Number of items to be displayed in the List"
+		},
+		showCount: {
+			control: { type: "boolean" },
+			description: "Show the number of selected items"
+		},
+		itemsType: {
+			control: { type: "text" },
+			description: "Type of the Items"
 		}
 	}
 } as ComponentMeta<typeof SolaceGridListMultiSelect>;
@@ -228,12 +240,13 @@ const basicRowMapping = (testItem) => {
 	return itemCells;
 };
 
-const getActions = (): JSX.Element[] => {
+const getActions = (isDisabled): JSX.Element[] => {
 	const actionList = [];
 	actionList.push(
 		<SolaceMenu
 			id={"custom-solace-menu"}
 			buttonProps={{
+				isDisabled: isDisabled,
 				variant: "outline",
 				endIcon: (
 					<span style={{ marginTop: "-2px" }}>
@@ -248,7 +261,7 @@ const getActions = (): JSX.Element[] => {
 	return actionList;
 };
 
-const SolaceGridListMultiSelectStory = ({ contained = false, selectedRowIds, highlightedRowId, ...args }) => {
+const SolaceGridListMultiSelectStory = ({ selectedRowIds, highlightedRowId, ...args }) => {
 	const [highlightedId, setHighlightedId] = useState(highlightedRowId || undefined);
 	const [selectedIds, setSelectedIds] = useState(selectedRowIds || []);
 
@@ -270,15 +283,13 @@ const SolaceGridListMultiSelectStory = ({ contained = false, selectedRowIds, hig
 		setSelectedIds(selectedItems.map((item) => item.id));
 	};
 	return (
-		<div style={{ height: contained ? "200px" : "" }}>
-			<SolaceGridListMultiSelect
-				{...args}
-				highlightedRowId={highlightedId}
-				onRowHighlight={handleRowHighlight}
-				selectedRowIds={selectedIds}
-				onSelection={handleRowSelection}
-			/>
-		</div>
+		<SolaceGridListMultiSelect
+			{...args}
+			highlightedRowId={highlightedId}
+			onRowHighlight={handleRowHighlight}
+			selectedRowIds={selectedIds}
+			onSelection={handleRowSelection}
+		/>
 	);
 };
 
@@ -331,8 +342,43 @@ WithActionMenus.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
 	gridTemplate: DEFAULT_GRID_TEMPALTE,
-	actions: getActions(),
+	actions: getActions(false),
 	dataQa: "demoDefaultList"
+};
+
+export const WithActionMenusEnabledOnItemsSelect = (): JSX.Element => {
+	const [highlightedRowId, setHighlightedRowId] = useState();
+	const [selectedRowIds, setSelectedRowIds] = useState([]);
+	const [isDisabled, setIsDisabled] = useState(true);
+
+	const handleRowHighlight = (selectedItem) => {
+		action("rowHighlighted")(selectedItem);
+		setHighlightedRowId(selectedItem.id);
+	};
+
+	const handleRowSelection = (selectedItems) => {
+		action("selectedRows")(selectedItems);
+		if (selectedItems.length > 0) {
+			setIsDisabled(false);
+		} else {
+			setIsDisabled(true);
+		}
+		setSelectedRowIds(selectedItems.map((item) => item.id));
+	};
+
+	return (
+		<SolaceGridListMultiSelect
+			items={testListItems}
+			rowMapping={basicRowMapping}
+			highlightedRowId={highlightedRowId}
+			onRowHighlight={handleRowHighlight}
+			selectedRowIds={selectedRowIds}
+			onSelection={handleRowSelection}
+			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
+			actions={getActions(isDisabled)}
+			dataQa="demoDefaultList"
+		/>
+	);
 };
 
 export const WithOnlyActionMenus = SolaceGridListMultiSelectStory.bind({});
@@ -340,7 +386,7 @@ WithOnlyActionMenus.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
 	gridTemplate: DEFAULT_GRID_TEMPALTE,
-	actions: getActions(),
+	actions: getActions(false),
 	selectAll: false,
 	dataQa: "demoDefaultList"
 };
@@ -359,9 +405,9 @@ ContainedList.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
 	gridTemplate: DEFAULT_GRID_TEMPALTE,
-	actions: getActions(),
+	actions: getActions(false),
 	dataQa: "demoDefaultList",
-	contained: true
+	numOfGridListItemDisplayed: 3
 };
 
 export const ContainedListNoHeader = SolaceGridListMultiSelectStory.bind({});
@@ -370,6 +416,6 @@ ContainedListNoHeader.args = {
 	rowMapping: basicRowMapping,
 	gridTemplate: DEFAULT_GRID_TEMPALTE,
 	dataQa: "demoDefaultList",
-	contained: true,
+	numOfGridListItemDisplayed: 3,
 	selectAll: false
 };
