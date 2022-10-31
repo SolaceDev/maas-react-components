@@ -15,6 +15,13 @@ export default {
 
 const Template: ComponentStory<typeof SolaceDetailMessage> = (args) => <SolaceDetailMessage {...args} />;
 
+const defaultButton = {
+	id: "catalog-btn",
+	variant: "call-to-action",
+	children: "Go To Catalog",
+	onClick: action("button-clicked")
+};
+
 export const NoAccessMessage = Template.bind({});
 NoAccessMessage.args = {
 	msgImg: <NoAccessImg />,
@@ -24,14 +31,7 @@ NoAccessMessage.args = {
 			Contact the owner <strong>jdoe@mail.com</strong> for access
 		</span>
 	),
-	actions: [
-		{
-			id: "catalog-btn",
-			variant: "call-to-action",
-			children: "Go To Catalog",
-			onClick: action("button-clicked")
-		}
-	]
+	actions: [defaultButton]
 };
 
 export const FailedFetchMessage = Template.bind({});
@@ -39,56 +39,28 @@ FailedFetchMessage.args = {
 	msgImg: <FailedFetch />,
 	title: "Unable to retreive data",
 	details: "Something went wrong. Please try again later",
-	actions: [
-		{
-			id: "catalog-btn",
-			variant: "call-to-action",
-			children: "Go To Catalog",
-			onClick: action("button-clicked")
-		}
-	]
+	actions: [defaultButton]
 };
 
 export const NoImageMessage = Template.bind({});
 NoImageMessage.args = {
 	title: "No Image Message",
 	details: "Hey, this message has no image",
-	actions: [
-		{
-			id: "catalog-btn",
-			variant: "call-to-action",
-			children: "Go To Catalog",
-			onClick: action("button-clicked")
-		}
-	]
+	actions: [defaultButton]
 };
 
 export const NoTitleMessage = Template.bind({});
 NoTitleMessage.args = {
 	msgImg: <ApiProducts />,
 	details: "Somebody stole my title!!!",
-	actions: [
-		{
-			id: "catalog-btn",
-			variant: "call-to-action",
-			children: "Go To Catalog",
-			onClick: action("button-clicked")
-		}
-	]
+	actions: [defaultButton]
 };
 
 export const NoDetailsMessage = Template.bind({});
 NoDetailsMessage.args = {
 	msgImg: <ApiProducts />,
 	title: "Ha ... I Only Have A Title and Button",
-	actions: [
-		{
-			id: "catalog-btn",
-			variant: "call-to-action",
-			children: "Go To Catalog",
-			onClick: action("button-clicked")
-		}
-	]
+	actions: [defaultButton]
 };
 
 export const NoActionsMessage = Template.bind({});
@@ -125,6 +97,14 @@ MultiActionMessage.args = {
 	]
 };
 
+export const CustomActionMessage = Template.bind({});
+CustomActionMessage.args = {
+	msgImg: <FailedFetch />,
+	title: "Something went wrong",
+	details: "This is a custom action JSX.Element!",
+	actions: <h1>This is a custom action!</h1>
+};
+
 export const CustomDetailsMessage = Template.bind({});
 CustomDetailsMessage.args = {
 	msgImg: <NoAccessImg />,
@@ -144,12 +124,5 @@ CustomDetailsMessage.args = {
 			</table>
 		</>
 	),
-	actions: [
-		{
-			id: "catalog-btn",
-			variant: "call-to-action",
-			children: "Go To Catalog",
-			onClick: action("button-clicked")
-		}
-	]
+	actions: [defaultButton]
 };

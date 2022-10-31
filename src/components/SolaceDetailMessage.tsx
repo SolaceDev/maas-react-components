@@ -2,6 +2,7 @@ import { styled } from "@mui/material";
 
 import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 import { BASE_FONT_PX_SIZES } from "../resources/typography";
+import { isEmpty } from "lodash";
 
 export interface SolaceDetailMessageProps {
 	/**
@@ -19,7 +20,7 @@ export interface SolaceDetailMessageProps {
 	/**
 	 * An array of actions to display as SolaceButtons
 	 */
-	actions?: SolaceButtonProps[];
+	actions?: SolaceButtonProps[] | JSX.Element;
 }
 
 const Container = styled("div")(({ theme }) => ({
@@ -60,10 +61,14 @@ const ButtonGroup = styled("div")(() => ({
 function SolaceDetailMessage({ msgImg, title, details, actions }: SolaceDetailMessageProps): JSX.Element {
 	const buildActionButtons = () => {
 		const buttons: JSX.Element[] = [];
-		actions?.forEach((action: SolaceButtonProps) =>
-			buttons.push(<SolaceButton dataQa={action.dataQa} key={action.id} {...action} />)
-		);
-		return buttons;
+		if (Array.isArray(actions) && !isEmpty(actions)) {
+			actions.forEach((action: SolaceButtonProps) =>
+				buttons.push(<SolaceButton dataQa={action.dataQa} key={action.id} {...action} />)
+			);
+			return buttons;
+		} else {
+			return actions;
+		}
 	};
 
 	return (
