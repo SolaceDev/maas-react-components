@@ -148,6 +148,16 @@ function SolaceGridList<T>({
 			: "none";
 	};
 
+	const [gridListRef, setGridListRef] = useState<null | HTMLElement>(null);
+
+	useEffect(() => {
+		const gridElement = gridListRef;
+		gridElement?.addEventListener("scroll", onScrollHandler);
+		return () => {
+			gridElement?.removeEventListener("scroll", onScrollHandler);
+		};
+	}, [gridListRef, onScrollHandler]);
+
 	return (
 		<div
 			id="listComponent"
@@ -160,15 +170,9 @@ function SolaceGridList<T>({
 			{headers && getListHeader}
 			<Border>
 				<List
-					{...onScrollHandler}
+					ref={setGridListRef}
 					style={{
 						backgroundColor: background,
-						/**
-						 * the maxHeight is calculated based on how many items to be displayed,
-						 * for example, 9 is the default value numOfGridListItemDisplayed, in this case
-						 * maxHeight = itemHeight * 9 + 4.5 (half itemHeight) + 8 (top/bottom padding)
-						 * so the bottom stops at exactly 9.5 item position
-						 */
 						maxHeight: numOfGridListItemDisplayed
 							? `${itemHeight * numOfGridListItemDisplayed + itemHeight / 2}px`
 							: "none",
