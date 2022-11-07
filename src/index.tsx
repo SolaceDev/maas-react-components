@@ -40,6 +40,7 @@ export { default as SolaceDetailMessage } from "./components/SolaceDetailMessage
 export { getOptionLabel as getSolaceSelectAutocompleteOptionLabel } from "./components/form/SolaceSelectAutocompleteItem";
 export { getShowOptionDivider as getShowSolaceSelectAutocompleteOptionDivider } from "./components/form/SolaceSelectAutocompleteItem";
 export { isOptionEqual as isSolaceSelectAutocompleteOptionEqual } from "./components/form/SolaceSelectAutocompleteItem";
+export { getGroupBy as getSolaceSelectAutocompleteGroupBy } from "./components/form/SolaceSelectAutocompleteItem";
 export type { SolaceSelectAutocompleteItemProps } from "./components/form/SolaceSelectAutocompleteItem";
 export { default as SolaceSelectAutocompleteResponsiveTags } from "./components/form/SolaceSelectAutocompleteResponsiveTags";
 export type { SolaceSelectAutocompleteResponsiveTagsProps } from "./components/form/SolaceSelectAutocompleteResponsiveTags";

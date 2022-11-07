@@ -6,6 +6,7 @@ export interface SolaceSelectAutocompleteItemProps {
 	subText?: string;
 	supplementalText?: string;
 	divider?: boolean;
+	categoryHeading?: string;
 }
 
 export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option?.name;
@@ -18,6 +19,8 @@ export const isOptionEqual = (
 ): boolean => {
 	return option?.value === value?.value;
 };
+
+export const getGroupBy = (option: SolaceSelectAutocompleteItemProps): string => option?.categoryHeading ?? "";
 
 function SolaceSelectAutocompleteItem({
 	name,

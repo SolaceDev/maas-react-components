@@ -11,6 +11,7 @@ import {
 	getSolaceSelectAutocompleteOptionLabel,
 	getShowSolaceSelectAutocompleteOptionDivider,
 	isSolaceSelectAutocompleteOptionEqual,
+	getSolaceSelectAutocompleteGroupBy,
 	SolaceSelectAutocompleteItemProps,
 	SolaceChip,
 	SolaceButton,
@@ -595,6 +596,194 @@ export const MultipleWithDisabled = () => {
 			></SolaceSelectAutocomplete>
 		</div>
 	);
+};
+
+const SELECT_OPTIONS_WITH_CATEGORY_HEADING: Array<SolaceSelectAutocompleteItemProps> = [
+	{
+		name: "Option #1",
+		value: "option1",
+		categoryHeading: "Shared"
+	},
+	{
+		name: "Option #2",
+		value: "option2",
+		categoryHeading: "Shared"
+	},
+	{
+		name: "Option #3",
+		value: "option3",
+		categoryHeading: "Non-Shared"
+	},
+	{
+		name: "Option #4",
+		value: "option4",
+		categoryHeading: "Non-Shared"
+	}
+];
+
+const SelectionWithHeadingTemplate = ({
+	disabledItems = false,
+	showGroupDivider = false
+}: {
+	disabledItems: boolean;
+	showGroupDivider: boolean;
+}): JSX.Element => {
+	const [values, setValues] = useState([]);
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
+
+	const handleChange = (evt) => {
+		setValues(evt.value);
+	};
+
+	const handleFetchOptionsCallback = React.useCallback((searchTerm: string) => {
+		if (searchTerm) {
+			setMatchingValues(
+				SELECT_OPTIONS_WITH_CATEGORY_HEADING.filter((option) =>
+					option["name"].toLowerCase().includes(searchTerm.toLowerCase())
+				)
+			);
+		} else {
+			setMatchingValues(SELECT_OPTIONS_WITH_CATEGORY_HEADING);
+		}
+	}, []);
+
+	const handleOptionDisabled = (option) => {
+		return option.categoryHeading === "Non-Shared";
+	};
+
+	return (
+		<div>
+			<SolaceSelectAutocomplete
+				name="demoSelect"
+				multiple={true}
+				value={values}
+				options={matchingValues}
+				itemComponent={SolaceSelectAutocompleteItem}
+				itemMappingCallback={(option) => option}
+				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				onChange={handleChange}
+				fetchOptionsCallback={handleFetchOptionsCallback}
+				getOptionDisabledCallback={disabledItems ? handleOptionDisabled : undefined}
+				groupByCallback={getSolaceSelectAutocompleteGroupBy}
+				showGroupDivider={showGroupDivider}
+			></SolaceSelectAutocomplete>
+		</div>
+	);
+};
+
+export const SelectionWithHeading = SelectionWithHeadingTemplate.bind({});
+SelectionWithHeading.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS_WITH_CATEGORY_HEADING
+			},
+			delay: 300
+		}
+	]
+};
+SelectionWithHeading.args = {};
+
+SelectionWithHeading.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByRole("select"));
+};
+
+SelectionWithHeading.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
+
+export const SelectionWithHeadingAndDisabledItems = SelectionWithHeadingTemplate.bind({});
+SelectionWithHeadingAndDisabledItems.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS_WITH_CATEGORY_HEADING
+			},
+			delay: 300
+		}
+	]
+};
+SelectionWithHeadingAndDisabledItems.args = {
+	disabledItems: true
+};
+
+SelectionWithHeadingAndDisabledItems.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByRole("select"));
+};
+
+SelectionWithHeadingAndDisabledItems.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
+
+export const SelectionWithHeadingWithDividers = SelectionWithHeadingTemplate.bind({});
+SelectionWithHeadingWithDividers.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS_WITH_CATEGORY_HEADING
+			},
+			delay: 300
+		}
+	]
+};
+SelectionWithHeadingWithDividers.args = {
+	showGroupDivider: true
+};
+
+SelectionWithHeadingWithDividers.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByRole("select"));
+};
+
+SelectionWithHeadingWithDividers.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
+
+export const SelectionWithHeadingWithDividersAndDisabledItems = SelectionWithHeadingTemplate.bind({});
+SelectionWithHeadingWithDividersAndDisabledItems.parameters = {
+	mockData: [
+		{
+			url: "http://someOtherExample.com/filterOptions",
+			method: "GET",
+			status: 200,
+			response: {
+				data: SELECT_OPTIONS_WITH_CATEGORY_HEADING
+			},
+			delay: 300
+		}
+	]
+};
+SelectionWithHeadingWithDividersAndDisabledItems.args = {
+	disabledItems: true,
+	showGroupDivider: true
+};
+
+SelectionWithHeadingWithDividersAndDisabledItems.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByRole("select"));
+};
+
+SelectionWithHeadingWithDividersAndDisabledItems.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
 };
 
 const SAMPLE_APPLICATION_DOMAINS: Array<SolaceSelectAutocompleteItemProps> = [

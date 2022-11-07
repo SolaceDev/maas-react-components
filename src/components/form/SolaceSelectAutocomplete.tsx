@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import { Box, Autocomplete, TextField, useTheme, styled } from "@mui/material";
+import { Box, Autocomplete, TextField, useTheme, styled, Divider } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 import CloseIcon from "@mui/icons-material/Close";
@@ -107,6 +107,14 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	getShowOptionDividerCallback?: (option: V) => boolean;
 	/**
+	 * The callback function which generates group heading
+	 */
+	groupByCallback?: (option: V) => string;
+	/**
+	 * Whether to show divider between group headings
+	 */
+	showGroupDivider?: boolean;
+	/**
 	 * Custom Width of the component.
 	 */
 	width?: string;
@@ -131,6 +139,10 @@ const CustomHeightTextField = styled(TextField)`
 	}
 `;
 
+const GroupItems = styled("ul")(() => ({
+	padding: 0
+}));
+
 function SolaceSelectAutocomplete<T, V>({
 	id,
 	name,
@@ -150,6 +162,8 @@ function SolaceSelectAutocomplete<T, V>({
 	itemMappingCallback,
 	optionsLabelCallback,
 	getShowOptionDividerCallback,
+	groupByCallback,
+	showGroupDivider = false,
 	dataQa,
 	dataTags,
 	options,
@@ -208,6 +222,23 @@ function SolaceSelectAutocomplete<T, V>({
 		return id ? id : name;
 	};
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const renderGroup = (params: any) => {
+		if (groupByCallback && showGroupDivider) {
+			return (
+				<li key={params.key}>
+					<div>
+						{params.key !== 0 && <Divider />}
+						<div className="MuiAutocomplete-groupLabel">{params.group}</div>
+					</div>
+					{params.children && <GroupItems>{params.children}</GroupItems>}
+				</li>
+			);
+		}
+		return null;
+	};
+
+	// eslint-disable-next-line sonarjs/cognitive-complexity
 	const select = () => (
 		<Autocomplete
 			ListboxProps={{ style: { maxHeight: maxHeight } }}
@@ -292,6 +323,8 @@ function SolaceSelectAutocomplete<T, V>({
 			ChipProps={{
 				deleteIcon: <CloseIcon />
 			}}
+			groupBy={groupByCallback}
+			renderGroup={groupByCallback && showGroupDivider ? renderGroup : undefined}
 		/>
 	);
 

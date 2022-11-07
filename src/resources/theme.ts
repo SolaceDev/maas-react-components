@@ -819,8 +819,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					},
 					popper: {
 						".MuiAutocomplete-listbox .MuiAutocomplete-option": {
-							paddingTop: 0,
-							paddingBottom: 0,
+							padding: "0 16px",
 							minHeight: "38px",
 							".MuiGrid-root.MuiGrid-container": {
 								"&.multiline": {
@@ -837,6 +836,21 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
 							backgroundColor: themeMapping.palette.brand.w10
+						},
+						".MuiAutocomplete-listbox .MuiAutocomplete-groupLabel": {
+							lineHeight: 1.5,
+							color: themeMapping.palette.primary.text.wMain,
+							fontSize: BASE_FONT_PX_SIZES.xs,
+							fontWeight: 500,
+							position: "unset",
+							height: "32px",
+							display: "flex",
+							alignItems: "center",
+							padding: "0 16px"
+						},
+						".MuiAutocomplete-listbox .MuiDivider-root": {
+							margin: "8px 0",
+							background: themeMapping.palette.primary.w10
 						},
 						boxShadow: `0 1px 4px ${getBoxShadow("w20")}`,
 						color: themeMapping.palette.primary.text.wMain,
