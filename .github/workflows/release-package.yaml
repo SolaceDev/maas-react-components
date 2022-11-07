@@ -11,9 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
+          cache: "npm"
           registry-url: https://npm.pkg.github.com/
           # Defaults to the user or organization that owns the workflow file
           scope: "@SolaceDev"

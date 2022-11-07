@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install dependencies
-        run: npm install && cd ./storybook && npm install
+        run: npm ci && cd ./storybook && npm ci
         env:
           GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }} #need this for npm package.
         # 👇 Adds Chromatic as a step in the workflow
@@ -39,12 +39,10 @@ jobs:
         uses: "actions/checkout@v2"
         with:
           ref: ${{ github.ref }}
+
       - name: "cat package.json"
         run: cat ./package.json
-      - name: "Setup Node.js"
-        uses: "actions/setup-node@v1"
-        with:
-          node-version: 14
+
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
@@ -64,7 +62,7 @@ jobs:
     steps:
       - uses: "actions/checkout@v2"
       - name: install
-        run: npm install
+        run: npm ci
         env:
           GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
       - name: deploy
@@ -72,4 +70,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          cd ./storybook && npm install && npm run deploy
+          cd ./storybook && npm ci && npm run deploy
