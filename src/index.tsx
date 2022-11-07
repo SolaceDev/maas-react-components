@@ -72,6 +72,7 @@ export { default as SolaceStack } from "./components/layout/SolaceStack";
 export { default as SolaceGrid } from "./components/layout/SolaceGrid";
 export { default as SolaceBreadcrumb } from "./components/SolaceBreadcrumb";
 export { default as SolaceToggleButtonGroup } from "./components/form/SolaceToggleButtonGroup";
+export { default as SolaceTypography } from "./components/SolaceTypography";
 export { default as SolaceCircularProgress } from "./components/SolaceCircularProgress";
 export { default as SolaceResponsiveItemList } from "./components/SolaceResponsiveItemList";
 export type { SolaceResponsiveItem } from "./components/SolaceResponsiveItemList";

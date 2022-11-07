@@ -8,3 +8,4 @@ export * from "./solaceChip";
 export * from "./sx";
 export * from "./solaceGrid";
 export * from "./solaceStack";
+export * from "./solaceTypography";

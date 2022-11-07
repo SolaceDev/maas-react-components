@@ -1633,11 +1633,25 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 		},
 		spacing: 8,
 		typography: {
-			fontSize: BASE_FONT_PX_SIZES.sm,
-			body1: {
-				fontSize: BASE_FONT_PX_SIZES.sm,
-				lineHeight: 1.5
+			/**
+			 * typography properties coming from the standard defined in
+			 * https://www.figma.com/file/2LR7eIvywQ8jgTrA0wlHTK/Text-styles-in-PS%2B?node-id=213%3A20861
+			 */
+			fontFamily: "Rubik,sans-serif",
+			h1: {
+				fontSize: "1.25rem",
+				lineHeight: 1.5,
+				fontWeight: 500
 			},
+			h2: { fontSize: "1.25rem", lineHeight: 1.5, fontWeight: 400 },
+			h3: { fontSize: "1rem", lineHeight: 1.5, fontWeight: 500 },
+			h4: { fontSize: "1rem", lineHeight: 1.5, fontWeight: 400 },
+			h5: { fontSize: "0.875rem", lineHeight: 1.5, fontWeight: 500 },
+			body1: { fontSize: "0.875rem", lineHeight: 1.5, fontWeight: 400 },
+			body2: { fontSize: "0.75rem", lineHeight: 1.5, fontWeight: 400 },
+			//***************************************************************
+			fontSize: BASE_FONT_PX_SIZES.sm,
+
 			button: {
 				lineHeight: 1.5,
 				fontSize: BASE_FONT_PX_SIZES.sm,
@@ -1650,8 +1664,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			subtitle1: {
 				fontSize: BASE_FONT_PX_SIZES.md,
 				lineHeight: 1.5
-			},
-			fontFamily: "Rubik,sans-serif"
+			}
 		}
 	};
 	return themeOptions;
