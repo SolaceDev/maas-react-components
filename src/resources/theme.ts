@@ -1662,7 +1662,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			h4: { fontSize: "1rem", lineHeight: 1.5, fontWeight: 400 },
 			h5: { fontSize: "0.875rem", lineHeight: 1.5, fontWeight: 500 },
 			body1: { fontSize: "0.875rem", lineHeight: 1.5, fontWeight: 400 },
-			body2: { fontSize: "0.75rem", lineHeight: 1.5, fontWeight: 400 },
+			caption: { fontSize: "0.75rem", lineHeight: 1.5, fontWeight: 400 },
 			//***************************************************************
 			fontSize: BASE_FONT_PX_SIZES.sm,
 
@@ -1670,10 +1670,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				lineHeight: 1.5,
 				fontSize: BASE_FONT_PX_SIZES.sm,
 				fontWeight: 500
-			},
-			caption: {
-				fontSize: BASE_FONT_PX_SIZES.xs,
-				lineHeight: 1.5
 			},
 			subtitle1: {
 				fontSize: BASE_FONT_PX_SIZES.md,

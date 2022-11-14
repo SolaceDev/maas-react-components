@@ -1,10 +1,19 @@
-import { Typography } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import { SolaceTypographyProps } from "../types";
 
 export default function SolaceTypography(props: SolaceTypographyProps) {
-	const { variant = "body1", children, ...rest } = props;
+	const theme = useTheme();
+
+	const colorMap = {
+		info: theme.palette.ux.info.w100,
+		error: theme.palette.ux.error.w100,
+		warning: theme.palette.ux.warning.w100,
+		success: theme.palette.ux.success.w100
+	};
+
+	const { variant = "body1", children, color, ...rest } = props;
 	return (
-		<Typography variant={variant} {...rest}>
+		<Typography variant={variant} color={colorMap[`${color}`]} {...rest}>
 			{children}
 		</Typography>
 	);

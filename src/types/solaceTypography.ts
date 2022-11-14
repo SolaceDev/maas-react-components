@@ -1,6 +1,6 @@
 import { TypographyProps } from "@mui/material";
 
-export type SolaceVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "body1" | "body2";
+export type SolaceVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "body1" | "caption";
 
 /**
  * All of the supported props related to SolaceTypoGraphy can be found at https://mui.com/material-ui/api/typography/
@@ -8,4 +8,5 @@ export type SolaceVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "body1" | "body2"
  */
 export type SolaceTypographyProps = Omit<TypographyProps, "variant"> & {
 	variant?: SolaceVariant;
+	color?: "success" | "info" | "warning" | "error";
 };
