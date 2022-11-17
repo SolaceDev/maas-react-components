@@ -965,9 +965,25 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								}
 							}
 						},
-						/**
-						 * apply an indeterminate linear progress indicator at the bottom of the dialog
-						 */
+						".success": {
+							".MuiSvgIcon-root path": {
+								fill: isCurrentSolace
+									? themeMapping.palette.deprecated.accent.n2.wMain
+									: themeMapping.palette.success.w100
+							}
+						},
+						".error": {
+							".MuiSvgIcon-root path": {
+								fill: themeMapping.palette.error.w100
+							}
+						},
+						".progress": {
+							".MuiSvgIcon-root path": {
+								fill: isCurrentSolace
+									? themeMapping.palette.deprecated.accent.n2.wMain
+									: themeMapping.palette.accent.n2.wMain
+							}
+						},
 						"&.linearProgressIndicator": {
 							".MuiPaper-root": {
 								position: "absolute",

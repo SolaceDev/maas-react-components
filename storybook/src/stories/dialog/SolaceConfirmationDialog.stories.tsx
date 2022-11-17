@@ -10,6 +10,7 @@ import {
 	styled
 } from "@SolaceDev/maas-react-components";
 import { DefaultTable } from "../table/SolaceTable.stories";
+import CheckCircleIcon from "@SolaceDev/maas-react-components/src/resources/icons/CheckCircleIcon";
 
 export default {
 	title: "Dialogs/SolaceConfirmationDialog",
@@ -158,6 +159,33 @@ const CustomContentWrapper = styled("div")(() => ({
 
 const TableWrapper = (props) => {
 	return <CustomContentWrapper>{props.children}</CustomContentWrapper>;
+};
+
+export const CircularSpinnerWithinDialog = Template.bind({});
+CircularSpinnerWithinDialog.args = {
+	isOpen: true,
+	maxWidth: "sm",
+	contentLayout: "contents",
+	actions: [
+		{
+			label: "Secondary",
+			onClick: action("secondary-callback")
+		},
+		{
+			label: "Primary",
+			onClick: action("primary-callback"),
+			variant: "outline"
+		}
+	],
+	children: (
+		<Stack direction="row" justifyContent="flex-start" alignItems="stretch" spacing={1} sx={{ marginTop: "0px" }}>
+			<div className="success">
+				<CheckCircleIcon />
+			</div>{" "}
+			{/* className can be success/error/progress*/}
+			<div>{`Placeholder text to showcase a modal dialog with an Icon and some body`}</div>
+		</Stack>
+	)
 };
 
 export const TableAsChildComponent = Template.bind({});
