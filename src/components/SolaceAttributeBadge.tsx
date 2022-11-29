@@ -12,12 +12,12 @@ const CHIP_PX_HEIGHTS: BASE_SIZE_TYPES = {
 };
 
 const CHIP_PX_BORDER_RADIUS: BASE_SIZE_TYPES = {
-	sm: 3,
-	md: 4,
-	lg: 5
+	sm: 30,
+	md: 40,
+	lg: 50
 };
 
-export interface SolaceChipProps extends SolaceComponentProps {
+export interface SolaceAttributeProps extends SolaceComponentProps {
 	/**
 	 * 	The content of the component.
 	 */
@@ -80,7 +80,7 @@ export interface SolaceChipProps extends SolaceComponentProps {
 	onDelete?: (id: string | number) => void;
 }
 
-export default function SolaceChip({
+export default function SolaceAttribute({
 	label,
 	variant = "filled",
 	disabled = false,
@@ -90,14 +90,14 @@ export default function SolaceChip({
 	labelColor,
 	borderRadius = "md",
 	fillColor,
-	boldLabel = false,
-	height = "md",
+	boldLabel = true,
+	height = "sm",
 	dataQa,
-	size = "sm",
-	compressed = false,
+	size = "xs",
+	compressed = true,
 	clickable = false,
 	onDelete
-}: SolaceChipProps): JSX.Element {
+}: SolaceAttributeProps): JSX.Element {
 	const CHIP_COLOR_MAP = useTheme().palette.ux.deprecated.chip;
 	return (
 		<Chip
@@ -111,8 +111,8 @@ export default function SolaceChip({
 				height: `${CHIP_PX_HEIGHTS[height]}px`,
 				backgroundColor: `${fillColor && CHIP_COLOR_MAP[fillColor]}`,
 				color: `${labelColor && CHIP_COLOR_MAP[labelColor]}`,
-				paddingLeft: `${compressed ? "2px" : "4px"}`,
-				paddingRight: `${compressed ? "2px" : "4px"}`
+				paddingLeft: `${compressed && "2px"}`,
+				paddingRight: `${compressed && "2px"}`
 			}}
 			label={label}
 			variant={variant}
@@ -122,7 +122,7 @@ export default function SolaceChip({
 			onDelete={onDelete}
 			deleteIcon={<CloseIcon />}
 			data-qa={dataQa}
-			className="chip"
+			className="attributeBadge"
 		/>
 	);
 }

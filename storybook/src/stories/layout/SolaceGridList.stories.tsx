@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { SolaceGridList, SolaceChip, SolaceMenu, SolaceTooltip } from "@SolaceDev/maas-react-components";
+import { SolaceGridList, SolaceAttributeBadge, SolaceMenu, SolaceTooltip } from "@SolaceDev/maas-react-components";
 import { MoreHorizOutlinedIcon } from "../../../../src/resources/icons/MoreHorizOutlinedIcon";
 
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
@@ -242,7 +242,7 @@ const customCellMapping = (testItem) => {
 	);
 	itemCells.push(
 		<div key={`${testItem.id}-${testItem.environment.name}`}>
-			<SolaceChip label={testItem.environment.name} />
+			<SolaceAttributeBadge label={testItem.environment.name} />
 		</div>
 	);
 	itemCells.push(
@@ -268,7 +268,7 @@ const withActionColumnMapping = (testItem) => {
 	);
 	itemCells.push(
 		<div key={`${testItem.id}-${testItem.environment.name}`}>
-			<SolaceChip label={testItem.environment.name} />
+			<SolaceAttributeBadge label={testItem.environment.name} />
 		</div>
 	);
 	itemCells.push(

@@ -13,6 +13,7 @@ import {
 	isSolaceSelectAutocompleteOptionEqual,
 	getSolaceSelectAutocompleteGroupBy,
 	SolaceSelectAutocompleteItemProps,
+	SolaceAttributeBadge,
 	SolaceChip,
 	SolaceButton,
 	SolaceSelectAutocompleteResponsiveTags
@@ -884,7 +885,10 @@ export const MultipleWithCustomTagRenderer = () => {
 				{values.map((value) => {
 					return (
 						<div style={{ marginRight: "8px", marginBottom: "8px" }} key={value.value}>
-							<SolaceChip label={`Application Domain: ${value.name}`} onDelete={() => handleDelete(value.value)} />
+							<SolaceAttributeBadge
+								label={`Application Domain: ${value.name}`}
+								onDelete={() => handleDelete(value.value)}
+							/>
 						</div>
 					);
 				})}

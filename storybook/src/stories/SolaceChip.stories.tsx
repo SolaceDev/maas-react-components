@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceChip, SolaceTooltip, CHIP_COLORS } from "@SolaceDev/maas-react-components";
+import { SolaceChip, BADGE_COLORS, SolaceTooltip } from "@SolaceDev/maas-react-components";
+import { action } from "@storybook/addon-actions";
 
 export default {
 	title: "Under Construction/SolaceChip",
@@ -22,7 +23,7 @@ export default {
 			}
 		},
 		borderColor: {
-			options: Object.values(CHIP_COLORS),
+			options: Object.values(BADGE_COLORS),
 			control: {
 				type: "select"
 			}
@@ -39,7 +40,7 @@ export default {
 			}
 		},
 		fillColor: {
-			options: Object.values(CHIP_COLORS),
+			options: Object.values(BADGE_COLORS),
 			control: {
 				type: "select"
 			}
@@ -50,7 +51,7 @@ export default {
 			}
 		},
 		labelColor: {
-			options: Object.values(CHIP_COLORS),
+			options: Object.values(BADGE_COLORS),
 			control: {
 				type: "select"
 			}
@@ -67,6 +68,9 @@ export default {
 		clickable: {
 			control: { type: "boolean" }
 		}
+	},
+	args: {
+		compressed: false
 	}
 } as ComponentMeta<typeof SolaceChip>;
 
@@ -103,15 +107,14 @@ LargeFontSizeChip.args = {
 
 export const BoldLabelChip = Template.bind({});
 BoldLabelChip.args = {
-	label: "Bold Label Chip",
+	label: "Bold (500) Font Weight",
 	boldLabel: true
 };
 
-export const NonCompressedChip = Template.bind({});
-NonCompressedChip.args = {
+export const CompressedChip = Template.bind({});
+CompressedChip.args = {
 	label: "Non Compressed Chip",
-	size: "xs",
-	compressed: false
+	compressed: true
 };
 
 export const WithTooltipChip = Template.bind({});
@@ -135,12 +138,11 @@ WithDashedBorderChip.args = {
 export const WithFillColorChip = Template.bind({});
 WithFillColorChip.args = {
 	label: "Fill Color Chip",
-	fillColor: CHIP_COLORS.OPAQUE_BLUE
+	fillColor: BADGE_COLORS.OPAQUE_BLUE
 };
 
-export const WithDeleteButtonChip = () => {
-	const handleDelete = () => {
-		alert("delete acton triggered");
-	};
-	return <SolaceChip label="Chip Text" onDelete={handleDelete} />;
+export const WithDeleteButtonChip = Template.bind({});
+WithDeleteButtonChip.args = {
+	label: "Chip Text",
+	onDelete: action("delete button clicked")
 };

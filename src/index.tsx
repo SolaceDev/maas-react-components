@@ -19,6 +19,7 @@ export type { SolaceCheckboxChangeEvent } from "./components/form/SolaceCheckBox
 export { default as SolaceRadio } from "./components/form/SolaceRadio";
 export { default as SolaceRadioGroup } from "./components/form/SolaceRadioGroup";
 export { default as Toasts } from "./components/SolaceToasts";
+export { default as SolaceAttributeBadge } from "./components/SolaceAttributeBadge";
 export { default as SolaceChip } from "./components/SolaceChip";
 export type { SolaceChipProps } from "./components/SolaceChip";
 export { default as SolaceErrorBox } from "./components/SolaceErrorBox";

@@ -1027,9 +1027,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			},
 			MuiChip: {
 				styleOverrides: {
-					root: {
-						borderRadius: "40px"
-					},
+					root: {},
 					filled: {
 						backgroundColor: themeMapping.palette.deprecated.chip.fill
 					},

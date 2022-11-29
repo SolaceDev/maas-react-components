@@ -225,11 +225,11 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 	const menuItems =
 		actionMenuItems && actionMenuItems.length > 0
 			? actionMenuItems.map((item) => ({
-				...item,
-				onMenuItemClick: () => {
-					item.callback(row);
-				}
-			}))
+					...item,
+					onMenuItemClick: () => {
+						item.callback(row);
+					}
+			  }))
 			: null;
 	const isDisabled = row.disabledRowActionMenu;
 	return (
