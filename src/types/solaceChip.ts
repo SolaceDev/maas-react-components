@@ -1,4 +1,4 @@
-export enum BADGE_COLORS {
+export enum CHIP_COLORS {
 	ROYAL_BLUE = "royalBlue",
 	DARK_BLUE = "darkBlue",
 	OPAQUE_BLUE = "opaqueBlue",

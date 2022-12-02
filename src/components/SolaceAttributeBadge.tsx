@@ -1,7 +1,7 @@
 import { Chip, useTheme } from "@mui/material";
 import { BASE_SIZE_TYPES } from "../resources/sizing";
 import { BASE_FONT_PX_SIZE_TYPES, BASE_FONT_PX_SIZES } from "../resources/typography";
-import { BADGE_COLORS } from "../types/solaceChip";
+import { CHIP_COLORS } from "../types/solaceChip";
 import SolaceComponentProps from "./SolaceComponentProps";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -37,7 +37,7 @@ export interface SolaceAttributeProps extends SolaceComponentProps {
 	/**
 	 * Sets the border color of the component
 	 */
-	borderColor?: BADGE_COLORS;
+	borderColor?: CHIP_COLORS;
 	/**
 	 * Sets the border radius of the component
 	 */
@@ -49,7 +49,7 @@ export interface SolaceAttributeProps extends SolaceComponentProps {
 	/**
 	 * Sets the fill color of the chip
 	 */
-	fillColor?: BADGE_COLORS;
+	fillColor?: CHIP_COLORS;
 	/**
 	 * Flag to set the label font weight to bold
 	 */
@@ -57,7 +57,7 @@ export interface SolaceAttributeProps extends SolaceComponentProps {
 	/**
 	 * Sets the text color of the label
 	 */
-	labelColor?: BADGE_COLORS;
+	labelColor?: CHIP_COLORS;
 	/**
 	 * Sets the vertical size of the chip
 	 */

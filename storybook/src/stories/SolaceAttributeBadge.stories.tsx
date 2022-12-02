@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceAttributeBadge, SolaceTooltip, BADGE_COLORS } from "@SolaceDev/maas-react-components";
+import { SolaceAttributeBadge, SolaceTooltip, CHIP_COLORS } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -23,7 +23,7 @@ export default {
 			}
 		},
 		borderColor: {
-			options: Object.values(BADGE_COLORS),
+			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			}
@@ -40,7 +40,7 @@ export default {
 			}
 		},
 		fillColor: {
-			options: Object.values(BADGE_COLORS),
+			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			}
@@ -51,7 +51,7 @@ export default {
 			}
 		},
 		labelColor: {
-			options: Object.values(BADGE_COLORS),
+			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			}
@@ -138,7 +138,7 @@ WithDashedBorderAttributeBadge.args = {
 export const WithFillColorAttributeBadge = Template.bind({});
 WithFillColorAttributeBadge.args = {
 	label: "Fill Color Attribute Badge",
-	fillColor: BADGE_COLORS.OPAQUE_BLUE
+	fillColor: CHIP_COLORS.OPAQUE_BLUE
 };
 
 export const WithDeleteButtonAttributeBadge = Template.bind({});

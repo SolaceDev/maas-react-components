@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceChip, BADGE_COLORS, SolaceTooltip } from "@SolaceDev/maas-react-components";
+import { SolaceChip, CHIP_COLORS, SolaceTooltip } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -23,7 +23,7 @@ export default {
 			}
 		},
 		borderColor: {
-			options: Object.values(BADGE_COLORS),
+			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			}
@@ -40,7 +40,7 @@ export default {
 			}
 		},
 		fillColor: {
-			options: Object.values(BADGE_COLORS),
+			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			}
@@ -51,7 +51,7 @@ export default {
 			}
 		},
 		labelColor: {
-			options: Object.values(BADGE_COLORS),
+			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			}
@@ -138,7 +138,7 @@ WithDashedBorderChip.args = {
 export const WithFillColorChip = Template.bind({});
 WithFillColorChip.args = {
 	label: "Fill Color Chip",
-	fillColor: BADGE_COLORS.OPAQUE_BLUE
+	fillColor: CHIP_COLORS.OPAQUE_BLUE
 };
 
 export const WithDeleteButtonChip = Template.bind({});
