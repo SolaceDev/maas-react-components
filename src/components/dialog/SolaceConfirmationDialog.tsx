@@ -6,7 +6,7 @@ import SolaceButton, { SolaceButtonProps } from "../form/SolaceButton";
 type actionProps = Partial<SolaceButtonProps> & { label: string; id?: string };
 
 export interface SolaceConfirmationDialogProps {
-	title?: string;
+	title?: string | JSX.Element;
 	contentText?: string;
 	actions: actionProps[];
 	isOpen: boolean;

@@ -201,3 +201,17 @@ TableAsChildComponent.args = {
 		</TableWrapper>
 	)
 };
+
+export const WithElementTypeTitle = (): JSX.Element => (
+	<SolaceConfirmationDialog
+		title={
+			<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+				<CheckCircleIcon />
+				<div>Title With JSX Element</div>
+			</div>
+		}
+		contentText="Some content"
+		isOpen={true}
+		actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK) }]}
+	/>
+);
