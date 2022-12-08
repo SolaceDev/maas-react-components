@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Stack } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
@@ -7,7 +7,8 @@ import {
 	SolaceSelect,
 	SolaceTextField,
 	MenuItem,
-	styled
+	styled,
+	SolaceAccordion
 } from "@SolaceDev/maas-react-components";
 import { DefaultTable } from "../table/SolaceTable.stories";
 import CheckCircleIcon from "@SolaceDev/maas-react-components/src/resources/icons/CheckCircleIcon";
@@ -133,15 +134,25 @@ export const WithNoChildren = (): JSX.Element => (
 	/>
 );
 
-export const WithLinearProgressIndicator = (): JSX.Element => (
-	<SolaceConfirmationDialog
-		title="Simple Form"
-		contentText="Submission in progress"
-		isOpen={true}
-		linearProgressIndicator={true}
-		actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), isDisabled: true }]}
-	/>
-);
+export const WithLinearProgressIndicator = ({ ...args }): JSX.Element => {
+	const [expanded, setExpanded] = useState(false);
+	return (
+		<SolaceConfirmationDialog
+			title="With Accordion Content And Progress Indicator"
+			isOpen={true}
+			linearProgressIndicator={true}
+			actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), isDisabled: true }]}
+		>
+			<SolaceAccordion
+				summary="Accordion in a dialog could have extra paddings AND break dialog progress indicator"
+				details="Because they both have MuiPaper-root class."
+				expanded={expanded}
+				onChange={() => setExpanded(!expanded)}
+				{...args}
+			/>
+		</SolaceConfirmationDialog>
+	);
+};
 
 const CustomContentWrapper = styled("div")(() => ({
 	display: "flex",

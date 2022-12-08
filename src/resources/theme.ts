@@ -985,12 +985,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							}
 						},
 						"&.linearProgressIndicator": {
-							".MuiPaper-root": {
+							".MuiDialog-paper": {
 								position: "absolute",
 								overflowX: "hidden"
 							},
 							// the light background of the progress bar
-							".MuiPaper-root::before": {
+							".MuiDialog-paper::before": {
 								content: '""',
 								position: "absolute",
 								bottom: 0,
@@ -1000,7 +1000,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								backgroundColor: isCurrentSolace ? themeMapping.palette.brand.w10 : themeMapping.palette.accent.n2.w10
 							},
 							// the dark sliding part of the progress bar
-							".MuiPaper-root::after": {
+							".MuiDialog-paper::after": {
 								content: '""',
 								position: "absolute",
 								bottom: 0,
