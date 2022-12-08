@@ -122,7 +122,7 @@ export default function SolaceChip({
 			onDelete={onDelete}
 			deleteIcon={<CloseIcon />}
 			data-qa={dataQa}
-			className="chip"
+			className="solaceChip"
 		/>
 	);
 }

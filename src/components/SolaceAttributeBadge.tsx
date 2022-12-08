@@ -122,7 +122,7 @@ export default function SolaceAttribute({
 			onDelete={onDelete}
 			deleteIcon={<CloseIcon />}
 			data-qa={dataQa}
-			className="attributeBadge"
+			className="solaceAttributeBadge"
 		/>
 	);
 }
