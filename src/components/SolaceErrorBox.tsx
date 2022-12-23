@@ -4,6 +4,7 @@ import SolaceButton from "./form/SolaceButton";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { ErrorIcon } from "../resources/icons/ErrorIcon";
 import { CloseIcon } from "../resources/icons/CloseIcon";
+import { getCloseButtonAriaLabel } from "../utils";
 
 const Container = styled("div")(({ theme }) => ({
 	display: "flex",
@@ -64,7 +65,7 @@ function SolaceErrorBox({
 				{message}
 			</MessageSection>
 			{showCloseButton && (
-				<SolaceButton variant="icon" onClick={handleClose}>
+				<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
 					<CloseIcon size={20} />
 				</SolaceButton>
 			)}

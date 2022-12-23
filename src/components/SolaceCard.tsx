@@ -3,6 +3,7 @@ import { styled } from "@mui/material";
 import SolaceButton from "./form/SolaceButton";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 import SolaceComponentProps from "./SolaceComponentProps";
+import { getCloseButtonAriaLabel } from "../utils";
 
 const CardContainer = styled("div", {
 	shouldForwardProp: (prop) => prop !== "backgroundColor" && prop !== "hasTitle"
@@ -77,7 +78,7 @@ function SolaceCard({
 					<TitleRow>
 						{isValidElement(title) ? title : <TitleSection>{title}</TitleSection>}
 						{showCloseButton && (
-							<SolaceButton variant="icon" onClick={handleClose}>
+							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
 								<CloseIcon size={20} />
 							</SolaceButton>
 						)}
@@ -90,7 +91,7 @@ function SolaceCard({
 					{children}
 					{showCloseButton && (
 						<div>
-							<SolaceButton variant="icon" onClick={handleClose}>
+							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
 								<CloseIcon size={20} />
 							</SolaceButton>
 						</div>

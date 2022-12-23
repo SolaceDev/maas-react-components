@@ -5,6 +5,7 @@ import SolaceComponentProps from "./SolaceComponentProps";
 import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 import SolaceMenuItem, { SolaceMenuItemProps } from "./SolaceMenuItem";
 import { useScrollIndicator } from "../hooks/useScrollIndicator";
+import { getActionMenuAriaLabel } from "../utils";
 
 interface SolaceMenuProps extends SolaceComponentProps {
 	id?: string;
@@ -182,7 +183,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 
 	return (
 		<Fragment>
-			<SolaceButton {...buttonProps} onClick={handleMenuClick} />
+			<SolaceButton aria-label={getActionMenuAriaLabel()} {...buttonProps} onClick={handleMenuClick} />
 
 			{/* 
 				Popover is used to sit right underneath of <Menu /> to give the desired box-shadow style after maskImage effect is applied.

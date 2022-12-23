@@ -3,5 +3,7 @@ export const constants = {
 	menuItemHeight: 38,
 	menuItemHeightMultiline: 58,
 	GridListItemHeight: 53,
-	DEFAULT_NUM_OF_MENUITEM_DISPLAYED: 9
+	DEFAULT_NUM_OF_MENUITEM_DISPLAYED: 9,
+	closeButtonAriaLabel: "Close",
+	actionMenuAriaLabel: "More Actions"
 };

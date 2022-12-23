@@ -8,6 +8,8 @@ import SolaceComponentProps from "../SolaceComponentProps";
 export interface SolaceButtonProps extends SolaceComponentProps {
 	id?: string;
 	variant: "call-to-action" | "outline" | "text" | "icon" | "link";
+	"aria-label"?: string;
+	"aria-labelledby"?: string;
 	isDisabled?: boolean;
 	underline?: "none" | "hover" | "always";
 	title?: string;
@@ -26,6 +28,8 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 function SolaceButton({
 	id,
 	variant = "text",
+	"aria-label": ariaLabel,
+	"aria-labelledby": ariaLabelledby,
 	isDisabled = false,
 	underline = "hover",
 	title = "",
@@ -51,6 +55,8 @@ function SolaceButton({
 		return (
 			<SolaceTooltip title={title}>
 				<IconButton
+					aria-label={ariaLabel}
+					aria-labelledby={ariaLabelledby}
 					data-qa={dataQa}
 					data-tags={dataTags}
 					type={type}

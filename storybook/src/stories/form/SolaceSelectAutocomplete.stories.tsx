@@ -691,7 +691,7 @@ SelectionWithHeading.args = {};
 SelectionWithHeading.play = async ({ canvasElement }) => {
 	// Starts querying the component from it's root element
 	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("select"));
+	await userEvent.click(await canvas.findByRole("combobox"));
 };
 
 SelectionWithHeading.parameters = {
@@ -720,7 +720,7 @@ SelectionWithHeadingAndDisabledItems.args = {
 SelectionWithHeadingAndDisabledItems.play = async ({ canvasElement }) => {
 	// Starts querying the component from it's root element
 	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("select"));
+	await userEvent.click(await canvas.findByRole("combobox"));
 };
 
 SelectionWithHeadingAndDisabledItems.parameters = {
@@ -749,7 +749,7 @@ SelectionWithHeadingWithDividers.args = {
 SelectionWithHeadingWithDividers.play = async ({ canvasElement }) => {
 	// Starts querying the component from it's root element
 	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("select"));
+	await userEvent.click(await canvas.findByRole("combobox"));
 };
 
 SelectionWithHeadingWithDividers.parameters = {
@@ -779,7 +779,7 @@ SelectionWithHeadingWithDividersAndDisabledItems.args = {
 SelectionWithHeadingWithDividersAndDisabledItems.play = async ({ canvasElement }) => {
 	// Starts querying the component from it's root element
 	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("select"));
+	await userEvent.click(await canvas.findByRole("combobox"));
 };
 
 SelectionWithHeadingWithDividersAndDisabledItems.parameters = {
@@ -1074,7 +1074,7 @@ CustomHeight.args = {
 CustomHeight.play = async ({ canvasElement }) => {
 	// Starts querying the component from it's root element
 	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("select"));
+	await userEvent.click(await canvas.findByRole("combobox"));
 };
 
 CustomHeight.parameters = {

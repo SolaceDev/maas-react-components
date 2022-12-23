@@ -302,7 +302,6 @@ function SolaceSelectAutocomplete<T, V>({
 						"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
 						"aria-labelledby": label ? `${getId()}-label` : "",
 						"aria-readonly": readOnly,
-						role: "select",
 						title: title
 					}}
 					InputProps={{
