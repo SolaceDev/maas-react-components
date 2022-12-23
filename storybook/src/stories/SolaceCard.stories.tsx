@@ -63,7 +63,7 @@ WithStringTitle.args = {
 };
 
 const CustomTitle = (
-	<div style={{ textDecoration: "underline", color: "red" }}>How to make a Topic Domain {"\u2728"} </div>
+	<div style={{ textDecoration: "underline", color: "#880808" }}>How to make a Topic Domain {"\u2728"} </div>
 );
 
 export const WithCustomTitle = Template.bind({});

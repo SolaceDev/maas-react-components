@@ -102,7 +102,7 @@ function SolaceMessageBox({
 			case "error":
 				return theme.palette.ux.error.w100;
 			case "warn":
-				return theme.palette.ux.warning.w100;
+				return theme.palette.ux.primary.wMain;
 			case "success":
 				return theme.palette.ux.success.w100;
 			case "info":
