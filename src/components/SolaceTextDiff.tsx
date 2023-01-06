@@ -23,6 +23,11 @@ const CodeDiffContainer = styled("div")(({ theme }) => ({
 			".d2h-file-side-diff": {
 				border: `1px solid ${theme.palette.ux.secondary.w20}`,
 				borderRadious: 4,
+				".d2h-diff-table": {
+					"td, th": {
+						padding: 0
+					}
+				},
 				".d2h-code-side-linenumber": {
 					border: 0,
 					backgroundColor: `${theme.palette.ux.primary.w20} !important;`,
@@ -87,7 +92,7 @@ export default function SolaceTextDiff(props: SolaceTextDiffProps): JSX.Element 
 		});
 
 		setDiff(diffHtml);
-	}, []);
+	}, [props.text1, props.text2]);
 
 	return <CodeDiffContainer id="code-diff" dangerouslySetInnerHTML={{ __html: diff }}></CodeDiffContainer>;
 }

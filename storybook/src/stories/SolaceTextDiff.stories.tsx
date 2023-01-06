@@ -13,12 +13,11 @@ const Template: ComponentStory<typeof SolaceTextDiff> = (args) => <SolaceTextDif
 export const DefaultSolaceTextDiff = Template.bind({});
 DefaultSolaceTextDiff.args = {
 	text1: `{
-		"asd": "aaaaaa",
-		"cvb": "bbbb"
-	  }`,
+		"subscriptions": ["match"]
+	}`,
 	text2: `{
-		"asd": "aaaaaa",
-		"cvb": "ccc",
-		"ccc": "vvvvvv"
-	  }`
+		"subscriptions": [
+			"partial/match"
+		]
+	}`
 };
