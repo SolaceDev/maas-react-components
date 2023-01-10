@@ -111,8 +111,8 @@ export default function SolaceChip({
 				height: `${CHIP_PX_HEIGHTS[height]}px`,
 				backgroundColor: `${fillColor && CHIP_COLOR_MAP[fillColor]}`,
 				color: `${labelColor && CHIP_COLOR_MAP[labelColor]}`,
-				paddingLeft: `${compressed ? "2px" : "4px"}`,
-				paddingRight: `${compressed ? "2px" : "4px"}`
+				paddingLeft: `${compressed ? "0px" : "2px"}`,
+				paddingRight: `${compressed ? "0px" : "2px"}`
 			}}
 			label={label}
 			variant={variant}

@@ -94,7 +94,7 @@ export default function SolaceAttribute({
 	height = "sm",
 	dataQa,
 	size = "xs",
-	compressed = true,
+	compressed = false,
 	clickable = false,
 	onDelete
 }: SolaceAttributeProps): JSX.Element {
@@ -111,8 +111,8 @@ export default function SolaceAttribute({
 				height: `${CHIP_PX_HEIGHTS[height]}px`,
 				backgroundColor: `${fillColor && CHIP_COLOR_MAP[fillColor]}`,
 				color: `${labelColor && CHIP_COLOR_MAP[labelColor]}`,
-				paddingLeft: `${compressed && "2px"}`,
-				paddingRight: `${compressed && "2px"}`
+				paddingLeft: `${compressed ? "0px" : "2px"}`,
+				paddingRight: `${compressed ? "0px" : "2px"}`
 			}}
 			label={label}
 			variant={variant}

@@ -1035,6 +1035,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&:hover": {
 							backgroundColor: themeMapping.palette.deprecated.chip.hover
 						}
+					},
+					label: {
+						paddingLeft: "6px",
+						paddingRight: "6px"
+					},
+					deleteIcon: {
+						margin: "0px 4px 0px 2px",
+						fontSize: BASE_FONT_PX_SIZES.md
 					}
 				}
 			},
