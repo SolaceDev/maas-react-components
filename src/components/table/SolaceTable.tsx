@@ -22,6 +22,15 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	selectionType: SELECTION_TYPE;
 	/**
+	 * If selection type is MULTI and independentRowHighlight is true, table row highlight is handled via row click only,
+	 * not affected by checkbox selection, default is false
+	 */
+	independentRowHighlight?: boolean;
+	/**
+	 * Controlled state for a row to be highlighted
+	 */
+	highlightedRowId?: string | null;
+	/**
 	 * Enables columns hiding
 	 */
 	hasColumnHiding?: boolean;
@@ -60,7 +69,11 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Selection changed callback
 	 */
-	selectionChangedCallback: (row: TableRow[]) => void;
+	selectionChangedCallback: (rows: TableRow[]) => void;
+	/**
+	 * Row highlight changed callback, applicable when selection type is MULTI and independentRowHighlight is true
+	 */
+	rowHighlightChangedCallback?: (row: TableRow | null) => void;
 	/**
 	 * Renders a custom row without predefined columns, such as checkbox column, expand/collapse column
 	 */
@@ -210,6 +223,9 @@ function SolaceTable({
 	columns,
 	selectionType,
 	selectionChangedCallback,
+	independentRowHighlight = false,
+	highlightedRowId,
+	rowHighlightChangedCallback,
 	sortedColumn,
 	sortCallback,
 	renderCustomRowCells,
@@ -232,6 +248,9 @@ function SolaceTable({
 		columns,
 		selectionType,
 		selectionChangedCallback,
+		independentRowHighlight,
+		highlightedRowId,
+		rowHighlightChangedCallback,
 		sortCallback,
 		sortedColumn,
 		renderCustomRowCells,

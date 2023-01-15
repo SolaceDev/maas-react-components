@@ -220,7 +220,7 @@ const rowActionMenuItems = [
 ];
 
 const selectionCallback = "selection callback";
-
+const rowHighlightCallback = "row highlight callback";
 const sortCallback = "sort callback";
 
 const TableTemplate = ({ rows, columns, selectionType, ...args }): JSX.Element => {
@@ -573,6 +573,66 @@ export const CustomColumnWidthAndTooltipTable = (): JSX.Element => {
 	);
 };
 
+const TableSelectMultiIndependentRowHighlightTemplate = ({
+	rows,
+	columns,
+	initialHighlightedRowId,
+	...args
+}): JSX.Element => {
+	const data = cloneDeep(rows);
+	const columnsDef = useMemo(() => {
+		return cloneDeep(columns);
+	}, [columns]);
+	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
+
+	const handleSort = useCallback(
+		(selectedColumn) => {
+			action(sortCallback);
+			setRows([...sortData(selectedColumn, data)]);
+		},
+		[data]
+	);
+
+	const [highlightedRowId, setHighlightedRowId] = useState<string | null>(initialHighlightedRowId);
+	const handleRowHighlightChanged = useCallback((row) => {
+		action(rowHighlightCallback);
+		setHighlightedRowId(row ? row.id : null);
+	}, []);
+
+	return (
+		<div>
+			<SolaceTable
+				{...args}
+				selectionChangedCallback={action(selectionCallback)}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columnsDef}
+				selectionType={SolaceTableSelectionType.MULTI}
+				independentRowHighlight={true}
+				highlightedRowId={highlightedRowId}
+				rowHighlightChangedCallback={handleRowHighlightChanged}
+			></SolaceTable>
+			<div style={{ marginTop: "32px" }}>
+				Highlighted Row Id: {highlightedRowId}, Email: {tableRows.find((row) => row.id === highlightedRowId)?.email}
+			</div>
+		</div>
+	);
+};
+
+export const TableSelectMultiIndependentRowHighlight = TableSelectMultiIndependentRowHighlightTemplate.bind({});
+TableSelectMultiIndependentRowHighlight.args = {
+	rows: rows,
+	columns: columns
+};
+
+export const TableSelectMultiIndependentRowHighlightWithInitialValue =
+	TableSelectMultiIndependentRowHighlightTemplate.bind({});
+TableSelectMultiIndependentRowHighlightWithInitialValue.args = {
+	rows: rows,
+	columns: columns,
+	initialHighlightedRowId: rows[0].id
+};
+
 export const EmptyStateTable = (): JSX.Element => {
 	return (
 		<div>
@@ -653,180 +713,198 @@ const renderExpandedRowContentHelper = (row, allowToggle, selectionType) => {
 	);
 };
 
-export const ExpandableRowTableSelectNone = (): JSX.Element => {
+const ExpandableRowTableTemplate = ({
+	rows,
+	columns,
+	selectionType,
+	rowActionMenuItems,
+	initialExpandedRowIds,
+	allowToggle,
+	...args
+}): JSX.Element => {
 	const data = cloneDeep(rows);
 	const columnsDef = useMemo(() => {
 		return cloneDeep(columns);
-	}, []);
+	}, [columns]);
 	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
-	const handleSort = useCallback((selectedColumn) => {
-		action(sortCallback);
-		setRows([...sortData(selectedColumn, data)]);
-	}, []);
 
-	const selectionType = SolaceTableSelectionType.NONE;
-	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, true, selectionType), []);
+	const handleSort = useCallback(
+		(selectedColumn) => {
+			action(sortCallback);
+			setRows([...sortData(selectedColumn, data)]);
+		},
+		[data]
+	);
+
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(
+		Array.isArray(initialExpandedRowIds) ? initialExpandedRowIds : []
+	);
+	const renderExpandedRowContent = useCallback(
+		(row) => renderExpandedRowContentHelper(row, allowToggle, selectionType),
+		[selectionType, allowToggle]
+	);
+
+	return (
+		<SolaceTable
+			{...args}
+			selectionChangedCallback={action(selectionCallback)}
+			sortCallback={handleSort}
+			rows={tableRows}
+			columns={columnsDef}
+			selectionType={selectionType}
+			hasColumnHiding={true}
+			expandableRowOptions={{
+				allowToggle: allowToggle,
+				renderChildren: renderExpandedRowContent,
+				expandedRowIds: expandedRowIds,
+				setExpandedRowIds: setExpandedRowIds
+			}}
+			rowActionMenuItems={rowActionMenuItems ? rowActionMenuItems : undefined}
+		></SolaceTable>
+	);
+};
+
+export const ExpandableRowTableSelectNone = ExpandableRowTableTemplate.bind({});
+ExpandableRowTableSelectNone.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.NONE,
+	allowToggle: true
+};
+
+export const ExpandableRowTableSelectMulti = ExpandableRowTableTemplate.bind({});
+ExpandableRowTableSelectMulti.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI,
+	allowToggle: true
+};
+
+export const ExpandableRowNoToggleTableSelectSingle = ExpandableRowTableTemplate.bind({});
+ExpandableRowNoToggleTableSelectSingle.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.SINGLE,
+	allowToggle: false,
+	rowActionMenuItems: rowActionMenuItems
+};
+
+export const ExpandableRowNoToggleTableSelectMulti = ExpandableRowTableTemplate.bind({});
+ExpandableRowNoToggleTableSelectMulti.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI,
+	allowToggle: false
+};
+
+export const ExpandableRowTableSelectNoneInitialExpandedRows = ExpandableRowTableTemplate.bind({});
+ExpandableRowTableSelectNoneInitialExpandedRows.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.NONE,
+	allowToggle: true,
+	initialExpandedRowIds: ["2", "3"]
+};
+
+const ExpandableRowTableSelectMultiIndependentRowHighlightTemplate = ({
+	rows,
+	columns,
+	rowActionMenuItems,
+	initialExpandedRowIds,
+	initialHighlightedRowId,
+	allowToggle,
+	...args
+}): JSX.Element => {
+	const data = cloneDeep(rows);
+	const columnsDef = useMemo(() => {
+		return cloneDeep(columns);
+	}, [columns]);
+	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
+
+	const handleSort = useCallback(
+		(selectedColumn) => {
+			action(sortCallback);
+			setRows([...sortData(selectedColumn, data)]);
+		},
+		[data]
+	);
+
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(
+		Array.isArray(initialExpandedRowIds) ? initialExpandedRowIds : []
+	);
+	const renderExpandedRowContent = useCallback(
+		(row) => renderExpandedRowContentHelper(row, allowToggle, SolaceTableSelectionType.MULTI),
+		[allowToggle]
+	);
+
+	const [highlightedRowId, setHighlightedRowId] = useState<string | null>(initialHighlightedRowId);
+	const handleRowHighlightChanged = useCallback((row) => {
+		action(rowHighlightCallback);
+		setHighlightedRowId(row ? row.id : null);
+	}, []);
 
 	return (
 		<div>
 			<SolaceTable
+				{...args}
 				selectionChangedCallback={action(selectionCallback)}
 				sortCallback={handleSort}
 				rows={tableRows}
 				columns={columnsDef}
-				selectionType={selectionType}
+				selectionType={SolaceTableSelectionType.MULTI}
 				hasColumnHiding={true}
 				expandableRowOptions={{
-					allowToggle: true,
+					allowToggle: allowToggle,
 					renderChildren: renderExpandedRowContent,
 					expandedRowIds: expandedRowIds,
 					setExpandedRowIds: setExpandedRowIds
 				}}
+				rowActionMenuItems={rowActionMenuItems ? rowActionMenuItems : undefined}
+				independentRowHighlight={true}
+				highlightedRowId={highlightedRowId}
+				rowHighlightChangedCallback={handleRowHighlightChanged}
 			></SolaceTable>
+			<div style={{ marginTop: "32px" }}>
+				Highlighted Row Id: {highlightedRowId}, Email: {tableRows.find((row) => row.id === highlightedRowId)?.email}
+			</div>
 		</div>
 	);
 };
 
-export const ExpandableRowTableSelectMulti = (): JSX.Element => {
-	const data = cloneDeep(rows);
-	const columnsDef = useMemo(() => {
-		return cloneDeep(columns);
-	}, []);
-	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
-	const handleSort = useCallback((selectedColumn) => {
-		action(sortCallback);
-		setRows([...sortData(selectedColumn, data)]);
-	}, []);
-	const selectionType = SolaceTableSelectionType.MULTI;
-
-	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, true, selectionType), []);
-
-	return (
-		<div>
-			<SolaceTable
-				selectionChangedCallback={action(selectionCallback)}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={selectionType}
-				hasColumnHiding={true}
-				expandableRowOptions={{
-					allowToggle: true,
-					renderChildren: renderExpandedRowContent,
-					expandedRowIds: expandedRowIds,
-					setExpandedRowIds: setExpandedRowIds
-				}}
-			></SolaceTable>
-		</div>
-	);
+export const ExpandableRowTableSelectMultiIndependentRowHighlight =
+	ExpandableRowTableSelectMultiIndependentRowHighlightTemplate.bind({});
+ExpandableRowTableSelectMultiIndependentRowHighlight.args = {
+	rows: rows,
+	columns: columns,
+	rowActionMenuItems: rowActionMenuItems,
+	allowToggle: true
 };
 
-export const ExpandableRowNoToggleTableSelectSingle = (): JSX.Element => {
-	const data = cloneDeep(rows);
-	const columnsDef = useMemo(() => {
-		return cloneDeep(columns);
-	}, []);
-	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
-	const handleSort = useCallback((selectedColumn) => {
-		action(sortCallback);
-		setRows([...sortData(selectedColumn, data)]);
-	}, []);
-
-	const selectionType = SolaceTableSelectionType.SINGLE;
-	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, false, selectionType), []);
-
-	return (
-		<div>
-			<SolaceTable
-				selectionChangedCallback={action(selectionCallback)}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={selectionType}
-				hasColumnHiding={true}
-				expandableRowOptions={{
-					allowToggle: false,
-					renderChildren: renderExpandedRowContent,
-					expandedRowIds: expandedRowIds,
-					setExpandedRowIds: setExpandedRowIds
-				}}
-				rowActionMenuItems={rowActionMenuItems}
-			></SolaceTable>
-		</div>
-	);
+export const ExpandableRowNoToggleTableSelectMultiIndependentRowHighlight =
+	ExpandableRowTableSelectMultiIndependentRowHighlightTemplate.bind({});
+ExpandableRowNoToggleTableSelectMultiIndependentRowHighlight.args = {
+	rows: rows,
+	columns: columns,
+	allowToggle: false
 };
 
-export const ExpandableRowNoToggleTableSelectMulti = (): JSX.Element => {
-	const data = cloneDeep(rows);
-	const columnsDef = useMemo(() => {
-		return cloneDeep(columns);
-	}, []);
-	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-	const [expandedRowIds, setExpandedRowIds] = useState<string[]>([]);
-	const handleSort = useCallback((selectedColumn) => {
-		action(sortCallback);
-		setRows([...sortData(selectedColumn, data)]);
-	}, []);
-
-	const selectionType = SolaceTableSelectionType.MULTI;
-	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, false, selectionType), []);
-
-	return (
-		<div>
-			<SolaceTable
-				selectionChangedCallback={action(selectionCallback)}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={selectionType}
-				hasColumnHiding={true}
-				expandableRowOptions={{
-					allowToggle: false,
-					renderChildren: renderExpandedRowContent,
-					expandedRowIds: expandedRowIds,
-					setExpandedRowIds: setExpandedRowIds
-				}}
-			></SolaceTable>
-		</div>
-	);
+export const ExpandableRowTableSelectMultiInitialHighlightedRow =
+	ExpandableRowTableSelectMultiIndependentRowHighlightTemplate.bind({});
+ExpandableRowTableSelectMultiInitialHighlightedRow.args = {
+	rows: rows,
+	columns: columns,
+	allowToggle: true,
+	initialHighlightedRowId: "3"
 };
 
-export const ExpandableRowTableSelectNoneInitialExpandedRows = (): JSX.Element => {
-	const data = cloneDeep(rows);
-	const columnsDef = useMemo(() => {
-		return cloneDeep(columns);
-	}, []);
-	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(["2", "3"]);
-	const handleSort = useCallback((selectedColumn) => {
-		action(sortCallback);
-		setRows([...sortData(selectedColumn, data)]);
-	}, []);
-
-	const selectionType = SolaceTableSelectionType.NONE;
-	const renderExpandedRowContent = useCallback((row) => renderExpandedRowContentHelper(row, true, selectionType), []);
-
-	return (
-		<div>
-			<SolaceTable
-				selectionChangedCallback={action(selectionCallback)}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={selectionType}
-				hasColumnHiding={true}
-				expandableRowOptions={{
-					allowToggle: true,
-					renderChildren: renderExpandedRowContent,
-					expandedRowIds: expandedRowIds,
-					setExpandedRowIds: setExpandedRowIds
-				}}
-			></SolaceTable>
-		</div>
-	);
+export const ExpandableRowTableSelectMultiInitialExpandedRowsAndHighlightedRow =
+	ExpandableRowTableSelectMultiIndependentRowHighlightTemplate.bind({});
+ExpandableRowTableSelectMultiInitialExpandedRowsAndHighlightedRow.args = {
+	rows: rows,
+	columns: columns,
+	allowToggle: true,
+	initialExpandedRowIds: ["2", "3"],
+	initialHighlightedRowId: "3"
 };
 
 const schemaRows = [

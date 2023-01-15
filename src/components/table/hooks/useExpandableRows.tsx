@@ -18,6 +18,8 @@ export interface ExpandableTableRowProps {
 	internalDisplayedColumns?: TableColumn[];
 	selectionType: SELECTION_TYPE;
 	updateSelection: (row: TableRow) => void;
+	independentRowHighlight: boolean;
+	highlightedRowId?: string | null;
 	addCheckBoxToRows: (row: TableRow) => React.ReactNode;
 	renderConfiguredRowCells: (
 		row: TableRow,
@@ -42,6 +44,8 @@ export const useExpandableRows = ({
 	internalDisplayedColumns,
 	selectionType,
 	updateSelection,
+	independentRowHighlight,
+	highlightedRowId,
 	addCheckBoxToRows,
 	renderConfiguredRowCells,
 	renderRowActionItems,
@@ -122,7 +126,10 @@ export const useExpandableRows = ({
 				<StyledExpandedTableRow
 					key={`${row.id}_childrenTr`}
 					className={clsx({
-						selected: row.rowSelected,
+						selected:
+							selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
+								? highlightedRowId === row.id
+								: row.rowSelected,
 						clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
 						expanded: expanded
 					})}
@@ -148,7 +155,10 @@ export const useExpandableRows = ({
 						onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
 						onClick={() => updateSelection(row)}
 						className={clsx({
-							selected: row.rowSelected,
+							selected:
+								selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
+									? highlightedRowId === row.id
+									: row.rowSelected,
 							clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
 							expanded: expanded
 						})}

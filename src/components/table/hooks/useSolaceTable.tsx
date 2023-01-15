@@ -23,12 +23,17 @@ import clsx from "clsx";
 import { cloneDeep } from "lodash";
 
 const DEFAULT_TOOLTIP_PLACEMENT = "bottom-end";
+const SELECT_ALL_TOOLTIP = "Select all on this page";
+const DESELECT_ALL_TOOLTIP = "Deselect all on this page";
 
 export const useSolaceTable = ({
 	rows,
 	columns,
 	selectionType,
 	selectionChangedCallback,
+	independentRowHighlight,
+	highlightedRowId,
+	rowHighlightChangedCallback,
 	sortedColumn,
 	sortCallback,
 	renderCustomRowCells,
@@ -44,7 +49,10 @@ export const useSolaceTable = ({
 	rows: TableRow[];
 	columns: TableColumn[];
 	selectionType: SELECTION_TYPE;
-	selectionChangedCallback: (row: TableRow[]) => void;
+	selectionChangedCallback: (rows: TableRow[]) => void;
+	independentRowHighlight: boolean;
+	highlightedRowId?: string | null;
+	rowHighlightChangedCallback?: (row: TableRow | null) => void;
 	sortedColumn: TableColumn | undefined;
 	sortCallback: (column: TableColumn | undefined) => void;
 	renderCustomRowCells?: (row: TableRow) => JSX.Element[];
@@ -79,6 +87,8 @@ export const useSolaceTable = ({
 		}
 	}, [columns]);
 
+	// Initailize selected rows based on property inside the row. Ideally, the component should have selectedIds exposed as property and
+	// use that for rendering checkboxes and rows selected state.
 	useEffect(() => {
 		const newSelected = rows.filter((row) => row.rowSelected);
 		setSelectedRows(newSelected);
@@ -91,7 +101,7 @@ export const useSolaceTable = ({
 		} else {
 			setSelectAll(false);
 		}
-	}, [selectedRows, selectionChangedCallback]);
+	}, [selectedRows, selectionChangedCallback, rows?.length]);
 
 	useEffect(() => {
 		if (selectedRows.length > 0 && selectedRows.length < rows.length) {
@@ -104,17 +114,26 @@ export const useSolaceTable = ({
 	const updateSelection = useCallback(
 		(clickedRow: TableRow) => {
 			if (selectionType !== SELECTION_TYPE.NONE) {
-				clickedRow.rowSelected = selectedRows.length > 1 ? true : !clickedRow.rowSelected;
-				setSelectAll(false);
-				rows.map((row) => {
-					if (clickedRow.id !== row.id) {
-						row.rowSelected = false;
+				if (selectionType === SELECTION_TYPE.MULTI && independentRowHighlight) {
+					if (highlightedRowId === clickedRow.id) {
+						rowHighlightChangedCallback?.(null);
+					} else {
+						rowHighlightChangedCallback?.(clickedRow);
 					}
-				});
-				setSelectedRows(clickedRow.rowSelected ? [clickedRow] : []);
+				} else {
+					// clicking on a row delect all other rows
+					clickedRow.rowSelected = selectedRows.length > 1 ? true : !clickedRow.rowSelected;
+					setSelectAll(false);
+					rows.map((row) => {
+						if (clickedRow.id !== row.id) {
+							row.rowSelected = false;
+						}
+					});
+					setSelectedRows(clickedRow.rowSelected ? [clickedRow] : []);
+				}
 			}
 		},
-		[rows, selectedRows.length]
+		[independentRowHighlight, highlightedRowId, rowHighlightChangedCallback, rows, selectedRows.length, selectionType]
 	);
 
 	const handleSort = useCallback(
@@ -174,12 +193,19 @@ export const useSolaceTable = ({
 		if (selectionType === SELECTION_TYPE.MULTI) {
 			return (
 				<StyledTableHeader key={"selectAllCheckbox"} className="checkbox-column">
-					<SolaceCheckBox
-						name={"selectAllCheckbox"}
-						onChange={() => handleSelectAllClick()}
-						checked={selectAll || indeterminate}
-						indeterminate={indeterminate}
-					/>
+					<SolaceTooltip
+						title={selectAll || indeterminate ? DESELECT_ALL_TOOLTIP : SELECT_ALL_TOOLTIP}
+						placement={"bottom-start"}
+					>
+						<div>
+							<SolaceCheckBox
+								name={"selectAllCheckbox"}
+								onChange={() => handleSelectAllClick()}
+								checked={selectAll || indeterminate}
+								indeterminate={indeterminate}
+							/>
+						</div>
+					</SolaceTooltip>
 				</StyledTableHeader>
 			);
 		} else {
@@ -345,7 +371,10 @@ export const useSolaceTable = ({
 				onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
 				onClick={() => updateSelection(row)}
 				className={clsx({
-					selected: row.rowSelected,
+					selected:
+						selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
+							? highlightedRowId === row.id
+							: row.rowSelected,
 					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
 				})}
 				data-qa={row.id}
@@ -359,7 +388,9 @@ export const useSolaceTable = ({
 		));
 	}, [
 		addCheckBoxToRows,
+		independentRowHighlight,
 		displayedColumns,
+		highlightedRowId,
 		internalDisplayedColumns,
 		renderConfiguredRowCells,
 		renderRowActionItems,
@@ -376,6 +407,8 @@ export const useSolaceTable = ({
 		internalDisplayedColumns: internalDisplayedColumns,
 		selectionType,
 		updateSelection,
+		independentRowHighlight,
+		highlightedRowId,
 		addCheckBoxToRows,
 		renderConfiguredRowCells,
 		renderRowActionItems,
