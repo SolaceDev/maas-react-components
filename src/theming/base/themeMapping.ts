@@ -182,7 +182,7 @@ export const baseThemeMapping: ThemeMapping = {
 	 * @deprecated This scheme is deprecated and will be removed when no longer used.
 	 */
 	pallete: {
-		error: "#d0021b",
+		error: "#C33135",
 		greyBackgroundLight: "#f9f9f9",
 		info: "#0079ff",
 		primary: "#00ad93",

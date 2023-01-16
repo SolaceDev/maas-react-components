@@ -12,8 +12,9 @@ export default function SolaceTypography(props: SolaceTypographyProps) {
 	};
 
 	const { variant = "body1", children, color, ...rest } = props;
+
 	return (
-		<Typography variant={variant} color={colorMap[`${color}`]} {...rest}>
+		<Typography variant={variant} color={color ? colorMap[`${color}`] : "textPrimary"} {...rest}>
 			{children}
 		</Typography>
 	);
