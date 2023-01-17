@@ -17,7 +17,9 @@ export interface ExpandableTableRowProps {
 	displayedColumns?: TableColumn[];
 	internalDisplayedColumns?: TableColumn[];
 	selectionType: SELECTION_TYPE;
-	updateSelection: (row: TableRow) => void;
+	controlledSelectedRowsState: boolean;
+	selectedRowIds: string[];
+	handleRowClick: (row: TableRow) => void;
 	independentRowHighlight: boolean;
 	highlightedRowId?: string | null;
 	addCheckBoxToRows: (row: TableRow) => React.ReactNode;
@@ -43,7 +45,9 @@ export const useExpandableRows = ({
 	displayedColumns,
 	internalDisplayedColumns,
 	selectionType,
-	updateSelection,
+	controlledSelectedRowsState,
+	selectedRowIds,
+	handleRowClick,
 	independentRowHighlight,
 	highlightedRowId,
 	addCheckBoxToRows,
@@ -129,12 +133,14 @@ export const useExpandableRows = ({
 						selected:
 							selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
 								? highlightedRowId === row.id
+								: controlledSelectedRowsState
+								? selectedRowIds?.includes(row.id)
 								: row.rowSelected,
 						clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
 						expanded: expanded
 					})}
 					onClick={() => {
-						if (selectRowWhenClickOnChildren) updateSelection(row);
+						if (selectRowWhenClickOnChildren) handleRowClick(row);
 					}}
 				>
 					<StyledExpandedTableData key={`${row.id}_childrenTd`} colSpan={displayedColumnsCount}>
@@ -153,11 +159,13 @@ export const useExpandableRows = ({
 					<StyledTableRow
 						key={row.id}
 						onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
-						onClick={() => updateSelection(row)}
+						onClick={() => handleRowClick(row)}
 						className={clsx({
 							selected:
 								selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
 									? highlightedRowId === row.id
+									: controlledSelectedRowsState
+									? selectedRowIds?.includes(row.id)
 									: row.rowSelected,
 							clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
 							expanded: expanded

@@ -22,6 +22,15 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	selectionType: SELECTION_TYPE;
 	/**
+	 * Whether to use controlled state for row selection, default is false
+	 * Introduced this flag to maintain backward compatiblity. Once all usage of SolaceTable uses controlled selection state, this flag will be removed.
+	 */
+	controlledSelectedRowsState?: boolean;
+	/**
+	 * Controlled state for rows to be selected
+	 */
+	selectedRowIds?: string[] | null;
+	/**
 	 * If selection type is MULTI and independentRowHighlight is true, table row highlight is handled via row click only,
 	 * not affected by checkbox selection, default is false
 	 */
@@ -69,7 +78,7 @@ interface TablePropType extends SolaceComponentProps {
 	/**
 	 * Selection changed callback
 	 */
-	selectionChangedCallback: (rows: TableRow[]) => void;
+	selectionChangedCallback?: (rows: TableRow[]) => void;
 	/**
 	 * Row highlight changed callback, applicable when selection type is MULTI and independentRowHighlight is true
 	 */
@@ -222,6 +231,8 @@ function SolaceTable({
 	rows,
 	columns,
 	selectionType,
+	controlledSelectedRowsState = false,
+	selectedRowIds,
 	selectionChangedCallback,
 	independentRowHighlight = false,
 	highlightedRowId,
@@ -243,10 +254,18 @@ function SolaceTable({
 	loading,
 	loadingMessage
 }: TablePropType): JSX.Element {
+	// sanitize selectedRowIds
+	let selectedIds = selectedRowIds ? selectedRowIds : [];
+	if (selectionType === SELECTION_TYPE.SINGLE && selectedIds.length > 1) {
+		selectedIds = selectedIds.slice(0, 1);
+	}
+
 	const [columnNodes, rowNodes] = useSolaceTable({
 		rows,
 		columns,
 		selectionType,
+		controlledSelectedRowsState,
+		selectedRowIds: selectedIds,
 		selectionChangedCallback,
 		independentRowHighlight,
 		highlightedRowId,
