@@ -2,10 +2,9 @@ import SolaceMenu from "../SolaceMenu";
 import { SolaceMenuItemProps } from "../SolaceMenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { styled } from "@mui/material";
-import ColumnControlMenu, { ColumnControProps } from "./components/ColumnControlMenu";
+import ContentControlMenu, { ContentControlProps } from "./components/ContentControlMenu";
 import { appTheme } from "../../theming/themeUtils";
 import { SupportedThemes } from "../../types/supportedThemes";
-
 export interface TableColumn {
 	field: string;
 	headerName: string;
@@ -28,6 +27,11 @@ export interface TableRow {
 
 export interface TableActionMenuItem extends SolaceMenuItemProps {
 	callback: (row: TableRow) => void;
+}
+
+export interface CustomContentDefinition {
+	type: string;
+	label: string;
 }
 
 export enum SELECTION_TYPE {
@@ -257,14 +261,20 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 
 export const addColumnHidingControl = ({
 	columns,
-	displayedColumnsChangedCallback
-}: ColumnControProps): React.ReactNode => {
+	displayedColumnsChangedCallback,
+	customContentDefinitions,
+	displayedCustomContent,
+	customContentDisplayChangeCallback
+}: ContentControlProps): React.ReactNode => {
 	return (
 		<StyledTableHeader key={"column-hiding-control"} className="icon-column">
-			<ColumnControlMenu
+			<ContentControlMenu
 				id={"column-hiding-control"}
 				columns={columns}
 				displayedColumnsChangedCallback={displayedColumnsChangedCallback}
+				customContentDefinitions={customContentDefinitions}
+				displayedCustomContent={displayedCustomContent}
+				customContentDisplayChangeCallback={customContentDisplayChangeCallback}
 			/>
 		</StyledTableHeader>
 	);

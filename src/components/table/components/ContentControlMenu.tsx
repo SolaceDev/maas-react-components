@@ -1,17 +1,27 @@
 import { useState } from "react";
-import { TableColumn } from "../table-utils";
+import { CustomContentDefinition, TableColumn } from "../table-utils";
 import SolaceComponentProps from "../../SolaceComponentProps";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 import SolaceMenu from "../../SolaceMenu";
 import TuneIcon from "@mui/icons-material/Tune";
 
-export interface ColumnControProps extends SolaceComponentProps {
+export interface ContentControlProps extends SolaceComponentProps {
 	id?: string;
 	columns: TableColumn[];
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
+	customContentDefinitions?: CustomContentDefinition[];
+	displayedCustomContent?: string[];
+	customContentDisplayChangeCallback?: (customContentDefinitions: string, isHidden: boolean) => void;
 }
 
-const ColumnControlMenu = ({ id, columns, displayedColumnsChangedCallback }: ColumnControProps): JSX.Element => {
+const ContentControlMenu = ({
+	id,
+	columns,
+	customContentDefinitions,
+	displayedCustomContent,
+	displayedColumnsChangedCallback,
+	customContentDisplayChangeCallback
+}: ContentControlProps): JSX.Element => {
 	const [oneColumnIsVisible, setOneColumnIsVisible] = useState<boolean>(
 		columns.filter((col) => !col.isHidden && !col.hasNoCell).length === 1
 	);
@@ -46,15 +56,32 @@ const ColumnControlMenu = ({ id, columns, displayedColumnsChangedCallback }: Col
 			)
 		}));
 
+	const customContentItems =
+		customContentDefinitions?.map((customContent: CustomContentDefinition) => ({
+			name: (
+				<SolaceCheckBox
+					name={customContent.type}
+					label={customContent.label}
+					onChange={
+						customContentDisplayChangeCallback
+							? (event) => customContentDisplayChangeCallback(customContent.type, !event.value)
+							: undefined
+					}
+					checked={displayedCustomContent?.includes(customContent.type) ? true : false}
+				></SolaceCheckBox>
+			)
+		})) ?? [];
+
 	return (
 		<SolaceMenu
+			header="Manage Content Shown"
 			id={id}
 			buttonProps={{
 				variant: "icon",
 				children: <TuneIcon />,
 				title: "Settings"
 			}}
-			items={customItems}
+			items={[...customItems, ...customContentItems]}
 			closeOnSelect={false}
 			anchorOrigin={{
 				vertical: "center",
@@ -68,4 +95,4 @@ const ColumnControlMenu = ({ id, columns, displayedColumnsChangedCallback }: Col
 	);
 };
 
-export default ColumnControlMenu;
+export default ContentControlMenu;

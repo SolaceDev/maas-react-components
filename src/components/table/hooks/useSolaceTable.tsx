@@ -11,7 +11,8 @@ import {
 	addColumnHidingControl,
 	StyledTableRow,
 	StyledTableData,
-	StyledTableHeader
+	StyledTableHeader,
+	CustomContentDefinition
 } from "../table-utils";
 import { useExpandableRows } from "./useExpandableRows";
 import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
@@ -46,7 +47,10 @@ export const useSolaceTable = ({
 	hasColumnHiding,
 	displayedColumns,
 	displayedColumnsChangedCallback,
-	expandableRowOptions
+	expandableRowOptions,
+	customContentDefinitions,
+	displayedCustomContent,
+	customContentDisplayChangeCallback
 }: {
 	rows: TableRow[];
 	columns: TableColumn[];
@@ -68,6 +72,9 @@ export const useSolaceTable = ({
 	displayedColumns?: TableColumn[];
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
 	expandableRowOptions?: ExpandableRowOptions;
+	customContentDefinitions?: CustomContentDefinition[];
+	displayedCustomContent?: string[];
+	customContentDisplayChangeCallback?: (type: string, isHidden: boolean) => void;
 	// TODO: Refactor this function to reduce its Cognitive Complexity from 107 to the 15 allowed
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 }): React.ReactNode[] => {
@@ -463,6 +470,7 @@ export const useSolaceTable = ({
 	const createHeaderNodes = useCallback(() => {
 		const columnToSort = sortedColumn ? sortedColumn : internalSortedColumn;
 		const columnsToDisplay = cloneDeep((displayedColumns ? displayedColumns : internalDisplayedColumns) ?? []);
+
 		return (
 			<StyledTableRow
 				key="headerRow"
@@ -477,7 +485,10 @@ export const useSolaceTable = ({
 					hasColumnHiding &&
 						addColumnHidingControl({
 							columns: columnsToDisplay,
-							displayedColumnsChangedCallback: handleDisplayColumnsChanged
+							displayedColumnsChangedCallback: handleDisplayColumnsChanged,
+							customContentDefinitions: customContentDefinitions,
+							displayedCustomContent: displayedCustomContent,
+							customContentDisplayChangeCallback: customContentDisplayChangeCallback
 						})
 				]}
 			</StyledTableRow>
@@ -494,7 +505,10 @@ export const useSolaceTable = ({
 		rowActionMenuItems,
 		renderCustomRowActionItem,
 		hasColumnHiding,
-		handleDisplayColumnsChanged
+		handleDisplayColumnsChanged,
+		customContentDefinitions,
+		displayedCustomContent,
+		customContentDisplayChangeCallback
 	]);
 
 	const createRowNodes = useCallback((): React.ReactNode[] => {

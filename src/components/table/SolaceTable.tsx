@@ -1,7 +1,7 @@
 import { useSolaceTable } from "./hooks/useSolaceTable";
 import { styled } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
-import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem } from "./table-utils";
+import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem, CustomContentDefinition } from "./table-utils";
 import SolaceCircularProgress from "../SolaceCircularProgress";
 
 interface TablePropType extends SolaceComponentProps {
@@ -51,6 +51,18 @@ interface TablePropType extends SolaceComponentProps {
 	 * Function that is called when displayed columns change is requested
 	 */
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
+	/**
+	 * Custom content definition to identify the attributes
+	 */
+	customContentDefinitions?: CustomContentDefinition[];
+	/**
+	 * Function that is called when custom content disply change is requested
+	 */
+	customContentDisplayChangeCallback?: (type: string, isHidden: boolean) => void;
+	/**
+	 * Controlled state for custom content to be displayed
+	 */
+	displayedCustomContent?: string[];
 	/**
 	 * Action menu items that apply to all rows
 	 */
@@ -252,7 +264,10 @@ function SolaceTable({
 	displayedColumnsChangedCallback,
 	expandableRowOptions,
 	loading,
-	loadingMessage
+	loadingMessage,
+	customContentDefinitions,
+	displayedCustomContent,
+	customContentDisplayChangeCallback
 }: TablePropType): JSX.Element {
 	// sanitize selectedRowIds
 	let selectedIds = selectedRowIds ? selectedRowIds : [];
@@ -280,7 +295,10 @@ function SolaceTable({
 		hasColumnHiding,
 		displayedColumns,
 		displayedColumnsChangedCallback,
-		expandableRowOptions
+		expandableRowOptions,
+		customContentDefinitions,
+		displayedCustomContent,
+		customContentDisplayChangeCallback
 	});
 
 	function renderEmptyStateMessage(): string {

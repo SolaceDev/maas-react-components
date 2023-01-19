@@ -58,6 +58,7 @@ export { StyledTableNumberData as SolaceTableNumberData } from "./components/tab
 export type { TableRow as SolaceTableRow } from "./components/table/table-utils";
 export type { TableColumn as SolaceTableColumn } from "./components/table/table-utils";
 export type { TableActionMenuItem as SolaceTableActionMenuItem } from "./components/table/table-utils";
+export type { CustomContentDefinition as SolaceCustomContentDefinition } from "./components/table/table-utils";
 export { default as SolacePagination } from "./components/SolacePagination";
 export { default as SolaceCodeEditor } from "./components/form/SolaceCodeEditor";
 export { default as SolacePopover } from "./components/SolacePopover";

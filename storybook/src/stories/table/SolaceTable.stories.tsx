@@ -11,7 +11,11 @@ import {
 	SolacePagination,
 	styled
 } from "@SolaceDev/maas-react-components";
-import { StyledTableData, StyledTableNumberData } from "../../../../src/components/table/table-utils";
+import {
+	CustomContentDefinition,
+	StyledTableData,
+	StyledTableNumberData
+} from "../../../../src/components/table/table-utils";
 import { cloneDeep } from "lodash";
 import { useMemo } from "react";
 import { useEffect } from "@storybook/addons";
@@ -858,6 +862,8 @@ const ExpandableRowTableTemplate = ({
 	allowToggle,
 	controlledSelectedRowsState,
 	initialSelectedRowIds,
+	customContentDefinition,
+	displayedCustomContent,
 	...args
 }): JSX.Element => {
 	const data = cloneDeep(rows);
@@ -883,6 +889,7 @@ const ExpandableRowTableTemplate = ({
 	);
 
 	const [selectedRowIds, setSelectedRowIds] = useState<string[]>(initialSelectedRowIds ?? []);
+	const [contentTypesShown, setContentTypesShown] = useState<string[]>(displayedCustomContent ?? []);
 	const handleRowSelectionsChange = useCallback(
 		// eslint-disable-next-line sonarjs/no-identical-functions
 		(rows: SolaceTableRow[]) => {
@@ -892,6 +899,20 @@ const ExpandableRowTableTemplate = ({
 			}
 		},
 		[controlledSelectedRowsState]
+	);
+
+	const customContentDisplayChangeCallback = useCallback(
+		(type, isHidden) => {
+			const shownContentsArray = [...contentTypesShown];
+			if (isHidden) {
+				const contentIndex = shownContentsArray.indexOf(type);
+				shownContentsArray.splice(contentIndex, 1);
+			} else {
+				shownContentsArray.push(type);
+			}
+			setContentTypesShown(shownContentsArray);
+		},
+		[contentTypesShown]
 	);
 
 	return (
@@ -906,12 +927,19 @@ const ExpandableRowTableTemplate = ({
 				columns={columnsDef}
 				selectionType={selectionType}
 				hasColumnHiding={true}
-				expandableRowOptions={{
-					allowToggle: allowToggle,
-					renderChildren: renderExpandedRowContent,
-					expandedRowIds: expandedRowIds,
-					setExpandedRowIds: setExpandedRowIds
-				}}
+				customContentDefinition={customContentDefinition}
+				displayedCustomContent={contentTypesShown}
+				customContentDisplayChangeCallback={customContentDisplayChangeCallback}
+				expandableRowOptions={
+					contentTypesShown.includes("tags")
+						? {
+								allowToggle: allowToggle,
+								renderChildren: renderExpandedRowContent,
+								expandedRowIds: expandedRowIds,
+								setExpandedRowIds: setExpandedRowIds
+						  }
+						: undefined
+				}
 				rowActionMenuItems={rowActionMenuItems ? rowActionMenuItems : undefined}
 			></SolaceTable>
 			<div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap", columnGap: "8px" }}>
@@ -936,6 +964,34 @@ ExpandableRowNoToggleTableSelectSingle.args = {
 	selectionType: SolaceTableSelectionType.SINGLE,
 	allowToggle: false,
 	rowActionMenuItems: rowActionMenuItems
+};
+
+export const ExpandableRowNoToggleTableSelectSingleWithShowHideOption = ExpandableRowTableTemplate.bind({});
+ExpandableRowNoToggleTableSelectSingleWithShowHideOption.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.SINGLE,
+	allowToggle: false,
+	rowActionMenuItems: rowActionMenuItems,
+	displayedCustomContent: ["tags"],
+	customContentDefinitions: [
+		{ type: "tags", label: "Tags" },
+		{ type: "detail", label: "Detail" }
+	]
+};
+
+export const ExpandableRowNoToggleTableSelectMultiWithShowHideOption = ExpandableRowTableTemplate.bind({});
+ExpandableRowNoToggleTableSelectMultiWithShowHideOption.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.MULTI,
+	allowToggle: false,
+	rowActionMenuItems: rowActionMenuItems,
+	displayedCustomContent: ["tags"],
+	customContentDefinitions: [
+		{ type: "tags", label: "Tags" },
+		{ type: "detail", label: "Detail" }
+	]
 };
 
 export const ExpandableRowTableSelectMulti = ExpandableRowTableTemplate.bind({});
