@@ -864,6 +864,7 @@ const ExpandableRowTableTemplate = ({
 	initialSelectedRowIds,
 	customContentDefinition,
 	displayedCustomContent,
+	enableCustomContents,
 	...args
 }): JSX.Element => {
 	const data = cloneDeep(rows);
@@ -931,14 +932,21 @@ const ExpandableRowTableTemplate = ({
 				displayedCustomContent={contentTypesShown}
 				customContentDisplayChangeCallback={customContentDisplayChangeCallback}
 				expandableRowOptions={
-					contentTypesShown.includes("tags")
-						? {
+					enableCustomContents
+						? contentTypesShown.includes("tags")
+							? {
+									allowToggle: allowToggle,
+									renderChildren: renderExpandedRowContent,
+									expandedRowIds: expandedRowIds,
+									setExpandedRowIds: setExpandedRowIds
+							  }
+							: undefined
+						: {
 								allowToggle: allowToggle,
 								renderChildren: renderExpandedRowContent,
 								expandedRowIds: expandedRowIds,
 								setExpandedRowIds: setExpandedRowIds
 						  }
-						: undefined
 				}
 				rowActionMenuItems={rowActionMenuItems ? rowActionMenuItems : undefined}
 			></SolaceTable>
@@ -974,6 +982,7 @@ ExpandableRowNoToggleTableSelectSingleWithShowHideOption.args = {
 	allowToggle: false,
 	rowActionMenuItems: rowActionMenuItems,
 	displayedCustomContent: ["tags"],
+	enableCustomContents: true,
 	customContentDefinitions: [
 		{ type: "tags", label: "Tags" },
 		{ type: "detail", label: "Detail" }
@@ -988,6 +997,7 @@ ExpandableRowNoToggleTableSelectMultiWithShowHideOption.args = {
 	allowToggle: false,
 	rowActionMenuItems: rowActionMenuItems,
 	displayedCustomContent: ["tags"],
+	enableCustomContents: true,
 	customContentDefinitions: [
 		{ type: "tags", label: "Tags" },
 		{ type: "detail", label: "Detail" }
