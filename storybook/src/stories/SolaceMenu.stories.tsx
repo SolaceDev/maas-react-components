@@ -139,6 +139,91 @@ MultilineSolaceMenu.args = {
 	numOfMenuItemDisplayed: 4 // default to 9 if this number is not specified
 };
 
+export const CustomMaxWidthSolaceMenu = Template.bind({});
+CustomMaxWidthSolaceMenu.args = {
+	buttonProps: {
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
+	items: [
+		{
+			name: "Option 1",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 2",
+			subText: SUBTEXT + " " + SUBTEXT + " " + SUBTEXT + " " + SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 3",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 4",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 5",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		}
+	],
+	multiline: true,
+	maxWidth: 500
+};
+
+export const CustomMaxWidthMaxHeightSolaceMenu = Template.bind({});
+CustomMaxWidthMaxHeightSolaceMenu.args = {
+	buttonProps: {
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
+	items: [
+		{
+			name: "Option 1",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 2",
+			subText: SUBTEXT + " " + SUBTEXT + " " + SUBTEXT + " " + SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 3",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 4",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 5",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		}
+	],
+	multiline: true,
+	numOfMenuItemDisplayed: 4,
+	maxWidth: 500
+};
+
 export const SecondaryActionSolaceMenu = Template.bind({});
 SecondaryActionSolaceMenu.args = {
 	buttonProps: {

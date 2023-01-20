@@ -646,7 +646,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								boxShadow: `0 1px 4px ${getBoxShadow("w20")}`,
 								".MuiMenuItem-root": {
 									minWidth: "80px",
-									maxWidth: "320px",
 									"&.wideMenu": {
 										minWidth: "320px"
 									}
@@ -667,7 +666,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								margin: "4px",
 								".MuiMenuItem-root": {
 									minWidth: "80px",
-									maxWidth: "320px",
 									"&.wideMenu": {
 										minWidth: "320px"
 									}

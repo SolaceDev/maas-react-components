@@ -53,7 +53,8 @@ const ContentControlMenu = ({
 					checked={!column.isHidden}
 					disabled={!column.isHidden && oneColumnIsVisible}
 				></SolaceCheckBox>
-			)
+			),
+			categoryHeading: "Manage Content Shown"
 		}));
 
 	const customContentItems =
@@ -69,12 +70,12 @@ const ContentControlMenu = ({
 					}
 					checked={displayedCustomContent?.includes(customContent.type) ? true : false}
 				></SolaceCheckBox>
-			)
+			),
+			categoryHeading: "Manage Content Shown"
 		})) ?? [];
 
 	return (
 		<SolaceMenu
-			header="Manage Content Shown"
 			id={id}
 			buttonProps={{
 				variant: "icon",

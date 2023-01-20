@@ -974,8 +974,10 @@ ExpandableRowNoToggleTableSelectSingle.args = {
 	rowActionMenuItems: rowActionMenuItems
 };
 
-export const ExpandableRowNoToggleTableSelectSingleWithShowHideOption = ExpandableRowTableTemplate.bind({});
-ExpandableRowNoToggleTableSelectSingleWithShowHideOption.args = {
+export const ExpandableRowNoToggleTableSelectSingleWithCustomContentShowHideOption = ExpandableRowTableTemplate.bind(
+	{}
+);
+ExpandableRowNoToggleTableSelectSingleWithCustomContentShowHideOption.args = {
 	rows: rows,
 	columns: columns,
 	selectionType: SolaceTableSelectionType.SINGLE,
@@ -989,8 +991,8 @@ ExpandableRowNoToggleTableSelectSingleWithShowHideOption.args = {
 	]
 };
 
-export const ExpandableRowNoToggleTableSelectMultiWithShowHideOption = ExpandableRowTableTemplate.bind({});
-ExpandableRowNoToggleTableSelectMultiWithShowHideOption.args = {
+export const ExpandableRowNoToggleTableSelectMultiWithCustomContentShowHideOption = ExpandableRowTableTemplate.bind({});
+ExpandableRowNoToggleTableSelectMultiWithCustomContentShowHideOption.args = {
 	rows: rows,
 	columns: columns,
 	selectionType: SolaceTableSelectionType.MULTI,

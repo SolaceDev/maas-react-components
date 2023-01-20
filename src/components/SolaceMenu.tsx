@@ -50,9 +50,14 @@ interface SolaceMenuProps extends SolaceComponentProps {
 	 * Note: the total number of items exceeding this number will make the list scrollable with fade style applied based on the scroll positions.
 	 */
 	numOfMenuItemDisplayed?: number;
+	/**
+	 * Optional attribute to define the maximum width of menu popper
+	 */
+	maxWidth?: number;
 }
 
 const DEFAULT_NUM_OF_MENUITEM_DISPLAYED = 9;
+const DEFAULT_MENU_POPOVER_MAX_WIDTH = 335;
 // defined in theme file under .MuiListSubheader-root
 const HEADING_HEIGHT = 32;
 
@@ -63,6 +68,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 		items,
 		header,
 		numOfMenuItemDisplayed = DEFAULT_NUM_OF_MENUITEM_DISPLAYED,
+		maxWidth = DEFAULT_MENU_POPOVER_MAX_WIDTH,
 		multiline = false,
 		propagateMenuClick = false,
 		closeOnSelect = true,
@@ -220,7 +226,8 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 					style: {
 						maxHeight: `${maxHeight}px`,
 						maskImage: hasMoreItems ? maskImage : "none",
-						WebkitMaskImage: hasMoreItems ? maskImage : "none"
+						WebkitMaskImage: hasMoreItems ? maskImage : "none",
+						maxWidth: `${maxWidth}px`
 					},
 					ref: (ref) => {
 						setMenuPopoverRef(ref); // ref setter on the Paper component
