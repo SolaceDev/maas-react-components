@@ -185,6 +185,7 @@ function SolaceSelectAutocomplete<T, V>({
 	const [loading, setLoading] = useState(false);
 	const [isFetching, setIsFetching] = useState(false);
 	const [open, setOpen] = useState(false);
+	const [resetOptions, setResetOptions] = useState(false);
 
 	useEffect(() => {
 		setSelectedValue(value || null);
@@ -204,6 +205,13 @@ function SolaceSelectAutocomplete<T, V>({
 		setFilteredOptions(options);
 		setIsFetching(false);
 	}, [options]);
+
+	useEffect(() => {
+		if (resetOptions) {
+			fetchOptionsCallback("");
+		}
+		setResetOptions(false);
+	}, [fetchOptionsCallback, resetOptions]);
 
 	const handleChange = (_event: SyntheticEvent<Element, Event>, _value: V | V[] | null) => {
 		// set internal state for selected value
@@ -285,7 +293,7 @@ function SolaceSelectAutocomplete<T, V>({
 			onOpen={() => {
 				setIsFetching(true);
 				setOpen(true);
-				fetchOptionsCallback(inputValue);
+				setResetOptions(true);
 			}}
 			onChange={handleChange}
 			popupIcon={<SelectDropdownIcon />}
