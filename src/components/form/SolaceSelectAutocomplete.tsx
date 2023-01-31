@@ -208,9 +208,10 @@ function SolaceSelectAutocomplete<T, V>({
 
 	useEffect(() => {
 		if (resetOptions) {
+			setIsFetching(true);
 			fetchOptionsCallback("");
+			setResetOptions(false);
 		}
-		setResetOptions(false);
 	}, [fetchOptionsCallback, resetOptions]);
 
 	const handleChange = (_event: SyntheticEvent<Element, Event>, _value: V | V[] | null) => {
@@ -223,6 +224,15 @@ function SolaceSelectAutocomplete<T, V>({
 				name: name,
 				value: _value
 			});
+		}
+	};
+
+	const handleInputChange = (_event: SyntheticEvent<Element, Event>, newInputValue: string) => {
+		if (newInputValue.length > 0) {
+			setInputValue(newInputValue);
+		} else {
+			// Reset options when inputValue is empty
+			setResetOptions(true);
 		}
 	};
 
@@ -253,9 +263,7 @@ function SolaceSelectAutocomplete<T, V>({
 			id={getId()}
 			data-qa={dataQa}
 			filterOptions={(x) => x}
-			onInputChange={(_event, newInputValue) => {
-				setInputValue(newInputValue);
-			}}
+			onInputChange={handleInputChange}
 			options={filteredOptions}
 			autoHighlight
 			value={selectedValue}
@@ -291,7 +299,6 @@ function SolaceSelectAutocomplete<T, V>({
 			}}
 			openOnFocus={openOnFocus}
 			onOpen={() => {
-				setIsFetching(true);
 				setOpen(true);
 				setResetOptions(true);
 			}}
