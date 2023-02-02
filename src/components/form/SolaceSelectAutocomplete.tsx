@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { Box, Autocomplete, TextField, useTheme, styled, Divider } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -179,6 +179,7 @@ function SolaceSelectAutocomplete<T, V>({
 	maxHeight
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
+	const inputValueChangedRef = useRef<boolean>(false);
 	const [selectedValue, setSelectedValue] = useState(value || null);
 	const [inputValue, setInputValue] = React.useState("");
 	const [filteredOptions, setFilteredOptions] = useState(options || []);
@@ -196,9 +197,11 @@ function SolaceSelectAutocomplete<T, V>({
 	}, [open, isFetching]);
 
 	useEffect(() => {
-		setFilteredOptions([]);
-		setIsFetching(true);
-		fetchOptionsCallback(inputValue);
+		if (inputValue.length > 0) {
+			setFilteredOptions([]);
+			setIsFetching(true);
+			fetchOptionsCallback(inputValue);
+		}
 	}, [inputValue, fetchOptionsCallback]);
 
 	useEffect(() => {
@@ -228,12 +231,29 @@ function SolaceSelectAutocomplete<T, V>({
 	};
 
 	const handleInputChange = (_event: SyntheticEvent<Element, Event>, newInputValue: string) => {
-		if (newInputValue.length > 0) {
-			setInputValue(newInputValue);
-		} else {
+		setInputValueChanged(true);
+		setInputValue(newInputValue);
+		if (newInputValue === "") {
 			// Reset options when inputValue is empty
 			setResetOptions(true);
 		}
+	};
+
+	const handleOpen = () => {
+		setOpen(true);
+		if (!inputValueChangedRef.current) {
+			setResetOptions(true);
+		}
+	};
+
+	const handleClose = () => {
+		onCloseCallback && onCloseCallback(); // notify parent select closed
+		setInputValueChanged(false);
+		setOpen(false);
+	};
+
+	const setInputValueChanged = (inputValueChanged: boolean) => {
+		inputValueChangedRef.current = inputValueChanged;
 	};
 
 	const getId = () => {
@@ -293,15 +313,9 @@ function SolaceSelectAutocomplete<T, V>({
 			open={open}
 			multiple={multiple}
 			disableCloseOnSelect={multiple}
-			onClose={() => {
-				onCloseCallback && onCloseCallback(); // notify parent select closed
-				setOpen(false);
-			}}
+			onClose={handleClose}
 			openOnFocus={openOnFocus}
-			onOpen={() => {
-				setOpen(true);
-				setResetOptions(true);
-			}}
+			onOpen={handleOpen}
 			onChange={handleChange}
 			popupIcon={<SelectDropdownIcon />}
 			renderInput={(params) => (

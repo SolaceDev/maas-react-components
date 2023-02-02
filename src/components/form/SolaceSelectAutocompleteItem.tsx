@@ -9,7 +9,7 @@ export interface SolaceSelectAutocompleteItemProps {
 	categoryHeading?: string;
 }
 
-export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option?.name;
+export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option?.name ?? "";
 
 export const getShowOptionDivider = (option: SolaceSelectAutocompleteItemProps): boolean => option?.divider ?? false;
 
