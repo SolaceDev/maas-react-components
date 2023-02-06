@@ -58,6 +58,10 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 	 * Optional flag for the height of menu items
 	 */
 	itemHeight?: number;
+	/**
+	 * Optional flag for identify the selected menu item
+	 */
+	selected?: boolean;
 }
 
 const SolaceMenuItem = ({
@@ -74,6 +78,7 @@ const SolaceMenuItem = ({
 	subMenuItems,
 	closeOnSelect,
 	itemHeight,
+	selected,
 	dataQa,
 	dataTags
 }: SolaceMenuItemProps) => {
@@ -123,7 +128,8 @@ const SolaceMenuItem = ({
 			disabled={!!disabled}
 			className={clsx({
 				multiline: !!subText && typeof name === "string",
-				wideMenu: !!supplementalText && typeof name === "string"
+				wideMenu: !!supplementalText && typeof name === "string",
+				selectedItem: selected
 			})}
 		>
 			{typeof name === "string" ? (

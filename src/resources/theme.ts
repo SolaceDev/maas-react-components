@@ -668,6 +668,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									minWidth: "80px",
 									"&.wideMenu": {
 										minWidth: "320px"
+									},
+									"&.selectedItem": {
+										backgroundColor: themeMapping.palette.brand.w10
 									}
 								}
 							}

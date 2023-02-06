@@ -172,6 +172,7 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				onMenuItemClick={item?.onMenuItemClick}
 				onMenuClose={handleMenuClose}
 				subMenuItems={item?.subMenuItems}
+				selected={item?.selected}
 				itemHeight={itemHeight}
 			/>
 		));

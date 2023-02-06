@@ -51,6 +51,40 @@ const DEFAULT_MENU_ITEMS = [
 	}
 ];
 
+export const SolaceMenuItemSelectedState = Template.bind({});
+SolaceMenuItemSelectedState.args = {
+	id: "demo-solace-menu-item-selected",
+	buttonProps: {
+		title: TITLE,
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
+	dataQa: "testDataProp",
+	dataTags: "testDataTag1",
+	items: [
+		{
+			name: "Option 1",
+			onMenuItemClick: action("callback"),
+			dataQa: "testDataProp2",
+			dataTags: "testDataTag2"
+		},
+		{
+			name: "Option 2",
+			onMenuItemClick: action("callback"),
+			selected: true
+		},
+		{
+			name: "Option 3",
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 4",
+			onMenuItemClick: action("callback")
+		}
+	],
+	numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+};
+
 export const DefaultSolaceMenu = Template.bind({});
 DefaultSolaceMenu.args = {
 	id: "demo-solace-menu",
