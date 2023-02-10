@@ -261,6 +261,15 @@ DefaultTable.args = {
 	selectionType: SolaceTableSelectionType.NONE
 };
 
+export const DefaultWithMinMaxHeightTable = TableTemplate.bind({});
+DefaultWithMinMaxHeightTable.args = {
+	rows: rows,
+	columns: columns,
+	selectionType: SolaceTableSelectionType.NONE,
+	minHeight: "100px",
+	maxHeight: "150px"
+};
+
 export const SingleSelectionTable = TableTemplate.bind({});
 SingleSelectionTable.args = {
 	rows: rows,

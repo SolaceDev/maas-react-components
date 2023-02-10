@@ -123,6 +123,14 @@ interface TablePropType extends SolaceComponentProps {
 	 * loading state messaging
 	 */
 	loadingMessage?: string;
+	/**
+	 * Max Height for Solace Table
+	 */
+	maxHeight?: string;
+	/**
+	 * Min Height for Solace Table
+	 */
+	minHeight?: string;
 }
 
 export interface ExpandableRowOptions {
@@ -148,7 +156,9 @@ export interface ExpandableRowOptions {
 	setExpandedRowIds: (rowIds: string[]) => void;
 }
 
-const TableWrapper = styled("div")(({ theme }) => ({
+const TableWrapper = styled("div", {
+	shouldForwardProp: (prop) => prop !== "minHeight" && prop !== "maxHeight"
+})<{ minHeight?: string; maxHeight?: string }>(({ theme, minHeight, maxHeight }) => ({
 	display: "flex",
 	flexDirection: "column",
 	color: theme.palette.ux.primary.text.wMain,
@@ -156,8 +166,8 @@ const TableWrapper = styled("div")(({ theme }) => ({
 	borderRadius: "4px",
 	width: "100%",
 	height: "100%",
-	minHeight: "200px",
-	maxHeight: "100%",
+	minHeight: minHeight ?? "200px",
+	maxHeight: maxHeight ?? "100%",
 	overflow: "auto",
 	fontFamily: theme.typography.fontFamily,
 	fontSize: theme.typography.body1.fontSize,
@@ -267,7 +277,9 @@ function SolaceTable({
 	loadingMessage,
 	customContentDefinitions,
 	displayedCustomContent,
-	customContentDisplayChangeCallback
+	customContentDisplayChangeCallback,
+	maxHeight,
+	minHeight
 }: TablePropType): JSX.Element {
 	// sanitize selectedRowIds
 	let selectedIds = selectedRowIds ? selectedRowIds : [];
@@ -319,7 +331,7 @@ function SolaceTable({
 	}
 
 	return (
-		<TableWrapper className="tableWrapper">
+		<TableWrapper maxHeight={maxHeight} minHeight={minHeight} className="tableWrapper">
 			<StyledTable data-qa={id}>
 				{/* The border style of thead is set in table-utils on th with boxShadow */}
 				<thead style={{ borderBottom: 0, position: "relative" }}>
