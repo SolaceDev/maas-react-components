@@ -909,7 +909,8 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								width: "16px",
 								height: "16px",
 								border: `solid 2px ${themeMapping.palette.primary.w60}`,
-								boxShadow: "none"
+								boxShadow: "none",
+								boxSizing: "content-box"
 							},
 							"&.Mui-checked .MuiSwitch-thumb": {
 								backgroundColor: themeMapping.palette.primary.wMain,
@@ -1570,6 +1571,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					}
 				},
 				row: {
+					boxSizing: "content-box",
 					display: "grid",
 					gridColumnGap: "32px",
 					whiteSpace: "nowrap",
