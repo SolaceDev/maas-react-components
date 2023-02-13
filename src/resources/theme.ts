@@ -1116,10 +1116,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							display: "none"
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root": {
-							margin: "0px",
-							padding: "0px",
+							margin: "0 2px",
+							padding: "0",
 							height: "24px",
-							minWidth: "24px",
+							minWidth: "20px",
 							color: themeMapping.palette.primary.wMain,
 							fontSize: BASE_FONT_PX_SIZES.sm
 						},

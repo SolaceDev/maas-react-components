@@ -42,16 +42,16 @@ const PaginationContainer = styled("div")(() => ({
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
-	margin: "0px",
+	margin: "0",
 	position: "relative"
 }));
 
 const PageListContainer = styled("div")(() => ({
-	margin: "0px"
+	margin: "0"
 }));
 
 const MessageContainer = styled("p")(({ theme }) => ({
-	margin: `${theme.spacing(0.5)} 0px 0px 0px`,
+	margin: theme.spacing(0.5, 0, 0, 0),
 	fontSize: BASE_FONT_PX_SIZES.xs,
 	color: theme.palette.ux.deprecated.secondary.text.wMain
 }));

@@ -65,3 +65,17 @@ export const CustomMessageText = (args): JSX.Element => {
 		/>
 	);
 };
+
+export const LargeNumberPagination = (args): JSX.Element => {
+	const [selectedPage, setSelectedPage] = useState(995);
+
+	return (
+		<SolacePagination
+			totalResults={args.totalResults || 10000}
+			activePage={selectedPage || 50}
+			pageSize={args.pageSize}
+			displayText={args.displayText}
+			onPageSelection={(page) => setSelectedPage(page)}
+		/>
+	);
+};
