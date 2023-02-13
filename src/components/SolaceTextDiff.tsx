@@ -30,6 +30,7 @@ const CodeDiffContainer = styled("div")(({ theme }) => ({
 				},
 				".d2h-code-side-linenumber": {
 					border: 0,
+					position: "relative", // Fixes line numbers overflowing out of container. https://github.com/rtfpessoa/diff2html/issues/381
 					backgroundColor: `${theme.palette.ux.primary.w20} !important;`,
 					padding: 0,
 					textAlign: "center",
