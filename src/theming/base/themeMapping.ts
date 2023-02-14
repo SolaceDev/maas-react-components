@@ -91,7 +91,7 @@ export const baseThemeMapping: ThemeMapping = {
 				w100: "",
 				wMain: "",
 				w30: "",
-				w10: ""
+				w10: "#ECF0FC"
 			},
 			n1: {
 				wMain: "",
