@@ -1,14 +1,28 @@
-import { Breakpoint, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import {
+	Breakpoint,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+	styled
+} from "@mui/material";
 import { ReactNode } from "react";
 
 import SolaceButton, { SolaceButtonProps } from "../form/SolaceButton";
 
 type actionProps = Partial<SolaceButtonProps> & { label: string; id?: string };
 
+const CustomAction = styled("div")(({ theme }) => ({
+	marginRight: "auto",
+	paddingRight: theme.spacing(1)
+}));
+
 export interface SolaceConfirmationDialogProps {
 	title?: string | JSX.Element;
 	contentText?: string;
 	actions: actionProps[];
+	customAction?: JSX.Element;
 	isOpen: boolean;
 	/**
 	 * whether to show an indeterminate linear progress indicator at the bottom border of the dialog
@@ -27,6 +41,7 @@ function SolaceConfirmationDialog({
 	title,
 	contentText,
 	actions,
+	customAction,
 	isOpen = false,
 	maxWidth = "dialogMd",
 	contentLayout = "block",
@@ -45,6 +60,7 @@ function SolaceConfirmationDialog({
 				{children}
 			</DialogContent>
 			<DialogActions>
+				{customAction && <CustomAction>{customAction}</CustomAction>}
 				{actions?.map((action) => (
 					<SolaceButton
 						dataQa={action.dataQa}

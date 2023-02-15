@@ -8,7 +8,8 @@ import {
 	SolaceTextField,
 	MenuItem,
 	styled,
-	SolaceAccordion
+	SolaceAccordion,
+	SolaceCheckBox
 } from "@SolaceDev/maas-react-components";
 import { DefaultTable } from "../table/SolaceTable.stories";
 import CheckCircleIcon from "@SolaceDev/maas-react-components/src/resources/icons/CheckCircleIcon";
@@ -224,5 +225,22 @@ export const WithElementTypeTitle = (): JSX.Element => (
 		contentText="Some content"
 		isOpen={true}
 		actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK) }]}
+	/>
+);
+
+const args = {
+	onChange: action("callback"),
+	title: "Checkbox title",
+	id: "demoCheckboxId",
+	name: "demoCheckbox",
+	label: "Optional checkbox that may be clicked before submitting"
+};
+export const WithCustomActions = (): JSX.Element => (
+	<SolaceConfirmationDialog
+		title="Dialog with custom action next to buttons"
+		contentText="Some content"
+		isOpen={true}
+		actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK) }]}
+		customAction={<SolaceCheckBox {...args} />}
 	/>
 );
