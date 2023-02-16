@@ -101,7 +101,6 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 }));
 
 export const StyledTableData = styled("td")(({ theme }) => ({
-	boxSizing: "content-box",
 	borderCollapse: "collapse",
 	padding: `${theme.spacing()} ${theme.spacing(2)}`,
 	height: "24px",

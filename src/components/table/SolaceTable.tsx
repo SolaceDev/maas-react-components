@@ -159,7 +159,6 @@ export interface ExpandableRowOptions {
 const TableWrapper = styled("div", {
 	shouldForwardProp: (prop) => prop !== "minHeight" && prop !== "maxHeight"
 })<{ minHeight?: string; maxHeight?: string }>(({ theme, minHeight, maxHeight }) => ({
-  	boxSizing: "content-box",
 	display: "flex",
 	flexDirection: "column",
 	color: theme.palette.ux.primary.text.wMain,
