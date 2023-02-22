@@ -356,6 +356,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							border: `solid 1px ${themeMapping.palette.secondary.w40}`,
 							borderRadius: "4px",
 							padding: "8px",
+							// eslint-disable-next-line sonarjs/no-duplicate-string
 							boxSizing: "border-box"
 						},
 						"&:hover .MuiOutlinedInput-input:read-only, &.Mui-focused .MuiOutlinedInput-input:read-only, .MuiOutlinedInput-input:read-only":
@@ -1589,7 +1590,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							background: "unset"
 						},
 						zIndex: 1,
-						":first-child": {
+						":first-of-type": {
 							borderTop: "none"
 						}
 					},
@@ -1608,6 +1609,33 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					"&.selected": {
 						background: themeMapping.palette.brand.w10,
 						cursor: "default"
+					}
+				},
+				virtualRow: {
+					display: "grid",
+					gridColumnGap: "32px",
+					whiteSpace: "nowrap",
+					placeItems: "center left",
+					padding: "10px 16px",
+					minHeight: "32px",
+					cursor: "pointer",
+					":hover": {
+						background: themeMapping.palette.deprecated.secondary.w10
+					},
+					":focus-visible": {
+						background: themeMapping.palette.secondary.w10,
+						outline: "none"
+					},
+					"&.selected": {
+						background: themeMapping.palette.brand.w10,
+						cursor: "default"
+					}
+				},
+				virtualRowContainer: {
+					boxSizing: "border-box",
+					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`,
+					":last-child": {
+						borderBottom: "none"
 					}
 				},
 				list: {
@@ -1721,6 +1749,8 @@ declare module "@mui/material/styles/createMixins" {
 		layoutComponent_ImageList: {
 			header: CSSProperties;
 			row: CSSProperties;
+			virtualRow: CSSProperties;
+			virtualRowContainer: CSSProperties;
 			list: CSSProperties;
 			border: CSSProperties;
 		};

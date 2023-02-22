@@ -4,9 +4,10 @@ import {
 	SolaceGridListMultiSelect,
 	SolaceTooltip,
 	SolaceMenu,
-	SelectDropdownIcon
+	SelectDropdownIcon,
+	SolaceAttributeBadge
 } from "@SolaceDev/maas-react-components";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
 const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
@@ -120,7 +121,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 1,
+		id: "1",
 		name: "Event Mesh 1",
 		description: LIST_ITEM_DESCRIPTION,
 		environmentId: "environment1",
@@ -136,7 +137,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 2,
+		id: "2",
 		name: "Event Mesh 2",
 		description: "Another fun and exciting mesh",
 		environmentId: "environment1",
@@ -152,7 +153,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 3,
+		id: "3",
 		name: "Event Mesh 3",
 		description: "Coolest MEM around",
 		environmentId: "environment2",
@@ -168,7 +169,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 4,
+		id: "4",
 		name: "Event Mesh 4 with super loooooooong name",
 		description: "A Modeled Event Mesh with a really long name (40 characters which is the max)",
 		environmentId: "environment1",
@@ -184,7 +185,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 5,
+		id: "5",
 		name: "Event Mesh 5",
 		description: LIST_ITEM_DESCRIPTION,
 		environmentId: "environment2",
@@ -214,8 +215,27 @@ const DEFAULT_MENU_ITEMS = [
 ];
 const DEFAULT_GRID_TEMPALTE = "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)";
 
+const largeListItems = Array.from({ length: 500 }).map((item, index) => {
+	return {
+		createdTime: 1635527600270,
+		updatedTime: 1635527600270,
+		createdBy: "10lota8vwsr",
+		changedBy: "10lota8vwsr",
+		id: index + "",
+		name: "Event Mesh " + index,
+		description: LIST_ITEM_DESCRIPTION,
+		environmentId: "environment1",
+		type: "eventMesh",
+		environment: {
+			id: "environment1",
+			name: ENV_1_NAME,
+			description: ENV_DESCRIPTION
+		}
+	};
+});
+
 const basicRowMapping = (testItem) => {
-	const itemCells = [];
+	const itemCells: any[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -240,8 +260,34 @@ const basicRowMapping = (testItem) => {
 	return itemCells;
 };
 
+const customCellMapping = (testItem) => {
+	const itemCells: any[] = [];
+	itemCells.push(
+		<div
+			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
+			key={`${testItem.id}-${testItem.name}`}
+		>
+			{testItem.name}
+		</div>
+	);
+	itemCells.push(
+		<div key={`${testItem.id}-${testItem.environment.name}`}>
+			<SolaceAttributeBadge label={testItem.environment.name} />
+		</div>
+	);
+	itemCells.push(
+		<div
+			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
+			key={`${testItem.id}-${testItem.description}`}
+		>
+			{testItem.description}
+		</div>
+	);
+	return itemCells;
+};
+
 const getActions = (isDisabled): JSX.Element[] => {
-	const actionList = [];
+	const actionList: any[] = [];
 	actionList.push(
 		<SolaceMenu
 			id={"custom-solace-menu"}
@@ -324,7 +370,7 @@ WithDefaultHighlight.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
 	gridTemplate: DEFAULT_GRID_TEMPALTE,
-	highlightedRowId: 2,
+	highlightedRowId: "2",
 	dataQa: "demoDefaultList"
 };
 
@@ -333,7 +379,7 @@ WithDefaultSelections.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
 	gridTemplate: DEFAULT_GRID_TEMPALTE,
-	selectedRowIds: [2, 3, 5],
+	selectedRowIds: ["2", "3", "5"],
 	dataQa: "demoDefaultList"
 };
 
@@ -374,7 +420,7 @@ export const WithActionMenusEnabledOnItemsSelect = (): JSX.Element => {
 			onRowHighlight={handleRowHighlight}
 			selectedRowIds={selectedRowIds}
 			onSelection={handleRowSelection}
-			gridTemplate="minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)"
+			gridTemplate={DEFAULT_GRID_TEMPALTE}
 			actions={getActions(isDisabled)}
 			dataQa="demoDefaultList"
 		/>
@@ -418,4 +464,34 @@ ContainedListNoHeader.args = {
 	dataQa: "demoDefaultList",
 	numOfGridListItemDisplayed: 3,
 	selectAll: false
+};
+
+export const LargeDataList = SolaceGridListMultiSelectStory.bind({});
+LargeDataList.args = {
+	items: largeListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: customCellMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	virtualizedListOption: {
+		height: 500,
+		overscanCount: 20
+	},
+	dataQa: "demoDefaultList"
+};
+
+export const LargeDataListDefaultHighlightAndSelection = SolaceGridListMultiSelectStory.bind({});
+LargeDataListDefaultHighlightAndSelection.args = {
+	items: largeListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: customCellMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	highlightedRowId: "20",
+	selectedRowIds: ["2", "4", "20"],
+	virtualizedListOption: {
+		height: 500,
+		overscanCount: 20
+	},
+	dataQa: "demoDefaultList"
 };

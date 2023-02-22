@@ -1,13 +1,30 @@
 import { styled, useTheme } from "@mui/material";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { CSSProperties } from "@mui/styled-engine";
 import { getGridListItemHeight } from "../../utils";
 import { useScrollIndicator } from "../../hooks/useScrollIndicator";
+import { FixedSizeList as VirtualizedList } from "react-window";
 
 const Row = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.row as CSSProperties) }));
-const List = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.list as CSSProperties) }));
+const VirtualRow = styled("div")(({ theme }) => ({
+	...(theme.mixins.layoutComponent_ImageList.virtualRow as CSSProperties)
+}));
+const VirtualRowContainer = styled("div")(({ theme }) => ({
+	...(theme.mixins.layoutComponent_ImageList.virtualRowContainer as CSSProperties)
+}));
+const List = styled("div")(({ theme }) => ({
+	...(theme.mixins.layoutComponent_ImageList.list as CSSProperties)
+}));
 const Border = styled("div")(({ theme }) => ({ ...(theme.mixins.layoutComponent_ImageList.border as CSSProperties) }));
+
+export interface VirtualizeListOptions {
+	height?: number;
+	width?: string | number;
+	itemHeight?: number;
+	overscanCount?: number;
+	contentPlaceholder?: JSX.Element;
+}
 
 interface SolaceGridListProps<T> extends SolaceComponentProps {
 	id?: string;
@@ -20,6 +37,8 @@ interface SolaceGridListProps<T> extends SolaceComponentProps {
 	gridTemplate: string;
 	background?: string;
 	numOfGridListItemDisplayed?: number;
+	// only render part of a large data set to fill the viewport
+	virtualizedListOption?: VirtualizeListOptions;
 }
 
 interface SolaceGridListRowProps extends SolaceComponentProps {
@@ -31,8 +50,12 @@ interface SolaceGridListRowProps extends SolaceComponentProps {
 	onClick: (id: string) => void;
 	dataQa?: string;
 	background?: string;
+	virtualRow?: boolean;
+	isLoading?: boolean;
+	contentPlaceholder?: JSX.Element;
 }
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 function SolaceGridListRow({
 	id,
 	index,
@@ -40,7 +63,10 @@ function SolaceGridListRow({
 	gridTemplate,
 	selected,
 	onClick,
-	dataQa
+	dataQa,
+	virtualRow = false,
+	isLoading = false,
+	contentPlaceholder
 }: SolaceGridListRowProps): JSX.Element {
 	const handleKeyPress = (e: any) => {
 		if (e.key === "Enter") {
@@ -48,7 +74,21 @@ function SolaceGridListRow({
 		}
 	};
 
-	return (
+	return virtualRow ? (
+		<VirtualRow
+			key={`row-${id}`}
+			className={selected ? "selected" : ""}
+			onClick={(e) => {
+				if (e.target === e.currentTarget) onClick(id);
+			}}
+			onKeyPress={(e) => handleKeyPress(e)}
+			style={{ gridTemplateColumns: gridTemplate }}
+			tabIndex={index}
+			data-qa={`${dataQa}-row-${id}`}
+		>
+			{isLoading && contentPlaceholder ? contentPlaceholder : items}
+		</VirtualRow>
+	) : (
 		<Row
 			key={`row-${id}`}
 			className={selected ? "selected" : ""}
@@ -76,7 +116,8 @@ function SolaceGridList<T>({
 	gridTemplate,
 	dataQa,
 	background,
-	numOfGridListItemDisplayed
+	numOfGridListItemDisplayed,
+	virtualizedListOption
 }: SolaceGridListProps<T>): JSX.Element {
 	const [headerBGC, setHeaderBGC] = useState("");
 	const theme = useTheme();
@@ -158,6 +199,18 @@ function SolaceGridList<T>({
 		};
 	}, [gridListRef, onScrollHandler]);
 
+	const virtualListRef = useRef<VirtualizedList<any> | null>();
+
+	useEffect(() => {
+		if (selectedItemId && virtualListRef.current && items) {
+			const foundIndex = items.findIndex((item) => item[objectIdentifier] === selectedItemId);
+			if (foundIndex >= 0) {
+				// scroll to the selected row as little as possible
+				virtualListRef.current.scrollToItem(foundIndex);
+			}
+		}
+	}, [items, objectIdentifier, selectedItemId]);
+
 	return (
 		<div
 			id="listComponent"
@@ -169,30 +222,71 @@ function SolaceGridList<T>({
 		>
 			{headers && getListHeader}
 			<Border>
-				<List
-					ref={setGridListRef}
-					style={{
-						backgroundColor: background,
-						maxHeight: numOfGridListItemDisplayed
-							? `${itemHeight * numOfGridListItemDisplayed + itemHeight / 2}px`
-							: "none",
-						maskImage: maskImageEffect(),
-						WebkitMaskImage: maskImageEffect()
-					}}
-				>
-					{items?.map((item, index) => (
-						<SolaceGridListRow
-							key={`solaceGridListRow-${item[objectIdentifier] ?? index}`}
-							id={item[objectIdentifier] ?? index}
-							index={index + 1}
-							items={rowMapping(item, index)}
-							selected={selectedItemId ? item[objectIdentifier] === selectedItemId : false}
-							gridTemplate={gridTemplate}
-							onClick={handleRowClick}
-							dataQa={dataQa}
-						/>
-					))}
-				</List>
+				{!virtualizedListOption && (
+					<List
+						ref={setGridListRef}
+						style={{
+							backgroundColor: background,
+							maxHeight: numOfGridListItemDisplayed
+								? `${itemHeight * numOfGridListItemDisplayed + itemHeight / 2}px`
+								: "none",
+							maskImage: maskImageEffect(),
+							WebkitMaskImage: maskImageEffect()
+						}}
+					>
+						{items?.map((item, index) => (
+							<SolaceGridListRow
+								key={`solaceGridListRow-${item[objectIdentifier] ?? index}`}
+								id={item[objectIdentifier] ?? index}
+								index={index + 1}
+								items={rowMapping(item, index)}
+								selected={selectedItemId ? item[objectIdentifier] === selectedItemId : false}
+								gridTemplate={gridTemplate}
+								onClick={handleRowClick}
+								dataQa={dataQa}
+							/>
+						))}
+					</List>
+				)}
+				{virtualizedListOption && items?.length > 0 && (
+					<VirtualizedList
+						className="List"
+						style={{ backgroundColor: background }}
+						height={
+							virtualizedListOption.height
+								? virtualizedListOption.height
+								: numOfGridListItemDisplayed
+								? itemHeight * numOfGridListItemDisplayed + itemHeight / 2
+								: 200
+						}
+						width={virtualizedListOption.width ?? "100%"}
+						itemCount={items.length}
+						itemSize={virtualizedListOption.itemHeight ? virtualizedListOption.itemHeight : getGridListItemHeight()}
+						overscanCount={virtualizedListOption.overscanCount ?? 1}
+						useIsScrolling={true}
+						ref={(element) => {
+							virtualListRef.current = element;
+						}}
+					>
+						{({ index, style, isScrolling }) => (
+							<VirtualRowContainer style={style}>
+								<SolaceGridListRow
+									key={`solaceGridListRow-${items[index][objectIdentifier] ?? index}`}
+									id={items[index][objectIdentifier] ?? index}
+									index={index + 1}
+									items={rowMapping(items[index], index)}
+									selected={selectedItemId ? items[index][objectIdentifier] === selectedItemId : false}
+									gridTemplate={gridTemplate}
+									onClick={handleRowClick}
+									dataQa={dataQa}
+									virtualRow={true}
+									isLoading={isScrolling}
+									contentPlaceholder={virtualizedListOption.contentPlaceholder}
+								/>
+							</VirtualRowContainer>
+						)}
+					</VirtualizedList>
+				)}
 			</Border>
 		</div>
 	);

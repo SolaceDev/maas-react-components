@@ -34,6 +34,7 @@ export { default as SolaceMenu } from "./components/SolaceMenu";
 export { default as SolaceMenuItem } from "./components/SolaceMenuItem";
 export type { SolaceMenuItemProps } from "./components/SolaceMenuItem";
 export { default as SolaceTextField } from "./components/form/SolaceTextField";
+export type { SolaceTextFieldChangeEvent } from "./components/form/SolaceTextField";
 export { default as SolaceSelect } from "./components/form/SolaceSelect";
 export type { SolaceSelectChangeEvent } from "./components/form/SolaceSelect";
 export { default as SolaceSelectAutocomplete } from "./components/form/SolaceSelectAutocomplete";

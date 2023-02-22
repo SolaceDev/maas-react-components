@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { SolaceGridList, SolaceAttributeBadge, SolaceMenu, SolaceTooltip } from "@SolaceDev/maas-react-components";
 import { MoreHorizOutlinedIcon } from "../../../../src/resources/icons/MoreHorizOutlinedIcon";
+import React from "react";
 
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
 const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
@@ -89,7 +90,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 1,
+		id: "1",
 		name: "Event Mesh 1",
 		description: LIST_ITEM_DESCRIPTION,
 		environmentId: "environment1",
@@ -105,7 +106,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 2,
+		id: "2",
 		name: "Event Mesh 2",
 		description: "Another fun and exciting mesh",
 		environmentId: "environment1",
@@ -121,7 +122,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 3,
+		id: "3",
 		name: "Event Mesh 3",
 		description: "Coolest MEM around",
 		environmentId: "environment2",
@@ -137,7 +138,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 4,
+		id: "4",
 		name: "Event Mesh 4 with super loooooooong name",
 		description: "A Modeled Event Mesh with a really long name (40 characters which is the max)",
 		environmentId: "environment1",
@@ -153,7 +154,7 @@ const testListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		id: 5,
+		id: "5",
 		name: "Event Mesh 5",
 		description: LIST_ITEM_DESCRIPTION,
 		environmentId: "environment2",
@@ -166,6 +167,25 @@ const testListItems = [
 	}
 ];
 
+const largeListItems = Array.from({ length: 500 }).map((item, index) => {
+	return {
+		createdTime: 1635527600270,
+		updatedTime: 1635527600270,
+		createdBy: "10lota8vwsr",
+		changedBy: "10lota8vwsr",
+		id: index + "",
+		name: "Event Mesh " + index,
+		description: LIST_ITEM_DESCRIPTION,
+		environmentId: "environment1",
+		type: "eventMesh",
+		environment: {
+			id: "environment1",
+			name: ENV_1_NAME,
+			description: ENV_DESCRIPTION
+		}
+	};
+});
+
 const createActionMenu = (item) => {
 	const handleViewSelection = () => {
 		action("viewDetailsSelected")(item);
@@ -177,6 +197,7 @@ const createActionMenu = (item) => {
 
 	return (
 		<SolaceMenu
+			id={item.id}
 			items={[
 				{
 					name: "View Details",
@@ -205,7 +226,7 @@ const createActionMenu = (item) => {
 };
 
 const basicRowMapping = (testItem) => {
-	const itemCells = [];
+	const itemCells: any[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -231,7 +252,7 @@ const basicRowMapping = (testItem) => {
 };
 
 const customCellMapping = (testItem) => {
-	const itemCells = [];
+	const itemCells: any[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -257,7 +278,7 @@ const customCellMapping = (testItem) => {
 };
 
 const withActionColumnMapping = (testItem) => {
-	const itemCells = [];
+	const itemCells: any[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -339,7 +360,7 @@ const customListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		customId: 1,
+		customId: "1",
 		name: "Event Mesh 1",
 		description: LIST_ITEM_DESCRIPTION,
 		environmentId: "environment1",
@@ -355,7 +376,7 @@ const customListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		customId: 2,
+		customId: "2",
 		name: "Event Mesh 2",
 		description: "Another fun and exciting mesh",
 		environmentId: "environment1",
@@ -371,7 +392,7 @@ const customListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		customId: 3,
+		customId: "3",
 		name: "Event Mesh 3",
 		description: "Coolest MEM around",
 		environmentId: "environment2",
@@ -387,7 +408,7 @@ const customListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		customId: 4,
+		customId: "4",
 		name: "Event Mesh 4 with super loooooooong name",
 		description: "A Modeled Event Mesh with a really long name (40 characters which is the max)",
 		environmentId: "environment1",
@@ -403,7 +424,7 @@ const customListItems = [
 		updatedTime: 1635527600270,
 		createdBy: "10lota8vwsr",
 		changedBy: "10lota8vwsr",
-		customId: 5,
+		customId: "5",
 		name: "Event Mesh 5",
 		description: LIST_ITEM_DESCRIPTION,
 		environmentId: "environment2",
@@ -433,5 +454,48 @@ WithActionMenus.args = {
 	onSelection: action("rowSelected"),
 	rowMapping: withActionColumnMapping,
 	gridTemplate: "minmax(120px, 1fr) minmax(120px, 1fr) 300px 40px",
+	dataQa: "demoDefaultList"
+};
+
+export const LargeDataList = Template.bind({});
+LargeDataList.args = {
+	items: largeListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: customCellMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	virtualizedListOption: {
+		height: 500,
+		overscanCount: 5
+	},
+	dataQa: "demoDefaultList"
+};
+
+export const LargeDataColoredList = Template.bind({});
+LargeDataColoredList.args = {
+	items: largeListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: customCellMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	virtualizedListOption: {
+		height: 500,
+		overscanCount: 20
+	},
+	dataQa: "demoDefaultList",
+	background: "rgba(0, 0, 0, 0.03)"
+};
+
+export const LargeDataListWithContentPlaceHolder = Template.bind({});
+LargeDataListWithContentPlaceHolder.args = {
+	items: largeListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: customCellMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	virtualizedListOption: {
+		height: 500,
+		contentPlaceholder: <div style={{ color: "rgba(0,0,0,0.5)" }}>Scrolling...</div>
+	},
 	dataQa: "demoDefaultList"
 };

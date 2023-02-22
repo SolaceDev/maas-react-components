@@ -4,7 +4,7 @@ import SolaceCheckBox, { SolaceCheckboxChangeEvent } from "../form/SolaceCheckBo
 import { CSSProperties } from "@mui/styled-engine";
 
 import SolaceComponentProps from "../SolaceComponentProps";
-import SolaceGridList from "./SolaceGridList";
+import SolaceGridList, { VirtualizeListOptions } from "./SolaceGridList";
 
 const ImageListHeader = styled("div")(({ theme }) => ({
 	...(theme.mixins.layoutComponent_ImageList.header as CSSProperties)
@@ -28,6 +28,7 @@ interface SolaceGridListMultiSelectProps<T> extends SolaceComponentProps {
 	numOfGridListItemDisplayed?: number;
 	showCount?: boolean;
 	itemsType?: string;
+	virtualizedListOption?: VirtualizeListOptions;
 }
 
 function SolaceGridListMultiSelect<T>({
@@ -47,7 +48,8 @@ function SolaceGridListMultiSelect<T>({
 	dataQa,
 	numOfGridListItemDisplayed,
 	showCount = false,
-	itemsType = ""
+	itemsType = "",
+	virtualizedListOption
 }: SolaceGridListMultiSelectProps<T>): JSX.Element {
 	// checkbox is 25px wide, column gap is 16px, setting a min width of 17px
 	// gives a gap of 8px between checkbox and first column (as per UX design)
@@ -194,7 +196,12 @@ function SolaceGridListMultiSelect<T>({
 	}, [actions, selectAll]);
 
 	return (
-		<div data-qa={dataQa} style={{ height: isHeaderDisplayed ? `calc(100% - ${HEADER_HEIGHT})` : "100%" }}>
+		<div
+			data-qa={dataQa}
+			style={
+				!virtualizedListOption ? { height: isHeaderDisplayed ? `calc(100% - ${HEADER_HEIGHT})` : "100%" } : undefined
+			}
+		>
 			{getListHeader}
 			{isHeaderDisplayed && (
 				<ImageListHeader>
@@ -235,6 +242,7 @@ function SolaceGridListMultiSelect<T>({
 				gridTemplate={getGridTemplate}
 				dataQa={`${dataQa}-gridlist`}
 				numOfGridListItemDisplayed={numOfGridListItemDisplayed}
+				virtualizedListOption={virtualizedListOption}
 			/>
 		</div>
 	);
