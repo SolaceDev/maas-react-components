@@ -27,7 +27,6 @@ jobs:
         uses: chromaui/action@v1
         # Chromatic GitHub Action options
         with:
-          node-version: 16
           token: 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
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: 3c6be3f5528f
@@ -75,4 +74,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          cd ./storybook && npm ci && npm run deploy
+          cd ./storybook && npm i && npm run deploy
