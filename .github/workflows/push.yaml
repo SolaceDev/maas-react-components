@@ -13,6 +13,10 @@ jobs:
     # Job steps
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
       - name: Install dependencies
         run: npm ci && npm --prefix storybook i
         env:
@@ -23,6 +27,7 @@ jobs:
         uses: chromaui/action@v1
         # Chromatic GitHub Action options
         with:
+          node-version: 16
           token: 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
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: 3c6be3f5528f
