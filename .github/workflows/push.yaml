@@ -43,6 +43,7 @@ jobs:
         uses: "actions/checkout@v2"
         with:
           ref: ${{ github.ref }}
+          token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
       - name: "cat package.json"
         run: cat ./package.json
