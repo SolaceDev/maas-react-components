@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm ci && npm --prefix storybook i
         env:
-          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }} #need this for npm package.
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }} #need this for npm package.
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         # publish
@@ -55,7 +55,7 @@ jobs:
           patch-wording: "solacepatch,SolacePatch,SOLACEPATCH"
           tag-prefix: ""
         env:
-          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
 
@@ -72,10 +72,10 @@ jobs:
       - name: install
         run: npm ci
         env:
-          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
       - name: deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.TAG_PUSH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           cd ./storybook && npm i && npm run deploy

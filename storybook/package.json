@@ -9,14 +9,15 @@
 		"build-storybook": "build-storybook",
 		"predeploy": "build-storybook",
 		"deploy": "gh-pages -d storybook-static -u \"github-actions-bot <support+actions@github.com>\"",
-		"chromatic": "npx chromatic --project-token=3c6be3f5528f"
+		"chromatic": "npx chromatic --project-token=3c6be3f5528f",
+		"test-storybook": "test-storybook --maxWorkers=2 --coverage"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@SolaceDev/maas-react-components": "file:..",
 		"@solacedev/maas-icons": "0.0.14",
+		"@SolaceDev/maas-react-components": "file:..",
 		"gh-pages": "^3.2.3",
 		"storybook-addon-react-docgen": "^1.2.42"
 	},
@@ -25,12 +26,14 @@
 		"@sambego/storybook-state": "^2.0.1",
 		"@storybook/addon-a11y": "^6.4.18",
 		"@storybook/addon-actions": "^6.4.18",
+		"@storybook/addon-coverage": "^0.0.8",
 		"@storybook/addon-essentials": "^6.4.18",
 		"@storybook/addon-interactions": "^6.4.18",
 		"@storybook/addon-links": "^6.4.18",
 		"@storybook/addons": "^6.4.18",
 		"@storybook/jest": "0.0.6",
 		"@storybook/react": "^6.4.18",
+		"@storybook/test-runner": "^0.9.4",
 		"@storybook/testing-library": "0.0.9",
 		"@storybook/theming": "^6.4.18",
 		"babel-loader": "^8.2.2",
