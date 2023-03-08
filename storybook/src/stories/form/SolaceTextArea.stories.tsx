@@ -74,6 +74,18 @@ export default {
 			control: {
 				type: "text"
 			}
+		},
+		resizable: {
+			control: { type: "boolean" },
+			description: "If true, the textarea would become resizable.",
+			table: {
+				defaultValue: {
+					summary: false
+				},
+				type: {
+					summary: "bool"
+				}
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceTextArea>;
@@ -206,4 +218,14 @@ Controlled.args = {
 	label: "Controlled Text Area",
 	value: "Initial value",
 	helperText: "The value of the text area is controlled by the change handler in the story."
+};
+
+export const Resizable = Template.bind({});
+Resizable.args = {
+	onChange: action("callback"),
+	title: DEMO_TITLE,
+	id: "demoTextFieldId",
+	name: "demoTextField",
+	width: "40%",
+	resizable: true
 };

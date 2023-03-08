@@ -102,6 +102,10 @@ export interface SolaceTextAreaProps extends SolaceComponentProps {
 	 * If true, the input will take up the full width of its container.
 	 */
 	fullWidth?: boolean;
+	/**
+	 * If true, the textarea would become resizable..
+	 */
+	resizable?: boolean;
 }
 
 const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
@@ -129,6 +133,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	dataQa,
 	dataTags,
 	fullWidth = false,
+	resizable = false,
 	width
 }) => {
 	const theme = useTheme();
@@ -143,7 +148,12 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	};
 
 	const getId = () => {
-		return id ? id : name;
+		let generatedId = id ? id : name;
+		if (resizable) {
+			generatedId = `${generatedId}-resizable`;
+		}
+
+		return generatedId;
 	};
 
 	const textField = () => (

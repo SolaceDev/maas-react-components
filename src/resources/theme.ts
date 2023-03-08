@@ -336,8 +336,13 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			},
 			MuiInputBase: {
 				styleOverrides: {
-					multiline: {
-						// TextArea Component
+					// TextArea Component
+					multiline: ({ ownerState }) => ({
+						...(ownerState.id?.includes("resizable") && {
+							textarea: {
+								resize: "both"
+							}
+						}),
 						display: "inline-block",
 						"&.MuiOutlinedInput-root": {
 							padding: "0",
@@ -352,6 +357,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								}
 							}
 						},
+
 						".MuiOutlinedInput-input": {
 							border: `solid 1px ${themeMapping.palette.secondary.w40}`,
 							borderRadius: "4px",
@@ -415,7 +421,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiInputBase-inputMultiline": {
 							backgroundColor: themeMapping.palette.background.w10
 						}
-					}
+					})
 				}
 			},
 			MuiTextField: {
