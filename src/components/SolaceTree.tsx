@@ -20,9 +20,8 @@ export interface TreeNode {
 	children?: TreeNode[];
 	component: JSX.Element;
 }
-// According to sonarjs "child.children" is always greater or equal to zero
-// eslint-disable-next-line sonarjs/no-collection-size-mischeck
-const hasChildren = (child: TreeNode) => child.children && child.children.length >= 0;
+
+const hasChildren = (child: TreeNode) => child.children && child.children.length > 0;
 
 // calculates the height in theme units of a node and it's children
 export const createHeightCalculation = (

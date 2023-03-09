@@ -11,7 +11,7 @@ export type SolaceToastsProps = {
 	message?: string;
 	open?: boolean;
 	action?: React.ReactNode;
-	onClose: (event: React.SyntheticEvent<Element, Event>) => void;
+	onClose: (event: React.SyntheticEvent<Element> | Event) => void;
 };
 
 const StyledAlert = styled(Alert)(({ theme }) => ({
@@ -41,7 +41,7 @@ export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
 		warning: <ReportProblemOutlinedIcon sx={{ color: theme.palette.ux.warning.w100 }} fontSize="inherit" />
 	};
 
-	const { message, severity } = props;
+	const { message, severity, onClose } = props;
 
 	return (
 		<Snackbar
@@ -52,8 +52,8 @@ export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
 			autoHideDuration={severity === "error" ? null : 6000}
 			onClose={(_event, reason) => {
 				// disable close on clickaway
-				if (reason !== "clickaway") {
-					props.onClose;
+				if (onClose && reason !== "clickaway") {
+					onClose(_event);
 				}
 			}}
 			action={defaultAction}

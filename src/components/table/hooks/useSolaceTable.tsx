@@ -174,7 +174,8 @@ export const useSolaceTable = ({
 					} else {
 						clickedRow.rowSelected = internalSelectedRows.length > 1 ? true : !clickedRow.rowSelected;
 						setSelectAll(false);
-						rows.map((row) => {
+
+						rows.forEach((row) => {
 							if (clickedRow.id !== row.id) {
 								row.rowSelected = false;
 							}
@@ -240,7 +241,7 @@ export const useSolaceTable = ({
 	);
 
 	const handleSelectAllClick = useCallback(() => {
-		rows.map((row) => (row.rowSelected = selectAll || indeterminate ? false : true));
+		rows.forEach((row) => (row.rowSelected = selectAll || indeterminate ? false : true));
 		setInternalSelectedRows(selectAll || indeterminate ? [] : rows);
 	}, [rows, selectAll, indeterminate]);
 
