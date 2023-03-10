@@ -51,6 +51,16 @@ const DEFAULT_XML_CONTENT = `<part number="1976">
 </description>
 </part>`;
 
+const DEFAULT_PROTOBUF_CONTENT = `syntax = "proto3";
+package com.acme;
+
+import "OtherRecord.proto";
+
+message MyRecord {
+  string f1 = 1;
+  OtherRecord f2 = 2;
+}`;
+
 export const DefaultEditor = Template.bind({});
 DefaultEditor.args = {
 	onChange: action("callback")
@@ -83,6 +93,14 @@ XMLEditor.args = {
 	id: "demoCodeEditorId",
 	value: DEFAULT_XML_CONTENT,
 	mode: "xml"
+};
+
+export const ProtobufEditor = Template.bind({});
+ProtobufEditor.args = {
+	onChange: action("callback"),
+	id: "demoCodeEditorId",
+	value: DEFAULT_PROTOBUF_CONTENT,
+	mode: "protobuf"
 };
 
 export const ReadOnlyEditor = Template.bind({});

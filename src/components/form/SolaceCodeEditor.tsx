@@ -11,6 +11,7 @@ import SolaceComponentProps from "../SolaceComponentProps";
 
 import "codemirror/mode/xml/xml";
 import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/protobuf/protobuf";
 import "codemirror/theme/material.css";
 import "codemirror/lib/codemirror.css";
 import "codemirror/addon/lint/json-lint";
@@ -52,7 +53,7 @@ export interface SolaceCodeEditorProps extends SolaceComponentProps {
 	/**
 	 * The formatting style to render the content as
 	 */
-	mode?: "json" | "xml";
+	mode?: "json" | "xml" | "protobuf";
 	/**
 	 * Content to display as supportive/explanitory text
 	 */
@@ -101,6 +102,18 @@ function SolaceCodeEditor({
 		setEditorExpanded(!editorExpanded);
 	};
 
+	let codeMirrorMode = "";
+	switch (mode) {
+		case "xml":
+			codeMirrorMode = "application/xml";
+			break;
+		case "protobuf":
+			codeMirrorMode = "text/x-protobuf";
+			break;
+		default:
+			codeMirrorMode = "application/ld+json";
+	}
+
 	return (
 		<>
 			{expandable && (
@@ -136,7 +149,7 @@ function SolaceCodeEditor({
 								onBeforeChange={handleChange}
 								options={{
 									theme: "default",
-									mode: mode === "json" ? "application/ld+json" : "application/xml",
+									mode: codeMirrorMode,
 									styleActiveLine: true,
 									keyMap: "sublime",
 									lint: false,
@@ -169,7 +182,7 @@ function SolaceCodeEditor({
 							onBeforeChange={handleChange}
 							options={{
 								theme: "default",
-								mode: mode === "json" ? "application/ld+json" : "application/xml",
+								mode: codeMirrorMode,
 								styleActiveLine: true,
 								keyMap: "sublime",
 								lint: false,
