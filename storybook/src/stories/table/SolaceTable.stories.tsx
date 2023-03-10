@@ -9,13 +9,11 @@ import {
 	SolaceTableColumn,
 	SolaceTableRow,
 	SolacePagination,
-	styled
+	styled,
+	SolaceRadio,
+	SolaceTableData,
+	SolaceTableNumberData
 } from "@SolaceDev/maas-react-components";
-import {
-	CustomContentDefinition,
-	StyledTableData,
-	StyledTableNumberData
-} from "../../../../src/components/table/table-utils";
 import { cloneDeep } from "lodash";
 import { useMemo } from "react";
 import { useEffect } from "@storybook/addons";
@@ -1380,22 +1378,22 @@ export const CustomSchemaRowTable = (): JSX.Element => {
 
 	const renderSchemaRowCells = useCallback((row: SolaceTableRow): JSX.Element[] => {
 		const cells: JSX.Element[] = [];
-		cells.push(<StyledTableData key={row.id + "_name"}>{row.name}</StyledTableData>);
+		cells.push(<SolaceTableData key={row.id + "_name"}>{row.name}</SolaceTableData>);
 		cells.push(
-			<StyledTableData key={row.id + "_shared"}>
+			<SolaceTableData key={row.id + "_shared"}>
 				{row.shared ? SharedTypes.shared : SharedTypes.notShared}
-			</StyledTableData>
+			</SolaceTableData>
 		);
-		cells.push(<StyledTableNumberData key={row.id + "_version_count"}>{row.version_count}</StyledTableNumberData>);
+		cells.push(<SolaceTableNumberData key={row.id + "_version_count"}>{row.version_count}</SolaceTableNumberData>);
 		cells.push(
-			<StyledTableData key={row.id + "_schemaType"}>
+			<SolaceTableData key={row.id + "_schemaType"}>
 				{schemaTypeLabel[row.schemaType] ?? row.schemaType}
-			</StyledTableData>
+			</SolaceTableData>
 		);
 		cells.push(
-			<StyledTableData key={row.id + "_contentType"}>
+			<SolaceTableData key={row.id + "_contentType"}>
 				{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}
-			</StyledTableData>
+			</SolaceTableData>
 		);
 
 		return cells;
@@ -1425,30 +1423,30 @@ const getColumnHiddenInfo = (columns) => {
 const createSchemaCells = (row, columnsHiddenInfo): JSX.Element[] => {
 	const cells: JSX.Element[] = [];
 	if (!columnsHiddenInfo?.name) {
-		cells.push(<StyledTableData key={row.id + "_name"}>{row.name}</StyledTableData>);
+		cells.push(<SolaceTableData key={row.id + "_name"}>{row.name}</SolaceTableData>);
 	}
 	if (!columnsHiddenInfo?.shared) {
 		cells.push(
-			<StyledTableData key={row.id + "_shared"}>
+			<SolaceTableData key={row.id + "_shared"}>
 				{row.shared ? SharedTypes.shared : SharedTypes.notShared}
-			</StyledTableData>
+			</SolaceTableData>
 		);
 	}
 	if (!columnsHiddenInfo?.version_count) {
-		cells.push(<StyledTableNumberData key={row.id + "_version_count"}>{row.version_count}</StyledTableNumberData>);
+		cells.push(<SolaceTableNumberData key={row.id + "_version_count"}>{row.version_count}</SolaceTableNumberData>);
 	}
 	if (!columnsHiddenInfo?.schemaType) {
 		cells.push(
-			<StyledTableData key={row.id + "_schemaType"}>
+			<SolaceTableData key={row.id + "_schemaType"}>
 				{schemaTypeLabel[row.schemaType] ?? row.schemaType}
-			</StyledTableData>
+			</SolaceTableData>
 		);
 	}
 	if (!columnsHiddenInfo?.contentType) {
 		cells.push(
-			<StyledTableData key={row.id + "_contentType"}>
+			<SolaceTableData key={row.id + "_contentType"}>
 				{schemaContentTypeLabel[row.schemaType]?.[row.contentType] ?? row.contentType}
-			</StyledTableData>
+			</SolaceTableData>
 		);
 	}
 
@@ -1721,5 +1719,59 @@ export const ExpandableCustomSchemaRowControlledStateTable = (): JSX.Element => 
 				}}
 			></SolaceTable>
 		</div>
+	);
+};
+
+export const CustomMenuActionsTable = (): JSX.Element => {
+	const data = cloneDeep(rows);
+	const columnsDef = useMemo(() => {
+		return cloneDeep(columns);
+	}, []);
+	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
+	const handleSort = useCallback((selectedColumn) => {
+		action(sortCallback);
+		setRows([...sortData(selectedColumn, data)]);
+	}, []);
+
+	const RESULTS_PER_PAGE_OPTIONS = useMemo(() => [10, 20, 50], []);
+
+	const [resultsPerPageState, setResultsPerPageState] = useState(RESULTS_PER_PAGE_OPTIONS[0]);
+
+	const handleResultsPerPageChange = (resultsPerPage) => {
+		alert(`Results per page changed to ${resultsPerPage}`);
+		setResultsPerPageState(resultsPerPage);
+	};
+
+	const renderResultsPerPageOptions = RESULTS_PER_PAGE_OPTIONS.map((resultPerPage) => ({
+		name: (
+			<SolaceRadio
+				checked={resultPerPage === resultsPerPageState}
+				onChange={() => handleResultsPerPageChange(resultPerPage)}
+				key={`resultsPerPage_${resultPerPage}`}
+				name="resultsPerPage"
+				value={`${resultPerPage}`}
+				label={`${resultPerPage}`}
+			/>
+		),
+		categoryHeading: "Results Per Page"
+	}));
+
+	const alertUserMenuOption = {
+		name: <div onClick={() => alert("User clicked on the menu option")}>Alert</div>,
+		categoryHeading: "Custom Menu Option"
+	};
+
+	const customMenuActions = [...renderResultsPerPageOptions, alertUserMenuOption];
+
+	return (
+		<SolaceTable
+			selectionChangedCallback={action(selectionCallback)}
+			sortCallback={handleSort}
+			rows={tableRows}
+			columns={columnsDef}
+			selectionType={SolaceTableSelectionType.SINGLE}
+			hasColumnHiding={true}
+			customMenuActions={customMenuActions}
+		/>
 	);
 };

@@ -22,6 +22,7 @@ import { ExpandableRowOptions } from "../SolaceTable";
 
 import clsx from "clsx";
 import { cloneDeep } from "lodash";
+import { SolaceMenuItemProps } from "../../SolaceMenuItem";
 
 const DEFAULT_TOOLTIP_PLACEMENT = "bottom-end";
 const SELECT_ALL_TOOLTIP = "Select all on this page";
@@ -50,7 +51,8 @@ export const useSolaceTable = ({
 	expandableRowOptions,
 	customContentDefinitions,
 	displayedCustomContent,
-	customContentDisplayChangeCallback
+	customContentDisplayChangeCallback,
+	customMenuActions
 }: {
 	rows: TableRow[];
 	columns: TableColumn[];
@@ -75,6 +77,7 @@ export const useSolaceTable = ({
 	customContentDefinitions?: CustomContentDefinition[];
 	displayedCustomContent?: string[];
 	customContentDisplayChangeCallback?: (type: string, isHidden: boolean) => void;
+	customMenuActions?: SolaceMenuItemProps[];
 	// TODO: Refactor this function to reduce its Cognitive Complexity from 107 to the 15 allowed
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 }): React.ReactNode[] => {
@@ -489,7 +492,8 @@ export const useSolaceTable = ({
 							displayedColumnsChangedCallback: handleDisplayColumnsChanged,
 							customContentDefinitions: customContentDefinitions,
 							displayedCustomContent: displayedCustomContent,
-							customContentDisplayChangeCallback: customContentDisplayChangeCallback
+							customContentDisplayChangeCallback: customContentDisplayChangeCallback,
+							customMenuActions: customMenuActions
 						})
 				]}
 			</StyledTableRow>
@@ -509,7 +513,8 @@ export const useSolaceTable = ({
 		handleDisplayColumnsChanged,
 		customContentDefinitions,
 		displayedCustomContent,
-		customContentDisplayChangeCallback
+		customContentDisplayChangeCallback,
+		customMenuActions
 	]);
 
 	const createRowNodes = useCallback((): React.ReactNode[] => {

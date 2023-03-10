@@ -4,6 +4,7 @@ import SolaceComponentProps from "../../SolaceComponentProps";
 import SolaceCheckBox from "../../form/SolaceCheckBox";
 import SolaceMenu from "../../SolaceMenu";
 import TuneIcon from "@mui/icons-material/Tune";
+import { SolaceMenuItemProps } from "../../SolaceMenuItem";
 
 export interface ContentControlProps extends SolaceComponentProps {
 	id?: string;
@@ -12,6 +13,7 @@ export interface ContentControlProps extends SolaceComponentProps {
 	customContentDefinitions?: CustomContentDefinition[];
 	displayedCustomContent?: string[];
 	customContentDisplayChangeCallback?: (customContentDefinitions: string, isHidden: boolean) => void;
+	customMenuActions?: SolaceMenuItemProps[];
 }
 
 const ContentControlMenu = ({
@@ -20,7 +22,8 @@ const ContentControlMenu = ({
 	customContentDefinitions,
 	displayedCustomContent,
 	displayedColumnsChangedCallback,
-	customContentDisplayChangeCallback
+	customContentDisplayChangeCallback,
+	customMenuActions
 }: ContentControlProps): JSX.Element => {
 	const [oneColumnIsVisible, setOneColumnIsVisible] = useState<boolean>(
 		columns.filter((col) => !col.isHidden && !col.hasNoCell).length === 1
@@ -74,6 +77,8 @@ const ContentControlMenu = ({
 			categoryHeading: "Manage Content Shown"
 		})) ?? [];
 
+	const customMenuActionsItems = customMenuActions ? customMenuActions : [];
+
 	return (
 		<SolaceMenu
 			id={id}
@@ -82,7 +87,7 @@ const ContentControlMenu = ({
 				children: <TuneIcon />,
 				title: "Settings"
 			}}
-			items={[...customItems, ...customContentItems]}
+			items={[...customItems, ...customContentItems, ...customMenuActionsItems]}
 			closeOnSelect={false}
 			anchorOrigin={{
 				vertical: "center",

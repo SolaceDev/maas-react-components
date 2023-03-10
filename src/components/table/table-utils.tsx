@@ -264,7 +264,8 @@ export const addColumnHidingControl = ({
 	displayedColumnsChangedCallback,
 	customContentDefinitions,
 	displayedCustomContent,
-	customContentDisplayChangeCallback
+	customContentDisplayChangeCallback,
+	customMenuActions
 }: ContentControlProps): React.ReactNode => {
 	return (
 		<StyledTableHeader key={"column-hiding-control"} className="icon-column">
@@ -275,6 +276,7 @@ export const addColumnHidingControl = ({
 				customContentDefinitions={customContentDefinitions}
 				displayedCustomContent={displayedCustomContent}
 				customContentDisplayChangeCallback={customContentDisplayChangeCallback}
+				customMenuActions={customMenuActions}
 			/>
 		</StyledTableHeader>
 	);

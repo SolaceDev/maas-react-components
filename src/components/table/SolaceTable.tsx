@@ -3,6 +3,7 @@ import { styled } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem, CustomContentDefinition } from "./table-utils";
 import SolaceCircularProgress from "../SolaceCircularProgress";
+import { SolaceMenuItemProps } from "../SolaceMenuItem";
 
 interface TablePropType extends SolaceComponentProps {
 	/**
@@ -131,6 +132,10 @@ interface TablePropType extends SolaceComponentProps {
 	 * Min Height for Solace Table
 	 */
 	minHeight?: string;
+	/**
+	 * Custom menu actions for Solace Table
+	 */
+	customMenuActions?: SolaceMenuItemProps[];
 }
 
 export interface ExpandableRowOptions {
@@ -279,7 +284,8 @@ function SolaceTable({
 	displayedCustomContent,
 	customContentDisplayChangeCallback,
 	maxHeight,
-	minHeight
+	minHeight,
+	customMenuActions
 }: TablePropType): JSX.Element {
 	// sanitize selectedRowIds
 	let selectedIds = selectedRowIds ? selectedRowIds : [];
@@ -310,7 +316,8 @@ function SolaceTable({
 		expandableRowOptions,
 		customContentDefinitions,
 		displayedCustomContent,
-		customContentDisplayChangeCallback
+		customContentDisplayChangeCallback,
+		customMenuActions
 	});
 
 	function renderEmptyStateMessage(): string {
