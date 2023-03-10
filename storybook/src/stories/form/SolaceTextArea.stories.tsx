@@ -76,16 +76,14 @@ export default {
 			}
 		},
 		resizable: {
-			control: { type: "boolean" },
-			description: "If true, the textarea would become resizable.",
+			options: ["both", "horizontal", "vertical"],
+			control: { type: "select" },
 			table: {
-				defaultValue: {
-					summary: false
-				},
 				type: {
-					summary: "bool"
+					summary: "'both' | 'horizontal' | 'vertical'"
 				}
-			}
+			},
+			description: "Set the resize property of text area."
 		}
 	}
 } as ComponentMeta<typeof SolaceTextArea>;
@@ -220,12 +218,32 @@ Controlled.args = {
 	helperText: "The value of the text area is controlled by the change handler in the story."
 };
 
-export const Resizable = Template.bind({});
-Resizable.args = {
+export const ResizableBoth = Template.bind({});
+ResizableBoth.args = {
 	onChange: action("callback"),
 	title: DEMO_TITLE,
 	id: "demoTextFieldId",
 	name: "demoTextField",
 	width: "40%",
-	resizable: true
+	resizable: "both"
+};
+
+export const ResizableVertically = Template.bind({});
+ResizableVertically.args = {
+	onChange: action("callback"),
+	title: DEMO_TITLE,
+	id: "demoTextFieldId",
+	name: "demoTextField",
+	width: "40%",
+	resizable: "vertical"
+};
+
+export const ResizableHorizontal = Template.bind({});
+ResizableHorizontal.args = {
+	onChange: action("callback"),
+	title: DEMO_TITLE,
+	id: "demoTextFieldId",
+	name: "demoTextField",
+	width: "40%",
+	resizable: "horizontal"
 };

@@ -338,11 +338,17 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					// TextArea Component
 					multiline: ({ ownerState }) => ({
-						...(ownerState.id?.includes("resizable") && {
-							textarea: {
-								resize: "both"
-							}
-						}),
+						// Additional checks to make sure resize is enabled correctly
+						...(ownerState.id &&
+							ownerState.id.split("-").length > 1 &&
+							ownerState.id.split("-")[ownerState.id.split("-").length - 2] === "resizable" &&
+							["both", "horizontal", "vertical"].indexOf(
+								ownerState.id.split("-")[ownerState.id.split("-").length - 1]
+							) > -1 && {
+								textarea: {
+									resize: ownerState.id.split("-")[ownerState.id.split("-").length - 1]
+								}
+							}),
 						display: "inline-block",
 						"&.MuiOutlinedInput-root": {
 							padding: "0",

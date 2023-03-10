@@ -103,9 +103,11 @@ export interface SolaceTextAreaProps extends SolaceComponentProps {
 	 */
 	fullWidth?: boolean;
 	/**
-	 * If true, the textarea would become resizable..
+	 * both: The element displays a mechanism for allowing the user to resize it, which may be resized both horizontally and vertically.
+	 * horizontal: The element displays a mechanism for allowing the user to resize it in the horizontal direction.
+	 * vertical: The element displays a mechanism for allowing the user to resize it in the vertical direction.
 	 */
-	resizable?: boolean;
+	resizable?: "both" | "horizontal" | "vertical";
 }
 
 const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
@@ -133,7 +135,7 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	dataQa,
 	dataTags,
 	fullWidth = false,
-	resizable = false,
+	resizable,
 	width
 }) => {
 	const theme = useTheme();
@@ -150,9 +152,8 @@ const SolaceTextArea: React.FC<SolaceTextAreaProps> = ({
 	const getId = () => {
 		let generatedId = id ? id : name;
 		if (resizable) {
-			generatedId = `${generatedId}-resizable`;
+			generatedId = `${generatedId}-resizable-${resizable}`;
 		}
-
 		return generatedId;
 	};
 
