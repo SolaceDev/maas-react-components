@@ -85,7 +85,15 @@ export default function SolaceTextDiff(props: SolaceTextDiffProps): JSX.Element 
 	const [diff, setDiff] = React.useState("");
 
 	React.useEffect(() => {
-		const diffString = Diff.createTwoFilesPatch(FILE_PATCH_TEXT1, FILE_PATCH_TEXT2, props.text1, props.text2);
+		const diffString = Diff.createTwoFilesPatch(
+			FILE_PATCH_TEXT1,
+			FILE_PATCH_TEXT2,
+			props.text1,
+			props.text2,
+			undefined,
+			undefined,
+			{ context: Number.MAX_SAFE_INTEGER }
+		);
 
 		const diffHtml = Diff2Html.html(diffString, {
 			drawFileList: true,
