@@ -292,7 +292,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							color: themeMapping.palette.deprecated.secondary.text.wMain
 						},
 						"&.Mui-disabled": {
-							color: themeMapping.palette.deprecated.secondary.text.wMain,
+							color: themeMapping.palette.deprecated.secondary.text.w50,
 							"&.check-box-label": {
 								color: themeMapping.palette.secondary.text.w50
 							},
