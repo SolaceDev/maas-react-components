@@ -31,6 +31,7 @@ const validateEnumInput = (currentInput, values: Array<any>) => {
 
 	return error;
 };
+
 interface AVPItem {
 	id?: string;
 	key: string;
@@ -309,7 +310,7 @@ MissingMandatoryKeyWithCustomMessage.parameters = {
 const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
 	{ key: "Jan", value: "January" },
 	{ key: "Jan", value: "February" },
-	{ key: "March", value: "March" },
+	{ key: "March", value: "@March" },
 	{ key: "@April", value: "April" }
 ];
 
@@ -327,6 +328,7 @@ export const WithCustomValidation = () => {
 			avpList={currentAVPList}
 			onAVPListUpdate={handleListUpdate}
 			avpKeyValidationCallback={validateEnumInput}
+			avpValueValidationCallback={validateEnumInput}
 			enableRequiredKeyFieldIndicator={true}
 		/>
 	);
