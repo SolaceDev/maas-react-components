@@ -2,7 +2,8 @@ name: SonarQube
 on:
   push:
     branches:
-      - main # or the name of your main branch
+      - DATAGO-51954-code-coverage # remove this and uncomment next line when publishing
+      # - main # or the name of your main branch
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -31,6 +32,57 @@ jobs:
         run: npm  ci
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
+
+      # run storybook via test-runner and generate lcov code coverage file
+
+      # - name: Build Storybook
+      #   working-directory: ./storybook
+      #   run: |
+      #     pwd
+      #     npm ci
+      #     npm run build-storybook --quiet
+      # - name: Serve Storybook and run tests
+      #   working-directory: ./storybook
+      #   run: |
+      #     npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+      #       "npx http-server storybook-static --port 6006 --silent" \
+      #       "npx wait-on tcp:6006 && npm run test-storybook:ci"
+
+      # - name: Install Playwright
+      #   run: npx playwright install --with-deps
+
+      - name: Create common coverage directory
+        working-directory: ./
+        run: mkdir coverage
+
+      - name: Install Storybook
+        working-directory: ./storybook
+        run: npm ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+
+      - name: Run Storybook Tests
+        working-directory: ./storybook
+        run: npm run test-storybook:ci
+
+      - name: convert JSON coverage file to lcov format
+        run: npx nyc report --reporter=lcov -t storybook/coverage/storybook --report-dir storybook/coverage/storybook
+
+      - name: Move lcov file to common coverage dir
+        run: mv ./storybook/coverage/storybook/lcov.info ./coverage/lcov-storybook.info
+
+      # Placeholder ... run any other automation test coverage tools here
+
+      - name: Combine Test Coverage Results
+        run: |
+          cd ./coverage
+          npx lcov-result-merger 'lcov*.info' 'lcov-final.info'
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lcove-artifacts
+          path: ./coverage/lcov*.info
+
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

@@ -4,5 +4,7 @@ node_modules
 .eslintcache
 storybook/storybook-static
 storybook/build-storybook.log
+storybook/coverage
+storybook/.nyc_output
 *.iml
 .DS_Store

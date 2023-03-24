@@ -12,7 +12,14 @@ module.exports = {
 		"@storybook/addon-a11y",
 		"storybook-addon-mock/register",
 		"storybook-addon-themes",
-		"@storybook/addon-coverage"
+		{
+			name: "@storybook/addon-coverage",
+			options: {
+				istanbul: {
+					cwd: path.join(__dirname, "..", "..")
+				}
+			}
+		}
 	],
 	features: {
 		interactionsDebugger: true
