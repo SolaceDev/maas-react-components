@@ -88,6 +88,27 @@ export default {
 					summary: "white"
 				}
 			}
+		},
+		border: {
+			control: { type: "boolean" },
+			description: "If false, accordion is borderless",
+			table: {
+				defaultValue: {
+					summary: true
+				}
+			}
+		},
+		borderColor: {
+			options: ["default", "info", "error", "warn", "success"],
+			control: {
+				type: "select"
+			},
+			description: "The variant of the accordion border color",
+			table: {
+				defaultValue: {
+					summary: ""
+				}
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceAccordion>;
@@ -256,4 +277,20 @@ RoundedAccordion.args = {
 	summary: testItem.summary,
 	details: testItem.details,
 	square: false
+};
+
+export const BorderlessAccordion = SolaceAccordionStory.bind({});
+BorderlessAccordion.args = {
+	dataQa: testItem.id,
+	summary: testItem.summary,
+	details: testItem.details,
+	border: false
+};
+
+export const CustomBorderAccordion = SolaceAccordionStory.bind({});
+CustomBorderAccordion.args = {
+	dataQa: testItem.id,
+	summary: testItem.summary,
+	details: testItem.details,
+	borderColor: "info"
 };

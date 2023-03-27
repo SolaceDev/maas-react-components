@@ -1213,25 +1213,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiAccordion: {
 				styleOverrides: {
 					root: {
-						border: `1px solid ${themeMapping.palette.secondary.w10}`,
 						boxShadow: "none",
 						"&:not(:last-child)": {
 							borderBottom: 0
 						},
 						"&:before": {
 							display: "none"
-						},
-						"&.indicator-info": {
-							background: `linear-gradient(${themeMapping.palette.info.w100} , ${themeMapping.palette.info.w100}) left/3px 90% no-repeat`
-						},
-						"&.indicator-error": {
-							background: `linear-gradient(${themeMapping.palette.error.w100} , ${themeMapping.palette.error.w100}) left/3px 90% no-repeat`
-						},
-						"&.indicator-warn": {
-							background: `linear-gradient(${themeMapping.palette.warning.w100} , ${themeMapping.palette.warning.w100}) left/3px 90% no-repeat`
-						},
-						"&.indicator-success": {
-							background: `linear-gradient(${themeMapping.palette.success.w100} , ${themeMapping.palette.success.w100}) left/3px 90% no-repeat`
 						},
 						"&.Mui-disabled": {
 							backgroundColor: themeMapping.palette.background.w20,
@@ -1249,6 +1236,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						flexDirection: "row-reverse",
+						position: "relative",
 						"&.hasHoverEffect": {
 							":hover": {
 								backgroundColor: themeMapping.palette.secondary.w10
@@ -1259,13 +1247,61 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						"&.Mui-disabled": {
 							opacity: 1
+						},
+						"&.indicator-info": {
+							":after": {
+								position: "absolute",
+								left: 2,
+								top: 2,
+								height: "calc(100% - 4px)",
+								width: "3px",
+								content: "''",
+								background: themeMapping.palette.info.w100,
+								borderRadius: "4px"
+							}
+						},
+						"&.indicator-error": {
+							":after": {
+								position: "absolute",
+								left: 2,
+								top: 2,
+								height: "calc(100% - 4px)",
+								width: "3px",
+								content: "''",
+								background: themeMapping.palette.error.w100,
+								borderRadius: "4px"
+							}
+						},
+						"&.indicator-warn": {
+							":after": {
+								position: "absolute",
+								left: 2,
+								top: 2,
+								height: "calc(100% - 4px)",
+								width: "3px",
+								content: "''",
+								background: themeMapping.palette.warning.w100,
+								borderRadius: "4px"
+							}
+						},
+						"&.indicator-success": {
+							":after": {
+								position: "absolute",
+								left: 2,
+								top: 2,
+								height: "calc(100% - 4px)",
+								width: "3px",
+								content: "''",
+								background: themeMapping.palette.success.w100,
+								borderRadius: "4px"
+							}
 						}
 					},
 					content: {
 						margin: "6px 0" // default is "12px 0"
 					},
 					expandIconWrapper: {
-						padding: "0 8px 0 8px",
+						padding: "0px",
 						svg: {
 							fill: themeMapping.palette.secondary.wMain,
 							":hover": {
