@@ -1298,7 +1298,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						}
 					},
 					content: {
-						margin: "6px 0" // default is "12px 0"
+						margin: "6px 0px 6px 8px"
 					},
 					expandIconWrapper: {
 						padding: "0px",
@@ -1316,10 +1316,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					root: {
 						/**
 						 * To left align the title with the content:
-						 * padding left of the content is calculated based on the elements in the title:
-						 * so, 16+8+24+8 = 56px
+						 * padding left of the content is calculated based on the elements in the accordion summary title:
+						 * so, 16px (padding left) + 24px (width of the chevron icon) + 8px (padding right)= 48px
 						 */
-						padding: "8px 16px 16px 56px"
+						padding: "8px 16px 16px 48px"
 					}
 				}
 			}
