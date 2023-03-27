@@ -14,7 +14,9 @@ const kafkaTopicPattern = /^[A-Za-z0-9-_.]*$/;
 
 // custom Emum input validation
 const validateEnumInput = (currentInput, values: Array<any>) => {
+	const MAX_KEY_CHARACTERS = 40;
 	let error = "";
+
 	// validate only alph-numeric values
 	if (!currentInput.match(kafkaTopicPattern)) {
 		// use kafka topic pattern for all enum value validation for simplicity
@@ -27,6 +29,10 @@ const validateEnumInput = (currentInput, values: Array<any>) => {
 		if (duplicatedValues.length > 1) {
 			error = "Must be unique";
 		}
+	}
+
+	if (currentInput?.length > MAX_KEY_CHARACTERS) {
+		error = `Enumeration value can not exceed ${MAX_KEY_CHARACTERS} characters`;
 	}
 
 	return error;
@@ -311,7 +317,7 @@ const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
 	{ key: "Jan", value: "January" },
 	{ key: "Jan", value: "February" },
 	{ key: "March", value: "@March" },
-	{ key: "@April", value: "April" }
+	{ key: "@April", value: "Message Longer Than 40 Characters........" }
 ];
 
 export const WithCustomValidation = () => {

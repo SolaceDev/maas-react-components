@@ -289,20 +289,6 @@ const SolaceAttributeValuePairForm = ({
 			list[index]["key"] = list[index]["key"].trim();
 			list[index]["value"] = list[index]["value"].trim();
 
-			// Check if the key field is empty
-			if (keyRequired && !list[index]["key"]) {
-				list[index]["keyErrorText"] = keyIsRequiredMessage;
-
-				setAVPList(list);
-				handleListUpdate(list);
-				return;
-			}
-
-			// Remove the error message if the key field is not empty anymore
-			if (list[index]["keyErrorText"] === keyIsRequiredMessage) {
-				delete list[index]["keyErrorText"];
-			}
-
 			// Check if the key field is valid if key validation callback is provided
 			if (event.target.getAttribute("name") === "key" && avpKeyValidationCallback) {
 				const error = avpKeyValidationCallback(event.target.value, list.slice(0, -1));
@@ -312,10 +298,6 @@ const SolaceAttributeValuePairForm = ({
 				} else {
 					delete list[index]["keyErrorText"];
 				}
-
-				setAVPList(list);
-				handleListUpdate(list);
-				return;
 			}
 
 			// Check if the value field is valid if value callback is provided
@@ -327,6 +309,13 @@ const SolaceAttributeValuePairForm = ({
 				} else {
 					delete list[index]["valueErrorText"];
 				}
+			}
+
+			// Check if the key field is empty
+			if (keyRequired && !list[index]["key"]) {
+				list[index]["keyErrorText"] = keyIsRequiredMessage;
+			} else if (list[index]["keyErrorText"] === keyIsRequiredMessage) {
+				delete list[index]["keyErrorText"];
 			}
 
 			setAVPList(list);
