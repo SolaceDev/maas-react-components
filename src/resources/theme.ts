@@ -1558,6 +1558,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					svg: {
 						width: "20px",
 						height: "20px"
+					},
+					a: {
+						fontWeight: 500
 					}
 				},
 				message: {
