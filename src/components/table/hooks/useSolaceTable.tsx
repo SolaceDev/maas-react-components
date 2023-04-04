@@ -32,7 +32,6 @@ export const useSolaceTable = ({
 	rows,
 	columns,
 	selectionType,
-	controlledSelectedRowsState,
 	selectedRowIds,
 	selectionChangedCallback,
 	independentRowHighlight,
@@ -57,7 +56,6 @@ export const useSolaceTable = ({
 	rows: TableRow[];
 	columns: TableColumn[];
 	selectionType: SELECTION_TYPE;
-	controlledSelectedRowsState: boolean;
 	selectedRowIds: string[];
 	selectionChangedCallback?: (rows: TableRow[]) => void;
 	independentRowHighlight: boolean;
@@ -84,8 +82,6 @@ export const useSolaceTable = ({
 	const [selectAll, setSelectAll] = useState(false);
 	const [indeterminate, setIndeterminate] = useState(false);
 
-	// Applicable if controlledSelectedRowsState is false
-	const [internalSelectedRows, setInternalSelectedRows] = useState<TableRow[]>([]);
 	// Applicable if sortedColumn is not set
 	const [internalSortedColumn, setInternalSortedColumn] = useState<TableColumn>();
 	// Applicable if displayedColumns is not set
@@ -102,50 +98,21 @@ export const useSolaceTable = ({
 		}
 	}, [columns]);
 
-	// Initailize internal selected rows based on property inside the row.
 	useEffect(() => {
-		if (!controlledSelectedRowsState) {
-			const newSelected = rows.filter((row) => row.rowSelected);
-			setInternalSelectedRows(newSelected);
-		}
-	}, [rows, controlledSelectedRowsState]);
-
-	useEffect(() => {
-		if (!controlledSelectedRowsState && selectionChangedCallback) {
-			selectionChangedCallback(internalSelectedRows);
-			if (rows.length !== 0 && internalSelectedRows.length === rows.length) {
-				setSelectAll(true);
-			} else {
-				setSelectAll(false);
-			}
-		}
-	}, [internalSelectedRows, selectionChangedCallback, rows?.length, controlledSelectedRowsState]);
-
-	useEffect(() => {
-		if (controlledSelectedRowsState) {
-			if (rows.length !== 0 && selectedRowIds.length === rows.length) {
-				setSelectAll(true);
-			} else {
-				setSelectAll(false);
-			}
-		}
-	}, [selectedRowIds.length, rows?.length, controlledSelectedRowsState]);
-
-	useEffect(() => {
-		if (controlledSelectedRowsState) {
-			if (selectedRowIds.length > 0 && selectedRowIds.length < rows.length) {
-				setIndeterminate(true);
-			} else {
-				setIndeterminate(false);
-			}
+		if (rows.length !== 0 && selectedRowIds.length === rows.length) {
+			setSelectAll(true);
 		} else {
-			if (internalSelectedRows.length > 0 && internalSelectedRows.length < rows.length) {
-				setIndeterminate(true);
-			} else {
-				setIndeterminate(false);
-			}
+			setSelectAll(false);
 		}
-	}, [rows?.length, internalSelectedRows?.length, selectedRowIds?.length, controlledSelectedRowsState]);
+	}, [selectedRowIds.length, rows?.length]);
+
+	useEffect(() => {
+		if (selectedRowIds.length > 0 && selectedRowIds.length < rows.length) {
+			setIndeterminate(true);
+		} else {
+			setIndeterminate(false);
+		}
+	}, [rows?.length, selectedRowIds?.length]);
 
 	const handleRowClick = useCallback(
 		(clickedRow: TableRow) => {
@@ -157,43 +124,28 @@ export const useSolaceTable = ({
 						rowHighlightChangedCallback?.(clickedRow);
 					}
 				} else {
-					if (controlledSelectedRowsState) {
-						if (selectionChangedCallback) {
-							if (selectedRowIds.includes(clickedRow.id)) {
-								// a row has been unselected
-								const selectedRows = rows.filter((row) => selectedRowIds.includes(row.id) && row.id !== clickedRow.id);
-								selectionChangedCallback(selectedRows);
+					if (selectionChangedCallback) {
+						if (selectedRowIds.includes(clickedRow.id)) {
+							// a row has been unselected
+							const selectedRows = rows.filter((row) => selectedRowIds.includes(row.id) && row.id !== clickedRow.id);
+							selectionChangedCallback(selectedRows);
 
-								if (selectedRows.length < rows.length && selectAll) {
-									// not all items in the list have been selected, uncheck the "Select All" checkbox
-									setSelectAll(false);
-								}
-							} else {
-								// selecting a row delect all other rows
-								selectionChangedCallback([clickedRow]);
-								setSelectAll(rows.length > 1);
+							if (selectedRows.length < rows.length && selectAll) {
+								// not all items in the list have been selected, uncheck the "Select All" checkbox
+								setSelectAll(false);
 							}
+						} else {
+							// selecting a row delect all other rows
+							selectionChangedCallback([clickedRow]);
+							setSelectAll(rows.length > 1);
 						}
-					} else {
-						clickedRow.rowSelected = internalSelectedRows.length > 1 ? true : !clickedRow.rowSelected;
-						setSelectAll(false);
-
-						rows.forEach((row) => {
-							if (clickedRow.id !== row.id) {
-								row.rowSelected = false;
-							}
-						});
-						// selecting a row delect all other rows
-						setInternalSelectedRows(clickedRow.rowSelected ? [clickedRow] : []);
 					}
 				}
 			}
 		},
 		[
-			controlledSelectedRowsState,
 			highlightedRowId,
 			independentRowHighlight,
-			internalSelectedRows.length,
 			rowHighlightChangedCallback,
 			rows,
 			selectAll,
@@ -241,21 +193,6 @@ export const useSolaceTable = ({
 			displayedColumnsChangedCallback?.(cols);
 		},
 		[displayedColumnsChangedCallback]
-	);
-
-	const handleSelectAllClick = useCallback(() => {
-		rows.forEach((row) => (row.rowSelected = selectAll || indeterminate ? false : true));
-		setInternalSelectedRows(selectAll || indeterminate ? [] : rows);
-	}, [rows, selectAll, indeterminate]);
-
-	const handleCheckboxClick = useCallback(
-		(row: TableRow) => {
-			row.rowSelected = !row.rowSelected;
-			setInternalSelectedRows(
-				row.rowSelected ? [...internalSelectedRows, row] : internalSelectedRows.filter((item) => row.id !== item.id)
-			);
-		},
-		[internalSelectedRows]
 	);
 
 	const handleSelectAllChange = useCallback(
@@ -316,22 +253,12 @@ export const useSolaceTable = ({
 						placement={"bottom-start"}
 					>
 						<div>
-							{controlledSelectedRowsState && (
-								<SolaceCheckBox
-									name={"selectAllCheckbox"}
-									onChange={handleSelectAllChange}
-									checked={selectAll || indeterminate}
-									indeterminate={indeterminate}
-								/>
-							)}
-							{!controlledSelectedRowsState && (
-								<SolaceCheckBox
-									name={"selectAllCheckbox"}
-									onChange={() => handleSelectAllClick()}
-									checked={selectAll || indeterminate}
-									indeterminate={indeterminate}
-								/>
-							)}
+							<SolaceCheckBox
+								name={"selectAllCheckbox"}
+								onChange={handleSelectAllChange}
+								checked={selectAll || indeterminate}
+								indeterminate={indeterminate}
+							/>
 						</div>
 					</SolaceTooltip>
 				</StyledTableHeader>
@@ -339,14 +266,7 @@ export const useSolaceTable = ({
 		} else {
 			return;
 		}
-	}, [
-		selectionType,
-		selectAll,
-		indeterminate,
-		controlledSelectedRowsState,
-		handleSelectAllChange,
-		handleSelectAllClick
-	]);
+	}, [selectionType, selectAll, indeterminate, handleSelectAllChange]);
 
 	const addChevronToHeader = useCallback((): React.ReactNode | void => {
 		if (expandableRowOptions?.allowToggle) {
@@ -360,24 +280,15 @@ export const useSolaceTable = ({
 		(row: TableRow): React.ReactNode => {
 			return (
 				<StyledTableData key={`${row.id}_rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
-					{controlledSelectedRowsState && (
-						<SolaceCheckBox
-							name={`${row.id}`}
-							onChange={handleRowSelectionChange}
-							checked={selectedRowIds.includes(row.id)}
-						/>
-					)}
-					{!controlledSelectedRowsState && (
-						<SolaceCheckBox
-							name={`${row.id}rowCheckbox`}
-							onChange={() => handleCheckboxClick(row)}
-							checked={!!row.rowSelected}
-						/>
-					)}
+					<SolaceCheckBox
+						name={`${row.id}`}
+						onChange={handleRowSelectionChange}
+						checked={selectedRowIds.includes(row.id)}
+					/>
 				</StyledTableData>
 			);
 		},
-		[handleCheckboxClick, controlledSelectedRowsState, selectedRowIds, handleRowSelectionChange]
+		[selectedRowIds, handleRowSelectionChange]
 	);
 
 	const renderRowActionItems = useCallback(
@@ -527,9 +438,7 @@ export const useSolaceTable = ({
 					selected:
 						selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
 							? highlightedRowId === row.id
-							: controlledSelectedRowsState
-							? selectedRowIds.includes(row.id)
-							: row.rowSelected,
+							: selectedRowIds.includes(row.id),
 					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
 				})}
 				data-qa={row.id}
@@ -547,7 +456,6 @@ export const useSolaceTable = ({
 		selectionType,
 		independentRowHighlight,
 		highlightedRowId,
-		controlledSelectedRowsState,
 		selectedRowIds,
 		addCheckBoxToRows,
 		renderConfiguredRowCells,
@@ -564,7 +472,6 @@ export const useSolaceTable = ({
 		internalDisplayedColumns: internalDisplayedColumns,
 		selectionType,
 		handleRowClick,
-		controlledSelectedRowsState,
 		selectedRowIds,
 		independentRowHighlight,
 		highlightedRowId,

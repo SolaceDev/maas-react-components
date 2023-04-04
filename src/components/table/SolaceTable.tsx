@@ -23,11 +23,6 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	selectionType: SELECTION_TYPE;
 	/**
-	 * Whether to use controlled state for row selection, default is false
-	 * Introduced this flag to maintain backward compatiblity. Once all usage of SolaceTable uses controlled selection state, this flag will be removed.
-	 */
-	controlledSelectedRowsState?: boolean;
-	/**
 	 * Controlled state for rows to be selected
 	 */
 	selectedRowIds?: string[] | null;
@@ -258,7 +253,6 @@ function SolaceTable({
 	rows,
 	columns,
 	selectionType,
-	controlledSelectedRowsState = false,
 	selectedRowIds,
 	selectionChangedCallback,
 	independentRowHighlight = false,
@@ -297,7 +291,6 @@ function SolaceTable({
 		rows,
 		columns,
 		selectionType,
-		controlledSelectedRowsState,
 		selectedRowIds: selectedIds,
 		selectionChangedCallback,
 		independentRowHighlight,

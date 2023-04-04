@@ -17,7 +17,6 @@ export interface ExpandableTableRowProps {
 	displayedColumns?: TableColumn[];
 	internalDisplayedColumns?: TableColumn[];
 	selectionType: SELECTION_TYPE;
-	controlledSelectedRowsState: boolean;
 	selectedRowIds: string[];
 	handleRowClick: (row: TableRow) => void;
 	independentRowHighlight: boolean;
@@ -45,7 +44,6 @@ export const useExpandableRows = ({
 	displayedColumns,
 	internalDisplayedColumns,
 	selectionType,
-	controlledSelectedRowsState,
 	selectedRowIds,
 	handleRowClick,
 	independentRowHighlight,
@@ -133,9 +131,7 @@ export const useExpandableRows = ({
 						selected:
 							selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
 								? highlightedRowId === row.id
-								: controlledSelectedRowsState
-								? selectedRowIds?.includes(row.id)
-								: row.rowSelected,
+								: selectedRowIds?.includes(row.id),
 						clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
 						expanded: expanded
 					})}
@@ -164,9 +160,7 @@ export const useExpandableRows = ({
 							selected:
 								selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
 									? highlightedRowId === row.id
-									: controlledSelectedRowsState
-									? selectedRowIds?.includes(row.id)
-									: row.rowSelected,
+									: selectedRowIds?.includes(row.id),
 							clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE,
 							expanded: expanded
 						})}
