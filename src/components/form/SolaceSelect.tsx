@@ -167,7 +167,7 @@ function SolaceSelect({
 			SelectProps={{
 				IconComponent: SelectDropdownIcon,
 				MenuProps: {
-					sx: { maxHeight: maxHeight }
+					sx: { maxHeight: maxHeight, width: width }
 				},
 
 				renderValue: getOptionDisplayValue

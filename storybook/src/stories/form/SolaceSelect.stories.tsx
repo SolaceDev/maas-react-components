@@ -99,6 +99,14 @@ SELECT_OPTIONS.push(
 	</MenuItem>
 );
 
+export const SELECT_OPTIONS_WITH_LONG_TEXT: Array<any> = [];
+SELECT_OPTIONS_WITH_LONG_TEXT.push(...SELECT_OPTIONS);
+SELECT_OPTIONS_WITH_LONG_TEXT.push(
+	<MenuItem key="option4" value="option4">
+		Very long menu option used to test how long I can go before it breaks the dialog
+	</MenuItem>
+);
+
 const SELECT_OPTIONS_WITH_SUBTEXT: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "Option #1",
@@ -213,7 +221,7 @@ CustomWidth.args = {
 	title: TITLE,
 	id: "demoSelectId",
 	name: "demoSelect",
-	children: SELECT_OPTIONS,
+	children: SELECT_OPTIONS_WITH_LONG_TEXT,
 	width: "350px"
 };
 export const CustomMaxHeight = Template.bind({});
