@@ -59,24 +59,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
-
-  deploy-to-pages:
-    needs: chromatic-deployment
-    name: "Deploy Storybook to Github Pages"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: "actions/checkout@v2"
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: "npm"
-      - name: install
-        run: npm ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-      - name: deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          cd ./storybook && npm i && npm run deploy

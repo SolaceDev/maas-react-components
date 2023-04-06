@@ -106,9 +106,15 @@ Follow the following steps to start component development on your local machines
 
 ## View Storybook
 
-To see the storybook visit: https://solid-garbanzo-f65ff422.pages.github.io/
+To see the storybook visit: https://solid-garbanzo-f65ff422.pages.github.io/storybook-static/
 
 You do need access to this repo to see the storybook.
+
+## View Coverage Report
+
+To see the storybook coverage report visit: https://solid-garbanzo-f65ff422.pages.github.io/lcov-report/
+
+You do need access to this repo to see the storybook coverage report.
 
 ## Test locally on maas-ui
 

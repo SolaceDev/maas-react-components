@@ -1,0 +1,66 @@
+name: Publish MRC website
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  merge:
+    name: generate storybook and coverage report
+    runs-on: ${{ fromJSON('["ubuntu-latest", "self-hosted"]')[github.repository == 'github/docs-internal'] }}
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+
+      - name: Install
+        run: npm  ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
+
+      - name: Install Storybook
+        working-directory: ./storybook
+        run: npm ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+
+      - name: Generate coverage and storybook static
+        working-directory: ./storybook
+        run: npm run test-storybook:ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+
+      - name: convert JSON coverage file to lcov format
+        run: npx nyc report --reporter=lcov -t storybook/coverage/storybook --report-dir storybook/coverage/storybook
+
+      - name: Move test coverage to merge-website
+        run: cp -r ./storybook/coverage/storybook/lcov-report ./storybook/website-merge/static/
+
+      - name: Move storybook static to merge-website
+        run: cp -r ./storybook/storybook-static ./storybook/website-merge/static/
+
+      - name: Install website-merge
+        working-directory: ./storybook
+        run: npm --prefix website-merge ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+
+      - name: Build website-merge
+        working-directory: ./storybook
+        run: npm run --prefix website-merge build
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+
+      - name: deploy to github page
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          cd ./storybook && npm i && npm run deploy:ci
