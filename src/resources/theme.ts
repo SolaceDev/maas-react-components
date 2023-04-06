@@ -1439,19 +1439,22 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						backgroundColor: themeMapping.palette.background.w10,
 						borderRadius: "4px",
 						padding: "4px",
-						width: "95%",
-						height: "auto",
-						minWidth: "1000px",
-						minHeight: "800px",
+						width: "80%",
+						height: "80%",
 						top: "50%",
 						left: "50%",
 						transform: "translate(-50%,-50%)",
+						".react-codemirror2": {
+							height: "100%"
+						},
 						".CodeMirror": {
-							minHeight: "800px"
+							height: "100%",
+							clipPath: "unset !important" // undo the fix for Chrome 105 https://github.com/codemirror/codemirror5/commit/0f41e5153f8948604a0e9a2d71a1adbb9aeaed23
 						}
 					}
 				},
 				EditorWrapper: {
+					height: "100%",
 					"&.codeEditor-border": {
 						border: `solid 1px ${themeMapping.palette.secondary.w40}`,
 						"&.codeEditor-readonly": {
