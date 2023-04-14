@@ -4,6 +4,7 @@ import SolaceComponentProps from "../SolaceComponentProps";
 import { SELECTION_TYPE, TableColumn, TableRow, TableActionMenuItem, CustomContentDefinition } from "./table-utils";
 import SolaceCircularProgress from "../SolaceCircularProgress";
 import { SolaceMenuItemProps } from "../SolaceMenuItem";
+import { uniq } from "lodash";
 
 interface TablePropType extends SolaceComponentProps {
 	/**
@@ -84,7 +85,8 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	showEmptyState?: boolean;
 	/**
-	 * Selection changed callback
+	 * Selection changed callback, applicable when selection type is SINGLE or select type is MULTI and
+	 * crossPageRowSelectionSupported is false.
 	 */
 	selectionChangedCallback?: (rows: TableRow[]) => void;
 	/**
@@ -131,6 +133,38 @@ interface TablePropType extends SolaceComponentProps {
 	 * Custom menu actions for Solace Table
 	 */
 	customMenuActions?: SolaceMenuItemProps[];
+	/**
+	 * This option is only applicable when selection type is MULTI. If set to true, selections made across different pages are remembered,
+	 * used in conjunction with totalObjectCount, selectedRowIds, deselectedRowIds, allPagesSelectedByDefault, and
+	 * crossPageSelectionChangedCallback. Default value is false.
+	 */
+	crossPageRowSelectionSupported?: boolean;
+	/**
+	 * Total number of objects across all pages, applicable when crossPageRowSelectionSupported is true.
+	 * Default value is 0.
+	 */
+	totalObjectCount?: number;
+	/**
+	 * This state is set to true once user checks Select All checkbox and set to false if user unchecks Select All checkbox,
+	 * applicable when crossPageRowSelectionSupported is true. Default value is false.
+	 */
+	allPagesSelectedByDefault?: boolean;
+	/**
+	 * Controlled state for rows to be deselected in all the pages that has been visited, applicable when crossPageRowSelectionSupported is true.
+	 * If same ID also exists in selectedRowIds, deselectedRowIds take precedence.
+	 */
+	deselectedRowIds?: string[] | null;
+	/**
+	 * Selection changed callback, applicable when crossPageRowSelectionSupported is true.
+	 */
+	crossPageSelectionChangedCallback?: (
+		// To be consistent with existing selection changed callback, return a list of selected rows for the current page
+		selectedRowsInCurrentPage: TableRow[],
+		allPagesSelectedByDefault: boolean,
+		selectedRowIdsInVisitedPages: string[],
+		// If allPagesSelectedByDefault is false, then deselectedRowIdsInVisitedPages is irrelevant and its value is always an empty array
+		deselectedRowIdsInVisitedPages: string[]
+	) => void;
 }
 
 export interface ExpandableRowOptions {
@@ -248,6 +282,37 @@ const LoadingMessage = styled("div")(({ theme }) => ({
 
 const DEFAULT_EMPTY_MESSAGE = "No Items Found";
 
+function santizeSelectedRowIds(selectedRowIds: string[], selectionType: string) {
+	let selectedIds = selectedRowIds;
+	if (selectionType === SELECTION_TYPE.SINGLE && selectedIds.length > 1) {
+		selectedIds = selectedIds.slice(0, 1);
+	} else if (selectionType === SELECTION_TYPE.MULTI && selectedIds.length > 1) {
+		selectedIds = uniq(selectedIds);
+	}
+
+	return selectedIds;
+}
+
+function santizeDeselectedRowIds(
+	deselectedRowIds: string[],
+	selectionType: string,
+	crossPageRowSelectionSupported: boolean,
+	allPagesSelectedByDefault: boolean
+) {
+	let deselectedIds = deselectedRowIds;
+	if (!(selectionType === SELECTION_TYPE.MULTI && crossPageRowSelectionSupported) && deselectedIds.length > 1) {
+		deselectedIds = [];
+	} else if (selectionType === SELECTION_TYPE.MULTI && crossPageRowSelectionSupported && deselectedIds.length > 1) {
+		if (allPagesSelectedByDefault) {
+			deselectedIds = uniq(deselectedIds);
+		} else {
+			deselectedIds = [];
+		}
+	}
+
+	return deselectedIds;
+}
+
 function SolaceTable({
 	id,
 	rows,
@@ -279,13 +344,21 @@ function SolaceTable({
 	customContentDisplayChangeCallback,
 	maxHeight,
 	minHeight,
-	customMenuActions
+	customMenuActions,
+	crossPageRowSelectionSupported = false,
+	totalObjectCount = 0,
+	allPagesSelectedByDefault = false,
+	deselectedRowIds,
+	crossPageSelectionChangedCallback
 }: TablePropType): JSX.Element {
-	// sanitize selectedRowIds
-	let selectedIds = selectedRowIds ? selectedRowIds : [];
-	if (selectionType === SELECTION_TYPE.SINGLE && selectedIds.length > 1) {
-		selectedIds = selectedIds.slice(0, 1);
-	}
+	// sanitize selectedRowIds and deselectRowIds to ensure they have proper values
+	const selectedIds = santizeSelectedRowIds(selectedRowIds ?? [], selectionType);
+	const deselectedIds = santizeDeselectedRowIds(
+		deselectedRowIds ?? [],
+		selectionType,
+		crossPageRowSelectionSupported,
+		allPagesSelectedByDefault
+	);
 
 	const [columnNodes, rowNodes] = useSolaceTable({
 		rows,
@@ -310,7 +383,12 @@ function SolaceTable({
 		customContentDefinitions,
 		displayedCustomContent,
 		customContentDisplayChangeCallback,
-		customMenuActions
+		customMenuActions,
+		crossPageRowSelectionSupported,
+		totalObjectCount,
+		allPagesSelectedByDefault,
+		deselectedRowIds: deselectedIds,
+		crossPageSelectionChangedCallback
 	});
 
 	function renderEmptyStateMessage(): string {

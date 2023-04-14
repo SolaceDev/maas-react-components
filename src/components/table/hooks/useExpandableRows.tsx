@@ -27,6 +27,7 @@ export interface ExpandableTableRowProps {
 		displayedColumns: TableColumn[] | undefined,
 		internalDisplayedColumns: TableColumn[] | undefined
 	) => React.ReactNode[];
+	hasRowActionItems: boolean;
 	renderRowActionItems: (row: TableRow) => React.ReactNode[];
 	rowHoverCallback?: (row: TableRow) => void;
 	hasColumnHiding?: boolean;
@@ -50,6 +51,7 @@ export const useExpandableRows = ({
 	highlightedRowId,
 	addCheckBoxToRows,
 	renderConfiguredRowCells,
+	hasRowActionItems,
 	renderRowActionItems,
 	rowHoverCallback,
 	hasColumnHiding,
@@ -78,7 +80,7 @@ export const useExpandableRows = ({
 
 			if (allowToggle) numberOfNonDataCols++;
 			if (selectionType === SELECTION_TYPE.MULTI) numberOfNonDataCols++;
-			if (renderRowActionItems.length) numberOfNonDataCols++;
+			if (hasRowActionItems) numberOfNonDataCols++;
 			setDisplayedColumnsCount(numberOfDisplayedDataCols + numberOfNonDataCols);
 		}
 	}, [
@@ -90,7 +92,7 @@ export const useExpandableRows = ({
 		hasColumnHiding,
 		allowToggle,
 		selectionType,
-		renderRowActionItems
+		hasRowActionItems
 	]);
 
 	function addChevronToRows(row: TableRow): React.ReactNode | void {

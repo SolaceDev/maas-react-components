@@ -92,6 +92,91 @@ const rows = [
 	}
 ];
 
+const rowsPage2 = [
+	{
+		id: "11",
+		first_name: "Takada",
+		last_name: "Fern",
+		email: "fvanstone0@ft.com",
+		gender: "Agender"
+	},
+	{
+		id: "12",
+		first_name: "Light",
+		last_name: "Delcastel",
+		email: "adelcastel1@chicagotribune.com",
+		gender: "Polygender"
+	},
+	{
+		id: "13",
+		first_name: "Misa",
+		last_name: "Bowering",
+		email: "sbowering2@globo.com",
+		gender: "Agender"
+	},
+	{
+		id: "14",
+		first_name: "Hime",
+		last_name: "Wingeatt",
+		email: "hwingeatt3@pcworld.com",
+		gender: "Female"
+	},
+	{
+		id: "15",
+		first_name: "Suruga",
+		last_name: "Hull",
+		email: "chull4@tiny.cc",
+		gender: "Female"
+	},
+	{
+		id: "16",
+		first_name: "Dio",
+		last_name: "Karsh",
+		email: "dkarsh5@forbes.com",
+		gender: "Agender"
+	},
+	{
+		id: "17",
+		first_name: "Alphonse",
+		last_name: "O'Grogane",
+		email: "kogrogane6@narod.ru",
+		gender: "Non-binary"
+	},
+	{
+		id: "18",
+		first_name: "Levi",
+		last_name: "Spillard",
+		email: "wspillard7@e-recht24.de",
+		gender: "Polygender"
+	},
+	{
+		id: "19",
+		first_name: "Sasha",
+		last_name: "Trahear",
+		email: "ltrahear8@telegraph.co.uk",
+		gender: "Male"
+	},
+	{
+		id: "20",
+		first_name: "Connie",
+		last_name: "Malsher",
+		email: "vmalsher9@twitpic.com",
+		gender: "Polygender"
+	}
+];
+
+const rowsPage3 = [
+	{
+		id: "21",
+		first_name: "Wakada",
+		last_name: "Bern",
+		email: "vanstone0@vt.com",
+		gender: "Agender"
+	}
+];
+
+const threePagesOfRows = [...rows, ...rowsPage2, rowsPage3];
+
 const columns: SolaceTableColumn[] = [
 	{
 		field: "first_name",
@@ -205,6 +290,7 @@ const rowActionMenuItems = [
 ];
 
 const selectionCallback = "selection callback";
+const crossPageSelectionCallback = "cross page selection callback";
 const rowHighlightCallback = "row highlight callback";
 const sortCallback = "sort callback";
 
@@ -251,6 +337,12 @@ const expandRow = async (canvas, textInRow) => {
 		const textElements = await canvas.findAllByText(textInRow);
 		const tr = textElements[0].closest("tr");
 		await userEvent.click(within(tr).getByTestId("ArrowRightIcon"));
+	}
+};
+
+const goToPage = async (canvas, pageNumber) => {
+	if (pageNumber) {
+		await userEvent.click(await canvas.findByLabelText("Go to page " + pageNumber));
 	}
 };
 
@@ -335,6 +427,15 @@ MultiSelectionTableInitialSelections.args = {
 	initialSelectedRowIds: ["2", "4"]
 };
 
+const PaginationContainer = styled("div")(({ theme }) => ({
+	border: `1px solid ${theme.palette.ux.secondary.w20}`,
+	borderRadius: "4px"
+}));
+
+const VerticalPadding = styled("div")(() => ({
+	padding: "8px 0px"
+}));
+
 const CustomContentWrapper = styled("div")(() => ({
 	// remove the border on table
 	".tableWrapper": {
@@ -403,14 +504,14 @@ LoadingTableWithPagination.decorators = [
 	(Story) => (
 		<div style={{ padding: 16 }}>
 			<h3>A loading table with (loading) pagination</h3>
-			<div style={{ border: "1px solid lightgray" }}>
+			<PaginationContainer>
 				<TableWrapper>
 					<Story />
 				</TableWrapper>
-				<div style={{ padding: "8px 0px" }}>
+				<VerticalPadding>
 					<SolacePagination totalResults={rows.length} loading={true} />
-				</div>
-			</div>
+				</VerticalPadding>
+			</PaginationContainer>
 		</div>
 	)
 ];
@@ -1602,7 +1703,7 @@ const ExpandableSchemaTableTemplate = ({ independentRowHighlight }): JSX.Element
 	);
 };
 
-const interactions = async (canvasElement) => {
+const schemaInteractions = async (canvasElement) => {
 	// Starts querying the component from it's root element
 	const canvas = within(canvasElement);
 
@@ -1650,7 +1751,7 @@ InteractiveExpandableSchemaTableIndependentRowHighlight.args = {
 	independentRowHighlight: true
 };
 InteractiveExpandableSchemaTableIndependentRowHighlight.play = async ({ canvasElement }) => {
-	await interactions(canvasElement);
+	await schemaInteractions(canvasElement);
 };
 InteractiveExpandableSchemaTableIndependentRowHighlight.parameters = {
 	// Delay snapshot 5 seconds until all interactions are done
@@ -1662,9 +1763,290 @@ InteractiveExpandableSchemaTableCoupledRowHighlight.args = {
 	independentRowHighlight: false
 };
 InteractiveExpandableSchemaTableCoupledRowHighlight.play = async ({ canvasElement }) => {
-	await interactions(canvasElement);
+	await schemaInteractions(canvasElement);
 };
 InteractiveExpandableSchemaTableCoupledRowHighlight.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
+};
+
+// ========= Table with cross page selection behaviour ============
+const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
+	tableData,
+	columns,
+	independentRowHighlight,
+	totalObjectCount,
+	expandedRow,
+	allowToggle,
+	initialExpandedRowIds,
+	...args
+}): JSX.Element => {
+	const data = cloneDeep(tableData);
+	const columnsDef = useMemo(() => {
+		// disable sorting for hardcoded paged data
+		return cloneDeep(columns).map((column) => {
+			return {
+				...column,
+				sortable: false
+			};
+		});
+	}, [columns]);
+	const [tableRows, setRows] = useState(data);
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(
+		Array.isArray(initialExpandedRowIds) ? initialExpandedRowIds : []
+	);
+	const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
+	const [deselectedRowIds, setDeselectedRowIds] = useState<string[]>([]);
+	const [isSelectAll, setIsSelectAll] = useState<boolean>(false);
+	// Setting this rule: store selected entities across multiple pages only if allPageSelectedByDefault is false,
+	// this is to simulate how audit bulk import would work when allPageSelectedByDefault is false
+	const [selectedEntities, setSelectedEntities] = useState<SolaceTableRow[]>([]);
+	const [pageNumber, setPageNumber] = useState<number>(1);
+
+	const handleCrossPageRowSelectionsChange = useCallback(
+		(
+			selectedRowsInCurrentPage: SolaceTableRow[],
+			allPagesSelectedByDefault: boolean,
+			selectedRowIdsInVisitedPages: string[],
+			deselectedRowIdsInVisitedPages: string[]
+		) => {
+			action(crossPageSelectionCallback);
+
+			const selectedEntitiesMap = selectedEntities.reduce((prev, curr: any) => {
+				prev[curr.id] = curr;
+				return prev;
+			}, {});
+			const newEntitiesMap = selectedRowsInCurrentPage.reduce((prev, curr: any) => {
+				prev[curr.id] = curr;
+				return prev;
+			}, {});
+			const newSelectedEntities: SolaceTableRow[] = [];
+
+			selectedEntities.forEach((entity) => {
+				if (selectedRowIdsInVisitedPages.includes(entity.id)) {
+					newSelectedEntities.push(newEntitiesMap[entity.id] ?? selectedEntitiesMap[entity.id]);
+				}
+			});
+			selectedRowsInCurrentPage.forEach((entity) => {
+				if (!selectedEntitiesMap[entity.id]) {
+					newSelectedEntities.push(entity);
+				}
+			});
+
+			setSelectedEntities(newSelectedEntities);
+
+			setIsSelectAll(allPagesSelectedByDefault);
+			setSelectedRowIds(selectedRowIdsInVisitedPages);
+			setDeselectedRowIds(deselectedRowIdsInVisitedPages);
+		},
+		[selectedEntities]
+	);
+
+	const handlePageSelection = useCallback((pageNumber) => {
+		if (pageNumber === 1) {
+			setRows(rows);
+		} else if (pageNumber === 2) {
+			setRows(rowsPage2);
+		} else {
+			setRows(rowsPage3);
+		}
+		setPageNumber(pageNumber);
+	}, []);
+
+	const [highlightedRowId, setHighlightedRowId] = useState<string | null>(null);
+	const handleRowHighlightChanged = useCallback((row) => {
+		action(rowHighlightCallback);
+		setHighlightedRowId(row ? row.id : null);
+	}, []);
+
+	const renderExpandedRowContent = useCallback(
+		(row) => renderExpandedRowContentHelper(row, allowToggle, SolaceTableSelectionType.MULTI),
+		[allowToggle]
+	);
+
+	return (
+		<div>
+			<PaginationContainer>
+				<TableWrapper>
+					<SolaceTable
+						{...args}
+						selectedRowIds={selectedRowIds}
+						rows={tableRows}
+						columns={columnsDef}
+						selectionType={SolaceTableSelectionType.MULTI}
+						independentRowHighlight={independentRowHighlight}
+						rowHighlightChangedCallback={handleRowHighlightChanged}
+						highlightedRowId={highlightedRowId}
+						crossPageRowSelectionSupported={true}
+						totalObjectCount={totalObjectCount}
+						deselectedRowIds={deselectedRowIds}
+						allPagesSelectedByDefault={isSelectAll}
+						crossPageSelectionChangedCallback={handleCrossPageRowSelectionsChange}
+						expandableRowOptions={
+							expandedRow
+								? {
+										allowToggle: true,
+										renderChildren: renderExpandedRowContent,
+										expandedRowIds: expandedRowIds,
+										setExpandedRowIds: setExpandedRowIds
+								  }
+								: undefined
+						}
+					></SolaceTable>
+				</TableWrapper>
+				<VerticalPadding>
+					{totalObjectCount > 0 && (
+						<SolacePagination
+							activePage={pageNumber}
+							totalResults={totalObjectCount}
+							loading={false}
+							onPageSelection={handlePageSelection}
+						/>
+					)}
+				</VerticalPadding>
+			</PaginationContainer>
+			<div style={{ marginTop: "24px", display: "flex", flexDirection: "column", rowGap: "8px" }}>
+				<div>
+					In Select All Mode: {isSelectAll ? "Yes" : "No"}; Total Object Count: {totalObjectCount}
+				</div>
+				<div>Selected IDs from Visited Pages: {JSON.stringify(selectedRowIds)}</div>
+				<div>Deselected IDs from Visited Pages: {JSON.stringify(deselectedRowIds)}</div>
+				<div>Selected Entities from Visited Pages:</div>
+				<div>{JSON.stringify(selectedEntities?.map((entity) => entity.email))}</div>
+			</div>
+		</div>
+	);
+};
+
+export const MultiSelectionTableWithCrossPagesRowSelectionAndIndependentRowHighlight =
+	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
+MultiSelectionTableWithCrossPagesRowSelectionAndIndependentRowHighlight.args = {
+	tableData: rows,
+	columns: columns,
+	independentRowHighlight: true,
+	totalObjectCount: threePagesOfRows.length
+};
+
+export const MultiSelectionTableWithCrossPagesRowSelectionAndCoupledRowHightlight =
+	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
+MultiSelectionTableWithCrossPagesRowSelectionAndCoupledRowHightlight.args = {
+	tableData: rows,
+	columns: columns,
+	independentRowHighlight: false,
+	totalObjectCount: threePagesOfRows.length
+};
+
+export const MultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow =
+	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
+MultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.args = {
+	tableData: rows,
+	columns: columns,
+	independentRowHighlight: true,
+	totalObjectCount: threePagesOfRows.length,
+	expandedRow: true,
+	allowToggle: true,
+	initialExpandedRowIds: ["6", "12"]
+};
+
+export const MultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable =
+	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
+MultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable.args = {
+	tableData: [],
+	columns: columns,
+	independentRowHighlight: true,
+	totalObjectCount: 0
+};
+
+export const MultiSelectionTableWithCrossPagesRowSelectionAndOneRow =
+	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
+MultiSelectionTableWithCrossPagesRowSelectionAndOneRow.args = {
+	tableData: rows.slice(0, 1),
+	columns: columns,
+	independentRowHighlight: true,
+	totalObjectCount: 1
+};
+
+const pagedTableInteractions = async (canvasElement) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+
+	// click on Select All
+	await selectCheckbox(canvas, null);
+	// click on checkbox for each row in page 1 to deselect
+	for (let i = 0; i < rows.length; i++) {
+		await selectCheckbox(canvas, rows[i].email);
+	}
+	// click on checkbox for each row to select
+	for (let i = rows.length - 1; i >= 0; i--) {
+		await selectCheckbox(canvas, rows[i].email);
+	}
+	// click on Select All to deselect all
+	await selectCheckbox(canvas, null);
+
+	// expand/collapse on rows
+	await expandRow(canvas, rows[3].email);
+	await expandRow(canvas, rows[1].email);
+
+	// click checkbox of a row
+	await selectCheckbox(canvas, rows[3].email);
+
+	// click on a row
+	await selectRow(canvas, rows[1].email);
+
+	// click checkbox of a row
+	await selectCheckbox(canvas, rows[2].email);
+
+	// go to page 2
+	await goToPage(canvas, "2");
+	// click on Select All to deselect all
+	await selectCheckbox(canvas, null);
+	// click on Select All to select all
+	await selectCheckbox(canvas, null);
+	// deselect row 1 and 2
+	await selectCheckbox(canvas, rowsPage2[0].email);
+	await selectCheckbox(canvas, rowsPage2[1].email);
+	// expand row 5
+	await expandRow(canvas, rows[4].email);
+
+	// go to page 1
+	await goToPage(canvas, "1");
+	// click on checkbox for each row in page 1 to deselect
+	for (let i = 0; i < rows.length; i++) {
+		await selectCheckbox(canvas, rows[i].email);
+	}
+
+	// go to page 2
+	await goToPage(canvas, "2");
+	// deselect 2 to 9
+	for (let i = 2; i < rowsPage2.length; i++) {
+		await selectCheckbox(canvas, rowsPage2[i].email);
+	}
+
+	// go to page 3
+	await goToPage(canvas, "3");
+	// deselect all rows
+	for (let i = 0; i < rowsPage3.length; i++) {
+		await selectCheckbox(canvas, rowsPage3[i].email);
+	}
+
+	// select all should be unchecked
+};
+
+export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow =
+	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.args = {
+	tableData: rows,
+	columns: columns,
+	independentRowHighlight: true,
+	totalObjectCount: threePagesOfRows.length,
+	expandedRow: true,
+	allowToggle: true
+};
+
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.play = async ({ canvasElement }) => {
+	await pagedTableInteractions(canvasElement);
+};
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.parameters = {
 	// Delay snapshot 5 seconds until all interactions are done
 	chromatic: { delay: 5000 }
 };

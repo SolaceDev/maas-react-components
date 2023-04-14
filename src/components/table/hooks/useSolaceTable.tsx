@@ -1,32 +1,21 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+/* eslint-disable sonarjs/cognitive-complexity */
+import React, { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import {
 	TableColumn,
 	TableRow,
 	TableActionMenuItem,
 	SELECTION_TYPE,
 	SORT_DIRECTION,
-	addEmptyHeaderCell,
-	addEmptyRowCell,
-	addActionMenuIcon,
-	addColumnHidingControl,
-	StyledTableRow,
-	StyledTableData,
-	StyledTableHeader,
 	CustomContentDefinition
 } from "../table-utils";
-import { useExpandableRows } from "./useExpandableRows";
-import { AscendingSortIcon, DescendingSortIcon, UnsortedIcon } from "../../../resources/icons/SortIcons";
-import SolaceCheckBox, { SolaceCheckboxChangeEvent } from "../../form/SolaceCheckBox";
-import SolaceTooltip from "../../SolaceToolTip";
-import { ExpandableRowOptions } from "../SolaceTable";
+import { SolaceCheckboxChangeEvent } from "../../form/SolaceCheckBox";
 
-import clsx from "clsx";
-import { cloneDeep } from "lodash";
+import { cloneDeep, isEqual } from "lodash";
 import { SolaceMenuItemProps } from "../../SolaceMenuItem";
-
-const DEFAULT_TOOLTIP_PLACEMENT = "bottom-end";
-const SELECT_ALL_TOOLTIP = "Select all on this page";
-const DESELECT_ALL_TOOLTIP = "Deselect all on this page";
+import { ExpandableRowOptions } from "../SolaceTable";
+import { SolaceTableRow } from "../../..";
+import useTableBodyRenderHelper from "./useTableBodyRenderHelper";
+import useTableHeaderRenderHelper from "./useTableHeaderRenderHelper";
 
 export const useSolaceTable = ({
 	rows,
@@ -51,7 +40,12 @@ export const useSolaceTable = ({
 	customContentDefinitions,
 	displayedCustomContent,
 	customContentDisplayChangeCallback,
-	customMenuActions
+	customMenuActions,
+	crossPageRowSelectionSupported = false,
+	totalObjectCount = 0,
+	allPagesSelectedByDefault = false,
+	deselectedRowIds,
+	crossPageSelectionChangedCallback
 }: {
 	rows: TableRow[];
 	columns: TableColumn[];
@@ -76,8 +70,17 @@ export const useSolaceTable = ({
 	displayedCustomContent?: string[];
 	customContentDisplayChangeCallback?: (type: string, isHidden: boolean) => void;
 	customMenuActions?: SolaceMenuItemProps[];
-	// TODO: Refactor this function to reduce its Cognitive Complexity from 107 to the 15 allowed
-	// eslint-disable-next-line sonarjs/cognitive-complexity
+	crossPageRowSelectionSupported?: boolean;
+	totalObjectCount?: number;
+	allPagesSelectedByDefault?: boolean;
+	deselectedRowIds: string[];
+	crossPageSelectionChangedCallback?: (
+		// To be consistent with existing selection changed callback, return a list of selected rows for the current page
+		selectedRowsInCurrentPage: TableRow[],
+		allPagesSelectedByDefault: boolean,
+		selectedRowIdsInVisitedPages: string[],
+		deselectedRowIdsInVisitedPages: string[]
+	) => void;
 }): React.ReactNode[] => {
 	const [selectAll, setSelectAll] = useState(false);
 	const [indeterminate, setIndeterminate] = useState(false);
@@ -89,6 +92,10 @@ export const useSolaceTable = ({
 
 	const columnsRef = useRef<TableColumn[]>([]);
 
+	const crossPageSelectionEnabled = useMemo(() => {
+		return selectionType === SELECTION_TYPE.MULTI && crossPageRowSelectionSupported;
+	}, [selectionType, crossPageRowSelectionSupported]);
+
 	useEffect(() => {
 		if (columns) {
 			const internalColumns = cloneDeep(columns);
@@ -99,20 +106,94 @@ export const useSolaceTable = ({
 	}, [columns]);
 
 	useEffect(() => {
-		if (rows.length !== 0 && selectedRowIds.length === rows.length) {
-			setSelectAll(true);
-		} else {
-			setSelectAll(false);
+		if (!crossPageSelectionEnabled) {
+			if (rows.length !== 0 && selectedRowIds.length === rows.length) {
+				setSelectAll(true);
+			} else {
+				setSelectAll(false);
+			}
 		}
-	}, [selectedRowIds.length, rows?.length]);
+	}, [selectedRowIds.length, rows?.length, crossPageSelectionEnabled]);
 
 	useEffect(() => {
-		if (selectedRowIds.length > 0 && selectedRowIds.length < rows.length) {
-			setIndeterminate(true);
-		} else {
-			setIndeterminate(false);
+		if (!crossPageSelectionEnabled) {
+			if (selectedRowIds.length > 0 && selectedRowIds.length < rows.length) {
+				setIndeterminate(true);
+			} else {
+				setIndeterminate(false);
+			}
 		}
-	}, [rows?.length, selectedRowIds?.length]);
+	}, [rows?.length, selectedRowIds?.length, crossPageSelectionEnabled]);
+
+	useEffect(() => {
+		if (crossPageSelectionEnabled) {
+			if (totalObjectCount > 0) {
+				const allSelected =
+					(allPagesSelectedByDefault && deselectedRowIds.length === 0) ||
+					(!allPagesSelectedByDefault && selectedRowIds.length === totalObjectCount);
+				setSelectAll(allSelected);
+			} else {
+				setSelectAll(false);
+			}
+		}
+	}, [
+		allPagesSelectedByDefault,
+		crossPageSelectionEnabled,
+		deselectedRowIds.length,
+		selectedRowIds.length,
+		totalObjectCount
+	]);
+
+	useEffect(() => {
+		if (crossPageSelectionEnabled) {
+			if (totalObjectCount > 0) {
+				setIndeterminate(
+					(allPagesSelectedByDefault && deselectedRowIds.length > 0 && deselectedRowIds.length < totalObjectCount) ||
+						(!allPagesSelectedByDefault && selectedRowIds.length > 0 && selectedRowIds.length !== totalObjectCount)
+				);
+			} else {
+				setIndeterminate(false);
+			}
+		}
+	}, [
+		allPagesSelectedByDefault,
+		crossPageSelectionEnabled,
+		deselectedRowIds.length,
+		selectedRowIds.length,
+		totalObjectCount
+	]);
+
+	useEffect(
+		() => {
+			// if allPagesSelectedByDefault is true, when loading a page, initialize checkbox state baesd on deselectedRowIds
+			if (crossPageSelectionEnabled && allPagesSelectedByDefault && crossPageSelectionChangedCallback) {
+				// check checkbox in the page if it is not unchecked by user
+				const newSelectedRowIds = [...selectedRowIds];
+				const selectedRowsInCurrentPage: SolaceTableRow[] = [];
+
+				rows.forEach((row) => {
+					if (!deselectedRowIds.includes(row.id)) {
+						if (!newSelectedRowIds.includes(row.id)) {
+							newSelectedRowIds.push(row.id);
+						}
+						selectedRowsInCurrentPage.push(row);
+					} else if (selectedRowIds.includes(row.id)) {
+						// if both deselectedRowIds and selectedRowIds has this row, must be programming error, remove it from selectedRowIds
+						const index = newSelectedRowIds.indexOf(row.id);
+						if (index >= 0) {
+							newSelectedRowIds.splice(index, 1);
+						}
+					}
+				});
+				if (!isEqual(selectedRowIds, newSelectedRowIds)) {
+					crossPageSelectionChangedCallback(selectedRowsInCurrentPage, true, newSelectedRowIds, deselectedRowIds);
+				}
+			}
+		},
+		// only trigger this effect when table rows are changed
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[crossPageSelectionChangedCallback, crossPageSelectionEnabled, rows]
+	);
 
 	const handleRowClick = useCallback(
 		(clickedRow: TableRow) => {
@@ -124,26 +205,55 @@ export const useSolaceTable = ({
 						rowHighlightChangedCallback?.(clickedRow);
 					}
 				} else {
-					if (selectionChangedCallback) {
-						if (selectedRowIds.includes(clickedRow.id)) {
-							// a row has been unselected
-							const selectedRows = rows.filter((row) => selectedRowIds.includes(row.id) && row.id !== clickedRow.id);
-							selectionChangedCallback(selectedRows);
+					if (selectionType === SELECTION_TYPE.MULTI && crossPageRowSelectionSupported) {
+						if (crossPageSelectionChangedCallback) {
+							if (selectedRowIds.includes(clickedRow.id)) {
+								// a row in current page has been unselected
+								const newSelectedRows = rows.filter(
+									(row) => selectedRowIds.includes(row.id) && row.id !== clickedRow.id
+								);
+								const newSelectedRowIds = selectedRowIds.filter((id) => id !== clickedRow.id);
+								const newDeselectedRowIds = allPagesSelectedByDefault
+									? [...deselectedRowIds, clickedRow.id]
+									: deselectedRowIds;
 
-							if (selectedRows.length < rows.length && selectAll) {
-								// not all items in the list have been selected, uncheck the "Select All" checkbox
-								setSelectAll(false);
+								crossPageSelectionChangedCallback(
+									newSelectedRows,
+									allPagesSelectedByDefault,
+									newSelectedRowIds,
+									newDeselectedRowIds
+								);
+							} else {
+								// selecting a row deselect all other rows and also exit allPagesSelectedByDefault
+								crossPageSelectionChangedCallback([clickedRow], false, [clickedRow.id], []);
 							}
-						} else {
-							// selecting a row delect all other rows
-							selectionChangedCallback([clickedRow]);
-							setSelectAll(rows.length > 1);
+						}
+					} else {
+						if (selectionChangedCallback) {
+							if (selectedRowIds.includes(clickedRow.id)) {
+								// a row has been unselected
+								const selectedRows = rows.filter((row) => selectedRowIds.includes(row.id) && row.id !== clickedRow.id);
+								selectionChangedCallback(selectedRows);
+
+								if (selectedRows.length < rows.length && selectAll) {
+									// not all items in the list have been selected, uncheck the "Select All" checkbox
+									setSelectAll(false);
+								}
+							} else {
+								// selecting a row delect all other rows
+								selectionChangedCallback([clickedRow]);
+								setSelectAll(rows.length === 1);
+							}
 						}
 					}
 				}
 			}
 		},
 		[
+			allPagesSelectedByDefault,
+			crossPageRowSelectionSupported,
+			crossPageSelectionChangedCallback,
+			deselectedRowIds,
 			highlightedRowId,
 			independentRowHighlight,
 			rowHighlightChangedCallback,
@@ -197,300 +307,166 @@ export const useSolaceTable = ({
 
 	const handleSelectAllChange = useCallback(
 		(event: SolaceCheckboxChangeEvent) => {
-			if (selectionChangedCallback) {
-				if (event.value) {
-					// select all items
-					setSelectAll(true);
-					selectionChangedCallback(rows);
-				} else {
-					// clear all selections
-					setSelectAll(false);
-					selectionChangedCallback([]);
+			if (crossPageSelectionEnabled) {
+				if (crossPageSelectionChangedCallback) {
+					if (event.value) {
+						// select all items
+						setSelectAll(true);
+						crossPageSelectionChangedCallback(
+							rows,
+							true,
+							rows.map((row) => row.id),
+							[]
+						);
+					} else {
+						// clear all selections
+						setSelectAll(false);
+						crossPageSelectionChangedCallback([], false, [], []);
+					}
+				}
+			} else {
+				if (selectionChangedCallback) {
+					if (event.value) {
+						// select all items
+						setSelectAll(true);
+						selectionChangedCallback(rows);
+					} else {
+						// clear all selections
+						setSelectAll(false);
+						selectionChangedCallback([]);
+					}
 				}
 			}
 		},
-		[rows, selectionChangedCallback]
+		[crossPageSelectionChangedCallback, crossPageSelectionEnabled, rows, selectionChangedCallback]
 	);
 
 	const handleRowSelectionChange = useCallback(
 		(event: SolaceCheckboxChangeEvent) => {
-			if (!selectionChangedCallback) {
+			if (
+				(crossPageSelectionEnabled && !crossPageSelectionChangedCallback) ||
+				(!crossPageSelectionEnabled && !selectionChangedCallback)
+			) {
 				return;
 			}
 
 			const selectedObj = rows.find((row) => row.id === event.name);
 			if (selectedObj) {
 				// found the selected row object
-				if (event.value && !selectedRowIds.includes(event.name)) {
-					// a new checkbox is being selected
-					const selectedRows = rows.filter((row) => selectedRowIds.includes(row.id));
-					selectionChangedCallback([...selectedRows, selectedObj]);
+				if (event.value) {
+					if (!selectedRowIds.includes(event.name)) {
+						// a new checkbox is being selected
+						const newSelectedRows = [
+							...rows.filter((row) => selectedRowIds.includes(row.id) && row.id !== event.name),
+							selectedObj
+						];
 
-					if (selectedRows.length + 1 === rows.length && !selectAll) {
-						// all items in the list have been selected, check the "Select All" checkbox
-						setSelectAll(true);
+						if (!crossPageSelectionEnabled) {
+							selectionChangedCallback?.(newSelectedRows);
+
+							if (newSelectedRows.length === rows.length && !selectAll) {
+								// all items in the list have been selected, check the "Select All" checkbox
+								setSelectAll(true);
+							}
+						} else if (crossPageSelectionEnabled && crossPageSelectionChangedCallback) {
+							const newSelectedRowIds = [...selectedRowIds, event.name];
+
+							if (allPagesSelectedByDefault) {
+								crossPageSelectionChangedCallback(
+									newSelectedRows,
+									true,
+									newSelectedRowIds,
+									deselectedRowIds.filter((id) => id !== event.name)
+								);
+							} else {
+								crossPageSelectionChangedCallback(newSelectedRows, false, newSelectedRowIds, deselectedRowIds);
+							}
+						}
 					}
 				} else {
 					// a checkbox is being unselected
-					const selectedRows = rows.filter((row) => selectedRowIds.includes(row.id) && row.id !== event.name);
-					selectionChangedCallback(selectedRows);
-					if (selectedRows.length < rows.length && selectAll) {
-						// not all items in the list have been selected, uncheck the "Select All" checkbox
-						setSelectAll(false);
+					const newSelectedRows = rows.filter((row) => selectedRowIds.includes(row.id) && row.id !== event.name);
+					if (!crossPageSelectionEnabled) {
+						selectionChangedCallback?.(newSelectedRows);
+						if (newSelectedRows.length < rows.length && selectAll) {
+							// not all items in the list have been selected, uncheck the "Select All" checkbox
+							setSelectAll(false);
+						}
+					} else if (crossPageSelectionEnabled && crossPageSelectionChangedCallback) {
+						const newSelectedRowIds = selectedRowIds.filter((id) => id !== event.name);
+						if (allPagesSelectedByDefault) {
+							const newDeselectedRowIds = [...deselectedRowIds, event.name];
+							if (newDeselectedRowIds.length === totalObjectCount) {
+								// every item is deselected, exit allPageSelectedByDefault
+								crossPageSelectionChangedCallback([], false, [], []);
+							} else {
+								crossPageSelectionChangedCallback(newSelectedRows, true, newSelectedRowIds, newDeselectedRowIds);
+							}
+						} else {
+							crossPageSelectionChangedCallback(newSelectedRows, false, newSelectedRowIds, deselectedRowIds);
+						}
 					}
 				}
 			}
 		},
-		[selectAll, rows, selectionChangedCallback, selectedRowIds]
+		[
+			crossPageSelectionEnabled,
+			crossPageSelectionChangedCallback,
+			selectionChangedCallback,
+			rows,
+			selectedRowIds,
+			selectAll,
+			allPagesSelectedByDefault,
+			deselectedRowIds,
+			totalObjectCount
+		]
 	);
 
-	const addCheckBoxToHeader = useCallback((): React.ReactNode | void => {
-		if (selectionType === SELECTION_TYPE.MULTI) {
-			return (
-				<StyledTableHeader key={"selectAllCheckbox"} className="checkbox-column">
-					<SolaceTooltip
-						title={selectAll || indeterminate ? DESELECT_ALL_TOOLTIP : SELECT_ALL_TOOLTIP}
-						placement={"bottom-start"}
-					>
-						<div>
-							<SolaceCheckBox
-								name={"selectAllCheckbox"}
-								onChange={handleSelectAllChange}
-								checked={selectAll || indeterminate}
-								indeterminate={indeterminate}
-							/>
-						</div>
-					</SolaceTooltip>
-				</StyledTableHeader>
-			);
-		} else {
-			return;
-		}
-	}, [selectionType, selectAll, indeterminate, handleSelectAllChange]);
-
-	const addChevronToHeader = useCallback((): React.ReactNode | void => {
-		if (expandableRowOptions?.allowToggle) {
-			return <StyledTableHeader key={"expandHeader"} className="expand-column"></StyledTableHeader>;
-		} else {
-			return;
-		}
-	}, [expandableRowOptions?.allowToggle]);
-
-	const addCheckBoxToRows = useCallback(
-		(row: TableRow): React.ReactNode => {
-			return (
-				<StyledTableData key={`${row.id}_rowCheckbox`} className="checkbox" onClick={(e) => e.stopPropagation()}>
-					<SolaceCheckBox
-						name={`${row.id}`}
-						onChange={handleRowSelectionChange}
-						checked={selectedRowIds.includes(row.id)}
-					/>
-				</StyledTableData>
-			);
-		},
-		[selectedRowIds, handleRowSelectionChange]
-	);
-
-	const renderRowActionItems = useCallback(
-		(row: TableRow): React.ReactNode[] => {
-			if (renderCustomRowActionItem) {
-				return [addActionMenuIcon(row, renderCustomRowActionItem(row))];
-			} else if (rowActionMenuItems && rowActionMenuItems.length > 0) {
-				return [addActionMenuIcon(row, rowActionMenuItems)];
-			} else if (!rowActionMenuItems && hasColumnHiding) {
-				return [addEmptyRowCell(row)];
-			}
-			return [];
-		},
-		[hasColumnHiding, renderCustomRowActionItem, rowActionMenuItems]
-	);
-
-	const renderConfiguredRowCells = useCallback(
-		(
-			row: TableRow,
-			displayedColumns: TableColumn[] | undefined,
-			internalDisplayedColumns: TableColumn[] | undefined
-		): React.ReactNode[] => {
-			if (renderCustomRowCells) {
-				return renderCustomRowCells(row);
-			} else {
-				const columnsToDisplay = (displayedColumns ? displayedColumns : internalDisplayedColumns) ?? [];
-				return columnsToDisplay.map((col) => {
-					if (!col.hasNoCell && !col.isHidden) {
-						const key = row.id + "_" + col.field;
-						return (
-							<StyledTableData key={key}>
-								{col.tooltip && (
-									<SolaceTooltip variant="overflow" title={row[col.field]} placement={DEFAULT_TOOLTIP_PLACEMENT}>
-										{row[col.field]}
-									</SolaceTooltip>
-								)}
-								{!col.tooltip && <span>{row[col.field]}</span>}
-							</StyledTableData>
-						);
-					} else {
-						return;
-					}
-				});
-			}
-		},
-		[renderCustomRowCells]
-	);
-
-	const addConfigureColumnHeader = useCallback(
-		(columnsToDisplay: TableColumn[], columnToSort: TableColumn | undefined): React.ReactNode | void => {
-			return columnsToDisplay.map(
-				(col) =>
-					!col.isHidden && (
-						<StyledTableHeader
-							key={col.headerName}
-							className={`${
-								(col.hasNoCell && "icon-column") || (col.isNumerical && "number-column") || col.class || ""
-							}`}
-							width={col.width ? (typeof col.width === "number" ? col.width + "px" : col.width) : "auto"}
-						>
-							<span
-								className={`${col.sortable ? "sortable header" : "header"}`}
-								onClick={() => (col.sortable ? handleSort(col, sortedColumn, internalSortedColumn) : undefined)}
-							>
-								<SolaceTooltip variant="overflow" title={col.headerName} placement={DEFAULT_TOOLTIP_PLACEMENT}>
-									{col.headerName}
-								</SolaceTooltip>
-								{columnToSort?.field === col.field && col.sortable && (
-									<SolaceTooltip title="Sort" placement={DEFAULT_TOOLTIP_PLACEMENT}>
-										<div>
-											{columnToSort.sortDirection === SORT_DIRECTION.ASC ? (
-												<AscendingSortIcon />
-											) : (
-												<DescendingSortIcon />
-											)}
-										</div>
-									</SolaceTooltip>
-								)}
-								{columnToSort?.field !== col.field && col.sortable && (
-									<SolaceTooltip title="Sort" placement={DEFAULT_TOOLTIP_PLACEMENT}>
-										<div>
-											<UnsortedIcon />
-										</div>
-									</SolaceTooltip>
-								)}
-							</span>
-						</StyledTableHeader>
-					)
-			);
-		},
-		[handleSort, internalSortedColumn, sortedColumn]
-	);
-
-	const createHeaderNodes = useCallback(() => {
-		const columnToSort = sortedColumn ? sortedColumn : internalSortedColumn;
-		const columnsToDisplay = cloneDeep((displayedColumns ? displayedColumns : internalDisplayedColumns) ?? []);
-
-		return (
-			<StyledTableRow
-				key="headerRow"
-				className="header"
-				onMouseEnter={headerHoverCallback ? () => headerHoverCallback() : undefined}
-			>
-				{[
-					addCheckBoxToHeader(),
-					addChevronToHeader(),
-					addConfigureColumnHeader(columnsToDisplay, columnToSort),
-					(!!rowActionMenuItems || renderCustomRowActionItem) && !hasColumnHiding && addEmptyHeaderCell(),
-					hasColumnHiding &&
-						addColumnHidingControl({
-							columns: columnsToDisplay,
-							displayedColumnsChangedCallback: handleDisplayColumnsChanged,
-							customContentDefinitions: customContentDefinitions,
-							displayedCustomContent: displayedCustomContent,
-							customContentDisplayChangeCallback: customContentDisplayChangeCallback,
-							customMenuActions: customMenuActions
-						})
-				]}
-			</StyledTableRow>
-		);
-	}, [
+	const columnNodes = useTableHeaderRenderHelper({
+		// pass down from SolaceTable props
+		selectionType,
 		sortedColumn,
-		internalSortedColumn,
-		displayedColumns,
-		internalDisplayedColumns,
-		headerHoverCallback,
-		addCheckBoxToHeader,
-		addChevronToHeader,
-		addConfigureColumnHeader,
 		rowActionMenuItems,
 		renderCustomRowActionItem,
+		headerHoverCallback,
 		hasColumnHiding,
-		handleDisplayColumnsChanged,
+		displayedColumns,
+		expandableRowOptions,
 		customContentDefinitions,
 		displayedCustomContent,
 		customContentDisplayChangeCallback,
-		customMenuActions
-	]);
-
-	const createRowNodes = useCallback((): React.ReactNode[] => {
-		return rows.map((row: TableRow) => (
-			<StyledTableRow
-				key={row.id}
-				onMouseEnter={rowHoverCallback ? () => rowHoverCallback(row) : undefined}
-				onClick={() => handleRowClick(row)}
-				className={clsx({
-					selected:
-						selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
-							? highlightedRowId === row.id
-							: selectedRowIds.includes(row.id),
-					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
-				})}
-				data-qa={row.id}
-			>
-				{[
-					selectionType === SELECTION_TYPE.MULTI && addCheckBoxToRows(row),
-					...renderConfiguredRowCells(row, displayedColumns, internalDisplayedColumns),
-					...renderRowActionItems(row)
-				]}
-			</StyledTableRow>
-		));
-	}, [
-		rows,
-		rowHoverCallback,
-		selectionType,
-		independentRowHighlight,
-		highlightedRowId,
-		selectedRowIds,
-		addCheckBoxToRows,
-		renderConfiguredRowCells,
-		displayedColumns,
+		customMenuActions,
+		// state and callbacks defined in useSolaceTable
+		crossPageSelectionEnabled,
+		selectAll,
+		indeterminate,
+		handleSelectAllChange,
+		internalSortedColumn,
+		handleSort,
 		internalDisplayedColumns,
-		renderRowActionItems,
-		handleRowClick
-	]);
-
-	const expandableRows = useExpandableRows({
-		enabled: expandableRowOptions !== undefined && expandableRowOptions !== null,
-		rows,
-		displayedColumns: displayedColumns,
-		internalDisplayedColumns: internalDisplayedColumns,
-		selectionType,
-		handleRowClick,
-		selectedRowIds,
-		independentRowHighlight,
-		highlightedRowId,
-		addCheckBoxToRows,
-		renderConfiguredRowCells,
-		renderRowActionItems,
-		rowHoverCallback,
-		hasColumnHiding,
-		displayedColumnsChangedCallback: handleDisplayColumnsChanged,
-		allowToggle: expandableRowOptions?.allowToggle,
-		selectRowWhenClickOnChildren: expandableRowOptions?.selectRowWhenClickOnChildren,
-		renderChildren: expandableRowOptions?.renderChildren,
-		expandedRowIds: expandableRowOptions?.expandedRowIds,
-		setExpandedRowIds: expandableRowOptions?.setExpandedRowIds
+		handleDisplayColumnsChanged
 	});
 
-	// if expandableRowOptions is set, then create expanded row nodes, otherwise createRowNodes
-	const rowNodes = expandableRowOptions ? expandableRows.createRowNodes() : createRowNodes();
-	const columnNodes = createHeaderNodes();
+	const rowNodes = useTableBodyRenderHelper({
+		// pass down from SolaceTable props
+		rows,
+		selectionType,
+		selectedRowIds,
+		independentRowHighlight,
+		highlightedRowId,
+		renderCustomRowCells,
+		rowActionMenuItems,
+		renderCustomRowActionItem,
+		rowHoverCallback,
+		hasColumnHiding,
+		displayedColumns,
+		expandableRowOptions,
+		// state and callbacks defined in useSolaceTable
+		internalDisplayedColumns,
+		handleDisplayColumnsChanged,
+		handleRowSelectionChange,
+		handleRowClick
+	});
 
 	return [columnNodes, rowNodes];
 };
