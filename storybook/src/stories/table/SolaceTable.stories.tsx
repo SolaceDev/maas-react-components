@@ -175,7 +175,7 @@ const rowsPage3 = [
 	}
 ];
 
-const threePagesOfRows = [...rows, ...rowsPage2, rowsPage3];
+const threePagesOfRows = [...rows, ...rowsPage2, ...rowsPage3];
 
 const columns: SolaceTableColumn[] = [
 	{
@@ -1776,6 +1776,8 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 	columns,
 	independentRowHighlight,
 	totalObjectCount,
+	initialAllPagesSelectedByDefault = false,
+	initialSelectedRowIds,
 	expandedRow,
 	allowToggle,
 	initialExpandedRowIds,
@@ -1795,9 +1797,11 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(
 		Array.isArray(initialExpandedRowIds) ? initialExpandedRowIds : []
 	);
-	const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
+	const [selectedRowIds, setSelectedRowIds] = useState<string[]>(initialSelectedRowIds ?? []);
 	const [deselectedRowIds, setDeselectedRowIds] = useState<string[]>([]);
-	const [isSelectAll, setIsSelectAll] = useState<boolean>(false);
+	const [allPagesSelectedByDefault, setAllPagesSelectedByDefault] = useState<boolean>(
+		initialAllPagesSelectedByDefault ? initialAllPagesSelectedByDefault : false
+	);
 	// Setting this rule: store selected entities across multiple pages only if allPageSelectedByDefault is false,
 	// this is to simulate how audit bulk import would work when allPageSelectedByDefault is false
 	const [selectedEntities, setSelectedEntities] = useState<SolaceTableRow[]>([]);
@@ -1835,7 +1839,7 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 
 			setSelectedEntities(newSelectedEntities);
 
-			setIsSelectAll(allPagesSelectedByDefault);
+			setAllPagesSelectedByDefault(allPagesSelectedByDefault);
 			setSelectedRowIds(selectedRowIdsInVisitedPages);
 			setDeselectedRowIds(deselectedRowIdsInVisitedPages);
 		},
@@ -1880,7 +1884,7 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 						crossPageRowSelectionSupported={true}
 						totalObjectCount={totalObjectCount}
 						deselectedRowIds={deselectedRowIds}
-						allPagesSelectedByDefault={isSelectAll}
+						allPagesSelectedByDefault={allPagesSelectedByDefault}
 						crossPageSelectionChangedCallback={handleCrossPageRowSelectionsChange}
 						expandableRowOptions={
 							expandedRow
@@ -1906,13 +1910,15 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 				</VerticalPadding>
 			</PaginationContainer>
 			<div style={{ marginTop: "24px", display: "flex", flexDirection: "column", rowGap: "8px" }}>
-				<div>
-					In Select All Mode: {isSelectAll ? "Yes" : "No"}; Total Object Count: {totalObjectCount}
+				<div style={{ display: "flex", columnGap: "32px" }}>
+					<div>All Pages Selected By Default: {allPagesSelectedByDefault ? "Yes" : "No"}</div>
+					<div>Total Object Count: {totalObjectCount}</div>
 				</div>
 				<div>Selected IDs from Visited Pages: {JSON.stringify(selectedRowIds)}</div>
 				<div>Deselected IDs from Visited Pages: {JSON.stringify(deselectedRowIds)}</div>
-				<div>Selected Entities from Visited Pages:</div>
-				<div>{JSON.stringify(selectedEntities?.map((entity) => entity.email))}</div>
+				<div>
+					Selected Entities from Visited Pages: {JSON.stringify(selectedEntities?.map((entity) => entity.email))}
+				</div>
 			</div>
 		</div>
 	);
@@ -1948,22 +1954,68 @@ MultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.args = {
 	initialExpandedRowIds: ["6", "12"]
 };
 
-export const MultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable =
+export const MultiSelectionTableWithCrossPagesRowSelectionNotInPageAllSelectedByDefaultIfAllRowsSelectedManually =
 	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-MultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable.args = {
+MultiSelectionTableWithCrossPagesRowSelectionNotInPageAllSelectedByDefaultIfAllRowsSelectedManually.args = {
+	tableData: rows,
+	columns: columns,
+	independentRowHighlight: true,
+	totalObjectCount: threePagesOfRows.length,
+	initialSelectedRowIds: threePagesOfRows.map((row) => row.id)
+};
+
+export const MultiSelectionTableWithCrossPagesRowSelectionInitAllPagesSelectedByDefault =
+	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
+MultiSelectionTableWithCrossPagesRowSelectionInitAllPagesSelectedByDefault.args = {
+	tableData: rows,
+	columns: columns,
+	independentRowHighlight: true,
+	totalObjectCount: threePagesOfRows.length,
+	initialAllPagesSelectedByDefault: true
+};
+
+export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable =
+	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable.args = {
 	tableData: [],
 	columns: columns,
 	independentRowHighlight: true,
 	totalObjectCount: 0
 };
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
 
-export const MultiSelectionTableWithCrossPagesRowSelectionAndOneRow =
+	// click on Select All
+	await selectCheckbox(canvas, null);
+	// click on Select All again
+	await selectCheckbox(canvas, null);
+};
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable.parameters = {
+	// Delay snapshot 1 seconds until all interactions are done
+	chromatic: { delay: 1000 }
+};
+
+export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow =
 	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-MultiSelectionTableWithCrossPagesRowSelectionAndOneRow.args = {
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow.args = {
 	tableData: rows.slice(0, 1),
 	columns: columns,
 	independentRowHighlight: true,
 	totalObjectCount: 1
+};
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+
+	// click on Select All
+	await selectCheckbox(canvas, null);
+	// uncheck first row to exit select all mode
+	await selectCheckbox(canvas, rows[0].email);
+};
+InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow.parameters = {
+	// Delay snapshot 1 seconds until all interactions are done
+	chromatic: { delay: 1000 }
 };
 
 const pagedTableInteractions = async (canvasElement) => {

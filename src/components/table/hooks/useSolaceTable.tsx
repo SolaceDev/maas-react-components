@@ -133,7 +133,7 @@ export const useSolaceTable = ({
 					(!allPagesSelectedByDefault && selectedRowIds.length === totalObjectCount);
 				setSelectAll(allSelected);
 			} else {
-				setSelectAll(false);
+				setSelectAll(allPagesSelectedByDefault);
 			}
 		}
 	}, [
