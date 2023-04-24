@@ -3,6 +3,7 @@ import { Controlled as CodeMirror } from "react-codemirror2";
 import SolaceButton from "./SolaceButton";
 import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
+import WarningText from "./WarningText";
 import ExpandIcon from "../../resources/icons/ExpandIcon";
 import { CloseFullscreen } from "@mui/icons-material";
 import { styled, useTheme } from "@mui/material";
@@ -63,6 +64,10 @@ export interface SolaceCodeEditorProps extends SolaceComponentProps {
 	 */
 	hasErrors?: boolean;
 	/**
+	 * Boolean flag to mark the SolaceCodeEditor in warning state
+	 */
+	hasWarnings?: boolean;
+	/**
 	 * whether to allow CodeEditor to be expandable
 	 */
 	expandable?: boolean;
@@ -72,8 +77,14 @@ export interface SolaceCodeEditorProps extends SolaceComponentProps {
 	onChange?: (editor: CodeMirror, data: any, value: string) => void;
 }
 
-const renderHelperText = (helperText: string | JSX.Element, hasErrors: boolean): JSX.Element => {
-	return hasErrors ? <ErrorText>{helperText}</ErrorText> : <HelperText>{helperText}</HelperText>;
+const renderHelperText = (helperText: string | JSX.Element, hasErrors: boolean, hasWarnings: boolean): JSX.Element => {
+	return hasErrors ? (
+		<ErrorText>{helperText}</ErrorText>
+	) : hasWarnings ? (
+		<WarningText>{helperText}</WarningText>
+	) : (
+		<HelperText>{helperText}</HelperText>
+	);
 };
 
 function SolaceCodeEditor({
@@ -85,6 +96,7 @@ function SolaceCodeEditor({
 	expandable = false,
 	helperText = "",
 	hasErrors = false,
+	hasWarnings = false,
 	onChange
 }: SolaceCodeEditorProps): JSX.Element {
 	const theme = useTheme();
@@ -167,7 +179,7 @@ function SolaceCodeEditor({
 								onChange={onChange}
 							/>
 						</StyledEditorWrapper>
-						{helperText && renderHelperText(helperText, hasErrors)}
+						{helperText && renderHelperText(helperText, hasErrors, hasWarnings)}
 					</StyledInnerWrapper>
 				</StyledOuterWrapper>
 			)}
@@ -200,7 +212,7 @@ function SolaceCodeEditor({
 							onChange={onChange}
 						/>
 					</StyledEditorWrapper>
-					{helperText && renderHelperText(helperText, hasErrors)}
+					{helperText && renderHelperText(helperText, hasErrors, hasWarnings)}
 				</>
 			)}
 		</>

@@ -142,6 +142,17 @@ WithError.args = {
 	hasErrors: true
 };
 
+export const WithWarning = Template.bind({});
+WithWarning.args = {
+	onChange: action("callback"),
+	id: "demoCodeEditorId",
+	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+	mode: "json",
+	expandable: true,
+	helperText: "A sample warning text",
+	hasWarnings: true
+};
+
 export const FullScreenEditor = (): JSX.Element => {
 	const [fullScreen, setFullScreen] = useState(false);
 
