@@ -34,6 +34,11 @@ interface SolacePopoverProps extends SolaceComponentProps {
 		| "top-end"
 		| "top-start"
 		| "top";
+
+	/**
+	 * Tooltip maximum width, default to small
+	 */
+	maxWidth?: "small" | "medium" | "full";
 }
 
 const SolacePopover = ({
@@ -43,13 +48,14 @@ const SolacePopover = ({
 	disableHoverListener = false,
 	dataQa,
 	dataTags,
-	children
+	children,
+	maxWidth = "small"
 }: SolacePopoverProps) => {
 	return (
 		<Tooltip
 			id={id}
 			title={title || ""}
-			classes={{ tooltip: "SolacePopover" }}
+			classes={{ tooltip: `SolacePopover ${maxWidth ? maxWidth + "Width" : ""}` }}
 			data-qa={dataQa}
 			data-tags={dataTags}
 			disableHoverListener={disableHoverListener}
