@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
-import SolaceChip from "../SolaceChip";
+import SolaceChip, { CHIP_VARIANT } from "../SolaceChip";
 import SolaceResponsiveItemList from "../SolaceResponsiveItemList";
 
 const Container = styled("div")(() => ({
@@ -44,7 +44,7 @@ function SolaceSelectAutocompleteResponsiveTags({
 				content: (
 					<SolaceChip
 						key={`${dataQa}-${tag.id}`}
-						variant={"filled"}
+						variant={CHIP_VARIANT.FILLED}
 						maxWidth={tagMaxWidth}
 						label={tag.label}
 						onDelete={() => handleDelete(tag.id)}

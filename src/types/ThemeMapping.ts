@@ -25,6 +25,7 @@ export type ThemeMappingPalette = {
 	};
 
 	secondary: {
+		w70: string;
 		w80: string;
 		w8040: string; // 40% of w80 for overlays and box-shadows
 		wMain: string;

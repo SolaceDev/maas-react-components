@@ -1,9 +1,13 @@
 import { Chip, useTheme } from "@mui/material";
 import { BASE_SIZE_TYPES } from "../resources/sizing";
 import { BASE_FONT_PX_SIZE_TYPES, BASE_FONT_PX_SIZES } from "../resources/typography";
+import { MODES } from "../types/modes";
 import { CHIP_COLORS } from "../types/solaceChip";
 import SolaceComponentProps from "./SolaceComponentProps";
 import CloseIcon from "@mui/icons-material/Close";
+import { STATUSES } from "../types/statuses";
+import { STATES } from "../types/states";
+import { ErrorIcon } from "../resources/icons/ErrorIcon";
 
 const CHIP_PX_HEIGHTS: BASE_SIZE_TYPES = {
 	sm: 18,
@@ -17,15 +21,20 @@ const CHIP_PX_BORDER_RADIUS: BASE_SIZE_TYPES = {
 	lg: 5
 };
 
+export enum CHIP_VARIANT {
+	FILLED = "filled",
+	OUTLINED = "outlined"
+}
+
 export interface SolaceChipProps extends SolaceComponentProps {
 	/**
 	 * 	The content of the component.
 	 */
 	label?: string | JSX.Element;
 	/**
-	 * 	The variant to use.
+	 * 	The variant to use ... standard (filled) vs choice (outlined).
 	 */
-	variant?: "filled" | "outlined";
+	variant?: CHIP_VARIANT;
 	/**
 	 * If true, the component is disabled.
 	 */
@@ -75,14 +84,34 @@ export interface SolaceChipProps extends SolaceComponentProps {
 	 */
 	clickable?: boolean;
 	/**
+	 * Sets the mode of the chip (default is LIGHT_MODE)
+	 */
+	mode?: MODES;
+	/**
+	 * Sets the status of the chip (default is NO_STATUS)
+	 */
+	status?: STATUSES;
+	/**
+	 * Sets the state of the chip (default is NOT_SELECTED)
+	 */
+	state?: STATES;
+	/**
+	 * Add a leading icon ... ensure the size of the icon is 14x14 pixels
+	 */
+	icon?: JSX.Element;
+	/**
 	 * if the callback function is set, the chip will show the delete button
 	 */
 	onDelete?: (id: string | number) => void;
+	/**
+	 * if the callback function is set, the chip will notify when clicked
+	 */
+	onClick?: () => void;
 }
 
 export default function SolaceChip({
 	label,
-	variant = "filled",
+	variant = CHIP_VARIANT.FILLED,
 	disabled = false,
 	maxWidth = "100%",
 	dashedBorder = false,
@@ -96,9 +125,16 @@ export default function SolaceChip({
 	size = "sm",
 	compressed = false,
 	clickable = false,
-	onDelete
+	mode = MODES.LIGHT_MODE,
+	status = STATUSES.NO_STATUS,
+	state = STATES.NOT_SELECTED,
+	icon,
+	onDelete,
+	onClick
 }: SolaceChipProps): JSX.Element {
 	const CHIP_COLOR_MAP = useTheme().palette.ux.deprecated.chip;
+	const theme = useTheme();
+
 	return (
 		<Chip
 			sx={{
@@ -122,7 +158,19 @@ export default function SolaceChip({
 			onDelete={onDelete}
 			deleteIcon={<CloseIcon />}
 			data-qa={dataQa}
-			className="solaceChip"
+			className={`solaceChip ${mode} ${status} ${state}`}
+			onClick={onClick}
+			icon={
+				<>
+					{icon && <span className="leadingIcon">{icon}</span>}
+					{status === STATUSES.ERROR_STATUS && (
+						<span className="errorIcon">
+							{" "}
+							<ErrorIcon size={14} fill={theme.palette.ux.error.w100} />{" "}
+						</span>
+					)}
+				</>
+			}
 		/>
 	);
 }

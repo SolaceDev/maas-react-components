@@ -126,6 +126,22 @@ export const WithChildrenComponents = (): JSX.Element => (
 	</SolaceConfirmationDialog>
 );
 
+export const WithChildrenAccordionComponents = (): JSX.Element => (
+	<SolaceConfirmationDialog
+		title="Children"
+		contentText="Some content text sitting above dialog child components (form elements in this case)"
+		isOpen={true}
+		actions={[{ label: "Ok", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), variant: "outline" }]}
+	>
+		<SolaceAccordion
+			summary={"hello world"}
+			details="here are some details"
+			expanded={false}
+			onChange={() => console.log("you clicked me")}
+		/>
+	</SolaceConfirmationDialog>
+);
+
 export const WithNoChildren = (): JSX.Element => (
 	<SolaceConfirmationDialog
 		title="No Children"

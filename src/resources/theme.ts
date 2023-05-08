@@ -1041,13 +1041,167 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			},
 			MuiChip: {
 				styleOverrides: {
-					root: {},
-					filled: {
-						backgroundColor: themeMapping.palette.deprecated.chip.fill
-					},
-					clickable: {
-						"&:hover": {
-							backgroundColor: themeMapping.palette.deprecated.chip.hover
+					root: {
+						"&.solaceChip": {
+							// all solace chips (standard, input & choice)
+							"&.MuiChip-filledDefault": {
+								// only standard and input chips
+								backgroundColor: themeMapping.palette.secondary.w20,
+								color: themeMapping.palette.primary.text.wMain,
+								".MuiChip-deleteIcon": {
+									fill: themeMapping.palette.primary.text.wMain
+								},
+								"&:hover": {
+									backgroundColor: themeMapping.palette.secondary.w40,
+									color: themeMapping.palette.primary.text.wMain
+								},
+								"&.Mui-disabled": {
+									backgroundColor: themeMapping.palette.background.w20,
+									color: themeMapping.palette.secondary.text.w50,
+									opacity: 1 // MuiChip by default applies opacity of 0.38 for disabled
+								},
+								"&.darkMode": {
+									backgroundColor: themeMapping.palette.secondary.w70,
+									color: themeMapping.palette.primary.text.w10,
+									".MuiChip-deleteIcon": {
+										fill: themeMapping.palette.primary.text.w10
+									},
+									"&:hover": {
+										backgroundColor: themeMapping.palette.secondary.w80,
+										color: themeMapping.palette.primary.text.w10
+									},
+									"&.Mui-disabled": {
+										backgroundColor: themeMapping.palette.secondary.w40,
+										color: themeMapping.palette.primary.text.w10,
+										opacity: 1 // MuiChip by default applies opacity of 0.38 for disabled
+									}
+								},
+								"&.MuiChip-clickable": {
+									// only input chips
+									backgroundColor: themeMapping.palette.secondary.w20,
+									color: themeMapping.palette.primary.text.wMain,
+									".MuiChip-deleteIcon": {
+										fill: themeMapping.palette.primary.text.wMain
+									},
+									"&:hover": {
+										backgroundColor: themeMapping.palette.secondary.w40,
+										color: themeMapping.palette.primary.text.wMain,
+										":has(.MuiChip-deleteIcon:hover)": {
+											backgroundColor: themeMapping.palette.secondary.w20
+										},
+										".MuiChip-deleteIcon:hover": {
+											backgroundColor: themeMapping.palette.secondary.w40
+										}
+									},
+									"&:active": {
+										backgroundColor: themeMapping.palette.secondary.w40,
+										color: themeMapping.palette.primary.text.wMain,
+										boxShadow: "none"
+									},
+									"&.darkMode": {
+										backgroundColor: themeMapping.palette.secondary.w70,
+										color: themeMapping.palette.primary.text.w10,
+										".MuiChip-deleteIcon": {
+											fill: themeMapping.palette.primary.text.w10
+										},
+										"&:hover": {
+											backgroundColor: themeMapping.palette.secondary.w80,
+											color: themeMapping.palette.primary.text.w10,
+											":has(.MuiChip-deleteIcon:hover)": {
+												backgroundColor: themeMapping.palette.secondary.w70
+											},
+											".MuiChip-deleteIcon:hover": {
+												backgroundColor: themeMapping.palette.secondary.w80
+											}
+										},
+										"&:active": {
+											backgroundColor: themeMapping.palette.background.wMain,
+											color: themeMapping.palette.primary.text.w10,
+											boxShadow: "none"
+										}
+									},
+									"&.errorStatus": {
+										backgroundColor: themeMapping.palette.error.w10,
+										color: themeMapping.palette.error.w100,
+										".MuiChip-deleteIcon": {
+											fill: themeMapping.palette.error.w100
+										},
+										"&:hover": {
+											backgroundColor: themeMapping.palette.error.w20,
+											color: themeMapping.palette.error.w100,
+											":has(.MuiChip-deleteIcon:hover)": {
+												backgroundColor: themeMapping.palette.error.w10
+											},
+											".MuiChip-deleteIcon:hover": {
+												backgroundColor: themeMapping.palette.error.w20
+											}
+										},
+										"&:active": {
+											backgroundColor: themeMapping.palette.error.w30,
+											color: themeMapping.palette.error.w100,
+											boxShadow: "none"
+										},
+										".MuiSvgIcon-root": {
+											fill: themeMapping.palette.error.w100
+										}
+									}
+								}
+							},
+							"&.MuiChip-outlinedDefault": {
+								// only choice chips (active & not selected)
+								backgroundColor: themeMapping.palette.background.w10,
+								color: themeMapping.palette.primary.text.wMain,
+								borderColor: themeMapping.palette.secondary.w40,
+								boxShadow: "none",
+								"&:hover": {
+									backgroundColor: themeMapping.palette.background.w20,
+									color: themeMapping.palette.primary.text.wMain
+								},
+								"&:active": {
+									backgroundColor: themeMapping.palette.secondary.w10,
+									color: themeMapping.palette.primary.text.wMain
+								},
+								"&.darkMode": {
+									backgroundColor: themeMapping.palette.background.w10,
+									color: themeMapping.palette.primary.text.wMain,
+									borderColor: themeMapping.palette.background.wMain,
+									"&:hover": {
+										backgroundColor: themeMapping.palette.secondary.w20,
+										color: themeMapping.palette.primary.text.wMain
+									},
+									"&:active": {
+										backgroundColor: themeMapping.palette.secondary.w70,
+										color: themeMapping.palette.primary.text.w10
+									}
+								},
+								"&.activeState": {
+									// only active chioce chip
+									backgroundColor: themeMapping.palette.secondary.w20,
+									color: themeMapping.palette.primary.text.wMain,
+									borderColor: themeMapping.palette.secondary.w40,
+									"&:hover": {
+										backgroundColor: themeMapping.palette.secondary.w40,
+										color: themeMapping.palette.primary.text.wMain
+									},
+									"&:active": {
+										backgroundColor: themeMapping.palette.secondary.wMain,
+										color: themeMapping.palette.primary.text.wMain
+									},
+									"&.darkMode": {
+										backgroundColor: themeMapping.palette.secondary.w70,
+										color: themeMapping.palette.primary.text.w10,
+										borderColor: themeMapping.palette.background.wMain,
+										"&:hover": {
+											backgroundColor: themeMapping.palette.secondary.w80,
+											color: themeMapping.palette.primary.text.w10
+										},
+										"&:active": {
+											backgroundColor: themeMapping.palette.background.wMain,
+											color: themeMapping.palette.primary.text.w10
+										}
+									}
+								}
+							}
 						}
 					},
 					label: {
@@ -1055,8 +1209,15 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						paddingRight: "6px"
 					},
 					deleteIcon: {
-						margin: "0px 4px 0px 2px",
+						margin: "0px 0px 0px 0px",
+						padding: "2px",
+						borderRadius: "3px",
 						fontSize: BASE_FONT_PX_SIZES.md
+					},
+					icon: {
+						"&.errorIcon, &.leadingIcon": {
+							margin: "3px 3px 0px 3px"
+						}
 					}
 				}
 			},
@@ -1228,6 +1389,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									fill: themeMapping.palette.secondary.w40
 								}
 							}
+						},
+						"&.MuiPaper-root": {
+							minWidth: "100px",
+							maxHeight: "100%",
+							boxShadow: "none",
+							padding: "0px"
 						}
 					}
 				}

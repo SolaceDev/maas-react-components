@@ -26,6 +26,7 @@ const palette: ThemeMappingPalette = {
 	},
 
 	secondary: {
+		w70: "#536574",
 		w80: "#354E62",
 		w8040: alpha("#354E62", 0.4),
 		wMain: "#8790A0",

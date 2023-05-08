@@ -499,3 +499,12 @@ LargeDataListWithContentPlaceHolder.args = {
 	},
 	dataQa: "demoDefaultList"
 };
+
+export const NoHeaderList = Template.bind({});
+NoHeaderList.args = {
+	items: testListItems,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)",
+	dataQa: "demoDefaultList"
+};
