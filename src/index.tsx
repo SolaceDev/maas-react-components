@@ -7,6 +7,7 @@ export { default as ErrorOutlineOutlinedIcon } from "@mui/icons-material/ErrorOu
 export { default as AddCircleOutlineOutlinedIcon } from "@mui/icons-material/AddCircleOutlineOutlined";
 export { default as HelpOutlineOutlinedIcon } from "@mui/icons-material/HelpOutlineOutlined";
 export { default as ChevronRightIcon } from "@mui/icons-material/ChevronRight";
+export { default as ChevronLeftIcon } from "@mui/icons-material/ChevronLeft";
 
 export { default as SolaceToasts } from "./components/SolaceToasts";
 export { default as NoAccess } from "./components/NoAccess";

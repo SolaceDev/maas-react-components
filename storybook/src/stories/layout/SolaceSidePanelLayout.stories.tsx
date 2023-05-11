@@ -8,9 +8,11 @@ import {
 	styled,
 	SolaceButton,
 	ListSubheader,
-	ChevronRightIcon
+	ChevronRightIcon,
+	ChevronLeftIcon
 } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../../resources/images/NoAccessBook";
+import { within, userEvent } from "@storybook/testing-library";
 
 const btnID = "catalog-btn";
 const VARIANT = "call-to-action";
@@ -83,38 +85,63 @@ export default {
 	}
 } as ComponentMeta<typeof SolaceSidePanelLayout>;
 
-export const DefaultSidePanel = (): JSX.Element => {
-	const [panelOpen, setPanelOpen] = useState(true);
+const mainContent = (panelOpen, handlePanelToggle) => (
+	<SolaceDetailMessage
+		msgImg={<NoAccessImg />}
+		title="Side Panel Layout Demo"
+		details={
+			<p style={{ margin: "0px", padding: "0px 15px" }}>
+				Click the buton to toggle the side panel{" "}
+				<a href="http://www.someURL.com">some really really really long anchor tag to showcase all is clickable</a>
+			</p>
+		}
+		actions={[
+			{
+				id: btnID,
+				variant: VARIANT,
+				children: panelOpen ? CLOSEPANEL : OPENPANEL,
+				onClick: handlePanelToggle
+			}
+		]}
+	/>
+);
 
-	const HandlePanelToggle = () => {
+const sidePanelContent = (handlePanelToggle, rightSide: boolean) => (
+	<React.Fragment>
+		<ListSubheader style={{ textAlign: rightSide ? "left" : "right" }}>
+			<SolaceButton onClick={handlePanelToggle} title="Close" variant="icon">
+				{rightSide ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+			</SolaceButton>
+		</ListSubheader>
+		{sidePanelMessage}
+	</React.Fragment>
+);
+
+export const DefaultSidePanel = (): JSX.Element => {
+	const [panelOpen, setPanelOpen] = useState(false);
+
+	const handlePanelToggle = () => {
 		setPanelOpen(!panelOpen);
 	};
 
 	return (
 		<StoryContainer>
 			<SolaceSidePanelLayout showSidePanel={panelOpen} sidePanelContent={sidePanelMessage}>
-				<SolaceDetailMessage
-					msgImg={<NoAccessImg />}
-					title="Side Panel Layout Demo"
-					details={<span>Click the buton to toggle the side panel</span>}
-					actions={[
-						{
-							id: btnID,
-							variant: VARIANT,
-							children: panelOpen ? CLOSEPANEL : OPENPANEL,
-							onClick: HandlePanelToggle
-						}
-					]}
-				/>
+				{mainContent(panelOpen, handlePanelToggle)}
 			</SolaceSidePanelLayout>
 		</StoryContainer>
 	);
 };
+DefaultSidePanel.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByText(OPENPANEL));
+};
 
 export const LeftSidePanel = (): JSX.Element => {
-	const [panelOpen, setPanelOpen] = useState(true);
+	const [panelOpen, setPanelOpen] = useState(false);
 
-	const HandlePanelToggle = () => {
+	const handlePanelToggle = () => {
 		setPanelOpen(!panelOpen);
 	};
 
@@ -125,135 +152,105 @@ export const LeftSidePanel = (): JSX.Element => {
 				showSidePanel={panelOpen}
 				sidePanelPosition={SolacePanelPosition.LEFT}
 			>
-				<div style={{ margin: "auto" }}>
-					<SolaceDetailMessage
-						msgImg={<NoAccessImg />}
-						title="Left Side Panel Layout Demo"
-						details={<span>Click the buton to toggle the side panel</span>}
-						actions={[
-							{
-								id: btnID,
-								variant: VARIANT,
-								children: panelOpen ? CLOSEPANEL : OPENPANEL,
-								onClick: HandlePanelToggle
-							}
-						]}
-					/>
-				</div>
+				{mainContent(panelOpen, handlePanelToggle)}
 			</SolaceSidePanelLayout>
 		</StoryContainer>
 	);
 };
+LeftSidePanel.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByText(OPENPANEL));
+};
 
 export const CustomWidthSidePanel = (): JSX.Element => {
-	const [panelOpen, setPanelOpen] = useState(true);
+	const [panelOpen, setPanelOpen] = useState(false);
 
-	const HandlePanelToggle = () => {
+	const handlePanelToggle = () => {
 		setPanelOpen(!panelOpen);
 	};
 
 	return (
 		<StoryContainer>
 			<SolaceSidePanelLayout sidePanelContent={sidePanelMessage} showSidePanel={panelOpen} sidePanelWidth={500}>
-				<div style={{ margin: "auto" }}>
-					<SolaceDetailMessage
-						msgImg={<NoAccessImg />}
-						title="Custom Width Side Panel Layout Demo"
-						details={<span>Click the buton to toggle the side panel</span>}
-						actions={[
-							{
-								id: btnID,
-								variant: VARIANT,
-								children: panelOpen ? CLOSEPANEL : OPENPANEL,
-								onClick: HandlePanelToggle
-							}
-						]}
-					/>
-				</div>
+				{mainContent(panelOpen, handlePanelToggle)}
 			</SolaceSidePanelLayout>
 		</StoryContainer>
 	);
+};
+CustomWidthSidePanel.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByText(OPENPANEL));
 };
 
 export const SelfClosingSidePanel = (): JSX.Element => {
-	const HandlePanelToggle = () => {
+	const handlePanelToggle = () => {
 		setPanelOpen(!panelOpen);
 	};
-	const [panelOpen, setPanelOpen] = useState(true);
-	const sidePanelContent = (
-		<React.Fragment>
-			<ListSubheader>
-				<SolaceButton onClick={HandlePanelToggle} title="Close" variant="icon">
-					<ChevronRightIcon />
-				</SolaceButton>
-			</ListSubheader>
-			{sidePanelMessage}
-		</React.Fragment>
-	);
+	const [panelOpen, setPanelOpen] = useState(false);
 
 	return (
 		<StoryContainer>
-			<SolaceSidePanelLayout sidePanelContent={sidePanelContent} showSidePanel={panelOpen}>
-				<div style={{ margin: "auto" }}>
-					<SolaceDetailMessage
-						msgImg={<NoAccessImg />}
-						title="Self-Closing Side Panel Layout Demo"
-						details={<span>Click the buton to toggle the side panel</span>}
-						actions={[
-							{
-								id: btnID,
-								variant: VARIANT,
-								children: panelOpen ? CLOSEPANEL : OPENPANEL,
-								onClick: HandlePanelToggle
-							}
-						]}
-					/>
-				</div>
+			<SolaceSidePanelLayout sidePanelContent={sidePanelContent(handlePanelToggle, true)} showSidePanel={panelOpen}>
+				{mainContent(panelOpen, handlePanelToggle)}
 			</SolaceSidePanelLayout>
 		</StoryContainer>
 	);
 };
+SelfClosingSidePanel.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByText(OPENPANEL));
+};
 
-export const OverlaySidePanel = (): JSX.Element => {
-	const HandlePanelToggle = () => {
+export const OverlaySidePanelRight = (): JSX.Element => {
+	const handlePanelToggle = () => {
 		setPanelOpen(!panelOpen);
 	};
-	const [panelOpen, setPanelOpen] = useState(true);
-	const sidePanelContent = (
-		<React.Fragment>
-			<ListSubheader>
-				<SolaceButton onClick={HandlePanelToggle} title="Close" variant="icon">
-					<ChevronRightIcon />
-				</SolaceButton>
-			</ListSubheader>
-			{sidePanelMessage}
-		</React.Fragment>
-	);
+	const [panelOpen, setPanelOpen] = useState(false);
 
 	return (
 		<StoryContainer>
 			<SolaceSidePanelLayout
-				sidePanelContent={sidePanelContent}
+				sidePanelContent={sidePanelContent(handlePanelToggle, true)}
 				showSidePanel={panelOpen}
 				overlayContent={true}
 				sidePanelWidth={400}
 			>
-				<div style={{ margin: "auto" }}>
-					<SolaceDetailMessage
-						msgImg={<NoAccessImg />}
-						title="Side Panel Layout Demo"
-						details={<span>Click the buton to toggle the side panel</span>}
-						actions={[
-							{
-								id: btnID,
-								variant: VARIANT,
-								children: panelOpen ? CLOSEPANEL : OPENPANEL,
-								onClick: HandlePanelToggle
-							}
-						]}
-					/>
-				</div>
+				{mainContent(panelOpen, handlePanelToggle)}
 			</SolaceSidePanelLayout>
 		</StoryContainer>
 	);
+};
+OverlaySidePanelRight.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByText(OPENPANEL));
+};
+
+export const OverlaySidePanelLeft = (): JSX.Element => {
+	const handlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+	const [panelOpen, setPanelOpen] = useState(false);
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout
+				sidePanelContent={sidePanelContent(handlePanelToggle, false)}
+				showSidePanel={panelOpen}
+				overlayContent={true}
+				sidePanelWidth={400}
+				sidePanelPosition={SolacePanelPosition.LEFT}
+			>
+				{mainContent(panelOpen, handlePanelToggle)}
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
+};
+OverlaySidePanelLeft.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByText(OPENPANEL));
 };

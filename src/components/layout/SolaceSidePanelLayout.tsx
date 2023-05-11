@@ -10,24 +10,21 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop === "children" }
 	overlayContent: boolean;
 	sidePanelPosition: PANEL_POSITION;
 	sidePanelWidth: number;
-}>(({ theme, showSidePanel, sidePanelPosition, sidePanelWidth, overlayContent }) => ({
+}>(({ theme, showSidePanel, sidePanelPosition, overlayContent }) => ({
 	flexGrow: 1,
 	transition: theme.transitions.create("margin", {
 		easing: theme.transitions.easing.easeIn,
 		duration: theme.transitions.duration.leavingScreen
 	}),
-	...(sidePanelPosition === PANEL_POSITION.RIGHT && { marginRight: `-${sidePanelWidth}px` }),
-
 	...(showSidePanel &&
 		sidePanelPosition === PANEL_POSITION.RIGHT &&
 		!overlayContent && {
+			marginRight: 0,
 			transition: theme.transitions.create("margin", {
 				easing: theme.transitions.easing.easeOut,
 				duration: theme.transitions.duration.enteringScreen
-			}),
-			marginRight: 0
+			})
 		}),
-	...(sidePanelPosition === PANEL_POSITION.LEFT && { marginLeft: `-${sidePanelWidth}px` }),
 	...(showSidePanel &&
 		sidePanelPosition === PANEL_POSITION.LEFT &&
 		!overlayContent && {
@@ -90,20 +87,25 @@ function SolaceSidePanelLayout({
 		>
 			<Drawer
 				sx={{
-					width: sidePanelWidth,
+					width: showSidePanel ? sidePanelWidth : "0px",
 					flexShrink: 0,
 					"& .MuiDrawer-paper": {
 						width: sidePanelWidth,
 						boxSizing: "border-box"
-					}
+					},
+					transition: "width 0.25s"
 				}}
 				PaperProps={{ style: { position: "absolute" } }}
-				BackdropProps={{ style: { position: "absolute" } }}
+				BackdropProps={{ style: { position: "absolute", display: "none" } }}
 				ModalProps={{
 					container: document.getElementById("drawer-container"),
-					style: { position: "absolute" }
+					style: {
+						position: "absolute",
+						left: sidePanelPosition === PANEL_POSITION.RIGHT ? "unset" : 0, // by default MUI puts left and right set to 0 ... want
+						right: sidePanelPosition === PANEL_POSITION.LEFT ? "unset" : 0 // to pick and choose when to force panel to left or right
+					}
 				}}
-				variant="persistent"
+				variant={overlayContent ? "temporary" : "persistent"}
 				anchor={sidePanelPosition}
 				open={showSidePanel}
 			>
