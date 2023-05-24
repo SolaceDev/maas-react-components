@@ -56,6 +56,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					}
 				}
 			},
+			MuiButtonBase: {
+				defaultProps: {
+					disableRipple: true
+				}
+			},
 			MuiButton: {
 				defaultProps: {
 					disableRipple: true,
@@ -1043,6 +1048,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						"&.solaceChip": {
+							".errorIcon, .leadingIcon": {
+								margin: "3px 3px 0px 3px"
+							},
 							// all solace chips (standard, input & choice)
 							"&.MuiChip-filledDefault": {
 								// only standard and input chips
@@ -1202,6 +1210,30 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									}
 								}
 							}
+						},
+						"&.solaceTag": {
+							".leadingIcon": {
+								margin: "3px 0px 0px 0px"
+							},
+							"&.MuiChip-filledDefault": {
+								backgroundColor: themeMapping.palette.secondary.w20,
+								color: themeMapping.palette.secondary.wMain,
+								"&.MuiChip-clickable": {
+									"&:hover": {
+										backgroundColor: themeMapping.palette.secondary.w40,
+										color: themeMapping.palette.primary.text.wMain
+									},
+									"&:active": {
+										boxShadow: "none"
+									}
+								}
+							},
+							"&.MuiChip-outlinedDefault": {
+								backgroundColor: themeMapping.palette.background.w10,
+								color: themeMapping.palette.secondary.wMain,
+								borderColor: themeMapping.palette.secondary.w70,
+								boxShadow: "none"
+							}
 						}
 					},
 					label: {
@@ -1213,11 +1245,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						padding: "2px",
 						borderRadius: "3px",
 						fontSize: BASE_FONT_PX_SIZES.md
-					},
-					icon: {
-						"&.errorIcon, &.leadingIcon": {
-							margin: "3px 3px 0px 3px"
-						}
 					}
 				}
 			},

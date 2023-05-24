@@ -1,4 +1,5 @@
 export type BASE_SIZE_TYPES = {
+	xs: number;
 	sm: number;
 	md: number;
 	lg: number;

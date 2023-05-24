@@ -24,10 +24,11 @@ export { default as SolaceAttributeBadge } from "./components/SolaceAttributeBad
 export { default as SolaceTextDiff } from "./components/SolaceTextDiff";
 export { default as SolaceChip } from "./components/SolaceChip";
 export type { SolaceChipProps } from "./components/SolaceChip";
-export { CHIP_VARIANT } from "./components/SolaceChip";
+export { CHIP_VARIANT } from "./types/solaceChip";
 export { MODES } from "./types/modes";
 export { STATES } from "./types/states";
 export { STATUSES } from "./types/statuses";
+export { default as SolaceTag } from "./components/SolaceTag";
 export { default as SolaceErrorBox } from "./components/SolaceErrorBox";
 export { default as SolaceMessageBox } from "./components/SolaceMessageBox";
 export { default as SolaceCard } from "./components/SolaceCard";

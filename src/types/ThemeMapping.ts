@@ -165,6 +165,7 @@ export type ThemeMappingPalette = {
 			warnBgYellow: string;
 			lightGrey: string;
 			smokeGrey: string;
+			darkGrey: string;
 			white: string;
 			fill: string;
 			hover: string;

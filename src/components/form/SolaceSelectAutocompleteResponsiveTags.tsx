@@ -1,6 +1,7 @@
 import { styled } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
-import SolaceChip, { CHIP_VARIANT } from "../SolaceChip";
+import { CHIP_VARIANT } from "../../types/solaceChip";
+import SolaceChip from "../SolaceChip";
 import SolaceResponsiveItemList from "../SolaceResponsiveItemList";
 
 const Container = styled("div")(() => ({

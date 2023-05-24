@@ -6,12 +6,14 @@ import SolaceComponentProps from "./SolaceComponentProps";
 import CloseIcon from "@mui/icons-material/Close";
 
 const CHIP_PX_HEIGHTS: BASE_SIZE_TYPES = {
+	xs: 12,
 	sm: 18,
 	md: 24,
 	lg: 30
 };
 
 const CHIP_PX_BORDER_RADIUS: BASE_SIZE_TYPES = {
+	xs: 20,
 	sm: 30,
 	md: 40,
 	lg: 50

@@ -2,29 +2,12 @@ import { Chip, useTheme } from "@mui/material";
 import { BASE_SIZE_TYPES } from "../resources/sizing";
 import { BASE_FONT_PX_SIZE_TYPES, BASE_FONT_PX_SIZES } from "../resources/typography";
 import { MODES } from "../types/modes";
-import { CHIP_COLORS } from "../types/solaceChip";
+import { CHIP_COLORS, CHIP_PX_BORDER_RADIUS, CHIP_PX_HEIGHTS, CHIP_VARIANT } from "../types/solaceChip";
 import SolaceComponentProps from "./SolaceComponentProps";
 import CloseIcon from "@mui/icons-material/Close";
 import { STATUSES } from "../types/statuses";
 import { STATES } from "../types/states";
 import { ErrorIcon } from "../resources/icons/ErrorIcon";
-
-const CHIP_PX_HEIGHTS: BASE_SIZE_TYPES = {
-	sm: 18,
-	md: 24,
-	lg: 30
-};
-
-const CHIP_PX_BORDER_RADIUS: BASE_SIZE_TYPES = {
-	sm: 3,
-	md: 4,
-	lg: 5
-};
-
-export enum CHIP_VARIANT {
-	FILLED = "filled",
-	OUTLINED = "outlined"
-}
 
 export interface SolaceChipProps extends SolaceComponentProps {
 	/**

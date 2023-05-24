@@ -162,6 +162,7 @@ const palette: ThemeMappingPalette = {
 			warnBgYellow: "#FEF7F1",
 			lightGrey: "#EBEDF2",
 			smokeGrey: "#DBDFE2",
+			darkGrey: alpha("#000", 0.8),
 			white: "#FFF",
 			fill: "rgba(0, 0, 0, 0.1)",
 			hover: "rgba(0, 0, 0, 0.2)",

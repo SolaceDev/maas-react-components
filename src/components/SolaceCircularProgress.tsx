@@ -10,6 +10,7 @@ import { BASE_SIZE_TYPES } from "../resources/sizing";
  */
 
 const PROGRESS_SIZES: BASE_SIZE_TYPES = {
+	xs: 14,
 	sm: 24,
 	md: 30,
 	lg: 42
