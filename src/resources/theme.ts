@@ -1881,10 +1881,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				},
 				virtualRowContainer: {
 					boxSizing: "border-box",
-					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`,
-					":last-child": {
-						borderBottom: "none"
-					}
+					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`
 				},
 				list: {
 					overflow: "overlay",

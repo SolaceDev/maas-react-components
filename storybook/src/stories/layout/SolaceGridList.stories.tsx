@@ -500,6 +500,20 @@ LargeDataListWithContentPlaceHolder.args = {
 	dataQa: "demoDefaultList"
 };
 
+export const LargeContainerList = Template.bind({});
+LargeContainerList.args = {
+	items: testListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	virtualizedListOption: {
+		height: 500,
+		overscanCount: 20
+	},
+	dataQa: "demoDefaultList"
+};
+
 export const NoHeaderList = Template.bind({});
 NoHeaderList.args = {
 	items: testListItems,
