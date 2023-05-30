@@ -21,6 +21,7 @@ jobs:
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGES_ADMIN_TOKEN }}" > .npmrc
           echo "@SolaceDev:registry=https://npm.pkg.github.com/" >> .npmrc
+          echo "legacy-peer-deps=true" >> .npmrc
           npm ci && npm --prefix storybook i
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
