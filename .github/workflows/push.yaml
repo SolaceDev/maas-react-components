@@ -18,9 +18,13 @@ jobs:
           node-version: 16
           cache: "npm"
       - name: Install dependencies
-        run: npm ci && npm --prefix storybook i
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGES_ADMIN_TOKEN }}" > .npmrc
+          echo "@SolaceDev:registry=https://npm.pkg.github.com/" >> .npmrc
+          npm ci && npm --prefix storybook i
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }} #need this for npm package.
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }} #need this for npm package.
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         # publish
