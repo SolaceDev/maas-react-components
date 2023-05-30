@@ -50,11 +50,11 @@ const Template: ComponentStory<typeof SolaceIcon> = (args) => <SolaceIcon {...ar
 
 export const AddIcon = Template.bind({});
 AddIcon.args = {
-	name: Icons.Add_24
+	name: Icons.add_24
 };
 
 export const AddIconWithTheme = Template.bind({});
 AddIconWithTheme.args = {
-	name: Icons.Add_24,
+	name: Icons.add_24,
 	color: "primary"
 };

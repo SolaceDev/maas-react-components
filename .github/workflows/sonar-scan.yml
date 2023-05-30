@@ -12,7 +12,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+  NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
 jobs:
   build:
@@ -29,10 +30,13 @@ jobs:
           node-version: 16.13.x
           cache: npm
       - name: Install
-        run: npm  ci
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGES_ADMIN_TOKEN }}" > .npmrc
+          echo "@SolaceDev:registry=https://npm.pkg.github.com/" >> .npmrc
+          npm ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
-
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
       # run storybook via test-runner and generate lcov code coverage file
 
       # - name: Build Storybook

@@ -87,6 +87,8 @@ export { default as SolaceTypography } from "./components/SolaceTypography";
 export { default as SolaceCircularProgress } from "./components/SolaceCircularProgress";
 export { default as SolaceResponsiveItemList } from "./components/SolaceResponsiveItemList";
 export type { SolaceResponsiveItem } from "./components/SolaceResponsiveItemList";
+export { default as SolaceSearchAndFilter } from "./components/SolaceSearchAndFilter";
+export { FIELD_TYPES } from "./types/fieldTypes";
 
 export * from "./types";
 

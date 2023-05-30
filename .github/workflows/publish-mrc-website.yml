@@ -23,7 +23,8 @@ jobs:
       - name: Install
         run: npm  ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
       - name: Install Storybook
         working-directory: ./storybook
