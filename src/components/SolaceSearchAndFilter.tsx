@@ -22,6 +22,14 @@ export interface SolaceSearchAndFilterProps extends SolaceComponentProps {
 	 */
 	name: string;
 	/**
+	 * the label content to display on the screen
+	 */
+	label?: string | JSX.Element;
+	/**
+	 * Content to display as supportive/explanitory text
+	 */
+	helperText?: string | JSX.Element;
+	/**
 	 * The value of the `input` element, required for controlled component
 	 */
 	value?: string;
@@ -42,6 +50,10 @@ export interface SolaceSearchAndFilterProps extends SolaceComponentProps {
 	 */
 	type?: FIELD_TYPES;
 	/**
+	 * Boolean flag to mark the field in error state
+	 */
+	hasErrors?: boolean;
+	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
 	onChange: (event: SolaceTextFieldChangeEvent) => void;
@@ -50,11 +62,14 @@ export interface SolaceSearchAndFilterProps extends SolaceComponentProps {
 function SolaceSearchAndFilter({
 	id,
 	name,
+	label,
+	helperText,
 	value = "",
 	placeholder,
 	width,
 	disabled = false,
 	type = FIELD_TYPES.DEFAULT,
+	hasErrors = false,
 	onChange
 }: SolaceSearchAndFilterProps): JSX.Element {
 	const getAdornment = useCallback(() => {
@@ -102,10 +117,13 @@ function SolaceSearchAndFilter({
 		<SolaceTextField
 			id={id}
 			name={name}
+			label={label}
+			helperText={helperText}
 			value={value}
 			onChange={handleChange}
 			width={width}
 			endAdornment={getAdornment()}
+			hasErrors={hasErrors}
 			disabled={disabled}
 			dataQa={`searchAndFilter-${id}`}
 			placeholder={placeholder}

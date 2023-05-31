@@ -38,6 +38,7 @@ Default.args = { name: "testField", onChange: action("key typed") };
 
 export const Search = Template.bind({});
 Search.args = {
+	id: "searchAndFilterID",
 	name: "testField",
 	type: FIELD_TYPES.SEARCH,
 	placeholder: SEARCH_PLACEHOLDER_TEXT,
@@ -46,6 +47,7 @@ Search.args = {
 
 export const Filter = Template.bind({});
 Filter.args = {
+	id: "searchAndFilterID",
 	name: "testField",
 	type: FIELD_TYPES.FILTER,
 	placeholder: FILTER_PLACEHOLDER_TEXT,
@@ -54,6 +56,7 @@ Filter.args = {
 
 export const FixedWidth = Template.bind({});
 FixedWidth.args = {
+	id: "searchAndFilterID",
 	name: "testField",
 	type: FIELD_TYPES.SEARCH,
 	placeholder: SEARCH_PLACEHOLDER_TEXT,
@@ -61,8 +64,29 @@ FixedWidth.args = {
 	onChange: action("key typed")
 };
 
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+	id: "searchAndFilterID",
+	name: "testField",
+	label: "Search",
+	type: FIELD_TYPES.SEARCH,
+	placeholder: SEARCH_PLACEHOLDER_TEXT,
+	onChange: action("key typed")
+};
+
+export const HelperText = Template.bind({});
+HelperText.args = {
+	id: "searchAndFilterID",
+	name: "testField",
+	type: FIELD_TYPES.SEARCH,
+	placeholder: SEARCH_PLACEHOLDER_TEXT,
+	helperText: "Showing 20 of 25 Results. Specify your search for more results",
+	onChange: action("key typed")
+};
+
 export const InitialValue = Template.bind({});
 InitialValue.args = {
+	id: "searchAndFilterID",
 	name: "testField",
 	type: FIELD_TYPES.SEARCH,
 	placeholder: SEARCH_PLACEHOLDER_TEXT,
@@ -71,8 +95,21 @@ InitialValue.args = {
 	onChange: action("key typed")
 };
 
+export const HasErrors = Template.bind({});
+HasErrors.args = {
+	id: "searchAndFilterID",
+	name: "testField",
+	type: FIELD_TYPES.SEARCH,
+	placeholder: SEARCH_PLACEHOLDER_TEXT,
+	value: "some invalid search",
+	hasErrors: true,
+	helperText: "Unexpected network error, please contact your system administrator",
+	onChange: action("key typed")
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
+	id: "searchAndFilterID",
 	name: "testField",
 	type: FIELD_TYPES.SEARCH,
 	placeholder: SEARCH_PLACEHOLDER_TEXT,
