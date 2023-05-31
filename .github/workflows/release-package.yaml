@@ -19,6 +19,11 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: "@SolaceDev"
       - run: npm ci
-      - run: npm publish
+      - run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGES_ADMIN_TOKEN }}" > .npmrc
+          echo "@SolaceDev:registry=https://npm.pkg.github.com/" >> .npmrc
+          echo "legacy-peer-deps=true" >> .npmrc
+          npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
