@@ -3,8 +3,11 @@ import { FIELD_TYPES } from "../types/fieldTypes";
 import SolaceComponentProps from "./SolaceComponentProps";
 import SolaceButton from "./form/SolaceButton";
 import SolaceTextField, { SolaceTextFieldChangeEvent } from "./form/SolaceTextField";
-import SolaceIcon from "./SolaceIcon";
+import { CloseIcon } from "../resources/icons/CloseIcon";
+import { FilterIcon } from "../resources/icons/FilterIcon";
+import { SearchIcon } from "../resources/icons/SearchIcon";
 import { styled } from "@mui/material";
+
 const SvgContainer = styled("div")(({ theme }) => ({
 	margin: `${theme.spacing(1)} ${theme.spacing(1)} 0 -${theme.spacing(0.5)}`,
 	".MuiSvgIcon-root": {
@@ -80,13 +83,13 @@ function SolaceSearchAndFilter({
 				case FIELD_TYPES.FILTER:
 					return (
 						<SvgContainer>
-							<SolaceIcon key="filterIcon" fontSize="small" name="icons_24px_filter" />
+							<FilterIcon size={20} key="filterIcon" />
 						</SvgContainer>
 					);
 				case FIELD_TYPES.SEARCH:
 					return (
 						<SvgContainer>
-							<SolaceIcon key="searchIcon" fontSize="small" name="icons_24px_search" />
+							<SearchIcon size={20} key="searchIcon" />
 						</SvgContainer>
 					);
 				default:
@@ -99,7 +102,7 @@ function SolaceSearchAndFilter({
 		if (value && value.trim().length > 0) {
 			icons.push(
 				<SolaceButton key={"closeIcon"} dataQa="clearButton" variant="icon" onClick={handleClearInput}>
-					<SolaceIcon key="closeIcon" fontSize="small" name="icons_24px_close" />
+					<CloseIcon size={20} key="closeIcon" />
 				</SolaceButton>
 			);
 		}
