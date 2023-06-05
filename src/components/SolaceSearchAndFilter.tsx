@@ -60,6 +60,11 @@ export interface SolaceSearchAndFilterProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
 	onChange: (event: SolaceTextFieldChangeEvent) => void;
+	/**
+	 * Callback function to notify the callee when the clear (x) button is clicked (in case
+	 * the callee wishes to perform any additional operations other than clearing the search/filter text)
+	 */
+	onClearAll?: () => void;
 }
 
 function SolaceSearchAndFilter({
@@ -73,10 +78,14 @@ function SolaceSearchAndFilter({
 	disabled = false,
 	type = FIELD_TYPES.DEFAULT,
 	hasErrors = false,
-	onChange
+	onChange,
+	onClearAll
 }: SolaceSearchAndFilterProps): JSX.Element {
 	const getAdornment = useCallback(() => {
-		const handleClearInput = () => onChange({ name, value: "" });
+		const handleClearInput = () => {
+			onChange({ name, value: "" });
+			onClearAll && onClearAll();
+		};
 
 		const getFieldIcon = (type: FIELD_TYPES) => {
 			switch (type) {
@@ -101,7 +110,13 @@ function SolaceSearchAndFilter({
 
 		if (value && value.trim().length > 0) {
 			icons.push(
-				<SolaceButton key={"closeIcon"} dataQa="clearButton" variant="icon" onClick={handleClearInput}>
+				<SolaceButton
+					key={"closeIcon"}
+					dataQa="clearButton"
+					isDisabled={disabled}
+					variant="icon"
+					onClick={handleClearInput}
+				>
 					<CloseIcon size={20} key="closeIcon" />
 				</SolaceButton>
 			);
@@ -110,7 +125,7 @@ function SolaceSearchAndFilter({
 		icons.push(getFieldIcon(type));
 
 		return icons;
-	}, [value, type, onChange, name]);
+	}, [value, type, onChange, name, onClearAll, disabled]);
 
 	const handleChange = (event: SolaceTextFieldChangeEvent) => {
 		onChange(event);

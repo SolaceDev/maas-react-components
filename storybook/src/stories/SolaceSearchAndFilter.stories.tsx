@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceSearchAndFilter, FIELD_TYPES, SolaceTextFieldChangeEvent } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
+import { userEvent, within } from "@storybook/testing-library";
 
 export default {
 	title: "Under Construction/SolaceSearchAndFilter",
@@ -116,4 +117,21 @@ Disabled.args = {
 	width: "200px",
 	disabled: true,
 	onChange: action("key typed")
+};
+
+export const ClearAllNotification = Template.bind({});
+ClearAllNotification.args = {
+	id: "searchAndFilterID",
+	name: "testField",
+	type: FIELD_TYPES.SEARCH,
+	placeholder: SEARCH_PLACEHOLDER_TEXT,
+	width: "400px",
+	value: "initial value to be cleared",
+	onChange: action("key typed"),
+	onClearAll: action("clear all triggered")
+};
+ClearAllNotification.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("button"));
 };
