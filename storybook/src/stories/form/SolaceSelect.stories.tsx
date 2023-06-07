@@ -330,6 +330,18 @@ ReadOnly.args = {
 	readOnly: true
 };
 
+export const ReadOnlyAndDisabled = Template.bind({});
+ReadOnlyAndDisabled.args = {
+	onChange: action("callback"),
+	name: "demoSelect",
+	title: TITLE,
+	label: LABEL,
+	children: SELECT_OPTIONS,
+	value: "option3",
+	readOnly: true,
+	disabled: true
+};
+
 export const WithIcon = Template.bind({});
 WithIcon.args = {
 	onChange: action("callback"),

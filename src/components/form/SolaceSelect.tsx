@@ -153,7 +153,7 @@ function SolaceSelect({
 			InputProps={{
 				sx: { height: theme.spacing(4) },
 				className: clsx({ readOnlySelect: readOnly, emptySelect: !selectedValue }),
-				disabled: disabled,
+				disabled: disabled && !readOnly,
 				readOnly: readOnly,
 				required: required
 			}}
