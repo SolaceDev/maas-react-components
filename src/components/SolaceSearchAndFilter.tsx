@@ -91,14 +91,14 @@ function SolaceSearchAndFilter({
 			switch (type) {
 				case FIELD_TYPES.FILTER:
 					return (
-						<SvgContainer>
-							<FilterIcon size={20} key="filterIcon" />
+						<SvgContainer key="filterIcon">
+							<FilterIcon size={20} />
 						</SvgContainer>
 					);
 				case FIELD_TYPES.SEARCH:
 					return (
-						<SvgContainer>
-							<SearchIcon size={20} key="searchIcon" />
+						<SvgContainer key="searchIcon">
+							<SearchIcon size={20} />
 						</SvgContainer>
 					);
 				default:
