@@ -8,6 +8,7 @@ import {
 	SolaceAttributeBadge
 } from "@SolaceDev/maas-react-components";
 import React, { useState, useEffect } from "react";
+import { cloneDeep } from "lodash";
 
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
 const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
@@ -115,6 +116,7 @@ export default {
 const ENV_1_NAME = "Environment 1";
 const ENV_DESCRIPTION = "The dev environment";
 const testHeaders = ["Modeled Event Mesh", "Environment", "Description"];
+const GRID_LIST_INDICATOR_VARIANT = ["info", "error", "warn", "success", "secondary"];
 const testListItems = [
 	{
 		createdTime: 1635527600270,
@@ -213,7 +215,7 @@ const DEFAULT_MENU_ITEMS = [
 		onMenuItemClick: action("callback")
 	}
 ];
-const DEFAULT_GRID_TEMPALTE = "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)";
+const DEFAULT_GRID_TEMPLATE = "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)";
 
 const largeListItems = Array.from({ length: 500 }).map((item, index) => {
 	return {
@@ -307,6 +309,21 @@ const getActions = (isDisabled): JSX.Element[] => {
 	return actionList;
 };
 
+const getListItemsWithDifferentIndicators = (listItems) => {
+	return listItems.map((item, index) => {
+		const newItem = cloneDeep(item);
+
+		if (index < GRID_LIST_INDICATOR_VARIANT.length) {
+			newItem["indicatorVariant"] = GRID_LIST_INDICATOR_VARIANT[index % GRID_LIST_INDICATOR_VARIANT.length];
+			if (newItem["indicatorVariant"] === "secondary") {
+				newItem["emphasized"] = true;
+			}
+		}
+
+		return newItem;
+	});
+};
+
 const SolaceGridListMultiSelectStory = ({ selectedRowIds, highlightedRowId, ...args }) => {
 	const [highlightedId, setHighlightedId] = useState(highlightedRowId || undefined);
 	const [selectedIds, setSelectedIds] = useState(selectedRowIds || []);
@@ -343,7 +360,7 @@ export const DefaultList = SolaceGridListMultiSelectStory.bind({});
 DefaultList.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	dataQa: "demoDefaultList"
 };
 
@@ -351,7 +368,7 @@ export const NoSelectAll = SolaceGridListMultiSelectStory.bind({});
 NoSelectAll.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	selectAll: false,
 	dataQa: "demoDefaultList"
 };
@@ -361,7 +378,7 @@ WithCustomSelectAllText.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
 	selectAllLabel: "Choose All",
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	dataQa: "demoDefaultList"
 };
 
@@ -369,7 +386,7 @@ export const WithDefaultHighlight = SolaceGridListMultiSelectStory.bind({});
 WithDefaultHighlight.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	highlightedRowId: "2",
 	dataQa: "demoDefaultList"
 };
@@ -378,7 +395,7 @@ export const WithDefaultSelections = SolaceGridListMultiSelectStory.bind({});
 WithDefaultSelections.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	selectedRowIds: ["2", "3", "5"],
 	dataQa: "demoDefaultList"
 };
@@ -387,7 +404,7 @@ export const WithActionMenus = SolaceGridListMultiSelectStory.bind({});
 WithActionMenus.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	actions: getActions(false),
 	dataQa: "demoDefaultList"
 };
@@ -420,7 +437,7 @@ export const WithActionMenusEnabledOnItemsSelect = (): JSX.Element => {
 			onRowHighlight={handleRowHighlight}
 			selectedRowIds={selectedRowIds}
 			onSelection={handleRowSelection}
-			gridTemplate={DEFAULT_GRID_TEMPALTE}
+			gridTemplate={DEFAULT_GRID_TEMPLATE}
 			actions={getActions(isDisabled)}
 			dataQa="demoDefaultList"
 		/>
@@ -431,7 +448,7 @@ export const WithOnlyActionMenus = SolaceGridListMultiSelectStory.bind({});
 WithOnlyActionMenus.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	actions: getActions(false),
 	selectAll: false,
 	dataQa: "demoDefaultList"
@@ -441,7 +458,7 @@ export const WithHeaders = SolaceGridListMultiSelectStory.bind({});
 WithHeaders.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	headers: testHeaders,
 	dataQa: "demoDefaultList"
 };
@@ -450,7 +467,7 @@ export const ContainedList = SolaceGridListMultiSelectStory.bind({});
 ContainedList.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	actions: getActions(false),
 	dataQa: "demoDefaultList",
 	numOfGridListItemDisplayed: 3
@@ -460,7 +477,7 @@ export const ContainedListNoHeader = SolaceGridListMultiSelectStory.bind({});
 ContainedListNoHeader.args = {
 	items: testListItems,
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	dataQa: "demoDefaultList",
 	numOfGridListItemDisplayed: 3,
 	selectAll: false
@@ -472,7 +489,7 @@ LargeDataList.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	virtualizedListOption: {
 		height: 500,
 		overscanCount: 20
@@ -486,9 +503,41 @@ LargeDataListDefaultHighlightAndSelection.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	highlightedRowId: "20",
 	selectedRowIds: ["2", "4", "20"],
+	virtualizedListOption: {
+		height: 500,
+		overscanCount: 20
+	},
+	dataQa: "demoDefaultList"
+};
+
+export const ListWithIndicatorEmphasized = SolaceGridListMultiSelectStory.bind({});
+ListWithIndicatorEmphasized.args = {
+	items: getListItemsWithDifferentIndicators(testListItems),
+	headers: testHeaders,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
+	dataQa: "demoDefaultList"
+};
+
+export const ListWithIndicatorEmphasizedInitialHighlight = SolaceGridListMultiSelectStory.bind({});
+ListWithIndicatorEmphasizedInitialHighlight.args = {
+	items: getListItemsWithDifferentIndicators(testListItems),
+	headers: testHeaders,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
+	highlightedRowId: "2",
+	dataQa: "demoDefaultList"
+};
+
+export const LargeDataListWithIndicatorEmphasized = SolaceGridListMultiSelectStory.bind({});
+LargeDataListWithIndicatorEmphasized.args = {
+	items: getListItemsWithDifferentIndicators(largeListItems),
+	headers: testHeaders,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	virtualizedListOption: {
 		height: 500,
 		overscanCount: 20

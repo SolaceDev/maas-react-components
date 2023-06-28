@@ -30,6 +30,8 @@ interface SolaceGridListProps<T> extends SolaceComponentProps {
 	id?: string;
 	items: T[];
 	objectIdentifier?: string;
+	indicatorVariantIdentifier?: string;
+	emphasizedIdentifier?: string;
 	headers?: string[];
 	selectedItemId?: string | number;
 	onSelection?: (item: T) => void;
@@ -47,6 +49,14 @@ interface SolaceGridListRowProps extends SolaceComponentProps {
 	items: JSX.Element[];
 	gridTemplate: string;
 	selected?: boolean;
+	/**
+	 * A colored vertical bar displayed inside the left border to indicate the variant
+	 */
+	indicatorVariant?: "info" | "error" | "warn" | "success" | "secondary";
+	/**
+	 * A colored background applies to the row to provide emphasize
+	 */
+	emphasized?: boolean;
 	onClick: (id: string) => void;
 	dataQa?: string;
 	background?: string;
@@ -62,6 +72,8 @@ function SolaceGridListRow({
 	items,
 	gridTemplate,
 	selected,
+	indicatorVariant,
+	emphasized,
 	onClick,
 	dataQa,
 	virtualRow = false,
@@ -77,7 +89,9 @@ function SolaceGridListRow({
 	return virtualRow ? (
 		<VirtualRow
 			key={`row-${id}`}
-			className={selected ? "selected" : ""}
+			className={`${selected ? "selected" : ""} ${indicatorVariant ? "indicator-" + indicatorVariant : ""} ${
+				emphasized ? "emphasized" : ""
+			}`}
 			onClick={(e) => {
 				if (e.target === e.currentTarget) onClick(id);
 			}}
@@ -91,7 +105,9 @@ function SolaceGridListRow({
 	) : (
 		<Row
 			key={`row-${id}`}
-			className={selected ? "selected" : ""}
+			className={`${selected ? "selected" : ""} ${indicatorVariant ? "indicator-" + indicatorVariant : ""} ${
+				emphasized ? "emphasized" : ""
+			}`}
 			onClick={(e) => {
 				if (e.target === e.currentTarget) onClick(id);
 			}}
@@ -109,6 +125,8 @@ function SolaceGridList<T>({
 	id,
 	items,
 	objectIdentifier = "id",
+	indicatorVariantIdentifier = "indicatorVariant",
+	emphasizedIdentifier = "emphasized",
 	headers,
 	selectedItemId,
 	onSelection,
@@ -241,6 +259,8 @@ function SolaceGridList<T>({
 								index={index + 1}
 								items={rowMapping(item, index)}
 								selected={selectedItemId ? item[objectIdentifier] === selectedItemId : false}
+								indicatorVariant={item[indicatorVariantIdentifier]}
+								emphasized={item[emphasizedIdentifier]}
 								gridTemplate={gridTemplate}
 								onClick={handleRowClick}
 								dataQa={dataQa}
@@ -276,6 +296,8 @@ function SolaceGridList<T>({
 									index={index + 1}
 									items={rowMapping(items[index], index)}
 									selected={selectedItemId ? items[index][objectIdentifier] === selectedItemId : false}
+									indicatorVariant={items[index][indicatorVariantIdentifier]}
+									emphasized={items[index][emphasizedIdentifier]}
 									gridTemplate={gridTemplate}
 									onClick={handleRowClick}
 									dataQa={dataQa}

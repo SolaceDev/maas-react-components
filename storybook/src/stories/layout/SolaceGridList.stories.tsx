@@ -2,7 +2,8 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { SolaceGridList, SolaceAttributeBadge, SolaceMenu, SolaceTooltip } from "@SolaceDev/maas-react-components";
 import { MoreHorizOutlinedIcon } from "../../../../src/resources/icons/MoreHorizOutlinedIcon";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { cloneDeep } from "lodash";
 
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
 const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
@@ -83,7 +84,9 @@ export default {
 const ENV_1_NAME = "Environment 1";
 const ENV_DESCRIPTION = "The dev environment";
 const testHeaders = ["Modeled Event Mesh", "Environment", "Description"];
-const DEFAULT_GRID_TEMPALTE = "minmax(120px, 1fr) minmax(120px, 1fr) 300px";
+const DEFAULT_GRID_TEMPLATE = "minmax(120px, 1fr) minmax(120px, 1fr) 300px";
+const GRID_TEMPLATE_1 = "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)";
+const GRID_LIST_INDICATOR_VARIANT = ["info", "error", "warn", "success", "secondary"];
 const testListItems = [
 	{
 		createdTime: 1635527600270,
@@ -156,6 +159,22 @@ const testListItems = [
 		changedBy: "10lota8vwsr",
 		id: "5",
 		name: "Event Mesh 5",
+		description: LIST_ITEM_DESCRIPTION,
+		environmentId: "environment2",
+		type: "eventMesh",
+		environment: {
+			id: "environment2",
+			name: ANOTHER_ENVIRONMENT_NAME,
+			description: ENV_DESCRIPTION
+		}
+	},
+	{
+		createdTime: 1635527600270,
+		updatedTime: 1635527600270,
+		createdBy: "10lota8vwsr",
+		changedBy: "10lota8vwsr",
+		id: "6",
+		name: "Event Mesh 6",
 		description: LIST_ITEM_DESCRIPTION,
 		environmentId: "environment2",
 		type: "eventMesh",
@@ -308,6 +327,21 @@ const withActionColumnMapping = (testItem) => {
 	return itemCells;
 };
 
+const getListItemsWithDifferentIndicators = (listItems) => {
+	return listItems.map((item, index) => {
+		const newItem = cloneDeep(item);
+
+		if (index < GRID_LIST_INDICATOR_VARIANT.length) {
+			newItem["indicatorVariant"] = GRID_LIST_INDICATOR_VARIANT[index % GRID_LIST_INDICATOR_VARIANT.length];
+			if (newItem["indicatorVariant"] === "secondary") {
+				newItem["emphasized"] = true;
+			}
+		}
+
+		return newItem;
+	});
+};
+
 const Template: ComponentStory<typeof SolaceGridList> = (args) => <SolaceGridList {...args} />;
 
 export const DefaultList = Template.bind({});
@@ -316,7 +350,7 @@ DefaultList.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: basicRowMapping,
-	gridTemplate: "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)",
+	gridTemplate: GRID_TEMPLATE_1,
 	dataQa: "demoDefaultList"
 };
 
@@ -326,7 +360,7 @@ ContainedList.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	dataQa: "demoDefaultList",
 	numOfGridListItemDisplayed: 3
 };
@@ -337,7 +371,7 @@ ColoredList.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	dataQa: "demoDefaultList",
 	background: "rgba(0, 0, 0, 0.03)"
 };
@@ -348,7 +382,7 @@ CustomRenderer.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	dataQa: "demoDefaultList"
 };
 
@@ -443,7 +477,7 @@ CustomObjectIdentifier.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	dataQa: "demoDefaultList"
 };
 
@@ -463,7 +497,7 @@ LargeDataList.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	virtualizedListOption: {
 		height: 500,
 		overscanCount: 5
@@ -477,7 +511,7 @@ LargeDataColoredList.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	virtualizedListOption: {
 		height: 500,
 		overscanCount: 20
@@ -492,7 +526,7 @@ LargeDataListWithContentPlaceHolder.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	virtualizedListOption: {
 		height: 500,
 		contentPlaceholder: <div style={{ color: "rgba(0,0,0,0.5)" }}>Scrolling...</div>
@@ -506,7 +540,7 @@ LargeContainerList.args = {
 	headers: testHeaders,
 	onSelection: action("rowSelected"),
 	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPALTE,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	virtualizedListOption: {
 		height: 500,
 		overscanCount: 20
@@ -519,6 +553,65 @@ NoHeaderList.args = {
 	items: testListItems,
 	onSelection: action("rowSelected"),
 	rowMapping: basicRowMapping,
-	gridTemplate: "minmax(120px, 200px) minmax(120px, 200px) minmax(300px, 1fr)",
+	gridTemplate: GRID_TEMPLATE_1,
+	dataQa: "demoDefaultList"
+};
+
+const SolaceGridListSelectStory = ({ selectedRowId, ...args }) => {
+	const [selectedId, setSelectedId] = useState(selectedRowId || undefined);
+
+	useEffect(() => {
+		setSelectedId(selectedRowId);
+	}, [selectedRowId]);
+
+	const handleRowSelection = (selectedItem) => {
+		action("selectedRows")(selectedItem);
+		setSelectedId(selectedItem?.id);
+	};
+	return <SolaceGridList {...args} selectedItemId={selectedId} onSelection={handleRowSelection} />;
+};
+
+export const ListWithSelection = SolaceGridListSelectStory.bind({});
+ListWithSelection.args = {
+	items: testListItems,
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: GRID_TEMPLATE_1,
+	dataQa: "demoDefaultList"
+};
+
+export const ListWithSelectionIndicatorEmphasized = SolaceGridListSelectStory.bind({});
+ListWithSelectionIndicatorEmphasized.args = {
+	items: getListItemsWithDifferentIndicators(testListItems),
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: GRID_TEMPLATE_1,
+	dataQa: "demoDefaultList"
+};
+
+export const ListWithSelectionIndicatorEmphasizedInitialSelection = SolaceGridListSelectStory.bind({});
+ListWithSelectionIndicatorEmphasizedInitialSelection.args = {
+	items: getListItemsWithDifferentIndicators(testListItems),
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: GRID_TEMPLATE_1,
+	selectedRowId: "2",
+	dataQa: "demoDefaultList"
+};
+
+export const LargeDataListWithSelectionIndicatorEmphasized = SolaceGridListSelectStory.bind({});
+LargeDataListWithSelectionIndicatorEmphasized.args = {
+	items: getListItemsWithDifferentIndicators(largeListItems),
+	headers: testHeaders,
+	onSelection: action("rowSelected"),
+	rowMapping: basicRowMapping,
+	gridTemplate: GRID_TEMPLATE_1,
+	virtualizedListOption: {
+		height: 500,
+		overscanCount: 5
+	},
 	dataQa: "demoDefaultList"
 };

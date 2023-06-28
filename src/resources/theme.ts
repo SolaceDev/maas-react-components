@@ -1,5 +1,5 @@
 import { alpha, hexToRgb, ThemeOptions } from "@mui/material";
-import { SupportedThemes, ThemeMappingPalette } from "../types";
+import { SupportedThemes, ThemeMapping, ThemeMappingPalette } from "../types";
 import getThemeMappings from "../theming/themeUtils";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
@@ -10,6 +10,109 @@ const deprecatedBoxShadows = {
 	w15: alpha("#000000", 0.15),
 	w20: alpha("#000000", 0.2),
 	w30: alpha("#000000", 0.3)
+};
+
+const verticalIndicatorHeight = "calc(100% - 4px)";
+
+const verticalIndicatorStyle = (themeMapping: ThemeMapping): any => {
+	return {
+		"&.indicator-info": {
+			":after": {
+				position: "absolute",
+				left: 2,
+				top: 2,
+				height: verticalIndicatorHeight,
+				width: "3px",
+				content: "''",
+				background: themeMapping.palette.info.w100,
+				borderRadius: "4px"
+			}
+		},
+		"&.indicator-error": {
+			":after": {
+				position: "absolute",
+				left: 2,
+				top: 2,
+				height: verticalIndicatorHeight,
+				width: "3px",
+				content: "''",
+				background: themeMapping.palette.error.w100,
+				borderRadius: "4px"
+			}
+		},
+		"&.indicator-warn": {
+			":after": {
+				position: "absolute",
+				left: 2,
+				top: 2,
+				height: verticalIndicatorHeight,
+				width: "3px",
+				content: "''",
+				background: themeMapping.palette.warning.w100,
+				borderRadius: "4px"
+			}
+		},
+		"&.indicator-success": {
+			":after": {
+				position: "absolute",
+				left: 2,
+				top: 2,
+				height: verticalIndicatorHeight,
+				width: "3px",
+				content: "''",
+				background: themeMapping.palette.success.w100,
+				borderRadius: "4px"
+			}
+		},
+		"&.indicator-secondary": {
+			":after": {
+				position: "absolute",
+				left: 2,
+				top: 2,
+				height: verticalIndicatorHeight,
+				width: "3px",
+				content: "''",
+				background: themeMapping.palette.secondary.text.w50,
+				borderRadius: "4px"
+			}
+		}
+	};
+};
+
+const gridListRowCommonStyle = (themeMapping: ThemeMapping): any => {
+	return {
+		position: "relative",
+		display: "grid",
+		gridColumnGap: "32px",
+		whiteSpace: "nowrap",
+		placeItems: "center left",
+		padding: "10px 16px",
+		minHeight: "32px",
+		cursor: "pointer",
+		":hover": {
+			background: themeMapping.palette.deprecated.secondary.w10
+		},
+		":focus-visible": {
+			background: themeMapping.palette.secondary.w10,
+			outline: "none"
+		},
+		"&.selected": {
+			background: themeMapping.palette.brand.w10,
+			cursor: "default"
+		},
+		"&.emphasized": {
+			"&:not(.selected)": {
+				background: themeMapping.palette.background.w20,
+				"&:hover": {
+					background: themeMapping.palette.secondary.w20
+				},
+				"&:focus-visible": {
+					background: themeMapping.palette.secondary.w20
+				}
+			}
+		},
+		...verticalIndicatorStyle(themeMapping)
+	};
 };
 
 // https://sol-jira.atlassian.net/wiki/spaces/MAASB/pages/2702704723/How+to+add+theming+in+maas-ui#React:
@@ -924,10 +1027,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								}
 							},
 							".MuiSwitch-thumb": {
-								width: "16px",
-								height: "16px",
+								width: "20px",
+								height: "20px",
 								border: `solid 2px ${themeMapping.palette.primary.w60}`,
-								boxShadow: "none"
+								boxShadow: "none",
+								boxSizing: "border-box"
 							},
 							"&.Mui-checked .MuiSwitch-thumb": {
 								backgroundColor: themeMapping.palette.primary.wMain,
@@ -1442,54 +1546,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&.Mui-disabled": {
 							opacity: 1
 						},
-						"&.indicator-info": {
-							":after": {
-								position: "absolute",
-								left: 2,
-								top: 2,
-								height: "calc(100% - 4px)",
-								width: "3px",
-								content: "''",
-								background: themeMapping.palette.info.w100,
-								borderRadius: "4px"
-							}
-						},
-						"&.indicator-error": {
-							":after": {
-								position: "absolute",
-								left: 2,
-								top: 2,
-								height: "calc(100% - 4px)",
-								width: "3px",
-								content: "''",
-								background: themeMapping.palette.error.w100,
-								borderRadius: "4px"
-							}
-						},
-						"&.indicator-warn": {
-							":after": {
-								position: "absolute",
-								left: 2,
-								top: 2,
-								height: "calc(100% - 4px)",
-								width: "3px",
-								content: "''",
-								background: themeMapping.palette.warning.w100,
-								borderRadius: "4px"
-							}
-						},
-						"&.indicator-success": {
-							":after": {
-								position: "absolute",
-								left: 2,
-								top: 2,
-								height: "calc(100% - 4px)",
-								width: "3px",
-								content: "''",
-								background: themeMapping.palette.success.w100,
-								borderRadius: "4px"
-							}
-						}
+						...verticalIndicatorStyle(themeMapping)
 					},
 					content: {
 						margin: "6px 0px 6px 8px"
@@ -1819,12 +1876,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					}
 				},
 				row: {
-					display: "grid",
-					gridColumnGap: "32px",
-					whiteSpace: "nowrap",
-					placeItems: "center left",
-					padding: "10px 16px",
-					minHeight: "32px",
+					...gridListRowCommonStyle(themeMapping),
 					"&.headerRow": {
 						border: "none",
 						height: "30px",
@@ -1843,41 +1895,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						}
 					},
 					borderBottom: `1px solid ${themeMapping.palette.secondary.w20}`,
-					cursor: "pointer",
 					":last-child": {
 						borderBottom: "none"
-					},
-					":hover": {
-						background: themeMapping.palette.deprecated.secondary.w10
-					},
-					":focus-visible": {
-						background: themeMapping.palette.secondary.w10,
-						outline: "none"
-					},
-					"&.selected": {
-						background: themeMapping.palette.brand.w10,
-						cursor: "default"
 					}
 				},
 				virtualRow: {
-					display: "grid",
-					gridColumnGap: "32px",
-					whiteSpace: "nowrap",
-					placeItems: "center left",
-					padding: "10px 16px",
-					minHeight: "32px",
-					cursor: "pointer",
-					":hover": {
-						background: themeMapping.palette.deprecated.secondary.w10
-					},
-					":focus-visible": {
-						background: themeMapping.palette.secondary.w10,
-						outline: "none"
-					},
-					"&.selected": {
-						background: themeMapping.palette.brand.w10,
-						cursor: "default"
-					}
+					...gridListRowCommonStyle(themeMapping)
 				},
 				virtualRowContainer: {
 					boxSizing: "border-box",

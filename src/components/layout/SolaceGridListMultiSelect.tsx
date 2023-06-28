@@ -15,6 +15,8 @@ interface SolaceGridListMultiSelectProps<T> extends SolaceComponentProps {
 	id?: string;
 	items: T[];
 	objectIdentifier?: string;
+	indicatorVariantIdentifier?: string;
+	emphasizedIdentifier?: string;
 	headers?: string[];
 	highlightedRowId?: string | number;
 	onRowHighlight?: (item: T) => void;
@@ -35,6 +37,8 @@ function SolaceGridListMultiSelect<T>({
 	id,
 	items,
 	objectIdentifier = "id",
+	indicatorVariantIdentifier = "indicatorVariant",
+	emphasizedIdentifier = "emphasized",
 	headers,
 	highlightedRowId,
 	onRowHighlight,
@@ -236,6 +240,8 @@ function SolaceGridListMultiSelect<T>({
 				id={id}
 				items={items}
 				objectIdentifier={objectIdentifier}
+				indicatorVariantIdentifier={indicatorVariantIdentifier}
+				emphasizedIdentifier={emphasizedIdentifier}
 				selectedItemId={highlightedRowId}
 				onSelection={onRowHighlight}
 				rowMapping={getRowMapping}

@@ -30,7 +30,7 @@ export default {
 			description: "The details (e.g. expandable) section of the Accordion component"
 		},
 		indicatorVariant: {
-			options: ["info", "error", "warn", "success"],
+			options: ["info", "error", "warn", "success", "secondary"],
 			control: {
 				type: "select"
 			},

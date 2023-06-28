@@ -20,7 +20,7 @@ export interface SolaceAccordionProps extends SolaceComponentProps {
 	/**
 	 * A colored vertical bar displayed inside the left border to indicate the variant
 	 */
-	indicatorVariant?: "info" | "error" | "warn" | "success";
+	indicatorVariant?: "info" | "error" | "warn" | "success" | "secondary";
 	/**
 	 * If true, the Accordion component is disabled.
 	 */
