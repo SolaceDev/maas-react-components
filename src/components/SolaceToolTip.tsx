@@ -2,6 +2,7 @@ import { styled, Tooltip } from "@mui/material";
 import { Fade } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { useCallback, useRef, useState } from "react";
+import { isEmpty } from "lodash";
 
 export interface SolaceTooltipProps extends SolaceComponentProps {
 	/**
@@ -109,6 +110,10 @@ function SolaceTooltip({
 
 	const handleOpen = useCallback(
 		(event: React.SyntheticEvent) => {
+			// if empty, don't open the tooltip.
+			if (isEmpty(title)) {
+				return;
+			}
 			let shouldOpen = true;
 			if (
 				variant === "overflow" &&
@@ -124,7 +129,7 @@ function SolaceTooltip({
 				}
 			}
 		},
-		[onOpen, variant]
+		[onOpen, title, variant]
 	);
 
 	const handleClose = useCallback(
