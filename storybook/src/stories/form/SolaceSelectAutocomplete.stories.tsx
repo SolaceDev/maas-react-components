@@ -93,6 +93,16 @@ export default {
 			control: {
 				type: "text"
 			}
+		},
+		fullWidth: {
+			control: {
+				type: "boolean"
+			}
+		},
+		minWidth: {
+			control: {
+				type: "text"
+			}
 		}
 	},
 	decorators: [withMock, withState()]

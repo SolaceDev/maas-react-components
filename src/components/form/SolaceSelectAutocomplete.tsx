@@ -131,6 +131,14 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * MaxHeight supports standard css units (px,rems, etc.)
 	 */
 	maxHeight?: string;
+	/**
+	 * Boolean flag to make the component full width
+	 */
+	fullWidth?: boolean;
+	/**
+	 * Custom min-width of the component
+	 */
+	minWidth?: string;
 }
 
 const CustomHeightTextField = styled(TextField)`
@@ -176,7 +184,9 @@ function SolaceSelectAutocomplete<T, V>({
 	width,
 	inputRef,
 	openOnFocus = false,
-	maxHeight
+	maxHeight,
+	fullWidth = false,
+	minWidth
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const inputValueChangedRef = useRef<boolean>(false);
@@ -353,6 +363,8 @@ function SolaceSelectAutocomplete<T, V>({
 			}}
 			groupBy={groupByCallback}
 			renderGroup={groupByCallback && showGroupDivider ? renderGroup : undefined}
+			fullWidth={fullWidth}
+			sx={{ minWidth: minWidth }}
 		/>
 	);
 

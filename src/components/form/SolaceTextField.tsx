@@ -121,6 +121,10 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * optional prop to pass an array of icon or button at the end of textfield
 	 */
 	endAdornment?: (React.ReactNode | JSX.Element)[];
+	/**
+	 * minimum width of the component
+	 */
+	minWidth?: string;
 }
 
 function SolaceTextField({
@@ -151,7 +155,8 @@ function SolaceTextField({
 	dataTags,
 	fullWidth = false,
 	width,
-	endAdornment
+	endAdornment,
+	minWidth
 }: SolaceTextFieldProps): JSX.Element {
 	const theme = useTheme();
 
@@ -253,6 +258,7 @@ function SolaceTextField({
 					onKeyUp={onKeyUp}
 					onFocus={onFocus}
 					fullWidth={fullWidth}
+					sx={{ minWidth: minWidth }}
 				/>
 			);
 		}

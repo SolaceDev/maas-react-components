@@ -76,6 +76,11 @@ export default {
 			control: {
 				type: "number"
 			}
+		},
+		minWidth: {
+			control: {
+				type: "number"
+			}
 		}
 	}
 } as ComponentMeta<typeof SolaceTextField>;
