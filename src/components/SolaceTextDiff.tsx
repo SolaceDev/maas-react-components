@@ -47,12 +47,10 @@ const CodeDiffContainer = styled("div")(({ theme }) => ({
 				".d2h-code-side-emptyplaceholder, .d2h-emptyplaceholder": {
 					border: 0,
 					backgroundColor: "#D0021B", // TODO: This is not added in the theme mapping file. Need to add it
-					opacity: 0.1,
-					mixBlendMode: "multiply"
+					opacity: 0.1
 				},
 				".d2h-ins, .d2h-del": {
-					backgroundColor: "rgba(83, 174, 15, 0.2);", // TODO: This is not added in the theme mapping file. Need to add it
-					mixBlendMode: "multiply"
+					backgroundColor: "rgba(83, 174, 15, 0.2);" // TODO: This is not added in the theme mapping file. Need to add it
 				},
 				ins: {
 					backgroundColor: "#FEE5BF", // TODO: This is not added in the theme mapping file. Need to add it
