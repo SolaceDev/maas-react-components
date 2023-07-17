@@ -5,10 +5,12 @@ import {
 	SolaceTooltip,
 	SolaceMenu,
 	SelectDropdownIcon,
-	SolaceAttributeBadge
+	SolaceAttributeBadge,
+	SolaceButton
 } from "@SolaceDev/maas-react-components";
 import React, { useState, useEffect } from "react";
 import { cloneDeep } from "lodash";
+import { userEvent, within } from "@storybook/testing-library";
 
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
 const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
@@ -398,6 +400,67 @@ WithDefaultSelections.args = {
 	gridTemplate: DEFAULT_GRID_TEMPLATE,
 	selectedRowIds: ["2", "3", "5"],
 	dataQa: "demoDefaultList"
+};
+
+export const WithAllSelected = SolaceGridListMultiSelectStory.bind({});
+WithAllSelected.args = {
+	items: testListItems,
+	rowMapping: basicRowMapping,
+	gridTemplate: DEFAULT_GRID_TEMPLATE,
+	selectedRowIds: testListItems.map((item) => item.id),
+	dataQa: "demoDefaultList"
+};
+
+export const WithClearSelectAllAction = (): JSX.Element => {
+	const [highlightedRowId, setHighlightedRowId] = useState();
+	const [selectedRowIds, setSelectedRowIds] = useState(testListItems.map((item) => item.id));
+
+	const handleRowHighlight = (selectedItem) => {
+		action("rowHighlighted")(selectedItem);
+		setHighlightedRowId(selectedItem.id);
+	};
+
+	const handleRowSelection = (selectedItems) => {
+		action("selectedRows")(selectedItems);
+		setSelectedRowIds(selectedItems.map((item) => item.id));
+	};
+
+	const handleClearAllSelections = () => {
+		action("clearAllSelections")();
+		setSelectedRowIds([]);
+	};
+
+	return (
+		<div style={{ display: "flex", flexDirection: "column", rowGap: "24px" }}>
+			<SolaceGridListMultiSelect
+				items={testListItems}
+				rowMapping={basicRowMapping}
+				highlightedRowId={highlightedRowId}
+				onRowHighlight={handleRowHighlight}
+				selectedRowIds={selectedRowIds}
+				onSelection={handleRowSelection}
+				gridTemplate={DEFAULT_GRID_TEMPLATE}
+				dataQa="demoDefaultList"
+			/>
+			<div style={{ width: "200px" }}>
+				<SolaceButton variant={"outline"} onClick={handleClearAllSelections}>
+					Clear All Selections
+				</SolaceButton>
+			</div>
+		</div>
+	);
+};
+
+WithClearSelectAllAction.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+
+	// clear all selection
+	await userEvent.click(await canvas.findByRole("button", { name: /Clear All Selections/i }));
+};
+WithClearSelectAllAction.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
 };
 
 export const WithActionMenus = SolaceGridListMultiSelectStory.bind({});

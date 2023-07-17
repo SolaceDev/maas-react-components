@@ -78,6 +78,14 @@ function SolaceGridListMultiSelect<T>({
 		}
 	}, [items?.length, selectedRowIds?.length]);
 
+	useEffect(() => {
+		if (items.length !== 0 && selectedRowIds.length === items.length) {
+			setAllSelected(true);
+		} else {
+			setAllSelected(false);
+		}
+	}, [selectedRowIds.length, items?.length]);
+
 	const handleRowSelection = useCallback(
 		(event: SolaceCheckboxChangeEvent) => {
 			const selectedObj = items.find((obj) => obj[objectIdentifier] === event.name);
