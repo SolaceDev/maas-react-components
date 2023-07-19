@@ -198,24 +198,22 @@ const SolaceMenuItem = ({
 						<div style={{ pointerEvents: "auto" }}>
 							{subMenuItems.map((item, index) => {
 								return (
-									<>
-										<SolaceMenuItem
-											id={`${item.name}-${index}`}
-											key={`${item.name}-${index}`}
-											name={item.name}
-											itemHeight={itemHeight ? itemHeight : 38} // default height is 38
-											closeOnSelect={closeOnSelect}
-											subText={item?.subText}
-											supplementalText={item?.supplementalText}
-											disabled={!!item?.disabled}
-											icon={item?.icon}
-											secondaryAction={item?.secondaryAction}
-											onMenuItemClick={onMenuItemClick}
-											onMenuClose={handleMenuClose}
-											subMenuItems={item?.subMenuItems}
-										/>
-										{!!item?.divider && <Divider />}
-									</>
+									<SolaceMenuItem
+										id={`${item.name}-${index}`}
+										key={`${item.name}-${index}`}
+										name={item.name}
+										itemHeight={itemHeight ? itemHeight : 38} // default height is 38
+										closeOnSelect={closeOnSelect}
+										subText={item?.subText}
+										supplementalText={item?.supplementalText}
+										divider={!!item?.divider}
+										disabled={!!item?.disabled}
+										icon={item?.icon}
+										secondaryAction={item?.secondaryAction}
+										onMenuItemClick={onMenuItemClick}
+										onMenuClose={handleMenuClose}
+										subMenuItems={item?.subMenuItems}
+									/>
 								);
 							})}
 						</div>

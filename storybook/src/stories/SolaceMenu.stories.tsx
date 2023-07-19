@@ -622,7 +622,7 @@ export const ClickPropagateToParent = (): JSX.Element => {
 	);
 };
 
-const MENU_WITH_NESTED_ITEMS = [
+const MENU_WITH_NESTED_ITEMS = (hasDivider: boolean) => [
 	{
 		name: "Option 1",
 		onMenuItemClick: action("callback"),
@@ -632,7 +632,7 @@ const MENU_WITH_NESTED_ITEMS = [
 			{ name: "Option 1-1", onMenuItemClick: action("callback") },
 			{ name: "Option 1-2", onMenuItemClick: action("callback") }
 		],
-		divider: true
+		divider: hasDivider
 	},
 	{
 		name: "Option 2",
@@ -641,7 +641,8 @@ const MENU_WITH_NESTED_ITEMS = [
 	},
 	{
 		name: "Option 3",
-		onMenuItemClick: action("callback")
+		onMenuItemClick: action("callback"),
+		divider: hasDivider
 	},
 	{
 		name: "Option 4",
@@ -655,7 +656,8 @@ const MENU_WITH_NESTED_ITEMS = [
 			},
 			{
 				name: "SubOption 4-2",
-				onMenuItemClick: action("callback")
+				onMenuItemClick: action("callback"),
+				divider: hasDivider
 			},
 			{
 				name: "SubOption 4-3",
@@ -674,7 +676,7 @@ const MENU_WITH_NESTED_ITEMS = [
 						supplementalText: SUPPLEMENTALText,
 						onMenuItemClick: action("callback"),
 						categoryHeading: "Category1",
-						divider: true
+						divider: hasDivider
 					},
 					{
 						name: "SubSubOption 4-3-3",
@@ -701,7 +703,19 @@ export const NestedMenuItems = (): JSX.Element => {
 				variant: "icon",
 				children: <MoreHorizOutlinedIcon />
 			}}
-			items={MENU_WITH_NESTED_ITEMS}
+			items={MENU_WITH_NESTED_ITEMS(false)}
+		/>
+	);
+};
+
+export const NestedMenuItemsWithDividers = (): JSX.Element => {
+	return (
+		<SolaceMenu
+			buttonProps={{
+				variant: "icon",
+				children: <MoreHorizOutlinedIcon />
+			}}
+			items={MENU_WITH_NESTED_ITEMS(true)}
 		/>
 	);
 };
