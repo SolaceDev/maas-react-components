@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MenuItem, ListItemIcon, Grid, Typography, useTheme, Menu } from "@mui/material";
+import { MenuItem, ListItemIcon, Grid, Typography, useTheme, Menu, Divider } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { ArrowRightIcon } from "../resources/icons/ArrowRight";
 import clsx from "clsx";
@@ -107,119 +107,123 @@ const SolaceMenuItem = ({
 	};
 
 	return (
-		<MenuItem
-			id={id}
-			key={id}
-			data-qa={dataQa}
-			data-tags={dataTags}
-			onClick={(e) => {
-				// stop click event on the menu item from being bubbled up to parent, causing unexpected extra click event
-				e.stopPropagation();
-				if (closeOnSelect) {
-					handleMenuClose(e);
-				}
-				if (onMenuItemClick) {
-					onMenuItemClick(e);
-				}
-			}}
-			onMouseEnter={handleMouseEnterOnMenuItem}
-			onMouseLeave={handleClose}
-			divider={!!divider}
-			disabled={!!disabled}
-			className={clsx({
-				multiline: !!subText && typeof name === "string",
-				wideMenu: !!supplementalText && typeof name === "string",
-				selectedItem: selected
-			})}
-		>
-			{typeof name === "string" ? (
-				<>
-					{icon && <ListItemIcon>{icon}</ListItemIcon>}
-					<Grid container direction={"column"} justifyContent="center">
-						<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
-							<Typography variant="body1" noWrap>
-								{name}
-							</Typography>
-							{supplementalText && (
-								<Grid className="supplementalText" item>
-									{supplementalText}
+		<>
+			<MenuItem
+				id={id}
+				key={id}
+				data-qa={dataQa}
+				data-tags={dataTags}
+				onClick={(e) => {
+					// stop click event on the menu item from being bubbled up to parent, causing unexpected extra click event
+					e.stopPropagation();
+					if (closeOnSelect) {
+						handleMenuClose(e);
+					}
+					if (onMenuItemClick) {
+						onMenuItemClick(e);
+					}
+				}}
+				onMouseEnter={handleMouseEnterOnMenuItem}
+				onMouseLeave={handleClose}
+				disabled={!!disabled}
+				className={clsx({
+					multiline: !!subText && typeof name === "string",
+					wideMenu: !!supplementalText && typeof name === "string",
+					selectedItem: selected
+				})}
+			>
+				{typeof name === "string" ? (
+					<>
+						{icon && <ListItemIcon>{icon}</ListItemIcon>}
+						<Grid container direction={"column"} justifyContent="center">
+							<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
+								<Typography variant="body1" noWrap>
+									{name}
+								</Typography>
+								{supplementalText && (
+									<Grid className="supplementalText" item>
+										{supplementalText}
+									</Grid>
+								)}
+							</Grid>
+
+							{subText && (
+								<Grid className="subtext" item>
+									<span className="subtext">{subText}</span>
 								</Grid>
 							)}
 						</Grid>
 
-						{subText && (
-							<Grid className="subtext" item>
-								<span className="subtext">{subText}</span>
+						{secondaryAction && (
+							<Grid container sx={{ marginLeft: theme.spacing(3) }} alignItems={"center"}>
+								{secondaryAction}
 							</Grid>
 						)}
-					</Grid>
 
-					{secondaryAction && (
-						<Grid container sx={{ marginLeft: theme.spacing(3) }} alignItems={"center"}>
-							{secondaryAction}
-						</Grid>
-					)}
-
-					{subMenuItems && subMenuItems.length > 0 && (
-						<Grid container sx={{ marginLeft: theme.spacing(3), width: "auto" }} alignItems={"center"}>
-							<ArrowRightIcon />
-						</Grid>
-					)}
-				</>
-			) : (
-				name
-			)}
-			{subMenuItems && subMenuItems.length > 0 && (
-				<Menu
-					id={id}
-					key={`key-${id}`}
-					data-qa={`${dataQa}-subMenu-${id}`}
-					data-tags={`${dataTags}-subMenu-${id}`}
-					anchorEl={anchorEl}
-					open={isSubMenuOpen}
-					anchorOrigin={{
-						vertical: "top",
-						horizontal: "right"
-					}}
-					transformOrigin={{
-						vertical: "top",
-						horizontal: "left"
-					}}
-					onClose={handleMenuClose}
-					PaperProps={{
-						style: {
-							maxHeight: itemHeight ? `${itemHeight * 9.5}px` : `${38 * 9.5}px` // default height is 38
-						}
-					}}
-					className="SolaceMenu"
-					style={{ pointerEvents: "none" }} /// "pointerEvents: none" to prevent invisible Popover wrapper div to capture mouse events
-				>
-					{/* reset pointer event here so that the menu items could receive mouse events */}
-					<div style={{ pointerEvents: "auto" }}>
-						{subMenuItems.map((item, index) => {
-							return (
-								<SolaceMenuItem
-									id={`${item.name}-${index}`}
-									key={`${item.name}-${index}`}
-									name={item.name}
-									itemHeight={itemHeight ? itemHeight : 38} // default height is 38
-									closeOnSelect={closeOnSelect}
-									subText={item?.subText}
-									supplementalText={item?.supplementalText}
-									divider={!!item?.divider}
-									disabled={!!item?.disabled}
-									icon={item?.icon}
-									secondaryAction={item?.secondaryAction}
-									onMenuItemClick={onMenuItemClick}
-									onMenuClose={handleMenuClose}
-									subMenuItems={item?.subMenuItems}
-								/>
-							);
-						})}
-					</div>
-				</Menu>
-			)}
-		</MenuItem>
+						{subMenuItems && subMenuItems.length > 0 && (
+							<Grid container sx={{ marginLeft: theme.spacing(3), width: "auto" }} alignItems={"center"}>
+								<ArrowRightIcon />
+							</Grid>
+						)}
+					</>
+				) : (
+					name
+				)}
+				{subMenuItems && subMenuItems.length > 0 && (
+					<Menu
+						id={id}
+						key={`key-${id}`}
+						data-qa={`${dataQa}-subMenu-${id}`}
+						data-tags={`${dataTags}-subMenu-${id}`}
+						anchorEl={anchorEl}
+						open={isSubMenuOpen}
+						anchorOrigin={{
+							vertical: "top",
+							horizontal: "right"
+						}}
+						transformOrigin={{
+							vertical: "top",
+							horizontal: "left"
+						}}
+						onClose={handleMenuClose}
+						PaperProps={{
+							style: {
+								maxHeight: itemHeight ? `${itemHeight * 9.5}px` : `${38 * 9.5}px` // default height is 38
+							}
+						}}
+						className="SolaceMenu"
+						style={{ pointerEvents: "none" }} /// "pointerEvents: none" to prevent invisible Popover wrapper div to capture mouse events
+					>
+						{/* reset pointer event here so that the menu items could receive mouse events */}
+						<div style={{ pointerEvents: "auto" }}>
+							{subMenuItems.map((item, index) => {
+								return (
+									<>
+										<SolaceMenuItem
+											id={`${item.name}-${index}`}
+											key={`${item.name}-${index}`}
+											name={item.name}
+											itemHeight={itemHeight ? itemHeight : 38} // default height is 38
+											closeOnSelect={closeOnSelect}
+											subText={item?.subText}
+											supplementalText={item?.supplementalText}
+											disabled={!!item?.disabled}
+											icon={item?.icon}
+											secondaryAction={item?.secondaryAction}
+											onMenuItemClick={onMenuItemClick}
+											onMenuClose={handleMenuClose}
+											subMenuItems={item?.subMenuItems}
+										/>
+										{!!item?.divider && <Divider />}
+									</>
+								);
+							})}
+						</div>
+					</Menu>
+				)}
+			</MenuItem>
+			{!!divider && <Divider />}
+		</>
 	);
 };
 

@@ -405,6 +405,36 @@ export const CustomPositionMenu = (): JSX.Element => {
 	);
 };
 
+export const MenusWithDivider = Template.bind({});
+MenusWithDivider.args = {
+	buttonProps: {
+		variant: "icon",
+		children: <MoreHorizOutlinedIcon />
+	},
+	items: [
+		{
+			name: "Option 1",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		},
+		{
+			name: "Option 2",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback"),
+			divider: true
+		},
+		{
+			name: "Option 3",
+			subText: SUBTEXT,
+			supplementalText: SUPPLEMENTALText,
+			onMenuItemClick: action("callback")
+		}
+	],
+	multiline: true
+};
+
 export const HeaderAndCategoryHeading = Template.bind({});
 HeaderAndCategoryHeading.args = {
 	buttonProps: {
@@ -601,7 +631,8 @@ const MENU_WITH_NESTED_ITEMS = [
 		subMenuItems: [
 			{ name: "Option 1-1", onMenuItemClick: action("callback") },
 			{ name: "Option 1-2", onMenuItemClick: action("callback") }
-		]
+		],
+		divider: true
 	},
 	{
 		name: "Option 2",
