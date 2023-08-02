@@ -1573,6 +1573,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						padding: "8px 16px 16px 48px"
 					}
 				}
+			},
+			MuiListItemButton: {
+				styleOverrides: {
+					root: { "&.Mui-selected": { backgroundColor: themeMapping.palette.brand.w10 } }
+				}
 			}
 		},
 		mixins: {

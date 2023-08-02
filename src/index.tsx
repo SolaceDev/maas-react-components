@@ -89,6 +89,9 @@ export { default as SolaceResponsiveItemList } from "./components/SolaceResponsi
 export type { SolaceResponsiveItem } from "./components/SolaceResponsiveItemList";
 export { default as SolaceSearchAndFilter } from "./components/SolaceSearchAndFilter";
 export { FIELD_TYPES } from "./types/fieldTypes";
+export { default as SolaceList } from "./components/layout/SolaceList";
+export { default as SolaceListItem } from "./components/layout/SolaceListItem";
+export { default as SolaceListItemButton } from "./components/layout/SolaceListItemButton";
 
 export * from "./types";
 

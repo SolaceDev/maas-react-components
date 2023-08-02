@@ -9,3 +9,4 @@ export * from "./sx";
 export * from "./solaceGrid";
 export * from "./solaceStack";
 export * from "./solaceTypography";
+export * from "./solaceList";
