@@ -7,6 +7,8 @@ export type ThemeMappingPalette = {
 		wMain30: string;
 		w30: string;
 		w10: string;
+		w60: string;
+		w100: string;
 	};
 
 	primary: {
@@ -123,6 +125,13 @@ export type ThemeMappingPalette = {
 			wMain: string;
 			w30: string;
 		};
+	};
+
+	learning: {
+		wMain: string;
+		w100: string;
+		w90: string;
+		w20: string;
 	};
 
 	deprecated: {

@@ -7,7 +7,9 @@ const palette: ThemeMappingPalette = {
 		wMain: "#0A6ED1",
 		wMain30: alpha("#0A6ED1", 0.3),
 		w30: "#B6D4F1",
-		w10: "#E7F1FA"
+		w10: "#E7F1FA",
+		w60: "#66DEBF",
+		w100: "#00AD93"
 	},
 
 	primary: {
@@ -124,6 +126,13 @@ const palette: ThemeMappingPalette = {
 			wMain: "#647987",
 			w30: "#D1D7DB"
 		}
+	},
+
+	learning: {
+		wMain: "#033A6F",
+		w90: "#022E59",
+		w100: "#022343",
+		w20: "#CDD8E2"
 	},
 
 	deprecated: {

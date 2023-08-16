@@ -76,6 +76,7 @@ export { default as SolaceGridList } from "./components/layout/SolaceGridList";
 export { default as SolaceGridListMultiSelect } from "./components/layout/SolaceGridListMultiSelect";
 export { default as SolaceNotificationCounter } from "./components/SolaceNotificationCounter";
 export { default as getThemeMappings } from "./theming/themeUtils";
+export { getNewSolaceTheme } from "./theming/themeUtils";
 export { default as SolaceIcon } from "./components/SolaceIcon";
 export { default as SolaceSplitPane } from "./components/layout/SolaceSplitPane";
 export { default as SolaceAccordion } from "./components/SolaceAccordion";
@@ -92,6 +93,7 @@ export { FIELD_TYPES } from "./types/fieldTypes";
 export { default as SolaceList } from "./components/layout/SolaceList";
 export { default as SolaceListItem } from "./components/layout/SolaceListItem";
 export { default as SolaceListItemButton } from "./components/layout/SolaceListItemButton";
+export { default as SolaceLearningButton } from "./components/form/Button/SolaceLearningButton";
 
 export * from "./types";
 

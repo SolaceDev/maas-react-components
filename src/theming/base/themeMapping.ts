@@ -11,7 +11,9 @@ export const baseThemeMapping: ThemeMapping = {
 			wMain: "#00AD93",
 			wMain30: alpha("#00AD93", 0.35),
 			w30: "#00C895",
-			w10: "#e8f9f4"
+			w10: "#e8f9f4",
+			w60: "#66DEBF",
+			w100: "#00AD93"
 		},
 
 		primary: {
@@ -128,6 +130,13 @@ export const baseThemeMapping: ThemeMapping = {
 				wMain: "#6A6A6A",
 				w30: ""
 			}
+		},
+
+		learning: {
+			wMain: "#033A6F",
+			w90: "#022E59",
+			w100: "#022343",
+			w20: "#CDD8E2"
 		},
 
 		deprecated: {
