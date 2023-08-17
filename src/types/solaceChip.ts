@@ -1,4 +1,4 @@
-import { BASE_SIZE_TYPES } from "../resources/sizing";
+import { BASE_SIZE_TYPES } from "./sizing";
 
 export enum CHIP_COLORS {
 	ROYAL_BLUE = "royalBlue",

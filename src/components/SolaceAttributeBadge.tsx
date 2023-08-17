@@ -1,5 +1,5 @@
 import { Chip, useTheme } from "@mui/material";
-import { BASE_SIZE_TYPES } from "../resources/sizing";
+import { BASE_SIZE_TYPES } from "../types/sizing";
 import { BASE_FONT_PX_SIZE_TYPES, BASE_FONT_PX_SIZES } from "../resources/typography";
 import { CHIP_COLORS } from "../types/solaceChip";
 import SolaceComponentProps from "./SolaceComponentProps";

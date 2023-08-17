@@ -302,6 +302,18 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					}
 				}
 			},
+			MuiLinearProgress: {
+				styleOverrides: {
+					root: {
+						backgroundColor: "transparent",
+						"&.learning": {
+							".MuiLinearProgress-bar": {
+								backgroundColor: themeMapping.palette.brand.w60
+							}
+						}
+					}
+				}
+			},
 			MuiFormHelperText: {
 				styleOverrides: {
 					root: {

@@ -11,3 +11,7 @@ export * from "./solaceStack";
 export * from "./solaceTypography";
 export * from "./solaceList";
 export * from "./solaceLearningButton";
+export * from "./numericTypes";
+export * from "./solaceProgress";
+export * from "./fieldTypes";
+export * from "./sizing";

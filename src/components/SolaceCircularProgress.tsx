@@ -1,6 +1,6 @@
 import { CircularProgress, useTheme } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
-import { BASE_SIZE_TYPES } from "../resources/sizing";
+import { BASE_SIZE_TYPES } from "../types/sizing";
 
 /**
  * Helper component to show the circular spinner with capability to display the value in progress of something
