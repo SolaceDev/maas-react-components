@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Box, Autocomplete, TextField, useTheme, styled, Divider } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -189,7 +189,6 @@ function SolaceSelectAutocomplete<T, V>({
 	minWidth
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
-	const inputValueChangedRef = useRef<boolean>(false);
 	const [selectedValue, setSelectedValue] = useState(value || null);
 	const [inputValue, setInputValue] = React.useState("");
 	const [filteredOptions, setFilteredOptions] = useState(options || []);
@@ -241,7 +240,6 @@ function SolaceSelectAutocomplete<T, V>({
 	};
 
 	const handleInputChange = (_event: SyntheticEvent<Element, Event>, newInputValue: string) => {
-		setInputValueChanged(true);
 		setInputValue(newInputValue);
 		if (newInputValue === "") {
 			// Reset options when inputValue is empty
@@ -251,19 +249,12 @@ function SolaceSelectAutocomplete<T, V>({
 
 	const handleOpen = () => {
 		setOpen(true);
-		if (!inputValueChangedRef.current) {
-			setResetOptions(true);
-		}
+		setResetOptions(true);
 	};
 
 	const handleClose = () => {
 		onCloseCallback && onCloseCallback(); // notify parent select closed
-		setInputValueChanged(false);
 		setOpen(false);
-	};
-
-	const setInputValueChanged = (inputValueChanged: boolean) => {
-		inputValueChangedRef.current = inputValueChanged;
 	};
 
 	const getId = () => {
