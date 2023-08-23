@@ -213,7 +213,56 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						textTransform: "none",
 						borderRadius: "4px",
 						minWidth: "100px",
-						height: "32px"
+						height: "32px",
+
+						"&.learning-button": {
+							borderRadius: `8px 4px`,
+							color: themeMapping.palette.learning.wMain,
+							backgroundColor: themeMapping.palette.brand.w60,
+							"&:hover": {
+								backgroundColor: themeMapping.palette.brand.wMain
+							},
+							"&.pressed": {
+								backgroundColor: themeMapping.palette.brand.w100
+							},
+							"&:disabled": {
+								backgroundColor: themeMapping.palette.brand.w10
+							}
+						},
+
+						"&.learning-light-button": {
+							borderRadius: `8px 4px`,
+							color: themeMapping.palette.brand.w60,
+							backgroundColor: themeMapping.palette.learning.wMain,
+							"&:hover": {
+								backgroundColor: themeMapping.palette.learning.w90
+							},
+							"&.pressed": {
+								backgroundColor: themeMapping.palette.learning.w100
+							},
+							"&:disabled": {
+								backgroundColor: themeMapping.palette.learning.w20,
+								color: themeMapping.palette.primary.text.w10
+							}
+						},
+
+						"&.learning-light-outlined-button": {
+							borderRadius: `8px 4px`,
+							borderColor: themeMapping.palette.learning.wMain,
+							color: themeMapping.palette.learning.wMain,
+							"&:hover": {
+								borderColor: themeMapping.palette.learning.w90,
+								backgroundColor: themeMapping.palette.learning.w10
+							},
+							"&.pressed": {
+								borderColor: themeMapping.palette.learning.w100,
+								backgroundColor: themeMapping.palette.learning.w20
+							},
+							"&:disabled": {
+								borderColor: themeMapping.palette.learning.w20,
+								color: themeMapping.palette.learning.w20
+							}
+						}
 					},
 					startIcon: {
 						width: "24px",
@@ -369,6 +418,30 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&:disabled": {
 							".MuiSvgIcon-root": {
 								fill: themeMapping.palette.secondary.w40
+							}
+						},
+						"&.learning-icon-button": {
+							".MuiSvgIcon-root": {
+								fill: themeMapping.palette.deprecated.secondary.w30
+							},
+							"&:hover": {
+								backgroundColor: themeMapping.palette.learning.w90,
+								".MuiSvgIcon-root": {
+									color: themeMapping.palette.brand.w60,
+									fill: themeMapping.palette.brand.w60
+								}
+							},
+							"&.pressed": {
+								backgroundColor: themeMapping.palette.learning.w100,
+								".MuiSvgIcon-root": {
+									color: themeMapping.palette.brand.w60,
+									fill: themeMapping.palette.brand.w60
+								}
+							},
+							"&:disabled": {
+								".MuiSvgIcon-root": {
+									fill: themeMapping.palette.brand.w10
+								}
 							}
 						}
 					}

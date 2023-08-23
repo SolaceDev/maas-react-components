@@ -1,12 +1,13 @@
 import React, { ReactNode } from "react";
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceLearningButton, DeleteIcon } from "@SolaceDev/maas-react-components";
+import { SolaceLearningButton, DeleteIcon, Paper, Container, Box } from "@SolaceDev/maas-react-components";
 
 enum VARIANT {
 	LEARNING = "learning",
 	LEARNING_ICON = "learning-icon",
-	LEARNING_LIGHT = "learning-light"
+	LEARNING_LIGHT = "learning-light",
+	LEARNING_LIGHT_OUTLINED = "learning-light-outlined"
 }
 
 export default {
@@ -29,7 +30,7 @@ export default {
 			description: "Unique identifier for the button"
 		},
 		variant: {
-			options: ["learning", "learning-icon", "learning-light"],
+			options: ["learning", "learning-icon", "learning-light", "learning-light-outlined"],
 			control: {
 				type: "select"
 			},
@@ -131,10 +132,27 @@ LearningLightButtonAndStartIcon.args = {
 	children: "Delete"
 };
 
-export const LEARNING_ICON = Template.bind({});
-LEARNING_ICON.args = {
+export const LearningLightOutlinedButton = Template.bind({});
+LearningLightOutlinedButton.args = {
 	onClick: action("callback"),
-	variant: VARIANT.LEARNING_ICON,
-	title: "Delete",
-	children: <DeleteIcon />
+	variant: VARIANT.LEARNING_LIGHT_OUTLINED,
+	children: "Click Me!"
+};
+
+export const LearningLightOutlinedAndStartIcon = Template.bind({});
+LearningLightOutlinedAndStartIcon.args = {
+	onClick: action("callback"),
+	variant: VARIANT.LEARNING_LIGHT_OUTLINED,
+	startIcon: <DeleteIcon />,
+	children: "Delete"
+};
+
+export const LearningIcon = (): ReactNode => {
+	return (
+		<Box sx={{ backgroundColor: "#033A6F" }} width={100} textAlign={"center"}>
+			<SolaceLearningButton variant="learning-icon" component="span">
+				<DeleteIcon />
+			</SolaceLearningButton>
+		</Box>
+	);
 };

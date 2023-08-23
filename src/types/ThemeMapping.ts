@@ -132,6 +132,7 @@ export type ThemeMappingPalette = {
 		w100: string;
 		w90: string;
 		w20: string;
+		w10: string;
 	};
 
 	deprecated: {
@@ -152,6 +153,7 @@ export type ThemeMappingPalette = {
 			wMain: string;
 			w20: string;
 			w10: string;
+			w30: string;
 			text: {
 				wMain: string;
 				w50: string;

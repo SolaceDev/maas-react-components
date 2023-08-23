@@ -1,7 +1,6 @@
 import { Button, IconButton } from "@mui/material";
 import SolaceTooltip from "../../SolaceToolTip";
 
-import { LearningIconStyles, LearningLightStyles, LearningStyles } from "./buttonhelper";
 import { SolaceLearningButtonProps } from "../../../types";
 
 function SolaceLearningButton({
@@ -39,7 +38,7 @@ function SolaceLearningButton({
 					disabled={isDisabled}
 					onClick={handleClick}
 					size="large"
-					sx={{ ...LearningIconStyles() }}
+					className="learning-icon-button"
 				>
 					{children}
 				</IconButton>
@@ -47,23 +46,25 @@ function SolaceLearningButton({
 		);
 	} else {
 		enum MATERIAL_VARIANTS {
-			contained = "contained"
+			contained = "contained",
+			outlined = "outlined"
 		}
 		const BUTTON_VARIANT_MAP = {
 			learning: MATERIAL_VARIANTS.contained,
-			"learning-light": MATERIAL_VARIANTS.contained
+			"learning-light": MATERIAL_VARIANTS.contained,
+			"learning-light-outlined": MATERIAL_VARIANTS.outlined
 		};
 
-		let additionalStyles = undefined;
-		if (variant === "learning" || variant === "learning-light") {
-			switch (variant) {
-				case "learning":
-					additionalStyles = LearningStyles();
-					break;
-				case "learning-light":
-					additionalStyles = LearningLightStyles();
-					break;
-			}
+		let className = "";
+		switch (variant) {
+			case "learning-light":
+				className = "learning-light-button";
+				break;
+			case "learning-light-outlined":
+				className = "learning-light-outlined-button";
+				break;
+			default:
+				className = "learning-button";
 		}
 
 		return (
@@ -79,7 +80,7 @@ function SolaceLearningButton({
 					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}
 					onClick={handleClick}
-					sx={{ ...additionalStyles }}
+					className={className}
 				>
 					{children}
 				</Button>

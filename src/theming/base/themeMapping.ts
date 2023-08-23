@@ -13,7 +13,7 @@ export const baseThemeMapping: ThemeMapping = {
 			w30: "#00C895",
 			w10: "#e8f9f4",
 			w60: "#66DEBF",
-			w100: "#00AD93"
+			w100: "#009193"
 		},
 
 		primary: {
@@ -136,7 +136,8 @@ export const baseThemeMapping: ThemeMapping = {
 			wMain: "#033A6F",
 			w90: "#022E59",
 			w100: "#022343",
-			w20: "#CDD8E2"
+			w20: "#CDD8E2",
+			w10: "#E6EBF1"
 		},
 
 		deprecated: {
@@ -154,6 +155,7 @@ export const baseThemeMapping: ThemeMapping = {
 				wMain: alpha("#000000", 0.35),
 				w20: alpha("#000000", 0.05),
 				w10: alpha("#000000", 0.05),
+				w30: alpha("#FFFFFF", 0.7),
 				text: {
 					wMain: alpha("#000000", 0.55),
 					w50: alpha("#000000", 0.55)

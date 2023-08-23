@@ -132,7 +132,8 @@ const palette: ThemeMappingPalette = {
 		wMain: "#033A6F",
 		w90: "#022E59",
 		w100: "#022343",
-		w20: "#CDD8E2"
+		w20: "#CDD8E2",
+		w10: "#E6EBF1"
 	},
 
 	deprecated: {
@@ -150,6 +151,7 @@ const palette: ThemeMappingPalette = {
 			wMain: "#89919A",
 			w20: "#E7E9EB",
 			w10: "#F3F4F5",
+			w30: alpha("#FFFFFF", 0.7),
 			text: {
 				wMain: "#6A6D70",
 				w50: "#D2D3D4"
