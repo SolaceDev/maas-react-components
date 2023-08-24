@@ -22,12 +22,4 @@ const getThemeMappings = (theme?: SupportedThemes): ThemeMapping => {
 	}
 };
 
-/**
- *
- * @returns new solace theme mapping
- * temporary solution to get the new solace theme
- * TODO: remove this method once the new solace theme is ready
- */
-export const getNewSolaceTheme = () => solaceNewThemeMapping;
-
 export default getThemeMappings;

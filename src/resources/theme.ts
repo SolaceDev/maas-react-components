@@ -226,7 +226,8 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								backgroundColor: themeMapping.palette.brand.w100
 							},
 							"&:disabled": {
-								backgroundColor: themeMapping.palette.brand.w10
+								backgroundColor: themeMapping.palette.brand.w10,
+								color: themeMapping.palette.learning.wMain
 							}
 						},
 
