@@ -55,6 +55,11 @@ export interface SolaceAccordionProps extends SolaceComponentProps {
 	 * border color variants: error, info, warn and success, default to `palette.ux.secondary.w10`
 	 */
 	borderColor?: "info" | "error" | "warn" | "success";
+	/**
+	 * If `true`, the Accordion details component will not have padding. The default is `false`.
+	 * If enabled, the content will not left align with the header title anymore.
+	 */
+	disablePadding?: boolean;
 }
 
 const parseBorderColor = (borderColor: string): string => {
@@ -75,7 +80,8 @@ const SolaceAccordion = ({
 	backgroundColor,
 	square = true,
 	border = true,
-	borderColor
+	borderColor,
+	disablePadding = false
 }: SolaceAccordionProps) => {
 	const theme = useTheme();
 	const getBorderColor = () => {
@@ -114,7 +120,7 @@ const SolaceAccordion = ({
 			>
 				{summary}
 			</AccordionSummary>
-			<AccordionDetails>{details}</AccordionDetails>
+			<AccordionDetails sx={{ padding: disablePadding ? 0 : undefined }}>{details}</AccordionDetails>
 		</Accordion>
 	);
 };

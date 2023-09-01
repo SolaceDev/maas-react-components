@@ -76,6 +76,7 @@ export type solaceListItemProps = {
 	 */
 	sx?: SxProps<Theme>;
 };
+
 export type solaceListItemButtonProps = {
 	/**
 	 * Defines the `align-items` style property.
@@ -127,4 +128,6 @@ export type solaceListItemButtonProps = {
 	 * The system prop that allows defining system overrides as well as additional CSS styles.
 	 */
 	sx?: SxProps<Theme>;
+
+	onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };

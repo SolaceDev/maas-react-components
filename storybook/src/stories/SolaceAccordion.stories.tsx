@@ -68,6 +68,16 @@ export default {
 				}
 			}
 		},
+		disablePadding: {
+			control: { type: "boolean" },
+			description:
+				"If `true`, the Accordion details component will not have padding. The default is `false`.If enabled, the content will not left align with the header title anymore.",
+			table: {
+				defaultValue: {
+					summary: false
+				}
+			}
+		},
 		hover: {
 			control: { type: "boolean" },
 			description: "If true, the Accordion component is has hover effect.",
@@ -293,4 +303,13 @@ CustomBorderAccordion.args = {
 	summary: testItem.summary,
 	details: testItem.details,
 	borderColor: "info"
+};
+
+export const DisablePaddingForAccordionDetails = SolaceAccordionStory.bind({});
+DisablePaddingForAccordionDetails.args = {
+	dataQa: testItem.id,
+	summary: testItem.summary,
+	details: testItem.details,
+	expanded: true,
+	disablePadding: true
 };
