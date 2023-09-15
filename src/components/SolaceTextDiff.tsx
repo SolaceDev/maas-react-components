@@ -59,6 +59,13 @@ const CodeDiffContainer = styled("div")(({ theme }) => ({
 				del: {
 					backgroundColor: "#FEE5BF", // TODO: This is not added in the theme mapping file. Need to add it
 					mixBlendMode: "multiply"
+				},
+				".d2h-diff-table .d2h-diff-tbody": {
+					tr: {
+						td: {
+							mixBlendMode: "unset" // This unset is because it hides some of the text content
+						}
+					}
 				}
 			}
 		}
