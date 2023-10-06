@@ -68,6 +68,7 @@ function SolaceConfirmationDialog({
 						onClick={action.onClick}
 						variant={action.variant ?? "text"}
 						isDisabled={action.isDisabled}
+						endIcon={action.endIcon}
 					>
 						{action.label}
 					</SolaceButton>
