@@ -214,6 +214,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						borderRadius: "4px",
 						minWidth: "100px",
 						height: "32px",
+						fontWeight: "500",
 
 						"&.learning-button": {
 							borderRadius: `8px 4px`,
