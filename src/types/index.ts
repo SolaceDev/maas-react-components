@@ -15,3 +15,4 @@ export * from "./numericTypes";
 export * from "./solaceProgress";
 export * from "./fieldTypes";
 export * from "./sizing";
+export * from "./solaceButton";
