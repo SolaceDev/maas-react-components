@@ -5,6 +5,7 @@ import SolaceCheckBox from "../../form/SolaceCheckBox";
 import SolaceMenu from "../../SolaceMenu";
 import TuneIcon from "@mui/icons-material/Tune";
 import { SolaceMenuItemProps } from "../../SolaceMenuItem";
+import { BUTTON_VARIANT } from "../../../types/solaceButton";
 
 export interface ContentControlProps extends SolaceComponentProps {
 	id?: string;
@@ -83,7 +84,7 @@ const ContentControlMenu = ({
 		<SolaceMenu
 			id={id}
 			buttonProps={{
-				variant: "icon",
+				variant: BUTTON_VARIANT.ICON,
 				children: <TuneIcon />,
 				title: "Settings"
 			}}

@@ -2,6 +2,7 @@ import { Button, IconButton } from "@mui/material";
 import SolaceTooltip from "../../SolaceToolTip";
 
 import { SolaceLearningButtonProps } from "../../../types";
+import { BUTTON_TYPE } from "../../../types/solaceButton";
 
 function SolaceLearningButton({
 	id,
@@ -11,7 +12,7 @@ function SolaceLearningButton({
 	isDisabled = false,
 	title = "",
 	component = "button",
-	type = "button",
+	type = BUTTON_TYPE.HOVER,
 	startIcon,
 	endIcon,
 	onClick,
@@ -33,12 +34,12 @@ function SolaceLearningButton({
 					aria-labelledby={ariaLabelledby}
 					data-qa={dataQa}
 					data-tags={dataTags}
-					type={type}
 					id={id}
 					disabled={isDisabled}
 					onClick={handleClick}
 					size="large"
 					className="learning-icon-button"
+					component="button"
 				>
 					{children}
 				</IconButton>
@@ -75,7 +76,7 @@ function SolaceLearningButton({
 					data-tags={dataTags}
 					startIcon={startIcon}
 					endIcon={endIcon}
-					component={component}
+					component={component as any} // Cast component to any
 					type={type}
 					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}

@@ -10,6 +10,7 @@ import {
 import { ReactNode } from "react";
 
 import SolaceButton, { SolaceButtonProps } from "../form/SolaceButton";
+import { BUTTON_VARIANT } from "../../types/solaceButton";
 
 type actionProps = Partial<SolaceButtonProps> & { label: string; id?: string };
 
@@ -66,7 +67,7 @@ function SolaceConfirmationDialog({
 						dataQa={action.dataQa}
 						key={action.label}
 						onClick={action.onClick}
-						variant={action.variant ?? "text"}
+						variant={action.variant ?? BUTTON_VARIANT.TEXT}
 						isDisabled={action.isDisabled}
 						endIcon={action.endIcon}
 					>

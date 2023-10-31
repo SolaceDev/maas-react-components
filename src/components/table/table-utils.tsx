@@ -5,6 +5,7 @@ import { styled } from "@mui/material";
 import ContentControlMenu, { ContentControlProps } from "./components/ContentControlMenu";
 import { appTheme } from "../../theming/themeUtils";
 import { SupportedThemes } from "../../types/supportedThemes";
+import { BUTTON_VARIANT } from "../../types/solaceButton";
 export interface TableColumn {
 	field: string;
 	headerName: string;
@@ -243,7 +244,12 @@ export const addActionMenuIcon = (row: TableRow, actionMenuItems: TableActionMen
 		>
 			{menuItems && (
 				<SolaceMenu
-					buttonProps={{ isDisabled: isDisabled, variant: "icon", children: <MoreHorizIcon />, title: "More Actions" }}
+					buttonProps={{
+						isDisabled: isDisabled,
+						variant: BUTTON_VARIANT.ICON,
+						children: <MoreHorizIcon />,
+						title: "More Actions"
+					}}
 					items={menuItems}
 					anchorOrigin={{
 						vertical: "center",

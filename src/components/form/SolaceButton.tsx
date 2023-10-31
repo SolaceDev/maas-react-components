@@ -4,10 +4,11 @@ import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
 import SolaceTooltip from "../SolaceToolTip";
 
 import SolaceComponentProps from "../SolaceComponentProps";
+import { BUTTON_TYPE, BUTTON_VARIANT } from "../../types/solaceButton";
 
 export interface SolaceButtonProps extends SolaceComponentProps {
 	id?: string;
-	variant: "call-to-action" | "outline" | "text" | "icon" | "link";
+	variant: BUTTON_VARIANT;
 	"aria-label"?: string;
 	"aria-labelledby"?: string;
 	isDisabled?: boolean;
@@ -15,7 +16,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	title?: string;
 	href?: string;
 	component?: "button" | "span";
-	type?: "button" | "submit" | "reset";
+	type?: BUTTON_TYPE;
 	startIcon?: symbol | JSX.Element;
 	endIcon?: symbol | JSX.Element;
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -27,7 +28,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 // eslint-disable-next-line sonarjs/cognitive-complexity
 function SolaceButton({
 	id,
-	variant = "text",
+	variant = BUTTON_VARIANT.TEXT,
 	"aria-label": ariaLabel,
 	"aria-labelledby": ariaLabelledby,
 	isDisabled = false,
@@ -35,7 +36,7 @@ function SolaceButton({
 	title = "",
 	href,
 	component = "button",
-	type = "button",
+	type = BUTTON_TYPE.HOVER,
 	startIcon,
 	endIcon,
 	onClick,
@@ -59,11 +60,13 @@ function SolaceButton({
 					aria-labelledby={ariaLabelledby}
 					data-qa={dataQa}
 					data-tags={dataTags}
-					type={type}
+					type={type as "none" | "submit" | "reset"}
 					id={id}
 					disabled={isDisabled}
 					onClick={handleClick}
 					size="large"
+					href={href}
+					component={href ? "a" : "button"}
 				>
 					{children}
 				</IconButton>
@@ -135,8 +138,8 @@ function SolaceButton({
 					data-tags={dataTags}
 					startIcon={startIcon}
 					endIcon={endIcon}
-					component={component}
-					type={type}
+					component={component ?? "button"} // Add the component prop with a default value of "button"
+					type={type as unknown as "button" | "submit" | "reset"} // Cast type to the correct type
 					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}
 					onClick={handleClick}

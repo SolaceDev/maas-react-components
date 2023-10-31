@@ -7,6 +7,7 @@ import { CloseIcon } from "../resources/icons/CloseIcon";
 import { FilterIcon } from "../resources/icons/FilterIcon";
 import { SearchIcon } from "../resources/icons/SearchIcon";
 import { styled } from "@mui/material";
+import { BUTTON_VARIANT } from "../types/solaceButton";
 
 const SvgContainer = styled("div")(({ theme }) => ({
 	margin: `${theme.spacing(1)} ${theme.spacing(1)} 0 -${theme.spacing(0.5)}`,
@@ -114,7 +115,7 @@ function SolaceSearchAndFilter({
 					key={"closeIcon"}
 					dataQa="clearButton"
 					isDisabled={disabled}
-					variant="icon"
+					variant={BUTTON_VARIANT.ICON}
 					onClick={handleClearInput}
 				>
 					<CloseIcon size={20} key="closeIcon" />

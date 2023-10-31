@@ -9,6 +9,7 @@ import { WarnIcon } from "../resources/icons/WarnIcon";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { CSSProperties } from "@mui/styled-engine";
 import { getCloseButtonAriaLabel } from "../utils";
+import { BUTTON_VARIANT } from "../types/solaceButton";
 
 const InfoBoxContainer = styled("div")(({ theme }) => ({
 	...(theme.mixins.component_MessageBox.container as CSSProperties)
@@ -123,7 +124,7 @@ function SolaceMessageBox({
 						<MessageTextContainer color={getColor()}>{message}</MessageTextContainer>
 					</InfoBoxMessage>
 					{showCloseButton && (
-						<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
+						<SolaceButton aria-label={getCloseButtonAriaLabel()} variant={BUTTON_VARIANT.ICON} onClick={handleClose}>
 							<CloseIcon size={20} />
 						</SolaceButton>
 					)}
