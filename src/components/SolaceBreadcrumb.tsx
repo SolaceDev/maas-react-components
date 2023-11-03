@@ -3,7 +3,6 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import SolaceButton from "./form/SolaceButton";
 
 import SolaceComponentProps from "./SolaceComponentProps";
-import { BUTTON_VARIANT } from "../types/solaceButton";
 
 type Paths = {
 	title: string;
@@ -30,12 +29,7 @@ function SolaceBreadcrumb({ id, paths, maxItems = 8, onRouteClick }: SolaceBread
 			!path.current &&
 				routes.push(
 					<Link underline="hover">
-						<SolaceButton
-							variant={BUTTON_VARIANT.LINK}
-							dense={true}
-							onClick={() => handleRouteClick(path.link)}
-							dataQa={path.link}
-						>
+						<SolaceButton variant="link" dense={true} onClick={() => handleRouteClick(path.link)} dataQa={path.link}>
 							{path.title}
 						</SolaceButton>
 					</Link>

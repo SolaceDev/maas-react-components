@@ -2,7 +2,6 @@ import { Button, IconButton } from "@mui/material";
 import SolaceTooltip from "../../SolaceToolTip";
 
 import { SolaceLearningButtonProps } from "../../../types";
-import { BUTTON_TYPE } from "../../../types/solaceButton";
 
 function SolaceLearningButton({
 	id,
@@ -12,7 +11,7 @@ function SolaceLearningButton({
 	isDisabled = false,
 	title = "",
 	component = "button",
-	type = BUTTON_TYPE.HOVER,
+	type = "hover",
 	startIcon,
 	endIcon,
 	onClick,

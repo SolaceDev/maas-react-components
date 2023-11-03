@@ -10,9 +10,8 @@ import {
 import { ReactNode } from "react";
 
 import SolaceButton, { SolaceButtonProps } from "../form/SolaceButton";
-import { BUTTON_VARIANT } from "../../types/solaceButton";
 
-type actionProps = Partial<SolaceButtonProps> & { label: string; id?: string };
+export type actionProps = Partial<SolaceButtonProps> & { label: string; id?: string };
 
 const CustomAction = styled("div")(({ theme }) => ({
 	marginRight: "auto",
@@ -67,7 +66,7 @@ function SolaceConfirmationDialog({
 						dataQa={action.dataQa}
 						key={action.label}
 						onClick={action.onClick}
-						variant={action.variant ?? BUTTON_VARIANT.TEXT}
+						variant={action.variant ?? "text"}
 						isDisabled={action.isDisabled}
 						endIcon={action.endIcon}
 					>

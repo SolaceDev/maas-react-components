@@ -4,7 +4,6 @@ import SolaceButton from "./form/SolaceButton";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { getCloseButtonAriaLabel } from "../utils";
-import { BUTTON_VARIANT } from "../types/solaceButton";
 
 const CardContainer = styled("div", {
 	shouldForwardProp: (prop) => prop !== "backgroundColor" && prop !== "hasTitle"
@@ -79,7 +78,7 @@ function SolaceCard({
 					<TitleRow>
 						{isValidElement(title) ? title : <TitleSection>{title}</TitleSection>}
 						{showCloseButton && (
-							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant={BUTTON_VARIANT.ICON} onClick={handleClose}>
+							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
 								<CloseIcon size={20} />
 							</SolaceButton>
 						)}
@@ -92,7 +91,7 @@ function SolaceCard({
 					{children}
 					{showCloseButton && (
 						<div>
-							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant={BUTTON_VARIANT.ICON} onClick={handleClose}>
+							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
 								<CloseIcon size={20} />
 							</SolaceButton>
 						</div>

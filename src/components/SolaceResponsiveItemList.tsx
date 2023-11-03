@@ -4,7 +4,6 @@ import SolacePopover from "./SolacePopover";
 import { difference } from "lodash";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SolaceComponentProps from "./SolaceComponentProps";
-import { BUTTON_VARIANT } from "../types/solaceButton";
 
 const ItemsContainer = styled("div", {
 	shouldForwardProp: (prop) =>
@@ -308,7 +307,7 @@ function SolaceResponsiveItemList({
 						>
 							<span>
 								<SolaceButton
-									variant={BUTTON_VARIANT.LINK}
+									variant="link"
 									onClick={onItemsOverflowIndicatorClick ? onItemsOverflowIndicatorClick : undefined}
 									dense={true}
 								>

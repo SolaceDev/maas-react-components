@@ -4,11 +4,10 @@ import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
 import SolaceTooltip from "../SolaceToolTip";
 
 import SolaceComponentProps from "../SolaceComponentProps";
-import { BUTTON_TYPE, BUTTON_VARIANT } from "../../types/solaceButton";
 
 export interface SolaceButtonProps extends SolaceComponentProps {
 	id?: string;
-	variant: BUTTON_VARIANT;
+	variant: "call-to-action" | "outline" | "text" | "icon" | "link";
 	"aria-label"?: string;
 	"aria-labelledby"?: string;
 	isDisabled?: boolean;
@@ -16,7 +15,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	title?: string;
 	href?: string;
 	component?: "button" | "span";
-	type?: BUTTON_TYPE;
+	type?: "none" | "hover" | "always";
 	startIcon?: symbol | JSX.Element;
 	endIcon?: symbol | JSX.Element;
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -28,7 +27,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 // eslint-disable-next-line sonarjs/cognitive-complexity
 function SolaceButton({
 	id,
-	variant = BUTTON_VARIANT.TEXT,
+	variant = "text",
 	"aria-label": ariaLabel,
 	"aria-labelledby": ariaLabelledby,
 	isDisabled = false,
@@ -36,7 +35,7 @@ function SolaceButton({
 	title = "",
 	href,
 	component = "button",
-	type = BUTTON_TYPE.HOVER,
+	type = "hover",
 	startIcon,
 	endIcon,
 	onClick,

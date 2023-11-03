@@ -20,7 +20,6 @@ import "codemirror/keymap/sublime";
 import "codemirror/addon/display/fullscreen";
 import "codemirror/addon/display/fullscreen.css"; // apply fullscreen to CodeEditor
 import { CSSProperties } from "@mui/styled-engine";
-import { BUTTON_VARIANT } from "../../types/solaceButton";
 
 const StyledOuterWrapper = styled("div")(({ theme }) => ({
 	...(theme.mixins.formComponent_CodeEditor.OuterWrapper as CSSProperties)
@@ -135,7 +134,7 @@ function SolaceCodeEditor({
 						<IconWrapper className={editorExpanded ? "codeEditor-expanded--icon" : "codeEditor-collapsed--icon"}>
 							{editorExpanded ? (
 								<SolaceButton
-									variant={BUTTON_VARIANT.ICON}
+									variant="icon"
 									dataQa="buttonCollapseCodeEditor"
 									onClick={toggleExpandedMode}
 									title="Collapse"
@@ -144,7 +143,7 @@ function SolaceCodeEditor({
 								</SolaceButton>
 							) : (
 								<SolaceButton
-									variant={BUTTON_VARIANT.ICON}
+									variant="icon"
 									dataQa="buttonExpandCodeEditor"
 									onClick={toggleExpandedMode}
 									title="Expand"
