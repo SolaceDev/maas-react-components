@@ -15,7 +15,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	title?: string;
 	href?: string;
 	component?: "button" | "span";
-	type?: "none" | "hover" | "always";
+	type?: "button" | "submit" | "reset";
 	startIcon?: symbol | JSX.Element;
 	endIcon?: symbol | JSX.Element;
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -35,7 +35,7 @@ function SolaceButton({
 	title = "",
 	href,
 	component = "button",
-	type = "hover",
+	type = "button",
 	startIcon,
 	endIcon,
 	onClick,
@@ -59,7 +59,7 @@ function SolaceButton({
 					aria-labelledby={ariaLabelledby}
 					data-qa={dataQa}
 					data-tags={dataTags}
-					type={type as "none" | "submit" | "reset"}
+					type={type}
 					id={id}
 					disabled={isDisabled}
 					onClick={handleClick}
@@ -137,8 +137,8 @@ function SolaceButton({
 					data-tags={dataTags}
 					startIcon={startIcon}
 					endIcon={endIcon}
-					component={component ?? "button"} // Add the component prop with a default value of "button"
-					type={type as unknown as "button" | "submit" | "reset"} // Cast type to the correct type
+					component={component}
+					type={type}
 					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}
 					onClick={handleClick}

@@ -11,7 +11,7 @@ function SolaceLearningButton({
 	isDisabled = false,
 	title = "",
 	component = "button",
-	type = "hover",
+	type = "button",
 	startIcon,
 	endIcon,
 	onClick,
@@ -33,6 +33,7 @@ function SolaceLearningButton({
 					aria-labelledby={ariaLabelledby}
 					data-qa={dataQa}
 					data-tags={dataTags}
+					type={type}
 					id={id}
 					disabled={isDisabled}
 					onClick={handleClick}
@@ -75,7 +76,7 @@ function SolaceLearningButton({
 					data-tags={dataTags}
 					startIcon={startIcon}
 					endIcon={endIcon}
-					component={component as any} // Cast component to any
+					component={component}
 					type={type}
 					disabled={isDisabled}
 					variant={BUTTON_VARIANT_MAP[variant]}
