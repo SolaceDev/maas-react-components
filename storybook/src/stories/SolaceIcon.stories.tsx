@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SolaceIcon } from "@SolaceDev/maas-react-components";
-import { Icons } from "@solacedev/maas-icons";
+import { Icons } from "@SolaceDev/maas-icons";
 
 export default {
 	title: "Under Construction/SolaceIcon",
