@@ -38,7 +38,6 @@ jobs:
           # storybook directory
           workingDir: storybook
           exitZeroOnChanges: false
-          buildScriptName: "export NODE_OPTIONS=--openssl-legacy-provider && build-storybook"
 
   bump-version:
     needs: chromatic-deployment
