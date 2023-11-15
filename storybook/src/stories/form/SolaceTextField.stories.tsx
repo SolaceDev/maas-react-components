@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { Search } from "@mui/icons-material";
-import { SolaceTextField, SolaceButton } from "@SolaceDev/maas-react-components";
+import { SolaceTextField, SolaceButton, CloseIcon } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { CloseIcon } from "../../../../src/resources/icons/CloseIcon";
 
 export default {
 	title: "Forms/SolaceTextfield",

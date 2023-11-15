@@ -82,7 +82,7 @@ export default function Example() {
 
 ### Making a commit
 
-Include one of the following values in a commit, before pushing your branch to master. This would trigger a automated package version update.
+Include one of the following values in a commit, before pushing your branch to master. This would trigger a automated package version update .
 
 | Value                                     | Definition                                                                |
 | ----------------------------------------- | ------------------------------------------------------------------------- |
@@ -187,6 +187,10 @@ npm install -g react-dom
 ### Switching back to the latest official `maas-react-components`
 
 Remove @SolaceDev/maas-react-components from node_modules and run `npm install @SolaceDev/maas-react-components`.
+
+### Switching to webpack 5 in storybook
+
+Remove `export NODE_OPTIONS=--openssl-legacy-provider` from anywhere present in the code. This is a temporary fix to make storybook work with node 20.
 
 ## License
 

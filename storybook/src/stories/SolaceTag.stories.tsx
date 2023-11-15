@@ -1,7 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceTag, CHIP_VARIANT, SolacePopover, SolaceTooltip, CHIP_COLORS } from "@SolaceDev/maas-react-components";
-import { InfoIcon } from "../../../src/resources/icons/InfoIcon";
+import {
+	SolaceTag,
+	CHIP_VARIANT,
+	SolacePopover,
+	SolaceTooltip,
+	CHIP_COLORS,
+	InfoIcon
+} from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceTag",

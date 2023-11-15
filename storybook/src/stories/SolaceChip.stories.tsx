@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceChip, SolacePopover, SolaceTooltip, CHIP_VARIANT } from "@SolaceDev/maas-react-components";
-import { InfoIcon } from "../../../src/resources/icons/InfoIcon";
+import { SolaceChip, SolacePopover, SolaceTooltip, CHIP_VARIANT, InfoIcon } from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Under Construction/SolaceChip",

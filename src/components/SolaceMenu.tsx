@@ -223,17 +223,18 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 				anchorOrigin={anchorOrigin}
 				transformOrigin={transformOrigin}
 				onClose={handleMenuClose}
-				PaperProps={{
-					style: {
-						maxHeight: `${maxHeight}px`,
-						maskImage: hasMoreItems ? maskImage : "none",
-						WebkitMaskImage: hasMoreItems ? maskImage : "none",
-						maxWidth: `${maxWidth}px`
-					},
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					ref: (ref) => {
-						setMenuPopoverRef(ref); // ref setter on the Paper component
+				slotProps={{
+					paper: {
+						style: {
+							maxHeight: `${maxHeight}px`,
+							maskImage: hasMoreItems ? maskImage : "none",
+							WebkitMaskImage: hasMoreItems ? maskImage : "none",
+							maxWidth: `${maxWidth}px`
+						},
+
+						ref: (ref) => {
+							setMenuPopoverRef(ref); // ref setter on the Paper component
+						}
 					}
 				}}
 				className="SolaceMenu"
