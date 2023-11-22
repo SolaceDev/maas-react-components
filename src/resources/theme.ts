@@ -14,7 +14,7 @@ const deprecatedBoxShadows = {
 
 const verticalIndicatorHeight = "calc(100% - 4px)";
 
-const verticalIndicatorStyle = (themeMapping: ThemeMapping): any => {
+const verticalIndicatorStyle = (themeMapping: ThemeMapping): Record<string, unknown> => {
 	return {
 		"&.indicator-info": {
 			":after": {
@@ -79,7 +79,7 @@ const verticalIndicatorStyle = (themeMapping: ThemeMapping): any => {
 	};
 };
 
-const gridListRowCommonStyle = (themeMapping: ThemeMapping): any => {
+const gridListRowCommonStyle = (themeMapping: ThemeMapping): Record<string, unknown> => {
 	return {
 		position: "relative",
 		display: "grid",
@@ -1045,6 +1045,13 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
 							backgroundColor: themeMapping.palette.brand.w10
+						},
+						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-disabled='true']": {
+							color: themeMapping.palette.secondary.text.w50,
+							opacity: 1,
+							".subtext, .supplementalText": {
+								color: themeMapping.palette.secondary.text.w50
+							}
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-groupLabel": {
 							lineHeight: 1.5,
