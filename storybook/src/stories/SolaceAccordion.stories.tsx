@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceAccordion } from "@SolaceDev/maas-react-components";
 import { useEffect, useState } from "@storybook/addons";
 import { SolaceAccordionProps } from "../../../dist/components/SolaceAccordion";
@@ -121,7 +121,7 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceAccordion>;
+} as Meta<typeof SolaceAccordion>;
 
 const testItem = {
 	id: "demoAccordion",
@@ -164,37 +164,49 @@ const SolaceAccordionStory = ({ expanded, ...args }) => {
 	return <SolaceAccordion {...args} expanded={isExpanded} onChange={handleChange} />;
 };
 
-export const DefaultAccordion = SolaceAccordionStory.bind({});
-DefaultAccordion.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	expanded: false
+export const DefaultAccordion = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		expanded: false
+	}
 };
 
-export const ExpandedAccordion = SolaceAccordionStory.bind({});
-ExpandedAccordion.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	expanded: true
+export const ExpandedAccordion = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		expanded: true
+	}
 };
 
-export const DisabledAccordion = SolaceAccordionStory.bind({});
-DisabledAccordion.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	disabled: true
+export const DisabledAccordion = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		disabled: true
+	}
 };
 
-export const DisabledExpandedAccordion = SolaceAccordionStory.bind({});
-DisabledExpandedAccordion.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	expanded: true,
-	disabled: true
+export const DisabledExpandedAccordion = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		expanded: true,
+		disabled: true
+	}
 };
 
 /**
@@ -249,67 +261,91 @@ const RoundedAccordionStory = ({ expanded, ...args }: SolaceAccordionProps) => {
 	);
 };
 
-export const MultipleAccordions = SolaceAccordionListStory.bind({});
-MultipleAccordions.args = {
-	dataQa: "demoAccordionList"
+export const MultipleAccordions = {
+	render: SolaceAccordionListStory,
+
+	args: {
+		dataQa: "demoAccordionList"
+	}
 };
 
-export const AccordionWithHoverEffect = SolaceAccordionStory.bind({});
-AccordionWithHoverEffect.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	expanded: false,
-	hover: true
+export const AccordionWithHoverEffect = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		expanded: false,
+		hover: true
+	}
 };
 
-export const AccordionWithCustomColor = SolaceAccordionStory.bind({});
-AccordionWithCustomColor.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	expanded: false,
-	backgroundColor: "#F9F9F9"
+export const AccordionWithCustomColor = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		expanded: false,
+		backgroundColor: "#F9F9F9"
+	}
 };
 
-export const AccordionWithIndicator = SolaceAccordionStory.bind({});
-AccordionWithIndicator.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	expanded: false,
-	indicatorVariant: "info"
+export const AccordionWithIndicator = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		expanded: false,
+		indicatorVariant: "info"
+	}
 };
 
-export const RoundedAccordion = RoundedAccordionStory.bind({});
-RoundedAccordion.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	square: false
+export const RoundedAccordion = {
+	render: RoundedAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		square: false
+	}
 };
 
-export const BorderlessAccordion = SolaceAccordionStory.bind({});
-BorderlessAccordion.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	border: false
+export const BorderlessAccordion = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		border: false
+	}
 };
 
-export const CustomBorderAccordion = SolaceAccordionStory.bind({});
-CustomBorderAccordion.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	borderColor: "info"
+export const CustomBorderAccordion = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		borderColor: "info"
+	}
 };
 
-export const DisablePaddingForAccordionDetails = SolaceAccordionStory.bind({});
-DisablePaddingForAccordionDetails.args = {
-	dataQa: testItem.id,
-	summary: testItem.summary,
-	details: testItem.details,
-	expanded: true,
-	disablePadding: true
+export const DisablePaddingForAccordionDetails = {
+	render: SolaceAccordionStory,
+
+	args: {
+		dataQa: testItem.id,
+		summary: testItem.summary,
+		details: testItem.details,
+		expanded: true,
+		disablePadding: true
+	}
 };

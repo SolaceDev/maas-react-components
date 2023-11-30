@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import { SolaceButton, SolaceCard } from "@SolaceDev/maas-react-components";
 
@@ -31,9 +31,7 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceCard>;
-
-const Template: ComponentStory<typeof SolaceCard> = (args) => <SolaceCard {...args} />;
+} as Meta<typeof SolaceCard>;
 
 const DefaultCardContent = (
 	<div>
@@ -44,41 +42,46 @@ const DefaultCardContent = (
 	</div>
 );
 
-export const DefaultCard = Template.bind({});
-DefaultCard.args = {
-	children: DefaultCardContent
+export const DefaultCard = {
+	args: {
+		children: DefaultCardContent
+	}
 };
 
-export const WithCloseButton = Template.bind({});
-WithCloseButton.args = {
-	children: DefaultCardContent,
-	showCloseButton: true
+export const WithCloseButton = {
+	args: {
+		children: DefaultCardContent,
+		showCloseButton: true
+	}
 };
 
-export const WithStringTitle = Template.bind({});
-WithStringTitle.args = {
-	children: DefaultCardContent,
-	showCloseButton: true,
-	title: "How to make a Topic Domain"
+export const WithStringTitle = {
+	args: {
+		children: DefaultCardContent,
+		showCloseButton: true,
+		title: "How to make a Topic Domain"
+	}
 };
 
 const CustomTitle = (
 	<div style={{ textDecoration: "underline", color: "#880808" }}>How to make a Topic Domain {"\u2728"} </div>
 );
 
-export const WithCustomTitle = Template.bind({});
-WithCustomTitle.args = {
-	children: DefaultCardContent,
-	showCloseButton: true,
-	title: CustomTitle
+export const WithCustomTitle = {
+	args: {
+		children: DefaultCardContent,
+		showCloseButton: true,
+		title: CustomTitle
+	}
 };
 
-export const WithCustomBackgroundColor = Template.bind({});
-WithCustomBackgroundColor.args = {
-	children: DefaultCardContent,
-	showCloseButton: true,
-	title: "How to make a Topic Domain",
-	backgroundColor: "#E6F2FF"
+export const WithCustomBackgroundColor = {
+	args: {
+		children: DefaultCardContent,
+		showCloseButton: true,
+		title: "How to make a Topic Domain",
+		backgroundColor: "#E6F2FF"
+	}
 };
 
 export const WithinContainer = (): ReactNode => {

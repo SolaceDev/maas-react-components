@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { ComponentStory } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 
 import { Link, Paper, SolaceGrid, Typography } from "@SolaceDev/maas-react-components";
 
@@ -97,7 +97,7 @@ export default {
 		}
 	}
 } as Meta;
-const Template: ComponentStory<typeof SolaceGrid> = (args) => <SolaceGrid container {...args} />;
+const Template: StoryFn<typeof SolaceGrid> = (args) => <SolaceGrid container {...args} />;
 
 const defaultStyle = { backgroundColor: "lightgrey", padding: 1, textAlign: "center" };
 const defaultContent = (
@@ -114,18 +114,24 @@ const defaultContent = (
 	</>
 );
 
-export const AutoLayoutGrid = Template.bind({});
-AutoLayoutGrid.args = {
-	children: defaultContent
+export const AutoLayoutGrid = {
+	render: Template,
+
+	args: {
+		children: defaultContent
+	}
 };
 
-export const TextGrid = Template.bind({});
-TextGrid.args = {
-	children: (
-		<>
-			<SolaceGrid item>{"Item 1"}</SolaceGrid>
-			<SolaceGrid item>{"Item 2"}</SolaceGrid>
-			<SolaceGrid item>{"Item 3"}</SolaceGrid>
-		</>
-	)
+export const TextGrid = {
+	render: Template,
+
+	args: {
+		children: (
+			<>
+				<SolaceGrid item>{"Item 1"}</SolaceGrid>
+				<SolaceGrid item>{"Item 2"}</SolaceGrid>
+				<SolaceGrid item>{"Item 3"}</SolaceGrid>
+			</>
+		)
+	}
 };

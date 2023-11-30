@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import {
 	SolaceTooltip,
 	DeleteIcon,
@@ -64,81 +64,87 @@ export default {
 			control: { type: "boolean" }
 		}
 	}
-} as ComponentMeta<typeof SolaceTooltip>;
-
-const Template: ComponentStory<typeof SolaceTooltip> = (args) => <SolaceTooltip {...args} />;
+} as Meta<typeof SolaceTooltip>;
 
 const TITLE = "Sample Tooltip";
 const LONG_TEXT =
 	"Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus. Praesent non nunc mollis, fermentum neque at, semper arcu. Nullam eget est sed sem iaculis gravida eget vitae justo.";
 
-export const DefaultTooltip = Template.bind({});
-DefaultTooltip.args = {
-	title: TITLE,
-	children: <DeleteIcon />
+export const DefaultTooltip = {
+	args: {
+		title: TITLE,
+		children: <DeleteIcon />
+	}
 };
 
-export const CustomPlacement = Template.bind({});
-CustomPlacement.args = {
-	title: TITLE,
-	children: <DeleteIcon style={{ margin: "40px 100px" }} fontSize="large" />,
-	placement: "left-start"
+export const CustomPlacement = {
+	args: {
+		title: TITLE,
+		children: <DeleteIcon style={{ margin: "40px 100px" }} fontSize="large" />,
+		placement: "left-start"
+	}
 };
 
-export const LongTitle = Template.bind({});
-LongTitle.args = {
-	title: LONG_TEXT,
-	children: <HelpOutlineOutlinedIcon />
+export const LongTitle = {
+	args: {
+		title: LONG_TEXT,
+		children: <HelpOutlineOutlinedIcon />
+	}
 };
 
-export const CustomMediumWidth = Template.bind({});
-CustomMediumWidth.args = {
-	title: LONG_TEXT,
-	children: <HelpOutlineOutlinedIcon />,
-	maxWidth: "medium"
+export const CustomMediumWidth = {
+	args: {
+		title: LONG_TEXT,
+		children: <HelpOutlineOutlinedIcon />,
+		maxWidth: "medium"
+	}
 };
 
-export const CustomFullWidth = Template.bind({});
-CustomFullWidth.args = {
-	title: LONG_TEXT,
-	children: <HelpOutlineOutlinedIcon />,
-	maxWidth: "full"
+export const CustomFullWidth = {
+	args: {
+		title: LONG_TEXT,
+		children: <HelpOutlineOutlinedIcon />,
+		maxWidth: "full"
+	}
 };
 
-export const DisableHoverListener = Template.bind({});
-DisableHoverListener.args = {
-	title: LONG_TEXT,
-	children: <HelpOutlineOutlinedIcon />,
-	disableHoverListener: true
+export const DisableHoverListener = {
+	args: {
+		title: LONG_TEXT,
+		children: <HelpOutlineOutlinedIcon />,
+		disableHoverListener: true
+	}
 };
 
-export const HtmlTooltip = Template.bind({});
-HtmlTooltip.args = {
-	title: (
-		<div>
-			<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
-			<SolaceButton variant="link" href="https://semver.org">
-				Semantic versioning best practices
-			</SolaceButton>
-		</div>
-	),
-	children: <HelpOutlineOutlinedIcon />,
-	variant: "html"
+export const HtmlTooltip = {
+	args: {
+		title: (
+			<div>
+				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
+				<SolaceButton variant="link" href="https://semver.org">
+					Semantic versioning best practices
+				</SolaceButton>
+			</div>
+		),
+		children: <HelpOutlineOutlinedIcon />,
+		variant: "html"
+	}
 };
 
-export const HtmlTooltipMediumWidth = Template.bind({});
-HtmlTooltipMediumWidth.args = {
-	title: (
-		<div>
-			<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
-			<SolaceButton variant="link" href="https://semver.org">
-				Semantic versioning best practices
-			</SolaceButton>
-		</div>
-	),
-	children: <HelpOutlineOutlinedIcon />,
-	variant: "html",
-	maxWidth: "medium"
+export const HtmlTooltipMediumWidth = {
+	args: {
+		title: (
+			<div>
+				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
+				<SolaceButton variant="link" href="https://semver.org">
+					Semantic versioning best practices
+				</SolaceButton>
+			</div>
+		),
+		children: <HelpOutlineOutlinedIcon />,
+		variant: "html",
+		maxWidth: "medium"
+	}
 };
 
 export const OverflowTooltipLongText = (): ReactNode => {
@@ -225,9 +231,6 @@ export const TooltipGroup = (): ReactNode => {
 	);
 };
 
-// For the input field with tooltip support,
-// - the tooltip  only shows up when the field is not focused
-// - when tooltip is visible, clicking on the field will close the tooltip
 export const ControlledTooltip = (): ReactNode => {
 	const [actionOpen, setActionOpen] = useState(false);
 	const [inputWithTooltip, setInputWithTooltip] = useState("");

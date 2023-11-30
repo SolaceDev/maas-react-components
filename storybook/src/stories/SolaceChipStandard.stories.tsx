@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceChip, MODES, CHIP_VARIANT } from "@SolaceDev/maas-react-components";
 
 export default {
@@ -23,29 +22,32 @@ export default {
 			control: { type: "radio" }
 		}
 	}
-} as ComponentMeta<typeof SolaceChip>;
+} as Meta<typeof SolaceChip>;
 
-const Template: ComponentStory<typeof SolaceChip> = (args) => <SolaceChip {...args} />;
-
-export const DefaultStandardChip = Template.bind({});
-DefaultStandardChip.args = {
-	label: "Default Standard Chip"
-};
-export const DisabledStandardChip = Template.bind({});
-DisabledStandardChip.args = {
-	label: "Disabled Standard Chip",
-	disabled: true
+export const DefaultStandardChip = {
+	args: {
+		label: "Default Standard Chip"
+	}
 };
 
-export const DarkStandardChip = Template.bind({});
-DarkStandardChip.args = {
-	mode: MODES.DARK_MODE,
-	label: "Dark Standard Chip"
+export const DisabledStandardChip = {
+	args: {
+		label: "Disabled Standard Chip",
+		disabled: true
+	}
 };
 
-export const DisabledDarkStandardChip = Template.bind({});
-DisabledDarkStandardChip.args = {
-	mode: MODES.DARK_MODE,
-	disabled: true,
-	label: "Disabled Dark Standard Chip"
+export const DarkStandardChip = {
+	args: {
+		mode: MODES.DARK_MODE,
+		label: "Dark Standard Chip"
+	}
+};
+
+export const DisabledDarkStandardChip = {
+	args: {
+		mode: MODES.DARK_MODE,
+		disabled: true,
+		label: "Disabled Dark Standard Chip"
+	}
 };

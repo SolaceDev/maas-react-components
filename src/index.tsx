@@ -97,6 +97,8 @@ export { default as SolaceTree } from "./components/SolaceTree";
 
 export { InfoIcon } from "./resources/icons/InfoIcon";
 export { CloseIcon } from "./resources/icons/CloseIcon";
+export { MoreHorizOutlinedIcon } from "./resources/icons/MoreHorizOutlinedIcon";
+export { default as CheckCircleIcon } from "./resources/icons/CheckCircleIcon";
 
 export * from "./types";
 

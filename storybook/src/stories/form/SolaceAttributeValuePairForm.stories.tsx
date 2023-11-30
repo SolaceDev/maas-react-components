@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 
 import { SolaceAttributeValuePairForm } from "@SolaceDev/maas-react-components";
@@ -8,12 +8,12 @@ export default {
 	title: "Forms/SolaceAttributeValuePairForm",
 	component: SolaceAttributeValuePairForm,
 	argTypes: {}
-} as ComponentMeta<typeof SolaceAttributeValuePairForm>;
+} as Meta<typeof SolaceAttributeValuePairForm>;
 
 const kafkaTopicPattern = /^[A-Za-z0-9-_.]*$/;
 
 // custom Emum input validation
-const validateEnumInput = (currentInput, values: Array<any>) => {
+const validateEnumInput = (currentInput, values: Array<unknown>) => {
 	const MAX_KEY_CHARACTERS = 40;
 	let error = "";
 
@@ -95,42 +95,61 @@ export const Default = () => {
 	);
 };
 
-export const WithInitialData = ({ hasWarnings = false, hasErrors = false, helperText = "" }) => {
-	const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
-	const [currentAVPList, setAVPList] = useState(list);
+export const WithInitialData = {
+	render: ({ hasWarnings = false, hasErrors = false, helperText = "" }) => {
+		const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
+		const [currentAVPList, setAVPList] = useState(list);
 
-	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setAVPList(updatedList);
-	};
+		const handleListUpdate = (updatedList: Array<AVPItem>) => {
+			setAVPList(updatedList);
+		};
 
-	return (
-		<div>
-			<SolaceAttributeValuePairForm
-				name="avpForm"
-				labelForKeys="Keys"
-				labelForValues="Values"
-				avpList={currentAVPList}
-				onAVPListUpdate={handleListUpdate}
-				hasWarnings={hasWarnings}
-				hasErrors={hasErrors}
-				helperText={helperText}
-			/>
-			<div style={{ marginTop: 20 }}>
-				<div>Returned Data:</div>
-				<div>{JSON.stringify(currentAVPList)}</div>
+		return (
+			<div>
+				<SolaceAttributeValuePairForm
+					name="avpForm"
+					labelForKeys="Keys"
+					labelForValues="Values"
+					avpList={currentAVPList}
+					onAVPListUpdate={handleListUpdate}
+					hasWarnings={hasWarnings}
+					hasErrors={hasErrors}
+					helperText={helperText}
+				/>
+				<div style={{ marginTop: 20 }}>
+					<div>Returned Data:</div>
+					<div>{JSON.stringify(currentAVPList)}</div>
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 };
 
-export const WithHelperText = () => <WithInitialData helperText="This Attribute Value Pair Form has helper text" />;
+export const WithHelperText = {
+	render: (args) => (
+		<WithInitialData.render {...WithInitialData.args} helperText="This Attribute Value Pair Form has helper text" />
+	)
+};
 
-export const WithWarnings = () => (
-	<WithInitialData hasWarnings={true} helperText="This Attribute Value Pair Form has warnings" />
-);
-export const WithErrors = () => (
-	<WithInitialData hasErrors={true} helperText="This Attribute Value Pair Form has errors" />
-);
+export const WithWarnings = {
+	render: (args) => (
+		<WithInitialData.render
+			{...WithInitialData.args}
+			hasWarnings={true}
+			helperText="This Attribute Value Pair Form has warnings"
+		/>
+	)
+};
+
+export const WithErrors = {
+	render: (args) => (
+		<WithInitialData.render
+			{...WithInitialData.args}
+			hasErrors={true}
+			helperText="This Attribute Value Pair Form has errors"
+		/>
+	)
+};
 
 export const ReadOnly = () => {
 	const data = SAMPLE_AVP_LIST_READ_ONLY.map((item) => ({ ...item }));
@@ -163,154 +182,166 @@ export const ReadOnlyWithEmptyFieldDisplayValue = () => {
 	);
 };
 
-export const UpdateData = () => {
-	const list = [];
-	const [currentAVPList, setAVPList] = useState(list);
+export const UpdateData = {
+	render: () => {
+		const list = [];
+		const [currentAVPList, setAVPList] = useState(list);
 
-	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setAVPList(updatedList);
-	};
+		const handleListUpdate = (updatedList: Array<AVPItem>) => {
+			setAVPList(updatedList);
+		};
 
-	return (
-		<div>
+		return (
+			<div>
+				<SolaceAttributeValuePairForm
+					name="avpForm"
+					labelForKeys="Keys"
+					labelForValues="Values"
+					avpList={currentAVPList}
+					onAVPListUpdate={handleListUpdate}
+				/>
+				<div style={{ marginTop: 20 }}>
+					<div>Returned Data:</div>
+					<div>{JSON.stringify(currentAVPList)}</div>
+				</div>
+			</div>
+		);
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		// input first AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-0`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-0`), SAMPLE_AVP_LIST[0].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-0`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-0`), SAMPLE_AVP_LIST[0].value, {
+			delay: 100
+		});
+
+		// input second AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-1`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-1`), SAMPLE_AVP_LIST[1].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-1`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-1`), SAMPLE_AVP_LIST[1].value, {
+			delay: 100
+		});
+
+		// input third AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-2`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-2`), SAMPLE_AVP_LIST[2].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-2`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-2`), SAMPLE_AVP_LIST[2].value, {
+			delay: 100
+		});
+
+		// input forth AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-3`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-3`), SAMPLE_AVP_LIST[3].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-3`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-3`), SAMPLE_AVP_LIST[3].value, {
+			delay: 100
+		});
+
+		// input fifth AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-4`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-4`), SAMPLE_AVP_LIST[4].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-4`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-4`), SAMPLE_AVP_LIST[4].value, {
+			delay: 100
+		});
+
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-5`));
+	},
+
+	parameters: {
+		// Delay snapshot 10 seconds until all interactions are done
+		chromatic: { delay: 10000 }
+	}
+};
+
+export const MissingMandatoryKeyValidation = {
+	render: () => {
+		const data = [];
+		const [avpList, setAVPList] = useState<Array<AVPItem>>(data);
+
+		const handleListUpdate = (updatedList: Array<AVPItem>) => {
+			setAVPList(updatedList);
+		};
+
+		return (
 			<SolaceAttributeValuePairForm
 				name="avpForm"
-				labelForKeys="Keys"
-				labelForValues="Values"
-				avpList={currentAVPList}
+				avpList={avpList}
 				onAVPListUpdate={handleListUpdate}
+				enableRequiredKeyFieldIndicator={true}
 			/>
-			<div style={{ marginTop: 20 }}>
-				<div>Returned Data:</div>
-				<div>{JSON.stringify(currentAVPList)}</div>
-			</div>
-		</div>
-	);
-};
-UpdateData.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+		);
+	},
 
-	// input first AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-0`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-0`), SAMPLE_AVP_LIST[0].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-0`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-0`), SAMPLE_AVP_LIST[0].value, {
-		delay: 100
-	});
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
 
-	// input second AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-1`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-1`), SAMPLE_AVP_LIST[1].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-1`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-1`), SAMPLE_AVP_LIST[1].value, {
-		delay: 100
-	});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-0`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-0`), "January", {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-1`));
+	},
 
-	// input third AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-2`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-2`), SAMPLE_AVP_LIST[2].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-2`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-2`), SAMPLE_AVP_LIST[2].value, {
-		delay: 100
-	});
-
-	// input forth AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-3`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-3`), SAMPLE_AVP_LIST[3].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-3`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-3`), SAMPLE_AVP_LIST[3].value, {
-		delay: 100
-	});
-
-	// input fifth AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-4`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-4`), SAMPLE_AVP_LIST[4].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-4`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-4`), SAMPLE_AVP_LIST[4].value, {
-		delay: 100
-	});
-
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-5`));
-};
-UpdateData.parameters = {
-	// Delay snapshot 10 seconds until all interactions are done
-	chromatic: { delay: 10000 }
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
-export const MissingMandatoryKeyValidation = () => {
-	const data = [];
-	const [avpList, setAVPList] = useState<Array<AVPItem>>(data);
+export const MissingMandatoryKeyWithCustomMessage = {
+	render: () => {
+		const data = [];
+		const [avpList, setAVPList] = useState<Array<AVPItem>>(data);
 
-	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setAVPList(updatedList);
-	};
+		const handleListUpdate = (updatedList: Array<AVPItem>) => {
+			setAVPList(updatedList);
+		};
 
-	return (
-		<SolaceAttributeValuePairForm
-			name="avpForm"
-			avpList={avpList}
-			onAVPListUpdate={handleListUpdate}
-			enableRequiredKeyFieldIndicator={true}
-		/>
-	);
-};
-MissingMandatoryKeyValidation.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+		return (
+			<SolaceAttributeValuePairForm
+				name="avpForm"
+				avpList={avpList}
+				onAVPListUpdate={handleListUpdate}
+				enableRequiredKeyFieldIndicator={true}
+				keyIsRequiredMessage="Enumeration key is required"
+			/>
+		);
+	},
 
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-0`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-0`), "January", {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-1`));
-};
-MissingMandatoryKeyValidation.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
-};
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
 
-export const MissingMandatoryKeyWithCustomMessage = () => {
-	const data = [];
-	const [avpList, setAVPList] = useState<Array<AVPItem>>(data);
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-0`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-0`), "January", {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-1`));
+	},
 
-	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setAVPList(updatedList);
-	};
-
-	return (
-		<SolaceAttributeValuePairForm
-			name="avpForm"
-			avpList={avpList}
-			onAVPListUpdate={handleListUpdate}
-			enableRequiredKeyFieldIndicator={true}
-			keyIsRequiredMessage="Enumeration key is required"
-		/>
-	);
-};
-MissingMandatoryKeyWithCustomMessage.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-0`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-0`), "January", {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-1`));
-};
-MissingMandatoryKeyWithCustomMessage.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
 const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
@@ -320,72 +351,76 @@ const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
 	{ key: "@April", value: "Message Longer Than 40 Characters........" }
 ];
 
-export const WithCustomValidation = () => {
-	const data = [];
-	const [currentAVPList, setAVPList] = useState<Array<AVPItem>>(data);
+export const WithCustomValidation = {
+	render: () => {
+		const data = [];
+		const [currentAVPList, setAVPList] = useState<Array<AVPItem>>(data);
 
-	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setAVPList(updatedList);
-	};
+		const handleListUpdate = (updatedList: Array<AVPItem>) => {
+			setAVPList(updatedList);
+		};
 
-	return (
-		<SolaceAttributeValuePairForm
-			name="avpForm"
-			avpList={currentAVPList}
-			onAVPListUpdate={handleListUpdate}
-			avpKeyValidationCallback={validateEnumInput}
-			avpValueValidationCallback={validateEnumInput}
-			enableRequiredKeyFieldIndicator={true}
-		/>
-	);
-};
-WithCustomValidation.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+		return (
+			<SolaceAttributeValuePairForm
+				name="avpForm"
+				avpList={currentAVPList}
+				onAVPListUpdate={handleListUpdate}
+				avpKeyValidationCallback={validateEnumInput}
+				avpValueValidationCallback={validateEnumInput}
+				enableRequiredKeyFieldIndicator={true}
+			/>
+		);
+	},
 
-	// input first AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-0`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-0`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[0].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-0`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-0`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[0].value, {
-		delay: 100
-	});
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
 
-	// input second AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-1`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-1`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[1].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-1`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-1`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[1].value, {
-		delay: 100
-	});
+		// input first AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-0`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-0`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[0].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-0`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-0`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[0].value, {
+			delay: 100
+		});
 
-	// input third AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-2`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-2`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[2].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-2`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-2`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[2].value, {
-		delay: 100
-	});
+		// input second AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-1`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-1`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[1].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-1`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-1`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[1].value, {
+			delay: 100
+		});
 
-	// input forth AVP data
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-3`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-3`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[3].key, {
-		delay: 100
-	});
-	await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-3`));
-	await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-3`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[3].value, {
-		delay: 100
-	});
+		// input third AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-2`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-2`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[2].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-2`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-2`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[2].value, {
+			delay: 100
+		});
 
-	await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-4`));
-};
-WithCustomValidation.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+		// input forth AVP data
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-3`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_KEY}-3`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[3].key, {
+			delay: 100
+		});
+		await userEvent.click(await canvas.findByTestId(`${AVP_VALUE}-3`));
+		await userEvent.type(await canvas.findByTestId(`${AVP_VALUE}-3`), SAMPLE_AVP_LIST_WITH_FALSE_VALUES[3].value, {
+			delay: 100
+		});
+
+		await userEvent.click(await canvas.findByTestId(`${AVP_KEY}-4`));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };

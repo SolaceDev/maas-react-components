@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { action } from "@storybook/addon-actions";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceButton, DeleteIcon } from "@SolaceDev/maas-react-components";
 
 enum VARIANT {
@@ -113,52 +113,56 @@ export default {
 			description: "Button label or contents"
 		}
 	}
-} as ComponentMeta<typeof SolaceButton>;
+} as Meta<typeof SolaceButton>;
 
-const Template: ComponentStory<typeof SolaceButton> = (args) => <SolaceButton {...args} />;
-
-export const DefaultButton = Template.bind({});
-DefaultButton.args = {
-	onClick: action("callback"),
-	dataQa: "testDataProp",
-	dataTags: "testDataTag1 testDataTag2",
-	children: "Click Me!"
+export const DefaultButton = {
+	args: {
+		onClick: action("callback"),
+		dataQa: "testDataProp",
+		dataTags: "testDataTag1 testDataTag2",
+		children: "Click Me!"
+	}
 };
 
-export const CallToActionButton = Template.bind({});
-CallToActionButton.args = {
-	onClick: action("callback"),
-	variant: VARIANT.ACTION,
-	children: "Click Me!"
+export const CallToActionButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ACTION,
+		children: "Click Me!"
+	}
 };
 
-export const OutlineButton = Template.bind({});
-OutlineButton.args = {
-	onClick: action("callback"),
-	variant: VARIANT.OUTLINE,
-	children: "Click Me!"
+export const OutlineButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.OUTLINE,
+		children: "Click Me!"
+	}
 };
 
-export const TextButton = Template.bind({});
-TextButton.args = {
-	onClick: action("callback"),
-	variant: VARIANT.TEXT,
-	children: "Click Me!"
+export const TextButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.TEXT,
+		children: "Click Me!"
+	}
 };
 
-export const IconButton = Template.bind({});
-IconButton.args = {
-	onClick: action("callback"),
-	variant: VARIANT.ICON,
-	title: "Delete",
-	children: <DeleteIcon />
+export const IconButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ICON,
+		title: "Delete",
+		children: <DeleteIcon />
+	}
 };
 
-export const LinkButton = Template.bind({});
-LinkButton.args = {
-	onClick: action("callback"),
-	variant: VARIANT.LINK,
-	children: "Click Me!"
+export const LinkButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LINK,
+		children: "Click Me!"
+	}
 };
 
 export const LinkButtonWithDenseStyle = (): JSX.Element => {
@@ -173,11 +177,12 @@ export const LinkButtonWithDenseStyle = (): JSX.Element => {
 	);
 };
 
-export const ExternalLinkButton = Template.bind({});
-ExternalLinkButton.args = {
-	variant: "link",
-	href: "http://www.cnn.com",
-	children: "Visit CNN"
+export const ExternalLinkButton = {
+	args: {
+		variant: "link",
+		href: "http://www.cnn.com",
+		children: "Visit CNN"
+	}
 };
 
 export const ExternaLinkWithText = (): ReactNode => {
@@ -192,20 +197,22 @@ export const ExternaLinkWithText = (): ReactNode => {
 	);
 };
 
-export const WithStartIcon = Template.bind({});
-WithStartIcon.args = {
-	onClick: action("callback"),
-	variant: VARIANT.ACTION,
-	startIcon: <DeleteIcon />,
-	children: "Delete"
+export const WithStartIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ACTION,
+		startIcon: <DeleteIcon />,
+		children: "Delete"
+	}
 };
 
-export const WithEndIcon = Template.bind({});
-WithEndIcon.args = {
-	onClick: action("callback"),
-	variant: VARIANT.ACTION,
-	endIcon: <DeleteIcon />,
-	children: "Delete"
+export const WithEndIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ACTION,
+		endIcon: <DeleteIcon />,
+		children: "Delete"
+	}
 };
 
 export const FileUpload = (): ReactNode => {

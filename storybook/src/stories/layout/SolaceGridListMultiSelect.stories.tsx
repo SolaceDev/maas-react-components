@@ -1,4 +1,4 @@
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import {
 	SolaceGridListMultiSelect,
@@ -113,7 +113,7 @@ export default {
 			description: "Type of the Items"
 		}
 	}
-} as ComponentMeta<typeof SolaceGridListMultiSelect>;
+} as Meta<typeof SolaceGridListMultiSelect>;
 
 const ENV_1_NAME = "Environment 1";
 const ENV_DESCRIPTION = "The dev environment";
@@ -239,7 +239,7 @@ const largeListItems = Array.from({ length: 500 }).map((item, index) => {
 });
 
 const basicRowMapping = (testItem) => {
-	const itemCells: any[] = [];
+	const itemCells: unknown[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -265,7 +265,7 @@ const basicRowMapping = (testItem) => {
 };
 
 const customCellMapping = (testItem) => {
-	const itemCells: any[] = [];
+	const itemCells: unknown[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -291,7 +291,7 @@ const customCellMapping = (testItem) => {
 };
 
 const getActions = (isDisabled): JSX.Element[] => {
-	const actionList: any[] = [];
+	const actionList: unknown[] = [];
 	actionList.push(
 		<SolaceMenu
 			id={"custom-solace-menu"}
@@ -358,118 +358,142 @@ const SolaceGridListMultiSelectStory = ({ selectedRowIds, highlightedRowId, ...a
 	);
 };
 
-export const DefaultList = SolaceGridListMultiSelectStory.bind({});
-DefaultList.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	dataQa: "demoDefaultList"
+export const DefaultList = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const NoSelectAll = SolaceGridListMultiSelectStory.bind({});
-NoSelectAll.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	selectAll: false,
-	dataQa: "demoDefaultList"
+export const NoSelectAll = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		selectAll: false,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const WithCustomSelectAllText = SolaceGridListMultiSelectStory.bind({});
-WithCustomSelectAllText.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	selectAllLabel: "Choose All",
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	dataQa: "demoDefaultList"
+export const WithCustomSelectAllText = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		selectAllLabel: "Choose All",
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const WithDefaultHighlight = SolaceGridListMultiSelectStory.bind({});
-WithDefaultHighlight.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	highlightedRowId: "2",
-	dataQa: "demoDefaultList"
+export const WithDefaultHighlight = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		highlightedRowId: "2",
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const WithDefaultSelections = SolaceGridListMultiSelectStory.bind({});
-WithDefaultSelections.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	selectedRowIds: ["2", "3", "5"],
-	dataQa: "demoDefaultList"
+export const WithDefaultSelections = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		selectedRowIds: ["2", "3", "5"],
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const WithAllSelected = SolaceGridListMultiSelectStory.bind({});
-WithAllSelected.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	selectedRowIds: testListItems.map((item) => item.id),
-	dataQa: "demoDefaultList"
+export const WithAllSelected = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		selectedRowIds: testListItems.map((item) => item.id),
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const WithClearSelectAllAction = (): JSX.Element => {
-	const [highlightedRowId, setHighlightedRowId] = useState();
-	const [selectedRowIds, setSelectedRowIds] = useState(testListItems.map((item) => item.id));
+export const WithClearSelectAllAction = {
+	render: (): JSX.Element => {
+		const [highlightedRowId, setHighlightedRowId] = useState();
+		const [selectedRowIds, setSelectedRowIds] = useState(testListItems.map((item) => item.id));
 
-	const handleRowHighlight = (selectedItem) => {
-		action("rowHighlighted")(selectedItem);
-		setHighlightedRowId(selectedItem.id);
-	};
+		const handleRowHighlight = (selectedItem) => {
+			action("rowHighlighted")(selectedItem);
+			setHighlightedRowId(selectedItem.id);
+		};
 
-	const handleRowSelection = (selectedItems) => {
-		action("selectedRows")(selectedItems);
-		setSelectedRowIds(selectedItems.map((item) => item.id));
-	};
+		const handleRowSelection = (selectedItems) => {
+			action("selectedRows")(selectedItems);
+			setSelectedRowIds(selectedItems.map((item) => item.id));
+		};
 
-	const handleClearAllSelections = () => {
-		action("clearAllSelections")();
-		setSelectedRowIds([]);
-	};
+		const handleClearAllSelections = () => {
+			action("clearAllSelections")();
+			setSelectedRowIds([]);
+		};
 
-	return (
-		<div style={{ display: "flex", flexDirection: "column", rowGap: "24px" }}>
-			<SolaceGridListMultiSelect
-				items={testListItems}
-				rowMapping={basicRowMapping}
-				highlightedRowId={highlightedRowId}
-				onRowHighlight={handleRowHighlight}
-				selectedRowIds={selectedRowIds}
-				onSelection={handleRowSelection}
-				gridTemplate={DEFAULT_GRID_TEMPLATE}
-				dataQa="demoDefaultList"
-			/>
-			<div style={{ width: "200px" }}>
-				<SolaceButton variant={"outline"} onClick={handleClearAllSelections}>
-					Clear All Selections
-				</SolaceButton>
+		return (
+			<div style={{ display: "flex", flexDirection: "column", rowGap: "24px" }}>
+				<SolaceGridListMultiSelect
+					items={testListItems}
+					rowMapping={basicRowMapping}
+					highlightedRowId={highlightedRowId}
+					onRowHighlight={handleRowHighlight}
+					selectedRowIds={selectedRowIds}
+					onSelection={handleRowSelection}
+					gridTemplate={DEFAULT_GRID_TEMPLATE}
+					dataQa="demoDefaultList"
+				/>
+				<div style={{ width: "200px" }}>
+					<SolaceButton variant={"outline"} onClick={handleClearAllSelections}>
+						Clear All Selections
+					</SolaceButton>
+				</div>
 			</div>
-		</div>
-	);
+		);
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		// clear all selection
+		await userEvent.click(await canvas.findByRole("button", { name: /Clear All Selections/i }));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
-WithClearSelectAllAction.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+export const WithActionMenus = {
+	render: SolaceGridListMultiSelectStory,
 
-	// clear all selection
-	await userEvent.click(await canvas.findByRole("button", { name: /Clear All Selections/i }));
-};
-WithClearSelectAllAction.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
-};
-
-export const WithActionMenus = SolaceGridListMultiSelectStory.bind({});
-WithActionMenus.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	actions: getActions(false),
-	dataQa: "demoDefaultList"
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		actions: getActions(false),
+		dataQa: "demoDefaultList"
+	}
 };
 
 export const WithActionMenusEnabledOnItemsSelect = (): JSX.Element => {
@@ -507,103 +531,130 @@ export const WithActionMenusEnabledOnItemsSelect = (): JSX.Element => {
 	);
 };
 
-export const WithOnlyActionMenus = SolaceGridListMultiSelectStory.bind({});
-WithOnlyActionMenus.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	actions: getActions(false),
-	selectAll: false,
-	dataQa: "demoDefaultList"
+export const WithOnlyActionMenus = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		actions: getActions(false),
+		selectAll: false,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const WithHeaders = SolaceGridListMultiSelectStory.bind({});
-WithHeaders.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	headers: testHeaders,
-	dataQa: "demoDefaultList"
+export const WithHeaders = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		headers: testHeaders,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const ContainedList = SolaceGridListMultiSelectStory.bind({});
-ContainedList.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	actions: getActions(false),
-	dataQa: "demoDefaultList",
-	numOfGridListItemDisplayed: 3
+export const ContainedList = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		actions: getActions(false),
+		dataQa: "demoDefaultList",
+		numOfGridListItemDisplayed: 3
+	}
 };
 
-export const ContainedListNoHeader = SolaceGridListMultiSelectStory.bind({});
-ContainedListNoHeader.args = {
-	items: testListItems,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	dataQa: "demoDefaultList",
-	numOfGridListItemDisplayed: 3,
-	selectAll: false
+export const ContainedListNoHeader = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: testListItems,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		dataQa: "demoDefaultList",
+		numOfGridListItemDisplayed: 3,
+		selectAll: false
+	}
 };
 
-export const LargeDataList = SolaceGridListMultiSelectStory.bind({});
-LargeDataList.args = {
-	items: largeListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	virtualizedListOption: {
-		height: 500,
-		overscanCount: 20
-	},
-	dataQa: "demoDefaultList"
+export const LargeDataList = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: largeListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: customCellMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		virtualizedListOption: {
+			height: 500,
+			overscanCount: 20
+		},
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const LargeDataListDefaultHighlightAndSelection = SolaceGridListMultiSelectStory.bind({});
-LargeDataListDefaultHighlightAndSelection.args = {
-	items: largeListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	highlightedRowId: "20",
-	selectedRowIds: ["2", "4", "20"],
-	virtualizedListOption: {
-		height: 500,
-		overscanCount: 20
-	},
-	dataQa: "demoDefaultList"
+export const LargeDataListDefaultHighlightAndSelection = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: largeListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: customCellMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		highlightedRowId: "20",
+		selectedRowIds: ["2", "4", "20"],
+		virtualizedListOption: {
+			height: 500,
+			overscanCount: 20
+		},
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const ListWithIndicatorEmphasized = SolaceGridListMultiSelectStory.bind({});
-ListWithIndicatorEmphasized.args = {
-	items: getListItemsWithDifferentIndicators(testListItems),
-	headers: testHeaders,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	dataQa: "demoDefaultList"
+export const ListWithIndicatorEmphasized = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: getListItemsWithDifferentIndicators(testListItems),
+		headers: testHeaders,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const ListWithIndicatorEmphasizedInitialHighlight = SolaceGridListMultiSelectStory.bind({});
-ListWithIndicatorEmphasizedInitialHighlight.args = {
-	items: getListItemsWithDifferentIndicators(testListItems),
-	headers: testHeaders,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	highlightedRowId: "2",
-	dataQa: "demoDefaultList"
+export const ListWithIndicatorEmphasizedInitialHighlight = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: getListItemsWithDifferentIndicators(testListItems),
+		headers: testHeaders,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		highlightedRowId: "2",
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const LargeDataListWithIndicatorEmphasized = SolaceGridListMultiSelectStory.bind({});
-LargeDataListWithIndicatorEmphasized.args = {
-	items: getListItemsWithDifferentIndicators(largeListItems),
-	headers: testHeaders,
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	virtualizedListOption: {
-		height: 500,
-		overscanCount: 20
-	},
-	dataQa: "demoDefaultList"
+export const LargeDataListWithIndicatorEmphasized = {
+	render: SolaceGridListMultiSelectStory,
+
+	args: {
+		items: getListItemsWithDifferentIndicators(largeListItems),
+		headers: testHeaders,
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		virtualizedListOption: {
+			height: 500,
+			overscanCount: 20
+		},
+		dataQa: "demoDefaultList"
+	}
 };

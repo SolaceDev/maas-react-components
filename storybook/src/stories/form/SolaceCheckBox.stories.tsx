@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import { SolaceCheckBox } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
@@ -50,140 +49,151 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceCheckBox>;
+} as Meta<typeof SolaceCheckBox>;
 
-const Template: ComponentStory<typeof SolaceCheckBox> = (args) => <SolaceCheckBox {...args} />;
-
-export const DefaultCheckbox = Template.bind({});
-DefaultCheckbox.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoCheckboxId",
-	name: "demoCheckbox"
-};
-
-export const Labeled = Template.bind({});
-Labeled.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoCheckboxId",
-	name: "demoCheckbox",
-	label: LABEL
-};
-
-export const BoldLabel = Template.bind({});
-BoldLabel.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoCheckboxId",
-	name: "demoCheckbox",
-	label: LABEL,
-	boldLabel: true
-};
-
-export const LargeLabel = Template.bind({});
-LargeLabel.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoCheckboxId",
-	name: "demoCheckbox",
-	label: LABEL,
-	largeLabel: true
-};
-
-export const SubText = Template.bind({});
-SubText.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoCheckboxId",
-	name: "demoCheckbox",
-	label: "Primary Label",
-	subTextProps: {
-		label: "Subtext subtext"
+export const DefaultCheckbox = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoCheckboxId",
+		name: "demoCheckbox"
 	}
 };
 
-export const LightSubText = Template.bind({});
-LightSubText.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoCheckboxId",
-	name: "demoCheckbox",
-	label: "Primary Label",
-	subTextProps: {
-		label: "This is a light subtext",
-		light: true
+export const Labeled = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoCheckboxId",
+		name: "demoCheckbox",
+		label: LABEL
 	}
 };
 
-export const HelperText = Template.bind({});
-HelperText.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoCheckboxId",
-	name: "demoCheckbox",
-	label: LABEL,
-	helperText: "Some helper text here"
+export const BoldLabel = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoCheckboxId",
+		name: "demoCheckbox",
+		label: LABEL,
+		boldLabel: true
+	}
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoCheckboxId",
-	name: "demoCheckbox",
-	label: LABEL,
-	hasErrors: true,
-	helperText: "Some error occured"
+export const LargeLabel = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoCheckboxId",
+		name: "demoCheckbox",
+		label: LABEL,
+		largeLabel: true
+	}
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	name: "demoCheckbox",
-	label: LABEL,
-	required: true
+export const SubText = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoCheckboxId",
+		name: "demoCheckbox",
+		label: "Primary Label",
+		subTextProps: {
+			label: "Subtext subtext"
+		}
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	name: "demoCheckbox",
-	label: LABEL,
-	checked: true,
-	disabled: true
+export const LightSubText = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoCheckboxId",
+		name: "demoCheckbox",
+		label: "Primary Label",
+		subTextProps: {
+			label: "This is a light subtext",
+			light: true
+		}
+	}
 };
 
-export const Indeterminate = Template.bind({});
-Indeterminate.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	name: "demoCheckbox",
-	label: LABEL,
-	checked: true,
-	indeterminate: true,
-	readOnly: false
+export const HelperText = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoCheckboxId",
+		name: "demoCheckbox",
+		label: LABEL,
+		helperText: "Some helper text here"
+	}
 };
 
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	name: "demoCheckbox",
-	label: LABEL,
-	checked: true,
-	readOnly: true
+export const WithErrors = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoCheckboxId",
+		name: "demoCheckbox",
+		label: LABEL,
+		hasErrors: true,
+		helperText: "Some error occured"
+	}
 };
 
-export const IndeterminateAndReadOnly = Template.bind({});
-IndeterminateAndReadOnly.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	name: "demoCheckbox",
-	label: LABEL,
-	checked: true,
-	indeterminate: true,
-	readOnly: true
+export const Required = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		name: "demoCheckbox",
+		label: LABEL,
+		required: true
+	}
+};
+
+export const Disabled = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		name: "demoCheckbox",
+		label: LABEL,
+		checked: true,
+		disabled: true
+	}
+};
+
+export const Indeterminate = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		name: "demoCheckbox",
+		label: LABEL,
+		checked: true,
+		indeterminate: true,
+		readOnly: false
+	}
+};
+
+export const ReadOnly = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		name: "demoCheckbox",
+		label: LABEL,
+		checked: true,
+		readOnly: true
+	}
+};
+
+export const IndeterminateAndReadOnly = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		name: "demoCheckbox",
+		label: LABEL,
+		checked: true,
+		indeterminate: true,
+		readOnly: true
+	}
 };

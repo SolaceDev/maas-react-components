@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import {
 	SolaceMenu,
 	SolaceCheckBox,
@@ -17,7 +17,7 @@ export default {
 	component: SolaceResponsiveItemList,
 	parameters: {},
 	argTypes: {}
-} as ComponentMeta<typeof SolaceMenu>;
+} as Meta<typeof SolaceMenu>;
 
 const DEFAULT_OPTIONS = [
 	{ value: "applicationDomain", label: "Application Domain" },
@@ -234,96 +234,113 @@ const ResponsiveItemListTemplate = ({
 	);
 };
 
-export const DefaultList = ResponsiveItemListTemplate.bind({});
-DefaultList.args = {
-	options: DEFAULT_OPTIONS.slice(0)
-};
+export const DefaultList = {
+	render: ResponsiveItemListTemplate,
 
-DefaultList.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+	args: {
+		options: DEFAULT_OPTIONS.slice(0)
+	},
 
-	const options = DEFAULT_OPTIONS.slice(0);
-	for (let i = 0; i < options.length; i++) {
-		await userEvent.click(await canvas.findByText(options[i].label));
-	}
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
 
-	await userEvent.hover(await canvas.findByText(/more/));
-};
+		const options = DEFAULT_OPTIONS.slice(0);
+		for (let i = 0; i < options.length; i++) {
+			await userEvent.click(await canvas.findByText(options[i].label));
+		}
 
-DefaultList.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
-};
+		await userEvent.hover(await canvas.findByText(/more/));
+	},
 
-export const DefaultListShowAll = ResponsiveItemListTemplate.bind({});
-DefaultListShowAll.args = {
-	options: DEFAULT_OPTIONS.slice(0)
-};
-
-DefaultListShowAll.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-
-	const options = DEFAULT_OPTIONS.slice(0);
-	for (let i = 0; i < options.length; i++) {
-		await userEvent.click(await canvas.findByText(options[i].label));
-	}
-
-	await userEvent.click(await canvas.findByText("Show All"));
-};
-
-export const ListWithChipWithTooltip = ResponsiveItemListTemplate.bind({});
-ListWithChipWithTooltip.args = {
-	options: DEFAULT_OPTIONS.slice(0),
-	chipMaxWidth: "120px"
-};
-
-// eslint-disable-next-line sonarjs/no-identical-functions
-ListWithChipWithTooltip.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	const options = DEFAULT_OPTIONS.slice(0);
-	for (let i = 0; i < options.length; i++) {
-		await userEvent.click(await canvas.findByText(options[i].label));
-	}
-
-	await userEvent.hover(await canvas.findByText(/more/));
-};
-
-ListWithChipWithTooltip.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
-};
-
-export const ListShowTwoRows = ResponsiveItemListTemplate.bind({});
-ListShowTwoRows.args = {
-	options: DEFAULT_OPTIONS.slice(0),
-	containerWidth: 400,
-	numOfRowsToShow: 2
-};
-
-ListShowTwoRows.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-
-	const options = DEFAULT_OPTIONS.slice(0);
-	for (let i = 0; i < options.length; i++) {
-		await userEvent.click(await canvas.findByText(options[i].label));
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { disableSnapshot: true }
 	}
 };
 
-export const ListWithNullOverflowComponent = ResponsiveItemListTemplate.bind({});
-ListWithNullOverflowComponent.args = {
-	options: DEFAULT_OPTIONS.slice(0),
-	initSelectedOptions: ["applicationDomain", "brokerType", "mem", "shared", "gatewayServices"],
-	componentToShowOverflowItems: null
+export const DefaultListShowAll = {
+	render: ResponsiveItemListTemplate,
+
+	args: {
+		options: DEFAULT_OPTIONS.slice(0)
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		const options = DEFAULT_OPTIONS.slice(0);
+		for (let i = 0; i < options.length; i++) {
+			await userEvent.click(await canvas.findByText(options[i].label));
+		}
+
+		await userEvent.click(await canvas.findByText("Show All"));
+	}
 };
 
-export const ListWithCustomOverflowLabel = ResponsiveItemListTemplate.bind({});
-ListWithCustomOverflowLabel.args = {
-	options: DEFAULT_OPTIONS.slice(0),
-	initSelectedOptions: ["applicationDomain", "brokerType", "mem", "shared", "gatewayServices"],
-	overflowIndicatorLabel: "Filters",
-	overflowIndicatorLabelSingular: "Filter"
+export const ListWithChipWithTooltip = {
+	render: ResponsiveItemListTemplate,
+
+	args: {
+		options: DEFAULT_OPTIONS.slice(0),
+		chipMaxWidth: "120px"
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const options = DEFAULT_OPTIONS.slice(0);
+		for (let i = 0; i < options.length; i++) {
+			await userEvent.click(await canvas.findByText(options[i].label));
+		}
+
+		await userEvent.hover(await canvas.findByText(/more/));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { disableSnapshot: true }
+	}
+};
+
+export const ListShowTwoRows = {
+	render: ResponsiveItemListTemplate,
+
+	args: {
+		options: DEFAULT_OPTIONS.slice(0),
+		containerWidth: 400,
+		numOfRowsToShow: 2
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		const options = DEFAULT_OPTIONS.slice(0);
+		for (let i = 0; i < options.length; i++) {
+			await userEvent.click(await canvas.findByText(options[i].label));
+		}
+	}
+};
+
+export const ListWithNullOverflowComponent = {
+	render: ResponsiveItemListTemplate,
+
+	args: {
+		options: DEFAULT_OPTIONS.slice(0),
+		initSelectedOptions: ["applicationDomain", "brokerType", "mem", "shared", "gatewayServices"],
+		componentToShowOverflowItems: null
+	}
+};
+
+export const ListWithCustomOverflowLabel = {
+	render: ResponsiveItemListTemplate,
+
+	args: {
+		options: DEFAULT_OPTIONS.slice(0),
+		initSelectedOptions: ["applicationDomain", "brokerType", "mem", "shared", "gatewayServices"],
+		overflowIndicatorLabel: "Filters",
+		overflowIndicatorLabelSingular: "Filter"
+	}
 };

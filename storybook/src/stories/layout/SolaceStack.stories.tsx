@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { ComponentStory, Meta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import {
 	SolaceStack,
@@ -69,8 +69,6 @@ export default {
 	}
 } as Meta;
 
-const Template: ComponentStory<typeof SolaceStack> = (args) => <SolaceStack {...args} />;
-
 const defaultContent = (
 	<>
 		<SolaceTextField label="default spacing1" name={"1"} />
@@ -81,21 +79,24 @@ const defaultContent = (
 	</>
 );
 
-export const DefaultSolaceStack = Template.bind({});
-DefaultSolaceStack.args = {
-	children: defaultContent
+export const DefaultSolaceStack = {
+	args: {
+		children: defaultContent
+	}
 };
 
-export const DisabledSpacing = Template.bind({});
-DisabledSpacing.args = {
-	children: defaultContent,
-	spacing: 0
+export const DisabledSpacing = {
+	args: {
+		children: defaultContent,
+		spacing: 0
+	}
 };
 
-export const Direction = Template.bind({});
-Direction.args = {
-	children: defaultContent,
-	direction: "row"
+export const Direction = {
+	args: {
+		children: defaultContent,
+		direction: "row"
+	}
 };
 
 export const WithDivider = (): JSX.Element => {

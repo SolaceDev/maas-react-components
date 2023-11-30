@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceTabs, SolaceNotificationCounter, SolaceButton } from "@SolaceDev/maas-react-components";
 
 export default {
@@ -11,40 +11,40 @@ export default {
 			control: { type: "text" }
 		}
 	}
-} as ComponentMeta<typeof SolaceTabs>;
+} as Meta<typeof SolaceTabs>;
 
-const Template: ComponentStory<typeof SolaceTabs> = (args) => <SolaceTabs {...args} />;
-
-// The tabValue is a controlled state. The tab won't change if no callback is defined.
-export const DefaultTabs = Template.bind({});
-DefaultTabs.args = {
-	tabs: [
-		{ label: "Tab One", value: "tab_one", href: "#" },
-		{ label: "Tab Two", value: "tab_two", href: "#" },
-		{ label: "Tab Three", value: "tab_three", href: "#" }
-	],
-	activeTabValue: "tab_one"
+export const DefaultTabs = {
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one", href: "#" },
+			{ label: "Tab Two", value: "tab_two", href: "#" },
+			{ label: "Tab Three", value: "tab_three", href: "#" }
+		],
+		activeTabValue: "tab_one"
+	}
 };
 
-export const IncreaseFontTabs = Template.bind({});
-IncreaseFontTabs.args = {
-	tabs: [
-		{ label: "Tab One", value: "tab_one" },
-		{ label: "Tab Two", value: "tab_two" },
-		{ label: "Tab Three", value: "tab_three" }
-	],
-	activeTabValue: "tab_one",
-	size: "md"
+export const IncreaseFontTabs = {
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one" },
+			{ label: "Tab Two", value: "tab_two" },
+			{ label: "Tab Three", value: "tab_three" }
+		],
+		activeTabValue: "tab_one",
+		size: "md"
+	}
 };
 
-export const DisabledTabs = Template.bind({});
-DisabledTabs.args = {
-	tabs: [
-		{ label: "Tab One", value: "tab_one", disabled: true },
-		{ label: "Tab Two", value: "tab_two" },
-		{ label: "Tab Three", value: "tab_three" }
-	],
-	activeTabValue: "tab_two"
+export const DisabledTabs = {
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one", disabled: true },
+			{ label: "Tab Two", value: "tab_two" },
+			{ label: "Tab Three", value: "tab_three" }
+		],
+		activeTabValue: "tab_two"
+	}
 };
 
 export const WithCallbackTabs = (): ReactNode => {
@@ -124,21 +124,23 @@ export const WithIconTabs = (): ReactNode => {
 	);
 };
 
-export const WithSingleTab = Template.bind({});
-WithSingleTab.args = {
-	tabs: [{ label: "Tab One", value: "tab_one", href: "#" }],
-	activeTabValue: "tab_one"
+export const WithSingleTab = {
+	args: {
+		tabs: [{ label: "Tab One", value: "tab_one", href: "#" }],
+		activeTabValue: "tab_one"
+	}
 };
 
-export const FullWidthTabs = Template.bind({});
-FullWidthTabs.args = {
-	tabs: [
-		{ label: "Tab One", value: "tab_one", href: "#" },
-		{ label: "Tab Two", value: "tab_two", href: "#" },
-		{ label: "Tab Three", value: "tab_three", href: "#" }
-	],
-	activeTabValue: "tab_one",
-	variant: "fullWidth"
+export const FullWidthTabs = {
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one", href: "#" },
+			{ label: "Tab Two", value: "tab_two", href: "#" },
+			{ label: "Tab Three", value: "tab_three", href: "#" }
+		],
+		activeTabValue: "tab_one",
+		variant: "fullWidth"
+	}
 };
 
 export const ScrollableTabs = (): ReactNode => {

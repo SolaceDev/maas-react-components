@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceIcon } from "@SolaceDev/maas-react-components";
 import { Icons } from "@SolaceDev/maas-icons";
 
@@ -44,17 +43,17 @@ export default {
 			description: "Override or extend the styles applied to the component. See CSS API below for more details."
 		}
 	}
-} as ComponentMeta<typeof SolaceIcon>;
+} as Meta<typeof SolaceIcon>;
 
-const Template: ComponentStory<typeof SolaceIcon> = (args) => <SolaceIcon {...args} />;
-
-export const AddIcon = Template.bind({});
-AddIcon.args = {
-	name: Icons.add_24
+export const AddIcon = {
+	args: {
+		name: Icons.add_24
+	}
 };
 
-export const AddIconWithTheme = Template.bind({});
-AddIconWithTheme.args = {
-	name: Icons.add_24,
-	color: "primary"
+export const AddIconWithTheme = {
+	args: {
+		name: Icons.add_24,
+		color: "primary"
+	}
 };

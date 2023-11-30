@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { action } from "@storybook/addon-actions";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SolaceLearningButton, DeleteIcon, Paper, Container, Box } from "@SolaceDev/maas-react-components";
+import { Meta } from "@storybook/react";
+import { SolaceLearningButton, DeleteIcon, Box } from "@SolaceDev/maas-react-components";
 
 enum VARIANT {
 	LEARNING = "learning",
@@ -90,61 +90,66 @@ export default {
 			description: "Button label or contents"
 		}
 	}
-} as ComponentMeta<typeof SolaceLearningButton>;
+} as Meta<typeof SolaceLearningButton>;
 
-const Template: ComponentStory<typeof SolaceLearningButton> = (args) => <SolaceLearningButton {...args} />;
-
-export const LearningButton = Template.bind({});
-LearningButton.args = {
-	onClick: action("callback"),
-	variant: VARIANT.LEARNING,
-	children: "Click Me!"
+export const LearningButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LEARNING,
+		children: "Click Me!"
+	}
 };
 
-export const LearningButtonAndStartIcon = Template.bind({});
-LearningButtonAndStartIcon.args = {
-	onClick: action("callback"),
-	variant: VARIANT.LEARNING,
-	startIcon: <DeleteIcon />,
-	children: "Start The Experience"
+export const LearningButtonAndStartIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LEARNING,
+		startIcon: <DeleteIcon />,
+		children: "Start The Experience"
+	}
 };
 
-export const LearningButtonAndEndIcon = Template.bind({});
-LearningButtonAndEndIcon.args = {
-	onClick: action("callback"),
-	variant: VARIANT.LEARNING,
-	endIcon: <DeleteIcon />,
-	children: "Start The Experience"
+export const LearningButtonAndEndIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LEARNING,
+		endIcon: <DeleteIcon />,
+		children: "Start The Experience"
+	}
 };
 
-export const LearningLightButton = Template.bind({});
-LearningLightButton.args = {
-	onClick: action("callback"),
-	variant: VARIANT.LEARNING_LIGHT,
-	children: "Click Me!"
+export const LearningLightButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LEARNING_LIGHT,
+		children: "Click Me!"
+	}
 };
 
-export const LearningLightButtonAndStartIcon = Template.bind({});
-LearningLightButtonAndStartIcon.args = {
-	onClick: action("callback"),
-	variant: VARIANT.LEARNING_LIGHT,
-	startIcon: <DeleteIcon />,
-	children: "Delete"
+export const LearningLightButtonAndStartIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LEARNING_LIGHT,
+		startIcon: <DeleteIcon />,
+		children: "Delete"
+	}
 };
 
-export const LearningLightOutlinedButton = Template.bind({});
-LearningLightOutlinedButton.args = {
-	onClick: action("callback"),
-	variant: VARIANT.LEARNING_LIGHT_OUTLINED,
-	children: "Click Me!"
+export const LearningLightOutlinedButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LEARNING_LIGHT_OUTLINED,
+		children: "Click Me!"
+	}
 };
 
-export const LearningLightOutlinedAndStartIcon = Template.bind({});
-LearningLightOutlinedAndStartIcon.args = {
-	onClick: action("callback"),
-	variant: VARIANT.LEARNING_LIGHT_OUTLINED,
-	startIcon: <DeleteIcon />,
-	children: "Delete"
+export const LearningLightOutlinedAndStartIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LEARNING_LIGHT_OUTLINED,
+		startIcon: <DeleteIcon />,
+		children: "Delete"
+	}
 };
 
 export const LearningIcon = (): ReactNode => {

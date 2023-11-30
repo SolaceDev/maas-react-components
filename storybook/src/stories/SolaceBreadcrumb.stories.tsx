@@ -1,6 +1,5 @@
-import React from "react";
 import { action } from "@storybook/addon-actions";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceBreadcrumb } from "@SolaceDev/maas-react-components";
 
 export default {
@@ -33,85 +32,88 @@ export default {
 				"Specifies the maximum number of breadcrumbs to display. When there are more than the maximum number, only the first and last item will be shown, with an ellipsis in between"
 		}
 	}
-} as ComponentMeta<typeof SolaceBreadcrumb>;
+} as Meta<typeof SolaceBreadcrumb>;
 
-const Template: ComponentStory<typeof SolaceBreadcrumb> = (args) => <SolaceBreadcrumb {...args} />;
 const ROUTE_CLICKED = "route clicked";
 
-export const CurrentLink = Template.bind({});
-CurrentLink.args = {
-	onRouteClick: action(ROUTE_CLICKED),
-	dataQa: "testBreadcrumb",
-	paths: [
-		{
-			title: "Home",
-			link: "",
-			current: true
-		}
-	]
+export const CurrentLink = {
+	args: {
+		onRouteClick: action(ROUTE_CLICKED),
+		dataQa: "testBreadcrumb",
+		paths: [
+			{
+				title: "Home",
+				link: "",
+				current: true
+			}
+		]
+	}
 };
 
-export const ChildLink = Template.bind({});
-ChildLink.args = {
-	onRouteClick: action(ROUTE_CLICKED),
-	dataQa: "testBreadcrumb",
-	paths: [
-		{
-			title: "Home",
-			link: "/",
-			current: false
-		},
-		{
-			title: "Designer",
-			link: "",
-			current: true
-		}
-	]
+export const ChildLink = {
+	args: {
+		onRouteClick: action(ROUTE_CLICKED),
+		dataQa: "testBreadcrumb",
+		paths: [
+			{
+				title: "Home",
+				link: "/",
+				current: false
+			},
+			{
+				title: "Designer",
+				link: "",
+				current: true
+			}
+		]
+	}
 };
 
-export const GrandChildLink = Template.bind({});
-GrandChildLink.args = {
-	onRouteClick: action(ROUTE_CLICKED),
-	dataQa: "testBreadcrumb",
-	paths: [
-		{
-			title: "Home",
-			link: "/",
-			current: false
-		},
-		{
-			title: "Designer",
-			link: "/ep/designer",
-			current: false
-		},
-		{
-			title: "Catalog",
-			link: "",
-			current: true
-		}
-	]
+export const GrandChildLink = {
+	args: {
+		onRouteClick: action(ROUTE_CLICKED),
+		dataQa: "testBreadcrumb",
+		paths: [
+			{
+				title: "Home",
+				link: "/",
+				current: false
+			},
+			{
+				title: "Designer",
+				link: "/ep/designer",
+				current: false
+			},
+			{
+				title: "Catalog",
+				link: "",
+				current: true
+			}
+		]
+	}
 };
 
-export const CollapsedLinks = Template.bind({});
-CollapsedLinks.args = {
-	onRouteClick: action(ROUTE_CLICKED),
-	dataQa: "testBreadcrumb",
-	maxItems: 2,
-	paths: [
-		{
-			title: "Home",
-			link: "/",
-			current: false
-		},
-		{
-			title: "Designer",
-			link: "/ep/designer",
-			current: false
-		},
-		{
-			title: "Catalog",
-			link: "",
-			current: true
-		}
-	]
+export const CollapsedLinks = {
+	args: {
+		onRouteClick: action(ROUTE_CLICKED),
+		dataQa: "testBreadcrumb",
+		maxItems: 2,
+		paths: [
+			{
+				title: "Home",
+				link: "/",
+				current: false
+			},
+			{
+				title: "Designer",
+				link: "/ep/designer",
+				current: false
+			},
+			{
+				title: "Catalog",
+				link: "",
+				current: true
+			}
+		]
+	}
 };

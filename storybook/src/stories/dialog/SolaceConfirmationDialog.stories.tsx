@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Stack } from "@mui/material";
 import { action } from "@storybook/addon-actions";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import {
 	SolaceConfirmationDialog,
 	SolaceSelect,
@@ -9,10 +9,10 @@ import {
 	MenuItem,
 	styled,
 	SolaceAccordion,
-	SolaceCheckBox
+	SolaceCheckBox,
+	CheckCircleIcon
 } from "@SolaceDev/maas-react-components";
 import { DefaultTable } from "../table/SolaceTable.stories";
-import CheckCircleIcon from "@SolaceDev/maas-react-components/src/resources/icons/CheckCircleIcon";
 
 export default {
 	title: "Dialogs/SolaceConfirmationDialog",
@@ -57,7 +57,7 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceConfirmationDialog>;
+} as Meta<typeof SolaceConfirmationDialog>;
 
 const SELECT_OPTIONS: Array<React.ReactNode> = [];
 SELECT_OPTIONS.push(
@@ -76,25 +76,24 @@ SELECT_OPTIONS.push(
 	</MenuItem>
 );
 
-const Template: ComponentStory<typeof SolaceConfirmationDialog> = (args) => <SolaceConfirmationDialog {...args} />;
-
-export const DefaultDialog = Template.bind({});
-DefaultDialog.args = {
-	title: "Test Dialog Title",
-	contentText:
-		"Placeholder text to showcase a modal dialog with a title, some content text and two action buttons (primary action and secondary secondary)",
-	isOpen: true,
-	actions: [
-		{
-			label: "Secondary",
-			onClick: action("secondary-callback")
-		},
-		{
-			label: "Primary",
-			onClick: action("primary-callback"),
-			variant: "outline"
-		}
-	]
+export const DefaultDialog = {
+	args: {
+		title: "Test Dialog Title",
+		contentText:
+			"Placeholder text to showcase a modal dialog with a title, some content text and two action buttons (primary action and secondary secondary)",
+		isOpen: true,
+		actions: [
+			{
+				label: "Secondary",
+				onClick: action("secondary-callback")
+			},
+			{
+				label: "Primary",
+				onClick: action("primary-callback"),
+				variant: "outline"
+			}
+		]
+	}
 };
 
 const BUTTON_CLICK_ACTION_CALLBACK = "button-clicked-callback";
@@ -151,24 +150,26 @@ export const WithNoChildren = (): JSX.Element => (
 	/>
 );
 
-export const WithLinearProgressIndicator = ({ ...args }): JSX.Element => {
-	const [expanded, setExpanded] = useState(false);
-	return (
-		<SolaceConfirmationDialog
-			title="With Accordion Content And Progress Indicator"
-			isOpen={true}
-			linearProgressIndicator={true}
-			actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), isDisabled: true }]}
-		>
-			<SolaceAccordion
-				summary="Accordion in a dialog could have extra paddings AND break dialog progress indicator"
-				details="Because they both have MuiPaper-root class."
-				expanded={expanded}
-				onChange={() => setExpanded(!expanded)}
-				{...args}
-			/>
-		</SolaceConfirmationDialog>
-	);
+export const WithLinearProgressIndicator = {
+	render: ({ ...args }): JSX.Element => {
+		const [expanded, setExpanded] = useState(false);
+		return (
+			<SolaceConfirmationDialog
+				title="With Accordion Content And Progress Indicator"
+				isOpen={true}
+				linearProgressIndicator={true}
+				actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), isDisabled: true }]}
+			>
+				<SolaceAccordion
+					summary="Accordion in a dialog could have extra paddings AND break dialog progress indicator"
+					details="Because they both have MuiPaper-root class."
+					expanded={expanded}
+					onChange={() => setExpanded(!expanded)}
+					{...args}
+				/>
+			</SolaceConfirmationDialog>
+		);
+	}
 };
 
 const CustomContentWrapper = styled("div")(() => ({
@@ -189,45 +190,47 @@ const TableWrapper = (props) => {
 	return <CustomContentWrapper>{props.children}</CustomContentWrapper>;
 };
 
-export const CircularSpinnerWithinDialog = Template.bind({});
-CircularSpinnerWithinDialog.args = {
-	isOpen: true,
-	maxWidth: "sm",
-	contentLayout: "contents",
-	actions: [
-		{
-			label: "Secondary",
-			onClick: action("secondary-callback")
-		},
-		{
-			label: "Primary",
-			onClick: action("primary-callback"),
-			variant: "outline"
-		}
-	],
-	children: (
-		<Stack direction="row" justifyContent="flex-start" alignItems="stretch" spacing={1} sx={{ marginTop: "0px" }}>
-			<div className="success">
-				<CheckCircleIcon />
-			</div>{" "}
-			{/* className can be success/error/progress*/}
-			<div>{`Placeholder text to showcase a modal dialog with an Icon and some body`}</div>
-		</Stack>
-	)
+export const CircularSpinnerWithinDialog = {
+	args: {
+		isOpen: true,
+		maxWidth: "sm",
+		contentLayout: "contents",
+		actions: [
+			{
+				label: "Secondary",
+				onClick: action("secondary-callback")
+			},
+			{
+				label: "Primary",
+				onClick: action("primary-callback"),
+				variant: "outline"
+			}
+		],
+		children: (
+			<Stack direction="row" justifyContent="flex-start" alignItems="stretch" spacing={1} sx={{ marginTop: "0px" }}>
+				<div className="success">
+					<CheckCircleIcon />
+				</div>{" "}
+				{/* className can be success/error/progress*/}
+				<div>{`Placeholder text to showcase a modal dialog with an Icon and some body`}</div>
+			</Stack>
+		)
+	}
 };
 
-export const TableAsChildComponent = Template.bind({});
-TableAsChildComponent.args = {
-	title: "Dialog contains a scrollable table",
-	isOpen: true,
-	maxWidth: "sm",
-	contentLayout: "contents",
-	actions: [{ label: "Close", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), variant: "outline" }],
-	children: (
-		<TableWrapper>
-			<DefaultTable {...DefaultTable.args} />
-		</TableWrapper>
-	)
+export const TableAsChildComponent = {
+	args: {
+		title: "Dialog contains a scrollable table",
+		isOpen: true,
+		maxWidth: "sm",
+		contentLayout: "contents",
+		actions: [{ label: "Close", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), variant: "outline" }],
+		children: (
+			<TableWrapper>
+				<DefaultTable.render {...DefaultTable.args} />
+			</TableWrapper>
+		)
+	}
 };
 
 export const WithElementTypeTitle = (): JSX.Element => (
@@ -251,6 +254,7 @@ const args = {
 	name: "demoCheckbox",
 	label: "Optional checkbox that may be clicked before submitting"
 };
+
 export const WithCustomActions = (): JSX.Element => (
 	<SolaceConfirmationDialog
 		title="Dialog with custom action next to buttons"

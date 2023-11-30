@@ -2,16 +2,14 @@
 
 import React from "react";
 
-import { ComponentStory } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 
-import { Box, Link, SolaceTypography } from "@SolaceDev/maas-react-components";
+import { Box, SolaceTypography } from "@SolaceDev/maas-react-components";
 
 import { Meta } from "@storybook/react";
 
-import { Title, Primary, ArgsTable, Stories, PRIMARY_STORY } from "@storybook/addon-docs";
 export default {
 	title: "Typography/SolaceTypography",
-	component: SolaceTypography,
 	argTypes: {
 		variant: {
 			options: ["h1", "h2", "h3", "h4", "h5", "body1", "caption"],
@@ -114,35 +112,11 @@ export default {
 			},
 			description:
 				"The component maps the variant prop to a range of different HTML element types. For instance, subtitle1 to <h6>. If you wish to change that mapping, you can provide your own. Alternatively, you can use the component prop."
-		}
-	},
-	parameters: {
-		docs: {
-			page: () => (
-				<>
-					<Title />
-					<SolaceTypography sx={{ marginBottom: 2 }}>
-						For detailed documentation and more examples please refer to {""}
-						{
-							<Link href="https://mui.com/material-ui/react-typography/#component">
-								https://mui.com/material-ui/react-typography/#component
-							</Link>
-						}
-						. Default variant is set to body1
-					</SolaceTypography>
-					<SolaceTypography sx={{ marginBottom: 2 }}>
-						The SolaceTypography component makes it easy to apply a default set of font weights and sizes in your
-						application.
-					</SolaceTypography>
-					<Primary />
-					<ArgsTable story={PRIMARY_STORY} />
-					<Stories />
-				</>
-			)
-		}
+		},
+		backgroundColor: { control: "color" }
 	}
 } as Meta;
-const Template: ComponentStory<typeof SolaceTypography> = (args) => <Box {...args} />;
+const Template: StoryFn<typeof SolaceTypography> = (args) => <Box {...args} />;
 
 const defaultContent = (
 	<>
@@ -172,9 +146,12 @@ const defaultContent = (
 	</>
 );
 
-export const AllVariants = Template.bind({});
-AllVariants.args = {
-	children: defaultContent
+export const AllVariants = {
+	render: Template,
+
+	args: {
+		children: defaultContent
+	}
 };
 
 const coloredContent = (
@@ -194,7 +171,10 @@ const coloredContent = (
 	</>
 );
 
-export const CustomColors = Template.bind({});
-CustomColors.args = {
-	children: coloredContent
+export const CustomColors = {
+	render: Template,
+
+	args: {
+		children: coloredContent
+	}
 };

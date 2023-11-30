@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import {
 	SolaceMenu,
 	SolaceMenuItemProps,
@@ -8,10 +8,10 @@ import {
 	DeleteIcon,
 	SolaceRadio,
 	SelectDropdownIcon,
-	SolaceToggle
+	SolaceToggle,
+	MoreHorizOutlinedIcon
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { MoreHorizOutlinedIcon } from "../../../src/resources/icons/MoreHorizOutlinedIcon";
 import { userEvent, within } from "@storybook/testing-library";
 
 export default {
@@ -19,9 +19,7 @@ export default {
 	component: SolaceMenu,
 	parameters: {},
 	argTypes: {}
-} as ComponentMeta<typeof SolaceMenu>;
-
-const Template: ComponentStory<typeof SolaceMenu> = (args) => <SolaceMenu {...args} />;
+} as Meta<typeof SolaceMenu>;
 
 const SUBTEXT = "Subtext subtext";
 const SUPPLEMENTALText = "Supplemental text";
@@ -51,266 +49,275 @@ const DEFAULT_MENU_ITEMS = [
 	}
 ];
 
-export const SolaceMenuItemSelectedState = Template.bind({});
-SolaceMenuItemSelectedState.args = {
-	id: "demo-solace-menu-item-selected",
-	buttonProps: {
-		title: TITLE,
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	dataQa: "testDataProp",
-	dataTags: "testDataTag1",
-	items: [
-		{
-			name: "Option 1",
-			onMenuItemClick: action("callback"),
-			dataQa: "testDataProp2",
-			dataTags: "testDataTag2"
+export const SolaceMenuItemSelectedState = {
+	args: {
+		id: "demo-solace-menu-item-selected",
+		buttonProps: {
+			title: TITLE,
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
 		},
-		{
-			name: "Option 2",
-			onMenuItemClick: action("callback"),
-			selected: true
-		},
-		{
-			name: "Option 3",
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 4",
-			onMenuItemClick: action("callback")
-		}
-	],
-	numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+		dataQa: "testDataProp",
+		dataTags: "testDataTag1",
+		items: [
+			{
+				name: "Option 1",
+				onMenuItemClick: action("callback"),
+				dataQa: "testDataProp2",
+				dataTags: "testDataTag2"
+			},
+			{
+				name: "Option 2",
+				onMenuItemClick: action("callback"),
+				selected: true
+			},
+			{
+				name: "Option 3",
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 4",
+				onMenuItemClick: action("callback")
+			}
+		],
+		numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+	}
 };
 
-export const DefaultSolaceMenu = Template.bind({});
-DefaultSolaceMenu.args = {
-	id: "demo-solace-menu",
-	buttonProps: {
-		title: TITLE,
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	dataQa: "testDataProp",
-	dataTags: "testDataTag1",
-	items: DEFAULT_MENU_ITEMS,
-	numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+export const DefaultSolaceMenu = {
+	args: {
+		id: "demo-solace-menu",
+		buttonProps: {
+			title: TITLE,
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		dataQa: "testDataProp",
+		dataTags: "testDataTag1",
+		items: DEFAULT_MENU_ITEMS,
+		numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+	}
 };
 
-export const DefaultSolaceMenuPressed = Template.bind({});
-DefaultSolaceMenuPressed.args = {
-	id: "demo-solace-menu",
-	buttonProps: {
-		title: TITLE,
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
+export const DefaultSolaceMenuPressed = {
+	args: {
+		id: "demo-solace-menu",
+		buttonProps: {
+			title: TITLE,
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		dataQa: "testDataProp",
+		dataTags: "testDataTag1",
+		items: DEFAULT_MENU_ITEMS,
+		numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
 	},
-	dataQa: "testDataProp",
-	dataTags: "testDataTag1",
-	items: DEFAULT_MENU_ITEMS,
-	numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		await userEvent.click(canvas.getByRole("button"));
+	}
 };
 
-DefaultSolaceMenuPressed.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-
-	await userEvent.click(canvas.getByRole("button"));
+export const TextMenuButton = {
+	args: {
+		buttonProps: {
+			variant: "text",
+			children: "Click"
+		},
+		dataQa: "testDataProp",
+		dataTags: "testDataTag1",
+		items: DEFAULT_MENU_ITEMS
+	}
 };
 
-export const TextMenuButton = Template.bind({});
-TextMenuButton.args = {
-	buttonProps: {
-		variant: "text",
-		children: "Click"
-	},
-	dataQa: "testDataProp",
-	dataTags: "testDataTag1",
-	items: DEFAULT_MENU_ITEMS
+export const MultilineSolaceMenu = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 4",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 5",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			}
+		],
+		multiline: true,
+		numOfMenuItemDisplayed: 4 // default to 9 if this number is not specified
+	}
 };
 
-export const MultilineSolaceMenu = Template.bind({});
-MultilineSolaceMenu.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
+export const CustomMaxWidthSolaceMenu = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
 		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 4",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 5",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		}
-	],
-	multiline: true,
-	numOfMenuItemDisplayed: 4 // default to 9 if this number is not specified
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT + " " + SUBTEXT + " " + SUBTEXT + " " + SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 4",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 5",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			}
+		],
+		multiline: true,
+		maxWidth: 500
+	}
 };
 
-export const CustomMaxWidthSolaceMenu = Template.bind({});
-CustomMaxWidthSolaceMenu.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
+export const CustomMaxWidthMaxHeightSolaceMenu = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
 		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT + " " + SUBTEXT + " " + SUBTEXT + " " + SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 4",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 5",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		}
-	],
-	multiline: true,
-	maxWidth: 500
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT + " " + SUBTEXT + " " + SUBTEXT + " " + SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 4",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 5",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			}
+		],
+		multiline: true,
+		numOfMenuItemDisplayed: 4,
+		maxWidth: 500
+	}
 };
 
-export const CustomMaxWidthMaxHeightSolaceMenu = Template.bind({});
-CustomMaxWidthMaxHeightSolaceMenu.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
+export const SecondaryActionSolaceMenu = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
 		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT + " " + SUBTEXT + " " + SUBTEXT + " " + SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 4",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 5",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		}
-	],
-	multiline: true,
-	numOfMenuItemDisplayed: 4,
-	maxWidth: 500
+		items: [
+			{
+				name: "Option 1",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 2",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback")
+			}
+		]
+	}
 };
 
-export const SecondaryActionSolaceMenu = Template.bind({});
-SecondaryActionSolaceMenu.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-			onMenuItemClick: action("callback")
+export const DisabledMenuItem = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
 		},
-		{
-			name: "Option 2",
-			secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 3",
-			secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-			onMenuItemClick: action("callback")
-		}
-	]
-};
-
-export const DisabledMenuItem = Template.bind({});
-DisabledMenuItem.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			disabled: true
-		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		}
-	],
-	multiline: true
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				disabled: true
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			}
+		],
+		multiline: true
+	}
 };
 
 export const DisabledMenu = (): JSX.Element => {
@@ -347,36 +354,37 @@ export const DisabledMenu = (): JSX.Element => {
 	);
 };
 
-export const IconMenuItem = Template.bind({});
-IconMenuItem.args = {
-	buttonProps: {
-		variant: "text",
-		children: "Click"
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			icon: <DeleteIcon />
+export const IconMenuItem = {
+	args: {
+		buttonProps: {
+			variant: "text",
+			children: "Click"
 		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			icon: <DeleteIcon />
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			icon: <DeleteIcon />
-		}
-	],
-	multiline: true
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				icon: <DeleteIcon />
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				icon: <DeleteIcon />
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				icon: <DeleteIcon />
+			}
+		],
+		multiline: true
+	}
 };
 
 export const CustomPositionMenu = (): JSX.Element => {
@@ -405,103 +413,106 @@ export const CustomPositionMenu = (): JSX.Element => {
 	);
 };
 
-export const MenusWithDivider = Template.bind({});
-MenusWithDivider.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
+export const MenusWithDivider = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
 		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			divider: true
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback")
-		}
-	],
-	multiline: true
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				divider: true
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			}
+		],
+		multiline: true
+	}
 };
 
-export const HeaderAndCategoryHeading = Template.bind({});
-HeaderAndCategoryHeading.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			categoryHeading: "Category1"
+export const HeaderAndCategoryHeading = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
 		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			categoryHeading: "Category1",
-			divider: true
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			categoryHeading: "Category2"
-		}
-	],
-	multiline: true,
-	header: "Menu Header"
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				categoryHeading: "Category1"
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				categoryHeading: "Category1",
+				divider: true
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				categoryHeading: "Category2"
+			}
+		],
+		multiline: true,
+		header: "Menu Header"
+	}
 };
 
-export const HeaderAndCategoryHeadingAndNumberOfItemsDisplayed = Template.bind({});
-HeaderAndCategoryHeadingAndNumberOfItemsDisplayed.args = {
-	buttonProps: {
-		variant: "icon",
-		children: <MoreHorizOutlinedIcon />
-	},
-	items: [
-		{
-			name: "Option 1",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			categoryHeading: "Category1"
+export const HeaderAndCategoryHeadingAndNumberOfItemsDisplayed = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
 		},
-		{
-			name: "Option 2",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			categoryHeading: "Category1",
-			divider: true
-		},
-		{
-			name: "Option 3",
-			subText: SUBTEXT,
-			supplementalText: SUPPLEMENTALText,
-			onMenuItemClick: action("callback"),
-			categoryHeading: "Category2"
-		}
-	],
-	multiline: true,
-	header: "Menu Header",
-	numOfMenuItemDisplayed: 2
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				categoryHeading: "Category1"
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				categoryHeading: "Category1",
+				divider: true
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				categoryHeading: "Category2"
+			}
+		],
+		multiline: true,
+		header: "Menu Header",
+		numOfMenuItemDisplayed: 2
+	}
 };
 
 export const EmptyMenuItems = (): JSX.Element => {

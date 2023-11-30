@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceToasts, DeleteIcon } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
@@ -32,48 +32,52 @@ export default {
 			control: { type: "boolean" }
 		}
 	}
-} as ComponentMeta<typeof SolaceToasts>;
+} as Meta<typeof SolaceToasts>;
 
-const Template: ComponentStory<typeof SolaceToasts> = (args) => <SolaceToasts {...args} />;
-
-export const DefaultToast = Template.bind({});
-DefaultToast.args = {
-	message: "This is a default toast",
-	open: true,
-	onClose: action("closing")
+export const DefaultToast = {
+	args: {
+		message: "This is a default toast",
+		open: true,
+		onClose: action("closing")
+	}
 };
 
-export const SuccessToast = Template.bind({});
-SuccessToast.args = {
-	severity: "success",
-	message: "This is a sample success toast",
-	open: true
+export const SuccessToast = {
+	args: {
+		severity: "success",
+		message: "This is a sample success toast",
+		open: true
+	}
 };
 
-export const InfoToast = Template.bind({});
-InfoToast.args = {
-	severity: "info",
-	message: "This is a sample info toast",
-	open: true
+export const InfoToast = {
+	args: {
+		severity: "info",
+		message: "This is a sample info toast",
+		open: true
+	}
 };
 
-export const WarningToast = Template.bind({});
-WarningToast.args = {
-	severity: "warning",
-	message: "This is a sample warning toast",
-	open: true
+export const WarningToast = {
+	args: {
+		severity: "warning",
+		message: "This is a sample warning toast",
+		open: true
+	}
 };
 
-export const ErrorToast = Template.bind({});
-ErrorToast.args = {
-	severity: "error",
-	message: "This is a sample error toast",
-	open: true
+export const ErrorToast = {
+	args: {
+		severity: "error",
+		message: "This is a sample error toast",
+		open: true
+	}
 };
 
-export const WithActionIcon = Template.bind({});
-WithActionIcon.args = {
-	message: "This is with an action icon",
-	action: <DeleteIcon onClick={action("delete icon clicked")} />,
-	open: true
+export const WithActionIcon = {
+	args: {
+		message: "This is with an action icon",
+		action: <DeleteIcon onClick={action("delete icon clicked")} />,
+		open: true
+	}
 };

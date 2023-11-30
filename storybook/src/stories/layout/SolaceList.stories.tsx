@@ -1,9 +1,8 @@
 import React from "react";
-import { Meta } from "@storybook/react/types-6-0";
+import { Meta } from "@storybook/react";
 import { SolaceList, SolaceListItem, SolaceListItemButton } from "@SolaceDev/maas-react-components";
 import { Typography, Link, Divider, Paper } from "@mui/material";
 import { Title, Primary, ArgsTable, Stories, PRIMARY_STORY } from "@storybook/addon-docs";
-import { ComponentStory } from "@storybook/react";
 
 export default {
 	title: "Layout/SolaceList",
@@ -61,22 +60,21 @@ export default {
 	}
 } as Meta;
 
-const Template: ComponentStory<typeof SolaceList> = (args) => <SolaceList {...args} />;
-
-export const Basic = Template.bind({});
-Basic.args = {
-	children: (
-		<Paper variant="outlined" sx={{ width: "100px" }}>
-			<SolaceList>
-				<SolaceListItem>Item 1</SolaceListItem>
-				<SolaceListItem>Item 2</SolaceListItem>
-			</SolaceList>
-			<Divider />
-			<SolaceList>
-				<SolaceListItem>Item 3</SolaceListItem>
-			</SolaceList>
-		</Paper>
-	)
+export const Basic = {
+	args: {
+		children: (
+			<Paper variant="outlined" sx={{ width: "100px" }}>
+				<SolaceList>
+					<SolaceListItem>Item 1</SolaceListItem>
+					<SolaceListItem>Item 2</SolaceListItem>
+				</SolaceList>
+				<Divider />
+				<SolaceList>
+					<SolaceListItem>Item 3</SolaceListItem>
+				</SolaceList>
+			</Paper>
+		)
+	}
 };
 
 export const WithButtons = () => (

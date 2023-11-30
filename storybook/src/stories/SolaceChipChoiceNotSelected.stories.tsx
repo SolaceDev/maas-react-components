@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceChip, MODES, STATES, CHIP_VARIANT } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
@@ -28,24 +27,25 @@ export default {
 			control: { type: "radio" }
 		}
 	}
-} as ComponentMeta<typeof SolaceChip>;
+} as Meta<typeof SolaceChip>;
 
 const CLICK_ACTION_TEXT = "Input button clicked";
-const Template: ComponentStory<typeof SolaceChip> = (args) => <SolaceChip {...args} />;
 
-export const DefaultNotSelectedChoiceChip = Template.bind({});
-DefaultNotSelectedChoiceChip.args = {
-	label: "Default Choice Chip (Not Selected)",
-	variant: "outlined",
-	clickable: true,
-	onClick: action(CLICK_ACTION_TEXT)
+export const DefaultNotSelectedChoiceChip = {
+	args: {
+		label: "Default Choice Chip (Not Selected)",
+		variant: "outlined",
+		clickable: true,
+		onClick: action(CLICK_ACTION_TEXT)
+	}
 };
 
-export const DarkNotSelectedChoiceChip = Template.bind({});
-DarkNotSelectedChoiceChip.args = {
-	mode: MODES.DARK_MODE,
-	label: "Dark Choice Chip (Not Selected)",
-	variant: "outlined",
-	clickable: true,
-	onClick: action(CLICK_ACTION_TEXT)
+export const DarkNotSelectedChoiceChip = {
+	args: {
+		mode: MODES.DARK_MODE,
+		label: "Dark Choice Chip (Not Selected)",
+		variant: "outlined",
+		clickable: true,
+		onClick: action(CLICK_ACTION_TEXT)
+	}
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import {
 	SolaceSelect,
@@ -75,7 +75,7 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceSelect>;
+} as Meta<typeof SolaceSelect>;
 
 export const SELECT_OPTIONS: Array<any> = [];
 SELECT_OPTIONS.push(
@@ -204,182 +204,198 @@ function generateSelectOptionsWithIconAndText(): Array<JSX.Element> {
 const TITLE = "Demo Select";
 const LABEL = "Some Label";
 
-const Template: ComponentStory<typeof SolaceSelect> = (args) => <SolaceSelect {...args} />;
-
-export const DefaultTextfield = Template.bind({});
-DefaultTextfield.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoSelectId",
-	name: "demoSelect",
-	children: SELECT_OPTIONS
+export const DefaultTextfield = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoSelectId",
+		name: "demoSelect",
+		children: SELECT_OPTIONS
+	}
 };
 
-export const CustomWidth = Template.bind({});
-CustomWidth.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoSelectId",
-	name: "demoSelect",
-	children: SELECT_OPTIONS_WITH_LONG_TEXT,
-	width: "350px"
-};
-export const CustomMaxHeight = Template.bind({});
-CustomMaxHeight.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoSelectId",
-	name: "demoSelect",
-	children: SELECT_OPTIONS,
-	width: "350px",
-	maxHeight: "10em"
+export const CustomWidth = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoSelectId",
+		name: "demoSelect",
+		children: SELECT_OPTIONS_WITH_LONG_TEXT,
+		width: "350px"
+	}
 };
 
-export const StackedLabelFormat = Template.bind({});
-StackedLabelFormat.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	name: "demoSelect",
-	label: LABEL,
-	children: SELECT_OPTIONS
+export const CustomMaxHeight = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoSelectId",
+		name: "demoSelect",
+		children: SELECT_OPTIONS,
+		width: "350px",
+		maxHeight: "10em"
+	}
 };
 
-export const InlineLabelFormat = Template.bind({});
-InlineLabelFormat.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: SELECT_OPTIONS,
-	inlineLabel: true
+export const StackedLabelFormat = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		name: "demoSelect",
+		label: LABEL,
+		children: SELECT_OPTIONS
+	}
 };
 
-export const Subtext = Template.bind({});
-Subtext.args = {
-	onChange: action("callback"),
-	getOptionDisplayValue: (value) => {
-		const match = SELECT_OPTIONS_WITH_SUBTEXT.find((props) => props.value === value);
-		return match ? match.name : "";
-	},
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: generateSelectOptionsWithSubtext()
+export const InlineLabelFormat = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		inlineLabel: true
+	}
 };
 
-export const DisplayEmpty = Template.bind({});
-DisplayEmpty.args = {
-	onChange: action("callback"),
-	title: TITLE,
-	id: "demoSelectId",
-	name: "demoSelect",
-	children: SELECT_OPTIONS,
-	displayEmpty: true
+export const Subtext = {
+	args: {
+		onChange: action("callback"),
+		getOptionDisplayValue: (value) => {
+			const match = SELECT_OPTIONS_WITH_SUBTEXT.find((props) => props.value === value);
+			return match ? match.name : "";
+		},
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: generateSelectOptionsWithSubtext()
+	}
 };
 
-export const HelperText = Template.bind({});
-HelperText.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: SELECT_OPTIONS,
-	helperText: "Some helper text"
+export const DisplayEmpty = {
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoSelectId",
+		name: "demoSelect",
+		children: SELECT_OPTIONS,
+		displayEmpty: true
+	}
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: SELECT_OPTIONS,
-	helperText: "The text you entered was invalid",
-	hasErrors: true
+export const HelperText = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		helperText: "Some helper text"
+	}
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: SELECT_OPTIONS,
-	required: true
+export const WithErrors = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		helperText: "The text you entered was invalid",
+		hasErrors: true
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: SELECT_OPTIONS,
-	value: "option2",
-	disabled: true
+export const Required = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		required: true
+	}
 };
 
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: SELECT_OPTIONS,
-	value: "option3",
-	readOnly: true
+export const Disabled = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		value: "option2",
+		disabled: true
+	}
 };
 
-export const ReadOnlyAndDisabled = Template.bind({});
-ReadOnlyAndDisabled.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: SELECT_OPTIONS,
-	value: "option3",
-	readOnly: true,
-	disabled: true
+export const ReadOnly = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		value: "option3",
+		readOnly: true
+	}
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: generateSelectOptionsWithIcon()
+export const ReadOnlyAndDisabled = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		value: "option3",
+		readOnly: true,
+		disabled: true
+	}
 };
 
-export const WithIconDisabled = Template.bind({});
-WithIconDisabled.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	value: "option2",
-	children: generateSelectOptionsWithIcon(),
-	disabled: true
+export const WithIcon = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: generateSelectOptionsWithIcon()
+	}
 };
 
-export const WithIconReadonly = Template.bind({});
-WithIconReadonly.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	value: "option3",
-	children: generateSelectOptionsWithIcon(),
-	readOnly: true
+export const WithIconDisabled = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		value: "option2",
+		children: generateSelectOptionsWithIcon(),
+		disabled: true
+	}
 };
 
-export const WithIconAndText = Template.bind({});
-WithIconAndText.args = {
-	onChange: action("callback"),
-	name: "demoSelect",
-	title: TITLE,
-	label: LABEL,
-	children: generateSelectOptionsWithIconAndText()
+export const WithIconReadonly = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		value: "option3",
+		children: generateSelectOptionsWithIcon(),
+		readOnly: true
+	}
+};
+
+export const WithIconAndText = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: generateSelectOptionsWithIconAndText()
+	}
 };
 
 export const OpenDropDownOnButtonClick = () => {

@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceChip, MODES, STATUSES, CHIP_VARIANT } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
@@ -28,34 +27,36 @@ export default {
 			control: { type: "radio" }
 		}
 	}
-} as ComponentMeta<typeof SolaceChip>;
+} as Meta<typeof SolaceChip>;
 
 const DELETE_ACTION_TEXT = "Delete icon clicked";
 const CLICK_ACTION_TEXT = "Input button clicked";
-const Template: ComponentStory<typeof SolaceChip> = (args) => <SolaceChip {...args} />;
 
-export const DefaultInputChip = Template.bind({});
-DefaultInputChip.args = {
-	label: "Default Input Chip",
-	clickable: true,
-	onDelete: action(DELETE_ACTION_TEXT),
-	onClick: action(CLICK_ACTION_TEXT)
+export const DefaultInputChip = {
+	args: {
+		label: "Default Input Chip",
+		clickable: true,
+		onDelete: action(DELETE_ACTION_TEXT),
+		onClick: action(CLICK_ACTION_TEXT)
+	}
 };
 
-export const DarkInputChip = Template.bind({});
-DarkInputChip.args = {
-	mode: MODES.DARK_MODE,
-	label: "Dark Input Chip",
-	clickable: true,
-	onDelete: action(DELETE_ACTION_TEXT),
-	onClick: action(CLICK_ACTION_TEXT)
+export const DarkInputChip = {
+	args: {
+		mode: MODES.DARK_MODE,
+		label: "Dark Input Chip",
+		clickable: true,
+		onDelete: action(DELETE_ACTION_TEXT),
+		onClick: action(CLICK_ACTION_TEXT)
+	}
 };
 
-export const ErrorInputChip = Template.bind({});
-ErrorInputChip.args = {
-	status: STATUSES.ERROR_STATUS,
-	label: "Error Input Chip",
-	clickable: true,
-	onDelete: action(DELETE_ACTION_TEXT),
-	onClick: action(CLICK_ACTION_TEXT)
+export const ErrorInputChip = {
+	args: {
+		status: STATUSES.ERROR_STATUS,
+		label: "Error Input Chip",
+		clickable: true,
+		onDelete: action(DELETE_ACTION_TEXT),
+		onClick: action(CLICK_ACTION_TEXT)
+	}
 };

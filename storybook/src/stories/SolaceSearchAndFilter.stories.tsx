@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import { SolaceSearchAndFilter, FIELD_TYPES, SolaceTextFieldChangeEvent } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/testing-library";
@@ -19,12 +19,12 @@ export default {
 			control: { type: "radio" }
 		}
 	}
-} as ComponentMeta<typeof SolaceSearchAndFilter>;
+} as Meta<typeof SolaceSearchAndFilter>;
 
 const SEARCH_PLACEHOLDER_TEXT = "Search for Application";
 const FILTER_PLACEHOLDER_TEXT = "Filter by name";
 
-const Template: ComponentStory<typeof SolaceSearchAndFilter> = (args) => {
+const Template: StoryFn<typeof SolaceSearchAndFilter> = (args) => {
 	const { value, onChange, ...rest } = args;
 	const [searchValue, setSerachValue] = useState(value);
 	const handleChange = (event: SolaceTextFieldChangeEvent) => {
@@ -34,104 +34,134 @@ const Template: ComponentStory<typeof SolaceSearchAndFilter> = (args) => {
 	return <SolaceSearchAndFilter value={searchValue} onChange={handleChange} {...rest} />;
 };
 
-export const Default = Template.bind({});
-Default.args = { name: "testField", onChange: action("key typed") };
-
-export const Search = Template.bind({});
-Search.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: SEARCH_PLACEHOLDER_TEXT,
-	onChange: action("key typed")
+export const Default = {
+	render: Template,
+	args: { name: "testField", onChange: action("key typed") }
 };
 
-export const Filter = Template.bind({});
-Filter.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	type: FIELD_TYPES.FILTER,
-	placeholder: FILTER_PLACEHOLDER_TEXT,
-	onChange: action("key typed")
+export const Search = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		type: FIELD_TYPES.SEARCH,
+		placeholder: SEARCH_PLACEHOLDER_TEXT,
+		onChange: action("key typed")
+	}
 };
 
-export const FixedWidth = Template.bind({});
-FixedWidth.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: SEARCH_PLACEHOLDER_TEXT,
-	width: "200px",
-	onChange: action("key typed")
+export const Filter = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		type: FIELD_TYPES.FILTER,
+		placeholder: FILTER_PLACEHOLDER_TEXT,
+		onChange: action("key typed")
+	}
 };
 
-export const WithLabel = Template.bind({});
-WithLabel.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	label: "Search",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: SEARCH_PLACEHOLDER_TEXT,
-	onChange: action("key typed")
+export const FixedWidth = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		type: FIELD_TYPES.SEARCH,
+		placeholder: SEARCH_PLACEHOLDER_TEXT,
+		width: "200px",
+		onChange: action("key typed")
+	}
 };
 
-export const HelperText = Template.bind({});
-HelperText.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: SEARCH_PLACEHOLDER_TEXT,
-	helperText: "Showing 20 of 25 Results. Specify your search for more results",
-	onChange: action("key typed")
+export const WithLabel = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		label: "Search",
+		type: FIELD_TYPES.SEARCH,
+		placeholder: SEARCH_PLACEHOLDER_TEXT,
+		onChange: action("key typed")
+	}
 };
 
-export const InitialValue = Template.bind({});
-InitialValue.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: SEARCH_PLACEHOLDER_TEXT,
-	width: "200px",
-	value: "initial value",
-	onChange: action("key typed")
+export const HelperText = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		type: FIELD_TYPES.SEARCH,
+		placeholder: SEARCH_PLACEHOLDER_TEXT,
+		helperText: "Showing 20 of 25 Results. Specify your search for more results",
+		onChange: action("key typed")
+	}
 };
 
-export const HasErrors = Template.bind({});
-HasErrors.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: SEARCH_PLACEHOLDER_TEXT,
-	value: "some invalid search",
-	hasErrors: true,
-	helperText: "Unexpected network error, please contact your system administrator",
-	onChange: action("key typed")
+export const InitialValue = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		type: FIELD_TYPES.SEARCH,
+		placeholder: SEARCH_PLACEHOLDER_TEXT,
+		width: "200px",
+		value: "initial value",
+		onChange: action("key typed")
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: SEARCH_PLACEHOLDER_TEXT,
-	width: "200px",
-	disabled: true,
-	onChange: action("key typed")
+export const HasErrors = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		type: FIELD_TYPES.SEARCH,
+		placeholder: SEARCH_PLACEHOLDER_TEXT,
+		value: "some invalid search",
+		hasErrors: true,
+		helperText: "Unexpected network error, please contact your system administrator",
+		onChange: action("key typed")
+	}
 };
 
-export const ClearAllNotification = Template.bind({});
-ClearAllNotification.args = {
-	id: "searchAndFilterID",
-	name: "testField",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: SEARCH_PLACEHOLDER_TEXT,
-	width: "400px",
-	value: "initial value to be cleared",
-	onChange: action("key typed"),
-	onClearAll: action("clear all triggered")
+export const Disabled = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		type: FIELD_TYPES.SEARCH,
+		placeholder: SEARCH_PLACEHOLDER_TEXT,
+		width: "200px",
+		disabled: true,
+		onChange: action("key typed")
+	}
 };
-ClearAllNotification.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(canvas.getByRole("button"));
+
+export const ClearAllNotification = {
+	render: Template,
+
+	args: {
+		id: "searchAndFilterID",
+		name: "testField",
+		type: FIELD_TYPES.SEARCH,
+		placeholder: SEARCH_PLACEHOLDER_TEXT,
+		width: "400px",
+		value: "initial value to be cleared",
+		onChange: action("key typed"),
+		onClearAll: action("clear all triggered")
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
 };

@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceCircularProgress } from "@SolaceDev/maas-react-components";
 
 export default {
@@ -25,15 +24,15 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceCircularProgress>;
+} as Meta<typeof SolaceCircularProgress>;
 
-const Template: ComponentStory<typeof SolaceCircularProgress> = (args) => <SolaceCircularProgress {...args} />;
+export const DefaultVariant = {
+	args: {}
+};
 
-export const DefaultVariant = Template.bind({});
-DefaultVariant.args = {};
-
-export const DeterminateVariant = Template.bind({});
-DeterminateVariant.args = {
-	variant: "determinate",
-	value: 90
+export const DeterminateVariant = {
+	args: {
+		variant: "determinate",
+		value: 90
+	}
 };

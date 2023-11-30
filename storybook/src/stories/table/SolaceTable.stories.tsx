@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { action } from "@storybook/addon-actions";
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import {
 	SolaceTable,
 	SolaceTableSelectionType,
@@ -261,7 +261,7 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceTable>;
+} as Meta<typeof SolaceTable>;
 
 const sortData = (selectedColumn: SolaceTableColumn, rows) => {
 	return rows.sort((a, b) => {
@@ -381,50 +381,68 @@ const TableTemplate = ({ rows, columns, selectionType, initialSelectedRowIds, ..
 	);
 };
 
-export const DefaultTable = TableTemplate.bind({});
-DefaultTable.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.NONE
+export const DefaultTable = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.NONE
+	}
 };
 
-export const DefaultWithMinMaxHeightTable = TableTemplate.bind({});
-DefaultWithMinMaxHeightTable.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.NONE,
-	minHeight: "100px",
-	maxHeight: "150px"
+export const DefaultWithMinMaxHeightTable = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.NONE,
+		minHeight: "100px",
+		maxHeight: "150px"
+	}
 };
 
-export const SingleSelectionTable = TableTemplate.bind({});
-SingleSelectionTable.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.SINGLE
+export const SingleSelectionTable = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.SINGLE
+	}
 };
 
-export const SingleSelectionTableInitialSelections = TableTemplate.bind({});
-SingleSelectionTableInitialSelections.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.SINGLE,
-	initialSelectedRowIds: ["2"]
+export const SingleSelectionTableInitialSelections = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.SINGLE,
+		initialSelectedRowIds: ["2"]
+	}
 };
 
-export const MultiSelectionTable = TableTemplate.bind({});
-MultiSelectionTable.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI
+export const MultiSelectionTable = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI
+	}
 };
 
-export const MultiSelectionTableInitialSelections = TableTemplate.bind({});
-MultiSelectionTableInitialSelections.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI,
-	initialSelectedRowIds: ["2", "4"]
+export const MultiSelectionTableInitialSelections = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		initialSelectedRowIds: ["2", "4"]
+	}
 };
 
 const PaginationContainer = styled("div")(({ theme }) => ({
@@ -447,80 +465,101 @@ const TableWrapper = (props) => {
 	return <CustomContentWrapper>{props.children}</CustomContentWrapper>;
 };
 
-export const TableWithNoBorder = TableTemplate.bind({});
-TableWithNoBorder.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI
-};
-TableWithNoBorder.decorators = [
-	(Story) => (
-		<TableWrapper>
-			<Story />
-		</TableWrapper>
-	)
-];
+export const TableWithNoBorder = {
+	render: TableTemplate,
 
-export const ScrollableTable = TableTemplate.bind({});
-ScrollableTable.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI
-};
-ScrollableTable.decorators = [
-	(Story) => (
-		<div style={{ height: "300px" }}>
-			<h3>Table header becomes sticky when table content is scrollable</h3>
-			<Story />
-		</div>
-	)
-];
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI
+	},
 
-export const TableWithOnlyOneRow = TableTemplate.bind({});
-TableWithOnlyOneRow.args = {
-	rows: rows.slice(-1),
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI
+	decorators: [
+		(Story) => (
+			<TableWrapper>
+				<Story />
+			</TableWrapper>
+		)
+	]
 };
 
-export const LoadingTableWithOnlyOneRow = TableTemplate.bind({});
-LoadingTableWithOnlyOneRow.args = {
-	rows: rows.slice(-1),
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI,
-	loading: true,
-	loadingMessage: "loading..."
+export const ScrollableTable = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI
+	},
+
+	decorators: [
+		(Story) => (
+			<div style={{ height: "300px" }}>
+				<h3>Table header becomes sticky when table content is scrollable</h3>
+				<Story />
+			</div>
+		)
+	]
 };
 
-export const LoadingTableWithPagination = TableTemplate.bind({});
-LoadingTableWithPagination.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI,
-	loading: true,
-	loadingMessage: "loading..."
-};
-LoadingTableWithPagination.decorators = [
-	(Story) => (
-		<div style={{ padding: 16 }}>
-			<h3>A loading table with (loading) pagination</h3>
-			<PaginationContainer>
-				<TableWrapper>
-					<Story />
-				</TableWrapper>
-				<VerticalPadding>
-					<SolacePagination totalResults={rows.length} loading={true} />
-				</VerticalPadding>
-			</PaginationContainer>
-		</div>
-	)
-];
+export const TableWithOnlyOneRow = {
+	render: TableTemplate,
 
-export const EmptyStateTable = TableTemplate.bind({});
-EmptyStateTable.args = {
-	rows: [],
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI
+	args: {
+		rows: rows.slice(-1),
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI
+	}
+};
+
+export const LoadingTableWithOnlyOneRow = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows.slice(-1),
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		loading: true,
+		loadingMessage: "loading..."
+	}
+};
+
+export const LoadingTableWithPagination = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		loading: true,
+		loadingMessage: "loading..."
+	},
+
+	decorators: [
+		(Story) => (
+			<div style={{ padding: 16 }}>
+				<h3>A loading table with (loading) pagination</h3>
+				<PaginationContainer>
+					<TableWrapper>
+						<Story />
+					</TableWrapper>
+					<VerticalPadding>
+						<SolacePagination totalResults={rows.length} loading={true} />
+					</VerticalPadding>
+				</PaginationContainer>
+			</div>
+		)
+	]
+};
+
+export const EmptyStateTable = {
+	render: TableTemplate,
+
+	args: {
+		rows: [],
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI
+	}
 };
 
 const renderCustomEmptyState = () => {
@@ -929,27 +968,34 @@ const MultiSelectionTableIndependentRowHighlightTemplate = ({
 	);
 };
 
-export const MultiSelectionTableIndependentRowHighlight = MultiSelectionTableIndependentRowHighlightTemplate.bind({});
-MultiSelectionTableIndependentRowHighlight.args = {
-	rows: rows,
-	columns: columns
+export const MultiSelectionTableIndependentRowHighlight = {
+	render: MultiSelectionTableIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns
+	}
 };
 
-export const MultiSelectionTableIndependentRowHighlightWithInitialHighlight =
-	MultiSelectionTableIndependentRowHighlightTemplate.bind({});
-MultiSelectionTableIndependentRowHighlightWithInitialHighlight.args = {
-	rows: rows,
-	columns: columns,
-	initialHighlightedRowId: rows[0].id
+export const MultiSelectionTableIndependentRowHighlightWithInitialHighlight = {
+	render: MultiSelectionTableIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		initialHighlightedRowId: rows[0].id
+	}
 };
 
-export const MultiSelectionTableIndependentRowHighlightInitialHighlightAndSelection =
-	MultiSelectionTableIndependentRowHighlightTemplate.bind({});
-MultiSelectionTableIndependentRowHighlightInitialHighlightAndSelection.args = {
-	rows: rows,
-	columns: columns,
-	initialHighlightedRowId: rows[0].id,
-	initialSelectedRowIds: [rows[0].id, rows[2].id]
+export const MultiSelectionTableIndependentRowHighlightInitialHighlightAndSelection = {
+	render: MultiSelectionTableIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		initialHighlightedRowId: rows[0].id,
+		initialSelectedRowIds: [rows[0].id, rows[2].id]
+	}
 };
 
 const renderExpandedRowContentHelper = (row, allowToggle, selectionType) => {
@@ -1072,96 +1118,123 @@ const ExpandableRowTableTemplate = ({
 	);
 };
 
-export const ExpandableRowSelectionNone = ExpandableRowTableTemplate.bind({});
-ExpandableRowSelectionNone.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.NONE,
-	allowToggle: true
+export const ExpandableRowSelectionNone = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.NONE,
+		allowToggle: true
+	}
 };
 
-export const ExpandableRowSingleSelectionNoToggle = ExpandableRowTableTemplate.bind({});
-ExpandableRowSingleSelectionNoToggle.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.SINGLE,
-	allowToggle: false,
-	rowActionMenuItems: rowActionMenuItems
+export const ExpandableRowSingleSelectionNoToggle = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.SINGLE,
+		allowToggle: false,
+		rowActionMenuItems: rowActionMenuItems
+	}
 };
 
-export const ExpandableRowMultiSelection = ExpandableRowTableTemplate.bind({});
-ExpandableRowMultiSelection.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI,
-	allowToggle: true
+export const ExpandableRowMultiSelection = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		allowToggle: true
+	}
 };
 
-export const ExpandableRowMultiSelectionNoToggle = ExpandableRowTableTemplate.bind({});
-ExpandableRowMultiSelectionNoToggle.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI,
-	allowToggle: false
+export const ExpandableRowMultiSelectionNoToggle = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		allowToggle: false
+	}
 };
 
-export const ExpandableRowSelectionNoneInitialExpandedRows = ExpandableRowTableTemplate.bind({});
-ExpandableRowSelectionNoneInitialExpandedRows.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.NONE,
-	allowToggle: true,
-	initialExpandedRowIds: ["2", "3"]
+export const ExpandableRowSelectionNoneInitialExpandedRows = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.NONE,
+		allowToggle: true,
+		initialExpandedRowIds: ["2", "3"]
+	}
 };
 
-export const ExpandableRowSingleSelectionInitialExpandedRowsAndSelection = ExpandableRowTableTemplate.bind({});
-ExpandableRowSingleSelectionInitialExpandedRowsAndSelection.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.SINGLE,
-	allowToggle: true,
-	initialExpandedRowIds: ["2", "3"],
-	initialSelectedRowIds: ["2", "4"]
+export const ExpandableRowSingleSelectionInitialExpandedRowsAndSelection = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.SINGLE,
+		allowToggle: true,
+		initialExpandedRowIds: ["2", "3"],
+		initialSelectedRowIds: ["2", "4"]
+	}
 };
 
-export const ExpandableRowMultiSelectionInitialExpandedRowsAndSelection = ExpandableRowTableTemplate.bind({});
-ExpandableRowMultiSelectionInitialExpandedRowsAndSelection.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI,
-	allowToggle: true,
-	initialExpandedRowIds: ["2", "3"],
-	initialSelectedRowIds: ["2", "4"]
+export const ExpandableRowMultiSelectionInitialExpandedRowsAndSelection = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		allowToggle: true,
+		initialExpandedRowIds: ["2", "3"],
+		initialSelectedRowIds: ["2", "4"]
+	}
 };
 
-export const ExpandableRowSingleSectionNoToggleWithCustomContentShowHideOption = ExpandableRowTableTemplate.bind({});
-ExpandableRowSingleSectionNoToggleWithCustomContentShowHideOption.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.SINGLE,
-	allowToggle: false,
-	rowActionMenuItems: rowActionMenuItems,
-	displayedCustomContent: ["tags"],
-	enableCustomContents: true,
-	customContentDefinitions: [
-		{ type: "tags", label: "Tags" },
-		{ type: "detail", label: "Detail" }
-	]
+export const ExpandableRowSingleSectionNoToggleWithCustomContentShowHideOption = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.SINGLE,
+		allowToggle: false,
+		rowActionMenuItems: rowActionMenuItems,
+		displayedCustomContent: ["tags"],
+		enableCustomContents: true,
+		customContentDefinitions: [
+			{ type: "tags", label: "Tags" },
+			{ type: "detail", label: "Detail" }
+		]
+	}
 };
 
-export const ExpandableRowMultiSelectionNoToggleWithCustomContentShowHideOption = ExpandableRowTableTemplate.bind({});
-ExpandableRowMultiSelectionNoToggleWithCustomContentShowHideOption.args = {
-	rows: rows,
-	columns: columns,
-	selectionType: SolaceTableSelectionType.MULTI,
-	allowToggle: false,
-	rowActionMenuItems: rowActionMenuItems,
-	displayedCustomContent: ["tags"],
-	enableCustomContents: true,
-	customContentDefinitions: [
-		{ type: "tags", label: "Tags" },
-		{ type: "detail", label: "Detail" }
-	]
+export const ExpandableRowMultiSelectionNoToggleWithCustomContentShowHideOption = {
+	render: ExpandableRowTableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		allowToggle: false,
+		rowActionMenuItems: rowActionMenuItems,
+		displayedCustomContent: ["tags"],
+		enableCustomContents: true,
+		customContentDefinitions: [
+			{ type: "tags", label: "Tags" },
+			{ type: "detail", label: "Detail" }
+		]
+	}
 };
 
 // Table template for multiselection expandable table with independent row hightlight
@@ -1241,61 +1314,73 @@ const ExpandableRowMultiSelectionIndependentRowHighlightTemplate = ({
 	);
 };
 
-export const ExpandableRowMultiSelectionIndependentRowHighlight =
-	ExpandableRowMultiSelectionIndependentRowHighlightTemplate.bind({});
-ExpandableRowMultiSelectionIndependentRowHighlight.args = {
-	rows: rows,
-	columns: columns,
-	rowActionMenuItems: rowActionMenuItems,
-	allowToggle: true
+export const ExpandableRowMultiSelectionIndependentRowHighlight = {
+	render: ExpandableRowMultiSelectionIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		rowActionMenuItems: rowActionMenuItems,
+		allowToggle: true
+	}
 };
 
-export const ExpandableRowMultiSelectionNoToggleIndependentRowHighlight =
-	ExpandableRowMultiSelectionIndependentRowHighlightTemplate.bind({});
-ExpandableRowMultiSelectionNoToggleIndependentRowHighlight.args = {
-	rows: rows,
-	columns: columns,
-	allowToggle: false
+export const ExpandableRowMultiSelectionNoToggleIndependentRowHighlight = {
+	render: ExpandableRowMultiSelectionIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		allowToggle: false
+	}
 };
 
-export const ExpandableRowMultiSelectionInitialHighlightedRow =
-	ExpandableRowMultiSelectionIndependentRowHighlightTemplate.bind({});
-ExpandableRowMultiSelectionInitialHighlightedRow.args = {
-	rows: rows,
-	columns: columns,
-	allowToggle: true,
-	initialHighlightedRowId: "3"
+export const ExpandableRowMultiSelectionInitialHighlightedRow = {
+	render: ExpandableRowMultiSelectionIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		allowToggle: true,
+		initialHighlightedRowId: "3"
+	}
 };
 
-export const ExpandableRowMultiSelectionInitialExpandedRowsAndHighlightedRow =
-	ExpandableRowMultiSelectionIndependentRowHighlightTemplate.bind({});
-ExpandableRowMultiSelectionInitialExpandedRowsAndHighlightedRow.args = {
-	rows: rows,
-	columns: columns,
-	allowToggle: true,
-	initialExpandedRowIds: ["2", "3"],
-	initialHighlightedRowId: "3"
+export const ExpandableRowMultiSelectionInitialExpandedRowsAndHighlightedRow = {
+	render: ExpandableRowMultiSelectionIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		allowToggle: true,
+		initialExpandedRowIds: ["2", "3"],
+		initialHighlightedRowId: "3"
+	}
 };
 
-export const ExpandableRowMultiSelectionInitialHighlightedRowAndSelection =
-	ExpandableRowMultiSelectionIndependentRowHighlightTemplate.bind({});
-ExpandableRowMultiSelectionInitialHighlightedRowAndSelection.args = {
-	rows: rows,
-	columns: columns,
-	allowToggle: true,
-	initialHighlightedRowId: "3",
-	initialSelectedRowIds: ["4"]
+export const ExpandableRowMultiSelectionInitialHighlightedRowAndSelection = {
+	render: ExpandableRowMultiSelectionIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		allowToggle: true,
+		initialHighlightedRowId: "3",
+		initialSelectedRowIds: ["4"]
+	}
 };
 
-export const ExpandableRowMultiSelectionInitialExpandedRowsAndHighlightedRowAndSelection =
-	ExpandableRowMultiSelectionIndependentRowHighlightTemplate.bind({});
-ExpandableRowMultiSelectionInitialExpandedRowsAndHighlightedRowAndSelection.args = {
-	rows: rows,
-	columns: columns,
-	allowToggle: true,
-	initialExpandedRowIds: ["2", "3"],
-	initialHighlightedRowId: "3",
-	initialSelectedRowIds: ["2", "4"]
+export const ExpandableRowMultiSelectionInitialExpandedRowsAndHighlightedRowAndSelection = {
+	render: ExpandableRowMultiSelectionIndependentRowHighlightTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		allowToggle: true,
+		initialExpandedRowIds: ["2", "3"],
+		initialHighlightedRowId: "3",
+		initialSelectedRowIds: ["2", "4"]
+	}
 };
 
 export const CustomMenuActionsTable = (): JSX.Element => {
@@ -1541,83 +1626,87 @@ const renderExpandedSchemaRowContentHelper = (row, allowToggle, selectionType) =
 	);
 };
 
-export const InteractiveSchemaTable = (): JSX.Element => {
-	const data = cloneDeep(schemaRows);
-	const columnsDef = useMemo(() => {
-		return cloneDeep(schemaColumns);
-	}, []);
-	columnsDef[1].width = "10%";
-	columnsDef[2].width = "15%";
-	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-	const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
+export const InteractiveSchemaTable = {
+	render: (): JSX.Element => {
+		const data = cloneDeep(schemaRows);
+		const columnsDef = useMemo(() => {
+			return cloneDeep(schemaColumns);
+		}, []);
+		columnsDef[1].width = "10%";
+		columnsDef[2].width = "15%";
+		const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
+		const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
 
-	const handleSort = useCallback(
-		(selectedColumn) => {
-			action(sortCallback);
-			setRows([...sortData(selectedColumn, data)]);
-		},
-		[data]
-	);
+		const handleSort = useCallback(
+			(selectedColumn) => {
+				action(sortCallback);
+				setRows([...sortData(selectedColumn, data)]);
+			},
+			[data]
+		);
 
-	const displayedColumnsChanged = useCallback((columns) => {
-		setColumnsHiddenInfo(getColumnHiddenInfo(columns));
-	}, []);
+		const displayedColumnsChanged = useCallback((columns) => {
+			setColumnsHiddenInfo(getColumnHiddenInfo(columns));
+		}, []);
 
-	const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
-	const handleRowSelectionsChange = useCallback((rows: SolaceTableRow[]) => {
-		action(selectionCallback);
-		setSelectedRowIds(rows.map((row) => row.id));
-	}, []);
+		const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
+		const handleRowSelectionsChange = useCallback((rows: SolaceTableRow[]) => {
+			action(selectionCallback);
+			setSelectedRowIds(rows.map((row) => row.id));
+		}, []);
 
-	const renderSchemaRowCells = useCallback(
-		(row: SolaceTableRow): JSX.Element[] => createSchemaCells(row, columnsHiddenInfo),
-		[columnsHiddenInfo]
-	);
+		const renderSchemaRowCells = useCallback(
+			(row: SolaceTableRow): JSX.Element[] => createSchemaCells(row, columnsHiddenInfo),
+			[columnsHiddenInfo]
+		);
 
-	return (
-		<div>
-			<SolaceTable
-				selectedRowIds={selectedRowIds}
-				selectionChangedCallback={handleRowSelectionsChange}
-				sortCallback={handleSort}
-				rows={tableRows}
-				columns={columnsDef}
-				selectionType={SolaceTableSelectionType.SINGLE}
-				rowActionMenuItems={rowActionMenuItems}
-				renderCustomRowCells={renderSchemaRowCells}
-				hasColumnHiding={true}
-				displayedColumnsChangedCallback={displayedColumnsChanged}
-				headerHoverCallback={action("header hover callback")}
-				rowHoverCallback={action("row hover callback")}
-			></SolaceTable>
-		</div>
-	);
-};
-InteractiveSchemaTable.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+		return (
+			<div>
+				<SolaceTable
+					selectedRowIds={selectedRowIds}
+					selectionChangedCallback={handleRowSelectionsChange}
+					sortCallback={handleSort}
+					rows={tableRows}
+					columns={columnsDef}
+					selectionType={SolaceTableSelectionType.SINGLE}
+					rowActionMenuItems={rowActionMenuItems}
+					renderCustomRowCells={renderSchemaRowCells}
+					hasColumnHiding={true}
+					displayedColumnsChangedCallback={displayedColumnsChanged}
+					headerHoverCallback={action("header hover callback")}
+					rowHoverCallback={action("row hover callback")}
+				></SolaceTable>
+			</div>
+		);
+	},
 
-	await userEvent.hover(await canvas.findByText("Schema Type"));
-	await userEvent.hover(await canvas.findByText("schema2"));
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
 
-	// no sort action triggererd
-	await userEvent.click(await canvas.findByText("# of Versions"));
-	// sort by Name in descending order
-	await userEvent.click(await canvas.findByText("Name"));
-	// sort by different column
-	await userEvent.click(await canvas.findByText("Schema Type"));
+		await userEvent.hover(await canvas.findByText("Schema Type"));
+		await userEvent.hover(await canvas.findByText("schema2"));
 
-	// select row
-	await selectRow(canvas, "schema1");
-	await selectRow(canvas, "schema2");
-	await selectRow(canvas, "schema1");
+		// no sort action triggererd
+		await userEvent.click(await canvas.findByText("# of Versions"));
+		// sort by Name in descending order
+		await userEvent.click(await canvas.findByText("Name"));
+		// sort by different column
+		await userEvent.click(await canvas.findByText("Schema Type"));
 
-	// hide Shared
-	await showHideColumn(canvas, "Shared");
-};
-InteractiveSchemaTable.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+		// select row
+		await selectRow(canvas, "schema1");
+		await selectRow(canvas, "schema2");
+		await selectRow(canvas, "schema1");
+
+		// hide Shared
+		await showHideColumn(canvas, "Shared");
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
 const ExpandableSchemaTableTemplate = ({ independentRowHighlight }): JSX.Element => {
@@ -1746,28 +1835,38 @@ const schemaInteractions = async (canvasElement) => {
 	await showHideColumn(canvas, "Shared");
 };
 
-export const InteractiveExpandableSchemaTableIndependentRowHighlight = ExpandableSchemaTableTemplate.bind({});
-InteractiveExpandableSchemaTableIndependentRowHighlight.args = {
-	independentRowHighlight: true
-};
-InteractiveExpandableSchemaTableIndependentRowHighlight.play = async ({ canvasElement }) => {
-	await schemaInteractions(canvasElement);
-};
-InteractiveExpandableSchemaTableIndependentRowHighlight.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+export const InteractiveExpandableSchemaTableIndependentRowHighlight = {
+	render: ExpandableSchemaTableTemplate,
+
+	args: {
+		independentRowHighlight: true
+	},
+
+	play: async ({ canvasElement }) => {
+		await schemaInteractions(canvasElement);
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
-export const InteractiveExpandableSchemaTableCoupledRowHighlight = ExpandableSchemaTableTemplate.bind({});
-InteractiveExpandableSchemaTableCoupledRowHighlight.args = {
-	independentRowHighlight: false
-};
-InteractiveExpandableSchemaTableCoupledRowHighlight.play = async ({ canvasElement }) => {
-	await schemaInteractions(canvasElement);
-};
-InteractiveExpandableSchemaTableCoupledRowHighlight.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+export const InteractiveExpandableSchemaTableCoupledRowHighlight = {
+	render: ExpandableSchemaTableTemplate,
+
+	args: {
+		independentRowHighlight: false
+	},
+
+	play: async ({ canvasElement }) => {
+		await schemaInteractions(canvasElement);
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
 // ========= Table with cross page selection behaviour ============
@@ -1816,11 +1915,11 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 		) => {
 			action(crossPageSelectionCallback);
 
-			const selectedEntitiesMap = selectedEntities.reduce((prev, curr: any) => {
+			const selectedEntitiesMap = selectedEntities.reduce((prev, curr: unknown) => {
 				prev[curr.id] = curr;
 				return prev;
 			}, {});
-			const newEntitiesMap = selectedRowsInCurrentPage.reduce((prev, curr: any) => {
+			const newEntitiesMap = selectedRowsInCurrentPage.reduce((prev, curr: unknown) => {
 				prev[curr.id] = curr;
 				return prev;
 			}, {});
@@ -1924,98 +2023,116 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 	);
 };
 
-export const MultiSelectionTableWithCrossPagesRowSelectionAndIndependentRowHighlight =
-	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-MultiSelectionTableWithCrossPagesRowSelectionAndIndependentRowHighlight.args = {
-	tableData: rows,
-	columns: columns,
-	independentRowHighlight: true,
-	totalObjectCount: threePagesOfRows.length
+export const MultiSelectionTableWithCrossPagesRowSelectionAndIndependentRowHighlight = {
+	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
+
+	args: {
+		tableData: rows,
+		columns: columns,
+		independentRowHighlight: true,
+		totalObjectCount: threePagesOfRows.length
+	}
 };
 
-export const MultiSelectionTableWithCrossPagesRowSelectionAndCoupledRowHightlight =
-	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-MultiSelectionTableWithCrossPagesRowSelectionAndCoupledRowHightlight.args = {
-	tableData: rows,
-	columns: columns,
-	independentRowHighlight: false,
-	totalObjectCount: threePagesOfRows.length
+export const MultiSelectionTableWithCrossPagesRowSelectionAndCoupledRowHightlight = {
+	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
+
+	args: {
+		tableData: rows,
+		columns: columns,
+		independentRowHighlight: false,
+		totalObjectCount: threePagesOfRows.length
+	}
 };
 
-export const MultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow =
-	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-MultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.args = {
-	tableData: rows,
-	columns: columns,
-	independentRowHighlight: true,
-	totalObjectCount: threePagesOfRows.length,
-	expandedRow: true,
-	allowToggle: true,
-	initialExpandedRowIds: ["6", "12"]
+export const MultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow = {
+	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
+
+	args: {
+		tableData: rows,
+		columns: columns,
+		independentRowHighlight: true,
+		totalObjectCount: threePagesOfRows.length,
+		expandedRow: true,
+		allowToggle: true,
+		initialExpandedRowIds: ["6", "12"]
+	}
 };
 
-export const MultiSelectionTableWithCrossPagesRowSelectionNotInPageAllSelectedByDefaultIfAllRowsSelectedManually =
-	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-MultiSelectionTableWithCrossPagesRowSelectionNotInPageAllSelectedByDefaultIfAllRowsSelectedManually.args = {
-	tableData: rows,
-	columns: columns,
-	independentRowHighlight: true,
-	totalObjectCount: threePagesOfRows.length,
-	initialSelectedRowIds: threePagesOfRows.map((row) => row.id)
+export const MultiSelectionTableWithCrossPagesRowSelectionNotInPageAllSelectedByDefaultIfAllRowsSelectedManually = {
+	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
+
+	args: {
+		tableData: rows,
+		columns: columns,
+		independentRowHighlight: true,
+		totalObjectCount: threePagesOfRows.length,
+		initialSelectedRowIds: threePagesOfRows.map((row) => row.id)
+	}
 };
 
-export const MultiSelectionTableWithCrossPagesRowSelectionInitAllPagesSelectedByDefault =
-	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-MultiSelectionTableWithCrossPagesRowSelectionInitAllPagesSelectedByDefault.args = {
-	tableData: rows,
-	columns: columns,
-	independentRowHighlight: true,
-	totalObjectCount: threePagesOfRows.length,
-	initialAllPagesSelectedByDefault: true
+export const MultiSelectionTableWithCrossPagesRowSelectionInitAllPagesSelectedByDefault = {
+	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
+
+	args: {
+		tableData: rows,
+		columns: columns,
+		independentRowHighlight: true,
+		totalObjectCount: threePagesOfRows.length,
+		initialAllPagesSelectedByDefault: true
+	}
 };
 
-export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable =
-	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable.args = {
-	tableData: [],
-	columns: columns,
-	independentRowHighlight: true,
-	totalObjectCount: 0
-};
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable = {
+	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
 
-	// click on Select All
-	await selectCheckbox(canvas, null);
-	// click on Select All again
-	await selectCheckbox(canvas, null);
-};
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndEmptyTable.parameters = {
-	// Delay snapshot 1 seconds until all interactions are done
-	chromatic: { delay: 1000 }
+	args: {
+		tableData: [],
+		columns: columns,
+		independentRowHighlight: true,
+		totalObjectCount: 0
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		// click on Select All
+		await selectCheckbox(canvas, null);
+		// click on Select All again
+		await selectCheckbox(canvas, null);
+	},
+
+	parameters: {
+		// Delay snapshot 1 seconds until all interactions are done
+		chromatic: { delay: 1000 }
+	}
 };
 
-export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow =
-	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow.args = {
-	tableData: rows.slice(0, 1),
-	columns: columns,
-	independentRowHighlight: true,
-	totalObjectCount: 1
-};
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow = {
+	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
 
-	// click on Select All
-	await selectCheckbox(canvas, null);
-	// uncheck first row to exit select all mode
-	await selectCheckbox(canvas, rows[0].email);
-};
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndOneRow.parameters = {
-	// Delay snapshot 1 seconds until all interactions are done
-	chromatic: { delay: 1000 }
+	args: {
+		tableData: rows.slice(0, 1),
+		columns: columns,
+		independentRowHighlight: true,
+		totalObjectCount: 1
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		// click on Select All
+		await selectCheckbox(canvas, null);
+		// uncheck first row to exit select all mode
+		await selectCheckbox(canvas, rows[0].email);
+	},
+
+	parameters: {
+		// Delay snapshot 1 seconds until all interactions are done
+		chromatic: { delay: 1000 }
+	}
 };
 
 const pagedTableInteractions = async (canvasElement) => {
@@ -2084,21 +2201,24 @@ const pagedTableInteractions = async (canvasElement) => {
 	// select all should be unchecked
 };
 
-export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow =
-	MultiSelectionTableWithCrossPagesRowSelectionTemplate.bind({});
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.args = {
-	tableData: rows,
-	columns: columns,
-	independentRowHighlight: true,
-	totalObjectCount: threePagesOfRows.length,
-	expandedRow: true,
-	allowToggle: true
-};
+export const InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow = {
+	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
 
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.play = async ({ canvasElement }) => {
-	await pagedTableInteractions(canvasElement);
-};
-InteractiveMultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+	args: {
+		tableData: rows,
+		columns: columns,
+		independentRowHighlight: true,
+		totalObjectCount: threePagesOfRows.length,
+		expandedRow: true,
+		allowToggle: true
+	},
+
+	play: async ({ canvasElement }) => {
+		await pagedTableInteractions(canvasElement);
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };

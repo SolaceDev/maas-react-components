@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolacePopover } from "@SolaceDev/maas-react-components";
 
 export default {
@@ -32,7 +32,7 @@ export default {
 			control: { type: "boolean" }
 		}
 	}
-} as ComponentMeta<typeof SolacePopover>;
+} as Meta<typeof SolacePopover>;
 
 export const DefaultPopover = () => {
 	return (
@@ -115,7 +115,7 @@ const EnumVersionPopover = ({ desc, values }) => {
 };
 
 interface EnumVersionItemProps {
-	item: any;
+	item: unknown;
 }
 
 // custom hover over element, in this case, an Enum list item

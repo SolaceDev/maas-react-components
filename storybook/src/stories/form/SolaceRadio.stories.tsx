@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import { SolaceRadio } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
@@ -35,50 +35,52 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceRadio>;
+} as Meta<typeof SolaceRadio>;
 
-const Template: ComponentStory<typeof SolaceRadio> = (args) => <SolaceRadio {...args} />;
-
-export const DefaultRadio = Template.bind({});
-DefaultRadio.args = {
-	onChange: action("callback"),
-	title: "Demo Radio",
-	id: "demoRadioId",
-	name: "demoRadio",
-	value: "someValue"
+export const DefaultRadio = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Radio",
+		id: "demoRadioId",
+		name: "demoRadio",
+		value: "someValue"
+	}
 };
 
-export const Labeled = Template.bind({});
-Labeled.args = {
-	onChange: action("callback"),
-	title: "Demo Radio",
-	id: "demoRadioId",
-	name: "demoRadio",
-	label: "Inline label",
-	value: "someValue"
+export const Labeled = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Radio",
+		id: "demoRadioId",
+		name: "demoRadio",
+		label: "Inline label",
+		value: "someValue"
+	}
 };
 
-export const SubText = Template.bind({});
-SubText.args = {
-	onChange: action("callback"),
-	title: "Demo Radio",
-	id: "demoRadioId",
-	name: "demoRadio",
-	label: "Header text",
-	subText: "Subtext subtext",
-	value: "someValue"
+export const SubText = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Radio",
+		id: "demoRadioId",
+		name: "demoRadio",
+		label: "Header text",
+		subText: "Subtext subtext",
+		value: "someValue"
+	}
 };
 
-export const LightSubText = Template.bind({});
-LightSubText.args = {
-	onChange: action("callback"),
-	title: "Demo Radio",
-	id: "demoRadioId",
-	name: "demoRadio",
-	label: "Header text",
-	subText: "Subtext subtext",
-	lightSubText: true,
-	value: "someValue"
+export const LightSubText = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Radio",
+		id: "demoRadioId",
+		name: "demoRadio",
+		label: "Header text",
+		subText: "Subtext subtext",
+		lightSubText: true,
+		value: "someValue"
+	}
 };
 
 function buildSubText() {
@@ -88,47 +90,52 @@ function buildSubText() {
 		</span>
 	);
 }
-export const LargeLabelAndCustomSubText = Template.bind({});
-LargeLabelAndCustomSubText.args = {
-	onChange: action("callback"),
-	title: "Demo Radio",
-	id: "demoRadioId",
-	name: "demoRadio",
-	label: "Import to Event Portal",
-	subText: buildSubText(),
-	value: "someValue",
-	largeLabel: true,
-	disabled: false
+
+export const LargeLabelAndCustomSubText = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Radio",
+		id: "demoRadioId",
+		name: "demoRadio",
+		label: "Import to Event Portal",
+		subText: buildSubText(),
+		value: "someValue",
+		largeLabel: true,
+		disabled: false
+	}
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	onChange: action("callback"),
-	name: "demoRadio",
-	title: "Demo Checkbox",
-	label: "Inline Label",
-	required: true,
-	value: "someValue"
+export const Required = {
+	args: {
+		onChange: action("callback"),
+		name: "demoRadio",
+		title: "Demo Checkbox",
+		label: "Inline Label",
+		required: true,
+		value: "someValue"
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	onChange: action("callback"),
-	name: "demoRadio",
-	title: "Demo Radio",
-	label: "Inline Label",
-	checked: true,
-	disabled: true,
-	value: "someValue"
+export const Disabled = {
+	args: {
+		onChange: action("callback"),
+		name: "demoRadio",
+		title: "Demo Radio",
+		label: "Inline Label",
+		checked: true,
+		disabled: true,
+		value: "someValue"
+	}
 };
 
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {
-	onChange: action("callback"),
-	name: "demoRadio",
-	title: "Demo Radio",
-	label: "Inline Label",
-	checked: true,
-	readOnly: true,
-	value: "someValue"
+export const ReadOnly = {
+	args: {
+		onChange: action("callback"),
+		name: "demoRadio",
+		title: "Demo Radio",
+		label: "Inline Label",
+		checked: true,
+		readOnly: true,
+		value: "someValue"
+	}
 };

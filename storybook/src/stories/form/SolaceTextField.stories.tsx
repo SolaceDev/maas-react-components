@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { Search } from "@mui/icons-material";
 import { SolaceTextField, SolaceButton, CloseIcon } from "@SolaceDev/maas-react-components";
@@ -82,189 +82,205 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceTextField>;
-
-const Template: ComponentStory<typeof SolaceTextField> = (args) => <SolaceTextField {...args} />;
+} as Meta<typeof SolaceTextField>;
 
 const DEMO_TITLE = "Demo Text Field";
 const DEMO_LABEL = "Some Label";
 
-export const DefaultTextfield = Template.bind({});
-DefaultTextfield.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField"
+export const DefaultTextfield = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField"
+	}
 };
 
-export const CustomWidth = Template.bind({});
-CustomWidth.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField",
-	width: "50%"
+export const CustomWidth = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField",
+		width: "50%"
+	}
 };
 
-export const StackedLabelFormat = Template.bind({});
-StackedLabelFormat.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	name: "demoTextField",
-	label: DEMO_LABEL
+export const StackedLabelFormat = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		name: "demoTextField",
+		label: DEMO_LABEL
+	}
 };
 
-export const InlineLabelFormat = Template.bind({});
-InlineLabelFormat.args = {
-	onChange: action("text-changed"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	inlineLabel: true
+export const InlineLabelFormat = {
+	args: {
+		onChange: action("text-changed"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		inlineLabel: true
+	}
 };
 
-export const HelperText = Template.bind({});
-HelperText.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	helperText: "Some helper text"
+export const HelperText = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		helperText: "Some helper text"
+	}
 };
 
-export const PlaceholderText = Template.bind({});
-PlaceholderText.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	placeholder: "Some placeholder text"
+export const PlaceholderText = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		placeholder: "Some placeholder text"
+	}
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	helperText: "The text you entered was invalid",
-	hasErrors: true
+export const WithErrors = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		helperText: "The text you entered was invalid",
+		hasErrors: true
+	}
 };
 
-export const WithWarning = Template.bind({});
-WithWarning.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	helperText: "The text you entered triggered a warning",
-	hasWarnings: true
+export const WithWarning = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		helperText: "The text you entered triggered a warning",
+		hasWarnings: true
+	}
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	helperText: "Text field with search icon",
-	customIcon: { position: "end", icon: <Search /> }
+export const WithIcon = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		helperText: "Text field with search icon",
+		customIcon: { position: "end", icon: <Search /> }
+	}
 };
 
-export const WithClearButton = (): JSX.Element => {
-	const [value, setValue] = useState("");
-	const handleChange = (e) => {
-		setValue(e.value);
-	};
-	const handleClearInput = () => {
-		setValue("");
-	};
-	const endAdornment = [
-		value ? (
-			<SolaceButton key={"closeIcon"} dataQa="clearButton" variant="icon" onClick={handleClearInput}>
-				<CloseIcon />
+export const WithClearButton = {
+	render: (): JSX.Element => {
+		const [value, setValue] = useState("");
+		const handleChange = (e) => {
+			setValue(e.value);
+		};
+		const handleClearInput = () => {
+			setValue("");
+		};
+		const endAdornment = [
+			value ? (
+				<SolaceButton key={"closeIcon"} dataQa="clearButton" variant="icon" onClick={handleClearInput}>
+					<CloseIcon />
+				</SolaceButton>
+			) : null,
+			<SolaceButton key={"searchIcon"} variant="icon" onClick={handleClearInput}>
+				<Search key="search" />
 			</SolaceButton>
-		) : null,
-		<SolaceButton key={"searchIcon"} variant="icon" onClick={handleClearInput}>
-			<Search key="search" />
-		</SolaceButton>
-	];
+		];
 
-	return (
-		<SolaceTextField
-			value={value}
-			name="demoTextField"
-			onChange={handleChange}
-			endAdornment={endAdornment}
-			title={DEMO_TITLE}
-			label={DEMO_LABEL}
-			helperText="Text field with clear button"
-			dataQa="textfieldWithClearButton"
-		/>
-	);
-};
-WithClearButton.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+		return (
+			<SolaceTextField
+				value={value}
+				name="demoTextField"
+				onChange={handleChange}
+				endAdornment={endAdornment}
+				title={DEMO_TITLE}
+				label={DEMO_LABEL}
+				helperText="Text field with clear button"
+				dataQa="textfieldWithClearButton"
+			/>
+		);
+	},
 
-	await userEvent.type(canvas.getByTestId("textfieldWithClearButton"), "This is a test ", {
-		delay: 400
-	});
-	//click on clear button
-	const buttons = canvas.getAllByRole("button");
-	await userEvent.click(buttons[0]);
-};
-WithClearButton.parameters = {
-	// Delay snapshot 10 seconds until all interactions are done
-	chromatic: { delay: 10000 }
-};
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
 
-export const AutoFocus = Template.bind({});
-AutoFocus.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	autoFocus: true
+		await userEvent.type(canvas.getByTestId("textfieldWithClearButton"), "This is a test ", {
+			delay: 400
+		});
+		//click on clear button
+		const buttons = canvas.getAllByRole("button");
+		await userEvent.click(buttons[0]);
+	},
+
+	parameters: {
+		// Delay snapshot 10 seconds until all interactions are done
+		chromatic: { delay: 10000 }
+	}
 };
 
-export const WithOnBlurOnFocus = Template.bind({});
-WithOnBlurOnFocus.args = {
-	onChange: action("callback"),
-	onBlur: action("blur"),
-	onFocus: action("focus"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField"
+export const AutoFocus = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		autoFocus: true
+	}
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	required: true
+export const WithOnBlurOnFocus = {
+	args: {
+		onChange: action("callback"),
+		onBlur: action("blur"),
+		onFocus: action("focus"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField"
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	value: "Some value",
-	disabled: true
+export const Required = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		required: true
+	}
 };
 
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	value: "Some value",
-	readOnly: true
+export const Disabled = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		value: "Some value",
+		disabled: true
+	}
+};
+
+export const ReadOnly = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		value: "Some value",
+		readOnly: true
+	}
 };
 
 export const ReadOnlyLongTextOverflowWithTooltip = (): JSX.Element => {
@@ -296,38 +312,44 @@ export const ReadOnlyInlineLabelLongTextOverflowWithTooltip = (): JSX.Element =>
 	);
 };
 
-export const Controlled = ({ value: initialValue, name, ...args }): JSX.Element => {
-	const [value, setValue] = useState(initialValue);
-	const handleChange = (e) => {
-		setValue(e.value);
-	};
+export const Controlled = {
+	render: ({ value: initialValue, name, ...args }): JSX.Element => {
+		const [value, setValue] = useState(initialValue);
+		const handleChange = (e) => {
+			setValue(e.value);
+		};
 
-	return <SolaceTextField value={value} name={name} onChange={handleChange} {...args} />;
-};
-Controlled.args = {
-	name: "controlledTextField",
-	label: "Controlled Text Field",
-	value: "Initial value",
-	helperText: "The value of the text field is controlled by the change handler in the story."
+		return <SolaceTextField value={value} name={name} onChange={handleChange} {...args} />;
+	},
+
+	args: {
+		name: "controlledTextField",
+		label: "Controlled Text Field",
+		value: "Initial value",
+		helperText: "The value of the text field is controlled by the change handler in the story."
+	}
 };
 
-export const Interaction = Template.bind({});
-Interaction.args = {
-	onChange: action("callback"),
-	id: "interactionTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	dataQa: "interactionTextField"
-};
-Interaction.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
+export const Interaction = {
+	args: {
+		onChange: action("callback"),
+		id: "interactionTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		dataQa: "interactionTextField"
+	},
 
-	await userEvent.type(canvas.getByTestId("interactionTextField"), "This is a test", {
-		delay: 100
-	});
-};
-Interaction.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		await userEvent.type(canvas.getByTestId("interactionTextField"), "This is a test", {
+			delay: 100
+		});
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };

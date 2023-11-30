@@ -1,7 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import React, { useCallback, useEffect, useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import withMock from "storybook-addon-mock";
+import { Meta } from "@storybook/react";
 import { withState, Store } from "@sambego/storybook-state";
 
 import { within, userEvent } from "@storybook/testing-library";
@@ -105,8 +104,8 @@ export default {
 			}
 		}
 	},
-	decorators: [withMock, withState()]
-} as ComponentMeta<typeof SolaceSelectAutocomplete>;
+	decorators: [withState()]
+} as Meta<typeof SolaceSelectAutocomplete>;
 
 const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 	{
@@ -131,8 +130,6 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 	}
 ];
 
-const Template: ComponentStory<typeof SolaceSelectAutocomplete> = (args) => <SolaceSelectAutocomplete {...args} />;
-
 async function fetchOptions(searchTerm: string) {
 	return fetch("http://someOtherExample.com/filterOptions")
 		.then((response) => response.json())
@@ -147,391 +144,401 @@ async function fetchOptions(searchTerm: string) {
 		});
 }
 
-export const DefaultAutocomplete = Template.bind({});
-DefaultAutocomplete.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-DefaultAutocomplete.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
-	itemMappingCallback: (option) => option,
-	title: "Demo Select",
-	id: "demoSelectId",
-	name: "demoSelect",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const DefaultAutocomplete = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	placeholder: "select an option"
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
+		itemMappingCallback: (option) => option,
+		title: "Demo Select",
+		id: "demoSelectId",
+		name: "demoSelect",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		placeholder: "select an option"
+	}
 };
 
-export const WithDividers = Template.bind({});
-WithDividers.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS.map((option) => {
-					if (option.value === "option1" || option.value === "option3") {
-						return {
-							...option,
-							divider: true
-						};
-					}
-					return option;
-				})
-			},
-			delay: 500
-		}
-	]
-};
-WithDividers.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	getShowOptionDividerCallback: getShowSolaceSelectAutocompleteOptionDivider,
-	isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
-	itemMappingCallback: (option) => option,
-	title: "Demo Select",
-	id: "demoSelectId",
-	name: "demoSelect",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const WithDividers = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS.map((option) => {
+						if (option.value === "option1" || option.value === "option3") {
+							return {
+								...option,
+								divider: true
+							};
+						}
+						return option;
+					})
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	placeholder: "select an option"
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		getShowOptionDividerCallback: getShowSolaceSelectAutocompleteOptionDivider,
+		isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
+		itemMappingCallback: (option) => option,
+		title: "Demo Select",
+		id: "demoSelectId",
+		name: "demoSelect",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		placeholder: "select an option"
+	}
 };
 
-export const StackedLabelFormat = Template.bind({});
-StackedLabelFormat.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-StackedLabelFormat.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	title: "Demo Select",
-	name: "demoSelect",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const StackedLabelFormat = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] })
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		title: "Demo Select",
+		name: "demoSelect",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] })
+	}
 };
 
-export const StackedLabelFormatWithCustomWidth = Template.bind({});
-StackedLabelFormat.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-StackedLabelFormatWithCustomWidth.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	title: "Demo Select",
-	name: "demoSelect",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
-	},
-	onCloseCallback: () => store.set({ options: [] }),
-	width: "50%"
+export const StackedLabelFormatWithCustomWidth = {
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		title: "Demo Select",
+		name: "demoSelect",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		width: "50%"
+	}
 };
 
-export const InlineLabelFormat = Template.bind({});
-InlineLabelFormat.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-InlineLabelFormat.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	name: "demoSelect",
-	title: "Demo Select",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const InlineLabelFormat = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	inlineLabel: true
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		inlineLabel: true
+	}
 };
 
-export const HelperText = Template.bind({});
-HelperText.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-HelperText.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const HelperText = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	helperText: "Some helper text"
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select Field",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		helperText: "Some helper text"
+	}
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-WithErrors.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const WithErrors = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	helperText: "The text you entered was invalid",
-	hasErrors: true
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select Field",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		helperText: "The text you entered was invalid",
+		hasErrors: true
+	}
 };
 
-export const Required = Template.bind({});
-Required.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-Required.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const Required = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	required: true
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select Field",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		required: true
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-Disabled.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
-	itemMappingCallback: (option) => option,
-	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const Disabled = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	value: {
-		name: "Option #2",
-		value: "option2",
-		subText: "Some sub text",
-		supplementalText: "opt2"
-	},
-	disabled: true
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select Field",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		value: {
+			name: "Option #2",
+			value: "option2",
+			subText: "Some sub text",
+			supplementalText: "opt2"
+		},
+		disabled: true
+	}
 };
 
-export const ReadOnly = Template.bind({});
-ReadOnly.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-ReadOnly.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const ReadOnly = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	value: {
-		name: "Option #2",
-		value: "option2",
-		subText: "Some sub text",
-		supplementalText: "opt2"
-	},
-	readOnly: true
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select Field",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		value: {
+			name: "Option #2",
+			value: "option2",
+			subText: "Some sub text",
+			supplementalText: "opt2"
+		},
+		readOnly: true
+	}
 };
 
-export const MultipleSelection = Template.bind({});
-MultipleSelection.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-MultipleSelection.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const MultipleSelection = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	value: [],
-	multiple: true
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select Field",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		value: [],
+		multiple: true
+	}
 };
 
-export const MultipleSelectionWithLimitedTag = Template.bind({});
-MultipleSelectionWithLimitedTag.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-MultipleSelectionWithLimitedTag.args = {
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	name: "demoSelect",
-	title: "Demo Select Field",
-	label: "Some Label",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const MultipleSelectionWithLimitedTag = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] }),
-	value: [],
-	multiple: true,
-	limitTags: 2
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select Field",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		value: [],
+		multiple: true,
+		limitTags: 2
+	}
 };
 
 const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
@@ -682,119 +689,79 @@ const SelectionWithHeadingTemplate = ({
 	);
 };
 
-export const SelectionWithHeading = SelectionWithHeadingTemplate.bind({});
-SelectionWithHeading.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS_WITH_CATEGORY_HEADING
-			},
-			delay: 300
-		}
-	]
-};
-SelectionWithHeading.args = {};
+export const SelectionWithHeading = {
+	render: SelectionWithHeadingTemplate,
 
-SelectionWithHeading.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("combobox"));
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	},
+
+	args: {},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
 };
 
-SelectionWithHeading.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+export const SelectionWithHeadingAndDisabledItems = {
+	render: SelectionWithHeadingTemplate,
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	},
+
+	args: {
+		disabledItems: true
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
 };
 
-export const SelectionWithHeadingAndDisabledItems = SelectionWithHeadingTemplate.bind({});
-SelectionWithHeadingAndDisabledItems.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS_WITH_CATEGORY_HEADING
-			},
-			delay: 300
-		}
-	]
-};
-SelectionWithHeadingAndDisabledItems.args = {
-	disabledItems: true
+export const SelectionWithHeadingWithDividers = {
+	render: SelectionWithHeadingTemplate,
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	},
+
+	args: {
+		showGroupDivider: true
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
 };
 
-SelectionWithHeadingAndDisabledItems.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("combobox"));
-};
+export const SelectionWithHeadingWithDividersAndDisabledItems = {
+	render: SelectionWithHeadingTemplate,
 
-SelectionWithHeadingAndDisabledItems.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
-};
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	},
 
-export const SelectionWithHeadingWithDividers = SelectionWithHeadingTemplate.bind({});
-SelectionWithHeadingWithDividers.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS_WITH_CATEGORY_HEADING
-			},
-			delay: 300
-		}
-	]
-};
-SelectionWithHeadingWithDividers.args = {
-	showGroupDivider: true
-};
+	args: {
+		disabledItems: true,
+		showGroupDivider: true
+	},
 
-SelectionWithHeadingWithDividers.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("combobox"));
-};
-
-SelectionWithHeadingWithDividers.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
-};
-
-export const SelectionWithHeadingWithDividersAndDisabledItems = SelectionWithHeadingTemplate.bind({});
-SelectionWithHeadingWithDividersAndDisabledItems.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS_WITH_CATEGORY_HEADING
-			},
-			delay: 300
-		}
-	]
-};
-SelectionWithHeadingWithDividersAndDisabledItems.args = {
-	disabledItems: true,
-	showGroupDivider: true
-};
-
-SelectionWithHeadingWithDividersAndDisabledItems.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("combobox"));
-};
-
-SelectionWithHeadingWithDividersAndDisabledItems.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
 };
 
 const SAMPLE_APPLICATION_DOMAINS: Array<SolaceSelectAutocompleteItemProps> = [
@@ -1051,43 +1018,43 @@ export const OpenDropDownOnButtonClick = () => {
 	);
 };
 
-export const CustomHeight = Template.bind({});
-CustomHeight.parameters = {
-	mockData: [
-		{
-			url: "http://someOtherExample.com/filterOptions",
-			method: "GET",
-			status: 200,
-			response: {
-				data: SELECT_OPTIONS
-			},
-			delay: 500
-		}
-	]
-};
-CustomHeight.args = {
-	maxHeight: "7.4rem",
-	onChange: action("callback"),
-	itemComponent: SolaceSelectAutocompleteItem,
-	optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-	itemMappingCallback: (option) => option,
-	title: "Demo Select",
-	name: "demoSelect",
-	label: "Some Label",
-	dataQa: "customHeight",
-	options: store.get("options") || null,
-	fetchOptionsCallback: async (searchTerm: string) => {
-		await fetchOptions(searchTerm);
+export const CustomHeight = {
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 },
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
 	},
-	onCloseCallback: () => store.set({ options: [] })
-};
-CustomHeight.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByRole("combobox"));
-};
 
-CustomHeight.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+	args: {
+		maxHeight: "7.4rem",
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		title: "Demo Select",
+		name: "demoSelect",
+		label: "Some Label",
+		dataQa: "customHeight",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] })
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
 };

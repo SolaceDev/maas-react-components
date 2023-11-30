@@ -188,10 +188,6 @@ npm install -g react-dom
 
 Remove @SolaceDev/maas-react-components from node_modules and run `npm install @SolaceDev/maas-react-components`.
 
-### Switching to webpack 5 in storybook
-
-Remove `export NODE_OPTIONS=--openssl-legacy-provider` from anywhere present in the code. This is a temporary fix to make storybook work with node 20.
-
 ## License
 
 MIT © [](https://github.com/)

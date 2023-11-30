@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceDrawer, SolaceDetailMessage, styled } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../resources/images/NoAccessBook";
 
@@ -59,26 +59,27 @@ export default {
 			control: { type: "boolean" }
 		}
 	}
-} as ComponentMeta<typeof SolaceDrawer>;
+} as Meta<typeof SolaceDrawer>;
 
-const Template: ComponentStory<typeof SolaceDrawer> = (args) => <SolaceDrawer {...args} />;
-
-export const DefaultDrawer = Template.bind({});
-DefaultDrawer.args = {
-	open: true
+export const DefaultDrawer = {
+	args: {
+		open: true
+	}
 };
 
-export const ResizableLeftDrawer = Template.bind({});
-ResizableLeftDrawer.args = {
-	open: true,
-	anchor: "left",
-	resizable: true
+export const ResizableLeftDrawer = {
+	args: {
+		open: true,
+		anchor: "left",
+		resizable: true
+	}
 };
 
-export const ResizableRightDrawer = Template.bind({});
-ResizableRightDrawer.args = {
-	open: true,
-	resizable: true
+export const ResizableRightDrawer = {
+	args: {
+		open: true,
+		resizable: true
+	}
 };
 
 const ContentBlock = styled("div")({

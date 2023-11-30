@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { action } from "@storybook/addon-actions";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { SolaceToggleButtonGroup, SolaceToggleButtonGroupOptionProps } from "@SolaceDev/maas-react-components";
 
 const options: Array<SolaceToggleButtonGroupOptionProps> = [];
@@ -44,23 +44,23 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceToggleButtonGroup>;
+} as Meta<typeof SolaceToggleButtonGroup>;
 
-const Template: ComponentStory<typeof SolaceToggleButtonGroup> = (args) => <SolaceToggleButtonGroup {...args} />;
-
-export const DefaultToggleButtonGroup = Template.bind({});
-DefaultToggleButtonGroup.args = {
-	dataQa: "testDefaultTBG",
-	options: options,
-	onChange: action("on change")
+export const DefaultToggleButtonGroup = {
+	args: {
+		dataQa: "testDefaultTBG",
+		options: options,
+		onChange: action("on change")
+	}
 };
 
-export const ToggleButtonGroupWithSelection = Template.bind({});
-ToggleButtonGroupWithSelection.args = {
-	dataQa: "testTBGWithSelection",
-	options: options,
-	onChange: action("on change"),
-	activeValue: "option1"
+export const ToggleButtonGroupWithSelection = {
+	args: {
+		dataQa: "testTBGWithSelection",
+		options: options,
+		onChange: action("on change"),
+		activeValue: "option1"
+	}
 };
 
 export const ToggleButtonGroupWithCallback = (): ReactNode => {
@@ -78,11 +78,12 @@ export const ToggleButtonGroupWithCallback = (): ReactNode => {
 	);
 };
 
-export const ToggleButtonGroupDisabled = Template.bind({});
-ToggleButtonGroupDisabled.args = {
-	dataQa: "testTBGDisabled",
-	options: options,
-	activeValue: "option3",
-	onChange: action("on change"),
-	isDisabled: true
+export const ToggleButtonGroupDisabled = {
+	args: {
+		dataQa: "testTBGDisabled",
+		options: options,
+		activeValue: "option3",
+		onChange: action("on change"),
+		isDisabled: true
+	}
 };

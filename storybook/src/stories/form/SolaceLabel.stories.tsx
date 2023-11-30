@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import { SolaceLabel } from "@SolaceDev/maas-react-components";
 
@@ -23,26 +22,27 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceLabel>;
+} as Meta<typeof SolaceLabel>;
 
-const Template: ComponentStory<typeof SolaceLabel> = (args) => <SolaceLabel {...args} />;
-
-export const DefaultLabel = Template.bind({});
-DefaultLabel.args = {
-	id: "demoTextFieldId",
-	children: "Custom Label"
+export const DefaultLabel = {
+	args: {
+		id: "demoTextFieldId",
+		children: "Custom Label"
+	}
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	id: "demoTextFieldId",
-	required: true,
-	children: "Custom Label"
+export const Required = {
+	args: {
+		id: "demoTextFieldId",
+		required: true,
+		children: "Custom Label"
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	id: "demoTextFieldId",
-	disabled: true,
-	children: "Custom Label"
+export const Disabled = {
+	args: {
+		id: "demoTextFieldId",
+		disabled: true,
+		children: "Custom Label"
+	}
 };

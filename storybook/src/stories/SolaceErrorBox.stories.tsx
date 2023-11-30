@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import { SolaceErrorBox } from "@SolaceDev/maas-react-components";
@@ -27,38 +27,42 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceErrorBox>;
-
-const Template: ComponentStory<typeof SolaceErrorBox> = (args) => <SolaceErrorBox {...args} />;
+} as Meta<typeof SolaceErrorBox>;
 
 const message = "Something is wrong.";
 
-export const DefaultErrorBox = Template.bind({});
-DefaultErrorBox.args = {
-	message
+export const DefaultErrorBox = {
+	args: {
+		message
+	}
 };
 
-export const WithCloseButton = Template.bind({});
-WithCloseButton.args = {
-	message,
-	showCloseButton: true
+export const WithCloseButton = {
+	args: {
+		message,
+		showCloseButton: true
+	}
 };
 
-export const WithCloseAction = Template.bind({});
-WithCloseAction.args = {
-	message,
-	showCloseButton: true,
-	onClose: action("callback")
+export const WithCloseAction = {
+	args: {
+		message,
+		showCloseButton: true,
+		onClose: action("callback")
+	}
 };
 
-export const WithinContainer = ({ message, ...args }): JSX.Element => {
-	return (
-		<div style={{ width: "300px" }}>
-			<SolaceErrorBox message={message} {...args} />
-		</div>
-	);
-};
-WithinContainer.args = {
-	message: "Something is wrong. The error box is in a small container.",
-	showCloseButton: true
+export const WithinContainer = {
+	render: ({ message, ...args }): JSX.Element => {
+		return (
+			<div style={{ width: "300px" }}>
+				<SolaceErrorBox message={message} {...args} />
+			</div>
+		);
+	},
+
+	args: {
+		message: "Something is wrong. The error box is in a small container.",
+		showCloseButton: true
+	}
 };

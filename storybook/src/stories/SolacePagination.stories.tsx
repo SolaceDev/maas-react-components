@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
+import { Meta } from "@storybook/react";
 
 import { SolacePagination } from "@SolaceDev/maas-react-components";
 
@@ -34,48 +33,52 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolacePagination>;
+} as Meta<typeof SolacePagination>;
 
-const Template: ComponentStory<typeof SolacePagination> = (args) => <SolacePagination {...args} />;
+export const DefaultPagination = {
+	render: (args): JSX.Element => {
+		const [selectedPage, setSelectedPage] = useState(1);
 
-export const DefaultPagination = (args): JSX.Element => {
-	const [selectedPage, setSelectedPage] = useState(1);
-
-	return (
-		<SolacePagination
-			totalResults={args.totalResults || 156}
-			activePage={selectedPage}
-			pageSize={args.pageSize}
-			displayText={args.displayText}
-			onPageSelection={(page) => setSelectedPage(page)}
-		/>
-	);
+		return (
+			<SolacePagination
+				totalResults={args.totalResults || 156}
+				activePage={selectedPage}
+				pageSize={args.pageSize}
+				displayText={args.displayText}
+				onPageSelection={(page) => setSelectedPage(page)}
+			/>
+		);
+	}
 };
 
-export const CustomMessageText = (args): JSX.Element => {
-	const [selectedPage, setSelectedPage] = useState(1);
+export const CustomMessageText = {
+	render: (args): JSX.Element => {
+		const [selectedPage, setSelectedPage] = useState(1);
 
-	return (
-		<SolacePagination
-			totalResults={args.totalResults || 156}
-			activePage={selectedPage}
-			pageSize={args.pageSize || 50}
-			displayText={args.displayText || "Showing page ${activePage} with ${pageSize} results"}
-			onPageSelection={(page) => setSelectedPage(page)}
-		/>
-	);
+		return (
+			<SolacePagination
+				totalResults={args.totalResults || 156}
+				activePage={selectedPage}
+				pageSize={args.pageSize || 50}
+				displayText={args.displayText || "Showing page ${activePage} with ${pageSize} results"}
+				onPageSelection={(page) => setSelectedPage(page)}
+			/>
+		);
+	}
 };
 
-export const LargeNumberPagination = (args): JSX.Element => {
-	const [selectedPage, setSelectedPage] = useState(995);
+export const LargeNumberPagination = {
+	render: (args): JSX.Element => {
+		const [selectedPage, setSelectedPage] = useState(995);
 
-	return (
-		<SolacePagination
-			totalResults={args.totalResults || 10000}
-			activePage={selectedPage || 50}
-			pageSize={args.pageSize}
-			displayText={args.displayText}
-			onPageSelection={(page) => setSelectedPage(page)}
-		/>
-	);
+		return (
+			<SolacePagination
+				totalResults={args.totalResults || 10000}
+				activePage={selectedPage || 50}
+				pageSize={args.pageSize}
+				displayText={args.displayText}
+				onPageSelection={(page) => setSelectedPage(page)}
+			/>
+		);
+	}
 };

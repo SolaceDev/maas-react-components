@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import { SolaceTextArea } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
@@ -86,164 +86,180 @@ export default {
 			description: "Set the resize property of text area."
 		}
 	}
-} as ComponentMeta<typeof SolaceTextArea>;
-
-const Template: ComponentStory<typeof SolaceTextArea> = (args) => <SolaceTextArea {...args} />;
+} as Meta<typeof SolaceTextArea>;
 
 const DEMO_TITLE = "Demo Text Field";
 const DEMO_LABEL = "Some Label";
 
-export const DefaultTextfield = Template.bind({});
-DefaultTextfield.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField"
+export const DefaultTextfield = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField"
+	}
 };
 
-export const CustomWidth = Template.bind({});
-CustomWidth.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField",
-	width: "40%"
+export const CustomWidth = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField",
+		width: "40%"
+	}
 };
 
-export const StackedLabeleFormat = Template.bind({});
-StackedLabeleFormat.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	name: "demoTextField",
-	label: DEMO_LABEL
+export const StackedLabeleFormat = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		name: "demoTextField",
+		label: DEMO_LABEL
+	}
 };
 
-export const InlineLabeleFormat = Template.bind({});
-InlineLabeleFormat.args = {
-	onChange: action("text-changed"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	inlineLabel: true
+export const InlineLabeleFormat = {
+	args: {
+		onChange: action("text-changed"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		inlineLabel: true
+	}
 };
 
-export const PlaceholderText = Template.bind({});
-PlaceholderText.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	placeholder: "Some placeholder text"
+export const PlaceholderText = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		placeholder: "Some placeholder text"
+	}
 };
 
-export const HelperText = Template.bind({});
-HelperText.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	helperText: "Some helper text"
+export const HelperText = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		helperText: "Some helper text"
+	}
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	helperText: "The text you entered was invalid",
-	hasErrors: true
+export const WithErrors = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		helperText: "The text you entered was invalid",
+		hasErrors: true
+	}
 };
 
-export const AutoFocus = Template.bind({});
-AutoFocus.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	autoFocus: true
+export const AutoFocus = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		autoFocus: true
+	}
 };
 
-export const WithOnBlurOnFocus = Template.bind({});
-WithOnBlurOnFocus.args = {
-	onChange: action("callback"),
-	onBlur: action("blur"),
-	onFocus: action("focus"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField"
+export const WithOnBlurOnFocus = {
+	args: {
+		onChange: action("callback"),
+		onBlur: action("blur"),
+		onFocus: action("focus"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField"
+	}
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	required: true
+export const Required = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		required: true
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	value: "Some value",
-	disabled: true
+export const Disabled = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		value: "Some value",
+		disabled: true
+	}
 };
 
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {
-	onChange: action("callback"),
-	name: "demoTextField",
-	title: DEMO_TITLE,
-	label: DEMO_LABEL,
-	value: "Some value",
-	readOnly: true
+export const ReadOnly = {
+	args: {
+		onChange: action("callback"),
+		name: "demoTextField",
+		title: DEMO_TITLE,
+		label: DEMO_LABEL,
+		value: "Some value",
+		readOnly: true
+	}
 };
 
-export const Controlled = ({ value: initialValue, name, ...args }): JSX.Element => {
-	const [value, setValue] = useState(initialValue);
-	const handleChange = (e) => {
-		setValue(e.value);
-	};
+export const Controlled = {
+	render: ({ value: initialValue, name, ...args }): JSX.Element => {
+		const [value, setValue] = useState(initialValue);
+		const handleChange = (e) => {
+			setValue(e.value);
+		};
 
-	return <SolaceTextArea value={value} name={name} onChange={handleChange} {...args} />;
-};
-Controlled.args = {
-	name: "controlledTextArea",
-	label: "Controlled Text Area",
-	value: "Initial value",
-	helperText: "The value of the text area is controlled by the change handler in the story."
-};
+		return <SolaceTextArea value={value} name={name} onChange={handleChange} {...args} />;
+	},
 
-export const ResizableBoth = Template.bind({});
-ResizableBoth.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField",
-	width: "40%",
-	resizable: "both"
+	args: {
+		name: "controlledTextArea",
+		label: "Controlled Text Area",
+		value: "Initial value",
+		helperText: "The value of the text area is controlled by the change handler in the story."
+	}
 };
 
-export const ResizableVertically = Template.bind({});
-ResizableVertically.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField",
-	width: "40%",
-	resizable: "vertical"
+export const ResizableBoth = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField",
+		width: "40%",
+		resizable: "both"
+	}
 };
 
-export const ResizableHorizontal = Template.bind({});
-ResizableHorizontal.args = {
-	onChange: action("callback"),
-	title: DEMO_TITLE,
-	id: "demoTextFieldId",
-	name: "demoTextField",
-	width: "40%",
-	resizable: "horizontal"
+export const ResizableVertically = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField",
+		width: "40%",
+		resizable: "vertical"
+	}
+};
+
+export const ResizableHorizontal = {
+	args: {
+		onChange: action("callback"),
+		title: DEMO_TITLE,
+		id: "demoTextFieldId",
+		name: "demoTextField",
+		width: "40%",
+		resizable: "horizontal"
+	}
 };

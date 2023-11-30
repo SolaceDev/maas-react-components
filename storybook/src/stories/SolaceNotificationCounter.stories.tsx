@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { SolaceNotificationCounter, SolaceButton } from "@SolaceDev/maas-react-components";
 
@@ -78,9 +78,7 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceNotificationCounter>;
-
-const Template: ComponentStory<typeof SolaceNotificationCounter> = (args) => <SolaceNotificationCounter {...args} />;
+} as Meta<typeof SolaceNotificationCounter>;
 
 function NotificationCounterDemo({
 	animiationDuration = 1000,
@@ -111,76 +109,89 @@ function NotificationCounterDemo({
 	);
 }
 
-export const DefaultNotificationCounter = () => {
-	return <NotificationCounterDemo />;
+export const DefaultNotificationCounter = {
+	render: () => {
+		return <NotificationCounterDemo />;
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByText("Decrement"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Decrement"));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
-DefaultNotificationCounter.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByText("Decrement"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Decrement"));
-};
-DefaultNotificationCounter.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+export const CustomAnimationNotificationCounter = {
+	render: () => {
+		return <NotificationCounterDemo animiationDuration={500} animationRepeatsUpdateCount={2} />;
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Decrement"));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
-export const CustomAnimationNotificationCounter = () => {
-	return <NotificationCounterDemo animiationDuration={500} animationRepeatsUpdateCount={2} />;
+export const NoAnimationNotificationCounter = {
+	render: () => {
+		return <NotificationCounterDemo animiationDuration={0} />;
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByText("Decrement"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Increment"));
+		await userEvent.click(await canvas.findByText("Decrement"));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
-CustomAnimationNotificationCounter.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Decrement"));
-};
-CustomAnimationNotificationCounter.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
+export const NotificationCounterWithTooltip = {
+	render: () => {
+		return <NotificationCounterDemo animiationDuration={0} title={"new events"} />;
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByText("1"));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	}
 };
 
-export const NoAnimationNotificationCounter = () => {
-	return <NotificationCounterDemo animiationDuration={0} />;
-};
-
-NoAnimationNotificationCounter.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByText("Decrement"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Increment"));
-	await userEvent.click(await canvas.findByText("Decrement"));
-};
-NoAnimationNotificationCounter.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
-};
-
-export const NotificationCounterWithTooltip = () => {
-	return <NotificationCounterDemo animiationDuration={0} title={"new events"} />;
-};
-
-NotificationCounterWithTooltip.play = async ({ canvasElement }) => {
-	// Starts querying the component from it's root element
-	const canvas = within(canvasElement);
-	await userEvent.click(await canvas.findByText("1"));
-};
-NotificationCounterWithTooltip.parameters = {
-	// Delay snapshot 5 seconds until all interactions are done
-	chromatic: { delay: 5000 }
-};
-
-export const CustomNotificationCounter = Template.bind({});
-CustomNotificationCounter.args = {
-	value: "99+",
-	fontSize: 11
+export const CustomNotificationCounter = {
+	args: {
+		value: "99+",
+		fontSize: 11
+	}
 };

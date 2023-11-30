@@ -1,7 +1,12 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { SolaceGridList, SolaceAttributeBadge, SolaceMenu, SolaceTooltip } from "@SolaceDev/maas-react-components";
-import { MoreHorizOutlinedIcon } from "../../../../src/resources/icons/MoreHorizOutlinedIcon";
+import {
+	SolaceGridList,
+	SolaceAttributeBadge,
+	SolaceMenu,
+	SolaceTooltip,
+	MoreHorizOutlinedIcon
+} from "@SolaceDev/maas-react-components";
 import React, { useEffect, useState } from "react";
 import { cloneDeep } from "lodash";
 
@@ -79,7 +84,7 @@ export default {
 			description: "Number of items to be displayed in the List"
 		}
 	}
-} as ComponentMeta<typeof SolaceGridList>;
+} as Meta<typeof SolaceGridList>;
 
 const ENV_1_NAME = "Environment 1";
 const ENV_DESCRIPTION = "The dev environment";
@@ -245,7 +250,7 @@ const createActionMenu = (item) => {
 };
 
 const basicRowMapping = (testItem) => {
-	const itemCells: any[] = [];
+	const itemCells: unknown[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -271,7 +276,7 @@ const basicRowMapping = (testItem) => {
 };
 
 const customCellMapping = (testItem) => {
-	const itemCells: any[] = [];
+	const itemCells: unknown[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -297,7 +302,7 @@ const customCellMapping = (testItem) => {
 };
 
 const withActionColumnMapping = (testItem) => {
-	const itemCells: any[] = [];
+	const itemCells: unknown[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -342,51 +347,52 @@ const getListItemsWithDifferentIndicators = (listItems) => {
 	});
 };
 
-const Template: ComponentStory<typeof SolaceGridList> = (args) => <SolaceGridList {...args} />;
-
-export const DefaultList = Template.bind({});
-DefaultList.args = {
-	items: testListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: GRID_TEMPLATE_1,
-	dataQa: "demoDefaultList"
+export const DefaultList = {
+	args: {
+		items: testListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: GRID_TEMPLATE_1,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const ContainedList = Template.bind({});
-ContainedList.args = {
-	items: testListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	dataQa: "demoDefaultList",
-	numOfGridListItemDisplayed: 3
+export const ContainedList = {
+	args: {
+		items: testListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		dataQa: "demoDefaultList",
+		numOfGridListItemDisplayed: 3
+	}
 };
 
-export const ColoredList = Template.bind({});
-ColoredList.args = {
-	items: testListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	dataQa: "demoDefaultList",
-	background: "rgba(0, 0, 0, 0.03)"
+export const ColoredList = {
+	args: {
+		items: testListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		dataQa: "demoDefaultList",
+		background: "rgba(0, 0, 0, 0.03)"
+	}
 };
 
-export const CustomRenderer = Template.bind({});
-CustomRenderer.args = {
-	items: testListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	dataQa: "demoDefaultList"
+export const CustomRenderer = {
+	args: {
+		items: testListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: customCellMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const CustomObjectIdentifier = Template.bind({});
 // the following list of objects no longer have an "id" attribute (which was used as the object identifier), but rather "customId"
 const customListItems = [
 	{
@@ -471,90 +477,98 @@ const customListItems = [
 	}
 ];
 
-CustomObjectIdentifier.args = {
-	items: customListItems,
-	objectIdentifier: "customId", // testing the custom identifier
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	dataQa: "demoDefaultList"
+export const CustomObjectIdentifier = {
+	args: {
+		items: customListItems,
+		objectIdentifier: "customId", // testing the custom identifier
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: customCellMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const WithActionMenus = Template.bind({});
-WithActionMenus.args = {
-	items: testListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: withActionColumnMapping,
-	gridTemplate: "minmax(120px, 1fr) minmax(120px, 1fr) 300px 40px",
-	dataQa: "demoDefaultList"
+export const WithActionMenus = {
+	args: {
+		items: testListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: withActionColumnMapping,
+		gridTemplate: "minmax(120px, 1fr) minmax(120px, 1fr) 300px 40px",
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const LargeDataList = Template.bind({});
-LargeDataList.args = {
-	items: largeListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	virtualizedListOption: {
-		height: 500,
-		overscanCount: 5
-	},
-	dataQa: "demoDefaultList"
+export const LargeDataList = {
+	args: {
+		items: largeListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: customCellMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		virtualizedListOption: {
+			height: 500,
+			overscanCount: 5
+		},
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const LargeDataColoredList = Template.bind({});
-LargeDataColoredList.args = {
-	items: largeListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	virtualizedListOption: {
-		height: 500,
-		overscanCount: 20
-	},
-	dataQa: "demoDefaultList",
-	background: "rgba(0, 0, 0, 0.03)"
+export const LargeDataColoredList = {
+	args: {
+		items: largeListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: customCellMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		virtualizedListOption: {
+			height: 500,
+			overscanCount: 20
+		},
+		dataQa: "demoDefaultList",
+		background: "rgba(0, 0, 0, 0.03)"
+	}
 };
 
-export const LargeDataListWithContentPlaceHolder = Template.bind({});
-LargeDataListWithContentPlaceHolder.args = {
-	items: largeListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: customCellMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	virtualizedListOption: {
-		height: 500,
-		contentPlaceholder: <div style={{ color: "rgba(0,0,0,0.5)" }}>Scrolling...</div>
-	},
-	dataQa: "demoDefaultList"
+export const LargeDataListWithContentPlaceHolder = {
+	args: {
+		items: largeListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: customCellMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		virtualizedListOption: {
+			height: 500,
+			contentPlaceholder: <div style={{ color: "rgba(0,0,0,0.5)" }}>Scrolling...</div>
+		},
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const LargeContainerList = Template.bind({});
-LargeContainerList.args = {
-	items: testListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: DEFAULT_GRID_TEMPLATE,
-	virtualizedListOption: {
-		height: 500,
-		overscanCount: 20
-	},
-	dataQa: "demoDefaultList"
+export const LargeContainerList = {
+	args: {
+		items: testListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: DEFAULT_GRID_TEMPLATE,
+		virtualizedListOption: {
+			height: 500,
+			overscanCount: 20
+		},
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const NoHeaderList = Template.bind({});
-NoHeaderList.args = {
-	items: testListItems,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: GRID_TEMPLATE_1,
-	dataQa: "demoDefaultList"
+export const NoHeaderList = {
+	args: {
+		items: testListItems,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: GRID_TEMPLATE_1,
+		dataQa: "demoDefaultList"
+	}
 };
 
 const SolaceGridListSelectStory = ({ selectedRowId, ...args }) => {
@@ -571,47 +585,59 @@ const SolaceGridListSelectStory = ({ selectedRowId, ...args }) => {
 	return <SolaceGridList {...args} selectedItemId={selectedId} onSelection={handleRowSelection} />;
 };
 
-export const ListWithSelection = SolaceGridListSelectStory.bind({});
-ListWithSelection.args = {
-	items: testListItems,
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: GRID_TEMPLATE_1,
-	dataQa: "demoDefaultList"
+export const ListWithSelection = {
+	render: SolaceGridListSelectStory,
+
+	args: {
+		items: testListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: GRID_TEMPLATE_1,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const ListWithSelectionIndicatorEmphasized = SolaceGridListSelectStory.bind({});
-ListWithSelectionIndicatorEmphasized.args = {
-	items: getListItemsWithDifferentIndicators(testListItems),
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: GRID_TEMPLATE_1,
-	dataQa: "demoDefaultList"
+export const ListWithSelectionIndicatorEmphasized = {
+	render: SolaceGridListSelectStory,
+
+	args: {
+		items: getListItemsWithDifferentIndicators(testListItems),
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: GRID_TEMPLATE_1,
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const ListWithSelectionIndicatorEmphasizedInitialSelection = SolaceGridListSelectStory.bind({});
-ListWithSelectionIndicatorEmphasizedInitialSelection.args = {
-	items: getListItemsWithDifferentIndicators(testListItems),
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: GRID_TEMPLATE_1,
-	selectedRowId: "2",
-	dataQa: "demoDefaultList"
+export const ListWithSelectionIndicatorEmphasizedInitialSelection = {
+	render: SolaceGridListSelectStory,
+
+	args: {
+		items: getListItemsWithDifferentIndicators(testListItems),
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: GRID_TEMPLATE_1,
+		selectedRowId: "2",
+		dataQa: "demoDefaultList"
+	}
 };
 
-export const LargeDataListWithSelectionIndicatorEmphasized = SolaceGridListSelectStory.bind({});
-LargeDataListWithSelectionIndicatorEmphasized.args = {
-	items: getListItemsWithDifferentIndicators(largeListItems),
-	headers: testHeaders,
-	onSelection: action("rowSelected"),
-	rowMapping: basicRowMapping,
-	gridTemplate: GRID_TEMPLATE_1,
-	virtualizedListOption: {
-		height: 500,
-		overscanCount: 5
-	},
-	dataQa: "demoDefaultList"
+export const LargeDataListWithSelectionIndicatorEmphasized = {
+	render: SolaceGridListSelectStory,
+
+	args: {
+		items: getListItemsWithDifferentIndicators(largeListItems),
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: basicRowMapping,
+		gridTemplate: GRID_TEMPLATE_1,
+		virtualizedListOption: {
+			height: 500,
+			overscanCount: 5
+		},
+		dataQa: "demoDefaultList"
+	}
 };

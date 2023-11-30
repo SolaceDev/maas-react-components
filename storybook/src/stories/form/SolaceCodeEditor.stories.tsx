@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import { SolaceCodeEditor, SolaceCheckBox } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
@@ -9,9 +9,8 @@ export default {
 	component: SolaceCodeEditor,
 	parameters: {},
 	argTypes: {}
-} as ComponentMeta<typeof SolaceCodeEditor>;
+} as Meta<typeof SolaceCodeEditor>;
 
-const Template: ComponentStory<typeof SolaceCodeEditor> = (args) => <SolaceCodeEditor {...args} />;
 const DEFAULT_JSON_VALUE = {
 	squadName: "Super hero squad",
 	homeTown: "Metro City",
@@ -61,96 +60,106 @@ message MyRecord {
   OtherRecord f2 = 2;
 }`;
 
-export const DefaultEditor = Template.bind({});
-DefaultEditor.args = {
-	onChange: action("callback")
+export const DefaultEditor = {
+	args: {
+		onChange: action("callback")
+	}
 };
 
 const NAME = "schemaVersion[content]";
 
-export const EmptyEditor = Template.bind({});
-EmptyEditor.args = {
-	id: NAME,
-	name: NAME,
-	value: "",
-	hasErrors: undefined,
-	helperText: null,
-	onChange: (editor, data, value) => action(value),
-	dataQa: NAME
+export const EmptyEditor = {
+	args: {
+		id: NAME,
+		name: NAME,
+		value: "",
+		hasErrors: undefined,
+		helperText: null,
+		onChange: (editor, data, value) => action(value),
+		dataQa: NAME
+	}
 };
 
-export const JSONEditor = Template.bind({});
-JSONEditor.args = {
-	onChange: action("callback"),
-	id: "demoCodeEditorId",
-	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-	mode: "json"
+export const JSONEditor = {
+	args: {
+		onChange: action("callback"),
+		id: "demoCodeEditorId",
+		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+		mode: "json"
+	}
 };
 
-export const XMLEditor = Template.bind({});
-XMLEditor.args = {
-	onChange: action("callback"),
-	id: "demoCodeEditorId",
-	value: DEFAULT_XML_CONTENT,
-	mode: "xml"
+export const XMLEditor = {
+	args: {
+		onChange: action("callback"),
+		id: "demoCodeEditorId",
+		value: DEFAULT_XML_CONTENT,
+		mode: "xml"
+	}
 };
 
-export const ProtobufEditor = Template.bind({});
-ProtobufEditor.args = {
-	onChange: action("callback"),
-	id: "demoCodeEditorId",
-	value: DEFAULT_PROTOBUF_CONTENT,
-	mode: "protobuf"
+export const ProtobufEditor = {
+	args: {
+		onChange: action("callback"),
+		id: "demoCodeEditorId",
+		value: DEFAULT_PROTOBUF_CONTENT,
+		mode: "protobuf"
+	}
 };
 
-export const ReadOnlyEditor = Template.bind({});
-ReadOnlyEditor.args = {
-	onChange: action("callback"),
-	id: "demoCodeEditorId",
-	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-	mode: "json",
-	readOnly: true
+export const ReadOnlyEditor = {
+	args: {
+		onChange: action("callback"),
+		id: "demoCodeEditorId",
+		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+		mode: "json",
+		readOnly: true
+	}
 };
 
-export const ExpandableEditor = Template.bind({});
-ExpandableEditor.args = {
-	onChange: action("callback"),
-	id: "demoCodeEditorId",
-	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-	mode: "json",
-	expandable: true
+export const ExpandableEditor = {
+	args: {
+		onChange: action("callback"),
+		id: "demoCodeEditorId",
+		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+		mode: "json",
+		expandable: true
+	}
 };
 
-export const WithHelperText = Template.bind({});
-WithHelperText.args = {
-	onChange: action("callback"),
-	id: "demoCodeEditorId",
-	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-	mode: "json",
-	expandable: true,
-	helperText: "A sample helper text"
+export const WithHelperText = {
+	args: {
+		onChange: action("callback"),
+		id: "demoCodeEditorId",
+		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+		mode: "json",
+		expandable: true,
+		helperText: "A sample helper text"
+	}
 };
 
-export const WithError = Template.bind({});
-WithError.args = {
-	onChange: action("callback"),
-	id: "demoCodeEditorId",
-	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-	mode: "json",
-	expandable: true,
-	helperText: "A sample error text",
-	hasErrors: true
+export const WithError = {
+	args: {
+		onChange: action("callback"),
+		id: "demoCodeEditorId",
+		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+		mode: "json",
+		expandable: true,
+		helperText: "A sample error text",
+		hasErrors: true
+	}
 };
 
-export const WithWarning = Template.bind({});
-WithWarning.args = {
-	onChange: action("callback"),
-	id: "demoCodeEditorId",
-	value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-	mode: "json",
-	expandable: true,
-	helperText: "A sample warning text",
-	hasWarnings: true
+export const WithWarning = {
+	args: {
+		onChange: action("callback"),
+		id: "demoCodeEditorId",
+		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
+		mode: "json",
+		expandable: true,
+		helperText: "A sample warning text",
+		hasWarnings: true
+	}
 };
 
 export const FullScreenEditor = (): JSX.Element => {
@@ -176,7 +185,7 @@ export const FullScreenEditor = (): JSX.Element => {
 
 export const ControlledEditor = (): JSX.Element => {
 	const [value, setValue] = useState("");
-	const handleChange = (_editor: any, _data: any, value: string) => {
+	const handleChange = (_editor: unknown, _data: unknown, value: string) => {
 		setValue(value);
 	};
 	return (
@@ -204,7 +213,7 @@ const fetchRandomDataSet = (array) => {
 export const UpdateData = (): JSX.Element => {
 	const [initValue, setInitValue] = useState("");
 	const [value, setValue] = useState("");
-	const handleChange = (_editor: any, _data: any, value: string) => {
+	const handleChange = (_editor: unknown, _data: unknown, value: string) => {
 		setValue(value);
 	};
 	return (

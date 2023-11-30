@@ -1,5 +1,4 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import { SolaceToggle } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
@@ -35,83 +34,89 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceToggle>;
+} as Meta<typeof SolaceToggle>;
 
-const Template: ComponentStory<typeof SolaceToggle> = (args) => <SolaceToggle {...args} />;
-
-export const DefaultToggle = Template.bind({});
-DefaultToggle.args = {
-	onChange: action("callback"),
-	title: "Demo Toggle",
-	id: "demoToggleId",
-	name: "demoToggle"
+export const DefaultToggle = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Toggle",
+		id: "demoToggleId",
+		name: "demoToggle"
+	}
 };
 
-export const Labeled = Template.bind({});
-Labeled.args = {
-	onChange: action("callback"),
-	title: "Demo Toggle",
-	id: "demoToggleId",
-	name: "demoToggle",
-	label: "Some Label"
+export const Labeled = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Toggle",
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: "Some Label"
+	}
 };
 
-export const LargeLabel = Template.bind({});
-LargeLabel.args = {
-	onChange: action("callback"),
-	title: "Demo Toggle",
-	id: "demoToggleId",
-	name: "demoToggle",
-	label: "Some Label",
-	largeLabel: true
+export const LargeLabel = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Toggle",
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: "Some Label",
+		largeLabel: true
+	}
 };
 
-export const LabeledWithStateText = Template.bind({});
-LabeledWithStateText.args = {
-	onChange: action("callback"),
-	title: "Demo Toggle",
-	id: "demoToggleId",
-	name: "demoToggle",
-	label: "Some Label",
-	stateText: true
+export const LabeledWithStateText = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Toggle",
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: "Some Label",
+		stateText: true
+	}
 };
 
-export const HelperText = Template.bind({});
-HelperText.args = {
-	onChange: action("callback"),
-	title: "Demo Toggle",
-	id: "demoToggleId",
-	name: "demoToggle",
-	label: "Some Label",
-	helperText: "Some helper text here"
+export const HelperText = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Toggle",
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: "Some Label",
+		helperText: "Some helper text here"
+	}
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.args = {
-	onChange: action("callback"),
-	title: "Demo Toggle",
-	id: "demoToggleId",
-	name: "demoToggle",
-	label: "Some Label",
-	hasErrors: true,
-	helperText: "Some error occured"
+export const WithErrors = {
+	args: {
+		onChange: action("callback"),
+		title: "Demo Toggle",
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: "Some Label",
+		hasErrors: true,
+		helperText: "Some error occured"
+	}
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	onChange: action("callback"),
-	name: "demoToggle",
-	title: "Demo Toggle",
-	label: "Some Label",
-	required: true
+export const Required = {
+	args: {
+		onChange: action("callback"),
+		name: "demoToggle",
+		title: "Demo Toggle",
+		label: "Some Label",
+		required: true
+	}
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	onChange: action("callback"),
-	name: "demoToggle",
-	title: "Demo Toggle",
-	label: "Some Label",
-	isOn: true,
-	disabled: true
+export const Disabled = {
+	args: {
+		onChange: action("callback"),
+		name: "demoToggle",
+		title: "Demo Toggle",
+		label: "Some Label",
+		isOn: true,
+		disabled: true
+	}
 };

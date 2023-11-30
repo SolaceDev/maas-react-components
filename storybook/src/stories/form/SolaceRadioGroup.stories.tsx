@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import { SolaceRadio, SolaceRadioGroup } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
@@ -14,9 +14,7 @@ export default {
 		}
 	},
 	argTypes: {}
-} as ComponentMeta<typeof SolaceRadioGroup>;
-
-const Template: ComponentStory<typeof SolaceRadioGroup> = (args) => <SolaceRadioGroup {...args} />;
+} as Meta<typeof SolaceRadioGroup>;
 
 const RADIOS: Array<React.ReactNode> = [];
 RADIOS.push(<SolaceRadio key="option1" name="option1" value="option1" label="Option 1" readOnly={false} />);
@@ -37,36 +35,42 @@ const LABELLED_RADIO_GROUP = {
 	label: "Some Label"
 };
 
-export const DefaultRadioGroup = Template.bind({});
-DefaultRadioGroup.args = { ...RADIO_GROUP };
-
-export const InlineRadioGroup = Template.bind({});
-InlineRadioGroup.args = { ...RADIO_GROUP, inline: true };
-
-export const StackedLabelFormat = Template.bind({});
-StackedLabelFormat.args = {
-	...LABELLED_RADIO_GROUP,
-	stackLabel: true
+export const DefaultRadioGroup = {
+	args: { ...RADIO_GROUP }
 };
 
-export const WithLargeStackLabel = Template.bind({});
-WithLargeStackLabel.args = {
-	...LABELLED_RADIO_GROUP,
-	stackLabel: true,
-	large: true
+export const InlineRadioGroup = {
+	args: { ...RADIO_GROUP, inline: true }
 };
 
-export const WithBoldStackLabel = Template.bind({});
-WithBoldStackLabel.args = {
-	...LABELLED_RADIO_GROUP,
-	stackLabel: true,
-	bold: true
+export const StackedLabelFormat = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		stackLabel: true
+	}
 };
 
-export const InlineLabelFormat = Template.bind({});
-InlineLabelFormat.args = {
-	...LABELLED_RADIO_GROUP,
-	inlineLabel: true
+export const WithLargeStackLabel = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		stackLabel: true,
+		large: true
+	}
+};
+
+export const WithBoldStackLabel = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		stackLabel: true,
+		bold: true
+	}
+};
+
+export const InlineLabelFormat = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		inlineLabel: true
+	}
 };
 
 function buildSubText() {
@@ -104,12 +108,13 @@ RADIOS_WITH_HELPER.push(
 	/>
 );
 
-export const HelperText = Template.bind({});
-HelperText.args = {
-	...LABELLED_RADIO_GROUP,
-	label: "Select the discovery type and fill the form to start a scan",
-	helperText: "Some group helper text here",
-	children: RADIOS_WITH_HELPER
+export const HelperText = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		label: "Select the discovery type and fill the form to start a scan",
+		helperText: "Some group helper text here",
+		children: RADIOS_WITH_HELPER
+	}
 };
 
 const RADIOS_WITH_LIGHT_SUBTEXT: Array<React.ReactNode> = [];
@@ -136,24 +141,28 @@ RADIOS_WITH_LIGHT_SUBTEXT.push(
 		readOnly={false}
 	/>
 );
-export const LightSubtext = Template.bind({});
-LightSubtext.args = {
-	...LABELLED_RADIO_GROUP,
-	label: "Select the discovery type and fill the form to start a scan",
-	children: RADIOS_WITH_LIGHT_SUBTEXT
+
+export const LightSubtext = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		label: "Select the discovery type and fill the form to start a scan",
+		children: RADIOS_WITH_LIGHT_SUBTEXT
+	}
 };
 
-export const WithErrors = Template.bind({});
-WithErrors.args = {
-	...LABELLED_RADIO_GROUP,
-	hasErrors: true,
-	helperText: "Some error occured"
+export const WithErrors = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		hasErrors: true,
+		helperText: "Some error occured"
+	}
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	...LABELLED_RADIO_GROUP,
-	required: true
+export const Required = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		required: true
+	}
 };
 
 const DISABLED_RADIOS: Array<React.ReactNode> = [];
@@ -167,10 +176,11 @@ DISABLED_RADIOS.push(
 	<SolaceRadio key="option3" value="option3" disabled={true} name="option3" label="Option 3" readOnly={false} />
 );
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	...LABELLED_RADIO_GROUP,
-	value: "option2",
-	disabled: true,
-	children: DISABLED_RADIOS
+export const Disabled = {
+	args: {
+		...LABELLED_RADIO_GROUP,
+		value: "option2",
+		disabled: true,
+		children: DISABLED_RADIOS
+	}
 };

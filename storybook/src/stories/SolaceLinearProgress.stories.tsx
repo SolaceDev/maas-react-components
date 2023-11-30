@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import { SolaceLinearProgress } from "@SolaceDev/maas-react-components";
 
 export default {
@@ -34,33 +34,44 @@ export default {
 			}
 		}
 	}
-} as ComponentMeta<typeof SolaceLinearProgress>;
+} as Meta<typeof SolaceLinearProgress>;
 
-const Template: ComponentStory<typeof SolaceLinearProgress> = (args) => (
+const Template: StoryFn<typeof SolaceLinearProgress> = (args) => (
 	<div style={{ border: "solid 1px #EEE" }}>
 		<SolaceLinearProgress {...args} />
 	</div>
 );
 
-export const IndeterminateVariant = Template.bind({});
-IndeterminateVariant.args = {};
-
-export const DeterminateVariant = Template.bind({});
-DeterminateVariant.args = {
-	variant: "determinate",
-	value: 75
+export const IndeterminateVariant = {
+	render: Template,
+	args: {}
 };
 
-export const LearningVariant = Template.bind({});
-LearningVariant.args = {
-	variant: "determinate",
-	value: 45,
-	color: "learning"
+export const DeterminateVariant = {
+	render: Template,
+
+	args: {
+		variant: "determinate",
+		value: 75
+	}
 };
 
-export const ThinnerVariant = Template.bind({});
-ThinnerVariant.args = {
-	variant: "determinate",
-	value: 35,
-	height: "xs"
+export const LearningVariant = {
+	render: Template,
+
+	args: {
+		variant: "determinate",
+		value: 45,
+		color: "learning"
+	}
+};
+
+export const ThinnerVariant = {
+	render: Template,
+
+	args: {
+		variant: "determinate",
+		value: 35,
+		height: "xs"
+	}
 };
