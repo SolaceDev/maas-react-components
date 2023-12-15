@@ -67,6 +67,14 @@ export const DefaultDrawer = {
 	}
 };
 
+export const DefaultLeftDrawerWithOffset = {
+	args: {
+		open: true,
+		anchor: "left",
+		offset: "200px"
+	}
+};
+
 export const ResizableLeftDrawer = {
 	args: {
 		open: true,
@@ -75,10 +83,27 @@ export const ResizableLeftDrawer = {
 	}
 };
 
+export const ResizableLeftDrawerWithOffset = {
+	args: {
+		open: true,
+		anchor: "left",
+		offset: "200px",
+		resizable: true
+	}
+};
+
 export const ResizableRightDrawer = {
 	args: {
 		open: true,
 		resizable: true
+	}
+};
+
+export const ResizableRightDrawerWithOffset = {
+	args: {
+		open: true,
+		resizable: true,
+		offset: "200px"
 	}
 };
 
@@ -111,6 +136,7 @@ function useWindowWidth({ offset }) {
 export const WithParentAndContent = (): ReactNode => {
 	const [open, setOpen] = useState(true);
 	const [anchor, setAnchor] = useState(ANCHOR.RIGHT);
+	const [offset, setOffset] = useState("0");
 	const [currentWidth, setCurrentWidth] = useState(INITIAL_WIDTH);
 	const maxWidth = useWindowWidth({ offset: 0 });
 
@@ -119,6 +145,9 @@ export const WithParentAndContent = (): ReactNode => {
 	};
 	const handleAnchorChange = () => {
 		setAnchor(anchor === ANCHOR.RIGHT ? ANCHOR.LEFT : ANCHOR.RIGHT);
+	};
+	const handleOffsetChange = () => {
+		setOffset(offset === "0" ? "100px" : "0");
 	};
 	const handleResizeDone = (newWidth: number) => {
 		setCurrentWidth(newWidth);
@@ -154,6 +183,12 @@ export const WithParentAndContent = (): ReactNode => {
 							variant: CALL_TO_ACTION,
 							children: anchor === ANCHOR.RIGHT ? "Change to Left" : "Change to Right",
 							onClick: handleAnchorChange
+						},
+						{
+							id: "anchor-button",
+							variant: CALL_TO_ACTION,
+							children: offset === "0" ? "Add Offset" : "Remove Offset",
+							onClick: handleOffsetChange
 						}
 					]}
 				/>
@@ -173,6 +208,7 @@ export const WithParentAndContent = (): ReactNode => {
 				maxWidth={maxWidth}
 				onResizeDone={handleResizeDone}
 				top="80px"
+				offset={offset}
 				height="calc(100vh - 160px)"
 			>
 				{drawerMessage}

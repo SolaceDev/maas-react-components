@@ -8,7 +8,7 @@ enum ANCHOR {
 }
 
 const Dragger = styled("div", { shouldForwardProp: (prop) => prop !== "anchor" })<{
-	anchor: ANCHOR;
+	anchor: "left" | "right";
 }>(({ anchor, theme }) => ({
 	width: "8px",
 	cursor: "ew-resize",
@@ -54,7 +54,7 @@ export interface SolaceDrawerProps {
 	/**
 	 * 	Side from which the drawer will appear.
 	 */
-	anchor?: ANCHOR;
+	anchor?: "left" | "right";
 	/**
 	 * 	CSS property of position top.
 	 */
@@ -63,6 +63,10 @@ export interface SolaceDrawerProps {
 	 * 	CSS property of position height.
 	 */
 	height?: string;
+	/**
+	 * 	CSS property of position left or right, relative to border, depends on anchor.
+	 */
+	offset?: string;
 	/**
 	 * The content that is in the drawer.
 	 */
@@ -77,7 +81,8 @@ function SolaceDrawer({
 	minWidth = 100,
 	maxWidth = 1000,
 	anchor = ANCHOR.RIGHT,
-	top = "0px",
+	top = "0",
+	offset,
 	height = "100%",
 	children
 }: SolaceDrawerProps): JSX.Element {
@@ -131,6 +136,16 @@ function SolaceDrawer({
 		[handleMouseMove, handleMouseUp]
 	);
 
+	const getStyle = () => {
+		if (anchor === ANCHOR.LEFT && offset) {
+			return { top, height, left: offset };
+		} else if (anchor === ANCHOR.RIGHT && offset) {
+			return { top, height, right: offset };
+		} else {
+			return { top, height };
+		}
+	};
+
 	return (
 		<Drawer
 			sx={{
@@ -144,8 +159,8 @@ function SolaceDrawer({
 					boxShadow: `0px 2px 4px ${theme.palette.ux.deprecated.secondary.w8040}`
 				}
 			}}
-			PaperProps={{ style: { top, height } }}
-			BackdropProps={{ style: { top, height } }}
+			PaperProps={{ style: getStyle() }}
+			BackdropProps={{ style: getStyle() }}
 			variant="persistent"
 			anchor={anchor}
 			open={open}
@@ -155,7 +170,11 @@ function SolaceDrawer({
 					<VerticalDotsIcon />
 				</Dragger>
 			)}
-			<Box sx={{ marginLeft: "8px", overflow: "auto" }}>{children}</Box>
+			<Box
+				sx={anchor === ANCHOR.LEFT ? { marginRight: "8px", overflow: "auto" } : { marginLeft: "8px", overflow: "auto" }}
+			>
+				{children}
+			</Box>
 		</Drawer>
 	);
 }
