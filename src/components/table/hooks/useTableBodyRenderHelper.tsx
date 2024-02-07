@@ -24,6 +24,7 @@ const useTableBodyRenderHelper = ({
 	rows,
 	selectionType,
 	selectedRowIds,
+	disabledRowIds,
 	independentRowHighlight,
 	highlightedRowId,
 	renderCustomRowCells,
@@ -43,6 +44,7 @@ const useTableBodyRenderHelper = ({
 	rows: TableRow[];
 	selectionType: SELECTION_TYPE;
 	selectedRowIds: string[];
+	disabledRowIds?: string[];
 	independentRowHighlight: boolean;
 	highlightedRowId?: string | null;
 	renderCustomRowCells?: (row: TableRow) => JSX.Element[];
@@ -66,11 +68,12 @@ const useTableBodyRenderHelper = ({
 						name={`${row.id}`}
 						onChange={handleRowSelectionChange}
 						checked={selectedRowIds.includes(row.id)}
+						disabled={disabledRowIds?.includes(row.id)}
 					/>
 				</StyledTableData>
 			);
 		},
-		[selectedRowIds, handleRowSelectionChange]
+		[selectedRowIds, disabledRowIds, handleRowSelectionChange]
 	);
 
 	const renderRowActionItems = useCallback(
@@ -138,7 +141,10 @@ const useTableBodyRenderHelper = ({
 						selectionType === SELECTION_TYPE.MULTI && independentRowHighlight
 							? highlightedRowId === row.id
 							: selectedRowIds.includes(row.id),
-					clickable: selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE
+					clickable:
+						(selectionType === SELECTION_TYPE.MULTI || selectionType === SELECTION_TYPE.SINGLE) &&
+						!disabledRowIds?.includes(row.id),
+					disabled: disabledRowIds?.includes(row.id)
 				})}
 				data-qa={row.id}
 			>
@@ -156,6 +162,7 @@ const useTableBodyRenderHelper = ({
 		independentRowHighlight,
 		highlightedRowId,
 		selectedRowIds,
+		disabledRowIds,
 		addCheckBoxToRows,
 		renderConfiguredRowCells,
 		displayedColumns,

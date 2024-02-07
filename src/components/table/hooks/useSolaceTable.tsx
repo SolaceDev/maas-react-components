@@ -23,6 +23,7 @@ export const useSolaceTable = ({
 	selectionType,
 	selectedRowIds,
 	selectionChangedCallback,
+	disabledRowIds,
 	independentRowHighlight,
 	highlightedRowId,
 	rowHighlightChangedCallback,
@@ -65,6 +66,7 @@ export const useSolaceTable = ({
 	hasColumnHiding?: boolean;
 	displayedColumns?: TableColumn[];
 	displayedColumnsChangedCallback?: (displayedColumns: TableColumn[]) => void;
+	disabledRowIds?: string[];
 	expandableRowOptions?: ExpandableRowOptions;
 	customContentDefinitions?: CustomContentDefinition[];
 	displayedCustomContent?: string[];
@@ -197,6 +199,9 @@ export const useSolaceTable = ({
 
 	const handleRowClick = useCallback(
 		(clickedRow: TableRow) => {
+			if (disabledRowIds?.includes(clickedRow.id)) {
+				return;
+			}
 			if (selectionType !== SELECTION_TYPE.NONE) {
 				if (selectionType === SELECTION_TYPE.MULTI && independentRowHighlight) {
 					if (highlightedRowId === clickedRow.id) {
@@ -254,6 +259,7 @@ export const useSolaceTable = ({
 			crossPageRowSelectionSupported,
 			crossPageSelectionChangedCallback,
 			deselectedRowIds,
+			disabledRowIds,
 			highlightedRowId,
 			independentRowHighlight,
 			rowHighlightChangedCallback,
@@ -307,15 +313,20 @@ export const useSolaceTable = ({
 
 	const handleSelectAllChange = useCallback(
 		(event: SolaceCheckboxChangeEvent) => {
+			let selectedRows = rows;
+			const hasDisabledRowIds = !!disabledRowIds && disabledRowIds.length > 0;
+			if (hasDisabledRowIds) {
+				selectedRows = rows.filter((row) => !disabledRowIds.includes(row.id));
+			}
 			if (crossPageSelectionEnabled) {
 				if (crossPageSelectionChangedCallback) {
 					if (event.value) {
 						// select all items
-						setSelectAll(true);
+						setSelectAll(selectedRows.length < rows.length ? false : true);
 						crossPageSelectionChangedCallback(
-							rows,
+							selectedRows,
 							true,
-							rows.map((row) => row.id),
+							selectedRows.map((row) => row.id),
 							[]
 						);
 					} else {
@@ -329,7 +340,7 @@ export const useSolaceTable = ({
 					if (event.value) {
 						// select all items
 						setSelectAll(true);
-						selectionChangedCallback(rows);
+						selectionChangedCallback(selectedRows);
 					} else {
 						// clear all selections
 						setSelectAll(false);
@@ -338,7 +349,7 @@ export const useSolaceTable = ({
 				}
 			}
 		},
-		[crossPageSelectionChangedCallback, crossPageSelectionEnabled, rows, selectionChangedCallback]
+		[crossPageSelectionChangedCallback, crossPageSelectionEnabled, rows, selectionChangedCallback, disabledRowIds]
 	);
 
 	const handleRowSelectionChange = useCallback(
@@ -452,6 +463,7 @@ export const useSolaceTable = ({
 		rows,
 		selectionType,
 		selectedRowIds,
+		disabledRowIds,
 		independentRowHighlight,
 		highlightedRowId,
 		renderCustomRowCells,

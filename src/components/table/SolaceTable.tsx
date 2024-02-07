@@ -37,6 +37,12 @@ interface TablePropType extends SolaceComponentProps {
 	 */
 	highlightedRowId?: string | null;
 	/**
+	 * Make rows disabled by passing in the row IDs of the disabled rows.
+	 * Does not affect expandedable rows. Select all feature does not select the row.
+	 * Selection related properties can programatically check the disabled row.
+	 */
+	disabledRowIds?: string[];
+	/**
 	 * Enables columns hiding
 	 */
 	hasColumnHiding?: boolean;
@@ -282,7 +288,7 @@ const LoadingMessage = styled("div")(({ theme }) => ({
 
 const DEFAULT_EMPTY_MESSAGE = "No Items Found";
 
-function santizeSelectedRowIds(selectedRowIds: string[], selectionType: string) {
+function sanitizeSelectedRowIds(selectedRowIds: string[], selectionType: string) {
 	let selectedIds = selectedRowIds;
 	if (selectionType === SELECTION_TYPE.SINGLE && selectedIds.length > 1) {
 		selectedIds = selectedIds.slice(0, 1);
@@ -293,7 +299,11 @@ function santizeSelectedRowIds(selectedRowIds: string[], selectionType: string) 
 	return selectedIds;
 }
 
-function santizeDeselectedRowIds(
+function sanitizeDisabledRowIds(disabledRowIds: string[]) {
+	return uniq(disabledRowIds);
+}
+
+function sanitizeDeselectedRowIds(
 	deselectedRowIds: string[],
 	selectionType: string,
 	crossPageRowSelectionSupported: boolean,
@@ -320,6 +330,7 @@ function SolaceTable({
 	selectionType,
 	selectedRowIds,
 	selectionChangedCallback,
+	disabledRowIds,
 	independentRowHighlight = false,
 	highlightedRowId,
 	rowHighlightChangedCallback,
@@ -352,8 +363,9 @@ function SolaceTable({
 	crossPageSelectionChangedCallback
 }: TablePropType): JSX.Element {
 	// sanitize selectedRowIds and deselectRowIds to ensure they have proper values
-	const selectedIds = santizeSelectedRowIds(selectedRowIds ?? [], selectionType);
-	const deselectedIds = santizeDeselectedRowIds(
+	const selectedIds = sanitizeSelectedRowIds(selectedRowIds ?? [], selectionType);
+	const disabledIds = sanitizeDisabledRowIds(disabledRowIds ?? []);
+	const deselectedIds = sanitizeDeselectedRowIds(
 		deselectedRowIds ?? [],
 		selectionType,
 		crossPageRowSelectionSupported,
@@ -366,6 +378,7 @@ function SolaceTable({
 		selectionType,
 		selectedRowIds: selectedIds,
 		selectionChangedCallback,
+		disabledRowIds: disabledIds,
 		independentRowHighlight,
 		highlightedRowId,
 		rowHighlightChangedCallback,

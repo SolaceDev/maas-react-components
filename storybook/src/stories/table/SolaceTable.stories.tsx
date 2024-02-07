@@ -434,6 +434,41 @@ export const MultiSelectionTable = {
 	}
 };
 
+export const MultiSelectionTableWithDisabledRows = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		disabledRowIds: [rows[0].id, rows[4].id]
+	}
+};
+
+export const InteractiveMultiSelectionTableWithInvalidDisabledRowIds = {
+	render: TableTemplate,
+
+	args: {
+		rows: rows,
+		columns: columns,
+		selectionType: SolaceTableSelectionType.MULTI,
+		disabledRowIds: ["unknownRowId"]
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		// click on Select All
+		await selectCheckbox(canvas, null);
+	},
+
+	parameters: {
+		// Delay snapshot 1 seconds until all interactions are done
+		chromatic: { delay: 1000 }
+	}
+};
+
 export const MultiSelectionTableInitialSelections = {
 	render: TableTemplate,
 
