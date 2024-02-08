@@ -55,7 +55,7 @@ export const baseThemeMapping: ThemeMapping = {
 
 		info: {
 			w100: "#0079FF",
-			wMain: "",
+			wMain: "#0079FF",
 			w70: "",
 			w30: "",
 			w20: "",
@@ -64,7 +64,7 @@ export const baseThemeMapping: ThemeMapping = {
 
 		error: {
 			w100: "#C33135",
-			wMain: "",
+			wMain: "#D0021B",
 			w70: "",
 			w30: alpha("#C33135", 0.15),
 			w20: alpha("#C33135", 0.2),
@@ -73,7 +73,7 @@ export const baseThemeMapping: ThemeMapping = {
 
 		warning: {
 			w100: "#F3AA24",
-			wMain: "",
+			wMain: "#F3AA24",
 			w70: "",
 			w30: "",
 			w20: "",
@@ -117,7 +117,7 @@ export const baseThemeMapping: ThemeMapping = {
 				wMain: ""
 			},
 			n5: {
-				wMain: ""
+				wMain: "#E67E22"
 			},
 			n6: {
 				wMain: "",
