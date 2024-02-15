@@ -90,7 +90,8 @@
 		"react-window": "^1.8.8"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"LICENSE"
 	],
 	"lint-staged": {
 		"*.{tsx,ts}": [
