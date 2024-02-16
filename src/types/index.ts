@@ -3,7 +3,6 @@
  */
 export * from "./supportedThemes";
 export * from "./ThemeMapping";
-export * from "./solaceIcon";
 export * from "./solaceChip";
 export * from "./sx";
 export * from "./solaceGrid";

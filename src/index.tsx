@@ -76,7 +76,6 @@ export { default as SolaceGridList } from "./components/layout/SolaceGridList";
 export { default as SolaceGridListMultiSelect } from "./components/layout/SolaceGridListMultiSelect";
 export { default as SolaceNotificationCounter } from "./components/SolaceNotificationCounter";
 export { default as getThemeMappings } from "./theming/themeUtils";
-export { default as SolaceIcon } from "./components/SolaceIcon";
 export { default as SolaceSplitPane } from "./components/layout/SolaceSplitPane";
 export { default as SolaceAccordion } from "./components/SolaceAccordion";
 export { default as SolaceStack } from "./components/layout/SolaceStack";

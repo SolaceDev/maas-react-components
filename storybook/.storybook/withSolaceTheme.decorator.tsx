@@ -1,7 +1,6 @@
 import React from "react";
 import { DecoratorHelpers } from "@storybook/addon-themes";
 import { createTheme, ThemeProvider, SolaceTheme, SupportedThemes } from "@SolaceDev/maas-react-components";
-import InlineSvg from "react-inlinesvg";
 const { initializeThemeState, pluckThemeFromContext, useThemeParameters } = DecoratorHelpers;
 
 export const withSolaceLayout = ({ themes, defaultTheme }) => {
@@ -19,9 +18,6 @@ export const withSolaceLayout = ({ themes, defaultTheme }) => {
 
 		return (
 			<ThemeProvider theme={createTheme(SolaceTheme(themeName))}>
-				<div style={{ display: "none" }}>
-					{<InlineSvg src={require("@SolaceDev/maas-icons/dist/svg/sprite.symbol.svg")} />}
-				</div>
 				<Story />
 			</ThemeProvider>
 		);

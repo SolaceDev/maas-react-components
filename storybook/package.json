@@ -18,11 +18,9 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@SolaceDev/maas-icons": "npm:@solacedev/maas-icons@^0.2.39",
 		"@SolaceDev/maas-react-components": "file:..",
 		"@storybook/addon-themes": "^7.5.3",
-		"gh-pages": "^3.2.3",
-		"react-inlinesvg": "^4.1.0"
+		"gh-pages": "^3.2.3"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.0",

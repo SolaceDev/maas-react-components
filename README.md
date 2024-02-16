@@ -94,7 +94,7 @@ Include one of the following values in a commit, before pushing your branch to m
 
 ### Publishing Your Changes
 
-Please see read [this resource](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to learn how to publish your changes (please note, you should always publish a new release whenever you merge changes to the repository.)
+Please see read [this resource](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to learn how to publish your changes (please note, you should always publish a new release whenever you merge changes to the repository.).
 
 ### Run locally
 
