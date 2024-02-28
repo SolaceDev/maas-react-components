@@ -165,3 +165,14 @@ export const ClearAllNotification = {
 		await userEvent.click(canvas.getByRole("button"));
 	}
 };
+
+export const OnFocus = Template.bind({});
+
+OnFocus.args = {
+	id: "searchAndFilterOnFocus",
+	name: "testFieldOnFocus",
+	type: FIELD_TYPES.SEARCH,
+	placeholder: "Click or tab into me and observe the action!",
+	onChange: action("value changed"),
+	onFocus: action("input focused") // Using action() to log the onFocus event
+};

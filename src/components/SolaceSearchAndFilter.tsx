@@ -61,6 +61,10 @@ export interface SolaceSearchAndFilterProps extends SolaceComponentProps {
 	 */
 	onChange: (event: SolaceTextFieldChangeEvent) => void;
 	/**
+	 * Callback function to notify the callee when the `input` is focused
+	 */
+	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	/**
 	 * Callback function to notify the callee when the clear (x) button is clicked (in case
 	 * the callee wishes to perform any additional operations other than clearing the search/filter text)
 	 */
@@ -79,6 +83,7 @@ function SolaceSearchAndFilter({
 	type = FIELD_TYPES.DEFAULT,
 	hasErrors = false,
 	onChange,
+	onFocus,
 	onClearAll
 }: SolaceSearchAndFilterProps): JSX.Element {
 	const getAdornment = useCallback(() => {
@@ -131,6 +136,10 @@ function SolaceSearchAndFilter({
 		onChange(event);
 	};
 
+	const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+		onFocus && onFocus(event);
+	};
+
 	return (
 		<SolaceTextField
 			id={id}
@@ -139,6 +148,7 @@ function SolaceSearchAndFilter({
 			helperText={helperText}
 			value={value}
 			onChange={handleChange}
+			onFocus={handleFocus}
 			width={width}
 			endAdornment={getAdornment()}
 			hasErrors={hasErrors}
