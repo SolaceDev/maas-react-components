@@ -79,6 +79,7 @@
 		"@emotion/styled": "^11.11.0",
 		"@mui/icons-material": "^5.14.16",
 		"@mui/material": "^5.14.16",
+		"@SolaceDev/maas-icons": "npm:@solacedev/maas-icons@^0.2.59",
 		"@types/react-beautiful-dnd": "^13.1.2",
 		"codemirror": "^5.65.5",
 		"diff": "^5.1.0",
