@@ -1672,6 +1672,28 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: { "&.Mui-selected": { backgroundColor: themeMapping.palette.brand.w10 } }
 				}
+			},
+			MuiStep: {
+				styleOverrides: {
+					root: { paddingLeft: "24px", paddingRight: "24px" }
+				}
+			},
+			MuiStepper: {
+				styleOverrides: {
+					root: {
+						paddingTop: "24px",
+						paddingBottom: "24px"
+					}
+				}
+			},
+			MuiStepConnector: {
+				styleOverrides: {
+					root: {
+						".MuiStepConnector-line": {
+							borderColor: themeMapping.palette.secondary.w40
+						}
+					}
+				}
 			}
 		},
 		mixins: {

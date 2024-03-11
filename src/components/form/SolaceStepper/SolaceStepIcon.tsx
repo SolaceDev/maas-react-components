@@ -3,7 +3,7 @@ import { CheckFilled16Icon, Error16Icon } from "@SolaceDev/maas-icons";
 const shapeStyles = { width: 48, height: 48 };
 const shapeCircleStyles = { borderRadius: "50%" };
 
-export type StepIconProps = {
+export type SolaceStepIconProps = {
 	active?: boolean;
 	completed?: boolean;
 	icon: React.ReactNode;
@@ -11,12 +11,12 @@ export type StepIconProps = {
 };
 
 /**
- * Renders a StepIcon component in a stepper.
+ * Renders a SolaceStepIcon component in a stepper.
  *
- * @param {StepIconProps} props - The props for the StepIcon component.
- * @returns {JSX.Element} The rendered StepIcon component.
+ * @param {SolaceStepIconProps} props - The props for the SolaceStepIcon component.
+ * @returns {JSX.Element} The rendered SolaceStepIcon component.
  */
-export default function StepIcon(props: StepIconProps) {
+export default function SolaceStepIcon(props: SolaceStepIconProps) {
 	const { active, completed, icon, error } = props;
 	const theme = useTheme();
 
