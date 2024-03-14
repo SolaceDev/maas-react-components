@@ -29,7 +29,7 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 	};
 
 	return (
-		<Box height={"inherit"}>
+		<Box display="flex" flexDirection="column" overflow="auto" flexGrow={1}>
 			<Stepper nonLinear activeStep={activeStep}>
 				{steps.map((step, index) => {
 					const labelColor =
@@ -38,12 +38,7 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 						<Step key={step.label}>
 							<StepButton
 								optional={
-									<SolaceTypography
-										sx={{
-											color: labelColor
-										}}
-										variant="caption"
-									>
+									<SolaceTypography sx={{ color: labelColor }} variant="caption">
 										{`Step ${index + 1} ${step?.subText ?? ""}`}
 									</SolaceTypography>
 								}
@@ -52,12 +47,7 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 								sx={{ textAlign: "left" }}
 							>
 								<StepLabel StepIconComponent={() => getSolaceIconComponent(step, activeStep === index)}>
-									<SolaceTypography
-										variant="h5"
-										sx={{
-											color: labelColor
-										}}
-									>
+									<SolaceTypography variant="h5" sx={{ color: labelColor }}>
 										{step.label}
 									</SolaceTypography>
 								</StepLabel>
@@ -66,7 +56,7 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 					);
 				})}
 			</Stepper>
-			<Box pl={3} pr={3} height={"100%"}>
+			<Box pl={3} pr={3} flexGrow={1} overflow="auto">
 				{children}
 			</Box>
 			<SolaceStepperFooter activeStep={activeStep} setActiveStep={setActiveStep} steps={steps} {...rest} />

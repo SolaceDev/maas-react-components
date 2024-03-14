@@ -45,7 +45,7 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 		setActiveStep(activeStep - 1);
 	};
 	return (
-		<Box height="69px">
+		<Box minHeight="69px">
 			<Divider />
 			<Box pl={3} pr={2} sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
 				<Box sx={{ mr: 1 }}>
