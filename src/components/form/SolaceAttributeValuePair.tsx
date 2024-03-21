@@ -12,6 +12,7 @@ interface SolaceAVPContainerProps {
 	dropFromTop: boolean | null;
 	index: number;
 	readOnly: boolean;
+	disableReorder?: boolean;
 }
 
 interface SolaceAVPMoveButtonProps {
@@ -46,12 +47,20 @@ const displayDropLine = (
 
 const SolaceAVPContainer = styled("div", {
 	shouldForwardProp: (prop) =>
-		prop !== "isDragging" && prop !== "dropOverIndex" && prop !== "dropFromTop" && prop !== "readOnly"
-})<SolaceAVPContainerProps>(({ theme, isDragging, dropOverIndex, index, dropFromTop, readOnly }) => ({
+		prop !== "isDragging" &&
+		prop !== "dropOverIndex" &&
+		prop !== "dropFromTop" &&
+		prop !== "readOnly" &&
+		prop !== "disableReorder"
+})<SolaceAVPContainerProps>(({ theme, isDragging, dropOverIndex, index, dropFromTop, readOnly, disableReorder }) => ({
 	...(theme.mixins.formComponent_AVPItem.container as CSSProperties),
 	backgroundColor: isDragging ? theme.palette.ux.brand.w10 : "inherit",
 	borderTop: displayDropLine(theme, dropFromTop, dropOverIndex, index),
-	gridTemplateColumns: readOnly ? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px" : "32px 1fr 8px 1fr 32px"
+	gridTemplateColumns: readOnly
+		? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px"
+		: disableReorder
+		  ? "0px 1fr 8px 1fr 32px"
+		  : "32px 1fr 8px 1fr 32px"
 }));
 const SolaceAVPInputForKey = styled("div")(({ theme }) => ({
 	...(theme.mixins.formComponent_AVPItem.inputWrapperForKey as CSSProperties)
@@ -169,6 +178,10 @@ export interface SolaceAttributeValuePairProps {
 	 * read only flag
 	 */
 	readOnly?: boolean;
+	/**
+	 * Boolean flag to disable re-ordering of items
+	 */
+	disableReorder?: boolean;
 }
 
 export const SolaceAttributeValuePair = ({
@@ -187,11 +200,12 @@ export const SolaceAttributeValuePair = ({
 	dropOverIndex,
 	dropFromTop,
 	readOnly,
-	emptyFieldDisplayValue = ""
+	emptyFieldDisplayValue = "",
+	disableReorder = false
 }: SolaceAttributeValuePairProps) => {
 	const theme = useTheme();
 	return (
-		<Draggable draggableId={id} index={index} isDragDisabled={ghostItem}>
+		<Draggable draggableId={id} index={index} isDragDisabled={ghostItem || disableReorder}>
 			{
 				// TODO: Refactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed
 				// eslint-disable-next-line sonarjs/cognitive-complexity
@@ -204,18 +218,21 @@ export const SolaceAttributeValuePair = ({
 						dropFromTop={dropFromTop}
 						index={index}
 						readOnly={readOnly ? readOnly : false}
+						disableReorder={disableReorder}
 					>
-						<SolaceAVPMoveButton
-							{...provided.dragHandleProps}
-							isDragging={snapshot.isDragging}
-							ghostItem={ghostItem}
-							readOnly={readOnly ? readOnly : false}
-						>
-							<MoveIcon
-								fill={ghostItem ? theme.palette.ux.secondary.w40 : theme.palette.ux.secondary.wMain}
-								opacity={1}
-							/>
-						</SolaceAVPMoveButton>
+						{!disableReorder && (
+							<SolaceAVPMoveButton
+								{...provided.dragHandleProps}
+								isDragging={snapshot.isDragging}
+								ghostItem={ghostItem}
+								readOnly={readOnly ? readOnly : false}
+							>
+								<MoveIcon
+									fill={ghostItem ? theme.palette.ux.secondary.w40 : theme.palette.ux.secondary.wMain}
+									opacity={1}
+								/>
+							</SolaceAVPMoveButton>
+						)}
 
 						<SolaceAVPInputForKey>
 							{!avpKey && avpValue && readOnly && (

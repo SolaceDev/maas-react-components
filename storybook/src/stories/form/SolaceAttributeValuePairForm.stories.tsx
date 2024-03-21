@@ -151,6 +151,37 @@ export const WithErrors = {
 	)
 };
 
+export const WithReOrderingDisabled = {
+	render: ({ hasWarnings = false, hasErrors = false, helperText = "" }) => {
+		const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
+		const [currentAVPList, setAVPList] = useState(list);
+
+		const handleListUpdate = (updatedList: Array<AVPItem>) => {
+			setAVPList(updatedList);
+		};
+
+		return (
+			<div>
+				<SolaceAttributeValuePairForm
+					name="avpForm"
+					labelForKeys="Keys"
+					labelForValues="Values"
+					avpList={currentAVPList}
+					onAVPListUpdate={handleListUpdate}
+					hasWarnings={hasWarnings}
+					hasErrors={hasErrors}
+					helperText={helperText}
+					disableReorder={true}
+				/>
+				<div style={{ marginTop: 20 }}>
+					<div>Returned Data:</div>
+					<div>{JSON.stringify(currentAVPList)}</div>
+				</div>
+			</div>
+		);
+	}
+};
+
 export const ReadOnly = () => {
 	const data = SAMPLE_AVP_LIST_READ_ONLY.map((item) => ({ ...item }));
 	return (

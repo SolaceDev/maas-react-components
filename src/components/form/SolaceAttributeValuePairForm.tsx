@@ -11,6 +11,7 @@ import { SolaceTextFieldChangeEvent } from "./SolaceTextField";
 
 interface SolaceAVPFormLabelProps {
 	readOnly: boolean;
+	disableReorder?: boolean;
 }
 
 export interface AVPItem {
@@ -24,9 +25,13 @@ export interface AVPItem {
 const SolaceAVPFormContainer = styled("div")(({ theme }) => ({
 	...(theme.mixins.formComponent_AVPForm.container as CSSProperties)
 }));
-const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(({ theme, readOnly }) => ({
+const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(({ theme, readOnly, disableReorder }) => ({
 	...(theme.mixins.formComponent_AVPForm.labelWrapper as CSSProperties),
-	gridTemplateColumns: readOnly ? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px" : "32px 1fr 8px 1fr 32px"
+	gridTemplateColumns: readOnly
+		? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px"
+		: disableReorder
+		  ? "0px 1fr 8px 1fr 32px"
+		  : "32px 1fr 8px 1fr 32px"
 }));
 const SolaceAVPListContainer = styled("div")(({ theme }) => ({
 	...(theme.mixins.formComponent_AVPForm.listWrapper as CSSProperties)
@@ -140,6 +145,10 @@ export interface SolaceAttributeValuePairFormProps {
 	 * Boolean flag to mark the `input` in warn state
 	 */
 	hasWarnings?: boolean;
+	/**
+	 * Boolean flag to disable re-ordering of items
+	 */
+	disableReorder?: boolean;
 }
 
 const SolaceAttributeValuePairForm = ({
@@ -159,7 +168,8 @@ const SolaceAttributeValuePairForm = ({
 	keyIsRequiredMessage = "Required",
 	helperText = "",
 	hasErrors = false,
-	hasWarnings = false
+	hasWarnings = false,
+	disableReorder = false
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
 	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
@@ -336,7 +346,7 @@ const SolaceAttributeValuePairForm = ({
 			<Droppable droppableId={getId()}>
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
-						<SolaceAVPFormLabel readOnly={readOnly ? readOnly : false}>
+						<SolaceAVPFormLabel readOnly={!!readOnly} disableReorder={!!disableReorder}>
 							<SolaceLabel id="avpLabelForKeys" required={enableRequiredKeyFieldIndicator}>
 								{labelForKeys}
 							</SolaceLabel>
@@ -365,6 +375,7 @@ const SolaceAttributeValuePairForm = ({
 										dropFromTop={dropFromTop}
 										readOnly={readOnly}
 										emptyFieldDisplayValue={emptyFieldDisplayValue}
+										disableReorder={disableReorder}
 									/>
 								);
 							})}
