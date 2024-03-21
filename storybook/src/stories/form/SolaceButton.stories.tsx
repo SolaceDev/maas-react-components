@@ -185,6 +185,15 @@ export const ExternalLinkButton = {
 	}
 };
 
+export const ExternalLinkButtonOpenPageInSameTab = {
+	args: {
+		variant: "link",
+		openLinkInNewTab: false,
+		href: "http://www.cnn.com",
+		children: "Visit CNN"
+	}
+};
+
 export const ExternaLinkWithText = (): ReactNode => {
 	return (
 		<div>

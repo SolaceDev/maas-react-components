@@ -21,6 +21,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 	children?: string | JSX.Element;
 	dense?: boolean; // only applicable to link variant
+	openLinkInNewTab?: boolean;
 }
 
 // Todo: Refactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed
@@ -42,7 +43,8 @@ function SolaceButton({
 	dataQa,
 	dataTags,
 	children,
-	dense = false
+	dense = false,
+	openLinkInNewTab = href ? true : false
 }: SolaceButtonProps): JSX.Element {
 	const handleClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (onClick) {
@@ -95,7 +97,7 @@ function SolaceButton({
 					data-qa={dataQa}
 					data-tags={dataTags}
 					component={href ? "a" : "button"}
-					target={href ? "_blank" : "_self"}
+					target={openLinkInNewTab ? "_blank" : "_self"}
 					href={href}
 					type={type}
 					disabled={isDisabled}
@@ -106,7 +108,7 @@ function SolaceButton({
 					<Box sx={{ marginRight: href ? theme.spacing(6 / 8) : 0 }} component="span">
 						{children}
 					</Box>
-					{href && <OpenExternalIcon></OpenExternalIcon>}
+					{href && openLinkInNewTab && <OpenExternalIcon></OpenExternalIcon>}
 				</Link>
 			</SolaceTooltip>
 		);
