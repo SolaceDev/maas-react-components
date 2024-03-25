@@ -15,3 +15,4 @@ export * from "./solaceProgress";
 export * from "./fieldTypes";
 export * from "./sizing";
 export * from "./solaceStepper";
+export * from "./solaceEmptyStateBanner";
