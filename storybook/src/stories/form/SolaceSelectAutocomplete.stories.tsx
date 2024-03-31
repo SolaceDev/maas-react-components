@@ -541,6 +541,40 @@ export const MultipleSelectionWithLimitedTag = {
 	}
 };
 
+export const MultipleSelectionWithCloseOnSelect = {
+	parameters: {
+		mockData: [
+			{
+				url: "http://someOtherExample.com/filterOptions",
+				method: "GET",
+				status: 200,
+				response: {
+					data: SELECT_OPTIONS
+				},
+				delay: 500
+			}
+		]
+	},
+
+	args: {
+		onChange: action("callback"),
+		itemComponent: SolaceSelectAutocompleteItem,
+		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
+		itemMappingCallback: (option) => option,
+		name: "demoSelect",
+		title: "Demo Select Field",
+		label: "Some Label",
+		options: store.get("options") || null,
+		fetchOptionsCallback: async (searchTerm: string) => {
+			await fetchOptions(searchTerm);
+		},
+		onCloseCallback: () => store.set({ options: [] }),
+		value: [],
+		multiple: true,
+		disableCloseOnSelect: false
+	}
+};
+
 const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "MEM #1",

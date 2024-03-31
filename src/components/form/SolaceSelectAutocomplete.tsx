@@ -127,6 +127,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	openOnFocus?: boolean;
 	/**
+	 * Boolean flag to disable close on select. If not set, it is enabled by default for multiple select
+	 */
+	disableCloseOnSelect?: boolean;
+	/**
 	 * Custom max-height of the expanded dropdown,
 	 * MaxHeight supports standard css units (px,rems, etc.)
 	 */
@@ -184,6 +188,7 @@ function SolaceSelectAutocomplete<T, V>({
 	width,
 	inputRef,
 	openOnFocus = false,
+	disableCloseOnSelect,
 	maxHeight,
 	fullWidth = false,
 	minWidth
@@ -266,10 +271,12 @@ function SolaceSelectAutocomplete<T, V>({
 		if (groupByCallback && showGroupDivider) {
 			return (
 				<li key={params.key}>
-					<div>
-						{params.key !== 0 && <Divider />}
-						<div className="MuiAutocomplete-groupLabel">{params.group}</div>
-					</div>
+					{(params.key !== 0 || params.group) && (
+						<div>
+							{params.key !== 0 && <Divider />}
+							{params.group && <div className="MuiAutocomplete-groupLabel">{params.group}</div>}
+						</div>
+					)}
 					{params.children && <GroupItems>{params.children}</GroupItems>}
 				</li>
 			);
@@ -313,7 +320,7 @@ function SolaceSelectAutocomplete<T, V>({
 			loading={loading}
 			open={open}
 			multiple={multiple}
-			disableCloseOnSelect={multiple}
+			disableCloseOnSelect={disableCloseOnSelect ?? multiple}
 			onClose={handleClose}
 			openOnFocus={openOnFocus}
 			onOpen={handleOpen}
