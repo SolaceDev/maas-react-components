@@ -1,5 +1,6 @@
 import { Badge, Box, useTheme } from "@mui/material";
-import { CheckFilled16Icon, Error16Icon } from "@SolaceDev/maas-icons";
+import { Error16Icon } from "../../../resources/icons/Error16Icon";
+import { CheckFilled16Icon } from "../../../resources/icons/CheckFilled16Icon";
 const shapeStyles = { width: 48, height: 48 };
 const shapeCircleStyles = { borderRadius: "50%" };
 
@@ -43,9 +44,9 @@ export default function SolaceStepIcon(props: SolaceStepIconProps) {
 	);
 
 	const badgeContent = completed ? (
-		<CheckFilled16Icon fill={theme.palette.ux.brand.wMain} sx={{ background: theme.palette.ux.background.w10 }} />
+		<CheckFilled16Icon fill={theme.palette.ux.brand.wMain} size={16} />
 	) : (
-		<Error16Icon fill={theme.palette.ux.error.wMain} sx={{ background: theme.palette.ux.background.w10 }} />
+		<Error16Icon fill={theme.palette.ux.error.wMain} size={16} />
 	);
 
 	return (
