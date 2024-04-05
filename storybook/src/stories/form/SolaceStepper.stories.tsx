@@ -53,6 +53,7 @@ const Component = ({ ...args }) => {
 	return (
 		<Box display="flex" border="1px solid grey" borderRadius="4px" height="300px">
 			<SolaceStepper
+				steps={initialSteps}
 				{...args}
 				activeStep={activeStep}
 				setActiveStep={setActiveStep}

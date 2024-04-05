@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { styled } from "@mui/material";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, OnDragEndResponder, OnDragUpdateResponder } from "react-beautiful-dnd";
 import SolaceLabel from "./SolaceLabel";
 import { SolaceAttributeValuePair, valueInputTypes } from "./SolaceAttributeValuePair";
 import HelperText from "./HelperText";
@@ -86,11 +86,11 @@ export interface SolaceAttributeValuePairFormProps {
 	/**
 	 * label for the key column
 	 */
-	labelForKeys?: string;
+	labelForKeys?: string | JSX.Element;
 	/**
 	 * label for the value column
 	 */
-	labelForValues?: string;
+	labelForValues?: string | JSX.Element;
 	/**
 	 * TODO: implementation required
 	 * specifies the type of the value providing component: types can be input, select etc. component, default to SolaceTextField if no type provided
@@ -195,7 +195,7 @@ const SolaceAttributeValuePairForm = ({
 	/**
 	 * All the things to do when a drag action ended
 	 */
-	const handleDragEnd = (result: any) => {
+	const handleDragEnd: OnDragEndResponder = (result) => {
 		// drag outside of the list
 		if (!result.destination) {
 			return;
@@ -221,11 +221,11 @@ const SolaceAttributeValuePairForm = ({
 
 	/**
 	 * update drop over index & direction on drag update
-	 * this allows to apply visual indicators to UI elements based on dragging behaviours
+	 * this allows to apply visual indicators to UI elements based on dragging behaviors
 	 */
-	const handleDragUpdate = (update: any) => {
+	const handleDragUpdate: OnDragUpdateResponder | undefined = (update) => {
 		const sourceIndex: number | null = update.source.index;
-		const destinationIndex: number | null = update.destination.index;
+		const destinationIndex: number | null = update?.destination?.index ?? null;
 		const dropOverIndex: number | null = destinationIndex;
 		let dropFromTop: boolean | null = null;
 		if (sourceIndex !== null && destinationIndex !== null) {

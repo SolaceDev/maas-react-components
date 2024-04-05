@@ -2,22 +2,31 @@ import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 
-import { SolaceAttributeValuePairForm } from "@SolaceDev/maas-react-components";
+import {
+	InfoIcon,
+	SolaceAttributeValuePairForm,
+	SolacePopover,
+	Typography,
+	useTheme
+} from "@SolaceDev/maas-react-components";
 
 export default {
 	title: "Forms/SolaceAttributeValuePairForm",
 	component: SolaceAttributeValuePairForm,
+	parameters: {
+		docs: { story: { height: "500px" } }
+	},
 	argTypes: {}
 } as Meta<typeof SolaceAttributeValuePairForm>;
 
 const kafkaTopicPattern = /^[A-Za-z0-9-_.]*$/;
 
-// custom Emum input validation
-const validateEnumInput = (currentInput, values: Array<unknown>) => {
+// custom Enum input validation
+const validateEnumInput = (currentInput, values: Array<AVPItem>) => {
 	const MAX_KEY_CHARACTERS = 40;
 	let error = "";
 
-	// validate only alph-numeric values
+	// validate only alpha-numeric values
 	if (!currentInput.match(kafkaTopicPattern)) {
 		// use kafka topic pattern for all enum value validation for simplicity
 		error = "Can only contain alphanumeric characters, dots, dashes and underscores";
@@ -71,13 +80,8 @@ const SAMPLE_AVP_LIST_MISSING_VALUES = [
 const AVP_KEY = "avpKey";
 const AVP_VALUE = "avpValue";
 
-export const Default = () => {
-	const [currentAVPList, setAVPList] = useState([]);
-
-	const handleListUpdate = (updatedList: Array<AVPItem>) => {
-		setAVPList(updatedList);
-	};
-
+const Component = ({ ...args }) => {
+	const [currentAVPList, setAVPList] = useState<AVPItem[]>(args?.avpList ? args.avpList : []);
 	return (
 		<div>
 			<SolaceAttributeValuePairForm
@@ -85,158 +89,91 @@ export const Default = () => {
 				labelForKeys="Keys"
 				labelForValues="Values"
 				avpList={currentAVPList}
-				onAVPListUpdate={handleListUpdate}
+				onAVPListUpdate={setAVPList}
+				{...args}
 			/>
-			<div style={{ marginTop: 20 }}>
-				<div>Returned Data:</div>
-				<div>{JSON.stringify(currentAVPList)}</div>
-			</div>
+			{args?.showOutput && (
+				<div style={{ marginTop: 20 }}>
+					<Typography variant="h6">👇 Returned Data 👇</Typography>
+					<pre>{JSON.stringify(currentAVPList, null, 2)}</pre>
+				</div>
+			)}
 		</div>
 	);
+};
+
+export const Default = {
+	render: Component,
+	args: { showOutput: true }
 };
 
 export const WithInitialData = {
-	render: ({ hasWarnings = false, hasErrors = false, helperText = "" }) => {
-		const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
-		const [currentAVPList, setAVPList] = useState(list);
-
-		const handleListUpdate = (updatedList: Array<AVPItem>) => {
-			setAVPList(updatedList);
-		};
-
-		return (
-			<div>
-				<SolaceAttributeValuePairForm
-					name="avpForm"
-					labelForKeys="Keys"
-					labelForValues="Values"
-					avpList={currentAVPList}
-					onAVPListUpdate={handleListUpdate}
-					hasWarnings={hasWarnings}
-					hasErrors={hasErrors}
-					helperText={helperText}
-				/>
-				<div style={{ marginTop: 20 }}>
-					<div>Returned Data:</div>
-					<div>{JSON.stringify(currentAVPList)}</div>
-				</div>
-			</div>
-		);
+	render: Component,
+	args: {
+		showOutput: true,
+		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item }))
 	}
 };
 
+const HELPER_TEXT = "This Attribute Value Pair Form has helper text";
+
 export const WithHelperText = {
-	render: (args) => (
-		<WithInitialData.render {...WithInitialData.args} helperText="This Attribute Value Pair Form has helper text" />
-	)
+	render: Component,
+	args: {
+		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
+		helperText: HELPER_TEXT
+	}
 };
 
 export const WithWarnings = {
-	render: (args) => (
-		<WithInitialData.render
-			{...WithInitialData.args}
-			hasWarnings={true}
-			helperText="This Attribute Value Pair Form has warnings"
-		/>
-	)
-};
-
-export const WithErrors = {
-	render: (args) => (
-		<WithInitialData.render
-			{...WithInitialData.args}
-			hasErrors={true}
-			helperText="This Attribute Value Pair Form has errors"
-		/>
-	)
-};
-
-export const WithReOrderingDisabled = {
-	render: ({ hasWarnings = false, hasErrors = false, helperText = "" }) => {
-		const list = SAMPLE_AVP_LIST.map((item) => ({ ...item }));
-		const [currentAVPList, setAVPList] = useState(list);
-
-		const handleListUpdate = (updatedList: Array<AVPItem>) => {
-			setAVPList(updatedList);
-		};
-
-		return (
-			<div>
-				<SolaceAttributeValuePairForm
-					name="avpForm"
-					labelForKeys="Keys"
-					labelForValues="Values"
-					avpList={currentAVPList}
-					onAVPListUpdate={handleListUpdate}
-					hasWarnings={hasWarnings}
-					hasErrors={hasErrors}
-					helperText={helperText}
-					disableReorder={true}
-				/>
-				<div style={{ marginTop: 20 }}>
-					<div>Returned Data:</div>
-					<div>{JSON.stringify(currentAVPList)}</div>
-				</div>
-			</div>
-		);
+	render: Component,
+	args: {
+		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
+		hasWarnings: true,
+		helperText: HELPER_TEXT
 	}
 };
 
-export const ReadOnly = () => {
-	const data = SAMPLE_AVP_LIST_READ_ONLY.map((item) => ({ ...item }));
-	return (
-		<div>
-			<SolaceAttributeValuePairForm
-				name="avpForm"
-				readOnly={true}
-				labelForKeys="Keys"
-				labelForValues="Values"
-				avpList={data}
-			/>
-		</div>
-	);
+export const WithErrors = {
+	render: Component,
+	args: {
+		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
+		hasErrors: true,
+		helperText: HELPER_TEXT
+	}
 };
 
-export const ReadOnlyWithEmptyFieldDisplayValue = () => {
-	const data = SAMPLE_AVP_LIST_MISSING_VALUES.map((item) => ({ ...item }));
-	return (
-		<div>
-			<SolaceAttributeValuePairForm
-				name="avpForm"
-				readOnly={true}
-				labelForKeys="Keys"
-				labelForValues="Values"
-				avpList={data}
-				emptyFieldDisplayValue="-"
-			/>
-		</div>
-	);
+export const WithReOrderingDisabled = {
+	render: Component,
+	args: {
+		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
+		disableReorder: true
+	}
+};
+
+export const ReadOnly = {
+	render: Component,
+	args: {
+		avpList: SAMPLE_AVP_LIST_READ_ONLY.map((item) => ({ ...item })),
+		readOnly: true
+	}
+};
+
+export const ReadOnlyWithEmptyFieldDisplayValue = {
+	render: Component,
+	args: {
+		avpList: SAMPLE_AVP_LIST_MISSING_VALUES.map((item) => ({ ...item })),
+		readOnly: true,
+		emptyFieldDisplayValue: "-"
+	}
 };
 
 export const UpdateData = {
-	render: () => {
-		const list = [];
-		const [currentAVPList, setAVPList] = useState(list);
-
-		const handleListUpdate = (updatedList: Array<AVPItem>) => {
-			setAVPList(updatedList);
-		};
-
-		return (
-			<div>
-				<SolaceAttributeValuePairForm
-					name="avpForm"
-					labelForKeys="Keys"
-					labelForValues="Values"
-					avpList={currentAVPList}
-					onAVPListUpdate={handleListUpdate}
-				/>
-				<div style={{ marginTop: 20 }}>
-					<div>Returned Data:</div>
-					<div>{JSON.stringify(currentAVPList)}</div>
-				</div>
-			</div>
-		);
+	render: Component,
+	args: {
+		name: "avpForm",
+		labelForKeys: "Keys",
+		labelForValues: "Values"
 	},
 
 	play: async ({ canvasElement }) => {
@@ -303,22 +240,10 @@ export const UpdateData = {
 };
 
 export const MissingMandatoryKeyValidation = {
-	render: () => {
-		const data = [];
-		const [avpList, setAVPList] = useState<Array<AVPItem>>(data);
-
-		const handleListUpdate = (updatedList: Array<AVPItem>) => {
-			setAVPList(updatedList);
-		};
-
-		return (
-			<SolaceAttributeValuePairForm
-				name="avpForm"
-				avpList={avpList}
-				onAVPListUpdate={handleListUpdate}
-				enableRequiredKeyFieldIndicator={true}
-			/>
-		);
+	render: Component,
+	args: {
+		name: "avpForm",
+		enableRequiredKeyFieldIndicator: true
 	},
 
 	play: async ({ canvasElement }) => {
@@ -339,23 +264,11 @@ export const MissingMandatoryKeyValidation = {
 };
 
 export const MissingMandatoryKeyWithCustomMessage = {
-	render: () => {
-		const data = [];
-		const [avpList, setAVPList] = useState<Array<AVPItem>>(data);
-
-		const handleListUpdate = (updatedList: Array<AVPItem>) => {
-			setAVPList(updatedList);
-		};
-
-		return (
-			<SolaceAttributeValuePairForm
-				name="avpForm"
-				avpList={avpList}
-				onAVPListUpdate={handleListUpdate}
-				enableRequiredKeyFieldIndicator={true}
-				keyIsRequiredMessage="Enumeration key is required"
-			/>
-		);
+	render: Component,
+	args: {
+		name: "avpForm",
+		enableRequiredKeyFieldIndicator: true,
+		keyIsRequiredMessage: "Enumeration key is required"
 	},
 
 	play: async ({ canvasElement }) => {
@@ -383,24 +296,12 @@ const SAMPLE_AVP_LIST_WITH_FALSE_VALUES = [
 ];
 
 export const WithCustomValidation = {
-	render: () => {
-		const data = [];
-		const [currentAVPList, setAVPList] = useState<Array<AVPItem>>(data);
-
-		const handleListUpdate = (updatedList: Array<AVPItem>) => {
-			setAVPList(updatedList);
-		};
-
-		return (
-			<SolaceAttributeValuePairForm
-				name="avpForm"
-				avpList={currentAVPList}
-				onAVPListUpdate={handleListUpdate}
-				avpKeyValidationCallback={validateEnumInput}
-				avpValueValidationCallback={validateEnumInput}
-				enableRequiredKeyFieldIndicator={true}
-			/>
-		);
+	render: Component,
+	args: {
+		name: "avpForm",
+		enableRequiredKeyFieldIndicator: true,
+		avpKeyValidationCallback: validateEnumInput,
+		avpValueValidationCallback: validateEnumInput
 	},
 
 	play: async ({ canvasElement }) => {
@@ -453,5 +354,27 @@ export const WithCustomValidation = {
 	parameters: {
 		// Delay snapshot 5 seconds until all interactions are done
 		chromatic: { delay: 5000 }
+	}
+};
+
+const Title = (props: { label: string }) => {
+	const theme = useTheme();
+	return (
+		<div style={{ display: "flex", alignItems: "center" }}>
+			{props.label}
+			<SolacePopover maxWidth="full" title="Important information">
+				<div style={{ display: "flex", marginLeft: theme.spacing(0.5) }}>
+					<InfoIcon size={20} fill={theme.palette.ux.secondary.wMain} />
+				</div>
+			</SolacePopover>
+		</div>
+	);
+};
+
+export const WithCustomLabels = {
+	render: Component,
+	args: {
+		labelForKeys: <Title label="Key" />,
+		labelForValues: <Title label="Value" />
 	}
 };

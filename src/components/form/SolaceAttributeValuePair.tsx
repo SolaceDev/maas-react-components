@@ -59,8 +59,8 @@ const SolaceAVPContainer = styled("div", {
 	gridTemplateColumns: readOnly
 		? "0px minmax(0, 1fr) 8px minmax(0, 1fr) 0px"
 		: disableReorder
-		  ? "0px 1fr 8px 1fr 32px"
-		  : "32px 1fr 8px 1fr 32px"
+		  ? "0px 1fr 8px 1fr 40px"
+		  : "32px 1fr 8px 1fr 40px"
 }));
 const SolaceAVPInputForKey = styled("div")(({ theme }) => ({
 	...(theme.mixins.formComponent_AVPItem.inputWrapperForKey as CSSProperties)
@@ -83,6 +83,7 @@ const SolaceAVPDeleteButton = styled("div", {
 	...(theme.mixins.formComponent_AVPItem.deleteButton as CSSProperties),
 	cursor: cursor,
 	display: readOnly ? "none" : "inherit",
+	height: "fit-content",
 	":hover": {
 		backgroundColor: background,
 		svg: {
@@ -90,7 +91,9 @@ const SolaceAVPDeleteButton = styled("div", {
 				fill: ghostItem ? theme.palette.ux.secondary.w40 : theme.palette.ux.deprecated.primary.wMain
 			}
 		}
-	}
+	},
+	paddingBottom: theme.spacing(0.5),
+	marginLeft: theme.spacing(1)
 }));
 
 const ValueWrapper = styled("div")(({ theme }) => ({
