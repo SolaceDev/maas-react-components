@@ -10,7 +10,7 @@ const config: StorybookConfig = {
 		"@storybook/addon-interactions",
 		"@storybook/addon-a11y",
 		"storybook-addon-mock",
-		"storybook-addon-themes",
+		"@storybook/addon-themes",
 		{
 			name: "@storybook/addon-coverage",
 			options: {

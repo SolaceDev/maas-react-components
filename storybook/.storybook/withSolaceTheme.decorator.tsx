@@ -10,9 +10,9 @@ export const withSolaceLayout = ({ themes, defaultTheme }) => {
 		const selectedTheme = pluckThemeFromContext(context);
 
 		let themeName = SupportedThemes.solace;
-		if (selectedTheme === "SAP") {
+		if (selectedTheme === "sap") {
 			themeName = SupportedThemes.sap;
-		} else if (selectedTheme === "New Solace") {
+		} else if (selectedTheme === "newSolace") {
 			themeName = SupportedThemes.newSolace;
 		}
 
