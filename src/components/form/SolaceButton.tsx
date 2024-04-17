@@ -4,6 +4,7 @@ import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
 import SolaceTooltip from "../SolaceToolTip";
 
 import SolaceComponentProps from "../SolaceComponentProps";
+import { dataCollectionApi } from "../../resources/trackingapi";
 
 export interface SolaceButtonProps extends SolaceComponentProps {
 	id?: string;
@@ -44,12 +45,14 @@ function SolaceButton({
 	dataTags,
 	children,
 	dense = false,
-	openLinkInNewTab = href ? true : false
+	openLinkInNewTab = href ? true : false,
+	eventName
 }: SolaceButtonProps): JSX.Element {
 	const handleClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (onClick) {
 			onClick(event);
 		}
+		dataCollectionApi && dataCollectionApi({ title, variant, id, href, dataQa, dataTags, eventName });
 	};
 	const theme = useTheme();
 

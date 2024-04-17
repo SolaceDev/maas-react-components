@@ -104,3 +104,4 @@ export { default as CheckCircleIcon } from "./resources/icons/CheckCircleIcon";
 export * from "./types";
 
 export { default as SolaceTheme } from "./resources/theme";
+export { initializeDataTrackingApi } from "./resources/trackingapi";
