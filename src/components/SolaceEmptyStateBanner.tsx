@@ -28,7 +28,14 @@ export default function SolaceEmptyStateBanner(props: SolaceEmptyStateBannerProp
 	};
 
 	return (
-		<Box width={"100%"} height={"100%"} display={"flex"} justifyContent={"center"} data-qa={"emptyStateBannerWrapper"}>
+		<Box
+			width={"100%"}
+			height={"100%"}
+			display={"flex"}
+			justifyContent={"center"}
+			alignItems={"center"}
+			data-qa={"emptyStateBannerWrapper"}
+		>
 			<Box data-qa={dataQa ?? "emptyStateBanner"} width={825}>
 				{bannerImage && <ImageContainer>{bannerImage}</ImageContainer>}
 				<SolaceStack spacing={3}>
