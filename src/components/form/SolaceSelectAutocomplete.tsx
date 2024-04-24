@@ -332,6 +332,7 @@ function SolaceSelectAutocomplete<T, V>({
 					title={title}
 					autoComplete="off"
 					placeholder={placeholder}
+					error={hasErrors}
 					inputProps={{
 						...params.inputProps,
 						"data-qa": `${dataQa}-input`,
