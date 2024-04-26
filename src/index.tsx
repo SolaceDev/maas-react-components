@@ -105,3 +105,5 @@ export * from "./types";
 
 export { default as SolaceTheme } from "./resources/theme";
 export { initializeDataTrackingApi } from "./resources/trackingapi";
+
+export { default as SolaceDatePicker } from "./components/SolaceDatePicker";
