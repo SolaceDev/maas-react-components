@@ -28,3 +28,11 @@ export const ControlledDatePicker = {
 		onClear: () => console.log("Cleared")
 	}
 };
+
+export const ReadOnlyDatePicker = {
+	render: Template,
+	args: {
+		value: "2022-01-01T00:00:00Z", // in ISO 8601 format
+		disabled: true
+	}
+};

@@ -13,6 +13,12 @@ export interface SolaceDatePickerProps extends SolaceComponentProps {
 	value?: string | null;
 
 	/**
+	 * If `true`, the date picker is readOnly and cannot be changed.
+	 
+	 */
+	disabled?: boolean;
+
+	/**
 	 * A callback that's called when the date picker's value changes. The new value is passed
 	 * as a string in ISO 8601 format. If the date picker is cleared, `null` is passed.
 	 */
@@ -24,7 +30,13 @@ export interface SolaceDatePickerProps extends SolaceComponentProps {
 	onClear?: () => void;
 }
 
-export default function SolaceDatePicker({ value = null, onChange, onClear, dataQa }: SolaceDatePickerProps) {
+export default function SolaceDatePicker({
+	value = null,
+	onChange,
+	onClear,
+	dataQa,
+	disabled = false
+}: SolaceDatePickerProps) {
 	const [date, setDate] = useState<Moment | null>(value ? moment(value) : null);
 
 	useEffect(() => {
@@ -48,6 +60,7 @@ export default function SolaceDatePicker({ value = null, onChange, onClear, data
 					field: { clearable: true, onClear: () => onClear && onClear() }
 				}}
 				format="YYYY-MM-DD"
+				disabled={disabled}
 			/>
 		</LocalizationProvider>
 	);
