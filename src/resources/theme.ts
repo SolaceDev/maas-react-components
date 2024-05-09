@@ -269,7 +269,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					startIcon: {
 						width: "24px",
 						height: "24px",
-						marginLeft: "-12px",
+						paddingLeft: "4px",
+						paddingTop: "4px",
+						paddingBottom: "4px",
+						paddingRight: "8px",
+						marginRight: "0",
 						">*:nth-of-type(1)": {
 							fontSize: "24px"
 						}
@@ -277,7 +281,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					endIcon: {
 						width: "24px",
 						height: "24px",
-						marginRight: "-12px",
+						paddingRight: "4px",
+						paddingTop: "4px",
+						paddingBottom: "4px",
+						paddingLeft: "8px",
+						marginLeft: "0",
 						">*:nth-of-type(1)": {
 							fontSize: "24px"
 						}

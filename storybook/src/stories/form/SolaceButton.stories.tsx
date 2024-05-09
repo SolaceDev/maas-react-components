@@ -224,6 +224,24 @@ export const WithEndIcon = {
 	}
 };
 
+export const WithStartIconLong = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ACTION,
+		startIcon: <DeleteIcon />,
+		children: "Delete is really really Long"
+	}
+};
+
+export const WithEndIconLong = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ACTION,
+		endIcon: <DeleteIcon />,
+		children: "Delete is really really Long"
+	}
+};
+
 export const FileUpload = (): ReactNode => {
 	return (
 		<label htmlFor="upload-photo">

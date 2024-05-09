@@ -128,8 +128,10 @@ function SolaceButton({
 		};
 
 		let padding;
-		if (startIcon || endIcon) {
-			padding = `${theme.spacing(4 / 8)}`;
+		if (startIcon) {
+			padding = `${theme.spacing(4 / 8)} ${theme.spacing(16 / 8)} ${theme.spacing(4 / 8)} ${theme.spacing(6 / 8)}`;
+		} else if (endIcon) {
+			padding = `${theme.spacing(4 / 8)} ${theme.spacing(6 / 8)} ${theme.spacing(4 / 8)} ${theme.spacing(16 / 8)}`;
 		} else {
 			padding = `${theme.spacing(6 / 8)} ${theme.spacing(16 / 8)}`;
 		}
@@ -149,7 +151,7 @@ function SolaceButton({
 					onClick={handleClick}
 					sx={{ padding: padding }}
 				>
-					{children}
+					<div style={{ width: "100%", textAlign: "center" }}>{children}</div>
 				</Button>
 			</SolaceTooltip>
 		);
