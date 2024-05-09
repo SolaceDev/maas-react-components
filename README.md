@@ -16,10 +16,9 @@ You can authenticate to GitHub Packages with npm by creating a npmrc file in you
 
 @SolaceDev:registry=https://npm.pkg.github.com
 
-
-
 //npm.pkg.github.com/:_authToken=GITHUB_TOKEN
 
+legacy-peer-deps=true
 
 
 ```
