@@ -29,15 +29,22 @@ export interface SolaceCircularProgressProps extends SolaceComponentProps {
 	 *  Size of the spinner
 	 */
 	size?: keyof BASE_SIZE_TYPES;
+	/**
+	 * If `true`, the shrink animation is disabled.
+	 * This only works if variant is `indeterminate`.
+	 * @default false
+	 */
+	disableShrink?: boolean;
 }
 
 export default function SolaceCircularProgress(props: SolaceCircularProgressProps): JSX.Element {
-	const { variant, value, size } = props;
+	const { variant, value, size, disableShrink } = props;
 	return (
 		<CircularProgress
 			variant={variant ?? "indeterminate"}
 			value={variant === "determinate" ? value : undefined}
 			size={PROGRESS_SIZES[size ?? "sm"]}
+			disableShrink={disableShrink}
 			sx={{ color: useTheme().palette.ux.brand.w30 }}
 		/>
 	);

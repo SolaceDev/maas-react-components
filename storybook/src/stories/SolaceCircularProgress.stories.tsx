@@ -18,6 +18,11 @@ export default {
 				type: "select"
 			}
 		},
+		disableShrink: {
+			control: {
+				type: "boolean"
+			}
+		},
 		value: {
 			control: {
 				type: "text"
@@ -34,5 +39,17 @@ export const DeterminateVariant = {
 	args: {
 		variant: "determinate",
 		value: 90
+	}
+};
+
+export const LargeSize = {
+	args: {
+		size: "lg"
+	}
+};
+
+export const DisableShrink = {
+	args: {
+		disableShrink: true
 	}
 };
