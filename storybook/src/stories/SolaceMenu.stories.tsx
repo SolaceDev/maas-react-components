@@ -341,11 +341,7 @@ export const DisabledMenu = (): JSX.Element => {
 				buttonProps={{
 					variant: "outline",
 					isDisabled: disabled,
-					endIcon: (
-						<span style={{ marginTop: "5px" }}>
-							<SelectDropdownIcon />
-						</span>
-					),
+					endIcon: <SelectDropdownIcon />,
 					children: "Actions"
 				}}
 				items={DEFAULT_MENU_ITEMS}
