@@ -635,18 +635,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					root: {
 						".MuiOutlinedInput-root": {
 							backgroundColor: themeMapping.palette.background.w10,
-							".MuiOutlinedInput-input": {
-								fontSize: BASE_FONT_PX_SIZES.sm,
-								color: themeMapping.palette.primary.text.wMain,
-								padding: "0 8px",
-								height: "32px",
-								"&:read-only": {
-									padding: "0"
-								},
-								"&:read-only + .MuiOutlinedInput-notchedOutline": {
-									border: "none"
-								}
-							},
 							".MuiOutlinedInput-notchedOutline": {
 								border: `solid 1px ${themeMapping.palette.secondary.w40}`,
 								backgroundColor: "transparent"
@@ -733,6 +721,18 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 										}
 									}
 								}
+							}
+						},
+						".MuiOutlinedInput-input": {
+							fontSize: BASE_FONT_PX_SIZES.sm,
+							color: themeMapping.palette.primary.text.wMain,
+							padding: "0 8px",
+							height: "32px",
+							"&:read-only": {
+								padding: "0"
+							},
+							"&:read-only + .MuiOutlinedInput-notchedOutline": {
+								border: "none"
 							}
 						}
 					}
