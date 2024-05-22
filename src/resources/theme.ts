@@ -395,7 +395,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				defaultProps: { disableRipple: true },
 				styleOverrides: {
 					root: {
-						padding: "4px",
+						padding: "0px",
 						borderRadius: "5px",
 						".MuiSvgIcon-root": {
 							fill: themeMapping.palette.secondary.wMain
@@ -1866,11 +1866,23 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			/** SolaceMessageBox component */
 			component_MessageBox: {
 				container: {
+					position: "relative",
 					height: "100%",
 					borderRadius: "2px",
+					"&::before": {
+						content: '""', // Required for the ::before to work
+						left: "0",
+						top: "0",
+						bottom: "0",
+						position: "absolute",
+						width: "3px", // Width of the vertical bar
+						borderRadius: "10px"
+					},
 					"&.info": {
+						"&::before": {
+							backgroundColor: `${themeMapping.palette.info.w100}`
+						},
 						backgroundColor: themeMapping.palette.info.w10,
-						borderLeft: `3px solid ${themeMapping.palette.info.w100}`,
 						".MuiButtonBase-root.MuiIconButton-root": {
 							".MuiSvgIcon-root path": {
 								// TODO: remove "solace" option when new theme is adopted
@@ -1885,8 +1897,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						}
 					},
 					"&.error": {
+						"&::before": {
+							backgroundColor: `${themeMapping.palette.error.w100}`
+						},
 						backgroundColor: themeMapping.palette.error.w10,
-						borderLeft: `3px solid ${themeMapping.palette.error.w100}`,
 						".MuiButtonBase-root.MuiIconButton-root": {
 							".MuiSvgIcon-root path": {
 								// TODO: remove "solace" options when new theme is adopted
@@ -1901,8 +1915,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						}
 					},
 					"&.warn": {
+						"&::before": {
+							backgroundColor: `${themeMapping.palette.warning.w100}`
+						},
 						backgroundColor: themeMapping.palette.warning.w10,
-						borderLeft: `3px solid ${themeMapping.palette.warning.w100}`,
 						".MuiButtonBase-root.MuiIconButton-root": {
 							".MuiSvgIcon-root path": {
 								// TODO: remove "solace" options when new theme is adopted
@@ -1917,8 +1933,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						}
 					},
 					"&.success": {
+						"&::before": {
+							backgroundColor: `${themeMapping.palette.success.w100}`
+						},
 						backgroundColor: themeMapping.palette.success.w10,
-						borderLeft: `3px solid ${themeMapping.palette.success.w100}`,
 						".MuiButtonBase-root.MuiIconButton-root": {
 							".MuiSvgIcon-root path": {
 								// TODO: remove "solace" options when new theme is adopted
@@ -1940,10 +1958,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					paddingRight: "4px",
 					button: {
 						width: "auto"
-					},
-					svg: {
-						width: "20px",
-						height: "20px"
 					},
 					a: {
 						fontWeight: 500

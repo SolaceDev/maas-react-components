@@ -108,7 +108,7 @@ function SolaceButton({
 					sx={styles}
 					onClick={handleClick}
 				>
-					<Box sx={{ marginRight: href ? theme.spacing(6 / 8) : 0 }} component="span">
+					<Box sx={{ marginRight: href ? theme.spacing(4 / 8) : 0 }} component="span">
 						{children}
 					</Box>
 					{href && openLinkInNewTab && <OpenExternalIcon></OpenExternalIcon>}

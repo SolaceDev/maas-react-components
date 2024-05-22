@@ -79,7 +79,7 @@ function SolaceCard({
 						{isValidElement(title) ? title : <TitleSection>{title}</TitleSection>}
 						{showCloseButton && (
 							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
-								<CloseIcon size={20} />
+								<CloseIcon size={24} />
 							</SolaceButton>
 						)}
 					</TitleRow>
@@ -92,7 +92,7 @@ function SolaceCard({
 					{showCloseButton && (
 						<div>
 							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
-								<CloseIcon size={20} />
+								<CloseIcon size={24} />
 							</SolaceButton>
 						</div>
 					)}

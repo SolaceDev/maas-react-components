@@ -124,7 +124,7 @@ function SolaceMessageBox({
 					</InfoBoxMessage>
 					{showCloseButton && (
 						<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
-							<CloseIcon size={20} />
+							<CloseIcon size={24} />
 						</SolaceButton>
 					)}
 				</InfoBoxMessageContainer>
