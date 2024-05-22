@@ -395,7 +395,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				defaultProps: { disableRipple: true },
 				styleOverrides: {
 					root: {
-						padding: "0px",
+						padding: "4px",
 						borderRadius: "5px",
 						".MuiSvgIcon-root": {
 							fill: themeMapping.palette.secondary.wMain
