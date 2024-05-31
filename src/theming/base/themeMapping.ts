@@ -91,44 +91,44 @@ export const baseThemeMapping: ThemeMapping = {
 
 		accent: {
 			n0: {
-				w100: "",
-				wMain: "",
-				w30: "",
+				w100: "#2F51AD",
+				wMain: "#3C69E1",
+				w30: "#C5D2F6",
 				w10: "#ECF0FC"
 			},
 			n1: {
-				wMain: "",
-				w60: "",
-				w10: ""
+				wMain: "#3A4880",
+				w60: "#8991B3",
+				w10: "#EBEDF2"
 			},
 			n2: {
-				w100: "",
+				w100: "#165E64",
 				wMain: "#00AD93",
 				w30: alpha("#00AD93", 0.35),
 				w10: alpha("#009193", 0.1)
 			},
 			n3: {
-				w100: "",
-				wMain: "",
-				w30: "",
-				w10: ""
+				w100: "#542D75",
+				wMain: "#7841A8",
+				w30: "#D7C6E5",
+				w10: "#F2ECF6"
 			},
 			n4: {
-				wMain: ""
+				wMain: "#E53170"
 			},
 			n5: {
 				wMain: "#E67E22"
 			},
 			n6: {
-				wMain: "",
-				w30: ""
+				wMain: "#FCA829",
+				w30: "#FEE5BF"
 			},
 			n7: {
-				wMain: ""
+				wMain: "#5ECCEE"
 			},
 			n8: {
 				wMain: "#6A6A6A",
-				w30: ""
+				w30: "#DBDFE2"
 			}
 		},
 
