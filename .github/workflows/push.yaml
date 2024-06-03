@@ -1,6 +1,7 @@
 name: "On Push to Main"
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "main"
@@ -12,8 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
@@ -29,12 +33,11 @@ jobs:
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         # publish
-        uses: chromaui/action@v1
+        uses: chromaui/action@latest
         # Chromatic GitHub Action options
         with:
-          token: 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
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: 3c6be3f5528f
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           # storybook directory
           workingDir: storybook
           exitZeroOnChanges: false
