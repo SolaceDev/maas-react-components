@@ -82,7 +82,7 @@ export const baseThemeMapping: ThemeMapping = {
 
 		success: {
 			w100: "#00AD93",
-			wMain: "#6FCCBC",
+			wMain: "#7ED321",
 			w70: "",
 			w30: "",
 			w20: "",
