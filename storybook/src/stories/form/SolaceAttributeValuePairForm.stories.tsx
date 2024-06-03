@@ -80,6 +80,14 @@ const SAMPLE_AVP_LIST_MISSING_VALUES = [
 const AVP_KEY = "avpKey";
 const AVP_VALUE = "avpValue";
 
+const generateAVPList = (count: number): Array<AVPItem> => {
+	const list: Array<AVPItem> = [];
+	for (let i = 0; i < count; i++) {
+		list.push({ key: `${AVP_KEY} ${i}`, value: `${AVP_VALUE} ${i}` });
+	}
+	return list;
+};
+
 const Component = ({ ...args }) => {
 	const [currentAVPList, setAVPList] = useState<AVPItem[]>(args?.avpList ? args.avpList : []);
 	return (
@@ -376,5 +384,111 @@ export const WithCustomLabels = {
 	args: {
 		labelForKeys: <Title label="Key" />,
 		labelForValues: <Title label="Value" />
+	}
+};
+
+export const WithInitialLargeData = {
+	render: Component,
+	args: {
+		showOutput: false,
+		avpList: generateAVPList(100)
+	}
+};
+
+export const WithInitialLargeDataFixHeight = {
+	render: Component,
+	args: {
+		showOutput: true,
+		avpList: generateAVPList(100),
+		avpListMaxHeight: "500px"
+	}
+};
+
+export const WithInitialLargeDataFixedHeightWithVirtualizedList = {
+	render: Component,
+	args: {
+		showOutput: true,
+		avpList: generateAVPList(100),
+		virtualizedAvpListOption: {
+			height: 500,
+			increaseViewportBy: 50
+		}
+	}
+};
+
+export const WithInitialLargeDataFixedHeightWithVirtualizedListInitialIndex = {
+	render: Component,
+	args: {
+		showOutput: true,
+		avpList: generateAVPList(100),
+		virtualizedAvpListOption: {
+			height: 500,
+			increaseViewportBy: 50,
+			initialTopMostItemIndex: 25
+		}
+	}
+};
+
+export const WithInitialLargeDataReadOnlyFixedHeightWithVirtualizedList = {
+	render: Component,
+	args: {
+		showOutput: false,
+		avpList: generateAVPList(100),
+		readOnly: true,
+		virtualizedAvpListOption: {
+			height: 500,
+			increaseViewportBy: 50
+		}
+	}
+};
+
+export const WithInitialLargeDataDisableReorderFixedHeightWithVirtualizedList = {
+	render: Component,
+	args: {
+		showOutput: false,
+		avpList: generateAVPList(100),
+		disableReorder: true,
+		virtualizedAvpListOption: {
+			height: 500,
+			increaseViewportBy: 50
+		}
+	}
+};
+
+export const WithInitialLargeDataFullWindowWithVirtualizedList = {
+	render: Component,
+	args: {
+		showOutput: false,
+		avpList: generateAVPList(100),
+		virtualizedAvpListOption: {
+			useWindowScrolling: true,
+			increaseViewportBy: 50
+		}
+	}
+};
+
+export const WithInitialLargeDataReadOnlyFullWindowWithVirtualizedList = {
+	render: Component,
+	args: {
+		showOutput: false,
+		avpList: generateAVPList(100),
+		readOnly: true,
+		virtualizedAvpListOption: {
+			useWindowScrolling: true,
+			increaseViewportBy: 50
+		}
+	}
+};
+
+export const WithInitialLargeDataDisableReorderFullWindowVirtualizedList = {
+	render: Component,
+	args: {
+		showOutput: false,
+		avpList: generateAVPList(100),
+		disableReorder: true,
+		virtualizedAvpListOption: {
+			useWindowScrolling: true,
+			increaseViewportBy: 50
+		}
 	}
 };
