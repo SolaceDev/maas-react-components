@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import { styled } from "@mui/material";
 import { DragDropContext, Droppable, OnDragEndResponder, OnDragUpdateResponder } from "react-beautiful-dnd";
 import SolaceLabel from "./SolaceLabel";
@@ -41,6 +41,7 @@ const SolaceAVPFormContainer = styled("div")(({ theme }) => ({
 	...(theme.mixins.formComponent_AVPForm.container as CSSProperties)
 }));
 
+// If hasScrollBar is true, the label wrapper will have an additional 16px padding to accommodate the scrollbar in the content area
 const SolaceAVPFormLabel = styled("div")<SolaceAVPFormLabelProps>(
 	({ theme, readOnly, disableReorder, hasScrollBar }) => ({
 		...(theme.mixins.formComponent_AVPForm.labelWrapper as CSSProperties),
@@ -89,7 +90,20 @@ const handleNavigateAVPList = (key: string, index: number, enumList: NodeListOf<
 };
 
 const List = React.forwardRef<HTMLDivElement>((props, ref) => {
-	return <SolaceAVPListContainer {...props} ref={ref} />;
+	const headerRef = props["context"]?.headerRef;
+	const virtualizedAvpListOption = props["context"]?.virtualizedAvpListOption;
+	const style = props["style"];
+
+	return (
+		<SolaceAVPListContainer
+			{...props}
+			ref={ref}
+			style={{
+				...style,
+				width: virtualizedAvpListOption?.height && headerRef.current ? headerRef.current.offsetWidth - 16 : "100%"
+			}}
+		/>
+	);
 });
 
 List.displayName = "List";
@@ -208,6 +222,7 @@ const SolaceAttributeValuePairForm = ({
 	const [currentAVPList, setAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
+	const headerRef = useRef<HTMLDivElement>(null);
 
 	// on avp list update
 	useEffect(() => {
@@ -381,6 +396,7 @@ const SolaceAttributeValuePairForm = ({
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
 						<SolaceAVPFormLabel
+							ref={headerRef}
 							readOnly={!!readOnly}
 							disableReorder={!!disableReorder}
 							hasScrollBar={!!avpListMaxHeight || !!virtualizedAvpListOption?.height}
@@ -392,8 +408,9 @@ const SolaceAttributeValuePairForm = ({
 								{labelForValues}
 							</SolaceLabel>
 						</SolaceAVPFormLabel>
-						{virtualizedAvpListOption && (
+						{virtualizedAvpListOption && headerRef.current && (
 							<Virtuoso
+								context={{ headerRef, virtualizedAvpListOption }}
 								style={{
 									height: virtualizedAvpListOption.height ? virtualizedAvpListOption.height : "auto",
 									minHeight: virtualizedAvpListOption.minHeight ? virtualizedAvpListOption.minHeight : 40
@@ -429,35 +446,37 @@ const SolaceAttributeValuePairForm = ({
 								}}
 							/>
 						)}
-						{!virtualizedAvpListOption && (
-							<SolaceAVPListContainer
-								style={avpListMaxHeight ? { maxHeight: avpListMaxHeight, overflowY: "auto" } : undefined}
-							>
-								{currentAVPList.map((item, index) => {
-									return (
-										<SolaceAttributeValuePair
-											key={`${index}`}
-											id={`${index}`}
-											index={index}
-											avpKey={item.key}
-											avpValue={item.value}
-											dataTags="avpInput"
-											onChange={handleInputChange}
-											onDelete={handleDeleteItem}
-											onKeyUp={handleKeyUp}
-											ghostItem={ghostItem(index)}
-											onBlur={handleInputOnBlur}
-											keyErrorText={item.keyErrorText}
-											valueErrorText={item.valueErrorText}
-											dropOverIndex={dropOverIndex}
-											dropFromTop={dropFromTop}
-											readOnly={readOnly}
-											emptyFieldDisplayValue={emptyFieldDisplayValue}
-											disableReorder={disableReorder}
-										/>
-									);
-								})}
-							</SolaceAVPListContainer>
+						{!virtualizedAvpListOption && headerRef.current && (
+							<div style={avpListMaxHeight ? { maxHeight: avpListMaxHeight, overflowY: "auto" } : undefined}>
+								<SolaceAVPListContainer
+									style={{ width: avpListMaxHeight ? headerRef.current.offsetWidth - 16 : "100%" }}
+								>
+									{currentAVPList.map((item, index) => {
+										return (
+											<SolaceAttributeValuePair
+												key={`${index}`}
+												id={`${index}`}
+												index={index}
+												avpKey={item.key}
+												avpValue={item.value}
+												dataTags="avpInput"
+												onChange={handleInputChange}
+												onDelete={handleDeleteItem}
+												onKeyUp={handleKeyUp}
+												ghostItem={ghostItem(index)}
+												onBlur={handleInputOnBlur}
+												keyErrorText={item.keyErrorText}
+												valueErrorText={item.valueErrorText}
+												dropOverIndex={dropOverIndex}
+												dropFromTop={dropFromTop}
+												readOnly={readOnly}
+												emptyFieldDisplayValue={emptyFieldDisplayValue}
+												disableReorder={disableReorder}
+											/>
+										);
+									})}
+								</SolaceAVPListContainer>
+							</div>
 						)}
 						{provided.placeholder}
 					</SolaceAVPFormContainer>
