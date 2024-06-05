@@ -1894,6 +1894,17 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							":active": {
 								backgroundColor: themeMapping.palette.info.w30
 							}
+						},
+						".MuiButton-root": {
+							"&.MuiButton-textPrimary": {
+								color: themeMapping.palette.info.w100,
+								"&:hover": {
+									backgroundColor: themeMapping.palette.info.w20
+								},
+								"&:active": {
+									backgroundColor: themeMapping.palette.info.w30
+								}
+							}
 						}
 					},
 					"&.error": {
@@ -1912,6 +1923,17 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							":active": {
 								backgroundColor: themeMapping.palette.error.w30
 							}
+						},
+						".MuiButton-root": {
+							"&.MuiButton-textPrimary": {
+								color: themeMapping.palette.error.w100,
+								"&:hover": {
+									backgroundColor: themeMapping.palette.error.w20
+								},
+								"&:active": {
+									backgroundColor: themeMapping.palette.error.w30
+								}
+							}
 						}
 					},
 					"&.warn": {
@@ -1929,6 +1951,17 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							},
 							":active": {
 								backgroundColor: themeMapping.palette.warning.w30
+							}
+						},
+						".MuiButton-root": {
+							"&.MuiButton-textPrimary": {
+								color: themeMapping.palette.warning.w100,
+								"&:hover": {
+									backgroundColor: themeMapping.palette.warning.w20
+								},
+								"&:active": {
+									backgroundColor: themeMapping.palette.warning.w30
+								}
 							}
 						}
 					},

@@ -96,6 +96,9 @@ function SolaceMessageBox({
 	const getColor = () => {
 		const colorOverride = color || theme.mixins.component_MessageBox.messageTextContainer.color;
 		if (colorOverride) {
+			if (variant === "error") {
+				return color || theme.palette.ux.error.w100;
+			}
 			return colorOverride;
 		}
 		switch (variant) {
