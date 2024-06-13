@@ -151,17 +151,15 @@ const renderAccordionDetails = (subTitle: string, content: string) => {
 /**
  * Single Accordion component story
  */
-const SolaceAccordionStory = ({ expanded, ...args }) => {
+const SolaceAccordionStory = ({ expanded, summary, details, ...args }) => {
 	const [isExpanded, setIsExpanded] = useState(expanded);
-
-	useEffect(() => {
-		setIsExpanded(isExpanded);
-	}, [isExpanded]);
 
 	const handleChange = () => {
 		setIsExpanded(!isExpanded);
 	};
-	return <SolaceAccordion {...args} expanded={isExpanded} onChange={handleChange} />;
+	return (
+		<SolaceAccordion summary={summary} details={details} {...args} expanded={isExpanded} onChange={handleChange} />
+	);
 };
 
 export const DefaultAccordion = {
@@ -237,6 +235,35 @@ const SolaceAccordionListStory = ({ ...args }) => {
 };
 
 /**
+ * Multiple expanded accordion list demo
+ */
+const SolaceMultiExpandedAccordionListStory = ({ ...args }) => {
+	const [expandedMap, setExpandedMap] = useState({});
+
+	const handleChange = (id: string) => () => {
+		const updatedExpandedMap = { ...expandedMap };
+		updatedExpandedMap[id] = !expandedMap[id];
+		setExpandedMap(updatedExpandedMap);
+	};
+	return (
+		<div>
+			{testListItems.map((item) => {
+				return (
+					<SolaceAccordion
+						key={item.id}
+						{...args}
+						expanded={expandedMap[item.id] === true}
+						onChange={handleChange(item.id)}
+						summary={renderAccordionSummary(item.title)}
+						details={renderAccordionDetails(item.subTitle, item.content)}
+					/>
+				);
+			})}
+		</div>
+	);
+};
+
+/**
  * Accordion List story: demo in a list of Accordions with only one Accordion expanded at a time
  */
 const RoundedAccordionStory = ({ expanded, ...args }: SolaceAccordionProps) => {
@@ -263,6 +290,14 @@ const RoundedAccordionStory = ({ expanded, ...args }: SolaceAccordionProps) => {
 
 export const MultipleAccordions = {
 	render: SolaceAccordionListStory,
+
+	args: {
+		dataQa: "demoAccordionList"
+	}
+};
+
+export const MultiExpandedAccordion = {
+	render: SolaceMultiExpandedAccordionListStory,
 
 	args: {
 		dataQa: "demoAccordionList"
