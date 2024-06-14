@@ -68,11 +68,11 @@ interface SolaceInfoBoxProps extends SolaceComponentProps {
 }
 
 function renderIcons(theme: Theme, variant: "info" | "error" | "warn" | "success"): JSX.Element {
-	if (variant === "info") return <InfoIcon size={20} fill={theme.palette.ux.info.w100} />;
-	else if (variant === "error") return <ErrorIcon size={20} fill={theme.palette.ux.error.w100} />;
-	else if (variant === "warn") return <WarnIcon size={20} fill={theme.palette.ux.warning.w100} />;
-	else if (variant === "success") return <SuccessIcon size={20} fill={theme.palette.ux.success.w100} />;
-	return <InfoIcon size={20} fill={theme.palette.ux.info.w100} />;
+	if (variant === "info") return <InfoIcon size={24} fill={theme.palette.ux.info.w100} />;
+	else if (variant === "error") return <ErrorIcon size={24} fill={theme.palette.ux.error.w100} />;
+	else if (variant === "warn") return <WarnIcon size={24} fill={theme.palette.ux.warning.w100} />;
+	else if (variant === "success") return <SuccessIcon size={24} fill={theme.palette.ux.success.w100} />;
+	return <InfoIcon size={24} fill={theme.palette.ux.info.w100} />;
 }
 
 function SolaceMessageBox({
@@ -105,7 +105,7 @@ function SolaceMessageBox({
 			case "error":
 				return theme.palette.ux.error.w100;
 			case "warn":
-				return theme.palette.ux.primary.wMain;
+				return theme.palette.ux.primary.text.wMain;
 			case "success":
 				return theme.palette.ux.success.w100;
 			case "info":

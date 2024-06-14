@@ -1878,6 +1878,16 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						width: "3px", // Width of the vertical bar
 						borderRadius: "10px"
 					},
+					".MuiButton-root": {
+						height: "24px",
+						margin: "4px 0px"
+					},
+
+					".MuiButtonBase-root.MuiIconButton-root": {
+						padding: "0px",
+						margin: "4px 0px"
+					},
+
 					"&.info": {
 						"&::before": {
 							backgroundColor: `${themeMapping.palette.info.w100}`
@@ -1897,7 +1907,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						".MuiButton-root": {
 							"&.MuiButton-textPrimary": {
-								color: themeMapping.palette.info.w100,
 								"&:hover": {
 									backgroundColor: themeMapping.palette.info.w20
 								},
@@ -1926,7 +1935,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						".MuiButton-root": {
 							"&.MuiButton-textPrimary": {
-								color: themeMapping.palette.error.w100,
 								"&:hover": {
 									backgroundColor: themeMapping.palette.error.w20
 								},
@@ -1955,7 +1963,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						".MuiButton-root": {
 							"&.MuiButton-textPrimary": {
-								color: themeMapping.palette.warning.w100,
 								"&:hover": {
 									backgroundColor: themeMapping.palette.warning.w20
 								},
@@ -1981,6 +1988,16 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							":active": {
 								backgroundColor: themeMapping.palette.success.w30
 							}
+						},
+						".MuiButton-root": {
+							"&.MuiButton-textPrimary": {
+								"&:hover": {
+									backgroundColor: themeMapping.palette.success.w20
+								},
+								"&:active": {
+									backgroundColor: themeMapping.palette.success.w30
+								}
+							}
 						}
 					}
 				},
@@ -1988,7 +2005,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "space-between",
-					paddingRight: "4px",
+					paddingRight: "8px",
 					button: {
 						width: "auto"
 					},
@@ -2001,7 +2018,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					width: "100%",
 					alignItems: "center",
 					gap: "8px",
-					padding: "6px 8px 5px 8px",
+					padding: "4px 8px 4px 8px",
 					lineHeight: "1.5",
 					"&.dense": {
 						padding: "0 8px",
@@ -2010,10 +2027,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				},
 				iconContainer: {
 					alignSelf: "flex-start",
-					width: "20px",
-					height: "20px",
+					width: "24px",
+					height: "24px",
 					"&.dense": {
-						paddingTop: "6px"
+						paddingTop: "4px"
 					}
 				},
 				messageTextContainer: {
