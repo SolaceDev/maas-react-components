@@ -220,7 +220,7 @@ export const SolaceAttributeValuePair = ({
 						dropOverIndex={dropOverIndex}
 						dropFromTop={dropFromTop}
 						index={index}
-						readOnly={readOnly ? readOnly : false}
+						readOnly={!!readOnly}
 						disableReorder={disableReorder}
 					>
 						{!disableReorder && (
@@ -228,7 +228,8 @@ export const SolaceAttributeValuePair = ({
 								{...provided.dragHandleProps}
 								isDragging={snapshot.isDragging}
 								ghostItem={ghostItem}
-								readOnly={readOnly ? readOnly : false}
+								readOnly={!!readOnly}
+								data-qa={`avpMove-${index}`}
 							>
 								<MoveIcon
 									fill={ghostItem ? theme.palette.ux.secondary.w40 : theme.palette.ux.secondary.wMain}
@@ -283,7 +284,8 @@ export const SolaceAttributeValuePair = ({
 							ghostItem={ghostItem}
 							cursor={ghostItem ? "default" : "pointer"}
 							background={ghostItem ? "inherit" : theme.palette.ux.secondary.w10}
-							readOnly={readOnly ? readOnly : false}
+							readOnly={!!readOnly}
+							data-qa={`avpDelete-${index}`}
 						>
 							<DeleteIcon
 								fill={ghostItem ? theme.palette.ux.secondary.w40 : theme.palette.ux.secondary.wMain}

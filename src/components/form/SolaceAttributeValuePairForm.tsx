@@ -219,21 +219,21 @@ const SolaceAttributeValuePairForm = ({
 	avpListMaxHeight,
 	virtualizedAvpListOption
 }: SolaceAttributeValuePairFormProps): JSX.Element => {
-	const [currentAVPList, setAVPList] = useState(avpList);
+	const [currentAVPList, setCurrentAVPList] = useState(avpList);
 	const [dropOverIndex, setDropOverIndex] = useState<number | null>(null);
 	const [dropFromTop, setDropFromTop] = useState<boolean | null>(null);
 	const headerRef = useRef<HTMLDivElement>(null);
 
-	// on avp list update
+	// Add new entry on avp list update
 	useEffect(() => {
 		const list = [...avpList];
 		list.push({ key: "", value: "" });
-		setAVPList(list);
+		setCurrentAVPList(list);
 	}, [avpList]);
 
 	const handleListUpdate = useCallback(
 		(list: Array<AVPItem>) => {
-			setAVPList(list);
+			setCurrentAVPList(list);
 			if (onAVPListUpdate && ghostItemAtIndex(list, list.length - 1)) onAVPListUpdate(list.slice(0, -1));
 			setDropOverIndex(null); // reset drop over index on drag end
 			setDropFromTop(null); // reset drop over direction on drag end
@@ -241,29 +241,28 @@ const SolaceAttributeValuePairForm = ({
 		[onAVPListUpdate]
 	);
 
-	/**
-	 * All the things to do when a drag action ended
-	 */
+	// All the things to do when a drag action ended
 	const handleDragEnd: OnDragEndResponder = (result) => {
-		// drag outside of the list
-		if (!result.destination) {
+		/**
+		 * No changes on the following conditions:
+		 * 1. Drag outside of the list
+		 * 2. Drag & Drop on the same item
+		 * 3. Drag & Drop on the last item e.g. ghost item
+		 */
+		if (
+			!result.destination ||
+			result.destination.index === result.source.index ||
+			result.destination.index === currentAVPList.length - 1
+		)
 			return;
-		}
-		// drag and drop on the same item
-		if (result.destination.index === result.source.index) {
-			return;
-		}
-		// drag and drop on the last item e.g. ghost item
-		if (result.destination.index === currentAVPList.length - 1) {
-			return;
-		}
 
 		const reorderedList = reorderList(currentAVPList, result.source.index, result.destination.index);
 
-		setAVPList(reorderedList);
+		setCurrentAVPList(reorderedList);
 
 		if (onAVPListUpdate && ghostItemAtIndex(reorderedList, reorderedList.length - 1))
 			onAVPListUpdate(reorderedList.slice(0, -1));
+
 		setDropOverIndex(null); // reset drop over index on drag end
 		setDropFromTop(null); // reset drop over direction on drag end
 	};
@@ -288,10 +287,6 @@ const SolaceAttributeValuePairForm = ({
 		setDropFromTop(dropFromTop);
 	};
 
-	const getId = () => {
-		return id ? id : name;
-	};
-
 	const handleInputChange = useCallback(
 		(event: SolaceTextFieldChangeEvent, index: number) => {
 			const eventName: string = event.name;
@@ -304,7 +299,7 @@ const SolaceAttributeValuePairForm = ({
 			if (eventName && list.length - 1 === index) {
 				list.push({ key: "", value: "" });
 			}
-			setAVPList(list);
+			setCurrentAVPList(list);
 			handleListUpdate(list);
 		},
 		[currentAVPList, handleListUpdate]
@@ -312,9 +307,7 @@ const SolaceAttributeValuePairForm = ({
 
 	// determine whether an enum item is a ghost item
 	const ghostItem = useCallback(
-		(index: number): boolean => {
-			return index === currentAVPList.length - 1 ? true : false;
-		},
+		(index: number): boolean => index === currentAVPList.length - 1,
 		[currentAVPList.length]
 	);
 
@@ -323,7 +316,7 @@ const SolaceAttributeValuePairForm = ({
 			if (event.type === "click" && !ghostItem(index) && currentAVPList.length > 1) {
 				const list = [...currentAVPList];
 				list.splice(index, 1);
-				setAVPList(list);
+				setCurrentAVPList(list);
 				handleListUpdate(list);
 			}
 		},
@@ -377,7 +370,7 @@ const SolaceAttributeValuePairForm = ({
 				delete list[index]["keyErrorText"];
 			}
 
-			setAVPList(list);
+			setCurrentAVPList(list);
 			handleListUpdate(list);
 		},
 		[
@@ -392,7 +385,7 @@ const SolaceAttributeValuePairForm = ({
 
 	return (
 		<DragDropContext onDragEnd={handleDragEnd} onDragUpdate={handleDragUpdate}>
-			<Droppable droppableId={getId()}>
+			<Droppable droppableId={id ?? name}>
 				{(provided) => (
 					<SolaceAVPFormContainer ref={provided.innerRef} {...provided.droppableProps}>
 						<SolaceAVPFormLabel
