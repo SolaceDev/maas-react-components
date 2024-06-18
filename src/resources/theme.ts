@@ -1885,7 +1885,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 
 					".MuiButtonBase-root.MuiIconButton-root": {
 						padding: "0px",
-						margin: "4px 0px"
+						margin: "4px 8px 4px 0px",
+						alignItems: "flex-start",
+						height: "24px"
 					},
 
 					"&.info": {
@@ -2003,9 +2005,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				},
 				messageContainer: {
 					display: "flex",
-					alignItems: "center",
 					justifyContent: "space-between",
-					paddingRight: "8px",
 					button: {
 						width: "auto"
 					},

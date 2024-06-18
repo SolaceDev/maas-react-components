@@ -68,11 +68,16 @@ interface SolaceInfoBoxProps extends SolaceComponentProps {
 }
 
 function renderIcons(theme: Theme, variant: "info" | "error" | "warn" | "success"): JSX.Element {
-	if (variant === "info") return <InfoIcon size={24} fill={theme.palette.ux.info.w100} />;
-	else if (variant === "error") return <ErrorIcon size={24} fill={theme.palette.ux.error.w100} />;
-	else if (variant === "warn") return <WarnIcon size={24} fill={theme.palette.ux.warning.w100} />;
-	else if (variant === "success") return <SuccessIcon size={24} fill={theme.palette.ux.success.w100} />;
-	return <InfoIcon size={24} fill={theme.palette.ux.info.w100} />;
+	const variantMap = {
+		info: { Icon: InfoIcon, color: theme.palette.ux.info.w100 },
+		error: { Icon: ErrorIcon, color: theme.palette.ux.error.w100 },
+		warn: { Icon: WarnIcon, color: theme.palette.ux.warning.w100 },
+		success: { Icon: SuccessIcon, color: theme.palette.ux.success.w100 }
+	};
+
+	const { Icon, color } = variantMap[variant] || variantMap.info;
+
+	return <Icon size={24} fill={color} />;
 }
 
 function SolaceMessageBox({
