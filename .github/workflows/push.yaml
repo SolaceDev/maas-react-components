@@ -67,3 +67,78 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
+
+  white-source-scan:
+    name: "WhiteSource Scan"
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    permissions:
+      repository-projects: read
+      contents: write
+      id-token: write
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout SolaceDev/maas-build-actions
+        uses: actions/checkout@v4
+        with:
+          repository: SolaceDev/maas-build-actions
+          ref: refs/heads/master
+          path: maas-build-actions
+          token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Perform WhiteSource Scan
+        id: whitesource_scan
+        uses: ./maas-build-actions/.github/actions/whitesource-scan
+        with:
+          whitesource_api_key: ${{ secrets.WHITESOURCE_API_KEY }}
+          whitesource_project_name: ${{ github.event.repository.name }}
+          target_directory: "."
+
+      - name: Get Commit Message
+        id: get_commit_message
+        run: |
+          echo "commit_message=$(git log --oneline -1)" >> $GITHUB_OUTPUT
+
+      - name: Whitesource Alerts Report
+        uses: ./maas-build-actions/.github/actions/whitesource-alerts-checker
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          ws_api_key: ${{ secrets.WHITESOURCE_API_KEY }}
+          ws_project_token: ${{ secrets.WHITESOURCE_PROJECT_TOKEN }}
+          build_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          branch: "${{ github.ref_name }}"
+          commit_message: "${{ steps.get_commit_message.outputs.commit_message }}"
+          ws_scan_duration: "${{ env.scan_duration }}"
+          ws_project_name: "${{ github.event.repository.name }}"
+          ws_repo_name: "${{ github.event.repository.name }}"
+          fail_if_policy_violations_found : "True"
+          s3_log_path: "s3://solace-cloud-ci-logs/${{ github.event.repository.name }}/${{ github.event.repository.name }}-whitesource-scan-${{ github.sha }}.txt"
+
+      - name: Whitesource Failure Notification
+        if: failure() && steps.whitesource_scan.outcome == 'failure'
+        uses: ./maas-build-actions/.github/actions/build-finish-notifier
+        with:
+          workflow_title: "${{ github.event.repository.name }} - Whitesource Scan Failure"
+          run_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          notify_channel: "#whitesource-scans-updates,#devsecops-security-event-incident"
+          auto_slack_channel: "False"
+
+      - name: Build Notification
+        if: failure()
+        uses: ./maas-build-actions/.github/actions/build-finish-notifier
+        with:
+          workflow_title: "${{ github.event.repository.name }} ${{ github.workflow }}"
+          run_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"

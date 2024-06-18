@@ -91,6 +91,13 @@ Include one of the following values in a commit, before pushing your branch to m
 
 [Semantic Versioning](https://semver.org/)
 
+### Merging Your Pull Request
+Whitesource scan will be performed when you merge your pull request:
+- Whitesource scan failure notification will be sent to `#whitesource-scans-updates` and `#devsecops-security-event-incident` Slack channel
+- Policy violations and build failure notification will be sent to `#sc-ci-ui-alerts` Slack channel
+- Jira tickets on Whitesource vulnerabilities will be raised and automatically assigned to `SC-ui tech` squad when `rc-ui` is run
+
+
 ### Publishing Your Changes
 
 Please see read [this resource](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to learn how to publish your changes (please note, you should always publish a new release whenever you merge changes to the repository.).
