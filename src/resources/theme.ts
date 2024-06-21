@@ -1167,7 +1167,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiBackdrop-root": {
 							backgroundColor: themeMapping.palette.secondary.w8040
 						},
-						".MuiPaper-root": {
+						".MuiPaper-root:first-child": {
 							minWidth: "400px",
 							maxHeight: "80%",
 							boxShadow: `0 2px 8px ${getBoxShadow("w30")}`,
