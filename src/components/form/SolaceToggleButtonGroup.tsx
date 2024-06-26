@@ -19,7 +19,7 @@ const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => 
 	// override here to match specificity of default mui styles
 	".MuiToggleButtonGroup-grouped:not(:first-of-type)": {
 		marginLeft: 0,
-		borderLeft: `solid 1px transparent`,
+		borderLeft: "none",
 
 		"&:focus-visible": {
 			borderLeftColor: theme.palette.ux.deprecated.accent.n2.wMain
@@ -47,7 +47,7 @@ const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => 
 		},
 
 		"&.Mui-selected": {
-			color: theme.palette.ux.deprecated.primary.text.wMain,
+			color: theme.palette.ux.primary.wMain,
 			fontWeight: theme.typography.fontWeightMedium,
 			backgroundColor: theme.palette.ux.brand.w10,
 
@@ -56,7 +56,7 @@ const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => 
 			},
 
 			"&.Mui-disabled": {
-				backgroundColor: theme.palette.ux.deprecated.secondary.w20
+				backgroundColor: theme.palette.ux.background.w20
 			}
 		},
 
