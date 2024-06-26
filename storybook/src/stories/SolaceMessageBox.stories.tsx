@@ -198,6 +198,6 @@ export const ErrorWithDetailsWithinContainer = {
 		message: "The error box is in a small container with font color overridden and details.",
 		showCloseButton: true,
 		color: "#778899",
-		details: <div style={{ backgroundColor: "#F9F9F9" }}>More Details</div>
+		details: <div style={{ backgroundColor: "#F9F9F9", padding: "8px" }}>More Details</div>
 	}
 };
