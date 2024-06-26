@@ -9,7 +9,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop === "children" }
 	showSidePanel: boolean;
 	overlayContent: boolean;
 	sidePanelPosition: PANEL_POSITION;
-	sidePanelWidth: number;
+	sidePanelWidth: number | string;
 }>(({ theme, showSidePanel, sidePanelPosition, overlayContent }) => ({
 	flexGrow: 1,
 	transition: theme.transitions.create("margin", {
@@ -48,7 +48,7 @@ export interface SolaceSidePanelLayoutProps {
 	/**
 	 * The desired width of the side panel
 	 */
-	sidePanelWidth?: number;
+	sidePanelWidth?: number | string;
 	/**
 	 * property to control which side of the main content the side panel is rendered on
 	 */

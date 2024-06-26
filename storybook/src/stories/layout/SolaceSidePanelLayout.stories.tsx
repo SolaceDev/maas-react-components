@@ -8,8 +8,7 @@ import {
 	styled,
 	SolaceButton,
 	ListSubheader,
-	ChevronRightIcon,
-	ChevronLeftIcon
+	CloseIcon
 } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../../resources/images/NoAccessBook";
 import { within, userEvent } from "@storybook/testing-library";
@@ -27,7 +26,7 @@ const StoryContainer = styled("div")(() => ({
 }));
 
 const sidePanelMessage = (
-	<div style={{ margin: "15px" }}>
+	<div style={{ margin: "24px" }}>
 		<h3>Side Panel</h3>
 		<p>
 			Here's a bunch of text that keeps repeating... Here's a bunch of text that keeps repeating... Here's a bunch of
@@ -76,7 +75,7 @@ export default {
 		},
 		sidePanelWidth: {
 			control: {
-				type: "number"
+				type: "text"
 			}
 		},
 		overlayContent: {
@@ -110,30 +109,51 @@ const sidePanelContent = (handlePanelToggle, rightSide: boolean) => (
 	<React.Fragment>
 		<ListSubheader style={{ textAlign: rightSide ? "left" : "right" }}>
 			<SolaceButton onClick={handlePanelToggle} title="Close" variant="icon">
-				{rightSide ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+				<CloseIcon />
 			</SolaceButton>
 		</ListSubheader>
 		{sidePanelMessage}
 	</React.Fragment>
 );
 
+const SolaceDefaultSidePanel = () => {
+	const [panelOpen, setPanelOpen] = useState(false);
+
+	const handlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout showSidePanel={panelOpen} sidePanelContent={sidePanelMessage} sidePanelWidth={"20%"}>
+				{mainContent(panelOpen, handlePanelToggle)}
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
+};
+
+const SolaceLeftSidePanel = () => {
+	const [panelOpen, setPanelOpen] = useState(false);
+
+	const handlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout
+				sidePanelContent={sidePanelMessage}
+				showSidePanel={panelOpen}
+				sidePanelPosition={SolacePanelPosition.LEFT}
+			>
+				{mainContent(panelOpen, handlePanelToggle)}
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
+};
+
 export const DefaultSidePanel = {
-	render: (): JSX.Element => {
-		const [panelOpen, setPanelOpen] = useState(false);
-
-		const handlePanelToggle = () => {
-			setPanelOpen(!panelOpen);
-		};
-
-		return (
-			<StoryContainer>
-				<SolaceSidePanelLayout showSidePanel={panelOpen} sidePanelContent={sidePanelMessage}>
-					{mainContent(panelOpen, handlePanelToggle)}
-				</SolaceSidePanelLayout>
-			</StoryContainer>
-		);
-	},
-
+	render: SolaceDefaultSidePanel,
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
@@ -142,100 +162,87 @@ export const DefaultSidePanel = {
 };
 
 export const LeftSidePanel = {
-	render: (): JSX.Element => {
-		const [panelOpen, setPanelOpen] = useState(false);
-
-		const handlePanelToggle = () => {
-			setPanelOpen(!panelOpen);
-		};
-
-		return (
-			<StoryContainer>
-				<SolaceSidePanelLayout
-					sidePanelContent={sidePanelMessage}
-					showSidePanel={panelOpen}
-					sidePanelPosition={SolacePanelPosition.LEFT}
-				>
-					{mainContent(panelOpen, handlePanelToggle)}
-				</SolaceSidePanelLayout>
-			</StoryContainer>
-		);
-	},
-
+	render: SolaceLeftSidePanel,
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
 		await userEvent.click(await canvas.findByText(OPENPANEL));
 	}
+};
+
+const SolaceCustomWidthSidePanel = () => {
+	const [panelOpen, setPanelOpen] = useState(false);
+
+	const handlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout sidePanelContent={sidePanelMessage} showSidePanel={panelOpen} sidePanelWidth={500}>
+				{mainContent(panelOpen, handlePanelToggle)}
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
 };
 
 export const CustomWidthSidePanel = {
-	render: (): JSX.Element => {
-		const [panelOpen, setPanelOpen] = useState(false);
-
-		const handlePanelToggle = () => {
-			setPanelOpen(!panelOpen);
-		};
-
-		return (
-			<StoryContainer>
-				<SolaceSidePanelLayout sidePanelContent={sidePanelMessage} showSidePanel={panelOpen} sidePanelWidth={500}>
-					{mainContent(panelOpen, handlePanelToggle)}
-				</SolaceSidePanelLayout>
-			</StoryContainer>
-		);
-	},
+	render: SolaceCustomWidthSidePanel,
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
 		await userEvent.click(await canvas.findByText(OPENPANEL));
 	}
+};
+
+const SolaceSelfClosingSidePanel = () => {
+	const handlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+	const [panelOpen, setPanelOpen] = useState(false);
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout sidePanelContent={sidePanelContent(handlePanelToggle, true)} showSidePanel={panelOpen}>
+				{mainContent(panelOpen, handlePanelToggle)}
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
 };
 
 export const SelfClosingSidePanel = {
-	render: (): JSX.Element => {
-		const handlePanelToggle = () => {
-			setPanelOpen(!panelOpen);
-		};
-		const [panelOpen, setPanelOpen] = useState(false);
-
-		return (
-			<StoryContainer>
-				<SolaceSidePanelLayout sidePanelContent={sidePanelContent(handlePanelToggle, true)} showSidePanel={panelOpen}>
-					{mainContent(panelOpen, handlePanelToggle)}
-				</SolaceSidePanelLayout>
-			</StoryContainer>
-		);
-	},
+	render: SolaceSelfClosingSidePanel,
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
 		await userEvent.click(await canvas.findByText(OPENPANEL));
 	}
+};
+
+const SolaceOverlaySidePanelRight = () => {
+	const handlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+	const [panelOpen, setPanelOpen] = useState(false);
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout
+				sidePanelContent={sidePanelContent(handlePanelToggle, true)}
+				showSidePanel={panelOpen}
+				overlayContent={true}
+				sidePanelWidth={400}
+			>
+				{mainContent(panelOpen, handlePanelToggle)}
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
 };
 
 export const OverlaySidePanelRight = {
-	render: (): JSX.Element => {
-		const handlePanelToggle = () => {
-			setPanelOpen(!panelOpen);
-		};
-		const [panelOpen, setPanelOpen] = useState(false);
-
-		return (
-			<StoryContainer>
-				<SolaceSidePanelLayout
-					sidePanelContent={sidePanelContent(handlePanelToggle, true)}
-					showSidePanel={panelOpen}
-					overlayContent={true}
-					sidePanelWidth={400}
-				>
-					{mainContent(panelOpen, handlePanelToggle)}
-				</SolaceSidePanelLayout>
-			</StoryContainer>
-		);
-	},
+	render: SolaceOverlaySidePanelRight,
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -244,28 +251,29 @@ export const OverlaySidePanelRight = {
 	}
 };
 
+const SolaceOverlaySidePanelLeft = () => {
+	const handlePanelToggle = () => {
+		setPanelOpen(!panelOpen);
+	};
+	const [panelOpen, setPanelOpen] = useState(false);
+
+	return (
+		<StoryContainer>
+			<SolaceSidePanelLayout
+				sidePanelContent={sidePanelContent(handlePanelToggle, false)}
+				showSidePanel={panelOpen}
+				overlayContent={true}
+				sidePanelWidth={400}
+				sidePanelPosition={SolacePanelPosition.LEFT}
+			>
+				{mainContent(panelOpen, handlePanelToggle)}
+			</SolaceSidePanelLayout>
+		</StoryContainer>
+	);
+};
+
 export const OverlaySidePanelLeft = {
-	render: (): JSX.Element => {
-		const handlePanelToggle = () => {
-			setPanelOpen(!panelOpen);
-		};
-		const [panelOpen, setPanelOpen] = useState(false);
-
-		return (
-			<StoryContainer>
-				<SolaceSidePanelLayout
-					sidePanelContent={sidePanelContent(handlePanelToggle, false)}
-					showSidePanel={panelOpen}
-					overlayContent={true}
-					sidePanelWidth={400}
-					sidePanelPosition={SolacePanelPosition.LEFT}
-				>
-					{mainContent(panelOpen, handlePanelToggle)}
-				</SolaceSidePanelLayout>
-			</StoryContainer>
-		);
-	},
-
+	render: SolaceOverlaySidePanelLeft,
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
