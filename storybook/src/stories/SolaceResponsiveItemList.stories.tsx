@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import { Meta } from "@storybook/react";
 import {
 	SolaceMenu,
@@ -10,7 +10,6 @@ import {
 	SolaceTooltip
 } from "@SolaceDev/maas-react-components";
 import { within, userEvent } from "@storybook/testing-library";
-import { useEffect } from "@storybook/addons";
 
 export default {
 	title: "Under Construction/SolaceResponsiveItemList",

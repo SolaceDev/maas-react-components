@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import {
@@ -16,7 +16,6 @@ import {
 } from "@SolaceDev/maas-react-components";
 import { cloneDeep } from "lodash";
 import { useMemo } from "react";
-import { useEffect } from "@storybook/addons";
 import { userEvent, within } from "@storybook/testing-library";
 
 const rows = [
@@ -1661,59 +1660,61 @@ const renderExpandedSchemaRowContentHelper = (row, allowToggle, selectionType) =
 	);
 };
 
+const InteractiveSchemaTableTemplate = () => {
+	const data = cloneDeep(schemaRows);
+	const columnsDef = useMemo(() => {
+		return cloneDeep(schemaColumns);
+	}, []);
+	columnsDef[1].width = "10%";
+	columnsDef[2].width = "15%";
+	const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
+	const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
+
+	const handleSort = useCallback(
+		(selectedColumn) => {
+			action(sortCallback);
+			setRows([...sortData(selectedColumn, data)]);
+		},
+		[data]
+	);
+
+	const displayedColumnsChanged = useCallback((columns) => {
+		setColumnsHiddenInfo(getColumnHiddenInfo(columns));
+	}, []);
+
+	const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
+	const handleRowSelectionsChange = useCallback((rows: SolaceTableRow[]) => {
+		action(selectionCallback);
+		setSelectedRowIds(rows.map((row) => row.id));
+	}, []);
+
+	const renderSchemaRowCells = useCallback(
+		(row: SolaceTableRow): JSX.Element[] => createSchemaCells(row, columnsHiddenInfo),
+		[columnsHiddenInfo]
+	);
+
+	return (
+		<div>
+			<SolaceTable
+				selectedRowIds={selectedRowIds}
+				selectionChangedCallback={handleRowSelectionsChange}
+				sortCallback={handleSort}
+				rows={tableRows}
+				columns={columnsDef}
+				selectionType={SolaceTableSelectionType.SINGLE}
+				rowActionMenuItems={rowActionMenuItems}
+				renderCustomRowCells={renderSchemaRowCells}
+				hasColumnHiding={true}
+				displayedColumnsChangedCallback={displayedColumnsChanged}
+				headerHoverCallback={action("header hover callback")}
+				rowHoverCallback={action("row hover callback")}
+			></SolaceTable>
+		</div>
+	);
+};
+
 export const InteractiveSchemaTable = {
-	render: (): JSX.Element => {
-		const data = cloneDeep(schemaRows);
-		const columnsDef = useMemo(() => {
-			return cloneDeep(schemaColumns);
-		}, []);
-		columnsDef[1].width = "10%";
-		columnsDef[2].width = "15%";
-		const [tableRows, setRows] = useState([...sortData(columnsDef[0], data)]);
-		const [columnsHiddenInfo, setColumnsHiddenInfo] = useState(null);
-
-		const handleSort = useCallback(
-			(selectedColumn) => {
-				action(sortCallback);
-				setRows([...sortData(selectedColumn, data)]);
-			},
-			[data]
-		);
-
-		const displayedColumnsChanged = useCallback((columns) => {
-			setColumnsHiddenInfo(getColumnHiddenInfo(columns));
-		}, []);
-
-		const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
-		const handleRowSelectionsChange = useCallback((rows: SolaceTableRow[]) => {
-			action(selectionCallback);
-			setSelectedRowIds(rows.map((row) => row.id));
-		}, []);
-
-		const renderSchemaRowCells = useCallback(
-			(row: SolaceTableRow): JSX.Element[] => createSchemaCells(row, columnsHiddenInfo),
-			[columnsHiddenInfo]
-		);
-
-		return (
-			<div>
-				<SolaceTable
-					selectedRowIds={selectedRowIds}
-					selectionChangedCallback={handleRowSelectionsChange}
-					sortCallback={handleSort}
-					rows={tableRows}
-					columns={columnsDef}
-					selectionType={SolaceTableSelectionType.SINGLE}
-					rowActionMenuItems={rowActionMenuItems}
-					renderCustomRowCells={renderSchemaRowCells}
-					hasColumnHiding={true}
-					displayedColumnsChangedCallback={displayedColumnsChanged}
-					headerHoverCallback={action("header hover callback")}
-					rowHoverCallback={action("row hover callback")}
-				></SolaceTable>
-			</div>
-		);
-	},
+	render: InteractiveSchemaTableTemplate,
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

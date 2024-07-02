@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Meta } from "@storybook/react";
 import { SolaceAccordion } from "@SolaceDev/maas-react-components";
-import { useEffect, useState } from "@storybook/addons";
 import { SolaceAccordionProps } from "../../../dist/components/SolaceAccordion";
 
 export default {

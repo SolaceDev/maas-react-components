@@ -27,6 +27,24 @@ const config: StorybookConfig = {
 			"react-dom": path.resolve(__dirname, "../node_modules/react-dom")
 		};
 
+		/*
+		 *	After upgrading to Storybook 8, webpack was not able to process typescript files, so had to explicitly specify the loader
+		 **/
+		config.module.rules.push({
+			test: /\.tsx?$/,
+			use: [
+				{
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-typescript"]
+					}
+				}
+			],
+			exclude: /node_modules/
+		});
+
+		config.resolve.extensions.push(".ts", ".tsx");
+
 		return config;
 	},
 	framework: {
