@@ -8,7 +8,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 	 * See https://storybook.js.org/docs/configure/#configure-story-loading
 	 * to learn how to generate automatic titles
 	 */
-	title: "Components/ConnectionCards",
+	title: "Components/SolaceEmptyStateBanner",
 	component: SolaceEmptyStateBanner
 };
 

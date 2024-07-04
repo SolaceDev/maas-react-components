@@ -107,3 +107,4 @@ export { default as SolaceTheme } from "./resources/theme";
 export { initializeDataTrackingApi } from "./resources/trackingapi";
 
 export { default as SolaceDatePicker } from "./components/SolaceDatePicker";
+export { default as SolaceFileUploader } from "./components/SolaceFileUploader";

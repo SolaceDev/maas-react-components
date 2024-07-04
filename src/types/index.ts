@@ -16,3 +16,4 @@ export * from "./fieldTypes";
 export * from "./sizing";
 export * from "./solaceStepper";
 export * from "./solaceEmptyStateBanner";
+export * from "./solacefileUploader";
