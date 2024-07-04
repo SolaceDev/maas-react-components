@@ -134,15 +134,6 @@ const testListItems = [
 	{ id: "itemC", title: "Item C", subTitle: "About C", content: "Description of Item C" }
 ];
 
-const getTestListDetails = (count: number) => {
-	const items: JSX.Element[] = [];
-
-	for (let i = 0; i < count; i++) {
-		items.push(renderAccordionDetails(`This is a label for item ${i}`, `This is a description of item ${i}`));
-	}
-	return items;
-};
-
 const renderAccordionSummary = (title: string) => {
 	return title;
 };
@@ -188,17 +179,6 @@ export const ExpandedAccordion = {
 		dataQa: testItem.id,
 		summary: testItem.summary,
 		details: testItem.details,
-		expanded: true
-	}
-};
-
-export const ExpandedAccordionWithLargeContent = {
-	render: SolaceAccordionStory,
-
-	args: {
-		dataQa: testItem.id,
-		summary: testItem.summary,
-		details: getTestListDetails(500),
 		expanded: true
 	}
 };
