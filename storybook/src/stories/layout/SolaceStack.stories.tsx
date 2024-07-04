@@ -8,12 +8,9 @@ import {
 	SolaceStack,
 	SolaceSelect,
 	SolaceTextField,
-	Divider,
-	Link,
-	Typography
+	Divider
 } from "@SolaceDev/maas-react-components";
 import { SELECT_OPTIONS } from "../form/SolaceSelect.stories";
-import { Title, Primary, ArgsTable, Stories, PRIMARY_STORY } from "@storybook/addon-docs";
 
 export default {
 	title: "Layout/SolaceStack",
@@ -50,21 +47,10 @@ export default {
 	},
 	parameters: {
 		docs: {
-			page: () => (
-				<>
-					<Title />
-					<Typography sx={{ marginBottom: 2 }}>
-						For more examples and documentation please refer to {""}
-						<Link href="https://mui.com/components/stack/">https://mui.com/components/stack/</Link>
-					</Typography>
-					<Typography sx={{ marginBottom: 2 }}>
-						SolaceStack is concerned with one-dimensional layouts, while SolaceGrid handles two-dimensional layouts.
-					</Typography>
-					<Primary />
-					<ArgsTable story={PRIMARY_STORY} />
-					<Stories />
-				</>
-			)
+			description: {
+				component:
+					"SolaceStack is concerned with one-dimensional layouts, while SolaceGrid handles two-dimensional layouts. For more examples and documentation please refer to https://mui.com/components/stack/"
+			}
 		}
 	}
 } as Meta;

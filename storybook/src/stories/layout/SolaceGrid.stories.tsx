@@ -4,11 +4,10 @@ import React from "react";
 
 import { StoryFn } from "@storybook/react";
 
-import { Link, Paper, SolaceGrid, Typography } from "@SolaceDev/maas-react-components";
+import { Paper, SolaceGrid } from "@SolaceDev/maas-react-components";
 
 import { Meta } from "@storybook/react";
 
-import { Title, Primary, ArgsTable, Stories, PRIMARY_STORY } from "@storybook/addon-docs";
 export default {
 	title: "Layout/SolaceGrid",
 	component: SolaceGrid,
@@ -80,20 +79,10 @@ export default {
 	},
 	parameters: {
 		docs: {
-			page: () => (
-				<>
-					<Title />
-					<Typography sx={{ marginBottom: 2 }}>
-						For detailed documentation and more examples please refer to {""}
-						{<Link href="https://mui.com/components/grid/">https://mui.com/components/grid/</Link>}. Default spacing is
-						set to 16px
-					</Typography>
-					<Typography sx={{ marginBottom: 2 }}>Component to handle 2 dimensional layouts</Typography>
-					<Primary />
-					<ArgsTable story={PRIMARY_STORY} />
-					<Stories />
-				</>
-			)
+			description: {
+				component:
+					"Component to handle 2 dimensional layouts. For detailed documentation and more examples please refer to https://mui.com/components/grid/"
+			}
 		}
 	}
 } as Meta;
