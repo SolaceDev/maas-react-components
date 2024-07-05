@@ -113,7 +113,7 @@ const SolaceAccordion = ({
 				backgroundColor: backgroundColor ?? "transparent",
 				border: border ? parseBorderColor(getBorderColor()) : "none"
 			}}
-			slotProps={{ transition: { timeout: { exit: 350 } } }}
+			slotProps={{ transition: { timeout: 350 } }}
 		>
 			<AccordionSummary
 				expandIcon={<ArrowRightIcon />}
