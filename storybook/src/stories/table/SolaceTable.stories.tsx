@@ -1083,6 +1083,11 @@ const ExpandableRowTableTemplate = ({
 		[data]
 	);
 
+	const [displayedColumns, setDisplayedColumns] = useState(columnsDef);
+	const displayedColumnsChanged = useCallback((columns) => {
+		setDisplayedColumns(columns);
+	}, []);
+
 	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(
 		Array.isArray(initialExpandedRowIds) ? initialExpandedRowIds : []
 	);
@@ -1123,6 +1128,8 @@ const ExpandableRowTableTemplate = ({
 				columns={columnsDef}
 				selectionType={selectionType}
 				hasColumnHiding={true}
+				displayedColumns={displayedColumns}
+				displayedColumnsChangedCallback={displayedColumnsChanged}
 				customContentDefinitions={customContentDefinitions}
 				displayedCustomContent={contentTypesShown}
 				customContentDisplayChangeCallback={customContentDisplayChangeCallback}
@@ -1168,7 +1175,14 @@ export const ExpandableRowSingleSelectionNoToggle = {
 
 	args: {
 		rows: rows,
-		columns: columns,
+		columns: columns.map((column) => {
+			if (column.field === "first_name" || column.field === "email") {
+				const col = cloneDeep(column);
+				col.disableHiding = true;
+				return col;
+			}
+			return column;
+		}),
 		selectionType: SolaceTableSelectionType.SINGLE,
 		allowToggle: false,
 		rowActionMenuItems: rowActionMenuItems
@@ -1942,6 +1956,14 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 	const [selectedEntities, setSelectedEntities] = useState<SolaceTableRow[]>([]);
 	const [pageNumber, setPageNumber] = useState<number>(1);
 
+	const handleSort = useCallback(
+		(selectedColumn) => {
+			action(sortCallback);
+			setRows([...sortData(selectedColumn, data)]);
+		},
+		[data]
+	);
+
 	const handleCrossPageRowSelectionsChange = useCallback(
 		(
 			selectedRowsInCurrentPage: SolaceTableRow[],
@@ -1951,11 +1973,11 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 		) => {
 			action(crossPageSelectionCallback);
 
-			const selectedEntitiesMap = selectedEntities.reduce((prev, curr: unknown) => {
+			const selectedEntitiesMap = selectedEntities.reduce((prev, curr) => {
 				prev[curr.id] = curr;
 				return prev;
 			}, {});
-			const newEntitiesMap = selectedRowsInCurrentPage.reduce((prev, curr: unknown) => {
+			const newEntitiesMap = selectedRowsInCurrentPage.reduce((prev, curr) => {
 				prev[curr.id] = curr;
 				return prev;
 			}, {});
@@ -2013,6 +2035,7 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 						rows={tableRows}
 						columns={columnsDef}
 						selectionType={SolaceTableSelectionType.MULTI}
+						sortCallback={handleSort}
 						independentRowHighlight={independentRowHighlight}
 						rowHighlightChangedCallback={handleRowHighlightChanged}
 						highlightedRowId={highlightedRowId}

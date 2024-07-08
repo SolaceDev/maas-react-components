@@ -141,7 +141,11 @@ export const useExpandableRows = ({
 						if (selectRowWhenClickOnChildren) handleRowClick(row);
 					}}
 				>
-					<StyledExpandedTableData key={`${row.id}_childrenTd`} colSpan={displayedColumnsCount}>
+					{/* Make displayedColumnsCount part of key to force expanded content to rerender when column show/hide changes. This solves issue where sometimes <td> with colspan not expanding to full table width  */}
+					<StyledExpandedTableData
+						key={`${row.id}_childrenTd_${displayedColumnsCount}`}
+						colSpan={displayedColumnsCount}
+					>
 						{renderChildren(row)}
 					</StyledExpandedTableData>
 				</StyledExpandedTableRow>
