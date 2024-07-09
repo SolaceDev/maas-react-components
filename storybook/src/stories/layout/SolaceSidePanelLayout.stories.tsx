@@ -27,7 +27,7 @@ const StoryContainer = styled("div")(() => ({
 
 const sidePanelMessage = (
 	<div style={{ margin: "24px" }}>
-		<h3>Side Panel</h3>
+		<h3 style={{ marginTop: 0 }}>Side Panel</h3>
 		<p>
 			Here's a bunch of text that keeps repeating... Here's a bunch of text that keeps repeating... Here's a bunch of
 			text that keeps repeating... Here's a bunch of text that keeps repeating... Here's a bunch of text that keeps
@@ -105,9 +105,9 @@ const mainContent = (panelOpen, handlePanelToggle) => (
 	/>
 );
 
-const sidePanelContent = (handlePanelToggle, rightSide: boolean) => (
+const sidePanelContent = (handlePanelToggle) => (
 	<React.Fragment>
-		<ListSubheader style={{ textAlign: rightSide ? "left" : "right" }}>
+		<ListSubheader style={{ position: "absolute", right: 0, top: "10px" }}>
 			<SolaceButton onClick={handlePanelToggle} title="Close" variant="icon">
 				<CloseIcon />
 			</SolaceButton>
@@ -204,7 +204,7 @@ const SolaceSelfClosingSidePanel = () => {
 
 	return (
 		<StoryContainer>
-			<SolaceSidePanelLayout sidePanelContent={sidePanelContent(handlePanelToggle, true)} showSidePanel={panelOpen}>
+			<SolaceSidePanelLayout sidePanelContent={sidePanelContent(handlePanelToggle)} showSidePanel={panelOpen}>
 				{mainContent(panelOpen, handlePanelToggle)}
 			</SolaceSidePanelLayout>
 		</StoryContainer>
@@ -230,7 +230,7 @@ const SolaceOverlaySidePanelRight = () => {
 	return (
 		<StoryContainer>
 			<SolaceSidePanelLayout
-				sidePanelContent={sidePanelContent(handlePanelToggle, true)}
+				sidePanelContent={sidePanelContent(handlePanelToggle)}
 				showSidePanel={panelOpen}
 				overlayContent={true}
 				sidePanelWidth={400}
@@ -260,7 +260,7 @@ const SolaceOverlaySidePanelLeft = () => {
 	return (
 		<StoryContainer>
 			<SolaceSidePanelLayout
-				sidePanelContent={sidePanelContent(handlePanelToggle, false)}
+				sidePanelContent={sidePanelContent(handlePanelToggle)}
 				showSidePanel={panelOpen}
 				overlayContent={true}
 				sidePanelWidth={400}
