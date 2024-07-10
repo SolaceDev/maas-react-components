@@ -4,12 +4,7 @@ import React from "react";
 
 import { Meta } from "@storybook/react";
 
-import {
-	SolaceStack,
-	SolaceSelect,
-	SolaceTextField,
-	Divider
-} from "@SolaceDev/maas-react-components";
+import { SolaceStack, SolaceSelect, SolaceTextField, Divider } from "@SolaceDev/maas-react-components";
 import { SELECT_OPTIONS } from "../form/SolaceSelect.stories";
 
 export default {

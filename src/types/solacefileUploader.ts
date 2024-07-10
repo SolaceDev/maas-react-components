@@ -42,13 +42,29 @@ export type SolaceFileUploaderProps = SolaceComponentProps & {
 	errorText?: string;
 
 	/**
-	 * The file types to accept. This should be a valid file type string.
-	 * Still need to be implemented.
+	 * Set accepted file types. Checkout https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker types option for more information.
+	 * example :
+	 * accept: {
+	 * 'image/png': ['.png'],
+	 * 'text/html': ['.html', '.htm']
+	 * }
 	 */
-	accept?: string;
+	accept?: Record<string, string[]>;
 
 	/**
 	 * The ID of the file uploader component.
 	 */
 	id?: string;
+
+	/**
+	 * The maximum size of the file in bytes.
+	 * default is inifinite.
+	 */
+	maxSize?: number;
+
+	/**
+	 * The minimum size of the file in bytes.
+	 * default is 0.
+	 */
+	minSize?: number;
 };

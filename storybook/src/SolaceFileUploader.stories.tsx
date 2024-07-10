@@ -42,3 +42,17 @@ export const EditMode: Story = {
 		fileNames: ["file1.txt", "file2.txt"]
 	}
 };
+
+export const MaxSize: Story = {
+	args: {
+		maxSize: 250000
+	}
+};
+
+export const PDFOnly: Story = {
+	args: {
+		accept: {
+			"application/pdf": [".pdf"]
+		}
+	}
+};

@@ -1,12 +1,14 @@
-import SolaceTypography from "./SolaceTypography";
-import { useEffect, useState } from "react";
-import SolaceStack from "./layout/SolaceStack";
+import SolaceTypography from "../SolaceTypography";
+import { useMemo, useState } from "react";
+import SolaceStack from "../layout/SolaceStack";
 import styled from "@emotion/styled";
 import { Box, Button, useTheme } from "@mui/material";
-import SolaceButton from "./form/SolaceButton";
-import { CloseIcon } from "../resources/icons/CloseIcon";
-import ErrorText from "./form/ErrorText";
-import { SolaceFileUploaderProps } from "../types";
+import SolaceButton from "../form/SolaceButton";
+import { CloseIcon } from "../../resources/icons/CloseIcon";
+import ErrorText from "../form/ErrorText";
+import { SolaceFileUploaderProps } from "../../types";
+import { acceptPropAsAcceptAttr, validateFiles } from "./fileUploaderUtils";
+import UploadIcon from "../../resources/icons/UploadIcon";
 
 const VisuallyHiddenInput = styled("input")({
 	clip: "rect(0 0 0 0)",
@@ -21,7 +23,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 /**
- * A file uploader component that allows users to upload files by dragging and dropping or selecting from their device.
+ * SolaceFileUploader component allows users to upload files by dragging and dropping or selecting files from their device.
  *
  * @component
  * @example
@@ -30,13 +32,22 @@ const VisuallyHiddenInput = styled("input")({
  *   maxFiles={3}
  *   readOnly={false}
  *   fileNames={[]}
- *   onFileChange={handleFileChange}
+ *   onFileChange={(files) => console.log(files)}
  *   label="Drag and drop file here"
- *   errorText="File size exceeds the limit"
+ *   errorText="Invalid file format"
  *   dataQa="fileUploader"
- *   id="fileUploaderId"
+ *   id="fileUploader"
+ *   minSize={0}
+ *   maxSize={1024}
+ *   accept:
+ * 			{
+ * 			'image/png': ['.png'],
+ * 			'text/html': ['.html', '.htm']
+ * 			'image/*': []
+ * 			}
  * />
  * ```
+ * @returns {JSX.Element} The rendered SolaceFileUploader component.
  */
 
 export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
@@ -48,18 +59,23 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 		label = "Drag and drop file here",
 		errorText,
 		dataQa,
-		id
+		id,
+		minSize = 0,
+		maxSize,
+		accept
 	} = props;
 
 	const theme = useTheme();
 	const [dragEvent, setDragEvent] = useState(false);
 	const [filesData, setFilesData] = useState<File[] | string[]>(fileNames ?? []);
-	const [maxFilesError, setMaxFilesError] = useState("");
+	const [validationError, setValidationError] = useState("");
 
-	useEffect(() => {
-		console.log("filesData", filesData);
-		onFileChange && onFileChange(filesData as File[]);
-	}, [filesData, onFileChange]);
+	const acceptedFilesArray = useMemo(() => {
+		if (accept) {
+			return acceptPropAsAcceptAttr(accept);
+		}
+		return undefined;
+	}, [accept]);
 
 	const getDivider = (direction: "left" | "right") => (
 		<Box
@@ -84,13 +100,9 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 		e.stopPropagation();
 		e.preventDefault();
 		setDragEvent(false);
-		if (maxFilesError) setMaxFilesError("");
+		if (validationError) setValidationError("");
 		const filesAdded: File[] = [];
 		if (e.dataTransfer.items) {
-			if (maxFiles !== 0 && e.dataTransfer.items.length + filesData.length > maxFiles) {
-				setMaxFilesError("Maximum files allowed is " + maxFiles);
-				return;
-			}
 			// Use DataTransferItemList interface to access the file(s)
 			Array.from(e.dataTransfer.items).forEach((item) => {
 				// If dropped items aren't files, reject them
@@ -102,24 +114,29 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 				}
 			});
 		}
-
 		if (filesAdded.length > 0) {
-			setFilesData([...filesData, ...filesAdded] as File[]);
+			const validationResult = validateFiles(maxFiles, minSize, filesAdded, maxSize, acceptedFilesArray);
+			if (validationResult !== null) {
+				setValidationError(validationResult);
+			} else {
+				setFilesData([...filesData, ...filesAdded] as File[]);
+				onFileChange && onFileChange([...filesData, ...filesAdded] as File[]);
+			}
 		}
 	};
 
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.files === null) return;
-		if (maxFilesError) setMaxFilesError("");
-
-		if (maxFiles !== 0 && 1 + filesData.length > maxFiles) {
-			setMaxFilesError("Maximum files allowed is " + maxFiles);
-			return;
-		}
+		if (validationError) setValidationError("");
 
 		const file = event?.target?.files[0];
-
-		setFilesData([...filesData, file] as File[]);
+		const validationResult = validateFiles(maxFiles, minSize, [file], maxSize, acceptedFilesArray);
+		if (validationResult !== null) {
+			setValidationError(validationResult);
+		} else {
+			setFilesData([...filesData, file] as File[]);
+			onFileChange && onFileChange([...filesData, file] as File[]);
+		}
 	};
 
 	const renderFileNameDisplay = (file: File | string, index: number): JSX.Element => {
@@ -183,9 +200,15 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 					)}
 					{!dragEvent && (
 						<SolaceStack alignItems={"center"} spacing={2}>
-							<SolaceTypography variant="body1" sx={{ color: theme.palette.ux.secondary.text.wMain }}>
-								{label}
-							</SolaceTypography>
+							<Box display={"flex"} alignItems={"center"}>
+								<UploadIcon />
+								<SolaceTypography
+									variant="body1"
+									sx={{ color: theme.palette.ux.secondary.text.wMain, marginLeft: theme.spacing() }}
+								>
+									{label}
+								</SolaceTypography>
+							</Box>
 							<Box display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"center"}>
 								{getDivider("left")}
 								<SolaceTypography sx={{ color: theme.palette.ux.secondary.text.wMain }} variant="body1">
@@ -201,8 +224,8 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 					)}
 				</Box>
 			)}
-			{(errorText || maxFilesError) && (
-				<ErrorText dataQa="solaceFileUploaderError">{errorText || maxFilesError}</ErrorText>
+			{(errorText || validationError) && (
+				<ErrorText dataQa="solaceFileUploaderError">{errorText || validationError}</ErrorText>
 			)}
 			{filesData.length > 0 && (
 				<SolaceStack mt={maxFiles > 1 ? 2 : 0}>
