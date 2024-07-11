@@ -143,7 +143,7 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 		return (
 			<Box
 				key={index}
-				border={`1px solid ${theme.palette.ux.secondary.w40}`}
+				border={`1px solid ${theme.palette.ux.secondary.w20}`}
 				display={"flex"}
 				alignItems={"center"}
 				justifyContent={"space-between"}
@@ -151,7 +151,7 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 				role="listitem"
 				data-qa={`solaceFileUploaderFileName-${index}`}
 				paddingLeft={2}
-				paddingRight={0.5}
+				paddingRight={1}
 			>
 				<SolaceTypography variant="h5">{typeof file === "string" ? file : file.name}</SolaceTypography>
 				{/* option to remove the item is disabled in read only mode */}
@@ -162,6 +162,7 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 							const newFiles = (filesData as File[]).filter((_, i) => i !== index);
 							setFilesData(newFiles as File[]);
 						}}
+						title="Remove"
 					>
 						<CloseIcon />
 					</SolaceButton>
@@ -187,8 +188,6 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 						})
 					]}
 					alignContent={"center"}
-					paddingTop={2}
-					paddingBottom={2}
 					id={"solaceFileUploaderWrapper" ?? id}
 					data-qa={dataQa}
 					role="dropzone"
@@ -217,7 +216,7 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 								{getDivider("right")}
 							</Box>
 							<Button component="label" role={undefined} variant="text" tabIndex={-1}>
-								Upload file
+								Upload File
 								<VisuallyHiddenInput type="file" onChange={handleFileChange} />
 							</Button>
 						</SolaceStack>
