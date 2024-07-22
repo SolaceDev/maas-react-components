@@ -93,12 +93,16 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 			// stop click event on the menu item from being bubble up to parent
 			event.stopPropagation();
 		}
-		//when items is passed down as empty [] this condition makes sure that menu doesn't open with empty paper.
+		// when items is passed down as empty [] this condition makes sure that menu doesn't open with empty paper.
 		if (items?.length) {
 			setAnchorEl(event.currentTarget);
 		}
 		// maintain the pressed state when the menu is open
 		event.currentTarget.classList.toggle("pressed");
+		// when defined, execute the callback -- caller can check for "pressed"
+		if (buttonProps.onClick) {
+			buttonProps.onClick(event);
+		}
 	};
 
 	const handleMenuClose = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
