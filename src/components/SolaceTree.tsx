@@ -71,6 +71,10 @@ interface SolaceTreeProps extends SolaceComponentProps {
  * @returns JSX.Element
  *
  */
+
+/**
+ * @deprecated This component is deprecated and should not be used in new code.
+ */
 export default function SolaceTree(props: SolaceTreeProps): JSX.Element {
 	const {
 		rowHeight,
@@ -128,11 +132,13 @@ export default function SolaceTree(props: SolaceTreeProps): JSX.Element {
 							</Grid>
 							<Grid item sx={{ flexGrow: 1 }}>
 								<Stack>
-									{children.map((child) =>
+									{children.map((child, index) =>
 										hasChildren(child) ? (
-											<SolaceTree {...childProps([child] as TreeNode[])} />
+											<SolaceTree key={index} {...childProps([child] as TreeNode[])} />
 										) : (
-											<Box sx={{ height: theme.spacing(rowHeight) }}>{child.component}</Box>
+											<Box key={index} sx={{ height: theme.spacing(rowHeight) }}>
+												{child.component}
+											</Box>
 										)
 									)}
 								</Stack>
