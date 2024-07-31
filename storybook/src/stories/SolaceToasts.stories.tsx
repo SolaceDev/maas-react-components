@@ -1,7 +1,8 @@
 import React from "react";
 import { Meta } from "@storybook/react";
-import { SolaceToasts, DeleteIcon } from "@SolaceDev/maas-react-components";
+import { SolaceToasts, SolaceButton } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default {
 	title: "Under Construction/SolaceToasts",
@@ -77,7 +78,31 @@ export const ErrorToast = {
 export const WithActionIcon = {
 	args: {
 		message: "This is with an action icon",
-		action: <DeleteIcon onClick={action("delete icon clicked")} />,
+		action: <CloseIcon className="close-icon" onClick={action("delete icon clicked")} />,
 		open: true
 	}
 };
+
+export const WithActionAndCloseIcon = {
+	args: {
+		message: "This is with an action icon and a close icon",
+		action: (
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "row",
+					justifyContent: "center",
+					alignItems: "center"
+				}}
+			>
+				<SolaceButton variant="text" onClick={action("action button clicked")}>
+					Action
+				</SolaceButton>
+				<CloseIcon className="close-icon" onClick={action("close icon clicked")} />
+			</div>
+		),
+		open: true
+	}
+};
+
+// MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root

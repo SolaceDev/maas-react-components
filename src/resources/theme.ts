@@ -152,6 +152,36 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			}
 		},
 		components: {
+			MuiSnackbar: {
+				styleOverrides: {
+					root: {
+						".MuiPaper-root": {
+							height: "40px",
+							minWidth: "200px",
+							display: "flex",
+							alignItems: "center",
+							color: themeMapping.palette.primary.text.w10,
+							backgroundColor: themeMapping.palette.background.wMain,
+							boxShadow: `0px 2px 8px 0px ${themeMapping.palette.secondary.w8040}`
+						},
+						".MuiAlert-message .MuiSnackbarContent-message": {
+							padding: "12px 0 11px 0",
+							lineHeight: "normal"
+						},
+
+						".MuiSnackbarContent-root": {
+							padding: "0px 16px"
+						},
+						".MuiAlert-icon": {
+							padding: "8px 0px",
+							marginRight: "8px"
+						},
+						"& svg.close-icon": {
+							fill: themeMapping.palette.primary.text.w10
+						}
+					}
+				}
+			},
 			MuiAppBar: {
 				styleOverrides: {
 					colorPrimary: {
