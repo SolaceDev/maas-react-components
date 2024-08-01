@@ -28,10 +28,15 @@ const CodeDiffContainer = styled("div")(({ theme }) => ({
 						padding: 0
 					}
 				},
+				".d2h-code-wrapper": {
+					borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`
+				},
 				".d2h-code-side-linenumber": {
+					color: `${theme.palette.ux.secondary.text.wMain}`,
 					border: 0,
 					position: "relative", // Fixes line numbers overflowing out of container. https://github.com/rtfpessoa/diff2html/issues/381
-					backgroundColor: `${theme.palette.ux.primary.w20} !important;`,
+					backgroundColor: `${theme.palette.ux.background.w20} !important;`,
+					opacity: "1 !important",
 					padding: 0,
 					textAlign: "center",
 					width: 24
@@ -63,7 +68,9 @@ const CodeDiffContainer = styled("div")(({ theme }) => ({
 				".d2h-diff-table .d2h-diff-tbody": {
 					tr: {
 						td: {
-							mixBlendMode: "unset" // This unset is because it hides some of the text content
+							mixBlendMode: "unset", // This unset is because it hides some of the text content
+							fontFamily: "monospace",
+							fontSize: "14px"
 						}
 					}
 				}
