@@ -28,9 +28,6 @@ const CodeDiffContainer = styled("div")(({ theme }) => ({
 						padding: 0
 					}
 				},
-				".d2h-code-wrapper": {
-					borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`
-				},
 				".d2h-code-side-linenumber": {
 					color: `${theme.palette.ux.secondary.text.wMain}`,
 					border: 0,
