@@ -125,6 +125,10 @@ export interface SolaceTextFieldProps extends SolaceComponentProps {
 	 * minimum width of the component
 	 */
 	minWidth?: string;
+	/**
+	 * pass a ref to the input element.
+	 */
+	inputRef?: (input: HTMLInputElement) => void;
 }
 
 function SolaceTextField({
@@ -156,7 +160,8 @@ function SolaceTextField({
 	fullWidth = false,
 	width,
 	endAdornment,
-	minWidth
+	minWidth,
+	inputRef
 }: SolaceTextFieldProps): JSX.Element {
 	const theme = useTheme();
 
@@ -244,6 +249,7 @@ function SolaceTextField({
 						title: title,
 						min: 0
 					}}
+					inputRef={inputRef}
 					type={type}
 					error={hasErrors}
 					autoComplete={`dummy-field-${name}`}

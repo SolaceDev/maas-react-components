@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { FIELD_TYPES } from "../types/fieldTypes";
 import SolaceComponentProps from "./SolaceComponentProps";
 import SolaceButton from "./form/SolaceButton";
@@ -86,10 +86,12 @@ function SolaceSearchAndFilter({
 	onFocus,
 	onClearAll
 }: SolaceSearchAndFilterProps): JSX.Element {
+	const inputRef = useRef<HTMLElement>();
 	const getAdornment = useCallback(() => {
 		const handleClearInput = () => {
 			onChange({ name, value: "" });
 			onClearAll && onClearAll();
+			inputRef.current?.focus(); // The input shall not lose focus after the clear action per UX requirement
 		};
 
 		const getFieldIcon = (type: FIELD_TYPES) => {
@@ -155,6 +157,9 @@ function SolaceSearchAndFilter({
 			disabled={disabled}
 			dataQa={`searchAndFilter-${id}`}
 			placeholder={placeholder}
+			inputRef={(input) => {
+				inputRef.current = input;
+			}}
 		/>
 	);
 }
