@@ -2079,8 +2079,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					padding: "4px 8px 4px 8px",
 					lineHeight: "1.5",
 					"&.dense": {
-						padding: "0 8px",
-						lineHeight: "normal"
+						padding: "0 8px"
 					}
 				},
 				iconContainer: {

@@ -117,14 +117,25 @@ export const MessageWithIcon = {
 export const CompactBoxWithCustomButton = {
 	args: {
 		message: (
-			<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexGrow: 1 }}>
-				<div>
+			/*
+				This layout will keep the button to the right when there is enough space and wrap to the next line below the text when there is not enough space or when the component size reduces.
+			*/
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-between",
+					flexWrap: "wrap",
+					flexGrow: 1
+				}}
+			>
+				<div style={{ padding: "4px 0px" }}>
 					<span>Learn more in </span>
 					<SolaceButton variant="link" href="https://#">
 						documentations
 					</SolaceButton>
 				</div>
-				<div style={{ whiteSpace: "nowrap" }}>
+				<div style={{ whiteSpace: "nowrap", marginLeft: "auto" }}>
 					<SolaceButton variant="text">Set Preferences</SolaceButton>
 				</div>
 			</div>
