@@ -4,6 +4,10 @@
 
 [![NPM](https://img.shields.io/npm/v/maas-react-components.svg)](https://github.com/SolaceDev/maas-react-components/packages/944783) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Maas React Component Guide
+
+This [guide](https://www.figma.com/design/YBEYCgm90ETlggYnUnIy1f/Design-Processes?node-id=15-4281&t=AUg09klAoEXwPpzf-0) provides the React component auditing process, including a JIRA task, bug and an auditing checklist.
+
 ## Setup npm registry
 
 Before installing the package this step needs to be completed.
@@ -11,16 +15,11 @@ Before installing the package this step needs to be completed.
 You can authenticate to GitHub Packages with npm by creating a npmrc file in your root directory.
 
 ```
-
-
-
 @SolaceDev:registry=https://npm.pkg.github.com
 
 //npm.pkg.github.com/:_authToken=GITHUB_TOKEN
 
 legacy-peer-deps=true
-
-
 ```
 
 GITHUB_TOKEN needs to be replaced by user specific github token. Make sure the package permissions ( write:packages, read:packages ) are correctly selected during token creation, and SSO is also enabled.
@@ -30,17 +29,7 @@ See this [link](https://docs.github.com/en/github/authenticating-to-github/keepi
 ## Install
 
 ```bash
-
-
-
-
-
 npm install --save @SolaceDev/maas-react-components
-
-
-
-
-
 ```
 
 ### Custom Package Name
@@ -50,13 +39,7 @@ npm gives you the ability to import this package with a custom package name, whi
 For e.g. If a team wants to use the package named as common-components, install the package like this:
 
 ```
-
-
-
 npm i common-components@SolaceDev/maas-react-components
-
-
-
 ```
 
 See usage example below to see how it would impact the imports.
@@ -92,11 +75,12 @@ Include one of the following values in a commit, before pushing your branch to m
 [Semantic Versioning](https://semver.org/)
 
 ### Merging Your Pull Request
+
 Whitesource scan will be performed when you merge your pull request:
+
 - Whitesource scan failure notification will be sent to `#whitesource-scans-updates` and `#devsecops-security-event-incident` Slack channel
 - Policy violations and build failure notification will be sent to `#sc-ci-ui-alerts` Slack channel
 - Jira tickets on Whitesource vulnerabilities will be raised and automatically assigned to `SC-ui tech` squad when `rc-ui` is run
-
 
 ### Publishing Your Changes
 
@@ -137,29 +121,23 @@ Then, run `npm link`.
 `cd` into the micro-frontend folder (e.g. `ep` or `saas`) you want to test on.
 
 ```
-
 npm uninstall @SolaceDev/maas-react-components
-
 ```
 
 Make sure `@SolaceDev/maas-react-components` is no longer in the `node_modules` folder, then return to the micro-frontend folder you are testing.
 
 ```
-
 npm link @SolaceDev/maas-react-components
-
 ```
 
 Open `webpack.config.js`, and comment out
 
 ```
-
 alias: {
 
-"react-dom": "@hot-loader/react-dom"
+	"react-dom": "@hot-loader/react-dom"
 
 }
-
 ```
 
 Go to `localhost:9000` to make sure your `maas-react-component` changes are reflected.
@@ -167,27 +145,21 @@ Go to `localhost:9000` to make sure your `maas-react-component` changes are refl
 To view the global link:
 
 ```
-
 ls /Users/<your user name>/.nvm/versions/node/<node version>/lib/node_modules/
-
 ```
 
 To remove the link:
 
 ```
-
 npm rm --global @SolaceDev/maas-react-components
-
 ```
 
 If getting react runtime or react-dom not found when loading pages, then do:
 
 ```
-
 npm install -g react
 
 npm install -g react-dom
-
 ```
 
 ### Switching back to the latest official `maas-react-components`

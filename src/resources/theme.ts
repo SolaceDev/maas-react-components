@@ -177,7 +177,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							marginRight: "8px"
 						},
 						"& svg.close-icon": {
-							fill: themeMapping.palette.primary.text.w10
+							fill: isCurrentSolace ? alpha("#FFFFFF", 0.5) : themeMapping.palette.secondary.wMain
 						}
 					}
 				}
