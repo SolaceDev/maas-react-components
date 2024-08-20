@@ -21,7 +21,7 @@ const CodeDiffContainer = styled("div")(({ theme }) => ({
 				display: "none"
 			},
 			".d2h-file-side-diff": {
-				border: `1px solid ${theme.palette.ux.secondary.w20}`,
+				border: `1px solid ${theme.palette.ux.secondary.w40}`,
 				borderRadious: 4,
 				".d2h-diff-table": {
 					"td, th": {

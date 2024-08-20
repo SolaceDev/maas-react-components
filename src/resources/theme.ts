@@ -1860,9 +1860,36 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".react-codemirror2": {
 							height: "100%"
 						},
+
+						/*
+						This code is duplicated in EditorWrapper, but it is necessary to have it here as well
+						*/
 						".CodeMirror": {
 							height: "100%",
-							clipPath: "unset !important" // undo the fix for Chrome 105 https://github.com/codemirror/codemirror5/commit/0f41e5153f8948604a0e9a2d71a1adbb9aeaed23
+							clipPath: "unset !important", // undo the fix for Chrome 105 https://github.com/codemirror/codemirror5/commit/0f41e5153f8948604a0e9a2d71a1adbb9aeaed23
+							borderRadius: "0px",
+							".cm-string, .cm-string-2": {
+								color: `${themeMapping.palette.error.w100}`
+							},
+							".cm-number, .cm-tag": {
+								color: `${themeMapping.palette.success.w100}`
+							},
+							".cm-atom, .cm-attribute": {
+								color: `${themeMapping.palette.info.w100}`
+							}
+						},
+						".CodeMirror-matchingbracket": {
+							color: `${themeMapping.palette.success.w100}`
+						},
+						".CodeMirror-gutter": {
+							backgroundColor: themeMapping.palette.background.w20
+						},
+						".CodeMirror-gutters": {
+							borderRight: `1px solid ${themeMapping.palette.secondary.w40}`
+						},
+						".CodeMirror-linenumber": {
+							textAlign: "center",
+							color: themeMapping.palette.secondary.text.wMain
 						}
 					}
 				},
@@ -1876,6 +1903,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&.codeEditor-readonly": {
 							".CodeMirror-cursor": { display: "none" } // hide the cursor when in readOnly mode
 						},
+						/*
+						This code is duplicated in InnerWrapper, but it is necessary to have it here as well
+						*/
 						".CodeMirror": {
 							borderRadius: "0px",
 							".cm-string, .cm-string-2": {
