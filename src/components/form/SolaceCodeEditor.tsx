@@ -5,7 +5,7 @@ import HelperText from "./HelperText";
 import ErrorText from "./ErrorText";
 import WarningText from "./WarningText";
 import ExpandIcon from "../../resources/icons/ExpandIcon";
-import { CloseFullscreen } from "@mui/icons-material";
+import CollapseIcon from "../../resources/icons/CollapseIcon";
 import { styled, useTheme } from "@mui/material";
 
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -74,6 +74,7 @@ export interface SolaceCodeEditorProps extends SolaceComponentProps {
 	/**
 	 * Callback function to trigger whenever the value of the `input` is changed
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	onChange?: (editor: CodeMirror, data: any, value: string) => void;
 }
 
@@ -106,6 +107,7 @@ function SolaceCodeEditor({
 	useEffect(() => {
 		if (value !== undefined) setVal(value);
 	}, [value]);
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleChange = (_editor: CodeMirror, _data: any, value: string) => {
 		setVal(value);
 	};
@@ -139,7 +141,7 @@ function SolaceCodeEditor({
 									onClick={toggleExpandedMode}
 									title="Collapse"
 								>
-									<CloseFullscreen />
+									<CollapseIcon fill={theme.palette.ux.secondary.wMain} size={24} />
 								</SolaceButton>
 							) : (
 								<SolaceButton
