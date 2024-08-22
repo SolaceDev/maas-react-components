@@ -84,7 +84,7 @@ export const WithIconTabs = (): ReactNode => {
 				value={count}
 				show={count !== 0}
 				size={18}
-				animationDuration={250}
+				animationDuration={500}
 				animationRepeatsInitialCount={1}
 				animationRepeatsUpdateCount={1}
 				title={`${count} new event${count > 1 ? "s" : ""}`}
