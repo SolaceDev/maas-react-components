@@ -44,6 +44,7 @@ function SolaceSelectAutocompleteResponsiveTags({
 				id: tag.id,
 				content: (
 					<SolaceChip
+						clickable
 						key={`${dataQa}-${tag.id}`}
 						variant={CHIP_VARIANT.FILLED}
 						maxWidth={tagMaxWidth}

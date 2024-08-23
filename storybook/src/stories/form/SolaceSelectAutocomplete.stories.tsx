@@ -3,7 +3,7 @@
  **/
 
 /* eslint-disable sonarjs/no-duplicate-string */
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Meta } from "@storybook/react";
 // import { withState, Store } from "@sambego/storybook-state";
 
@@ -12,20 +12,15 @@ import {
 	SolaceSelectAutocomplete,
 	SolaceSelectAutocompleteItem,
 	getSolaceSelectAutocompleteOptionLabel,
-	// getShowSolaceSelectAutocompleteOptionDivider,
-	// isSolaceSelectAutocompleteOptionEqual,
+	isSolaceSelectAutocompleteOptionEqual,
 	getSolaceSelectAutocompleteGroupBy,
 	SolaceSelectAutocompleteItemProps,
-	SolaceAttributeBadge,
 	SolaceChip,
 	SolaceButton,
-	SolaceSelectAutocompleteResponsiveTags
+	SolaceSelectAutocompleteResponsiveTags,
+	getShowSolaceSelectAutocompleteOptionDivider
 } from "@SolaceDev/maas-react-components";
-// import { action } from "@storybook/addon-actions";
-
-// const store = new Store({
-// 	options: []
-// });
+import { action } from "@storybook/addon-actions";
 
 export default {
 	title: "Forms/SolaceSelectAutocomplete",
@@ -148,436 +143,334 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 // 		});
 // }
 
-// export const DefaultAutocomplete = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+function fetchOptions(
+	searchTerm: string,
+	dataSet: Array<SolaceSelectAutocompleteItemProps>,
+	delay: number,
+	withDivider?: boolean
+): Promise<Array<SolaceSelectAutocompleteItemProps>> {
+	const processedData = dataSet.map((option) => {
+		if (withDivider && (option.value === "option1" || option.value === "option2")) {
+			return {
+				...option,
+				divider: true
+			};
+		}
+		return option;
+	});
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			if (searchTerm) {
+				// filter the data
+				const filteredData = processedData.filter((option) =>
+					option.name.toLowerCase().includes(searchTerm.toLowerCase())
+				);
+				resolve(filteredData);
+			} else {
+				resolve(processedData);
+			}
+		}, delay);
+	});
+}
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
-// 		itemMappingCallback: (option) => option,
-// 		title: "Demo Select",
-// 		id: "demoSelectId",
-// 		name: "demoSelect",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		placeholder: "select an option"
-// 	}
-// };
+const DefaultSelectionTemplate = ({
+	multiple = false,
+	readOnly = false,
+	required = false,
+	disabled = false,
+	label,
+	inlineLabel = false,
+	width,
+	placeholder,
+	helperText,
+	hasErrors,
+	value,
+	limitTags,
+	disableCloseOnSelect,
+	clearSearchOnSelect,
+	maxHeight,
+	// storybook specific
+	disabledItems = false,
+	withDividers = false,
+	longLabel = false
+}: {
+	// props of component
+	multiple?: boolean;
+	readOnly?: boolean;
+	required?: boolean;
+	disabled?: boolean;
+	label?: string;
+	inlineLabel?: boolean;
+	width?: string;
+	placeholder?: string;
+	helperText?: string;
+	hasErrors?: boolean;
+	value?: SolaceSelectAutocompleteItemProps | Array<SolaceSelectAutocompleteItemProps>;
+	limitTags?: number;
+	disableCloseOnSelect?: boolean;
+	clearSearchOnSelect?: boolean;
+	maxHeight?: string;
+	// storybook specific
+	disabledItems?: boolean;
+	withDividers?: boolean;
+	longLabel?: boolean;
+}): JSX.Element => {
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 
-// export const WithDividers = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS.map((option) => {
-// 						if (option.value === "option1" || option.value === "option3") {
-// 							return {
-// 								...option,
-// 								divider: true
-// 							};
-// 						}
-// 						return option;
-// 					})
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+	const handleFetchOptionsCallback = useCallback(
+		(searchTerm: string) => {
+			fetchOptions(
+				searchTerm,
+				SELECT_OPTIONS.map((option) => {
+					return {
+						...option,
+						name:
+							longLabel && (option.value === "option2" || option.value === "option4")
+								? `${option.name} with long long long long long name`
+								: option.name
+					};
+				}),
+				300,
+				withDividers
+			).then((data) => {
+				setMatchingValues(data);
+			});
+		},
+		[withDividers, longLabel]
+	);
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		getShowOptionDividerCallback: getShowSolaceSelectAutocompleteOptionDivider,
-// 		isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
-// 		itemMappingCallback: (option) => option,
-// 		title: "Demo Select",
-// 		id: "demoSelectId",
-// 		name: "demoSelect",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		placeholder: "select an option"
-// 	}
-// };
+	const handleOptionDisabled = (option) => {
+		return option.name === SELECT_OPTIONS[2].name || option.name === SELECT_OPTIONS[3].name;
+	};
 
-// export const StackedLabelFormat = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+	return (
+		<div>
+			<SolaceSelectAutocomplete
+				onChange={action("callback")}
+				multiple={multiple}
+				title="Demo Select"
+				id="demoSelectId"
+				name="demoSelect"
+				label={label}
+				options={matchingValues}
+				itemComponent={SolaceSelectAutocompleteItem}
+				itemMappingCallback={(option) => option}
+				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
+				fetchOptionsCallback={handleFetchOptionsCallback}
+				getOptionDisabledCallback={disabledItems ? handleOptionDisabled : undefined}
+				getShowOptionDividerCallback={withDividers ? getShowSolaceSelectAutocompleteOptionDivider : undefined}
+				width={width}
+				placeholder={placeholder}
+				readOnly={readOnly}
+				disabled={disabled}
+				required={required}
+				inlineLabel={inlineLabel}
+				onCloseCallback={() => setMatchingValues([])}
+				value={value}
+				helperText={helperText}
+				hasErrors={hasErrors}
+				limitTags={limitTags}
+				getLimitTagsText={(limit) => `+${limit} more`}
+				disableCloseOnSelect={disableCloseOnSelect}
+				clearSearchOnSelect={clearSearchOnSelect}
+				maxHeight={maxHeight}
+			></SolaceSelectAutocomplete>
+		</div>
+	);
+};
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		title: "Demo Select",
-// 		name: "demoSelect",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] })
-// 	}
-// };
+export const DefaultAutocomplete = {
+	render: DefaultSelectionTemplate,
 
-// export const StackedLabelFormatWithCustomWidth = {
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		title: "Demo Select",
-// 		name: "demoSelect",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		width: "50%"
-// 	}
-// };
+	args: {}
+};
 
-// export const InlineLabelFormat = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const WithDividers = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		inlineLabel: true
-// 	}
-// };
+	args: {
+		withDividers: true
+	}
+};
 
-// export const HelperText = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const StackedLabelFormat = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select Field",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		helperText: "Some helper text"
-// 	}
-// };
+	args: {
+		label: "Some Label"
+	}
+};
 
-// export const WithErrors = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const StackedLabelFormatWithCustomWidth = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select Field",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		helperText: "The text you entered was invalid",
-// 		hasErrors: true
-// 	}
-// };
+	args: {
+		label: "Some Label",
+		width: "50%",
+		longLabel: true
+	}
+};
 
-// export const Required = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const InlineLabelFormat = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select Field",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		required: true
-// 	}
-// };
+	args: {
+		label: "Some Label",
+		inlineLabel: true
+	}
+};
 
-// export const Disabled = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const HelperText = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		isOptionEqualToValueCallback: isSolaceSelectAutocompleteOptionEqual,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select Field",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		value: {
-// 			name: "Option #2",
-// 			value: "option2",
-// 			subText: "Some sub text",
-// 			supplementalText: "opt2"
-// 		},
-// 		disabled: true
-// 	}
-// };
+	args: {
+		helperText: "Some helper text"
+	}
+};
 
-// export const ReadOnly = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const WithErrors = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select Field",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		value: {
-// 			name: "Option #2",
-// 			value: "option2",
-// 			subText: "Some sub text",
-// 			supplementalText: "opt2"
-// 		},
-// 		readOnly: true
-// 	}
-// };
+	args: {
+		helperText: "The text you entered was invalid",
+		hasErrors: true
+	}
+};
 
-// export const MultipleSelection = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const Required = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select Field",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		value: [],
-// 		multiple: true
-// 	}
-// };
+	args: {
+		label: "Some Label",
+		required: true
+	}
+};
 
-// export const MultipleSelectionWithLimitedTag = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const Disabled = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select Field",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		value: [],
-// 		multiple: true,
-// 		limitTags: 2
-// 	}
-// };
+	args: {
+		label: "Some Label",
+		disabled: true,
+		value: SELECT_OPTIONS[1]
+	}
+};
 
-// export const MultipleSelectionWithCloseOnSelect = {
-// 	parameters: {
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
+export const ReadOnly = {
+	render: DefaultSelectionTemplate,
 
-// 	args: {
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		name: "demoSelect",
-// 		title: "Demo Select Field",
-// 		label: "Some Label",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] }),
-// 		value: [],
-// 		multiple: true,
-// 		disableCloseOnSelect: false
-// 	}
-// };
+	args: {
+		label: "Some Label",
+		readOnly: true,
+		value: SELECT_OPTIONS[1]
+	}
+};
+
+export const WithDisabledItems = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		disabledItems: true
+	}
+};
+
+export const CustomHeight = {
+	render: DefaultSelectionTemplate,
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { delay: 5000 }
+	},
+
+	args: {
+		label: "Some Label",
+		maxHeight: "7.4rem"
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
+};
+
+export const MultipleSelection = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		value: []
+	}
+};
+
+export const MultipleSelectionWithLimitedTag = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		value: [],
+		limitTags: 2
+	}
+};
+
+export const MultipleSelectionWithLongLabel = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		value: [],
+		width: "50%",
+		longLabel: true
+	}
+};
+
+export const MultipleSelectionWithCloseOnSelect = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		value: [],
+		disableCloseOnSelect: false
+	}
+};
+
+export const MultipleSelectionWithClearSearchOnSelect = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		value: [],
+		clearSearchOnSelect: true
+	}
+};
+
+export const MultiSelectionDisabled = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		disabled: true,
+		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[2]]
+	}
+};
+
+export const MultiSelectionReadOnly = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		readOnly: true,
+		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[2]]
+	}
+};
 
 const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
 	{
@@ -612,7 +505,7 @@ const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
 	}
 ];
 
-export const MultipleWithDisabled = () => {
+export const MultiSelectionWithDisabledItems = () => {
 	const [values, setValues] = useState([]);
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 
@@ -620,7 +513,7 @@ export const MultipleWithDisabled = () => {
 		setValues(evt.value);
 	};
 
-	const handleFetchOptionsCallback = React.useCallback((searchTerm: string) => {
+	const handleFetchOptionsCallback = useCallback((searchTerm: string) => {
 		if (searchTerm) {
 			setMatchingValues(
 				SAMPLE_EVENT_MESHES.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()))
@@ -646,12 +539,111 @@ export const MultipleWithDisabled = () => {
 				itemComponent={SolaceSelectAutocompleteItem}
 				itemMappingCallback={(option) => option}
 				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
 				onChange={handleChange}
 				fetchOptionsCallback={handleFetchOptionsCallback}
 				getOptionDisabledCallback={handleOptionDisabled}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
+};
+
+const MultiSelectionWithCreateNewTemplate = ({
+	clearSearchWhenSelectNew = false
+}: {
+	clearSearchWhenSelectNew: boolean;
+}) => {
+	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
+	const [availableValues, setAvailableValues] = useState<SolaceSelectAutocompleteItemProps[]>(SELECT_OPTIONS.slice());
+
+	const handleChange = (evt) => {
+		const selectedValues: SolaceSelectAutocompleteItemProps[] = [];
+		const newValues: SolaceSelectAutocompleteItemProps[] = [];
+		evt.value.forEach((value) => {
+			if (value.isNew) {
+				const newValue: SolaceSelectAutocompleteItemProps = { ...value, subText: undefined, isNew: false };
+				newValues.push(newValue);
+				selectedValues.push(newValue);
+			} else {
+				selectedValues.push(value);
+			}
+		});
+
+		setValues(selectedValues);
+
+		if (newValues.length > 0) {
+			setAvailableValues((prevValues) => [...prevValues, ...newValues].sort((a, b) => a.name.localeCompare(b.name)));
+			if (!clearSearchWhenSelectNew) {
+				// update matching options manually
+				setMatchingValues((prevValues) => {
+					return prevValues
+						.map((value) => (value.isNew ? { ...value, subText: undefined, isNew: false } : value))
+						.sort((a, b) => a.name.localeCompare(b.name));
+				});
+			}
+		}
+	};
+
+	const shouldClearSearchOnSelectCallback = useCallback((value: SolaceSelectAutocompleteItemProps) => {
+		return !!value?.isNew;
+	}, []);
+
+	const handleFetchOptionsCallback = useCallback(
+		(searchTerm: string) => {
+			if (searchTerm) {
+				const matches = availableValues.filter((option) =>
+					option["name"].toLowerCase().includes(searchTerm.toLowerCase())
+				);
+				const exactMatch = matches.find((option) => option["name"] === searchTerm);
+				if (!exactMatch) {
+					const toCreate = { name: searchTerm, value: searchTerm, subText: "Create new value", isNew: true };
+					setMatchingValues([...matches, toCreate]);
+				} else {
+					setMatchingValues(matches);
+				}
+			} else {
+				setMatchingValues(availableValues);
+			}
+		},
+		[availableValues]
+	);
+
+	return (
+		<div>
+			<SolaceSelectAutocomplete
+				name="customAttributeValues"
+				label="Custom Attribute Values"
+				multiple={true}
+				value={values}
+				options={matchingValues}
+				itemComponent={SolaceSelectAutocompleteItem}
+				itemMappingCallback={(option) => option}
+				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
+				onChange={handleChange}
+				fetchOptionsCallback={handleFetchOptionsCallback}
+				shouldClearSearchOnSelectCallback={clearSearchWhenSelectNew ? shouldClearSearchOnSelectCallback : undefined}
+				maxHeight="400px"
+			></SolaceSelectAutocomplete>
+		</div>
+	);
+};
+
+export const MultiSelectionWithCreateNewAndClearSearchWhenSelectNew = {
+	render: MultiSelectionWithCreateNewTemplate,
+
+	args: {
+		clearSearchWhenSelectNew: true
+	}
+};
+
+export const MultiSelectionWithCreateNewAndNotClearSearchWhenSelectNew = {
+	render: MultiSelectionWithCreateNewTemplate,
+
+	args: {
+		clearSearchWhenSelectNew: false
+	}
 };
 
 const SELECT_OPTIONS_WITH_CATEGORY_HEADING: Array<SolaceSelectAutocompleteItemProps> = [
@@ -677,21 +669,29 @@ const SELECT_OPTIONS_WITH_CATEGORY_HEADING: Array<SolaceSelectAutocompleteItemPr
 	}
 ];
 
-const SelectionWithHeadingTemplate = ({
+const MultiSelectionWithHeadingTemplate = ({
+	label,
+	disabled = false,
+	readOnly = false,
+	value,
 	disabledItems = false,
 	showGroupDivider = false
 }: {
-	disabledItems: boolean;
-	showGroupDivider: boolean;
+	label?: string;
+	disabled?: boolean;
+	readOnly?: boolean;
+	value?: Array<SolaceSelectAutocompleteItemProps>;
+	disabledItems?: boolean;
+	showGroupDivider?: boolean;
 }): JSX.Element => {
-	const [values, setValues] = useState([]);
+	const [values, setValues] = useState(value ?? []);
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 
 	const handleChange = (evt) => {
 		setValues(evt.value);
 	};
 
-	const handleFetchOptionsCallback = React.useCallback((searchTerm: string) => {
+	const handleFetchOptionsCallback = useCallback((searchTerm: string) => {
 		if (searchTerm) {
 			setMatchingValues(
 				SELECT_OPTIONS_WITH_CATEGORY_HEADING.filter((option) =>
@@ -711,24 +711,28 @@ const SelectionWithHeadingTemplate = ({
 		<div>
 			<SolaceSelectAutocomplete
 				name="demoSelect"
+				label={label}
 				multiple={true}
 				value={values}
 				options={matchingValues}
 				itemComponent={SolaceSelectAutocompleteItem}
 				itemMappingCallback={(option) => option}
 				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
 				onChange={handleChange}
 				fetchOptionsCallback={handleFetchOptionsCallback}
 				getOptionDisabledCallback={disabledItems ? handleOptionDisabled : undefined}
 				groupByCallback={getSolaceSelectAutocompleteGroupBy}
 				showGroupDivider={showGroupDivider}
+				disabled={disabled}
+				readOnly={readOnly}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
 };
 
-export const SelectionWithHeading = {
-	render: SelectionWithHeadingTemplate,
+export const MultiSelectionWithHeading = {
+	render: MultiSelectionWithHeadingTemplate,
 
 	parameters: {
 		// Delay snapshot 5 seconds until all interactions are done
@@ -744,8 +748,8 @@ export const SelectionWithHeading = {
 	}
 };
 
-export const SelectionWithHeadingAndDisabledItems = {
-	render: SelectionWithHeadingTemplate,
+export const MultiSelectionWithHeadingAndDisabledItems = {
+	render: MultiSelectionWithHeadingTemplate,
 
 	parameters: {
 		// Delay snapshot 5 seconds until all interactions are done
@@ -763,8 +767,8 @@ export const SelectionWithHeadingAndDisabledItems = {
 	}
 };
 
-export const SelectionWithHeadingWithDividers = {
-	render: SelectionWithHeadingTemplate,
+export const MultiSelectionWithHeadingWithDividers = {
+	render: MultiSelectionWithHeadingTemplate,
 
 	parameters: {
 		// Delay snapshot 5 seconds until all interactions are done
@@ -782,8 +786,8 @@ export const SelectionWithHeadingWithDividers = {
 	}
 };
 
-export const SelectionWithHeadingWithDividersAndDisabledItems = {
-	render: SelectionWithHeadingTemplate,
+export const MultiSelectionWithHeadingWithDividersAndDisabledItems = {
+	render: MultiSelectionWithHeadingTemplate,
 
 	parameters: {
 		// Delay snapshot 5 seconds until all interactions are done
@@ -820,16 +824,16 @@ const SAMPLE_APPLICATION_DOMAINS: Array<SolaceSelectAutocompleteItemProps> = [
 		value: "domainD"
 	},
 	{
-		name: "Domain With Long Name #1",
+		name: "Domain With Long Long Long Long Name #1",
 		value: "domain1"
 	},
 	{
-		name: "Domain With Long Name #2",
+		name: "Domain With Long Long Long Long Name #2",
 		value: "domain2"
 	}
 ];
 
-export const MultipleWithCustomTagRenderer = () => {
+export const MultiSelectionWithCustomTagRenderer = () => {
 	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>([
 		SAMPLE_APPLICATION_DOMAINS[0],
 		SAMPLE_APPLICATION_DOMAINS[2]
@@ -846,7 +850,7 @@ export const MultipleWithCustomTagRenderer = () => {
 		});
 	};
 
-	const handleFetchOptionsCallback = React.useCallback(async (searchTerm: string) => {
+	const handleFetchOptionsCallback = useCallback((searchTerm: string) => {
 		if (searchTerm) {
 			setMatchingValues(
 				SAMPLE_APPLICATION_DOMAINS.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()))
@@ -867,10 +871,11 @@ export const MultipleWithCustomTagRenderer = () => {
 				itemComponent={SolaceSelectAutocompleteItem}
 				itemMappingCallback={(option) => option}
 				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
 				onChange={handleChange}
 				fetchOptionsCallback={handleFetchOptionsCallback}
 				renderTags={() => (
-					<div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+					<div style={{ display: "flex", alignItems: "center", gap: "4px", paddingRight: "8px" }}>
 						<span>Application Domain: </span>
 						<span
 							style={{
@@ -900,7 +905,8 @@ export const MultipleWithCustomTagRenderer = () => {
 				{values.map((value) => {
 					return (
 						<div style={{ marginRight: "8px", marginBottom: "8px" }} key={value.value}>
-							<SolaceAttributeBadge
+							<SolaceChip
+								clickable
 								label={`Application Domain: ${value.name}`}
 								onDelete={() => handleDelete(value.value)}
 							/>
@@ -912,7 +918,7 @@ export const MultipleWithCustomTagRenderer = () => {
 	);
 };
 
-export const MultipleWithResponsiveTagRenderer = () => {
+export const MultiSelectionWithResponsiveTagRenderer = () => {
 	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>(SAMPLE_APPLICATION_DOMAINS.slice(1));
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 	const [selectedTags, setSelectedTags] = useState<{ id: string; label: string }[]>([]);
@@ -949,7 +955,7 @@ export const MultipleWithResponsiveTagRenderer = () => {
 	}, [values]);
 
 	// eslint-disable-next-line sonarjs/no-identical-functions
-	const handleFetchOptionsCallback = React.useCallback(async (searchTerm: string) => {
+	const handleFetchOptionsCallback = useCallback((searchTerm: string) => {
 		if (searchTerm) {
 			setMatchingValues(
 				SAMPLE_APPLICATION_DOMAINS.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()))
@@ -970,6 +976,7 @@ export const MultipleWithResponsiveTagRenderer = () => {
 				itemComponent={SolaceSelectAutocompleteItem}
 				itemMappingCallback={(option) => option}
 				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
 				onChange={handleChange}
 				fetchOptionsCallback={handleFetchOptionsCallback}
 				renderTags={() => (
@@ -992,7 +999,7 @@ export const MultipleWithResponsiveTagRenderer = () => {
 				{values.map((value) => {
 					return (
 						<div style={{ marginRight: "8px", marginBottom: "8px" }} key={value.value}>
-							<SolaceChip label={`${value.name}`} onDelete={() => handleDelete(value.value)} />
+							<SolaceChip clickable label={`${value.name}`} onDelete={() => handleDelete(value.value)} />
 						</div>
 					);
 				})}
@@ -1004,13 +1011,13 @@ export const MultipleWithResponsiveTagRenderer = () => {
 export const OpenDropDownOnButtonClick = () => {
 	const [values, setValues] = useState([]);
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
-	let demoInputRef;
+	const demoInputRef = useRef<HTMLInputElement>();
 
 	const handleChange = (evt) => {
 		setValues(evt.value);
 	};
 
-	const handleFetchOptionsCallback = React.useCallback((searchTerm: string) => {
+	const handleFetchOptionsCallback = useCallback((searchTerm: string) => {
 		if (searchTerm) {
 			setMatchingValues(
 				SELECT_OPTIONS.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()))
@@ -1035,11 +1042,12 @@ export const OpenDropDownOnButtonClick = () => {
 				itemComponent={SolaceSelectAutocompleteItem}
 				itemMappingCallback={(option) => option}
 				optionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}
+				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
 				onChange={handleChange}
 				fetchOptionsCallback={handleFetchOptionsCallback}
 				getOptionDisabledCallback={handleOptionDisabled}
 				inputRef={(input) => {
-					demoInputRef = input;
+					demoInputRef.current = input;
 				}}
 				openOnFocus
 				width="500px"
@@ -1047,7 +1055,7 @@ export const OpenDropDownOnButtonClick = () => {
 			<SolaceButton
 				variant="outline"
 				onClick={() => {
-					demoInputRef.focus();
+					demoInputRef.current?.focus();
 				}}
 			>
 				open the dropdown
@@ -1055,44 +1063,3 @@ export const OpenDropDownOnButtonClick = () => {
 		</div>
 	);
 };
-
-// export const CustomHeight = {
-// 	parameters: {
-// 		// Delay snapshot 5 seconds until all interactions are done
-// 		chromatic: { delay: 5000 },
-// 		mockData: [
-// 			{
-// 				url: "http://someOtherExample.com/filterOptions",
-// 				method: "GET",
-// 				status: 200,
-// 				response: {
-// 					data: SELECT_OPTIONS
-// 				},
-// 				delay: 500
-// 			}
-// 		]
-// 	},
-
-// 	args: {
-// 		maxHeight: "7.4rem",
-// 		onChange: action("callback"),
-// 		itemComponent: SolaceSelectAutocompleteItem,
-// 		optionsLabelCallback: getSolaceSelectAutocompleteOptionLabel,
-// 		itemMappingCallback: (option) => option,
-// 		title: "Demo Select",
-// 		name: "demoSelect",
-// 		label: "Some Label",
-// 		dataQa: "customHeight",
-// 		options: store.get("options") || null,
-// 		fetchOptionsCallback: async (searchTerm: string) => {
-// 			await fetchOptions(searchTerm);
-// 		},
-// 		onCloseCallback: () => store.set({ options: [] })
-// 	},
-
-// 	play: async ({ canvasElement }) => {
-// 		// Starts querying the component from it's root element
-// 		const canvas = within(canvasElement);
-// 		await userEvent.click(await canvas.findByRole("combobox"));
-// 	}
-// };

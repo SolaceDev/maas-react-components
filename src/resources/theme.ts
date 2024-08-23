@@ -1054,12 +1054,28 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiButtonBase-root.MuiChip-root": {
 							height: "24px",
 							margin: "3px 6px 3px 0",
-							borderRadius: "40px",
+							borderRadius: "4px",
 							fontSize: "14px",
-							svg: {
-								width: "17px",
-								height: "17px",
-								fill: themeMapping.palette.secondary.wMain
+							cursor: "pointer",
+							backgroundColor: themeMapping.palette.secondary.w20,
+							color: themeMapping.palette.primary.text.wMain,
+							".MuiChip-deleteIcon": {
+								fill: themeMapping.palette.primary.text.wMain
+							},
+							"&:hover": {
+								backgroundColor: themeMapping.palette.secondary.w40,
+								color: themeMapping.palette.primary.text.wMain,
+								":has(.MuiChip-deleteIcon:hover)": {
+									backgroundColor: themeMapping.palette.secondary.w20
+								},
+								".MuiChip-deleteIcon:hover": {
+									backgroundColor: themeMapping.palette.secondary.w40
+								}
+							},
+							"&:focus": {
+								backgroundColor: themeMapping.palette.secondary.w40,
+								color: themeMapping.palette.primary.text.wMain,
+								boxShadow: "none"
 							}
 						}
 					},

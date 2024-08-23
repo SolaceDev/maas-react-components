@@ -7,6 +7,7 @@ export interface SolaceSelectAutocompleteItemProps {
 	supplementalText?: string;
 	divider?: boolean;
 	categoryHeading?: string;
+	isNew?: boolean;
 }
 
 export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option?.name ?? "";
@@ -25,12 +26,13 @@ export const getGroupBy = (option: SolaceSelectAutocompleteItemProps): string =>
 function SolaceSelectAutocompleteItem({
 	name,
 	subText,
-	supplementalText
+	supplementalText,
+	isNew
 }: SolaceSelectAutocompleteItemProps): JSX.Element {
 	const sizeOfColumn = supplementalText ? 8 : 12;
 	const middlePadding = supplementalText ? "16px" : "0px";
 	return (
-		<Grid container direction={"column"} className={clsx({ multiline: !!subText })} py={0.5}>
+		<Grid container direction={"column"} className={clsx({ multiline: !!subText || isNew })} py={0.5}>
 			<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"flex-start"}>
 				<Grid item xs={sizeOfColumn} zeroMinWidth style={{ wordBreak: "break-word", paddingRight: middlePadding }}>
 					{name}

@@ -1,5 +1,5 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
-import { Box, Autocomplete, TextField, useTheme, styled, Divider } from "@mui/material";
+import React, { SyntheticEvent, useEffect, useMemo, useRef, useState } from "react";
+import { Box, Autocomplete, TextField, useTheme, styled, Divider, AutocompleteChangeReason } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 import CloseIcon from "@mui/icons-material/Close";
@@ -87,6 +87,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	limitTags?: number;
 	/**
+	 * The label to display when the tags are truncated by limitTags.
+	 */
+	getLimitTagsText?: (more: number) => string;
+	/**
 	 * Fetch updated list of options
 	 */
 	fetchOptionsCallback: (searchTerm: string) => void;
@@ -107,9 +111,17 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	getShowOptionDividerCallback?: (option: V) => boolean;
 	/**
+	 * Used to determin the key for a given option
+	 */
+	getOptionKeyCallback?: (option: V) => string;
+	/**
 	 * The callback function which generates group heading
 	 */
 	groupByCallback?: (option: V) => string;
+	/**
+	 * Whether to clear search input when the option is selected
+	 */
+	shouldClearSearchOnSelectCallback?: (option: V) => boolean;
 	/**
 	 * Whether to show divider between group headings
 	 */
@@ -131,6 +143,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	disableCloseOnSelect?: boolean;
 	/**
+	 * Boolean flag to clear search input on select. This flag is only applicable for multiple select and is false by default
+	 */
+	clearSearchOnSelect?: boolean;
+	/**
 	 * Custom max-height of the expanded dropdown,
 	 * MaxHeight supports standard css units (px,rems, etc.)
 	 */
@@ -145,15 +161,17 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	minWidth?: string;
 }
 
-const CustomHeightTextField = styled(TextField)`
-	& .MuiOutlinedInput-input {
-		height: 32px;
+const CustomHeightTextField = styled(TextField)(() => ({
+	"& .MuiOutlinedInput-input": {
+		height: "32px"
 	}
-`;
+}));
 
 const GroupItems = styled("ul")(() => ({
 	padding: 0
 }));
+
+const DEFAULT_DATA_QA = "SolaceSelectAutocomplete";
 
 function SolaceSelectAutocomplete<T, V>({
 	id,
@@ -174,6 +192,7 @@ function SolaceSelectAutocomplete<T, V>({
 	itemMappingCallback,
 	optionsLabelCallback,
 	getShowOptionDividerCallback,
+	shouldClearSearchOnSelectCallback,
 	groupByCallback,
 	showGroupDivider = false,
 	dataQa,
@@ -181,26 +200,33 @@ function SolaceSelectAutocomplete<T, V>({
 	options,
 	renderTags,
 	limitTags,
+	getLimitTagsText,
 	fetchOptionsCallback,
 	onCloseCallback,
 	isOptionEqualToValueCallback,
 	getOptionDisabledCallback,
+	getOptionKeyCallback,
 	width,
 	inputRef,
 	openOnFocus = false,
 	disableCloseOnSelect,
+	clearSearchOnSelect = false,
 	maxHeight,
 	fullWidth = false,
 	minWidth
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
-	const [inputValue, setInputValue] = React.useState("");
+	const [inputValue, setInputValue] = useState("");
 	const [filteredOptions, setFilteredOptions] = useState(options || []);
 	const [loading, setLoading] = useState(false);
 	const [isFetching, setIsFetching] = useState(false);
 	const [open, setOpen] = useState(false);
 	const [resetOptions, setResetOptions] = useState(false);
+	const currentInputValue = useRef<string>("");
+	const persistInputValueOnSelect = useMemo(() => {
+		return multiple && !clearSearchOnSelect;
+	}, [clearSearchOnSelect, multiple]);
 
 	useEffect(() => {
 		setSelectedValue(value || null);
@@ -231,24 +257,56 @@ function SolaceSelectAutocomplete<T, V>({
 		}
 	}, [fetchOptionsCallback, resetOptions]);
 
-	const handleChange = (_event: SyntheticEvent<Element, Event>, _value: V | V[] | null) => {
-		// set internal state for selected value
+	const handleChange = (
+		_event: SyntheticEvent<Element, Event>,
+		_value: V | V[] | null,
+		reason: AutocompleteChangeReason
+	) => {
+		if (reason === "clear" && persistInputValueOnSelect && inputValue) {
+			// If search input needs to be peristed after user select/deselect an option, then clicking on "X" button should clear search input first and then clear selected values
+			return;
+		}
+
+		// Set internal state for selected value
 		setSelectedValue(_value || null);
 
-		// notify externally
+		// Notify externally
 		if (onChange) {
 			onChange({
 				name: name,
 				value: _value
 			});
 		}
+
+		// Clear search input if needed. Since onChange is called before this, we can assume parent of this component has updated data used to populate the options
+		if (reason === "selectOption" && persistInputValueOnSelect && _value && shouldClearSearchOnSelectCallback) {
+			const shouldClear =
+				(Array.isArray(_value) && _value.some((option) => shouldClearSearchOnSelectCallback(option))) ||
+				shouldClearSearchOnSelectCallback(_value as V);
+			if (shouldClear) {
+				setInputValue("");
+				setResetOptions(true);
+			}
+		}
 	};
 
-	const handleInputChange = (_event: SyntheticEvent<Element, Event>, newInputValue: string) => {
-		setInputValue(newInputValue);
-		if (newInputValue === "") {
-			// Reset options when inputValue is empty
-			setResetOptions(true);
+	const handleInputChange = (_event: SyntheticEvent<Element, Event>, newInputValue: string, reason: string) => {
+		// Clear search input when user selects an option is built-in behavior from MUI's Autocomplete. This logic is to prevent that behavior.
+		// - NOTE: selectOption, removeOption are only supported in MUI 6.x, they are included here so that the logic is future-proof.
+		if (
+			persistInputValueOnSelect &&
+			(reason === "reset" || reason === "selectOption" || reason === "removeOption") &&
+			currentInputValue.current
+		) {
+			// Manually set inputValue to currentInputValue to keep inputValue state in this component in sync with with underlying Autocomplete component
+			setInputValue(currentInputValue.current);
+		} else {
+			currentInputValue.current = newInputValue;
+			setInputValue(newInputValue);
+			if (newInputValue === "") {
+				// Reset options when inputValue is empty
+				setResetOptions(true);
+			}
 		}
 	};
 
@@ -259,6 +317,9 @@ function SolaceSelectAutocomplete<T, V>({
 
 	const handleClose = () => {
 		onCloseCallback && onCloseCallback(); // notify parent select closed
+		if (persistInputValueOnSelect) {
+			setInputValue("");
+		}
 		setOpen(false);
 	};
 
@@ -289,15 +350,20 @@ function SolaceSelectAutocomplete<T, V>({
 		<Autocomplete
 			ListboxProps={{ style: { maxHeight: maxHeight } }}
 			id={getId()}
-			data-qa={dataQa}
+			data-qa={dataQa ?? DEFAULT_DATA_QA}
 			filterOptions={(x) => x}
 			onInputChange={handleInputChange}
 			options={filteredOptions}
-			autoHighlight
+			autoHighlight={true} // auto highlight first option
 			value={selectedValue}
+			inputValue={inputValue} // Use controlled input value
 			getOptionLabel={(option) => {
 				const mappedOption = itemMappingCallback(option);
 				return optionsLabelCallback(mappedOption);
+			}}
+			getOptionKey={(option) => {
+				const mappedOption = itemMappingCallback(option);
+				return getOptionKeyCallback?.(option) ?? optionsLabelCallback(mappedOption);
 			}}
 			renderOption={(props, option) => {
 				if (option) {
@@ -326,37 +392,42 @@ function SolaceSelectAutocomplete<T, V>({
 			onOpen={handleOpen}
 			onChange={handleChange}
 			popupIcon={<SelectDropdownIcon />}
-			renderInput={(params) => (
-				<CustomHeightTextField
-					{...params}
-					title={title}
-					autoComplete="off"
-					placeholder={placeholder}
-					error={hasErrors}
-					inputProps={{
-						...params.inputProps,
-						"data-qa": `${dataQa}-input`,
-						"data-tags": dataTags,
-						"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
-						"aria-labelledby": label ? `${getId()}-label` : "",
-						"aria-readonly": readOnly,
-						title: title
-					}}
-					InputProps={{
-						...params.InputProps,
-						sx: { height: theme.spacing(4) },
-						className: readOnly ? "readOnlySelect" : "",
-						disabled: disabled,
-						readOnly: readOnly,
-						required: required
-					}}
-					inputRef={inputRef}
-				/>
-			)}
+			renderInput={(params) => {
+				const { InputProps, inputProps, ...rest } = params;
+
+				return (
+					<CustomHeightTextField
+						{...rest}
+						title={title}
+						autoComplete="off"
+						placeholder={placeholder}
+						error={hasErrors}
+						inputProps={{
+							...inputProps,
+							"data-qa": `${dataQa ?? DEFAULT_DATA_QA}-input`,
+							"data-tags": dataTags,
+							"aria-describedby": helperText ? `${getId()}-select-helper-text` : "",
+							"aria-labelledby": label ? `${getId()}-label` : "",
+							"aria-readonly": readOnly,
+							title: title
+						}}
+						InputProps={{
+							...InputProps,
+							sx: { height: theme.spacing(4) },
+							className: readOnly ? "readOnlySelect" : "",
+							disabled: disabled,
+							readOnly: readOnly,
+							required: required
+						}}
+						inputRef={inputRef}
+					/>
+				);
+			}}
 			isOptionEqualToValue={isOptionEqualToValueCallback}
 			getOptionDisabled={getOptionDisabledCallback}
 			renderTags={renderTags}
 			limitTags={limitTags}
+			getLimitTagsText={getLimitTagsText}
 			ChipProps={{
 				deleteIcon: <CloseIcon />
 			}}
@@ -364,6 +435,7 @@ function SolaceSelectAutocomplete<T, V>({
 			renderGroup={groupByCallback && showGroupDivider ? renderGroup : undefined}
 			fullWidth={fullWidth}
 			sx={{ minWidth: minWidth }}
+			clearText={persistInputValueOnSelect && inputValue ? "Clear Search" : "Clear"}
 		/>
 	);
 
