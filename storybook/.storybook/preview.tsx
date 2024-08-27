@@ -31,17 +31,7 @@ const preview: Preview = {
 				date: /Date$/
 			}
 		},
-		docs: {
-			// template definition for  docs page
-			page: () => (
-				<>
-					<Title />
-					<Description />
-					<Primary />
-					<Stories />
-				</>
-			)
-		}
+		tags: ["autodocs"]
 	},
 	// Provide the MSW addon loader globally
 	decorators
