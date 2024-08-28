@@ -36,7 +36,8 @@ const config: StorybookConfig = {
 				{
 					loader: "babel-loader",
 					options: {
-						presets: ["@babel/preset-typescript", "@babel/preset-react"]
+						presets: ["@babel/preset-typescript", "@babel/preset-react"],
+						plugins: ["@babel/plugin-transform-react-display-name"]
 					}
 				}
 			],
