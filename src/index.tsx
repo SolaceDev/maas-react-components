@@ -107,5 +107,6 @@ export { initializeDataTrackingApi } from "./resources/trackingapi";
 
 export { default as SolaceDatePicker } from "./components/SolaceDatePicker";
 export { default as SolaceFileUploader } from "./components/fileuploader/SolaceFileUploader";
+export { default as SolaceDonutChart } from "./components/SolaceDonutChart";
 export { default as SolaceJsonSchemaForm } from "./components/jsonschemaform/SolaceJsonSchemaForm";
 export type { SolaceJsonSchemaFormProps } from "./components/jsonschemaform/SolaceJsonSchemaForm";
