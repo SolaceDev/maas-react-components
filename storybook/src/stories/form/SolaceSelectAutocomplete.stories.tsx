@@ -549,13 +549,16 @@ export const MultiSelectionWithDisabledItems = () => {
 };
 
 const MultiSelectionWithCreateNewTemplate = ({
-	clearSearchWhenSelectNew = false
+	clearSearchWhenSelectNew = false,
+	initialValues = []
 }: {
 	clearSearchWhenSelectNew: boolean;
+	initialValues: SolaceSelectAutocompleteItemProps[];
+	validateInput: boolean;
 }) => {
 	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
-	const [availableValues, setAvailableValues] = useState<SolaceSelectAutocompleteItemProps[]>(SELECT_OPTIONS.slice());
+	const [availableValues, setAvailableValues] = useState<SolaceSelectAutocompleteItemProps[]>(initialValues.slice());
 
 	const handleChange = (evt) => {
 		const selectedValues: SolaceSelectAutocompleteItemProps[] = [];
@@ -635,6 +638,15 @@ export const MultiSelectionWithCreateNewAndClearSearchWhenSelectNew = {
 
 	args: {
 		clearSearchWhenSelectNew: true
+	}
+};
+
+export const MultiSelectionWithInitialValueCreateNewAndClearSearchWhenSelectNew = {
+	render: MultiSelectionWithCreateNewTemplate,
+
+	args: {
+		clearSearchWhenSelectNew: true,
+		initialValues: SELECT_OPTIONS
 	}
 };
 

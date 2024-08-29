@@ -1098,10 +1098,16 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							backgroundColor: themeMapping.palette.secondary.w10
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
-							backgroundColor: themeMapping.palette.brand.w10
+							backgroundColor: themeMapping.palette.brand.w10,
+							"&:hover": {
+								backgroundColor: themeMapping.palette.secondary.w10
+							}
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
-							backgroundColor: themeMapping.palette.secondary.w10
+							backgroundColor: themeMapping.palette.brand.w10,
+							"&:hover": {
+								backgroundColor: themeMapping.palette.secondary.w10
+							}
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-disabled='true']": {
 							color: themeMapping.palette.secondary.text.w50,
