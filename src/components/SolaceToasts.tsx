@@ -1,8 +1,7 @@
-import { IconButton, Snackbar, useTheme } from "@mui/material";
+import { Snackbar, useTheme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import CloseIcon from "@mui/icons-material/Close";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
 
@@ -24,11 +23,6 @@ export type SolaceToastsProps = {
  */
 export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
 	const theme = useTheme();
-	const defaultAction = props.action ?? (
-		<IconButton aria-label="delete" onClick={props.onClose} size="large">
-			<CloseIcon className="close-icon" />
-		</IconButton>
-	);
 	const iconMapping = {
 		success: <CheckCircleOutlineIcon sx={{ color: theme.palette.ux.brand.wMain }} />,
 		error: <CancelOutlinedIcon sx={{ color: theme.palette.ux.error.w100 }} fontSize="inherit" />,
@@ -43,15 +37,15 @@ export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
 			className="alert-toast"
 			{...props}
 			message={severity === undefined && message}
-			// will persist in case of error until closed manually.
-			autoHideDuration={severity === "error" ? null : 6000}
+			//if no action then 8000 else 4000
+			autoHideDuration={props.action ? 8000 : 4000}
 			onClose={(_event, reason) => {
 				// disable close on clickaway
 				if (onClose && reason !== "clickaway") {
 					onClose(_event);
 				}
 			}}
-			action={defaultAction}
+			action={props.action}
 			role="toast"
 			anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 		>
@@ -60,8 +54,6 @@ export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
 					style={{ padding: severity ? "0 16px 0 8px" : "0 16px" }}
 					icon={iconMapping[severity]}
 					severity={severity}
-					onClose={props.onClose}
-					action={props.action}
 				>
 					{message}
 				</Alert>

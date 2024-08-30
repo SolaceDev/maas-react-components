@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta } from "@storybook/react";
-import { SolaceToasts, SolaceButton } from "@SolaceDev/maas-react-components";
+import { SolaceToasts, SolaceButton, IconButton } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -47,7 +47,8 @@ export const SuccessToast = {
 	args: {
 		severity: "success",
 		message: "This is a sample success toast",
-		open: true
+		open: true,
+		onClose: action("closing")
 	}
 };
 
@@ -55,7 +56,8 @@ export const InfoToast = {
 	args: {
 		severity: "info",
 		message: "This is a sample info toast",
-		open: true
+		open: true,
+		onClose: action("closing")
 	}
 };
 
@@ -63,7 +65,8 @@ export const WarningToast = {
 	args: {
 		severity: "warning",
 		message: "This is a sample warning toast",
-		open: true
+		open: true,
+		onClose: action("closing")
 	}
 };
 
@@ -71,15 +74,21 @@ export const ErrorToast = {
 	args: {
 		severity: "error",
 		message: "This is a sample error toast",
-		open: true
+		open: true,
+		onClose: action("closing")
 	}
 };
 
 export const WithActionIcon = {
 	args: {
 		message: "This is with an action icon",
-		action: <CloseIcon className="close-icon" onClick={action("delete icon clicked")} />,
-		open: true
+		action: (
+			<IconButton onClick={action("close icon clicked")}>
+				<CloseIcon className="close-icon" />
+			</IconButton>
+		),
+		open: true,
+		onClose: action("closing")
 	}
 };
 
@@ -87,21 +96,17 @@ export const WithActionAndCloseIcon = {
 	args: {
 		message: "This is with an action icon and a close icon",
 		action: (
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "row",
-					justifyContent: "center",
-					alignItems: "center"
-				}}
-			>
+			<React.Fragment>
 				<SolaceButton variant="text" onClick={action("action button clicked")}>
 					Action
 				</SolaceButton>
-				<CloseIcon className="close-icon" onClick={action("close icon clicked")} />
-			</div>
+				<IconButton onClick={action("close icon clicked")}>
+					<CloseIcon className="close-icon" />
+				</IconButton>
+			</React.Fragment>
 		),
-		open: true
+		open: true,
+		onClose: action("closing")
 	}
 };
 

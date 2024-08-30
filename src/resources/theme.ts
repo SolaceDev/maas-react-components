@@ -156,7 +156,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						".MuiPaper-root": {
-							height: "40px",
+							minHeight: "40px",
 							minWidth: "200px",
 							display: "flex",
 							alignItems: "center",
