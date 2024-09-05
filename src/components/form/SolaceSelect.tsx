@@ -1,4 +1,4 @@
-import { TextField, useTheme } from "@mui/material";
+import { MenuProps, PopoverOrigin, TextField, useTheme } from "@mui/material";
 import React, { ReactNode, useEffect, useState } from "react";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -76,6 +76,7 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	/**
 	 * Boolean flag to show the select option that has empty value
 	 */
+
 	displayEmpty?: boolean;
 	/**
 	 * Boolean flag to show the select options
@@ -89,6 +90,14 @@ export interface SolaceSelectProps extends SolaceComponentProps {
 	 * Callback function to trigger whenever the dropdown closes
 	 */
 	onClose?: () => void;
+	/**
+	 * Custom anchorOrigin of the menu
+	 */
+	menuAnchorOrigin?: PopoverOrigin;
+	/**
+	 * Custom transformOrigin of the menu
+	 */
+	menuTransformOrigin?: PopoverOrigin;
 }
 
 function SolaceSelect({
@@ -113,7 +122,9 @@ function SolaceSelect({
 	maxHeight,
 	open,
 	onOpen,
-	onClose
+	onClose,
+	menuAnchorOrigin,
+	menuTransformOrigin
 }: SolaceSelectProps): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value);
@@ -134,6 +145,19 @@ function SolaceSelect({
 
 	const getId = () => {
 		return id ? id : name;
+	};
+
+	const getMenuProps = () => {
+		const menuProps: Partial<MenuProps> = {
+			sx: { maxHeight: maxHeight, width: width }
+		};
+		if (menuAnchorOrigin) {
+			menuProps.anchorOrigin = menuAnchorOrigin;
+		}
+		if (menuTransformOrigin) {
+			menuProps.transformOrigin = menuTransformOrigin;
+		}
+		return menuProps;
 	};
 
 	const select = () => (
@@ -161,14 +185,13 @@ function SolaceSelect({
 			autoComplete="off"
 			required={required}
 			disabled={disabled || readOnly}
+			error={hasErrors}
 			margin="dense"
 			value={selectedValue}
 			onChange={handleChange}
 			SelectProps={{
 				IconComponent: SelectDropdownIcon,
-				MenuProps: {
-					sx: { maxHeight: maxHeight, width: width }
-				},
+				MenuProps: getMenuProps(),
 
 				renderValue: getOptionDisplayValue
 					? (value: unknown) => {

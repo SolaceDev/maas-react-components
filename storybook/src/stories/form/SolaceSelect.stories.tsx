@@ -106,6 +106,12 @@ SELECT_OPTIONS_WITH_LONG_TEXT.push(
 		Very long menu option used to test how long I can go before it breaks the dialog
 	</MenuItem>
 );
+const SELECT_OPTIONS_WITH_LONG_TEXT_AND_CUSTOM_WIDTH = [...SELECT_OPTIONS];
+SELECT_OPTIONS_WITH_LONG_TEXT_AND_CUSTOM_WIDTH.push(
+	<MenuItem key="option4" value="option4" sx={{ maxWidth: "400px" }}>
+		Very long menu option used to test how long I can go before it breaks the dialog with custom width
+	</MenuItem>
+);
 
 const SELECT_OPTIONS_WITH_SUBTEXT: Array<SolaceSelectAutocompleteItemProps> = [
 	{
@@ -214,7 +220,7 @@ export const DefaultTextfield = {
 	}
 };
 
-export const CustomWidth = {
+export const CustomSelectWidth = {
 	args: {
 		onChange: action("callback"),
 		title: TITLE,
@@ -223,6 +229,32 @@ export const CustomWidth = {
 		children: SELECT_OPTIONS_WITH_LONG_TEXT,
 		width: "350px"
 	}
+};
+
+/**
+ * The width on SolaceSelect applies to both Select input and MenuProps so by default they have the same width.
+ * The width on MenuProps applies to the MuiModal-root (with role="presentation") that wraps the menu list
+ * It starts at the top left corner of the screen. If set, custom menuItem width won't work.
+ * In this example, the width of the select is set to 350px on the wrapper container and the custom menu item has maxWidth 400px.
+ * The alignment is calculated based on the space available. If available, the default of anchorOrigin is bottom center, and the transformOrigin is top center.
+ * In this example, it is set to bottom left and top left respectively, so that the menu list starts from the bottom left corner of the select.
+ */
+export const CustomMenuItemWidthAndAlignment = () => {
+	return (
+		<div style={{ marginLeft: "400px", width: "350px" }}>
+			<SolaceSelect
+				title={TITLE}
+				id="demoSelectId"
+				name="demoSelect"
+				dataQa="demoSelect"
+				onChange={action("callback")}
+				menuAnchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+				menuTransformOrigin={{ vertical: "top", horizontal: "left" }}
+			>
+				{SELECT_OPTIONS_WITH_LONG_TEXT_AND_CUSTOM_WIDTH}
+			</SolaceSelect>
+		</div>
+	);
 };
 
 export const CustomMaxHeight = {
