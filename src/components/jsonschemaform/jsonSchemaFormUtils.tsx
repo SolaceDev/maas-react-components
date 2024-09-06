@@ -60,9 +60,9 @@ const CustomTextWidget = function (
 			return [
 				<SolaceButton
 					key={showSensitiveField ? "eyeIcon" : "hideEyeIcon"}
-					dataQa={showSensitiveField ? "showPasswordButton" : "hidePasswordButton"}
 					variant="icon"
 					onClick={() => setShowSensitiveField(!showSensitiveField)}
+					dataQa={showSensitiveField ? "showPasswordButton" : "hidePasswordButton"}
 				>
 					{showSensitiveField ? <VisibilityShowIcon /> : <VisibilityHideIcon />}
 				</SolaceButton>
@@ -87,9 +87,10 @@ const CustomTextWidget = function (
 					disabled={props.disabled}
 					width="100%"
 					maxLength={props.schema.maxLength}
-					dataQa={`${props.label}-form-textArea`}
 					hasErrors={!!errorMessage}
 					helperText={errorMessage || props.schema.description}
+					placeholder={props.schema.placeholder ?? ""}
+					dataQa={`${props.label}-form-textArea`}
 				></SolaceTextArea>
 			) : (
 				<SolaceTextField
@@ -102,9 +103,10 @@ const CustomTextWidget = function (
 					required={props.required && !props.readonly}
 					disabled={props.disabled}
 					endAdornment={endAdornment}
-					dataQa={`${props.label}-form-textField`}
 					hasErrors={!!errorMessage}
 					helperText={errorMessage || props.schema.description}
+					placeholder={props.schema.placeholder ?? ""}
+					dataQa={`${props.label}-form-textField`}
 				/>
 			)}
 
@@ -112,9 +114,9 @@ const CustomTextWidget = function (
 				<Box ml={1}>
 					<SolaceButton
 						key={showSensitiveField ? "eyeIcon" : "hideEyeIcon"}
-						dataQa={showSensitiveField ? "showPasswordButton" : "hidePasswordButton"}
 						variant="icon"
 						onClick={() => setShowSensitiveField(!showSensitiveField)}
+						dataQa={showSensitiveField ? "showPasswordButton" : "hidePasswordButton"}
 					>
 						{showSensitiveField ? <VisibilityShowIcon /> : <VisibilityHideIcon />}
 					</SolaceButton>
@@ -145,6 +147,7 @@ const CustomSelectWidget = function (
 				id={props.id}
 				hasErrors={!!errorMessage}
 				helperText={errorMessage || props.schema.description}
+				dataQa={`${props.id}-form-select`}
 			>
 				{props.options.enumOptions.map((option) => (
 					<MenuItem value={option.value} key={option.label}>
@@ -177,6 +180,7 @@ const CustomCheckboxWidget = function (
 			hasErrors={!!errorMessage}
 			helperText={errorMessage}
 			subTextProps={{ label: errorMessage ? "" : props.schema.description, light: true }}
+			dataQa={`${props.label}-form-checkbox`}
 		/>
 	);
 };

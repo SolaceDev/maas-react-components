@@ -233,9 +233,9 @@ const solaceQueueSchemaPartial = {
 			type: "string"
 		},
 		queueName: {
-			minLength: 7,
-			maxLength: 30,
+			pattern: "^sc_ep_[a-z]+$",
 			description: "sc_ep_<squad>",
+			placeholder: "sc_ep_event",
 			type: "string"
 		}
 	},

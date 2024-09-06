@@ -52,11 +52,11 @@ const CustomForm = styled(Form)(({ theme }) => ({
 				},
 
 				".MuiBox-root": {
-					".MuiFormLabel-asterisk": {
+					"label .MuiFormLabel-asterisk": {
 						display: "none"
 					},
-					"> label .MuiFormLabel-asterisk": {
-						display: "inline" // display only first asterisk on label
+					"label[for] .MuiFormLabel-asterisk": {
+						display: "inline" // display only first asterisk on label for input
 					}
 				}
 			}
