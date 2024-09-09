@@ -1,9 +1,10 @@
 import React, { SyntheticEvent, useEffect, useMemo, useRef, useState } from "react";
-import { Box, Autocomplete, TextField, useTheme, styled, Divider, AutocompleteChangeReason } from "@mui/material";
+import { Box, Autocomplete, TextField, useTheme, styled, Divider, AutocompleteChangeReason, Chip } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 import CloseIcon from "@mui/icons-material/Close";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
+import SolaceTooltip from "../SolaceToolTip";
 
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
 	/**
@@ -429,7 +430,28 @@ function SolaceSelectAutocomplete<T, V>({
 			limitTags={limitTags}
 			getLimitTagsText={getLimitTagsText}
 			ChipProps={{
-				deleteIcon: <CloseIcon />
+				deleteIcon: <CloseIcon />,
+				component:
+					multiple && readOnly
+						? (props) => {
+								const selectedOptions = (selectedValue as V[]) || [];
+								const option = selectedOptions[props["data-tag-index"]];
+								let label = null;
+								if (option) {
+									label = optionsLabelCallback(itemMappingCallback(option));
+								}
+								return label ? (
+									<Chip
+										label={
+											<SolaceTooltip variant="overflow" title={label}>
+												{label}
+											</SolaceTooltip>
+										}
+										disabled={true}
+									></Chip>
+								) : null;
+						  }
+						: undefined
 			}}
 			groupBy={groupByCallback}
 			renderGroup={groupByCallback && showGroupDivider ? renderGroup : undefined}

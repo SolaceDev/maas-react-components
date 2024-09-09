@@ -18,6 +18,8 @@ export interface SolaceSelectAutocompleteResponsiveTagsProps {
 	overflowIndicatorLabelWidth?: number;
 	onDelete?: (id: string) => void;
 	dataQa?: string;
+	disabled?: boolean;
+	readOnly?: boolean;
 }
 
 function SolaceSelectAutocompleteResponsiveTags({
@@ -29,7 +31,9 @@ function SolaceSelectAutocompleteResponsiveTags({
 	overflowIndicatorLabelSingular,
 	overflowIndicatorLabelWidth,
 	onDelete,
-	dataQa = "autocompleteTags"
+	dataQa = "autocompleteTags",
+	disabled = false,
+	readOnly = false
 }: SolaceSelectAutocompleteResponsiveTagsProps) {
 	const handleDelete = useCallback(
 		(id: string) => {
@@ -49,12 +53,13 @@ function SolaceSelectAutocompleteResponsiveTags({
 						variant={CHIP_VARIANT.FILLED}
 						maxWidth={tagMaxWidth}
 						label={tag.label}
+						disabled={disabled || readOnly}
 						onDelete={() => handleDelete(tag.id)}
 					/>
 				)
 			};
 		});
-	}, [dataQa, handleDelete, tagMaxWidth, tags]);
+	}, [dataQa, handleDelete, tagMaxWidth, tags, disabled, readOnly]);
 
 	return tagChips?.length > 0 ? (
 		<Container>

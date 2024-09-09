@@ -1039,7 +1039,25 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							flexWrap: "wrap"
 						},
 						".MuiOutlinedInput-root.readOnlySelect": {
-							padding: "0"
+							padding: "0",
+							// styles specifically applied when autocomplete allows multiple lines with chips
+							".MuiChip-root": {
+								height: "24px",
+								margin: "3px 6px 3px 0",
+								borderRadius: "4px",
+								fontSize: "14px",
+								cursor: "pointer",
+								backgroundColor: themeMapping.palette.secondary.w20,
+								color: themeMapping.palette.primary.text.wMain,
+								"&.Mui-disabled, &.solaceChip.MuiChip-filledDefault.Mui-disabled": {
+									opacity: 1,
+									pointerEvents: "initial",
+									cursor: "default",
+									"&:hover": {
+										backgroundColor: themeMapping.palette.secondary.w20
+									}
+								}
+							}
 						},
 						".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
 							padding: "0"
@@ -1061,6 +1079,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							color: themeMapping.palette.primary.text.wMain,
 							".MuiChip-deleteIcon": {
 								fill: themeMapping.palette.primary.text.wMain
+							},
+							"&.Mui-disabled, &.solaceChip.MuiChip-filledDefault.Mui-disabled": {
+								// solace chip made disabled background opacity 1, has to change it back to default 0.38
+								opacity: 0.38
 							},
 							"&:hover": {
 								backgroundColor: themeMapping.palette.secondary.w40,

@@ -101,6 +101,11 @@ export default {
 			control: {
 				type: "text"
 			}
+		},
+		clearSearchOnSelect: {
+			control: {
+				type: "boolean"
+			}
 		}
 	}
 	// decorators: [withState()]
@@ -173,6 +178,10 @@ function fetchOptions(
 	});
 }
 
+function getLongLabel(option: SolaceSelectAutocompleteItemProps) {
+	return option.name + " with Long Name to Check Responsiveness Works Properly";
+}
+
 const DefaultSelectionTemplate = ({
 	multiple = false,
 	readOnly = false,
@@ -226,7 +235,7 @@ const DefaultSelectionTemplate = ({
 						...option,
 						name:
 							longLabel && (option.value === "option2" || option.value === "option4")
-								? `${option.name} with long long long long long name`
+								? getLongLabel(option)
 								: option.name
 					};
 				}),
@@ -240,7 +249,7 @@ const DefaultSelectionTemplate = ({
 	);
 
 	const handleOptionDisabled = (option) => {
-		return option.name === SELECT_OPTIONS[2].name || option.name === SELECT_OPTIONS[3].name;
+		return option.value === SELECT_OPTIONS[2].value || option.value === SELECT_OPTIONS[3].value;
 	};
 
 	return (
@@ -468,7 +477,8 @@ export const MultiSelectionReadOnly = {
 		label: "Some Label",
 		multiple: true,
 		readOnly: true,
-		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[2]]
+		longLabel: true,
+		value: [SELECT_OPTIONS[0], { ...SELECT_OPTIONS[3], name: getLongLabel(SELECT_OPTIONS[3]) }]
 	}
 };
 
@@ -930,7 +940,7 @@ export const MultiSelectionWithCustomTagRenderer = () => {
 	);
 };
 
-export const MultiSelectionWithResponsiveTagRenderer = () => {
+export const MultiSelectionWithResponsiveTagRenderer = ({ disabled = false, readOnly = false }) => {
 	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>(SAMPLE_APPLICATION_DOMAINS.slice(1));
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 	const [selectedTags, setSelectedTags] = useState<{ id: string; label: string }[]>([]);
@@ -982,6 +992,8 @@ export const MultiSelectionWithResponsiveTagRenderer = () => {
 			<SolaceSelectAutocomplete
 				name="applicationDomain"
 				placeholder={values.length ? "" : "Application Domain"}
+				disabled={disabled}
+				readOnly={readOnly}
 				multiple={true}
 				value={values}
 				options={matchingValues}
@@ -1002,6 +1014,8 @@ export const MultiSelectionWithResponsiveTagRenderer = () => {
 								overflowIndicatorLabel={"Filters"}
 								overflowIndicatorLabelSingular={"Filter"}
 								dataQa={"applicationDomainSelect-tags"}
+								disabled={disabled}
+								readOnly={readOnly}
 							/>
 						)}
 					</>
@@ -1018,6 +1032,22 @@ export const MultiSelectionWithResponsiveTagRenderer = () => {
 			</div>
 		</div>
 	);
+};
+
+export const MultiSelectionWithResponsiveTagRendererDisabled = {
+	render: MultiSelectionWithResponsiveTagRenderer,
+
+	args: {
+		disabled: true
+	}
+};
+
+export const MultiSelectionWithResponsiveTagRendererReadOnly = {
+	render: MultiSelectionWithResponsiveTagRenderer,
+
+	args: {
+		readOnly: true
+	}
 };
 
 export const OpenDropDownOnButtonClick = () => {
