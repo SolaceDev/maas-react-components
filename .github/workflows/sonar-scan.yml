@@ -83,7 +83,7 @@ jobs:
           cd ./coverage
           npx lcov-result-merger 'lcov*.info' 'lcov-final.info'
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: lcove-artifacts
           path: ./coverage/lcov*.info

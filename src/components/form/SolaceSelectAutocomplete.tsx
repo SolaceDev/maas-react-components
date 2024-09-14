@@ -377,7 +377,7 @@ function SolaceSelectAutocomplete<T, V>({
 							{...props}
 							style={{ borderBottom: showDivider ? `1px solid ${theme.palette.ux.secondary.w20}` : "none" }}
 						>
-							{itemComponent(mappedOption)}
+							<Box className={"itemContainer"}>{itemComponent(mappedOption)}</Box>
 						</Box>
 					);
 				}
