@@ -264,11 +264,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						fontWeight: "500",
 
 						"&.learning-button": {
-							borderRadius: `8px 4px`,
+							borderRadius: `10px 3px`,
 							color: themeMapping.palette.learning.wMain,
 							backgroundColor: themeMapping.palette.brand.w60,
 							"&:hover": {
 								backgroundColor: themeMapping.palette.brand.wMain
+							},
+							"&:active": {
+								backgroundColor: themeMapping.palette.brand.w100
 							},
 							"&.pressed": {
 								backgroundColor: themeMapping.palette.brand.w100
@@ -280,11 +283,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 
 						"&.learning-light-button": {
-							borderRadius: `8px 4px`,
+							borderRadius: `10px 3px`,
 							color: themeMapping.palette.brand.w60,
 							backgroundColor: themeMapping.palette.learning.wMain,
 							"&:hover": {
 								backgroundColor: themeMapping.palette.learning.w90
+							},
+							"&:active": {
+								backgroundColor: themeMapping.palette.learning.w100
 							},
 							"&.pressed": {
 								backgroundColor: themeMapping.palette.learning.w100
@@ -296,12 +302,16 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 
 						"&.learning-light-outlined-button": {
-							borderRadius: `8px 4px`,
+							borderRadius: `10px 3px`,
 							borderColor: themeMapping.palette.learning.wMain,
 							color: themeMapping.palette.learning.wMain,
 							"&:hover": {
 								borderColor: themeMapping.palette.learning.w90,
 								backgroundColor: themeMapping.palette.learning.w10
+							},
+							"&:active": {
+								borderColor: themeMapping.palette.learning.w100,
+								backgroundColor: themeMapping.palette.learning.w20
 							},
 							"&.pressed": {
 								borderColor: themeMapping.palette.learning.w100,
@@ -479,6 +489,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							}
 						},
 						"&.learning-icon-button": {
+							borderRadius: `10px 3px`,
 							".MuiSvgIcon-root": {
 								fill: themeMapping.palette.deprecated.secondary.w30
 							},
@@ -488,6 +499,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									color: themeMapping.palette.brand.w60,
 									fill: themeMapping.palette.brand.w60
 								}
+							},
+							"&:active": {
+								backgroundColor: themeMapping.palette.learning.w100
 							},
 							"&.pressed": {
 								backgroundColor: themeMapping.palette.learning.w100,
