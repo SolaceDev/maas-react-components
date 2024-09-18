@@ -12,23 +12,6 @@ const deprecatedBoxShadows = {
 	w30: alpha("#000000", 0.3)
 };
 
-// New color for non-selected focused item and selected focused item.
-// Once the variable name is decided, the color will be updated to use variables.
-const focusedItemBackgroundOverlayColor = alpha("#03223B", 0.1);
-const getFocusedItemBackgroundColor = (themeName: SupportedThemes) => {
-	const themeMapping = getThemeMappings(themeName);
-
-	if (themeName === SupportedThemes.solace) {
-		return "#CFE2DF";
-	} else if (themeName === SupportedThemes.sap) {
-		return "#CCD9E3";
-	} else if (themeName === SupportedThemes.newSolace) {
-		return "#CCE3DF";
-	}
-
-	return themeMapping.palette.brand.w10;
-};
-
 const verticalIndicatorHeight = "calc(100% - 4px)";
 
 const verticalIndicatorStyle = (themeMapping: ThemeMapping): Record<string, unknown> => {
@@ -979,13 +962,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									paddingBottom: "8px"
 								},
 								"&.Mui-focusVisible:not(.Mui-selected)": {
-									backgroundColor: focusedItemBackgroundOverlayColor
+									backgroundColor: themeMapping.palette.secondary.w10
 								},
 								"&.Mui-selected:not(:hover)": {
 									backgroundColor: themeMapping.palette.brand.w10,
 									"&.Mui-focusVisible": {
-										// Need a solid color for selected item in focus because no component can be used as overlay for MenuItem
-										backgroundColor: getFocusedItemBackgroundColor(themeName)
+										backgroundColor: themeMapping.palette.secondary.w20
 									}
 								},
 								".MuiListItemIcon-root": {
@@ -1153,32 +1135,26 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					},
 					popper: {
 						".MuiAutocomplete-listbox .MuiAutocomplete-option": {
-							padding: "0",
-							".itemContainer": {
-								padding: "0 16px",
-								minHeight: "38px",
-								width: "100%",
-								display: "flex",
-								alignItems: "center",
-								".MuiGrid-root.MuiGrid-container": {
-									"&.multiline": {
-										paddingTop: "8px",
-										paddingBottom: "8px"
-									}
+							padding: "0 16px",
+							minHeight: "38px",
+							".MuiGrid-root.MuiGrid-container": {
+								"&.multiline": {
+									paddingTop: "8px",
+									paddingBottom: "8px"
 								}
 							}
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused ": {
-							backgroundColor: focusedItemBackgroundOverlayColor
+							backgroundColor: themeMapping.palette.secondary.w10
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
 							backgroundColor: themeMapping.palette.brand.w10
 						},
-						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
-							backgroundColor: themeMapping.palette.brand.w10,
-							".itemContainer": {
-								backgroundColor: focusedItemBackgroundOverlayColor
-							}
+						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused:not(:hover)": {
+							backgroundColor: themeMapping.palette.secondary.w20
+						},
+						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused:hover": {
+							backgroundColor: themeMapping.palette.secondary.w10
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-disabled='true']": {
 							color: themeMapping.palette.secondary.text.w50,
