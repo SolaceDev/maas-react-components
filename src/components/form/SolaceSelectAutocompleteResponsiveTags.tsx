@@ -48,13 +48,13 @@ function SolaceSelectAutocompleteResponsiveTags({
 				id: tag.id,
 				content: (
 					<SolaceChip
-						clickable
+						clickable={!readOnly}
 						key={`${dataQa}-${tag.id}`}
 						variant={CHIP_VARIANT.FILLED}
 						maxWidth={tagMaxWidth}
 						label={tag.label}
-						disabled={disabled || readOnly}
-						onDelete={() => handleDelete(tag.id)}
+						disabled={disabled}
+						onDelete={readOnly ? undefined : () => handleDelete(tag.id)}
 					/>
 				)
 			};

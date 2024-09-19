@@ -1074,17 +1074,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								margin: "3px 6px 3px 0",
 								borderRadius: "4px",
 								fontSize: "14px",
-								cursor: "pointer",
+								cursor: "default",
 								backgroundColor: themeMapping.palette.secondary.w20,
-								color: themeMapping.palette.primary.text.wMain,
-								"&.Mui-disabled, &.solaceChip.MuiChip-filledDefault.Mui-disabled": {
-									opacity: 1,
-									pointerEvents: "initial",
-									cursor: "default",
-									"&:hover": {
-										backgroundColor: themeMapping.palette.secondary.w20
-									}
-								}
+								color: themeMapping.palette.primary.text.wMain
 							}
 						},
 						".MuiFormControl-root .MuiOutlinedInput-root.Mui-disabled input": {
@@ -1148,7 +1140,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							backgroundColor: themeMapping.palette.secondary.w10
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true']": {
-							backgroundColor: themeMapping.palette.brand.w10
+							backgroundColor: themeMapping.palette.brand.w10,
+							"&:hover": {
+								backgroundColor: themeMapping.palette.secondary.w10
+							}
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected='true'].Mui-focused:not(:hover)": {
 							backgroundColor: themeMapping.palette.secondary.w20

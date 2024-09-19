@@ -363,8 +363,9 @@ function SolaceSelectAutocomplete<T, V>({
 				return optionsLabelCallback(mappedOption);
 			}}
 			getOptionKey={(option) => {
-				const mappedOption = itemMappingCallback(option);
-				return getOptionKeyCallback?.(option) ?? optionsLabelCallback(mappedOption);
+				const defaultKey = optionsLabelCallback(itemMappingCallback(option));
+
+				return getOptionKeyCallback?.(option) ?? defaultKey;
 			}}
 			renderOption={(props, option) => {
 				if (option) {
@@ -443,11 +444,12 @@ function SolaceSelectAutocomplete<T, V>({
 								return label ? (
 									<Chip
 										label={
-											<SolaceTooltip variant="overflow" title={label}>
-												{label}
-											</SolaceTooltip>
+											<div>
+												<SolaceTooltip variant="overflow" title={label}>
+													{label}
+												</SolaceTooltip>
+											</div>
 										}
-										disabled={true}
 									></Chip>
 								) : null;
 						  }
