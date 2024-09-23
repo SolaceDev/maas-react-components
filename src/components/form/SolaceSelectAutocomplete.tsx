@@ -1,10 +1,13 @@
 import React, { SyntheticEvent, useEffect, useMemo, useRef, useState } from "react";
-import { Box, Autocomplete, TextField, useTheme, styled, Divider, AutocompleteChangeReason, Chip } from "@mui/material";
+import { Box, Autocomplete, TextField, useTheme, styled, Divider, AutocompleteChangeReason } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
 import CloseIcon from "@mui/icons-material/Close";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 import SolaceTooltip from "../SolaceToolTip";
+import { ErrorIcon } from "../../resources/icons/ErrorIcon";
+import SolaceChip from "../SolaceChip";
+import { STATUSES } from "../../types/statuses";
 
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
 	/**
@@ -124,6 +127,14 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	shouldClearSearchOnSelectCallback?: (option: V) => boolean;
 	/**
+	 * Used to determine if an option has validation error, applicable to multiple select
+	 */
+	getOptionValidationErrorCallback?: (option: V) => string | JSX.Element;
+	/**
+	 * Used to validate selected option
+	 */
+	validateInputCallback?: (searchTerm: string) => string | JSX.Element;
+	/**
 	 * Whether to show divider between group headings
 	 */
 	showGroupDivider?: boolean;
@@ -140,11 +151,11 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	openOnFocus?: boolean;
 	/**
-	 * Boolean flag to disable close on select. If not set, it is enabled by default for multiple select
+	 * Boolean flag to disable close on select. It is enabled by default for multiple select
 	 */
 	disableCloseOnSelect?: boolean;
 	/**
-	 * Boolean flag to clear search input on select. This flag is only applicable for multiple select and is false by default
+	 * Boolean flag to clear search input on select. It is only applicable to multiple select and is false by default
 	 */
 	clearSearchOnSelect?: boolean;
 	/**
@@ -173,6 +184,20 @@ const GroupItems = styled("ul")(() => ({
 }));
 
 const DEFAULT_DATA_QA = "SolaceSelectAutocomplete";
+
+function ErrorChipToolTipContent({ label, error }: { label: string; error: string | JSX.Element }) {
+	const theme = useTheme();
+	return (
+		<Box display={"flex"} flexDirection={"column"} rowGap={theme.spacing(1.5)}>
+			<Box style={{ wordBreak: "break-word" }}>{label}</Box>
+			<Divider />
+			<Box display={"flex"} alignItems={"flex-start"} columnGap={theme.spacing(0.5)}>
+				<ErrorIcon size={18} fill={theme.palette.ux.error.w100} />
+				{error}
+			</Box>
+		</Box>
+	);
+}
 
 function SolaceSelectAutocomplete<T, V>({
 	id,
@@ -207,6 +232,8 @@ function SolaceSelectAutocomplete<T, V>({
 	isOptionEqualToValueCallback,
 	getOptionDisabledCallback,
 	getOptionKeyCallback,
+	getOptionValidationErrorCallback,
+	validateInputCallback,
 	width,
 	inputRef,
 	openOnFocus = false,
@@ -219,6 +246,7 @@ function SolaceSelectAutocomplete<T, V>({
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
 	const [inputValue, setInputValue] = useState("");
+	const [inputValidationError, setInputValidationError] = useState<string | JSX.Element | null>(null);
 	const [filteredOptions, setFilteredOptions] = useState(options || []);
 	const [loading, setLoading] = useState(false);
 	const [isFetching, setIsFetching] = useState(false);
@@ -240,10 +268,15 @@ function SolaceSelectAutocomplete<T, V>({
 	useEffect(() => {
 		if (inputValue.length > 0) {
 			setFilteredOptions([]);
-			setIsFetching(true);
-			fetchOptionsCallback(inputValue);
+			if (!validateInputCallback?.(inputValue)) {
+				setIsFetching(true);
+				fetchOptionsCallback(inputValue);
+			} else {
+				setIsFetching(false);
+				setOpen(false);
+			}
 		}
-	}, [inputValue, fetchOptionsCallback]);
+	}, [inputValue, fetchOptionsCallback, validateInputCallback]);
 
 	useEffect(() => {
 		setFilteredOptions(options);
@@ -305,23 +338,56 @@ function SolaceSelectAutocomplete<T, V>({
 			currentInputValue.current = newInputValue;
 			setInputValue(newInputValue);
 			if (newInputValue === "") {
+				setInputValidationError(null);
 				// Reset options when inputValue is empty
 				setResetOptions(true);
+			} else if (!disabled && !readOnly) {
+				const validationError = validateInputCallback?.(newInputValue);
+
+				setInputValidationError(validationError ?? null);
+				if (validationError) {
+					setOpen(false);
+				} else {
+					setOpen(true);
+				}
 			}
 		}
 	};
 
 	const handleOpen = () => {
 		setOpen(true);
-		setResetOptions(true);
+		if (!inputValue) {
+			setResetOptions(true);
+		}
 	};
 
 	const handleClose = () => {
 		onCloseCallback && onCloseCallback(); // notify parent select closed
 		if (persistInputValueOnSelect) {
 			setInputValue("");
+			setInputValidationError(null);
 		}
 		setOpen(false);
+	};
+
+	const handleBlur = () => {
+		setInputValue("");
+		setInputValidationError(null);
+	};
+
+	const handleDeleteChip = (index: number) => {
+		const newValue = (selectedValue as V[]).slice();
+		newValue.splice(index, 1);
+
+		setSelectedValue(newValue);
+
+		// Notify externally
+		if (onChange) {
+			onChange({
+				name: name,
+				value: newValue
+			});
+		}
 	};
 
 	const getId = () => {
@@ -346,6 +412,35 @@ function SolaceSelectAutocomplete<T, V>({
 		return null;
 	};
 
+	const renderMultiSelectedTags = (tagValue: V[]) => {
+		return tagValue.map((option, index) => {
+			const label = optionsLabelCallback(itemMappingCallback(option));
+			const error = getOptionValidationErrorCallback?.(option) ?? null;
+
+			return (
+				<SolaceChip
+					key={`${dataQa ?? DEFAULT_DATA_QA}-${index}`}
+					label={
+						<div style={{ overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
+							<SolaceTooltip
+								variant={error ? "html" : "overflow"}
+								title={error ? <ErrorChipToolTipContent label={label} error={error} /> : label}
+								placement={"bottom-start"}
+							>
+								{label}
+							</SolaceTooltip>
+						</div>
+					}
+					clickable={!readOnly}
+					disabled={disabled}
+					onDelete={() => handleDeleteChip(index)}
+					dataQa={`${dataQa ?? DEFAULT_DATA_QA}-${index}`}
+					status={error ? STATUSES.ERROR_STATUS : STATUSES.NO_STATUS}
+				></SolaceChip>
+			);
+		});
+	};
+
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 	const select = () => (
 		<Autocomplete
@@ -362,20 +457,17 @@ function SolaceSelectAutocomplete<T, V>({
 				const mappedOption = itemMappingCallback(option);
 				return optionsLabelCallback(mappedOption);
 			}}
-			getOptionKey={(option) => {
-				const defaultKey = optionsLabelCallback(itemMappingCallback(option));
-
-				return getOptionKeyCallback?.(option) ?? defaultKey;
-			}}
 			renderOption={(props, option) => {
 				if (option) {
 					const mappedOption = itemMappingCallback(option);
 					const showDivider = getShowOptionDividerCallback?.(option) ?? false;
-
+					const defaultKey = optionsLabelCallback(itemMappingCallback(option));
+					const optionKey = getOptionKeyCallback?.(option) ?? defaultKey;
 					return (
 						<Box
 							component="li"
 							{...props}
+							key={optionKey}
 							style={{ borderBottom: showDivider ? `1px solid ${theme.palette.ux.secondary.w20}` : "none" }}
 						>
 							{itemComponent(mappedOption)}
@@ -393,6 +485,7 @@ function SolaceSelectAutocomplete<T, V>({
 			openOnFocus={openOnFocus}
 			onOpen={handleOpen}
 			onChange={handleChange}
+			onBlur={handleBlur}
 			popupIcon={<SelectDropdownIcon />}
 			renderInput={(params) => {
 				const { InputProps, inputProps, ...rest } = params;
@@ -403,7 +496,7 @@ function SolaceSelectAutocomplete<T, V>({
 						title={title}
 						autoComplete="off"
 						placeholder={placeholder}
-						error={hasErrors}
+						error={!!inputValidationError || hasErrors}
 						inputProps={{
 							...inputProps,
 							"data-qa": `${dataQa ?? DEFAULT_DATA_QA}-input`,
@@ -422,38 +515,22 @@ function SolaceSelectAutocomplete<T, V>({
 							required: required
 						}}
 						inputRef={inputRef}
+						onKeyDown={(event) => {
+							// prevent multi-selected values from being deleted when user presses backspace or delete key
+							if (event.key === "Backspace" || event.key === "Delete") {
+								event.stopPropagation();
+							}
+						}}
 					/>
 				);
 			}}
 			isOptionEqualToValue={isOptionEqualToValueCallback}
 			getOptionDisabled={getOptionDisabledCallback}
-			renderTags={renderTags}
+			renderTags={renderTags ? renderTags : renderMultiSelectedTags}
 			limitTags={limitTags}
 			getLimitTagsText={getLimitTagsText}
 			ChipProps={{
-				deleteIcon: <CloseIcon />,
-				component:
-					multiple && readOnly
-						? (props) => {
-								const selectedOptions = (selectedValue as V[]) || [];
-								const option = selectedOptions[props["data-tag-index"]];
-								let label = null;
-								if (option) {
-									label = optionsLabelCallback(itemMappingCallback(option));
-								}
-								return label ? (
-									<Chip
-										label={
-											<div>
-												<SolaceTooltip variant="overflow" title={label}>
-													{label}
-												</SolaceTooltip>
-											</div>
-										}
-									></Chip>
-								) : null;
-						  }
-						: undefined
+				deleteIcon: <CloseIcon />
 			}}
 			groupBy={groupByCallback}
 			renderGroup={groupByCallback && showGroupDivider ? renderGroup : undefined}
@@ -468,7 +545,7 @@ function SolaceSelectAutocomplete<T, V>({
 			id={getId()}
 			label={label}
 			helperText={helperText}
-			errorText={hasErrors ? helperText : undefined}
+			errorText={inputValidationError ? inputValidationError : hasErrors ? helperText : undefined}
 			disabled={disabled}
 			readOnly={readOnly}
 			required={required}

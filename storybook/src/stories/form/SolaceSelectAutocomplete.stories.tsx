@@ -198,6 +198,7 @@ const DefaultSelectionTemplate = ({
 	disableCloseOnSelect,
 	clearSearchOnSelect,
 	maxHeight,
+	getOptionValidationErrorCallback,
 	// storybook specific
 	disabledItems = false,
 	withDividers = false,
@@ -219,6 +220,7 @@ const DefaultSelectionTemplate = ({
 	disableCloseOnSelect?: boolean;
 	clearSearchOnSelect?: boolean;
 	maxHeight?: string;
+	getOptionValidationErrorCallback?: ((option: SolaceSelectAutocompleteItemProps) => string | JSX.Element) | undefined;
 	// storybook specific
 	disabledItems?: boolean;
 	withDividers?: boolean;
@@ -269,6 +271,7 @@ const DefaultSelectionTemplate = ({
 				fetchOptionsCallback={handleFetchOptionsCallback}
 				getOptionDisabledCallback={disabledItems ? handleOptionDisabled : undefined}
 				getShowOptionDividerCallback={withDividers ? getShowSolaceSelectAutocompleteOptionDivider : undefined}
+				getOptionValidationErrorCallback={getOptionValidationErrorCallback}
 				width={width}
 				placeholder={placeholder}
 				readOnly={readOnly}
@@ -482,6 +485,26 @@ export const MultiSelectionReadOnly = {
 	}
 };
 
+export const MultiSelectionWithErrors = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		helperText: "More than one values have errors. Hover on the values to see errors.",
+		hasErrors: true,
+		longLabel: true,
+		getOptionValidationErrorCallback: (option: SolaceSelectAutocompleteItemProps) => {
+			if (option.value === "option1") {
+				return "Invalid characters. Enter only alphanumeric characters, dashes and underscores.";
+			} else if (option.value === "option4") {
+				return "Exceeds limit. Enter a value under 100 characters";
+			}
+		},
+		value: [SELECT_OPTIONS[0], { ...SELECT_OPTIONS[3], name: getLongLabel(SELECT_OPTIONS[3]) }, SELECT_OPTIONS[2]]
+	}
+};
+
 const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "MEM #1",
@@ -558,9 +581,13 @@ export const MultiSelectionWithDisabledItems = () => {
 	);
 };
 
+const INPUT_VALUE_REGEX = /^[A-Za-z0-9-_./@()'–# ]*$/;
+const MAX_SELECTED_VAlUES = 5;
+
 const MultiSelectionWithCreateNewTemplate = ({
 	clearSearchWhenSelectNew = false,
-	initialValues = []
+	initialValues = [],
+	validateInput = false
 }: {
 	clearSearchWhenSelectNew: boolean;
 	initialValues: SolaceSelectAutocompleteItemProps[];
@@ -569,6 +596,22 @@ const MultiSelectionWithCreateNewTemplate = ({
 	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 	const [availableValues, setAvailableValues] = useState<SolaceSelectAutocompleteItemProps[]>(initialValues.slice());
+	const [hasErrors, setHasErrors] = useState<boolean>(false);
+	const [helperText, setHelperText] = useState("");
+
+	const validateInputValue = useCallback((value) => {
+		let errorMsg = "";
+		const charLimit = 100;
+
+		if (value.length > charLimit) {
+			errorMsg = `Exceeds limit. Enter a value with no more than ${charLimit} characters.`;
+		} else if (!value.match(INPUT_VALUE_REGEX)) {
+			errorMsg =
+				"Invalid characters. Enter only alphanumeric characters, spaces and the following characters: . - – _ @ / ( ) #";
+		}
+
+		return errorMsg;
+	}, []);
 
 	const handleChange = (evt) => {
 		const selectedValues: SolaceSelectAutocompleteItemProps[] = [];
@@ -596,6 +639,14 @@ const MultiSelectionWithCreateNewTemplate = ({
 				});
 			}
 		}
+
+		if (validateInput && selectedValues.length > MAX_SELECTED_VAlUES) {
+			setHasErrors(true);
+			setHelperText(`Maximum number of values allowed is ${MAX_SELECTED_VAlUES}`);
+		} else {
+			setHasErrors(false);
+			setHelperText("");
+		}
 	};
 
 	const shouldClearSearchOnSelectCallback = useCallback((value: SolaceSelectAutocompleteItemProps) => {
@@ -616,7 +667,7 @@ const MultiSelectionWithCreateNewTemplate = ({
 					setMatchingValues(matches);
 				}
 			} else {
-				setMatchingValues(availableValues);
+				setMatchingValues(availableValues.slice());
 			}
 		},
 		[availableValues]
@@ -638,6 +689,9 @@ const MultiSelectionWithCreateNewTemplate = ({
 				fetchOptionsCallback={handleFetchOptionsCallback}
 				shouldClearSearchOnSelectCallback={clearSearchWhenSelectNew ? shouldClearSearchOnSelectCallback : undefined}
 				maxHeight="400px"
+				validateInputCallback={validateInput ? validateInputValue : undefined}
+				hasErrors={hasErrors}
+				helperText={helperText}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
@@ -657,6 +711,16 @@ export const MultiSelectionWithInitialValueCreateNewAndClearSearchWhenSelectNew 
 	args: {
 		clearSearchWhenSelectNew: true,
 		initialValues: SELECT_OPTIONS
+	}
+};
+
+export const MultiSelectionWithInitialValueCreateNewAndValidateInputAndClearSearchWhenSelectNew = {
+	render: MultiSelectionWithCreateNewTemplate,
+
+	args: {
+		clearSearchWhenSelectNew: true,
+		initialValues: SELECT_OPTIONS,
+		validateInput: true
 	}
 };
 

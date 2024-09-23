@@ -1092,32 +1092,19 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiButtonBase-root.MuiChip-root": {
 							height: "24px",
 							margin: "3px 6px 3px 0",
-							borderRadius: "4px",
-							fontSize: "14px",
-							cursor: "pointer",
-							backgroundColor: themeMapping.palette.secondary.w20,
-							color: themeMapping.palette.primary.text.wMain,
-							".MuiChip-deleteIcon": {
-								fill: themeMapping.palette.primary.text.wMain
-							},
 							"&.Mui-disabled, &.solaceChip.MuiChip-filledDefault.Mui-disabled": {
 								// solace chip made disabled background opacity 1, has to change it back to default 0.38
 								opacity: 0.38
-							},
-							"&:hover": {
-								backgroundColor: themeMapping.palette.secondary.w40,
-								color: themeMapping.palette.primary.text.wMain,
-								":has(.MuiChip-deleteIcon:hover)": {
-									backgroundColor: themeMapping.palette.secondary.w20
-								},
-								".MuiChip-deleteIcon:hover": {
-									backgroundColor: themeMapping.palette.secondary.w40
-								}
 							},
 							"&:focus": {
 								backgroundColor: themeMapping.palette.secondary.w40,
 								color: themeMapping.palette.primary.text.wMain,
 								boxShadow: "none"
+							},
+							"&.errorStatus": {
+								".errorIcon": {
+									margin: "4px 2px 0px 4px"
+								}
 							}
 						}
 					},
