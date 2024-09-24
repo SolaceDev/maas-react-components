@@ -131,7 +131,7 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	getOptionValidationErrorCallback?: (option: V) => string | JSX.Element;
 	/**
-	 * Used to validate selected option
+	 * Used to validate search input, applicable to multiple select
 	 */
 	validateInputCallback?: (searchTerm: string) => string | JSX.Element;
 	/**
@@ -171,6 +171,10 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * Custom min-width of the component
 	 */
 	minWidth?: string;
+	/**
+	 * Maximum width of selected value tag rendered by default renderer, applicable to multiple select
+	 */
+	tagMaxWidth?: string;
 }
 
 const CustomHeightTextField = styled(TextField)(() => ({
@@ -241,7 +245,8 @@ function SolaceSelectAutocomplete<T, V>({
 	clearSearchOnSelect = false,
 	maxHeight,
 	fullWidth = false,
-	minWidth
+	minWidth,
+	tagMaxWidth = "200px"
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -268,15 +273,20 @@ function SolaceSelectAutocomplete<T, V>({
 	useEffect(() => {
 		if (inputValue.length > 0) {
 			setFilteredOptions([]);
-			if (!validateInputCallback?.(inputValue)) {
+			if (multiple) {
+				if (!validateInputCallback?.(inputValue)) {
+					setIsFetching(true);
+					fetchOptionsCallback(inputValue);
+				} else {
+					setIsFetching(false);
+					setOpen(false);
+				}
+			} else {
 				setIsFetching(true);
 				fetchOptionsCallback(inputValue);
-			} else {
-				setIsFetching(false);
-				setOpen(false);
 			}
 		}
-	}, [inputValue, fetchOptionsCallback, validateInputCallback]);
+	}, [inputValue, fetchOptionsCallback, validateInputCallback, multiple]);
 
 	useEffect(() => {
 		setFilteredOptions(options);
@@ -341,7 +351,7 @@ function SolaceSelectAutocomplete<T, V>({
 				setInputValidationError(null);
 				// Reset options when inputValue is empty
 				setResetOptions(true);
-			} else if (!disabled && !readOnly) {
+			} else if (!disabled && !readOnly && multiple) {
 				const validationError = validateInputCallback?.(newInputValue);
 
 				setInputValidationError(validationError ?? null);
@@ -356,7 +366,7 @@ function SolaceSelectAutocomplete<T, V>({
 
 	const handleOpen = () => {
 		setOpen(true);
-		if (!inputValue) {
+		if (!multiple || !inputValue) {
 			setResetOptions(true);
 		}
 	};
@@ -436,6 +446,7 @@ function SolaceSelectAutocomplete<T, V>({
 					onDelete={() => handleDeleteChip(index)}
 					dataQa={`${dataQa ?? DEFAULT_DATA_QA}-${index}`}
 					status={error ? STATUSES.ERROR_STATUS : STATUSES.NO_STATUS}
+					maxWidth={tagMaxWidth === null ? undefined : tagMaxWidth}
 				></SolaceChip>
 			);
 		});

@@ -106,6 +106,11 @@ export default {
 			control: {
 				type: "boolean"
 			}
+		},
+		tagMaxWidth: {
+			control: {
+				type: "text"
+			}
 		}
 	}
 	// decorators: [withState()]
@@ -198,6 +203,7 @@ const DefaultSelectionTemplate = ({
 	disableCloseOnSelect,
 	clearSearchOnSelect,
 	maxHeight,
+	maxTagWidth,
 	getOptionValidationErrorCallback,
 	// storybook specific
 	disabledItems = false,
@@ -220,6 +226,7 @@ const DefaultSelectionTemplate = ({
 	disableCloseOnSelect?: boolean;
 	clearSearchOnSelect?: boolean;
 	maxHeight?: string;
+	maxTagWidth?: string;
 	getOptionValidationErrorCallback?: ((option: SolaceSelectAutocompleteItemProps) => string | JSX.Element) | undefined;
 	// storybook specific
 	disabledItems?: boolean;
@@ -287,6 +294,7 @@ const DefaultSelectionTemplate = ({
 				disableCloseOnSelect={disableCloseOnSelect}
 				clearSearchOnSelect={clearSearchOnSelect}
 				maxHeight={maxHeight}
+				tagMaxWidth={maxTagWidth}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
@@ -437,6 +445,19 @@ export const MultipleSelectionWithLongLabel = {
 		value: [],
 		width: "50%",
 		longLabel: true
+	}
+};
+
+export const MultipleSelectionWithLongLabelAndNullMaxTagWidth = {
+	render: DefaultSelectionTemplate,
+
+	args: {
+		label: "Some Label",
+		multiple: true,
+		value: [],
+		width: "50%",
+		longLabel: true,
+		maxTagWidth: null
 	}
 };
 
