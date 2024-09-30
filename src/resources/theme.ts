@@ -1,9 +1,11 @@
 import { alpha, hexToRgb, ThemeOptions } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import { SupportedThemes, ThemeMapping, ThemeMappingPalette } from "../types";
 import getThemeMappings from "../theming/themeUtils";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
+const theme = createTheme();
 
 const deprecatedBoxShadows: { [key: string]: string } = {
 	w12: alpha("#000000", 0.12),
@@ -245,6 +247,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						minWidth: "100px",
 						height: "32px",
 						fontWeight: "500",
+						padding: theme.spacing(1, 2),
 
 						"&.call-to-action-button": {
 							borderRadius: `10px 3px`,
@@ -309,7 +312,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					startIcon: {
 						width: "24px",
 						height: "24px",
-						marginRight: "8px",
+						marginRight: theme.spacing(1),
 						// eslint-disable-next-line sonarjs/no-duplicate-string
 						boxSizing: "border-box",
 						">*:nth-of-type(1)": {
@@ -319,7 +322,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					endIcon: {
 						width: "24px",
 						height: "24px",
-						marginLeft: "8px",
+						marginLeft: theme.spacing(1),
 						// eslint-disable-next-line sonarjs/no-duplicate-string
 						boxSizing: "border-box",
 						">*:nth-of-type(1)": {
