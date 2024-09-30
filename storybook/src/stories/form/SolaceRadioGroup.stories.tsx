@@ -76,10 +76,7 @@ export const InlineLabelFormat = {
 function buildSubText() {
 	return (
 		<div>
-			Runtime Discovery is used to import your architecture into the{" "}
-			<a href="#" style={{ color: "#00c895", textDecoration: "none" }}>
-				PubSub+ Discovery
-			</a>
+			Runtime Discovery is used to import your architecture into the <a href="#">PubSub+ Discovery</a>
 		</div>
 	);
 }

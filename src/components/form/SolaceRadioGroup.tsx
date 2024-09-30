@@ -146,7 +146,9 @@ function SolaceRadioGroup({
 			required={required}
 			inlineLabel={inlineLabel}
 		>
-			<Box sx={{ marginTop: inlineLabel ? 0 : theme.spacing(1) }}>{getRadioGroup()}</Box>
+			<Box sx={{ marginTop: inlineLabel ? 0 : theme.spacing(1), marginBottom: hasErrors ? theme.spacing(1.25) : 0 }}>
+				{getRadioGroup()}
+			</Box>
 		</FormChildBase>
 	);
 }

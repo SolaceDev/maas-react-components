@@ -531,6 +531,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						fontSize: "14px",
 						fontWeight: 400,
 						lineHeight: 1.5,
+						"&.radio-btn-label": {
+							"& a": {
+								color: themeMapping.palette.primary.wMain,
+								textDecoration: "none"
+							}
+						},
 						"&.Mui-error": {
 							color: themeMapping.palette.secondary.text.wMain
 						},
