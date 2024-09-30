@@ -5,7 +5,7 @@ import { SolaceLearningButtonProps } from "../../../types";
 
 function SolaceLearningButton({
 	id,
-	variant = "learning",
+	variant = "call-to-action",
 	"aria-label": ariaLabel,
 	"aria-labelledby": ariaLabelledby,
 	isDisabled = false,
@@ -25,7 +25,7 @@ function SolaceLearningButton({
 		}
 	};
 
-	if (variant === "learning-icon") {
+	if (variant === "icon") {
 		return (
 			<SolaceTooltip title={title}>
 				<IconButton
@@ -38,7 +38,7 @@ function SolaceLearningButton({
 					disabled={isDisabled}
 					onClick={handleClick}
 					size="large"
-					className="learning-icon-button"
+					className="icon-button"
 					component="button"
 				>
 					{children}
@@ -52,20 +52,20 @@ function SolaceLearningButton({
 		}
 		const BUTTON_VARIANT_MAP = {
 			learning: MATERIAL_VARIANTS.contained,
-			"learning-light": MATERIAL_VARIANTS.contained,
-			"learning-light-outlined": MATERIAL_VARIANTS.outlined
+			"dark-call-to-action": MATERIAL_VARIANTS.contained,
+			"dark-outline": MATERIAL_VARIANTS.outlined
 		};
 
 		let className = "";
 		switch (variant) {
-			case "learning-light":
-				className = "learning-light-button";
+			case "dark-call-to-action":
+				className = "dark-call-to-action-button";
 				break;
-			case "learning-light-outlined":
-				className = "learning-light-outlined-button";
+			case "dark-outline":
+				className = "dark-outline-button";
 				break;
 			default:
-				className = "learning-button";
+				className = "call-to-action-button";
 		}
 
 		return (

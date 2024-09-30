@@ -1,13 +1,14 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
-import { SolaceLearningButton, DeleteIcon, Box } from "@SolaceDev/maas-react-components";
+import { within, expect } from "@storybook/test";
+import { SolaceLearningButton, DeleteIcon } from "@SolaceDev/maas-react-components";
 
 enum VARIANT {
-	LEARNING = "learning",
-	LEARNING_ICON = "learning-icon",
-	LEARNING_LIGHT = "learning-light",
-	LEARNING_LIGHT_OUTLINED = "learning-light-outlined"
+	CALL_TO_ACTION = "call-to-action",
+	ICON = "icon",
+	DARK_CALL_TO_ACTION = "dark-call-to-action",
+	DARK_OUTLINE = "dark-outline"
 }
 
 export default {
@@ -30,7 +31,7 @@ export default {
 			description: "Unique identifier for the button"
 		},
 		variant: {
-			options: ["learning", "learning-icon", "learning-light", "learning-light-outlined"],
+			options: ["call-to-action", "icon", "dark-call-to-action", "dark-outline"],
 			control: {
 				type: "select"
 			},
@@ -92,72 +93,146 @@ export default {
 	}
 } as Meta<typeof SolaceLearningButton>;
 
-export const LearningButton = {
+export const CallToAction = {
 	args: {
 		onClick: action("callback"),
-		variant: VARIANT.LEARNING,
-		children: "Click Me!"
+		variant: VARIANT.CALL_TO_ACTION,
+		children: "Click Me!",
+		isDisabled: false
 	}
 };
 
-export const LearningButtonAndStartIcon = {
+export const CallToActionDisabled = {
 	args: {
 		onClick: action("callback"),
-		variant: VARIANT.LEARNING,
+		variant: VARIANT.CALL_TO_ACTION,
+		children: "Click Me!",
+		isDisabled: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const callToActionBtn = canvas.getByRole("button");
+
+		await expect(callToActionBtn).toHaveAttribute("disabled");
+	}
+};
+
+export const CallToActionWithStartIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.CALL_TO_ACTION,
 		startIcon: <DeleteIcon />,
 		children: "Start The Experience"
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const startIcon = canvas.queryByTestId("DeleteIcon");
+
+		await expect(startIcon).toBeInTheDocument();
 	}
 };
 
-export const LearningButtonAndEndIcon = {
+export const CallToActionWithEndIcon = {
 	args: {
 		onClick: action("callback"),
-		variant: VARIANT.LEARNING,
+		variant: VARIANT.CALL_TO_ACTION,
 		endIcon: <DeleteIcon />,
 		children: "Start The Experience"
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const endIcon = canvas.queryByTestId("DeleteIcon");
+
+		await expect(endIcon).toBeInTheDocument();
 	}
 };
 
-export const LearningLightButton = {
+export const DarkCallToAction = {
 	args: {
 		onClick: action("callback"),
-		variant: VARIANT.LEARNING_LIGHT,
+		variant: VARIANT.DARK_CALL_TO_ACTION,
 		children: "Click Me!"
 	}
 };
 
-export const LearningLightButtonAndStartIcon = {
+export const DarkCallToActionDisabled = {
 	args: {
 		onClick: action("callback"),
-		variant: VARIANT.LEARNING_LIGHT,
+		variant: VARIANT.DARK_CALL_TO_ACTION,
+		children: "Click Me!",
+		isDisabled: true
+	}
+};
+
+export const DarkCallToActionWithStartIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.DARK_CALL_TO_ACTION,
 		startIcon: <DeleteIcon />,
 		children: "Delete"
 	}
 };
 
-export const LearningLightOutlinedButton = {
+export const DarkOutlineButton = {
 	args: {
 		onClick: action("callback"),
-		variant: VARIANT.LEARNING_LIGHT_OUTLINED,
+		variant: VARIANT.DARK_OUTLINE,
 		children: "Click Me!"
 	}
 };
 
-export const LearningLightOutlinedAndStartIcon = {
+export const DarkOutlineButtonDisabled = {
 	args: {
 		onClick: action("callback"),
-		variant: VARIANT.LEARNING_LIGHT_OUTLINED,
+		variant: VARIANT.DARK_OUTLINE,
+		children: "Click Me!",
+		isDisabled: true
+	}
+};
+
+export const DarkOutlineWithStartIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.DARK_OUTLINE,
 		startIcon: <DeleteIcon />,
 		children: "Delete"
 	}
 };
 
-export const LearningIcon = (): ReactNode => {
-	return (
-		<Box sx={{ backgroundColor: "#033A6F" }} width={100} textAlign={"center"}>
-			<SolaceLearningButton variant="learning-icon" component="span">
-				<DeleteIcon />
-			</SolaceLearningButton>
-		</Box>
-	);
+export const DarkOutlineWithEndIcon = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.DARK_OUTLINE,
+		endIcon: <DeleteIcon />,
+		children: "Delete"
+	}
+};
+
+export const IconButton = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ICON,
+		component: "span",
+		children: <DeleteIcon />
+	}
+};
+
+export const IconButtonDisabled = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ICON,
+		component: "span",
+		children: <DeleteIcon />,
+		isDisabled: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const callToActionBtn = canvas.getByRole("button");
+
+		await expect(callToActionBtn).toHaveAttribute("disabled");
+	}
 };

@@ -5,7 +5,7 @@ import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
 
-const deprecatedBoxShadows = {
+const deprecatedBoxShadows: { [key: string]: string } = {
 	w12: alpha("#000000", 0.12),
 	w15: alpha("#000000", 0.15),
 	w20: alpha("#000000", 0.2),
@@ -246,7 +246,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						height: "32px",
 						fontWeight: "500",
 
-						"&.learning-button": {
+						"&.call-to-action-button": {
 							borderRadius: `10px 3px`,
 							color: themeMapping.palette.learning.wMain,
 							backgroundColor: themeMapping.palette.brand.w60,
@@ -265,7 +265,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							}
 						},
 
-						"&.learning-light-button": {
+						"&.dark-call-to-action-button": {
 							borderRadius: `10px 3px`,
 							color: themeMapping.palette.brand.w60,
 							backgroundColor: themeMapping.palette.learning.wMain,
@@ -284,7 +284,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							}
 						},
 
-						"&.learning-light-outlined-button": {
+						"&.dark-outline-button": {
 							borderRadius: `10px 3px`,
 							borderColor: themeMapping.palette.learning.wMain,
 							color: themeMapping.palette.learning.wMain,
@@ -471,15 +471,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								fill: themeMapping.palette.secondary.w40
 							}
 						},
-						"&.learning-icon-button": {
+						"&.icon-button": {
 							borderRadius: `10px 3px`,
 							".MuiSvgIcon-root": {
-								fill: themeMapping.palette.deprecated.secondary.w30
+								fill: themeMapping.palette.secondary.wMain
 							},
 							"&:hover": {
 								backgroundColor: themeMapping.palette.learning.w90,
 								".MuiSvgIcon-root": {
-									color: themeMapping.palette.brand.w60,
 									fill: themeMapping.palette.brand.w60
 								}
 							},
@@ -489,7 +488,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							"&.pressed": {
 								backgroundColor: themeMapping.palette.learning.w100,
 								".MuiSvgIcon-root": {
-									color: themeMapping.palette.brand.w60,
 									fill: themeMapping.palette.brand.w60
 								}
 							},

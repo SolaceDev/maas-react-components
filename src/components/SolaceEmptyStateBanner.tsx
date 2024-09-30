@@ -65,7 +65,7 @@ export default function SolaceEmptyStateBanner(props: SolaceEmptyStateBannerProp
 							</SolaceStack>
 							<SolaceStack direction="row" alignItems="center" paddingTop={theme.spacing(3)} spacing={1.5}>
 								<SolaceLearningButton
-									variant={"learning"}
+									variant={"call-to-action"}
 									onClick={onPrimaryButtonClick}
 									dataQa={primaryButton?.dataQa ?? "emptyStateBannerPrimaryButton"}
 								>
@@ -73,7 +73,7 @@ export default function SolaceEmptyStateBanner(props: SolaceEmptyStateBannerProp
 								</SolaceLearningButton>
 
 								<SolaceLearningButton
-									variant="learning-light"
+									variant="dark-call-to-action"
 									dataQa={primaryButton?.dataQa ?? "emptyStateBannerSecondaryButton"}
 									onClick={onSecondaryButtonClick}
 								>
