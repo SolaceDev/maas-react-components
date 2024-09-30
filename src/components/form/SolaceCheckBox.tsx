@@ -85,6 +85,7 @@ interface CheckBoxLabelProps {
 	disabled: boolean;
 	bold: boolean;
 	large: boolean;
+	readOnly: boolean;
 	children?: JSX.Element | string;
 }
 
@@ -95,6 +96,7 @@ function CheckBoxLabel({
 	disabled = false,
 	bold = false,
 	large = false,
+	readOnly = false,
 	children
 }: CheckBoxLabelProps): JSX.Element {
 	const theme = useTheme();
@@ -105,7 +107,7 @@ function CheckBoxLabel({
 			required={required}
 			disabled={disabled}
 			sx={{ display: "block", fontSize: large ? theme.typography.subtitle1 : theme.typography.body1 }}
-			className={clsx({ "bold-label": bold, "check-box-label": true })}
+			className={clsx({ "bold-label": bold, "check-box-label": true, readOnly: readOnly })}
 		>
 			{children}
 		</FormLabel>
@@ -177,7 +179,7 @@ const SolaceCheckBox = ({
 
 	return (
 		<React.Fragment>
-			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="flex-start">
+			<Box display="grid" gridTemplateColumns="auto 1fr" gridTemplateRows="auto auto" alignItems="center">
 				<Checkbox
 					id={`${getId()}-checkbox`}
 					name={name}
@@ -198,26 +200,23 @@ const SolaceCheckBox = ({
 					checked={selected}
 					onChange={handleChange}
 				/>
-				<Box
-					display="flex"
-					flexDirection="column"
-					justifyContent={subTextProps.label ? "flex-start" : "center"}
-					alignItems="flex-start"
-					sx={{ paddingLeft: theme.spacing(2) }}
-				>
-					{label && (
+				{label && (
+					<Box>
 						<CheckBoxLabel
 							id={`${getId()}-label`}
 							htmlForId={`${getId()}-checkbox`}
 							required={required}
 							disabled={disabled}
-							bold={boldLabel}
+							bold={boldLabel || (!!subTextProps.label && !subTextProps.light)}
 							large={largeLabel}
+							readOnly={readOnly}
 						>
 							{label}
 						</CheckBoxLabel>
-					)}
-					{subTextProps.label && (
+					</Box>
+				)}
+				{subTextProps.label && (
+					<Box gridColumn="2" gridRow="2">
 						<FormLabel
 							id={`${id}-subtext`}
 							disabled={disabled}
@@ -225,18 +224,16 @@ const SolaceCheckBox = ({
 						>
 							{subTextProps.label}
 						</FormLabel>
-					)}
-				</Box>
+					</Box>
+				)}
+				{helperText && (
+					<Box gridColumn="2" gridRow="3">
+						<FormHelperText error={hasErrors} component="div" sx={{ marginTop: theme.spacing(0.25) }}>
+							{getHelperText()}
+						</FormHelperText>
+					</Box>
+				)}
 			</Box>
-			{helperText && (
-				<FormHelperText
-					error={hasErrors}
-					component="div"
-					sx={{ marginLeft: theme.spacing(0.4), marginTop: theme.spacing(0.25) }}
-				>
-					{getHelperText()}
-				</FormHelperText>
-			)}
 		</React.Fragment>
 	);
 };

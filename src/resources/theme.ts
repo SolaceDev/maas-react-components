@@ -546,6 +546,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&.light-sub-text": {
 							color: themeMapping.palette.deprecated.secondary.text.wMain
 						},
+						"&.check-box-label": {
+							color: themeMapping.palette.primary.text.wMain
+						},
 						"&.Mui-disabled": {
 							color: themeMapping.palette.deprecated.secondary.text.w50,
 							"&.check-box-label": {
@@ -554,6 +557,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							"&.radio-btn-label": {
 								color: themeMapping.palette.secondary.text.w50
 							}
+						},
+						"&.readOnly": {
+							color: themeMapping.palette.primary.text.wMain
 						},
 						"&.bold-label": {
 							fontWeight: 500
@@ -797,18 +803,28 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiCheckbox: {
 				styleOverrides: {
 					root: {
+						marginRight: "16px",
+						rect: {
+							fill: themeMapping.palette.background.w10
+						},
+						".SolaceCheckboxContainer": {
+							stroke: themeMapping.palette.secondary.w40
+						},
 						"&.Mui-checked .MuiSvgIcon-root": {
 							".SolaceCheckboxCheckmark": {
-								fill: themeMapping.palette.deprecated.accent.n2.wMain
+								fill: themeMapping.palette.accent.n2.wMain
 							},
 							".SolaceCheckboxIndeterminant": {
-								stroke: themeMapping.palette.deprecated.accent.n2.wMain
+								stroke: themeMapping.palette.accent.n2.wMain
 							}
 						},
 						"&:hover .MuiSvgIcon-root rect.SolaceCheckboxContainer": {
-							stroke: themeMapping.palette.deprecated.secondary.wMain
+							stroke: themeMapping.palette.secondary.wMain
 						},
 						"&.Mui-disabled .MuiSvgIcon-root": {
+							rect: {
+								fill: themeMapping.palette.background.w10
+							},
 							".SolaceCheckboxContainer": {
 								stroke: themeMapping.palette.secondary.w20
 							},
@@ -822,6 +838,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&.readOnly .MuiSvgIcon-root": {
 							rect: {
 								fill: themeMapping.palette.background.w20
+							},
+							".SolaceCheckboxContainer": {
+								stroke: themeMapping.palette.secondary.w40
 							},
 							".SolaceCheckboxCheckmark": {
 								fill: themeMapping.palette.deprecated.secondary.wMain
