@@ -1,5 +1,7 @@
-import { Pagination, styled } from "@mui/material";
+import { Pagination, PaginationItem, styled } from "@mui/material";
 import { BASE_FONT_PX_SIZES } from "../resources/typography";
+import { ArrowRightIcon } from "../resources/icons/ArrowRight";
+import { ArrowLeftIcon } from "../resources/icons/ArrowLeft";
 
 export interface SolacePaginationProps {
 	/**
@@ -51,7 +53,7 @@ const PageListContainer = styled("div")(() => ({
 }));
 
 const MessageContainer = styled("p")(({ theme }) => ({
-	margin: theme.spacing(0.5, 0, 0, 0),
+	margin: theme.spacing(0),
 	fontSize: BASE_FONT_PX_SIZES.xs,
 	color: theme.palette.ux.deprecated.secondary.text.wMain
 }));
@@ -78,7 +80,7 @@ function SolacePagination({
 	const firstItemIndex = (activePage - 1) * pageSize + 1;
 	const lastItemIndex = Math.min(activePage * pageSize, totalResults);
 
-	const handlePageSelection = (event: React.ChangeEvent<unknown>, page: number) => {
+	const handlePageSelection = (event: React.ChangeEvent<unknown> | null, page: number) => {
 		if (event && page > 0 && onPageSelection) {
 			onPageSelection(page);
 		}
@@ -99,10 +101,17 @@ function SolacePagination({
 					count={totalPages}
 					shape="rounded"
 					page={activePage}
-					hideNextButton={true}
-					hidePrevButton={true}
 					boundaryCount={2}
 					onChange={handlePageSelection}
+					renderItem={(item) => (
+						<PaginationItem
+							slots={{
+								previous: ArrowLeftIcon,
+								next: ArrowRightIcon
+							}}
+							{...item}
+						/>
+					)}
 				/>
 			</PageListContainer>
 			<MessageContainer>{substituteMessageValues()}</MessageContainer>

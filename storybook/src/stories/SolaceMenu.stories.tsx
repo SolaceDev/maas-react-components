@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 import {
 	SolaceMenu,
-	SolaceMenuItemProps,
 	SolaceButton,
 	SolaceCheckBox,
 	DeleteIcon,
@@ -12,7 +11,7 @@ import {
 	MoreHorizOutlinedIcon
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { userEvent, within } from "@storybook/testing-library";
+import { userEvent, within } from "@storybook/test";
 
 export default {
 	title: "Under Construction/SolaceMenu",
@@ -101,7 +100,6 @@ export const DefaultSolaceMenu = {
 
 export const DefaultSolaceMenuPressed = {
 	args: {
-		id: "demo-solace-menu",
 		buttonProps: {
 			title: TITLE,
 			variant: "icon",
@@ -173,6 +171,11 @@ export const MultilineSolaceMenu = {
 		],
 		multiline: true,
 		numOfMenuItemDisplayed: 4 // default to 9 if this number is not specified
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
@@ -216,6 +219,11 @@ export const CustomMaxWidthSolaceMenu = {
 		],
 		multiline: true,
 		maxWidth: 500
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
@@ -259,7 +267,12 @@ export const CustomMaxWidthMaxHeightSolaceMenu = {
 		],
 		multiline: true,
 		numOfMenuItemDisplayed: 4,
-		maxWidth: 500
+		maxWidth: 400
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
@@ -286,6 +299,11 @@ export const SecondaryActionSolaceMenu = {
 				onMenuItemClick: action("callback")
 			}
 		]
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
@@ -317,11 +335,16 @@ export const DisabledMenuItem = {
 			}
 		],
 		multiline: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
 export const DisabledMenu = (): JSX.Element => {
-	const [disabled, setDisabled] = useState(false);
+	const [disabled, setDisabled] = useState(true);
 
 	return (
 		<div style={{ display: "flex", alignItems: "center", padding: "8px", border: "1px solid rgba(0,0,0, 0.1)" }}>
@@ -380,33 +403,33 @@ export const IconMenuItem = {
 			}
 		],
 		multiline: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
-export const CustomPositionMenu = (): JSX.Element => {
-	return (
-		<div
-			style={{
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
-				border: "2px solid rgba(0,0,0, 0.1)",
-				height: "100px",
-				width: "20%"
-			}}
-		>
-			<SolaceMenu
-				buttonProps={{
-					variant: "icon",
-					children: <MoreHorizOutlinedIcon />
-				}}
-				items={DEFAULT_MENU_ITEMS}
-				multiline={true}
-				anchorOrigin={{ vertical: "center", horizontal: "left" }}
-				transformOrigin={{ vertical: "top", horizontal: "right" }}
-			></SolaceMenu>
-		</div>
-	);
+export const CustomPositionMenu = {
+	args: {
+		buttonProps: {
+			title: TITLE,
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		dataQa: "testDataProp",
+		dataTags: "testDataTag1",
+		items: DEFAULT_MENU_ITEMS,
+		numOfMenuItemDisplayed: 3, // default to 9 if this number is not specified
+		anchorOrigin: { vertical: "top", horizontal: "right" },
+		transformOrigin: { vertical: "top", horizontal: "left" }
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
 };
 
 export const MenusWithDivider = {
@@ -437,6 +460,11 @@ export const MenusWithDivider = {
 			}
 		],
 		multiline: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
@@ -472,6 +500,11 @@ export const HeaderAndCategoryHeading = {
 		],
 		multiline: true,
 		header: "Menu Header"
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
@@ -508,21 +541,31 @@ export const HeaderAndCategoryHeadingAndNumberOfItemsDisplayed = {
 		multiline: true,
 		header: "Menu Header",
 		numOfMenuItemDisplayed: 2
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
 	}
 };
 
-export const EmptyMenuItems = (): JSX.Element => {
-	const emptyItems: SolaceMenuItemProps[] = [];
-	return (
-		<SolaceMenu
-			id={"custom-solace-menu2"}
-			buttonProps={{
-				variant: "icon",
-				children: <MoreHorizOutlinedIcon />
-			}}
-			items={emptyItems}
-		></SolaceMenu>
-	);
+export const EmptyMenuItems = {
+	args: {
+		buttonProps: {
+			title: TITLE,
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		dataQa: "testDataProp",
+		dataTags: "testDataTag1",
+		items: [],
+		numOfMenuItemDisplayed: 3 // default to 9 if this number is not specified
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
 };
 
 export const CustomMenuItemsWithRadioButton = (): JSX.Element => {
@@ -551,8 +594,13 @@ export const CustomMenuItemsWithRadioButton = (): JSX.Element => {
 	);
 };
 
+CustomMenuItemsWithRadioButton.play = ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	userEvent.click(canvas.getByRole("button"));
+};
+
 export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
-	const [checked, setChecked] = React.useState([]);
+	const [checked, setChecked] = React.useState<string[]>([]);
 
 	const handleToggle = (item) => {
 		const currentIndex = checked.indexOf(item.name);
@@ -567,9 +615,16 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 		setChecked(newChecked);
 	};
 
-	const customItems = ["Option 1", "Option 2", "Option 3"].map((value) => ({
-		name: <SolaceCheckBox name={value} label={value} checked={checked.indexOf(value) !== -1} onChange={handleToggle} />
-	}));
+	const customItems: { name: JSX.Element }[] = ["Option 1", "Option 2", "Option 3"].map((value: string) => ({
+		name: (
+			<SolaceCheckBox
+				name={value}
+				label={value}
+				checked={checked.indexOf(value) !== -1 || value === "Option 1" || value === "Option 3"}
+				onChange={() => handleToggle(value)}
+			/>
+		)
+	})) as { name: JSX.Element }[];
 
 	return (
 		<SolaceMenu
@@ -582,6 +637,11 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 			closeOnSelect={false}
 		></SolaceMenu>
 	);
+};
+
+CustomMenuItemsWithCheckbox.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("button"));
 };
 
 export const ClickNotPropagateToParent = (): JSX.Element => {
@@ -715,6 +775,11 @@ export const NestedMenuItems = (): JSX.Element => {
 	);
 };
 
+NestedMenuItems.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("button"));
+};
+
 export const NestedMenuItemsWithDividers = (): JSX.Element => {
 	return (
 		<SolaceMenu
@@ -725,4 +790,10 @@ export const NestedMenuItemsWithDividers = (): JSX.Element => {
 			items={MENU_WITH_NESTED_ITEMS(true)}
 		/>
 	);
+};
+
+NestedMenuItemsWithDividers.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("button"));
+	await userEvent.click(canvas.getByText("Option 3"));
 };

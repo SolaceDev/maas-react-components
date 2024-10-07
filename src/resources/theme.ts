@@ -957,7 +957,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						 */
 						"&.SolaceMenu": {
 							".MuiPaper-root": {
-								margin: "4px",
+								margin: theme.spacing(0.5, 0.5, 0.5, 0),
 								".MuiMenuItem-root": {
 									minWidth: "80px",
 									"&.wideMenu": {
@@ -1629,14 +1629,34 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiPagination: {
 				styleOverrides: {
 					root: {
+						padding: theme.spacing(1, 0),
+						li: {
+							"&:first-child": {
+								paddingRight: theme.spacing(1),
+								svg: {
+									fill: themeMapping.palette.secondary.wMain
+								}
+							},
+							"&:last-child": {
+								paddingLeft: theme.spacing(1),
+								svg: {
+									fill: themeMapping.palette.secondary.wMain
+								}
+							},
+							"& .Mui-disabled": {
+								svg: {
+									fill: themeMapping.palette.secondary.w40
+								}
+							}
+						},
 						".MuiTouchRipple-root": {
 							display: "none"
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root": {
-							margin: "0 2px",
-							padding: "0",
-							height: "24px",
-							minWidth: "20px",
+							margin: theme.spacing(0),
+							padding: theme.spacing(0),
+							height: theme.spacing(3),
+							minWidth: theme.spacing(3),
 							color: themeMapping.palette.primary.wMain,
 							fontSize: BASE_FONT_PX_SIZES.sm
 						},
