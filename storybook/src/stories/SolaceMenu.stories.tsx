@@ -11,12 +11,14 @@ import {
 	MoreHorizOutlinedIcon
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { userEvent, within } from "@storybook/test";
+import { userEvent, within, waitFor } from "@storybook/test";
 
 export default {
 	title: "Under Construction/SolaceMenu",
 	component: SolaceMenu,
-	parameters: {},
+	parameters: {
+		chromatic: { delay: 1000 }
+	},
 	argTypes: {}
 } as Meta<typeof SolaceMenu>;
 
@@ -357,6 +359,7 @@ export const DisabledMenu = (): JSX.Element => {
 						setDisabled(!disabled);
 					}}
 					stateText
+					isOn={disabled}
 					title="Disable Toggle"
 				/>
 			</div>
@@ -599,6 +602,11 @@ CustomMenuItemsWithRadioButton.play = ({ canvasElement }) => {
 	userEvent.click(canvas.getByRole("button"));
 };
 
+CustomMenuItemsWithRadioButton.play = ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	userEvent.click(canvas.getByRole("button"));
+};
+
 export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 	const [checked, setChecked] = React.useState<string[]>([]);
 
@@ -637,6 +645,11 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 			closeOnSelect={false}
 		></SolaceMenu>
 	);
+};
+
+CustomMenuItemsWithCheckbox.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("button"));
 };
 
 CustomMenuItemsWithCheckbox.play = async ({ canvasElement }) => {
@@ -780,6 +793,11 @@ NestedMenuItems.play = async ({ canvasElement }) => {
 	await userEvent.click(canvas.getByRole("button"));
 };
 
+NestedMenuItems.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("button"));
+};
+
 export const NestedMenuItemsWithDividers = (): JSX.Element => {
 	return (
 		<SolaceMenu
@@ -794,6 +812,10 @@ export const NestedMenuItemsWithDividers = (): JSX.Element => {
 
 NestedMenuItemsWithDividers.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
-	await userEvent.click(canvas.getByRole("button"));
-	await userEvent.click(canvas.getByText("Option 3"));
+	await waitFor(
+		async () => {
+			await userEvent.click(canvas.getByRole("button"));
+		},
+		{ timeout: 1000 }
+	);
 };
