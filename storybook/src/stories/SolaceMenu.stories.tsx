@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Meta } from "@storybook/react";
+import { Decorator, Meta } from "@storybook/react";
 import {
 	SolaceMenu,
 	SolaceButton,
@@ -11,7 +11,16 @@ import {
 	MoreHorizOutlinedIcon
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { userEvent, within, waitFor } from "@storybook/test";
+import { userEvent, within, screen } from "@storybook/test";
+
+// Create a decorator to increase the snapshot window size"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ width: "400px", height: "400px", padding: "10px 35px" }}>
+			<Story />
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceMenu",
@@ -19,7 +28,8 @@ export default {
 	parameters: {
 		chromatic: { delay: 1000 }
 	},
-	argTypes: {}
+	argTypes: {},
+	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceMenu>;
 
 const SUBTEXT = "Subtext subtext";
@@ -597,14 +607,13 @@ export const CustomMenuItemsWithRadioButton = (): JSX.Element => {
 	);
 };
 
-CustomMenuItemsWithRadioButton.play = ({ canvasElement }) => {
+CustomMenuItemsWithRadioButton.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
-	userEvent.click(canvas.getByRole("button"));
-};
-
-CustomMenuItemsWithRadioButton.play = ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	userEvent.click(canvas.getByRole("button"));
+	const button = canvas.getByRole("button");
+	await userEvent.click(button);
+	const option1 = await screen.findByText("Option 1");
+	await userEvent.click(option1);
+	await userEvent.click(button);
 };
 
 export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
@@ -628,7 +637,7 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 			<SolaceCheckBox
 				name={value}
 				label={value}
-				checked={checked.indexOf(value) !== -1 || value === "Option 1" || value === "Option 3"}
+				checked={checked.indexOf(value) !== -1}
 				onChange={() => handleToggle(value)}
 			/>
 		)
@@ -650,11 +659,11 @@ export const CustomMenuItemsWithCheckbox = (): JSX.Element => {
 CustomMenuItemsWithCheckbox.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	await userEvent.click(canvas.getByRole("button"));
-};
 
-CustomMenuItemsWithCheckbox.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	await userEvent.click(canvas.getByRole("button"));
+	const option1 = await screen.findByText("Option 1");
+	const option2 = await screen.findByText("Option 2");
+	await userEvent.click(option1);
+	await userEvent.click(option2);
 };
 
 export const ClickNotPropagateToParent = (): JSX.Element => {
@@ -791,11 +800,8 @@ export const NestedMenuItems = (): JSX.Element => {
 NestedMenuItems.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	await userEvent.click(canvas.getByRole("button"));
-};
-
-NestedMenuItems.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	await userEvent.click(canvas.getByRole("button"));
+	const option1 = await screen.findByText("Option 1");
+	await userEvent.hover(option1);
 };
 
 export const NestedMenuItemsWithDividers = (): JSX.Element => {
@@ -812,10 +818,7 @@ export const NestedMenuItemsWithDividers = (): JSX.Element => {
 
 NestedMenuItemsWithDividers.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
-	await waitFor(
-		async () => {
-			await userEvent.click(canvas.getByRole("button"));
-		},
-		{ timeout: 1000 }
-	);
+	await userEvent.click(canvas.getByRole("button"));
+	const option1 = await screen.findByText("Option 1");
+	await userEvent.hover(option1);
 };
