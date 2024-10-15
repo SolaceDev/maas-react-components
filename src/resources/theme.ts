@@ -935,7 +935,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						 */
 						"&.SolaceMenuPopover": {
 							".MuiPaper-root": {
-								margin: "4px",
+								margin: theme.spacing(0.5, 0.5, 0.5, 0),
 								overflowY: "auto",
 								boxShadow: `0 1px 4px ${getBoxShadow("w20")}`,
 								".MuiMenuItem-root": {
