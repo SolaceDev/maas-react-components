@@ -8,8 +8,8 @@ const palette: ThemeMappingPalette = {
 		wMain30: alpha("#0A6ED1", 0.3),
 		w30: "#B6D4F1",
 		w10: "#E7F1FA",
-		w60: "#66DEBF",
-		w100: "#00AD93"
+		w60: "#6CA8E3",
+		w100: "#0961B9"
 	},
 
 	primary: {

@@ -1187,6 +1187,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							background: themeMapping.palette.primary.w10
 						},
 						boxShadow: `0 1px 4px ${getBoxShadow("w20")}`,
+						".MuiAutocomplete-paper": {
+							boxShadow: `0 1px 4px ${getBoxShadow("w20")}`
+						},
 						color: themeMapping.palette.primary.text.wMain,
 						".subtext": {
 							color: themeMapping.palette.deprecated.secondary.text.wMain
