@@ -110,3 +110,4 @@ export { default as SolaceFileUploader } from "./components/fileuploader/SolaceF
 export { default as SolaceDonutChart } from "./components/SolaceDonutChart";
 export { default as SolaceJsonSchemaForm } from "./components/jsonschemaform/SolaceJsonSchemaForm";
 export type { SolaceJsonSchemaFormProps } from "./components/jsonschemaform/SolaceJsonSchemaForm";
+export { default as SolaceTruncatableLink } from "./components/SolaceTruncatableLink";
