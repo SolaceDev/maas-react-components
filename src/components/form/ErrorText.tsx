@@ -22,7 +22,7 @@ function ErrorText({ children }: ErrorTextProps): JSX.Element {
 	const size = theme.typography.subtitle1.fontSize?.toString();
 	return (
 		<ErrorTextContainer>
-			<ErrorIcon size={size ? parseInt(size) : BASE_FONT_PX_SIZES.md} fill={theme.palette.ux.error.w100}></ErrorIcon>
+			<ErrorIcon size={size ? parseInt(size) : BASE_FONT_PX_SIZES.md} fill={theme.palette.ux.error.wMain} />
 			<ErrorTextLabel>{children}</ErrorTextLabel>
 		</ErrorTextContainer>
 	);

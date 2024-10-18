@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useMemo, useRef, useState } from "react";
+import React, { SyntheticEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Box, Autocomplete, TextField, useTheme, styled, Divider, AutocompleteChangeReason } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -258,6 +258,7 @@ function SolaceSelectAutocomplete<T, V>({
 	const [open, setOpen] = useState(false);
 	const [resetOptions, setResetOptions] = useState(false);
 	const currentInputValue = useRef<string>("");
+	const listboxRef = useRef<HTMLUListElement | null>(null);
 	const persistInputValueOnSelect = useMemo(() => {
 		return multiple && !clearSearchOnSelect;
 	}, [clearSearchOnSelect, multiple]);
@@ -300,6 +301,139 @@ function SolaceSelectAutocomplete<T, V>({
 			setResetOptions(false);
 		}
 	}, [fetchOptionsCallback, resetOptions]);
+
+	/**
+	 * The following use callback is used to determine if there is a scrollbar and if true to calculate the maxHeight based on the total height of visible items and the height of the label div in the last visible item.
+	 * The calculation ensures that the last visible item is cut at the label div.
+	 * A condition checking if there are group dividers is present to add additional required conditioning to calculate the height based on nested elements
+	 *
+	 * Steps:
+	 * 1. Iterate through the list items and sum their heights until the total height exceeds the client height of the listbox.
+	 * 2. Identify the div containing the label within the last visible item.
+	 * 3. Add half the height of the label div to the total height.
+	 *
+	 * For example, if the listbox can display items with a total height of 300px, and the label div in the last visible item has a height of 20px:
+	 * maxHeight = totalHeight (300px) + half of labelDivHeight (10px)
+	 * maxHeight = 300px + 10px
+	 * maxHeight = 310px
+	 *
+	 * This ensures that the last visible item is cut at the label div.
+	 */
+	const setListBoxRef = useCallback(
+		(node: HTMLUListElement | null) => {
+			if (!node) return;
+
+			// Set the listbox reference
+			listboxRef.current = node;
+			const listbox = listboxRef.current;
+
+			// If the listbox doesn't have a scrollbar, no need to adjust the height
+			if (listbox.scrollHeight <= listbox.clientHeight) return;
+
+			const totalHeightObj = { value: 0 };
+			let lastVisibleElementHeight = 0;
+			const items = listbox.children;
+
+			// Function to set the height of the last visible element
+			const setLastVisibleElementHeight = (height: number) => {
+				lastVisibleElementHeight = height;
+			};
+
+			// Wrappers for the helper functions to pass necessary parameters
+			const calculateHeightWrapper = (item: HTMLElement) =>
+				calculateHeight(item, totalHeightObj, listbox, setLastVisibleElementHeight);
+			const processNestedItemsWrapper = (nestedUl: HTMLElement) =>
+				processNestedItems(nestedUl, totalHeightObj, listbox, calculateHeightWrapper);
+			const processGroupDividerWrapper = (item: HTMLElement) =>
+				processGroupDivider(
+					item,
+					showGroupDivider,
+					totalHeightObj,
+					listbox,
+					calculateHeightWrapper,
+					processNestedItemsWrapper
+				);
+
+			// Iterate through the list items and calculate the total height
+			for (let i = 0; i < items.length; i++) {
+				const item = items[i] as HTMLElement;
+				if (!processGroupDividerWrapper(item) && !calculateHeightWrapper(item)) break;
+			}
+
+			// Calculate the new height for the listbox
+			const newHeight = totalHeightObj.value + lastVisibleElementHeight / 2 - 8; // 8 is the padding of the listbox
+			listbox.style.maxHeight = `${newHeight}px`;
+		},
+		[showGroupDivider]
+	);
+
+	const calculateHeight = (
+		item: HTMLElement,
+		totalHeightObj: { value: number },
+		listbox: HTMLElement,
+		setLastVisibleElementHeight: (height: number) => void
+	) => {
+		const itemHeight = item.clientHeight;
+		if (totalHeightObj.value + itemHeight > listbox.clientHeight) {
+			setLastVisibleElementHeight(itemHeight);
+			return false;
+		}
+		totalHeightObj.value += itemHeight;
+		setLastVisibleElementHeight(itemHeight);
+		return true;
+	};
+
+	const processNestedItems = (
+		nestedUl: HTMLElement,
+		totalHeightObj: { value: number },
+		listbox: HTMLElement,
+		calculateHeight: (
+			item: HTMLElement,
+			totalHeightObj: { value: number },
+			listbox: HTMLElement,
+			setLastVisibleElementHeight: (height: number) => void
+		) => boolean
+	) => {
+		const nestedItems = nestedUl.children;
+		for (let j = 0; j < nestedItems.length; j++) {
+			const nestedItem = nestedItems[j] as HTMLElement;
+			if (!calculateHeight(nestedItem, totalHeightObj, listbox, () => {})) return false;
+		}
+		return true;
+	};
+
+	const processGroupDivider = (
+		item: HTMLElement,
+		showGroupDivider: boolean,
+		totalHeightObj: { value: number },
+		listbox: HTMLElement,
+		calculateHeight: (
+			item: HTMLElement,
+			totalHeightObj: { value: number },
+			listbox: HTMLElement,
+			setLastVisibleElementHeight: (height: number) => void
+		) => boolean,
+		processNestedItems: (
+			nestedUl: HTMLElement,
+			totalHeightObj: { value: number },
+			listbox: HTMLElement,
+			calculateHeight: (
+				item: HTMLElement,
+				totalHeightObj: { value: number },
+				listbox: HTMLElement,
+				setLastVisibleElementHeight: (height: number) => void
+			) => boolean
+		) => boolean
+	) => {
+		const labelGroupDiv = item.querySelector("div.MuiAutocomplete-groupLabel") as HTMLElement;
+		if (showGroupDivider || labelGroupDiv) {
+			if (!calculateHeight(labelGroupDiv, totalHeightObj, listbox, () => {})) return false;
+
+			const nestedUl = item.querySelector("ul") as HTMLElement;
+			return !(nestedUl?.tagName === "UL" && !processNestedItems(nestedUl, totalHeightObj, listbox, calculateHeight));
+		}
+		return false;
+	};
 
 	const handleChange = (
 		_event: SyntheticEvent<Element, Event>,
@@ -455,7 +589,7 @@ function SolaceSelectAutocomplete<T, V>({
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 	const select = () => (
 		<Autocomplete
-			ListboxProps={{ style: { maxHeight: maxHeight } }}
+			ListboxProps={{ style: { maxHeight: maxHeight }, ref: setListBoxRef }}
 			id={getId()}
 			data-qa={dataQa ?? DEFAULT_DATA_QA}
 			filterOptions={(x) => x}

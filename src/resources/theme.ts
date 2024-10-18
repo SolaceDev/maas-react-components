@@ -122,6 +122,7 @@ const gridListRowCommonStyle = (themeMapping: ThemeMapping): Record<string, unkn
 const getThemeOptions = (themeName: SupportedThemes) => {
 	const themeMapping = getThemeMappings(themeName);
 	const isCurrentSolace = themeName === SupportedThemes.solace;
+	const isSap = themeName === SupportedThemes.sap;
 
 	const getBoxShadow = (currentKey: string) => {
 		if (isCurrentSolace) {
@@ -740,7 +741,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							},
 							"&.Mui-error": {
 								".MuiOutlinedInput-notchedOutline, .MuiInputBase-inputMultiline": {
-									border: `solid 1px ${themeMapping.palette.error.w100}`
+									border: `solid 1px ${themeMapping.palette.error.wMain}`
 								},
 								"&.Mui-focused": {
 									".MuiOutlinedInput-notchedOutline": {
@@ -1109,10 +1110,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							padding: "0"
 						},
 						".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-popupIndicator:hover": {
-							background: "transparent"
-						},
-						".MuiButtonBase-root.MuiIconButton-root.MuiAutocomplete-clearIndicator .MuiSvgIcon-root:hover": {
-							fill: themeMapping.palette.secondary.wMain
+							background: "transparent",
+							".MuiSvgIcon-root": {
+								fill: themeMapping.palette.secondary.wMain
+							}
 						},
 						// styles specifically applied when autocomplete allows multiple lines with chips
 						".MuiButtonBase-root.MuiChip-root": {
@@ -1148,6 +1149,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									paddingBottom: "8px"
 								}
 							}
+						},
+						".MuiAutocomplete-paper": {
+							boxShadow: "none"
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused ": {
 							backgroundColor: themeMapping.palette.secondary.w10
@@ -1187,9 +1191,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							background: themeMapping.palette.primary.w10
 						},
 						boxShadow: `0 1px 4px ${getBoxShadow("w20")}`,
-						".MuiAutocomplete-paper": {
-							boxShadow: `0 1px 4px ${getBoxShadow("w20")}`
-						},
+						borderRadius: "4px",
 						color: themeMapping.palette.primary.text.wMain,
 						".subtext": {
 							color: themeMapping.palette.deprecated.secondary.text.wMain
@@ -1848,7 +1850,8 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				},
 				label: {
 					// TODO: remove "solace" option when new theme is adopted
-					color: themeMapping.palette.error.w100,
+					color:
+						isCurrentSolace || isSap ? themeMapping.palette.error.wMain : themeMapping.palette.secondary.text.wMain,
 					fontSize: BASE_FONT_PX_SIZES.xs,
 					marginLeft: "8px"
 				}

@@ -4,10 +4,10 @@
 
 /* eslint-disable sonarjs/no-duplicate-string */
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Meta } from "@storybook/react";
+import { Meta, Decorator } from "@storybook/react";
 // import { withState, Store } from "@sambego/storybook-state";
 
-import { within, userEvent } from "@storybook/testing-library";
+import { within, userEvent } from "@storybook/test";
 import {
 	SolaceSelectAutocomplete,
 	SolaceSelectAutocompleteItem,
@@ -22,11 +22,21 @@ import {
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+// Create a decorator to increase the snapshot window size"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ width: "auto", height: "500px", padding: "10px 35px" }}>
+			<Story />
+		</div>
+	);
+};
+
 export default {
 	title: "Forms/SolaceSelectAutocomplete",
 	component: SolaceSelectAutocomplete,
 	parameters: {
-		controls: { sort: "alpha" }
+		controls: { sort: "alpha" },
+		chromatic: { delay: 500 }
 		// state: {
 		// 	store
 		// }
@@ -112,7 +122,8 @@ export default {
 				type: "text"
 			}
 		}
-	}
+	},
+	decorators: [withSnapshotContainer]
 	// decorators: [withState()]
 } as Meta<typeof SolaceSelectAutocomplete>;
 
@@ -303,14 +314,27 @@ const DefaultSelectionTemplate = ({
 export const DefaultAutocomplete = {
 	render: DefaultSelectionTemplate,
 
-	args: {}
+	args: {
+		value: SELECT_OPTIONS[0]
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
 };
 
 export const WithDividers = {
 	render: DefaultSelectionTemplate,
 
 	args: {
+		value: SELECT_OPTIONS[0],
 		withDividers: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
 	}
 };
 
@@ -329,6 +353,11 @@ export const StackedLabelFormatWithCustomWidth = {
 		label: "Some Label",
 		width: "50%",
 		longLabel: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
 	}
 };
 
@@ -392,6 +421,11 @@ export const WithDisabledItems = {
 
 	args: {
 		disabledItems: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
 	}
 };
 
@@ -409,7 +443,6 @@ export const CustomHeight = {
 	},
 
 	play: async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
 		await userEvent.click(await canvas.findByRole("combobox"));
 	}
@@ -421,7 +454,7 @@ export const MultipleSelection = {
 	args: {
 		label: "Some Label",
 		multiple: true,
-		value: []
+		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[1], SELECT_OPTIONS[2]]
 	}
 };
 
@@ -431,7 +464,7 @@ export const MultipleSelectionWithLimitedTag = {
 	args: {
 		label: "Some Label",
 		multiple: true,
-		value: [],
+		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[1], SELECT_OPTIONS[2]],
 		limitTags: 2
 	}
 };
@@ -445,6 +478,11 @@ export const MultipleSelectionWithLongLabel = {
 		value: [],
 		width: "50%",
 		longLabel: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
 	}
 };
 
@@ -458,6 +496,11 @@ export const MultipleSelectionWithLongLabelAndNullMaxTagWidth = {
 		width: "50%",
 		longLabel: true,
 		maxTagWidth: null
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
 	}
 };
 
@@ -560,7 +603,7 @@ const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
 ];
 
 export const MultiSelectionWithDisabledItems = () => {
-	const [values, setValues] = useState([]);
+	const [values, setValues] = useState([SAMPLE_EVENT_MESHES[1], SAMPLE_EVENT_MESHES[2]]);
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 
 	const handleChange = (evt) => {
@@ -600,6 +643,11 @@ export const MultiSelectionWithDisabledItems = () => {
 			></SolaceSelectAutocomplete>
 		</div>
 	);
+};
+
+MultiSelectionWithDisabledItems.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(await canvas.findByRole("combobox"));
 };
 
 const INPUT_VALUE_REGEX = /^[A-Za-z0-9-_./@()'–# ]*$/;
@@ -728,7 +776,6 @@ export const MultiSelectionWithCreateNewAndClearSearchWhenSelectNew = {
 
 export const MultiSelectionWithInitialValueCreateNewAndClearSearchWhenSelectNew = {
 	render: MultiSelectionWithCreateNewTemplate,
-
 	args: {
 		clearSearchWhenSelectNew: true,
 		initialValues: SELECT_OPTIONS
