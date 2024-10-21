@@ -9,7 +9,8 @@ import {
 	styled,
 	SolaceTooltip
 } from "@SolaceDev/maas-react-components";
-import { within, userEvent } from "@storybook/testing-library";
+import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 export default {
 	title: "Under Construction/SolaceResponsiveItemList",
@@ -27,6 +28,10 @@ const DEFAULT_OPTIONS = [
 	{ value: "gatewayServices", label: "Gateway Services" },
 	{ value: "accessType", label: "Access Type" }
 ];
+
+const EXPANDED_OPTIONS = new Array(20).fill(null).map((_v, i) => {
+	return { value: `option${i}`, label: `Option ${i}` };
+});
 
 const Container = styled("div")(({ theme }) => ({
 	display: "flex",
@@ -99,6 +104,7 @@ const ResponsiveItemListTemplate = ({
 	containerWidth = 600,
 	componentToShowOverflowItems = "popover",
 	numOfRowsToShow = 1,
+	numOfMenuItemsToDisplay,
 	chipMaxWidth,
 	overflowIndicatorLabel,
 	overflowIndicatorLabelSingular
@@ -108,6 +114,7 @@ const ResponsiveItemListTemplate = ({
 	containerWidth: number | undefined;
 	componentToShowOverflowItems: "popover" | null;
 	numOfRowsToShow: number;
+	numOfMenuItemsToDisplay?: number;
 	overflowIndicatorLabel?: string;
 	overflowIndicatorLabelSingular?: string;
 	chipMaxWidth?: string | number;
@@ -211,6 +218,7 @@ const ResponsiveItemListTemplate = ({
 							containerWidth={containerWidth}
 							componentToShowOverflowItems={componentToShowOverflowItems}
 							numOfRowsToShow={numOfRowsToShow}
+							numOfMenuItemsToDisplay={numOfMenuItemsToDisplay}
 							showAll={showAll}
 							overflowIndicatorLabel={overflowIndicatorLabel}
 							overflowIndicatorLabelSingular={overflowIndicatorLabelSingular}
@@ -250,6 +258,49 @@ export const DefaultList = {
 		}
 
 		await userEvent.hover(await canvas.findByText(/more/));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { disableSnapshot: true }
+	}
+};
+
+export const DefaultListManyMenuItems = {
+	render: ResponsiveItemListTemplate,
+
+	args: {
+		options: EXPANDED_OPTIONS.slice(0),
+		initSelectedOptions: new Array(20).fill(null).map((_v, i) => `option${i}`)
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		await waitFor(() => expect(canvas.getByText("+ 14 more")).toBeInTheDocument());
+		await userEvent.hover(canvas.getByText(/more/));
+	},
+
+	parameters: {
+		// Delay snapshot 5 seconds until all interactions are done
+		chromatic: { disableSnapshot: true }
+	}
+};
+
+export const DefaultListLimitedMenuItems = {
+	render: ResponsiveItemListTemplate,
+
+	args: {
+		options: EXPANDED_OPTIONS.slice(0),
+		initSelectedOptions: new Array(20).fill(null).map((_v, i) => `option${i}`),
+		numOfMenuItemsToDisplay: 3
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		await waitFor(() => expect(canvas.getByText("+ 14 more")).toBeInTheDocument());
+		await userEvent.hover(canvas.getByText(/more/));
 	},
 
 	parameters: {

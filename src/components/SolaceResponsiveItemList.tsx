@@ -21,10 +21,16 @@ const ItemsContainer = styled("div", {
 	})
 );
 
-const PopoverContainer = styled("div")(({ theme }) => ({
+const PopoverContainer = styled("div", {
+	shouldForwardProp: (prop) => prop !== "maxHeight"
+})<{
+	maxHeight?: string;
+}>(({ theme, maxHeight }) => ({
 	display: "flex",
 	flexDirection: "column",
-	rowGap: theme.spacing(1.5)
+	rowGap: theme.spacing(1.5),
+	maxHeight: maxHeight,
+	overflowY: "auto"
 }));
 
 export interface SolaceResponsiveItem {
@@ -106,6 +112,10 @@ export interface SolaceResponsiveItemListProps extends SolaceComponentProps {
 	 * */
 	numOfRowsToShow?: number;
 	/**
+	 * Number of menu items to be displayed (defaulting to 9) before scrolling is applied.
+	 */
+	numOfMenuItemsToDisplay?: number;
+	/**
 	 * Callback to notify items rendered
 	 */
 	onItemsRendered?: () => void;
@@ -135,6 +145,7 @@ function SolaceResponsiveItemList({
 	overflowIndicatorLabelSingular,
 	overflowIndicatorLabelWidth,
 	numOfRowsToShow = 1,
+	numOfMenuItemsToDisplay = 9, // matches menu overflow default
 	onItemsRendered,
 	onItemsOverflow,
 	onItemsOverflowIndicatorClick,
@@ -155,8 +166,14 @@ function SolaceResponsiveItemList({
 
 	const popoverContents = useMemo(() => {
 		if (items && visibleItemIds) {
+			const popoverMaxHeight =
+				hiddenItemsCount > numOfMenuItemsToDisplay
+					? // gap between menu items is 12px - removing 1/2 the last gap to help indicate the continuation
+					  `${(itemHeightRef.current + 12) * numOfMenuItemsToDisplay - 6}px`
+					: "unset";
+
 			return (
-				<PopoverContainer>
+				<PopoverContainer maxHeight={popoverMaxHeight}>
 					{items
 						.filter((item) => !visibleItemIds.includes(item.id))
 						.map((item) => (
@@ -167,7 +184,7 @@ function SolaceResponsiveItemList({
 		} else {
 			return undefined;
 		}
-	}, [items, visibleItemIds]);
+	}, [items, hiddenItemsCount, visibleItemIds]);
 
 	const itemIds = useMemo(() => {
 		return items ? items.map((item) => item.id) : null;
