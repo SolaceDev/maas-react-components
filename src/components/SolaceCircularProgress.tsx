@@ -1,4 +1,4 @@
-import { CircularProgress, useTheme } from "@mui/material";
+import { CircularProgress, styled, useTheme } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { BASE_SIZE_TYPES } from "../types/sizing";
 
@@ -16,7 +16,24 @@ const PROGRESS_SIZES: BASE_SIZE_TYPES = {
 	lg: 42
 };
 
+const Container = styled("div")(({ theme }) => ({
+	width: "fit-content",
+	display: "flex",
+	flexDirection: "column",
+	alignItems: "center",
+	rowGap: theme.spacing(1.5)
+}));
+
 export interface SolaceCircularProgressProps extends SolaceComponentProps {
+	/**
+	 * 	Text to display below the spinner
+	 */
+	message?: string | JSX.Element;
+
+	/**
+	 * 	Used to locate this component for testing purpose
+	 */
+	dataQa?: string;
 	/**
 	 * 	The variant to use.
 	 */
@@ -38,14 +55,17 @@ export interface SolaceCircularProgressProps extends SolaceComponentProps {
 }
 
 export default function SolaceCircularProgress(props: SolaceCircularProgressProps): JSX.Element {
-	const { variant, value, size, disableShrink } = props;
+	const { variant, value, size, disableShrink, dataQa, message } = props;
 	return (
-		<CircularProgress
-			variant={variant ?? "indeterminate"}
-			value={variant === "determinate" ? value : undefined}
-			size={PROGRESS_SIZES[size ?? "sm"]}
-			disableShrink={disableShrink}
-			sx={{ color: useTheme().palette.ux.brand.w30 }}
-		/>
+		<Container data-qa={dataQa ?? "loading-spinner"}>
+			<CircularProgress
+				variant={variant ?? "indeterminate"}
+				value={variant === "determinate" ? value : undefined}
+				size={PROGRESS_SIZES[size ?? "sm"]}
+				disableShrink={disableShrink}
+				sx={{ color: useTheme().palette.ux.brand.w30 }}
+			/>
+			{message && <div>{message}</div>}
+		</Container>
 	);
 }

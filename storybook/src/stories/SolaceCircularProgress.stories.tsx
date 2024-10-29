@@ -13,7 +13,7 @@ export default {
 			}
 		},
 		size: {
-			options: ["sm", "md", "lg"],
+			options: ["xs", "sm", "md", "lg"],
 			control: {
 				type: "select"
 			}
@@ -27,12 +27,23 @@ export default {
 			control: {
 				type: "text"
 			}
+		},
+		message: {
+			control: {
+				type: "text"
+			}
 		}
 	}
 } as Meta<typeof SolaceCircularProgress>;
 
 export const DefaultVariant = {
 	args: {}
+};
+
+export const WithMessageVariant = {
+	args: {
+		message: "Loading"
+	}
 };
 
 export const DeterminateVariant = {
