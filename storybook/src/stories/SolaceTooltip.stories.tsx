@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { Meta } from "@storybook/react";
+import { Meta, Decorator } from "@storybook/react";
 import {
 	SolaceTooltip,
 	DeleteIcon,
@@ -9,6 +9,18 @@ import {
 	AddCircleOutlineOutlinedIcon,
 	SolaceLabel
 } from "@SolaceDev/maas-react-components";
+import { userEvent, within } from "@storybook/test";
+
+// Create a decorator to increase the snapshot window size"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceTooltip",
@@ -22,7 +34,8 @@ export default {
 			description: {
 				component: "Tooltip component for reuse in all Solace based applications"
 			}
-		}
+		},
+		chromatic: { delay: 1000 }
 	},
 	argTypes: {
 		id: {
@@ -63,17 +76,30 @@ export default {
 		disableHoverListener: {
 			control: { type: "boolean" }
 		}
-	}
+	},
+	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceTooltip>;
 
 const TITLE = "Sample Tooltip";
 const LONG_TEXT =
 	"Aliquam eget finibus ante, non facilisis lectus. Sed vitae dignissim est, vel aliquam tellus. Praesent non nunc mollis, fermentum neque at, semper arcu. Nullam eget est sed sem iaculis gravida eget vitae justo.";
 
+const hoverListener = async (canvasElement, element, queryType) => {
+	const canvas = within(canvasElement);
+	const elementWithMoreInfo = canvas[queryType](element);
+	if (elementWithMoreInfo) {
+		await userEvent.hover(elementWithMoreInfo);
+	}
+};
+
 export const DefaultTooltip = {
 	args: {
 		title: TITLE,
 		children: <DeleteIcon />
+	},
+
+	play: async ({ canvasElement }) => {
+		hoverListener(canvasElement, "DeleteIcon", "queryByTestId");
 	}
 };
 
@@ -82,6 +108,10 @@ export const CustomPlacement = {
 		title: TITLE,
 		children: <DeleteIcon style={{ margin: "40px 100px" }} fontSize="large" />,
 		placement: "left-start"
+	},
+
+	play: async ({ canvasElement }) => {
+		hoverListener(canvasElement, "DeleteIcon", "queryByTestId");
 	}
 };
 
@@ -89,6 +119,10 @@ export const LongTitle = {
 	args: {
 		title: LONG_TEXT,
 		children: <HelpOutlineOutlinedIcon />
+	},
+
+	play: async ({ canvasElement }) => {
+		hoverListener(canvasElement, "HelpOutlineOutlinedIcon", "queryByTestId");
 	}
 };
 
@@ -97,6 +131,10 @@ export const CustomMediumWidth = {
 		title: LONG_TEXT,
 		children: <HelpOutlineOutlinedIcon />,
 		maxWidth: "medium"
+	},
+
+	play: async ({ canvasElement }) => {
+		hoverListener(canvasElement, "HelpOutlineOutlinedIcon", "queryByTestId");
 	}
 };
 
@@ -105,6 +143,10 @@ export const CustomFullWidth = {
 		title: LONG_TEXT,
 		children: <HelpOutlineOutlinedIcon />,
 		maxWidth: "full"
+	},
+
+	play: async ({ canvasElement }) => {
+		hoverListener(canvasElement, "HelpOutlineOutlinedIcon", "queryByTestId");
 	}
 };
 
@@ -157,14 +199,22 @@ export const OverflowTooltipLongText = (): ReactNode => {
 	);
 };
 
+OverflowTooltipLongText.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, LONG_TEXT, "getByText");
+};
+
 export const OverflowTooltipShortText = (): ReactNode => {
 	return (
-		<div style={{ width: "400px" }}>
+		<div style={{ width: "50px" }}>
 			<SolaceTooltip variant="overflow" title={TITLE}>
 				{TITLE}
 			</SolaceTooltip>
 		</div>
 	);
+};
+
+OverflowTooltipShortText.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, TITLE, "getByText");
 };
 
 export const OverflowTooltipLongTextMediumWidth = (): ReactNode => {
@@ -177,6 +227,10 @@ export const OverflowTooltipLongTextMediumWidth = (): ReactNode => {
 	);
 };
 
+OverflowTooltipLongTextMediumWidth.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, LONG_TEXT, "getByText");
+};
+
 export const OverflowTooltipLongTextElement = (): ReactNode => {
 	return (
 		<div style={{ width: "400px" }}>
@@ -187,14 +241,22 @@ export const OverflowTooltipLongTextElement = (): ReactNode => {
 	);
 };
 
+OverflowTooltipLongTextElement.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, LONG_TEXT, "getByText");
+};
+
 export const OverflowTooltipShortTextElement = (): ReactNode => {
 	return (
-		<div style={{ width: "400px" }}>
+		<div style={{ width: "50px" }}>
 			<SolaceTooltip variant="overflow" title={TITLE}>
 				<span style={{ fontStyle: "italic" }}>{TITLE}</span>
 			</SolaceTooltip>
 		</div>
 	);
+};
+
+OverflowTooltipShortTextElement.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, TITLE, "getByText");
 };
 
 export const OverflowTooltipLongTextElementRespondToResize = (): ReactNode => {
@@ -205,6 +267,10 @@ export const OverflowTooltipLongTextElementRespondToResize = (): ReactNode => {
 			</SolaceTooltip>
 		</div>
 	);
+};
+
+OverflowTooltipLongTextElementRespondToResize.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, LONG_TEXT, "getByText");
 };
 
 export const TooltipGroup = (): ReactNode => {
@@ -229,6 +295,10 @@ export const TooltipGroup = (): ReactNode => {
 			</SolaceTooltip>
 		</div>
 	);
+};
+
+TooltipGroup.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, "DeleteIcon", "queryByTestId");
 };
 
 export const ControlledTooltip = (): ReactNode => {
@@ -276,7 +346,9 @@ export const ControlledTooltip = (): ReactNode => {
 				alignItems: "center"
 			}}
 		>
-			<SolaceLabel id="inputWithTooltipLabel">With Toolip</SolaceLabel>
+			<SolaceLabel id="inputWithTooltipLabel" htmlForId="inputWithTooltip">
+				With Toolip
+			</SolaceLabel>
 			<SolaceTooltip
 				variant="text"
 				title={"Input Something"}
@@ -288,6 +360,7 @@ export const ControlledTooltip = (): ReactNode => {
 			>
 				<span>
 					<SolaceTextField
+						id="inputWithTooltip"
 						name="inputWithTooltip"
 						value={inputWithTooltip}
 						onFocus={handleFocus}
@@ -300,6 +373,10 @@ export const ControlledTooltip = (): ReactNode => {
 			<SolaceTextField name="inputWithoutTooltip" value={inputWithoutTooltip} onChange={handleChange} />
 		</div>
 	);
+};
+
+ControlledTooltip.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, "With Toolip", "queryByLabelText");
 };
 
 export const TooltipWithAndWithoutFocusListener = (): ReactNode => {

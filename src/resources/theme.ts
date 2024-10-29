@@ -1708,7 +1708,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						lineHeight: "18px",
 						backgroundColor: themeMapping.palette.background.wMain,
 						color: themeMapping.palette.deprecated.primary.text.w10,
-						boxShadow: `0 2px 2px ${getBoxShadow("w12")}`,
+						boxShadow: isCurrentSolace
+							? `0 2px 2px ${getBoxShadow("w12")}`
+							: `0 1px 4px ${alpha(themeMapping.palette.secondary.w80, 0.4)}`,
 						"&.htmlContent": {
 							padding: "12px 16px",
 							fontSize: BASE_FONT_PX_SIZES.sm,
