@@ -1,6 +1,5 @@
 import React from "react";
-import { useTheme } from "@mui/material";
-import { SvgIcon } from "@SolaceDev/maas-react-components";
+import { useTheme, SvgIcon } from "@SolaceDev/maas-react-components";
 
 const ApiProducts = (): JSX.Element => {
 	const theme = useTheme();

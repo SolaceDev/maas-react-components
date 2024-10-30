@@ -22,6 +22,7 @@ export type ThemeMappingPalette = {
 
 		text: {
 			wMain: string;
+			w100: string;
 			w10: string;
 		};
 	};
@@ -31,6 +32,7 @@ export type ThemeMappingPalette = {
 		w80: string;
 		w8040: string; // 40% of w80 for overlays and box-shadows
 		wMain: string;
+		w100: string;
 		w40: string;
 		w20: string;
 		w10: string;
@@ -84,6 +86,11 @@ export type ThemeMappingPalette = {
 		w10: string;
 	};
 
+	stateLayer: {
+		w10: string;
+		w20: string;
+	};
+
 	accent: {
 		n0: {
 			w100: string;
@@ -94,12 +101,14 @@ export type ThemeMappingPalette = {
 		n1: {
 			wMain: string;
 			w60: string;
+			w20: string;
 			w10: string;
 		};
 		n2: {
 			w100: string;
 			wMain: string;
 			w30: string;
+			w20: string;
 			w10: string;
 		};
 		n3: {
@@ -113,6 +122,7 @@ export type ThemeMappingPalette = {
 		};
 		n5: {
 			wMain: string;
+			w60: string;
 		};
 		n6: {
 			wMain: string;
@@ -124,6 +134,9 @@ export type ThemeMappingPalette = {
 		n8: {
 			wMain: string;
 			w30: string;
+		};
+		n9: {
+			wMain: string;
 		};
 	};
 

@@ -1,7 +1,8 @@
 import React from "react";
+import { MemoryRouter as Router } from "react-router-dom";
 import { DecoratorHelpers } from "@storybook/addon-themes";
 import { createTheme, ThemeProvider, SolaceTheme, SupportedThemes } from "@SolaceDev/maas-react-components";
-const { initializeThemeState, pluckThemeFromContext, useThemeParameters } = DecoratorHelpers;
+const { initializeThemeState, pluckThemeFromContext } = DecoratorHelpers;
 
 export const withSolaceLayout = ({ themes, defaultTheme }) => {
 	initializeThemeState(Object.keys(themes), defaultTheme);
@@ -18,7 +19,9 @@ export const withSolaceLayout = ({ themes, defaultTheme }) => {
 
 		return (
 			<ThemeProvider theme={createTheme(SolaceTheme(themeName))}>
-				<Story />
+				<Router>
+					<Story />
+				</Router>
 			</ThemeProvider>
 		);
 	};

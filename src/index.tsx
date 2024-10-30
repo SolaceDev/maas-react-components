@@ -19,8 +19,10 @@ export { default as SolaceCheckBox } from "./components/form/SolaceCheckBox";
 export type { SolaceCheckboxChangeEvent } from "./components/form/SolaceCheckBox";
 export { default as SolaceRadio } from "./components/form/SolaceRadio";
 export { default as SolaceRadioGroup } from "./components/form/SolaceRadioGroup";
+export type { SolaceRadioGroupChangeEvent, SolaceRadioGroupProps } from "./components/form/SolaceRadioGroup";
 export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceAttributeBadge } from "./components/SolaceAttributeBadge";
+export type { SolaceAttributeProps } from "./components/SolaceAttributeBadge";
 export { default as SolaceTextDiff } from "./components/SolaceTextDiff";
 export { default as SolaceChip } from "./components/SolaceChip";
 export type { SolaceChipProps } from "./components/SolaceChip";
@@ -55,6 +57,7 @@ export { default as SolaceSelectAutocompleteResponsiveTags } from "./components/
 export type { SolaceSelectAutocompleteResponsiveTagsProps } from "./components/form/SolaceSelectAutocompleteResponsiveTags";
 export { default as SolaceTextArea } from "./components/form/SolaceTextArea";
 export { default as SolaceToggle } from "./components/form/SolaceToggle";
+export type { SolaceToggleChangeEvent, SolaceToggleProps } from "./components/form/SolaceToggle";
 export { default as SolaceLabel } from "./components/form/SolaceLabel";
 export { default as SolaceStackLabel } from "./components/form/SolaceStackLabel";
 export { default as SolaceTable } from "./components/table/SolaceTable";
@@ -81,7 +84,13 @@ export { default as SolaceAccordion } from "./components/SolaceAccordion";
 export { default as SolaceStack } from "./components/layout/SolaceStack";
 export { default as SolaceGrid } from "./components/layout/SolaceGrid";
 export { default as SolaceBreadcrumb } from "./components/SolaceBreadcrumb";
+export type { SolacePath } from "./components/SolaceBreadcrumb";
 export { default as SolaceToggleButtonGroup } from "./components/form/SolaceToggleButtonGroup";
+export type {
+	SolaceToggleButtonGroupOptionProps,
+	SolaceToggleButtonGroupProps
+} from "./components/form/SolaceToggleButtonGroup";
+
 export { default as SolaceTypography } from "./components/SolaceTypography";
 export { default as SolaceCircularProgress } from "./components/SolaceCircularProgress";
 export { default as SolaceLinearProgress } from "./components/SolaceLinearProgress";
@@ -111,3 +120,27 @@ export { default as SolaceDonutChart } from "./components/SolaceDonutChart";
 export { default as SolaceJsonSchemaForm } from "./components/jsonschemaform/SolaceJsonSchemaForm";
 export type { SolaceJsonSchemaFormProps } from "./components/jsonschemaform/SolaceJsonSchemaForm";
 export { default as SolaceTruncatableLink } from "./components/SolaceTruncatableLink";
+
+export { default as SolaceEnvironmentChip } from "./components/SolaceEnvironmentChip";
+export type { SolaceEnvironmentChipProps } from "./components/SolaceEnvironmentChip";
+export { default as SolaceEnvironmentLabel } from "./components/SolaceEnvironmentLabel";
+export type { SolaceEnvironmentLabelProps } from "./components/SolaceEnvironmentLabel";
+export { default as SolaceFeatureTag } from "./components/SolaceFeatureTag";
+export type { SolaceFeatureTagProps } from "./components/SolaceFeatureTag";
+export { default as SolaceIconTabs } from "./components/layout/SolaceIconTabs";
+export type { SolaceIconTabsButton, SolaceIconTabsProps } from "./components/layout/SolaceIconTabs";
+export { default as SolacePageHeader } from "./components/layout/SolacePageHeader";
+export type { SolacePageHeaderProps } from "./components/layout/SolacePageHeader";
+export { default as SolaceEnvironmentSelectChip } from "./components/SolaceEnvironmentSelectChip";
+export type {
+	SolaceEnvironmentSelectChipOption,
+	SolaceEnvironmentSelectChipProps
+} from "./components/SolaceEnvironmentSelectChip";
+export { default as SolacePicker, color2value, value2color } from "./components/form/SolacePicker";
+export type {
+	SolaceColors,
+	SolaceEnvironmentIcons,
+	SolacePickerChangeEvent,
+	SolacePickerProps,
+	SolacePickerTypes
+} from "./components/form/SolacePicker";

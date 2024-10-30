@@ -3,7 +3,7 @@ import { Box, Tabs, Tab } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { BASE_FONT_PX_SIZES, BASE_FONT_PX_SIZE_TYPES } from "../../resources/typography";
 
-interface TabProps {
+export interface TabProps {
 	/**
 	 * Label of the tab
 	 */
@@ -27,7 +27,7 @@ interface TabProps {
 	size?: keyof BASE_FONT_PX_SIZE_TYPES;
 }
 
-interface SolaceTabsProps extends SolaceComponentProps {
+export interface SolaceTabsProps extends SolaceComponentProps {
 	tabs: TabProps[];
 	/**
 	 * The value of the active tab

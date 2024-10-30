@@ -69,6 +69,42 @@ export const ChildLink = {
 	}
 };
 
+export const WithLongLabels = {
+	args: {
+		onRouteClick: action(ROUTE_CLICKED),
+		dataQa: "testBreadcrumb",
+		paths: [
+			{
+				title: "This is a very long label that should be clipped",
+				link: "/",
+				current: false,
+				tooltip: "Some more info about this"
+			},
+			{
+				title: "You are here",
+				link: "",
+				current: true
+			}
+		]
+	}
+};
+
+export const WithRouter = {
+	args: {
+		paths: [
+			{
+				title: "Home",
+				link: "/"
+			},
+			{
+				title: "Designer",
+				link: "",
+				current: true
+			}
+		]
+	}
+};
+
 export const GrandChildLink = {
 	args: {
 		onRouteClick: action(ROUTE_CLICKED),

@@ -26,6 +26,7 @@ export const baseThemeMapping: ThemeMapping = {
 			w10: alpha("#000000", 0.05),
 
 			text: {
+				w100: "#000000",
 				wMain: alpha("#000000", 0.8),
 				w10: "#FFFFFF"
 			}
@@ -35,6 +36,7 @@ export const baseThemeMapping: ThemeMapping = {
 			w80: alpha("#000000", 0.5),
 			w70: alpha("#000000", 0.35),
 			w8040: alpha("#000000", 0.35),
+			w100: "#000000",
 			wMain: alpha("#000000", 0.5),
 			w40: alpha("#000000", 0.2),
 			w20: alpha("#000000", 0.1),
@@ -89,6 +91,11 @@ export const baseThemeMapping: ThemeMapping = {
 			w10: alpha("#53AE0F", 0.1)
 		},
 
+		stateLayer: {
+			w10: alpha("#03223B", 0.1),
+			w20: alpha("#03223B", 0.2)
+		},
+
 		accent: {
 			n0: {
 				w100: "#2F51AD",
@@ -99,12 +106,14 @@ export const baseThemeMapping: ThemeMapping = {
 			n1: {
 				wMain: "#3A4880",
 				w60: "#8991B3",
+				w20: "#D8DAE6",
 				w10: "#EBEDF2"
 			},
 			n2: {
 				w100: "#165E64",
 				wMain: "#00AD93",
 				w30: alpha("#00AD93", 0.35),
+				w20: "#CCE9E9",
 				w10: alpha("#009193", 0.1)
 			},
 			n3: {
@@ -114,21 +123,25 @@ export const baseThemeMapping: ThemeMapping = {
 				w10: "#F2ECF6"
 			},
 			n4: {
-				wMain: "#E53170"
+				wMain: "#CB1AA5"
 			},
 			n5: {
-				wMain: "#E67E22"
+				wMain: "#E67E22",
+				w60: "#FAA397"
 			},
 			n6: {
 				wMain: "#FCA829",
 				w30: "#FEE5BF"
 			},
 			n7: {
-				wMain: "#5ECCEE"
+				wMain: "#7CD3F6"
 			},
 			n8: {
 				wMain: "#6A6A6A",
 				w30: "#DBDFE2"
+			},
+			n9: {
+				wMain: "#DA162D"
 			}
 		},
 

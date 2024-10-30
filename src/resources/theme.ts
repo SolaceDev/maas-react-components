@@ -577,6 +577,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						lineHeight: 1.5,
 						fontSize: "14px",
 						color: themeMapping.palette.primary.wMain,
+						fontWeight: 500,
 						"&:hover": {
 							// TODO: remove "solace" options when new theme is adopted
 							color: isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.primary.w90
@@ -909,6 +910,27 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiSelect: {
 				// Select component
 				styleOverrides: {
+					root: {
+						".MuiOutlinedInput-notchedOutline": {
+							border: `solid 1px ${themeMapping.palette.secondary.w40}`,
+							backgroundColor: "transparent"
+						},
+						"&:hover": {
+							".MuiOutlinedInput-notchedOutline": {
+								border: `solid 1px ${
+									isCurrentSolace ? themeMapping.palette.secondary.text.w50 : themeMapping.palette.secondary.wMain
+								}`,
+								backgroundColor: "transparent"
+							}
+						},
+						"&.Mui-focused": {
+							".MuiOutlinedInput-notchedOutline": {
+								border: `solid 1px ${
+									isCurrentSolace ? themeMapping.palette.brand.w30 : themeMapping.palette.accent.n2.wMain
+								}`
+							}
+						}
+					},
 					select: {
 						"&.MuiOutlinedInput-input": {
 							padding: "7px 34px 5px 8px",
@@ -1007,6 +1029,25 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								// select styles
 								".MuiTouchRipple-child": {
 									backgroundColor: themeMapping.palette.secondary.w20
+								}
+							},
+							".SolaceGrid": {
+								display: "grid",
+								columnGap: "8px",
+								padding: "16px",
+								rowGap: "8px",
+								".MuiMenuItem-root": {
+									border: `1px solid transparent`,
+									borderRadius: "4px",
+									boxSizing: "border-box",
+									justifyContent: "center",
+									minHeight: "32px",
+									minWidth: "32px",
+									padding: 0,
+									"&.Mui-selected:not(:hover)": {
+										backgroundColor: "transparent",
+										borderColor: themeMapping.palette.accent.n2.wMain
+									}
 								}
 							},
 
@@ -1575,6 +1616,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiBreadcrumbs-separator": {
 							marginLeft: "0px",
 							marginRight: "0px"
+						},
+						".MuiLink-root:not(.MuiLink-underlineNone)": {
+							fontWeight: 500
 						},
 						".MuiBreadcrumbs-li": {
 							".MuiLink-underlineNone": {

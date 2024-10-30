@@ -1,6 +1,5 @@
 import React from "react";
-import { useTheme } from "@mui/material";
-import { SvgIcon } from "@SolaceDev/maas-react-components";
+import { SvgIcon, useTheme } from "@SolaceDev/maas-react-components";
 
 const NoAccessImg = (): JSX.Element => {
 	const theme = useTheme();

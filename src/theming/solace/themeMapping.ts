@@ -23,6 +23,7 @@ const palette: ThemeMappingPalette = {
 
 		text: {
 			wMain: "#273749",
+			w100: "#000000",
 			w10: "#FFFFFF"
 		}
 	},
@@ -31,6 +32,7 @@ const palette: ThemeMappingPalette = {
 		w70: "#536574",
 		w80: "#354E62",
 		w8040: alpha("#354E62", 0.4),
+		w100: "#000000",
 		wMain: "#8790A0",
 		w40: "#CFD3D9",
 		w20: "#E7E9EC",
@@ -85,6 +87,11 @@ const palette: ThemeMappingPalette = {
 		w10: "#E6F5F2"
 	},
 
+	stateLayer: {
+		w10: alpha("#03223B", 0.1),
+		w20: alpha("#03223B", 0.2)
+	},
+
 	accent: {
 		n0: {
 			w100: "#2F51AD",
@@ -95,12 +102,14 @@ const palette: ThemeMappingPalette = {
 		n1: {
 			wMain: "#3A4880",
 			w60: "#8991B3",
+			w20: "#D8DAE6",
 			w10: "#EBEDF2"
 		},
 		n2: {
 			w100: "#165E64",
 			wMain: "#009193",
 			w30: "#B3DEDF",
+			w20: "#CCE9E9",
 			w10: "#E6F4F4"
 		},
 		n3: {
@@ -113,7 +122,8 @@ const palette: ThemeMappingPalette = {
 			wMain: "#E53170"
 		},
 		n5: {
-			wMain: "#F66651"
+			wMain: "#F66651",
+			w60: "#FAA397"
 		},
 		n6: {
 			wMain: "#FCA829",
@@ -125,6 +135,9 @@ const palette: ThemeMappingPalette = {
 		n8: {
 			wMain: "#86939E",
 			w30: "#DBDFE2"
+		},
+		n9: {
+			wMain: "#DA162D"
 		}
 	},
 	learning: {
