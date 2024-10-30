@@ -100,6 +100,8 @@ To see the storybook visit: https://solid-garbanzo-f65ff422.pages.github.io/stor
 
 You do need access to this repo to see the storybook.
 
+Make sure you run `npm install` in the storybook folder if it complains about missing `react-router-dom`.
+
 ## View Coverage Report
 
 To see the storybook coverage report visit: https://solid-garbanzo-f65ff422.pages.github.io/lcov-report/
