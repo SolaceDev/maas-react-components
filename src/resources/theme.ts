@@ -577,12 +577,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						lineHeight: 1.5,
 						fontSize: "14px",
 						color: themeMapping.palette.primary.wMain,
-						fontWeight: 500,
 						"&:hover": {
 							// TODO: remove "solace" options when new theme is adopted
 							color: isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.primary.w90
 						},
 						"&:active": {
+							fontWeight: 500,
 							color: isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.primary.w100
 						},
 						"&[disabled]": {

@@ -5,6 +5,7 @@ const FeatureTag = styled("span")(
 	({ theme }) => `
 	border: 2px solid ${theme.palette.ux.secondary.text.w50};
 	border-radius: ${theme.spacing(0.5)};
+	box-sizing: border-box;
 	color: ${theme.palette.ux.secondary.text.w50};
 	font-size: 10px;
 	font-weight: 500;

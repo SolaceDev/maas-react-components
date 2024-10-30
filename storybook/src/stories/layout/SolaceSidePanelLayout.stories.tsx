@@ -8,8 +8,7 @@ import {
 	styled,
 	SolaceButton,
 	ListSubheader,
-	CloseIcon,
-	SolaceTruncatableLink
+	CloseIcon
 } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../../resources/images/NoAccessBook";
 import { within, userEvent } from "@storybook/testing-library";
@@ -92,11 +91,9 @@ const mainContent = (panelOpen, handlePanelToggle) => (
 		details={
 			<p style={{ margin: "0px", padding: "0px 15px" }}>
 				Click the buton to toggle the side panel{" "}
-				<SolaceTruncatableLink
-					id="dummy"
-					href="https://solace.com"
-					text="some really really really long anchor tag to showcase all is clickable"
-				/>
+				<SolaceButton variant="link" dense href="https://solace.com">
+					some really really really long anchor tag to showcase all is clickable
+				</SolaceButton>
 			</p>
 		}
 		actions={[
