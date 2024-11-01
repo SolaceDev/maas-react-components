@@ -7,9 +7,10 @@ import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined
 
 export type SolaceToastsProps = {
 	severity?: "success" | "info" | "warning" | "error";
-	message?: string;
+	message: string;
 	open?: boolean;
 	action?: React.ReactNode;
+	autoDismiss?: boolean;
 	onClose: (event: React.SyntheticEvent<Element> | Event) => void;
 };
 
@@ -30,15 +31,16 @@ export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
 		warning: <ReportProblemOutlinedIcon sx={{ color: theme.palette.ux.warning.w100 }} fontSize="inherit" />
 	};
 
-	const { message, severity, onClose } = props;
+	const { message, severity, autoDismiss = true, onClose } = props;
 
 	return (
 		<Snackbar
 			className="alert-toast"
 			{...props}
 			message={severity === undefined && message}
-			//if no action then 8000 else 4000
-			autoHideDuration={props.action ? 8000 : 4000}
+			//if null, autoHide is disabled, if there is action then 8000 else 4000
+			autoHideDuration={!autoDismiss ? null : props.action ? 8000 : 4000}
+			resumeHideDuration={1000}
 			onClose={(_event, reason) => {
 				// disable close on clickaway
 				if (onClose && reason !== "clickaway") {

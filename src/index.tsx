@@ -10,6 +10,7 @@ export { default as ChevronRightIcon } from "@mui/icons-material/ChevronRight";
 export { default as ChevronLeftIcon } from "@mui/icons-material/ChevronLeft";
 
 export { default as SolaceToasts } from "./components/SolaceToasts";
+export type { SolaceToastsProps } from "./components/SolaceToasts";
 export { default as NoAccess } from "./components/NoAccess";
 export { default as SolaceBackDrop } from "./components/SolaceBackDrop";
 export { default as SolaceButton } from "./components/form/SolaceButton";
@@ -20,7 +21,6 @@ export type { SolaceCheckboxChangeEvent } from "./components/form/SolaceCheckBox
 export { default as SolaceRadio } from "./components/form/SolaceRadio";
 export { default as SolaceRadioGroup } from "./components/form/SolaceRadioGroup";
 export type { SolaceRadioGroupChangeEvent, SolaceRadioGroupProps } from "./components/form/SolaceRadioGroup";
-export { default as Toasts } from "./components/SolaceToasts";
 export { default as SolaceAttributeBadge } from "./components/SolaceAttributeBadge";
 export type { SolaceAttributeProps } from "./components/SolaceAttributeBadge";
 export { default as SolaceTextDiff } from "./components/SolaceTextDiff";
