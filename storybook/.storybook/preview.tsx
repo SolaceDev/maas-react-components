@@ -8,6 +8,7 @@ import isChromatic from "chromatic/isChromatic";
 
 const themes = {
 	themes: {
+		boomi: "boomi",
 		sap: "sap",
 		solace: "solace",
 		newSolace: "new-solace"

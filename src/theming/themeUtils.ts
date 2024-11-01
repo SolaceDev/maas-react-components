@@ -3,6 +3,7 @@ import { baseThemeMapping } from "./base/themeMapping";
 import { solaceNewThemeMapping } from "./solace/themeMapping";
 import { ThemeMapping } from "../types/ThemeMapping";
 import { SupportedThemes } from "../types/supportedThemes";
+import { boomiThemeMapping } from "./boomi/themeMapping";
 
 export let appTheme: SupportedThemes | undefined;
 
@@ -17,6 +18,8 @@ const getThemeMappings = (theme?: SupportedThemes): ThemeMapping => {
 		return sapThemeMapping;
 	} else if (appTheme === SupportedThemes.newSolace) {
 		return solaceNewThemeMapping;
+	} else if (appTheme === SupportedThemes.boomi) {
+		return boomiThemeMapping;
 	} else {
 		return baseThemeMapping;
 	}

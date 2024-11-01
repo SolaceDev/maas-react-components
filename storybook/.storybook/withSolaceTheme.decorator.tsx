@@ -13,6 +13,8 @@ export const withSolaceLayout = ({ themes, defaultTheme }) => {
 		let themeName = SupportedThemes.solace;
 		if (selectedTheme === "sap") {
 			themeName = SupportedThemes.sap;
+		} else if (selectedTheme === "boomi") {
+			themeName = SupportedThemes.boomi;
 		} else if (selectedTheme === "newSolace") {
 			themeName = SupportedThemes.newSolace;
 		}
