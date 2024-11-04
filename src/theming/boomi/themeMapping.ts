@@ -4,140 +4,140 @@ import { baseThemeMapping } from "../base/themeMapping";
 
 const palette: ThemeMappingPalette = {
 	brand: {
-		wMain: "#0000FF", // Blue
-		wMain30: alpha("#0000FF", 0.3),
-		w30: "#B3B3FF",
-		w10: "#E6E6FF",
-		w60: "#6666FF",
-		w100: "#0000CC"
+		wMain: "#033D58",
+		wMain30: alpha("#033D58", 0.3),
+		w30: "#BDCBD1",
+		w10: "#C2CED4",
+		w60: "#4D7689",
+		w100: "#02293B"
 	},
 
 	primary: {
-		w100: "#000080", // Navy
-		w90: "#000099",
-		wMain: "#0000B2",
-		w60: "#6666CC",
-		w40: "#9999E6",
-		w20: "#CCCCFF",
-		w10: "#E6E6FF",
+		w100: "#011B27",
+		w90: "#02293B",
+		wMain: "#033D58",
+		w60: "#4D7689",
+		w40: "#7091A0",
+		w20: "#BDCBD1",
+		w10: "#C2CED4",
 
 		text: {
-			wMain: "#273749",
+			wMain: "#262626",
 			w100: "#000000",
 			w10: "#FFFFFF"
 		}
 	},
 
 	secondary: {
-		w70: "#0000CC", // Dark Blue
-		w80: "#000099", // Medium Blue
-		w8040: alpha("#000099", 0.4),
-		w100: "#000066", // Navy Blue
-		wMain: "#0000FF", // Blue
-		w40: "#6666FF", // Light Blue
-		w20: "#B3B3FF", // Lighter Blue
-		w10: "#E6E6FF", // Lightest Blue
+		w70: "#404040",
+		w80: "#404040",
+		w8040: alpha("#404040", 0.4),
+		w100: "#000",
+		wMain: "#033D58",
+		w40: "#CCC",
+		w20: "#E5E5E5",
+		w10: "#EDEDED",
 
 		text: {
-			wMain: "#273749",
-			w50: "#B1B9C0"
+			wMain: "#707070",
+			w50: "#cccccc"
 		}
 	},
 
 	background: {
-		w100: "#000033", // Dark Blue
-		wMain: "#00004D", // Medium Dark Blue
-		w20: "#B3B3FF", // Light Blue
-		w10: "#E6E6FF" // Lightest Blue
+		w100: "#1A1A1A",
+		wMain: "#262626",
+		w20: "#F5F5F5",
+		w10: "#ffffff"
 	},
 
 	info: {
-		w100: "#2B71B1",
-		wMain: "#0591D3",
-		w70: "#7CD3F6",
-		w30: "#B4DEF2",
-		w20: "#CDE9F6",
-		w10: "#E6F4FB"
+		w100: "#1C4070",
+		wMain: "#0357AC",
+		w70: "#1B72C3",
+		w30: "#3894DC",
+		w20: "#67ABE1",
+		w10: "#A6D2F0"
 	},
 
 	error: {
-		w100: "#C33135",
-		wMain: "#E94C4E",
-		w70: "#ED9B9D",
-		w30: "#F8C9CA",
-		w20: "#FBDBDC",
-		w10: "#FDEDED"
+		w100: "#913345",
+		wMain: "#C73D58",
+		w70: "#FA4A6C",
+		w30: "#FA8A98",
+		w20: "#F8BEC3",
+		w10: "#F8DFE1"
 	},
 
 	warning: {
-		w100: "#E1681F",
-		wMain: "#FF8E2B",
-		w70: "#F8C785",
-		w30: "#FFDDBF",
-		w20: "#FFE8D5",
-		w10: "#FFF4EA"
+		w100: "#7B4E23",
+		wMain: "#A16123",
+		w70: "#CF761B",
+		w30: "#EC9932",
+		w20: "#F4C57F",
+		w10: "#F5E4C2"
 	},
 
 	success: {
-		w100: "#006B53",
-		wMain: "#009A80",
-		w70: "#6FCCBC",
-		w30: "#B3E1D9",
-		w20: "#CCEBE6",
-		w10: "#E6F5F2"
+		w100: "#226347",
+		wMain: "#157F57",
+		w70: "#0EA076",
+		w30: "#71BF9D",
+		w20: "#A3D8BE",
+		w10: "#D5EADF"
 	},
 
 	stateLayer: {
-		w10: alpha("#03223B", 0.1),
-		w20: alpha("#03223B", 0.2)
+		w10: alpha("#354A5F", 0.1),
+		w20: alpha("#354A5F", 0.2)
 	},
 
 	accent: {
 		n0: {
-			w100: "#000080", // Navy Blue
-			wMain: "#0000FF", // Blue
-			w30: "#B3B3FF", // Light Blue
-			w10: "#E6E6FF" // Lightest Blue
+			w100: "#E5634D",
+			wMain: "#FF7C66",
+			w30: "#FFD8D1",
+			w10: "#FFF2F0"
 		},
 		n1: {
-			wMain: "#000066", // Dark Blue
-			w60: "#6666CC", // Medium Blue
-			w20: "#CCCCFF", // Light Blue
-			w10: "#E6E6FF" // Lightest Blue
+			wMain: "#9E559C",
+			w60: "#C76CB8",
+			w20: "#F4E2F1",
+			w10: "#F9F0F8"
 		},
 		n2: {
-			w100: "#003366", // Dark Teal Blue
-			wMain: "#0066CC", // Medium Teal Blue
-			w30: "#99CCFF", // Light Teal Blue
-			w20: "#CCE5FF", // Lighter Teal Blue
-			w10: "#E6F2FF" // Lightest Teal Blue
+			w100: "#22626F",
+			wMain: "#127B87",
+			w30: "#79BFBE",
+			w20: "#A9DFDA",
+			w10: "#EFF7F6"
 		},
 		n3: {
-			w100: "#330066", // Dark Purple Blue
-			wMain: "#6600CC", // Medium Purple Blue
-			w30: "#CC99FF", // Light Purple Blue
-			w10: "#F2E6FF" // Lightest Purple Blue
+			w100: "#664E7C",
+			wMain: "#8462A5",
+			w30: "#B9A3CE",
+			w10: "#F3EFF6"
 		},
 		n4: {
-			wMain: "#0033CC" // Medium Blue
+			wMain: "#4B4FE2"
 		},
 		n5: {
-			wMain: "#3366FF", // Bright Blue
-			w60: "#99CCFF" // Light Bright Blue
+			wMain: "#FF6900",
+			w60: "#FFA566"
 		},
 		n6: {
-			wMain: "#3399FF", // Sky Blue
-			w30: "#CCE5FF" // Light Sky Blue
+			wMain: "#FCB900",
+			w30: "#FEEAB3"
 		},
 		n7: {
-			wMain: "#66CCFF" // Light Sky Blue
+			wMain: "#F78DA7"
 		},
 		n8: {
-			wMain: "#99CCFF", // Light Blue
-			w30: "#E6F2FF" // Lightest Blue
+			wMain: "#969696",
+			w30: "#E0E0E0"
 		},
 		n9: {
-			wMain: "#0033FF" // Bright Blue
+			wMain: "#C71739"
 		}
 	},
 
@@ -145,34 +145,34 @@ const palette: ThemeMappingPalette = {
 		wMain: "#033A6F",
 		w90: "#022E59",
 		w100: "#022343",
-		w20: "#CDD8E2",
-		w10: "#E6EBF1"
+		w20: "#C5D8EA",
+		w10: "#E9EFF6"
 	},
 
 	deprecated: {
 		primary: {
-			wMain: "#015B82",
-			w20: "#CCDEE6",
+			wMain: "#033D58",
+			w20: "#BDCBD1",
 			text: {
-				wMain: "#273749",
+				wMain: "#262626",
 				w10: "#FFFFFF"
 			}
 		},
 		secondary: {
-			w80: "#354E62",
-			w8040: alpha("#354E62", 0.4),
-			wMain: "#8790A0",
-			w20: "#E7E9EC",
-			w10: "#F3F4F6",
-			w30: "#8790A0",
+			w80: "#404040",
+			w8040: alpha("#404040", 0.4),
+			wMain: "#033D58",
+			w20: "#E5E5E5",
+			w10: "#EDEDED",
+			w30: "#033D58",
 			text: {
-				wMain: "#647481",
-				w50: "#B1B9C0"
+				wMain: "#707070",
+				w50: "#cccccc"
 			}
 		},
 		accent: {
 			n2: {
-				wMain: "#009193"
+				wMain: "#127B87"
 			}
 		},
 		// new chip colours are TBD in UX
@@ -180,20 +180,20 @@ const palette: ThemeMappingPalette = {
 			royalBlue: "#3A4880",
 			darkBlue: "#273749",
 			opaqueBlue: "rgba(58, 72, 128, 0.5)",
-			infoBlue: "#2B71B1",
-			infoBgBlue: "#E6F4FB",
-			warnYellow: "#E1681F",
-			warnBgYellow: "#FFF4EA",
+			infoBlue: "#0079FF",
+			infoBgBlue: alpha("#0079FF", 0.1),
+			warnYellow: "#F3AA24",
+			warnBgYellow: alpha("#F3AA24", 0.1),
 			lightGrey: "#EBEDF2",
 			smokeGrey: "#DBDFE2",
 			darkGrey: alpha("#000", 0.8),
 			white: "#FFF",
 			fill: "rgba(0, 0, 0, 0.1)",
 			hover: "rgba(0, 0, 0, 0.2)",
-			infoLightLabelBlue: "#E0F5FD",
+			infoLightBgBlue: "#E0F5FD",
 			errorBgRed: "#FDEDED",
 			successBgGreen: "#DDF2EF",
-			infoLightBgBlue: "#2C75B7",
+			infoLightLabelBlue: "#2C75B7",
 			errorLabel: "#C33135",
 			successLabel: "#006B53"
 		}
