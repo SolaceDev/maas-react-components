@@ -5,7 +5,7 @@ import { ColoredBase, SolaceEnvironmentChipProps } from "./SolaceEnvironmentChip
 const ColoredIcon = styled(ColoredBase)(
 	({ theme }) => `
 	justify-content: center;
-	width: ${theme.spacing(3)};`
+	min-width: ${theme.spacing(3)};`
 );
 
 const Container = styled("div")(
@@ -17,7 +17,7 @@ const Container = styled("div")(
 	font-size: ${theme.typography.body1.fontSize};
 	font-weight: ${theme.typography.body1.fontWeight};
 	height: ${theme.spacing(3)};
-	max-width: 200px;`
+	width: 100%`
 );
 
 const Text = styled("span")(`

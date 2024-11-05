@@ -80,6 +80,8 @@ const ContainerLayer = styled(ContentLayer, { shouldForwardProp: () => true })(
 	}`
 );
 
+// NOTE: due to a Safari bug with "sticky" and "overflow",
+//       we are using the `will-change` CSS property here.
 const Listbox = styled("ul")(
 	({ theme }) => `
 	background-color: ${theme.palette.ux.background.w10};
@@ -89,8 +91,11 @@ const Listbox = styled("ul")(
 	margin: 0;
 	min-width: ${theme.spacing(40)};
 	outline: 0;
-	overflow: auto;
-	padding: ${theme.spacing(1, 0)};`
+	overflow-y: auto;
+	max-height: min(${theme.spacing(52)}, calc(100vh - ${theme.spacing(10)}));
+	min-height: ${theme.spacing(10)};
+	padding: ${theme.spacing(1, 0, 0, 0)};
+	will-change: transform;`
 );
 
 const Option = styled(BaseOption)(
@@ -132,6 +137,15 @@ const Text = styled("span")`
 	text-overflow: ellipsis;
 	white-space: nowrap;
 `;
+
+const StickyChildren = styled("div")(
+	({ theme }) => `
+	background-color: ${theme.palette.ux.background.w10};
+	bottom: 0;
+	display: block;
+	padding-top: ${theme.spacing(1)};
+	position: sticky;`
+);
 
 export interface SolaceEnvironmentSelectChipOption {
 	/**
@@ -268,7 +282,7 @@ function SolaceEnvironmentSelectChip({
 			value={selectedValue}
 			onChange={handleChange}
 		>
-			{children}
+			<StickyChildren>{children}</StickyChildren>
 		</Select>
 	);
 }

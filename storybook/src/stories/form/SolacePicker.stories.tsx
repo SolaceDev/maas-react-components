@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { userEvent, within } from "@storybook/test";
 
 import { SolacePicker } from "@SolaceDev/maas-react-components";
 import {
@@ -82,6 +83,13 @@ export const ColorPicker = {
 		title: "Color Picker",
 		id: "demoColorPickerId",
 		name: "demoColorPicker"
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		await userEvent.click(canvas.getByRole("combobox"));
 	}
 };
 
@@ -108,5 +116,17 @@ export const IconPicker = {
 			VERIFIED: <Verified24Icon />,
 			DEPLOYED_CODE: <DeployedCode24Icon />
 		}
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		await userEvent.click(canvas.getByRole("combobox"));
+	},
+
+	parameters: {
+		// Delay snapshot 1 second until all interactions are done
+		chromatic: { delay: 1000 }
 	}
 };

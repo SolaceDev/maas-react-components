@@ -1,7 +1,16 @@
 import React from "react";
-import { Meta } from "@storybook/react";
+import { Decorator, Meta } from "@storybook/react";
 import { SolaceEnvironmentLabel } from "@SolaceDev/maas-react-components";
 import { Broker16Icon } from "@SolaceDev/maas-icons";
+
+// Create a decorator to decrease the snapshot window size
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ width: "200px", height: "50px" }}>
+			<Story />
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceEnvironmentLabel",
@@ -17,7 +26,8 @@ export default {
 				type: "select"
 			}
 		}
-	}
+	},
+	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceEnvironmentLabel>;
 
 export const DefaultEnvironmentLabel = {
@@ -30,12 +40,22 @@ export const DefaultEnvironmentLabel = {
 	}
 };
 
-export const DefaultEnvironmentTitle = {
+export const LabelTitleVariant = {
 	args: {
 		label: "Default",
 		fgColor: "#ffffff",
 		bgColor: "#7841A8",
 		icon: <Broker16Icon />,
 		variant: "title"
+	}
+};
+
+export const LongTitle = {
+	args: {
+		label: "This is an environment with a very long name",
+		fgColor: "#ffffff",
+		bgColor: "#7841A8",
+		icon: <Broker16Icon />,
+		variant: "standard"
 	}
 };
