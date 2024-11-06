@@ -26,14 +26,19 @@ export default {
 			}
 		},
 		message: {
-			control: { type: "text" },
+			control: { type: "object" },
 			description: "Title displayed at the top of the tooltip"
 		},
 		open: {
 			control: { type: "boolean" }
+		},
+		autoDismiss: {
+			control: { type: "boolean" }
 		}
 	}
 } as Meta<typeof SolaceToasts>;
+
+const buttonClickedAction = action("action button clicked");
 
 export const DefaultToast = {
 	args: {
@@ -97,7 +102,7 @@ export const WithActionAndCloseIcon = {
 		message: "This is with an action icon and a close icon",
 		action: (
 			<React.Fragment>
-				<SolaceButton variant="text" onClick={action("action button clicked")}>
+				<SolaceButton variant="text" onClick={buttonClickedAction}>
 					Action
 				</SolaceButton>
 				<IconButton onClick={action("close icon clicked")}>
@@ -106,6 +111,37 @@ export const WithActionAndCloseIcon = {
 			</React.Fragment>
 		),
 		open: true,
+		onClose: action("closing")
+	}
+};
+
+export const WithStyledMessage = {
+	args: {
+		message: (
+			<span>
+				3 applications added to <b>Staging EventMesh</b>
+			</span>
+		),
+		action: (
+			<SolaceButton variant="text" onClick={buttonClickedAction}>
+				Undo
+			</SolaceButton>
+		),
+		open: true,
+		onClose: action("closing")
+	}
+};
+
+export const WithAutoDismissDisabled = {
+	args: {
+		message: "This is toast that will not auto dismiss",
+		action: (
+			<SolaceButton variant="text" onClick={buttonClickedAction}>
+				Refresh
+			</SolaceButton>
+		),
+		open: true,
+		autoDismiss: false,
 		onClose: action("closing")
 	}
 };

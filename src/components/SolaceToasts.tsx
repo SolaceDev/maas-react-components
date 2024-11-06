@@ -4,10 +4,11 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
+import React from "react";
 
 export type SolaceToastsProps = {
 	severity?: "success" | "info" | "warning" | "error";
-	message: string;
+	message: React.ReactNode;
 	open?: boolean;
 	action?: React.ReactNode;
 	autoDismiss?: boolean;
@@ -31,15 +32,15 @@ export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
 		warning: <ReportProblemOutlinedIcon sx={{ color: theme.palette.ux.warning.w100 }} fontSize="inherit" />
 	};
 
-	const { message, severity, autoDismiss = true, onClose } = props;
+	const { message, severity, open, action, autoDismiss = true, onClose } = props;
 
 	return (
 		<Snackbar
 			className="alert-toast"
-			{...props}
+			open={open}
 			message={severity === undefined && message}
 			//if null, autoHide is disabled, if there is action then 8000 else 4000
-			autoHideDuration={!autoDismiss ? null : props.action ? 8000 : 4000}
+			autoHideDuration={!autoDismiss ? null : action ? 8000 : 4000}
 			resumeHideDuration={1000}
 			onClose={(_event, reason) => {
 				// disable close on clickaway
@@ -47,7 +48,7 @@ export default function SolaceToasts(props: SolaceToastsProps): JSX.Element {
 					onClose(_event);
 				}
 			}}
-			action={props.action}
+			action={action}
 			role="toast"
 			anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 		>
