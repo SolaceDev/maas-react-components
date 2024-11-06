@@ -5,13 +5,21 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { useMemo } from "react";
 import SolaceTooltip from "./SolaceToolTip";
+import SolaceCircularProgress from "./SolaceCircularProgress";
 
-const SolaceLink = styled(Link)<LinkProps<typeof Link | RouterLink>>`
-	max-width: 200px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-`;
+const SolaceLink = styled(Link)<LinkProps<typeof Link | RouterLink>>(() => ({
+	maxWidth: "200px",
+	overflow: "hidden",
+	textOverflow: "ellipsis",
+	whiteSpace: "nowrap"
+}));
+
+const RouteContainer = styled("div")(({ theme }) => ({
+	alignItems: "center",
+	columnGap: theme.spacing(0.5),
+	display: "flex",
+	flexDirection: "row"
+}));
 
 export type SolacePath = {
 	/**
@@ -30,6 +38,14 @@ export type SolacePath = {
 	 * Optional tooltip to display
 	 */
 	tooltip?: string;
+	/**
+	 * Optional progress indicator
+	 */
+	progress?: boolean;
+	/**
+	 * Optional progress indicator tooltip
+	 */
+	progressTooltip?: string;
 };
 
 export interface SolaceBreadcrumbProps extends SolaceComponentProps {
@@ -79,23 +95,41 @@ function SolaceBreadcrumb({
 			data-qa={dataQa}
 			data-tags={dataTags}
 		>
-			{paths.map(({ title, link, current, tooltip }, index) =>
+			{paths.map(({ title, link, current, tooltip, progress, progressTooltip }, index) =>
 				current ? (
-					<SolaceLink key={link} underline="none" component="span" data-qa={link}>
-						{title}
-					</SolaceLink>
-				) : (
-					<SolaceTooltip key={link} title={tooltip} variant="overflow">
-						{onRouteClick ? (
-							<SolaceLink underline="hover" component={"button"} onClick={handleRouteClick[index]} data-qa={link}>
-								{title}
-							</SolaceLink>
-						) : (
-							<SolaceLink key={link} underline="hover" component={RouterLink} to={link} data-qa={link}>
-								{title}
-							</SolaceLink>
+					<RouteContainer key={link}>
+						<SolaceLink underline="none" component="span" data-qa={link}>
+							{title}
+						</SolaceLink>
+						{progress && (
+							<SolaceTooltip title={progressTooltip}>
+								<div>
+									<SolaceCircularProgress size="xs" />
+								</div>
+							</SolaceTooltip>
 						)}
-					</SolaceTooltip>
+					</RouteContainer>
+				) : (
+					<RouteContainer key={link}>
+						<SolaceTooltip title={tooltip} variant="overflow">
+							{onRouteClick ? (
+								<SolaceLink underline="hover" component={"button"} onClick={handleRouteClick[index]} data-qa={link}>
+									{title}
+								</SolaceLink>
+							) : (
+								<SolaceLink underline="hover" component={RouterLink} to={link} data-qa={link}>
+									{title}
+								</SolaceLink>
+							)}
+						</SolaceTooltip>
+						{progress && (
+							<SolaceTooltip title={progressTooltip}>
+								<div>
+									<SolaceCircularProgress size="xs" />
+								</div>
+							</SolaceTooltip>
+						)}
+					</RouteContainer>
 				)
 			)}
 		</Breadcrumbs>

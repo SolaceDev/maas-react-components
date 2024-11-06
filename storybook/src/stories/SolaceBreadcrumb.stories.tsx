@@ -153,3 +153,59 @@ export const CollapsedLinks = {
 		]
 	}
 };
+
+export const WithPreloaderAtParentRoute = {
+	args: {
+		paths: [
+			{
+				title: "Home",
+				link: "/",
+				progress: true,
+				progressTooltip: "Loading Parent"
+			},
+			{
+				title: "Designer",
+				link: "",
+				current: true
+			}
+		]
+	}
+};
+
+export const WithPreloaderAtCurrentRoute = {
+	args: {
+		paths: [
+			{
+				title: "Home",
+				link: "/"
+			},
+			{
+				title: "Designer",
+				link: "",
+				current: true,
+				progress: true,
+				progressTooltip: "Loading Child"
+			}
+		]
+	}
+};
+
+export const WithPreloaderAtEveryRoute = {
+	args: {
+		paths: [
+			{
+				title: "Home",
+				link: "/",
+				progress: true,
+				progressTooltip: "Loading Parent"
+			},
+			{
+				title: "Designer",
+				link: "",
+				current: true,
+				progress: true,
+				progressTooltip: "Loading Child"
+			}
+		]
+	}
+};
