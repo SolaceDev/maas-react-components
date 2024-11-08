@@ -113,33 +113,37 @@ function FormChildBase({
 			display="flex"
 			flexDirection={inlineLabel ? "row" : "column"}
 			justifyContent="space-between"
-			alignItems={centerInlineLabel ? "center" : ""}
+			alignItems={centerInlineLabel ? "flex-start" : ""}
 			sx={sx}
 		>
 			{stackLabel && label && (
-				<SolaceStackLabel
-					id={`${id}-label`}
-					htmlForId={`${id}`}
-					required={required}
-					disabled={disabled}
-					large={large}
-					bold={bold}
-					readOnly={readOnly}
-				>
-					{label}
-				</SolaceStackLabel>
+				<div style={{ marginTop: centerInlineLabel ? "5.5px" : "" }}>
+					<SolaceStackLabel
+						id={`${id}-label`}
+						htmlForId={`${id}`}
+						required={required}
+						disabled={disabled}
+						large={large}
+						bold={bold}
+						readOnly={readOnly}
+					>
+						{label}
+					</SolaceStackLabel>
+				</div>
 			)}
 			{!stackLabel && label && (
-				<SolaceLabel
-					id={`${id}-label`}
-					htmlForId={`${id}`}
-					required={required}
-					disabled={disabled}
-					readOnly={readOnly}
-					noWrap={inlineLabel}
-				>
-					{label}
-				</SolaceLabel>
+				<div style={{ marginTop: centerInlineLabel ? "5.5px" : "" }}>
+					<SolaceLabel
+						id={`${id}-label`}
+						htmlForId={`${id}`}
+						required={required}
+						disabled={disabled}
+						readOnly={readOnly}
+						noWrap={inlineLabel}
+					>
+						{label}
+					</SolaceLabel>
+				</div>
 			)}
 			<ChildrenContainer inlineLabel={inlineLabel} className={warningText ? "hasWarnings" : ""}>
 				{children}

@@ -1,12 +1,6 @@
-/*
- *	Related Defect - DATAGO-79485 Look an alternative for @sambego/storybook-state
- **/
-
 /* eslint-disable sonarjs/no-duplicate-string */
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import { Meta, Decorator } from "@storybook/react";
-// import { withState, Store } from "@sambego/storybook-state";
-
 import { within, userEvent } from "@storybook/test";
 import {
 	SolaceSelectAutocomplete,
@@ -18,11 +12,12 @@ import {
 	SolaceChip,
 	SolaceButton,
 	SolaceSelectAutocompleteResponsiveTags,
-	getShowSolaceSelectAutocompleteOptionDivider
+	getShowSolaceSelectAutocompleteOptionDivider,
+	styled
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
-// Create a decorator to increase the snapshot window size"
+// Create a decorator to increase the snapshot window size
 const withSnapshotContainer: Decorator = (Story) => {
 	return (
 		<div id="snapshot" style={{ width: "auto", height: "500px", padding: "10px 35px" }}>
@@ -37,9 +32,6 @@ export default {
 	parameters: {
 		controls: { sort: "alpha" },
 		chromatic: { delay: 500 }
-		// state: {
-		// 	store
-		// }
 	},
 	argTypes: {
 		label: {
@@ -78,6 +70,11 @@ export default {
 			}
 		},
 		disabled: {
+			control: {
+				type: "boolean"
+			}
+		},
+		disableCloseOnSelect: {
 			control: {
 				type: "boolean"
 			}
@@ -124,7 +121,6 @@ export default {
 		}
 	},
 	decorators: [withSnapshotContainer]
-	// decorators: [withState()]
 } as Meta<typeof SolaceSelectAutocomplete>;
 
 const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
@@ -149,20 +145,6 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 		supplementalText: "supplemental text option 4"
 	}
 ];
-
-// async function fetchOptions(searchTerm: string) {
-// 	return fetch("http://someOtherExample.com/filterOptions")
-// 		.then((response) => response.json())
-// 		.then((data) => {
-// 			if (searchTerm) {
-// 				// filter the data
-// 				const filteredData = data.data.filter((option) => option.name.includes(searchTerm));
-// 				return store.set({ options: filteredData });
-// 			} else {
-// 				return store.set({ options: data.data });
-// 			}
-// 		});
-// }
 
 function fetchOptions(
 	searchTerm: string,
@@ -214,7 +196,8 @@ const DefaultSelectionTemplate = ({
 	disableCloseOnSelect,
 	clearSearchOnSelect,
 	maxHeight,
-	maxTagWidth,
+	tagMaxWidth,
+	minWidth,
 	getOptionValidationErrorCallback,
 	// storybook specific
 	disabledItems = false,
@@ -237,7 +220,8 @@ const DefaultSelectionTemplate = ({
 	disableCloseOnSelect?: boolean;
 	clearSearchOnSelect?: boolean;
 	maxHeight?: string;
-	maxTagWidth?: string;
+	tagMaxWidth?: string;
+	minWidth?: string;
 	getOptionValidationErrorCallback?: ((option: SolaceSelectAutocompleteItemProps) => string | JSX.Element) | undefined;
 	// storybook specific
 	disabledItems?: boolean;
@@ -305,7 +289,8 @@ const DefaultSelectionTemplate = ({
 				disableCloseOnSelect={disableCloseOnSelect}
 				clearSearchOnSelect={clearSearchOnSelect}
 				maxHeight={maxHeight}
-				tagMaxWidth={maxTagWidth}
+				tagMaxWidth={tagMaxWidth}
+				minWidth={minWidth}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
@@ -432,11 +417,6 @@ export const WithDisabledItems = {
 export const CustomHeight = {
 	render: DefaultSelectionTemplate,
 
-	parameters: {
-		// Delay snapshot 5 seconds until all interactions are done
-		chromatic: { delay: 5000 }
-	},
-
 	args: {
 		label: "Some Label",
 		maxHeight: "7.4rem"
@@ -495,7 +475,7 @@ export const MultipleSelectionWithLongLabelAndNullMaxTagWidth = {
 		value: [],
 		width: "50%",
 		longLabel: true,
-		maxTagWidth: null
+		tagMaxWidth: null
 	},
 
 	play: async ({ canvasElement }) => {
@@ -602,7 +582,44 @@ const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
 	}
 ];
 
-export const MultiSelectionWithDisabledItems = () => {
+export const MultiSelectionWithDisabledItems = ({
+	multiple = true,
+	readOnly = false,
+	required = true,
+	disabled = false,
+	label = "Modeled Event Mesh",
+	inlineLabel = false,
+	width,
+	placeholder,
+	helperText,
+	hasErrors,
+	limitTags,
+	disableCloseOnSelect,
+	clearSearchOnSelect,
+	maxHeight,
+	tagMaxWidth,
+	minWidth,
+	getOptionValidationErrorCallback
+}: {
+	// props of component
+	multiple?: boolean;
+	readOnly?: boolean;
+	required?: boolean;
+	disabled?: boolean;
+	label?: string;
+	inlineLabel?: boolean;
+	width?: string;
+	placeholder?: string;
+	helperText?: string;
+	hasErrors?: boolean;
+	limitTags?: number;
+	disableCloseOnSelect?: boolean;
+	clearSearchOnSelect?: boolean;
+	maxHeight?: string;
+	tagMaxWidth?: string;
+	minWidth?: string;
+	getOptionValidationErrorCallback?: ((option: SolaceSelectAutocompleteItemProps) => string | JSX.Element) | undefined;
+}): JSX.Element => {
 	const [values, setValues] = useState([SAMPLE_EVENT_MESHES[1], SAMPLE_EVENT_MESHES[2]]);
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 
@@ -628,9 +645,23 @@ export const MultiSelectionWithDisabledItems = () => {
 		<div>
 			<SolaceSelectAutocomplete
 				name="modeledEventMesh"
-				label="Modeled Event Mesh"
-				required
-				multiple={true}
+				label={label}
+				required={required}
+				clearSearchOnSelect={clearSearchOnSelect}
+				disabled={disabled}
+				hasErrors={hasErrors}
+				helperText={helperText}
+				inlineLabel={inlineLabel}
+				limitTags={limitTags}
+				multiple={multiple}
+				readOnly={readOnly}
+				width={width}
+				placeholder={placeholder}
+				disableCloseOnSelect={disableCloseOnSelect}
+				maxHeight={maxHeight}
+				minWidth={minWidth}
+				tagMaxWidth={tagMaxWidth}
+				getOptionValidationErrorCallback={getOptionValidationErrorCallback}
 				value={values}
 				options={matchingValues}
 				itemComponent={SolaceSelectAutocompleteItem}
@@ -651,36 +682,55 @@ MultiSelectionWithDisabledItems.play = async ({ canvasElement }) => {
 };
 
 const INPUT_VALUE_REGEX = /^[A-Za-z0-9-_./@()'–# ]*$/;
-const MAX_SELECTED_VAlUES = 5;
 
 const MultiSelectionWithCreateNewTemplate = ({
-	clearSearchWhenSelectNew = false,
-	initialValues = [],
+	multiple = true,
+	readOnly = false,
+	required = false,
+	disabled = false,
+	name = "customAttributeValues",
+	label = "Custom Attribute Values",
+	inlineLabel = false,
+	width,
+	placeholder,
+	helperText,
+	hasErrors,
+	limitTags,
+	disableCloseOnSelect,
+	clearSearchOnSelect = false,
+	maxHeight = "400px",
+	minWidth,
+	tagMaxWidth,
+	getOptionValidationErrorCallback,
+	value = [],
+	options = [],
 	validateInput = false
 }: {
-	clearSearchWhenSelectNew: boolean;
-	initialValues: SolaceSelectAutocompleteItemProps[];
+	// props of component
+	multiple?: boolean;
+	readOnly?: boolean;
+	required?: boolean;
+	disabled?: boolean;
+	name?: string;
+	label?: string;
+	inlineLabel?: boolean;
+	width?: string;
+	placeholder?: string;
+	helperText?: string;
+	hasErrors?: boolean;
+	limitTags?: number;
+	disableCloseOnSelect?: boolean;
+	clearSearchOnSelect?: boolean;
+	maxHeight?: string;
+	minWidth?: string;
+	tagMaxWidth?: string;
+	getOptionValidationErrorCallback?: ((option: SolaceSelectAutocompleteItemProps) => string | JSX.Element) | undefined;
+	value?: SolaceSelectAutocompleteItemProps | Array<SolaceSelectAutocompleteItemProps>;
+	options: SolaceSelectAutocompleteItemProps[];
 	validateInput: boolean;
-}) => {
-	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
-	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
-	const [availableValues, setAvailableValues] = useState<SolaceSelectAutocompleteItemProps[]>(initialValues.slice());
-	const [hasErrors, setHasErrors] = useState<boolean>(false);
-	const [helperText, setHelperText] = useState("");
-
-	const validateInputValue = useCallback((value) => {
-		let errorMsg = "";
-		const charLimit = 100;
-
-		if (value.length > charLimit) {
-			errorMsg = `Exceeds limit. Enter a value with no more than ${charLimit} characters.`;
-		} else if (!value.match(INPUT_VALUE_REGEX)) {
-			errorMsg =
-				"Invalid characters. Enter only alphanumeric characters, spaces and the following characters: . - – _ @ / ( ) #";
-		}
-
-		return errorMsg;
-	}, []);
+}): JSX.Element => {
+	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>(Array.isArray(value) ? value : [value]);
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>(options);
 
 	const handleChange = (evt) => {
 		const selectedValues: SolaceSelectAutocompleteItemProps[] = [];
@@ -698,36 +748,15 @@ const MultiSelectionWithCreateNewTemplate = ({
 		setValues(selectedValues);
 
 		if (newValues.length > 0) {
-			setAvailableValues((prevValues) => [...prevValues, ...newValues].sort((a, b) => a.name.localeCompare(b.name)));
-			if (!clearSearchWhenSelectNew) {
-				// update matching options manually
-				setMatchingValues((prevValues) => {
-					return prevValues
-						.map((value) => (value.isNew ? { ...value, subText: undefined, isNew: false } : value))
-						.sort((a, b) => a.name.localeCompare(b.name));
-				});
-			}
-		}
-
-		if (validateInput && selectedValues.length > MAX_SELECTED_VAlUES) {
-			setHasErrors(true);
-			setHelperText(`Maximum number of values allowed is ${MAX_SELECTED_VAlUES}`);
-		} else {
-			setHasErrors(false);
-			setHelperText("");
+			options.push(...newValues); // Update the options array directly
+			setMatchingValues([...options].sort((a, b) => a.name.localeCompare(b.name)));
 		}
 	};
-
-	const shouldClearSearchOnSelectCallback = useCallback((value: SolaceSelectAutocompleteItemProps) => {
-		return !!value?.isNew;
-	}, []);
 
 	const handleFetchOptionsCallback = useCallback(
 		(searchTerm: string) => {
 			if (searchTerm) {
-				const matches = availableValues.filter((option) =>
-					option["name"].toLowerCase().includes(searchTerm.toLowerCase())
-				);
+				const matches = options.filter((option) => option["name"].toLowerCase().includes(searchTerm.toLowerCase()));
 				const exactMatch = matches.find((option) => option["name"] === searchTerm);
 				if (!exactMatch) {
 					const toCreate = { name: searchTerm, value: searchTerm, subText: "Create new value", isNew: true };
@@ -736,18 +765,36 @@ const MultiSelectionWithCreateNewTemplate = ({
 					setMatchingValues(matches);
 				}
 			} else {
-				setMatchingValues(availableValues.slice());
+				setMatchingValues([...options]);
 			}
 		},
-		[availableValues]
+		[options]
 	);
+
+	const validateInputValue = useCallback((value) => {
+		let errorMsg = "";
+		const charLimit = 100;
+
+		if (value.length > charLimit) {
+			errorMsg = `Exceeds limit. Enter a value with no more than ${charLimit} characters.`;
+		} else if (!value.match(INPUT_VALUE_REGEX)) {
+			errorMsg =
+				"Invalid characters. Enter only alphanumeric characters, spaces and the following characters: . - – _ @ / ( ) #";
+		}
+
+		return errorMsg;
+	}, []);
 
 	return (
 		<div>
 			<SolaceSelectAutocomplete
-				name="customAttributeValues"
-				label="Custom Attribute Values"
-				multiple={true}
+				name={name}
+				label={label}
+				multiple={multiple}
+				readOnly={readOnly}
+				disabled={disabled}
+				required={required}
+				inlineLabel={inlineLabel}
 				value={values}
 				options={matchingValues}
 				itemComponent={SolaceSelectAutocompleteItem}
@@ -756,8 +803,15 @@ const MultiSelectionWithCreateNewTemplate = ({
 				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
 				onChange={handleChange}
 				fetchOptionsCallback={handleFetchOptionsCallback}
-				shouldClearSearchOnSelectCallback={clearSearchWhenSelectNew ? shouldClearSearchOnSelectCallback : undefined}
-				maxHeight="400px"
+				clearSearchOnSelect={clearSearchOnSelect}
+				width={width}
+				placeholder={placeholder}
+				limitTags={limitTags}
+				disableCloseOnSelect={disableCloseOnSelect}
+				maxHeight={maxHeight}
+				minWidth={minWidth}
+				tagMaxWidth={tagMaxWidth}
+				getOptionValidationErrorCallback={getOptionValidationErrorCallback}
 				validateInputCallback={validateInput ? validateInputValue : undefined}
 				hasErrors={hasErrors}
 				helperText={helperText}
@@ -770,15 +824,17 @@ export const MultiSelectionWithCreateNewAndClearSearchWhenSelectNew = {
 	render: MultiSelectionWithCreateNewTemplate,
 
 	args: {
-		clearSearchWhenSelectNew: true
+		clearSearchOnSelect: true,
+		options: []
 	}
 };
 
 export const MultiSelectionWithInitialValueCreateNewAndClearSearchWhenSelectNew = {
 	render: MultiSelectionWithCreateNewTemplate,
 	args: {
-		clearSearchWhenSelectNew: true,
-		initialValues: SELECT_OPTIONS
+		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[1]],
+		clearSearchOnSelect: true,
+		options: SELECT_OPTIONS
 	}
 };
 
@@ -786,8 +842,9 @@ export const MultiSelectionWithInitialValueCreateNewAndValidateInputAndClearSear
 	render: MultiSelectionWithCreateNewTemplate,
 
 	args: {
-		clearSearchWhenSelectNew: true,
-		initialValues: SELECT_OPTIONS,
+		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[1]],
+		clearSearchOnSelect: true,
+		options: SELECT_OPTIONS,
 		validateInput: true
 	}
 };
@@ -796,7 +853,8 @@ export const MultiSelectionWithCreateNewAndNotClearSearchWhenSelectNew = {
 	render: MultiSelectionWithCreateNewTemplate,
 
 	args: {
-		clearSearchWhenSelectNew: false
+		clearSearchOnSelect: false,
+		options: SELECT_OPTIONS
 	}
 };
 
@@ -825,18 +883,46 @@ const SELECT_OPTIONS_WITH_CATEGORY_HEADING: Array<SolaceSelectAutocompleteItemPr
 
 const MultiSelectionWithHeadingTemplate = ({
 	label,
-	disabled = false,
+	disabled,
 	readOnly = false,
 	value,
-	disabledItems = false,
-	showGroupDivider = false
+	showGroupDivider = false,
+	clearSearchOnSelect = false,
+	hasErrors,
+	disableCloseOnSelect,
+	helperText,
+	inlineLabel,
+	limitTags,
+	maxHeight,
+	minWidth,
+	multiple = true,
+	placeholder,
+	required,
+	tagMaxWidth,
+	width,
+	//storybook specific
+	disabledItems
 }: {
 	label?: string;
 	disabled?: boolean;
 	readOnly?: boolean;
 	value?: Array<SolaceSelectAutocompleteItemProps>;
-	disabledItems?: boolean;
 	showGroupDivider?: boolean;
+	clearSearchOnSelect?: boolean;
+	disableCloseOnSelect?: boolean;
+	hasErrors?: boolean;
+	helperText?: string;
+	inlineLabel?: boolean;
+	limitTags?: number;
+	maxHeight?: string;
+	minWidth?: string;
+	multiple?: boolean;
+	placeholder?: string;
+	required?: boolean;
+	tagMaxWidth?: string;
+	width?: string;
+	//storybook specific
+	disabledItems?: boolean;
 }): JSX.Element => {
 	const [values, setValues] = useState(value ?? []);
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
@@ -866,7 +952,7 @@ const MultiSelectionWithHeadingTemplate = ({
 			<SolaceSelectAutocomplete
 				name="demoSelect"
 				label={label}
-				multiple={true}
+				multiple={multiple}
 				value={values}
 				options={matchingValues}
 				itemComponent={SolaceSelectAutocompleteItem}
@@ -880,6 +966,18 @@ const MultiSelectionWithHeadingTemplate = ({
 				showGroupDivider={showGroupDivider}
 				disabled={disabled}
 				readOnly={readOnly}
+				clearSearchOnSelect={clearSearchOnSelect}
+				disableCloseOnSelect={disableCloseOnSelect}
+				hasErrors={hasErrors}
+				helperText={helperText}
+				inlineLabel={inlineLabel}
+				limitTags={limitTags}
+				maxHeight={maxHeight}
+				minWidth={minWidth}
+				placeholder={placeholder}
+				required={required}
+				tagMaxWidth={tagMaxWidth}
+				width={width}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
@@ -887,11 +985,6 @@ const MultiSelectionWithHeadingTemplate = ({
 
 export const MultiSelectionWithHeading = {
 	render: MultiSelectionWithHeadingTemplate,
-
-	parameters: {
-		// Delay snapshot 5 seconds until all interactions are done
-		chromatic: { delay: 5000 }
-	},
 
 	args: {},
 
@@ -904,11 +997,6 @@ export const MultiSelectionWithHeading = {
 
 export const MultiSelectionWithHeadingAndDisabledItems = {
 	render: MultiSelectionWithHeadingTemplate,
-
-	parameters: {
-		// Delay snapshot 5 seconds until all interactions are done
-		chromatic: { delay: 5000 }
-	},
 
 	args: {
 		disabledItems: true
@@ -924,11 +1012,6 @@ export const MultiSelectionWithHeadingAndDisabledItems = {
 export const MultiSelectionWithHeadingWithDividers = {
 	render: MultiSelectionWithHeadingTemplate,
 
-	parameters: {
-		// Delay snapshot 5 seconds until all interactions are done
-		chromatic: { delay: 5000 }
-	},
-
 	args: {
 		showGroupDivider: true
 	},
@@ -942,11 +1025,6 @@ export const MultiSelectionWithHeadingWithDividers = {
 
 export const MultiSelectionWithHeadingWithDividersAndDisabledItems = {
 	render: MultiSelectionWithHeadingTemplate,
-
-	parameters: {
-		// Delay snapshot 5 seconds until all interactions are done
-		chromatic: { delay: 5000 }
-	},
 
 	args: {
 		disabledItems: true,
@@ -987,12 +1065,47 @@ const SAMPLE_APPLICATION_DOMAINS: Array<SolaceSelectAutocompleteItemProps> = [
 	}
 ];
 
-export const MultiSelectionWithCustomTagRenderer = () => {
+export const MultiSelectionWithCustomTagRenderer = ({
+	label,
+	disabled,
+	readOnly,
+	showGroupDivider = false,
+	clearSearchOnSelect = false,
+	hasErrors,
+	disableCloseOnSelect,
+	helperText,
+	inlineLabel,
+	maxHeight,
+	minWidth,
+	options = [],
+	required,
+	tagMaxWidth,
+	width
+}: {
+	label?: string;
+	disabled?: boolean;
+	readOnly?: boolean;
+	value?: Array<SolaceSelectAutocompleteItemProps>;
+	showGroupDivider?: boolean;
+	clearSearchOnSelect?: boolean;
+	disableCloseOnSelect?: boolean;
+	hasErrors?: boolean;
+	helperText?: string;
+	inlineLabel?: boolean;
+	maxHeight?: string;
+	minWidth?: string;
+	multiple?: boolean;
+	placeholder?: string;
+	required?: boolean;
+	tagMaxWidth?: string;
+	width?: string;
+	options?: SolaceSelectAutocompleteItemProps[];
+}): JSX.Element => {
 	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>([
 		SAMPLE_APPLICATION_DOMAINS[0],
 		SAMPLE_APPLICATION_DOMAINS[2]
 	]);
-	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>(options);
 
 	const handleChange = (evt) => {
 		setValues(evt.value);
@@ -1028,6 +1141,20 @@ export const MultiSelectionWithCustomTagRenderer = () => {
 				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
 				onChange={handleChange}
 				fetchOptionsCallback={handleFetchOptionsCallback}
+				label={label}
+				disabled={disabled}
+				readOnly={readOnly}
+				showGroupDivider={showGroupDivider}
+				clearSearchOnSelect={clearSearchOnSelect}
+				hasErrors={hasErrors}
+				disableCloseOnSelect={disableCloseOnSelect}
+				helperText={helperText}
+				inlineLabel={inlineLabel}
+				maxHeight={maxHeight}
+				minWidth={minWidth}
+				required={required}
+				tagMaxWidth={tagMaxWidth}
+				width={width}
 				renderTags={() => (
 					<div style={{ display: "flex", alignItems: "center", gap: "4px", paddingRight: "8px" }}>
 						<span>Application Domain: </span>
@@ -1055,14 +1182,17 @@ export const MultiSelectionWithCustomTagRenderer = () => {
 					</div>
 				)}
 			></SolaceSelectAutocomplete>
-			<div style={{ marginBlock: "24px", display: "flex", flexWrap: "wrap" }}>
+			<div
+				style={{ marginBlock: "24px", display: "flex", flexWrap: "wrap", width: width === null ? undefined : width }}
+			>
 				{values.map((value) => {
 					return (
 						<div style={{ marginRight: "8px", marginBottom: "8px" }} key={value.value}>
 							<SolaceChip
 								clickable
 								label={`Application Domain: ${value.name}`}
-								onDelete={() => handleDelete(value.value)}
+								maxWidth={tagMaxWidth === null ? undefined : tagMaxWidth}
+								onDelete={!disabled && !readOnly ? () => handleDelete(value.value) : undefined} // Conditionally render onDelete
 							/>
 						</div>
 					);
@@ -1072,9 +1202,55 @@ export const MultiSelectionWithCustomTagRenderer = () => {
 	);
 };
 
-export const MultiSelectionWithResponsiveTagRenderer = ({ disabled = false, readOnly = false }) => {
+const Container = styled("div")(() => ({
+	".MuiAutocomplete-root .MuiOutlinedInput-root .MuiInputBase-root": {
+		// avoid the dropdown to grow due to search input area being wrapped around temporarily during re-render between window resize events
+		height: "32px",
+		maxHeight: "32px"
+	}
+}));
+
+export const MultiSelectionWithResponsiveTagRenderer = ({
+	label = "Application Label",
+	disabled,
+	readOnly,
+	showGroupDivider = false,
+	clearSearchOnSelect = false,
+	hasErrors,
+	disableCloseOnSelect,
+	helperText,
+	inlineLabel,
+	maxHeight,
+	minWidth = "500px",
+	options = [],
+	required,
+	tagMaxWidth,
+	width,
+	limitTags
+}: {
+	label?: string;
+	disabled?: boolean;
+	readOnly?: boolean;
+	value?: Array<SolaceSelectAutocompleteItemProps>;
+	showGroupDivider?: boolean;
+	clearSearchOnSelect?: boolean;
+	disableCloseOnSelect?: boolean;
+	hasErrors?: boolean;
+	helperText?: string;
+	inlineLabel?: boolean;
+	maxHeight?: string;
+	minWidth?: string;
+	multiple?: boolean;
+	placeholder?: string;
+	required?: boolean;
+	tagMaxWidth?: string;
+	width?: string;
+	options?: SolaceSelectAutocompleteItemProps[];
+	limitTags?: number | null | undefined;
+	getLimitTagsText?: (limit: number) => string;
+}): JSX.Element => {
 	const [values, setValues] = useState<SolaceSelectAutocompleteItemProps[]>(SAMPLE_APPLICATION_DOMAINS.slice(1));
-	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
+	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>(options);
 	const [selectedTags, setSelectedTags] = useState<{ id: string; label: string }[]>([]);
 
 	const handleChange = (evt) => {
@@ -1082,33 +1258,12 @@ export const MultiSelectionWithResponsiveTagRenderer = ({ disabled = false, read
 	};
 
 	// eslint-disable-next-line sonarjs/no-identical-functions
-	const handleDelete = useCallback((item) => {
+	const handleDelete = (item) => {
 		setValues((prevValues) => {
 			return prevValues.filter((value) => value.value !== item);
 		});
-	}, []);
+	};
 
-	const handleDeleteTag = useCallback(
-		(id: string) => {
-			setValues((prevValues) => {
-				return prevValues.filter((preValue) => preValue.value !== id);
-			});
-		},
-		[setValues]
-	);
-
-	useEffect(() => {
-		const tags = values?.map((selectedItemValue) => {
-			return {
-				id: selectedItemValue.value,
-				label: selectedItemValue.name
-			};
-		});
-
-		setSelectedTags(tags);
-	}, [values]);
-
-	// eslint-disable-next-line sonarjs/no-identical-functions
 	const handleFetchOptionsCallback = useCallback((searchTerm: string) => {
 		if (searchTerm) {
 			setMatchingValues(
@@ -1119,13 +1274,21 @@ export const MultiSelectionWithResponsiveTagRenderer = ({ disabled = false, read
 		}
 	}, []);
 
+	useEffect(() => {
+		const tags = values?.map((selectedItemValue) => {
+			return {
+				id: selectedItemValue.value,
+				label: selectedItemValue.name
+			};
+		});
+		setSelectedTags(tags);
+	}, [values]);
+
 	return (
-		<div style={{ width: "500px", height: "32px" }}>
+		<Container>
 			<SolaceSelectAutocomplete
 				name="applicationDomain"
 				placeholder={values.length ? "" : "Application Domain"}
-				disabled={disabled}
-				readOnly={readOnly}
 				multiple={true}
 				value={values}
 				options={matchingValues}
@@ -1135,34 +1298,57 @@ export const MultiSelectionWithResponsiveTagRenderer = ({ disabled = false, read
 				isOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}
 				onChange={handleChange}
 				fetchOptionsCallback={handleFetchOptionsCallback}
+				label={label}
+				disabled={disabled}
+				readOnly={readOnly}
+				showGroupDivider={showGroupDivider}
+				clearSearchOnSelect={clearSearchOnSelect}
+				hasErrors={hasErrors}
+				disableCloseOnSelect={disableCloseOnSelect}
+				helperText={helperText}
+				inlineLabel={inlineLabel}
+				maxHeight={maxHeight}
+				minWidth={minWidth}
+				required={required}
+				tagMaxWidth={tagMaxWidth}
+				width={width}
+				{...(typeof limitTags === "number" && { limitTags })}
+				getLimitTagsText={(limit) => `+${limit} more`}
 				renderTags={() => (
 					<>
 						{values && values.length > 0 && (
 							<SolaceSelectAutocompleteResponsiveTags
 								containerWidth={500}
 								tags={selectedTags}
-								tagMaxWidth={"300px"}
-								onDelete={handleDeleteTag}
+								tagMaxWidth={tagMaxWidth}
 								overflowIndicatorLabel={"Filters"}
 								overflowIndicatorLabelSingular={"Filter"}
+								onDelete={handleDelete}
 								dataQa={"applicationDomainSelect-tags"}
 								disabled={disabled}
-								readOnly={readOnly}
 							/>
 						)}
 					</>
 				)}
 			></SolaceSelectAutocomplete>
-			<div style={{ marginBlock: "24px", display: "flex", flexWrap: "wrap" }}>
-				{values.map((value) => {
-					return (
-						<div style={{ marginRight: "8px", marginBottom: "8px" }} key={value.value}>
-							<SolaceChip clickable label={`${value.name}`} onDelete={() => handleDelete(value.value)} />
-						</div>
-					);
-				})}
+			<div
+				style={{ marginBlock: "24px", display: "flex", flexWrap: "wrap", width: width === null ? undefined : width }}
+			>
+				{values.length > 0 &&
+					(() => {
+						const count = values.length;
+						return (
+							<div style={{ marginRight: "8px", marginBottom: "8px" }} key="selected-tags">
+								<SolaceChip
+									clickable
+									label={`${label}: ${count}`}
+									onDelete={!disabled && !readOnly ? () => setValues([]) : undefined}
+								/>
+							</div>
+						);
+					})()}
 			</div>
-		</div>
+		</Container>
 	);
 };
 
