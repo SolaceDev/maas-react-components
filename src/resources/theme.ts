@@ -599,6 +599,16 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			},
 			MuiInputBase: {
 				styleOverrides: {
+					root: {
+						".MuiSvgIcon-root": {
+							fill: themeMapping.palette.secondary.wMain
+						},
+						"&.Mui-disabled": {
+							".MuiSvgIcon-root": {
+								fill: themeMapping.palette.secondary.w40
+							}
+						}
+					},
 					// TextArea Component
 					multiline: ({ ownerState }) => ({
 						// Additional checks to make sure resize is enabled correctly
@@ -722,6 +732,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								},
 								".MuiSvgIcon-root": {
 									display: "none"
+								},
+								".MuiSelect-select": {
+									".MuiSvgIcon-root": {
+										display: "block"
+									}
 								},
 								".MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input": {
 									cursor: "default",
@@ -903,7 +918,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								fill: themeMapping.palette.deprecated.secondary.wMain
 							}
 						},
-						padding: "0"
+						padding: 0
 					}
 				}
 			},
@@ -933,13 +948,22 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					},
 					select: {
 						"&.MuiOutlinedInput-input": {
-							padding: "7px 34px 5px 8px",
-							width: "100%"
+							padding: theme.spacing(0.75, 4.25, 0.75, 1),
+							width: "100%",
+							"& span": {
+								color: themeMapping.palette.secondary.text.wMain
+							},
+							".MuiSvgIcon-root": {
+								fill: themeMapping.palette.secondary.wMain
+							},
+							".SolaceGrid & .MuiSvgIcon-root": {
+								fill: themeMapping.palette.secondary.w100
+							}
 						},
 						// input field for select is always read-only, make sure the style override has higher precedence than the style defined for
 						// default input field in MuiOutlinedInput
 						"&.MuiOutlinedInput-input:read-only": {
-							padding: "7px 34px 5px 8px",
+							padding: theme.spacing(0.75, 4.25, 0.75, 1),
 							width: "100%",
 							height: "auto"
 						}
@@ -953,6 +977,17 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiPopover: {
 				styleOverrides: {
 					root: {
+						".MuiPaper-root": {
+							"& span": {
+								color: themeMapping.palette.secondary.text.wMain
+							},
+							".MuiSvgIcon-root": {
+								fill: themeMapping.palette.secondary.wMain
+							},
+							"& .SolaceGrid .MuiSvgIcon-root": {
+								fill: themeMapping.palette.secondary.w100
+							}
+						},
 						/**
 						 * styles applied to .SolaceMenuPopover should match exactly these applied to .SolaceMenu
 						 */
@@ -1088,6 +1123,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiList: {
 				styleOverrides: {
 					root: {
+						"& .MuiRadio-root + .MuiBox-root .MuiBox-root": {
+							color: themeMapping.palette.primary.text.wMain
+						},
 						".MuiListSubheader-root": {
 							lineHeight: 1.5,
 							color: themeMapping.palette.deprecated.secondary.text.wMain,

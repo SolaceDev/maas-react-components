@@ -1,4 +1,4 @@
-import { MenuProps, PopoverOrigin, TextField, useTheme } from "@mui/material";
+import { MenuProps, PopoverOrigin, TextField, useTheme, Collapse } from "@mui/material";
 import React, { ReactNode, useEffect, useState } from "react";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -191,7 +191,10 @@ function SolaceSelect({
 			onChange={handleChange}
 			SelectProps={{
 				IconComponent: SelectDropdownIcon,
-				MenuProps: getMenuProps(),
+				MenuProps: {
+					TransitionComponent: Collapse,
+					...getMenuProps()
+				},
 
 				renderValue: getOptionDisplayValue
 					? (value: unknown) => {

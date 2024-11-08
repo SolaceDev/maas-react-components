@@ -1,6 +1,5 @@
 import React from "react";
-import { Meta } from "@storybook/react";
-
+import { Meta, Decorator } from "@storybook/react";
 import {
 	SolaceSelect,
 	DeleteIcon,
@@ -11,6 +10,18 @@ import {
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@SolaceDev/maas-react-components";
 import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
+import { within, userEvent } from "@storybook/test";
+
+// Create a decorator to increase the snapshot window size"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Forms/SolaceSelect",
@@ -74,10 +85,11 @@ export default {
 				type: "boolean"
 			}
 		}
-	}
+	},
+	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceSelect>;
 
-export const SELECT_OPTIONS: Array<any> = [];
+const SELECT_OPTIONS: Array<JSX.Element> = [];
 SELECT_OPTIONS.push(
 	<MenuItem key="no option" value="">
 		No Option
@@ -99,7 +111,7 @@ SELECT_OPTIONS.push(
 	</MenuItem>
 );
 
-export const SELECT_OPTIONS_WITH_LONG_TEXT: Array<any> = [];
+const SELECT_OPTIONS_WITH_LONG_TEXT: Array<JSX.Element> = [];
 SELECT_OPTIONS_WITH_LONG_TEXT.push(...SELECT_OPTIONS);
 SELECT_OPTIONS_WITH_LONG_TEXT.push(
 	<MenuItem key="option4" value="option4">
@@ -145,7 +157,7 @@ function generateSelectOptionsWithSubtext(): Array<JSX.Element> {
 	});
 }
 
-const SELECT_OPTIONS_WITH_ICON: Array<any> = [
+const SELECT_OPTIONS_WITH_ICON: Array<{ name: string; value: string; icon: JSX.Element }> = [
 	{
 		name: "Option #1",
 		value: "option1",
@@ -175,7 +187,7 @@ function generateSelectOptionsWithIcon(): Array<JSX.Element> {
 	});
 }
 
-const SELECT_OPTIONS_WITH_ICON_TEXT: Array<any> = [
+const SELECT_OPTIONS_WITH_ICON_TEXT: Array<{ name: string; value: string; delimiter: string }> = [
 	{
 		name: "Solace",
 		value: "solace",
@@ -217,6 +229,11 @@ export const DefaultTextfield = {
 		id: "demoSelectId",
 		name: "demoSelect",
 		children: SELECT_OPTIONS
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("combobox"));
 	}
 };
 
@@ -228,6 +245,11 @@ export const CustomSelectWidth = {
 		name: "demoSelect",
 		children: SELECT_OPTIONS_WITH_LONG_TEXT,
 		width: "350px"
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("combobox"));
 	}
 };
 
@@ -257,6 +279,11 @@ export const CustomMenuItemWidthAndAlignment = () => {
 	);
 };
 
+CustomMenuItemWidthAndAlignment.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("combobox"));
+};
+
 export const CustomMaxHeight = {
 	args: {
 		onChange: action("callback"),
@@ -265,7 +292,12 @@ export const CustomMaxHeight = {
 		name: "demoSelect",
 		children: SELECT_OPTIONS,
 		width: "350px",
-		maxHeight: "10em"
+		maxHeight: "15em"
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("combobox"));
 	}
 };
 
@@ -301,6 +333,11 @@ export const Subtext = {
 		title: TITLE,
 		label: LABEL,
 		children: generateSelectOptionsWithSubtext()
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("combobox"));
 	}
 };
 
@@ -393,6 +430,11 @@ export const WithIcon = {
 		title: TITLE,
 		label: LABEL,
 		children: generateSelectOptionsWithIcon()
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("combobox"));
 	}
 };
 
