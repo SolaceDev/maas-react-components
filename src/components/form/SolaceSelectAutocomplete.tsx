@@ -373,7 +373,7 @@ function SolaceSelectAutocomplete<T, V>({
 		listbox: HTMLElement,
 		setLastVisibleElementHeight: (height: number) => void
 	) => {
-		const itemHeight = item.clientHeight;
+		const itemHeight = item ? item.clientHeight : 0;
 		if (totalHeightObj.value + itemHeight > listbox.clientHeight) {
 			setLastVisibleElementHeight(itemHeight);
 			return false;
