@@ -8,7 +8,9 @@ import {
 	SolaceRadio,
 	SelectDropdownIcon,
 	SolaceToggle,
-	MoreHorizOutlinedIcon
+	MoreHorizOutlinedIcon,
+	SolaceMenuItemProps,
+	SolaceLabel
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within, screen } from "@storybook/test";
@@ -821,4 +823,54 @@ NestedMenuItemsWithDividers.play = async ({ canvasElement }) => {
 	await userEvent.click(canvas.getByRole("button"));
 	const option1 = await screen.findByText("Option 1");
 	await userEvent.hover(option1);
+};
+
+const MenuItemsWithToggle = ({ isOn = false }): JSX.Element => {
+	const item: SolaceMenuItemProps[] = [
+		{
+			name: (
+				<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+					<SolaceToggle
+						id="demoToggleId"
+						name="demoToggleId"
+						label="Toggle Label"
+						onChange={action("callback")}
+						stateText
+						isOn={isOn}
+						title="Disable Toggle"
+					/>
+					<SolaceLabel id="demo-label">{"\u00A0Separate Label"}</SolaceLabel>
+				</div>
+			)
+		}
+	];
+
+	return (
+		<SolaceMenu
+			buttonProps={{
+				variant: "icon",
+				children: <MoreHorizOutlinedIcon />
+			}}
+			closeOnSelect={false}
+			items={item}
+		></SolaceMenu>
+	);
+};
+
+export const MenuItemsWithToggleOff = (): JSX.Element => {
+	return <MenuItemsWithToggle />;
+};
+
+MenuItemsWithToggleOff.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("button"));
+};
+
+export const MenuItemsWithToggleOn = (): JSX.Element => {
+	return <MenuItemsWithToggle isOn={true} />;
+};
+
+MenuItemsWithToggleOn.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("button"));
 };

@@ -1327,7 +1327,8 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								height: "20px",
 								border: `solid 2px ${themeMapping.palette.primary.w60}`,
 								boxShadow: "none",
-								boxSizing: "border-box"
+								boxSizing: "border-box",
+								color: themeMapping.palette.background.w10
 							},
 							"&.Mui-checked .MuiSwitch-thumb": {
 								backgroundColor: themeMapping.palette.primary.wMain,
