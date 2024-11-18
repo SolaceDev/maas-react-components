@@ -151,6 +151,38 @@ export const WithTabs = (): JSX.Element => {
 	);
 };
 
+export const WithLongSubTitle = (): JSX.Element => {
+	const [activeTabValue, setActiveTabValue] = useState("status");
+	const handleTabClick = (tabValue: string) => {
+		setActiveTabValue(tabValue);
+	};
+
+	return (
+		<SolacePageHeader
+			title="Service Details"
+			subTitle="ThisIsAVeryLongTitleWithManyCharactersWithoutAnySpaces"
+			breadcrumbs={[
+				{ title: "Cluster Manager", link: "/#1" },
+				{ title: "Services Details", link: "/#2", current: true }
+			]}
+			tabs={
+				<SolaceTabs
+					activeTabValue={activeTabValue}
+					tabs={[
+						{ label: "Status", value: "status" },
+						{ label: "Connect", value: "connect" },
+						{ label: "Manage", value: "manage" },
+						{ label: "Monitoring", value: "monitoring" },
+						{ label: "Configuration", value: "configuration" },
+						{ label: "Try Me!", value: "tryme" }
+					]}
+					onTabClick={handleTabClick}
+				></SolaceTabs>
+			}
+		/>
+	);
+};
+
 export const WithActionMenu = (): JSX.Element => {
 	return <SolacePageHeader title="Service Details" subTitle="My Service" actionMenu={<DemoMenu />} />;
 };

@@ -3,6 +3,7 @@ import { styled } from "@mui/material";
 import SolaceFeatureTag from "../SolaceFeatureTag";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceBreadcrumb, { SolacePath } from "../SolaceBreadcrumb";
+import SolaceTooltip from "../SolaceToolTip";
 
 /**
  Structure of this Page Header component:
@@ -76,24 +77,22 @@ const TitleSection = styled("div")(
 	flex-direction: row;`
 );
 
-const Title = styled("span")(
-	({ theme }) => `
+const Title = styled("div", {
+	shouldForwardProp: (propName) => propName !== "hasTabs"
+})<{ hasTabs: boolean }>(
+	({ theme, hasTabs }) => `
 	font-family: ${theme.typography.h2.fontFamily};
 	font-size: ${theme.typography.h2.fontSize};
 	font-weight: ${theme.typography.h2.fontWeight};
-	overflow-x: hidden;
-	text-overflow: ellipsis;
+	max-width: ${hasTabs ? "35vw" : "50vw"};
 	text-wrap: nowrap;`
 );
 
-const SubTitle = styled("span")(
+const SubTitle = styled(Title)(
 	({ theme }) => `
 	font-family: ${theme.typography.h1.fontFamily};
 	font-size: ${theme.typography.h1.fontSize};
-	font-weight: ${theme.typography.h1.fontWeight};
-	overflow-x: hidden;
-	text-overflow: ellipsis;
-	text-wrap: nowrap;`
+	font-weight: ${theme.typography.h1.fontWeight};`
 );
 
 const TabsSection = styled("div")(
@@ -197,11 +196,21 @@ export default function SolacePageHeader({
 			<HeaderSection>
 				{iconTabs && <IconTabsSection>{iconTabs}</IconTabsSection>}
 				<TitleSection>
-					<Title id={getId("title")} data-qa="solace-header-title">
-						{title}
-						{subTitle ? ":" : ""}
+					<Title id={getId("title")} data-qa="solace-header-title" hasTabs={!!tabs}>
+						<SolaceTooltip title={title} variant="overflow">
+							<>
+								{title}
+								{subTitle ? ":" : ""}
+							</>
+						</SolaceTooltip>
 					</Title>
-					{subTitle && <SubTitle id={getId("subtitle")}>{subTitle}</SubTitle>}
+					{subTitle && (
+						<SubTitle id={getId("subtitle")} data-qa="solace-header-subtitle" hasTabs={!!tabs}>
+							<SolaceTooltip title={subTitle} variant="overflow">
+								{subTitle}
+							</SolaceTooltip>
+						</SubTitle>
+					)}
 				</TitleSection>
 				{tabs && <TabsSection>{tabs}</TabsSection>}
 				{(actions || actionMenu) && (
