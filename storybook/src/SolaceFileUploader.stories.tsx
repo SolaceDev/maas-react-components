@@ -39,6 +39,9 @@ export const ReadOnlyMode: Story = {
 
 export const EditMode: Story = {
 	args: {
+		onFileChange: (files: File[]) => {
+			window.alert(`Files changed: ${files.length}`);
+		},
 		fileNames: ["file1.txt", "file2.txt"]
 	}
 };

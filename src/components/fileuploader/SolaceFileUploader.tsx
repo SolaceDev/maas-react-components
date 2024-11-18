@@ -161,6 +161,7 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 						onClick={() => {
 							const newFiles = (filesData as File[]).filter((_, i) => i !== index);
 							setFilesData(newFiles as File[]);
+							onFileChange && onFileChange(newFiles as File[]);
 						}}
 						title="Remove"
 					>
