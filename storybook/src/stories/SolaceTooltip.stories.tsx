@@ -3,11 +3,11 @@ import { Meta, Decorator } from "@storybook/react";
 import {
 	SolaceTooltip,
 	DeleteIcon,
-	SolaceButton,
 	SolaceTextField,
 	HelpOutlineOutlinedIcon,
 	AddCircleOutlineOutlinedIcon,
-	SolaceLabel
+	SolaceLabel,
+	TooltipVariant
 } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
 
@@ -45,7 +45,7 @@ export default {
 			description: "Tooltip content"
 		},
 		variant: {
-			options: ["text", "overflow", "html"],
+			options: ["text", "overflow"],
 			control: {
 				type: "select"
 			}
@@ -158,41 +158,10 @@ export const DisableHoverListener = {
 	}
 };
 
-export const HtmlTooltip = {
-	args: {
-		title: (
-			<div>
-				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
-				<SolaceButton variant="link" href="https://semver.org">
-					Semantic versioning best practices
-				</SolaceButton>
-			</div>
-		),
-		children: <HelpOutlineOutlinedIcon />,
-		variant: "html"
-	}
-};
-
-export const HtmlTooltipMediumWidth = {
-	args: {
-		title: (
-			<div>
-				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
-				<SolaceButton variant="link" href="https://semver.org">
-					Semantic versioning best practices
-				</SolaceButton>
-			</div>
-		),
-		children: <HelpOutlineOutlinedIcon />,
-		variant: "html",
-		maxWidth: "medium"
-	}
-};
-
 export const OverflowTooltipLongText = (): ReactNode => {
 	return (
 		<div style={{ width: "400px" }}>
-			<SolaceTooltip variant="overflow" title={LONG_TEXT}>
+			<SolaceTooltip variant={TooltipVariant.overflow} title={LONG_TEXT}>
 				{LONG_TEXT}
 			</SolaceTooltip>
 		</div>
@@ -206,7 +175,7 @@ OverflowTooltipLongText.play = async ({ canvasElement }) => {
 export const OverflowTooltipShortText = (): ReactNode => {
 	return (
 		<div style={{ width: "50px" }}>
-			<SolaceTooltip variant="overflow" title={TITLE}>
+			<SolaceTooltip variant={TooltipVariant.overflow} title={TITLE}>
 				{TITLE}
 			</SolaceTooltip>
 		</div>
@@ -220,7 +189,7 @@ OverflowTooltipShortText.play = async ({ canvasElement }) => {
 export const OverflowTooltipLongTextMediumWidth = (): ReactNode => {
 	return (
 		<div style={{ width: "400px" }}>
-			<SolaceTooltip variant="overflow" title={LONG_TEXT} maxWidth="medium">
+			<SolaceTooltip variant={TooltipVariant.overflow} title={LONG_TEXT} maxWidth="medium">
 				{LONG_TEXT}
 			</SolaceTooltip>
 		</div>
@@ -234,7 +203,7 @@ OverflowTooltipLongTextMediumWidth.play = async ({ canvasElement }) => {
 export const OverflowTooltipLongTextElement = (): ReactNode => {
 	return (
 		<div style={{ width: "400px" }}>
-			<SolaceTooltip variant="overflow" title={LONG_TEXT}>
+			<SolaceTooltip variant={TooltipVariant.overflow} title={LONG_TEXT}>
 				<span style={{ fontStyle: "italic" }}>{LONG_TEXT}</span>
 			</SolaceTooltip>
 		</div>
@@ -248,7 +217,7 @@ OverflowTooltipLongTextElement.play = async ({ canvasElement }) => {
 export const OverflowTooltipShortTextElement = (): ReactNode => {
 	return (
 		<div style={{ width: "50px" }}>
-			<SolaceTooltip variant="overflow" title={TITLE}>
+			<SolaceTooltip variant={TooltipVariant.overflow} title={TITLE}>
 				<span style={{ fontStyle: "italic" }}>{TITLE}</span>
 			</SolaceTooltip>
 		</div>
@@ -262,7 +231,7 @@ OverflowTooltipShortTextElement.play = async ({ canvasElement }) => {
 export const OverflowTooltipLongTextElementRespondToResize = (): ReactNode => {
 	return (
 		<div style={{ width: "100%" }}>
-			<SolaceTooltip variant="overflow" title={LONG_TEXT}>
+			<SolaceTooltip variant={TooltipVariant.overflow} title={LONG_TEXT}>
 				<span style={{ fontStyle: "italic" }}>{LONG_TEXT}</span>
 			</SolaceTooltip>
 		</div>
@@ -284,13 +253,13 @@ export const TooltipGroup = (): ReactNode => {
 				columnGap: "8px"
 			}}
 		>
-			<SolaceTooltip variant="text" title={"Add"}>
+			<SolaceTooltip variant={TooltipVariant.text} title={"Add"}>
 				<AddCircleOutlineOutlinedIcon />
 			</SolaceTooltip>
-			<SolaceTooltip variant="text" title={"Delete"}>
+			<SolaceTooltip variant={TooltipVariant.text} title={"Delete"}>
 				<DeleteIcon />
 			</SolaceTooltip>
-			<SolaceTooltip variant="text" title={"Hint"}>
+			<SolaceTooltip variant={TooltipVariant.text} title={"Hint"}>
 				<HelpOutlineOutlinedIcon />
 			</SolaceTooltip>
 		</div>
@@ -350,7 +319,7 @@ export const ControlledTooltip = (): ReactNode => {
 				With Toolip
 			</SolaceLabel>
 			<SolaceTooltip
-				variant="text"
+				variant={TooltipVariant.text}
 				title={"Input Something"}
 				open={actionOpen}
 				onOpen={handleOpen}
@@ -390,13 +359,13 @@ export const TooltipWithAndWithoutFocusListener = (): ReactNode => {
 				columnGap: "8px"
 			}}
 		>
-			<SolaceTooltip variant="text" title={"Add"}>
+			<SolaceTooltip variant={TooltipVariant.text} title={"Add"}>
 				<SolaceTextField name="input1" value={"add"} autoFocus={true} />
 			</SolaceTooltip>
-			<SolaceTooltip variant="text" title={"Delete"} disableFocusListener={true}>
+			<SolaceTooltip variant={TooltipVariant.text} title={"Delete"} disableFocusListener={true}>
 				<SolaceTextField name="input2" value={"delete"} />
 			</SolaceTooltip>
-			<SolaceTooltip variant="text" title={"Hint"}>
+			<SolaceTooltip variant={TooltipVariant.text} title={"Hint"}>
 				<SolaceTextField name="input3" value={"hint"} />
 			</SolaceTooltip>
 		</div>

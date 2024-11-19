@@ -8,6 +8,8 @@ import SolaceTooltip from "../SolaceToolTip";
 import { ErrorIcon } from "../../resources/icons/ErrorIcon";
 import SolaceChip from "../SolaceChip";
 import { STATUSES } from "../../types/statuses";
+import SolacePopover from "../SolacePopover";
+import { TooltipVariant } from "../../types/solaceTooltip";
 
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
 	/**
@@ -189,7 +191,7 @@ const GroupItems = styled("ul")(() => ({
 
 const DEFAULT_DATA_QA = "SolaceSelectAutocomplete";
 
-function ErrorChipToolTipContent({ label, error }: { label: string; error: string | JSX.Element }) {
+function ErrorChipToolTipContent({ label, error }: { label: string | JSX.Element; error: string | JSX.Element }) {
 	const theme = useTheme();
 	return (
 		<Box display={"flex"} flexDirection={"column"} rowGap={theme.spacing(1.5)}>
@@ -556,6 +558,22 @@ function SolaceSelectAutocomplete<T, V>({
 		return null;
 	};
 
+	const getErrorMessage = (label: string | JSX.Element, error: string | JSX.Element) => {
+		return (
+			<SolacePopover title={<ErrorChipToolTipContent label={label} error={error} />} placement={"bottom-start"}>
+				<span>{label}</span>
+			</SolacePopover>
+		);
+	};
+
+	const getMessage = (label: string | JSX.Element) => {
+		return (
+			<SolaceTooltip variant={TooltipVariant.overflow} title={label} placement={"bottom-start"}>
+				{label}
+			</SolaceTooltip>
+		);
+	};
+
 	const renderMultiSelectedTags = (tagValue: V[]) => {
 		return tagValue.map((option, index) => {
 			const label = optionsLabelCallback(itemMappingCallback(option));
@@ -566,13 +584,7 @@ function SolaceSelectAutocomplete<T, V>({
 					key={`${dataQa ?? DEFAULT_DATA_QA}-${index}`}
 					label={
 						<div style={{ overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
-							<SolaceTooltip
-								variant={error ? "html" : "overflow"}
-								title={error ? <ErrorChipToolTipContent label={label} error={error} /> : label}
-								placement={"bottom-start"}
-							>
-								{label}
-							</SolaceTooltip>
+							{error ? getErrorMessage(label, error) : getMessage(label)}
 						</div>
 					}
 					clickable={!readOnly}

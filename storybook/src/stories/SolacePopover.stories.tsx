@@ -1,6 +1,18 @@
 import React from "react";
-import { Meta } from "@storybook/react";
-import { SolacePopover } from "@SolaceDev/maas-react-components";
+import { Decorator, Meta } from "@storybook/react";
+import { HelpOutlineOutlinedIcon, SolaceButton, SolacePopover } from "@SolaceDev/maas-react-components";
+import { userEvent, within } from "@storybook/test";
+
+// Create a decorator to include the tooltip & popover inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolacePopover",
@@ -30,16 +42,33 @@ export default {
 		},
 		disableHoverListener: {
 			control: { type: "boolean" }
+		},
+		disableFocusListener: {
+			control: { type: "boolean" }
+		},
+		enterDelay: {
+			control: { type: "number" }
+		},
+		enterNextDelay: {
+			control: { type: "number" }
 		}
 	}
 } as Meta<typeof SolacePopover>;
 
-export const DefaultPopover = () => {
-	return (
-		<SolacePopover title="simple text">
-			<span>Hover content</span>
-		</SolacePopover>
-	);
+export const DefaultPopover = {
+	args: {
+		title: "simple text",
+		children: <span data-testid="popover-details">Hover content</span>,
+		variant: "html",
+		maxWidth: "medium"
+	},
+	decorators: [withSnapshotContainer],
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const triggerElement = canvas.getByTestId("popover-details");
+		await userEvent.hover(triggerElement);
+	}
 };
 
 const MyComp = ({ myRef, ...props }) => {
@@ -48,23 +77,30 @@ const MyComp = ({ myRef, ...props }) => {
 			{...props}
 			ref={myRef}
 			style={{ width: "180px", backgroundColor: "skyblue", padding: "20px", textAlign: "center", cursor: "pointer" }}
+			data-testid="popover-details"
 		>
 			Custom Component
 		</div>
 	);
 };
 
-export const CustomComponent = () => {
-	const MyCompForwardRef = React.forwardRef((props, ref) => {
-		return <MyComp {...props} myRef={ref} />;
-	});
-	return (
-		<div>
-			<SolacePopover title="simple text" placement="bottom-end">
-				<MyCompForwardRef />
-			</SolacePopover>
-		</div>
-	);
+const MyCompForwardRef = React.forwardRef((props, ref) => {
+	return <MyComp {...props} myRef={ref} />;
+});
+
+export const CustomComponent = {
+	args: {
+		title: "simple text",
+		children: <MyCompForwardRef />,
+		maxWidth: "medium"
+	},
+	decorators: [withSnapshotContainer],
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const triggerElement = canvas.getByTestId("popover-details");
+		await userEvent.hover(triggerElement);
+	}
 };
 
 /**
@@ -160,7 +196,7 @@ export const EnumVersionList = () => {
 								title={<EnumVersionPopover desc={item.desc} values={item.values} />}
 								placement="right-start"
 							>
-								<EnumVersionItemForwardRef item={item} />
+								<EnumVersionItemForwardRef item={item} data-testid={`popover-details-${index}`} />
 							</SolacePopover>
 						</div>
 					);
@@ -168,4 +204,56 @@ export const EnumVersionList = () => {
 			</div>
 		</div>
 	);
+};
+
+(EnumVersionList.decorators = [withSnapshotContainer]),
+	(EnumVersionList.play = async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const triggerElement = canvas.getByTestId("popover-details-2");
+		await userEvent.hover(triggerElement);
+	});
+
+export const HtmlPopover = {
+	args: {
+		title: (
+			<div>
+				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
+				<SolaceButton variant="link" href="https://semver.org">
+					Semantic versioning best practices
+				</SolaceButton>
+			</div>
+		),
+		children: <HelpOutlineOutlinedIcon data-testid="version-details" />
+	},
+	decorators: [withSnapshotContainer],
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const triggerElement = canvas.getByTestId("version-details");
+		await userEvent.hover(triggerElement);
+	}
+};
+
+export const HtmlPopoverMediumWidth = {
+	args: {
+		title: (
+			<div>
+				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
+				<SolaceButton variant="link" href="https://semver.org">
+					Semantic versioning best practices
+				</SolaceButton>
+			</div>
+		),
+		children: <HelpOutlineOutlinedIcon data-testid="version-details" />,
+		variant: "html",
+		maxWidth: "medium"
+	},
+	decorators: [withSnapshotContainer],
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const triggerElement = canvas.getByTestId("version-details");
+		await userEvent.hover(triggerElement);
+	}
 };

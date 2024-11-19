@@ -3,6 +3,7 @@ import { Fade } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { useCallback, useRef, useState } from "react";
 import { isEmpty } from "lodash";
+import { TooltipVariant, TooltipVariantTypes } from "../types/solaceTooltip";
 
 export interface SolaceTooltipProps extends SolaceComponentProps {
 	/**
@@ -16,7 +17,7 @@ export interface SolaceTooltipProps extends SolaceComponentProps {
 	/**
 	 * Different type of tooltip, default to `text`
 	 */
-	variant?: "text" | "overflow" | "html";
+	variant?: TooltipVariantTypes;
 	/**
 	 * Tooltip referenced element.
 	 */
@@ -90,7 +91,7 @@ const OverflowDiv = styled("div")(() => ({
 function SolaceTooltip({
 	id,
 	title,
-	variant = "text",
+	variant = TooltipVariant.text,
 	children,
 	placement = "bottom",
 	maxWidth = "small",
@@ -146,7 +147,9 @@ function SolaceTooltip({
 		<Tooltip
 			id={id}
 			title={title ?? ""}
-			classes={{ tooltip: `${variant === "html" ? "htmlContent" : ""} ${maxWidth ? maxWidth + "Width" : ""}` }}
+			classes={{
+				tooltip: `${variant === TooltipVariant.html ? "htmlContent" : ""} ${maxWidth ? maxWidth + "Width" : ""}`
+			}}
 			placement={placement}
 			data-qa={dataQa}
 			data-tags={dataTags}
