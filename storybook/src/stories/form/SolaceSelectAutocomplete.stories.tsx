@@ -419,7 +419,7 @@ export const CustomHeight = {
 
 	args: {
 		label: "Some Label",
-		maxHeight: "7.4rem"
+		maxHeight: "150px"
 	},
 
 	play: async ({ canvasElement }) => {
@@ -870,6 +870,11 @@ const SELECT_OPTIONS_WITH_CATEGORY_HEADING: Array<SolaceSelectAutocompleteItemPr
 		categoryHeading: "Shared"
 	},
 	{
+		name: "Option #5",
+		value: "option5",
+		categoryHeading: "Shared"
+	},
+	{
 		name: "Option #3",
 		value: "option3",
 		categoryHeading: "Non-Shared"
@@ -942,7 +947,6 @@ const MultiSelectionWithHeadingTemplate = ({
 			setMatchingValues(SELECT_OPTIONS_WITH_CATEGORY_HEADING);
 		}
 	}, []);
-
 	const handleOptionDisabled = (option) => {
 		return option.categoryHeading === "Non-Shared";
 	};
@@ -987,6 +991,20 @@ export const MultiSelectionWithHeading = {
 	render: MultiSelectionWithHeadingTemplate,
 
 	args: {},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
+};
+
+export const MultiSelectionWithHeadingWithCustomHeight = {
+	render: MultiSelectionWithHeadingTemplate,
+
+	args: {
+		maxHeight: "205px"
+	},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

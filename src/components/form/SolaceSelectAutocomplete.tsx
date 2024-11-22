@@ -245,7 +245,7 @@ function SolaceSelectAutocomplete<T, V>({
 	openOnFocus = false,
 	disableCloseOnSelect,
 	clearSearchOnSelect = false,
-	maxHeight,
+	maxHeight = "40vh", // default value set by MUI so that dropdown calculation can work if value is omited
 	fullWidth = false,
 	minWidth,
 	tagMaxWidth = "200px"
@@ -260,7 +260,8 @@ function SolaceSelectAutocomplete<T, V>({
 	const [open, setOpen] = useState(false);
 	const [resetOptions, setResetOptions] = useState(false);
 	const currentInputValue = useRef<string>("");
-	const listboxRef = useRef<HTMLUListElement | null>(null);
+	const dropdownRef = useRef<HTMLUListElement | null>(null);
+	const [dropdownRefState, setDropdownRefState] = useState<HTMLUListElement | null>(null);
 	const persistInputValueOnSelect = useMemo(() => {
 		return multiple && !clearSearchOnSelect;
 	}, [clearSearchOnSelect, multiple]);
@@ -304,138 +305,143 @@ function SolaceSelectAutocomplete<T, V>({
 		}
 	}, [fetchOptionsCallback, resetOptions]);
 
-	/**
-	 * The following use callback is used to determine if there is a scrollbar and if true to calculate the maxHeight based on the total height of visible items and the height of the label div in the last visible item.
-	 * The calculation ensures that the last visible item is cut at the label div.
-	 * A condition checking if there are group dividers is present to add additional required conditioning to calculate the height based on nested elements
-	 *
-	 * Steps:
-	 * 1. Iterate through the list items and sum their heights until the total height exceeds the client height of the listbox.
-	 * 2. Identify the div containing the label within the last visible item.
-	 * 3. Add half the height of the label div to the total height.
-	 *
-	 * For example, if the listbox can display items with a total height of 300px, and the label div in the last visible item has a height of 20px:
-	 * maxHeight = totalHeight (300px) + half of labelDivHeight (10px)
-	 * maxHeight = 300px + 10px
-	 * maxHeight = 310px
-	 *
-	 * This ensures that the last visible item is cut at the label div.
-	 */
-	const setListBoxRef = useCallback(
-		(node: HTMLUListElement | null) => {
-			if (!node) return;
+	const HEADING_HEIGHT = 32;
 
-			// Set the listbox reference
-			listboxRef.current = node;
-			const listbox = listboxRef.current;
+	const setDropdownRef = useCallback((node: HTMLUListElement | null) => {
+		if (!node) return;
 
-			// If the listbox doesn't have a scrollbar, no need to adjust the height
-			if (listbox.scrollHeight <= listbox.clientHeight) return;
+		// Set the dropdown reference to get the height properties of the dropdown
+		dropdownRef.current = node;
+		setDropdownRefState(node);
+	}, []);
 
-			const totalHeightObj = { value: 0 };
-			let lastVisibleElementHeight = 0;
-			const items = listbox.children;
+	const calculateItemHeight = useCallback((option: V) => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		return (option as any).subText ? 58 : 38;
+	}, []);
 
-			// Function to set the height of the last visible element
-			const setLastVisibleElementHeight = (height: number) => {
-				lastVisibleElementHeight = height;
-			};
-
-			// Wrappers for the helper functions to pass necessary parameters
-			const calculateHeightWrapper = (item: HTMLElement) =>
-				calculateHeight(item, totalHeightObj, listbox, setLastVisibleElementHeight);
-			const processNestedItemsWrapper = (nestedUl: HTMLElement) =>
-				processNestedItems(nestedUl, totalHeightObj, listbox, calculateHeightWrapper);
-			const processGroupDividerWrapper = (item: HTMLElement) =>
-				processGroupDivider(
-					item,
-					showGroupDivider,
-					totalHeightObj,
-					listbox,
-					calculateHeightWrapper,
-					processNestedItemsWrapper
-				);
-
-			// Iterate through the list items and calculate the total height
-			for (let i = 0; i < items.length; i++) {
-				const item = items[i] as HTMLElement;
-				if (!processGroupDividerWrapper(item) && !calculateHeightWrapper(item)) break;
-			}
-
-			// Calculate the new height for the listbox
-			const newHeight = totalHeightObj.value + lastVisibleElementHeight / 2 - 8; // 8 is the padding of the listbox
-			listbox.style.maxHeight = `${newHeight}px`;
+	const shouldBreakLoop = useCallback(
+		(dropdownHeight: number, itemHeight: number, groupCount: number, maxHeight: number) => {
+			return dropdownHeight + itemHeight + groupCount * HEADING_HEIGHT + 16 >= maxHeight; // 16 is total padding of the dropdown
 		},
-		[showGroupDivider]
+		[]
 	);
 
-	const calculateHeight = (
-		item: HTMLElement,
-		totalHeightObj: { value: number },
-		listbox: HTMLElement,
-		setLastVisibleElementHeight: (height: number) => void
-	) => {
-		const itemHeight = item ? item.clientHeight : 0;
-		if (totalHeightObj.value + itemHeight > listbox.clientHeight) {
-			setLastVisibleElementHeight(itemHeight);
-			return false;
+	const updateGroupCount = useCallback(
+		(option: V, prevCategoryGroup: string) => {
+			return !!(groupByCallback && groupByCallback(option) !== prevCategoryGroup);
+		},
+		[groupByCallback]
+	);
+
+	const updatePrevCategoryGroup = useCallback(
+		(option: V) => {
+			if (option && groupByCallback) {
+				return groupByCallback(option);
+			}
+			return "";
+		},
+		[groupByCallback]
+	);
+
+	const convertToPixels = (value: string): number | string | null => {
+		const units = value.match(/[\d.]+|\D+/g);
+		if (dropdownRef.current) {
+			const currentDropdownRef = dropdownRef.current;
+
+			if (!units || units.length < 2) {
+				return value;
+			}
+
+			const [number, unit] = units;
+			const num = parseFloat(number);
+
+			if (isNaN(num)) return null;
+
+			switch (unit) {
+				case "px":
+					return num;
+				case "em":
+					return currentDropdownRef ? num * parseFloat(getComputedStyle(currentDropdownRef).fontSize) : null;
+				case "rem":
+					return num * parseFloat(getComputedStyle(document.documentElement).fontSize);
+				case "%":
+					return currentDropdownRef ? (num * currentDropdownRef.clientHeight) / 100 : null;
+				case "vh":
+					return (num * window.innerHeight) / 100;
+				case "vw":
+					return (num * window.innerWidth) / 100;
+				default:
+					return null;
+			}
 		}
-		totalHeightObj.value += itemHeight;
-		setLastVisibleElementHeight(itemHeight);
-		return true;
+
+		return null;
 	};
 
-	const processNestedItems = (
-		nestedUl: HTMLElement,
-		totalHeightObj: { value: number },
-		listbox: HTMLElement,
-		calculateHeight: (
-			item: HTMLElement,
-			totalHeightObj: { value: number },
-			listbox: HTMLElement,
-			setLastVisibleElementHeight: (height: number) => void
-		) => boolean
-	) => {
-		const nestedItems = nestedUl.children;
-		for (let j = 0; j < nestedItems.length; j++) {
-			const nestedItem = nestedItems[j] as HTMLElement;
-			if (!calculateHeight(nestedItem, totalHeightObj, listbox, () => {})) return false;
-		}
-		return true;
-	};
+	/**
+	 * The `maxDropdownHeight` is calculated by iterating through the  options and summing their heights
+	 * until the total height exceeds the specified `maxHeight`. It then takes the last element's difference
+	 * from the `maxHeight` and divides it by 2 to cut the last visible element. If the initial `maxHeight` is
+	 * larger than the scroll height of the dropdown, it will exit the function as the last element does not
+	 * need to be trimmed.
+	 *
+	 * Function will account for keyword values passed into `maxHeight` ex: fit-content, none, etc. and will return
+	 * the value as is
+	 */
 
-	const processGroupDivider = (
-		item: HTMLElement,
-		showGroupDivider: boolean,
-		totalHeightObj: { value: number },
-		listbox: HTMLElement,
-		calculateHeight: (
-			item: HTMLElement,
-			totalHeightObj: { value: number },
-			listbox: HTMLElement,
-			setLastVisibleElementHeight: (height: number) => void
-		) => boolean,
-		processNestedItems: (
-			nestedUl: HTMLElement,
-			totalHeightObj: { value: number },
-			listbox: HTMLElement,
-			calculateHeight: (
-				item: HTMLElement,
-				totalHeightObj: { value: number },
-				listbox: HTMLElement,
-				setLastVisibleElementHeight: (height: number) => void
-			) => boolean
-		) => boolean
-	) => {
-		const labelGroupDiv = item.querySelector("div.MuiAutocomplete-groupLabel") as HTMLElement;
-		if (showGroupDivider || labelGroupDiv) {
-			if (!calculateHeight(labelGroupDiv, totalHeightObj, listbox, () => {})) return false;
+	// eslint-disable-next-line sonarjs/cognitive-complexity
+	const maxDropdownHeight = useMemo(() => {
+		let dropdownHeight = 0;
+		let itemHeight = 0;
+		let prevItemHeight = 0;
+		let groupCount = 0;
+		let prevCategoryGroup = "";
+		let lastElementDifference = 0;
 
-			const nestedUl = item.querySelector("ul") as HTMLElement;
-			return !(nestedUl?.tagName === "UL" && !processNestedItems(nestedUl, totalHeightObj, listbox, calculateHeight));
+		if (!dropdownRefState) return;
+
+		const maxHeightInPixels = convertToPixels(maxHeight);
+
+		if (typeof maxHeightInPixels === "string") return maxHeightInPixels;
+		if (!maxHeightInPixels || maxHeightInPixels <= 58 || maxHeightInPixels >= dropdownRefState.scrollHeight) return;
+
+		for (let i = 0; i < filteredOptions.length; i++) {
+			const option = filteredOptions[i];
+			itemHeight = calculateItemHeight(option);
+
+			// Check if adding the next item would exceed the max height and calculate the last element difference
+			if (shouldBreakLoop(dropdownHeight, itemHeight, groupCount, maxHeightInPixels)) {
+				lastElementDifference = maxHeightInPixels - dropdownHeight;
+				break;
+			}
+			if (typeof option === "object") {
+				// Check if the current option belongs to a new category group and update the group count
+				if (updateGroupCount(option, prevCategoryGroup)) {
+					groupCount++;
+					// Check if adding a new group would exceed the max height and calculate the last element difference
+					if (prevItemHeight && shouldBreakLoop(dropdownHeight, itemHeight, groupCount, maxHeightInPixels)) {
+						lastElementDifference = maxHeightInPixels - dropdownHeight;
+						break;
+					}
+				}
+				prevCategoryGroup = updatePrevCategoryGroup(option);
+			}
+
+			dropdownHeight += itemHeight;
+			prevItemHeight = itemHeight;
 		}
-		return false;
-	};
+
+		return prevItemHeight / 2 + lastElementDifference - 8 - (groupCount === 0 ? 0 : groupCount * 32); // 8 is the padding of the dropdown, groupcount calcuations is added since the group headings have a diffenet height than the normal items
+	}, [
+		calculateItemHeight,
+		dropdownRefState,
+		filteredOptions,
+		maxHeight,
+		shouldBreakLoop,
+		updateGroupCount,
+		updatePrevCategoryGroup
+	]);
 
 	const handleChange = (
 		_event: SyntheticEvent<Element, Event>,
@@ -601,7 +607,15 @@ function SolaceSelectAutocomplete<T, V>({
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 	const select = () => (
 		<Autocomplete
-			ListboxProps={{ style: { maxHeight: maxHeight }, ref: setListBoxRef }}
+			ListboxProps={{
+				style: {
+					maxHeight:
+						typeof maxDropdownHeight === "string"
+							? maxDropdownHeight
+							: `calc(${maxHeight} - ${maxDropdownHeight ? maxDropdownHeight + "px" : "0px"})` // if maxDropdownHeight a string type then a keyword value was passed into maxHeight ex: fit-content, none, etc.
+				},
+				ref: setDropdownRef
+			}}
 			id={getId()}
 			data-qa={dataQa ?? DEFAULT_DATA_QA}
 			filterOptions={(x) => x}

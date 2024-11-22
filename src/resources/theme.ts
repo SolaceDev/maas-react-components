@@ -1219,6 +1219,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						width: 0
 					},
 					popper: {
+						".MuiAutocomplete-listbox": {
+							boxSizing: "border-box"
+						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-option": {
 							padding: "0 16px",
 							minHeight: "38px",
