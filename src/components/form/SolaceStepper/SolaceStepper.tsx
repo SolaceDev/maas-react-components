@@ -12,7 +12,7 @@ import SolaceStepIcon from "./SolaceStepIcon";
  * @returns {JSX.Element} The SolaceStepper component.
  */
 export default function SolaceStepper(props: SolaceStepperProps) {
-	const { activeStep, steps, setActiveStep, children, ...rest } = props;
+	const { activeStep, steps, setActiveStep, children, stepContentOverflow, ...rest } = props;
 	const theme = useTheme();
 
 	/**
@@ -56,7 +56,7 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 					);
 				})}
 			</Stepper>
-			<Box pl={3} pr={3} flexGrow={1} overflow="auto">
+			<Box pl={3} pr={3} flexGrow={1} overflow={stepContentOverflow ?? "auto"}>
 				{children}
 			</Box>
 			<SolaceStepperFooter activeStep={activeStep} setActiveStep={setActiveStep} steps={steps} {...rest} />
