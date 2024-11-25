@@ -49,6 +49,16 @@ export const TruncatedChip = {
 	}
 };
 
+export const TruncatedChipWithOptionalMaxWidth = {
+	args: {
+		label: "This is an environment with a very long name",
+		fgColor: "#000000",
+		bgColor: "#ffffff",
+		maxWidth: "150px",
+		icon: <Broker16Icon />
+	}
+};
+
 export const EveryColors = (): JSX.Element => {
 	const {
 		palette: { ux }

@@ -22,14 +22,18 @@ export const ColoredBase = styled("div", {
 	height: ${theme.spacing(3)};`
 );
 
-const ColoredContainer = styled(ColoredBase)(
-	({ theme }) => `
+const ColoredContainer = styled(ColoredBase, {
+	shouldForwardProp: (key: string) => key !== "maxWidth"
+})<{
+	maxWidth: `${number}px` | `${number}%`;
+}>(
+	({ theme, maxWidth }) => `
 	column-gap: ${theme.spacing(1)};
 	font-family: ${theme.typography.body1.fontFamily};
 	font-size: ${theme.typography.body1.fontSize};
 	font-weight: ${theme.typography.body1.fontWeight};
 	padding: ${theme.spacing(0, 1, 0, 0.5)};
-	max-width: 200px;`
+	max-width: ${maxWidth};`
 );
 
 const Icon = styled("span")(`
@@ -59,6 +63,10 @@ export interface SolaceEnvironmentChipProps extends SolaceComponentProps {
 	 * Add a leading icon (from maas-icons) and ensure the size of the icon is 16x16 pixels
 	 */
 	icon: JSX.Element;
+	/**
+	 * Max width of the chip, default to 200px
+	 */
+	maxWidth?: `${number}px` | `${number}%`;
 }
 
 export default function SolaceEnvironmentChip({
@@ -66,11 +74,18 @@ export default function SolaceEnvironmentChip({
 	bgColor,
 	fgColor,
 	icon,
+	maxWidth,
 	dataQa,
 	dataTags
 }: SolaceEnvironmentChipProps): JSX.Element {
 	return (
-		<ColoredContainer bgColor={bgColor} fgColor={fgColor} data-qa={dataQa} data-tags={dataTags}>
+		<ColoredContainer
+			bgColor={bgColor}
+			fgColor={fgColor}
+			data-qa={dataQa}
+			data-tags={dataTags}
+			maxWidth={maxWidth ?? "200px"}
+		>
 			{icon && <Icon>{icon}</Icon>}
 			{label && <Text>{label}</Text>}
 		</ColoredContainer>
