@@ -950,9 +950,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&.MuiOutlinedInput-input": {
 							padding: theme.spacing(0.75, 4.25, 0.75, 1),
 							width: "100%",
-							"& span": {
-								color: themeMapping.palette.secondary.text.wMain
-							},
 							".MuiSvgIcon-root": {
 								fill: themeMapping.palette.secondary.wMain
 							},
@@ -978,9 +975,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						".MuiPaper-root": {
-							"& span": {
-								color: themeMapping.palette.secondary.text.wMain
-							},
 							".MuiSvgIcon-root": {
 								fill: themeMapping.palette.secondary.wMain
 							},

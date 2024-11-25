@@ -5,7 +5,8 @@ import {
 	DeleteIcon,
 	AddCircleOutlineOutlinedIcon,
 	HelpOutlineOutlinedIcon,
-	SolaceButton
+	SolaceButton,
+	useTheme
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@SolaceDev/maas-react-components";
@@ -204,20 +205,6 @@ const SELECT_OPTIONS_WITH_ICON_TEXT: Array<{ name: string; value: string; delimi
 		delimiter: ""
 	}
 ];
-function generateSelectOptionsWithIconAndText(): Array<JSX.Element> {
-	return SELECT_OPTIONS_WITH_ICON_TEXT.map((option) => {
-		return (
-			<MenuItem key={option.value} value={option.value}>
-				<div
-					style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px", width: "100%" }}
-				>
-					{option.name}
-					{option.delimiter ? <span>{option.delimiter}</span> : <HelpOutlineOutlinedIcon fontSize="small" />}
-				</div>
-			</MenuItem>
-		);
-	});
-}
 
 const TITLE = "Demo Select";
 const LABEL = "Some Label";
@@ -462,14 +449,34 @@ export const WithIconReadonly = {
 	}
 };
 
-export const WithIconAndText = {
-	args: {
-		onChange: action("callback"),
-		name: "demoSelect",
-		title: TITLE,
-		label: LABEL,
-		children: generateSelectOptionsWithIconAndText()
-	}
+export const WithIconAndText = (): JSX.Element => {
+	const theme = useTheme();
+	const options = SELECT_OPTIONS_WITH_ICON_TEXT.map((option) => {
+		return (
+			<MenuItem key={option.value} value={option.value}>
+				<div
+					style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px", width: "100%" }}
+				>
+					{option.name}
+					{option.delimiter ? (
+						<span style={{ color: theme.palette.ux.secondary.text.wMain }}>{option.delimiter}</span>
+					) : (
+						<HelpOutlineOutlinedIcon fontSize="small" />
+					)}
+				</div>
+			</MenuItem>
+		);
+	});
+	return (
+		<SolaceSelect onChange={action("callback")} name="demoSelect" title={TITLE} label={LABEL}>
+			{options}
+		</SolaceSelect>
+	);
+};
+
+WithIconAndText.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("combobox"));
 };
 
 export const OpenDropDownOnButtonClick = () => {
