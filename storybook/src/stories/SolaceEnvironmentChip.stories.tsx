@@ -59,6 +59,25 @@ export const TruncatedChipWithOptionalMaxWidth = {
 	}
 };
 
+export const RemovableChip = {
+	args: {
+		label: "This is a removable environment",
+		fgColor: "#000000",
+		bgColor: "#ffffff",
+		icon: <Broker16Icon />,
+		onDelete: () => {}
+	}
+};
+
+export const IconOnlyChip = {
+	args: {
+		label: "",
+		fgColor: "#000000",
+		bgColor: "#ffffff",
+		icon: <Broker16Icon />
+	}
+};
+
 export const EveryColors = (): JSX.Element => {
 	const {
 		palette: { ux }
@@ -78,7 +97,12 @@ export const EveryColors = (): JSX.Element => {
 			icon: <ContentSearch16Icon />
 		},
 		{ label: "Environment 9", fgColor: ux.primary.text.w10, bgColor: ux.accent.n4.wMain, icon: <Broker16Icon /> },
-		{ label: "Environment 10", fgColor: ux.primary.text.w10, bgColor: ux.accent.n9.wMain, icon: <RocketLaunch16Icon /> }
+		{
+			label: "Environment 10",
+			fgColor: ux.primary.text.w10,
+			bgColor: ux.accent.n9.wMain,
+			icon: <RocketLaunch16Icon />
+		}
 	];
 	return (
 		<Grid>

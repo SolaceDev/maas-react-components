@@ -1,5 +1,6 @@
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
+import { CloseIcon } from "../resources/icons/CloseIcon";
 
 export const ColoredBase = styled("div", {
 	shouldForwardProp: (key: string) => key !== "bgColor" && key !== "fgColor"
@@ -25,17 +26,20 @@ export const ColoredBase = styled("div", {
 );
 
 const ColoredContainer = styled(ColoredBase, {
-	shouldForwardProp: (key: string) => key !== "maxWidth"
+	shouldForwardProp: (key: string) => key !== "maxWidth" && key !== "iconOnly" && key !== "removable"
 })<{
 	maxWidth: `${number}px` | `${number}%`;
+	iconOnly: boolean;
+	removable: boolean;
 }>(
-	({ theme, maxWidth }) => `
-	column-gap: ${theme.spacing(1)};
+	({ theme, maxWidth, iconOnly, removable }) => `
+	column-gap: ${theme.spacing(0.5)};
 	font-family: ${theme.typography.body1.fontFamily};
 	font-size: ${theme.typography.body1.fontSize};
 	font-weight: ${theme.typography.body1.fontWeight};
-	padding: ${theme.spacing(0, 1, 0, 0.5)};
-	max-width: ${maxWidth};`
+	padding: ${iconOnly || removable ? theme.spacing(0, 0.5, 0, 0.5) : theme.spacing(0, 1, 0, 0.5)};
+	max-width: ${maxWidth};
+	justify-content: space-between;`
 );
 
 const Icon = styled("span")(`
@@ -48,11 +52,18 @@ const Text = styled("span")(`
 	white-space: nowrap;
 `);
 
+const CloseButtonContainer = styled("div")(`
+	cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`);
+
 export interface SolaceEnvironmentChipProps extends SolaceComponentProps {
 	/**
 	 * 	The text of the component
 	 */
-	label: string;
+	label?: string;
 	/**
 	 * Sets the fill color of the component (RGB like "#3C69E1")
 	 */
@@ -66,6 +77,10 @@ export interface SolaceEnvironmentChipProps extends SolaceComponentProps {
 	 */
 	icon: JSX.Element;
 	/**
+	 * Adds a close icon and makes the component removable
+	 */
+	onDelete?: () => void;
+	/**
 	 * Max width of the chip, default to 200px
 	 */
 	maxWidth?: `${number}px` | `${number}%`;
@@ -78,7 +93,8 @@ export default function SolaceEnvironmentChip({
 	icon,
 	maxWidth,
 	dataQa,
-	dataTags
+	dataTags,
+	onDelete
 }: SolaceEnvironmentChipProps): JSX.Element {
 	return (
 		<ColoredContainer
@@ -87,9 +103,18 @@ export default function SolaceEnvironmentChip({
 			data-qa={dataQa}
 			data-tags={dataTags}
 			maxWidth={maxWidth ?? "200px"}
+			iconOnly={!label}
+			removable={!!onDelete}
 		>
-			{icon && <Icon>{icon}</Icon>}
-			{label && <Text>{label}</Text>}
+			<Box display={"flex"} columnGap={1} maxWidth={onDelete ? "calc(100% - 18px)" : "100%"}>
+				{icon && <Icon>{icon}</Icon>}
+				{label && <Text>{label}</Text>}
+			</Box>
+			{onDelete && (
+				<CloseButtonContainer>
+					<CloseIcon size={16} fill={fgColor} />
+				</CloseButtonContainer>
+			)}
 		</ColoredContainer>
 	);
 }
