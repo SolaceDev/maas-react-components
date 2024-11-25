@@ -18,8 +18,10 @@ export const ColoredBase = styled("div", {
 	color: ${fgColor};
 	cursor: default;
 	display: inline-flex;
-	fill: ${fgColor};
-	height: ${theme.spacing(3)};`
+	height: ${theme.spacing(3)};
+	svg {
+		fill: ${fgColor};
+	}`
 );
 
 const ColoredContainer = styled(ColoredBase, {

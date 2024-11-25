@@ -104,6 +104,7 @@ const TabsSection = styled("div")(
 
 const Actions = styled("div")(
 	({ theme }) => `
+	align-items: center;
 	flex: 1 0 0%;
 	column-gap: ${theme.spacing(1)};
 	display: flex;
