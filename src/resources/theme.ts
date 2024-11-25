@@ -953,6 +953,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							".MuiSvgIcon-root": {
 								fill: themeMapping.palette.secondary.wMain
 							},
+							"&.Mui-disabled": {
+								".MuiSvgIcon-root": {
+									fill: themeMapping.palette.secondary.w40
+								}
+							},
 							".SolaceGrid & .MuiSvgIcon-root": {
 								fill: themeMapping.palette.secondary.w100
 							}
