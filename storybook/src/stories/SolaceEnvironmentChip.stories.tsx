@@ -1,5 +1,6 @@
 import React from "react";
 import { Meta } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import { SolaceEnvironmentChip, SolaceEnvironmentChipProps, styled, useTheme } from "@SolaceDev/maas-react-components";
 import {
 	Maintenance16Icon,
@@ -27,7 +28,8 @@ export default {
 	argTypes: {
 		label: { control: { type: "text" } },
 		fgColor: { control: { type: "color" } },
-		bgColor: { control: { type: "color" } }
+		bgColor: { control: { type: "color" } },
+		maxWidth: { control: { type: "text" } }
 	}
 } as Meta<typeof SolaceEnvironmentChip>;
 
@@ -59,14 +61,21 @@ export const TruncatedChipWithOptionalMaxWidth = {
 	}
 };
 
-export const RemovableChip = {
-	args: {
-		label: "This is a removable environment",
-		fgColor: "#000000",
-		bgColor: "#ffffff",
-		icon: <Broker16Icon />,
-		onDelete: () => {}
-	}
+export const RemovableChip = (): JSX.Element => {
+	const {
+		palette: { ux }
+	} = useTheme();
+
+	return (
+		<SolaceEnvironmentChip
+			onDelete={action("callback")}
+			label="This is a removable environment chip"
+			bgColor={ux.accent.n9.wMain}
+			fgColor={ux.primary.text.w10}
+			icon={<Broker16Icon />}
+			dataQa="example"
+		/>
+	);
 };
 
 export const IconOnlyChip = {

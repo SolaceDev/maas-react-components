@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { IconButton, styled } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 
@@ -37,27 +37,23 @@ const ColoredContainer = styled(ColoredBase, {
 	font-family: ${theme.typography.body1.fontFamily};
 	font-size: ${theme.typography.body1.fontSize};
 	font-weight: ${theme.typography.body1.fontWeight};
-	padding: ${iconOnly || removable ? theme.spacing(0, 0.5, 0, 0.5) : theme.spacing(0, 1, 0, 0.5)};
 	max-width: ${maxWidth};
-	justify-content: space-between;`
+	padding: ${iconOnly || removable ? theme.spacing(0, 0.5) : theme.spacing(0, 1, 0, 0.5)};
+	.MuiIconButton-root:hover {
+		background-color: ${theme.palette.ux.secondary.w20};
+	}`
 );
 
-const Icon = styled("span")(`
+const Icon = styled("span")`
 	display: flex;
-`);
+`;
 
-const Text = styled("span")(`
+const Text = styled("span")`
+	flex: 1 0 0%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-`);
-
-const CloseButtonContainer = styled("div")(`
-	cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`);
+`;
 
 export interface SolaceEnvironmentChipProps extends SolaceComponentProps {
 	/**
@@ -106,14 +102,12 @@ export default function SolaceEnvironmentChip({
 			iconOnly={!label}
 			removable={!!onDelete}
 		>
-			<Box display={"flex"} columnGap={1} maxWidth={onDelete ? "calc(100% - 18px)" : "100%"}>
-				{icon && <Icon>{icon}</Icon>}
-				{label && <Text>{label}</Text>}
-			</Box>
+			{icon && <Icon>{icon}</Icon>}
+			{label && <Text>{label}</Text>}
 			{onDelete && (
-				<CloseButtonContainer>
+				<IconButton data-qa={`${dataQa}-delete`} type="button" onClick={onDelete}>
 					<CloseIcon size={16} fill={fgColor} />
-				</CloseButtonContainer>
+				</IconButton>
 			)}
 		</ColoredContainer>
 	);

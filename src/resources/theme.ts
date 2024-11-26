@@ -354,7 +354,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						margin: "0",
 						// re-position the Solace Dropdown icon inside Select input element
 						".MuiOutlinedInput-root.MuiSelect-root": {
-							".MuiSvgIcon-root": {
+							".MuiSelect-icon": {
 								position: "absolute",
 								top: "12px",
 								right: "0",
@@ -364,21 +364,21 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								color: themeMapping.palette.secondary.wMain // dropdown icon color in resting/focused/error states
 							},
 							"&.Mui-disabled": {
-								".MuiSvgIcon-root": {
+								".MuiSelect-icon": {
 									color: themeMapping.palette.secondary.w40 // dropdown icon color in disabled state
 								}
 							},
 							"&.readOnlySelect": {
 								".MuiSelect-select": {
 									// reset svg inside selected area which is sibling to the svg icon for dropdown caret
-									".MuiSvgIcon-root": {
+									".MuiSelect-icon": {
 										display: "inline-block"
 									}
 								}
 							},
 							".MuiSelect-select": {
 								// reset svg inside selected area which is sibling to the svg icon for dropdown caret
-								".MuiSvgIcon-root": {
+								".MuiSelect-icon": {
 									position: "relative",
 									top: "0"
 								}
@@ -389,7 +389,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								backgroundColor: "transparent" // set background transparent in readonly state
 							},
 							"&.Mui-disabled": {
-								".MuiSvgIcon-root": {
+								".MuiSelect-icon": {
 									color: themeMapping.palette.secondary.w40 // dropdown icon color in disabled state
 								}
 							}
@@ -600,11 +600,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiInputBase: {
 				styleOverrides: {
 					root: {
-						".MuiSvgIcon-root": {
+						".MuiSelect-icon": {
 							fill: themeMapping.palette.secondary.wMain
 						},
 						"&.Mui-disabled": {
-							".MuiSvgIcon-root": {
+							".MuiSelect-icon": {
 								fill: themeMapping.palette.secondary.w40
 							}
 						}
@@ -950,15 +950,15 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&.MuiOutlinedInput-input": {
 							padding: theme.spacing(0.75, 4.25, 0.75, 1),
 							width: "100%",
-							".MuiSvgIcon-root": {
+							".MuiSelect-icon": {
 								fill: themeMapping.palette.secondary.wMain
 							},
 							"&.Mui-disabled": {
-								".MuiSvgIcon-root": {
+								".MuiSelect-icon": {
 									fill: themeMapping.palette.secondary.w40
 								}
 							},
-							".SolaceGrid & .MuiSvgIcon-root": {
+							".SolaceGrid & .MuiSelect-icon": {
 								fill: themeMapping.palette.secondary.w100
 							}
 						},
@@ -980,10 +980,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						".MuiPaper-root": {
-							".MuiSvgIcon-root": {
+							".MuiSelect-icon": {
 								fill: themeMapping.palette.secondary.wMain
 							},
-							"& .SolaceGrid .MuiSvgIcon-root": {
+							"& .SolaceGrid .MuiSelect-icon": {
 								fill: themeMapping.palette.secondary.w100
 							}
 						},
