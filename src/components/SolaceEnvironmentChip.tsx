@@ -37,6 +37,7 @@ const ColoredContainer = styled(ColoredBase, {
 	font-family: ${theme.typography.body1.fontFamily};
 	font-size: ${theme.typography.body1.fontSize};
 	font-weight: ${theme.typography.body1.fontWeight};
+	width: fit-content;
 	max-width: ${maxWidth};
 	padding: ${iconOnly || removable ? theme.spacing(0, 0.5) : theme.spacing(0, 1, 0, 0.5)};
 	.MuiIconButton-root:hover {

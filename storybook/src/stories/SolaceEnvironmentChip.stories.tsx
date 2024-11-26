@@ -121,3 +121,40 @@ export const EveryColors = (): JSX.Element => {
 		</Grid>
 	);
 };
+
+export const WithInContainer = (): JSX.Element => {
+	const {
+		palette: { ux }
+	} = useTheme();
+	const examples: SolaceEnvironmentChipProps[] = [
+		{ label: "Env 2", fgColor: ux.primary.text.w100, bgColor: ux.accent.n2.w20, icon: <Construction16Icon /> },
+		{
+			label: "Environment 7 with very long name to test truncation",
+			fgColor: ux.primary.text.w10,
+			bgColor: ux.accent.n0.wMain,
+			icon: <NewRelease16Icon />
+		},
+		{
+			label: "Environment 10",
+			fgColor: ux.primary.text.w10,
+			bgColor: ux.accent.n9.wMain,
+			icon: <RocketLaunch16Icon />
+		}
+	];
+	return (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				gap: "8px",
+				width: "200px",
+				padding: "16px",
+				border: "1px dotted grey"
+			}}
+		>
+			{examples.map((props) => (
+				<SolaceEnvironmentChip key={props.label} {...props} />
+			))}
+		</div>
+	);
+};
