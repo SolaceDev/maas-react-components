@@ -178,50 +178,49 @@ export const WithIcon = {
 	}
 };
 
-export const WithClearButton = {
-	render: (): JSX.Element => {
-		const [value, setValue] = useState("");
-		const handleChange = (e) => {
-			setValue(e.value);
-		};
-		const handleClearInput = () => {
-			setValue("");
-		};
-		const endAdornment = [
-			value ? (
-				<SolaceButton key={"closeIcon"} dataQa="clearButton" variant="icon" onClick={handleClearInput}>
-					<CloseIcon />
-				</SolaceButton>
-			) : null,
-			<SolaceButton key={"searchIcon"} variant="icon" onClick={handleClearInput}>
-				<Search key="search" />
+const WithClearButtonComponent = (): JSX.Element => {
+	const [value, setValue] = useState("");
+	const handleChange = (e) => {
+		setValue(e.value);
+	};
+	const handleClearInput = () => {
+		setValue("");
+	};
+	const endAdornment = [
+		value ? (
+			<SolaceButton key={"closeIcon"} dataQa="clearButton" variant="icon" onClick={handleClearInput}>
+				<CloseIcon />
 			</SolaceButton>
-		];
+		) : null,
+		<SolaceButton key={"searchIcon"} variant="icon" onClick={handleClearInput}>
+			<Search key="search" />
+		</SolaceButton>
+	];
 
-		return (
-			<SolaceTextField
-				value={value}
-				name="demoTextField"
-				onChange={handleChange}
-				endAdornment={endAdornment}
-				title={DEMO_TITLE}
-				label={DEMO_LABEL}
-				helperText="Text field with clear button"
-				dataQa="textfieldWithClearButton"
-			/>
-		);
-	},
+	return (
+		<SolaceTextField
+			value={value}
+			name="demoTextField"
+			onChange={handleChange}
+			endAdornment={endAdornment}
+			title={DEMO_TITLE}
+			label={DEMO_LABEL}
+			helperText="Text field with clear button"
+			dataQa="textfieldWithClearButton"
+		/>
+	);
+};
+
+export const WithClearButton = {
+	render: WithClearButtonComponent,
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
 
 		await userEvent.type(canvas.getByTestId("textfieldWithClearButton"), "This is a test ", {
-			delay: 400
+			delay: 100
 		});
-		//click on clear button
-		const buttons = canvas.getAllByRole("button");
-		await userEvent.click(buttons[0]);
 	},
 
 	parameters: {
@@ -312,15 +311,17 @@ export const ReadOnlyInlineLabelLongTextOverflowWithTooltip = (): JSX.Element =>
 	);
 };
 
-export const Controlled = {
-	render: ({ value: initialValue, name, ...args }): JSX.Element => {
-		const [value, setValue] = useState(initialValue);
-		const handleChange = (e) => {
-			setValue(e.value);
-		};
+const ControlledComponent = ({ value: initialValue, name, ...args }): JSX.Element => {
+	const [value, setValue] = useState(initialValue);
+	const handleChange = (e) => {
+		setValue(e.value);
+	};
 
-		return <SolaceTextField value={value} name={name} onChange={handleChange} {...args} />;
-	},
+	return <SolaceTextField value={value} name={name} onChange={handleChange} {...args} />;
+};
+
+export const Controlled = {
+	render: ControlledComponent,
 
 	args: {
 		name: "controlledTextField",

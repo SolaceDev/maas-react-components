@@ -145,5 +145,3 @@ export const WithAutoDismissDisabled = {
 		onClose: action("closing")
 	}
 };
-
-// MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root

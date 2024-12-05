@@ -1,7 +1,18 @@
 import React, { useState } from "react";
-import { Meta } from "@storybook/react";
+import { Meta, Decorator } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { SolaceNotificationCounter, SolaceButton } from "@SolaceDev/maas-react-components";
+
+// Create a decorator to include the tooltip & popover inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceNotificationCounter",
@@ -28,7 +39,7 @@ export default {
 			description: "Whether to show the component",
 			table: {
 				defaultValue: {
-					summary: true
+					summary: "true"
 				}
 			}
 		},
@@ -37,7 +48,7 @@ export default {
 			description: "Size the circle in pixels",
 			table: {
 				defaultValue: {
-					summary: 21
+					summary: "21"
 				}
 			}
 		},
@@ -46,7 +57,7 @@ export default {
 			description: "Font size of the text",
 			table: {
 				defaultValue: {
-					summary: 14
+					summary: "14"
 				}
 			}
 		},
@@ -55,7 +66,7 @@ export default {
 			description: "Animation duration in milliseconds",
 			table: {
 				defaultValue: {
-					summary: 1000
+					summary: "1000"
 				}
 			}
 		},
@@ -64,7 +75,7 @@ export default {
 			description: "The number of animation cycles to run when showing the component the first time",
 			table: {
 				defaultValue: {
-					summary: 1
+					summary: "1"
 				}
 			}
 		},
@@ -73,7 +84,7 @@ export default {
 			description: "The number of animation cycles to run when value is updated",
 			table: {
 				defaultValue: {
-					summary: 3
+					summary: "3"
 				}
 			}
 		}
@@ -84,7 +95,7 @@ function NotificationCounterDemo({
 	animiationDuration = 1000,
 	animationRepeatsInitialCount = 1,
 	animationRepeatsUpdateCount = 3,
-	title = null
+	title = undefined as string | undefined
 }) {
 	const [counter, setCounter] = useState(1);
 	return (
@@ -176,6 +187,8 @@ export const NotificationCounterWithTooltip = {
 	render: () => {
 		return <NotificationCounterDemo animiationDuration={0} title={"new events"} />;
 	},
+
+	decorators: [withSnapshotContainer],
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

@@ -59,7 +59,7 @@ export default {
 	}
 } as Meta<typeof SolaceConfirmationDialog>;
 
-const SELECT_OPTIONS: Array<React.ReactNode> = [];
+const SELECT_OPTIONS: Array<JSX.Element> = [];
 SELECT_OPTIONS.push(
 	<MenuItem key="option1" value="option1">
 		Menu Option #1
@@ -136,7 +136,7 @@ export const WithChildrenAccordionComponents = (): JSX.Element => (
 			summary={"hello world"}
 			details="here are some details"
 			expanded={false}
-			onChange={() => console.log("you clicked me")}
+			onChange={action("you clicked me")}
 		/>
 	</SolaceConfirmationDialog>
 );
@@ -150,26 +150,24 @@ export const WithNoChildren = (): JSX.Element => (
 	/>
 );
 
-export const WithLinearProgressIndicator = {
-	render: ({ ...args }): JSX.Element => {
-		const [expanded, setExpanded] = useState(false);
-		return (
-			<SolaceConfirmationDialog
-				title="With Accordion Content And Progress Indicator"
-				isOpen={true}
-				linearProgressIndicator={true}
-				actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), isDisabled: true }]}
-			>
-				<SolaceAccordion
-					summary="Accordion in a dialog could have extra paddings AND break dialog progress indicator"
-					details="Because they both have MuiPaper-root class."
-					expanded={expanded}
-					onChange={() => setExpanded(!expanded)}
-					{...args}
-				/>
-			</SolaceConfirmationDialog>
-		);
-	}
+export const WithLinearProgressIndicator = ({ ...args }): JSX.Element => {
+	const [expanded, setExpanded] = useState(false);
+	return (
+		<SolaceConfirmationDialog
+			title="With Accordion Content And Progress Indicator"
+			isOpen={true}
+			linearProgressIndicator={true}
+			actions={[{ label: "Submit", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), isDisabled: true }]}
+		>
+			<SolaceAccordion
+				summary="Accordion in a dialog could have extra paddings AND break dialog progress indicator"
+				details="Because they both have MuiPaper-root class."
+				expanded={expanded}
+				onChange={() => setExpanded(!expanded)}
+				{...args}
+			/>
+		</SolaceConfirmationDialog>
+	);
 };
 
 const CustomContentWrapper = styled("div")(() => ({
@@ -227,7 +225,7 @@ export const TableAsChildComponent = {
 		actions: [{ label: "Close", onClick: action(BUTTON_CLICK_ACTION_CALLBACK), variant: "outline" }],
 		children: (
 			<TableWrapper>
-				<DefaultTable.render {...DefaultTable.args} />
+				<DefaultTable.render {...DefaultTable.args} initialSelectedRowIds={[]} />
 			</TableWrapper>
 		)
 	}

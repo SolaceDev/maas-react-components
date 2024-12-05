@@ -1,7 +1,19 @@
 import React from "react";
-import { Meta } from "@storybook/react";
+import { Meta, Decorator } from "@storybook/react";
 import { SolaceAttributeBadge, SolaceTooltip, CHIP_COLORS } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
+import { userEvent, within } from "@storybook/test";
+
+// Create a decorator to include the tooltip inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceAttributeBadge",
@@ -126,6 +138,13 @@ export const WithTooltipAttributeBadge = {
 	args: {
 		label: <SolaceTooltip title="Attribute Badge With Long Content">Attribute Badge With Long Content</SolaceTooltip>,
 		maxWidth: 100
+	},
+	decorators: [withSnapshotContainer],
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const targetElement = await canvas.getByText("Attribute Badge With Long Content");
+		await userEvent.hover(targetElement);
 	}
 };
 

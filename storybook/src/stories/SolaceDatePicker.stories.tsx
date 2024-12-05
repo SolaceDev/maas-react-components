@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import { SolaceDatePicker } from "@SolaceDev/maas-react-components";
+import { action } from "@storybook/addon-actions";
 
 export default {
 	title: "Under Construction/SolaceDatePicker",
@@ -24,8 +25,8 @@ export const ControlledDatePicker = {
 	render: Template,
 	args: {
 		value: "2022-01-01T00:00:00Z", // in ISO 8601 format
-		onChange: (date: string | null) => console.log(date),
-		onClear: () => console.log("Cleared")
+		onChange: action("Date Changed"),
+		onClear: action("Cleared")
 	}
 };
 

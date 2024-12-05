@@ -18,7 +18,7 @@ export default {
 				"Defines the space between the type item components. It can only be used on a type container component.",
 			table: {
 				defaultValue: {
-					summary: 2
+					summary: "2"
 				},
 				type: { summary: "Array<number| string>| number| object|string" }
 			}
@@ -29,7 +29,7 @@ export default {
 				"If true, the component will have the flex container behavior. You should be wrapping items with a container.",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				},
 				type: {
 					summary: "bool"
@@ -42,7 +42,7 @@ export default {
 				"If true, the component will have the flex item behavior. You should be wrapping items with a container.",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				},
 				type: {
 					summary: "bool"
@@ -54,7 +54,7 @@ export default {
 			description: "The number of columns",
 			table: {
 				defaultValue: {
-					summary: 12
+					summary: "12"
 				},
 				type: {
 					summary: "Array<number>| number| object"

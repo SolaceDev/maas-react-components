@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta } from "@storybook/react";
+import { Meta, Decorator } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import {
 	SolaceEnvironmentSelectChip,
@@ -10,6 +10,17 @@ import {
 } from "@SolaceDev/maas-react-components";
 import { TestTube16Icon, Broker16Icon, RocketLaunch16Icon, DeployedCode16Icon } from "@SolaceDev/maas-icons";
 import { userEvent, within } from "@storybook/test";
+
+// Create a decorator to include the tooltip & popover inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 const ToggleWrapper = styled("div")(({ theme }) => ({
 	borderTop: `1px solid ${theme.palette.ux.secondary.w20}`,
@@ -37,18 +48,17 @@ export default {
 		fgColor: { control: { type: "color" } },
 		bgColor: { control: { type: "color" } }
 	},
-
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
 
 		await userEvent.click(canvas.getByRole("combobox"));
 	},
-
 	parameters: {
 		// Delay snapshot 1 second until all interactions are done
 		chromatic: { delay: 1000 }
-	}
+	},
+	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceEnvironmentSelectChip>;
 
 export const EnvironmentSelectChip = (): JSX.Element => {

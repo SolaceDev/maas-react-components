@@ -39,7 +39,7 @@ export default {
 			description: "Renders the button group as disabled",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		}

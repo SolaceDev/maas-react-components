@@ -171,7 +171,12 @@ export const FullScreenEditor = (): JSX.Element => {
 
 	return (
 		<>
-			<SolaceCheckBox label="Full Screen" isChecked={fullScreen} onChange={() => onToggleFullScreen()} />
+			<SolaceCheckBox
+				name="fullScreenCheckbox"
+				label="Full Screen"
+				checked={fullScreen}
+				onChange={() => onToggleFullScreen()}
+			/>
 			<SolaceCodeEditor
 				id="demoCodeEditorId"
 				value={JSON.stringify(DEFAULT_JSON_VALUE, null, " ")}

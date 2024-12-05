@@ -45,7 +45,7 @@ export default {
 			description: "If true, the Accordion expands by default",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},
@@ -54,7 +54,7 @@ export default {
 			description: "If true, square corners are enabled",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},
@@ -63,7 +63,7 @@ export default {
 			description: "If true, expands the Accordion component, otherwise collapse it",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},
@@ -73,7 +73,7 @@ export default {
 				"If `true`, the Accordion details component will not have padding. The default is `false`.If enabled, the content will not left align with the header title anymore.",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},
@@ -82,7 +82,7 @@ export default {
 			description: "If true, the Accordion component is has hover effect.",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},
@@ -103,7 +103,7 @@ export default {
 			description: "If false, accordion is borderless",
 			table: {
 				defaultValue: {
-					summary: true
+					summary: "true"
 				}
 			}
 		},
@@ -237,7 +237,12 @@ const SolaceAccordionListStory = ({ ...args }) => {
  * Multiple expanded accordion list demo
  */
 const SolaceMultiExpandedAccordionListStory = ({ ...args }) => {
-	const [expandedMap, setExpandedMap] = useState({});
+	const [expandedMap, setExpandedMap] = useState(
+		testListItems.reduce((acc, item) => {
+			acc[item.id] = true;
+			return acc;
+		}, {})
+	);
 
 	const handleChange = (id: string) => () => {
 		const updatedExpandedMap = { ...expandedMap };
@@ -251,7 +256,7 @@ const SolaceMultiExpandedAccordionListStory = ({ ...args }) => {
 					<SolaceAccordion
 						key={item.id}
 						{...args}
-						expanded={expandedMap[item.id] === true}
+						expanded={expandedMap[item.id]}
 						onChange={handleChange(item.id)}
 						summary={renderAccordionSummary(item.title)}
 						details={renderAccordionDetails(item.subTitle, item.content)}

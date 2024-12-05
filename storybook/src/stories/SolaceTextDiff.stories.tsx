@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta } from "@storybook/react";
 import { SolaceConfirmationDialog, SolaceTextDiff } from "@SolaceDev/maas-react-components";
+import { action } from "@storybook/addon-actions";
 
 export default {
 	title: "Under Construction/SolaceTextDiff",
@@ -30,9 +31,7 @@ export const DefaultSolaceTextDiffInDialog = {
 				actions={[
 					{
 						label: "Submit",
-						onClick: () => {
-							console.log("Do nothing to appease linter");
-						},
+						onClick: action("Do nothing to appease linter"),
 						isDisabled: true
 					}
 				]}

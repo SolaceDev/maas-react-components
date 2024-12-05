@@ -36,10 +36,13 @@ export default {
 	}
 } as Meta<typeof SolaceToggle>;
 
+const title = "Demo Toggle";
+const label = "Some Label";
+
 export const DefaultToggle = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Toggle",
+		title: title,
 		id: "demoToggleId",
 		name: "demoToggle"
 	}
@@ -48,20 +51,20 @@ export const DefaultToggle = {
 export const Labeled = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Toggle",
+		title: title,
 		id: "demoToggleId",
 		name: "demoToggle",
-		label: "Some Label"
+		label: label
 	}
 };
 
 export const LargeLabel = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Toggle",
+		title: title,
 		id: "demoToggleId",
 		name: "demoToggle",
-		label: "Some Label",
+		label: label,
 		largeLabel: true
 	}
 };
@@ -69,10 +72,10 @@ export const LargeLabel = {
 export const LabeledWithStateText = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Toggle",
+		title: title,
 		id: "demoToggleId",
 		name: "demoToggle",
-		label: "Some Label",
+		label: label,
 		stateText: true
 	}
 };
@@ -80,10 +83,10 @@ export const LabeledWithStateText = {
 export const HelperText = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Toggle",
+		title: title,
 		id: "demoToggleId",
 		name: "demoToggle",
-		label: "Some Label",
+		label: label,
 		helperText: "Some helper text here"
 	}
 };
@@ -91,10 +94,10 @@ export const HelperText = {
 export const WithErrors = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Toggle",
+		title: title,
 		id: "demoToggleId",
 		name: "demoToggle",
-		label: "Some Label",
+		label: label,
 		hasErrors: true,
 		helperText: "Some error occured"
 	}
@@ -104,8 +107,8 @@ export const Required = {
 	args: {
 		onChange: action("callback"),
 		name: "demoToggle",
-		title: "Demo Toggle",
-		label: "Some Label",
+		title: title,
+		label: label,
 		required: true
 	}
 };
@@ -114,8 +117,8 @@ export const Disabled = {
 	args: {
 		onChange: action("callback"),
 		name: "demoToggle",
-		title: "Demo Toggle",
-		label: "Some Label",
+		title: title,
+		label: label,
 		isOn: true,
 		disabled: true
 	}

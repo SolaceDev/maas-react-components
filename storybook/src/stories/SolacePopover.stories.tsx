@@ -52,7 +52,8 @@ export default {
 		enterNextDelay: {
 			control: { type: "number" }
 		}
-	}
+	},
+	decorators: [withSnapshotContainer]
 } as Meta<typeof SolacePopover>;
 
 export const DefaultPopover = {
@@ -69,6 +70,11 @@ export const DefaultPopover = {
 		const triggerElement = canvas.getByTestId("popover-details");
 		await userEvent.hover(triggerElement);
 	}
+};
+
+DefaultPopover.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.hover(canvas.getByText("Hover content"));
 };
 
 const MyComp = ({ myRef, ...props }) => {
@@ -101,6 +107,11 @@ export const CustomComponent = {
 		const triggerElement = canvas.getByTestId("popover-details");
 		await userEvent.hover(triggerElement);
 	}
+};
+
+CustomComponent.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.hover(canvas.getByText("Custom Component"));
 };
 
 /**

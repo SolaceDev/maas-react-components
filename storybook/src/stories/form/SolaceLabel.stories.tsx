@@ -24,10 +24,12 @@ export default {
 	}
 } as Meta<typeof SolaceLabel>;
 
+const label = "Custom Label";
+
 export const DefaultLabel = {
 	args: {
 		id: "demoTextFieldId",
-		children: "Custom Label"
+		children: label
 	}
 };
 
@@ -35,7 +37,7 @@ export const Required = {
 	args: {
 		id: "demoTextFieldId",
 		required: true,
-		children: "Custom Label"
+		children: label
 	}
 };
 
@@ -43,6 +45,6 @@ export const Disabled = {
 	args: {
 		id: "demoTextFieldId",
 		disabled: true,
-		children: "Custom Label"
+		children: label
 	}
 };

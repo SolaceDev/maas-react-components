@@ -37,10 +37,13 @@ export default {
 	}
 } as Meta<typeof SolaceRadio>;
 
+const title = "Demo Radio";
+const label = "Inline Label";
+
 export const DefaultRadio = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Radio",
+		title: title,
 		id: "demoRadioId",
 		name: "demoRadio",
 		value: "someValue"
@@ -50,7 +53,7 @@ export const DefaultRadio = {
 export const Labeled = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Radio",
+		title: title,
 		id: "demoRadioId",
 		name: "demoRadio",
 		label: "Inline label",
@@ -61,7 +64,7 @@ export const Labeled = {
 export const SubText = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Radio",
+		title: title,
 		id: "demoRadioId",
 		name: "demoRadio",
 		label: "Header text",
@@ -73,7 +76,7 @@ export const SubText = {
 export const LightSubText = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Radio",
+		title: title,
 		id: "demoRadioId",
 		name: "demoRadio",
 		label: "Header text",
@@ -94,7 +97,7 @@ function buildSubText() {
 export const LargeLabelAndCustomSubText = {
 	args: {
 		onChange: action("callback"),
-		title: "Demo Radio",
+		title: title,
 		id: "demoRadioId",
 		name: "demoRadio",
 		label: "Import to Event Portal",
@@ -110,7 +113,7 @@ export const Required = {
 		onChange: action("callback"),
 		name: "demoRadio",
 		title: "Demo Checkbox",
-		label: "Inline Label",
+		label: label,
 		required: true,
 		value: "someValue"
 	}
@@ -120,8 +123,8 @@ export const Disabled = {
 	args: {
 		onChange: action("callback"),
 		name: "demoRadio",
-		title: "Demo Radio",
-		label: "Inline Label",
+		title: title,
+		label: label,
 		checked: true,
 		disabled: true,
 		value: "someValue"
@@ -132,8 +135,8 @@ export const ReadOnly = {
 	args: {
 		onChange: action("callback"),
 		name: "demoRadio",
-		title: "Demo Radio",
-		label: "Inline Label",
+		title: title,
+		label: label,
 		checked: true,
 		readOnly: true,
 		value: "someValue"

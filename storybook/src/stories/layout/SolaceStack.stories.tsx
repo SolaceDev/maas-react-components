@@ -4,8 +4,22 @@ import React from "react";
 
 import { Meta } from "@storybook/react";
 
-import { SolaceStack, SolaceSelect, SolaceTextField, Divider } from "@SolaceDev/maas-react-components";
-import { SELECT_OPTIONS } from "../form/SolaceSelect.stories";
+import { SolaceStack, SolaceSelect, SolaceTextField, Divider, MenuItem } from "@SolaceDev/maas-react-components";
+
+const SELECT_OPTIONS: Array<JSX.Element> = [
+	<MenuItem key="no option" value="">
+		No Option
+	</MenuItem>,
+	<MenuItem key="option1" value="option1">
+		Menu Option #1
+	</MenuItem>,
+	<MenuItem key="option2" value="option2">
+		Menu Option #2
+	</MenuItem>,
+	<MenuItem key="option3" value="option3">
+		Menu Option #3
+	</MenuItem>
+];
 
 export default {
 	title: "Layout/SolaceStack",
@@ -17,7 +31,7 @@ export default {
 				"If customSpacing is passed in the default 16px would be replaced by the appropriate value. eg: if 3 is passed in the result would be theme.spacing(3) = 24px between all elements.If 0 is passed in all spacing is disabled.For detailed documentation please refer to https://mui.com/api/stack/",
 			table: {
 				defaultValue: {
-					summary: 2
+					summary: "2"
 				}
 			}
 		},

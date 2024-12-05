@@ -1,6 +1,18 @@
 import React from "react";
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta, Decorator } from "@storybook/react";
 import { SolaceDonutChart, InfoIcon, SolaceButton } from "@SolaceDev/maas-react-components";
+import { userEvent } from "@storybook/test";
+
+// Create a decorator to include the tooltip & popover inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceDonutChart",
@@ -46,7 +58,14 @@ export const WithTooltip = {
 	args: {
 		...DefaultChart.args,
 		showTooltip: true
-	}
+	},
+	play: async ({ canvasElement }) => {
+		const targetElement = canvasElement.querySelector(".recharts-pie-sector");
+		if (targetElement) {
+			await userEvent.hover(targetElement);
+		}
+	},
+	decorators: [withSnapshotContainer]
 };
 
 export const WithSingleDataPoint = {

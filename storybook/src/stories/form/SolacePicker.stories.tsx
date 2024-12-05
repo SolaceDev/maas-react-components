@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta } from "@storybook/react";
+import { Meta, Decorator } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/test";
 
@@ -18,6 +18,17 @@ import {
 	Verified24Icon,
 	DeployedCode24Icon
 } from "@SolaceDev/maas-icons";
+
+// Create a decorator to include the dropdown inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Forms/SolacePicker",
@@ -71,7 +82,8 @@ export default {
 				type: "boolean"
 			}
 		}
-	}
+	},
+	decorators: [withSnapshotContainer]
 } as Meta<typeof SolacePicker>;
 
 export const ColorPicker = {

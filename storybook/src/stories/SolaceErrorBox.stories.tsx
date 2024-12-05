@@ -11,7 +11,7 @@ export default {
 	argTypes: {
 		message: {
 			control: {
-				type: "string"
+				type: "text"
 			}
 		},
 		showErrorIcon: {

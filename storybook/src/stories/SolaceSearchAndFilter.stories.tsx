@@ -176,3 +176,9 @@ OnFocus.args = {
 	onChange: action("value changed"),
 	onFocus: action("input focused") // Using action() to log the onFocus event
 };
+
+OnFocus.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
+	await userEvent.click(canvas.getByRole("textbox"));
+};

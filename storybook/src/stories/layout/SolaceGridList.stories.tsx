@@ -36,7 +36,7 @@ export default {
 				"The collection of object data to populate the list with. Each object MUST have an associated id field",
 			table: {
 				defaultValue: {
-					summary: []
+					summary: "[]"
 				}
 			}
 		},
@@ -45,7 +45,7 @@ export default {
 			description: "Ordered list of collumn header names",
 			table: {
 				defaultValue: {
-					summary: []
+					summary: "[]"
 				}
 			}
 		},
@@ -582,7 +582,16 @@ const SolaceGridListSelectStory = ({ selectedRowId, ...args }) => {
 		action("selectedRows")(selectedItem);
 		setSelectedId(selectedItem?.id);
 	};
-	return <SolaceGridList {...args} selectedItemId={selectedId} onSelection={handleRowSelection} />;
+	return (
+		<SolaceGridList
+			{...args}
+			items={args.items}
+			rowMapping={args.rowMapping}
+			gridTemplate={args.gridTemplate}
+			selectedItemId={selectedId}
+			onSelection={handleRowSelection}
+		/>
+	);
 };
 
 export const ListWithSelection = {

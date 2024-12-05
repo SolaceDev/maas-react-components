@@ -47,7 +47,7 @@ export default {
 			description: "Renders the button disabled",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},
@@ -74,7 +74,7 @@ export default {
 			description: "Removes spacing from link button",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},
@@ -105,7 +105,7 @@ export default {
 			description: "Element placed after the children"
 		},
 		onClick: {
-			control: { type: "string" },
+			control: { type: "text" },
 			description: "Optional click handler"
 		},
 		children: {

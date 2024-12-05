@@ -1,6 +1,18 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta, StoryFn, Decorator } from "@storybook/react";
 import { SolaceChip, SolacePopover, SolaceTooltip, CHIP_VARIANT, InfoIcon } from "@SolaceDev/maas-react-components";
+import { userEvent, within } from "@storybook/test";
+
+// Create a decorator to include the tooltip & popover inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceChip",
@@ -13,7 +25,7 @@ export default {
 			control: { type: "radio" }
 		}
 	}
-} as ComponentMeta<typeof SolaceChip>;
+} as Meta<typeof SolaceChip>;
 
 // custom Popover component
 const CustomPopoverText = () => {
@@ -25,9 +37,9 @@ const CustomPopoverText = () => {
 	);
 };
 
-const Template: ComponentStory<typeof SolaceChip> = (args) => <SolaceChip {...args} />;
+const Template: StoryFn<typeof SolaceChip> = (args) => <SolaceChip {...args} />;
 
-const PopoverTemplate: ComponentStory<typeof SolaceChip> = (args) => {
+const PopoverTemplate: StoryFn<typeof SolaceChip> = (args) => {
 	return (
 		<SolacePopover title={<CustomPopoverText />} placement="right-end">
 			<span>
@@ -46,10 +58,22 @@ export const ChipWithPopover = PopoverTemplate.bind({});
 ChipWithPopover.args = {
 	label: "Chip With Popover"
 };
+ChipWithPopover.decorators = [withSnapshotContainer];
+ChipWithPopover.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const targetElement = await canvas.getByText("Chip With Popover");
+	await userEvent.hover(targetElement);
+};
 
 export const ChipWithTooltip = Template.bind({});
 ChipWithTooltip.args = {
 	label: <SolaceTooltip title="This is a tooltip when you hover over an choice chip">Hover Over Me</SolaceTooltip>
+};
+ChipWithTooltip.decorators = [withSnapshotContainer];
+ChipWithTooltip.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const targetElement = await canvas.getByText("Hover Over Me");
+	await userEvent.hover(targetElement);
 };
 
 export const TruncatedChip = Template.bind({});

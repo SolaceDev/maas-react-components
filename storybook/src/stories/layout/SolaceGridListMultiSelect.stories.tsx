@@ -38,7 +38,7 @@ export default {
 				"The collection of object data to populate the list with. Each object MUST have an associated id field",
 			table: {
 				defaultValue: {
-					summary: []
+					summary: "[]"
 				}
 			}
 		},
@@ -47,7 +47,7 @@ export default {
 			description: "Ordered list of collumn header names",
 			table: {
 				defaultValue: {
-					summary: []
+					summary: "[]"
 				}
 			}
 		},
@@ -65,7 +65,7 @@ export default {
 				"A callback function which is triggered on row is highlighted (row is clicked),  will pass the data object associated with the highlighted row"
 		},
 		selectedRowIds: {
-			control: { type: "array" },
+			control: { type: "object" },
 			description: "The ids of all the items currenlty selected (checkbox selected) in the list",
 			table: {
 				defaultValue: {
@@ -96,7 +96,7 @@ export default {
 				"Flag for enabling or disabling the 'Select All' functionality (disabling will not render the 'Select All' checkbox)",
 			table: {
 				defaultValue: {
-					summary: true
+					summary: "true"
 				}
 			}
 		},
@@ -238,8 +238,8 @@ const largeListItems = Array.from({ length: 500 }).map((item, index) => {
 	};
 });
 
-const basicRowMapping = (testItem) => {
-	const itemCells: unknown[] = [];
+const basicRowMapping = (testItem): JSX.Element[] => {
+	const itemCells: JSX.Element[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -264,8 +264,8 @@ const basicRowMapping = (testItem) => {
 	return itemCells;
 };
 
-const customCellMapping = (testItem) => {
-	const itemCells: unknown[] = [];
+const customCellMapping = (testItem): JSX.Element[] => {
+	const itemCells: JSX.Element[] = [];
 	itemCells.push(
 		<div
 			style={{ textOverflow: "ellipsis", maxWidth: "100%", overflow: "hidden" }}
@@ -291,7 +291,7 @@ const customCellMapping = (testItem) => {
 };
 
 const getActions = (isDisabled): JSX.Element[] => {
-	const actionList: unknown[] = [];
+	const actionList: JSX.Element[] = [];
 	actionList.push(
 		<SolaceMenu
 			id={"custom-solace-menu"}
@@ -350,6 +350,9 @@ const SolaceGridListMultiSelectStory = ({ selectedRowIds, highlightedRowId, ...a
 	return (
 		<SolaceGridListMultiSelect
 			{...args}
+			items={args.items}
+			rowMapping={args.rowMapping}
+			gridTemplate={args.gridTemplate}
 			highlightedRowId={highlightedId}
 			onRowHighlight={handleRowHighlight}
 			selectedRowIds={selectedIds}
@@ -429,59 +432,57 @@ export const WithAllSelected = {
 	}
 };
 
-export const WithClearSelectAllAction = {
-	render: (): JSX.Element => {
-		const [highlightedRowId, setHighlightedRowId] = useState();
-		const [selectedRowIds, setSelectedRowIds] = useState(testListItems.map((item) => item.id));
+export const WithClearSelectAllAction = () => {
+	const [highlightedRowId, setHighlightedRowId] = useState();
+	const [selectedRowIds, setSelectedRowIds] = useState(testListItems.map((item) => item.id));
 
-		const handleRowHighlight = (selectedItem) => {
-			action("rowHighlighted")(selectedItem);
-			setHighlightedRowId(selectedItem.id);
-		};
+	const handleRowHighlight = (selectedItem) => {
+		action("rowHighlighted")(selectedItem);
+		setHighlightedRowId(selectedItem.id);
+	};
 
-		const handleRowSelection = (selectedItems) => {
-			action("selectedRows")(selectedItems);
-			setSelectedRowIds(selectedItems.map((item) => item.id));
-		};
+	const handleRowSelection = (selectedItems) => {
+		action("selectedRows")(selectedItems);
+		setSelectedRowIds(selectedItems.map((item) => item.id));
+	};
 
-		const handleClearAllSelections = () => {
-			action("clearAllSelections")();
-			setSelectedRowIds([]);
-		};
+	const handleClearAllSelections = () => {
+		action("clearAllSelections")();
+		setSelectedRowIds([]);
+	};
 
-		return (
-			<div style={{ display: "flex", flexDirection: "column", rowGap: "24px" }}>
-				<SolaceGridListMultiSelect
-					items={testListItems}
-					rowMapping={basicRowMapping}
-					highlightedRowId={highlightedRowId}
-					onRowHighlight={handleRowHighlight}
-					selectedRowIds={selectedRowIds}
-					onSelection={handleRowSelection}
-					gridTemplate={DEFAULT_GRID_TEMPLATE}
-					dataQa="demoDefaultList"
-				/>
-				<div style={{ width: "200px" }}>
-					<SolaceButton variant={"outline"} onClick={handleClearAllSelections}>
-						Clear All Selections
-					</SolaceButton>
-				</div>
+	return (
+		<div style={{ display: "flex", flexDirection: "column", rowGap: "24px" }}>
+			<SolaceGridListMultiSelect
+				items={testListItems}
+				rowMapping={basicRowMapping}
+				highlightedRowId={highlightedRowId}
+				onRowHighlight={handleRowHighlight}
+				selectedRowIds={selectedRowIds}
+				onSelection={handleRowSelection}
+				gridTemplate={DEFAULT_GRID_TEMPLATE}
+				dataQa="demoDefaultList"
+			/>
+			<div style={{ width: "200px" }}>
+				<SolaceButton variant={"outline"} onClick={handleClearAllSelections}>
+					Clear All Selections
+				</SolaceButton>
 			</div>
-		);
-	},
+		</div>
+	);
+};
 
-	play: async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
-		const canvas = within(canvasElement);
+WithClearSelectAllAction.play = async ({ canvasElement }) => {
+	// Starts querying the component from it's root element
+	const canvas = within(canvasElement);
 
-		// clear all selection
-		await userEvent.click(await canvas.findByRole("button", { name: /Clear All Selections/i }));
-	},
+	// clear all selection
+	await userEvent.click(await canvas.findByRole("button", { name: /Clear All Selections/i }));
+};
 
-	parameters: {
-		// Delay snapshot 5 seconds until all interactions are done
-		chromatic: { delay: 5000 }
-	}
+WithClearSelectAllAction.parameters = {
+	// Delay snapshot 5 seconds until all interactions are done
+	chromatic: { delay: 5000 }
 };
 
 export const WithActionMenus = {

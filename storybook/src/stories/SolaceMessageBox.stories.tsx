@@ -31,7 +31,7 @@ export default {
 			description: "Whether to show icon",
 			table: {
 				defaultValue: {
-					summary: true
+					summary: "true"
 				}
 			}
 		},
@@ -42,7 +42,7 @@ export default {
 			description: "Whether to show the close button",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},

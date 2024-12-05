@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { Meta } from "@storybook/react";
-
 import { SolaceButton, SolaceCard } from "@SolaceDev/maas-react-components";
 
 export default {
@@ -15,7 +14,7 @@ export default {
 			description: "Whether to show the close button",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},

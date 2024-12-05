@@ -1,7 +1,19 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import { Meta } from "@storybook/react";
+import { Meta, Decorator } from "@storybook/react";
 import { SolaceTruncatableLink, Box } from "@SolaceDev/maas-react-components";
+import { userEvent, within } from "@storybook/test";
+
+// Create a decorator to include the tooltip & popover inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceTruncatableLink",
@@ -16,7 +28,7 @@ export default {
 			description: "This is the text that will be displayed in the button",
 			table: {
 				defaultValue: {
-					summary: false
+					summary: "false"
 				}
 			}
 		},
@@ -33,40 +45,53 @@ export default {
 			description: "This is the margin right for the wrapper component"
 		},
 		onClick: {
-			control: { type: "string" },
+			control: { type: "text" },
 			description: "Optional click handler"
 		}
-	}
+	},
+	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceTruncatableLink>;
+
+const linkText = "This is a truncatable link with loooong name";
 
 export const DefaultTruncatableLink = (): JSX.Element => {
 	return (
 		<Box width={"200px"}>
-			<SolaceTruncatableLink
-				id="defaultLink"
-				text="This is a truncatable link with loooong name"
-				onClick={action("callback")}
-			/>
+			<SolaceTruncatableLink id="defaultLink" text={linkText} onClick={action("callback")} />
 		</Box>
 	);
+};
+
+DefaultTruncatableLink.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const targetElement = await canvas.getByText(linkText);
+	await userEvent.hover(targetElement);
 };
 
 export const TruncatableLinkOpenInNewTab = (): JSX.Element => {
 	return (
 		<div style={{ width: "200px" }}>
-			<SolaceTruncatableLink
-				id="defaultLink"
-				text="This is a truncatable link with loooong name"
-				href="https://solace.com"
-			/>
+			<SolaceTruncatableLink id="defaultLink" text={linkText} href="https://solace.com" />
 		</div>
 	);
+};
+
+TruncatableLinkOpenInNewTab.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const targetElement = await canvas.getByText(linkText);
+	await userEvent.hover(targetElement);
 };
 
 export const TruncatableText = (): JSX.Element => {
 	return (
 		<Box width={"200px"}>
-			<SolaceTruncatableLink id="defaultLink" text="This is a truncatable link with loooong name" />
+			<SolaceTruncatableLink id="defaultLink" text={linkText} />
 		</Box>
 	);
+};
+
+TruncatableText.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const targetElement = await canvas.getByText(linkText);
+	await userEvent.hover(targetElement);
 };

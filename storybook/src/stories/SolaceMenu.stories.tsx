@@ -18,7 +18,7 @@ import { userEvent, within, screen } from "@storybook/test";
 // Create a decorator to increase the snapshot window size"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (
-		<div id="snapshot" style={{ width: "400px", height: "400px", padding: "10px 35px" }}>
+		<div id="snapshot" style={{ width: "100vw", height: "400px", padding: "10px 35px" }}>
 			<Story />
 		</div>
 	);
@@ -802,8 +802,6 @@ export const NestedMenuItems = (): JSX.Element => {
 NestedMenuItems.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	await userEvent.click(canvas.getByRole("button"));
-	const option1 = await screen.findByText("Option 1");
-	await userEvent.hover(option1);
 };
 
 export const NestedMenuItemsWithDividers = (): JSX.Element => {
@@ -821,8 +819,6 @@ export const NestedMenuItemsWithDividers = (): JSX.Element => {
 NestedMenuItemsWithDividers.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	await userEvent.click(canvas.getByRole("button"));
-	const option1 = await screen.findByText("Option 1");
-	await userEvent.hover(option1);
 };
 
 const MenuItemsWithToggle = ({ isOn = false }): JSX.Element => {

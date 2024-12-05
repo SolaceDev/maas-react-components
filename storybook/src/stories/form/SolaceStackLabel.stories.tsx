@@ -34,10 +34,12 @@ export default {
 	}
 } as Meta<typeof SolaceStackLabel>;
 
+const label = "Custom Label";
+
 export const DefaultLabel = {
 	args: {
 		id: "demoTextFieldId",
-		children: "Custom Label"
+		children: label
 	}
 };
 
@@ -45,7 +47,7 @@ export const LargeLabel = {
 	args: {
 		id: "demoTextFieldId",
 		large: true,
-		children: "Custom Label"
+		children: label
 	}
 };
 
@@ -53,7 +55,7 @@ export const BoldLabel = {
 	args: {
 		id: "demoTextFieldId",
 		bold: true,
-		children: "Custom Label"
+		children: label
 	}
 };
 
@@ -61,7 +63,7 @@ export const Required = {
 	args: {
 		id: "demoTextFieldId",
 		required: true,
-		children: "Custom Label"
+		children: label
 	}
 };
 
@@ -69,6 +71,6 @@ export const Disabled = {
 	args: {
 		id: "demoTextFieldId",
 		disabled: true,
-		children: "Custom Label"
+		children: label
 	}
 };

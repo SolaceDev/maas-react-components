@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta, Decorator } from "@storybook/react";
 import {
 	SolaceTag,
 	CHIP_VARIANT,
@@ -8,6 +8,18 @@ import {
 	CHIP_COLORS,
 	InfoIcon
 } from "@SolaceDev/maas-react-components";
+import { userEvent, within } from "@storybook/test";
+
+// Create a decorator to include the tooltip & popover inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
 
 export default {
 	title: "Under Construction/SolaceTag",
@@ -20,7 +32,7 @@ export default {
 			control: { type: "radio" }
 		}
 	}
-} as ComponentMeta<typeof SolaceTag>;
+} as Meta<typeof SolaceTag>;
 
 // custom Popover component
 const CustomPopoverText = () => {
@@ -32,9 +44,9 @@ const CustomPopoverText = () => {
 	);
 };
 
-const Template: ComponentStory<typeof SolaceTag> = (args) => <SolaceTag {...args} />;
+const Template: StoryFn<typeof SolaceTag> = (args) => <SolaceTag {...args} />;
 
-const PopoverTemplate: ComponentStory<typeof SolaceTag> = (args) => {
+const PopoverTemplate: StoryFn<typeof SolaceTag> = (args) => {
 	return (
 		<SolacePopover title={<CustomPopoverText />} placement="right-end">
 			<span>
@@ -60,6 +72,13 @@ HoverableTag.args = {
 	label: "Hoverable Tag",
 	clickable: true
 };
+HoverableTag.decorators = [withSnapshotContainer];
+
+HoverableTag.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const targetElement = await canvas.getByText("Hoverable Tag");
+	await userEvent.hover(targetElement);
+};
 
 export const StyledTag = Template.bind({});
 StyledTag.args = {
@@ -72,6 +91,13 @@ export const TruncatedTextTag = Template.bind({});
 TruncatedTextTag.args = {
 	label: <SolaceTooltip title="Choice Chip With Long Content">Choice Chip With Long Content</SolaceTooltip>,
 	maxWidth: 150
+};
+TruncatedTextTag.decorators = [withSnapshotContainer];
+
+TruncatedTextTag.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const targetElement = await canvas.getByText("Choice Chip With Long Content");
+	await userEvent.hover(targetElement);
 };
 
 export const WithLeadingIcon = Template.bind({});

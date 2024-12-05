@@ -716,7 +716,7 @@ export const CustomRowActionMenuTable = (): JSX.Element => {
 
 	const renderSchemaRowActions = useCallback((row: SolaceTableRow): SolaceTableActionMenuItem[] => {
 		if (row.id === "4") {
-			return null;
+			return [];
 		} else if (row.id === "3") {
 			return rowActionMenuItems.slice(0, 1);
 		} else if (row.id === "1") {

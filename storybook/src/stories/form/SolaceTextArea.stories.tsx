@@ -213,15 +213,17 @@ export const ReadOnly = {
 	}
 };
 
-export const Controlled = {
-	render: ({ value: initialValue, name, ...args }): JSX.Element => {
-		const [value, setValue] = useState(initialValue);
-		const handleChange = (e) => {
-			setValue(e.value);
-		};
+const ControlledComponent = ({ value: initialValue, name, ...args }): JSX.Element => {
+	const [value, setValue] = useState(initialValue);
+	const handleChange = (e) => {
+		setValue(e.value);
+	};
 
-		return <SolaceTextArea value={value} name={name} onChange={handleChange} {...args} />;
-	},
+	return <SolaceTextArea value={value} name={name} onChange={handleChange} {...args} />;
+};
+
+export const Controlled = {
+	render: ControlledComponent,
 
 	args: {
 		name: "controlledTextArea",

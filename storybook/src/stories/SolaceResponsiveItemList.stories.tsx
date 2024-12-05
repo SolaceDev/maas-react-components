@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { Meta } from "@storybook/react";
 import {
-	SolaceMenu,
 	SolaceCheckBox,
 	SolaceResponsiveItemList,
 	SolaceResponsiveItem,
@@ -17,7 +16,7 @@ export default {
 	component: SolaceResponsiveItemList,
 	parameters: {},
 	argTypes: {}
-} as Meta<typeof SolaceMenu>;
+} as Meta<typeof SolaceResponsiveItemList>;
 
 const DEFAULT_OPTIONS = [
 	{ value: "applicationDomain", label: "Application Domain" },
