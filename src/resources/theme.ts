@@ -918,6 +918,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								fill: themeMapping.palette.deprecated.secondary.wMain
 							}
 						},
+						// Style added to overide Aurelia custom styling, to be removed once Aurelia code is phased out.
+						input: {
+							left: "auto !important"
+						},
 						padding: 0
 					}
 				}
