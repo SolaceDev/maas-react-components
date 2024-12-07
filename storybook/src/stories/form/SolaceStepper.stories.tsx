@@ -42,6 +42,7 @@ const getStepText = (activeStep: number, stepsLength: number) => {
 
 const onCloseAlert = () => alert("onClose event fired!");
 const onSubmitAlert = () => alert("onSubmit event fired!");
+const onSecondarySubmitAlert = () => alert("onSecondarySubmit event fired!");
 
 /**
  * Renders a simple component with a SolaceStepper.
@@ -67,6 +68,27 @@ const Component = ({ ...args }) => {
 	);
 };
 
+const ComponentWithSecondaryButton = ({ ...args }) => {
+	const [activeStep, setActiveStep] = useState(0);
+
+	return (
+		<Box display="flex" border="1px solid grey" borderRadius="4px" height="300px">
+			<SolaceStepper
+				steps={initialSteps}
+				{...args}
+				activeStep={activeStep}
+				setActiveStep={setActiveStep}
+				onClose={onCloseAlert}
+				onSubmit={onSubmitAlert}
+				onSecondarySubmit={onSecondarySubmitAlert}
+				submitLabel="Submit"
+				secondarySubmitLabel="Secondary Submit"
+			>
+				{getStepText(activeStep, initialSteps.length)}
+			</SolaceStepper>
+		</Box>
+	);
+};
 export const Primary: Story = {
 	render: Component,
 	args: { steps: initialSteps }
@@ -93,4 +115,9 @@ const errorOnCurrentStep: StepsProps = [
 export const ErrorOnCurrentStepAndSubmitDisabled: Story = {
 	render: Component,
 	args: { steps: errorOnCurrentStep, disableSubmit: true }
+};
+
+export const SecondaryButtonEnabled: Story = {
+	render: ComponentWithSecondaryButton,
+	args: { steps: initialSteps }
 };

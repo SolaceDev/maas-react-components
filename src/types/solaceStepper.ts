@@ -43,8 +43,10 @@ export type SolaceStepperFooterProps = {
 	activeStep: number;
 	setActiveStep: React.Dispatch<React.SetStateAction<number>>;
 	onClose: () => void;
+	onSecondarySubmit?: () => void;
 	onSubmit: () => void;
 	submitLabel: string;
+	secondarySubmitLabel?: string;
 	disableSubmit?: boolean;
 };
 

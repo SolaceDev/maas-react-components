@@ -19,22 +19,42 @@ const buttonStrings = {
  *     steps={steps}
  *     onClose={handleClose}
  *     onSubmit={handleSubmit}
+ *     onSecondarySubmit={handleSecondarySubmit}
  *     setActiveStep={setActiveStep}
  *     activeStep={activeStep}
  *     submitLabel="Submit"
+ *     secondarySubmitLabel="Secondary Submit"
  *     disableSubmit={false}
  *   />
  * );
  */
 
 export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
-	const { steps, onClose, onSubmit, setActiveStep, activeStep, submitLabel, disableSubmit } = props;
+	const {
+		steps,
+		onClose,
+		onSubmit,
+		onSecondarySubmit,
+		setActiveStep,
+		activeStep,
+		submitLabel,
+		secondarySubmitLabel,
+		disableSubmit
+	} = props;
 	const onLastStep = activeStep === steps.length - 1;
 	const onFirstStep = activeStep === 0;
 
 	const handleNext = () => {
 		if (onLastStep) {
 			onSubmit();
+			return;
+		}
+		setActiveStep(activeStep + 1);
+	};
+
+	const handleSecondaryNext = () => {
+		if (onLastStep) {
+			onSecondarySubmit?.();
 			return;
 		}
 		setActiveStep(activeStep + 1);
@@ -61,6 +81,13 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 						{buttonStrings.cancel}
 					</SolaceButton>
 				</Box>
+				{secondarySubmitLabel && (
+					<Box sx={{ mr: 1 }}>
+						<SolaceButton variant="outline" onClick={handleSecondaryNext} isDisabled={onLastStep && disableSubmit}>
+							{secondarySubmitLabel}
+						</SolaceButton>
+					</Box>
+				)}
 
 				<SolaceButton variant="call-to-action" onClick={handleNext} isDisabled={onLastStep && disableSubmit}>
 					{onLastStep ? submitLabel : `${buttonStrings.next}: ${steps[activeStep + 1].label} >`}
