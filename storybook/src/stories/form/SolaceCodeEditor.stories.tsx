@@ -4,6 +4,9 @@ import { Meta } from "@storybook/react";
 import { SolaceCodeEditor, SolaceCheckBox } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceCodeEditor as React.FC & { displayName?: string }).displayName = "SolaceCodeEditor";
+(SolaceCheckBox as React.FC & { displayName?: string }).displayName = "SolaceCheckBox";
+
 export default {
 	title: "Forms/SolaceCodeEditor",
 	component: SolaceCodeEditor,

@@ -6,6 +6,8 @@ import NoAccessImg from "../resources/images/NoAccessBook";
 import FailedFetch from "../resources/images/FailedFetch";
 import ApiProducts from "../resources/images/ApiProducts";
 
+(SolaceDetailMessage as React.FC & { displayName?: string }).displayName = "SolaceDetailMessage";
+
 export default {
 	title: "Under Construction/SolaceDetailMessage",
 	component: SolaceDetailMessage,

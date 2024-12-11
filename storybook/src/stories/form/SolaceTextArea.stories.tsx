@@ -4,6 +4,8 @@ import { Meta } from "@storybook/react";
 import { SolaceTextArea } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceTextArea as React.FC & { displayName?: string }).displayName = "SolaceTextArea";
+
 export default {
 	title: "Forms/SolaceTextArea",
 	component: SolaceTextArea,

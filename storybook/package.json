@@ -23,7 +23,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.0",
-		"@babel/preset-react": "^7.24.7",
+		"@babel/plugin-transform-react-display-name": "^7.25.9",
+		"@babel/preset-react": "^7.26.3",
 		"@babel/preset-typescript": "^7.24.7",
 		"@storybook/addon-a11y": "^8.1.10",
 		"@storybook/addon-coverage": "^1.0.0",

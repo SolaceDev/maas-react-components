@@ -2,6 +2,8 @@ import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { SolaceBreadcrumb } from "@SolaceDev/maas-react-components";
 
+(SolaceBreadcrumb as React.FC & { displayName?: string }).displayName = "SolaceBreadcrumb";
+
 export default {
 	title: "Under Construction/SolaceBreadcrumb",
 	component: SolaceBreadcrumb,

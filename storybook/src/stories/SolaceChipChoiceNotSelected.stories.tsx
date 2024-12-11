@@ -2,6 +2,8 @@ import { Meta } from "@storybook/react";
 import { SolaceChip, MODES, STATES, CHIP_VARIANT } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceChip as React.FC & { displayName?: string }).displayName = "SolaceChip";
+
 export default {
 	title: "Under Construction/SolaceChip/Choice Chip/Not Selected",
 	component: SolaceChip,

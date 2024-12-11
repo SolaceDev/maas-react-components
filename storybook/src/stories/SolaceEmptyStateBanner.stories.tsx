@@ -3,6 +3,8 @@ import { SolaceEmptyStateBanner } from "@SolaceDev/maas-react-components";
 import React from "react";
 import EmptyBannerImage from "../resources/images/EmptyBannerImage";
 
+(SolaceEmptyStateBanner as React.FC & { displayName?: string }).displayName = "SolaceEmptyStateBanner";
+
 const meta: Meta<typeof SolaceEmptyStateBanner> = {
 	/* 👇 The title prop is optional.
 	 * See https://storybook.js.org/docs/configure/#configure-story-loading

@@ -4,6 +4,8 @@ import { Meta } from "@storybook/react";
 import { SolaceRadio } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceRadio as React.FC & { displayName?: string }).displayName = "SolaceRadio";
+
 export default {
 	title: "Forms/SolaceRadio",
 	component: SolaceRadio,

@@ -1,6 +1,8 @@
 import { Meta } from "@storybook/react";
 import { SolaceFeatureTag } from "@SolaceDev/maas-react-components";
 
+(SolaceFeatureTag as React.FC & { displayName?: string }).displayName = "SolaceFeatureTag";
+
 export default {
 	title: "Under Construction/SolaceFeatureTag",
 	component: SolaceFeatureTag,

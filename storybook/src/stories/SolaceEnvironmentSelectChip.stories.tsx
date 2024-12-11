@@ -11,6 +11,8 @@ import {
 import { TestTube16Icon, Broker16Icon, RocketLaunch16Icon, DeployedCode16Icon } from "@SolaceDev/maas-icons";
 import { userEvent, within } from "@storybook/test";
 
+(SolaceEnvironmentSelectChip as React.FC & { displayName?: string }).displayName = "SolaceEnvironmentSelectChip";
+
 // Create a decorator to include the tooltip & popover inside the snapshot"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

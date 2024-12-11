@@ -3,6 +3,9 @@ import { Meta } from "@storybook/react";
 import { SolaceDrawer, SolaceDetailMessage, styled } from "@SolaceDev/maas-react-components";
 import NoAccessImg from "../resources/images/NoAccessBook";
 
+(SolaceDrawer as React.FC & { displayName?: string }).displayName = "SolaceDrawer";
+(SolaceDetailMessage as React.FC & { displayName?: string }).displayName = "SolaceDetailMessage";
+
 enum ANCHOR {
 	LEFT = "left",
 	RIGHT = "right"

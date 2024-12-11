@@ -17,6 +17,13 @@ import {
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceSelectAutocomplete as React.FC & { displayName?: string }).displayName = "SolaceSelectAutocomplete";
+(SolaceSelectAutocompleteItem as React.FC & { displayName?: string }).displayName = "SolaceSelectAutocompleteItem";
+(SolaceChip as React.FC & { displayName?: string }).displayName = "SolaceChip";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+(SolaceSelectAutocompleteResponsiveTags as unknown as React.FC & { displayName?: string }).displayName =
+	"SolaceSelectAutocompleteResponsiveTags";
+
 // Create a decorator to increase the snapshot window size
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

@@ -3,6 +3,8 @@ import { Meta } from "@storybook/react";
 import { userEvent, within, expect } from "@storybook/test";
 import { SolacePagination } from "@SolaceDev/maas-react-components";
 
+(SolacePagination as React.FC & { displayName?: string }).displayName = "SolacePagination";
+
 export default {
 	title: "Under Construction/SolacePagination",
 	component: SolacePagination,

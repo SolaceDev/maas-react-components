@@ -3,6 +3,10 @@ import { Meta } from "@storybook/react";
 import { SolaceAccordion } from "@SolaceDev/maas-react-components";
 import { SolaceAccordionProps } from "../../../dist/components/SolaceAccordion";
 
+(SolaceAccordion as React.FC & { displayName?: string }).displayName = "SolaceAccordion";
+
+(SolaceAccordion as React.FC & { displayName?: string }).displayName = "SolaceAccordion";
+
 export default {
 	title: "Under Construction/SolaceAccordion",
 	component: SolaceAccordion,

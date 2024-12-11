@@ -14,6 +14,13 @@ import {
 } from "@SolaceDev/maas-react-components";
 import { DefaultTable } from "../table/SolaceTable.stories";
 
+(SolaceConfirmationDialog as React.FC & { displayName?: string }).displayName = "SolaceConfirmationDialog";
+(SolaceSelect as React.FC & { displayName?: string }).displayName = "SolaceSelect";
+(SolaceTextField as React.FC & { displayName?: string }).displayName = "SolaceTextField";
+(MenuItem as React.FC & { displayName?: string }).displayName = "MenuItem";
+(SolaceAccordion as React.FC & { displayName?: string }).displayName = "SolaceAccordion";
+(SolaceCheckBox as React.FC & { displayName?: string }).displayName = "SolaceCheckBox";
+
 export default {
 	title: "Dialogs/SolaceConfirmationDialog",
 	component: SolaceConfirmationDialog,

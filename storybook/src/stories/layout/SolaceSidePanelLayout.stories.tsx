@@ -13,6 +13,8 @@ import {
 import NoAccessImg from "../../resources/images/NoAccessBook";
 import { within, userEvent } from "@storybook/testing-library";
 
+(SolaceSidePanelLayout as React.FC & { displayName?: string }).displayName = "SolaceSidePanelLayout";
+
 const btnID = "catalog-btn";
 const VARIANT = "call-to-action";
 const CLOSEPANEL = "Close Panel";

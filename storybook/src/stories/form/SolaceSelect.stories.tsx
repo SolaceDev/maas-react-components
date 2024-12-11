@@ -13,6 +13,11 @@ import { MenuItem } from "@SolaceDev/maas-react-components";
 import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
 import { within, userEvent } from "@storybook/test";
 
+(SolaceSelect as React.FC & { displayName?: string }).displayName = "SolaceSelect";
+(MenuItem as React.FC & { displayName?: string }).displayName = "MenuItem";
+(SolaceSelectAutocompleteItem as React.FC & { displayName?: string }).displayName = "SolaceSelectAutocompleteItem";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+
 // Create a decorator to increase the snapshot window size"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

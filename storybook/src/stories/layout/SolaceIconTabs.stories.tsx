@@ -5,6 +5,8 @@ import { SolaceIconTabs } from "@SolaceDev/maas-react-components";
 import { GraphViewIcon } from "../../resources/images/GraphViewIcon";
 import { ListViewIcon } from "../../resources/images/ListViewIcon";
 
+(SolaceIconTabs as React.FC & { displayName?: string }).displayName = "SolaceIconTabs";
+
 export default {
 	title: "Layout/SolaceIconTabs",
 	component: SolaceIconTabs,

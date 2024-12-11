@@ -3,6 +3,9 @@ import { Meta, Decorator } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { SolaceNotificationCounter, SolaceButton } from "@SolaceDev/maas-react-components";
 
+(SolaceNotificationCounter as React.FC & { displayName?: string }).displayName = "SolaceNotificationCounter";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+
 // Create a decorator to include the tooltip & popover inside the snapshot"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

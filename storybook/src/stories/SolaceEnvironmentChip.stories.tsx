@@ -15,6 +15,9 @@ import {
 	RocketLaunch16Icon
 } from "@SolaceDev/maas-icons";
 
+(SolaceEnvironmentChip as React.FC & { displayName?: string }).displayName = "SolaceEnvironmentChip";
+(Broker16Icon as React.FC & { displayName?: string }).displayName = "Broker16Icon";
+
 const Grid = styled("div")`
 	display: flex;
 	flex-direction: column;

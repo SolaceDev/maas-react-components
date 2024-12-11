@@ -8,6 +8,9 @@ import { Box, SolaceTypography } from "@SolaceDev/maas-react-components";
 
 import { Meta } from "@storybook/react";
 
+(SolaceTypography as React.FC & { displayName?: string }).displayName = "SolaceTypography";
+(Box as React.FC & { displayName?: string }).displayName = "Box";
+
 export default {
 	title: "Typography/SolaceTypography",
 	argTypes: {

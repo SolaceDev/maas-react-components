@@ -15,6 +15,12 @@ import {
 import { action } from "@storybook/addon-actions";
 import { userEvent, within, screen } from "@storybook/test";
 
+(SolaceMenu as React.FC & { displayName?: string }).displayName = "SolaceMenu";
+(SolaceRadio as React.FC & { displayName?: string }).displayName = "SolaceRadio";
+(SolaceCheckBox as React.FC & { displayName?: string }).displayName = "SolaceCheckBox";
+(MoreHorizOutlinedIcon as React.FC & { displayName?: string }).displayName = "MoreHorizOutlinedIcon";
+(DeleteIcon as React.FC & { displayName?: string }).displayName = "DeleteIcon";
+
 // Create a decorator to increase the snapshot window size"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

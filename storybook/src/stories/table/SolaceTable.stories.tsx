@@ -18,6 +18,9 @@ import { cloneDeep } from "lodash";
 import { useMemo } from "react";
 import { userEvent, within } from "@storybook/testing-library";
 
+(SolaceTable as React.FC & { displayName?: string }).displayName = "SolaceTable";
+(SolacePagination as React.FC & { displayName?: string }).displayName = "SolacePagination";
+
 const rows = [
 	{
 		id: "1",

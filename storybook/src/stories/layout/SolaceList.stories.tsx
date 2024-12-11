@@ -3,6 +3,12 @@ import { Meta } from "@storybook/react";
 import { SolaceList, SolaceListItem, SolaceListItemButton } from "@SolaceDev/maas-react-components";
 import { Divider, Paper } from "@mui/material";
 
+(SolaceList as React.FC & { displayName?: string }).displayName = "SolaceList";
+(SolaceListItem as React.FC & { displayName?: string }).displayName = "SolaceListItem";
+(SolaceListItemButton as React.FC & { displayName?: string }).displayName = "SolaceListItemButton";
+(Paper as React.FC & { displayName?: string }).displayName = "Paper";
+(Divider as React.FC & { displayName?: string }).displayName = "Divider";
+
 export default {
 	title: "Layout/SolaceList",
 	component: SolaceList,

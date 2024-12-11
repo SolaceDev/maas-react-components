@@ -5,6 +5,9 @@ import { Search } from "@mui/icons-material";
 import { SolaceTextField, SolaceButton, CloseIcon } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceTextField as React.FC & { displayName?: string }).displayName = "SolaceTextField";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+
 export default {
 	title: "Forms/SolaceTextfield",
 	component: SolaceTextField,

@@ -2,6 +2,10 @@ import React, { ReactNode, useState } from "react";
 import { Meta } from "@storybook/react";
 import { SolaceTabs, SolaceNotificationCounter, SolaceButton } from "@SolaceDev/maas-react-components";
 
+(SolaceTabs as React.FC & { displayName?: string }).displayName = "SolaceTabs";
+(SolaceNotificationCounter as React.FC & { displayName?: string }).displayName = "SolaceNotificationCounter";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+
 export default {
 	title: "Layout/SolaceTabs",
 	component: SolaceTabs,

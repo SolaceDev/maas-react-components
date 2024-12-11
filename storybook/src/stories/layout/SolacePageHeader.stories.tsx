@@ -19,6 +19,12 @@ import { Broker16Icon, RocketLaunch16Icon, TestTube16Icon, DeployedCode16Icon } 
 import { GraphViewIcon } from "../../resources/images/GraphViewIcon";
 import { ListViewIcon } from "../../resources/images/ListViewIcon";
 
+(SolacePageHeader as React.FC & { displayName?: string }).displayName = "SolacePageHeader";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+(SolaceTabs as React.FC & { displayName?: string }).displayName = "SolaceTabs";
+(SolaceEnvironmentChip as React.FC & { displayName?: string }).displayName = "SolaceEnvironmentChip";
+(SolaceEnvironmentSelectChip as React.FC & { displayName?: string }).displayName = "SolaceEnvironmentSelectChip";
+
 const DemoMenu = (): JSX.Element => {
 	return (
 		<SolaceMenu

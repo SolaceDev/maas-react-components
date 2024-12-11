@@ -2,6 +2,9 @@ import React, { ReactNode } from "react";
 import { Meta } from "@storybook/react";
 import { SolaceButton, SolaceCard } from "@SolaceDev/maas-react-components";
 
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+(SolaceCard as React.FC & { displayName?: string }).displayName = "SolaceCard";
+
 export default {
 	title: "Under Construction/SolaceCard",
 	component: SolaceCard,

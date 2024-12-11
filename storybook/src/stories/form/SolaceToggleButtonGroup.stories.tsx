@@ -3,6 +3,8 @@ import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { SolaceToggleButtonGroup, SolaceToggleButtonGroupOptionProps } from "@SolaceDev/maas-react-components";
 
+(SolaceToggleButtonGroup as React.FC & { displayName?: string }).displayName = "SolaceToggleButtonGroup";
+
 const options: Array<SolaceToggleButtonGroupOptionProps> = [];
 options.push({ value: "option1", label: "All" });
 options.push({ value: "option2", label: "Sub" });

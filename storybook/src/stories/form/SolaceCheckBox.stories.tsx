@@ -3,6 +3,8 @@ import { Meta } from "@storybook/react";
 import { SolaceCheckBox } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceCheckBox as React.FC & { displayName?: string }).displayName = "SolaceCheckBox";
+
 const LABEL = "Some Label";
 const TITLE = "Demo Checkbox";
 

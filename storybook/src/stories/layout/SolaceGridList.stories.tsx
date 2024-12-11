@@ -10,6 +10,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { cloneDeep } from "lodash";
 
+(SolaceGridList as React.FC & { displayName?: string }).displayName = "SolaceGridList";
+
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
 const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
 

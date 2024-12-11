@@ -3,6 +3,10 @@ import { Meta, StoryFn, Decorator } from "@storybook/react";
 import { SolaceChip, SolacePopover, SolaceTooltip, CHIP_VARIANT, InfoIcon } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
 
+(SolaceChip as React.FC & { displayName?: string }).displayName = "SolaceChip";
+(SolacePopover as React.FC & { displayName?: string }).displayName = "SolacePopover";
+(SolaceTooltip as React.FC & { displayName?: string }).displayName = "SolaceTooltip";
+
 // Create a decorator to include the tooltip & popover inside the snapshot"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

@@ -2,7 +2,6 @@ import React from "react";
 import { Meta, Decorator } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/test";
-
 import { SolacePicker } from "@SolaceDev/maas-react-components";
 import {
 	Maintenance24Icon,
@@ -18,6 +17,8 @@ import {
 	Verified24Icon,
 	DeployedCode24Icon
 } from "@SolaceDev/maas-icons";
+
+(SolacePicker as React.FC & { displayName?: string }).displayName = "SolacePicker";
 
 // Create a decorator to include the dropdown inside the snapshot"
 const withSnapshotContainer: Decorator = (Story) => {

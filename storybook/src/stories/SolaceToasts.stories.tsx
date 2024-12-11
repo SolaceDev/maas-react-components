@@ -4,6 +4,11 @@ import { SolaceToasts, SolaceButton, IconButton } from "@SolaceDev/maas-react-co
 import { action } from "@storybook/addon-actions";
 import CloseIcon from "@mui/icons-material/Close";
 
+(SolaceToasts as React.FC & { displayName?: string }).displayName = "SolaceToasts";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+(CloseIcon as React.FC & { displayName?: string }).displayName = "CloseIcon";
+(IconButton as React.FC & { displayName?: string }).displayName = "IconButton";
+
 export default {
 	title: "Under Construction/SolaceToasts",
 	component: SolaceToasts,

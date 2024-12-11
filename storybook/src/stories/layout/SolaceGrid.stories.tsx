@@ -8,6 +8,9 @@ import { Paper, SolaceGrid } from "@SolaceDev/maas-react-components";
 
 import { Meta } from "@storybook/react";
 
+(SolaceGrid as React.FC & { displayName?: string }).displayName = "SolaceGrid";
+(Paper as React.FC & { displayName?: string }).displayName = "Paper";
+
 export default {
 	title: "Layout/SolaceGrid",
 	component: SolaceGrid,

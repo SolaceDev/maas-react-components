@@ -2,6 +2,9 @@ import React from "react";
 import { Meta } from "@storybook/react";
 import { SolaceMessageBox, SolaceButton } from "@SolaceDev/maas-react-components";
 
+(SolaceMessageBox as React.FC & { displayName?: string }).displayName = "SolaceMessageBox";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+
 export default {
 	title: "Under Construction/SolaceMessageBox",
 	component: SolaceMessageBox,

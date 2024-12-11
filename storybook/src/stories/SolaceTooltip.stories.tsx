@@ -11,6 +11,13 @@ import {
 } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
 
+(SolaceTooltip as React.FC & { displayName?: string }).displayName = "SolaceTooltip";
+(SolaceTextField as React.FC & { displayName?: string }).displayName = "SolaceTextField";
+(SolaceLabel as React.FC & { displayName?: string }).displayName = "SolaceLabel";
+(DeleteIcon as React.FC & { displayName?: string }).displayName = "DeleteIcon";
+(HelpOutlineOutlinedIcon as React.FC & { displayName?: string }).displayName = "HelpOutlineOutlinedIcon";
+(AddCircleOutlineOutlinedIcon as React.FC & { displayName?: string }).displayName = "AddCircleOutlineOutlinedIcon";
+
 // Create a decorator to increase the snapshot window size"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

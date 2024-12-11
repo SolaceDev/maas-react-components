@@ -4,6 +4,8 @@ import { action } from "@storybook/addon-actions";
 
 import { SolaceErrorBox } from "@SolaceDev/maas-react-components";
 
+(SolaceErrorBox as React.FC & { displayName?: string }).displayName = "SolaceErrorBox";
+
 export default {
 	title: "Under Construction/SolaceErrorBox",
 	component: SolaceErrorBox,

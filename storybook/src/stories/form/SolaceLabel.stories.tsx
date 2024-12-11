@@ -2,6 +2,8 @@ import { Meta } from "@storybook/react";
 
 import { SolaceLabel } from "@SolaceDev/maas-react-components";
 
+(SolaceLabel as React.FC & { displayName?: string }).displayName = "SolaceLabel";
+
 export default {
 	title: "Forms/SolaceLabel",
 	component: SolaceLabel,

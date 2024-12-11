@@ -1,6 +1,8 @@
 import { Meta } from "@storybook/react";
 import { SolaceCircularProgress } from "@SolaceDev/maas-react-components";
 
+(SolaceCircularProgress as React.FC & { displayName?: string }).displayName = "SolaceCircularProgress";
+
 export default {
 	title: "Under Construction/SolaceCircularProgress",
 	component: SolaceCircularProgress,

@@ -4,6 +4,9 @@ import { SolaceAttributeBadge, SolaceTooltip, CHIP_COLORS } from "@SolaceDev/maa
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/test";
 
+(SolaceAttributeBadge as React.FC & { displayName?: string }).displayName = "SolaceAttributeBadge";
+(SolaceTooltip as React.FC & { displayName?: string }).displayName = "SolaceTooltip";
+
 // Create a decorator to include the tooltip inside the snapshot"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

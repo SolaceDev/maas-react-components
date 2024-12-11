@@ -20,6 +20,9 @@ import {
 	Toolkit16Icon
 } from "@SolaceDev/maas-icons";
 
+(SolaceEnvironmentLabel as React.FC & { displayName?: string }).displayName = "SolaceEnvironmentLabel";
+(Broker16Icon as React.FC & { displayName?: string }).displayName = "Broker16Icon";
+
 // Create a decorator to decrease the snapshot window size
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

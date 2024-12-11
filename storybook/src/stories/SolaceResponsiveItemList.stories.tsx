@@ -11,6 +11,9 @@ import {
 import { within, userEvent, waitFor } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
+(SolaceResponsiveItemList as unknown as React.FC & { displayName?: string }).displayName = "SolaceResponsiveItemList";
+(SolaceCheckBox as React.FC & { displayName?: string }).displayName = "SolaceCheckBox";
+
 export default {
 	title: "Under Construction/SolaceResponsiveItemList",
 	component: SolaceResponsiveItemList,

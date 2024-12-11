@@ -4,6 +4,9 @@ import { Meta, Decorator } from "@storybook/react";
 import { SolaceTruncatableLink, Box } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
 
+(SolaceTruncatableLink as React.FC & { displayName?: string }).displayName = "SolaceTruncatableLink";
+(Box as React.FC & { displayName?: string }).displayName = "Box";
+
 // Create a decorator to include the tooltip & popover inside the snapshot"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

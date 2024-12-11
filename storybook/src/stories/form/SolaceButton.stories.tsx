@@ -3,6 +3,8 @@ import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { SolaceButton, DeleteIcon } from "@SolaceDev/maas-react-components";
 
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
+
 enum VARIANT {
 	ACTION = "call-to-action",
 	OUTLINE = "outline",

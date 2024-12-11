@@ -4,6 +4,8 @@ import { Meta } from "@storybook/react";
 import { within, expect } from "@storybook/test";
 import { SolaceLearningButton, DeleteIcon } from "@SolaceDev/maas-react-components";
 
+(SolaceLearningButton as React.FC & { displayName?: string }).displayName = "SolaceLearningButton";
+
 enum VARIANT {
 	CALL_TO_ACTION = "call-to-action",
 	ICON = "icon",

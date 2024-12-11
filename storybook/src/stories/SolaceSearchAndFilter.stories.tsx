@@ -4,6 +4,8 @@ import { SolaceSearchAndFilter, FIELD_TYPES, SolaceTextFieldChangeEvent } from "
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/testing-library";
 
+(SolaceSearchAndFilter as React.FC & { displayName?: string }).displayName = "SolaceSearchAndFilter";
+
 export default {
 	title: "Under Construction/SolaceSearchAndFilter",
 	component: SolaceSearchAndFilter,

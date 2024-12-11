@@ -3,6 +3,8 @@ import { StoryFn, Meta } from "@storybook/react";
 import { SolaceDatePicker } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceDatePicker as React.FC & { displayName?: string }).displayName = "SolaceDatePicker";
+
 export default {
 	title: "Under Construction/SolaceDatePicker",
 	component: SolaceDatePicker,

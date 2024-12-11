@@ -6,6 +6,12 @@ import { Meta } from "@storybook/react";
 
 import { SolaceStack, SolaceSelect, SolaceTextField, Divider, MenuItem } from "@SolaceDev/maas-react-components";
 
+(SolaceStack as React.FC & { displayName?: string }).displayName = "SolaceStack";
+(SolaceSelect as React.FC & { displayName?: string }).displayName = "SolaceSelect";
+(SolaceTextField as React.FC & { displayName?: string }).displayName = "SolaceTextField";
+(Divider as React.FC & { displayName?: string }).displayName = "Divider";
+(MenuItem as React.FC & { displayName?: string }).displayName = "MenuItem";
+
 const SELECT_OPTIONS: Array<JSX.Element> = [
 	<MenuItem key="no option" value="">
 		No Option

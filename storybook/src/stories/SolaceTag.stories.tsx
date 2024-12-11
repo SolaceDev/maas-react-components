@@ -10,6 +10,8 @@ import {
 } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
 
+(SolaceTag as React.FC & { displayName?: string }).displayName = "SolaceTag";
+
 // Create a decorator to include the tooltip & popover inside the snapshot"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (

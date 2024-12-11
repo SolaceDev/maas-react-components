@@ -3,6 +3,8 @@ import { Meta } from "@storybook/react";
 import { SolaceConfirmationDialog, SolaceTextDiff } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceTextDiff as React.FC & { displayName?: string }).displayName = "SolaceTextDiff";
+
 export default {
 	title: "Under Construction/SolaceTextDiff",
 	component: SolaceTextDiff,

@@ -12,6 +12,8 @@ import React, { useState, useEffect } from "react";
 import { cloneDeep } from "lodash";
 import { userEvent, within } from "@storybook/testing-library";
 
+(SolaceGridListMultiSelect as React.FC & { displayName?: string }).displayName = "SolaceGridListMultiSelect";
+
 const LIST_ITEM_DESCRIPTION = "The event mesh for accounting";
 const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
 

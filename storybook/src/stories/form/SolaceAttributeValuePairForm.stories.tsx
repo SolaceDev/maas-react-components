@@ -10,6 +10,9 @@ import {
 	useTheme
 } from "@SolaceDev/maas-react-components";
 
+(SolaceAttributeValuePairForm as React.FC & { displayName?: string }).displayName = "SolaceAttributeValuePairForm";
+(SolacePopover as React.FC & { displayName?: string }).displayName = "SolacePopover";
+
 export default {
 	title: "Forms/SolaceAttributeValuePairForm",
 	component: SolaceAttributeValuePairForm,

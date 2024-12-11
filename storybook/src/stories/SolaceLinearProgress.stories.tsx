@@ -2,6 +2,8 @@ import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import { SolaceLinearProgress } from "@SolaceDev/maas-react-components";
 
+(SolaceLinearProgress as React.FC & { displayName?: string }).displayName = "SolaceLinearProgress";
+
 export default {
 	title: "Under Construction/SolaceLinearProgress",
 	component: SolaceLinearProgress,

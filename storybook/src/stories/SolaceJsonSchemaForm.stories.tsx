@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/testing-library";
 
+(SolaceJsonSchemaForm as React.FC & { displayName?: string }).displayName = "SolaceJsonSchemaForm";
+
 //================================================================================
 
 const thresholdProperties = {

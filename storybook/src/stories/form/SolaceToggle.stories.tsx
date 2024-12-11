@@ -3,6 +3,8 @@ import { Meta } from "@storybook/react";
 import { SolaceToggle } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
+(SolaceToggle as React.FC & { displayName?: string }).displayName = "SolaceToggle";
+
 export default {
 	title: "Forms/SolaceToggle",
 	component: SolaceToggle,

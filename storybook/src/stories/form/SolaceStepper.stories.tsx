@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { SolaceStepper, DeleteIcon, StepsProps, Box } from "@SolaceDev/maas-react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 
+(SolaceStepper as React.FC & { displayName?: string }).displayName = "SolaceStepper";
+(Box as React.FC & { displayName?: string }).displayName = "Box";
+
 const meta: Meta<typeof SolaceStepper> = {
 	title: "Forms/SolaceStepper",
 	component: SolaceStepper,
