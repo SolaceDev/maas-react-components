@@ -7,7 +7,7 @@
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/SolaceDev"
 	},
-	"version": "13.0.15",
+	"version": "13.0.16",
 	"description": "React component library designed for Solace.",
 	"author": "",
 	"license": "MIT",
