@@ -2,6 +2,7 @@ import { Pagination, PaginationItem, styled } from "@mui/material";
 import { BASE_FONT_PX_SIZES } from "../resources/typography";
 import { ArrowRightIcon } from "../resources/icons/ArrowRight";
 import { ArrowLeftIcon } from "../resources/icons/ArrowLeft";
+import { useRef, useState, useEffect } from "react";
 
 export interface SolacePaginationProps {
 	/**
@@ -39,23 +40,28 @@ export interface SolacePaginationProps {
 	loading?: boolean;
 }
 
-const PaginationContainer = styled("div")(() => ({
+const PaginationContainer = styled("div")<{ isSmall: boolean }>(({ theme, isSmall }) => ({
 	width: "100%",
 	display: "flex",
-	flexDirection: "column",
 	alignItems: "center",
+	justifyContent: "center",
 	margin: "0",
-	position: "relative"
+	position: "relative",
+	padding: theme.spacing(1, 0),
+	flexDirection: isSmall ? "column" : "row"
 }));
 
 const PageListContainer = styled("div")(() => ({
 	margin: "0"
 }));
 
-const MessageContainer = styled("p")(({ theme }) => ({
-	margin: theme.spacing(0),
+const MessageContainer = styled("p")<{ isSmall: boolean }>(({ theme, isSmall }) => ({
+	margin: isSmall ? theme.spacing(0) : theme.spacing(0, 2, 0, 0),
 	fontSize: BASE_FONT_PX_SIZES.xs,
-	color: theme.palette.ux.deprecated.secondary.text.wMain
+	color: theme.palette.ux.deprecated.secondary.text.wMain,
+	position: isSmall ? "relative" : "absolute",
+	right: isSmall ? 0 : "0",
+	paddingTop: isSmall ? theme.spacing(1) : "0"
 }));
 
 const LoadingOverlay = styled("div")(() => ({
@@ -71,7 +77,7 @@ const LoadingOverlay = styled("div")(() => ({
 function SolacePagination({
 	activePage = 1,
 	pageSize = 10,
-	displayText = "Showing ${firstItemIndex}-${lastItemIndex} of ${totalResults} results",
+	displayText = "${firstItemIndex}-${lastItemIndex} of ${totalResults} results",
 	totalResults,
 	loading = false,
 	onPageSelection
@@ -79,6 +85,20 @@ function SolacePagination({
 	const totalPages = Math.ceil(totalResults / pageSize);
 	const firstItemIndex = (activePage - 1) * pageSize + 1;
 	const lastItemIndex = Math.min(activePage * pageSize, totalResults);
+	const containerRef = useRef<HTMLDivElement>(null);
+	const [isSmall, setIsSmall] = useState<boolean>(false);
+
+	useEffect(() => {
+		const handleResize = () => {
+			if (containerRef.current) {
+				setIsSmall(containerRef.current.offsetWidth <= 730);
+			}
+		};
+
+		handleResize();
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, [isSmall]);
 
 	const handlePageSelection = (event: React.ChangeEvent<unknown> | null, page: number) => {
 		if (event && page > 0 && onPageSelection) {
@@ -95,7 +115,7 @@ function SolacePagination({
 	};
 
 	return (
-		<PaginationContainer>
+		<PaginationContainer ref={containerRef} isSmall={isSmall}>
 			<PageListContainer>
 				<Pagination
 					count={totalPages}
@@ -114,7 +134,7 @@ function SolacePagination({
 					)}
 				/>
 			</PageListContainer>
-			<MessageContainer>{substituteMessageValues()}</MessageContainer>
+			<MessageContainer isSmall={isSmall}>{substituteMessageValues()}</MessageContainer>
 			{loading && <LoadingOverlay />}
 		</PaginationContainer>
 	);

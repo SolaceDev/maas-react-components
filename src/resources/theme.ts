@@ -1723,7 +1723,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiPagination: {
 				styleOverrides: {
 					root: {
-						padding: theme.spacing(1, 0),
+						padding: theme.spacing(0),
 						li: {
 							"&:first-child": {
 								paddingRight: theme.spacing(1),
@@ -1748,7 +1748,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						".MuiButtonBase-root.MuiPaginationItem-root": {
 							margin: theme.spacing(0),
-							padding: theme.spacing(0),
+							padding: theme.spacing(0, 1),
 							height: theme.spacing(3),
 							minWidth: theme.spacing(3),
 							color: themeMapping.palette.primary.wMain,
