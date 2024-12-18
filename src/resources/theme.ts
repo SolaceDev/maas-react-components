@@ -957,9 +957,28 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							".MuiSelect-icon": {
 								fill: themeMapping.palette.secondary.wMain
 							},
+							".menuItemIcon": {
+								minWidth: "24px",
+								".MuiSvgIcon-root": {
+									width: "24px",
+									height: "24px",
+									fill: themeMapping.palette.secondary.wMain
+								}
+							},
+							".supplementalText": {
+								color: themeMapping.palette.secondary.text.wMain
+							},
 							"&.Mui-disabled": {
 								".MuiSelect-icon": {
 									fill: themeMapping.palette.secondary.w40
+								},
+								".menuItemIcon": {
+									".MuiSvgIcon-root": {
+										fill: themeMapping.palette.secondary.w40
+									}
+								},
+								".supplementalText": {
+									color: themeMapping.palette.secondary.text.w50
 								}
 							},
 							".SolaceGrid & .MuiSelect-icon": {
@@ -1058,8 +1077,17 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									}
 								},
 								".MuiListItemIcon-root": {
-									width: "48px",
+									width: "24px",
 									".MuiSvgIcon-root": {
+										width: "24px",
+										height: "24px"
+									}
+								},
+								".menuItemIcon": {
+									minWidth: "24px",
+									alignItems: "center",
+									".MuiSvgIcon-root": {
+										fill: themeMapping.palette.secondary.wMain,
 										width: "24px",
 										height: "24px"
 									}
@@ -1067,6 +1095,13 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								// select styles
 								".MuiTouchRipple-child": {
 									backgroundColor: themeMapping.palette.secondary.w20
+								}
+							},
+							".MuiMenuItem-root.Mui-disabled": {
+								".menuItemIcon": {
+									".MuiSvgIcon-root": {
+										fill: themeMapping.palette.secondary.w40
+									}
 								}
 							},
 							".SolaceGrid": {
@@ -1233,6 +1268,12 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									paddingTop: "8px",
 									paddingBottom: "8px"
 								}
+							},
+							".menuItemIcon": {
+								minWidth: "24px",
+								".MuiSvgIcon-root": {
+									fill: themeMapping.palette.secondary.wMain
+								}
 							}
 						},
 						".MuiAutocomplete-paper": {
@@ -1258,6 +1299,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							opacity: 1,
 							".subtext, .supplementalText": {
 								color: themeMapping.palette.secondary.text.w50
+							},
+							".menuItemIcon": {
+								".MuiSvgIcon-root": {
+									fill: themeMapping.palette.secondary.w40
+								}
 							}
 						},
 						".MuiAutocomplete-listbox .MuiAutocomplete-groupLabel": {

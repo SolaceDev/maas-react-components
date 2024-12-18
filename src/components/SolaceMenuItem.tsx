@@ -134,7 +134,11 @@ const SolaceMenuItem = ({
 			>
 				{typeof name === "string" ? (
 					<>
-						{icon && <ListItemIcon>{icon}</ListItemIcon>}
+						{icon && (
+							<ListItemIcon className="menuItemIcon" style={{ paddingRight: theme.spacing(1) }}>
+								{icon}
+							</ListItemIcon>
+						)}
 						<Grid container direction={"column"} justifyContent="center">
 							<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"center"}>
 								<Typography variant="body1" noWrap>
@@ -155,7 +159,13 @@ const SolaceMenuItem = ({
 						</Grid>
 
 						{secondaryAction && (
-							<Grid container sx={{ marginLeft: theme.spacing(3) }} alignItems={"center"}>
+							<Grid
+								container
+								sx={{ marginLeft: `${subText ? 0 : theme.spacing(3)}`, width: "auto" }}
+								justifyContent={"end"}
+								alignItems={"center"}
+								className="menuItemIcon"
+							>
 								{secondaryAction}
 							</Grid>
 						)}

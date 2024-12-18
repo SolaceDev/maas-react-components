@@ -10,7 +10,9 @@ import {
 	SolaceToggle,
 	MoreHorizOutlinedIcon,
 	SolaceMenuItemProps,
-	SolaceLabel
+	SolaceLabel,
+	HelpOutlineOutlinedIcon,
+	SolaceTooltip
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within, screen } from "@storybook/test";
@@ -327,6 +329,133 @@ export const SecondaryActionSolaceMenu = {
 	}
 };
 
+export const SecondaryActionSolaceMenuWithSubtext = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		items: [
+			{
+				name: "Option 1",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			},
+			{
+				name: "Option 2",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			}
+		]
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
+};
+
+export const IconOnRight = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		items: [
+			{
+				name: "Option 1",
+				secondaryAction: (
+					<SolaceTooltip title="Help">
+						<HelpOutlineOutlinedIcon />
+					</SolaceTooltip>
+				),
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			},
+			{
+				name: "Option 2",
+				secondaryAction: (
+					<SolaceTooltip title="Help">
+						<HelpOutlineOutlinedIcon />
+					</SolaceTooltip>
+				),
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				secondaryAction: (
+					<SolaceTooltip title="Help">
+						<HelpOutlineOutlinedIcon />
+					</SolaceTooltip>
+				),
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			}
+		]
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
+};
+
+export const IconAndTextOnRight = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		items: [
+			{
+				name: "Option 1",
+				secondaryAction: (
+					<SolaceTooltip title="Help">
+						<HelpOutlineOutlinedIcon />
+					</SolaceTooltip>
+				),
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT,
+				disabled: true
+			},
+			{
+				name: "Option 2",
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				disabled: true
+			},
+			{
+				name: "Option 3",
+				secondaryAction: (
+					<SolaceTooltip title="Help">
+						<HelpOutlineOutlinedIcon />
+					</SolaceTooltip>
+				),
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			},
+			{
+				name: "Option 4",
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			}
+		]
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
+};
+
 export const DisabledMenuItem = {
 	args: {
 		buttonProps: {
@@ -394,7 +523,7 @@ export const DisabledMenu = (): JSX.Element => {
 	);
 };
 
-export const IconMenuItem = {
+export const IconMenuItemOnLeft = {
 	args: {
 		buttonProps: {
 			variant: "text",
@@ -406,7 +535,8 @@ export const IconMenuItem = {
 				subText: SUBTEXT,
 				supplementalText: SUPPLEMENTALText,
 				onMenuItemClick: action("callback"),
-				icon: <DeleteIcon />
+				icon: <DeleteIcon />,
+				disabled: true
 			},
 			{
 				name: "Option 2",

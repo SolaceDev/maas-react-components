@@ -1,13 +1,42 @@
-import { Grid } from "@mui/material";
+import { Grid, ListItemIcon } from "@mui/material";
 import clsx from "clsx";
 export interface SolaceSelectAutocompleteItemProps {
+	/**
+	 * Name attribute to show as menu item label.
+	 */
 	name: string;
+	/**
+	 * The value of the current autocomplete item, must have reference equality with the option value in order to be selected.
+	 */
 	value: string;
+	/**
+	 * Content to display as supportive/explanitory text
+	 */
 	subText?: string;
+	/**
+	 * Content to display as supportive/explanitory text
+	 */
 	supplementalText?: string;
+	/**
+	 * Adds a divider to the bottom of menuItem
+	 */
 	divider?: boolean;
+	/**
+	 * Optional attribute to group Menu items and show categoryHeading
+	 */
 	categoryHeading?: string;
+	/**
+	 * Optional attribute allowing the multiline className to be added to the menu item
+	 */
 	isNew?: boolean;
+	/**
+	 * Adds an Icon to left handside of the menu item name for Supporting visuals and helping differentiate between menu options
+	 */
+	icon?: JSX.Element | HTMLElement;
+	/**
+	 * Adds a secondary action (ex. more info icon button) to the right end of menu item
+	 */
+	secondaryAction?: JSX.Element | HTMLElement;
 }
 
 export const getOptionLabel = (option: SolaceSelectAutocompleteItemProps): string => option?.name ?? "";
@@ -27,37 +56,58 @@ function SolaceSelectAutocompleteItem({
 	name,
 	subText,
 	supplementalText,
-	isNew
+	isNew,
+	icon,
+	secondaryAction
 }: SolaceSelectAutocompleteItemProps): JSX.Element {
 	const sizeOfColumn = supplementalText ? 8 : 12;
 	const middlePadding = supplementalText ? "16px" : "0px";
 	return (
-		<Grid container direction={"column"} className={clsx({ multiline: !!subText || isNew })} py={0.5}>
-			<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"flex-start"}>
-				<Grid item xs={sizeOfColumn} zeroMinWidth style={{ wordBreak: "break-word", paddingRight: middlePadding }}>
-					{name}
+		<div style={{ display: "flex", width: "100%", alignItems: "center" }}>
+			{icon && (
+				<ListItemIcon className="menuItemIcon" style={{ paddingRight: "8px" }}>
+					{icon}
+				</ListItemIcon>
+			)}
+			<Grid container direction={"column"} className={clsx({ multiline: !!subText || isNew })} py={0.5}>
+				<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"flex-start"}>
+					<Grid item xs={sizeOfColumn} zeroMinWidth style={{ wordBreak: "break-word", paddingRight: middlePadding }}>
+						{name}
+					</Grid>
+					{supplementalText && (
+						<Grid
+							container
+							className="supplementalText"
+							item
+							xs={4}
+							direction="column"
+							alignItems="flex-end"
+							justifyContent="flex-start"
+							style={{ marginLeft: "0px" }}
+						>
+							{supplementalText}
+						</Grid>
+					)}
 				</Grid>
-				{supplementalText && (
-					<Grid
-						container
-						className="supplementalText"
-						item
-						xs={4}
-						direction="column"
-						alignItems="flex-end"
-						justifyContent="flex-start"
-						style={{ marginLeft: "0px" }}
-					>
-						{supplementalText}
+				{subText && (
+					<Grid className="subtext" item>
+						<span className="subtext">{subText}</span>
 					</Grid>
 				)}
 			</Grid>
-			{subText && (
-				<Grid className="subtext" item>
-					<span className="subtext">{subText}</span>
+
+			{secondaryAction && (
+				<Grid
+					container
+					sx={{ marginLeft: `${subText ? 0 : "24px"}`, width: "auto" }}
+					justifyContent={"end"}
+					alignItems={"center"}
+					className="menuItemIcon"
+				>
+					{secondaryAction}
 				</Grid>
 			)}
-		</Grid>
+		</div>
 	);
 }
 

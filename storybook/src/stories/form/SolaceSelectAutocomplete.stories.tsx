@@ -13,7 +13,10 @@ import {
 	SolaceButton,
 	SolaceSelectAutocompleteResponsiveTags,
 	getShowSolaceSelectAutocompleteOptionDivider,
-	styled
+	styled,
+	SolaceTooltip,
+	HelpOutlineOutlinedIcon,
+	DeleteIcon
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 
@@ -125,11 +128,28 @@ export default {
 			control: {
 				type: "text"
 			}
+		},
+		itemMappingCallback: {
+			control: {
+				type: "object"
+			}
+		},
+		showSupplementalTextOrSecondaryAction: {
+			control: {
+				type: "boolean"
+			}
+		},
+		showLeftIcon: {
+			control: {
+				type: "boolean"
+			}
 		}
 	},
 	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceSelectAutocomplete>;
 
+const SUBTEXT = "Subtext subtext";
+const SUPPLEMENTALText = "Supplemental text";
 const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "Option #1",
@@ -150,6 +170,44 @@ const SELECT_OPTIONS: Array<SolaceSelectAutocompleteItemProps> = [
 		name: "Option #4",
 		value: "option4",
 		supplementalText: "supplemental text option 4"
+	}
+];
+
+const SELECT_OPTIONS_FOR_SECONDARY_ACTION = [
+	{
+		name: "Option 1",
+		value: "option1",
+		secondaryAction: (
+			<SolaceTooltip title="Help">
+				<HelpOutlineOutlinedIcon />
+			</SolaceTooltip>
+		),
+		onMenuItemClick: action("callback"),
+		subText: SUBTEXT
+	},
+	{
+		name: "Option 2",
+		value: "option2",
+		supplementalText: SUPPLEMENTALText,
+		onMenuItemClick: action("callback")
+	},
+	{
+		name: "Option 3",
+		value: "option3",
+		secondaryAction: (
+			<SolaceTooltip title="Help">
+				<HelpOutlineOutlinedIcon />
+			</SolaceTooltip>
+		),
+		onMenuItemClick: action("callback"),
+		subText: SUBTEXT
+	},
+	{
+		name: "Option 4",
+		value: "option4",
+		supplementalText: SUPPLEMENTALText,
+		onMenuItemClick: action("callback"),
+		subText: SUBTEXT
 	}
 ];
 
@@ -199,6 +257,7 @@ const DefaultSelectionTemplate = ({
 	helperText,
 	hasErrors,
 	value,
+	options = SELECT_OPTIONS,
 	limitTags,
 	disableCloseOnSelect,
 	clearSearchOnSelect,
@@ -206,6 +265,8 @@ const DefaultSelectionTemplate = ({
 	tagMaxWidth,
 	minWidth,
 	getOptionValidationErrorCallback,
+	showSupplementalTextOrSecondaryAction,
+	showLeftIcon,
 	// storybook specific
 	disabledItems = false,
 	withDividers = false,
@@ -223,6 +284,7 @@ const DefaultSelectionTemplate = ({
 	helperText?: string;
 	hasErrors?: boolean;
 	value?: SolaceSelectAutocompleteItemProps | Array<SolaceSelectAutocompleteItemProps>;
+	options: Array<SolaceSelectAutocompleteItemProps>;
 	limitTags?: number;
 	disableCloseOnSelect?: boolean;
 	clearSearchOnSelect?: boolean;
@@ -234,14 +296,17 @@ const DefaultSelectionTemplate = ({
 	disabledItems?: boolean;
 	withDividers?: boolean;
 	longLabel?: boolean;
+	showSupplementalTextOrSecondaryAction?: boolean;
+	showLeftIcon?: boolean;
 }): JSX.Element => {
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
+	const dropdownOptions = options;
 
 	const handleFetchOptionsCallback = useCallback(
 		(searchTerm: string) => {
 			fetchOptions(
 				searchTerm,
-				SELECT_OPTIONS.map((option) => {
+				dropdownOptions.map((option) => {
 					return {
 						...option,
 						name:
@@ -256,7 +321,7 @@ const DefaultSelectionTemplate = ({
 				setMatchingValues(data);
 			});
 		},
-		[withDividers, longLabel]
+		[withDividers, longLabel, dropdownOptions]
 	);
 
 	const handleOptionDisabled = (option) => {
@@ -298,6 +363,8 @@ const DefaultSelectionTemplate = ({
 				maxHeight={maxHeight}
 				tagMaxWidth={tagMaxWidth}
 				minWidth={minWidth}
+				showSupplementalTextOrSecondaryAction={showSupplementalTextOrSecondaryAction}
+				showLeftIcon={showLeftIcon}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
@@ -307,7 +374,8 @@ export const DefaultAutocomplete = {
 	render: DefaultSelectionTemplate,
 
 	args: {
-		value: SELECT_OPTIONS[0]
+		value: SELECT_OPTIONS[0],
+		options: SELECT_OPTIONS
 	},
 
 	play: async ({ canvasElement }) => {
@@ -321,7 +389,8 @@ export const WithDividers = {
 
 	args: {
 		value: SELECT_OPTIONS[0],
-		withDividers: true
+		withDividers: true,
+		options: SELECT_OPTIONS
 	},
 
 	play: async ({ canvasElement }) => {
@@ -1447,4 +1516,210 @@ export const OpenDropDownOnButtonClick = () => {
 			</SolaceButton>
 		</div>
 	);
+};
+
+export const SecondaryActionSolaceMenu = {
+	render: DefaultSelectionTemplate,
+	args: {
+		options: [
+			{
+				name: "Option 1",
+				value: "option1",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 2",
+				value: "option2",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				value: "option3",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback")
+			}
+		]
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
+};
+
+export const SecondaryActionSolaceMenuWithSubtext = {
+	render: DefaultSelectionTemplate,
+	args: {
+		options: [
+			{
+				name: "Option 1",
+				value: "option1",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			},
+			{
+				name: "Option 2",
+				value: "option2",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				value: "option3",
+				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			}
+		]
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
+};
+
+export const IconOnRight = {
+	render: DefaultSelectionTemplate,
+	args: {
+		id: "demo-solace-autocomplete",
+		options: [
+			{
+				name: "Option 1",
+				value: "option1",
+				secondaryAction: (
+					<SolaceTooltip title="Help">
+						<HelpOutlineOutlinedIcon />
+					</SolaceTooltip>
+				),
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			},
+			{
+				name: "Option 2",
+				value: "option2",
+				secondaryAction: (
+					<SolaceTooltip title="Help">
+						<HelpOutlineOutlinedIcon />
+					</SolaceTooltip>
+				),
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				value: "option3",
+				secondaryAction: (
+					<SolaceTooltip title="Help">
+						<HelpOutlineOutlinedIcon />
+					</SolaceTooltip>
+				),
+				onMenuItemClick: action("callback"),
+				subText: SUBTEXT
+			}
+		]
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
+};
+
+export const IconAndTextOnRight = {
+	render: DefaultSelectionTemplate,
+	args: {
+		id: "demo-solace-autocomplete",
+		disabledItems: true,
+		options: SELECT_OPTIONS_FOR_SECONDARY_ACTION
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(await canvas.findByRole("combobox"));
+	}
+};
+
+export const IconMenuItemShowingSecondaryActionIconInInput = {
+	render: DefaultSelectionTemplate,
+	args: {
+		value: SELECT_OPTIONS_FOR_SECONDARY_ACTION[0],
+		showSupplementalTextOrSecondaryAction: true,
+		options: SELECT_OPTIONS_FOR_SECONDARY_ACTION
+	}
+};
+
+export const IconMenuItemShowingSupplementalTextInInput = {
+	render: DefaultSelectionTemplate,
+	args: {
+		value: SELECT_OPTIONS_FOR_SECONDARY_ACTION[1],
+		showSupplementalTextOrSecondaryAction: true,
+		options: SELECT_OPTIONS_FOR_SECONDARY_ACTION
+	}
+};
+
+const SELECT_OPTIONS_FOR_LEFT_ICON = [
+	{
+		name: "Option 1",
+		value: "option1",
+		subText: SUBTEXT,
+		supplementalText: SUPPLEMENTALText,
+		icon: <DeleteIcon />
+	},
+	{
+		name: "Option 2",
+		value: "option2",
+		subText: SUBTEXT,
+		supplementalText: SUPPLEMENTALText,
+		icon: <DeleteIcon />
+	},
+	{
+		name: "Option 3",
+		value: "option3",
+		subText: SUBTEXT,
+		supplementalText: SUPPLEMENTALText,
+		icon: <DeleteIcon />
+	},
+	{
+		name: "Option 4",
+		value: "option4",
+		subText: SUBTEXT,
+		supplementalText: SUPPLEMENTALText,
+		icon: <DeleteIcon />
+	}
+];
+
+export const IconMenuItemOnLeft = {
+	render: DefaultSelectionTemplate,
+	args: {
+		disabledItems: true,
+		showSupplementalTextOrSecondaryAction: true,
+		options: SELECT_OPTIONS_FOR_LEFT_ICON
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+	}
+};
+
+export const ShowIconMenuItemOnLeftShowingLeftIconInInput = {
+	render: DefaultSelectionTemplate,
+	args: {
+		showLeftIcon: true,
+		value: SELECT_OPTIONS_FOR_LEFT_ICON[0],
+		options: SELECT_OPTIONS_FOR_LEFT_ICON
+	}
+};
+
+export const ShowIconMenuItemOnLeftShowingLeftIconAndSupplementaryTextInInput = {
+	render: DefaultSelectionTemplate,
+	args: {
+		showLeftIcon: true,
+		showSupplementalTextOrSecondaryAction: true,
+		value: SELECT_OPTIONS_FOR_LEFT_ICON[0],
+		options: SELECT_OPTIONS_FOR_LEFT_ICON
+	}
 };

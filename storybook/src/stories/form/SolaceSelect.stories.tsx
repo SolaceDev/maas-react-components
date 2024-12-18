@@ -5,8 +5,7 @@ import {
 	DeleteIcon,
 	AddCircleOutlineOutlinedIcon,
 	HelpOutlineOutlinedIcon,
-	SolaceButton,
-	useTheme
+	SolaceButton
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { MenuItem } from "@SolaceDev/maas-react-components";
@@ -153,6 +152,7 @@ const SELECT_OPTIONS_WITH_SUBTEXT: Array<SolaceSelectAutocompleteItemProps> = [
 		supplementalText: "supplemental text option 4"
 	}
 ];
+
 function generateSelectOptionsWithSubtext(): Array<JSX.Element> {
 	return SELECT_OPTIONS_WITH_SUBTEXT.map((option) => {
 		return (
@@ -163,7 +163,7 @@ function generateSelectOptionsWithSubtext(): Array<JSX.Element> {
 	});
 }
 
-const SELECT_OPTIONS_WITH_ICON: Array<{ name: string; value: string; icon: JSX.Element }> = [
+const SELECT_OPTIONS_WITH_ICON: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "Option #1",
 		value: "option1",
@@ -180,36 +180,73 @@ const SELECT_OPTIONS_WITH_ICON: Array<{ name: string; value: string; icon: JSX.E
 		icon: <HelpOutlineOutlinedIcon />
 	}
 ];
+
 function generateSelectOptionsWithIcon(): Array<JSX.Element> {
 	return SELECT_OPTIONS_WITH_ICON.map((option) => {
 		return (
 			<MenuItem key={option.value} value={option.value}>
-				<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-					{option.icon}
-					{option.name}
-				</div>
+				<SolaceSelectAutocompleteItem {...option} />
 			</MenuItem>
 		);
 	});
 }
 
-const SELECT_OPTIONS_WITH_ICON_TEXT: Array<{ name: string; value: string; delimiter: string }> = [
+const SELECT_OPTIONS_WITH_ICON_TEXT: Array<SolaceSelectAutocompleteItemProps> = [
 	{
 		name: "Solace",
 		value: "solace",
-		delimiter: "use /"
+		supplementalText: "use /"
 	},
 	{
 		name: "Kafka",
 		value: "kafka",
-		delimiter: "use ."
+		supplementalText: "use ."
 	},
 	{
 		name: "Unknown",
 		value: "unknown",
-		delimiter: ""
+		secondaryAction: <HelpOutlineOutlinedIcon fontSize="small" />
 	}
 ];
+
+const SELECT_OPTIONS_SHOWING_ALL_CONDITIONS: Array<SolaceSelectAutocompleteItemProps> = [
+	{
+		name: "Option 1",
+		value: "option1",
+		subText: "Subtext Option 1",
+		supplementalText: "supplemental text option 1",
+		icon: <DeleteIcon />
+	},
+	{
+		name: "Option 2",
+		value: "option2",
+		subText: "Subtext Option 2",
+		secondaryAction: <HelpOutlineOutlinedIcon fontSize="small" />,
+		icon: <DeleteIcon />
+	},
+	{
+		name: "Option 3",
+		value: "option3",
+		supplementalText: "supplemental text option 3",
+		icon: <DeleteIcon />
+	},
+	{
+		name: "Option 4",
+		value: "option4",
+		subText: "Subtext Option 4",
+		icon: <DeleteIcon />
+	}
+];
+
+function generateSelectOptionsWithAll(): Array<JSX.Element> {
+	return SELECT_OPTIONS_SHOWING_ALL_CONDITIONS.map((option) => {
+		return (
+			<MenuItem key={option.value} value={option.value}>
+				<SolaceSelectAutocompleteItem {...option} />
+			</MenuItem>
+		);
+	});
+}
 
 const TITLE = "Demo Select";
 const LABEL = "Some Label";
@@ -455,20 +492,10 @@ export const WithIconReadonly = {
 };
 
 export const WithIconAndText = (): JSX.Element => {
-	const theme = useTheme();
 	const options = SELECT_OPTIONS_WITH_ICON_TEXT.map((option) => {
 		return (
 			<MenuItem key={option.value} value={option.value}>
-				<div
-					style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px", width: "100%" }}
-				>
-					{option.name}
-					{option.delimiter ? (
-						<span style={{ color: theme.palette.ux.secondary.text.wMain }}>{option.delimiter}</span>
-					) : (
-						<HelpOutlineOutlinedIcon fontSize="small" />
-					)}
-				</div>
+				<SolaceSelectAutocompleteItem {...option} />
 			</MenuItem>
 		);
 	});
@@ -482,6 +509,26 @@ export const WithIconAndText = (): JSX.Element => {
 WithIconAndText.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	await userEvent.click(canvas.getByRole("combobox"));
+};
+
+export const ShowingAllDropdownOptions = {
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		getOptionDisplayValue: (value) => {
+			const match = SELECT_OPTIONS_WITH_SUBTEXT.find((props) => props.value === value);
+			return match ? match.name : "";
+		},
+		title: TITLE,
+		label: LABEL,
+		value: "option3",
+		children: generateSelectOptionsWithAll()
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("combobox"));
+	}
 };
 
 export const OpenDropDownOnButtonClick = () => {

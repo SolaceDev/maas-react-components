@@ -177,6 +177,14 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 * Maximum width of selected value tag rendered by default renderer, applicable to multiple select
 	 */
 	tagMaxWidth?: string;
+	/**
+	 * Will display supplementalText or secondaryAction icon (used with SolaceSelectAutocompleteItem) inside input box if present in the selected option, not applicable to multiple select.
+	 */
+	showSupplementalTextOrSecondaryAction?: boolean;
+	/**
+	 * Will display left icon (used with SolaceSelectAutocompleteItem) inside input box if present in the selected option, not applicable to multiple select.
+	 */
+	showLeftIcon?: boolean;
 }
 
 const CustomHeightTextField = styled(TextField)(() => ({
@@ -187,6 +195,18 @@ const CustomHeightTextField = styled(TextField)(() => ({
 
 const GroupItems = styled("ul")(() => ({
 	padding: 0
+}));
+
+const MenuItemIcon = styled("span")(({ theme }) => ({
+	color: theme.palette.ux.secondary.text.wMain,
+	// padding: `0 ${theme.spacing(1)}`,
+	whiteSpace: "nowrap",
+	display: "flex",
+	justifyContent: "flex-end",
+	className: "menuItemIcon",
+	".MuiSvgIcon-root": {
+		fill: theme.palette.ux.secondary.wMain
+	}
 }));
 
 const DEFAULT_DATA_QA = "SolaceSelectAutocomplete";
@@ -248,7 +268,9 @@ function SolaceSelectAutocomplete<T, V>({
 	maxHeight = "40vh", // default value set by MUI so that dropdown calculation can work if value is omited
 	fullWidth = false,
 	minWidth,
-	tagMaxWidth = "200px"
+	tagMaxWidth = "200px",
+	showSupplementalTextOrSecondaryAction = false,
+	showLeftIcon = false
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -660,6 +682,14 @@ function SolaceSelectAutocomplete<T, V>({
 			popupIcon={<SelectDropdownIcon />}
 			renderInput={(params) => {
 				const { InputProps, inputProps, ...rest } = params;
+				const selectedOption = selectedValue && !Array.isArray(selectedValue) ? selectedValue : null;
+				const supplementalText = selectedOption
+					? (selectedOption as V & { supplementalText?: string }).supplementalText
+					: null;
+				const secondaryAction = selectedOption
+					? (selectedOption as V & { secondaryAction?: JSX.Element | HTMLElement }).secondaryAction
+					: null;
+				const leftIcon = selectedOption ? (selectedOption as V & { icon?: JSX.Element | HTMLElement }).icon : null;
 
 				return (
 					<CustomHeightTextField
@@ -683,7 +713,26 @@ function SolaceSelectAutocomplete<T, V>({
 							className: readOnly ? "readOnlySelect" : "",
 							disabled: disabled,
 							readOnly: readOnly,
-							required: required
+							required: required,
+							startAdornment: (
+								<>
+									{InputProps.startAdornment}
+									{showLeftIcon && leftIcon && (
+										<MenuItemIcon sx={{ padding: theme.spacing(0, 1, 0, 0) }}>{leftIcon}</MenuItemIcon>
+									)}
+								</>
+							),
+							endAdornment: (
+								<>
+									{InputProps.endAdornment}
+									{showSupplementalTextOrSecondaryAction && supplementalText && (
+										<MenuItemIcon sx={{ padding: theme.spacing(0, 1) }}>{supplementalText}</MenuItemIcon>
+									)}
+									{showSupplementalTextOrSecondaryAction && secondaryAction && (
+										<MenuItemIcon sx={{ padding: theme.spacing(0, 1) }}>{secondaryAction}</MenuItemIcon>
+									)}
+								</>
+							)
 						}}
 						inputRef={inputRef}
 						onKeyDown={(event) => {
