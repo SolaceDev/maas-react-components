@@ -599,16 +599,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			},
 			MuiInputBase: {
 				styleOverrides: {
-					root: {
-						".MuiSelect-icon": {
-							fill: themeMapping.palette.secondary.wMain
-						},
-						"&.Mui-disabled": {
-							".MuiSelect-icon": {
-								fill: themeMapping.palette.secondary.w40
-							}
-						}
-					},
 					// TextArea Component
 					multiline: ({ ownerState }) => ({
 						// Additional checks to make sure resize is enabled correctly
@@ -1002,14 +992,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiPopover: {
 				styleOverrides: {
 					root: {
-						".MuiPaper-root": {
-							".MuiSelect-icon": {
-								fill: themeMapping.palette.secondary.wMain
-							},
-							"& .SolaceGrid .MuiSelect-icon": {
-								fill: themeMapping.palette.secondary.w100
-							}
-						},
 						/**
 						 * styles applied to .SolaceMenuPopover should match exactly these applied to .SolaceMenu
 						 */

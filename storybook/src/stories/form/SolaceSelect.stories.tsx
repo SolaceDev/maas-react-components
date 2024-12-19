@@ -3,14 +3,25 @@ import { Meta, Decorator } from "@storybook/react";
 import {
 	SolaceSelect,
 	DeleteIcon,
+	MenuItem,
 	AddCircleOutlineOutlinedIcon,
 	HelpOutlineOutlinedIcon,
-	SolaceButton
+	SolaceButton,
+	SolaceEnvironmentChip,
+	SolaceEnvironmentChipProps,
+	SolaceSelectAutocompleteItem,
+	SolaceSelectAutocompleteItemProps,
+	useTheme
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { MenuItem } from "@SolaceDev/maas-react-components";
-import { SolaceSelectAutocompleteItem, SolaceSelectAutocompleteItemProps } from "@SolaceDev/maas-react-components";
-import { within, userEvent } from "@storybook/test";
+import { within, userEvent, screen } from "@storybook/test";
+import {
+	Maintenance16Icon,
+	Construction16Icon,
+	Toolkit16Icon,
+	Broker16Icon,
+	RocketLaunch16Icon
+} from "@SolaceDev/maas-icons";
 
 (SolaceSelect as React.FC & { displayName?: string }).displayName = "SolaceSelect";
 (MenuItem as React.FC & { displayName?: string }).displayName = "MenuItem";
@@ -573,4 +584,38 @@ export const OpenDropDownOnButtonClick = () => {
 			</SolaceButton>
 		</div>
 	);
+};
+
+export const WithSolaceEnvironmentChips = () => {
+	const {
+		palette: { ux }
+	} = useTheme();
+	const examples: SolaceEnvironmentChipProps[] = [
+		{ label: "Environment 1", fgColor: ux.primary.text.w100, bgColor: ux.background.w10, icon: <Maintenance16Icon /> },
+		{ label: "Environment 2", fgColor: ux.primary.text.w100, bgColor: ux.accent.n2.w20, icon: <Construction16Icon /> },
+		{ label: "Environment 3", fgColor: ux.primary.text.w100, bgColor: ux.accent.n1.w20, icon: <Toolkit16Icon /> },
+		{ label: "Environment 9", fgColor: ux.primary.text.w10, bgColor: ux.accent.n4.wMain, icon: <Broker16Icon /> },
+		{ label: "Environment 10", fgColor: ux.primary.text.w10, bgColor: ux.accent.n9.wMain, icon: <RocketLaunch16Icon /> }
+	];
+	const options = examples.map((example) => {
+		return (
+			<MenuItem key={example.label} value={example.label} style={{ width: "100%" }}>
+				<SolaceEnvironmentChip {...example} />
+			</MenuItem>
+		);
+	});
+	return (
+		<SolaceSelect label="Environment" name="Environment">
+			{options}
+		</SolaceSelect>
+	);
+};
+
+WithSolaceEnvironmentChips.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const dropdown = canvas.getByRole("combobox");
+	await userEvent.click(dropdown);
+	const environment2 = await screen.getByText("Environment 2");
+	await userEvent.click(environment2);
+	await userEvent.click(dropdown);
 };
