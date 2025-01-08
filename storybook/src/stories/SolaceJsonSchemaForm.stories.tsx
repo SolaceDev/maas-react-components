@@ -311,6 +311,31 @@ export const Default: Story = {
 	}
 };
 
+export const PasswordFieldsWithDifferentConfigs: Story = {
+	args: {
+		formItem: {
+			id: "password1",
+			schema: {
+				type: "object",
+				title: "Passwords",
+				properties: {
+					passwordFieldWithOptions: {
+						type: "string",
+						options: {
+							format: "password"
+						}
+					},
+					passwordFieldWithoutOptions: {
+						type: "string",
+						format: "password"
+					}
+				}
+			}
+		},
+		onChange: (data) => action("onChangeHandler")(data)
+	}
+};
+
 export const Validation: Story = {
 	args: {
 		formItem: {
@@ -378,7 +403,8 @@ export const SolaceQueueWithCustomFields: Story = {
 					default:
 						return false;
 				}
-			}
+			},
+			tagName: "div"
 		},
 		onChange: (data, errors) => action("onChangeHandler")(data, errors),
 		transformError: defaultTransformError,

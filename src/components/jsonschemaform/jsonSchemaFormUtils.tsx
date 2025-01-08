@@ -32,7 +32,7 @@ const CustomTextWidget = function (
 	transformWidgetProps?: (props: WidgetProps) => WidgetProps
 ) {
 	const props = transformWidgetProps ? transformWidgetProps(widgetProps) : widgetProps;
-	const sensitiveField = props.schema.options?.format === "password";
+	const sensitiveField = props.schema.options?.format === "password" || props.schema.format === "password";
 
 	// state
 	const [showSensitiveField, setShowSensitiveField] = useState(false);
@@ -224,6 +224,7 @@ export const getWidgets = (transformWidgetProps?: (props: WidgetProps) => Widget
 	return {
 		CheckboxWidget: (props: WidgetProps) => CustomCheckboxWidget(props, transformWidgetProps),
 		SelectWidget: (props: WidgetProps) => CustomSelectWidget(props, transformWidgetProps),
-		TextWidget: (props: WidgetProps) => CustomTextWidget(props, transformWidgetProps)
+		TextWidget: (props: WidgetProps) => CustomTextWidget(props, transformWidgetProps),
+		PasswordWidget: (props: WidgetProps) => CustomTextWidget(props, transformWidgetProps)
 	};
 };

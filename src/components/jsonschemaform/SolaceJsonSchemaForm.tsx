@@ -6,6 +6,7 @@ import { customizeValidator } from "@rjsf/validator-ajv8";
 import Ajv2020 from "ajv/dist/2020";
 import { styled } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
+import { ElementType } from "react";
 
 const custom2020Validator = customizeValidator({ AjvClass: Ajv2020 });
 
@@ -24,6 +25,7 @@ interface FormItem {
 interface FormOptions {
 	order?: string[];
 	isHidden?: (fieldType: FormFieldType, propertyName?: string, data?: any) => boolean;
+	tagName?: ElementType<any> | undefined;
 }
 
 /**
@@ -118,8 +120,9 @@ export interface SolaceJsonSchemaFormProps extends SolaceComponentProps {
 	/**
 	 * The form options to customize the form, including:
 	 *
-	 * 	order?: string[]; // ordered property keys for display
-	 *  isHidden?: () => boolean; // function to determine if field should be hidden
+	 *  order?: string[]; // ordered property keys for display
+	 *  isHidden?: () => boolean; // function to determine if field should be hidden,
+	 *  tagName?: ElementType<any> | undefined; // tag name (eg. "div") to replace "form" and support embedding in other forms
 	 */
 	formOptions?: FormOptions;
 	/*
@@ -170,7 +173,7 @@ function SolaceJsonSchemaForm({
 	validator
 }: SolaceJsonSchemaFormProps) {
 	const schema = formItem.schema as RJSFSchema;
-	const { order, isHidden } = formOptions;
+	const { order, isHidden, tagName } = formOptions;
 
 	/**
 	 * Build the uiSchema to support:
@@ -229,6 +232,7 @@ function SolaceJsonSchemaForm({
 
 	return (
 		<CustomForm
+			tagName={tagName}
 			key={formItem.id}
 			idPrefix={formItem.id}
 			schema={schema}
