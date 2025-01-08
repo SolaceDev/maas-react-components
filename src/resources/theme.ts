@@ -697,6 +697,20 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				// Textfield component
 				styleOverrides: {
 					root: {
+						/**
+						 * styles applied to .SolaceDatePicker
+						 * default disabled horizontal padding is set to 8px
+						 * ensure the horizontal padding of the Read-Only DatePicker is set to 0px
+						 */
+						"&.SolaceDatePicker": {
+							".MuiOutlinedInput-root": {
+								"&.Mui-disabled": {
+									input: {
+										padding: "0 8px"
+									}
+								}
+							}
+						},
 						".MuiOutlinedInput-root": {
 							backgroundColor: themeMapping.palette.background.w10,
 							".MuiOutlinedInput-notchedOutline": {

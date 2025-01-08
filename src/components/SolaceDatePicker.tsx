@@ -53,6 +53,7 @@ export default function SolaceDatePicker({
 	return (
 		<LocalizationProvider dateAdapter={AdapterMoment}>
 			<DatePicker
+				className="SolaceDatePicker"
 				value={date}
 				onChange={handleChange}
 				data-qa={dataQa}
