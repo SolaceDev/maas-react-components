@@ -1857,7 +1857,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							maxWidth: "100%"
 						},
 						/**
-						 * style for SolacePopover
+						 * style for SolacePopover - delete class once SolacePopover no longer uses MUI Tooltip component
 						 */
 						"&.SolacePopover": {
 							backgroundColor: themeMapping.palette.background.w10,

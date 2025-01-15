@@ -148,7 +148,9 @@ function SolaceTooltip({
 			id={id}
 			title={title ?? ""}
 			classes={{
-				tooltip: `${variant === TooltipVariant.html ? "htmlContent" : ""} ${maxWidth ? maxWidth + "Width" : ""}`
+				tooltip: `${variant === TooltipVariant.html || variant === TooltipVariant.rich ? "htmlContent" : ""} ${
+					maxWidth ? maxWidth + "Width" : ""
+				}`
 			}}
 			placement={placement}
 			data-qa={dataQa}

@@ -7,7 +7,8 @@ import {
 	HelpOutlineOutlinedIcon,
 	AddCircleOutlineOutlinedIcon,
 	SolaceLabel,
-	TooltipVariant
+	TooltipVariant,
+	SolaceButton
 } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
 
@@ -52,7 +53,7 @@ export default {
 			description: "Tooltip content"
 		},
 		variant: {
-			options: ["text", "overflow"],
+			options: ["text", "overflow", "rich"],
 			control: {
 				type: "select"
 			}
@@ -377,4 +378,202 @@ export const TooltipWithAndWithoutFocusListener = (): ReactNode => {
 			</SolaceTooltip>
 		</div>
 	);
+};
+
+export const DefaultRichVariantTooltip = {
+	args: {
+		title: "simple text",
+		children: <span data-testid="tooltip-details">Hover content</span>,
+		variant: "html",
+		maxWidth: "medium"
+	},
+	decorators: [withSnapshotContainer],
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const triggerElement = canvas.getByTestId("tooltip-details");
+		await userEvent.hover(triggerElement);
+	}
+};
+
+DefaultRichVariantTooltip.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	await userEvent.hover(canvas.getByText("Hover content"));
+};
+
+const MyComp = ({ myRef, ...props }) => {
+	return (
+		<div
+			{...props}
+			ref={myRef}
+			style={{ width: "180px", backgroundColor: "skyblue", padding: "20px", textAlign: "center", cursor: "pointer" }}
+			data-testid="tooltip-details"
+		>
+			Custom Component
+		</div>
+	);
+};
+
+// to properly apply ref use forwardRef
+const MyCompForwardRef = React.forwardRef((props, ref) => {
+	return <MyComp {...props} myRef={ref} />;
+});
+
+export const CustomComponentWithRichContentVariant = {
+	args: {
+		title: "simple text",
+		children: <MyCompForwardRef />,
+		maxWidth: "medium",
+		variant: TooltipVariant.rich
+	},
+
+	play: async ({ canvasElement }) => {
+		hoverListener(canvasElement, "Custom Component", "getByText");
+	}
+};
+
+/**
+ * Using Enum version list as an example to demonstrate how to customize both the hover over element and the Tooltip rich variant component
+ */
+
+// mock-up data
+const enumVersionList = [
+	{
+		version: "1.1.0",
+		desc: "description for version 1.1.0",
+		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9", "value10"]
+	},
+	{
+		version: "1.1.1",
+		desc: "description for version 1.1.1",
+		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9"]
+	},
+	{
+		version: "1.1.2",
+		desc: "description for version 1.1.2",
+		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8"]
+	},
+	{
+		version: "1.1.3",
+		desc: "description for version 1.1.3",
+		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9", "value10"]
+	},
+	{
+		version: "1.1.4",
+		desc: "description for version 1.1.4",
+		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9", "value10"]
+	}
+];
+
+// custom tooltip component
+const EnumVersionTooltip = ({ desc, values }) => {
+	return (
+		<div>
+			<h3>Description</h3>
+			<div>{desc}</div>
+			<h3>Values ({values.length})</h3>
+			{values.map((value, index) => {
+				return <div key={index}>{value}</div>;
+			})}
+		</div>
+	);
+};
+
+interface EnumVersionItemProps {
+	item: unknown;
+}
+
+// custom hover over element, in this case, an Enum list item
+const EnumVersionItem = ({ item, itemRef, ...props }) => {
+	return (
+		<div
+			{...props}
+			ref={itemRef}
+			style={{ width: "200px", height: "auto", padding: "10px", border: "1px solid lightgrey", cursor: "pointer" }}
+		>
+			{item.version}
+		</div>
+	);
+};
+
+export const RichVariantEnumVersionList = () => {
+	// to properly apply ref use forwardRef
+	const EnumVersionItemForwardRef = React.forwardRef<HTMLElement, React.PropsWithChildren<EnumVersionItemProps>>(
+		(props, ref) => {
+			return <EnumVersionItem {...props} item={props.item} itemRef={ref} />;
+		}
+	);
+	return (
+		<div
+			style={{
+				width: "250px",
+				height: "250px",
+				padding: "10px",
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+				alignItems: "flex-start"
+			}}
+		>
+			<div>Enum versions</div>
+			<div>
+				{enumVersionList.map((item, index) => {
+					return (
+						<div key={index}>
+							<SolaceTooltip
+								title={<EnumVersionTooltip desc={item.desc} values={item.values} />}
+								placement="right-start"
+								variant={TooltipVariant.rich}
+							>
+								<EnumVersionItemForwardRef item={item} data-testid={`richTooltip-details-${index}`} />
+							</SolaceTooltip>
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	);
+};
+
+RichVariantEnumVersionList.play = async ({ canvasElement }) => {
+	hoverListener(canvasElement, "richTooltip-details-2", "getByTestId");
+};
+
+export const TooltipRichVariantAdditonalDetails = {
+	args: {
+		variant: TooltipVariant.rich,
+		title: (
+			<div>
+				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
+				<SolaceButton variant="link" href="https://semver.org">
+					Semantic versioning best practices
+				</SolaceButton>
+			</div>
+		),
+		children: <HelpOutlineOutlinedIcon />
+	},
+
+	play: async ({ canvasElement }) => {
+		hoverListener(canvasElement, "HelpOutlineOutlinedIcon", "queryByTestId");
+	}
+};
+
+export const TooltipRichVariantAdditonalDetailsMediumWidth = {
+	args: {
+		variant: TooltipVariant.rich,
+		title: (
+			<div>
+				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
+				<SolaceButton variant="link" href="https://semver.org">
+					Semantic versioning best practices
+				</SolaceButton>
+			</div>
+		),
+		children: <HelpOutlineOutlinedIcon />,
+		maxWidth: "medium"
+	},
+
+	play: async ({ canvasElement }) => {
+		hoverListener(canvasElement, "HelpOutlineOutlinedIcon", "queryByTestId");
+	}
 };
