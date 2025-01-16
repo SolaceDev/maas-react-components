@@ -15,18 +15,9 @@ export interface SolaceToggleButtonGroupOptionProps extends SolaceComponentProps
 	value: string;
 }
 
-const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
-	// override here to match specificity of default mui styles
-	".MuiToggleButtonGroup-grouped:not(:first-of-type)": {
-		marginLeft: 0,
-		borderLeft: "none",
-
-		"&:focus-visible": {
-			borderLeftColor: theme.palette.ux.deprecated.accent.n2.wMain
-		}
-	},
-
-	button: {
+// override here to match specificity of default mui styles
+const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => {
+	const sharedStyles = {
 		height: theme.spacing(4),
 		padding: theme.spacing(0, 2),
 
@@ -68,8 +59,43 @@ const OutlineSolaceToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => 
 			borderColor: theme.palette.ux.secondary.w40,
 			color: theme.palette.ux.secondary.text.w50
 		}
-	}
-}));
+	};
+
+	// override the sharedStyles for the new Solace Theme
+	const newSolaceStyles = {
+		color: theme.palette.ux.secondary.text.wMain,
+
+		"&.Mui-selected": {
+			color: theme.palette.ux.primary.text.wMain,
+			fontWeight: theme.typography.fontWeightMedium,
+			backgroundColor: theme.palette.ux.accent.n2.w10,
+
+			"&:hover": {
+				backgroundColor: theme.palette.ux.accent.n2.w10
+			},
+
+			"&.Mui-disabled": {
+				backgroundColor: theme.palette.ux.secondary.w10
+			}
+		}
+	};
+
+	return {
+		".MuiToggleButtonGroup-grouped:not(:first-of-type)": {
+			marginLeft: 0,
+			borderLeft: "none",
+
+			"&:focus-visible": {
+				borderLeftColor: theme.palette.ux.deprecated.accent.n2.wMain
+			}
+		},
+
+		button: {
+			...sharedStyles,
+			...(appTheme === SupportedThemes.newSolace && newSolaceStyles)
+		}
+	};
+});
 
 function SolaceToggleButtonGroup({
 	onChange,
