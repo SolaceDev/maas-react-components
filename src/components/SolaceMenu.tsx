@@ -6,6 +6,7 @@ import SolaceButton, { SolaceButtonProps } from "./form/SolaceButton";
 import SolaceMenuItem, { SolaceMenuItemProps } from "./SolaceMenuItem";
 import { useScrollIndicator } from "../hooks/useScrollIndicator";
 import { getActionMenuAriaLabel } from "../utils";
+import SolaceTooltip from "./SolaceToolTip";
 
 interface SolaceMenuProps extends SolaceComponentProps {
 	id?: string;
@@ -159,27 +160,37 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 			);
 		list.push(categoryheader);
 
-		const itemsList = groupedItems[categoryHeading].map((item, index) => (
-			<SolaceMenuItem
-				id={item.id}
-				key={index}
-				name={item?.name}
-				subText={item?.subText}
-				supplementalText={item?.supplementalText}
-				dataQa={item?.dataQa}
-				dataTags={item?.dataTags}
-				closeOnSelect={closeOnSelect}
-				divider={!!item?.divider}
-				disabled={!!item?.disabled}
-				icon={item?.icon}
-				secondaryAction={item?.secondaryAction}
-				onMenuItemClick={item?.onMenuItemClick}
-				onMenuClose={handleMenuClose}
-				subMenuItems={item?.subMenuItems}
-				selected={item?.selected}
-				itemHeight={itemHeight}
-			/>
-		));
+		const itemsList = groupedItems[categoryHeading].map((item, index) => {
+			const menuItemContent = (
+				<SolaceMenuItem
+					id={item.id}
+					key={index}
+					name={item?.name}
+					subText={item?.subText}
+					supplementalText={item?.supplementalText}
+					dataQa={item?.dataQa}
+					dataTags={item?.dataTags}
+					closeOnSelect={closeOnSelect}
+					divider={!!item?.divider}
+					disabled={!!item?.disabled}
+					icon={item?.icon}
+					secondaryAction={item?.secondaryAction}
+					onMenuItemClick={item?.onMenuItemClick}
+					onMenuClose={handleMenuClose}
+					subMenuItems={item?.subMenuItems}
+					selected={item?.selected}
+					itemHeight={itemHeight}
+				/>
+			);
+
+			const disabledMenuItemWithTooltip = (
+				<SolaceTooltip title={item.disabledMenuItemTooltipContent || "This menuItem is disabled."}>
+					<span>{menuItemContent}</span>
+				</SolaceTooltip>
+			);
+
+			return item.disabled && item.disabledMenuItemTooltipContent ? disabledMenuItemWithTooltip : menuItemContent;
+		});
 		list.push(itemsList);
 		return list;
 	});

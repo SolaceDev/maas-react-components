@@ -15,7 +15,7 @@ import {
 	SolaceTooltip
 } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { userEvent, within, screen } from "@storybook/test";
+import { userEvent, within, screen, fireEvent } from "@storybook/test";
 
 (SolaceMenu as React.FC & { displayName?: string }).displayName = "SolaceMenu";
 (SolaceRadio as React.FC & { displayName?: string }).displayName = "SolaceRadio";
@@ -489,6 +489,45 @@ export const DisabledMenuItem = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		await userEvent.click(canvas.getByRole("button"));
+	}
+};
+
+export const DisabledMenuItemWithToolTip = {
+	args: {
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		items: [
+			{
+				name: "Option 1",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback"),
+				disabled: true,
+				disabledMenuItemTooltipContent: "Application domain has deletion protection enabled."
+			},
+			{
+				name: "Option 2",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			},
+			{
+				name: "Option 3",
+				subText: SUBTEXT,
+				supplementalText: SUPPLEMENTALText,
+				onMenuItemClick: action("callback")
+			}
+		],
+		multiline: true
+	},
+
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		await userEvent.click(canvas.getByRole("button"));
+		const option1Element = await screen.findByText("Option 1");
+		await fireEvent.mouseOver(option1Element);
 	}
 };
 

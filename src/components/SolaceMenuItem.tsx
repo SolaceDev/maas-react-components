@@ -62,6 +62,10 @@ export interface SolaceMenuItemProps extends SolaceComponentProps {
 	 * Optional flag for identify the selected menu item
 	 */
 	selected?: boolean;
+	/**
+	 * Content to display in a tooltip when the menuItem is disabled
+	 */
+	disabledMenuItemTooltipContent?: string;
 }
 
 const SolaceMenuItem = ({
