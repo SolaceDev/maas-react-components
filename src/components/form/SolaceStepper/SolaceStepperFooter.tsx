@@ -1,6 +1,8 @@
-import { Box, Divider } from "@mui/material";
+import { Box, Divider, styled } from "@mui/material";
 import SolaceButton from "../SolaceButton";
 import { SolaceStepperFooterProps } from "../../../types";
+import { ArrowLeftIcon } from "../../../resources/icons/ArrowLeft";
+import { ArrowRightIcon } from "../../../resources/icons/ArrowRight";
 
 const buttonStrings = {
 	cancel: "Cancel",
@@ -28,6 +30,35 @@ const buttonStrings = {
  *   />
  * );
  */
+
+const StyledButtonGroupBox = styled(Box)(({ theme }) => ({
+	paddingTop: theme.spacing(2),
+	paddingLeft: theme.spacing(3),
+	paddingRight: theme.spacing(2),
+	display: "flex",
+	flexDirection: "row"
+}));
+
+// left and right directions have different padding
+// right direction only has padding when onLastStep is false
+const StyledButtonBox = styled(Box)<{ direction: "left" | "right"; onLastStep?: boolean }>(
+	({ theme, direction, onLastStep }) => ({
+		marginRight: direction === "left" ? theme.spacing(1) : 0,
+		".MuiButtonBase-root": {
+			padding: direction === "left" ? "0 16px 0 0" : !onLastStep ? "0 0 0 16px" : undefined
+		}
+	})
+);
+
+// left and right icons have different padding
+const IconPadding = {
+	left: styled(ArrowLeftIcon)({
+		padding: "4px 0px 4px 4px"
+	}),
+	right: styled(ArrowRightIcon)({
+		padding: "4px 4px 4px 0px"
+	})
+};
 
 export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 	const {
@@ -64,17 +95,27 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 		if (onFirstStep) return;
 		setActiveStep(activeStep - 1);
 	};
+
+	const ButtonContent = styled("span")(({ theme }) => ({
+		display: "flex",
+		alignItems: "center",
+		gap: theme.spacing(1)
+	}));
+
 	return (
 		<Box minHeight="69px">
 			<Divider />
-			<Box pl={3} pr={2} sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-				<Box sx={{ mr: 1 }}>
+			<StyledButtonGroupBox>
+				<StyledButtonBox direction="left">
 					{!onFirstStep && (
 						<SolaceButton variant="text" onClick={handleBack}>
-							{`< ${buttonStrings.back}: ${steps[activeStep - 1].label}`}
+							<ButtonContent>
+								<IconPadding.left />
+								{`${buttonStrings.back}: ${steps[activeStep - 1].label}`}
+							</ButtonContent>
 						</SolaceButton>
 					)}
-				</Box>
+				</StyledButtonBox>
 				<Box sx={{ flex: "1 1 auto" }} />
 				<Box sx={{ mr: 1 }}>
 					<SolaceButton variant="text" onClick={onClose}>
@@ -88,11 +129,19 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 						</SolaceButton>
 					</Box>
 				)}
-
-				<SolaceButton variant="call-to-action" onClick={handleNext} isDisabled={onLastStep && disableSubmit}>
-					{onLastStep ? submitLabel : `${buttonStrings.next}: ${steps[activeStep + 1].label} >`}
-				</SolaceButton>
-			</Box>
+				<StyledButtonBox direction="right" onLastStep={onLastStep}>
+					<SolaceButton variant="call-to-action" onClick={handleNext} isDisabled={onLastStep && disableSubmit}>
+						{onLastStep ? (
+							submitLabel
+						) : (
+							<ButtonContent>
+								{`${buttonStrings.next}: ${steps[activeStep + 1]?.label}`}
+								<IconPadding.right />
+							</ButtonContent>
+						)}
+					</SolaceButton>
+				</StyledButtonBox>
+			</StyledButtonGroupBox>
 		</Box>
 	);
 }

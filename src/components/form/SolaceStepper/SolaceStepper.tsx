@@ -33,7 +33,9 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 			<Stepper nonLinear activeStep={activeStep}>
 				{steps.map((step, index) => {
 					const labelColor =
-						activeStep === index ? theme.palette.ux.brand.wMain : theme.palette.ux.deprecated.secondary.text.wMain;
+						activeStep === index
+							? theme.palette.ux.primary.text.wMain
+							: theme.palette.ux.deprecated.secondary.text.wMain;
 					return (
 						<Step key={step.label}>
 							<StepButton
@@ -44,7 +46,12 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 								}
 								color="inherit"
 								onClick={handleStep(index)}
-								sx={{ textAlign: "left" }}
+								sx={{
+									textAlign: "left",
+									"&:hover .MuiTypography-root": {
+										color: theme.palette.common.black
+									}
+								}}
 							>
 								<StepLabel StepIconComponent={() => getSolaceIconComponent(step, activeStep === index)}>
 									<SolaceTypography variant="h5" sx={{ color: labelColor }}>
