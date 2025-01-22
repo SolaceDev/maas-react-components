@@ -53,8 +53,10 @@ jobs:
       #       "npx http-server storybook-static --port 6006 --silent" \
       #       "npx wait-on tcp:6006 && npm run test-storybook:ci"
 
-      # - name: Install Playwright
-      #   run: npx playwright install --with-deps
+      # Add the playwright install step. Every time we update the playwright version. We need to run this step.
+      # Reference: https://github.com/microsoft/playwright/issues/12179
+      -  name: Install Playwright
+         run: npx playwright install --with-deps
 
       - name: Create common coverage directory
         working-directory: ./
