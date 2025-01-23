@@ -797,6 +797,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									padding: "0px",
 									marginRight: "8px"
 								},
+								// add focus state for SolaceDatePicker
+								".MuiIconButton-root:focus": {
+									".MuiSvgIcon-root": {
+										outline: `1px solid ${themeMapping.palette.accent.n2.wMain}`,
+										outlineOffset: "-1px",
+										borderRadius: "4px"
+									}
+								},
 								".MuiIconButton-root:hover, .MuiIconButton-root:active": {
 									".MuiSvgIcon-root": {
 										path: {

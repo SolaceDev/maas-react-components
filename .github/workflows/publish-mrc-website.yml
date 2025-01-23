@@ -36,6 +36,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
+        # Add the playwright install step. Every time we update the playwright version. We need to run this step.
+        # Reference: https://github.com/microsoft/playwright/issues/12179
+      - name: Install playwright
+        working-directory: ./storybook
+        run: npx playwright install --with-deps
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+
       - name: Generate coverage and storybook static
         working-directory: ./storybook
         run: npm run test-storybook:ci
