@@ -44,7 +44,7 @@ export default function SolaceStepIcon(props: SolaceStepIconProps) {
 	);
 
 	const badgeContent = completed ? (
-		<CheckFilled16Icon fill={theme.palette.ux.success.wMain} size={16} />
+		<CheckFilled16Icon fill={theme.palette.ux.brand.wMain} size={16} />
 	) : (
 		<Error16Icon fill={theme.palette.ux.error.wMain} size={16} />
 	);

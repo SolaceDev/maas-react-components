@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState, useEffect, useMemo } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import { Meta } from "@storybook/react";
 import {
 	SolaceCheckBox,
@@ -8,8 +8,8 @@ import {
 	styled,
 	SolaceTooltip
 } from "@SolaceDev/maas-react-components";
-import { within, userEvent, waitFor, expect } from "@storybook/test";
-import { SolaceCheckboxChangeEvent } from "@SolaceDev/maas-react-components";
+import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 (SolaceResponsiveItemList as unknown as React.FC & { displayName?: string }).displayName = "SolaceResponsiveItemList";
 (SolaceCheckBox as React.FC & { displayName?: string }).displayName = "SolaceCheckBox";
@@ -126,18 +126,10 @@ const ResponsiveItemListTemplate = ({
 	const [showAll, setShowAll] = useState<boolean>(false);
 	const overflowedItemIdsRef = useRef<string[] | null>(null);
 
-	/*
-	* Memoize the optionMap to ensure that its reference remains stable across renders.
-		Without useMemo, optionMap would be regenerated on every render due to the use of reduce,
-		causing re-render loop of useEffect
-		By adding useMemo, optionMap is only recalculated when the "options" array changes.
-	* */
-	const optionMap = useMemo(() => {
-		return options.reduce((prev, curr) => {
-			prev[curr.value] = curr.label;
-			return prev;
-		}, {});
-	}, [options]);
+	const optionMap = options.reduce((prev, curr) => {
+		prev[curr.value] = curr.label;
+		return prev;
+	}, {});
 
 	const handleShouldShowPopover = useCallback((id: string): boolean => {
 		return !overflowedItemIdsRef.current?.includes(id);
@@ -174,7 +166,7 @@ const ResponsiveItemListTemplate = ({
 		setShowAll(true);
 	}, []);
 
-	const handleOptionChange = (event: SolaceCheckboxChangeEvent) => {
+	const handleOptionChange = (event) => {
 		const currentIndex = selectedOptions.indexOf(event.name);
 		const newSelectedOptions = [...selectedOptions];
 
@@ -214,7 +206,7 @@ const ResponsiveItemListTemplate = ({
 		/>
 	));
 
-	const handleShowAllChange = (event: SolaceCheckboxChangeEvent) => {
+	const handleShowAllChange = (event) => {
 		setShowAll(event.value);
 	};
 

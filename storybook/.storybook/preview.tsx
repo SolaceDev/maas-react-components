@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/react";
+import React from "react";
 
+import { Title, Subtitle, Description, Primary, Controls, Stories } from "@storybook/blocks";
 import { withSolaceLayout } from "./withSolaceTheme.decorator";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import isChromatic from "chromatic/isChromatic";
@@ -33,8 +35,7 @@ const preview: Preview = {
 		tags: ["autodocs"]
 	},
 	// Provide the MSW addon loader globally
-	decorators,
-	tags: ["autodocs"]
+	decorators
 };
 
 export default preview;
