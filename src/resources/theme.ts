@@ -850,6 +850,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"&:hover .MuiSvgIcon-root rect.SolaceCheckboxContainer": {
 							stroke: themeMapping.palette.secondary.wMain
 						},
+						"&.Mui-focusVisible": {
+							outline: `1px solid ${themeMapping.palette.accent.n2.wMain}`,
+							borderRadius: "4px"
+						},
 						"&.Mui-disabled .MuiSvgIcon-root": {
 							rect: {
 								fill: themeMapping.palette.background.w10
