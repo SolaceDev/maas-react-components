@@ -28,13 +28,13 @@ const SELECT_OPTIONS: Array<JSX.Element> = [
 ];
 
 export default {
-	title: "Layout/SolaceStack",
+	title: "Layout/Stack",
 	component: SolaceStack,
 	argTypes: {
 		spacing: {
 			control: { type: "range", min: 1, max: 10, step: 1 },
 			description:
-				"If customSpacing is passed in the default 16px would be replaced by the appropriate value. eg: if 3 is passed in the result would be theme.spacing(3) = 24px between all elements.If 0 is passed in all spacing is disabled.For detailed documentation please refer to https://mui.com/api/stack/",
+				"If customSpacing is passed in the default 16px would be replaced by the appropriate value. eg: if 3 is passed in the result would be theme.spacing(3) = 24px between all elements.If 0 is passed in all spacing is disabled.For detailed documentation please refer to https://mui.com/api/stack/. Code component name: SolaceStack",
 			table: {
 				defaultValue: {
 					summary: "2"

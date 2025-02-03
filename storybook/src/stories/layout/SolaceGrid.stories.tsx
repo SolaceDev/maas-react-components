@@ -12,7 +12,7 @@ import { Meta } from "@storybook/react";
 (Paper as React.FC & { displayName?: string }).displayName = "Paper";
 
 export default {
-	title: "Layout/SolaceGrid",
+	title: "Layout/Grid",
 	component: SolaceGrid,
 	argTypes: {
 		spacing: {
@@ -84,7 +84,7 @@ export default {
 		docs: {
 			description: {
 				component:
-					"Component to handle 2 dimensional layouts. For detailed documentation and more examples please refer to https://mui.com/components/grid/"
+					"Component to handle 2 dimensional layouts. For detailed documentation and more examples please refer to https://mui.com/components/grid/. Code component name: SolaceGrid"
 			}
 		}
 	}

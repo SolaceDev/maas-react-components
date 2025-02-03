@@ -1,0 +1,115 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Getting Started/Theming Your Application" />
+
+# Theming Your Application with MRC
+
+To theme your application using the supported MRC themes, you can create a theme provider that wraps your application. Below are the steps to achieve this:
+
+## Step 1: Install Required Packages
+
+Ensure you have the `@SolaceDev/maas-react-components` package installed.
+
+```bash
+npm install @SolaceDev/maas-react-components
+```
+
+## Step 2: Create a Theme Provider
+
+MRC supports a select list of available themes, which include both Solace based themes as well as customer specific themes. The supported themes are:
+
+<table>
+	<thead>
+		<tr>
+			<th>Theme Name</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>solace</td>
+			<td>Old Solace theme based on the corporate brand colors</td>
+		</tr>
+		<tr>
+			<td>sap</td>
+			<td>SAP theme based on their corportate colors</td>
+		</tr>
+		<tr>
+			<td>boomi</td>
+			<td>Boomi theme based on their corportate colors</td>
+		</tr>
+		<tr>
+			<td>newSolace</td>
+			<td>New Solace theme based on the new corporate palette</td>
+		</tr>
+	</tbody>
+</table>
+
+These themes are defined in the `SupportedThemes` enum within the `supportedThemes.ts` file.
+
+To specify which theme your application will use or to allow your application to switch between these themes, follow these steps:
+
+1. <b>Import the Supported Themes:</b> Ensure you import the SupportedThemes enum and other necessary components from the
+   `@SolaceDev/maas-react-components` package.
+
+2. <b>Create the Theme Object:</b> Use the following code snippet to create the theme object based on the supported themes:
+
+```javascript
+import { SupportedThemes, createTheme, SolaceTheme, Theme } from '@SolaceDev/maas-react-components';
+
+function getSupportedTheme(): SupportedThemes {
+    const desiredTheme = getYourTargetedThemeName(); // custom function to extract the configured or targeted theme name
+    let supportedTheme: SupportedThemes = SupportedThemes.solace; // default to the "old" solace theme
+
+    if (desiredTheme?.contains("sap")) {
+        supportedTheme = SupportedThemes.sap;
+    } else if (desiredTheme?.contains("boomi")) {
+        supportedTheme = SupportedThemes.boomi;
+    } else if (desiredTheme?.contains("new-solace")) {
+        // added this entry for new solace theme in order to test the theme in storybook
+        supportedTheme = SupportedThemes.newSolace;
+    }
+
+    return supportedTheme;
+}
+
+/**
+ * Returns the appropriate Solace supported theme.
+ * @returns Theme
+ */
+export function getTheme(): Theme {
+    return createTheme(SolaceTheme(getSupportedTheme()));
+}
+```
+
+3. <b>Configure the Theme Provider:</b> Create a theme provider to wrap your application in. The theme provider should be
+   created using the `ThemeProvider` component from `@SolaceDev/maas-react-components` and the theme object created in the
+   previous step:
+
+```javascript
+import React from "react";
+import { getTheme } from "./theme";
+import { ThemeProvider } from "@SolaceDev/maas-react-components";
+
+export default function ThemeProvider({ children }) {
+	return <ThemeProvider theme={getTheme()}>{children}</ThemeProvider>;
+}
+```
+
+4. <b>Switching Between Themes:</b> To allow your application to change between themes, you can dynamically set the theme
+   based on user preferences or application context (`getYourTargetedThemeName()` in step #2 above).
+
+By following these steps, you can easily specify and switch between the supported MRC themes, ensuring a consistent and cohesive look and feel across your application.
+
+## Step 3: Wrap Your Application
+
+Wrap your application with the theme provider you created in Step 2.
+
+```javascript
+import React from "react";
+import ThemeProvider from "./ThemeProvider";
+
+export default function App() {
+	return <ThemeProvider>{/* Your application content here */}</ThemeProvider>;
+}
+```

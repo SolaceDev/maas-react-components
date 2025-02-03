@@ -64,9 +64,15 @@ const sidePanelMessage = (
 );
 
 export default {
-	title: "Layout/SolaceSidePanelLayout",
+	title: "Layout/Side Panel",
 	component: SolaceSidePanelLayout,
-	parameters: {},
+	parameters: {
+		docs: {
+			description: {
+				component: "Code component name: SolaceSidePanelLayout"
+			}
+		}
+	},
 	argTypes: {
 		showSidePanel: {
 			control: { type: "boolean" }
