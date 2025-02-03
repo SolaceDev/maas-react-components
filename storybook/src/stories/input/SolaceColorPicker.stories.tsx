@@ -4,8 +4,6 @@ import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/test";
 import { SolacePicker } from "@SolaceDev/maas-react-components";
 
-
-
 (SolacePicker as React.FC & { displayName?: string }).displayName = "SolacePicker";
 
 // Create a decorator to include the dropdown inside the snapshot"
