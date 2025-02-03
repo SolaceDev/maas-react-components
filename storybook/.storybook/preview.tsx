@@ -50,7 +50,12 @@ const preview: Preview = {
 				const aTitle = a.title.split("/");
 				const bTitle = b.title.split("/");
 
-				const gettingStartedOrder = ["Welcome To MRC", "Installing & Referencing", "Theming Your Application"];
+				const gettingStartedOrder = [
+					"Welcome To MRC",
+					"Installing & Referencing",
+					"Testing & Linking",
+					"Theming Your Application"
+				];
 
 				// Ensure "Getting Started" is always first
 				if (aTitle[0] === "Getting Started" && bTitle[0] !== "Getting Started") {

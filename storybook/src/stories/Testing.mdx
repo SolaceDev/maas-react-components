@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Getting Started/Testing & Linking" />
+
+# Testing & Linking With MRC
+
+This page provides instructions on how to setup/configure `npm link` so that as a developer you can test your MRC changes within your application code prior to publishing a new version of the library (i.e. try it before you buy it).
+
+## NPM Link
+
+### Step 1: Configure MRC Repo
+
+Within your `maas-react-components` repository, find the top level `package.json` file and change the `module` property to be `dist/index.js` (instead of the existing `"module": "dist/index.modern.js"` value)
+
+```json
+"module": "dist/index.js",
+```
+
+### Step 2: Create The Global Link
+
+Next you will need to generate a global link to your `maas-react-components` code base in your local node directory by executing the following on the command line from the top level of your cloned repository:
+
+```bash
+npm link
+```
+
+NOTE: If you encounter errors regarding 'peer-dependencies' for `react-router-dom`, you can globally install it to ensure the versions align as necessary: `npm install -g react-router-dom@<version>`
+
+NOTE: If at some point you modify someting in your local `maas-react-components` and your application is not picking it up automatically, run the `npm link` command again from within `maas-react-components` ... if this doesn't work due to permission issues, try running `sudo npm link`
+
+### Step 3: Link MRC To Your Application
+
+Switch to your application code base (ex: `maas-ui`), change to the directory where MRC is installed (ex: `micro-frontends/ep`), uninstall MRC and then link to the global link you created in step #2 above:
+
+```bash
+cd micro-frontends/ep
+npm uninstall @SolaceDev/maas-react-components
+npm link @SolaceDev/maas-react-components
+```
+
+NOTE: if you receive permission errors, try using `sudo npm link @SolaceDev/maas-react-components` or open your `webpack.config.js` file and comment out the hot-loader line:
+
+```json
+alias: {
+	"react-dom": "@hot-loader/react-dom"
+}
+```
+
+### Step 4: Cleaning Up
+
+When you are done with your testing, remove the link (see command below) and revert any changes you did in `package.json` or `webpack.config.js`:
+
+```bash
+npm rm --global @SolaceDev/maas-react-components
+```

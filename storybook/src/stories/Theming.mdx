@@ -113,3 +113,13 @@ export default function App() {
 	return <ThemeProvider>{/* Your application content here */}</ThemeProvider>;
 }
 ```
+
+## Step 4: Colour Palette References
+
+When leveraging the colour palette from MRC from wihin your application (in order to align with UX patterns and theming), be sure to only reference colors under `theme.palette.ux` key. Example:
+
+```html
+<SolaceTypography sx={{ color: theme.palette.ux.secondary.wMain }} ml="auto">
+	{connectorType.category}
+</SolaceTypography>
+```
