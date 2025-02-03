@@ -83,14 +83,22 @@ function SolaceButton({
 				padding: `${theme.spacing(6 / 8)} ${theme.spacing(16 / 8)}`,
 				borderRadius: theme.spacing(4 / 8),
 				minWidth: "100px",
-				height: theme.spacing(32 / 8)
+				height: theme.spacing(32 / 8),
+				"&:focus": {
+					outline: `1px solid ${theme.palette.ux.accent.n2.wMain}`,
+					outlineOffset: "-1px"
+				}
 			};
 		} else {
 			styles = {
 				padding: "0",
 				display: "inline-flex",
 				alignItems: "center",
-				verticalAlign: "inherit"
+				verticalAlign: "inherit",
+				"&:focus": {
+					outline: `1px solid ${theme.palette.ux.accent.n2.wMain}`,
+					outlineOffset: "1px"
+				}
 			};
 		}
 		return (
