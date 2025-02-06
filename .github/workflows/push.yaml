@@ -73,6 +73,7 @@ jobs:
           major-wording: "solacemajor,SolaceMajor,SOLACEMAJOR"
           patch-wording: "solacepatch,SolacePatch,SOLACEPATCH"
           tag-prefix: ""
+          commit-message: "CI: bumps version to {{version}} [skip ci]"  # Add skip ci tag
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
       - name: "cat package.json"
