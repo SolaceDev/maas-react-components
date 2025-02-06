@@ -1380,6 +1380,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								},
 								"&:hover": {
 									backgroundColor: themeMapping.palette.brand.wMain30
+								},
+								"&.Mui-focusVisible": {
+									backgroundColor: themeMapping.palette.brand.wMain30
 								}
 							},
 							".MuiSwitch-thumb": {
