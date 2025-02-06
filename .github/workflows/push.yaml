@@ -6,6 +6,16 @@ on:
     branches:
       - "main"
 
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+  pull-requests: write
+  actions: read
+  statuses: write
+  checks: write
+  repository-projects: read
+  
 jobs:
   chromatic-deployment:
     name: "Deploy Storybook to Chromatic"
