@@ -4,6 +4,7 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import moment, { Moment } from "moment";
 import { useState, useEffect } from "react";
 import SolaceComponentProps from "./SolaceComponentProps";
+import { SolaceDatePickerVariant, variantConfig } from "../types/solaceDatePicker";
 
 export interface SolaceDatePickerProps extends SolaceComponentProps {
 	/**
@@ -17,6 +18,11 @@ export interface SolaceDatePickerProps extends SolaceComponentProps {
 	 
 	 */
 	disabled?: boolean;
+
+	/**
+	 * The variant of the date picker to use. Defaults to `FORMAT_YEAR_MONTH_DAY` if not provided.
+	 */
+	variant?: SolaceDatePickerVariant;
 
 	/**
 	 * A callback that's called when the date picker's value changes. The new value is passed
@@ -35,9 +41,12 @@ export default function SolaceDatePicker({
 	onChange,
 	onClear,
 	dataQa,
+	variant = SolaceDatePickerVariant.FORMAT_YEAR_MONTH_DAY,
 	disabled = false
 }: SolaceDatePickerProps) {
 	const [date, setDate] = useState<Moment | null>(value ? moment(value) : null);
+
+	const { views, openTo, format } = variantConfig[variant];
 
 	useEffect(() => {
 		setDate(value ? moment(value) : null);
@@ -60,8 +69,10 @@ export default function SolaceDatePicker({
 				slotProps={{
 					field: { clearable: true, onClear: () => onClear && onClear() }
 				}}
-				format="YYYY-MM-DD"
 				disabled={disabled}
+				views={views}
+				openTo={openTo}
+				format={format}
 			/>
 		</LocalizationProvider>
 	);

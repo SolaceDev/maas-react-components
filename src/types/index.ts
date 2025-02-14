@@ -4,6 +4,7 @@
 export * from "./supportedThemes";
 export * from "./ThemeMapping";
 export * from "./solaceChip";
+export * from "./solaceDatePicker";
 export * from "./sx";
 export * from "./solaceGrid";
 export * from "./solaceStack";
