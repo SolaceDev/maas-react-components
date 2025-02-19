@@ -997,7 +997,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									color: themeMapping.palette.secondary.text.w50
 								}
 							},
-							".SolaceGrid & .MuiSelect-icon": {
+							".SolacePickerGrid & .MuiSelect-icon": {
 								fill: themeMapping.palette.secondary.w100
 							}
 						},
@@ -1112,10 +1112,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									}
 								}
 							},
-							".SolaceGrid": {
+							".SolacePickerGrid": {
 								display: "grid",
 								columnGap: "8px",
-								padding: "16px",
+								padding: "0px",
 								rowGap: "8px",
 								".MuiMenuItem-root": {
 									border: `1px solid transparent`,

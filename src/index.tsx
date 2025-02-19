@@ -144,5 +144,6 @@ export type {
 	SolacePickerProps,
 	SolacePickerTypes
 } from "./components/form/SolacePicker";
+export { SolacePickerIconWrapper } from "./components/form/SolacePicker";
 export type { TooltipVariantTypes } from "./types/solaceTooltip";
 export { TooltipVariant } from "./types/solaceTooltip";

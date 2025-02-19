@@ -2,33 +2,7 @@ import React from "react";
 import { Meta, Decorator, StoryFn } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/test";
-import { SolacePicker } from "@SolaceDev/maas-react-components";
-import {
-	Maintenance24Icon,
-	Construction24Icon,
-	Toolkit24Icon,
-	Terminal24Icon,
-	Bug24Icon,
-	TestTube24Icon,
-	NewRelease24Icon,
-	ContentSearch24Icon,
-	Broker24Icon,
-	RocketLaunch24Icon,
-	Verified24Icon,
-	DeployedCode24Icon,
-	Announcement24Icon,
-	Calendar24Icon,
-	Infrastructure24Icon,
-	PsCloudLogo24Icon,
-	Source24Icon,
-	Target24Icon,
-	Tree24Icon,
-	UsageReports24Icon,
-	User24Icon,
-	VisibilityHide24Icon,
-	VisibilityShow24Icon,
-	NoSelection24Icon
-} from "@SolaceDev/maas-icons";
+import { Box, SolacePicker, styled, useTheme } from "@SolaceDev/maas-react-components";
 
 (SolacePicker as React.FC & { displayName?: string }).displayName = "SolacePicker";
 
@@ -44,7 +18,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 };
 
 export default {
-	title: "Input/Picker/Icon/Simple",
+	title: "Input/Picker/Icon/CustomColor",
 	component: SolacePicker,
 	parameters: {
 		controls: { sort: "alpha" },
@@ -114,42 +88,67 @@ export default {
 	decorators: [withSnapshotContainer]
 } as Meta<typeof SolacePicker>;
 
-const iconMap = {
-	MAINTENANCE: <Maintenance24Icon />,
-	CONSTRUCTION: <Construction24Icon />,
-	TOOLKIT: <Toolkit24Icon />,
-	TERMINAL: <Terminal24Icon />,
-	BUG: <Bug24Icon />,
-	TEST_TUBE: <TestTube24Icon />,
-	NEW_RELEASE: <NewRelease24Icon />,
-	CONTENT_SEARCH: <ContentSearch24Icon />,
-	BROKER: <Broker24Icon />,
-	ROCKET_LAUNCH: <RocketLaunch24Icon />,
-	VERIFIED: <Verified24Icon />,
-	DEPLOYED_CODE: <DeployedCode24Icon />
-};
+const NodeColorBlockContainer = styled("div")(({ theme }) => ({
+	display: "inline-block",
+	width: theme.spacing(3),
+	height: theme.spacing(3),
+	boxSizing: "border-box",
+	borderRadius: theme.spacing(0.5)
+}));
 
-const longIconMap = {
-	...iconMap,
-	ANNOUNCEMENT: <Announcement24Icon />,
-	CALENDAR: <Calendar24Icon />,
-	INFRASTRUCTURE: <Infrastructure24Icon />,
-	PS_CLOUD_LOGO: <PsCloudLogo24Icon />,
-	SOURCE: <Source24Icon />,
-	TARGET: <Target24Icon />,
-	TREE: <Tree24Icon />,
-	USAGE_REPORT: <UsageReports24Icon />,
-	USER: <User24Icon />,
-	VISIBILITY_HIDE: <VisibilityHide24Icon />,
-	VISIBILITY_SHOW: <VisibilityShow24Icon />,
-	NO_SELECTION: <NoSelection24Icon />
-};
+const NodeColorBlockDualColorContainer = styled(NodeColorBlockContainer)(() => ({
+	display: "grid",
+	gridTemplateColumns: "50% 50%",
+	columnGap: "1px"
+}));
 
-const iconKeyOrderedList = ["NO_SELECTION", "DEPLOYED_CODE"].concat(
-	Object.keys(longIconMap)
-		.filter((key) => key !== "NO_SELECTION" && key !== "DEPLOYED_CODE")
-		.sort()
-);
+function NodeColorBlock({ colorVariation, nodeType }: { colorVariation: string; nodeType?: string }) {
+	const theme = useTheme();
+
+	const dualColor = nodeType === "applicationDomain";
+	const accentValueWMain = theme.palette.ux.accent[colorVariation].wMain;
+	const accentValueW100 = theme.palette.ux.accent[colorVariation].w100;
+
+	if (dualColor) {
+		const bgColor = accentValueWMain;
+		const bgColor2 = accentValueW100;
+
+		return (
+			<NodeColorBlockDualColorContainer>
+				<Box
+					sx={{
+						backgroundColor: bgColor,
+						borderTopLeftRadius: theme.spacing(0.5),
+						borderBottomLeftRadius: theme.spacing(0.5)
+					}}
+				></Box>
+				<Box
+					sx={{
+						backgroundColor: bgColor2,
+						borderTopRightRadius: theme.spacing(0.5),
+						borderBottomRightRadius: theme.spacing(0.5)
+					}}
+				></Box>
+			</NodeColorBlockDualColorContainer>
+		);
+	} else {
+		const bgColor = nodeType === "event" ? accentValueWMain : accentValueW100;
+
+		return <NodeColorBlockContainer style={{ backgroundColor: bgColor }}></NodeColorBlockContainer>;
+	}
+}
+
+function getNodeColorForCustomization(nodeType: string): { [key: string]: JSX.Element } {
+	const colors = {};
+
+	["n2", "n0", "n3"].forEach((colorVariation) => {
+		colors[colorVariation] = (
+			<NodeColorBlock key={colorVariation} colorVariation={colorVariation} nodeType={nodeType} />
+		);
+	});
+
+	return colors;
+}
 
 const Template: StoryFn<typeof SolacePicker> = (args) => {
 	return (
@@ -157,15 +156,16 @@ const Template: StoryFn<typeof SolacePicker> = (args) => {
 			{...args}
 			variant="icons"
 			name="demoIconPicker"
-			value={"DEPLOYED_CODE"}
+			value={"n2"}
+			numOfItemsPerRow={3}
 			onChange={action("callback")}
 		/>
 	);
 };
 
-export const Default = {
+export const ApplicationColorPicker = {
 	render: Template,
-	args: { icons: iconMap },
+	args: { icons: getNodeColorForCustomization("application") },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -180,9 +180,9 @@ export const Default = {
 	}
 };
 
-export const CustomGridParameter = {
+export const EventColorPicker = {
 	render: Template,
-	args: { icons: longIconMap, numOfItemsPerRow: 6 },
+	args: { icons: getNodeColorForCustomization("event") },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -197,26 +197,9 @@ export const CustomGridParameter = {
 	}
 };
 
-export const OrderedIcons = {
+export const ApplicationDomainColorPicker = {
 	render: Template,
-	args: { icons: longIconMap, iconKeyOrderedList: iconKeyOrderedList, numOfItemsPerRow: 6 },
-
-	play: async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
-		const canvas = within(canvasElement);
-
-		await userEvent.click(canvas.getByRole("combobox"));
-	},
-
-	parameters: {
-		// Delay snapshot 1 second until all interactions are done
-		chromatic: { delay: 1000 }
-	}
-};
-
-export const MaxHeight = {
-	render: Template,
-	args: { icons: longIconMap, numOfItemsPerRow: 4, numOfRowsDisplayed: 5 },
+	args: { icons: getNodeColorForCustomization("applicationDomain") },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

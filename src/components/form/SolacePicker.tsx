@@ -1,5 +1,14 @@
-import { MenuItem, MenuProps, PopoverOrigin, Select, SelectChangeEvent, styled, useTheme } from "@mui/material";
-import { useEffect, useMemo, useState } from "react";
+import {
+	ListSubheader,
+	MenuItem,
+	MenuProps,
+	PopoverOrigin,
+	Select,
+	SelectChangeEvent,
+	styled,
+	useTheme
+} from "@mui/material";
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { SelectDropdownIcon } from "../../resources/icons/SelectIcons";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -9,7 +18,7 @@ export interface SolaceColors {
 	fgColor: string;
 }
 
-const Icon = styled("div")(
+export const SolacePickerIconWrapper = styled("div")(
 	({ theme }) => `
 	align-items: center;
 	display: flex;
@@ -19,7 +28,9 @@ const Icon = styled("div")(
 	width: ${theme.spacing(3)};`
 );
 
-const Color = styled(Icon, { shouldForwardProp: (key: string) => key !== "bgColor" && key !== "fgColor" })<{
+const Color = styled(SolacePickerIconWrapper, {
+	shouldForwardProp: (key: string) => key !== "bgColor" && key !== "fgColor"
+})<{
 	bgColor: string;
 	fgColor: string;
 }>(
@@ -100,6 +111,10 @@ export interface SolacePickerProps<T extends string> extends SolaceComponentProp
 	 */
 	icons?: { [key in T]: JSX.Element };
 	/**
+	 * When #variant is "icons", you can specify the order of the icons to be displayed
+	 */
+	iconKeyOrderedList?: T[];
+	/**
 	 * the label content to display on the screen
 	 */
 	label?: string | JSX.Element;
@@ -142,7 +157,6 @@ export interface SolacePickerProps<T extends string> extends SolaceComponentProp
 	/**
 	 * Boolean flag to show the select option that has empty value
 	 */
-
 	displayEmpty?: boolean;
 	/**
 	 * Boolean flag to show the select options
@@ -164,13 +178,42 @@ export interface SolacePickerProps<T extends string> extends SolaceComponentProp
 	 * Custom transformOrigin of the menu
 	 */
 	menuTransformOrigin?: PopoverOrigin;
+	/**
+	 * Number of colors or icons to display per row
+	 */
+	numOfItemsPerRow?: number;
+	/**
+	 * Optional flag to specify the number of rows to be displayed, default to 5.
+	 */
+	numOfRowsDisplayed?: number;
+	/**
+	 * Content control panel to be displayed on top of the menu items. Only applicable when variant is "icons".
+	 * This is useful when you want to provide additional controls to the user, such as search, filter, etc.
+	 */
+	contentControlPanel?: JSX.Element;
+	/**
+	 * Callback function to return option display value based on selected option value
+	 */
+	getOptionDisplayValue?: (value: unknown) => ReactNode;
+	/**
+	 * If true, will focus on the first menuitem
+	 */
+	autoFocusItem?: boolean;
 }
+
+const ITEM_HEIGHT = 32;
+const ITEM_WIDTH = 32;
+const ITEM_GAP = 8;
+const DEFAULT_NUM_OF_ROWS = 5;
+// Padding defined in SolaceGrid for MUI Paper component where menu items are rendered
+const MUI_PAPER_PADDING = 16;
 
 function SolacePicker<T extends string>({
 	id,
 	name,
 	variant = "colors",
 	icons,
+	iconKeyOrderedList,
 	label,
 	value,
 	helperText,
@@ -188,15 +231,31 @@ function SolacePicker<T extends string>({
 	onOpen,
 	onClose,
 	menuAnchorOrigin,
-	menuTransformOrigin
+	menuTransformOrigin,
+	numOfItemsPerRow,
+	numOfRowsDisplayed = DEFAULT_NUM_OF_ROWS,
+	contentControlPanel,
+	getOptionDisplayValue,
+	autoFocusItem = true
 }: SolacePickerProps<T>): JSX.Element {
 	const theme = useTheme();
 	const ux = theme.palette.ux;
 	const [selectedValue, setSelectedValue] = useState(value);
+	const [contentControlElement, setContentControlElement] = useState<null | HTMLElement>(null);
 
 	useEffect(() => {
 		setSelectedValue(value);
 	}, [value]);
+
+	const numOfMenuItemsPerRow = numOfItemsPerRow ? numOfItemsPerRow : sizes[variant];
+
+	const contentWidth = useMemo(() => {
+		return ITEM_WIDTH * numOfMenuItemsPerRow + ITEM_GAP * (numOfMenuItemsPerRow - 1);
+	}, [numOfMenuItemsPerRow]);
+
+	const contentMaxHeight = useMemo(() => {
+		return ITEM_HEIGHT * numOfRowsDisplayed + ITEM_GAP * (numOfRowsDisplayed - 1) + ITEM_HEIGHT / 2;
+	}, [numOfRowsDisplayed]);
 
 	const colors = useMemo(
 		() =>
@@ -215,6 +274,10 @@ function SolacePicker<T extends string>({
 		[ux]
 	);
 
+	const shallRenderContentControl = useMemo(() => {
+		return variant === "icons" && contentControlPanel;
+	}, [contentControlPanel, variant]);
+
 	const handleChange = (event: SelectChangeEvent) => {
 		setSelectedValue(event.target.value);
 		if (onChange) {
@@ -230,14 +293,36 @@ function SolacePicker<T extends string>({
 	};
 
 	const getMenuProps = () => {
+		let maxHeight = contentMaxHeight;
+
+		if (shallRenderContentControl) {
+			maxHeight = maxHeight + (contentControlElement?.clientHeight || 0);
+		} else {
+			maxHeight = maxHeight - MUI_PAPER_PADDING / 2;
+		}
+
+		const paperOverrrides = {
+			// For Select's Paper component, the default maxHeight is `calc(100% - 96px)` which depending on view size.
+			// Adding custom maxHeight to override the default value if it is smaller than `calc(100% - 96px)`.
+			maxHeight: `min(${maxHeight}px, calc(100% - 96px))`,
+			// When rendering content control panel inside the sticky ListSubheader, we want the ListSubheader to define paddingTop
+			// instead of the parent Paper component so that when user scrolls, the content inside the ListSubheader stays at the same location.
+			padding: shallRenderContentControl ? theme.spacing(0, 2, 2, 2) : theme.spacing(2)
+		};
+
 		const menuProps: Partial<MenuProps> = {
 			anchorOrigin: { vertical: "bottom", horizontal: "left" },
 			transformOrigin: { vertical: "top", horizontal: "left" },
 			MenuListProps: {
-				autoFocusItem: true,
-				className: "SolaceGrid",
+				autoFocusItem: autoFocusItem,
+				className: "SolacePickerGrid",
 				style: {
-					gridTemplateColumns: `repeat(${sizes[variant]}, 1fr)`
+					gridTemplateColumns: `repeat(${numOfMenuItemsPerRow}, 1fr)`
+				}
+			},
+			slotProps: {
+				paper: {
+					sx: paperOverrrides
 				}
 			}
 		};
@@ -250,6 +335,69 @@ function SolacePicker<T extends string>({
 		return menuProps;
 	};
 
+	const renderContentControl = useCallback(() => {
+		if (contentControlPanel) {
+			return (
+				<ListSubheader
+					ref={setContentControlElement}
+					sx={{
+						gridColumnStart: 1,
+						gridColumnEnd: numOfMenuItemsPerRow + 1,
+						padding: theme.spacing(2, 0, 1, 0),
+						width: contentWidth, // width is determined by the number of items per row
+						height: "fit-content !important"
+					}}
+				>
+					{contentControlPanel}
+				</ListSubheader>
+			);
+		}
+
+		return null;
+	}, [contentControlPanel, contentWidth, numOfMenuItemsPerRow, theme]);
+
+	const renderColorMenuItems = useCallback(() => {
+		if (variant === "colors") {
+			return colors.map((color) => {
+				const value = color2value(color);
+				return (
+					<MenuItem key={value} value={value} disableGutters>
+						<Color bgColor={color.bgColor} fgColor={color.fgColor}>
+							Aa
+						</Color>
+					</MenuItem>
+				);
+			});
+		}
+
+		return null;
+	}, [colors, variant]);
+
+	const renderIconMenuItems = useCallback(() => {
+		if (variant === "icons" && icons) {
+			if (iconKeyOrderedList) {
+				return iconKeyOrderedList
+					.map((key) => {
+						const icon = icons[key];
+						return icon ? (
+							<MenuItem key={key} value={key} disableGutters>
+								<SolacePickerIconWrapper>{icon}</SolacePickerIconWrapper>
+							</MenuItem>
+						) : null;
+					})
+					.filter((item) => item !== null);
+			} else {
+				return Object.entries<JSX.Element>(icons).map(([key, icon]) => (
+					<MenuItem key={key} value={key} disableGutters>
+						<SolacePickerIconWrapper>{icon}</SolacePickerIconWrapper>
+					</MenuItem>
+				));
+			}
+		}
+
+		return null;
+	}, [iconKeyOrderedList, icons, variant]);
+
 	const select = () => (
 		<Select
 			id={getId()}
@@ -259,7 +407,7 @@ function SolacePicker<T extends string>({
 			aria-describedby={helperText ? `${getId()}-select-helper-text` : ""}
 			aria-labelledby={label ? `${getId()}-label` : ""}
 			aria-readonly={readOnly}
-			className="SolaceGrid"
+			className="SolacePickerGrid"
 			title={title}
 			disabled={disabled && !readOnly}
 			readOnly={readOnly}
@@ -275,25 +423,11 @@ function SolacePicker<T extends string>({
 			onOpen={onOpen}
 			onClose={onClose}
 			open={open}
+			renderValue={getOptionDisplayValue ? getOptionDisplayValue : undefined}
 		>
-			{variant === "colors" &&
-				colors.map((color) => {
-					const value = color2value(color);
-					return (
-						<MenuItem key={value} value={value} disableGutters>
-							<Color bgColor={color.bgColor} fgColor={color.fgColor}>
-								Aa
-							</Color>
-						</MenuItem>
-					);
-				})}
-			{variant === "icons" &&
-				icons &&
-				Object.entries<JSX.Element>(icons).map(([key, icon]) => (
-					<MenuItem key={key} value={key} disableGutters>
-						<Icon>{icon}</Icon>
-					</MenuItem>
-				))}
+			{shallRenderContentControl && renderContentControl()}
+			{renderColorMenuItems()}
+			{renderIconMenuItems()}
 		</Select>
 	);
 

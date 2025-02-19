@@ -64,6 +64,7 @@ export function useScrollIndicator() {
 		} else if (scrollPosition === "isBottom") {
 			maskImage = topFade;
 		}
+
 		return maskImage;
 	}, [getScrollPosition]);
 

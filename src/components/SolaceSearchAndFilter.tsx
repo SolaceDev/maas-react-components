@@ -49,6 +49,10 @@ export interface SolaceSearchAndFilterProps extends SolaceComponentProps {
 	 */
 	disabled?: boolean;
 	/**
+	 * Boolean flag to keep the `input` focused
+	 */
+	autoFocus?: boolean;
+	/**
 	 * Indicates whether this is a "search" or "filter" field (appropriate icon will show as the adornment)
 	 */
 	type?: FIELD_TYPES;
@@ -65,6 +69,10 @@ export interface SolaceSearchAndFilterProps extends SolaceComponentProps {
 	 */
 	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
 	/**
+	 * Callback function to notify the callee when the `input` is blurred
+	 */
+	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	/**
 	 * Callback function to notify the callee when the clear (x) button is clicked (in case
 	 * the callee wishes to perform any additional operations other than clearing the search/filter text)
 	 */
@@ -80,10 +88,12 @@ function SolaceSearchAndFilter({
 	placeholder,
 	width,
 	disabled = false,
+	autoFocus = false,
 	type = FIELD_TYPES.DEFAULT,
 	hasErrors = false,
 	onChange,
 	onFocus,
+	onBlur,
 	onClearAll
 }: SolaceSearchAndFilterProps): JSX.Element {
 	const inputRef = useRef<HTMLElement>();
@@ -142,6 +152,10 @@ function SolaceSearchAndFilter({
 		onFocus && onFocus(event);
 	};
 
+	const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+		onBlur && onBlur(event);
+	};
+
 	return (
 		<SolaceTextField
 			id={id}
@@ -149,8 +163,10 @@ function SolaceSearchAndFilter({
 			label={label}
 			helperText={helperText}
 			value={value}
+			autoFocus={autoFocus}
 			onChange={handleChange}
 			onFocus={handleFocus}
+			onBlur={handleBlur}
 			width={width}
 			endAdornment={getAdornment()}
 			hasErrors={hasErrors}
