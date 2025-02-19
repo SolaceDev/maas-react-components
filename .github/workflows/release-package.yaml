@@ -1,5 +1,6 @@
 name: Publish package to GitHub Packages
 on:
+  workflow_dispatch:
   release:
     types: [created]
 
@@ -18,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v3
         with:
@@ -28,14 +29,14 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: "@SolaceDev"
       - run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGES_ADMIN_TOKEN }}" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           echo "@SolaceDev:registry=https://npm.pkg.github.com/" >> .npmrc
           echo "legacy-peer-deps=true" >> .npmrc
           npm ci
           npm publish
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   update-release-manifest:
     name: "Update Release Manifest"
@@ -53,7 +54,7 @@ jobs:
           ref: refs/heads/master
           path: maas-build-actions
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-
+          #Packages Github token is required to checkout the private repository
       - name: Get Version
         id: get_version
         run: |

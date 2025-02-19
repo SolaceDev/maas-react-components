@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 120
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup node
         uses: actions/setup-node@v3
@@ -32,25 +32,25 @@ jobs:
 
       - name: Install
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGES_ADMIN_TOKEN }}" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           echo "@SolaceDev:registry=https://npm.pkg.github.com/" >> .npmrc
           echo "legacy-peer-deps=true" >> .npmrc
           npm ci
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Storybook
         working-directory: ./storybook
         run: npm ci
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate coverage and storybook static
         working-directory: ./storybook
         run: npm run test-storybook:ci
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: convert JSON coverage file to lcov format
         run: npx nyc report --reporter=lcov -t storybook/coverage/storybook --report-dir storybook/coverage/storybook
@@ -65,17 +65,17 @@ jobs:
         working-directory: ./storybook
         run: npm --prefix website-merge ci
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build website-merge
         working-directory: ./storybook
         run: npm run --prefix website-merge build
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: deploy to github page
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           cd ./storybook && npm i && npm run deploy:ci

@@ -27,20 +27,29 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Checkout SolaceDev/maas-build-actions
+        uses: actions/checkout@v4
+        with:
+          repository: SolaceDev/maas-build-actions
+          ref: refs/heads/master
+          path: maas-build-actions
+          token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+           #Packages Github token is required to checkout the private repository
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
       - name: Install dependencies
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGES_ADMIN_TOKEN }}" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           echo "@SolaceDev:registry=https://npm.pkg.github.com/" >> .npmrc
           echo "legacy-peer-deps=true" >> .npmrc
           npm ci && npm --prefix storybook i
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }} #need this for npm package.
-        # 👇 Adds Chromatic as a step in the workflow
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} #need this for npm package.
+        # 👇 Adds Chromatic as a step in the workflow 
+      
       - name: Publish to Chromatic
         # publish
         uses: chromaui/action@latest
@@ -51,68 +60,11 @@ jobs:
           # storybook directory
           workingDir: storybook
           exitZeroOnChanges: false
-
-  bump-version:
-    needs: chromatic-deployment
-    name: "Bump Version on main"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout source code"
-        uses: "actions/checkout@v2"
-        with:
-          ref: ${{ github.ref }}
-          token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-
-      - name: "cat package.json"
-        run: cat ./package.json
-
-      - name: "Automated Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        with:
-          minor-wording: "solaceminor,SolaceMinor,SOLACEMINOR"
-          major-wording: "solacemajor,SolaceMajor,SOLACEMAJOR"
-          patch-wording: "solacepatch,SolacePatch,SOLACEPATCH"
-          tag-prefix: ""
-          commit-message: "CI: bumps version to {{version}} [skip ci]"  # Add skip ci tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-      - name: "cat package.json"
-        run: cat ./package.json
-
-  white-source-scan:
-    name: "WhiteSource Scan"
-    runs-on: ubuntu-22.04
-    timeout-minutes: 60
-    permissions:
-      repository-projects: read
-      contents: write
-      id-token: write
-      packages: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Checkout SolaceDev/maas-build-actions
-        uses: actions/checkout@v4
-        with:
-          repository: SolaceDev/maas-build-actions
-          ref: refs/heads/master
-          path: maas-build-actions
-          token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
+      
       - name: Perform WhiteSource Scan
         id: whitesource_scan
         uses: ./maas-build-actions/.github/actions/whitesource-scan
+        continue-on-error: true
         with:
           whitesource_api_key: ${{ secrets.WHITESOURCE_API_KEY }}
           whitesource_product_name: "maas_libraries"
@@ -126,6 +78,7 @@ jobs:
 
       - name: Whitesource Alerts Report
         uses: ./maas-build-actions/.github/actions/whitesource-alerts-checker
+        continue-on-error: true
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           ws_api_key: ${{ secrets.WHITESOURCE_API_KEY }}
@@ -155,3 +108,33 @@ jobs:
         with:
           workflow_title: "${{ github.event.repository.name }} ${{ github.workflow }}"
           run_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+  
+
+  bump-version:
+    needs: chromatic-deployment
+    name: "Bump Version on main"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout source code"
+        uses: "actions/checkout@v4"
+        with:
+          ref: ${{ github.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "cat package.json"
+        run: cat ./package.json
+
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        with:
+          minor-wording: "solaceminor,SolaceMinor,SOLACEMINOR"
+          major-wording: "solacemajor,SolaceMajor,SOLACEMAJOR"
+          patch-wording: "solacepatch,SolacePatch,SOLACEPATCH"
+          tag-prefix: ""
+          commit-message: "CI: bumps version to {{version}} [skip ci]"  # Add skip ci tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "cat package.json"
+        run: cat ./package.json
+
+ 

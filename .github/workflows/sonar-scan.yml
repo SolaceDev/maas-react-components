@@ -2,8 +2,7 @@ name: SonarQube
 on:
   push:
     branches:
-      - DATAGO-51954-code-coverage # remove this and uncomment next line when publishing
-      # - main # or the name of your main branch
+      - main 
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -12,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 permissions:
   contents: write
@@ -24,7 +23,6 @@ permissions:
   statuses: write
   checks: write
   repository-projects: read
-
 
 jobs:
   build:
@@ -42,13 +40,13 @@ jobs:
           cache: npm
       - name: Install
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGES_ADMIN_TOKEN }}" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           echo "@SolaceDev:registry=https://npm.pkg.github.com/" >> .npmrc
           echo "legacy-peer-deps=true" >> .npmrc
           npm ci
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # run storybook via test-runner and generate lcov code coverage file
 
       # - name: Build Storybook
@@ -75,7 +73,7 @@ jobs:
         working-directory: ./storybook
         run: npm ci
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Storybook Tests
         working-directory: ./storybook
