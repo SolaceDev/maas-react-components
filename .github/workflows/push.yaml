@@ -133,7 +133,8 @@ jobs:
           tag-prefix: ""
           commit-message: "CI: bumps version to {{version}} [skip ci]"  # Add skip ci tag
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #Required for version bumping and by-passing branch protection
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
 
