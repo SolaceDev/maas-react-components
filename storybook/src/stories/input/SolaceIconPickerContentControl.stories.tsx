@@ -54,7 +54,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 };
 
 export default {
-	title: "Input/Picker/Icon/ContentControl",
+	title: "Input/Picker/Icon",
 	component: SolacePicker,
 	parameters: {
 		controls: { sort: "alpha" },
@@ -106,6 +106,21 @@ export default {
 			}
 		},
 		displayEmpty: {
+			control: {
+				type: "boolean"
+			}
+		},
+		numOfItemsPerRow: {
+			control: {
+				type: "number"
+			}
+		},
+		numOfRowsDisplayed: {
+			control: {
+				type: "number"
+			}
+		},
+		autoFocusItem: {
 			control: {
 				type: "boolean"
 			}
@@ -277,8 +292,8 @@ const getIconsWithTooltip = () => {
 
 const getLogosWithTooltip = (colors: string[]) => {
 	const logos = {};
-	Object.entries(iconMap).forEach(([key, value]) => {
-		const index = Math.floor(Math.random() * colors.length);
+	Object.entries(iconMap).forEach(([key, value], index) => {
+		const colorIndex = index % colors.length;
 		logos["logo_" + key] = (
 			<SolaceTooltip key={key} title={value.label}>
 				<div
@@ -291,7 +306,7 @@ const getLogosWithTooltip = (colors: string[]) => {
 						height: "24px"
 					}}
 				>
-					{React.cloneElement(value.icon, { fill: colors[index] })}
+					{React.cloneElement(value.icon, { fill: colors[colorIndex] })}
 				</div>
 			</SolaceTooltip>
 		);
@@ -466,7 +481,7 @@ const ContentControlTemplate: StoryFn<ExtendedSolacePickerProps> = (args) => {
 	);
 };
 
-export const ToggleAndSearch = {
+export const FilterContent = {
 	render: ContentControlTemplate,
 	args: {
 		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
@@ -488,7 +503,7 @@ export const ToggleAndSearch = {
 	}
 };
 
-export const ToggleAndSearchAndMaxHeight = {
+export const FilterContentAndMaxHeight = {
 	render: ContentControlTemplate,
 	args: {
 		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
@@ -510,7 +525,7 @@ export const ToggleAndSearchAndMaxHeight = {
 	}
 };
 
-export const SearchAndMaxHeight = {
+export const SearchContentAndMaxHeight = {
 	render: ContentControlTemplate,
 	args: {
 		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },

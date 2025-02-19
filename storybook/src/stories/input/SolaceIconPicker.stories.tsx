@@ -44,7 +44,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 };
 
 export default {
-	title: "Input/Picker/Icon/Simple",
+	title: "Input/Picker/Icon",
 	component: SolacePicker,
 	parameters: {
 		controls: { sort: "alpha" },
@@ -109,6 +109,11 @@ export default {
 			control: {
 				type: "number"
 			}
+		},
+		autoFocusItem: {
+			control: {
+				type: "boolean"
+			}
 		}
 	},
 	decorators: [withSnapshotContainer]
@@ -163,7 +168,7 @@ const Template: StoryFn<typeof SolacePicker> = (args) => {
 	);
 };
 
-export const Default = {
+export const DefaultIconPicker = {
 	render: Template,
 	args: { icons: iconMap },
 
@@ -180,7 +185,7 @@ export const Default = {
 	}
 };
 
-export const CustomGridParameter = {
+export const NumberOfItemsPerRow = {
 	render: Template,
 	args: { icons: longIconMap, numOfItemsPerRow: 6 },
 

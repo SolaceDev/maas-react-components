@@ -18,7 +18,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 };
 
 export default {
-	title: "Input/Picker/Icon/CustomColor",
+	title: "Input/Picker/Icon",
 	component: SolacePicker,
 	parameters: {
 		controls: { sort: "alpha" },
@@ -83,6 +83,11 @@ export default {
 			control: {
 				type: "number"
 			}
+		},
+		autoFocusItem: {
+			control: {
+				type: "boolean"
+			}
 		}
 	},
 	decorators: [withSnapshotContainer]
@@ -101,6 +106,8 @@ const NodeColorBlockDualColorContainer = styled(NodeColorBlockContainer)(() => (
 	gridTemplateColumns: "50% 50%",
 	columnGap: "1px"
 }));
+
+const SupportedColorVariationList = ["n2", "n0", "n3"];
 
 function NodeColorBlock({ colorVariation, nodeType }: { colorVariation: string; nodeType?: string }) {
 	const theme = useTheme();
@@ -141,7 +148,7 @@ function NodeColorBlock({ colorVariation, nodeType }: { colorVariation: string; 
 function getNodeColorForCustomization(nodeType: string): { [key: string]: JSX.Element } {
 	const colors = {};
 
-	["n2", "n0", "n3"].forEach((colorVariation) => {
+	SupportedColorVariationList.forEach((colorVariation) => {
 		colors[colorVariation] = (
 			<NodeColorBlock key={colorVariation} colorVariation={colorVariation} nodeType={nodeType} />
 		);
@@ -163,9 +170,9 @@ const Template: StoryFn<typeof SolacePicker> = (args) => {
 	);
 };
 
-export const ApplicationColorPicker = {
+export const ColorIcon = {
 	render: Template,
-	args: { icons: getNodeColorForCustomization("application") },
+	args: { icons: getNodeColorForCustomization("application"), iconKeyOrderedList: SupportedColorVariationList },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -180,26 +187,9 @@ export const ApplicationColorPicker = {
 	}
 };
 
-export const EventColorPicker = {
+export const DualColorIcon = {
 	render: Template,
-	args: { icons: getNodeColorForCustomization("event") },
-
-	play: async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
-		const canvas = within(canvasElement);
-
-		await userEvent.click(canvas.getByRole("combobox"));
-	},
-
-	parameters: {
-		// Delay snapshot 1 second until all interactions are done
-		chromatic: { delay: 1000 }
-	}
-};
-
-export const ApplicationDomainColorPicker = {
-	render: Template,
-	args: { icons: getNodeColorForCustomization("applicationDomain") },
+	args: { icons: getNodeColorForCustomization("applicationDomain"), iconKeyOrderedList: SupportedColorVariationList },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
