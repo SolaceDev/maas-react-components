@@ -103,7 +103,7 @@ const NodeColorBlockContainer = styled("div")(({ theme }) => ({
 
 const NodeColorBlockDualColorContainer = styled(NodeColorBlockContainer)(() => ({
 	display: "grid",
-	gridTemplateColumns: "50% 50%",
+	gridTemplateColumns: "auto auto",
 	columnGap: "1px"
 }));
 
@@ -170,7 +170,7 @@ const Template: StoryFn<typeof SolacePicker> = (args) => {
 	);
 };
 
-export const ColorIcon = {
+export const SingleColorIcon = {
 	render: Template,
 	args: { icons: getNodeColorForCustomization("application"), iconKeyOrderedList: SupportedColorVariationList },
 
