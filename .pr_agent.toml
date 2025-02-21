@@ -1,0 +1,174 @@
+[config]
+model="bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0"
+model_turbo="bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0"
+fallback_models="bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0"
+git_provider="github"
+publish_output=true
+publish_output_progress=false
+verbosity_level=2 # 0,1,2
+use_repo_settings_file=false
+ai_timeout=600 # 10minutes
+max_description_tokens = 800
+max_commits_tokens = 1000
+max_model_tokens = 64000 # Limits the maximum number of tokens that can be used by any model, regardless of the model's default capabilities.
+allow_dynamic_context=true                  # Allow dynamic context extension
+max_extra_lines_before_dynamic_context = 10  # will try to include up to X extra lines before the hunk in the patch, until we reach an enclosing function or class
+patch_extra_lines_before = 10                # Number of extra lines (+3 default ones) to include before each hunk in the patch
+patch_extra_lines_after = 10                 # Number of extra lines (+3 default ones) to include after each hunk in the patch
+secret_provider="google_cloud_storage"
+cli_mode=false
+max_number_of_calls=50
+patch_extension_skip_types =[".md",".txt"]
+temperature=0.2
+ignore_pr_title = ["chore\\(deps\\):"]
+
+[ignore]
+glob = ['**/test/**']
+
+[pr_description] # /describe #
+publish_labels=true
+add_original_user_description=true
+keep_original_user_title=true
+generate_ai_title=false
+use_bullet_points=true
+extra_instructions = "This code base is for maas-react-components, which is a component library extending the MUI library. The intent of the repository is to improve frontend developer efficiencies when building applications, providing them a toolbox of pre-built and themed components"
+enable_pr_type=true
+final_update_message = true
+enable_help_text=false
+enable_help_comment=false
+# describe as comment
+publish_description_as_comment=false
+publish_description_as_comment_persistent=true
+## changes walkthrough section
+enable_semantic_files_types=true
+collapsible_file_list='adaptive' # true, false, 'adaptive'
+inline_file_summary=false # false, true, 'table'
+# markers
+use_description_markers=false
+include_generated_by_header=true
+
+[github]
+# The type of deployment to create. Valid values are 'app' or 'user'.
+deployment_type = "user"
+ratelimit_retries = 5
+base_url = "https://api.github.com"
+publish_inline_comments_fallback_with_verification = true
+try_fix_invalid_inline_comments = true
+
+
+
+[pr_reviewer] # /review #
+require_score_review=true
+require_tests_review=false  
+require_estimate_effort_to_review=true
+require_can_be_split_review=false
+# general options
+num_code_suggestions=200
+inline_code_comments = false
+ask_and_reflect=false
+#automatic_review=true
+persistent_comment=true
+extra_instructions = """\
+You must be as thorough as possible and give as many code suggestions as you can. THIS CODE MUST BE BUG FREE.
+Bug Prevention and Edge Cases:
+    - Are there potential runtime errors (undefined variables, null checks, type coercion issues)?
+    - Are all async operations properly handled with error boundaries and loading states?
+    - Are component lifecycle methods used correctly?
+    - Are there memory leaks (event listeners, subscriptions, etc.)?
+    - Are proper type checks implemented (TypeScript/PropTypes)?
+Code Clarity and Maintainability:
+    - Is the component structure logical and well-organized?
+    - Are custom hooks following the Rules of Hooks?
+    - Are props and state management clear and efficient?
+    - Is there appropriate code documentation for complex logic?
+    - Are meaningful variable/function names used?
+Frontend Best Practices:
+    - Does the code follow React best practices and patterns?
+    - Is there proper separation of concerns (presentation vs logic)?
+    - Are reusable components properly abstracted?
+    - Is the CSS/styling approach consistent and maintainable?
+    - Are accessibility (a11y) guidelines followed?
+Performance Considerations:
+    - Are React rendering optimizations implemented where needed?
+    - Is code leveraging performance optimization such as memoization?
+    - Is code splitting used appropriately?
+    - Are assets optimized (images, bundle size, etc.)?
+    - Are there unnecessary re-renders?
+Testing and Validation:
+    - Are component tests comprehensive?
+    - Is input validation handled properly?
+    - Are error states and edge cases tested?
+    - Is proper test coverage maintained?
+"""
+final_update_message = true
+# review labels
+enable_review_labels_security=false
+enable_review_labels_effort=true
+# specific configurations for incremental review (/review -i)
+require_all_thresholds_for_incremental_review=false
+minimal_commits_for_incremental_review=0
+minimal_minutes_for_incremental_review=0
+enable_help_text=true # Determines whether to include help text in the PR review. Enabled by default.
+# auto approval
+enable_auto_approval=false
+maximal_review_effort=5
+max_number_of_calls = 60
+
+
+[pr_code_suggestions] # /improve #
+max_context_tokens=4000
+#
+commitable_code_suggestions = false
+dual_publishing_score_threshold=-1 # -1 to disable, [0-10] to set the threshold (>=) for publishing a code suggestion both in a table and as commitable
+#
+extra_instructions = """\
+You must be as thorough as possible and give as many code suggestions as you can. THIS CODE MUST BE BUG FREE.
+Bug Prevention and Edge Cases:
+    - Are there potential runtime errors (undefined variables, null checks, type coercion issues)?
+    - Are all async operations properly handled with error boundaries and loading states?
+    - Are component lifecycle methods used correctly?
+    - Are there memory leaks (event listeners, subscriptions, etc.)?
+    - Are proper type checks implemented (TypeScript/PropTypes)?
+Code Clarity and Maintainability:
+    - Is the component structure logical and well-organized?
+    - Are custom hooks following the Rules of Hooks?
+    - Are props and state management clear and efficient?
+    - Is there appropriate code documentation for complex logic?
+    - Are meaningful variable/function names used?
+Frontend Best Practices:
+    - Does the code follow React best practices and patterns?
+    - Is there proper separation of concerns (presentation vs logic)?
+    - Are reusable components properly abstracted?
+    - Is the CSS/styling approach consistent and maintainable?
+    - Are accessibility (a11y) guidelines followed?
+Performance Considerations:
+    - Are React rendering optimizations implemented where needed?
+    - Is code leveraging performance optimization such as memoization?
+    - Is code splitting used appropriately?
+    - Are assets optimized (images, bundle size, etc.)?
+    - Are there unnecessary re-renders?
+Testing and Validation:
+    - Are component tests comprehensive?
+    - Is input validation handled properly?
+    - Are error states and edge cases tested?
+    - Is proper test coverage maintained?
+"""
+num_code_suggestions=25
+rank_suggestions = true
+persistent_comment=true
+max_history_len=50
+# suggestions scoring
+self_reflect_on_suggestions=true
+suggestions_score_threshold=7 # [0-10]| recommend not to set this value above 8, since above it may clip highly relevant suggestions
+# params for '/improve --extended' mode
+auto_extended_mode=true
+num_code_suggestions_per_chunk=200
+max_number_of_calls = 60
+parallel_calls = true
+rank_extended_suggestions = true
+final_clip_factor = 0.8
+
+
+
+[litellm]
+drop_params = true
