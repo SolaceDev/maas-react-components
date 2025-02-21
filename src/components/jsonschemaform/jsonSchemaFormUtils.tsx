@@ -16,6 +16,8 @@ export enum CustomProperty {
 	hidden = "x-custom-hidden"
 }
 
+const EMPTY_VALUE = "-";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onChangeTrigger = (props: any, e: any) => {
 	const value = e.value;
@@ -32,31 +34,33 @@ const CustomTextWidget = function (
 	transformWidgetProps?: (props: WidgetProps) => WidgetProps
 ) {
 	const props = transformWidgetProps ? transformWidgetProps(widgetProps) : widgetProps;
-	const sensitiveField = props.schema.options?.format === "password" || props.schema.format === "password";
+	const { disabled, label, name, readonly, required, schema, value } = props;
+
+	const errorMessage = props[CustomProperty.error] ?? "";
+	const helperMessage = readonly ? "" : errorMessage || schema.description;
+	const isSensitiveField = schema.options?.format === "password" || schema.format === "password";
 
 	// state
 	const [showSensitiveField, setShowSensitiveField] = useState(false);
 
 	const fieldValue = useMemo(() => {
-		let fieldValue = props.value ?? "";
+		let fieldValue = value ?? "";
 
-		if (props) {
-			if (props.readonly) {
-				if (sensitiveField) {
-					fieldValue = showSensitiveField ? fieldValue : "**********";
-				} else {
-					fieldValue = fieldValue ?? "-";
-				}
-			} else if (props.schema.const) {
-				fieldValue = props.schema.const;
+		if (readonly) {
+			if (isSensitiveField) {
+				fieldValue = showSensitiveField ? fieldValue : "**********";
+			} else {
+				fieldValue = fieldValue || EMPTY_VALUE;
 			}
+		} else if (schema.const) {
+			fieldValue = schema.const;
 		}
 
 		return fieldValue;
-	}, [props, sensitiveField, showSensitiveField]);
+	}, [value, readonly, schema.const, isSensitiveField, showSensitiveField]);
 
 	const endAdornment = useMemo(() => {
-		if (props && !props.readonly && sensitiveField) {
+		if (!readonly && isSensitiveField) {
 			return [
 				<SolaceButton
 					key={showSensitiveField ? "eyeIcon" : "hideEyeIcon"}
@@ -70,47 +74,45 @@ const CustomTextWidget = function (
 		}
 
 		return undefined;
-	}, [props, sensitiveField, showSensitiveField]);
-
-	const errorMessage = props[CustomProperty.error] ?? "";
+	}, [isSensitiveField, readonly, showSensitiveField]);
 
 	return (
-		<Box sx={{ display: props.readonly && sensitiveField ? "flex" : "block", flexDirection: "row", alignItems: "end" }}>
-			{props.schema?.maxLength && props.schema?.maxLength > 100 ? (
+		<Box sx={{ display: readonly && isSensitiveField ? "flex" : "block", flexDirection: "row", alignItems: "end" }}>
+			{schema.maxLength && schema.maxLength > 100 ? (
 				<SolaceTextArea
-					name={props.name}
-					label={props.label}
+					name={name}
+					label={label}
 					onChange={(e) => onChangeTrigger(props, e)}
 					value={fieldValue}
-					readOnly={props.readonly}
-					required={props.required && !props.readonly}
-					disabled={props.disabled}
+					readOnly={readonly}
+					required={required && !readonly}
+					disabled={disabled}
 					width="100%"
-					maxLength={props.schema.maxLength}
+					maxLength={schema.maxLength}
 					hasErrors={!!errorMessage}
-					helperText={errorMessage || props.schema.description}
-					placeholder={props.schema.placeholder ?? ""}
-					dataQa={`${props.label}-form-textArea`}
+					helperText={helperMessage}
+					placeholder={schema.placeholder ?? ""}
+					dataQa={`${label}-form-textArea`}
 				></SolaceTextArea>
 			) : (
 				<SolaceTextField
-					type={sensitiveField && !showSensitiveField ? "password" : "text"}
-					label={props.label}
-					name={props.name}
+					type={isSensitiveField && !showSensitiveField ? "password" : "text"}
+					label={label}
+					name={name}
 					onChange={(e) => onChangeTrigger(props, e)}
 					value={fieldValue}
-					readOnly={props.readonly}
-					required={props.required && !props.readonly}
-					disabled={props.disabled}
+					readOnly={readonly}
+					required={required && !readonly}
+					disabled={disabled}
 					endAdornment={endAdornment}
 					hasErrors={!!errorMessage}
-					helperText={errorMessage || props.schema.description}
-					placeholder={props.schema.placeholder ?? ""}
-					dataQa={`${props.label}-form-textField`}
+					helperText={helperMessage}
+					placeholder={schema.placeholder ?? ""}
+					dataQa={`${label}-form-textField`}
 				/>
 			)}
 
-			{props.readonly && sensitiveField && (
+			{readonly && isSensitiveField && (
 				<Box ml={1}>
 					<SolaceButton
 						key={showSensitiveField ? "eyeIcon" : "hideEyeIcon"}
@@ -132,6 +134,7 @@ const CustomSelectWidget = function (
 ) {
 	const props = transformWidgetProps ? transformWidgetProps(widgetProps) : widgetProps;
 	const errorMessage = props[CustomProperty.error] ?? "";
+	const helperMessage = props.readonly ? "" : errorMessage || props.schema.description;
 
 	return props.options.enumOptions !== undefined ? (
 		<Box mb={props.id.includes("oneof") ? 2 : 0}>
@@ -146,7 +149,7 @@ const CustomSelectWidget = function (
 				title={props.title}
 				id={props.id}
 				hasErrors={!!errorMessage}
-				helperText={errorMessage || props.schema.description}
+				helperText={helperMessage}
 				dataQa={`${props.id}-form-select`}
 			>
 				{props.options.enumOptions.map((option) => (
@@ -167,6 +170,7 @@ const CustomCheckboxWidget = function (
 ) {
 	const props = transformWidgetProps ? transformWidgetProps(widgetProps) : widgetProps;
 	const errorMessage = props[CustomProperty.error] ?? "";
+	const helperMessage = props.readonly ? "" : errorMessage || props.schema.description;
 
 	return (
 		<SolaceCheckBox
@@ -178,8 +182,7 @@ const CustomCheckboxWidget = function (
 			disabled={props.disabled}
 			checked={props.value}
 			hasErrors={!!errorMessage}
-			helperText={errorMessage}
-			subTextProps={{ label: errorMessage ? "" : props.schema.description, light: true }}
+			helperText={helperMessage}
 			dataQa={`${props.label}-form-checkbox`}
 		/>
 	);

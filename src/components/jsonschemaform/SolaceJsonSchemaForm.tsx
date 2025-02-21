@@ -7,8 +7,7 @@ import Ajv2020 from "ajv/dist/2020";
 import { styled } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { ElementType } from "react";
-
-const custom2020Validator = customizeValidator({ AjvClass: Ajv2020 });
+import Ajv from "ajv";
 
 enum FormFieldType {
 	description = "description",
@@ -16,12 +15,10 @@ enum FormFieldType {
 	submitButton = "submitButton",
 	title = "title"
 }
-
 interface FormItem {
 	id: string; // unique id for the form
 	schema: unknown; // must be castable to RJSFSchema
 }
-
 interface FormOptions {
 	order?: string[];
 	isHidden?: (fieldType: FormFieldType, propertyName?: string, data?: any) => boolean;
@@ -61,6 +58,24 @@ const CustomForm = styled(Form)(({ theme }) => ({
 						display: "inline" // display only first asterisk on label for input
 					}
 				}
+			},
+			".form-group.field-array": {
+				// override rjsf array styles
+				".MuiPaper-root": {
+					boxShadow: "none",
+					border: `1px solid ${theme.palette.ux.secondary.w20}`,
+					padding: 0,
+					margin: theme.spacing(1, 0, 0, 0)
+				},
+				".MuiTypography-root": {
+					padding: theme.spacing(1, 0)
+				},
+				".form-group.field": {
+					paddingBottom: theme.spacing(2),
+					"&.field-object": {
+						paddingBottom: 0
+					}
+				}
 			}
 		}
 	}
@@ -83,25 +98,35 @@ const getOrder = (order: any) => {
 	return uiOrder;
 };
 
-const hideProperties = (isHidden: any, uiSchema: UiSchema, properties: any) => {
-	if (!properties) {
+/**
+ * Recursively hides properties based on the isHidden function
+ */
+const hideProperties = (isHidden: any, uiSchema: UiSchema, schema: any) => {
+	if (!schema) {
 		return;
 	}
 
-	for (const property in properties) {
-		// hide all errors - errors are displayed with custom widgets
-		uiSchema[property] = { "ui:hideError": true };
+	const properties = schema.properties;
 
-		if (isHidden(FormFieldType.property, property, properties[property])) {
-			// hide rjsf property widge
-			uiSchema[property]["ui:widget"] = "hidden";
-		} else if (isHidden(FormFieldType.description, property, properties[property])) {
-			// hide rjsf property description via custom handling - descriptions are displayed with custom widgets
-			uiSchema[property]["ui:description"] = CustomProperty.hidden;
+	if (properties) {
+		for (const property in properties) {
+			// hide all errors - errors are displayed with custom widgets
+			uiSchema[property] = { "ui:hideError": true };
+
+			if (isHidden(FormFieldType.property, property, properties[property])) {
+				// hide rjsf property widget
+				uiSchema[property]["ui:widget"] = "hidden";
+			} else if (isHidden(FormFieldType.description, property, properties[property])) {
+				// hide rjsf property description via custom handling - descriptions are displayed with custom widgets
+				uiSchema[property]["ui:description"] = CustomProperty.hidden;
+			}
 		}
 
-		// recursively hide nested properties
-		hideProperties(isHidden, uiSchema, properties[property].properties);
+		hideProperties(isHidden, uiSchema, properties);
+	} else if (typeof schema === "object") {
+		for (const property in schema) {
+			hideProperties(isHidden, uiSchema, schema[property]);
+		}
 	}
 };
 
@@ -134,6 +159,15 @@ export interface SolaceJsonSchemaFormProps extends SolaceComponentProps {
 	 */
 	disabled?: boolean;
 	/**
+	 * Can be used in trigger form validation manually
+	 * e.g. formRef.current.validateForm()
+	 */
+	formRef?: any;
+	/**
+	 * Whether to validate the form data live
+	 */
+	liveValidate?: boolean;
+	/**
 	 * Callback function when the form data changes.
 	 */
 	onChange?: (formData: any, formErrors: any[]) => void;
@@ -154,9 +188,9 @@ export interface SolaceJsonSchemaFormProps extends SolaceComponentProps {
 	 */
 	transformTitle?: (props: any) => any;
 	/**
-	 * Custom validator to use for the form.
+	 * Custom Ajv to use for the form, default to Ajv2020.
 	 */
-	validator?: any;
+	ajvClass?: typeof Ajv;
 }
 
 function SolaceJsonSchemaForm({
@@ -165,15 +199,18 @@ function SolaceJsonSchemaForm({
 	formOptions = {},
 	readOnly = false,
 	disabled = false,
+	formRef,
+	liveValidate = true,
 	onChange,
 	transformDescription,
 	transformError,
 	transformWidget,
 	transformTitle,
-	validator
-}: SolaceJsonSchemaFormProps) {
+	ajvClass
+}: Readonly<SolaceJsonSchemaFormProps>) {
 	const schema = formItem.schema as RJSFSchema;
 	const { order, isHidden, tagName } = formOptions;
+	const customValidator = customizeValidator({ AjvClass: ajvClass ?? Ajv2020 });
 
 	/**
 	 * Build the uiSchema to support:
@@ -196,7 +233,7 @@ function SolaceJsonSchemaForm({
 			uiSchema["ui:options"] = { label: false };
 		}
 
-		hideProperties(isHidden, uiSchema, schema.properties);
+		hideProperties(isHidden, uiSchema, schema);
 	}
 
 	/**
@@ -207,7 +244,7 @@ function SolaceJsonSchemaForm({
 		const hasErrors = props.rawErrors && props.rawErrors.length > 0;
 
 		if (hasErrors) {
-			newProps[CustomProperty.error] = props.rawErrors.join(", ");
+			newProps[CustomProperty.error] = Array.from(new Set(props.rawErrors)).join(", ");
 		}
 
 		return newProps;
@@ -237,17 +274,18 @@ function SolaceJsonSchemaForm({
 			idPrefix={formItem.id}
 			schema={schema}
 			uiSchema={uiSchema}
-			validator={validator ?? custom2020Validator}
+			validator={customValidator}
 			widgets={getWidgets(transformWidgetProps)}
 			templates={getTemplates(transformDescription, transformTitle)}
 			formData={formData}
 			onChange={handleOnChange}
 			readonly={readOnly}
 			disabled={disabled}
-			liveValidate={true}
+			liveValidate={liveValidate}
 			showErrorList={false}
 			transformErrors={transformErrors}
 			data-qa={formItem.id}
+			ref={formRef}
 		/>
 	);
 }

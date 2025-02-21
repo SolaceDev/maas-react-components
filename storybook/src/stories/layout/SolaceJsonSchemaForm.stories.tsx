@@ -7,186 +7,6 @@ import { userEvent, within } from "@storybook/testing-library";
 
 //================================================================================
 
-const thresholdProperties = {
-	clearPercent: {
-		title: "Clear Percent",
-		type: "integer"
-	},
-	clearValue: {
-		title: "Clear Value",
-		type: "integer"
-	},
-	setPercent: {
-		title: "Set Percent",
-		type: "integer"
-	},
-	setValue: {
-		title: "Set Value",
-		type: "integer"
-	}
-};
-const solaceQueueSchema = {
-	$id: "https://solace.cloud/schemas/solace/msg-vpn-queue-2-31-0-v2.schema.json",
-	type: "object",
-	title: "SolaceMsgVpnQueue",
-	$schema: "http://json-schema.org/draft-07/schema#all",
-	properties: {
-		accessType: {
-			default: "exclusive",
-			enum: ["exclusive", "non-exclusive"],
-			title: "Access Type",
-			type: "string"
-		},
-		consumerAckPropagationEnabled: {
-			default: true,
-			title: "Consumer Acknowledgement Propagation Enabled",
-			type: "boolean"
-		},
-		deadMsgQueue: {
-			default: "#DEAD_MSG_QUEUE",
-			title: "Dead Message Queue",
-			type: "string"
-		},
-		deliveryCountEnabled: {
-			default: false,
-			title: "Delivery Count Enabled",
-			type: "boolean"
-		},
-		deliveryDelay: {
-			default: 0,
-			title: "Delivery Delay",
-			type: "integer"
-		},
-		egressEnabled: {
-			default: false,
-			title: "Egress Enabled",
-			type: "boolean"
-		},
-		eventBindCountThreshold: {
-			properties: thresholdProperties,
-			title: "Event Bind Count Threshold",
-			type: "object"
-		},
-		eventMsgSpoolUsageThreshold: {
-			properties: thresholdProperties,
-			title: "Event Message Spool Usage Threshold",
-			type: "object"
-		},
-		eventRejectLowPriorityMsgLimitThreshold: {
-			properties: thresholdProperties,
-			title: "Event Reject Low Priority Message Limit Threshold",
-			type: "object"
-		},
-		ingressEnabled: {
-			default: false,
-			title: "Ingress Enabled",
-			type: "boolean"
-		},
-		maxBindCount: {
-			default: 1000,
-			title: "Max Bind Count",
-			type: "integer"
-		},
-		maxDeliveredUnackedMsgsPerFlow: {
-			default: 10000,
-			title: "Max Delivered Unacknowledged Messages Per Flow",
-			type: "integer"
-		},
-		maxMsgSize: {
-			default: 10000000,
-			title: "Max Message Size",
-			type: "integer"
-		},
-		maxMsgSpoolUsage: {
-			default: 5000,
-			title: "Max Message Spool Usage",
-			type: "integer"
-		},
-		maxRedeliveryCount: {
-			default: 0,
-			title: "Max Redelivery Count",
-			type: "integer"
-		},
-		maxTtl: {
-			default: 0,
-			title: "Max TTL",
-			type: "integer"
-		},
-		partitionCount: {
-			default: 0,
-			title: "Partition Count",
-			type: "integer"
-		},
-		partitionRebalanceDelay: {
-			default: 3,
-			title: "Partition Rebalance Delay",
-			type: "integer"
-		},
-		partitionRebalanceMaxHandoffTime: {
-			default: 30,
-			title: "Partition Rebalance Max Handoff Time",
-			type: "integer"
-		},
-		permission: {
-			default: "no-access",
-			enum: ["no-access", "consume", "modify-topic", "read-only", "delete"],
-			title: "Permission",
-			type: "string"
-		},
-		redeliveryDelayEnabled: {
-			default: false,
-			title: "Redelivery Delay Enabled",
-			type: "boolean"
-		},
-		redeliveryDelayInitialInterval: {
-			default: 1000,
-			title: "Redelivery Delay Initial Interval",
-			type: "integer"
-		},
-		redeliveryDelayMaxInterval: {
-			default: 64000,
-			title: "Redelivery Delay Max Interval",
-			type: "integer"
-		},
-		redeliveryDelayMultiplier: {
-			default: 200,
-			title: "Redelivery Delay Multiplier",
-			type: "integer"
-		},
-		redeliveryEnabled: {
-			default: true,
-			title: "Redelivery Enabled",
-			type: "boolean"
-		},
-		rejectLowPriorityMsgEnabled: {
-			default: false,
-			title: "Reject Low Priority Message Enabled",
-			type: "boolean"
-		},
-		rejectLowPriorityMsgLimit: {
-			default: 0,
-			title: "Reject Low Priority Message Limit",
-			type: "integer"
-		},
-		rejectMsgToSenderOnDiscardBehavior: {
-			default: "when-queue-enabled",
-			enum: ["never", "when-queue-enabled", "always"],
-			title: "Reject Message To Sender On Discard Behavior",
-			type: "string"
-		},
-		respectMsgPriorityEnabled: {
-			default: false,
-			title: "Respect Message Priority Enabled",
-			type: "boolean"
-		},
-		respectTtlEnabled: {
-			default: false,
-			title: "Respect TTL Enabled",
-			type: "boolean"
-		}
-	}
-};
-
 const solaceQueueSchemaPartial = {
 	type: "object",
 	title: "SolaceMsgVpnQueue",
@@ -200,8 +20,7 @@ const solaceQueueSchemaPartial = {
 		consumerAckPropagationEnabled: {
 			default: true,
 			description: "Enables or disables the propagation of consumer acknowledgments",
-			type: "boolean",
-			readOnly: true // displayed in UI, but disabled
+			type: "boolean"
 		},
 		deadMsgQueue: {
 			default: "#DEAD_MSG_QUEUE",
@@ -231,7 +50,7 @@ const solaceQueueSchemaPartial = {
 			type: "integer"
 		},
 		permission: {
-			const: "no-access", // not displayed in UI
+			const: "no-access",
 			type: "string"
 		},
 		queueName: {
@@ -239,6 +58,23 @@ const solaceQueueSchemaPartial = {
 			description: "sc_ep_<squad>",
 			placeholder: "sc_ep_event",
 			type: "string"
+		},
+		owners: {
+			type: "array",
+			title: "Owners",
+			items: {
+				type: "object",
+				properties: {
+					name: {
+						type: "string",
+						title: "Name"
+					},
+					level: {
+						type: "string",
+						title: "Level"
+					}
+				}
+			}
 		}
 	},
 	required: ["accessType", "deadMsgQueue", "queueName"]
@@ -285,7 +121,7 @@ const meta: Meta<typeof SolaceJsonSchemaForm> = {
 type Story = StoryObj<typeof SolaceJsonSchemaForm>;
 
 export default meta;
-export const Default: Story = {
+export const BasicForm: Story = {
 	args: {
 		formItem: {
 			id: "person1",
@@ -318,7 +154,7 @@ export const Default: Story = {
 	}
 };
 
-export const PasswordFieldsWithDifferentConfigs: Story = {
+export const Password: Story = {
 	args: {
 		formItem: {
 			id: "password1",
@@ -338,6 +174,73 @@ export const PasswordFieldsWithDifferentConfigs: Story = {
 					}
 				}
 			}
+		},
+		onChange: (data) => action("onChangeHandler")(data)
+	}
+};
+
+export const AnyOf: Story = {
+	args: {
+		formItem: {
+			id: "anyOf",
+			schema: {
+				type: "object",
+				anyOf: [
+					{
+						title: "Option 1",
+						type: "object",
+						properties: {
+							option1: {
+								type: "string"
+							}
+						}
+					},
+					{
+						title: "Option 2",
+						type: "object",
+						properties: {
+							option2: {
+								type: "integer"
+							}
+						}
+					}
+				]
+			}
+		},
+		onChange: (data) => action("onChangeHandler")(data)
+	}
+};
+
+export const List: Story = {
+	args: {
+		formItem: {
+			id: "people",
+			schema: {
+				type: "object",
+				properties: {
+					people: {
+						type: "array",
+						title: "List of people",
+						items: {
+							type: "object",
+							properties: {
+								name: {
+									type: "string",
+									title: "Name"
+								},
+								height: {
+									type: "number",
+									title: "Height (cm)"
+								}
+							},
+							required: ["name"]
+						}
+					}
+				}
+			}
+		},
+		formData: {
+			people: [{ name: "Bob", height: 170 }]
 		},
 		onChange: (data) => action("onChangeHandler")(data)
 	}
@@ -382,17 +285,7 @@ export const Validation: Story = {
 	}
 };
 
-export const SolaceQueue: Story = {
-	args: {
-		formItem: {
-			id: "solaceQueue1",
-			schema: solaceQueueSchema
-		},
-		onChange: (data, errors) => action("onChangeHandler")(data, errors)
-	}
-};
-
-export const SolaceQueueWithCustomFields: Story = {
+export const HiddenFields: Story = {
 	args: {
 		formItem: {
 			id: "solaceQueue1",
@@ -406,13 +299,17 @@ export const SolaceQueueWithCustomFields: Story = {
 					case "description":
 						return true;
 					case "property":
-						return data?.const !== undefined || propertyName === "accessType";
+						return data?.const !== undefined || propertyName === "accessType" || propertyName === "secret";
 					default:
 						return false;
 				}
 			},
 			tagName: "div"
 		},
+		formData: {
+			owners: [{ name: "Bob", level: "Read" }]
+		},
+		liveValidate: false,
 		onChange: (data, errors) => action("onChangeHandler")(data, errors),
 		transformError: defaultTransformError,
 		transformWidget: defaultTransform,
@@ -420,7 +317,7 @@ export const SolaceQueueWithCustomFields: Story = {
 	}
 };
 
-export const SolaceQueueWithOrderedFields: Story = {
+export const OrderedFields: Story = {
 	args: {
 		formItem: {
 			id: "solaceQueue1",
@@ -430,8 +327,24 @@ export const SolaceQueueWithOrderedFields: Story = {
 			queueName: "sc_ep_event"
 		},
 		formOptions: {
-			order: ["deadMsgQueue", "queueName", "accessType", "maxMsgSpoolUsage"]
+			order: ["owners", "deadMsgQueue", "queueName", "accessType", "maxMsgSpoolUsage"]
 		},
+		onChange: (data, errors) => action("onChangeHandler")(data, errors),
+		transformError: defaultTransformError
+	}
+};
+
+export const ReadOnly: Story = {
+	args: {
+		formItem: {
+			id: "solaceQueue1",
+			schema: solaceQueueSchemaPartial
+		},
+		formData: {
+			queueName: "sc_ep_event",
+			owners: [{ name: "Antti", level: "Write" }]
+		},
+		readOnly: true,
 		onChange: (data, errors) => action("onChangeHandler")(data, errors),
 		transformError: defaultTransformError
 	}
