@@ -7,77 +7,92 @@ import { userEvent, within } from "@storybook/testing-library";
 
 //================================================================================
 
-const solaceQueueSchemaPartial = {
+const demoSchema = {
 	type: "object",
-	title: "SolaceMsgVpnQueue",
+	title: "DemoSchema",
 	properties: {
-		accessType: {
+		enumProp: {
 			default: "exclusive",
 			enum: ["exclusive", "non-exclusive"],
-			description: "Specifies how multiple consumer flows are bound to the queue",
+			description: "enumProp description",
 			type: "string"
 		},
-		consumerAckPropagationEnabled: {
+		booleanProp: {
 			default: true,
-			description: "Enables or disables the propagation of consumer acknowledgments",
+			description: "booleanProp description",
 			type: "boolean"
 		},
-		deadMsgQueue: {
+		stringProp: {
 			default: "#DEAD_MSG_QUEUE",
 			minLength: 10,
 			maxLength: 30,
-			description: "Queue receive messages that are discarded from one or more queues or topic endpoints",
+			description: "stringProp description",
 			type: "string"
 		},
-		eventBindCountThreshold: {
+		stringWithPatternProp: {
+			pattern: "^sc_[a-z]+$",
+			description: "sc_<squad>",
+			placeholder: "sc_team",
+			type: "string"
+		},
+		pairedProp: {
 			properties: {
 				clearPercent: {
 					type: "integer",
+					description: "nested description 1",
 					const: 50
 				},
 				setPercent: {
 					type: "integer",
+					description: "nested description 2",
 					default: 70
 				}
 			},
 			required: ["setPercent"]
 		},
-		maxMsgSpoolUsage: {
+		integerProp: {
 			default: 5000,
 			minimum: 1000,
 			maximum: 10000,
-			description: "Message spool size should support the number of messages the spool may need to store",
+			description: "integerProp description",
 			type: "integer"
 		},
-		permission: {
+		constProp: {
 			const: "no-access",
+			description: "constProp description",
 			type: "string"
 		},
-		queueName: {
-			pattern: "^sc_ep_[a-z]+$",
-			description: "sc_ep_<squad>",
-			placeholder: "sc_ep_event",
-			type: "string"
-		},
-		owners: {
+		arrayProp: {
 			type: "array",
-			title: "Owners",
 			items: {
 				type: "object",
 				properties: {
 					name: {
 						type: "string",
+						description: "name description",
 						title: "Name"
 					},
-					level: {
-						type: "string",
-						title: "Level"
+					accessLevel: {
+						type: "integer",
+						description: "access level description",
+						title: "Access Level"
 					}
 				}
 			}
+		},
+		longStringProp: {
+			type: "string",
+			description: "longStringProp description",
+			maxLength: 500
+		},
+		longPasswordStringProp: {
+			type: "string",
+			description: "longPasswordStringProp description",
+			format: "password",
+			maxLength: 1000
 		}
 	},
-	required: ["accessType", "deadMsgQueue", "queueName"]
+	required: ["enumProp", "stringProp", "stringWithPatternProp"]
 };
 
 const defaultTransformError = (error) => {
@@ -121,13 +136,13 @@ const meta: Meta<typeof SolaceJsonSchemaForm> = {
 type Story = StoryObj<typeof SolaceJsonSchemaForm>;
 
 export default meta;
-export const BasicForm: Story = {
+export const Standard: Story = {
 	args: {
 		formItem: {
 			id: "person1",
 			schema: {
 				type: "object",
-				title: "SolacePerson",
+				title: "Person",
 				properties: {
 					name: {
 						type: "string",
@@ -191,27 +206,34 @@ export const AnyOf: Story = {
 						type: "object",
 						properties: {
 							option1: {
-								type: "string"
+								type: "string",
+								maxLength: 3
 							}
-						}
+						},
+						required: ["option1"]
 					},
 					{
 						title: "Option 2",
 						type: "object",
 						properties: {
 							option2: {
-								type: "integer"
+								type: "string",
+								minLength: 4
 							}
-						}
+						},
+						required: ["option2"]
 					}
 				]
 			}
 		},
-		onChange: (data) => action("onChangeHandler")(data)
+		formData: {
+			option1: "abc"
+		},
+		onChange: (data, errors) => action("onChangeHandler")(data, errors)
 	}
 };
 
-export const List: Story = {
+export const Arrays: Story = {
 	args: {
 		formItem: {
 			id: "people",
@@ -220,27 +242,29 @@ export const List: Story = {
 				properties: {
 					people: {
 						type: "array",
-						title: "List of people",
+						title: "People",
 						items: {
 							type: "object",
 							properties: {
 								name: {
-									type: "string",
-									title: "Name"
+									title: "Name",
+									type: "string"
 								},
-								height: {
-									type: "number",
-									title: "Height (cm)"
+								accessLevel: {
+									title: "Access Level",
+									type: "integer"
 								}
-							},
-							required: ["name"]
+							}
 						}
 					}
 				}
 			}
 		},
 		formData: {
-			people: [{ name: "Bob", height: 170 }]
+			people: [
+				{ name: "Bob", accessLevel: 100 },
+				{ name: "Boris", accessLevel: 75 }
+			]
 		},
 		onChange: (data) => action("onChangeHandler")(data)
 	}
@@ -252,7 +276,7 @@ export const Validation: Story = {
 			id: "person1",
 			schema: {
 				type: "object",
-				title: "SolacePerson",
+				title: "Person",
 				properties: {
 					name: {
 						type: "string",
@@ -266,13 +290,19 @@ export const Validation: Story = {
 						},
 						minLength: 6,
 						maxLength: 8
+					},
+					longContent: {
+						type: "string",
+						title: "Long Content",
+						maxLength: 150
 					}
 				},
 				required: ["name", "password"]
 			}
 		},
 		formData: {
-			password: "otters_r_us" // too long
+			password: "pw", // too short
+			longContent: "a".repeat(151) // too long
 		},
 		onChange: (data, errors) => action("onChangeHandler")(data, errors),
 		transformError: defaultTransformError
@@ -285,11 +315,11 @@ export const Validation: Story = {
 	}
 };
 
-export const HiddenFields: Story = {
+export const Hidden: Story = {
 	args: {
 		formItem: {
-			id: "solaceQueue1",
-			schema: solaceQueueSchemaPartial
+			id: "demoSchema1",
+			schema: demoSchema
 		},
 		formOptions: {
 			isHidden: (fieldType, propertyName, data) => {
@@ -299,7 +329,7 @@ export const HiddenFields: Story = {
 					case "description":
 						return true;
 					case "property":
-						return data?.const !== undefined || propertyName === "accessType" || propertyName === "secret";
+						return data?.const !== undefined || propertyName === "stringLong";
 					default:
 						return false;
 				}
@@ -307,7 +337,8 @@ export const HiddenFields: Story = {
 			tagName: "div"
 		},
 		formData: {
-			owners: [{ name: "Bob", level: "Read" }]
+			arrayProp: [{ name: "Bob", accessLevel: 50 }],
+			longPasswordStringProp: "x".repeat(500)
 		},
 		liveValidate: false,
 		onChange: (data, errors) => action("onChangeHandler")(data, errors),
@@ -317,17 +348,17 @@ export const HiddenFields: Story = {
 	}
 };
 
-export const OrderedFields: Story = {
+export const Ordered: Story = {
 	args: {
 		formItem: {
-			id: "solaceQueue1",
-			schema: solaceQueueSchemaPartial
+			id: "demoSchema1",
+			schema: demoSchema
 		},
 		formData: {
-			queueName: "sc_ep_event"
+			stringWithPatternProp: "sc_ui"
 		},
 		formOptions: {
-			order: ["owners", "deadMsgQueue", "queueName", "accessType", "maxMsgSpoolUsage"]
+			order: ["arrayProp", "stringProp", "longPasswordStringProp", "constProp", "integerProp"]
 		},
 		onChange: (data, errors) => action("onChangeHandler")(data, errors),
 		transformError: defaultTransformError
@@ -337,12 +368,14 @@ export const OrderedFields: Story = {
 export const ReadOnly: Story = {
 	args: {
 		formItem: {
-			id: "solaceQueue1",
-			schema: solaceQueueSchemaPartial
+			id: "demoSchema1",
+			schema: demoSchema
 		},
 		formData: {
-			queueName: "sc_ep_event",
-			owners: [{ name: "Antti", level: "Write" }]
+			stringWithPatternProp: "sc_ui",
+			arrayProp: [{ name: "Antti", accessLevel: 99 }],
+			longPasswordStringProp: "it's a secret.",
+			longStringProp: new Array(100).fill("item").join(",")
 		},
 		readOnly: true,
 		onChange: (data, errors) => action("onChangeHandler")(data, errors),

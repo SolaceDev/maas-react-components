@@ -1,4 +1,4 @@
-import { DescriptionFieldProps, RegistryWidgetsType, TitleFieldProps, WidgetProps } from "@rjsf/utils";
+import { DescriptionFieldProps, RegistryWidgetsType, RJSFSchema, TitleFieldProps, WidgetProps } from "@rjsf/utils";
 import { isEmpty, toString } from "lodash";
 import { useMemo, useState } from "react";
 import SolaceButton from "../form/SolaceButton";
@@ -29,6 +29,18 @@ const onChangeTrigger = (props: any, e: any) => {
 	}
 };
 
+const isPasswordField = (schema: RJSFSchema) => {
+	return schema.options?.format === "password" || schema.format === "password";
+};
+const getMaxLength = (schema: RJSFSchema, value: string, readonly = false) => {
+	// if readonly and maxLength is set, use the length of the data to reduce empty space
+	if (readonly) {
+		return schema.maxLength ? value.length : schema.maxLength;
+	}
+
+	return schema.maxLength;
+};
+
 const CustomTextWidget = function (
 	widgetProps: WidgetProps,
 	transformWidgetProps?: (props: WidgetProps) => WidgetProps
@@ -38,7 +50,7 @@ const CustomTextWidget = function (
 
 	const errorMessage = props[CustomProperty.error] ?? "";
 	const helperMessage = readonly ? "" : errorMessage || schema.description;
-	const isSensitiveField = schema.options?.format === "password" || schema.format === "password";
+	const isSensitiveField = isPasswordField(schema);
 
 	// state
 	const [showSensitiveField, setShowSensitiveField] = useState(false);
@@ -59,8 +71,8 @@ const CustomTextWidget = function (
 		return fieldValue;
 	}, [value, readonly, schema.const, isSensitiveField, showSensitiveField]);
 
-	const endAdornment = useMemo(() => {
-		if (!readonly && isSensitiveField) {
+	const sensitiveFieldToggle = useMemo(() => {
+		if (isSensitiveField) {
 			return [
 				<SolaceButton
 					key={showSensitiveField ? "eyeIcon" : "hideEyeIcon"}
@@ -74,11 +86,19 @@ const CustomTextWidget = function (
 		}
 
 		return undefined;
-	}, [isSensitiveField, readonly, showSensitiveField]);
+	}, [isSensitiveField, showSensitiveField]);
 
+	const maxLength = getMaxLength(schema, fieldValue, readonly);
 	return (
-		<Box sx={{ display: readonly && isSensitiveField ? "flex" : "block", flexDirection: "row", alignItems: "end" }}>
-			{schema.maxLength && schema.maxLength > 100 ? (
+		<Box
+			sx={{
+				display: isSensitiveField ? "grid" : "block",
+				gridTemplateColumns: "1fr auto",
+				alignItems: "flex-end",
+				overflow: "hidden"
+			}}
+		>
+			{maxLength && maxLength > 100 ? (
 				<SolaceTextArea
 					name={name}
 					label={label}
@@ -88,7 +108,7 @@ const CustomTextWidget = function (
 					required={required && !readonly}
 					disabled={disabled}
 					width="100%"
-					maxLength={schema.maxLength}
+					maxLength={maxLength + 1} // add one to the maxLength to display error message to user
 					hasErrors={!!errorMessage}
 					helperText={helperMessage}
 					placeholder={schema.placeholder ?? ""}
@@ -104,26 +124,14 @@ const CustomTextWidget = function (
 					readOnly={readonly}
 					required={required && !readonly}
 					disabled={disabled}
-					endAdornment={endAdornment}
+					endAdornment={!readonly ? sensitiveFieldToggle : undefined}
 					hasErrors={!!errorMessage}
 					helperText={helperMessage}
 					placeholder={schema.placeholder ?? ""}
 					dataQa={`${label}-form-textField`}
 				/>
 			)}
-
-			{readonly && isSensitiveField && (
-				<Box ml={1}>
-					<SolaceButton
-						key={showSensitiveField ? "eyeIcon" : "hideEyeIcon"}
-						variant="icon"
-						onClick={() => setShowSensitiveField(!showSensitiveField)}
-						dataQa={showSensitiveField ? "showPasswordButton" : "hidePasswordButton"}
-					>
-						{showSensitiveField ? <VisibilityShowIcon /> : <VisibilityHideIcon />}
-					</SolaceButton>
-				</Box>
-			)}
+			{readonly && sensitiveFieldToggle ? <Box ml={1}>{sensitiveFieldToggle}</Box> : null}
 		</Box>
 	);
 };
@@ -133,26 +141,27 @@ const CustomSelectWidget = function (
 	transformWidgetProps?: (props: WidgetProps) => WidgetProps
 ) {
 	const props = transformWidgetProps ? transformWidgetProps(widgetProps) : widgetProps;
+	const { disabled, id, label, name, options, readonly, required, schema, title, value } = props;
 	const errorMessage = props[CustomProperty.error] ?? "";
-	const helperMessage = props.readonly ? "" : errorMessage || props.schema.description;
+	const helperMessage = readonly ? "" : errorMessage || schema.description;
 
-	return props.options.enumOptions !== undefined ? (
+	return options.enumOptions !== undefined ? (
 		<Box mb={props.id.includes("oneof") ? 2 : 0}>
 			<SolaceSelect
-				label={props.label}
-				name={props.name}
+				label={label}
+				name={name}
 				onChange={(e) => onChangeTrigger(props, e)}
-				value={props.value}
-				readOnly={props.readonly}
-				required={props.required && !props.readonly}
-				disabled={props.disabled}
-				title={props.title}
-				id={props.id}
+				value={value}
+				readOnly={readonly}
+				required={required && !readonly}
+				disabled={disabled}
+				title={title}
+				id={id}
 				hasErrors={!!errorMessage}
 				helperText={helperMessage}
-				dataQa={`${props.id}-form-select`}
+				dataQa={`${id}-form-select`}
 			>
-				{props.options.enumOptions.map((option) => (
+				{options.enumOptions.map((option) => (
 					<MenuItem value={option.value} key={option.label}>
 						{option.label}
 					</MenuItem>
@@ -169,21 +178,22 @@ const CustomCheckboxWidget = function (
 	transformWidgetProps?: (props: WidgetProps) => WidgetProps
 ) {
 	const props = transformWidgetProps ? transformWidgetProps(widgetProps) : widgetProps;
+	const { disabled, label, name, readonly, required, schema, value } = props;
 	const errorMessage = props[CustomProperty.error] ?? "";
-	const helperMessage = props.readonly ? "" : errorMessage || props.schema.description;
+	const helperMessage = readonly ? "" : errorMessage || schema.description;
 
 	return (
 		<SolaceCheckBox
-			name={props.name}
-			label={props.label}
+			name={name}
+			label={label}
 			onChange={(e) => props.onChange(e.value)}
-			readOnly={props.readonly}
-			required={props.required && !props.readonly}
-			disabled={props.disabled}
-			checked={props.value}
+			readOnly={readonly}
+			required={required && !readonly}
+			disabled={disabled}
+			checked={value}
 			hasErrors={!!errorMessage}
 			helperText={helperMessage}
-			dataQa={`${props.label}-form-checkbox`}
+			dataQa={`${label}-form-checkbox`}
 		/>
 	);
 };
