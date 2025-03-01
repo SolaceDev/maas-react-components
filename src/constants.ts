@@ -5,5 +5,6 @@ export const constants = {
 	GridListItemHeight: 53,
 	DEFAULT_NUM_OF_MENUITEM_DISPLAYED: 9,
 	closeButtonAriaLabel: "Close",
-	actionMenuAriaLabel: "More Actions"
+	actionMenuAriaLabel: "More Actions",
+	clearButtonAriaLabel: "Clear"
 };

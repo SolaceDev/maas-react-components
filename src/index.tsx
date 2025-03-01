@@ -147,3 +147,4 @@ export type {
 export { SolacePickerIconWrapper } from "./components/form/SolacePicker";
 export type { TooltipVariantTypes } from "./types/solaceTooltip";
 export { TooltipVariant } from "./types/solaceTooltip";
+export { default as SolaceCategorizedSearch } from "./components/SolaceCategorizedSearch";

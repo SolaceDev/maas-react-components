@@ -18,3 +18,4 @@ export * from "./sizing";
 export * from "./solaceStepper";
 export * from "./solaceEmptyStateBanner";
 export * from "./solacefileUploader";
+export * from "./solaceCategorizedSearch";

@@ -7,7 +7,7 @@ import { userEvent, within } from "@storybook/testing-library";
 (SolaceSearchAndFilter as React.FC & { displayName?: string }).displayName = "SolaceSearchAndFilter";
 
 export default {
-	title: "Input/Textfield/Search & Filter",
+	title: "Input/Search & Filter/Standard",
 	component: SolaceSearchAndFilter,
 	parameters: {
 		docs: {

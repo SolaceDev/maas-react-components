@@ -1,15 +1,12 @@
 import React, { ReactNode, useCallback, useEffect, useState } from "react";
 import { Meta, Decorator, StoryFn } from "@storybook/react";
 import {
-	FIELD_TYPES,
+	SolaceCategorizedSearch,
 	SolacePicker,
 	SolacePickerChangeEvent,
 	SolacePickerIconWrapper,
-	SolaceSearchAndFilter,
-	SolaceTextFieldChangeEvent,
-	SolaceToggleButtonGroup,
-	SolaceTooltip,
-	styled
+	SolaceToggleButtonGroupOptionProps,
+	SolaceTooltip
 } from "@SolaceDev/maas-react-components";
 import {
 	Maintenance24Icon,
@@ -326,68 +323,6 @@ const getIconLabelMap = () => {
 
 const sampleColors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
 
-const ContentControlPanelWrapper = styled("div")(({ theme }) => ({
-	display: "flex",
-	flexDirection: "column",
-	justifyContent: "stretch",
-	rowGap: theme.spacing(1),
-	".MuiToggleButtonGroup-root": {
-		".MuiToggleButtonGroup-grouped": {
-			flex: 1
-		}
-	}
-}));
-
-interface CustomContentControlPanelProps {
-	searchText: string;
-	setSearchText: React.Dispatch<React.SetStateAction<string>>;
-	onSearchTextBlur: () => void;
-	onSearchTextFocus: () => void;
-	activeTab: string;
-	setActiveTab: React.Dispatch<React.SetStateAction<string>>;
-	toggleGroupOptions: { value: string; label: string }[];
-	hideToggle?: boolean;
-}
-
-function CustomContentControlPanel({
-	searchText,
-	setSearchText,
-	onSearchTextBlur,
-	onSearchTextFocus,
-	activeTab,
-	setActiveTab,
-	toggleGroupOptions,
-	hideToggle
-}: CustomContentControlPanelProps) {
-	const handleSearchTextChange = (event: SolaceTextFieldChangeEvent) => {
-		setSearchText(event.value);
-	};
-
-	const handleTabChange = (_event: React.MouseEvent<HTMLElement>, value: string) => {
-		setActiveTab(value);
-	};
-
-	return (
-		<ContentControlPanelWrapper>
-			{!hideToggle && (
-				<SolaceToggleButtonGroup
-					options={toggleGroupOptions}
-					activeValue={activeTab}
-					onChange={handleTabChange}
-				></SolaceToggleButtonGroup>
-			)}
-			<SolaceSearchAndFilter
-				name="iconSearchAndFilter"
-				value={searchText}
-				onChange={handleSearchTextChange}
-				type={FIELD_TYPES.SEARCH}
-				onFocus={onSearchTextFocus}
-				onBlur={onSearchTextBlur}
-			/>
-		</ContentControlPanelWrapper>
-	);
-}
-
 function performFilterOnIconKey(
 	key: string,
 	labelMap: { [key: string]: string },
@@ -411,16 +346,17 @@ function performFilterOnIconKey(
 interface ExtendedSolacePickerProps extends React.ComponentProps<typeof SolacePicker> {
 	iconLabelMap: { [key: string]: string };
 	hideToggle?: boolean;
+	disableLogos?: boolean;
 }
 
 const ContentControlTemplate: StoryFn<ExtendedSolacePickerProps> = (args) => {
-	const { icons, iconLabelMap, hideToggle, ...rest } = args;
+	const { icons, iconLabelMap, hideToggle, disableLogos, ...rest } = args;
 	const [selectedOption, setSelectedOption] = useState<string>("DEPLOYED_CODE");
 	const [searchText, setSearchText] = useState("");
 	const [activeTab, setActiveTab] = useState("icon");
-	const toggleGroupOptions = [
+	const toggleGroupOptions: SolaceToggleButtonGroupOptionProps[] = [
 		{ value: "icon", label: "Icons" },
-		{ value: "logo", label: "Logos" }
+		{ value: "logo", label: "Logos", disabled: !!disableLogos }
 	];
 	const [filteredIcons, setFilteredIcons] = useState<{ [x: string]: JSX.Element }>({});
 	const [autoFocusItem, setAutoFocusItem] = useState<boolean>(true);
@@ -466,15 +402,19 @@ const ContentControlTemplate: StoryFn<ExtendedSolacePickerProps> = (args) => {
 			getOptionDisplayValue={getOptionDisplayValue}
 			autoFocusItem={autoFocusItem}
 			contentControlPanel={
-				<CustomContentControlPanel
-					searchText={searchText}
-					setSearchText={setSearchText}
-					activeTab={activeTab}
-					setActiveTab={setActiveTab}
-					toggleGroupOptions={toggleGroupOptions}
-					hideToggle={hideToggle}
-					onSearchTextBlur={() => setAutoFocusItem(true)}
-					onSearchTextFocus={() => setAutoFocusItem(false)}
+				<SolaceCategorizedSearch
+					name={"iconSearchAndFilter"}
+					searchValue={searchText}
+					onSearchValueChange={(event) => setSearchText(event.value)}
+					selectedCategoryValue={activeTab}
+					onCategoryChange={(_event, value) => setActiveTab(value)}
+					categoryOptions={hideToggle ? [] : toggleGroupOptions}
+					placeholder="Search by name"
+					equalButtonWidth={true}
+					onSearchInputFocus={() => setAutoFocusItem(false)}
+					onSearchInputBlur={() => setAutoFocusItem(true)}
+					searchInputWidth="100%"
+					categoryOptionsWidth="100%"
 				/>
 			}
 		/>

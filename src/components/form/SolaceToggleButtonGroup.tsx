@@ -13,6 +13,7 @@ export interface SolaceToggleButtonGroupProps extends SolaceComponentProps {
 export interface SolaceToggleButtonGroupOptionProps extends SolaceComponentProps {
 	label: string | JSX.Element;
 	value: string;
+	disabled?: boolean;
 }
 
 // override here to match specificity of default mui styles
@@ -111,6 +112,7 @@ function SolaceToggleButtonGroup({
 					value={option.value}
 					disableRipple={true}
 					disableFocusRipple={true}
+					disabled={option.disabled ?? false}
 					selected={activeValue === option.value}
 				>
 					{option.label}

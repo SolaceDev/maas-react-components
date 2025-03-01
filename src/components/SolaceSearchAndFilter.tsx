@@ -7,6 +7,7 @@ import { CloseIcon } from "../resources/icons/CloseIcon";
 import { FilterIcon } from "../resources/icons/FilterIcon";
 import { SearchIcon } from "../resources/icons/SearchIcon";
 import { styled } from "@mui/material";
+import { constants } from "../constants";
 
 const SvgContainer = styled("div")(({ theme }) => ({
 	margin: `${theme.spacing(1)} ${theme.spacing(1)} 0 -${theme.spacing(0.5)}`,
@@ -133,6 +134,7 @@ function SolaceSearchAndFilter({
 					isDisabled={disabled}
 					variant="icon"
 					onClick={handleClearInput}
+					aria-label={constants.clearButtonAriaLabel}
 				>
 					<CloseIcon size={20} key="closeIcon" />
 				</SolaceButton>
