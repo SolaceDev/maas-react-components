@@ -1,6 +1,7 @@
 name: Publish MRC website
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "main"
