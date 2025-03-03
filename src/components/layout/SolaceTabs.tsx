@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Tabs, Tab } from "@mui/material";
+import { Box, Tabs, Tab, Theme } from "@mui/material";
 import SolaceComponentProps from "../SolaceComponentProps";
 import { BASE_FONT_PX_SIZES, BASE_FONT_PX_SIZE_TYPES } from "../../resources/typography";
 
@@ -46,23 +46,27 @@ export interface SolaceTabsProps extends SolaceComponentProps {
 	variant?: "fullWidth" | "scrollable" | "standard";
 }
 
+const tabStyles = (theme: Theme, size: keyof BASE_FONT_PX_SIZE_TYPES) => ({
+	height: "100%",
+	fontSize: BASE_FONT_PX_SIZES[size],
+	"&:focus": {
+		border: `1px solid ${theme.palette.ux.accent.n2.wMain}`,
+		outline: "none"
+	}
+});
+
 function AnchorTab(props: TabProps) {
 	const { onTabClick, size = "sm", ...rest } = props;
-	return (
-		<Tab
-			component="a"
-			onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-				event.preventDefault();
-				if (onTabClick) {
-					// The unique tab value is passed back to the callback function
-					onTabClick(props.value);
-				}
-			}}
-			disableRipple={true}
-			sx={{ height: "100%", fontSize: BASE_FONT_PX_SIZES[size] }}
-			{...rest}
-		/>
-	);
+
+	const onClickCallBack = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+		event.preventDefault();
+		if (onTabClick) {
+			// The unique tab value is passed back to the callback function
+			onTabClick(props.value);
+		}
+	};
+
+	return <Tab component="a" onClick={onClickCallBack} disableRipple sx={(theme) => tabStyles(theme, size)} {...rest} />;
 }
 
 function SolaceTabs({
@@ -75,11 +79,27 @@ function SolaceTabs({
 	const handleChange = (_e: React.SyntheticEvent, value: string) => {
 		onTabClick?.(value);
 	};
+
+	const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+		if (["ArrowRight", "ArrowLeft"].includes(event.key)) {
+			event.preventDefault();
+			const currentIndex = tabs.findIndex((tab) => tab.value === activeTabValue);
+			let newIndex = currentIndex;
+			if (event.key === "ArrowRight") {
+				newIndex = (currentIndex + 1) % tabs.length;
+			} else if (event.key === "ArrowLeft") {
+				newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+			}
+			onTabClick?.(tabs[newIndex].value);
+		}
+	};
+
 	return (
 		<Box sx={{ width: "100%", fontSize: BASE_FONT_PX_SIZES[size] }}>
 			<Tabs
 				value={activeTabValue}
 				onChange={handleChange}
+				onKeyDown={handleKeyDown}
 				className={tabs.length === 1 ? "singleTab" : ""}
 				variant={variant}
 			>
