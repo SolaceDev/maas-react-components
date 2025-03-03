@@ -5,6 +5,7 @@ import moment, { Moment } from "moment";
 import { useState, useEffect } from "react";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { SolaceDatePickerVariant, variantConfig } from "../types/solaceDatePicker";
+import { useTheme } from "@mui/material";
 
 export interface SolaceDatePickerProps extends SolaceComponentProps {
 	/**
@@ -15,7 +16,6 @@ export interface SolaceDatePickerProps extends SolaceComponentProps {
 
 	/**
 	 * If `true`, the date picker is readOnly and cannot be changed.
-	 
 	 */
 	disabled?: boolean;
 
@@ -59,6 +59,25 @@ export default function SolaceDatePicker({
 		}
 	};
 
+	const theme = useTheme();
+	const color = theme.palette.ux.accent.n2.wMain;
+	const styles = {
+		".MuiPickersCalendarHeader-switchViewButton:focus-visible": {
+			border: `1px solid ${color}`,
+			borderRadius: "3px"
+		},
+
+		".MuiPickersArrowSwitcher-button:focus-visible": {
+			border: `1px solid ${color}`,
+			borderRadius: "3px"
+		},
+
+		'[role="gridcell"] button:focus-visible': {
+			outline: `1px solid ${color}`,
+			borderRadius: "50%"
+		}
+	};
+
 	return (
 		<LocalizationProvider dateAdapter={AdapterMoment}>
 			<DatePicker
@@ -67,7 +86,10 @@ export default function SolaceDatePicker({
 				onChange={handleChange}
 				data-qa={dataQa}
 				slotProps={{
-					field: { clearable: true, onClear: () => onClear && onClear() }
+					field: { clearable: true, onClear: () => onClear && onClear() },
+					popper: {
+						sx: styles
+					}
 				}}
 				disabled={disabled}
 				views={views}
