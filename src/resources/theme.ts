@@ -912,6 +912,11 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								stroke: themeMapping.palette.deprecated.secondary.wMain
 							}
 						},
+						"&.Mui-focusVisible": {
+							".MuiSvgIcon-root .SolaceRadioContainer": {
+								stroke: themeMapping.palette.accent.n2.wMain
+							}
+						},
 						"&.Mui-checked": {
 							".SolaceRadioSelection": {
 								fill: themeMapping.palette.deprecated.accent.n2.wMain

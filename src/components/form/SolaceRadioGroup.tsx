@@ -1,7 +1,14 @@
 import { Box, RadioGroup, Grid, useTheme } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
+
+const keyMapping: Record<string, number> = {
+	ArrowDown: 1,
+	ArrowRight: 1,
+	ArrowUp: -1,
+	ArrowLeft: -1
+};
 
 export interface SolaceRadioGroupChangeEvent {
 	name: string;
@@ -95,6 +102,7 @@ function SolaceRadioGroup({
 }: SolaceRadioGroupProps): JSX.Element {
 	const theme = useTheme();
 	const [selected, setSelected] = useState(value);
+	const radioGroupRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		setSelected(value);
@@ -114,6 +122,52 @@ function SolaceRadioGroup({
 		id = name;
 	}
 
+	useEffect(() => {
+		const group = radioGroupRef.current;
+		if (!group) return;
+
+		const focusTarget = group.querySelector(`input[value="${selected}"]`) ?? group.querySelector("input");
+
+		if (focusTarget && focusTarget instanceof HTMLElement) {
+			focusTarget.focus();
+		}
+	}, [selected]);
+
+	const radioOptions = useMemo((): string[] => {
+		/*
+		 * 1. Convert the children prop to an array.
+		 * 2. Filter valid React elements.
+		 * 3. Map over the valid elements to extract their "value" prop.
+		 * 4. Filter out any null or undefined values.
+		 * This ensures that the radioOptions array only contains valid string values,
+		 * and it will only be recomputed when the "children" prop changes.
+		 * */
+		return React.Children.toArray(children)
+			.filter(React.isValidElement)
+			.map((child) => (child as React.ReactElement).props.value)
+			.filter((option): option is string => option !== null && option !== undefined);
+	}, [children]);
+
+	const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+		if (disabled || readOnly) return;
+
+		if (radioOptions.length === 0) return;
+
+		const delta = keyMapping[event.key] ?? 0;
+		if (delta === 0) return;
+
+		event.preventDefault();
+
+		const currentIndex = selected ? radioOptions.indexOf(selected) : 0;
+		const newIndex = (currentIndex + delta + radioOptions.length) % radioOptions.length;
+
+		if (newIndex !== currentIndex) {
+			const newValue = radioOptions[newIndex];
+			setSelected(newValue);
+			onChange?.({ name, value: newValue });
+		}
+	};
+
 	const getRadioGroup = () => {
 		const childItems: Array<React.ReactNode> = children.map((child, i) => (
 			<Grid item key={i}>
@@ -123,7 +177,15 @@ function SolaceRadioGroup({
 
 		return (
 			<Box display="flex" flexDirection="row" justifyContent="flex-start" alignItems="center">
-				<RadioGroup aria-label={name} name={name} role="radiogroup" value={selected} onChange={handleChange}>
+				<RadioGroup
+					aria-label={name}
+					name={name}
+					role="radiogroup"
+					value={selected}
+					onChange={handleChange}
+					onKeyDown={handleKeyDown}
+					ref={radioGroupRef}
+				>
 					<Grid container spacing={inline ? 4.5 : 1.5} direction={inline ? "row" : "column"}>
 						{childItems}
 					</Grid>
