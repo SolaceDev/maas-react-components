@@ -32,6 +32,9 @@ export default {
 		variant: {
 			options: [SolaceDatePickerVariant.FORMAT_YEAR_MONTH_DAY, SolaceDatePickerVariant.FORMAT_MONTH_YEAR],
 			control: { type: "select" }
+		},
+		disableFuture: {
+			control: { type: "boolean" }
 		}
 	},
 	decorators: [withSnapshotContainer]

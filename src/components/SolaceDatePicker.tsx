@@ -34,6 +34,11 @@ export interface SolaceDatePickerProps extends SolaceComponentProps {
 	 * A callback that's called when the date picker is cleared.
 	 */
 	onClear?: () => void;
+
+	/**
+	 * This prop prevents the selection of all dates after the current date.
+	 */
+	disableFuture?: boolean;
 }
 
 export default function SolaceDatePicker({
@@ -42,8 +47,9 @@ export default function SolaceDatePicker({
 	onClear,
 	dataQa,
 	variant = SolaceDatePickerVariant.FORMAT_YEAR_MONTH_DAY,
-	disabled = false
-}: SolaceDatePickerProps) {
+	disabled = false,
+	disableFuture = false
+}: Readonly<SolaceDatePickerProps>) {
 	const [date, setDate] = useState<Moment | null>(value ? moment(value) : null);
 
 	const { views, openTo, format } = variantConfig[variant];
@@ -95,6 +101,7 @@ export default function SolaceDatePicker({
 				views={views}
 				openTo={openTo}
 				format={format}
+				disableFuture={disableFuture}
 			/>
 		</LocalizationProvider>
 	);
