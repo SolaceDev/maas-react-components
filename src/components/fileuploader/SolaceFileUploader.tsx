@@ -224,13 +224,13 @@ export default function SolaceFileUploader(props: SolaceFileUploaderProps) {
 					)}
 				</Box>
 			)}
-			{(errorText || validationError) && (
-				<ErrorText dataQa="solaceFileUploaderError">{errorText || validationError}</ErrorText>
-			)}
 			{filesData.length > 0 && (
 				<SolaceStack mt={maxFiles > 1 ? 2 : 0}>
 					{filesData.map((file, index) => renderFileNameDisplay(file, index))}
 				</SolaceStack>
+			)}
+			{(errorText || validationError) && (
+				<ErrorText dataQa="solaceFileUploaderError">{errorText || validationError}</ErrorText>
 			)}
 		</>
 	);
