@@ -250,6 +250,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						fontWeight: "500",
 						padding: theme.spacing(1, 2),
 
+						"&.Mui-focusVisible": {
+							outline: `1px solid ${themeMapping.palette.accent.n2.wMain}`
+						},
 						"&.call-to-action-button": {
 							borderRadius: `10px 3px`,
 							color: themeMapping.palette.learning.wMain,
