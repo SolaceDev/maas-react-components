@@ -85,6 +85,7 @@ function SolaceButton({
 				minWidth: "100px",
 				height: theme.spacing(32 / 8),
 				"&:focus": {
+					borderRadius: 0,
 					outline: `1px solid ${theme.palette.ux.accent.n2.wMain}`,
 					outlineOffset: "-1px"
 				}
