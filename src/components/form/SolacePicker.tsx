@@ -46,6 +46,13 @@ const Color = styled(SolacePickerIconWrapper, {
 	width: ${theme.spacing(3)};`
 );
 
+export const EmptyMessageContainer = styled("div")(
+	({ theme }) => `
+	width: 100%;
+	color: ${theme.palette.ux.deprecated.secondary.text.wMain};
+	text-align: center;`
+);
+
 export type SolacePickerTypes = "colors" | "icons";
 
 const sizes: { [key in SolacePickerTypes]: number } = {
@@ -199,6 +206,10 @@ export interface SolacePickerProps<T extends string> extends SolaceComponentProp
 	 * If true, will focus on the first menuitem
 	 */
 	autoFocusItem?: boolean;
+	/**
+	 * Empty state message
+	 */
+	emptyStateMessage?: string;
 }
 
 const ITEM_HEIGHT = 32;
@@ -207,6 +218,7 @@ const ITEM_GAP = 8;
 const DEFAULT_NUM_OF_ROWS = 5;
 // Padding defined in SolaceGrid for MUI Paper component where menu items are rendered
 const MUI_PAPER_PADDING = 16;
+const DEFAULT_EMPTY_MESSAGE = "No Results Found";
 
 function SolacePicker<T extends string>({
 	id,
@@ -236,7 +248,8 @@ function SolacePicker<T extends string>({
 	numOfRowsDisplayed = DEFAULT_NUM_OF_ROWS,
 	contentControlPanel,
 	getOptionDisplayValue,
-	autoFocusItem = true
+	autoFocusItem = true,
+	emptyStateMessage = DEFAULT_EMPTY_MESSAGE
 }: SolacePickerProps<T>): JSX.Element {
 	const theme = useTheme();
 	const ux = theme.palette.ux;
@@ -356,6 +369,22 @@ function SolacePicker<T extends string>({
 		return null;
 	}, [contentControlPanel, contentWidth, numOfMenuItemsPerRow, theme]);
 
+	const renderEmptyMessage = useCallback(() => {
+		return (
+			<ListSubheader
+				sx={{
+					gridColumnStart: 1,
+					gridColumnEnd: numOfMenuItemsPerRow + 1,
+					padding: theme.spacing(0),
+					width: contentWidth, // width is determined by the number of items per row
+					height: "fit-content !important"
+				}}
+			>
+				<EmptyMessageContainer>{emptyStateMessage}</EmptyMessageContainer>
+			</ListSubheader>
+		);
+	}, [contentWidth, emptyStateMessage, numOfMenuItemsPerRow, theme]);
+
 	const renderColorMenuItems = useCallback(() => {
 		if (variant === "colors") {
 			return colors.map((color) => {
@@ -374,29 +403,39 @@ function SolacePicker<T extends string>({
 	}, [colors, variant]);
 
 	const renderIconMenuItems = useCallback(() => {
-		if (variant === "icons" && icons) {
-			if (iconKeyOrderedList) {
-				return iconKeyOrderedList
-					.map((key) => {
-						const icon = icons[key];
-						return icon ? (
-							<MenuItem key={key} value={key} disableGutters>
-								<SolacePickerIconWrapper>{icon}</SolacePickerIconWrapper>
-							</MenuItem>
-						) : null;
-					})
-					.filter((item) => item !== null);
+		if (variant === "icons") {
+			let iconMenuItems = null;
+
+			if (icons) {
+				if (iconKeyOrderedList) {
+					iconMenuItems = iconKeyOrderedList
+						.map((key) => {
+							const icon = icons[key];
+							return icon ? (
+								<MenuItem key={key} value={key} disableGutters>
+									<SolacePickerIconWrapper>{icon}</SolacePickerIconWrapper>
+								</MenuItem>
+							) : null;
+						})
+						.filter((item) => item !== null);
+				} else {
+					iconMenuItems = Object.entries<JSX.Element>(icons).map(([key, icon]) => (
+						<MenuItem key={key} value={key} disableGutters>
+							<SolacePickerIconWrapper>{icon}</SolacePickerIconWrapper>
+						</MenuItem>
+					));
+				}
+			}
+
+			if (iconMenuItems?.length) {
+				return iconMenuItems;
 			} else {
-				return Object.entries<JSX.Element>(icons).map(([key, icon]) => (
-					<MenuItem key={key} value={key} disableGutters>
-						<SolacePickerIconWrapper>{icon}</SolacePickerIconWrapper>
-					</MenuItem>
-				));
+				return renderEmptyMessage();
 			}
 		}
 
 		return null;
-	}, [iconKeyOrderedList, icons, variant]);
+	}, [variant, icons, iconKeyOrderedList, renderEmptyMessage]);
 
 	const select = () => (
 		<Select

@@ -34,8 +34,8 @@ import {
 	VisibilityShow24Icon,
 	NoSelection24Icon
 } from "@SolaceDev/maas-icons";
-import { within } from "@storybook/testing-library";
-import { userEvent } from "@storybook/testing-library";
+import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 (SolacePicker as React.FC & { displayName?: string }).displayName = "SolacePicker";
 
@@ -347,12 +347,14 @@ interface ExtendedSolacePickerProps extends React.ComponentProps<typeof SolacePi
 	iconLabelMap: { [key: string]: string };
 	hideToggle?: boolean;
 	disableLogos?: boolean;
+	searchValue?: string;
+	customEmptyMessage?: string;
 }
 
 const ContentControlTemplate: StoryFn<ExtendedSolacePickerProps> = (args) => {
-	const { icons, iconLabelMap, hideToggle, disableLogos, ...rest } = args;
+	const { icons, iconLabelMap, hideToggle, disableLogos, searchValue, customEmptyMessage, ...rest } = args;
 	const [selectedOption, setSelectedOption] = useState<string>("DEPLOYED_CODE");
-	const [searchText, setSearchText] = useState("");
+	const [searchText, setSearchText] = useState(searchValue ?? "");
 	const [activeTab, setActiveTab] = useState("icon");
 	const toggleGroupOptions: SolaceToggleButtonGroupOptionProps[] = [
 		{ value: "icon", label: "Icons" },
@@ -417,6 +419,7 @@ const ContentControlTemplate: StoryFn<ExtendedSolacePickerProps> = (args) => {
 					categoryOptionsWidth="100%"
 				/>
 			}
+			emptyStateMessage={customEmptyMessage}
 		/>
 	);
 };
@@ -435,6 +438,84 @@ export const FilterContent = {
 		const canvas = within(canvasElement);
 
 		await userEvent.click(canvas.getByRole("combobox"));
+	},
+
+	parameters: {
+		// Delay snapshot 1 second until all interactions are done
+		chromatic: { delay: 1000 }
+	}
+};
+
+export const FilterContentWithInitalSearchText = {
+	render: ContentControlTemplate,
+	args: {
+		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
+		iconLabelMap: getIconLabelMap(),
+		numOfItemsPerRow: 6,
+		numOfRowsDisplayed: 5,
+		searchValue: "te"
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const root = within(canvasElement.parentElement);
+
+		await userEvent.click(canvas.getByRole("combobox"));
+		await waitFor(() => expect(root.getAllByRole("option")).toHaveLength(5));
+	},
+
+	parameters: {
+		// Delay snapshot 1 second until all interactions are done
+		chromatic: { delay: 1000 }
+	}
+};
+
+export const FilterContentWithInvalidSearchText = {
+	render: ContentControlTemplate,
+	args: {
+		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
+		iconLabelMap: getIconLabelMap(),
+		numOfItemsPerRow: 6,
+		numOfRowsDisplayed: 5,
+		searchValue: "invalid"
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const root = within(canvasElement.parentElement);
+
+		await userEvent.click(canvas.getByRole("combobox"));
+		await waitFor(() => expect(root.getAllByRole("option")).toHaveLength(2));
+		await waitFor(() => expect(root.getByText("No Results Found")).toBeInTheDocument());
+	},
+
+	parameters: {
+		// Delay snapshot 1 second until all interactions are done
+		chromatic: { delay: 1000 }
+	}
+};
+
+export const FilterContentWithCustomEmptyMessage = {
+	render: ContentControlTemplate,
+	args: {
+		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
+		iconLabelMap: getIconLabelMap(),
+		numOfItemsPerRow: 6,
+		numOfRowsDisplayed: 5,
+		searchValue: "invalid",
+		customEmptyMessage: "No items found"
+	},
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+		const root = within(canvasElement.parentElement);
+
+		await userEvent.click(canvas.getByRole("combobox"));
+		await waitFor(() => expect(root.getAllByRole("option")).toHaveLength(2));
+		await waitFor(() => expect(root.getByText("No items found")).toBeInTheDocument());
 	},
 
 	parameters: {
