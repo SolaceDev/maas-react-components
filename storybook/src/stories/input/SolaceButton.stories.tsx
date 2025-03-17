@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { SolaceButton, DeleteIcon } from "@SolaceDev/maas-react-components";
+import { userEvent } from "@storybook/testing-library";
 
 (SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
 
@@ -93,6 +94,10 @@ export default {
 		children: {
 			control: { type: "object" },
 			description: "Button label or contents"
+		},
+		disabledFocusState: {
+			control: { type: "boolean" },
+			description: "Boolean flag to disable the focus state of the button"
 		}
 	}
 } as Meta<typeof SolaceButton>;
@@ -136,6 +141,24 @@ export const IconButton = {
 		variant: VARIANT.ICON,
 		title: "Delete",
 		children: <DeleteIcon />
+	},
+
+	play: async () => {
+		await userEvent.tab();
+	}
+};
+
+export const IconButtonWithDisabledFocusState = {
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.ICON,
+		title: "Delete",
+		children: <DeleteIcon />,
+		disabledFocusState: true
+	},
+
+	play: async () => {
+		await userEvent.tab();
 	}
 };
 

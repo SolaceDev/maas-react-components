@@ -1,4 +1,4 @@
-import { Button, IconButton, Link, useTheme } from "@mui/material";
+import { Button, IconButton, Link, SxProps, Theme, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import { OpenExternalIcon } from "../../resources/icons/OpenExternalIcon";
 import SolaceTooltip from "../SolaceToolTip";
@@ -23,6 +23,7 @@ export interface SolaceButtonProps extends SolaceComponentProps {
 	children?: string | JSX.Element;
 	dense?: boolean; // only applicable to link variant
 	openLinkInNewTab?: boolean;
+	disabledFocusState?: boolean;
 }
 
 // Todo: Refactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed
@@ -46,7 +47,8 @@ function SolaceButton({
 	children,
 	dense = false,
 	openLinkInNewTab = href ? true : false,
-	eventName
+	eventName,
+	disabledFocusState = false
 }: SolaceButtonProps): JSX.Element {
 	const handleClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		if (onClick) {
@@ -57,6 +59,16 @@ function SolaceButton({
 	const theme = useTheme();
 
 	if (variant === "icon") {
+		const focusStyles: SxProps<Theme> = disabledFocusState
+			? {}
+			: {
+					"&.MuiIconButton-root.Mui-focusVisible": {
+						outline: `1px solid ${theme.palette.ux.accent.n2.wMain}`,
+						outlineOffset: "1px",
+						borderRadius: "3px"
+					}
+			  };
+
 		return (
 			<SolaceTooltip title={title}>
 				<IconButton
@@ -71,6 +83,7 @@ function SolaceButton({
 					size="large"
 					href={href}
 					component={href ? "a" : "button"}
+					sx={focusStyles}
 				>
 					{children}
 				</IconButton>
@@ -130,6 +143,7 @@ function SolaceButton({
 			outlined = "outlined",
 			text = "text"
 		}
+
 		const BUTTON_VARIANT_MAP = {
 			"call-to-action": MATERIAL_VARIANTS.contained,
 			outline: MATERIAL_VARIANTS.outlined,
