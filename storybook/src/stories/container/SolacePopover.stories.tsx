@@ -62,6 +62,11 @@ export default {
 		},
 		enterNextDelay: {
 			control: { type: "number" }
+		},
+		useAnimation: {
+			control: { type: "boolean" },
+			description: "Enable or disable the popover animation",
+			defaultValue: true
 		}
 	},
 	decorators: [withSnapshotContainer]
@@ -276,6 +281,21 @@ export const HtmlPopoverMediumWidth = {
 		// Starts querying the component from it's root element
 		const canvas = within(canvasElement);
 		const triggerElement = canvas.getByTestId("version-details");
+		await userEvent.hover(triggerElement);
+	}
+};
+
+export const PopoverWithoutAnimation = {
+	args: {
+		title: "Popover without animation",
+		children: <span data-testid="no-animation-popover">Hover me (no animation)</span>,
+		useAnimation: false,
+		maxWidth: "medium"
+	},
+	decorators: [withSnapshotContainer],
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const triggerElement = canvas.getByTestId("no-animation-popover");
 		await userEvent.hover(triggerElement);
 	}
 };

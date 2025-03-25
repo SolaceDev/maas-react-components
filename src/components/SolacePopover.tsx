@@ -33,6 +33,8 @@ interface SolacePopoverProps extends SolaceComponentProps {
 	enterDelay?: number;
 	// Delay in milliseconds before showing the tooltip when one was recently opened, defaults to 0ms
 	enterNextDelay?: number;
+	// Flag to enable/disable the animation, defaults to true
+	useAnimation?: boolean;
 }
 
 // SolacePopover functional component
@@ -47,7 +49,8 @@ const SolacePopover = ({
 	children,
 	enterDelay = 500,
 	enterNextDelay = 0,
-	maxWidth = "small"
+	maxWidth = "small",
+	useAnimation = true
 }: SolacePopoverProps) => {
 	// Return the Tooltip component with the provided props and handlers
 	return (
@@ -63,8 +66,10 @@ const SolacePopover = ({
 			enterNextDelay={enterNextDelay}
 			leaveDelay={0}
 			placement={placement}
-			TransitionComponent={Fade}
-			TransitionProps={{ timeout: { enter: 150, exit: 200 } }}
+			slots={{ transition: useAnimation ? Fade : undefined }}
+			slotProps={{
+				transition: { timeout: { enter: useAnimation ? 150 : undefined, exit: useAnimation ? 200 : undefined } }
+			}}
 		>
 			{children}
 		</Tooltip>
