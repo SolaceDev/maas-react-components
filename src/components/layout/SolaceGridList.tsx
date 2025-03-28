@@ -92,9 +92,7 @@ function SolaceGridListRow({
 			className={`${selected ? "selected" : ""} ${indicatorVariant ? "indicator-" + indicatorVariant : ""} ${
 				emphasized ? "emphasized" : ""
 			}`}
-			onClick={(e) => {
-				if (e.target === e.currentTarget) onClick(id);
-			}}
+			onClick={() => onClick(id)}
 			onKeyPress={(e) => handleKeyPress(e)}
 			style={{ gridTemplateColumns: gridTemplate }}
 			tabIndex={index}
@@ -108,9 +106,7 @@ function SolaceGridListRow({
 			className={`${selected ? "selected" : ""} ${indicatorVariant ? "indicator-" + indicatorVariant : ""} ${
 				emphasized ? "emphasized" : ""
 			}`}
-			onClick={(e) => {
-				if (e.target === e.currentTarget) onClick(id);
-			}}
+			onClick={() => onClick(id)}
 			onKeyPress={(e) => handleKeyPress(e)}
 			style={{ gridTemplateColumns: gridTemplate }}
 			tabIndex={index}

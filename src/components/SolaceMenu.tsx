@@ -249,6 +249,12 @@ export default function SolaceMenu(props: SolaceMenuProps): JSX.Element {
 
 						ref: (ref) => {
 							setMenuPopoverRef(ref); // ref setter on the Paper component
+						},
+						onClick: (event) => {
+							// stop click event on the paper from being bubble up to parent
+							// clicking on menu item inside the paper should trigger the menu item click event,
+							// and that onClick handler will also stop the event from being bubble up to parent
+							event.stopPropagation();
 						}
 					}
 				}}

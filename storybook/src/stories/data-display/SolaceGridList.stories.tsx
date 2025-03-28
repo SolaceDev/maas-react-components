@@ -228,7 +228,8 @@ const createActionMenu = (item) => {
 			items={[
 				{
 					name: "View Details",
-					onMenuItemClick: handleViewSelection
+					onMenuItemClick: handleViewSelection,
+					disabled: true
 				},
 				{
 					name: "Delete",
@@ -606,6 +607,19 @@ export const ListWithSelection = {
 		onSelection: action("rowSelected"),
 		rowMapping: basicRowMapping,
 		gridTemplate: GRID_TEMPLATE_1,
+		dataQa: "demoDefaultList"
+	}
+};
+
+export const ListWithSelectionAndActionMenu = {
+	render: SolaceGridListSelectStory,
+
+	args: {
+		items: testListItems,
+		headers: testHeaders,
+		onSelection: action("rowSelected"),
+		rowMapping: withActionColumnMapping,
+		gridTemplate: "minmax(120px, 1fr) minmax(120px, 1fr) 300px 40px",
 		dataQa: "demoDefaultList"
 	}
 };
