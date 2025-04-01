@@ -5,13 +5,13 @@ import { within, userEvent } from "@storybook/testing-library";
 import {
 	InfoIcon,
 	SolaceAttributeValuePairForm,
-	SolacePopover,
+	SolaceTooltip,
+	TooltipVariant,
 	Typography,
 	useTheme
 } from "@SolaceDev/maas-react-components";
 
 (SolaceAttributeValuePairForm as React.FC & { displayName?: string }).displayName = "SolaceAttributeValuePairForm";
-(SolacePopover as React.FC & { displayName?: string }).displayName = "SolacePopover";
 
 export default {
 	title: "Input/Textfield/Attribute Pair",
@@ -378,11 +378,11 @@ const Title = (props: { label: string }) => {
 	return (
 		<div style={{ display: "flex", alignItems: "center" }}>
 			{props.label}
-			<SolacePopover maxWidth="full" title="Important information">
+			<SolaceTooltip variant={TooltipVariant.rich} maxWidth="full" title="Important information">
 				<div style={{ display: "flex", marginLeft: theme.spacing(0.5) }}>
 					<InfoIcon size={20} fill={theme.palette.ux.secondary.wMain} />
 				</div>
-			</SolacePopover>
+			</SolaceTooltip>
 		</div>
 	);
 };

@@ -2,16 +2,15 @@ import React from "react";
 import { Meta, StoryFn, Decorator } from "@storybook/react";
 import {
 	SolaceChip,
-	SolacePopover,
 	SolaceTooltip,
 	CHIP_VARIANT,
 	InfoIcon,
+	TooltipVariant,
 	MODES
 } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
 
 (SolaceChip as React.FC & { displayName?: string }).displayName = "SolaceChip";
-(SolacePopover as React.FC & { displayName?: string }).displayName = "SolacePopover";
 (SolaceTooltip as React.FC & { displayName?: string }).displayName = "SolaceTooltip";
 
 // Create a decorator to include the tooltip & popover inside the snapshot"
@@ -68,11 +67,11 @@ const Template: StoryFn<typeof SolaceChip> = (args) => <SolaceChip {...args} />;
 
 const PopoverTemplate: StoryFn<typeof SolaceChip> = (args) => {
 	return (
-		<SolacePopover title={<CustomPopoverText />} placement="right-end">
+		<SolaceTooltip variant={TooltipVariant.rich} title={<CustomPopoverText />} placement="right-end">
 			<span>
 				<SolaceChip {...args} />
 			</span>
-		</SolacePopover>
+		</SolaceTooltip>
 	);
 };
 

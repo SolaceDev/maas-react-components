@@ -1,79 +1,112 @@
-import { Tooltip, Fade } from "@mui/material";
-import SolaceComponentProps from "./SolaceComponentProps";
+/**
+ * A functional component that wraps the Material-UI `Popover` component with additional
+ * customization options and props. This component is used to display content in a popover
+ * anchored to a specific element or position.
+ *
+ * @param props - The properties to configure the `SolacePopover` component.
+ * @param props.id - The unique identifier for the popover.
+ * @param props.key - A React key for the component.
+ * @param props.anchorElement - The element to which the popover is anchored.
+ * @param props.anchorPosition - The position to anchor the popover, if specified.
+ * @param props.anchorOrigin - The origin point for the popover's anchor.
+ * @param props.transformOrigin - The origin point for the popover's transformation.
+ * @param props.open - A boolean indicating whether the popover is open.
+ * @param props.dataQa - A data attribute for QA purposes.
+ * @param props.dataTags - A data attribute for tagging purposes.
+ * @param props.children - The content to be displayed inside the popover.
+ * @param props.onClose - A callback function triggered when the popover is closed.
+ * @param props.marginThreshold - The margin threshold for the popover's positioning.
+ * @param props.activateOnHover - A boolean indicating whether the popover should activate on hover.
+ * @param props.additionalProps - Additional props to be passed to the `Popover` component.
+ *
+ * @returns A Material-UI `Popover` component with the provided configuration and content.
+ *
+ * @example
+ * ```tsx
+ * import React, { useState } from "react";
+ * import SolacePopover from "./SolacePopover";
+ *
+ * const Example = () => {
+ *   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+ *   const [open, setOpen] = useState(false);
+ *
+ *   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+ *     setAnchorEl(event.currentTarget);
+ *     setOpen(true);
+ *   };
+ *
+ *   const handleClose = () => {
+ *     setAnchorEl(null);
+ *     setOpen(false);
+ *   };
+ *
+ *   return (
+ *     <div>
+ *       <button onClick={handleClick}>Open Popover</button>
+ *       <SolacePopover
+ *         id="example-popover"
+ *         open={open}
+ *         anchorElement={anchorEl}
+ *         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+ *         transformOrigin={{ vertical: "top", horizontal: "center" }}
+ *         onClose={handleClose}
+ *       >
+ *         <div style={{ padding: "16px" }}>This is the content of the popover.</div>
+ *       </SolacePopover>
+ *     </div>
+ *   );
+ * };
+ *
+ * export default Example;
+ * ```
+ */
+import Popover from "@mui/material/Popover";
+import { SolacePopoverProps } from "../types/solacePopover";
 
-// Define the props interface for SolacePopover component
-interface SolacePopoverProps extends SolaceComponentProps {
-	// Optional id for accessibility, falls back to a randomly generated id by MUI if not provided
-	id?: string;
-	// Popover title, not displayed if it's an empty string
-	title?: string | JSX.Element;
-	// Reference element for the popover, must be able to hold a ref
-	children: JSX.Element;
-	// Disable focus listener for showing the tooltip, defaults to false
-	disableFocusListener?: boolean;
-	// Disable hover listener for showing the popover, defaults to false
-	disableHoverListener?: boolean;
-	// Popover placement options
-	placement?:
-		| "bottom-end"
-		| "bottom-start"
-		| "bottom"
-		| "left-end"
-		| "left-start"
-		| "left"
-		| "right-end"
-		| "right-start"
-		| "right"
-		| "top-end"
-		| "top-start"
-		| "top";
-	// Tooltip maximum width, defaults to small
-	maxWidth?: "small" | "medium" | "full";
-	// Delay in milliseconds before showing the tooltip, defaults to 500ms
-	enterDelay?: number;
-	// Delay in milliseconds before showing the tooltip when one was recently opened, defaults to 0ms
-	enterNextDelay?: number;
-	// Flag to enable/disable the animation, defaults to true
-	useAnimation?: boolean;
-}
+const SolacePopover = (props: SolacePopoverProps) => {
+	const {
+		id,
+		key,
+		anchorElement,
+		anchorPosition,
+		anchorOrigin,
+		transformOrigin,
+		open,
+		dataQa,
+		dataTags,
+		children,
+		onClose,
+		marginThreshold,
+		activateOnHover,
+		...additionalProps
+	} = props;
+	// Determine the anchorReference based on the presence of anchorPosition
+	const anchorRef = anchorPosition ? "anchorPosition" : "anchorEl";
 
-// SolacePopover functional component
-const SolacePopover = ({
-	id,
-	title,
-	placement,
-	disableFocusListener = false,
-	disableHoverListener = false,
-	dataQa,
-	dataTags,
-	children,
-	enterDelay = 500,
-	enterNextDelay = 0,
-	maxWidth = "small",
-	useAnimation = true
-}: SolacePopoverProps) => {
-	// Return the Tooltip component with the provided props and handlers
+	// Return the Popover component with the provided props and handlers
 	return (
-		<Tooltip
+		<Popover
 			id={id}
-			title={title || ""}
-			classes={{ tooltip: `SolacePopover ${maxWidth ? maxWidth + "Width" : ""}` }}
+			open={open}
+			anchorReference={anchorRef}
+			anchorOrigin={anchorOrigin}
+			transformOrigin={transformOrigin}
+			anchorPosition={anchorPosition}
+			anchorEl={anchorElement}
+			key={key}
+			classes={{ paper: "SolacePopover" }}
 			data-qa={dataQa}
 			data-tags={dataTags}
-			disableFocusListener={disableFocusListener}
-			disableHoverListener={disableHoverListener}
-			enterDelay={enterDelay}
-			enterNextDelay={enterNextDelay}
-			leaveDelay={0}
-			placement={placement}
-			slots={{ transition: useAnimation ? Fade : undefined }}
-			slotProps={{
-				transition: { timeout: { enter: useAnimation ? 150 : undefined, exit: useAnimation ? 200 : undefined } }
-			}}
+			onClose={onClose}
+			marginThreshold={marginThreshold}
+			sx={{ pointerEvents: activateOnHover ? "none" : "auto" }}
+			{...additionalProps}
 		>
 			{children}
-		</Tooltip>
+		</Popover>
 	);
 };
+
+SolacePopover.displayName = "SolacePopover";
 
 export default SolacePopover;

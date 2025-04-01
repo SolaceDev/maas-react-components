@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Decorator, Meta } from "@storybook/react";
-import { HelpOutlineOutlinedIcon, SolaceButton, SolacePopover } from "@SolaceDev/maas-react-components";
+import {
+	Box,
+	SolaceButton,
+	SolacePopover,
+	SolacePopoverProps,
+	SolaceTextField,
+	SolaceStack,
+	SolaceTypography
+} from "@SolaceDev/maas-react-components";
+import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/test";
 
 (SolacePopover as React.FC & { displayName?: string }).displayName = "SolacePopover";
 (SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
-(HelpOutlineOutlinedIcon as React.FC & { displayName?: string }).displayName = "HelpOutlineOutlinedIcon";
+(SolaceTextField as React.FC & { displayName?: string }).displayName = "SolaceTextField";
+(SolaceTypography as React.FC & { displayName?: string }).displayName = "SolaceTypography";
 
 // Create a decorator to include the tooltip & popover inside the snapshot"
 const withSnapshotContainer: Decorator = (Story) => {
 	return (
-		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
-			<div style={{ margin: "16px" }}>
-				<Story />
-			</div>
+		<div id="snapshot" style={{ height: "600px", padding: "0px", margin: "0px" }}>
+			<Story />
 		</div>
 	);
 };
@@ -21,10 +29,17 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Container/Popover",
 	component: SolacePopover,
-	properties: {
+	decorators: [withSnapshotContainer],
+	parameters: {
+		chromatic: { delay: 1000 },
+		design: {
+			type: "figma",
+			url: "https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21909-955&p=f&t=nZPRTnBQWGY5q2cb-0"
+		},
 		docs: {
 			description: {
-				component: "Code component name: SolacePopover"
+				component:
+					"A Popover can be used to display some content on top of another. Popovers can appear in-context, aligned to the anchor element. Alignment can vary depending on where the anchor element is placed on a page."
 			}
 		}
 	},
@@ -32,270 +47,412 @@ export default {
 		id: {
 			control: { type: "text" }
 		},
-		placement: {
-			options: [
-				"bottom-end",
-				"bottom-start",
-				"bottom",
-				"left-end",
-				"left-start",
-				"left",
-				"right-end",
-				"right-start",
-				"right",
-				"top-end",
-				"top-start",
-				"top"
-			],
-			control: {
-				type: "select"
-			}
+		anchorOrigin: {
+			control: "object",
+			description:
+				"This is the point on the referenced anchor where the popover will attach to. This is used to determine the position of the popover"
 		},
-		disableHoverListener: {
-			control: { type: "boolean" }
+		transformOrigin: {
+			control: "object",
+			description: "This is the point on the popover which will attach to the anchor's origin"
 		},
-		disableFocusListener: {
-			control: { type: "boolean" }
+		open: {
+			control: "boolean",
+			description: "Controls whether the popover is open",
+			defaultValue: false
 		},
-		enterDelay: {
-			control: { type: "number" }
+		anchorElement: {
+			control: false, // We handle this internally
+			description:
+				"The ref element the popover is going to anchor to. If no anchor element is provided, the popover will anchor to the top left of the application's client area"
 		},
-		enterNextDelay: {
-			control: { type: "number" }
+		anchorPosition: {
+			control: "object",
+			description: "Position of the anchor element relative to the top left corner of the application's client area"
 		},
-		useAnimation: {
-			control: { type: "boolean" },
-			description: "Enable or disable the popover animation",
-			defaultValue: true
+		marginThreshold: {
+			control: { type: "number" },
+			description: "Specifies the minimum margin between the popover and the screen edges",
+			defaultValue: 16
+		},
+		activateOnHover: {
+			control: "boolean",
+			description: "Determines if the popover should activate on hover",
+			defaultValue: false
+		},
+		dataQa: {
+			control: "text",
+			description: "Data attribute for QA purposes"
+		},
+		dataTags: {
+			control: "text",
+			description: "Data tags for the popover"
+		},
+		onClose: {
+			control: false,
+			description: "Callback fired when the popover requests to be closed"
+		},
+		testTitle: {
+			table: { disable: true }, // Hide this props from the control table since they are not part of the SolacePopover component
+			description: "Test title for internal use"
+		},
+		testMessage: {
+			table: { disable: true }, // Hide this props from the control table since they are not part of the SolacePopover component
+			description: "Test message for internal use"
 		}
-	},
-	decorators: [withSnapshotContainer]
+	}
 } as Meta<typeof SolacePopover>;
 
-export const DefaultPopover = {
-	args: {
-		title: "simple text",
-		children: <span data-testid="popover-details">Hover content</span>,
-		variant: "html",
-		maxWidth: "medium"
-	},
-	decorators: [withSnapshotContainer],
-	play: async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
-		const canvas = within(canvasElement);
-		const triggerElement = canvas.getByTestId("popover-details");
-		await userEvent.hover(triggerElement);
-	}
-};
-
-DefaultPopover.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	await userEvent.hover(canvas.getByText("Hover content"));
-};
-
-const MyComp = ({ myRef, ...props }) => {
-	return (
-		<div
-			{...props}
-			ref={myRef}
-			style={{ width: "180px", backgroundColor: "skyblue", padding: "20px", textAlign: "center", cursor: "pointer" }}
-			data-testid="popover-details"
-		>
-			Custom Component
-		</div>
-	);
-};
-
-const MyCompForwardRef = React.forwardRef((props, ref) => {
-	return <MyComp {...props} myRef={ref} />;
-});
-
-export const CustomComponent = {
-	args: {
-		title: "simple text",
-		children: <MyCompForwardRef />,
-		maxWidth: "medium"
-	},
-	decorators: [withSnapshotContainer],
-	play: async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
-		const canvas = within(canvasElement);
-		const triggerElement = canvas.getByTestId("popover-details");
-		await userEvent.hover(triggerElement);
-	}
-};
-
-CustomComponent.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	await userEvent.hover(canvas.getByText("Custom Component"));
-};
-
-/**
- * Using Enum version list as an example to demonstrate how to customize both the hover over element and the Popover component
- */
-
-// mock-up data
-const enumVersionList = [
-	{
-		version: "1.1.0",
-		desc: "description for version 1.1.0",
-		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9", "value10"]
-	},
-	{
-		version: "1.1.1",
-		desc: "description for version 1.1.1",
-		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9"]
-	},
-	{
-		version: "1.1.2",
-		desc: "description for version 1.1.2",
-		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8"]
-	},
-	{
-		version: "1.1.3",
-		desc: "description for version 1.1.3",
-		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9", "value10"]
-	},
-	{
-		version: "1.1.4",
-		desc: "description for version 1.1.4",
-		values: ["value1", "value2", "value3", "value4", "value5", "value6", "value7", "value8", "value9", "value10"]
-	}
-];
-
-// custom Popover component
-const EnumVersionPopover = ({ desc, values }) => {
-	return (
-		<div>
-			<h3>Description</h3>
-			<div>{desc}</div>
-			<h3>Values ({values.length})</h3>
-			{values.map((value, index) => {
-				return <div key={index}>{value}</div>;
-			})}
-		</div>
-	);
-};
-
-interface EnumVersionItemProps {
-	item: unknown;
+interface SolacePopoverTestProps extends SolacePopoverProps {
+	testTitle?: JSX.Element;
+	testMessage: JSX.Element;
 }
 
-// custom hover over element, in this case, an Enum list item
-const EnumVersionItem = ({ item, itemRef, ...props }) => {
+const PopoverFormContent = (props) => {
+	const { onClose, onSubmit, onFirstNameChange, onLastNameChange, invalid, ...remainingProps } = props;
+
 	return (
-		<div
-			{...props}
-			ref={itemRef}
-			style={{ width: "200px", height: "auto", padding: "10px", border: "1px solid lightgrey", cursor: "pointer" }}
-		>
-			{item.version}
+		<div {...remainingProps} style={{ padding: "16px" }}>
+			<form>
+				<SolaceStack>
+					<SolaceTextField
+						label="First Name"
+						name="popoverSampleFirstNameField"
+						title="Popover Sample First Name Field"
+						required
+						onChange={onFirstNameChange}
+					/>
+					<SolaceTextField
+						label="Last Name"
+						name="popoverSampleLastNameField"
+						title="Popover Sample Last Name Field"
+						required
+						onChange={onLastNameChange}
+					/>
+					<div style={{ display: "flex", justifyContent: "flex-end", gap: "8px" }}>
+						<SolaceButton variant="outline" onClick={onClose}>
+							Cancel
+						</SolaceButton>
+						<SolaceButton variant="call-to-action" onClick={onSubmit}>
+							Submit
+						</SolaceButton>
+					</div>
+					{invalid && (
+						<SolaceTypography variant="body2" color="error">
+							Please enter a valid first and last name
+						</SolaceTypography>
+					)}
+				</SolaceStack>
+			</form>
 		</div>
 	);
 };
 
-export const EnumVersionList = () => {
-	// to properly apply ref
-	// use forwardRef
-	const EnumVersionItemForwardRef = React.forwardRef<HTMLElement, React.PropsWithChildren<EnumVersionItemProps>>(
-		(props, ref) => {
-			return <EnumVersionItem {...props} item={props.item} itemRef={ref} />;
+const PopoverTemplate: Story<SolacePopoverTestProps> = (args) => {
+	const { testTitle, testMessage, ...popoverArgs } = args;
+	const popoverContentRef = useRef<HTMLDivElement>(null);
+	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+	const open = Boolean(anchorEl);
+	const id = open ? "simple-popover" : undefined;
+
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		action("ClickMeButtonClicked");
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleClose = () => {
+		action("UserClickedElsewhereToClosePopover");
+		setAnchorEl(null);
+	};
+
+	useEffect(() => {
+		const handleDocumentClick = (event: MouseEvent) => {
+			if (
+				open &&
+				anchorEl &&
+				popoverContentRef.current &&
+				!anchorEl.contains(event.target as Node) &&
+				!popoverContentRef.current.contains(event.target as Node)
+			) {
+				handleClose();
+			}
+		};
+
+		document.addEventListener("click", handleDocumentClick);
+
+		return () => {
+			document.removeEventListener("click", handleDocumentClick);
+		};
+	}, [open, anchorEl]);
+
+	return (
+		<div style={{ width: "600px" }}>
+			<SolaceTypography variant="h2" component="div">
+				{testTitle}
+			</SolaceTypography>
+			{testMessage}
+			{testMessage && <Box height="20px" />}
+			<SolacePopover
+				id={id}
+				anchorElement={anchorEl}
+				ref={popoverContentRef}
+				open={open}
+				{...popoverArgs}
+				onClose={handleClose}
+			>
+				<div style={{ width: "500px", padding: "16px" }}>
+					<SolaceTypography variant="body1" component="div">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+						ea commodo consequat
+					</SolaceTypography>
+				</div>
+			</SolacePopover>
+
+			<SolaceButton aria-describedby={id} variant="call-to-action" onClick={handleClick}>
+				Click Me To Launch Popover
+			</SolaceButton>
+		</div>
+	);
+};
+
+const PopoverFormTemplate: Story<SolacePopoverTestProps> = (args) => {
+	const { testTitle, testMessage, ...popoverArgs } = args;
+	const popoverFormContentRef = useRef<HTMLDivElement>(null);
+	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+	const open = Boolean(anchorEl);
+	const id = open ? "simple-popover" : undefined;
+
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [invalid, setInvalid] = useState(false);
+
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		action("ClickMeButtonClicked");
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleClose = () => {
+		action("UserClickedElsewhereToClosePopover");
+
+		if (!firstName || !lastName) {
+			setInvalid(true);
+		} else {
+			setFirstName("");
+			setLastName("");
+			setInvalid(false);
+			setAnchorEl(null);
 		}
-	);
+	};
+
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		if (!firstName || !lastName) {
+			setInvalid(true);
+		} else {
+			setFirstName("");
+			setLastName("");
+			setInvalid(false);
+			setAnchorEl(null);
+		}
+	};
+
+	const handleCancel = () => {
+		setFirstName("");
+		setLastName("");
+		setInvalid(false);
+		setAnchorEl(null);
+	};
+
+	const handleFirstNameChange = (event) => {
+		action("firstNameChanged");
+		setInvalid(false);
+		setFirstName(event?.value);
+	};
+
+	const handleLastNameChange = (event) => {
+		action("lastNameChanged");
+		setInvalid(false);
+		setLastName(event.value);
+	};
+
+	useEffect(() => {
+		const handleDocumentClick = (event: MouseEvent) => {
+			if (
+				open &&
+				anchorEl &&
+				popoverFormContentRef.current &&
+				!anchorEl.contains(event.target as Node) &&
+				!popoverFormContentRef.current.contains(event.target as Node)
+			) {
+				handleClose();
+			}
+		};
+
+		document.addEventListener("click", handleDocumentClick);
+
+		return () => {
+			document.removeEventListener("click", handleDocumentClick);
+		};
+	}, [open, firstName, lastName, anchorEl]);
+
 	return (
-		<div
-			style={{
-				width: "250px",
-				height: "250px",
-				padding: "10px",
-				display: "flex",
-				flexDirection: "column",
-				justifyContent: "center",
-				alignItems: "flex-start"
-			}}
-		>
-			<div>Enum versions</div>
-			<div>
-				{enumVersionList.map((item, index) => {
-					return (
-						<div key={index}>
-							<SolacePopover
-								title={<EnumVersionPopover desc={item.desc} values={item.values} />}
-								placement="right-start"
-							>
-								<EnumVersionItemForwardRef item={item} data-testid={`popover-details-${index}`} />
-							</SolacePopover>
-						</div>
-					);
-				})}
-			</div>
+		<div style={{ width: "600px" }}>
+			<SolaceTypography variant="h2" component="div">
+				{testTitle}
+			</SolaceTypography>
+			{testMessage}
+			{testMessage && <Box height="20px" />}
+			<SolacePopover
+				id={id}
+				anchorElement={anchorEl}
+				ref={popoverFormContentRef}
+				open={open}
+				onClose={handleClose}
+				{...popoverArgs}
+			>
+				<PopoverFormContent
+					invalid={invalid}
+					onFirstNameChange={handleFirstNameChange}
+					onLastNameChange={handleLastNameChange}
+					onClose={handleCancel}
+					onSubmit={handleSubmit}
+				/>
+			</SolacePopover>
+
+			<SolaceButton aria-describedby={id} variant="call-to-action" onClick={handleClick}>
+				Click Me To Launch Popover
+			</SolaceButton>
 		</div>
 	);
 };
 
-(EnumVersionList.decorators = [withSnapshotContainer]),
-	(EnumVersionList.play = async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
-		const canvas = within(canvasElement);
-		const triggerElement = canvas.getByTestId("popover-details-2");
-		await userEvent.hover(triggerElement);
-	});
-
-export const HtmlPopover = {
-	args: {
-		title: (
-			<div>
-				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
-				<SolaceButton variant="link" href="https://semver.org">
-					Semantic versioning best practices
-				</SolaceButton>
-			</div>
-		),
-		children: <HelpOutlineOutlinedIcon data-testid="version-details" />
-	},
-	decorators: [withSnapshotContainer],
-	play: async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
-		const canvas = within(canvasElement);
-		const triggerElement = canvas.getByTestId("version-details");
-		await userEvent.hover(triggerElement);
-	}
+export const DefaultPopover = PopoverTemplate.bind({});
+DefaultPopover.args = {
+	testTitle: "Default Popover",
+	testMessage: (
+		<>
+			<SolaceTypography variant="h3" component="div">
+				This test showcases the default Popover with no additional properties set
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				Clicking the &apos;Click Me To Launch Popover&apos; button will display the Popover. Once the Popover is
+				displayed, clicking anywhere outside the Popover will close it.
+			</SolaceTypography>
+		</>
+	)
+};
+DefaultPopover.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const button = canvas.getByRole("button");
+	await userEvent.click(button);
 };
 
-export const HtmlPopoverMediumWidth = {
-	args: {
-		title: (
-			<div>
-				<span>Semantic versioning is in the form of MAJOR.MINOR.PATCH format. For additional information, see </span>
-				<SolaceButton variant="link" href="https://semver.org">
-					Semantic versioning best practices
-				</SolaceButton>
-			</div>
-		),
-		children: <HelpOutlineOutlinedIcon data-testid="version-details" />,
-		variant: "html",
-		maxWidth: "medium"
-	},
-	decorators: [withSnapshotContainer],
-	play: async ({ canvasElement }) => {
-		// Starts querying the component from it's root element
-		const canvas = within(canvasElement);
-		const triggerElement = canvas.getByTestId("version-details");
-		await userEvent.hover(triggerElement);
-	}
+export const WithAnchorAndTransformOrigin = PopoverTemplate.bind({});
+WithAnchorAndTransformOrigin.args = {
+	testTitle: "Popover With Degined Anchor and Transform",
+	testMessage: (
+		<>
+			<SolaceTypography variant="h3" component="div">
+				This test showcases how a Popover component positioned by its anchor and transform properties
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				This test has the anchorOrigin set to top right and the transformOrigin set to top left.
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				Clicking the &apos;Click Me To Launch Popover&apos; button will display the Popover. Once the Popover is
+				displayed, clicking anywhere outside the Popover will close it.
+			</SolaceTypography>
+		</>
+	),
+	anchorOrigin: { vertical: "top", horizontal: "right" },
+	transformOrigin: { vertical: "top", horizontal: "left" }
+};
+WithAnchorAndTransformOrigin.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const button = canvas.getByRole("button");
+	await userEvent.click(button);
 };
 
-export const PopoverWithoutAnimation = {
-	args: {
-		title: "Popover without animation",
-		children: <span data-testid="no-animation-popover">Hover me (no animation)</span>,
-		useAnimation: false,
-		maxWidth: "medium"
-	},
-	decorators: [withSnapshotContainer],
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-		const triggerElement = canvas.getByTestId("no-animation-popover");
-		await userEvent.hover(triggerElement);
-	}
+export const WithCustomAnchorOffest = PopoverTemplate.bind({});
+WithCustomAnchorOffest.args = {
+	testTitle: "Popover With Custom Anchor Offset",
+	testMessage: (
+		<>
+			<SolaceTypography variant="h3" component="div">
+				This test showcases how a Popover component positioned using a custom anchor offset to displace it from the
+				anchor
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				An anchor offset of 36 pixels from the top and left is set for the anchorOrigin so to offset the Popover 10px
+				away from the anchor (anchor button is 26px tall, leaving 10 px of offset). The transformOrigin is set to top
+				left.
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				Clicking the &apos;Click Me To Launch Popover&apos; button will display the Popover. Once the Popover is
+				displayed, clicking anywhere outside the Popover will close it.
+			</SolaceTypography>
+		</>
+	),
+	anchorOrigin: { vertical: 36, horizontal: "left" },
+	transformOrigin: { vertical: "top", horizontal: "left" }
+};
+WithCustomAnchorOffest.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const button = canvas.getByRole("button");
+	await userEvent.click(button);
+};
+
+export const WithAnchorPosition = PopoverTemplate.bind({});
+WithAnchorPosition.args = {
+	testTitle: "Popover With Anchor Position",
+	testMessage: (
+		<>
+			<SolaceTypography variant="h3" component="div">
+				This test showcases how a Popover component positioned using an anchor position
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				An anchor position of 120px from the top and 150px from the left relative to the application&apos;s client area.
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				Clicking the &apos;Click Me To Launch Popover&apos; button will display the Popover. Once the Popover is
+				displayed, clicking anywhere outside the Popover will close it.
+			</SolaceTypography>
+		</>
+	),
+	anchorPosition: { top: 120, left: 150 }
+};
+WithAnchorPosition.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const button = canvas.getByRole("button");
+	await userEvent.click(button);
+};
+
+export const WithFormValidation = PopoverFormTemplate.bind({});
+WithFormValidation.args = {
+	testTitle: "Popover With Custom Anchor Offset",
+	testMessage: (
+		<>
+			<SolaceTypography variant="h3" component="div">
+				This test showcases how a Popover can remain visible until a form is submitted with valid data
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				Clicking anywhere outside the Popover shall first validate the form before closing. If any form elements are
+				invalid, the Popover shall remain open and the form can optionally show some validation errors for the user to
+				be corrected. Correcting the validation errors or cancelling the form will allow the user to close the popover.
+			</SolaceTypography>
+			<SolaceTypography variant="body1" component="div">
+				Clicking the &apos;Click Me To Launch Popover&apos; button will display the Popover. Once the Popover is
+				displayed, clicking anywhere outside the Popover will close it.
+			</SolaceTypography>
+		</>
+	),
+	anchorOrigin: { vertical: 36, horizontal: "left" },
+	transformOrigin: { vertical: "top", horizontal: "left" }
+};
+WithFormValidation.play = async ({ canvasElement }) => {
+	const canvas = within(canvasElement);
+	const button = canvas.getByRole("button");
+	await userEvent.click(button);
 };

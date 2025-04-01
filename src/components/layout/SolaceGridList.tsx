@@ -80,7 +80,7 @@ function SolaceGridListRow({
 	isLoading = false,
 	contentPlaceholder
 }: SolaceGridListRowProps): JSX.Element {
-	const handleKeyPress = (e: any) => {
+	const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		if (e.key === "Enter") {
 			onClick(id);
 		}
@@ -213,7 +213,7 @@ function SolaceGridList<T>({
 		};
 	}, [gridListRef, onScrollHandler]);
 
-	const virtualListRef = useRef<VirtualizedList<any> | null>();
+	const virtualListRef = useRef<VirtualizedList<T> | null>();
 
 	useEffect(() => {
 		if (selectedItemId && virtualListRef.current && items) {
@@ -272,8 +272,8 @@ function SolaceGridList<T>({
 							virtualizedListOption.height
 								? virtualizedListOption.height
 								: numOfGridListItemDisplayed
-								? itemHeight * numOfGridListItemDisplayed + itemHeight / 2
-								: 200
+								  ? itemHeight * numOfGridListItemDisplayed + itemHeight / 2
+								  : 200
 						}
 						width={virtualizedListOption.width ?? "100%"}
 						itemCount={items.length}

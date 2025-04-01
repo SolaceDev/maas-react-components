@@ -8,7 +8,6 @@ import SolaceTooltip from "../SolaceToolTip";
 import { ErrorIcon } from "../../resources/icons/ErrorIcon";
 import SolaceChip from "../SolaceChip";
 import { STATUSES } from "../../types/statuses";
-import SolacePopover from "../SolacePopover";
 import { TooltipVariant } from "../../types/solaceTooltip";
 
 export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProps {
@@ -588,9 +587,13 @@ function SolaceSelectAutocomplete<T, V>({
 
 	const getErrorMessage = (label: string | JSX.Element, error: string | JSX.Element) => {
 		return (
-			<SolacePopover title={<ErrorChipToolTipContent label={label} error={error} />} placement={"bottom-start"}>
+			<SolaceTooltip
+				variant={TooltipVariant.rich}
+				title={<ErrorChipToolTipContent label={label} error={error} />}
+				placement={"bottom-start"}
+			>
 				<span>{label}</span>
-			</SolacePopover>
+			</SolaceTooltip>
 		);
 	};
 

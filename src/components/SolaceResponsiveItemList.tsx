@@ -1,9 +1,10 @@
 import { styled } from "@mui/material";
 import SolaceButton from "./form/SolaceButton";
-import SolacePopover from "./SolacePopover";
+import SolaceTooltip from "./SolaceToolTip";
 import { difference } from "lodash";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SolaceComponentProps from "./SolaceComponentProps";
+import { TooltipVariant } from "../types/solaceTooltip";
 
 const ItemsContainer = styled("div", {
 	shouldForwardProp: (prop) =>
@@ -317,10 +318,11 @@ function SolaceResponsiveItemList({
 			{!showAll && hiddenItemsCount > 0 && (
 				<>
 					{componentToShowOverflowItems === "popover" && (
-						<SolacePopover
+						<SolaceTooltip
 							title={popoverContents}
 							placement={overflowItemsPlacement}
 							dataQa={`${dataQa}-overflowPopover`}
+							variant={TooltipVariant.rich}
 						>
 							<span>
 								<SolaceButton
@@ -335,7 +337,7 @@ function SolaceResponsiveItemList({
 									)}`}</span>
 								</SolaceButton>
 							</span>
-						</SolacePopover>
+						</SolaceTooltip>
 					)}
 					{componentToShowOverflowItems !== "popover" && (
 						<span style={{ whiteSpace: "nowrap" }}>{`+ ${hiddenItemsCount} ${getOverflowIndicatorLabel(

@@ -3,10 +3,10 @@ import { StoryFn, Meta, Decorator } from "@storybook/react";
 import {
 	SolaceTag,
 	CHIP_VARIANT,
-	SolacePopover,
 	SolaceTooltip,
 	CHIP_COLORS,
-	InfoIcon
+	InfoIcon,
+	TooltipVariant
 } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
 
@@ -56,11 +56,11 @@ const Template: StoryFn<typeof SolaceTag> = (args) => <SolaceTag {...args} />;
 
 const PopoverTemplate: StoryFn<typeof SolaceTag> = (args) => {
 	return (
-		<SolacePopover title={<CustomPopoverText />} placement="right-end">
+		<SolaceTooltip variant={TooltipVariant.rich} title={<CustomPopoverText />} placement="right-end">
 			<span>
 				<SolaceTag {...args} />
 			</span>
-		</SolacePopover>
+		</SolaceTooltip>
 	);
 };
 

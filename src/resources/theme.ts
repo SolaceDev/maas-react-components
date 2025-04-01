@@ -1835,7 +1835,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiTooltip: {
 				styleOverrides: {
 					popper: {
-						// the gap between the hovered over element and the Popover/Tooltip
+						// the gap between the hovered over element and the Tooltip
 						"&.MuiTooltip-popper": {
 							".MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight": {
 								marginLeft: "14px"
@@ -1878,19 +1878,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						},
 						"&.fullWidth": {
 							maxWidth: "100%"
-						},
-						/**
-						 * style for SolacePopover - delete class once SolacePopover no longer uses MUI Tooltip component
-						 */
-						"&.SolacePopover": {
-							backgroundColor: themeMapping.palette.background.w10,
-							color: themeMapping.palette.primary.text.wMain,
-							fontSize: BASE_FONT_PX_SIZES.sm,
-							fontWeight: 400,
-							padding: "12px 16px", // considering line height
-							borderRadius: "4px",
-							boxShadow: `0 2px 5px ${getBoxShadow("w15")}`,
-							cursor: "pointer"
 						}
 					}
 				}
