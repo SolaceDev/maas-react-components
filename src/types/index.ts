@@ -19,3 +19,5 @@ export * from "./solaceStepper";
 export * from "./solaceEmptyStateBanner";
 export * from "./solacefileUploader";
 export * from "./solaceCategorizedSearch";
+export * from "./solaceNewCard";
+export * from "./solaceNewCardHeader";

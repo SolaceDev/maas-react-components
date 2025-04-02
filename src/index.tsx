@@ -103,6 +103,8 @@ export { default as SolaceListItemButton } from "./components/layout/SolaceListI
 export { default as SolaceLearningButton } from "./components/form/Button/SolaceLearningButton";
 export { default as SolaceStepper } from "./components/form/SolaceStepper/SolaceStepper";
 export { default as SolaceEmptyStateBanner } from "./components/SolaceEmptyStateBanner";
+export { default as SolaceNewCard } from "./components/SolaceNewCard";
+export { default as SolaceNewCardHeader } from "./components/SolaceNewCardHeader";
 
 export { InfoIcon } from "./resources/icons/InfoIcon";
 export { CloseIcon } from "./resources/icons/CloseIcon";

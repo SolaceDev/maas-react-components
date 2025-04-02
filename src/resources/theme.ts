@@ -1954,6 +1954,41 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 					}
 				}
 			},
+			MuiCard: {
+				styleOverrides: {
+					root: {
+						"&.solaceNewCard": {
+							backgroundColor: themeMapping.palette.background.w10,
+							color: themeMapping.palette.primary.text.wMain,
+							borderRadius: theme.spacing(0.5),
+							boxShadow: `0px 1px 4px 0px ${themeMapping.palette.secondary.w8040}`,
+							boxSizing: "border-box",
+							display: "flex",
+							flexDirection: "column",
+							gap: theme.spacing(1),
+							justifyContent: "center",
+							transition: "background-color 0.3s, box-shadow 0.3s",
+
+							"&:hover": {
+								backgroundColor: themeMapping.palette.secondary.w10,
+								boxShadow: `0px 2px 8px 0px ${themeMapping.palette.secondary.w8040}`,
+								cursor: "pointer"
+							},
+
+							"&.readOnly": {
+								border: `1px solid ${themeMapping.palette.secondary.w40}`,
+								boxShadow: "none",
+
+								"&:hover": {
+									backgroundColor: themeMapping.palette.background.w10,
+									boxShadow: "none",
+									cursor: "default"
+								}
+							}
+						}
+					}
+				}
+			},
 			MuiListItemButton: {
 				styleOverrides: {
 					root: { "&.Mui-selected": { backgroundColor: themeMapping.palette.brand.w10 } }
