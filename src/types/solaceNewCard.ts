@@ -76,4 +76,12 @@ export interface SolaceNewCardProps extends SolaceComponentProps {
 	 * Data-tags attribute for additional metadata
 	 */
 	dataTags?: string;
+
+	/**
+	 * onClick handler for the card
+	 *
+	 * This handler will only be applied when readOnly is false.
+	 * In readOnly mode, the card will not be clickable.
+	 */
+	onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }

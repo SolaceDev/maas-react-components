@@ -19,7 +19,8 @@ function SolaceNewCard({
 	readOnly = false,
 	ariaLabel,
 	dataQa,
-	dataTags
+	dataTags,
+	onClick
 }: SolaceNewCardProps): JSX.Element {
 	const theme = useTheme();
 
@@ -36,6 +37,7 @@ function SolaceNewCard({
 			data-tags={dataTags}
 			aria-label={ariaLabel}
 			role="article"
+			onClick={!readOnly ? onClick : undefined}
 		>
 			{cardHeaderProps && <SolaceNewCardHeader {...cardHeaderProps} />}
 

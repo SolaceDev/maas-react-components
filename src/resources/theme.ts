@@ -1966,7 +1966,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							display: "flex",
 							flexDirection: "column",
 							gap: theme.spacing(1),
-							justifyContent: "center",
 							transition: "background-color 0.3s, box-shadow 0.3s",
 
 							"&:hover": {

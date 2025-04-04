@@ -141,14 +141,17 @@ export const Default = {
 		width: "250px",
 		height: "250px",
 		minWidth: "250px",
-		cardContent: <div></div>
+		cardContent: <SolaceTypography variant="body1">Click me! I&apos;m interactive.</SolaceTypography>,
+		onClick: () => {
+			alert("Card clicked! This is an interactive card.");
+		}
 	},
 
 	parameters: {
 		docs: {
 			description: {
 				story:
-					"Default empty card with no header or footer, just an empty content area. This is the interactive card per the Card pattern."
+					"Default empty card with no header or footer, just an empty content area. This is the interactive card per the Card pattern. This card has an onClick handler that will be triggered when the card is clicked."
 			}
 		}
 	}
@@ -166,14 +169,18 @@ export const ReadOnly = {
 		height: "250px",
 		minWidth: "250px",
 		cardContent: <div></div>,
-		readOnly: true
+		readOnly: true,
+		onClick: () => {
+			alert("This alert should not appear because the card is read-only");
+		}
 	},
 
 	parameters: {
 		docs: {
 			description: {
 				story:
-					"Read-only card example. Read-only cards are used as a visual layout option to help categorize and group topics."
+					"Read-only card example. Read-only cards are used as a visual layout option to help categorize and group topics. " +
+					"Note that even though an onClick handler is provided, it will not be triggered because the card is in read-only mode."
 			}
 		}
 	}
@@ -189,6 +196,9 @@ export const CustomContent = {
 		dataQa: "custom-content-card",
 		width: "400px",
 		minWidth: "300px",
+		onClick: () => {
+			alert("Card Clicked");
+		},
 		cardContent: (
 			<>
 				<SolaceTypography variant="h3" sx={{ marginBottom: "8px" }}>
@@ -265,6 +275,7 @@ export const WithDefaultHeader = {
 		dataQa: "with-header-card",
 		width: "400px",
 		minWidth: "371px",
+		readOnly: true,
 		cardHeaderProps: {
 			title: "Java",
 			icon: <InfoIcon />,
@@ -304,6 +315,7 @@ export const CardWithSubTitle = {
 		dataQa: "With-subtitle-card",
 		width: "400px",
 		minWidth: "371px",
+		readOnly: true,
 		cardHeaderProps: {
 			title: "Go",
 			subTitle: "PubSub+ Messaging API for Go",
@@ -342,6 +354,7 @@ export const CompleteCard = {
 	args: {
 		dataQa: "complete-card-example",
 		width: "400px",
+		readOnly: true,
 		cardHeaderProps: {
 			title: "Built-in header",
 			subTitle: "subtitle",
