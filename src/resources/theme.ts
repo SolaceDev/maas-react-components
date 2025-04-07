@@ -1969,7 +1969,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							transition: "background-color 0.3s, box-shadow 0.3s",
 
 							"&:hover": {
-								backgroundColor: themeMapping.palette.secondary.w10,
 								boxShadow: `0px 2px 8px 0px ${themeMapping.palette.secondary.w8040}`,
 								cursor: "pointer"
 							},
@@ -1979,7 +1978,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								boxShadow: "none",
 
 								"&:hover": {
-									backgroundColor: themeMapping.palette.background.w10,
 									boxShadow: "none",
 									cursor: "default"
 								}

@@ -14,9 +14,6 @@ import InfoIcon from "@mui/icons-material/Info";
 
 (SolaceNewCard as React.FC & { displayName?: string }).displayName = "SolaceNewCard";
 
-const ON_BUTTON_CLICK_MESSAGE = "Button Clicked";
-const ON_MENU_ITEM_CLICKED = "Menu item cliked;";
-
 export default {
 	title: "Data Display/New Card",
 	component: SolaceNewCard,
@@ -101,23 +98,17 @@ export default {
 const menuItemsWithSecondaryActions = [
 	{
 		name: "Doc",
-		onMenuItemClick: () => {
-			action(ON_MENU_ITEM_CLICKED);
-		},
+		onMenuItemClick: action("callback"),
 		secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />
 	},
 	{
 		name: "Tutorial",
-		onMenuItemClick: () => {
-			action(ON_MENU_ITEM_CLICKED);
-		},
+		onMenuItemClick: action("callback"),
 		secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />
 	},
 	{
 		name: "Download",
-		onMenuItemClick: () => {
-			action(ON_MENU_ITEM_CLICKED);
-		},
+		onMenuItemClick: action("callback"),
 		secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />
 	}
 ];
@@ -142,9 +133,7 @@ export const Default = {
 		height: "250px",
 		minWidth: "250px",
 		cardContent: <SolaceTypography variant="body1">Click me! I&apos;m interactive.</SolaceTypography>,
-		onClick: () => {
-			alert("Card clicked! This is an interactive card.");
-		}
+		onClick: action("callback")
 	},
 
 	parameters: {
@@ -170,9 +159,7 @@ export const ReadOnly = {
 		minWidth: "250px",
 		cardContent: <div></div>,
 		readOnly: true,
-		onClick: () => {
-			alert("This alert should not appear because the card is read-only");
-		}
+		onClick: action("callback")
 	},
 
 	parameters: {
@@ -281,7 +268,7 @@ export const WithDefaultHeader = {
 			icon: <InfoIcon />,
 			actionElements: (
 				<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-					<SolaceButton variant="text" onClick={() => action(ON_BUTTON_CLICK_MESSAGE)}>
+					<SolaceButton variant="text" onClick={action("callback")}>
 						Tutorials
 					</SolaceButton>
 					<SolaceMenu
@@ -322,7 +309,7 @@ export const CardWithSubTitle = {
 			icon: <InfoIcon />,
 			actionElements: (
 				<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-					<SolaceButton variant="text" onClick={() => action(ON_BUTTON_CLICK_MESSAGE)}>
+					<SolaceButton variant="text" onClick={action("callback")}>
 						Tutorials
 					</SolaceButton>
 					<SolaceMenu
@@ -389,7 +376,7 @@ export const CompleteCard = {
 				}}
 			>
 				<SolaceTypography variant="body1">CardActions</SolaceTypography>
-				<SolaceButton variant="icon" onClick={() => action(ON_BUTTON_CLICK_MESSAGE)}>
+				<SolaceButton variant="icon" onClick={action("callback")}>
 					<DeleteIcon />
 				</SolaceButton>
 			</div>
