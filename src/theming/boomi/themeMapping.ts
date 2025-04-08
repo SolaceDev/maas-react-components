@@ -7,7 +7,7 @@ const palette: ThemeMappingPalette = {
 		wMain: "#033D58",
 		wMain30: alpha("#033D58", 0.3),
 		w30: "#BDCBD1",
-		w10: "#C2CED4",
+		w10: "#E6ECEE",
 		w60: "#4D7689",
 		w100: "#02293B"
 	},
@@ -19,7 +19,7 @@ const palette: ThemeMappingPalette = {
 		w60: "#4D7689",
 		w40: "#7091A0",
 		w20: "#BDCBD1",
-		w10: "#C2CED4",
+		w10: "#E6ECEE",
 
 		text: {
 			wMain: "#262626",
@@ -57,7 +57,7 @@ const palette: ThemeMappingPalette = {
 		w70: "#1B72C3",
 		w30: "#3894DC",
 		w20: "#67ABE1",
-		w10: "#A6D2F0"
+		w10: "#E6EEF7"
 	},
 
 	error: {
@@ -75,7 +75,7 @@ const palette: ThemeMappingPalette = {
 		w70: "#CF761B",
 		w30: "#EC9932",
 		w20: "#F4C57F",
-		w10: "#F5E4C2"
+		w10: "#F6EFE9"
 	},
 
 	success: {
