@@ -41,7 +41,11 @@ export default {
 } as Meta<typeof SolaceDatePicker>;
 
 export const DefaultSolaceDatePicker = {
-	args: {},
+	args: {
+		value: DateStringInISOFormat, // in ISO 8601 format
+		onChange: action("Date Changed"),
+		onClear: action("Cleared")
+	},
 	decorators: [withSnapshotContainer],
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -58,11 +62,13 @@ const Template: StoryFn<typeof SolaceDatePicker> = (args) => (
 
 export const UncontrolledDatePicker = {
 	render: Template,
+	decorators: [withSnapshotContainer],
 	args: {}
 };
 
 export const ControlledDatePicker = {
 	render: Template,
+	decorators: [withSnapshotContainer],
 	args: {
 		value: DateStringInISOFormat, // in ISO 8601 format
 		onChange: action("Date Changed"),
@@ -72,6 +78,7 @@ export const ControlledDatePicker = {
 
 export const ReadOnlyDatePicker = {
 	render: Template,
+	decorators: [withSnapshotContainer],
 	args: {
 		value: DateStringInISOFormat, // in ISO 8601 format
 		disabled: true
