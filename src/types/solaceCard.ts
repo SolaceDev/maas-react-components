@@ -1,15 +1,15 @@
 import React from "react";
 import SolaceComponentProps from "../components/SolaceComponentProps";
-import { SolaceNewCardHeaderProps } from "./solaceNewCardHeader";
+import { SolaceCardHeaderProps } from "./solaceCardHeader";
 
 /**
- * Props for the SolaceNewCard component
+ * Props for the SolaceCard component
  */
-export interface SolaceNewCardProps extends SolaceComponentProps {
+export interface SolaceCardProps extends SolaceComponentProps {
 	/**
 	 * Props for the card header component
 	 */
-	cardHeaderProps?: SolaceNewCardHeaderProps;
+	cardHeaderProps?: SolaceCardHeaderProps;
 
 	/**
 	 * Content to display in the card body

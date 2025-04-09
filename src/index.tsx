@@ -33,7 +33,7 @@ export { STATUSES } from "./types/statuses";
 export { default as SolaceTag } from "./components/SolaceTag";
 export { default as SolaceErrorBox } from "./components/SolaceErrorBox";
 export { default as SolaceMessageBox } from "./components/SolaceMessageBox";
-export { default as SolaceCard } from "./components/SolaceCard";
+export { default as SolaceLearningBanner } from "./components/SolaceLearningBanner";
 export { default as SolaceTabs } from "./components/layout/SolaceTabs";
 export { default as SolaceSidePanelLayout } from "./components/layout/SolaceSidePanelLayout";
 export { PANEL_POSITION as SolacePanelPosition } from "./components/layout/SolaceSidePanelLayout";
@@ -103,8 +103,8 @@ export { default as SolaceListItemButton } from "./components/layout/SolaceListI
 export { default as SolaceLearningButton } from "./components/form/Button/SolaceLearningButton";
 export { default as SolaceStepper } from "./components/form/SolaceStepper/SolaceStepper";
 export { default as SolaceEmptyStateBanner } from "./components/SolaceEmptyStateBanner";
-export { default as SolaceNewCard } from "./components/SolaceNewCard";
-export { default as SolaceNewCardHeader } from "./components/SolaceNewCardHeader";
+export { default as SolaceCard } from "./components/SolaceCard";
+export { default as SolaceCardHeader } from "./components/SolaceCardHeader";
 
 export { InfoIcon } from "./resources/icons/InfoIcon";
 export { CloseIcon } from "./resources/icons/CloseIcon";

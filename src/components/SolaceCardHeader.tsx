@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 import SolaceTypography from "./SolaceTypography";
-import { SolaceNewCardHeaderProps } from "../types";
+import { SolaceCardHeaderProps } from "../types";
 
 /**
  * Styled container for the card header
@@ -50,19 +50,19 @@ const CardHeaderActions = styled("div")(({ theme }) => ({
 }));
 
 /**
- * SolaceNewCardHeader component
+ * SolaceCardHeader component
  *
  * A custom card header component that doesn't wrap the title in a Typography element,
  * allowing for direct use of custom Typography components.
  */
-function SolaceNewCardHeader({
+function SolaceCardHeader({
 	icon,
 	title,
 	subTitle,
 	actionElements = null,
 	dataQa,
 	dataTags
-}: SolaceNewCardHeaderProps): JSX.Element {
+}: SolaceCardHeaderProps): JSX.Element {
 	return (
 		<CardHeader data-qa={dataQa} data-tags={dataTags}>
 			<CardHeaderContent>
@@ -79,4 +79,4 @@ function SolaceNewCardHeader({
 	);
 }
 
-export default SolaceNewCardHeader;
+export default SolaceCardHeader;

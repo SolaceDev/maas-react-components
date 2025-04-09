@@ -1,17 +1,17 @@
 import React, { ReactNode } from "react";
 import { Meta } from "@storybook/react";
-import { SolaceButton, SolaceCard } from "@SolaceDev/maas-react-components";
+import { SolaceButton, SolaceLearningBanner } from "@SolaceDev/maas-react-components";
 
 (SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
-(SolaceCard as React.FC & { displayName?: string }).displayName = "SolaceCard";
+(SolaceLearningBanner as React.FC & { displayName?: string }).displayName = "SolaceLearningBanner";
 
 export default {
 	title: "Messaging/Banner/Learning",
-	component: SolaceCard,
+	component: SolaceLearningBanner,
 	parameters: {
 		docs: {
 			description: {
-				component: "Code component name: SolaceCard"
+				component: "Code component name: SolaceLearningBanner"
 			}
 		}
 	},
@@ -39,9 +39,9 @@ export default {
 			}
 		}
 	}
-} as Meta<typeof SolaceCard>;
+} as Meta<typeof SolaceLearningBanner>;
 
-const DefaultCardContent = (
+const DefaultBannerContent = (
 	<div>
 		<p>When do I use literals vs variables in my addresses?</p>
 		<SolaceButton variant="link" href="#">
@@ -50,22 +50,22 @@ const DefaultCardContent = (
 	</div>
 );
 
-export const DefaultCard = {
+export const DefaultLearningBanner = {
 	args: {
-		children: DefaultCardContent
+		children: DefaultBannerContent
 	}
 };
 
 export const WithCloseButton = {
 	args: {
-		children: DefaultCardContent,
+		children: DefaultBannerContent,
 		showCloseButton: true
 	}
 };
 
 export const WithStringTitle = {
 	args: {
-		children: DefaultCardContent,
+		children: DefaultBannerContent,
 		showCloseButton: true,
 		title: "How to make a Topic Domain"
 	}
@@ -77,7 +77,7 @@ const CustomTitle = (
 
 export const WithCustomTitle = {
 	args: {
-		children: DefaultCardContent,
+		children: DefaultBannerContent,
 		showCloseButton: true,
 		title: CustomTitle
 	}
@@ -85,7 +85,7 @@ export const WithCustomTitle = {
 
 export const WithCustomBackgroundColor = {
 	args: {
-		children: DefaultCardContent,
+		children: DefaultBannerContent,
 		showCloseButton: true,
 		title: "How to make a Topic Domain",
 		backgroundColor: "#E6F2FF"
@@ -95,9 +95,9 @@ export const WithCustomBackgroundColor = {
 export const WithinContainer = (): ReactNode => {
 	return (
 		<div style={{ maxWidth: "40%", border: "1px solid rgba(0, 0, 0, 0.1)" }}>
-			<SolaceCard showCloseButton={true} title="How to make a Topic Domain" dataQa="topicAddressCard">
-				{DefaultCardContent}
-			</SolaceCard>
+			<SolaceLearningBanner showCloseButton={true} title="How to make a Topic Domain" dataQa="topicAddressCard">
+				{DefaultBannerContent}
+			</SolaceLearningBanner>
 		</div>
 	);
 };

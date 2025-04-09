@@ -5,18 +5,18 @@ import {
 	DeleteIcon,
 	MoreHorizOutlinedIcon,
 	SolaceButton,
-	SolaceNewCard,
+	SolaceCard,
 	SolaceMenu,
 	SolaceTypography
 } from "@SolaceDev/maas-react-components";
-import { SolaceNewCardProps } from "@SolaceDev/maas-react-components";
+import { SolaceCardProps } from "@SolaceDev/maas-react-components";
 import InfoIcon from "@mui/icons-material/Info";
 
-(SolaceNewCard as React.FC & { displayName?: string }).displayName = "SolaceNewCard";
+(SolaceCard as React.FC & { displayName?: string }).displayName = "SolaceCard";
 
 export default {
-	title: "Data Display/New Card",
-	component: SolaceNewCard,
+	title: "Data Display Card",
+	component: SolaceCard,
 	parameters: {
 		design: {
 			type: "figma",
@@ -24,7 +24,7 @@ export default {
 		},
 		docs: {
 			description: {
-				component: "Code component name: SolaceNewCard"
+				component: "Code component name: SolaceCard"
 			}
 		}
 	},
@@ -92,7 +92,7 @@ export default {
 			description: "Data-tags attribute for additional metadata"
 		}
 	}
-} as Meta<typeof SolaceNewCard>;
+} as Meta<typeof SolaceCard>;
 
 // Menu items with secondary actions
 const menuItemsWithSecondaryActions = [
@@ -114,10 +114,10 @@ const menuItemsWithSecondaryActions = [
 ];
 
 /**
- * Default SolaceNewCard story
+ * Default SolaceCard story
  */
-const SolaceNewCardStory = (args: SolaceNewCardProps) => {
-	return <SolaceNewCard {...args} />;
+const SolaceCardStory = (args: SolaceCardProps) => {
+	return <SolaceCard {...args} />;
 };
 
 /**
@@ -125,7 +125,7 @@ const SolaceNewCardStory = (args: SolaceNewCardProps) => {
  * No header, no footer. This helps show what devs will get if they pass nothing in.
  */
 export const Default = {
-	render: SolaceNewCardStory,
+	render: SolaceCardStory,
 
 	args: {
 		dataQa: "default-empty-card",
@@ -150,7 +150,7 @@ export const Default = {
  * Read Only story - Show an example of what it looks like when the card is read-only.
  */
 export const ReadOnly = {
-	render: SolaceNewCardStory,
+	render: SolaceCardStory,
 
 	args: {
 		dataQa: "read-only-card",
@@ -177,7 +177,7 @@ export const ReadOnly = {
  * Custom Content story - No header, no footer. Content only with custom title.
  */
 export const CustomContent = {
-	render: SolaceNewCardStory,
+	render: SolaceCardStory,
 
 	args: {
 		dataQa: "custom-content-card",
@@ -215,7 +215,7 @@ export const CustomContent = {
 export const PaddingOptions = {
 	render: () => (
 		<div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-			<SolaceNewCard
+			<SolaceCard
 				dataQa="padding-16px-card"
 				width="300px"
 				cardHeaderProps={{
@@ -227,7 +227,7 @@ export const PaddingOptions = {
 					</SolaceTypography>
 				}
 			/>
-			<SolaceNewCard
+			<SolaceCard
 				dataQa="padding-24px-card"
 				width="300px"
 				padding="24px"
@@ -253,10 +253,10 @@ export const PaddingOptions = {
 };
 
 /**
- * Original Default SolaceNewCard story
+ * Original Default SolaceCard story
  */
 export const WithDefaultHeader = {
-	render: SolaceNewCardStory,
+	render: SolaceCardStory,
 
 	args: {
 		dataQa: "with-header-card",
@@ -289,14 +289,14 @@ export const WithDefaultHeader = {
 	parameters: {
 		docs: {
 			description: {
-				story: "Original SolaceNewCard with icon, title, button, and menu"
+				story: "Original SolaceCard with icon, title, button, and menu"
 			}
 		}
 	}
 };
 
 export const CardWithSubTitle = {
-	render: SolaceNewCardStory,
+	render: SolaceCardStory,
 
 	args: {
 		dataQa: "With-subtitle-card",
@@ -330,14 +330,14 @@ export const CardWithSubTitle = {
 	parameters: {
 		docs: {
 			description: {
-				story: "SolaceNewCard with icon, title, subTitle, button, and menu"
+				story: "SolaceCard with icon, title, subTitle, button, and menu"
 			}
 		}
 	}
 };
 
 export const CompleteCard = {
-	render: SolaceNewCardStory,
+	render: SolaceCardStory,
 	args: {
 		dataQa: "complete-card-example",
 		width: "400px",

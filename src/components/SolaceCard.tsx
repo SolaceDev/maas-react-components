@@ -1,105 +1,70 @@
-import React, { isValidElement } from "react";
-import { styled } from "@mui/material";
-import SolaceButton from "./form/SolaceButton";
-import { CloseIcon } from "../resources/icons/CloseIcon";
-import SolaceComponentProps from "./SolaceComponentProps";
-import { getCloseButtonAriaLabel } from "../utils";
+import { Card, CardActions, CardContent, useTheme } from "@mui/material";
+import SolaceCardHeader from "./SolaceCardHeader";
+import { SolaceCardProps } from "../types";
 
-const CardContainer = styled("div", {
-	shouldForwardProp: (prop) => prop !== "backgroundColor" && prop !== "hasTitle"
-})<{
-	backgroundColor?: string;
-	hasTitle: boolean;
-}>(({ backgroundColor, hasTitle, theme }) => ({
-	backgroundColor: backgroundColor ?? theme.palette.ux.background.w20,
-	color: theme.palette.ux.primary.text.wMain,
-	borderRadius: "4px",
-	display: "flex",
-	flexDirection: hasTitle ? "column" : "row",
-	justifyContent: "space-between",
-	alignContent: "flex-start",
-	padding: theme.spacing(2)
-}));
-
-const TitleRow = styled("div")({
-	display: "flex",
-	justifyContent: "space-between",
-	alignItems: "center"
-});
-
-const TitleSection = styled("div")(({ theme }) => ({
-	fontSize: theme.typography.subtitle1.fontSize,
-	fontWeight: theme.typography.fontWeightMedium
-}));
-
-interface SolaceCardProps extends SolaceComponentProps {
-	/**
-	 * The title of the card.
-	 */
-	title?: string | JSX.Element;
-	/**
-	 * The content of the card.
-	 */
-	children: JSX.Element;
-	/**
-	 * Boolean flag to control whether to show a close button in the end of the card
-	 */
-	showCloseButton?: boolean;
-	/**
-	 * Callback function after the card is closed
-	 */
-	onClose?: () => void;
-	/**
-	 * Background color of the card
-	 */
-	backgroundColor?: string;
-}
-
+/**
+ * SolaceCard component
+ *
+ * A customizable card component for displaying learning resources with optional
+ * icon, title, content, custom action elements, and menu.
+ */
 function SolaceCard({
-	title,
-	children,
-	showCloseButton = false,
-	onClose,
-	backgroundColor,
+	cardHeaderProps,
+	cardContent,
+	cardActions,
+	width,
+	height,
+	minWidth = "250px",
+	padding,
+	readOnly = false,
+	ariaLabel,
 	dataQa,
-	dataTags
-}: SolaceCardProps): JSX.Element | null {
-	const [open, setOpen] = React.useState(true);
+	dataTags,
+	onClick
+}: SolaceCardProps): JSX.Element {
+	const theme = useTheme();
 
-	const handleClose = () => {
-		setOpen(false);
-		onClose?.();
-	};
+	return (
+		<Card
+			className={`solaceCard ${readOnly ? "readOnly" : ""}`}
+			sx={{
+				width,
+				height,
+				minWidth,
+				padding: padding ?? theme.spacing(2)
+			}}
+			data-qa={dataQa}
+			data-tags={dataTags}
+			aria-label={ariaLabel}
+			role="article"
+			onClick={!readOnly ? onClick : undefined}
+		>
+			{cardHeaderProps && <SolaceCardHeader {...cardHeaderProps} />}
 
-	return open ? (
-		<CardContainer backgroundColor={backgroundColor} hasTitle={!!title} data-qa={dataQa} data-tags={dataTags}>
-			{title && (
-				<>
-					<TitleRow>
-						{isValidElement(title) ? title : <TitleSection>{title}</TitleSection>}
-						{showCloseButton && (
-							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
-								<CloseIcon size={24} />
-							</SolaceButton>
-						)}
-					</TitleRow>
-					{children}
-				</>
+			{cardContent && (
+				<CardContent
+					sx={{
+						"&.MuiCardContent-root:last-child": {
+							paddingBottom: theme.spacing(0)
+						},
+						padding: theme.spacing(0)
+					}}
+				>
+					{cardContent}
+				</CardContent>
 			)}
-			{!title && (
-				<>
-					{children}
-					{showCloseButton && (
-						<div>
-							<SolaceButton aria-label={getCloseButtonAriaLabel()} variant="icon" onClick={handleClose}>
-								<CloseIcon size={24} />
-							</SolaceButton>
-						</div>
-					)}
-				</>
+
+			{cardActions && (
+				<CardActions
+					sx={{
+						padding: theme.spacing(0)
+					}}
+				>
+					{cardActions}
+				</CardActions>
 			)}
-		</CardContainer>
-	) : null;
+		</Card>
+	);
 }
 
 export default SolaceCard;

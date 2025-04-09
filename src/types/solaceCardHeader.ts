@@ -2,9 +2,9 @@ import React from "react";
 import SolaceComponentProps from "../components/SolaceComponentProps";
 
 /**
- * Props for the SolaceNewCardHeader component
+ * Props for the SolaceCardHeader component
  */
-export interface SolaceNewCardHeaderProps extends SolaceComponentProps {
+export interface SolaceCardHeaderProps extends SolaceComponentProps {
 	/**
 	 * The avatar element to display
 	 */

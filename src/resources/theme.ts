@@ -1957,7 +1957,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 			MuiCard: {
 				styleOverrides: {
 					root: {
-						"&.solaceNewCard": {
+						"&.solaceCard": {
 							backgroundColor: themeMapping.palette.background.w10,
 							color: themeMapping.palette.primary.text.wMain,
 							borderRadius: theme.spacing(0.5),
