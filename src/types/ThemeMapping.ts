@@ -99,8 +99,10 @@ export type ThemeMappingPalette = {
 			w10: string;
 		};
 		n1: {
+			w100: string;
 			wMain: string;
 			w60: string;
+			w30: string;
 			w20: string;
 			w10: string;
 		};
@@ -118,20 +120,28 @@ export type ThemeMappingPalette = {
 			w10: string;
 		};
 		n4: {
+			w100: string;
 			wMain: string;
+			w30: string;
 		};
 		n5: {
+			w100: string;
 			wMain: string;
 			w60: string;
+			w30: string;
 		};
 		n6: {
+			w100: string;
 			wMain: string;
 			w30: string;
 		};
 		n7: {
+			w100: string;
 			wMain: string;
+			w30: string;
 		};
 		n8: {
+			w100: string;
 			wMain: string;
 			w30: string;
 		};

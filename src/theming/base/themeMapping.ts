@@ -104,7 +104,9 @@ export const baseThemeMapping: ThemeMapping = {
 				w10: "#ECF0FC"
 			},
 			n1: {
+				w100: "#1F284C",
 				wMain: "#3A4880",
+				w30: "#C4C8D9",
 				w60: "#8991B3",
 				w20: "#D8DAE6",
 				w10: "#EBEDF2"
@@ -123,20 +125,28 @@ export const baseThemeMapping: ThemeMapping = {
 				w10: "#F2ECF6"
 			},
 			n4: {
-				wMain: "#CB1AA5"
+				w100: "#951379",
+				wMain: "#CB1AA5",
+				w30: "#F2C4E8"
 			},
 			n5: {
+				w100: "#D03C1B",
 				wMain: "#E67E22",
+				w30: "#FCCEC7",
 				w60: "#FAA397"
 			},
 			n6: {
+				w100: "#DE7E00",
 				wMain: "#FCA829",
 				w30: "#FEE5BF"
 			},
 			n7: {
-				wMain: "#7CD3F6"
+				w100: "#2DADE1",
+				wMain: "#7CD3F6",
+				w30: "#CBEDFB"
 			},
 			n8: {
+				w100: "#4F5A63",
 				wMain: "#6A6A6A",
 				w30: "#DBDFE2"
 			},

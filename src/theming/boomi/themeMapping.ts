@@ -100,7 +100,9 @@ const palette: ThemeMappingPalette = {
 			w10: "#FFF2F0"
 		},
 		n1: {
+			w100: "#8F4D8D",
 			wMain: "#9E559C",
+			w30: "#E9C4E3",
 			w60: "#C76CB8",
 			w20: "#F4E2F1",
 			w10: "#F9F0F8"
@@ -108,31 +110,39 @@ const palette: ThemeMappingPalette = {
 		n2: {
 			w100: "#22626F",
 			wMain: "#127B87",
-			w30: "#79BFBE",
-			w20: "#A9DFDA",
+			w30: "#A9DFDA",
+			w20: "#CCEBE8",
 			w10: "#EFF7F6"
 		},
 		n3: {
 			w100: "#664E7C",
 			wMain: "#8462A5",
-			w30: "#B9A3CE",
+			w30: "#CFC0DD",
 			w10: "#F3EFF6"
 		},
 		n4: {
-			wMain: "#4B4FE2"
+			w100: "#3E40B5",
+			wMain: "#4B4FE2",
+			w30: "#C7C8F5"
 		},
 		n5: {
+			w100: "#EB5A00",
 			wMain: "#FF6900",
+			w30: "#FFC399",
 			w60: "#FFA566"
 		},
 		n6: {
+			w100: "#EBA400",
 			wMain: "#FCB900",
 			w30: "#FEEAB3"
 		},
 		n7: {
-			wMain: "#F78DA7"
+			w100: "#F57594",
+			wMain: "#F78DA7",
+			w30: "#FABCCB"
 		},
 		n8: {
+			w100: "#808080",
 			wMain: "#969696",
 			w30: "#E0E0E0"
 		},
