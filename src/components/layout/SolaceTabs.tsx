@@ -24,7 +24,14 @@ export interface TabProps {
 	 * If the tab is disabled
 	 */
 	disabled?: boolean;
+	/**
+	 * Size of the tab font
+	 */
 	size?: keyof BASE_FONT_PX_SIZE_TYPES;
+	/**
+	 * Tab index for keyboard navigation
+	 */
+	tabIndex?: number;
 }
 
 export interface SolaceTabsProps extends SolaceComponentProps {
@@ -49,9 +56,9 @@ export interface SolaceTabsProps extends SolaceComponentProps {
 const tabStyles = (theme: Theme, size: keyof BASE_FONT_PX_SIZE_TYPES) => ({
 	height: "100%",
 	fontSize: BASE_FONT_PX_SIZES[size],
-	"&:focus": {
-		border: `1px solid ${theme.palette.ux.accent.n2.wMain}`,
-		outline: "none"
+	"&.Mui-focusVisible": {
+		padding: "11px 15px 13px 15px",
+		border: `1px solid ${theme.palette.ux.accent.n2.wMain}`
 	}
 });
 
@@ -76,21 +83,37 @@ function SolaceTabs({
 	size = "sm",
 	variant = "standard"
 }: SolaceTabsProps): JSX.Element {
+	// Find initial focused index directly (without useMemo)
+	const [focusedTabIndex, setFocusedTabIndex] = React.useState(() =>
+		tabs.findIndex((tab) => tab.value === activeTabValue)
+	);
+
+	// Update focused tab index when active tab changes
+	React.useEffect(() => {
+		const activeIndex = tabs.findIndex((tab) => tab.value === activeTabValue);
+		if (activeIndex !== -1) {
+			setFocusedTabIndex(activeIndex);
+		}
+	}, [activeTabValue, tabs]);
+
 	const handleChange = (_e: React.SyntheticEvent, value: string) => {
 		onTabClick?.(value);
 	};
 
 	const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-		if (["ArrowRight", "ArrowLeft"].includes(event.key)) {
+		const { key } = event;
+
+		if (["ArrowRight", "ArrowDown"].includes(key)) {
 			event.preventDefault();
-			const currentIndex = tabs.findIndex((tab) => tab.value === activeTabValue);
-			let newIndex = currentIndex;
-			if (event.key === "ArrowRight") {
-				newIndex = (currentIndex + 1) % tabs.length;
-			} else if (event.key === "ArrowLeft") {
-				newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-			}
-			onTabClick?.(tabs[newIndex].value);
+			const newIndex = (focusedTabIndex + 1) % tabs.length;
+			setFocusedTabIndex(newIndex);
+		} else if (["ArrowLeft", "ArrowUp"].includes(key)) {
+			event.preventDefault();
+			const newIndex = (focusedTabIndex - 1 + tabs.length) % tabs.length;
+			setFocusedTabIndex(newIndex);
+		} else if (key === " " || key === "Enter") {
+			event.preventDefault();
+			onTabClick?.(tabs[focusedTabIndex].value);
 		}
 	};
 
@@ -103,8 +126,13 @@ function SolaceTabs({
 				className={tabs.length === 1 ? "singleTab" : ""}
 				variant={variant}
 			>
-				{tabs.map((item: TabProps) => (
-					<AnchorTab {...item} key={`anchroTab-${item.value}`} size={size} />
+				{tabs.map((item) => (
+					<AnchorTab
+						{...item}
+						key={`anchorTab-${item.value}`}
+						size={size}
+						tabIndex={item.value === activeTabValue ? 0 : -1}
+					/>
 				))}
 			</Tabs>
 		</Box>
