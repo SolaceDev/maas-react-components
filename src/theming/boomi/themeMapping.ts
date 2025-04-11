@@ -126,10 +126,10 @@ const palette: ThemeMappingPalette = {
 			w30: "#C7C8F5"
 		},
 		n5: {
-			w100: "#EB5A00",
-			wMain: "#FF6900",
-			w30: "#FFC399",
-			w60: "#FFA566"
+			w100: "#B2301A",
+			wMain: "#D94A3A",
+			w30: "#FDD3D3",
+			w60: "#F47874"
 		},
 		n6: {
 			w100: "#EBA400",

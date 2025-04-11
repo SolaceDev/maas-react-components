@@ -107,7 +107,7 @@ const NodeColorBlockDualColorContainer = styled(NodeColorBlockContainer)(() => (
 	columnGap: "1px"
 }));
 
-const SupportedColorVariationList = ["n2", "n0", "n3"];
+const SupportedColorVariationList = ["n2", "n0", "n1", "n3", "n4", "n5", "n6", "n7", "n8"];
 
 function NodeColorBlock({ colorVariation, nodeType }: { colorVariation: string; nodeType?: string }) {
 	const theme = useTheme();
@@ -117,8 +117,8 @@ function NodeColorBlock({ colorVariation, nodeType }: { colorVariation: string; 
 	const accentValueW100 = theme.palette.ux.accent[colorVariation].w100;
 
 	if (dualColor) {
-		const bgColor = accentValueWMain;
-		const bgColor2 = accentValueW100;
+		const bgColor = accentValueW100;
+		const bgColor2 = accentValueWMain;
 
 		return (
 			<NodeColorBlockDualColorContainer>
