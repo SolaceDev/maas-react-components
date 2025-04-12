@@ -114,7 +114,7 @@ export const baseThemeMapping: ThemeMapping = {
 			n2: {
 				w100: "#165E64",
 				wMain: "#00AD93",
-				w30: alpha("#00AD93", 0.35),
+				w30: "#B3DEDF",
 				w20: "#CCE9E9",
 				w10: alpha("#009193", 0.1)
 			},
