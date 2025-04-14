@@ -15,7 +15,7 @@ import InfoIcon from "@mui/icons-material/Info";
 (SolaceCard as React.FC & { displayName?: string }).displayName = "SolaceCard";
 
 export default {
-	title: "Data Display Card",
+	title: "Container/Card",
 	component: SolaceCard,
 	parameters: {
 		design: {
