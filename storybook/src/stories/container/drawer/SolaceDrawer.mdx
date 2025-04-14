@@ -1,0 +1,93 @@
+import { Meta, Canvas, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceDrawerStories from "./SolaceDrawer.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceDrawerStories} />
+
+<Title>Drawer</Title>
+
+<Description of={SolaceDrawerStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceDrawer`
+
+<Subtitle>How It Works</Subtitle>
+
+The `SolaceDrawer` component provides a sliding panel that enters from the edge of the screen. It can be used to display additional content, navigation options, or contextual information without navigating away from the current view. The drawer can be configured to appear from either the left or right side of the screen, and can be made resizable to allow users to adjust its width.
+
+The drawer is a resizable, non-overlay version of a traditional sheet. It does not have a scrim behind it that blocks interactions, however it may visually block parts of the page.
+
+<Subtitle>When To Use It</Subtitle>
+
+- You need to complete complex tasks that would take up too much space on the page itself if embedded
+  - Example: Selecting multiple objects from a list of objects with the ability to sort and filter
+- You want to bring in additional information that isn't naturally part of the page but can be useful for reference, improving efficiency in task completion
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- The task does not require the user to refer to content in the main page (consider using a dialog instead, as it's better for focusing user on the current task and providing a clear sign of end of task)
+- You're implementing simple basic interactions, such as selecting a single object from a list
+- A simpler component can be used instead, such as an autocomplete dropdown
+- The cognitive load would be too high for users to manage both the main content and drawer content
+
+<Subtitle>Behavior</Subtitle>
+
+- Does not appear by default but can be opened by the user through a trigger on the page
+- Is locked to a single edge
+- Appears above the content of the page but does not stop the user from working in the content
+- Does not cover header the page, but covers the footer
+- By default, it does not save input entered in the sheet. If the use case requires users to switch sheets frequently, consider alternative methods of taking actions/input
+- Opens with a subtle slide-in animation
+
+<Subtitle>Details</Subtitle>
+
+```tsx
+// Example of a basic drawer implementation with callback functions
+import React, { useState } from "react";
+
+const MyDrawerComponent = () => {
+	// State to control drawer visibility
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+	// Callback function to open the drawer
+	const handleOpenDrawer = () => {
+		setIsDrawerOpen(true);
+	};
+
+	// Callback function to close the drawer
+	const handleCloseDrawer = () => {
+		setIsDrawerOpen(false);
+		// Additional close logic here, e.g.:
+		console.log("Drawer closed");
+	};
+
+	return (
+		<>
+			{/* Button to open the drawer */}
+			<SolaceButton variant="outline" onClick={handleOpenDrawer}>
+				Open Drawer
+			</SolaceButton>
+
+			{/* The drawer component */}
+			<SolaceDrawer open={isDrawerOpen} onClose={handleCloseDrawer} anchor="right" width={320}>
+				<div>
+					<h2>Drawer Content</h2>
+					<p>This is the content of the drawer.</p>
+				</div>
+			</SolaceDrawer>
+		</>
+	);
+};
+```
+
+The source code for the `SolaceDrawer` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceDrawer.tsx)
+
+More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21118-35071&t=1T347Fr0kW1b1Z4A-0)
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceDrawerStories} />
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

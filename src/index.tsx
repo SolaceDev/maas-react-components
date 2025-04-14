@@ -72,6 +72,7 @@ export type { CustomContentDefinition as SolaceCustomContentDefinition } from ".
 export { default as SolacePagination } from "./components/SolacePagination";
 export { default as SolaceCodeEditor } from "./components/form/SolaceCodeEditor";
 export { default as SolacePopover } from "./components/SolacePopover";
+export type { SolacePopoverProps } from "./types/solacePopover";
 export { default as SolaceAttributeValuePairForm } from "./components/form/SolaceAttributeValuePairForm";
 export { default as SolaceTooltip } from "./components/SolaceToolTip";
 export { default as SolaceDrawer } from "./components/SolaceDrawer";
@@ -81,6 +82,8 @@ export { default as SolaceNotificationCounter } from "./components/SolaceNotific
 export { default as getThemeMappings } from "./theming/themeUtils";
 export { default as SolaceSplitPane } from "./components/layout/SolaceSplitPane";
 export { default as SolaceAccordion } from "./components/SolaceAccordion";
+export type { SolaceAccordionProps } from "./components/SolaceAccordion";
+
 export { default as SolaceStack } from "./components/layout/SolaceStack";
 export { default as SolaceGrid } from "./components/layout/SolaceGrid";
 export { default as SolaceBreadcrumb } from "./components/SolaceBreadcrumb";

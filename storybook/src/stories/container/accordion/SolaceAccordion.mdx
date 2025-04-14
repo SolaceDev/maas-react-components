@@ -1,0 +1,112 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceAccordionStories from "./SolaceAccordion.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceAccordionStories} />
+
+<Title>Accordion</Title>
+
+<Description of={SolaceAccordionStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceAccordion`
+
+<Subtitle>How It Works</Subtitle>
+
+The `SolaceAccordion` component allows users to show and hide sections of related content. Accordions are useful when you want to toggle between hiding and showing large amounts of content. The component supports various states including expanded, disabled, with indicators, and with custom styling options.
+
+<Subtitle>When To Use It</Subtitle>
+
+This is an interaction pattern called "progressive disclosure" with the purpose of only revealing the essential information up front, and moving the secondary/complex content out of the main interface into an expandable area. Usually used to keep user on track of the main task while still making additional information available.
+
+Examples of where it can be used:
+
+- Tables
+- Lists
+- Cards
+- Settings (for advanced options)
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- The content is critical and should always be visible to users
+- There are only a few short sections that could easily fit on the screen at once
+- Users need to compare information across multiple sections simultaneously
+- The accordion would create an unnecessary extra step for frequently accessed content
+- The content has a natural sequential flow that users should follow step by step
+- The collapsed state might hide important information that users need to see immediately
+
+<Subtitle>Anatomy - Chevron Icon</Subtitle>
+
+- The chevron icon indicates the current state of the accordion (collapsed or expanded)
+- When collapsed, the chevron points to the right
+- When expanded, the chevron points down
+- The icon size is 24x24 pixels with 8px padding on all sides
+
+<Subtitle>Anatomy - Panel</Subtitle>
+
+- **Panel Area**: The container for the accordion content with a white background by default
+- **Separation Line**: A line below the section that gets pushed down with the content
+- **Background Area**: Default white (#FFFFFF) background color that may be changed based on context
+- **Padding Around Content**: Top: 8px, Right and Bottom: 16px
+- **Alignment of Content**: Content should be left-aligned with the title
+
+<Subtitle>Behavior</Subtitle>
+
+- **Default State**: May be collapsed or expanded depending on the context. The state should be maintained even if the user exits and returns to the page.
+- **Collapsed & Hover**: Hovering over the chevron icon or entire panel area triggers visual feedback.
+- **Expanded**: Clicking the chevron icon or anywhere in the title area will expand the panel and reveal content inside.
+- **Expanded & Hover**: Clicking the chevron icon or anywhere in the title area will collapse the panel and hide content inside.
+
+<Subtitle>Details</Subtitle>
+
+```tsx
+// Example of a basic accordion implementation with callback functions
+import React, { useState } from "react";
+
+const MyAccordionComponent = () => {
+	// State to track the expanded state of the accordion
+	const [isExpanded, setIsExpanded] = useState(false);
+
+	// Callback function for handling accordion expansion state changes
+	const handleAccordionChange = (event: React.SyntheticEvent, expanded: boolean) => {
+		setIsExpanded(expanded);
+
+		// Additional logic based on expansion state
+		if (expanded) {
+			console.log("Accordion expanded");
+			// You might want to:
+			// - Load additional content
+			// - Track analytics event
+			// - Update other UI elements
+		} else {
+			console.log("Accordion collapsed");
+			// You might want to:
+			// - Clean up resources
+			// - Reset form values
+			// - Update other UI elements
+		}
+	};
+
+	return (
+		<SolaceAccordion
+			id="exampleAccordion"
+			summary="Accordion Summary"
+			details="Accordion Details"
+			expanded={isExpanded}
+			onChange={handleAccordionChange}
+		/>
+	);
+};
+```
+
+The source code for the `SolaceAccordion` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceAccordion.tsx)
+
+More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=1060%3A0)
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceAccordionStories} />
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />
