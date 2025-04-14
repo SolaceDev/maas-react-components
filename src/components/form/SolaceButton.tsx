@@ -97,7 +97,7 @@ function SolaceButton({
 				borderRadius: theme.spacing(4 / 8),
 				minWidth: "100px",
 				height: theme.spacing(32 / 8),
-				"&:focus": {
+				"&.Mui-focusVisible": {
 					borderRadius: 0,
 					outline: `1px solid ${theme.palette.ux.accent.n2.wMain}`,
 					outlineOffset: "-1px"
@@ -109,7 +109,7 @@ function SolaceButton({
 				display: "inline-flex",
 				alignItems: "center",
 				verticalAlign: "inherit",
-				"&:focus": {
+				"&.Mui-focusVisible": {
 					outline: `1px solid ${theme.palette.ux.accent.n2.wMain}`,
 					outlineOffset: "1px"
 				}
