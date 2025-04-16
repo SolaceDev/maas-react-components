@@ -117,7 +117,11 @@ const menuItemsWithSecondaryActions = [
  * Default SolaceCard story
  */
 const SolaceCardStory = (args: SolaceCardProps) => {
-	return <SolaceCard {...args} />;
+	return (
+		<div style={{ margin: "20px", padding: "20px" }}>
+			<SolaceCard {...args} />
+		</div>
+	);
 };
 
 /**
@@ -214,7 +218,7 @@ export const CustomContent = {
  */
 export const PaddingOptions = {
 	render: () => (
-		<div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+		<div style={{ display: "flex", flexDirection: "column", gap: "24px", padding: "20px", margin: "20px" }}>
 			<SolaceCard
 				dataQa="padding-16px-card"
 				width="300px"
