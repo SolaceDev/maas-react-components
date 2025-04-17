@@ -274,7 +274,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 
 						"&.dark-call-to-action-button": {
 							borderRadius: `10px 3px`,
-							color: themeMapping.palette.brand.w60,
+							color: themeMapping.palette.primary.text.w10,
 							backgroundColor: themeMapping.palette.learning.wMain,
 							"&:hover": {
 								backgroundColor: themeMapping.palette.learning.w90
