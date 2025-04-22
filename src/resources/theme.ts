@@ -916,9 +916,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							}
 						},
 						"&.Mui-focusVisible": {
-							".MuiSvgIcon-root .SolaceRadioContainer": {
-								stroke: themeMapping.palette.accent.n2.wMain
-							}
+							outline: `1px solid ${themeMapping.palette.accent.n2.wMain}`,
+							outlineOffset: "-1px",
+							borderRadius: "50%"
 						},
 						"&.Mui-checked": {
 							".SolaceRadioSelection": {
