@@ -70,16 +70,18 @@ export default function SolaceDatePicker({
 	const styles = {
 		".MuiPickersCalendarHeader-switchViewButton:focus-visible": {
 			border: `1px solid ${color}`,
+			padding: "3px",
 			borderRadius: "3px"
 		},
 
 		".MuiPickersArrowSwitcher-button:focus-visible": {
 			border: `1px solid ${color}`,
+			padding: "3px",
 			borderRadius: "3px"
 		},
 
-		'[role="gridcell"] button:focus-visible': {
-			outline: `1px solid ${color}`,
+		".MuiPickersDay-root:focus-visible": {
+			border: `1px solid ${color}`,
 			borderRadius: "50%"
 		}
 	};

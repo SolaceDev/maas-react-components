@@ -585,7 +585,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 							color: isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.primary.w90
 						},
 						"&:active": {
-							fontWeight: 500,
 							color: isCurrentSolace ? themeMapping.palette.primary.wMain : themeMapping.palette.primary.w100
 						},
 						"&[disabled]": {
@@ -801,7 +800,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									marginRight: "8px"
 								},
 								// add focus state for SolaceDatePicker
-								".MuiIconButton-root:focus": {
+								".MuiIconButton-root:focus-visible": {
 									".MuiSvgIcon-root": {
 										outline: `1px solid ${themeMapping.palette.accent.n2.wMain}`,
 										outlineOffset: "-1px",
