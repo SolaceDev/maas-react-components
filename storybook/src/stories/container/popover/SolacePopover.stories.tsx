@@ -29,7 +29,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Container/Popover",
 	component: SolacePopover,
-	decorators: [withSnapshotContainer],
 	parameters: {
 		chromatic: { delay: 1000 },
 		design: {
@@ -45,60 +44,63 @@ export default {
 	},
 	argTypes: {
 		id: {
-			control: { type: "text" }
+			control: { type: "text" },
+			description:
+				"Unique identifier for the popover. This is important for accessibility and helps screen readers identify the popover content. It's used for ARIA attributes and should be unique across the page. The id is also used to establish the relationship between the trigger element and the popover content via aria-describedby."
+		},
+		anchorElement: {
+			control: false,
+			description:
+				"The ref element the popover is going to anchor to. If no anchor element is provided, the popover will anchor to the top left of the application's client area. This is typically a button or other interactive element that triggers the popover. When using anchorElement, the anchorPosition prop is ignored."
+		},
+		anchorPosition: {
+			control: "object",
+			description:
+				"Position of the anchor element relative to the top left corner of the application's client area. Use this when you need to position the popover relative to a specific point rather than an element. This prop is used when you want absolute positioning, such as for context menus. The object should contain 'top' and 'left' properties with numeric values representing pixel positions. When using anchorPosition, the anchorElement prop is ignored."
 		},
 		anchorOrigin: {
 			control: "object",
 			description:
-				"This is the point on the referenced anchor where the popover will attach to. This is used to determine the position of the popover"
+				"This is the point on the referenced anchor where the popover will attach to. This is used to determine the position of the popover. Can be specified using vertical ('top', 'center', 'bottom') and horizontal ('left', 'center', 'right') values, or with numeric pixel values for precise positioning. For example, { vertical: 'bottom', horizontal: 'center' } will position the popover below the anchor, centered horizontally."
 		},
 		transformOrigin: {
 			control: "object",
-			description: "This is the point on the popover which will attach to the anchor's origin"
+			description:
+				"This is the point on the popover which will attach to the anchor's origin. Works in conjunction with anchorOrigin to determine the final position of the popover relative to its anchor element. For example, if anchorOrigin is { vertical: 'bottom', horizontal: 'center' } and transformOrigin is { vertical: 'top', horizontal: 'center' }, the popover's top-center will attach to the anchor's bottom-center."
 		},
 		open: {
 			control: "boolean",
-			description: "Controls whether the popover is open",
-			defaultValue: false
-		},
-		anchorElement: {
-			control: false, // We handle this internally
 			description:
-				"The ref element the popover is going to anchor to. If no anchor element is provided, the popover will anchor to the top left of the application's client area"
+				"Controls whether the popover is open. Use this prop to programmatically show or hide the popover based on user interactions or application state. This makes the popover a controlled component, meaning its visibility state is fully managed by the parent component."
 		},
-		anchorPosition: {
-			control: "object",
-			description: "Position of the anchor element relative to the top left corner of the application's client area"
-		},
-		marginThreshold: {
-			control: { type: "number" },
-			description: "Specifies the minimum margin between the popover and the screen edges",
-			defaultValue: 16
-		},
-		activateOnHover: {
-			control: "boolean",
-			description: "Determines if the popover should activate on hover",
-			defaultValue: false
-		},
-		dataQa: {
-			control: "text",
-			description: "Data attribute for QA purposes"
-		},
-		dataTags: {
-			control: "text",
-			description: "Data tags for the popover"
+		children: {
+			control: false,
+			description:
+				"The content to be displayed inside the popover. This can be any valid React node, including text, elements, or components. The content is rendered within a Paper component that provides the visual container for the popover."
 		},
 		onClose: {
 			control: false,
-			description: "Callback fired when the popover requests to be closed"
+			description:
+				"Callback fired when the popover requests to be closed. This function is triggered when the user clicks outside the popover or presses the escape key (unless these behaviors are disabled). The callback receives the event that triggered the close action as its parameter. This is essential for controlled components to update their state and close the popover."
 		},
-		testTitle: {
-			table: { disable: true }, // Hide this props from the control table since they are not part of the SolacePopover component
-			description: "Test title for internal use"
+		marginThreshold: {
+			control: { type: "number" },
+			description:
+				"Specifies the minimum margin (in pixels) between the popover and the screen edges. This ensures the popover remains visible even when the anchor is near the edge of the viewport."
 		},
-		testMessage: {
-			table: { disable: true }, // Hide this props from the control table since they are not part of the SolacePopover component
-			description: "Test message for internal use"
+		activateOnHover: {
+			control: "boolean",
+			description:
+				"Determines if the popover should activate on hover rather than click. When true, the popover will appear when the user hovers over the anchor element and disappear when the mouse leaves. Setting this to true also disables pointer events on the popover (sets pointerEvents: 'none'), which affects how the popover interacts with mouse events. This is useful for tooltip-like behavior where you want the popover to appear on hover but not intercept mouse events."
+		},
+		dataQa: {
+			control: "text",
+			description:
+				"Data attribute for QA purposes. This attribute helps with automated testing by providing a consistent selector for test scripts. It's added as a data-qa attribute to the DOM element."
+		},
+		dataTags: {
+			control: "text",
+			description: "Data tags for the popover. These can be used for analytics tracking or other custom metadata needs."
 		}
 	}
 } as Meta<typeof SolacePopover>;
@@ -343,6 +345,14 @@ DefaultPopover.args = {
 		</>
 	)
 };
+DefaultPopover.parameters = {
+	docs: {
+		story: {
+			before:
+				"The standard popover with default positioning and behavior. This is the most common popover pattern and should be used for displaying supplementary information or controls without navigating away from the current context."
+		}
+	}
+};
 DefaultPopover.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	const button = canvas.getByRole("button");
@@ -368,6 +378,14 @@ WithAnchorAndTransformOrigin.args = {
 	),
 	anchorOrigin: { vertical: "top", horizontal: "right" },
 	transformOrigin: { vertical: "top", horizontal: "left" }
+};
+WithAnchorAndTransformOrigin.parameters = {
+	docs: {
+		story: {
+			before:
+				"A popover with custom anchor and transform origins. Use this pattern when you need precise control over the popover's position relative to its anchor element. This example positions the popover so that its top-left corner connects to the top-right corner of the anchor element.\n\n**Prop Dependencies:**\n- `anchorOrigin` and `transformOrigin` - These props work together to determine the final position of the popover. The anchorOrigin defines the point on the anchor element where the popover will attach, while transformOrigin defines the point on the popover that will connect to that anchor point."
+		}
+	}
 };
 WithAnchorAndTransformOrigin.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
@@ -398,6 +416,14 @@ WithCustomAnchorOffest.args = {
 	anchorOrigin: { vertical: 36, horizontal: "left" },
 	transformOrigin: { vertical: "top", horizontal: "left" }
 };
+WithCustomAnchorOffest.parameters = {
+	docs: {
+		story: {
+			before:
+				"A popover with a custom numeric anchor offset. Use this pattern when you need to fine-tune the position of the popover with pixel-level precision, such as when you want to create a specific spacing between the anchor and the popover.\n\n**Prop Dependencies:**\n- `anchorOrigin` - When using numeric values (like 36) instead of keywords ('top', 'bottom', etc.), you can achieve precise pixel positioning relative to the anchor element.\n- `transformOrigin` - Works with the custom anchorOrigin to determine the final position."
+		}
+	}
+};
 WithCustomAnchorOffest.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
 	const button = canvas.getByRole("button");
@@ -422,6 +448,14 @@ WithAnchorPosition.args = {
 		</>
 	),
 	anchorPosition: { top: 120, left: 150 }
+};
+WithAnchorPosition.parameters = {
+	docs: {
+		story: {
+			before:
+				"A popover positioned at specific coordinates on the screen. Use this pattern when you need to position a popover relative to the viewport rather than an anchor element. This is useful for context menus, tooltips for map points, or any scenario where the popover should appear at an absolute position.\n\n**Prop Dependencies:**\n- `anchorPosition` - When using this prop, the popover will ignore the `anchorElement` prop and position itself based on the specified coordinates relative to the application's client area. These two props are mutually exclusive - if you provide `anchorPosition`, the `anchorElement` will be ignored."
+		}
+	}
 };
 WithAnchorPosition.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);
@@ -450,6 +484,15 @@ WithFormValidation.args = {
 	),
 	anchorOrigin: { vertical: 36, horizontal: "left" },
 	transformOrigin: { vertical: "top", horizontal: "left" }
+};
+WithFormValidation.decorators = [withSnapshotContainer];
+WithFormValidation.parameters = {
+	docs: {
+		story: {
+			before:
+				"A popover containing a form with validation. Use this pattern when you need to collect user input while maintaining the current page context. This example demonstrates how to keep the popover open until valid data is submitted, preventing accidental data loss.\n\n**Prop Dependencies:**\n- `onClose` - This prop is crucial for form validation popovers as it allows you to implement custom closing logic that can prevent the popover from closing when form data is invalid.\n- `anchorOrigin` and `transformOrigin` - These props are used here to position the form popover appropriately relative to its trigger button."
+		}
+	}
 };
 WithFormValidation.play = async ({ canvasElement }) => {
 	const canvas = within(canvasElement);

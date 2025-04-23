@@ -1,0 +1,111 @@
+import { Meta, Description, Title, Subtitle, ArgTypes, Markdown } from "@storybook/blocks";
+import * as SolacePopoverStories from "./SolacePopover.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolacePopoverStories} />
+
+<Title>Popover</Title>
+
+<Description of={SolacePopoverStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolacePopover`
+
+<Subtitle>Popover Types</Subtitle>
+
+There are two main types of popovers:
+
+1. **Standard Popover**
+
+- Contains supplementary or overflow information in flexible layouts
+- Content could be purely informational or interactive
+- Does not require user input to dismiss or proceed
+- Closes when clicking outside the popover
+
+2. **Input Popover**
+
+- Collects user input while maintaining page context
+- Ideal for situations where users need to reference nearby information while providing input
+- May include form elements and action buttons
+- Can include validation to prevent closing with unsaved changes
+
+<Subtitle>Alignment & Positioning</Subtitle>
+
+Popovers can be aligned to the trigger element in various ways:
+```
+Vertical 	Horizontal
+Top		Left
+Top		Center
+Top 		Right
+Center 		Left
+Center 		Center
+Center 		Right
+Bottom 		Left
+Bottom 		Center
+Bottom 		Right
+```
+The most important aspect of positioning is to ensure that the popover's placement does not block users from performing other tasks on screen. Implementation of alignments may differ from guidelines based on specific use cases.
+
+<Subtitle>Opening & Closing Behavior</Subtitle>
+
+- **Opening**:
+  - Popovers open upon the user clicking an interactive element (the trigger).
+- **Closing**:
+  - Standard popovers close when the user clicks outside the popover.
+  - Input popovers with unsaved changes should not close when clicked outside. Instead, display a warning to prompt the user to save or discard their changes.
+
+<Subtitle>Details</Subtitle>
+
+```tsx
+// Example of a basic popover implementation
+import React, { useState } from "react";
+import { SolaceButton, SolacePopover } from "@SolaceDev/maas-react-components";
+
+const MyComponent = () => {
+	// State to track the anchor element and open state
+	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+	const open = Boolean(anchorEl);
+	const id = open ? "simple-popover" : undefined;
+
+	// Handler for opening the popover
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	// Handler for closing the popover
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
+	return (
+		<div>
+			{/* Button that triggers the popover */}
+			<SolaceButton aria-describedby={id} variant="call-to-action" onClick={handleClick}>
+				Open Popover
+			</SolaceButton>
+
+			{/* The popover component */}
+			<SolacePopover
+				id={id}
+				open={open}
+				anchorElement={anchorEl}
+				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+				transformOrigin={{ vertical: "top", horizontal: "center" }}
+				onClose={handleClose}
+			>
+				<div style={{ padding: "16px" }}>This is the content of the popover.</div>
+			</SolacePopover>
+		</div>
+	);
+};
+```
+
+The source code for the `SolacePopover` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolacePopover.tsx)
+
+More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21909-955&p=f&t=krT48Tpudmfvc1Pl-0)
+
+<ArgTypes of={SolacePopoverStories} />
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />
