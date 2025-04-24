@@ -40,14 +40,24 @@ const StyledButtonGroupBox = styled(Box)(({ theme }) => ({
 
 // left and right directions have different padding
 // right direction only has padding when onLastStep is false
-const StyledButtonBox = styled(Box)<{ direction: "left" | "right"; onLastStep?: boolean }>(
-	({ theme, direction, onLastStep }) => ({
-		marginRight: direction === "left" ? theme.spacing(1) : 0,
-		".MuiButtonBase-root": {
-			padding: direction === "left" ? "0 16px 0 0" : !onLastStep ? "0 0 0 16px" : undefined
-		}
-	})
-);
+const StyledButtonBox = styled(Box, {
+	shouldForwardProp: (prop) => prop !== "onLastStep" && prop !== "direction"
+})<{ direction: "left" | "right"; onLastStep?: boolean }>(({ theme, direction, onLastStep }) => ({
+	marginRight: direction === "left" ? theme.spacing(1) : 0,
+	".MuiButtonBase-root": {
+		padding: (() => {
+			if (direction === "left") return "0 16px 0 0";
+			if (!onLastStep) return "0 0 0 16px";
+			return undefined;
+		})()
+	}
+}));
+
+const ButtonContent = styled("span")(({ theme }) => ({
+	display: "flex",
+	alignItems: "center",
+	gap: theme.spacing(1)
+}));
 
 export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 	const {
@@ -86,12 +96,6 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 		if (onFirstStep) return;
 		setActiveStep(activeStep - 1);
 	};
-
-	const ButtonContent = styled("span")(({ theme }) => ({
-		display: "flex",
-		alignItems: "center",
-		gap: theme.spacing(1)
-	}));
 
 	return (
 		<Box minHeight="69px">
