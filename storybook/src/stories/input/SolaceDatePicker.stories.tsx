@@ -7,6 +7,9 @@ import { userEvent, within } from "@storybook/test";
 (SolaceDatePicker as React.FC & { displayName?: string }).displayName = "SolaceDatePicker";
 
 const DateStringInISOFormat = "2022-01-01T00:00:00Z";
+const UTC_TIMEZONE = "UTC";
+const DATE_CHANGED_EVENT = "Date Changed";
+const CLEARED_EVENT = "Cleared";
 
 const withSnapshotContainer: Decorator = (Story) => {
 	return (
@@ -43,8 +46,8 @@ export default {
 export const DefaultSolaceDatePicker = {
 	args: {
 		value: DateStringInISOFormat, // in ISO 8601 format
-		onChange: action("Date Changed"),
-		onClear: action("Cleared")
+		onChange: action(DATE_CHANGED_EVENT),
+		onClear: action(CLEARED_EVENT)
 	},
 	decorators: [withSnapshotContainer],
 	play: async ({ canvasElement }) => {
@@ -66,13 +69,23 @@ export const UncontrolledDatePicker = {
 	args: {}
 };
 
+export const DatePickerWithTimezoneUTC = {
+	render: Template,
+	decorators: [withSnapshotContainer],
+	args: {
+		value: DateStringInISOFormat,
+		timezone: UTC_TIMEZONE,
+		onChange: action(DATE_CHANGED_EVENT)
+	}
+};
+
 export const ControlledDatePicker = {
 	render: Template,
 	decorators: [withSnapshotContainer],
 	args: {
 		value: DateStringInISOFormat, // in ISO 8601 format
-		onChange: action("Date Changed"),
-		onClear: action("Cleared")
+		onChange: action(DATE_CHANGED_EVENT),
+		onClear: action(CLEARED_EVENT)
 	}
 };
 
