@@ -29,6 +29,11 @@ export default {
 			options: ["success", "info", "warning", "error"],
 			control: {
 				type: "select"
+			},
+			description: "**Deprecated** - This prop will be removed in a future version",
+			table: {
+				type: { summary: '"success" | "info" | "warning" | "error"' },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		message: {
@@ -49,42 +54,6 @@ const buttonClickedAction = action("action button clicked");
 export const DefaultToast = {
 	args: {
 		message: "This is a default toast",
-		open: true,
-		onClose: action("closing")
-	}
-};
-
-export const SuccessToast = {
-	args: {
-		severity: "success",
-		message: "This is a sample success toast",
-		open: true,
-		onClose: action("closing")
-	}
-};
-
-export const InfoToast = {
-	args: {
-		severity: "info",
-		message: "This is a sample info toast",
-		open: true,
-		onClose: action("closing")
-	}
-};
-
-export const WarningToast = {
-	args: {
-		severity: "warning",
-		message: "This is a sample warning toast",
-		open: true,
-		onClose: action("closing")
-	}
-};
-
-export const ErrorToast = {
-	args: {
-		severity: "error",
-		message: "This is a sample error toast",
 		open: true,
 		onClose: action("closing")
 	}

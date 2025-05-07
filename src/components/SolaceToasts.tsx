@@ -7,6 +7,7 @@ import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined
 import React from "react";
 
 export type SolaceToastsProps = {
+	/** @deprecated This prop will be removed in a future version. Target: August 2025 */
 	severity?: "success" | "info" | "warning" | "error";
 	message: React.ReactNode;
 	open?: boolean;
