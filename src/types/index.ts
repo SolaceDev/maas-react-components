@@ -21,3 +21,4 @@ export * from "./solacefileUploader";
 export * from "./solaceCategorizedSearch";
 export * from "./solaceCard";
 export * from "./solaceCardHeader";
+export * from "./solaceChipTextArea";

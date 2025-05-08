@@ -56,6 +56,9 @@ export type { SolaceSelectAutocompleteItemProps } from "./components/form/Solace
 export { default as SolaceSelectAutocompleteResponsiveTags } from "./components/form/SolaceSelectAutocompleteResponsiveTags";
 export type { SolaceSelectAutocompleteResponsiveTagsProps } from "./components/form/SolaceSelectAutocompleteResponsiveTags";
 export { default as SolaceTextArea } from "./components/form/SolaceTextArea";
+export type { SolaceTextAreaChangeEvent } from "./components/form/SolaceTextArea";
+export { default as SolaceChipTextArea } from "./components/form/SolaceChipTextArea/SolaceChipTextArea";
+export type { SolaceChipTextAreaProps, ChipData } from "./types/solaceChipTextArea";
 export { default as SolaceToggle } from "./components/form/SolaceToggle";
 export type { SolaceToggleChangeEvent, SolaceToggleProps } from "./components/form/SolaceToggle";
 export { default as SolaceLabel } from "./components/form/SolaceLabel";
