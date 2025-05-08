@@ -2,7 +2,6 @@ import { Box, FormLabel, InputLabel, Radio, useRadioGroup, useTheme } from "@mui
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
-import { RestingRadioIcon, SelectedRadioIcon } from "../../resources/icons/RadioIcons";
 import clsx from "clsx";
 export interface SolaceRadioChangeEvent {
 	name: string;
@@ -143,8 +142,6 @@ function SolaceRadio({
 				id={`${id}-radio`}
 				name={name}
 				value={value}
-				icon={RestingRadioIcon}
-				checkedIcon={SelectedRadioIcon}
 				inputProps={
 					{
 						"aria-labelledby": label ? `${id}-label` : "",
@@ -159,6 +156,55 @@ function SolaceRadio({
 				disableRipple
 				checked={selected}
 				onChange={handleChange}
+				sx={{
+					"&": {
+						padding: 0,
+						alignItems: "flex-start",
+						marginRight: "16px"
+					},
+					"& .MuiSvgIcon-root": {
+						width: "24px",
+						height: "24px"
+					},
+					"& .MuiSvgIcon-root path": {
+						// Outer circle
+						d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z",
+						transform: "scale(1)"
+					},
+					// Unselected state
+					"&:not(.Mui-checked) .MuiSvgIcon-root": {
+						color: theme.palette.ux.secondary.w40
+					},
+					// Hover state
+					"&:hover:not(.Mui-checked):not(.Mui-disabled) .MuiSvgIcon-root": {
+						color: theme.palette.ux.secondary.wMain
+					},
+					// Selected state
+					"&.Mui-checked .MuiSvgIcon-root": {
+						color: theme.palette.ux.accent.n2.wMain
+					},
+					"&.Mui-checked .MuiSvgIcon-root path": {
+						// Filled circle for selected state - adjusted to make inner circle 12x12px (from position 6 to 18)
+						d: "M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0-4C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+					},
+					// Disabled state
+					"&.Mui-disabled:not(.Mui-checked) .MuiSvgIcon-root": {
+						color: theme.palette.ux.secondary.w20
+					},
+					"&.Mui-disabled.Mui-checked .MuiSvgIcon-root": {
+						color: theme.palette.ux.accent.n2.w30
+					},
+					// Read-only state
+					"&.readOnly": {
+						backgroundColor: theme.palette.ux.background.w20
+					},
+					"&.readOnly:not(.Mui-checked) .MuiSvgIcon-root": {
+						color: theme.palette.ux.secondary.w40
+					},
+					"&.readOnly.Mui-checked .MuiSvgIcon-root": {
+						color: theme.palette.ux.secondary.wMain
+					}
+				}}
 			/>
 			{label && (
 				<Box>
