@@ -905,37 +905,47 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiFormHelperText-root": {
 							marginLeft: "0"
 						},
-						padding: 0,
+						".MuiSvgIcon-root .SolaceRadioContainer": {
+							fill: themeMapping.palette.background.w10,
+							stroke: themeMapping.palette.secondary.w40
+						},
+						"&:hover": {
+							".MuiSvgIcon-root .SolaceRadioContainer": {
+								stroke: themeMapping.palette.deprecated.secondary.wMain
+							}
+						},
 						"&.Mui-focusVisible": {
 							outline: `1px solid ${themeMapping.palette.accent.n2.wMain}`,
 							outlineOffset: "-1px",
 							borderRadius: "50%"
 						},
+						"&.Mui-checked": {
+							".SolaceRadioSelection": {
+								fill: themeMapping.palette.deprecated.accent.n2.wMain
+							}
+						},
+						"&.Mui-disabled .MuiSvgIcon-root": {
+							".SolaceRadioContainer": {
+								stroke: themeMapping.palette.secondary.w20
+							},
+							".SolaceRadioSelection": {
+								fill: themeMapping.palette.accent.n2.w30
+							}
+						},
+						"&.readOnly .MuiSvgIcon-root": {
+							".SolaceRadioContainer": {
+								fill: themeMapping.palette.background.w20,
+								stroke: themeMapping.palette.secondary.w40
+							},
+							".SolaceRadioSelection": {
+								fill: themeMapping.palette.deprecated.secondary.wMain
+							}
+						},
 						// Style added to overide Aurelia custom styling, to be removed once Aurelia code is phased out.
 						input: {
 							left: "auto !important"
 						},
-						"& .MuiSvgIcon-root": {
-							color: themeMapping.palette.secondary.w40
-						},
-						"&:hover .MuiSvgIcon-root": {
-							color: themeMapping.palette.secondary.wMain
-						},
-						"&.Mui-checked .MuiSvgIcon-root": {
-							color: themeMapping.palette.accent.n2.wMain
-						},
-						"&.Mui-disabled .MuiSvgIcon-root": {
-							color: themeMapping.palette.secondary.w20
-						},
-						"&.Mui-checked.Mui-disabled .MuiSvgIcon-root": {
-							color: themeMapping.palette.accent.n2.w30
-						},
-						"&.readOnly .MuiSvgIcon-root": {
-							color: themeMapping.palette.secondary.w40
-						},
-						"&.readOnly.Mui-checked .MuiSvgIcon-root": {
-							color: themeMapping.palette.deprecated.secondary.wMain
-						}
+						padding: 0
 					}
 				}
 			},
