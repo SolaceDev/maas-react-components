@@ -152,64 +152,6 @@ function SolaceRadio({
 				role="radio"
 				title={title}
 				className={clsx({ readOnly: readOnly })}
-				sx={{
-					"&.MuiRadio-root": {
-						// Enabled state - Outer circle
-						color: theme.palette.ux.secondary.w40, // Stroke (border)
-						"& .MuiSvgIcon-root:first-of-type circle": {
-							fill: theme.palette.ux.background.w10, // Fill (background)
-							strokeWidth: "1px" // Set border width to 1px
-						},
-
-						// Hover state - Outer circle
-						"&:hover": {
-							color: theme.palette.ux.secondary.wMain // Stroke (border) on hover
-						},
-
-						// Read-only state - must come before checked state to establish base styles
-						"&.readOnly": {
-							color: theme.palette.ux.secondary.w40, // Outer circle stroke
-							"& .MuiSvgIcon-root:first-of-type circle": {
-								fill: theme.palette.ux.background.w20 // Outer circle fill
-							}
-						},
-
-						// Checked state - Inner circle (indicator)
-						"&.Mui-checked": {
-							// Keep outer circle styling
-							color: theme.palette.ux.secondary.w40,
-
-							// Inner circle styling for enabled/hover
-							"& .MuiSvgIcon-root:last-of-type": {
-								color: theme.palette.ux.accent.n2.wMain // Indicator color
-							},
-
-							// Hover when checked - outer circle
-							"&:hover": {
-								color: theme.palette.ux.secondary.wMain
-							},
-
-							// Read-only checked - ensure inner circle is secondary.wMain
-							// This must be inside the checked state to override the default checked color
-							"&.readOnly .MuiSvgIcon-root:last-of-type": {
-								color: `${theme.palette.ux.secondary.wMain} !important` // Force grey indicator for read-only
-							}
-						},
-
-						// Disabled state
-						"&.Mui-disabled": {
-							color: theme.palette.ux.secondary.w20, // Outer circle stroke
-							"& .MuiSvgIcon-root:first-of-type circle": {
-								fill: theme.palette.ux.background.w10 // Outer circle fill
-							},
-
-							// Disabled and checked
-							"&.Mui-checked .MuiSvgIcon-root:last-of-type": {
-								color: theme.palette.ux.accent.n2.w30 // Indicator color for disabled
-							}
-						}
-					}
-				}}
 				disabled={disabled || readOnly}
 				disableRipple
 				checked={selected}
