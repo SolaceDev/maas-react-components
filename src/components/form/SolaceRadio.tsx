@@ -157,7 +157,8 @@ function SolaceRadio({
 						// Enabled state - Outer circle
 						color: theme.palette.ux.secondary.w40, // Stroke (border)
 						"& .MuiSvgIcon-root:first-of-type circle": {
-							fill: theme.palette.ux.background.w10 // Fill (background)
+							fill: theme.palette.ux.background.w10, // Fill (background)
+							strokeWidth: "1px" // Set border width to 1px
 						},
 
 						// Hover state - Outer circle
