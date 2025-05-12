@@ -154,18 +154,57 @@ function SolaceRadio({
 				className={clsx({ readOnly: readOnly })}
 				sx={{
 					"&.MuiRadio-root": {
-						color: "#979797", // This controls the outer circle color when unchecked
+						// Enabled state - Outer circle
+						color: theme.palette.ux.secondary.w40, // Stroke (border)
+						"& .MuiSvgIcon-root:first-of-type circle": {
+							fill: theme.palette.ux.background.w10 // Fill (background)
+						},
+
+						// Hover state - Outer circle
+						"&:hover": {
+							color: theme.palette.ux.secondary.wMain // Stroke (border) on hover
+						},
+
+						// Read-only state - must come before checked state to establish base styles
+						"&.readOnly": {
+							color: theme.palette.ux.secondary.w40, // Outer circle stroke
+							"& .MuiSvgIcon-root:first-of-type circle": {
+								fill: theme.palette.ux.background.w20 // Outer circle fill
+							}
+						},
+
+						// Checked state - Inner circle (indicator)
 						"&.Mui-checked": {
-							// This controls the color when checked
-							"& .MuiSvgIcon-root": {
-								// First SVG is the outer circle
-								"&:first-of-type": {
-									color: "#979797" // Keep outer circle greyish
-								},
-								// Second SVG is the inner circle
-								"&:last-of-type": {
-									color: theme.palette.ux.success.w100 // Inner circle greenish
-								}
+							// Keep outer circle styling
+							color: theme.palette.ux.secondary.w40,
+
+							// Inner circle styling for enabled/hover
+							"& .MuiSvgIcon-root:last-of-type": {
+								color: theme.palette.ux.accent.n2.wMain // Indicator color
+							},
+
+							// Hover when checked - outer circle
+							"&:hover": {
+								color: theme.palette.ux.secondary.wMain
+							},
+
+							// Read-only checked - ensure inner circle is secondary.wMain
+							// This must be inside the checked state to override the default checked color
+							"&.readOnly .MuiSvgIcon-root:last-of-type": {
+								color: `${theme.palette.ux.secondary.wMain} !important` // Force grey indicator for read-only
+							}
+						},
+
+						// Disabled state
+						"&.Mui-disabled": {
+							color: theme.palette.ux.secondary.w20, // Outer circle stroke
+							"& .MuiSvgIcon-root:first-of-type circle": {
+								fill: theme.palette.ux.background.w10 // Outer circle fill
+							},
+
+							// Disabled and checked
+							"&.Mui-checked .MuiSvgIcon-root:last-of-type": {
+								color: theme.palette.ux.accent.n2.w30 // Indicator color for disabled
 							}
 						}
 					}
@@ -174,7 +213,6 @@ function SolaceRadio({
 				disableRipple
 				checked={selected}
 				onChange={handleChange}
-				// Styles moved to theme.ts
 			/>
 			{label && (
 				<Box>
