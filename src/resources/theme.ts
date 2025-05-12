@@ -905,41 +905,66 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						".MuiFormHelperText-root": {
 							marginLeft: "0"
 						},
-						".MuiSvgIcon-root .SolaceRadioContainer": {
-							fill: themeMapping.palette.background.w10,
-							stroke: themeMapping.palette.secondary.w40
-						},
-						"&:hover": {
-							".MuiSvgIcon-root .SolaceRadioContainer": {
-								stroke: themeMapping.palette.deprecated.secondary.wMain
+						"&.MuiRadio-root": {
+							// Enabled state - Outer circle
+							color: themeMapping.palette.secondary.w40, // Stroke (border)
+							"& .MuiSvgIcon-root:first-of-type circle": {
+								fill: themeMapping.palette.background.w10, // Fill (background)
+								strokeWidth: "1px" // Set border width to 1px
+							},
+
+							// Hover state - Outer circle
+							"&:hover": {
+								color: themeMapping.palette.secondary.wMain // Stroke (border) on hover
+							},
+
+							// Read-only state - must come before checked state to establish base styles
+							"&.readOnly": {
+								color: themeMapping.palette.secondary.w40, // Outer circle stroke
+								"& .MuiSvgIcon-root:first-of-type circle": {
+									fill: themeMapping.palette.background.w20 // Outer circle fill
+								}
+							},
+
+							// Checked state - Inner circle (indicator)
+							"&.Mui-checked": {
+								// Keep outer circle styling
+								color: themeMapping.palette.secondary.w40,
+
+								// Inner circle styling for enabled/hover
+								"& .MuiSvgIcon-root:last-of-type": {
+									color: themeMapping.palette.accent.n2.wMain // Indicator color
+								},
+
+								// Hover when checked - outer circle
+								"&:hover": {
+									color: themeMapping.palette.secondary.wMain
+								},
+
+								// Read-only checked - ensure inner circle is secondary.wMain
+								// This must be inside the checked state to override the default checked color
+								"&.readOnly .MuiSvgIcon-root:last-of-type": {
+									color: `${themeMapping.palette.secondary.wMain} !important` // Force grey indicator for read-only
+								}
+							},
+
+							// Disabled state
+							"&.Mui-disabled": {
+								color: themeMapping.palette.secondary.w20, // Outer circle stroke
+								"& .MuiSvgIcon-root:first-of-type circle": {
+									fill: themeMapping.palette.background.w10 // Outer circle fill
+								},
+
+								// Disabled and checked
+								"&.Mui-checked .MuiSvgIcon-root:last-of-type": {
+									color: themeMapping.palette.accent.n2.w30 // Indicator color for disabled
+								}
 							}
 						},
 						"&.Mui-focusVisible": {
 							outline: `1px solid ${themeMapping.palette.accent.n2.wMain}`,
 							outlineOffset: "-1px",
 							borderRadius: "50%"
-						},
-						"&.Mui-checked": {
-							".SolaceRadioSelection": {
-								fill: themeMapping.palette.deprecated.accent.n2.wMain
-							}
-						},
-						"&.Mui-disabled .MuiSvgIcon-root": {
-							".SolaceRadioContainer": {
-								stroke: themeMapping.palette.secondary.w20
-							},
-							".SolaceRadioSelection": {
-								fill: themeMapping.palette.accent.n2.w30
-							}
-						},
-						"&.readOnly .MuiSvgIcon-root": {
-							".SolaceRadioContainer": {
-								fill: themeMapping.palette.background.w20,
-								stroke: themeMapping.palette.secondary.w40
-							},
-							".SolaceRadioSelection": {
-								fill: themeMapping.palette.deprecated.secondary.wMain
-							}
 						},
 						// Style added to overide Aurelia custom styling, to be removed once Aurelia code is phased out.
 						input: {

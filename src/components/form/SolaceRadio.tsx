@@ -2,7 +2,6 @@ import { Box, FormLabel, InputLabel, Radio, useRadioGroup, useTheme } from "@mui
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
-import { RestingRadioIcon, SelectedRadioIcon } from "../../resources/icons/RadioIcons";
 import clsx from "clsx";
 export interface SolaceRadioChangeEvent {
 	name: string;
@@ -143,8 +142,6 @@ function SolaceRadio({
 				id={`${id}-radio`}
 				name={name}
 				value={value}
-				icon={RestingRadioIcon}
-				checkedIcon={SelectedRadioIcon}
 				inputProps={
 					{
 						"aria-labelledby": label ? `${id}-label` : "",
