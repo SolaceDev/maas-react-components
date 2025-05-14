@@ -6,7 +6,7 @@ import { userEvent, within } from "@storybook/test";
 
 (SolaceDatePicker as React.FC & { displayName?: string }).displayName = "SolaceDatePicker";
 
-const DateStringInISOFormat = "2022-01-01T00:00:00Z";
+const DateStringInISOFormat = "2025-05-12T00:00:00Z";
 const UTC_TIMEZONE = "UTC";
 const DATE_CHANGED_EVENT = "Date Changed";
 const CLEARED_EVENT = "Cleared";
@@ -74,6 +74,17 @@ export const DatePickerWithTimezoneUTC = {
 	decorators: [withSnapshotContainer],
 	args: {
 		value: DateStringInISOFormat,
+		timezone: UTC_TIMEZONE,
+		onChange: action(DATE_CHANGED_EVENT)
+	}
+};
+
+export const DatePickerWithFutureDateDisabled = {
+	render: Template,
+	decorators: [withSnapshotContainer],
+	args: {
+		value: DateStringInISOFormat,
+		disableFuture: true,
 		timezone: UTC_TIMEZONE,
 		onChange: action(DATE_CHANGED_EVENT)
 	}

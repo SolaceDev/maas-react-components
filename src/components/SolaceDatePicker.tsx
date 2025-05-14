@@ -112,7 +112,7 @@ export default function SolaceDatePicker({
 	};
 
 	return (
-		<LocalizationProvider dateAdapter={AdapterMoment}>
+		<LocalizationProvider dateAdapter={AdapterMoment} dateLibInstance={moment}>
 			<DatePicker
 				className="SolaceDatePicker"
 				value={date}
@@ -129,6 +129,7 @@ export default function SolaceDatePicker({
 				openTo={openTo}
 				format={format}
 				disableFuture={disableFuture}
+				timezone={timezone ?? "system"}
 			/>
 		</LocalizationProvider>
 	);
