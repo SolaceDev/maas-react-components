@@ -1,14 +1,11 @@
 import { Box, Checkbox, FormHelperText, useTheme, FormLabel } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
-import {
-	IndeterminateCheckBoxIcon,
-	RestingCheckBoxIcon,
-	SelectedCheckBoxIcon
-} from "../../resources/icons/CheckBoxIcons";
 import clsx from "clsx";
+import { Remove } from "@mui/icons-material";
 
 export interface SolaceCheckboxChangeEvent {
 	name: string;
@@ -161,21 +158,7 @@ const SolaceCheckBox = ({
 		return id ? id : name;
 	};
 
-	const getCheckboxIcon = () => {
-		if (indeterminate) {
-			return IndeterminateCheckBoxIcon;
-		} else {
-			return RestingCheckBoxIcon;
-		}
-	};
-
-	const getSelectedIcon = () => {
-		if (indeterminate) {
-			return IndeterminateCheckBoxIcon;
-		} else {
-			return SelectedCheckBoxIcon;
-		}
-	};
+	// No need to get custom icons as we're using MUI's built-in icons
 
 	return (
 		<React.Fragment>
@@ -183,8 +166,7 @@ const SolaceCheckBox = ({
 				<Checkbox
 					id={`${getId()}-checkbox`}
 					name={name}
-					icon={getCheckboxIcon()}
-					checkedIcon={getSelectedIcon()}
+					indeterminate={indeterminate}
 					inputProps={
 						{
 							"aria-labelledby": label ? `${getId()}-label` : "",
@@ -199,6 +181,8 @@ const SolaceCheckBox = ({
 					disableRipple
 					checked={selected}
 					onChange={handleChange}
+					checkedIcon={<CheckIcon />}
+					indeterminateIcon={<Remove />}
 				/>
 				{label && (
 					<Box>
