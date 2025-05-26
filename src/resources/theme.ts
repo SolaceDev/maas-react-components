@@ -1006,7 +1006,7 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						"+.MuiFormLabel-root": {
 							marginLeft: "16px",
 							color: themeMapping.palette.primary.text.wMain,
-							lineHeight: "150%",
+							lineHeight: 1.5,
 							"&.Mui-disabled": {
 								color: themeMapping.palette.secondary.text.w50
 							}
