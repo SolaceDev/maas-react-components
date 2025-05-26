@@ -2,8 +2,9 @@ import { styled } from "@mui/material";
 
 import { ColoredBase, SolaceEnvironmentChipProps } from "./SolaceEnvironmentChip";
 
-const ColoredIcon = styled(ColoredBase)(
-	({ theme }) => `
+const ColoredIcon = styled(ColoredBase, { shouldForwardProp: (prop) => prop !== "disabled" })<{ disabled?: boolean }>(
+	({ theme, disabled }) => `
+	opacity: ${disabled ? 0.38 : 1}; // Use same opacity for disabled icon container as MUI menu item
 	justify-content: center;
 	min-width: ${theme.spacing(3)};`
 );
@@ -26,17 +27,18 @@ const Text = styled("span")(`
 	white-space: nowrap;
 `);
 
-const Label = styled(Text, { shouldForwardProp: (key: string) => key !== "variant" })<{
+const Label = styled(Text, { shouldForwardProp: (key: string) => key !== "variant" && key !== "disabled" })<{
 	variant?: "standard" | "title";
-}>(({ theme, variant }) =>
+	disabled?: boolean;
+}>(({ theme, variant, disabled = false }) =>
 	variant === "title"
 		? `
-	color: ${theme.palette.ux.primary.text.wMain};
+	color: ${disabled ? theme.palette.ux.deprecated.secondary.text.w50 : theme.palette.ux.primary.text.wMain};
 	font-family: ${theme.typography.h1.fontFamily};
 	font-size: ${theme.typography.h1.fontSize};
 	font-weight: ${theme.typography.h1.fontWeight};`
 		: `
-	color: ${theme.palette.ux.primary.text.wMain};`
+	color: ${disabled ? theme.palette.ux.deprecated.secondary.text.w50 : theme.palette.ux.primary.text.wMain};`
 );
 
 export interface SolaceEnvironmentLabelProps extends SolaceEnvironmentChipProps {
@@ -45,6 +47,7 @@ export interface SolaceEnvironmentLabelProps extends SolaceEnvironmentChipProps 
 	 * The "title" variant use bold and bigger font (h4)
 	 */
 	variant?: "standard" | "title";
+	disabled?: boolean;
 }
 
 export default function SolaceEnvironmentLabel({
@@ -54,14 +57,17 @@ export default function SolaceEnvironmentLabel({
 	icon,
 	variant,
 	dataQa,
-	dataTags
+	dataTags,
+	disabled = false
 }: SolaceEnvironmentLabelProps): JSX.Element {
 	return (
 		<Container data-qa={dataQa} data-tags={dataTags}>
-			<ColoredIcon bgColor={bgColor} fgColor={fgColor}>
+			<ColoredIcon bgColor={bgColor} fgColor={fgColor} disabled={disabled}>
 				{icon}
 			</ColoredIcon>
-			<Label variant={variant}>{label}</Label>
+			<Label variant={variant} disabled={disabled}>
+				{label}
+			</Label>
 		</Container>
 	);
 }
