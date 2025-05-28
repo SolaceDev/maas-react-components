@@ -16,12 +16,12 @@ const PROGRESS_SIZES: BASE_SIZE_TYPES = {
 	lg: 42
 };
 
-const Container = styled("div")(({ theme }) => ({
+const Container = styled("div")<{ inline?: boolean }>(({ theme, inline }) => ({
 	width: "fit-content",
 	display: "flex",
-	flexDirection: "column",
+	flexDirection: inline ? "row" : "column",
 	alignItems: "center",
-	rowGap: theme.spacing(1.5)
+	gap: theme.spacing(1.5)
 }));
 
 export interface SolaceCircularProgressProps extends SolaceComponentProps {
@@ -52,12 +52,17 @@ export interface SolaceCircularProgressProps extends SolaceComponentProps {
 	 * @default false
 	 */
 	disableShrink?: boolean;
+	/**
+	 * If `true`, the spinner and message are displayed side by side.
+	 * @default false
+	 */
+	inline?: boolean;
 }
 
 export default function SolaceCircularProgress(props: SolaceCircularProgressProps): JSX.Element {
-	const { variant, value, size, disableShrink, dataQa, message } = props;
+	const { variant, value, size, disableShrink, dataQa, message, inline } = props;
 	return (
-		<Container data-qa={dataQa ?? "loading-spinner"}>
+		<Container data-qa={dataQa ?? "loading-spinner"} inline={inline}>
 			<CircularProgress
 				variant={variant ?? "indeterminate"}
 				value={variant === "determinate" ? value : undefined}
