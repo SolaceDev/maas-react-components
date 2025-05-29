@@ -1,0 +1,86 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceAccordionStories from "./SolaceAccordion.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceAccordionStories} />
+
+<Title>SolaceAccordion</Title>
+
+<Description of={SolaceAccordionStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceAccordion`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceAccordion component provides an expandable/collapsible container that helps organize content into sections. It's useful for reducing visual clutter by hiding content until needed, allowing users to focus on specific information.
+
+The component implements a progressive disclosure pattern with the purpose of only revealing essential information up front, and moving secondary/complex content out of the main interface into an expandable area. This pattern keeps users on track of the main task while still making additional information available.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use accordions when you have multiple sections of related content that don't need to be visible simultaneously. This interaction pattern is particularly effective for organizing large amounts of content without overwhelming the user interface.
+
+Common use cases include FAQ sections, settings panels with advanced options, table row details, list item expansions, and card-based layouts where additional information needs to be accessible but not always visible.
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- The content is critical and should always be visible to users
+- There are only a few short sections that could easily fit on the screen at once
+- Users need to compare information across multiple sections simultaneously
+- The accordion would create an unnecessary extra step for frequently accessed content
+- The content has a natural sequential flow that users should follow step by step
+- The collapsed state might hide important information that users need to see immediately
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceAccordion } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceAccordion.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceAccordion.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiAccordion" target="_blank">theme.ts (MuiAccordion, MuiAccordionSummary, MuiAccordionDetails styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceAccordionStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiAccordion-root` - Root accordion container
+- `.MuiAccordionSummary-root` - Summary/header section
+- `.MuiAccordionDetails-root` - Expandable details section
+
+**State Classes:**
+
+- `.Mui-expanded` - Applied when accordion is expanded
+- `.Mui-disabled` - Applied when accordion is disabled
+- `.hasHoverEffect` - Applied when hover prop is true
+
+**Indicator Classes:**
+
+- `.indicator-info` - Info variant indicator styling
+- `.indicator-error` - Error variant indicator styling
+- `.indicator-warn` - Warning variant indicator styling
+- `.indicator-success` - Success variant indicator styling
+- `.indicator-secondary` - Secondary variant indicator styling
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.secondary.w10` - Default border color
+- `theme.palette.ux.error.w100` - Error state colors
+- `theme.palette.ux.info.w100` - Info state colors
+- `theme.palette.ux.warning.w100` - Warning state colors
+- `theme.palette.ux.success.w100` - Success state colors
+
+**Layout Specifications:**
+
+- Summary padding: `6px 0px 6px 8px`
+- Details padding: `8px 16px 16px 48px` (48px left aligns with summary text)
+- Expand icon: 24x24px ArrowRight icon
+- Transition timeout: 350ms

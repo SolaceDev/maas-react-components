@@ -32,15 +32,27 @@ export default {
 		id: {
 			control: { type: "text" },
 			description:
-				"Unique identifier for the Accordion component. Use this to distinguish between multiple accordions on the same page, especially when tracking user interactions or managing state."
+				"Unique identifier for the Accordion component. Use this to distinguish between multiple accordions on the same page, especially when tracking user interactions or managing state.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		summary: {
 			description:
-				"The summary section of the Accordion component. This is always visible and acts as the clickable header that expands/collapses the accordion. Can be a string or JSX element for more complex headers."
+				"The summary section of the Accordion component. This is always visible and acts as the clickable header that expands/collapses the accordion. Can be a string or JSX element for more complex headers.",
+			table: {
+				type: { summary: "string | JSX.Element" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		details: {
 			description:
-				"The details (e.g. expandable) section of the Accordion component. This content is shown when the accordion is expanded and hidden when collapsed. Can be a string or JSX element for rich content."
+				"The details (e.g. expandable) section of the Accordion component. This content is shown when the accordion is expanded and hidden when collapsed. Can be a string or JSX element for rich content.",
+			table: {
+				type: { summary: "string | JSX.Element" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		indicatorVariant: {
 			options: ["info", "error", "warn", "success", "secondary"],
@@ -50,9 +62,8 @@ export default {
 			description:
 				"Adds a colored vertical bar to the left border of the accordion. Use this to visually indicate the nature or importance of the content. For example, use 'error' for critical information, 'warn' for cautionary content, or 'info' for informational content.",
 			table: {
-				defaultValue: {
-					summary: ""
-				}
+				type: { summary: '"info" | "error" | "warn" | "success" | "secondary"' },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		disabled: {
@@ -60,19 +71,8 @@ export default {
 			description:
 				"If true, the Accordion is disabled and cannot be interacted with. Use this when the accordion content is not currently applicable or available to the user based on other selections or states in your application.",
 			table: {
-				defaultValue: {
-					summary: "false"
-				}
-			}
-		},
-		round: {
-			control: { type: "boolean" },
-			description:
-				"If true, square corners are enabled. Use this to match the visual style of surrounding UI elements or to create a more structured appearance.",
-			table: {
-				defaultValue: {
-					summary: "false"
-				}
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		expanded: {
@@ -80,9 +80,8 @@ export default {
 			description:
 				"If true, expands the Accordion component, otherwise collapse it. Use this to control the accordion state programmatically, such as expanding specific accordions based on user actions elsewhere in the application.",
 			table: {
-				defaultValue: {
-					summary: "false"
-				}
+				type: { summary: "boolean" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		disablePadding: {
@@ -90,9 +89,8 @@ export default {
 			description:
 				"If `true`, the Accordion details component will not have padding. The default is `false`. If enabled, the content will not left align with the header title anymore. Use this when you need to display content that has its own padding or when you want to maximize the available space for content like tables or images.",
 			table: {
-				defaultValue: {
-					summary: "false"
-				}
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		hover: {
@@ -100,23 +98,25 @@ export default {
 			description:
 				"If true, the Accordion component has a hover effect. This provides visual feedback when users hover over the accordion, enhancing the interactive feel of the component and indicating it can be clicked.",
 			table: {
-				defaultValue: {
-					summary: "false"
-				}
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		onChange: {
 			description:
-				"A callback function that fires when the expand/collapse state of the Accordion component is changed. Use this to perform actions when the accordion state changes, such as loading additional data, updating other UI elements, or tracking user interactions."
+				"A callback function that fires when the expand/collapse state of the Accordion component is changed. Use this to perform actions when the accordion state changes, such as loading additional data, updating other UI elements, or tracking user interactions.",
+			table: {
+				type: { summary: "(event: React.SyntheticEvent, expanded: boolean) => void" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		backgroundColor: {
 			control: { type: "color" },
 			description:
 				"Background color of the accordion. Use this to visually distinguish the accordion from surrounding content or to group related accordions by color coding them.",
 			table: {
-				defaultValue: {
-					summary: "white"
-				}
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		border: {
@@ -124,9 +124,8 @@ export default {
 			description:
 				"If false, accordion is borderless. Use borderless accordions when you want a cleaner, more minimal look or when the accordion is already contained within another bordered element.",
 			table: {
-				defaultValue: {
-					summary: "true"
-				}
+				type: { summary: "boolean" },
+				defaultValue: { summary: "true" }
 			}
 		},
 		borderColor: {
@@ -137,9 +136,33 @@ export default {
 			description:
 				"The variant of the accordion border color. Use this to visually communicate the nature of the content, such as using 'error' for critical information or 'success' for positive outcomes.",
 			table: {
-				defaultValue: {
-					summary: ""
-				}
+				type: { summary: '"info" | "error" | "warn" | "success"' },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		square: {
+			control: { type: "boolean" },
+			description:
+				"If false, enables rounded corners. Use this to create a softer, more modern appearance or to match the visual style of other rounded UI elements in your application.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "true" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify elements during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	}
