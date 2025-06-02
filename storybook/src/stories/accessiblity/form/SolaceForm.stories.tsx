@@ -39,7 +39,7 @@ import {
 	SolaceTypography,
 	styled
 } from "@SolaceDev/maas-react-components";
-import { SolaceDatePicker, SolacePicker, TooltipVariant } from "../../../../dist";
+import { SolaceDatePicker, SolacePicker, TooltipVariant } from "@SolaceDev/maas-react-components";
 
 const MIN_CONTENT = "min-content";
 const FLEX = "flex";

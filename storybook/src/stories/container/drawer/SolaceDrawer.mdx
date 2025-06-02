@@ -1,92 +1,92 @@
-import { Meta, Canvas, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
 import * as SolaceDrawerStories from "./SolaceDrawer.stories.tsx";
 import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceDrawerStories} />
 
-<Title>Drawer</Title>
+<Title>Solace Drawer</Title>
 
 <Description of={SolaceDrawerStories} />
 
 <Subtitle>Code Component Name</Subtitle>
 `SolaceDrawer`
 
-<Subtitle>How It Works</Subtitle>
+<Subtitle>Component Description</Subtitle>
 
-The `SolaceDrawer` component provides a sliding panel that enters from the edge of the screen. It can be used to display additional content, navigation options, or contextual information without navigating away from the current view. The drawer can be configured to appear from either the left or right side of the screen, and can be made resizable to allow users to adjust its width.
+The SolaceDrawer component provides a sliding panel that enters from the edge of the screen to display additional content, navigation options, or contextual information without navigating away from the current view. It's useful for organizing supplementary content that supports the main workflow, allowing users to access additional tools and information when needed.
 
-The drawer is a resizable, non-overlay version of a traditional sheet. It does not have a scrim behind it that blocks interactions, however it may visually block parts of the page.
+The component implements a persistent drawer pattern with the purpose of creating a non-modal overlay that can coexist with the main content. This pattern provides additional workspace without completely interrupting the user's current task while offering optional resizing capabilities for user customization.
 
 <Subtitle>When To Use It</Subtitle>
 
-- You need to complete complex tasks that would take up too much space on the page itself if embedded
-  - Example: Selecting multiple objects from a list of objects with the ability to sort and filter
-- You want to bring in additional information that isn't naturally part of the page but can be useful for reference, improving efficiency in task completion
+Use SolaceDrawer when you need to display supplementary content that supports the main page workflow without completely taking over the interface. This interaction pattern is particularly effective for complex applications where users need access to additional tools or information while maintaining their current context.
+
+Common use cases include:
+
+- Complex task workflows that require additional tools or reference information alongside the main content
+- Filter and search panels for data tables or content listings that need to remain accessible while browsing results
+- Property panels or configuration interfaces that allow users to modify settings while seeing real-time previews
+- Navigation menus in applications where users need to switch contexts while maintaining their current work state
+- Detail panels that provide additional information about selected items without leaving the current view
+- Multi-step workflows where users need access to supporting tools or reference materials throughout the process
 
 <Subtitle>When Not To Use It</Subtitle>
 
-- The task does not require the user to refer to content in the main page (consider using a dialog instead, as it's better for focusing user on the current task and providing a clear sign of end of task)
-- You're implementing simple basic interactions, such as selecting a single object from a list
-- A simpler component can be used instead, such as an autocomplete dropdown
-- The cognitive load would be too high for users to manage both the main content and drawer content
+- Simple tasks that don't require users to reference the main page content (use a dialog or modal instead for better focus)
+- Basic interactions like selecting a single item from a list (use dropdown menus or simple selection components)
+- Mobile interfaces where screen space is limited and drawers would create cramped user experiences
+- Workflows where the cognitive load of managing both main content and drawer content would be overwhelming
+- Single-purpose forms or actions that are better suited to modal dialogs with clear start and end points
+- Contexts where users need to focus entirely on one task without distractions from the main page content
+- Applications where the drawer would cover critical information that users need to see constantly
+- Scenarios where simpler components like autocomplete dropdowns or inline expansion would be more appropriate
 
-<Subtitle>Behavior</Subtitle>
-
-- Does not appear by default but can be opened by the user through a trigger on the page
-- Is locked to a single edge
-- Appears above the content of the page but does not stop the user from working in the content
-- Does not cover header the page, but covers the footer
-- By default, it does not save input entered in the sheet. If the use case requires users to switch sheets frequently, consider alternative methods of taking actions/input
-- Opens with a subtle slide-in animation
-
-<Subtitle>Details</Subtitle>
+<Subtitle>Import Statement</Subtitle>
 
 ```tsx
-// Example of a basic drawer implementation with callback functions
-import React, { useState } from "react";
-
-const MyDrawerComponent = () => {
-	// State to control drawer visibility
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-	// Callback function to open the drawer
-	const handleOpenDrawer = () => {
-		setIsDrawerOpen(true);
-	};
-
-	// Callback function to close the drawer
-	const handleCloseDrawer = () => {
-		setIsDrawerOpen(false);
-		// Additional close logic here, e.g.:
-		console.log("Drawer closed");
-	};
-
-	return (
-		<>
-			{/* Button to open the drawer */}
-			<SolaceButton variant="outline" onClick={handleOpenDrawer}>
-				Open Drawer
-			</SolaceButton>
-
-			{/* The drawer component */}
-			<SolaceDrawer open={isDrawerOpen} onClose={handleCloseDrawer} anchor="right" width={320}>
-				<div>
-					<h2>Drawer Content</h2>
-					<p>This is the content of the drawer.</p>
-				</div>
-			</SolaceDrawer>
-		</>
-	);
-};
+import { SolaceDrawer } from "@SolaceDev/maas-react-components";
 ```
 
-The source code for the `SolaceDrawer` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceDrawer.tsx)
+<Subtitle>Links</Subtitle>
 
-More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21118-35071&t=1T347Fr0kW1b1Z4A-0)
+- **GitHub Source Code**: [SolaceDrawer.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceDrawer.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiDrawer" target="_blank">theme.ts (MuiDrawer styles)</a>
 
 <Subtitle>Properties</Subtitle>
 
 <ArgTypes of={SolaceDrawerStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiDrawer-root` - Root drawer container
+- `.MuiDrawer-paper` - Drawer paper/content area with custom styling
+- `.MuiBox-root` - Content container with margin and overflow handling
+
+**Custom Classes:**
+
+- `.Dragger` - Resize handle element (when resizable is true)
+- `.VerticalDotsIcon` - Icon displayed in the resize handle
+
+**Theme Customization:**
+
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.secondary.w40` - Border colors for drawer and resize handle
+- `theme.palette.ux.background.w20` - Background color for resize handle
+- `theme.palette.ux.deprecated.secondary.w8040` - Box shadow color
+
+**Layout Specifications:**
+
+- Default width: `320px`
+- Minimum width: `100px` (when resizable)
+- Maximum width: `1000px` (when resizable)
+- Resize handle width: `8px`
+- Border radius: `2px`
+- Content margin: `8px` (left or right based on anchor)
+- Box shadow: `0px 2px 4px` with theme color
+- Variant: `persistent` (non-modal)
 
 <Subtitle>Stories</Subtitle>
 
