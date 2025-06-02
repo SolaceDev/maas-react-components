@@ -35,20 +35,95 @@ export default {
 		}
 	},
 	argTypes: {
-		label: {},
+		label: {
+			control: { type: "text" },
+			description:
+				"The content to be displayed in the chip. Can be a string or JSX element for more complex content like tooltips or icons. When using JSX elements, ensure they are accessible and provide appropriate interaction feedback.",
+			table: {
+				type: { summary: "string | React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
 		variant: {
 			options: [CHIP_VARIANT.FILLED, CHIP_VARIANT.OUTLINED],
-			control: { type: "radio" }
+			control: { type: "radio" },
+			description:
+				"The visual style variant of the chip. 'filled' provides a solid background with high contrast, while 'outlined' provides a border-only style that's less visually prominent. Use 'filled' for primary categorization and 'outlined' for secondary or supplementary information.",
+			table: {
+				type: { summary: '"filled" | "outlined"' },
+				defaultValue: { summary: '"filled"' }
+			}
 		},
 		disabled: {
-			control: { type: "boolean" }
+			control: { type: "boolean" },
+			description:
+				"If true, the chip will be disabled and non-interactive. Use this when the chip represents information that is not currently applicable or actionable based on the current application state.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		clickable: {
-			control: { type: "boolean" }
+			control: { type: "boolean" },
+			description:
+				"If true, the chip will be clickable and show hover effects. Use this when the chip should trigger an action or navigation when clicked. When enabled, the chip will have appropriate cursor styling and interaction feedback.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		mode: {
 			options: [MODES.LIGHT_MODE, MODES.DARK_MODE],
-			control: { type: "radio" }
+			control: { type: "radio" },
+			description:
+				"The color mode for the chip. Controls the overall color scheme to match the application's theme. Use 'light' for standard interfaces and 'dark' for dark-themed applications or when the chip appears on dark backgrounds.",
+			table: {
+				type: { summary: '"light" | "dark"' },
+				defaultValue: { summary: '"light"' }
+			}
+		},
+		icon: {
+			control: false,
+			description:
+				"Optional icon to display at the beginning of the chip. Should be a React element, typically an icon component. The icon will be automatically sized and positioned appropriately within the chip layout.",
+			table: {
+				type: { summary: "React.ReactElement" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		maxWidth: {
+			control: { type: "number" },
+			description:
+				"Maximum width of the chip in pixels. When the content exceeds this width, it will be truncated with an ellipsis. Use this to maintain consistent layout when chip content varies in length.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onClick: {
+			control: false,
+			description:
+				"Callback function that fires when the chip is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter.",
+			table: {
+				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify chips during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceChip>;

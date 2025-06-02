@@ -670,7 +670,186 @@ export default {
 	title: "Accessibility/Form",
 	component: SolaceTestForm,
 	decorators: [withSnapshotContainer],
-	argTypes: {}
+	argTypes: {
+		// Form Layout Properties
+		gridColumnGap: {
+			control: { type: "number" },
+			description:
+				"Gap between grid columns in the form layout. Controls spacing between label and value columns. Uses theme spacing units (8px base).",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "18px (theme.spacing(36/8))" }
+			}
+		},
+		gridRowGap: {
+			control: { type: "number" },
+			description:
+				"Gap between grid rows in the form layout. Controls vertical spacing between form fields. Uses theme spacing units (8px base).",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "16px (theme.spacing(2))" }
+			}
+		},
+		labelColumnWidth: {
+			control: { type: "text" },
+			description:
+				"Width of the label column in the two-column grid layout. Defines how much space is allocated for form labels.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "108px" }
+			}
+		},
+		contentColumnWidth: {
+			control: { type: "text" },
+			description:
+				"Width of the content column in the two-column grid layout. Defines the maximum width for form controls and content.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "minmax(auto, 920px)" }
+			}
+		},
+
+		// Form Field Properties
+		fixedWidth520: {
+			control: { type: "boolean" },
+			description:
+				"Apply fixed width of 520px to form controls. Use for standard form fields that need consistent sizing across the interface.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		fixedWidth260: {
+			control: { type: "boolean" },
+			description:
+				"Apply fixed width of 260px to form controls. Use for compact form fields like dropdowns or shorter text inputs.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		required: {
+			control: { type: "boolean" },
+			description:
+				"Indicates if form fields are required. Adds visual indicator (asterisk) and affects validation behavior.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+
+		// Section Properties
+		sectionSpacing: {
+			control: { type: "number" },
+			description:
+				"Top margin spacing for section titles. Controls vertical separation between different form sections. Uses theme spacing units.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "32px (theme.spacing(4))" }
+			}
+		},
+
+		// Tab Properties
+		activeTab: {
+			control: { type: "text" },
+			description:
+				"Currently active tab value. Controls which tab content is displayed when using tabbed interfaces within the form.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "tab1" }
+			}
+		},
+
+		// Accordion Properties
+		accordion1Expanded: {
+			control: { type: "boolean" },
+			description:
+				"Controls the expanded state of the first accordion in the form. When true, the accordion content is visible.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		accordion2Expanded: {
+			control: { type: "boolean" },
+			description:
+				"Controls the expanded state of the second accordion in the form. When true, the accordion content is visible.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		accordion3Expanded: {
+			control: { type: "boolean" },
+			description:
+				"Controls the expanded state of the third accordion in the form. When true, the accordion content is visible.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "true" }
+			}
+		},
+
+		// Toggle Properties
+		activeToggle: {
+			control: { type: "text" },
+			description:
+				"Currently active toggle button value. Controls which toggle button is selected in toggle button groups.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "toggle1" }
+			}
+		},
+
+		// Background Properties
+		backgroundColor: {
+			control: { type: "color" },
+			description:
+				"Background color of the form container. Uses theme palette background colors for consistency with the design system.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "theme.palette.ux.background.w10" }
+			}
+		},
+
+		// Layout Properties
+		minWidth: {
+			control: { type: "text" },
+			description:
+				"Minimum width of the form container. Ensures the form maintains usability across different screen sizes.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "920px" }
+			}
+		},
+		overflow: {
+			control: { type: "text" },
+			description:
+				"Overflow behavior of the form container. Controls how content is handled when it exceeds container dimensions.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "auto" }
+			}
+		},
+
+		// Accessibility Properties
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify form elements during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description:
+				"Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata on form elements.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		}
+	}
 } as Meta;
 
 export const AccessibleForm = {

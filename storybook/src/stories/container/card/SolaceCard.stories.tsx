@@ -30,66 +30,217 @@ export default {
 	},
 	argTypes: {
 		cardHeaderProps: {
-			description: "Props for the card header component",
-			control: "object",
+			control: { type: "object" },
+			description:
+				"Configuration object for the card header component. Contains properties like title, subtitle, icon, and action elements. Use this to create a consistent header across different card implementations.",
 			table: {
-				type: {
-					summary: "SolaceCardHeaderProps"
-				}
+				type: { summary: "SolaceCardHeaderProps" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		cardContent: {
-			description: "Content to display in the card body"
+			description:
+				"The main content area of the card. Can be any React node including text, components, or complex layouts. This is where the primary information or functionality of the card is displayed.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		cardActions: {
-			description: "Actions to display at the bottom of the card"
+			description:
+				"Action elements displayed at the bottom of the card. Typically contains buttons, links, or other interactive elements that users can perform on the card content.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		width: {
 			control: { type: "text" },
-			description: "Width of the card"
+			description:
+				"Explicit width of the card. Can be specified in any valid CSS unit (px, %, rem, etc.). Use this to control the exact width when the card needs to fit specific layout requirements.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		height: {
 			control: { type: "text" },
-			description: "Height of the card"
+			description:
+				"Explicit height of the card. Can be specified in any valid CSS unit (px, %, rem, etc.). Use this when you need cards to have consistent heights in a grid layout.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		minWidth: {
 			control: { type: "text" },
-			description: "Minimum width of the card",
+			description:
+				"Minimum width constraint for the card. Ensures the card maintains usability and readability even in responsive layouts. Prevents content from becoming too cramped.",
 			table: {
-				defaultValue: {
-					summary: "250px"
-				}
+				type: { summary: "string" },
+				defaultValue: { summary: "250px" }
+			}
+		},
+		maxWidth: {
+			control: { type: "text" },
+			description:
+				"Maximum width constraint for the card. Prevents cards from becoming too wide on large screens, maintaining optimal readability and visual balance.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		padding: {
 			control: { type: "text" },
-			description: "Padding for the entire card",
+			description:
+				"Internal padding for the entire card content. Controls the spacing between the card border and its content. Use larger padding for cards with more content or when more breathing room is needed.",
 			table: {
-				defaultValue: {
-					summary: "16px"
-				}
+				type: { summary: "string" },
+				defaultValue: { summary: "16px" }
+			}
+		},
+		margin: {
+			control: { type: "text" },
+			description:
+				"External margin around the card. Controls spacing between the card and adjacent elements. Useful for creating consistent spacing in card grids or lists.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		readOnly: {
 			control: { type: "boolean" },
-			description: "Whether the card is in read-only mode",
+			description:
+				"When true, the card is in read-only mode and cannot be interacted with. Used for display-only cards that serve as visual layout elements to categorize and group content without interactive functionality.",
 			table: {
-				defaultValue: {
-					summary: "false"
-				}
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		onClick: {
+			description:
+				"Callback function triggered when the card is clicked. Only functional when readOnly is false. Use this to make the entire card clickable for navigation or selection purposes.",
+			table: {
+				type: { summary: "(event: React.MouseEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onKeyDown: {
+			description:
+				"Callback function triggered when a key is pressed while the card has focus. Enables keyboard accessibility for card interactions. Typically used to support Enter and Space key activation.",
+			table: {
+				type: { summary: "(event: React.KeyboardEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		elevation: {
+			control: { type: "number", min: 0, max: 24 },
+			description:
+				"Material-UI elevation level for the card shadow. Higher values create more pronounced shadows, giving the appearance of the card being elevated above the background.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "1" }
+			}
+		},
+		variant: {
+			control: { type: "select" },
+			options: ["elevation", "outlined"],
+			description:
+				"Visual variant of the card. 'elevation' uses shadow for depth, 'outlined' uses a border. Choose based on your design system and the visual hierarchy you want to establish.",
+			table: {
+				type: { summary: '"elevation" | "outlined"' },
+				defaultValue: { summary: "elevation" }
+			}
+		},
+		square: {
+			control: { type: "boolean" },
+			description:
+				"When true, removes border radius for sharp corners. When false, applies rounded corners for a softer appearance. Use square cards for more formal or technical interfaces.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		raised: {
+			control: { type: "boolean" },
+			description:
+				"When true, applies a more prominent elevation/shadow effect. Use this to make certain cards stand out more prominently in the interface, such as featured content or important notifications.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		ariaLabel: {
 			control: { type: "text" },
-			description: "ARIA label for the card"
+			description:
+				"ARIA label for accessibility. Provides a text description of the card's purpose for screen readers. Essential for making interactive cards accessible to users with disabilities.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		ariaDescribedBy: {
+			control: { type: "text" },
+			description:
+				"ARIA described-by attribute referencing elements that provide additional description for the card. Use this to link the card to help text or detailed descriptions elsewhere on the page.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		role: {
+			control: { type: "text" },
+			description:
+				"ARIA role for the card element. Defines the semantic meaning of the card for assistive technologies. Common values include 'button' for clickable cards or 'article' for content cards.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		tabIndex: {
+			control: { type: "number" },
+			description:
+				"Tab index for keyboard navigation. When set to 0, makes the card focusable via keyboard navigation. When -1, removes from tab order but allows programmatic focus.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataQa: {
 			control: { type: "text" },
-			description: "Data-qa attribute for testing"
+			description:
+				"Data attribute for QA testing. Use this to identify card elements during automated testing. Should be unique and descriptive of the card's purpose or content.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataTags: {
 			control: { type: "text" },
-			description: "Data-tags attribute for additional metadata"
+			description:
+				"Data attribute for additional tagging and metadata. Use this for analytics tracking, categorization, or any additional metadata that needs to be associated with the card element.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		className: {
+			control: { type: "text" },
+			description:
+				"Additional CSS class names to apply to the card. Use this to extend the card's styling with custom CSS classes while maintaining the base card functionality.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the card element. Use this when you need to reference the card programmatically or for linking with other elements via ARIA attributes.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceCard>;

@@ -31,65 +31,108 @@ export default {
 	argTypes: {
 		value: {
 			control: { type: "text" },
-			description: "The text to render in the circle",
+			description:
+				"The text to render in the circle. Can be a number, string, or text like '99+' for values that exceed a maximum threshold.",
 			table: {
-				defaultValue: {
-					summary: "text"
-				}
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		show: {
 			control: { type: "boolean" },
-			description: "Whether to show the component",
+			description:
+				"Whether to show the component. Use this to conditionally display the notification counter based on whether there are notifications to show.",
 			table: {
-				defaultValue: {
-					summary: "true"
-				}
+				type: { summary: "boolean" },
+				defaultValue: { summary: "true" }
 			}
 		},
 		size: {
 			control: { type: "number" },
-			description: "Size the circle in pixels",
+			description:
+				"Size of the circular badge in pixels. Affects both width and height. Use larger sizes for more prominent notifications or when displaying longer text content.",
 			table: {
-				defaultValue: {
-					summary: "21"
-				}
+				type: { summary: "number" },
+				defaultValue: { summary: "21" }
 			}
 		},
 		fontSize: {
 			control: { type: "number" },
-			description: "Font size of the text",
+			description:
+				"Font size of the text inside the notification counter in pixels. Should be proportional to the size prop for optimal visual balance.",
 			table: {
-				defaultValue: {
-					summary: "14"
-				}
+				type: { summary: "number" },
+				defaultValue: { summary: "14" }
 			}
 		},
 		animationDuration: {
-			contorl: { type: "number" },
-			description: "Animation duration in milliseconds",
+			control: { type: "number" },
+			description:
+				"Duration of the animation effect in milliseconds. Set to 0 to disable animations. Use shorter durations for subtle effects, longer for more attention-grabbing notifications.",
 			table: {
-				defaultValue: {
-					summary: "1000"
-				}
+				type: { summary: "number" },
+				defaultValue: { summary: "1000" }
 			}
 		},
 		animationRepeatsInitialCount: {
 			control: { type: "number" },
-			description: "The number of animation cycles to run when showing the component the first time",
+			description:
+				"The number of animation cycles to run when showing the component for the first time. Use higher values for critical notifications that need immediate attention.",
 			table: {
-				defaultValue: {
-					summary: "1"
-				}
+				type: { summary: "number" },
+				defaultValue: { summary: "1" }
 			}
 		},
 		animationRepeatsUpdateCount: {
 			control: { type: "number" },
-			description: "The number of animation cycles to run when value is updated",
+			description:
+				"The number of animation cycles to run when the value is updated. Use higher values for significant updates that users should notice.",
 			table: {
-				defaultValue: {
-					summary: "3"
-				}
+				type: { summary: "number" },
+				defaultValue: { summary: "3" }
+			}
+		},
+		title: {
+			control: { type: "text" },
+			description:
+				"Tooltip text to display when hovering over the notification counter. Use this to provide additional context about what the counter represents.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		className: {
+			control: { type: "text" },
+			description: "Additional CSS class name to apply to the notification counter for custom styling.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		style: {
+			control: false,
+			description:
+				"Inline styles to apply to the notification counter. Use this for positioning or custom appearance modifications.",
+			table: {
+				type: { summary: "React.CSSProperties" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description:
+				"Data attribute for QA testing. Use this to identify notification counters during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	}

@@ -31,89 +31,155 @@ export default {
 	argTypes: {
 		id: {
 			control: { type: "text" },
-			description: "Unique identifier for the list"
+			description:
+				"Unique identifier for the GridList MultiSelect component. Used for accessibility and programmatic access to the grid list instance.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		items: {
-			control: {
-				type: "object"
-			},
+			control: { type: "object" },
 			description:
-				"The collection of object data to populate the list with. Each object MUST have an associated id field",
+				"The collection of object data to populate the list with. Each object MUST have an associated id field (or custom identifier field if objectIdentifier is specified).",
 			table: {
-				defaultValue: {
-					summary: "[]"
-				}
+				type: { summary: "Array<object>" },
+				defaultValue: { summary: "[]" }
 			}
 		},
 		headers: {
 			control: { type: "object" },
-			description: "Ordered list of collumn header names",
+			description:
+				"Ordered list of column header names to display at the top of the grid. If not provided, no headers will be shown.",
 			table: {
-				defaultValue: {
-					summary: "[]"
-				}
+				type: { summary: "string[]" },
+				defaultValue: { summary: "[]" }
 			}
 		},
 		highlightedRowId: {
-			control: { type: "number" },
-			description: "The id of the item to be highlighted in the list",
+			control: { type: "text" },
+			description:
+				"The id of the item to be highlighted in the list. Use this for controlled highlight state to show focus or current selection.",
 			table: {
-				defaultValue: {
-					summary: undefined
-				}
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		onRowHighlight: {
+			control: false,
 			description:
-				"A callback function which is triggered on row is highlighted (row is clicked),  will pass the data object associated with the highlighted row"
+				"Callback function triggered when a row is highlighted (clicked). Receives the data object associated with the highlighted row.",
+			table: {
+				type: { summary: "(item: object) => void" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		selectedRowIds: {
 			control: { type: "object" },
-			description: "The ids of all the items currenlty selected (checkbox selected) in the list",
+			description:
+				"Array of ids for all items currently selected (checkbox selected) in the list. Use this for controlled multi-selection state.",
 			table: {
-				defaultValue: {
-					summary: undefined
-				}
+				type: { summary: "string[]" },
+				defaultValue: { summary: "[]" }
 			}
 		},
 		onSelection: {
+			control: false,
 			description:
-				"A callback function which is triggered on row is selected (row's checkbox is clicked), will pass the list of data objects associated with all the selected rows)"
+				"Callback function triggered when row selection changes (checkbox clicked). Receives array of all selected data objects.",
+			table: {
+				type: { summary: "(selectedItems: object[]) => void" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		gridTemplate: {
 			control: { type: "text" },
 			description:
-				"Text used to desribe the layout of each list item (and header). Defines the columns of the list with values representing the track size, and the space between them"
+				"CSS grid-template-columns value that defines the layout of each list item and header. Defines the columns with values representing track size and spacing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataQa: {
 			control: { type: "text" },
-			description: "identifier assigned to the data-qa tag to assist with testing"
+			description:
+				"Identifier assigned to the data-qa attribute to assist with automated testing and element identification.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		rowMapping: {
+			control: false,
 			description:
-				"A callback function which maps an individual object into an ordered list of HTMLDivElements of how to render each individual attribute"
+				"A callback function that maps an individual object into an ordered array of React elements defining how to render each attribute in the grid columns.",
+			table: {
+				type: { summary: "(item: object) => React.ReactElement[]" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		selectAll: {
 			control: { type: "boolean" },
 			description:
-				"Flag for enabling or disabling the 'Select All' functionality (disabling will not render the 'Select All' checkbox)",
+				"Flag for enabling or disabling the 'Select All' functionality. When false, the 'Select All' checkbox will not be rendered.",
 			table: {
-				defaultValue: {
-					summary: "true"
-				}
+				type: { summary: "boolean" },
+				defaultValue: { summary: "true" }
 			}
 		},
 		numOfGridListItemDisplayed: {
 			control: { type: "number" },
-			description: "Number of items to be displayed in the List"
+			description:
+				"Maximum number of items to display in the list. When set, the list will be contained and show only the specified number of items.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		showCount: {
 			control: { type: "boolean" },
-			description: "Show the number of selected items"
+			description:
+				"When true, displays the number of selected items. Useful for providing selection feedback to users.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		itemsType: {
 			control: { type: "text" },
-			description: "Type of the Items"
+			description: "Type description of the items being displayed. Used for accessibility and user interface labels.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		selectAllLabel: {
+			control: { type: "text" },
+			description:
+				"Custom label text for the 'Select All' checkbox. Use this to provide localized or context-specific text.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "'Select All'" }
+			}
+		},
+		actions: {
+			control: false,
+			description:
+				"Array of action components (typically buttons or menus) to display alongside the selection controls. Provides bulk operations for selected items.",
+			table: {
+				type: { summary: "React.ReactElement[]" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		virtualizedListOption: {
+			control: false,
+			description:
+				"Configuration options for virtualized rendering when dealing with large datasets. Includes height, overscanCount, and contentPlaceholder properties.",
+			table: {
+				type: { summary: "object" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceGridListMultiSelect>;

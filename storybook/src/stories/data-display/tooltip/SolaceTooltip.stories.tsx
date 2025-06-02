@@ -47,15 +47,32 @@ export default {
 	},
 	argTypes: {
 		id: {
-			control: { type: "text" }
+			control: { type: "text" },
+			description:
+				"Unique identifier for the tooltip. This is important for accessibility and helps establish proper ARIA relationships between the tooltip and its trigger element.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		title: {
-			description: "Tooltip content"
+			description:
+				"Tooltip content to be displayed. Can be a string for simple text or a React element for rich content including formatted text, links, or complex layouts. For rich content, use the 'rich' variant.",
+			table: {
+				type: { summary: "string | React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		variant: {
 			options: ["text", "overflow", "rich"],
 			control: {
 				type: "select"
+			},
+			description:
+				"The type of tooltip behavior. 'text' shows on hover/focus, 'overflow' only shows when content is truncated, 'rich' allows complex HTML content with enhanced styling and positioning.",
+			table: {
+				type: { summary: '"text" | "overflow" | "rich"' },
+				defaultValue: { summary: '"text"' }
 			}
 		},
 		placement: {
@@ -75,14 +92,107 @@ export default {
 			],
 			control: {
 				type: "select"
+			},
+			description:
+				"Where the tooltip should appear relative to its trigger element. Choose placement based on available space and content importance. Use 'top' or 'bottom' for primary actions, 'left' or 'right' for supplementary information.",
+			table: {
+				type: {
+					summary:
+						'"bottom-end" | "bottom-start" | "bottom" | "left-end" | "left-start" | "left" | "right-end" | "right-start" | "right" | "top-end" | "top-start" | "top"'
+				},
+				defaultValue: { summary: '"bottom"' }
 			}
 		},
 		maxWidth: {
 			options: ["small", "medium", "full"],
-			control: { type: "select" }
+			control: { type: "select" },
+			description:
+				"Maximum width constraint for the tooltip. 'small' for brief hints, 'medium' for explanatory text, 'full' for detailed information or when tooltip content should not wrap.",
+			table: {
+				type: { summary: '"small" | "medium" | "full"' },
+				defaultValue: { summary: '"small"' }
+			}
 		},
 		disableHoverListener: {
-			control: { type: "boolean" }
+			control: { type: "boolean" },
+			description:
+				"If true, disables the hover listener. Use this when you want to control tooltip visibility manually or when implementing custom trigger behaviors.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		disableFocusListener: {
+			control: { type: "boolean" },
+			description:
+				"If true, disables the focus listener. Use this when you don't want the tooltip to appear on keyboard focus, such as for decorative tooltips or when implementing custom focus behavior.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		open: {
+			control: { type: "boolean" },
+			description:
+				"Controls the open state of the tooltip when used as a controlled component. Use this for programmatic control over tooltip visibility.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onOpen: {
+			control: false,
+			description:
+				"Callback fired when the tooltip requests to be opened. Use this for controlled tooltips or to track tooltip interactions for analytics.",
+			table: {
+				type: { summary: "(event: React.SyntheticEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onClose: {
+			control: false,
+			description:
+				"Callback fired when the tooltip requests to be closed. Use this for controlled tooltips or to perform cleanup actions when tooltip is hidden.",
+			table: {
+				type: { summary: "(event: React.SyntheticEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		enterDelay: {
+			control: { type: "number" },
+			description:
+				"Delay in milliseconds before the tooltip appears on hover. Use longer delays for less critical information to avoid UI clutter, shorter delays for important interactive hints.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "100" }
+			}
+		},
+		enterNextDelay: {
+			control: { type: "number" },
+			description:
+				"Delay in milliseconds before the tooltip appears when moving between tooltip targets. Typically shorter than enterDelay to improve user experience when exploring multiple tooltips.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "0" }
+			}
+		},
+		leaveDelay: {
+			control: { type: "number" },
+			description:
+				"Delay in milliseconds before the tooltip disappears. Use longer delays for rich content that users might want to interact with, shorter delays for simple text tooltips.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "0" }
+			}
+		},
+		children: {
+			control: false,
+			description:
+				"The element that triggers the tooltip. Must be a single React element that can accept event handlers and ref. For multiple elements, wrap them in a container element.",
+			table: {
+				type: { summary: "React.ReactElement" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	},
 	decorators: [withSnapshotContainer]

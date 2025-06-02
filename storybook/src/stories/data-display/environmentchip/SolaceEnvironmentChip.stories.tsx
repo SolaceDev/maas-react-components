@@ -35,10 +35,85 @@ export default {
 		}
 	},
 	argTypes: {
-		label: { control: { type: "text" } },
-		fgColor: { control: { type: "color" } },
-		bgColor: { control: { type: "color" } },
-		maxWidth: { control: { type: "text" } }
+		label: {
+			control: { type: "text" },
+			description:
+				"The text content to be displayed in the environment chip. Typically used for environment names like 'Production', 'Staging', 'Development', etc. When empty, only the icon will be displayed.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		fgColor: {
+			control: { type: "color" },
+			description:
+				"The foreground (text and icon) color of the environment chip. Should provide sufficient contrast against the background color for accessibility. Use theme colors for consistency.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		bgColor: {
+			control: { type: "color" },
+			description:
+				"The background color of the environment chip. Use distinct colors for different environments to help users quickly identify and differentiate between them.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		maxWidth: {
+			control: { type: "text" },
+			description:
+				"Maximum width of the environment chip. Can be specified in any CSS unit (px, rem, %, etc.). When content exceeds this width, it will be truncated with an ellipsis.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		icon: {
+			control: false,
+			description:
+				"Icon to display within the environment chip. Should be a React element, typically a 16px icon. The icon helps users quickly identify the type or category of environment.",
+			table: {
+				type: { summary: "React.ReactElement" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onDelete: {
+			control: false,
+			description:
+				"Callback function that fires when the delete button is clicked. When provided, a delete button will be added to the chip. Use this for removable environment selections.",
+			table: {
+				type: { summary: "(event: React.MouseEvent<HTMLButtonElement>) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onClick: {
+			control: false,
+			description:
+				"Callback function that fires when the environment chip is clicked. Use this when the chip should trigger an action such as environment selection or navigation.",
+			table: {
+				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify environment chips during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		}
 	}
 } as Meta<typeof SolaceEnvironmentChip>;
 

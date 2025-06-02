@@ -29,62 +29,110 @@ export default {
 	argTypes: {
 		id: {
 			control: { type: "text" },
-			description: "Unique identifier for the list"
+			description:
+				"Unique identifier for the GridList component. Used for accessibility and programmatic access to the grid list instance.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		items: {
-			control: {
-				type: "object"
-			},
+			control: { type: "object" },
 			description:
-				"The collection of object data to populate the list with. Each object MUST have an associated id field",
+				"The collection of object data to populate the list with. Each object MUST have an associated id field (or custom identifier field if objectIdentifier is specified).",
 			table: {
-				defaultValue: {
-					summary: "[]"
-				}
+				type: { summary: "Array<object>" },
+				defaultValue: { summary: "[]" }
 			}
 		},
 		headers: {
 			control: { type: "object" },
-			description: "Ordered list of collumn header names",
+			description:
+				"Ordered list of column header names to display at the top of the grid. If not provided, no headers will be shown.",
 			table: {
-				defaultValue: {
-					summary: "[]"
-				}
+				type: { summary: "string[]" },
+				defaultValue: { summary: "[]" }
 			}
 		},
 		selectedItemId: {
 			control: { type: "text" },
-			description: "The id of the item to be selected in the list",
+			description: "The id of the item to be selected in the list. Use this for controlled selection state.",
 			table: {
-				defaultValue: {
-					summary: undefined
-				}
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		gridTemplate: {
 			control: { type: "text" },
 			description:
-				"Text used to desribe the layout of each list item (and header). Defines the columns of the list with values representing the track size, and the space between them"
+				"CSS grid-template-columns value that defines the layout of each list item and header. Defines the columns with values representing track size and spacing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataQa: {
 			control: { type: "text" },
-			description: "identifier assigned to the data-qa tag to assist with testing"
+			description:
+				"Identifier assigned to the data-qa attribute to assist with automated testing and element identification.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		rowMapping: {
+			control: false,
 			description:
-				"A callback function which maps an individual object into an ordered list of HTMLDivElements of how to render each individual attribute"
+				"A callback function that maps an individual object into an ordered array of React elements defining how to render each attribute in the grid columns.",
+			table: {
+				type: { summary: "(item: object) => React.ReactElement[]" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		onSelection: {
+			control: false,
 			description:
-				"A callback function which is triggered on row selection (will pass the data object associated wit hthat row)"
+				"Callback function triggered when a row is selected. Receives the data object associated with the selected row.",
+			table: {
+				type: { summary: "(item: object) => void" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		background: {
 			control: { type: "text" },
-			description: "Text used to set the background color of the list"
+			description:
+				"CSS background color value to apply to the entire list container. Useful for creating visual distinction or theming.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		numOfGridListItemDisplayed: {
 			control: { type: "number" },
-			description: "Number of items to be displayed in the List"
+			description:
+				"Maximum number of items to display in the list. When set, the list will be contained and show only the specified number of items.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		objectIdentifier: {
+			control: { type: "text" },
+			description:
+				"Custom field name to use as the unique identifier for each object instead of the default 'id' field.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "'id'" }
+			}
+		},
+		virtualizedListOption: {
+			control: false,
+			description:
+				"Configuration options for virtualized rendering when dealing with large datasets. Includes height, overscanCount, and contentPlaceholder properties.",
+			table: {
+				type: { summary: "object" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceGridList>;

@@ -22,36 +22,57 @@ export default {
 	},
 	argTypes: {
 		disablePadding: {
-			description: "If true, the left and right padding is removed.",
+			control: { type: "boolean" },
+			description:
+				"If true, removes the left and right padding from the list. Use this when you want the list items to extend to the full width of their container.",
 			table: {
-				type: { summary: "bool" },
+				type: { summary: "boolean" },
 				defaultValue: { summary: "false" }
-			},
-			control: { type: "boolean" }
+			}
 		},
 		dense: {
-			description: "If true, compact vertical padding designed for keyboard and mouse input is used.",
+			control: { type: "boolean" },
+			description:
+				"If true, applies compact vertical padding designed for keyboard and mouse input. Use this to display more items in less vertical space.",
 			table: {
-				type: { summary: "bool" },
+				type: { summary: "boolean" },
 				defaultValue: { summary: "false" }
-			},
-			control: { type: "boolean" }
+			}
 		},
 		subheader: {
-			description: "The content to use as the subheader.",
+			control: { type: "text" },
+			description:
+				"The content to use as the subheader for the list. Typically used to group list items under a descriptive heading.",
 			table: {
-				type: { summary: "node" },
-				defaultValue: { summary: "null" }
-			},
-			control: { type: "text" }
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
-		solaceListProps: {
-			description: "Other SolaceList props",
+		children: {
+			control: false,
+			description:
+				"The list items to render inside the list. Should be SolaceListItem components or similar list item elements.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		className: {
+			control: { type: "text" },
+			description: "Additional CSS class name to apply to the list component for custom styling.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		sx: {
+			control: false,
+			description:
+				"System prop to customize the component's CSS styling using the MUI sx prop. Allows for responsive and theme-aware styling.",
 			table: {
 				type: { summary: "object" },
-				defaultValue: { summary: "null" }
-			},
-			control: { type: "object" }
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta;

@@ -34,10 +34,94 @@ export default {
 		}
 	},
 	argTypes: {
-		label: {},
+		label: {
+			control: { type: "text" },
+			description:
+				"The content to be displayed in the tag. Can be a string or JSX element for more complex content like tooltips or icons. Tags are typically used for categorization, status indicators, or metadata display.",
+			table: {
+				type: { summary: "string | React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
 		variant: {
 			options: [CHIP_VARIANT.FILLED, CHIP_VARIANT.OUTLINED],
-			control: { type: "radio" }
+			control: { type: "radio" },
+			description:
+				"The visual style variant of the tag. 'filled' provides a solid background with high contrast for important categorization, while 'outlined' provides a border-only style for secondary information or when you need multiple tags without visual clutter.",
+			table: {
+				type: { summary: '"filled" | "outlined"' },
+				defaultValue: { summary: '"filled"' }
+			}
+		},
+		clickable: {
+			control: { type: "boolean" },
+			description:
+				"If true, the tag will be clickable and show hover effects. Use this when the tag should trigger an action, such as filtering or navigation. When enabled, the tag will have appropriate cursor styling and interaction feedback.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		fillColor: {
+			control: { type: "color" },
+			description:
+				"Custom background color for the tag. Use this to create color-coded categorization systems or to match specific brand colors. When not specified, the tag uses the default theme colors.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		labelColor: {
+			control: { type: "color" },
+			description:
+				"Custom text color for the tag label. Use this in conjunction with fillColor to ensure proper contrast and readability. When not specified, the tag uses theme-appropriate text colors.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		icon: {
+			control: false,
+			description:
+				"Optional icon to display at the beginning of the tag. Should be a React element, typically an icon component. The icon will be automatically sized and positioned appropriately within the tag layout.",
+			table: {
+				type: { summary: "React.ReactElement" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		maxWidth: {
+			control: { type: "number" },
+			description:
+				"Maximum width of the tag in pixels. When the content exceeds this width, it will be truncated with an ellipsis. Use this to maintain consistent layout when tag content varies in length.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onClick: {
+			control: false,
+			description:
+				"Callback function that fires when the tag is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter.",
+			table: {
+				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify tags during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceTag>;
