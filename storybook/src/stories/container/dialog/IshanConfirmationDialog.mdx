@@ -1,0 +1,90 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceConfirmationDialogStories from "./SolaceConfirmationDialog.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceConfirmationDialogStories} />
+
+<Title>Solace Confirmation Dialog</Title>
+
+<Description of={SolaceConfirmationDialogStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceConfirmationDialog`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Confirmation Dialog component provides modal dialogs that appear in front of the main content to provide critical information, require decisions, or involve multiple tasks. It's useful for keeping users in context when quick actions are needed, allowing users to make decisions without losing their current workflow.
+
+The component implements a flexible dialog pattern with the purpose of drawing user attention to specific actions or information. This pattern helps users stay focused on important decisions while still maintaining their context within the application.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Confirmation Dialog when you have critical information to display or important decisions that require user acknowledgment. This interaction pattern is particularly effective for workflow-critical confirmations and contextual information display.
+
+Common use cases include:
+
+- Confirming destructive actions like deleting items or clearing data
+- Collecting user input through form fields without navigating away
+- Displaying critical alerts or warnings that require acknowledgment
+- Presenting quick tasks or decisions that progress the workflow
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- Complex multi-step interactions that require extensive navigation
+- When context from the rest of the screen is needed for decision making
+- Don't open dialogs without user interaction or clear triggering events
+- Avoid for non-critical information that could be displayed inline
+- Don't use for simple notifications that don't require user decisions
+- Avoid when the interaction disrupts the user flow unnecessarily
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceConfirmationDialog } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceConfirmationDialog.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/dialog/SolaceConfirmationDialog.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiDialog" target="_blank">theme.ts (MuiDialog styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceConfirmationDialogStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiDialog-root` - Root dialog container
+- `.MuiDialogTitle-root` - Dialog title section
+- `.MuiDialogContent-root` - Dialog content area
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied when dialog actions are disabled
+- `.linearProgressIndicator` - Applied when linear progress indicator is enabled
+- `.CustomAction` - Applied when custom action components are present
+
+**Dialog Layout Classes:**
+
+- `.MuiDialogActions-root` - Dialog action buttons footer styling
+- `.MuiDialog-paper` - Dialog paper container styling
+- `.MuiDialogContentText-root` - Content text styling
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.background.w10` - Dialog background color
+- `theme.palette.ux.primary.text.wMain` - Primary text color
+
+**Layout Specifications:**
+
+- Dialog title padding: `24px 24px 16px 24px`
+- Dialog content: Flexible display based on contentLayout prop
+- Action buttons: Right-aligned with consistent spacing
+- Custom actions: Left-aligned with auto margin
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

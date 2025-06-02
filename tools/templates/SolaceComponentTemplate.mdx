@@ -1,0 +1,95 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as [COMPONENT_NAME]Stories from "./[COMPONENT_NAME].stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={[COMPONENT_NAME]Stories} />
+
+<Title>[COMPONENT_DISPLAY_NAME]</Title>
+
+<Description of={[COMPONENT_NAME]Stories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`[COMPONENT_NAME]`
+
+<Subtitle>Component Description</Subtitle>
+
+[Write a 2-3 sentence description explaining what the component does and its primary purpose. Follow this pattern:]
+The [COMPONENT_DISPLAY_NAME] component provides [main functionality]. It's useful for [primary use case], allowing users to [key benefit].
+
+The component implements [design pattern/interaction pattern] with the purpose of [specific goal]. This pattern [explain how it helps users] while still [additional benefit].
+
+<Subtitle>When To Use It</Subtitle>
+
+[Describe when developers should use this component. Include specific use cases and scenarios.]
+
+Use [COMPONENT_DISPLAY_NAME] when you have [specific scenario]. This [interaction/display] pattern is particularly effective for [use case context].
+
+Common use cases include:
+
+- [Use case 1]
+- [Use case 2]
+- [Use case 3]
+- [Use case 4]
+
+<Subtitle>When Not To Use It</Subtitle>
+
+[List scenarios when this component should NOT be used. Be specific about alternatives.]
+
+- [Scenario where component shouldn't be used]
+- [Another scenario to avoid]
+- [Third scenario with explanation]
+- [Fourth scenario]
+- [Fifth scenario]
+- [Sixth scenario with alternative suggestion]
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { [COMPONENT_NAME] } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [[COMPONENT_NAME].tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/[COMPONENT_NAME].tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=[MUI_COMPONENT_NAME]" target="_blank">theme.ts ([MUI_COMPONENT_NAME] styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={[COMPONENT_NAME]Stories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.[MUI_COMPONENT_NAME]-root` - Root [component type] container
+- `.[MUI_COMPONENT_NAME]-[ELEMENT_1]` - [Description of element 1]
+- `.[MUI_COMPONENT_NAME]-[ELEMENT_2]` - [Description of element 2]
+
+**State Classes:**
+
+- `.Mui-[STATE_1]` - Applied when [condition for state 1]
+- `.Mui-[STATE_2]` - Applied when [condition for state 2]
+- `.[CUSTOM_CLASS_NAME]` - Applied when [custom condition]
+
+**[VARIANT/INDICATOR] Classes:**
+
+- `.[VARIANT_PREFIX]-[VARIANT_1]` - [Variant 1] styling
+- `.[VARIANT_PREFIX]-[VARIANT_2]` - [Variant 2] styling
+- `.[VARIANT_PREFIX]-[VARIANT_3]` - [Variant 3] styling
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.[COLOR_GROUP].[COLOR_VARIANT]` - [Description of color usage]
+- `theme.palette.ux.[COLOR_GROUP_2].[COLOR_VARIANT_2]` - [Description of color usage 2]
+
+**Layout Specifications:**
+
+- [ELEMENT_1] padding: `[PADDING_VALUES]`
+- [ELEMENT_2] dimensions: `[DIMENSIONS]`
+- [ELEMENT_3]: [SIZE_DESCRIPTION]
+- Transition timeout: `[TRANSITION_TIME]`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />
