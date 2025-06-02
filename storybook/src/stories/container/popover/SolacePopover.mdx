@@ -1,110 +1,86 @@
-import { Meta, Description, Title, Subtitle, ArgTypes, Markdown } from "@storybook/blocks";
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
 import * as SolacePopoverStories from "./SolacePopover.stories.tsx";
 import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolacePopoverStories} />
 
-<Title>Popover</Title>
+<Title>Solace Popover</Title>
 
 <Description of={SolacePopoverStories} />
 
 <Subtitle>Code Component Name</Subtitle>
 `SolacePopover`
 
-<Subtitle>Popover Types</Subtitle>
+<Subtitle>Component Description</Subtitle>
 
-There are two main types of popovers:
+The SolacePopover component provides a floating container that displays content anchored to a specific element or position on the screen. It's useful for showing supplementary information, contextual actions, or interactive content without navigating away from the current view, allowing users to access additional functionality while maintaining their current context.
 
-1. **Standard Popover**
+The component implements a popover pattern with the purpose of creating non-modal overlays that can display rich content positioned relative to trigger elements. This pattern helps reduce cognitive load by keeping related actions and information spatially connected while providing flexible positioning options for various layout requirements.
 
-- Contains supplementary or overflow information in flexible layouts
-- Content could be purely informational or interactive
-- Does not require user input to dismiss or proceed
-- Closes when clicking outside the popover
+<Subtitle>When To Use It</Subtitle>
 
-2. **Input Popover**
+Use SolacePopover when you need to display contextual content that's directly related to a specific element or action on the page. This interaction pattern is particularly effective for supplementary information, quick actions, or input forms that don't require full page navigation.
 
-- Collects user input while maintaining page context
-- Ideal for situations where users need to reference nearby information while providing input
-- May include form elements and action buttons
-- Can include validation to prevent closing with unsaved changes
+Common use cases include:
 
-<Subtitle>Alignment & Positioning</Subtitle>
+- Contextual menus with actions related to specific items or areas of the interface
+- Detailed information panels that provide additional context about selected elements without leaving the current view
+- Quick input forms for tasks like adding comments, tags, or making simple edits while maintaining page context
+- Help tooltips or explanatory content that users can access on-demand for specific features or controls
+- Filter panels or configuration options that apply to specific sections of content
+- Rich media previews or expanded views of list items that show additional details on demand
 
-Popovers can be aligned to the trigger element in various ways:
-```
-Vertical 	Horizontal
-Top		Left
-Top		Center
-Top 		Right
-Center 		Left
-Center 		Center
-Center 		Right
-Bottom 		Left
-Bottom 		Center
-Bottom 		Right
-```
-The most important aspect of positioning is to ensure that the popover's placement does not block users from performing other tasks on screen. Implementation of alignments may differ from guidelines based on specific use cases.
+<Subtitle>When Not To Use It</Subtitle>
 
-<Subtitle>Opening & Closing Behavior</Subtitle>
+- Critical user flows that require full attention and shouldn't be interrupted by other page content (use modals instead)
+- Simple text-only tooltips that don't require interaction (use SolaceTooltip for better performance and accessibility)
+- Primary navigation that needs to be persistent and always accessible to users
+- Complex multi-step workflows that require significant screen space and user focus
+- Content that needs to be accessible via keyboard navigation as the primary interaction method
+- Mobile interfaces where popovers might be difficult to position appropriately or could obstruct important content
+- Alert messages or notifications that need to capture immediate user attention regardless of context
+- Content that users need to reference while interacting with multiple other elements on the page simultaneously
 
-- **Opening**:
-  - Popovers open upon the user clicking an interactive element (the trigger).
-- **Closing**:
-  - Standard popovers close when the user clicks outside the popover.
-  - Input popovers with unsaved changes should not close when clicked outside. Instead, display a warning to prompt the user to save or discard their changes.
-
-<Subtitle>Details</Subtitle>
+<Subtitle>Import Statement</Subtitle>
 
 ```tsx
-// Example of a basic popover implementation
-import React, { useState } from "react";
-import { SolaceButton, SolacePopover } from "@SolaceDev/maas-react-components";
-
-const MyComponent = () => {
-	// State to track the anchor element and open state
-	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-	const open = Boolean(anchorEl);
-	const id = open ? "simple-popover" : undefined;
-
-	// Handler for opening the popover
-	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	// Handler for closing the popover
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	return (
-		<div>
-			{/* Button that triggers the popover */}
-			<SolaceButton aria-describedby={id} variant="call-to-action" onClick={handleClick}>
-				Open Popover
-			</SolaceButton>
-
-			{/* The popover component */}
-			<SolacePopover
-				id={id}
-				open={open}
-				anchorElement={anchorEl}
-				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-				transformOrigin={{ vertical: "top", horizontal: "center" }}
-				onClose={handleClose}
-			>
-				<div style={{ padding: "16px" }}>This is the content of the popover.</div>
-			</SolacePopover>
-		</div>
-	);
-};
+import { SolacePopover } from "@SolaceDev/maas-react-components";
 ```
 
-The source code for the `SolacePopover` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolacePopover.tsx)
+<Subtitle>Links</Subtitle>
 
-More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21909-955&p=f&t=krT48Tpudmfvc1Pl-0)
+- **GitHub Source Code**: [SolacePopover.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolacePopover.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiPopover" target="_blank">theme.ts (MuiPopover styles)</a>
+- **Figma Design**: [UX Patterns](https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21909-955&p=f&t=krT48Tpudmfvc1Pl-0)
+
+<Subtitle>Properties</Subtitle>
 
 <ArgTypes of={SolacePopoverStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiPopover-root` - Root popover container
+- `.MuiPopover-paper` - Paper component that contains the popover content
+- `.SolacePopover` - Custom class applied to the paper element for Solace-specific styling
+
+**State Classes:**
+
+- `.MuiPopover-root.Mui-open` - Applied when popover is open
+- `.MuiPopover-paper` - Paper container with elevation and border styling
+
+**Theme Customization:**
+
+The component uses Material-UI's theme system with custom Solace styling through the `.SolacePopover` class applied to the paper element.
+
+**Layout Specifications:**
+
+- Anchor reference: Determined by presence of `anchorPosition` prop ("anchorPosition" or "anchorEl")
+- Pointer events: Set to "none" when `activateOnHover` is true, "auto" otherwise
+- Positioning: Controlled by `anchorOrigin` and `transformOrigin` props
+- Margin threshold: Configurable minimum distance from viewport edges
+- Content container: Material-UI Paper component with elevation and custom styling
 
 <Subtitle>Stories</Subtitle>
 
