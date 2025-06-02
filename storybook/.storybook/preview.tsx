@@ -11,7 +11,7 @@ const themes = {
 		boomi: "boomi",
 		sap: "sap",
 		solace: "solace",
-		newSolace: "new-solace"
+		newSolace: "newSolace"
 	},
 	defaultTheme: "solace"
 };
