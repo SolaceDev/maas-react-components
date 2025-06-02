@@ -843,7 +843,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						borderRadius: "4px",
 						//This overrides the thick border
 						color: "#FFFFFF",
-						alignSelf: "center",
 
 						// Unselected, Enabled
 						"&.MuiButtonBase-root": {
@@ -1005,10 +1004,9 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						// Other styling
 						"+.MuiFormLabel-root": {
 							marginLeft: "16px",
-							color: themeMapping.palette.primary.text.wMain,
-							lineHeight: 1.5,
+							color: themeMapping.palette.secondary.wMain,
 							"&.Mui-disabled": {
-								color: themeMapping.palette.secondary.text.w50
+								color: themeMapping.palette.secondary.w40
 							}
 						},
 						padding: "0"
