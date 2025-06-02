@@ -1,0 +1,98 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceEnvironmentChipStories from "./SolaceEnvironmentChip.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceEnvironmentChipStories} />
+
+<Title>Solace Environment Chip</Title>
+
+<Description of={SolaceEnvironmentChipStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceEnvironmentChip`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceEnvironmentChip component provides a specialized visual element for displaying environment-specific information with custom branding colors and icons. It's useful for indicating different deployment environments, system contexts, or organizational divisions, allowing users to quickly identify the context they're working within through distinctive visual styling.
+
+The component implements a branded chip pattern with the purpose of providing clear environmental context through color-coded visual indicators. This pattern helps users maintain situational awareness while working across multiple environments or organizational contexts, reducing the risk of confusion or accidental actions in the wrong environment.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use SolaceEnvironmentChip when you need to display environment-specific or contextual information that requires distinctive visual branding. This interaction pattern is particularly effective for multi-environment applications and organizational context switching.
+
+Common use cases include:
+
+- Environment indicators showing "Development", "Staging", "Production" environments with distinct color schemes
+- Organizational context displays for multi-tenant applications showing different companies or divisions
+- Service or region identifiers in cloud applications indicating geographic or infrastructure contexts
+- Brand indicators for white-labeled applications showing different client or partner branding
+- System context markers indicating different operational modes or service levels
+- Security context indicators showing different access levels or classification levels with appropriate visual cues
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- General categorization where standard chips or badges would be more appropriate and don't require custom branding
+- Interactive selection interfaces where users need to choose from multiple options (use SolaceChip instead)
+- Temporary status indicators that change frequently (use status badges or notifications for dynamic information)
+- Decorative elements where the environmental context isn't functionally important to the user
+- Accessibility-critical scenarios where color is the only differentiating factor between environments
+- Mobile interfaces where custom colors might not display consistently across different devices
+- Print-friendly interfaces where color differentiation might not be preserved
+- Contexts where environmental information should be more subtle and not draw primary attention
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceEnvironmentChip } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceEnvironmentChip.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceEnvironmentChip.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=SolaceEnvironmentChip" target="_blank">theme.ts (SolaceEnvironmentChip styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceEnvironmentChipStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.ColoredContainer` - Main styled container with custom background and foreground colors
+- `.ColoredBase` - Base styled component with core styling and color application
+- `.MuiIconButton-root` - Delete button when removable (with hover effects)
+
+**Custom Classes:**
+
+- `.Icon` - Container for the leading icon with flex display
+- `.Text` - Text label container with ellipsis overflow handling
+
+**Theme Customization:**
+
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.spacing()` - Consistent spacing for padding, border radius, and gaps
+- `theme.typography.body1` - Font family, size, and weight for text content
+- `theme.palette.ux.secondary.w100` - Border color for white backgrounds
+- `theme.palette.ux.secondary.w20` - Hover background color for delete button
+
+**Layout Specifications:**
+
+- Height: `theme.spacing(3)` (24px typically)
+- Border radius: `theme.spacing(0.5)` (4px typically)
+- Border width: `1px` solid
+- Default max width: `200px`
+- Icon size: `16x16` pixels (for both leading icon and close icon)
+- Column gap: `theme.spacing(0.5)` (4px typically) between icon and text
+- Padding variations:
+  - Icon only: `theme.spacing(0, 0.5)` (0px vertical, 4px horizontal)
+  - With delete: `theme.spacing(0, 0.5)` (0px vertical, 4px horizontal)
+  - Standard: `theme.spacing(0, 1, 0, 0.5)` (0px top, 8px right, 0px bottom, 4px left)
+- White background special case: Adds border using `theme.palette.ux.secondary.w100`
+- Text overflow: Ellipsis with `white-space: nowrap`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

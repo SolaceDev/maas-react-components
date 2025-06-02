@@ -1,0 +1,136 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceChipStories from "./SolaceChip.stories.tsx";
+import * as SolaceChipChoiceStories from "./SolaceChipChoice.stories.tsx";
+import * as SolaceChipInputStories from "./SolaceChipInput.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceChipStories} />
+
+<Title>Solace Chip</Title>
+
+<Description of={SolaceChipStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceChip`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceChip component provides an interactive element for displaying compact information with optional actions like selection, deletion, or click handling. It's useful for creating filterable tags, selectable options, or actionable labels that users can interact with, allowing for dynamic content management and user input collection.
+
+The component implements an enhanced chip pattern with the purpose of combining visual information display with user interaction capabilities. This pattern supports various states, modes, and status indicators while providing flexible styling options for different interaction contexts and visual hierarchies.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use SolaceChip when you need interactive compact elements that combine information display with user actions. This interaction pattern is particularly effective for selection interfaces, filtering systems, and dynamic content management.
+
+Common use cases include:
+
+- Filter interfaces where users can select and remove filter criteria for search results or data tables
+- Tag selection systems for content management, allowing users to add or remove categorization tags
+- Multi-select inputs where users can choose multiple options from a set of available choices
+- Status indicators with interactive capabilities like changing states or triggering actions
+- Choice selection interfaces for forms or configuration screens with visual feedback
+- Dynamic lists where users can add, remove, or modify items through chip interactions
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- Static information display that doesn't require user interaction - use SolaceAttributeBadge for read-only labels
+- Primary navigation elements where users expect standard navigation patterns - use SolaceButton or SolaceTabs
+- Single-choice selection where radio buttons or dropdowns would be more appropriate for clarity
+- Complex forms that require detailed input rather than simple selection - use SolaceTextField or SolaceSelect
+- Critical actions that require confirmation dialogs to prevent accidental execution - use SolaceButton with confirmation
+- Large datasets where chip interfaces would become cluttered or overwhelming - use SolaceTable or SolaceGridList
+- Mobile interfaces where small interactive elements might be difficult to use accurately - consider larger touch targets
+- When content truncation would hide important information - use full-width components instead
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceChip, CHIP_VARIANT, MODES } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Story Variants</Subtitle>
+
+The component includes three different story categories with multiple examples:
+
+**Standard Chip Stories (SolaceChip.stories.tsx):**
+
+- **DefaultChip** - Basic chip implementation with standard styling
+- **ChipWithPopover** - Demonstrates rich tooltip functionality with custom content and hover interactions
+- **ChipWithTooltip** - Shows simple tooltip integration for additional context
+- **TruncatedChip** - Illustrates content truncation with tooltip for overflow text
+- **ChipWithLeadingIcon** - Examples of icon integration for visual enhancement
+- **DisabledStandardChip** - Shows disabled state styling and behavior
+- **DarkStandardChip** - Demonstrates dark mode theming
+- **DisabledDarkStandardChip** - Combines disabled state with dark mode theming
+
+**Choice Chip Stories (SolaceChipChoice.stories.tsx):**
+
+- **DefaultActiveChoiceChip** - Choice chip in active/selected state with outlined variant
+- **DarkActiveChoiceChip** - Dark mode choice chip in active state
+- **DefaultNotSelectedChoiceChip** - Choice chip in unselected state
+- **DarkNotSelectedChoiceChip** - Dark mode choice chip in unselected state
+
+**Input Chip Stories (SolaceChipInput.stories.tsx):**
+
+- **DefaultInputChip** - Input chip with both click and delete functionality
+- **DarkInputChip** - Dark mode input chip with delete capability
+- **ErrorInputChip** - Input chip showing error status with error icon
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceChipStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiChip-root` - Root chip container with Material-UI styling
+- `.solaceChip` - Custom class for Solace-specific chip styling
+- `.MuiChip-label` - Text content wrapper
+- `.MuiChip-deleteIcon` - Delete button icon (when onDelete is provided)
+- `.MuiChip-icon` - Icon container for leading icons
+
+**Mode Classes:**
+
+- `.LIGHT_MODE` - Applied for light theme mode
+- `.DARK_MODE` - Applied for dark theme mode
+
+**Status Classes:**
+
+- `.NO_STATUS` - Default status with no special styling
+- `.ERROR_STATUS` - Applied when status indicates an error, shows error icon
+
+**State Classes:**
+
+- `.NOT_SELECTED` - Default unselected state
+- `.SELECTED` - Applied when chip is in selected state
+- `.MuiChip-clickable` - Applied when clickable is true
+- `.MuiChip-disabled` - Applied when disabled is true
+
+**Custom Icon Classes:**
+
+- `.leadingIcon` - Container for custom leading icons
+- `.errorIcon` - Container for error status icon
+
+**Theme Customization:**
+
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.deprecated.chip` - Color mappings for borders, fills, and text colors
+- `theme.palette.ux.error.w100` - Error icon color
+
+**Layout Specifications:**
+
+- Height options: `xs: 12px`, `sm: 18px`, `md: 24px`, `lg: 30px`
+- Border radius options: `xs: 20px`, `sm: 30px`, `md: 40px`, `lg: 50px`
+- Default height: `md` (24px)
+- Default border radius: `md` (40px)
+- Default font size: `sm`
+- Default variant: `FILLED`
+- Icon size: 14x14 pixels for leading icons
+- Font weight: 400 by default, 500 when `boldLabel` is true
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories stories={[SolaceChipStories, SolaceChipChoiceStories, SolaceChipInputStories]} />

@@ -1,0 +1,108 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceTooltipStories from "./SolaceTooltip.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceTooltipStories} />
+
+<Title>Solace Tooltip</Title>
+
+<Description of={SolaceTooltipStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceTooltip`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceTooltip component provides contextual information through floating overlays that appear when users interact with trigger elements. It's useful for displaying additional details, explanations, or help text without cluttering the interface, allowing users to access supplementary information on demand while maintaining a clean visual hierarchy.
+
+The component implements an enhanced tooltip pattern with the purpose of providing just-in-time information delivery. This pattern supports multiple content types, intelligent overflow detection, and flexible positioning while offering extensive customization options for timing, behavior, and visual presentation.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use SolaceTooltip when you need to provide supplementary information that enhances user understanding without overwhelming the primary interface. This interaction pattern is particularly effective for progressive disclosure and contextual help systems.
+
+Common use cases include:
+
+- Explanatory text for complex UI elements, technical terms, or unfamiliar icons that need clarification
+- Additional context for form fields, buttons, or interactive elements to guide user actions
+- Overflow text display for truncated content where full text needs to be accessible on demand
+- Help documentation integration providing just-in-time assistance without navigation away from current tasks
+- Rich content presentation including formatted text, links, or structured information in compact overlays
+- Accessibility enhancement for screen readers and keyboard navigation with proper ARIA labeling
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- Critical information that users must see to complete tasks (use visible labels or inline text instead)
+- Complex interactive content that requires user input or navigation (use modals or dedicated pages)
+- Information that's needed immediately upon page load (integrate into the main interface design)
+- Mobile interfaces where hover interactions aren't available or touch targets are imprecise
+- Frequently accessed information that users need repeatedly (make it permanently visible)
+- Error messages or validation feedback that requires immediate attention (use inline validation displays)
+- Primary navigation or essential functionality that shouldn't be hidden behind hover states
+- Long-form content that exceeds comfortable tooltip reading length (use expandable sections or separate pages)
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceTooltip } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceToolTip.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceToolTip.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiTooltip" target="_blank">theme.ts (MuiTooltip styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceTooltipStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiTooltip-tooltip` - Root tooltip container with Material-UI styling
+- `.MuiTooltip-arrow` - Arrow pointer element when arrow is enabled
+- `.MuiTooltip-popper` - Positioning container for tooltip placement
+
+**Variant Classes:**
+
+- `.htmlContent` - Applied when variant is "html" or "rich" for enhanced content styling
+- `.smallWidth` - Applied when maxWidth is "small" (default width constraint)
+- `.mediumWidth` - Applied when maxWidth is "medium" (larger width constraint)
+- `.fullWidth` - Applied when maxWidth is "full" (maximum available width)
+
+**Custom Classes:**
+
+- `.OverflowDiv` - Special container for overflow variant with text truncation handling
+
+**Theme Customization:**
+
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- Standard Material-UI tooltip theming applies for background, text color, and shadows
+
+**Layout Specifications:**
+
+- Default placement: `bottom`
+- Default max width: `small`
+- Default variant: `text`
+- Enter delay: `500ms` (time before showing)
+- Enter next delay: `0ms` (time for subsequent tooltips)
+- Leave delay: `0ms` (time before hiding)
+- Transition: Fade effect with `150ms` enter, `200ms` exit
+- Overflow detection: Automatic for `overflow` variant based on scrollWidth vs clientWidth
+- Positioning: 12 available positions (top, bottom, left, right with start/end variants)
+- Auto-generated IDs for accessibility when not provided
+
+**Special Behaviors:**
+
+- Overflow variant only shows tooltip when content is actually truncated
+- HTML and rich variants support complex content formatting
+- Empty title prevents tooltip from showing
+- Controlled and uncontrolled modes supported
+- Focus and hover listeners can be independently disabled
+- Safari-specific fixes for double tooltip prevention
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

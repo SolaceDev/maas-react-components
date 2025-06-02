@@ -1,0 +1,101 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceGridListMultiSelectStories from "./SolaceGridListMultiSelect.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceGridListMultiSelectStories} />
+
+<Title>Solace Grid List Multi-Select</Title>
+
+<Description of={SolaceGridListMultiSelectStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceGridListMultiSelect`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Grid List Multi-Select component provides a powerful way to display collections of data with built-in multi-selection capabilities using checkboxes. It's useful for scenarios where users need to select multiple items from a structured dataset, allowing bulk operations and batch processing workflows.
+
+The component implements a grid-based layout pattern with integrated selection controls, providing both individual item selection and "Select All" functionality. This pattern enables efficient data management workflows while maintaining visual organization and clear selection state feedback.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Grid List Multi-Select when you need to allow users to select multiple items from a structured dataset with clear visual feedback. This selection pattern is particularly effective for bulk operations and data management workflows.
+
+Common use cases include:
+
+- Bulk operations on event meshes, environments, or other business entities
+- Multi-select file managers or resource browsers with batch actions
+- Data management interfaces requiring selection of multiple items for processing
+- Admin interfaces where users need to perform actions on multiple selected records
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For single-selection scenarios - use SolaceGridList for single-item selection
+- When no selection is needed - use SolaceGridList for display-only lists
+- For simple checkbox lists without grid layout - use standard form components with SolaceCheckBox
+- When you need complex table features like sorting or filtering - use SolaceTable with multi-selection
+- For card-based multi-selection - use SolaceCard components with individual checkboxes
+- When selection state doesn't need to be managed - use simpler list components for better performance
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceGridListMultiSelect } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceGridListMultiSelect.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/layout/SolaceGridListMultiSelect.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=layoutComponent_ImageList" target="_blank">theme.ts (layoutComponent_ImageList styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceGridListMultiSelectStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.layoutComponent_ImageList-header` - Header container with selection controls and actions
+- `.layoutComponent_ImageList-row` - Individual grid row container
+- `.layoutComponent_ImageList-list` - Main list container (inherited from SolaceGridList)
+- `.layoutComponent_ImageList-border` - Border wrapper around the list
+
+**Selection Classes:**
+
+- `.selectAll` - Container for the "Select All" checkbox and label
+- `.selectAllText` - Text label for the "Select All" checkbox
+- `.countItemsText` - Text showing count of selected items
+- `.selected` - Applied when a row is selected (inherited from SolaceGridList)
+
+**State Classes:**
+
+- `.headerRow` - Applied to the column header row
+- `.indicator-info` - Applied when indicatorVariant is "info"
+- `.indicator-error` - Applied when indicatorVariant is "error"
+- `.indicator-warn` - Applied when indicatorVariant is "warn"
+- `.indicator-success` - Applied when indicatorVariant is "success"
+- `.indicator-secondary` - Applied when indicatorVariant is "secondary"
+
+**Emphasis Classes:**
+
+- `.emphasized` - Applied when a row should be emphasized with special styling
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.primary.text.wMain` - Primary text color for content
+- `theme.palette.ux.secondary.text.wMain` - Secondary text color for headers
+- `theme.palette.ux.background.w10` - Default background color
+
+**Layout Specifications:**
+
+- Checkbox column width: `min(17px)` with 8px gap to first data column
+- Header height: `49px` when selection controls or actions are displayed
+- Grid template: Checkbox column + custom `gridTemplate` prop using CSS Grid syntax
+- Header padding: `0 64px` for proper alignment with content
+- Virtual list height: Calculated as `calc(100% - 49px)` when header is displayed
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

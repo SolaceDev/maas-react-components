@@ -13,7 +13,7 @@ import {
 	CheckCircleIcon,
 	SolaceButton
 } from "@SolaceDev/maas-react-components";
-import { DefaultTable } from "../../data-display/SolaceTable.stories";
+import { DefaultTable } from "../../data-display/table/SolaceTable.stories";
 import { userEvent, within } from "@storybook/testing-library";
 
 (SolaceConfirmationDialog as React.FC & { displayName?: string }).displayName = "SolaceConfirmationDialog";

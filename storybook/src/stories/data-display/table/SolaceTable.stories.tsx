@@ -226,41 +226,82 @@ export default {
 			description: {
 				component: "Table component for reuse in all Solace based applications. Code component name: SolaceTable"
 			}
+		}
+	},
+	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the Table component"
 		},
-		argTypes: {
-			id: {
-				control: { type: "text" },
-				description: "Unique identifier for the Table component"
-			},
-			rows: {
-				control: { type: "array" },
-				description: "Array of items to be displayed"
-			},
-			columns: {
-				control: { type: "array" },
-				description: "Array of columns to be rendered"
-			},
-			selectionType: {
-				options: [SolaceTableSelectionType.NONE, SolaceTableSelectionType.SINGLE, SolaceTableSelectionType.MULTI],
-				control: { type: "select" },
-				description: "Table selection types"
-			},
-			loading: {
-				control: { type: "boolean" },
-				description: "Whether the table is in loading state, if true, a loading spinner will be displayed"
-			},
-			loadingMessage: {
-				control: { type: "text" },
-				description: "Specify a loading message if the table is in loading state"
-			},
-			selectionChangedCallback: {
-				control: false,
-				description: "Selection changed callback"
-			},
-			sortCallback: {
-				control: false,
-				description: "Sort callback when sorted column change is requested"
-			}
+		rows: {
+			control: { type: "object" },
+			description: "Array of items to be displayed"
+		},
+		columns: {
+			control: { type: "object" },
+			description: "Array of columns to be rendered"
+		},
+		selectionType: {
+			options: [SolaceTableSelectionType.NONE, SolaceTableSelectionType.SINGLE, SolaceTableSelectionType.MULTI],
+			control: { type: "select" },
+			description: "Table selection types"
+		},
+		loading: {
+			control: { type: "boolean" },
+			description: "Whether the table is in loading state, if true, a loading spinner will be displayed"
+		},
+		loadingMessage: {
+			control: { type: "text" },
+			description: "Specify a loading message if the table is in loading state"
+		},
+		selectionChangedCallback: {
+			control: false,
+			description: "Selection changed callback"
+		},
+		sortCallback: {
+			control: false,
+			description: "Sort callback when sorted column change is requested"
+		},
+		selectedRowIds: {
+			control: { type: "object" },
+			description: "Controlled state for rows to be selected"
+		},
+		disabledRowIds: {
+			control: { type: "object" },
+			description: "Array of row IDs to be disabled"
+		},
+		independentRowHighlight: {
+			control: { type: "boolean" },
+			description:
+				"If selection type is MULTI and independentRowHighlight is true, table row highlight is handled via row click only"
+		},
+		highlightedRowId: {
+			control: { type: "text" },
+			description: "Controlled state for a row to be highlighted"
+		},
+		hasColumnHiding: {
+			control: { type: "boolean" },
+			description: "Enables columns hiding"
+		},
+		maxHeight: {
+			control: { type: "text" },
+			description: "Maximum height for the table"
+		},
+		minHeight: {
+			control: { type: "text" },
+			description: "Minimum height for the table"
+		},
+		crossPageRowSelectionSupported: {
+			control: { type: "boolean" },
+			description: "Enable cross-page row selection for multi-selection tables"
+		},
+		totalObjectCount: {
+			control: { type: "number" },
+			description: "Total number of objects across all pages"
+		},
+		allPagesSelectedByDefault: {
+			control: { type: "boolean" },
+			description: "Whether all pages are selected by default in cross-page selection mode"
 		}
 	}
 } as Meta<typeof SolaceTable>;

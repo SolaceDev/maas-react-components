@@ -1,0 +1,92 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceFeatureTagStories from "./SolaceFeatureTag.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceFeatureTagStories} />
+
+<Title>Solace Feature Tag</Title>
+
+<Description of={SolaceFeatureTagStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceFeatureTag`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceFeatureTag component provides a small, distinctive label for indicating feature status, development phases, or special designations. It's useful for communicating the maturity level of features, highlighting new functionality, or marking experimental capabilities, allowing users to understand the status and stability of different product features.
+
+The component implements a minimal feature indicator pattern with the purpose of providing clear visual communication about feature states. This pattern helps set user expectations about functionality while maintaining a clean, unobtrusive design that doesn't interfere with the main interface.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use SolaceFeatureTag when you need to communicate feature status or special designations that help users understand the maturity or characteristics of functionality. This interaction pattern is particularly effective for product development contexts and feature rollouts.
+
+Common use cases include:
+
+- Development phase indicators like "BETA", "ALPHA", or "PREVIEW" to communicate feature maturity levels
+- New feature announcements with "NEW" or "UPDATED" tags to draw attention to recent additions
+- Experimental feature marking with "EXPERIMENTAL" or "LABS" to set appropriate user expectations
+- Feature availability indicators like "PRO", "PREMIUM", or "ENTERPRISE" for tiered functionality
+- Status communication for "DEPRECATED" or "LEGACY" features that may be phased out
+- Special designation markers for "RECOMMENDED", "POPULAR", or "FEATURED" content or features
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- General content categorization where regular tags or labels would be more appropriate
+- Interactive elements that require user actions (use buttons or interactive components instead)
+- Primary status indicators for critical system states (use status badges or alerts for important information)
+- Large amounts of descriptive text that wouldn't fit in a small tag format
+- Permanent feature states that don't need special designation (integrate into normal UI patterns)
+- Mobile interfaces where very small text might be difficult to read
+- Contexts where the tag might be confused with actionable elements
+- Accessibility scenarios where color-only differentiation might not be perceivable by all users
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceFeatureTag } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceFeatureTag.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceFeatureTag.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=SolaceFeatureTag" target="_blank">theme.ts (SolaceFeatureTag styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceFeatureTagStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.FeatureTag` - Styled span element with custom Solace feature tag styling
+
+**State Classes:**
+
+- `.active` - Applied when active prop is true, uses primary branding colors
+
+**Theme Customization:**
+
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.secondary.text.w50` - Default border and text color
+- `theme.palette.ux.primary.wMain` - Active state border and text color
+- `theme.spacing()` - Consistent spacing for border radius and padding
+
+**Layout Specifications:**
+
+- Font size: `10px` (fixed)
+- Font weight: `500` (medium)
+- Line height: `10px`
+- Text transform: `uppercase`
+- Border width: `2px` solid
+- Border radius: `theme.spacing(0.5)` (4px typically)
+- Padding: `theme.spacing(0.25, 1)` (2px vertical, 8px horizontal typically)
+- Box sizing: `border-box`
+- Default colors: Secondary text at 50% opacity
+- Active colors: Primary brand color
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />
