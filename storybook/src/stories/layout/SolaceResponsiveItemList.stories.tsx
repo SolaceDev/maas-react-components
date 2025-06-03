@@ -24,7 +24,28 @@ export default {
 			}
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the responsive item list component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the responsive item list in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the list content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		}
+	}
 } as Meta<typeof SolaceResponsiveItemList>;
 
 const DEFAULT_OPTIONS = [

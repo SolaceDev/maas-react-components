@@ -34,6 +34,25 @@ export default {
 		}
 	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the chip textarea component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the chip textarea in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the chip textarea content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		label: {
 			control: {
 				type: "text"

@@ -29,6 +29,25 @@ export default {
 		}
 	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the icon picker component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the icon picker in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the icon selection.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		label: {
 			control: {
 				type: "text"

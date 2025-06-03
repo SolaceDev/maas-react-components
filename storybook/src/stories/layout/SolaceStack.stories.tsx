@@ -31,6 +31,25 @@ export default {
 	title: "Layout/Stack",
 	component: SolaceStack,
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the stack component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the stack in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the stack content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		spacing: {
 			control: { type: "range", min: 1, max: 10, step: 1 },
 			description:

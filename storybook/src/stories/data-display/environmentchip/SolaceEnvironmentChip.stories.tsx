@@ -44,6 +44,17 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the environment chip in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the environment.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		fgColor: {
 			control: { type: "color" },
 			description:

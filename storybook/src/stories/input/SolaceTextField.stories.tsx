@@ -27,67 +27,255 @@ export default {
 		label: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The label text displayed above or inline with the text field. Use this to clearly describe what information the user should enter. Labels should be concise and descriptive.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		helperText: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Additional text displayed below the input field to provide guidance or error messages. Use this to give users context about expected input format or validation requirements.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		hasErrors: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the text field in an error state with red styling. Use this to indicate validation failures or input errors. Often paired with error text in helperText.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the textfield in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the textfield content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		autoFocus: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, automatically focuses the text field when the component mounts. Use sparingly as it can disrupt user navigation and accessibility. Best for primary input fields on forms.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		inlineLabel: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the label inline with the input field rather than above it. Use this for compact layouts or when you need to save vertical space.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		required: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, marks the field as required and displays an asterisk (*) next to the label. Use this to indicate mandatory fields in forms and ensure proper validation.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		disabled: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, disables the text field preventing user interaction. Use this when the field is not applicable based on current form state or user permissions.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		readOnly: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, makes the text field read-only. Users can see and select the text but cannot edit it. Use this for displaying computed values or information that shouldn't be modified.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		value: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The current value of the text field. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		placeholder: {
+			control: {
+				type: "text"
+			},
+			description:
+				"Placeholder text displayed when the field is empty. Use this to provide examples of expected input format or additional guidance. Should not replace proper labels.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		type: {
 			options: ["text", "number", "password", "email", "url"],
 			control: {
 				type: "select"
+			},
+			description:
+				"The input type which affects validation, keyboard behavior on mobile devices, and browser auto-completion. Choose the most appropriate type for your data to improve user experience.",
+			table: {
+				type: { summary: '"text" | "number" | "password" | "email" | "url"' },
+				defaultValue: { summary: '"text"' }
 			}
 		},
 		size: {
 			control: {
 				type: "number"
+			},
+			description:
+				"The size attribute for the input field, affecting the visible character width. Use this to hint at the expected input length, but don't rely on it for validation.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		width: {
 			control: {
-				type: "number"
+				type: "text"
+			},
+			description:
+				"The width of the text field. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		minWidth: {
 			control: {
-				type: "number"
+				type: "text"
+			},
+			description:
+				"The minimum width of the text field. Prevents the field from becoming too narrow in responsive layouts. Useful for ensuring readability of input content.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		name: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The name attribute for the input field, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the textfield component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		title: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The title attribute for the input field, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onChange: {
+			description:
+				"Callback function fired when the input value changes. Receives an event object with the new value. Essential for controlled components and form state management.",
+			table: {
+				type: { summary: "(event: {value: string, name: string}) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onBlur: {
+			description:
+				"Callback function fired when the input loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes editing.",
+			table: {
+				type: { summary: "(event: React.FocusEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onFocus: {
+			description:
+				"Callback function fired when the input gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for input.",
+			table: {
+				type: { summary: "(event: React.FocusEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		customIcon: {
+			control: { type: "object" },
+			description:
+				"Custom icon configuration object with position ('start' or 'end') and icon element. Use this to add visual cues or actions like search, clear, or validation indicators.",
+			table: {
+				type: { summary: "{position: 'start' | 'end', icon: React.ReactElement}" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		endAdornment: {
+			control: { type: "object" },
+			description:
+				"Array of React elements to display at the end of the input field. Use this for action buttons, status indicators, or additional interactive elements.",
+			table: {
+				type: { summary: "React.ReactElement[]" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify the text field during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	}

@@ -1,0 +1,93 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceButtonStories from "./SolaceButton.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceButtonStories} />
+
+<Title>Solace Button</Title>
+
+<Description of={SolaceButtonStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceButton`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Button component is a versatile and customizable button for use in all Solace-based applications. It provides various visual styles, sizes, and states to accommodate different user interface needs. The button can be used for actions, navigation, form submission, and more.
+
+The component implements a standard button pattern with the purpose of triggering actions or events within the application. This pattern helps users interact with the interface, submit forms, navigate between pages, and perform various operations.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Button when you need to provide users with a clear, interactive element for performing actions. This button component is particularly effective for:
+
+- Submitting forms or data
+- Triggering modal dialogs or popups
+- Navigating between pages or sections
+- Executing actions like save, delete, or update
+- Toggling features or settings
+- Initiating processes or workflows
+- Creating call-to-action elements
+- Providing clear, clickable targets for user interaction
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For long blocks of text or complex content (use a card or panel instead)
+- When a less prominent action is needed (consider using a link)
+- For grouping multiple related actions (use a dropdown or menu)
+- When toggle functionality is required (use a switch or checkbox)
+- For selecting from a list of options (use radio buttons or a select component)
+- When the action requires a drag-and-drop interaction
+- For displaying static, non-interactive information
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceButton } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceButton.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceButton.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiButton" target="_blank">theme.ts (MuiButton styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceButtonStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiButton-root` - Root button container
+- `.MuiButton-text` - Applied to text variant buttons
+- `.MuiButton-outlined` - Applied to outline variant buttons
+- `.MuiButton-contained` - Applied to call-to-action variant buttons
+- `.MuiButton-startIcon` - Container for the start icon
+- `.MuiButton-endIcon` - Container for the end icon
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied when the button is disabled
+- `.Mui-focusVisible` - Applied when the button has keyboard focus
+- `.Mui-loading` - Applied when the button is in a loading state
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.primary` - Primary color for call-to-action buttons
+- `theme.palette.ux.secondary` - Secondary color for outline and text buttons
+- `theme.palette.ux.error` - Color for error states
+- `theme.palette.ux.warning` - Color for warning states
+
+**Layout Specifications:**
+
+- Button padding: Consistent padding based on size prop
+- Icon spacing: 8px between icon and text
+- Minimum width: Set to accommodate the content plus padding
+- Border radius: Consistent with Solace design system
+- Transition duration: 250ms for hover and focus effects
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

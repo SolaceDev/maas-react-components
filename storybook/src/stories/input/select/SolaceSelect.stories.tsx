@@ -54,56 +54,283 @@ export default {
 		label: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The label text displayed above or inline with the select field. Use this to clearly describe what the user is selecting. Labels should be concise and descriptive.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		helperText: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Additional text displayed below the select field to provide guidance or error messages. Use this to give users context about available options or validation requirements.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		hasErrors: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the select field in an error state with red styling. Use this to indicate validation failures or selection errors. Often paired with error text in helperText.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the select in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the select options.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		inlineLabel: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the label inline with the select field rather than above it. Use this for compact layouts or when you need to save vertical space.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		required: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, marks the field as required and displays an asterisk (*) next to the label. Use this to indicate mandatory fields in forms and ensure proper validation.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		disabled: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, disables the select field preventing user interaction. Use this when the field is not applicable based on current form state or user permissions.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		readOnly: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, makes the select field read-only. Users can see the selected value but cannot change it. Use this for displaying computed values or information that shouldn't be modified.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		value: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The current selected value of the select field. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
+			table: {
+				type: { summary: "string | number | Array<string | number>" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		defaultValue: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The default selected value for uncontrolled components. Use this when you want to set an initial value but don't need to control the selection state.",
+			table: {
+				type: { summary: "string | number | Array<string | number>" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		multiple: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, enables multiple selection mode. Users can select multiple options from the dropdown. The value will be an array of selected values.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		width: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The width of the select field. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		maxHeight: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Maximum height of the dropdown menu. Use this to limit the dropdown height and enable scrolling when there are many options.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		displayEmpty: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays a placeholder or empty option when no value is selected. Use this to show users that they need to make a selection.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		placeholder: {
+			control: {
+				type: "text"
+			},
+			description:
+				"Placeholder text displayed when no value is selected and displayEmpty is true. Use this to provide guidance about what the user should select.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		name: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The name attribute for the select field, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		id: {
+			control: {
+				type: "text"
+			},
+			description:
+				"Unique identifier for the select field. Used to associate the label with the input for accessibility and to reference the field programmatically.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		title: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The title attribute for the select field, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onChange: {
+			description:
+				"Callback function fired when the selection changes. Receives an event object with the new value. Essential for controlled components and form state management.",
+			table: {
+				type: { summary: "(event: {value: any, name: string}) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onBlur: {
+			description:
+				"Callback function fired when the select field loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes selecting.",
+			table: {
+				type: { summary: "(event: React.FocusEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onFocus: {
+			description:
+				"Callback function fired when the select field gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for selection.",
+			table: {
+				type: { summary: "(event: React.FocusEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		children: {
+			control: { type: "object" },
+			description:
+				"MenuItem components that represent the available options. Use MenuItem components from the library to ensure proper styling and behavior.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		getOptionDisplayValue: {
+			description:
+				"Function to customize how selected values are displayed in the input field. Use this when you need to show different text than the MenuItem content.",
+			table: {
+				type: { summary: "(value: any) => string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		open: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"Controls whether the dropdown is open. Use this for controlled dropdown state, often paired with onOpen and onClose handlers.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onOpen: {
+			description:
+				"Callback function fired when the dropdown opens. Use this for controlled dropdown state or to trigger actions when the dropdown becomes visible.",
+			table: {
+				type: { summary: "() => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onClose: {
+			description:
+				"Callback function fired when the dropdown closes. Use this for controlled dropdown state or to trigger actions when the dropdown becomes hidden.",
+			table: {
+				type: { summary: "() => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify the select field during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	},

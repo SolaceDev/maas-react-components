@@ -18,7 +18,28 @@ export default {
 			}
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the detail message component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the detail message in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the detail message content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		}
+	}
 } as Meta<typeof SolaceDetailMessage>;
 
 const defaultButton = {

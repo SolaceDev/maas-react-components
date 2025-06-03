@@ -24,7 +24,154 @@ export default {
 			}
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the attribute value pair form component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		name: {
+			control: { type: "text" },
+			description: "Name attribute for the form component.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		labelForKeys: {
+			control: { type: "text" },
+			description: "Label text or component for the keys column.",
+			table: {
+				type: { summary: "string | ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		labelForValues: {
+			control: { type: "text" },
+			description: "Label text or component for the values column.",
+			table: {
+				type: { summary: "string | ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		avpList: {
+			control: { type: "object" },
+			description: "Array of key-value pairs to display in the form.",
+			table: {
+				type: { summary: "Array<AVPItem>" },
+				defaultValue: { summary: "[]" }
+			}
+		},
+		onAVPListUpdate: {
+			description: "Callback function triggered when the list is updated.",
+			table: {
+				type: { summary: "(list: Array<AVPItem>) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: { type: "boolean" },
+			description:
+				"If true, displays the attribute value pair form in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the form content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasErrors: {
+			control: { type: "boolean" },
+			description: "If true, displays the form in an error state.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		helperText: {
+			control: { type: "text" },
+			description: "Additional text displayed below the form for guidance or error messages.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		disableReorder: {
+			control: { type: "boolean" },
+			description: "If true, disables the ability to reorder items in the list.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		readOnly: {
+			control: { type: "boolean" },
+			description: "If true, makes the form read-only.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		emptyFieldDisplayValue: {
+			control: { type: "text" },
+			description: "Value to display for empty fields in read-only mode.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		enableRequiredKeyFieldIndicator: {
+			control: { type: "boolean" },
+			description: "If true, shows required field indicators for keys.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		keyIsRequiredMessage: {
+			control: { type: "text" },
+			description: "Custom message for required key validation.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		avpKeyValidationCallback: {
+			description: "Custom validation function for key fields.",
+			table: {
+				type: { summary: "(input: string, values: Array<AVPItem>) => string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		avpValueValidationCallback: {
+			description: "Custom validation function for value fields.",
+			table: {
+				type: { summary: "(input: string, values: Array<AVPItem>) => string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		avpListMaxHeight: {
+			control: { type: "text" },
+			description: "Maximum height for the list container.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		virtualizedAvpListOption: {
+			control: { type: "object" },
+			description: "Configuration for virtualized list rendering.",
+			table: {
+				type: {
+					summary:
+						"{ height?: number, increaseViewportBy?: number, useWindowScrolling?: boolean, initialTopMostItemIndex?: number }"
+				},
+				defaultValue: { summary: "undefined" }
+			}
+		}
+	}
 } as Meta<typeof SolaceAttributeValuePairForm>;
 
 const kafkaTopicPattern = /^[A-Za-z0-9-_.]*$/;

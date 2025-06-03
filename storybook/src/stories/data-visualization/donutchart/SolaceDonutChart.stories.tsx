@@ -28,15 +28,79 @@ export default {
 		}
 	},
 	argTypes: {
+		data: {
+			control: { type: "object" },
+			description:
+				"Array of data objects to display in the donut chart. Each object should contain name, value, and optionally color and label properties. Use this to provide the chart data that will be visualized as segments.",
+			table: {
+				type: { summary: "Array<{name: string, value: number, color?: string, label?: string}>" },
+				defaultValue: { summary: "[]" }
+			}
+		},
 		size: {
 			options: ["sm", "md", "lg"],
 			control: {
 				type: "select"
+			},
+			description:
+				"Controls the size of the donut chart. Use 'sm' for compact displays, 'md' for standard layouts, and 'lg' for prominent chart presentations. The size affects both the outer and inner radius of the chart.",
+			table: {
+				type: { summary: '"sm" | "md" | "lg"' },
+				defaultValue: { summary: '"md"' }
 			}
 		},
 		showTooltip: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays tooltips when hovering over chart segments. Tooltips show the segment name, value, and percentage. Enable this to provide additional context for chart data.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		icon: {
+			control: { type: "object" },
+			description:
+				"Optional icon to display in the center of the donut chart. Use this to add visual context or branding to the chart. Should be a React element/component.",
+			table: {
+				type: { summary: "React.ReactElement" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		iconWidth: {
+			control: { type: "number" },
+			description:
+				"Width of the center icon in pixels. Use this to control the size of the icon displayed in the chart center. Should be used together with iconHeight for proper scaling.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		iconHeight: {
+			control: { type: "number" },
+			description:
+				"Height of the center icon in pixels. Use this to control the size of the icon displayed in the chart center. Should be used together with iconWidth for proper scaling.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify the chart during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	}

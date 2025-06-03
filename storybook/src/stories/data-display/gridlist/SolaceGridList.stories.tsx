@@ -36,6 +36,17 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the grid list in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the grid list content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		items: {
 			control: { type: "object" },
 			description:

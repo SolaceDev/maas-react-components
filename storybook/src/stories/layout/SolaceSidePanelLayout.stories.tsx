@@ -74,6 +74,26 @@ export default {
 		}
 	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the side panel layout component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the side panel layout in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the side panel content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		showSidePanel: {
 			control: { type: "boolean" }
 		},

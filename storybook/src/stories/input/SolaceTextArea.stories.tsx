@@ -24,73 +24,272 @@ export default {
 		label: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The label text displayed above or inline with the text area. Use this to clearly describe what information the user should enter. Labels should be concise and descriptive.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		helperText: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Additional text displayed below the text area to provide guidance or error messages. Use this to give users context about expected input format or validation requirements.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		hasErrors: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the text area in an error state with red styling. Use this to indicate validation failures or input errors. Often paired with error text in helperText.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the text area in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the textarea content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		autoFocus: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, automatically focuses the text area when the component mounts. Use sparingly as it can disrupt user navigation and accessibility. Best for primary input areas on forms.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		inlineLabel: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the label inline with the text area rather than above it. Use this for compact layouts or when you need to save vertical space.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		required: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, marks the field as required and displays an asterisk (*) next to the label. Use this to indicate mandatory fields in forms and ensure proper validation.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		disabled: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, disables the text area preventing user interaction. Use this when the field is not applicable based on current form state or user permissions.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		readOnly: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, makes the text area read-only. Users can see and select the text but cannot edit it. Use this for displaying computed values or information that shouldn't be modified.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		value: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The current value of the text area. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		placeholder: {
+			control: {
+				type: "text"
+			},
+			description:
+				"Placeholder text displayed when the field is empty. Use this to provide examples of expected input format or additional guidance. Should not replace proper labels.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		type: {
 			options: ["text", "number", "password", "email", "url"],
 			control: {
 				type: "select"
+			},
+			description:
+				"The input type which affects validation and browser auto-completion. Choose the most appropriate type for your data to improve user experience.",
+			table: {
+				type: { summary: '"text" | "number" | "password" | "email" | "url"' },
+				defaultValue: { summary: '"text"' }
+			}
+		},
+		rows: {
+			control: {
+				type: "number"
+			},
+			description:
+				"The number of visible text lines for the text area. Use this to control the initial height of the text area. Users can still resize if resizable is enabled.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "4" }
+			}
+		},
+		maxRows: {
+			control: {
+				type: "number"
+			},
+			description:
+				"Maximum number of rows to display before scrolling. Use this with multiline text areas to limit the maximum height while allowing content expansion.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		minRows: {
+			control: {
+				type: "number"
+			},
+			description:
+				"Minimum number of rows to display. Use this to ensure the text area maintains a minimum height even when empty or with little content.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		size: {
 			control: {
 				type: "number"
+			},
+			description:
+				"The size attribute for the text area, affecting the visible character width. Use this to hint at the expected input length, but don't rely on it for validation.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		width: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The width of the text area. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		resizable: {
-			options: ["both", "horizontal", "vertical"],
+			options: ["both", "horizontal", "vertical", "none"],
 			control: { type: "select" },
+			description:
+				"Controls whether and how the text area can be resized by the user. Use 'both' for maximum flexibility, 'vertical' for content that expands downward, or 'none' for fixed-size areas.",
 			table: {
-				type: {
-					summary: "'both' | 'horizontal' | 'vertical'"
-				}
+				type: { summary: "'both' | 'horizontal' | 'vertical' | 'none'" },
+				defaultValue: { summary: "'both'" }
+			}
+		},
+		name: {
+			control: {
+				type: "text"
 			},
-			description: "Set the resize property of text area."
+			description:
+				"The name attribute for the text area, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		id: {
+			control: {
+				type: "text"
+			},
+			description: "Unique identifier for the textarea component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		title: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The title attribute for the text area, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onChange: {
+			description:
+				"Callback function fired when the text area value changes. Receives an event object with the new value. Essential for controlled components and form state management.",
+			table: {
+				type: { summary: "(event: {value: string, name: string}) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onBlur: {
+			description:
+				"Callback function fired when the text area loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes editing.",
+			table: {
+				type: { summary: "(event: React.FocusEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onFocus: {
+			description:
+				"Callback function fired when the text area gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for input.",
+			table: {
+				type: { summary: "(event: React.FocusEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify the text area during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceTextArea>;

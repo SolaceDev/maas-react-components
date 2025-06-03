@@ -33,6 +33,17 @@ export default {
 			control: { type: "text" },
 			description: "Unique identifier for the button"
 		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the button in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the button action.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		variant: {
 			options: ["call-to-action", "icon", "dark-call-to-action", "dark-outline"],
 			control: {

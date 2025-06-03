@@ -15,6 +15,25 @@ export default {
 		}
 	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the stack label component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the stack label in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the stack label content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		htmlForId: {
 			control: {
 				type: "text"

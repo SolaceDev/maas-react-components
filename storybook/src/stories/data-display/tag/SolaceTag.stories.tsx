@@ -43,6 +43,17 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the tag in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the tagged item.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		variant: {
 			options: [CHIP_VARIANT.FILLED, CHIP_VARIANT.OUTLINED],
 			control: { type: "radio" },

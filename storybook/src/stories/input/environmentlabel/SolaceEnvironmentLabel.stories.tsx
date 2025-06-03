@@ -43,6 +43,26 @@ export default {
 		}
 	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the environment label component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the environment label in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the environment.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		label: { control: { type: "text" } },
 		fgColor: { control: { type: "color" } },
 		bgColor: { control: { type: "color" } },

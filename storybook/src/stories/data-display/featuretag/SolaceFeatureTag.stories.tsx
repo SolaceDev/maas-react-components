@@ -23,6 +23,17 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the feature tag in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the feature.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		active: {
 			control: { type: "boolean" },
 			description:

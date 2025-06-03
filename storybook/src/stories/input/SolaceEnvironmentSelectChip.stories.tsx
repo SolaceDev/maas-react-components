@@ -46,9 +46,114 @@ export default {
 	title: "Input/Dropdown/Environment",
 	component: SolaceEnvironmentSelectChip,
 	argTypes: {
-		label: { control: { type: "text" } },
-		fgColor: { control: { type: "color" } },
-		bgColor: { control: { type: "color" } }
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the environment select chip component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		name: {
+			control: { type: "text" },
+			description: "Name attribute for the select chip input. Used for form submission and identification.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		value: {
+			control: { type: "text" },
+			description: "The currently selected environment value. This should match one of the option values.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		options: {
+			control: { type: "object" },
+			description:
+				"Array of environment options with label, value, colors, and icon. Each option represents an environment that can be selected.",
+			table: {
+				type: { summary: "SolaceEnvironmentSelectChipOption[]" },
+				defaultValue: { summary: "[]" }
+			}
+		},
+		onChange: {
+			description:
+				"Callback function triggered when environment selection changes. Receives the new selected value as parameter.",
+			table: {
+				type: { summary: "(value: string) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		label: {
+			control: { type: "text" },
+			description: "Label text displayed for the select chip. Provides context for what the user is selecting.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		fgColor: {
+			control: { type: "color" },
+			description: "Foreground (text) color for the selected chip. Overrides the option's fgColor if provided.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		bgColor: {
+			control: { type: "color" },
+			description: "Background color for the selected chip. Overrides the option's bgColor if provided.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		disabled: {
+			control: { type: "boolean" },
+			description: "If true, disables the select chip and prevents user interaction. The chip appears grayed out.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		required: {
+			control: { type: "boolean" },
+			description: "If true, marks the select chip as required for form validation purposes.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		maxWidth: {
+			control: { type: "text" },
+			description:
+				"Maximum width for the chip display. Long environment names will be truncated if they exceed this width.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		children: {
+			description:
+				"Additional content to display in the dropdown below the environment options (e.g., toggles, actions).",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description:
+				"Data attribute for QA testing. Use this to identify the environment select chip during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		}
 	},
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

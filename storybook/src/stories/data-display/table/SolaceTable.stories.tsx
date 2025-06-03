@@ -238,6 +238,17 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the table in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the table data.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		rows: {
 			control: { type: "object" },
 			description:
@@ -2278,7 +2289,7 @@ export const MultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow = {
 	}
 };
 
-export const MultiSelectionTableWithCrossPagesRowSelectionNotInPageAllSelectedByDefaultIfAllRowsSelectedManually = {
+export const MultiSelectionTableWithCrossPagesRowSelectionNotInPageInDefaultIfAllRowsSelectedManually = {
 	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
 
 	args: {

@@ -17,7 +17,107 @@ export default {
 			}
 		}
 	},
-	argTypes: {}
+	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the code editor component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		name: {
+			control: { type: "text" },
+			description: "Name attribute for the code editor input. Used for form submission and identification.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		value: {
+			control: { type: "text" },
+			description: "The current code content in the editor. This is the controlled value of the editor.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		mode: {
+			control: { type: "select" },
+			options: ["json", "xml", "protobuf", "javascript", "typescript", "yaml"],
+			description:
+				"The syntax highlighting mode for the code editor. Determines the language parsing and highlighting.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "json" }
+			}
+		},
+		onChange: {
+			description:
+				"Callback function triggered when the code content changes. Receives (editor, data, value) parameters.",
+			table: {
+				type: { summary: "(editor: any, data: any, value: string) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		readOnly: {
+			control: { type: "boolean" },
+			description: "If true, the editor is read-only and cannot be modified by the user.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		expandable: {
+			control: { type: "boolean" },
+			description: "If true, shows an expand button that allows the editor to be opened in full-screen mode.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		fullScreen: {
+			control: { type: "boolean" },
+			description: "If true, the editor is displayed in full-screen mode covering the entire viewport.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasErrors: {
+			control: { type: "boolean" },
+			description: "If true, displays the editor in an error state with red styling to indicate validation issues.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasWarnings: {
+			control: { type: "boolean" },
+			description: "If true, displays the editor in a warning state with amber styling to indicate potential issues.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		helperText: {
+			control: { type: "text" },
+			description:
+				"Helper text displayed below the editor. Can be used for instructions, error messages, or additional context.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify the code editor during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		}
+	}
 } as Meta<typeof SolaceCodeEditor>;
 
 const DEFAULT_JSON_VALUE = {

@@ -30,6 +30,17 @@ export default {
 				defaultValue: { summary: "false" }
 			}
 		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the list in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the list content.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		dense: {
 			control: { type: "boolean" },
 			description:

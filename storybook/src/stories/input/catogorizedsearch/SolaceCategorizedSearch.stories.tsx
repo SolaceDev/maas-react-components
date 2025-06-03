@@ -22,30 +22,149 @@ export default {
 		}
 	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the categorized search component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		name: {
+			control: { type: "text" },
+			description: "Name attribute for the search input field.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
 		layout: {
 			options: ["horizontal", "vertical"],
-			control: {
-				type: "radio"
+			control: { type: "radio" },
+			description:
+				"Determines the layout of the search component. 'horizontal' places categories next to the search field, 'vertical' places them above.",
+			table: {
+				type: { summary: "SolaceCategorizedSearchLayout" },
+				defaultValue: { summary: "SolaceCategorizedSearchLayout.vertical" }
 			}
 		},
 		equalButtonWidth: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description: "If true, all category buttons will have equal width.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		disabled: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description: "If true, the entire component will be disabled and non-interactive.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		autoFocus: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description: "If true, the search input will automatically receive focus when the component mounts.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		hasErrors: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description: "If true, displays the component in an error state.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasWarnings: {
+			control: { type: "boolean" },
+			description:
+				"If true, displays the categorized search in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the search.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		categoryOptions: {
+			control: { type: "object" },
+			description: "Array of category options to display as toggle buttons.",
+			table: {
+				type: { summary: "SolaceToggleButtonGroupOptionProps[]" },
+				defaultValue: { summary: "[]" }
+			}
+		},
+		selectedCategoryValue: {
+			control: { type: "text" },
+			description: "The currently selected category value.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onCategoryChange: {
+			description: "Callback function triggered when a category is selected.",
+			table: {
+				type: { summary: "(event: React.MouseEvent<HTMLElement, MouseEvent>, value: string) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		searchValue: {
+			control: { type: "text" },
+			description: "The current value of the search input.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: '""' }
+			}
+		},
+		onSearchValueChange: {
+			description: "Callback function triggered when the search input value changes.",
+			table: {
+				type: { summary: "(event: SolaceTextFieldChangeEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		placeholder: {
+			control: { type: "text" },
+			description: "Placeholder text for the search input when it's empty.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		helperText: {
+			control: { type: "text" },
+			description: "Helper text displayed below the search input.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		categoryOptionsWidth: {
+			control: { type: "text" },
+			description: "Width of the category options container.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		searchInputWidth: {
+			control: { type: "text" },
+			description: "Width of the search input field.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onClearAll: {
+			description: "Callback function triggered when the clear all button is clicked.",
+			table: {
+				type: { summary: "() => void" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	}
