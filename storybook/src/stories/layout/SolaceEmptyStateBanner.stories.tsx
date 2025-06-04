@@ -21,7 +21,7 @@ type Story = StoryObj<typeof SolaceEmptyStateBanner>;
 export const EmptyBanner: Story = {
 	args: {
 		bannerImage: <EmptyBannerImage />,
-		subtitle: "Get started with integration",
+		subtitle: "Get started with integration2",
 		title: "Bring your data into the event mesh",
 		description:
 			"In this sample, Acme Inc. enterprise is taking their next step in optimizing their operations by using Event Portal to discover, audit, catalog, extend, and govern their event-driven architecture. Code component name: SolaceEmptyStateBanner",
@@ -32,6 +32,20 @@ export const EmptyBanner: Story = {
 		secondaryButton: {
 			label: "Explore On My Own",
 			onClick: () => alert("Secondary button clicked")
+		}
+	}
+};
+
+export const EmptyBannerWithoutSecondaryButton: Story = {
+	args: {
+		bannerImage: <EmptyBannerImage />,
+		subtitle: "Get started with integration",
+		title: "Bring your data into the event mesh",
+		description:
+			"In this sample, Acme Inc. enterprise is taking their next step in optimizing their operations by using Event Portal to discover, audit, catalog, extend, and govern their event-driven architecture. Code component name: SolaceEmptyStateBanner",
+		primaryButton: {
+			label: "Check Out Available Connectors",
+			onClick: () => alert("Primary button clicked")
 		}
 	}
 };
