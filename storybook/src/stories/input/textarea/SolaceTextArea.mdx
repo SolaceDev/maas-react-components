@@ -1,0 +1,89 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceTextAreaStories from "./SolaceTextArea.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceTextAreaStories} />
+
+<Title>Solace Text Area</Title>
+
+<Description of={SolaceTextAreaStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceTextArea`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Text Area component is a versatile and customizable multi-line text input field designed for use in forms and other UI elements. It provides a consistent way to collect longer text input from users while offering various styling options and states.
+
+This component extends the functionality of a standard HTML textarea, adding features such as label support, error handling, helper text, and customizable styling. It's particularly useful for creating accessible and visually consistent form layouts that require longer text input.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Text Area in the following scenarios:
+
+- Collecting longer text input from users (e.g., comments, descriptions, messages)
+- Creating form fields for multi-line text entry
+- Implementing text areas with custom styling to match your application's design
+- When you need a resizable text input area
+- For fields that require a minimum or maximum number of visible rows
+- When you need to provide helper text or error messages associated with the input
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For single-line text input (use SolaceTextField instead)
+- When you need a rich text editor with formatting options
+- For password input fields
+- When the input should be limited to a specific data type (e.g., numbers, dates)
+- If you require a fixed-size input area that users cannot resize
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceTextArea } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceTextArea.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceTextArea.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiTextField" target="_blank">theme.ts (MuiTextField styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceTextAreaStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiTextField-root` - Root text area container
+- `.MuiInputBase-root` - Input base container
+- `.MuiInputBase-input` - Input element
+- `.MuiFormLabel-root` - Label element
+- `.MuiFormHelperText-root` - Helper text container
+
+**State Classes:**
+
+- `.Mui-focused` - Applied when the text area has focus
+- `.Mui-disabled` - Applied when the text area is disabled
+- `.Mui-error` - Applied when hasErrors is true
+- `.Mui-required` - Applied when the field is required
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.spacing(4)` - Height of the input field
+- `theme.palette.text.primary` - Text color
+- `theme.palette.error.main` - Error state color
+- `theme.typography.body1` - Font styling for input text
+- `theme.shape.borderRadius` - Border radius of the input field
+
+**Layout Specifications:**
+
+- Minimum rows: Controlled by the minRows prop (default: 4)
+- Maximum rows: Controlled by the maxRows prop (default: 4)
+- Width: Can be controlled by the width prop or fullWidth prop
+- Resizability: Controlled by the resizable prop
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

@@ -1,0 +1,85 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceToggleStories from "./SolaceToggle.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceToggleStories} />
+
+<Title>Solace Toggle</Title>
+
+<Description of={SolaceToggleStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceToggle`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Toggle component is a customizable switch input that allows users to toggle between two states. It's designed for use in forms and other UI elements where a binary choice is required. The component extends the functionality of a standard switch input, adding features such as labels, error states, helper text, and customizable styling.
+
+This component is particularly useful for creating accessible and visually consistent toggle inputs that fit within the Solace design system. It supports both controlled and uncontrolled usage, making it flexible for various application needs.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Toggle in the following scenarios:
+
+- When you need a binary on/off input in forms
+- For settings that can be enabled or disabled
+- In preference panels where users can toggle features
+- When you want to provide immediate feedback for a state change
+- In situations where a checkbox might be too subtle
+- For mobile-friendly interfaces where a larger touch target is beneficial
+- When you need to display the current state (on/off) as text alongside the toggle
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For multi-select options (use checkboxes instead)
+- When more than two options are available (use radio buttons or select inputs)
+- For submitting forms (use a button instead)
+- When the options are not clearly binary
+- If the action requires confirmation before taking effect
+- When the toggle action has a significant or irreversible impact (consider using a more explicit control)
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceToggle } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceToggle.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceToggle.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiSwitch" target="_blank">theme.ts (MuiSwitch styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceToggleStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiSwitch-root` - Root switch container
+- `.MuiSwitch-switchBase` - The base of the switch
+- `.MuiSwitch-thumb` - The circular thumb of the switch
+- `.MuiSwitch-track` - The track that the thumb slides on
+
+**State Classes:**
+
+- `.Mui-checked` - Applied when the switch is in the on state
+- `.Mui-disabled` - Applied when the switch is disabled
+- `.Mui-focusVisible` - Applied when the switch has keyboard focus
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.primary.text.wMain` - Label text color
+- `theme.palette.ux.secondary.text.w50` - Disabled label text color
+
+**Layout Specifications:**
+
+- Switch Size: small (Material-UI default small size)
+- Label Position: To the right of the switch
+- Helper Text: Below the switch and label
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

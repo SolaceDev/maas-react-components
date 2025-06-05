@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SolaceEmptyStateBanner } from "@SolaceDev/maas-react-components";
 import React from "react";
-import EmptyBannerImage from "../../resources/images/EmptyBannerImage";
+import EmptyBannerImage from "../../../resources/images/EmptyBannerImage";
 
 (SolaceEmptyStateBanner as React.FC & { displayName?: string }).displayName = "SolaceEmptyStateBanner";
 
@@ -75,38 +75,10 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 				defaultValue: { summary: "undefined" }
 			}
 		},
-		variant: {
-			options: ["default", "learning", "error", "success"],
-			control: { type: "select" },
-			description:
-				"Visual variant of the empty state banner. Use 'learning' for educational content, 'error' for error states, 'success' for completed states, or 'default' for general empty states.",
-			table: {
-				type: { summary: "'default' | 'learning' | 'error' | 'success'" },
-				defaultValue: { summary: "'default'" }
-			}
-		},
-		size: {
-			options: ["small", "medium", "large"],
-			control: { type: "select" },
-			description:
-				"Controls the overall size and spacing of the banner. Use 'small' for compact layouts, 'medium' for standard usage, and 'large' for prominent empty states.",
-			table: {
-				type: { summary: "'small' | 'medium' | 'large'" },
-				defaultValue: { summary: "'medium'" }
-			}
-		},
 		dataQa: {
 			control: { type: "text" },
 			description:
 				"Data attribute for QA testing. Use this to identify the empty state banner during automated testing.",
-			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		dataTags: {
-			control: { type: "text" },
-			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }

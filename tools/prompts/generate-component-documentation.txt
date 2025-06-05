@@ -64,12 +64,12 @@ When analyzing the component source code, pay special attention to:
 
 You will receive:
 
-1. **Template File**: The SolaceComponentTemplate.mdx file with placeholders
-2. **Component Source Code**: The React component's .tsx file to analyze
+1. **Template File**: The SolaceComponentTemplate.mdx / txt file with placeholders
+2. **Component Stories**: The stories for a component
 
 ## Output Format:
 
-Return the complete .mdx documentation file with all placeholders filled in and ready to use.
+Return the complete .mdx documentation file with all placeholders filled in and ready to use. The output MDX file should be placed next to the stories for the component (in the same directory as the component's stories file).
 
 ---
 

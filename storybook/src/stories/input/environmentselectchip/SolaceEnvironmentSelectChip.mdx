@@ -1,0 +1,107 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceEnvironmentSelectChipStories from "./SolaceEnvironmentSelectChip.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceEnvironmentSelectChipStories} />
+
+<Title>Solace Environment Select Chip</Title>
+
+<Description of={SolaceEnvironmentSelectChipStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceEnvironmentSelectChip`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Environment Select Chip component provides a dropdown selection interface for choosing environments with visual color coding and icons. It's useful for environment selection in applications where users need to switch between different environments like development, staging, and production, allowing users to easily identify and select environments through distinctive visual cues.
+
+The component implements a custom select pattern with the purpose of making environment selection intuitive and visually distinctive. This pattern helps users quickly identify different environments through color coding and iconography while providing a compact dropdown interface for space-efficient layouts.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Environment Select Chip when you need environment selection with visual distinction in a compact format. This selection pattern is particularly effective for applications with multiple environments that require clear visual identification.
+
+Common use cases include:
+
+- Application headers where users need to switch between development, staging, and production environments
+- Dashboard interfaces requiring environment context selection with visual feedback
+- Form controls where environment selection affects the scope of operations or data
+- Navigation components where environment context needs to be clearly visible and selectable
+- Administrative interfaces where environment switching is a frequent user action
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For non-environment selections - use regular SolaceSelect for general purpose dropdowns
+- When environments don't have distinctive visual identities - use standard select components instead
+- For single environment applications - no need for environment selection interface
+- When space is extremely limited - consider using a simple environment indicator instead
+- For environments that don't require color coding - use text-only selection components
+- When the selection affects critical operations - consider requiring confirmation dialogs for environment switches
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceEnvironmentSelectChip } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceEnvironmentSelectChip.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceEnvironmentSelectChip.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiSelect" target="_blank">theme.ts (MuiSelect styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceEnvironmentSelectChipStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- Custom styled components based on MUI Base Select
+- `ColorLayer` - Colored background and border styling for chip appearance
+- `StateLayer` - Hover and interaction state styling
+- `ContentLayer` - Main button content with dropdown indicator
+- `ContainerLayer` - Root select container with focus and expanded states
+
+**MUI Base Select Classes:**
+
+- `.MuiSelect-root` - Root select element
+- `.MuiSelect-expanded` - Applied when dropdown is open
+- `.MuiSelect-focusVisible` - Applied when select receives keyboard focus
+
+**Option Classes:**
+
+- `.MuiOption-root` - Individual option styling
+- `.MuiOption-selected` - Applied to the currently selected option
+- `.MuiOption-highlighted` - Applied when option is highlighted/hovered
+- `.MuiOption-disabled` - Applied to disabled options
+
+**Custom Classes:**
+
+- `.state-layer` - Hover state styling for the chip button
+- `IconWrapper` - Colored icon container within options
+- `StickyChildren` - Bottom-positioned sticky content area
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.background.w10` - Dropdown background color
+- `theme.palette.ux.brand.w10` - Selected/highlighted option background
+- `theme.palette.ux.stateLayer.w10` - Hover state background
+- `theme.palette.ux.stateLayer.w20` - Expanded state background
+- `theme.palette.ux.secondary.w100` - Border color for white backgrounds
+
+**Layout Specifications:**
+
+- Chip border radius: `4px` (theme.spacing(0.5))
+- Icon padding: `4px` (theme.spacing(0.5))
+- Option padding: `8px 16px` (theme.spacing(1, 2))
+- Gap between elements: `16px` (theme.spacing(2))
+- Dropdown max height: `min(416px, calc(100vh - 80px))` (theme.spacing(52, 10))
+- Dropdown min height: `80px` (theme.spacing(10))
+- Dropdown min width: `320px` (theme.spacing(40))
+- Text max width: `134px` with ellipsis overflow
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

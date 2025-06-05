@@ -1,0 +1,93 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceDetailMessageStories from "./SolaceDetailMessage.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceDetailMessageStories} />
+
+<Title>Solace Detail Message</Title>
+
+<Description of={SolaceDetailMessageStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceDetailMessage`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Detail Message component provides a centered layout for displaying important messages with optional imagery, titles, detailed text, and action buttons. It's useful for empty states, error messages, confirmation screens, and informational displays, allowing users to understand context and take appropriate actions.
+
+The component implements a vertical card layout pattern with the purpose of drawing attention to critical information. This pattern helps users focus on the message content while still providing clear pathways for next steps.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Detail Message when you need to display important information that requires user attention and potentially action. This layout pattern is particularly effective for states where the main interface is temporarily unavailable or when providing clear feedback.
+
+Common use cases include:
+
+- Empty state messages when no data is available to display
+- Error screens that explain what went wrong and how to recover
+- Success confirmation pages after completing important actions
+- Onboarding or welcome messages with introductory content
+- "No results found" states in search or filtering scenarios
+- Maintenance or system status notifications
+- Permission denied or access restriction messages
+- Loading completion states with next step guidance
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For inline messages within forms or content areas - use SolaceMessageBox or validation messages instead
+- When displaying brief notifications - use SolaceToasts for temporary alerts
+- For complex multi-column layouts - use SolaceGrid or custom layout components
+- When the message is secondary to other content - use callout boxes or inline text
+- For navigation-heavy interfaces - use SolacePageHeader with breadcrumbs
+- When displaying tabular data or lists - use appropriate data display components
+- For real-time status updates - use progress indicators or live updating components
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceDetailMessage } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceDetailMessage.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceDetailMessage.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts" target="_blank">theme.ts</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceDetailMessageStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.Container` - Root flexbox container with centered vertical layout
+- `.ImgContainer` - Image wrapper with bottom margin spacing
+- `.TitleText` - Title text with large font size and center alignment
+- `.DetailsContainer` - Details text wrapper with medium font size
+- `.ButtonGroup` - Horizontal flex container for action buttons
+
+**Layout Specifications:**
+
+- Container display: `flex` with `flexDirection: column` and `alignItems: center`
+- Container font family: `theme.typography.fontFamily`
+- Image container margin: `0px 0px 40px 0px` (40px bottom spacing)
+- Title text margin: `0px 0px 14px 0px` (14px bottom spacing)
+- Title font size: `BASE_FONT_PX_SIZES.xl` (20px)
+- Title color: `theme.palette.ux.primary.text.wMain`
+- Title alignment: `center`
+- Details container margin: `0px 0px 14px 0px` (14px bottom spacing)
+- Details font size: `BASE_FONT_PX_SIZES.sm` (14px)
+- Details color: `theme.palette.ux.primary.text.wMain`
+- Button group display: `flex` with `flexDirection: row` and `alignItems: center`
+
+**Theme Customization:**
+The component uses Solace theme system for consistent typography and spacing:
+
+- Primary text color: `theme.palette.ux.primary.text.wMain` for titles and details
+- Font family: Inherited from `theme.typography.fontFamily`
+- Font sizes: `BASE_FONT_PX_SIZES.xl` (20px) for titles, `BASE_FONT_PX_SIZES.sm` (14px) for details
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

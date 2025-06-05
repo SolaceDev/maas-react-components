@@ -10,7 +10,7 @@ import {
 	ListSubheader,
 	CloseIcon
 } from "@SolaceDev/maas-react-components";
-import NoAccessImg from "../../resources/images/NoAccessBook";
+import NoAccessImg from "../../../resources/images/NoAccessBook.tsx";
 import { within, userEvent } from "@storybook/testing-library";
 
 (SolaceSidePanelLayout as React.FC & { displayName?: string }).displayName = "SolaceSidePanelLayout";
