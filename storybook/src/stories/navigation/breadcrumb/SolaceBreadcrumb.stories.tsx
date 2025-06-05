@@ -18,20 +18,34 @@ export default {
 	argTypes: {
 		id: {
 			control: { type: "text" },
-			description: "Unique identifier for the breadcrumb component"
+			description: "Optional ID of this component"
 		},
 		paths: {
 			control: {
-				type: "select"
+				type: "object"
 			},
-			description: "the list of route objects to render"
+			description:
+				"Array of Paths, each containing title, link, current (optional), tooltip (optional), progress (optional), and progressTooltip (optional)"
 		},
 		maxItems: {
 			control: {
 				type: "number"
 			},
-			description:
-				"Specifies the maximum number of breadcrumbs to display. When there are more than the maximum number, only the first and last item will be shown, with an ellipsis in between"
+			defaultValue: 8,
+			description: "Maximum of displayed paths (to see ... when there's more)"
+		},
+		onRouteClick: {
+			control: false,
+			description: "Optional click handler. When not set, it's assume a React Router's Link will be used"
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute for testing",
+			defaultValue: "breadcrumbs"
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute for additional metadata"
 		}
 	}
 } as Meta<typeof SolaceBreadcrumb>;

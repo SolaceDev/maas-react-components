@@ -15,28 +15,43 @@ export default {
 		}
 	},
 	argTypes: {
+		activePage: {
+			control: {
+				type: "number",
+				defaultValue: 1
+			},
+			description: "The current active page"
+		},
 		totalResults: {
 			control: {
 				type: "number",
 				defaultValue: 156
-			}
+			},
+			description: "The total number of results"
 		},
 		pageSize: {
 			control: {
 				type: "select",
 				options: [10, 20, 50, 100]
-			}
+			},
+			description: "The number of items per page"
 		},
 		displayText: {
 			control: {
 				type: "text"
-			}
+			},
+			description: "The string template to use for communicating pagination details"
+		},
+		onPageSelection: {
+			action: "page selected",
+			description: "Callback function to notify which page was clicked/selected by the end user"
 		},
 		loading: {
 			control: {
-				type: "boolean",
-				description: "The loading state flag for pagination component, default to false"
-			}
+				type: "boolean"
+			},
+			description: "The loading state flag for pagination component",
+			defaultValue: false
 		}
 	}
 } as Meta<typeof SolacePagination>;

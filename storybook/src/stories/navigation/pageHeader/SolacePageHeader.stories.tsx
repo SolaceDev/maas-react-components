@@ -16,8 +16,8 @@ import {
 	useTheme
 } from "@SolaceDev/maas-react-components";
 import { Broker16Icon, RocketLaunch16Icon, TestTube16Icon, DeployedCode16Icon } from "@SolaceDev/maas-icons";
-import { GraphViewIcon } from "../../resources/images/GraphViewIcon";
-import { ListViewIcon } from "../../resources/images/ListViewIcon";
+import { GraphViewIcon } from "../../../resources/images/GraphViewIcon";
+import { ListViewIcon } from "../../../resources/images/ListViewIcon";
 
 (SolacePageHeader as React.FC & { displayName?: string }).displayName = "SolacePageHeader";
 (SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
@@ -59,11 +59,61 @@ export default {
 		}
 	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Optional id to be used"
+		},
 		title: {
-			control: { type: "text" }
+			control: { type: "text" },
+			description: "The header's title to display"
 		},
 		subTitle: {
-			control: { type: "text" }
+			control: { type: "text" },
+			description: "The sub-title to display next to the title"
+		},
+		release: {
+			control: { type: "text" },
+			description: "The release string (e.g. 'BETA')"
+		},
+		environment: {
+			control: { type: "object" },
+			description: "The environment's chip (SolaceEnvironmentChip or SolaceEnvironmentSelectChip)"
+		},
+		borderTop: {
+			control: { type: "text" },
+			description: "The header's top border color"
+		},
+		breadcrumbs: {
+			control: { type: "object" },
+			description: "Breadcrumbs where the last path should be the current one"
+		},
+		actions: {
+			control: { type: "object" },
+			description: "Array of actions (like SolaceButton)"
+		},
+		actionMenu: {
+			control: { type: "object" },
+			description: "The action menu (usually with a '...' icon)"
+		},
+		tabs: {
+			control: { type: "object" },
+			description: "The tabs (SolaceTabs) to be displayed next to the title/sub-title"
+		},
+		iconTabs: {
+			control: { type: "object" },
+			description: "The icon tabs (SolaceIconTabs) to be displayed before the title/sub-title"
+		},
+		returnTo: {
+			control: { type: "object" },
+			description: "Used to add a 'Return to X' link in front of the breadcrumbs"
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute"
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute"
 		}
 	}
 } as Meta<typeof SolacePageHeader>;

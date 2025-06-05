@@ -30,38 +30,32 @@ export default {
 		},
 		variant: {
 			options: ["link"],
-			control: {
-				type: "select"
-			},
+			control: { type: "select" },
 			description: "The type/style of button to render",
-			table: {
-				defaultValue: {
-					summary: "text"
-				}
-			}
+			defaultValue: "text"
+		},
+		"aria-label": {
+			control: { type: "text" },
+			description: "Accessibility label for the button"
+		},
+		"aria-labelledby": {
+			control: { type: "text" },
+			description: "ID of element that labels the button for accessibility"
 		},
 		isDisabled: {
 			control: { type: "boolean" },
 			description: "Renders the button disabled",
-			table: {
-				defaultValue: {
-					summary: "false"
-				}
-			}
+			defaultValue: false
 		},
 		underline: {
 			options: ["none", "hover", "always"],
 			control: { type: "select" },
 			description: "Controls when the link should have an underline",
-			table: {
-				defaultValue: {
-					summary: "hover"
-				}
-			}
+			defaultValue: "hover"
 		},
 		title: {
 			control: { type: "text" },
-			description: "Text to use for tooltip and arial-label (assecibility)"
+			description: "Text to use for tooltip"
 		},
 		href: {
 			control: { type: "text" },
@@ -70,45 +64,57 @@ export default {
 		dense: {
 			control: { type: "boolean" },
 			description: "Removes spacing from link button",
-			table: {
-				defaultValue: {
-					summary: "false"
-				}
-			}
+			defaultValue: false
 		},
 		component: {
 			options: ["button", "span"],
 			control: { type: "select" },
 			description: "The component used for the root node. Either a string to use a HTML element or a component button",
-			table: {
-				defaultValue: {
-					summary: "button"
-				}
-			}
+			defaultValue: "button"
 		},
 		type: {
-			options: ["button"],
+			options: ["button", "submit", "reset"],
 			control: { type: "select" },
-			description: "Attribute which specifies the type of button (button, submit or reset)",
-			table: {
-				defaultValue: {
-					summary: "button"
-				}
-			}
+			description: "Attribute which specifies the type of button",
+			defaultValue: "button"
 		},
 		startIcon: {
+			control: false,
 			description: "Element placed before the children"
 		},
 		endIcon: {
+			control: false,
 			description: "Element placed after the children"
 		},
 		onClick: {
-			control: { type: "text" },
+			control: false,
 			description: "Optional click handler"
 		},
 		children: {
-			control: { type: "object" },
+			control: { type: "text" },
 			description: "Button label or contents"
+		},
+		openLinkInNewTab: {
+			control: { type: "boolean" },
+			description: "Whether to open link in new tab",
+			defaultValue: "true if href is provided, false otherwise"
+		},
+		disabledFocusState: {
+			control: { type: "boolean" },
+			description: "Whether to disable the focus state styling",
+			defaultValue: false
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute for testing"
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute for additional metadata"
+		},
+		eventName: {
+			control: { type: "text" },
+			description: "Event name for tracking"
 		}
 	}
 } as Meta<typeof SolaceButton>;

@@ -43,7 +43,71 @@ export default {
 			}
 		}
 	},
-	argTypes: {},
+	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Optional ID of this component"
+		},
+		buttonProps: {
+			control: { type: "object" },
+			description: "Attributes to customize menu button"
+		},
+		items: {
+			control: { type: "object" },
+			description: "An array of options when using default menu"
+		},
+		header: {
+			control: { type: "text" },
+			description: "Header of menu when using default menu"
+		},
+		anchorOrigin: {
+			control: { type: "object" },
+			description: "Optional attribute to change the position of menu popper only for default menu",
+			defaultValue: { vertical: "bottom", horizontal: "left" }
+		},
+		transformOrigin: {
+			control: { type: "object" },
+			description: "Optional attribute to change the position of menu popper only for default menu",
+			defaultValue: { vertical: "top", horizontal: "left" }
+		},
+		multiline: {
+			control: { type: "boolean" },
+			description: "Optional boolean flag to adjust the maxHeight of menu",
+			defaultValue: false
+		},
+		propagateMenuClick: {
+			control: { type: "boolean" },
+			description: "Optional attribute to propagate menu button click event to parent",
+			defaultValue: false
+		},
+		closeOnSelect: {
+			control: { type: "boolean" },
+			description: "Optional flag to close the menu on menuItemClick",
+			defaultValue: true
+		},
+		onMenuItemClick: {
+			action: "clicked",
+			description: "The callback function runs when the user clicks on a menu item"
+		},
+		numOfMenuItemDisplayed: {
+			control: { type: "number" },
+			description: "Optional flag to specify the number of menu items to be displayed",
+			defaultValue: 9
+		},
+		maxWidth: {
+			control: { type: "number" },
+			description: "Optional attribute to define the maximum width of menu popper",
+			defaultValue: 335
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute for testing"
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute for additional metadata"
+		}
+	},
 	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceMenu>;
 

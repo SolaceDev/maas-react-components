@@ -1,0 +1,97 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceTruncatableLinkStories from "./SolaceTruncatableLink.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceTruncatableLinkStories} />
+
+<Title>Solace Truncatable Link</Title>
+
+<Description of={SolaceTruncatableLinkStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceTruncatableLink`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Truncatable Link component provides clickable text elements that automatically truncate with ellipsis when content exceeds the available space. It includes tooltip functionality to display the full text on hover, ensuring users can always access complete information while maintaining clean layouts in constrained spaces.
+
+The component implements a truncatable link pattern with the purpose of displaying long text content in limited space while preserving functionality. This pattern helps maintain visual consistency in layouts while ensuring important information remains accessible through progressive disclosure.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Truncatable Link when you need to display potentially long link text in constrained spaces. This truncation pattern is essential for maintaining clean layouts with variable content lengths.
+
+Common use cases include:
+
+- Table cells with long URLs or file names
+- Navigation items with variable-length labels
+- List items with lengthy titles or descriptions
+- Inline links within content blocks with space limitations
+- Card components with dynamic text content
+- Breadcrumb navigation with long page names
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- When the full text is critical and must always be visible
+- For very short text that doesn't need truncation
+- When horizontal scrolling is preferred over truncation
+- For text that users need to copy exactly - provide full text alternative
+- In contexts where tooltips may not be accessible (touch-only interfaces)
+- When text length is predictable and fits available space
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceTruncatableLink } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceTruncatableLink.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceTruncatableLink.tsx)
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceTruncatableLinkStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- Custom `TextWrapper` - Text container with truncation styling
+- Custom `SolaceButtonWrapper` - Button wrapper for interactive links
+- `.MuiButton-root` - Underlying button component for clickable links
+- `.MuiTooltip-tooltip` - Tooltip container for overflow text
+
+**Custom Classes:**
+
+- Text truncation: `white-space: nowrap`, `overflow: hidden`, `text-overflow: ellipsis`
+- Button styling: `display: inline-flex`, `max-width: 100%`
+- Link styling: Custom hover states and focus indicators
+- Tooltip integration: Overflow-based tooltip triggering
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.primary.text.wMain` - Link text color
+- `theme.palette.ux.accent.n2.wMain` - Focus outline color
+- Background hover states inherited from SolaceButton component
+
+**Layout Specifications:**
+
+- Container: `max-width: 100%` to respect parent constraints
+- Text truncation: Ellipsis appears when content overflows
+- Tooltip positioning: `bottom-end` placement by default
+- Button padding: Inherited from SolaceButton link variant
+- Focus indicators: `1px solid` outline with `1px` offset
+- Hover states: Background color changes on interactive elements
+
+**Accessibility Features:**
+
+- Tooltip provides full text for screen readers
+- Proper focus management for keyboard navigation
+- ARIA labels for link context and behavior
+- Semantic link structure for assistive technologies
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

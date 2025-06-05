@@ -1,0 +1,100 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolacePageHeaderStories from "./SolacePageHeader.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolacePageHeaderStories} />
+
+<Title>Solace Page Header</Title>
+
+<Description of={SolacePageHeaderStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolacePageHeader`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Page Header component provides a comprehensive header layout for application pages, combining title, subtitle, breadcrumbs, tabs, actions, and environment information. It serves as the primary navigation and context element at the top of pages, helping users understand their current location and available actions.
+
+The component implements a page header pattern with the purpose of establishing page context and providing primary navigation elements. This pattern helps users orient themselves within the application and access key functionality related to the current page.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Page Header as the primary header component for application pages. This header pattern is essential for establishing page context and navigation.
+
+Common use cases include:
+
+- Main application pages requiring title and navigation context
+- Detail pages with breadcrumb navigation back to parent sections
+- Pages with multiple tabs or view modes
+- Pages requiring action buttons or menus in the header
+- Multi-environment applications showing current environment context
+- Pages with hierarchical navigation structures
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For modal dialogs or popups - use modal headers instead
+- For simple forms without complex navigation - use simpler header components
+- For landing pages or marketing content - use custom headers
+- When space is extremely constrained - consider simplified headers
+- For print layouts - headers may not be appropriate
+- In embedded widgets or components within larger pages
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolacePageHeader } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolacePageHeader.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/layout/SolacePageHeader.tsx)
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolacePageHeaderStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- Custom `HeaderContainer` - Main header container with border-top styling
+- Custom `TopRowContainer` - First row containing breadcrumbs and environment
+- Custom `SecondRowContainer` - Second row with title, subtitle, and actions
+- Custom `ThirdRowContainer` - Third row for tabs and icon tabs
+- Custom `BreadcrumbContainer` - Container for breadcrumb navigation
+- Custom `TitleContainer` - Container for title and subtitle
+- Custom `ActionsContainer` - Container for action buttons and menu
+
+**Layout Classes:**
+
+- Responsive flexbox layout with proper spacing
+- Environment chip positioning with border-top color matching
+- Action button grouping with consistent spacing
+- Tab integration with proper alignment
+
+**Custom Classes:**
+
+- Title styling: Typography variants for main title and subtitle
+- Release badge: Styled chip for beta/alpha indicators
+- Environment integration: Color coordination with border-top
+- Responsive behavior: Proper wrapping and spacing on smaller screens
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.primary.text.wMain` - Primary text colors
+- `theme.palette.ux.background.w10` - Background colors
+- `theme.spacing()` - Consistent spacing throughout header
+
+**Layout Specifications:**
+
+- Header padding: `theme.spacing(2, 3)` for consistent margins
+- Row spacing: `theme.spacing(1)` between header rows
+- Border-top: `2px solid` with environment-matched color
+- Action spacing: `theme.spacing(1)` between action buttons
+- Responsive breakpoints: Proper stacking on mobile devices
+- Title typography: H1 for main title, subtitle styling for secondary text
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

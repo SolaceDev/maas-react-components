@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SolaceStepper, DeleteIcon, StepsProps, Box } from "@SolaceDev/maas-react-components";
+import { SolaceStepper, DeleteIcon, StepsProps, Box, StepContentOverflow } from "@SolaceDev/maas-react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 
 (SolaceStepper as React.FC & { displayName?: string }).displayName = "SolaceStepper";
@@ -97,9 +97,21 @@ const ComponentWithSecondaryButton = ({ ...args }) => {
 		</Box>
 	);
 };
+
 export const Primary: Story = {
 	render: Component,
-	args: { steps: initialSteps }
+	args: {
+		steps: initialSteps,
+		activeStep: 0,
+		setActiveStep: () => {},
+		onClose: onCloseAlert,
+		onSubmit: onSubmitAlert,
+		submitLabel: "Submit",
+		stepContentOverflow: StepContentOverflow.Auto,
+		disableSubmit: false,
+		onSecondarySubmit: undefined,
+		secondarySubmitLabel: undefined
+	}
 };
 
 const errorAndSuccess: StepsProps = [
@@ -110,7 +122,18 @@ const errorAndSuccess: StepsProps = [
 
 export const ErrorAndSuccess: Story = {
 	render: Component,
-	args: { steps: errorAndSuccess }
+	args: {
+		steps: errorAndSuccess,
+		activeStep: 0,
+		setActiveStep: () => {},
+		onClose: onCloseAlert,
+		onSubmit: onSubmitAlert,
+		submitLabel: "Submit",
+		stepContentOverflow: StepContentOverflow.Auto,
+		disableSubmit: false,
+		onSecondarySubmit: undefined,
+		secondarySubmitLabel: undefined
+	}
 };
 
 const errorOnCurrentStep: StepsProps = [
@@ -122,10 +145,32 @@ const errorOnCurrentStep: StepsProps = [
 
 export const ErrorOnCurrentStepAndSubmitDisabled: Story = {
 	render: Component,
-	args: { steps: errorOnCurrentStep, disableSubmit: true }
+	args: {
+		steps: errorOnCurrentStep,
+		activeStep: 0,
+		setActiveStep: () => {},
+		onClose: onCloseAlert,
+		onSubmit: onSubmitAlert,
+		submitLabel: "Submit",
+		stepContentOverflow: StepContentOverflow.Auto,
+		disableSubmit: true,
+		onSecondarySubmit: undefined,
+		secondarySubmitLabel: undefined
+	}
 };
 
 export const SecondaryButtonEnabled: Story = {
 	render: ComponentWithSecondaryButton,
-	args: { steps: initialSteps }
+	args: {
+		steps: initialSteps,
+		activeStep: 0,
+		setActiveStep: () => {},
+		onClose: onCloseAlert,
+		onSubmit: onSubmitAlert,
+		submitLabel: "Submit",
+		stepContentOverflow: StepContentOverflow.Auto,
+		disableSubmit: false,
+		onSecondarySubmit: onSecondarySubmitAlert,
+		secondarySubmitLabel: "Secondary Submit"
+	}
 };

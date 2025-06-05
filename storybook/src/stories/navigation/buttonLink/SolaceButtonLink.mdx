@@ -1,0 +1,90 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceButtonStories from "./SolaceButtonLink.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceButtonStories} />
+
+<Title>Solace Button Link</Title>
+
+<Description of={SolaceButtonStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceButton` (variant="link")
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Button Link component provides clickable text elements that function as navigation links or interactive buttons. It's useful for creating inline links within text content, allowing users to trigger actions or navigate to other locations without the visual weight of a traditional button.
+
+The component implements a link pattern with the purpose of providing subtle, text-based interactions. This pattern helps users perform actions or navigate while maintaining the flow of content and reducing visual clutter.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Button Link when you need subtle, text-based interactive elements. This link pattern is particularly effective for inline navigation and lightweight actions.
+
+Common use cases include:
+
+- Inline links within paragraphs or content blocks
+- Navigation links in headers, footers, or sidebars
+- Action links that don't require prominent button styling
+- External links that open in new tabs with appropriate indicators
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For primary actions that need visual prominence - use a call-to-action button instead
+- When the action is destructive or critical - use a more prominent button variant
+- For form submissions - use a submit button instead
+- When multiple links are grouped together in a list - consider using a menu or navigation component
+- For toggling between states - use toggle buttons or switches
+- When the link represents a major navigation decision - use tabs or a navigation menu
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceButton } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceButton.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceButton.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiLink" target="_blank">theme.ts (MuiLink styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceButtonStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiLink-root` - Root link container
+- `.MuiLink-underlineHover` - Applied when underline="hover"
+- `.MuiLink-underlineNone` - Applied when underline="none"
+- `.MuiLink-underlineAlways` - Applied when underline="always"
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied when the link is disabled
+- `.Mui-focusVisible` - Applied when the link has keyboard focus
+
+**Custom Classes:**
+
+- Custom dense styling removes default padding for inline use
+- External link indicator with OpenExternalIcon when href is provided
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.primary.text.wMain` - Primary text color for links
+- `theme.palette.ux.accent.n2.wMain` - Focus outline color
+
+**Layout Specifications:**
+
+- Dense variant: `padding: 0` for inline use
+- Standard variant: `padding: 6px 16px` with `minWidth: 100px` and `height: 32px`
+- Focus outline: `1px solid` accent color with `outlineOffset: 1px`
+- Border radius: `4px` for standard variant
+- External link icon spacing: `marginRight: 4px`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />
