@@ -17,8 +17,25 @@ export default {
 		}
 	},
 	argTypes: {
+		tabs: {
+			control: { type: "object" },
+			description: "Array of tab objects with label, value, and optional properties"
+		},
 		activeTabValue: {
-			control: { type: "text" }
+			control: { type: "text" },
+			description: "The value of the active tab"
+		},
+		onTabClick: {
+			action: "clicked",
+			description: "Callback fired when a tab is clicked"
+		},
+		size: {
+			control: { type: "select", options: ["sm", "md", "lg"] },
+			description: "Size of the tab font"
+		},
+		variant: {
+			control: { type: "select", options: ["standard", "fullWidth", "scrollable"] },
+			description: "The variant to use"
 		}
 	}
 } as Meta<typeof SolaceTabs>;

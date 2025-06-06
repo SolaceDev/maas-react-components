@@ -57,6 +57,10 @@ export default {
 		onClick: {
 			control: { type: "text" },
 			description: "Optional click handler"
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute for testing purposes"
 		}
 	},
 	decorators: [withSnapshotContainer]
