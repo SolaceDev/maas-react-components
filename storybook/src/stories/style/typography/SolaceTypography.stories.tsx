@@ -33,7 +33,7 @@ export default {
 					summary: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'body1' | 'caption'"
 				}
 			},
-			description: "Set the text-align on the component."
+			description: "Typography variant to use. Uses SolaceVariant type from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTypography.ts"
 		},
 		color: {
 			options: ["success", "error", "warning", "info"],
@@ -43,7 +43,7 @@ export default {
 					summary: "'success' | 'error' | 'warning' | 'info'"
 				}
 			},
-			description: "Set the text color based on theme mappings."
+			description: "Set the text color based on theme mappings. Uses color union type from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTypography.ts"
 		},
 		noWrap: {
 			control: { type: "boolean" },

@@ -33,7 +33,9 @@ export default {
 			options: ["xs", "sm", "md", "lg"],
 			control: {
 				type: "select"
-			}
+			},
+			description:
+				"Height of the linear indicator. Uses BASE_SIZE_TYPES enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/sizing.ts"
 		},
 		color: {
 			options: ["default", "learning"],

@@ -70,12 +70,11 @@ export default {
 			}
 		},
 		borderColor: {
-			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			},
 			description:
-				"Custom border color for the attribute badge. Use this to create color-coded categorization systems or to match specific design requirements. Only applicable when variant is 'outlined'.",
+				"Custom border color for the attribute badge. Use this to create color-coded categorization systems or to match specific design requirements. Only applicable when variant is 'outlined'. This is an enum type. See CHIP_COLORS enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/colors.ts",
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
@@ -105,12 +104,11 @@ export default {
 			}
 		},
 		fillColor: {
-			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			},
 			description:
-				"Custom background color for the attribute badge. Use this to create color-coded categorization systems or to match specific brand colors. Only applicable when variant is 'filled'.",
+				"Custom background color for the attribute badge. Use this to create color-coded categorization systems or to match specific brand colors. Only applicable when variant is 'filled'. This is an enum type. See CHIP_COLORS enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/colors.ts",
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
@@ -128,12 +126,11 @@ export default {
 			}
 		},
 		labelColor: {
-			options: Object.values(CHIP_COLORS),
 			control: {
 				type: "select"
 			},
 			description:
-				"Custom text color for the attribute badge label. Use this in conjunction with fillColor or borderColor to ensure proper contrast and readability.",
+				"Custom text color for the attribute badge label. Use this in conjunction with fillColor or borderColor to ensure proper contrast and readability. This is an enum type. See CHIP_COLORS enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/colors.ts",
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }

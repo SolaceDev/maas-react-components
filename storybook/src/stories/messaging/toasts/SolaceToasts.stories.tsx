@@ -30,7 +30,8 @@ export default {
 			control: {
 				type: "select"
 			},
-			description: "**Deprecated** - This prop will be removed in a future version",
+			description:
+				"**Deprecated** - This prop will be removed in a future version. Uses status enum values similar to STATUSES from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/statuses.ts",
 			table: {
 				type: { summary: '"success" | "info" | "warning" | "error"' },
 				defaultValue: { summary: "undefined" }

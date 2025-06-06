@@ -55,7 +55,8 @@ export default {
 			control: {
 				type: "select"
 			},
-			description: "The type/style of message box to render",
+			description:
+				"The type/style of message box to render. Uses status enum values similar to STATUSES from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/statuses.ts",
 			table: {
 				defaultValue: {
 					summary: "text"

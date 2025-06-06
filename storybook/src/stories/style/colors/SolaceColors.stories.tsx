@@ -3,10 +3,10 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Box, Typography, IconButton, Tooltip } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckIcon from "@mui/icons-material/Check";
-import { baseThemeMapping } from "../../../../src/theming/base/themeMapping";
-import { boomiThemeMapping } from "../../../../src/theming/boomi/themeMapping";
-import { sapThemeMapping } from "../../../../src/theming/sap/themeMapping";
-import { solaceNewThemeMapping } from "../../../../src/theming/solace/themeMapping";
+import { baseThemeMapping } from "../../../../../src/theming/base/themeMapping";
+import { boomiThemeMapping } from "../../../../../src/theming/boomi/themeMapping";
+import { sapThemeMapping } from "../../../../../src/theming/sap/themeMapping";
+import { solaceNewThemeMapping } from "../../../../../src/theming/solace/themeMapping";
 
 // Map theme names to their corresponding theme mappings
 const themeMap = {

@@ -268,10 +268,9 @@ export default {
 			}
 		},
 		selectionType: {
-			options: [SolaceTableSelectionType.NONE, SolaceTableSelectionType.SINGLE, SolaceTableSelectionType.MULTI],
 			control: { type: "select" },
 			description:
-				"Determines the row selection behavior. 'NONE' disables selection, 'SINGLE' allows one row selection, 'MULTI' enables multiple row selection with checkboxes.",
+				"Determines the row selection behavior. 'NONE' disables selection, 'SINGLE' allows one row selection, 'MULTI' enables multiple row selection with checkboxes. This is an enum type. See SolaceTableSelectionType enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/solaceTable.ts",
 			table: {
 				type: { summary: '"NONE" | "SINGLE" | "MULTI"' },
 				defaultValue: { summary: '"NONE"' }

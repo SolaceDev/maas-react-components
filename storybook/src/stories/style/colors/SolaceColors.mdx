@@ -1,0 +1,85 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceColorsStories from "./SolaceColors.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceColorsStories} />
+
+<Title>Solace Color Palette</Title>
+
+<Description of={SolaceColorsStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`ColorPaletteStoryViewer`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Color Palette component provides a comprehensive display of the color scheme used in the Solace design system. It's useful for visualizing and accessing the entire color palette, allowing users to easily reference and copy color values and theme paths.
+
+The component implements a hierarchical display pattern with the purpose of organizing colors by categories and subcategories. This pattern helps users quickly find specific colors while still providing context within the overall color system.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Color Palette when you need to reference or showcase the complete color scheme of the Solace design system. This component is particularly effective for design and development contexts.
+
+Common use cases include:
+
+- During the design phase to ensure consistency across UI elements
+- When developing new components and need to reference the correct color values
+- For documentation purposes to provide a comprehensive view of the color system
+- As a quick reference tool for designers and developers working with the Solace theme
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- When you only need to display a single color or a small subset of colors
+- In production applications where end-users don't need access to the entire color palette
+- When you need to allow users to modify or create custom color palettes
+- If you're working with a different theme system that doesn't align with the Solace color structure
+- In performance-critical parts of an application where rendering the full palette might impact load times
+- When you need to display color information in a different format (e.g., as a color picker or in a table format)
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { ColorPaletteStoryViewer } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceColors.stories.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/storybook/src/stories/style/colors/SolaceColors.stories.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=palette" target="_blank">theme.ts (palette styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceColorsStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiBox-root` - Root Box container
+- `.MuiTypography-root` - Typography elements for text display
+- `.MuiIconButton-root` - Icon button for copying theme paths
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied to disabled elements
+- `.MuiTooltip-popper` - Applied to the tooltip when hovering over copy button
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.[COLOR_GROUP].[COLOR_VARIANT]` - Used for displaying and copying color values
+- `theme.palette.text.secondary` - Used for secondary text color
+- `theme.palette.action.hover` - Used for hover effect on copy buttons
+
+**Layout Specifications:**
+
+- Color swatch dimensions: `32px x 32px`
+- Main container padding: `16px`
+- Color item margin bottom: `8px`
+- Section margin bottom: `20px`
+- Border radius for sections: `8px`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

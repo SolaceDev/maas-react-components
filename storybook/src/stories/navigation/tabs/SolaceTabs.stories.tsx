@@ -30,12 +30,14 @@ export default {
 			description: "Callback fired when a tab is clicked"
 		},
 		size: {
-			control: { type: "select", options: ["sm", "md", "lg"] },
-			description: "Size of the tab font"
+			control: "select",
+			description:
+				"Size of the tab font. Uses TabSize enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTabs.ts"
 		},
 		variant: {
-			control: { type: "select", options: ["standard", "fullWidth", "scrollable"] },
-			description: "The variant to use"
+			control: "select",
+			description:
+				"The variant to use. Uses TabVariant enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTabs.ts"
 		}
 	}
 } as Meta<typeof SolaceTabs>;

@@ -31,7 +31,8 @@ export default {
 		variant: {
 			options: ["link"],
 			control: { type: "select" },
-			description: "The type/style of button to render",
+			description:
+				"The type/style of button to render. Uses button variant enum values. For full list of variants, see: https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceButton.tsx",
 			defaultValue: "text"
 		},
 		"aria-label": {

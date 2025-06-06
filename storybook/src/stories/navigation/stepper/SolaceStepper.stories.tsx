@@ -19,6 +19,22 @@ const meta: Meta<typeof SolaceStepper> = {
 			type: "figma",
 			url: "https://www.figma.com/file/FsVh1zud1IAaXHRn9oIkB7/DATAGOMILE-154---Connector-Flows-Phase-1?type=design&node-id=1096-6315&mode=design&t=IlWw05RJHzNzB8Mi-0"
 		}
+	},
+	argTypes: {
+		steps: { control: "object", description: "Array of step objects" },
+		activeStep: { control: "number", description: "Index of the current active step" },
+		setActiveStep: { action: "setActiveStep", description: "Function to set the active step" },
+		onClose: { action: "onClose", description: "Function called when stepper is closed" },
+		onSubmit: { action: "onSubmit", description: "Function called when stepper is submitted" },
+		submitLabel: { control: "text", description: "Label for the submit button" },
+		stepContentOverflow: {
+			control: "select",
+			description:
+				"Controls how content overflows within each step. Uses StepContentOverflow enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceStepper.ts"
+		},
+		disableSubmit: { control: "boolean", description: "Whether to disable the submit button" },
+		onSecondarySubmit: { action: "onSecondarySubmit", description: "Function called for secondary submit action" },
+		secondarySubmitLabel: { control: "text", description: "Label for the secondary submit button" }
 	}
 };
 
