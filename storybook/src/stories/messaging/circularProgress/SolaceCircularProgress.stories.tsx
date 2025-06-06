@@ -40,6 +40,11 @@ export default {
 			control: {
 				type: "text"
 			}
+		},
+		inline: {
+			control: {
+				type: "boolean"
+			}
 		}
 	}
 } as Meta<typeof SolaceCircularProgress>;
@@ -70,5 +75,11 @@ export const LargeSize = {
 export const DisableShrink = {
 	args: {
 		disableShrink: true
+	}
+};
+export const Inline = {
+	args: {
+		inline: true,
+		message: "Loading"
 	}
 };

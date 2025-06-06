@@ -1,8 +1,8 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { alpha, hexToRgb, ThemeOptions } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { SupportedThemes, ThemeMapping, ThemeMappingPalette } from "../types";
 import getThemeMappings from "../theming/themeUtils";
+import { SupportedThemes, ThemeMapping, ThemeMappingPalette } from "../types";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
@@ -836,7 +836,6 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						marginRight: "16px",
-						marginBottom: "12px",
 						width: "24px",
 						height: "24px",
 						border: `1px solid ${themeMapping.palette.secondary.w40}`,
@@ -1004,9 +1003,10 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 						// Other styling
 						"+.MuiFormLabel-root": {
 							marginLeft: "16px",
-							color: themeMapping.palette.secondary.wMain,
+							color: themeMapping.palette.primary.text.wMain,
+							lineHeight: 1.5,
 							"&.Mui-disabled": {
-								color: themeMapping.palette.secondary.w40
+								color: themeMapping.palette.secondary.text.w50
 							}
 						},
 						padding: "0"

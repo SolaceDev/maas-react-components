@@ -23,10 +23,6 @@ export default function SolaceEmptyStateBanner(props: SolaceEmptyStateBannerProp
 		primaryButton.onClick();
 	};
 
-	const onSecondaryButtonClick = () => {
-		secondaryButton.onClick();
-	};
-
 	return (
 		<Box
 			width={"100%"}
@@ -72,13 +68,15 @@ export default function SolaceEmptyStateBanner(props: SolaceEmptyStateBannerProp
 									{primaryButton.label}
 								</SolaceLearningButton>
 
-								<SolaceLearningButton
-									variant="dark-call-to-action"
-									dataQa={primaryButton?.dataQa ?? "emptyStateBannerSecondaryButton"}
-									onClick={onSecondaryButtonClick}
-								>
-									{secondaryButton.label}
-								</SolaceLearningButton>
+								{secondaryButton && (
+									<SolaceLearningButton
+										variant="dark-call-to-action"
+										dataQa={secondaryButton.dataQa ?? "emptyStateBannerSecondaryButton"}
+										onClick={() => secondaryButton.onClick()}
+									>
+										{secondaryButton.label}
+									</SolaceLearningButton>
+								)}
 							</SolaceStack>
 						</Box>
 					</Box>
