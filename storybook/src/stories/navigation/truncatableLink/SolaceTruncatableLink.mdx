@@ -70,19 +70,35 @@ import { SolaceTruncatableLink } from "@SolaceDev/maas-react-components";
 - Tooltip integration: Overflow-based tooltip triggering
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.wMain` - Link text color
-- `theme.palette.ux.accent.n2.wMain` - Focus outline color
-- Background hover states inherited from SolaceButton component
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.primary.text.wMain - Link text color
+- theme.palette.ux.accent.n2.wMain - Focus outline color
+- theme.palette.ux.primary.wMain - Link color in default state
+- theme.palette.ux.primary.w90 - Link color on hover
+- theme.palette.ux.primary.w100 - Link color on active
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiButton.styleOverrides.textPrimary - Override link button styling
+- theme.components.MuiTooltip.styleOverrides.tooltip - Override tooltip appearance
+- theme.typography.body2 - Link text typography styling
+- theme.spacing() - Internal padding and margins
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and tooltip behavior through tooltip overrides.
 
 **Layout Specifications:**
 
-- Container: `max-width: 100%` to respect parent constraints
+- Container: max-width: 100% to respect parent constraints
 - Text truncation: Ellipsis appears when content overflows
-- Tooltip positioning: `bottom-end` placement by default
+- Tooltip positioning: bottom-end placement by default
 - Button padding: Inherited from SolaceButton link variant
-- Focus indicators: `1px solid` outline with `1px` offset
+- Focus indicators: 1px solid outline with 1px offset
 - Hover states: Background color changes on interactive elements
 
 **Accessibility Features:**

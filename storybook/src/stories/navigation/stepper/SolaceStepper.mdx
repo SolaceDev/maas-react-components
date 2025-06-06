@@ -80,21 +80,38 @@ import { SolaceStepper } from "@SolaceDev/maas-react-components";
 - Progress indicator styling for visual feedback
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.wMain` - Active step styling
-- `theme.palette.ux.error.wMain` - Error state styling
-- `theme.palette.ux.success.wMain` - Completed step styling
-- `theme.palette.ux.secondary.w40` - Inactive step styling
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.primary.wMain - Active step styling
+- theme.palette.ux.error.wMain - Error state styling
+- theme.palette.ux.success.wMain - Completed step styling
+- theme.palette.ux.secondary.w40 - Inactive step styling and connector lines
+- theme.palette.ux.primary.text.wMain - Step label text color
+- theme.palette.ux.secondary.text.w50 - Optional/subtitle text color
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Spacing between steps
+- theme.spacing(1) - Spacing between footer buttons
+- theme.components.MuiStepper.styleOverrides.root - Override stepper container styling
+- theme.components.MuiStep.styleOverrides.root - Override individual step styling
+- theme.typography.body1 - Step label text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and step appearance through stepper overrides.
 
 **Layout Specifications:**
 
 - Stepper width: Configurable sidebar width for step navigation
 - Content area: Flexible width for step content
 - Footer height: Fixed height for navigation buttons
-- Step spacing: `theme.spacing(2)` between steps
-- Icon size: `24px x 24px` for step icons
-- Button spacing: `theme.spacing(1)` between footer buttons
+- Step spacing: theme.spacing(2) between steps
+- Icon size: 24px x 24px for step icons
+- Button spacing: theme.spacing(1) between footer buttons
 
 <Subtitle>Stories</Subtitle>
 

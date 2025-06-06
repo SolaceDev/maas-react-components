@@ -73,20 +73,45 @@ import { SolaceLearningBanner } from "@SolaceDev/maas-react-components";
 - Custom styled components handle layout and spacing
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.background.w20` - Default background color
-- `theme.palette.ux.primary.text.wMain` - Text color
-- `theme.typography.subtitle1.fontSize` - Title font size
-- `theme.typography.fontWeightMedium` - Title font weight
-- `theme.spacing(2)` - Container padding
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #FFF3CD; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.warning.w10 - Banner background color</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #856404; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.warning.text.wMain - Text color for banner content</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #FFC107; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.warning.wMain - Icon and border accent color</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #0066CC; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.primary.wMain - Link color within banner content</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Container padding
+- theme.typography.subtitle1.fontSize - Title font size
+- theme.typography.fontWeightMedium - Title font weight
+- theme.shape.borderRadius - Border radius styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and customize the banner appearance through styled component overrides.
 
 **Layout Specifications:**
 
-- Border radius: `4px` for rounded corners
-- Container padding: `theme.spacing(2)` for consistent spacing
-- Flex direction: `column` when title present, `row` when title absent
-- Title typography: Uses `subtitle1` fontSize with medium font weight
+- Border radius: 4px for rounded corners
+- Container padding: theme.spacing(2) for consistent spacing
+- Flex direction: column when title present, row when title absent
+- Title typography: Uses subtitle1 fontSize with medium font weight
 - Close button: 24px icon size with icon variant styling
 
 <Subtitle>Stories</Subtitle>

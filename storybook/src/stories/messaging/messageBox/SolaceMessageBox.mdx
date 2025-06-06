@@ -78,16 +78,32 @@ import { SolaceMessageBox } from "@SolaceDev/maas-react-components";
 - `.success` - Applied for success messages
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.mixins.component_MessageBox.container` - Main container styling
-- `theme.mixins.component_MessageBox.messageContainer` - Message container layout
-- `theme.mixins.component_MessageBox.messageTextContainer` - Text styling and color
-- `theme.mixins.component_MessageBox.iconContainer` - Icon positioning and spacing
-- `theme.palette.ux.info.w100` - Info variant color
-- `theme.palette.ux.error.w100` - Error variant color
-- `theme.palette.ux.warning.w100` - Warning variant color
-- `theme.palette.ux.success.w100` - Success variant color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.info.w100 - Info variant color and icon
+- theme.palette.ux.error.w100 - Error variant color and icon
+- theme.palette.ux.warning.w100 - Warning variant color and icon
+- theme.palette.ux.success.w100 - Success variant color and icon
+- theme.palette.ux.info.w10 - Info variant background color
+- theme.palette.ux.error.w10 - Error variant background color
+- theme.palette.ux.warning.w10 - Warning variant background color
+- theme.palette.ux.success.w10 - Success variant background color
+- theme.palette.ux.primary.text.wMain - Message text color
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.mixins.component_MessageBox.container - Main container styling
+- theme.mixins.component_MessageBox.messageContainer - Message container layout
+- theme.mixins.component_MessageBox.messageTextContainer - Text styling
+- theme.mixins.component_MessageBox.iconContainer - Icon positioning and spacing
+- theme.spacing() - Internal padding and margins for dense mode
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, and customize the message box appearance through the available mixins.
 
 **Layout Specifications:**
 

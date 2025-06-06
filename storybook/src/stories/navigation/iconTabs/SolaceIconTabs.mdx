@@ -73,20 +73,36 @@ import { SolaceIconTabs } from "@SolaceDev/maas-react-components";
 - Hover state: `background-color: secondary.w10`, `color: primary.text.wMain`
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.background.w10` - Active tab background
-- `theme.palette.ux.background.w20` - Inactive tab background
-- `theme.palette.ux.secondary.w20` - Active tab border
-- `theme.palette.ux.accent.n2.wMain` - Active indicator color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.background.w10 - Active tab background
+- theme.palette.ux.background.w20 - Inactive tab background
+- theme.palette.ux.secondary.w20 - Active tab border
+- theme.palette.ux.accent.n2.wMain - Active indicator color
+- theme.palette.ux.secondary.w10 - Hover background color
+- theme.palette.ux.primary.text.wMain - Text and icon colors
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(5) - Container height (40px)
+- theme.spacing(1, 1) - Icon padding (8px)
+- theme.shape.borderRadius - Border radius for tab buttons
+- theme.typography.button - Icon button typography styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and customize the tab appearance through styled component overrides.
 
 **Layout Specifications:**
 
-- Container height: `theme.spacing(5)` (40px)
-- Icon padding: `theme.spacing(1, 1)` (8px)
-- Active indicator: `height: 2px`, `width: 100%`
-- Border styling: `1px solid` for active state
-- Cursor: `pointer` for inactive, `default` for active
+- Container height: theme.spacing(5) (40px)
+- Icon padding: theme.spacing(1, 1) (8px)
+- Active indicator: height: 2px, width: 100%
+- Border styling: 1px solid for active state
+- Cursor: pointer for inactive, default for active
 
 <Subtitle>Stories</Subtitle>
 

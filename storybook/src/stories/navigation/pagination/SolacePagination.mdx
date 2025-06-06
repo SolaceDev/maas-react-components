@@ -79,18 +79,35 @@ import { SolacePagination } from "@SolaceDev/maas-react-components";
 - Custom spacing between pagination elements
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.wMain` - Active page background
-- `theme.palette.ux.primary.text.wMain` - Text colors
-- `theme.palette.ux.secondary.w10` - Hover backgrounds
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.primary.wMain - Active page background
+- theme.palette.ux.primary.text.w10 - Active page text color
+- theme.palette.ux.primary.text.wMain - Default text colors
+- theme.palette.ux.secondary.w10 - Hover backgrounds
+- theme.palette.ux.secondary.text.w50 - Disabled button text
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Container spacing between pagination and content
+- theme.spacing(0.5) - Item spacing between pagination items
+- theme.components.MuiPagination.styleOverrides.root - Override pagination container styling
+- theme.components.MuiPaginationItem.styleOverrides.root - Override pagination item styling
+- theme.typography.body2 - Result count text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and pagination behavior through pagination overrides.
 
 **Layout Specifications:**
 
-- Container spacing: `theme.spacing(2)` between pagination and content
-- Item spacing: `theme.spacing(0.5)` between pagination items
-- Page item size: `32px x 32px` for consistent click targets
-- Border radius: `4px` for page items
+- Container spacing: theme.spacing(2) between pagination and content
+- Item spacing: theme.spacing(0.5) between pagination items
+- Page item size: 32px x 32px for consistent click targets
+- Border radius: 4px for page items
 - Result text: Typography body2 variant for result counts
 - Responsive breakpoints: Simplified navigation on mobile devices
 

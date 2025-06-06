@@ -72,18 +72,35 @@ import { SolaceButton } from "@SolaceDev/maas-react-components";
 - External link indicator with OpenExternalIcon when href is provided
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.wMain` - Primary text color for links
-- `theme.palette.ux.accent.n2.wMain` - Focus outline color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.primary.text.wMain - Primary text color for links
+- theme.palette.ux.accent.n2.wMain - Focus outline color
+- theme.palette.ux.primary.wMain - Link color in default state
+- theme.palette.ux.primary.w90 - Link hover color
+- theme.palette.ux.secondary.text.w50 - Disabled link color
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing() - Padding and margin customization through sx prop
+- theme.components.MuiLink.styleOverrides.root - Override link styling
+- theme.typography.body2 - Link text typography styling
+- theme.shape.borderRadius - Border radius for standard variant
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and link behavior through link overrides.
 
 **Layout Specifications:**
 
-- Dense variant: `padding: 0` for inline use
-- Standard variant: `padding: 6px 16px` with `minWidth: 100px` and `height: 32px`
-- Focus outline: `1px solid` accent color with `outlineOffset: 1px`
-- Border radius: `4px` for standard variant
-- External link icon spacing: `marginRight: 4px`
+- Dense variant: padding: 0 for inline use
+- Standard variant: padding: 6px 16px with minWidth: 100px and height: 32px
+- Focus outline: 1px solid accent color with outlineOffset: 1px
+- Border radius: 4px for standard variant
+- External link icon spacing: marginRight: 4px
 
 <Subtitle>Stories</Subtitle>
 

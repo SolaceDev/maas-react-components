@@ -83,20 +83,38 @@ import { SolaceTypography } from "@SolaceDev/maas-react-components";
 - `.MuiTypography-alignJustify` - Justified text
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace color mappings. Key theme paths:
 
-- `theme.palette.ux.info.w100` - Info state color
-- `theme.palette.ux.error.w100` - Error state color
-- `theme.palette.ux.warning.w100` - Warning state color
-- `theme.palette.ux.success.w100` - Success state color
-- `theme.typography.fontFamily` - Primary font family
-- `theme.typography.h1` - Heading 1 typography definitions
-- `theme.typography.body1` - Body text typography definitions
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.info.w100 - Info state color
+- theme.palette.ux.error.w100 - Error state color
+- theme.palette.ux.warning.w100 - Warning state color
+- theme.palette.ux.success.w100 - Success state color
+- theme.palette.ux.primary.text.wMain - Primary text color
+- theme.palette.ux.secondary.text.wMain - Secondary text color
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.fontFamily - Primary font family
+- theme.typography.h1 - Heading 1 typography definitions (size, weight, line height)
+- theme.typography.h2 - Heading 2 typography definitions
+- theme.typography.h3 - Heading 3 typography definitions
+- theme.typography.h4 - Heading 4 typography definitions
+- theme.typography.h5 - Heading 5 typography definitions
+- theme.typography.body1 - Body text typography definitions
+- theme.typography.caption - Caption text typography definitions
+- theme.components.MuiTypography.styleOverrides.root - Override typography styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify typography scales, weights, and spacing using the theme typography system, and customize appearance through typography overrides.
 
 **Layout Specifications:**
 
-- Default variant: `body1`
-- Default color: `textPrimary`
+- Default variant: body1
+- Default color: textPrimary
 - Supports all Material-UI Typography spacing props
 - Inherits theme typography scales and weights
 - Responsive typography based on theme breakpoints

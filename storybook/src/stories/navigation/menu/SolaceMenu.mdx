@@ -80,20 +80,38 @@ import { SolaceMenu } from "@SolaceDev/maas-react-components";
 - Secondary action positioning within menu items
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.background.w10` - Menu background
-- `theme.palette.ux.primary.text.wMain` - Menu item text color
-- `theme.palette.ux.secondary.w10` - Menu item hover background
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.background.w10 - Menu background
+- theme.palette.ux.primary.text.wMain - Menu item text color
+- theme.palette.ux.secondary.w10 - Menu item hover background
+- theme.palette.ux.brand.w10 - Selected menu item background
+- theme.palette.ux.secondary.wMain - Menu item icon color
+- theme.palette.ux.secondary.w40 - Disabled menu item icon color
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1, 0) - Menu container padding
+- theme.spacing(1) - Gap between icon and text
+- theme.components.MuiMenu.styleOverrides.paper - Override menu container styling
+- theme.components.MuiMenuItem.styleOverrides.root - Override menu item styling
+- theme.typography.body2 - Menu item text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and positioning through menu overrides.
 
 **Layout Specifications:**
 
-- Default max width: `280px` (configurable via `maxWidth` prop)
-- Default max height: Based on `numOfMenuItemDisplayed` (default 9 items)
-- Item height: `38px` for single-line, `58px` for multiline
-- Menu positioning: Configurable via `anchorOrigin` and `transformOrigin`
-- Padding: `theme.spacing(1, 0)` for menu container
-- Icon spacing: `theme.spacing(1)` gap between icon and text
+- Default max width: 280px (configurable via maxWidth prop)
+- Default max height: Based on numOfMenuItemDisplayed (default 9 items)
+- Item height: 38px for single-line, 58px for multiline
+- Menu positioning: Configurable via anchorOrigin and transformOrigin
+- Padding: theme.spacing(1, 0) for menu container
+- Icon spacing: theme.spacing(1) gap between icon and text
 
 <Subtitle>Stories</Subtitle>
 

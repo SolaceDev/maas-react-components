@@ -80,18 +80,34 @@ import { SolacePageHeader } from "@SolaceDev/maas-react-components";
 - Responsive behavior: Proper wrapping and spacing on smaller screens
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.wMain` - Primary text colors
-- `theme.palette.ux.background.w10` - Background colors
-- `theme.spacing()` - Consistent spacing throughout header
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.primary.text.wMain - Primary text colors for title and subtitle
+- theme.palette.ux.background.w10 - Background colors for header container
+- theme.palette.ux.secondary.w40 - Border and divider colors
+- theme.palette.ux.brand.wMain - Environment chip and border-top color coordination
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2, 3) - Header padding for consistent margins
+- theme.spacing(1) - Row spacing between header rows and action buttons
+- theme.typography.h1 - Main title typography styling
+- theme.typography.subtitle1 - Subtitle typography styling
+- theme.breakpoints.down('md') - Responsive behavior breakpoints
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior through breakpoint utilities.
 
 **Layout Specifications:**
 
-- Header padding: `theme.spacing(2, 3)` for consistent margins
-- Row spacing: `theme.spacing(1)` between header rows
-- Border-top: `2px solid` with environment-matched color
-- Action spacing: `theme.spacing(1)` between action buttons
+- Header padding: theme.spacing(2, 3) for consistent margins
+- Row spacing: theme.spacing(1) between header rows
+- Border-top: 2px solid with environment-matched color
+- Action spacing: theme.spacing(1) between action buttons
 - Responsive breakpoints: Proper stacking on mobile devices
 - Title typography: H1 for main title, subtitle styling for secondary text
 

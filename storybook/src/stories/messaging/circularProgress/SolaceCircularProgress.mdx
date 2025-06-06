@@ -69,22 +69,45 @@ import { SolaceCircularProgress } from "@SolaceDev/maas-react-components";
 
 **Custom Classes:**
 
-- Custom `Container` with flex column layout and centered alignment
+- Custom Container with flex column layout and centered alignment
 - Message text styling with theme spacing
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.brand.w30` - Spinner color styling
-- `theme.spacing(1.5)` - Gap between spinner and message text
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #00C895; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.brand.wMain - Primary progress circle color</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #E8F5F2; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.brand.w10 - Background circle track color</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #333333; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.primary.text.wMain - Label text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1.5) - Gap between spinner and message text
+- theme.components.MuiCircularProgress.styleOverrides.root - Override default circular progress styling
+- theme.components.MuiCircularProgress.styleOverrides.circle - Override circle element styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, and customize the spinner appearance through component overrides.
 
 **Layout Specifications:**
 
-- Container width: `fit-content` for minimal space usage
-- Flex direction: `column` with center alignment
-- Row gap: `theme.spacing(1.5)` between spinner and message
-- Size dimensions: `xs: 14px`, `sm: 24px`, `md: 30px`, `lg: 42px`
-- Default size: `sm` (24px)
+- Container width: fit-content for minimal space usage
+- Flex direction: column with center alignment
+- Row gap: theme.spacing(1.5) between spinner and message
+- Size dimensions: xs: 14px, sm: 24px, md: 30px, lg: 42px
+- Default size: sm (24px)
 
 <Subtitle>Stories</Subtitle>
 

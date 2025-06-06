@@ -66,19 +66,37 @@ import { ColorPaletteStoryViewer } from "@SolaceDev/maas-react-components";
 - `.MuiTooltip-popper` - Applied to the tooltip when hovering over copy button
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.[COLOR_GROUP].[COLOR_VARIANT]` - Used for displaying and copying color values
-- `theme.palette.text.secondary` - Used for secondary text color
-- `theme.palette.action.hover` - Used for hover effect on copy buttons
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.[COLOR_GROUP].[COLOR_VARIANT] - Used for displaying and copying color values
+- theme.palette.ux.primary.text.wMain - Primary text color for labels
+- theme.palette.ux.secondary.text.wMain - Secondary text color for descriptions
+- theme.palette.ux.background.wMain - Background color for sections
+- theme.palette.ux.secondary.w10 - Hover background for interactive elements
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Main container padding (16px)
+- theme.spacing(1) - Color item margin bottom (8px)
+- theme.spacing(2.5) - Section margin bottom (20px)
+- theme.shape.borderRadius - Border radius for sections (8px)
+- theme.components.MuiBox.styleOverrides.root - Override container styling
+- theme.typography.body2 - Typography styling for color labels
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and section appearance through box overrides.
 
 **Layout Specifications:**
 
-- Color swatch dimensions: `32px x 32px`
-- Main container padding: `16px`
-- Color item margin bottom: `8px`
-- Section margin bottom: `20px`
-- Border radius for sections: `8px`
+- Color swatch dimensions: 32px x 32px
+- Main container padding: theme.spacing(2) (16px)
+- Color item margin bottom: theme.spacing(1) (8px)
+- Section margin bottom: theme.spacing(2.5) (20px)
+- Border radius for sections: theme.shape.borderRadius (8px)
 
 <Subtitle>Stories</Subtitle>
 

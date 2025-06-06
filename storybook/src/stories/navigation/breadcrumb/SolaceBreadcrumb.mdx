@@ -72,18 +72,34 @@ import { SolaceBreadcrumb } from "@SolaceDev/maas-react-components";
 - Custom `RouteContainer` with flex layout and column gap
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- Uses standard MUI Breadcrumbs theming
-- Custom spacing for RouteContainer gap: `theme.spacing(0.5)`
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.primary.wMain - Active breadcrumb link color
+- theme.palette.ux.secondary.text.wMain - Current page text color (no link)
+- theme.palette.ux.primary.w90 - Link hover color
+- theme.palette.ux.secondary.wMain - Separator icon color
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(0.5) - Route container gap between breadcrumb elements
+- theme.components.MuiBreadcrumbs.styleOverrides.root - Override breadcrumb container styling
+- theme.components.MuiLink.styleOverrides.root - Override link styling
+- theme.typography.body2 - Breadcrumb text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and link behavior through link overrides.
 
 **Layout Specifications:**
 
-- Link max-width: `200px`
-- Text overflow: `ellipsis` with `whiteSpace: nowrap`
-- Route container: `flex` with `row` direction and `center` alignment
-- Default maxItems: `8`
-- NavigateNext icon as separator with `fontSize="small"`
+- Link max-width: 200px
+- Text overflow: ellipsis with whiteSpace: nowrap
+- Route container: flex with row direction and center alignment
+- Default maxItems: 8
+- NavigateNext icon as separator with fontSize="small"
 
 <Subtitle>Stories</Subtitle>
 

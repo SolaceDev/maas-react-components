@@ -77,21 +77,55 @@ import { SolaceToasts } from "@SolaceDev/maas-react-components";
 - Icon mapping with theme-based colors
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.brand.wMain` - Success icon color
-- `theme.palette.ux.error.w100` - Error icon color
-- `theme.palette.ux.info.w100` - Info icon color
-- `theme.palette.ux.warning.w100` - Warning icon color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #D4EDDA; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.success.w10 - Success toast background</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #F8D7DA; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.error.w10 - Error toast background</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #FFF3CD; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.warning.w10 - Warning toast background</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #D1ECF1; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.info.w10 - Info toast background</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #155724; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.success.text.wMain - Success toast text color</span>
+</div>
+<div style="display: flex; align-items: center; margin: 8px 0;">
+	<div style="width: 16px; height: 16px; background-color: #721C24; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; margin-right: 8px;"></div>
+	<span>theme.palette.ux.error.text.wMain - Error toast text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing() - Internal padding and margins
+- theme.components.MuiSnackbar.styleOverrides.root - Override snackbar container styling
+- theme.components.MuiAlert.styleOverrides.root - Override alert styling when severity is used
+- theme.typography.body2 - Toast message text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and positioning through snackbar overrides.
 
 **Layout Specifications:**
 
 - Anchor position: Bottom center of viewport
 - Auto-hide duration: 4000ms (4 seconds) without action, 8000ms (8 seconds) with action
 - Resume hide duration: 1000ms after user interaction
-- Padding: `0 16px 0 8px` with severity, `0 16px` without severity
+- Padding: 0 16px 0 8px with severity, 0 16px without severity
 - Click-away dismissal: Disabled for better user control
-- Role: `toast` for accessibility
+- Role: toast for accessibility
 
 <Subtitle>Stories</Subtitle>
 

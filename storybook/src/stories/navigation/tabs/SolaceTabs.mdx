@@ -85,21 +85,37 @@ import { SolaceTabs } from "@SolaceDev/maas-react-components";
 - Typography scaling based on size prop
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.accent.n2.wMain` - Active tab indicator color
-- `theme.palette.ux.primary.text.wMain` - Active tab text color
-- `theme.palette.ux.secondary.text.wMain` - Inactive tab text color
-- `theme.palette.ux.secondary.w10` - Tab hover background
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+- theme.palette.ux.accent.n2.wMain - Active tab indicator color
+- theme.palette.ux.primary.text.wMain - Active tab text color
+- theme.palette.ux.secondary.text.wMain - Inactive tab text color
+- theme.palette.ux.secondary.w10 - Tab hover background
+- theme.palette.ux.secondary.w40 - Disabled tab text color
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1, 2) - Tab padding for comfortable click targets
+- theme.components.MuiTabs.styleOverrides.root - Override tabs container styling
+- theme.components.MuiTab.styleOverrides.root - Override individual tab styling
+- theme.typography.button - Tab text typography styling
+- theme.shape.borderRadius - Border radius for focus indicators
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and tab behavior through tabs overrides.
 
 **Layout Specifications:**
 
-- Tab height: `48px` for standard size, `56px` for medium size
-- Indicator height: `2px` positioned at bottom of active tab
-- Tab padding: `theme.spacing(1, 2)` for comfortable click targets
-- Font sizes: `sm` (14px) default, `md` (16px) for larger variant
-- Border radius: `4px` for focus indicators
-- Scroll button size: `40px x 40px` for scrollable variant
+- Tab height: 48px for standard size, 56px for medium size
+- Indicator height: 2px positioned at bottom of active tab
+- Tab padding: theme.spacing(1, 2) for comfortable click targets
+- Font sizes: sm (14px) default, md (16px) for larger variant
+- Border radius: 4px for focus indicators
+- Scroll button size: 40px x 40px for scrollable variant
 
 <Subtitle>Stories</Subtitle>
 
