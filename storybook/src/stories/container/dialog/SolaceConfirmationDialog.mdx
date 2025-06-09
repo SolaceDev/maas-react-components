@@ -73,17 +73,63 @@ import { SolaceConfirmationDialog } from "@SolaceDev/maas-react-components";
 - `.MuiDialogContentText-root` - Content text styling
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.background.w10` - Dialog background color
-- `theme.palette.ux.primary.text.wMain` - Primary text color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Dialog background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Primary text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(3, 3, 2, 3) for title padding)
+- theme.typography.[VARIANT] - Text styles for dialog content and title
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiDialog.styleOverrides.root - Custom styling for dialog container
+- theme.components.MuiDialogTitle.styleOverrides.root - Custom styling for dialog title
+- theme.components.MuiDialogContent.styleOverrides.root - Custom styling for dialog content
+- theme.components.MuiDialogActions.styleOverrides.root - Custom styling for dialog actions
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in dialog actions
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
-- Dialog title padding: `24px 24px 16px 24px`
+- Dialog title padding: `theme.spacing(3, 3, 2, 3)` (24px 24px 16px 24px)
 - Dialog content: Flexible display based on contentLayout prop
 - Action buttons: Right-aligned with consistent spacing
 - Custom actions: Left-aligned with auto margin
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

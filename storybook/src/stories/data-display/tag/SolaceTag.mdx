@@ -80,21 +80,77 @@ import { SolaceTag } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.deprecated.chip` - Color mappings for borders, fills, and text colors
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.default.fill - Default tag background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.primary.fill - Primary tag background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.default.text - Default tag text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body2 - Base typography for tag text
+- theme.shape.borderRadius - Border radius for tag container
+- theme.transitions.create(['background-color', 'box-shadow']) - Tag hover and focus transitions
+- theme.components.MuiChip.styleOverrides.root - Custom tag styling
+- theme.components.MuiChip.styleOverrides.label - Custom label styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.tag.filled - Filled variant styling
+- theme.mixins.tag.outlined - Outlined variant styling
 
 **Layout Specifications:**
 
-- Height: Fixed at `sm` size (18px from CHIP_PX_HEIGHTS)
-- Border radius: Fixed at `xs` size (20px from CHIP_PX_BORDER_RADIUS)
-- Font size: Fixed at `xs` size (12px from BASE_FONT_PX_SIZES)
+- Height: Fixed at `18px` (sm size from CHIP_PX_HEIGHTS)
+- Border radius: Fixed at `20px` (xs size from CHIP_PX_BORDER_RADIUS)
+- Font size: Fixed at `12px` (xs size from BASE_FONT_PX_SIZES)
 - Font weight: `400` (regular)
 - Default variant: `FILLED`
 - Default max width: `100%`
 - Padding: `2px` left and right
 - Icon size: `14x14` pixels for leading icons
 - Size: Always `medium` (not responsive to content)
+- Clickable hover effect: Slight opacity change and elevation increase
 
 <Subtitle>Stories</Subtitle>
 

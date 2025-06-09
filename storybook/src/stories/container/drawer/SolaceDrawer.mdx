@@ -71,11 +71,65 @@ import { SolaceDrawer } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.secondary.w40` - Border colors for drawer and resize handle
-- `theme.palette.ux.background.w20` - Background color for resize handle
-- `theme.palette.ux.deprecated.secondary.w8040` - Box shadow color
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Border colors for drawer and resize handle</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#EEEEEE",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w20 - Background color for resize handle</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.15)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.secondary.w8040 - Box shadow color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for 8px content margin)
+- theme.typography.[VARIANT] - Text styles for drawer content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiDrawer.styleOverrides.root - Custom styling for drawer container
+- theme.components.MuiDrawer.styleOverrides.paper - Custom styling for drawer paper/content area
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in drawer content
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -84,9 +138,10 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Maximum width: `1000px` (when resizable)
 - Resize handle width: `8px`
 - Border radius: `2px`
-- Content margin: `8px` (left or right based on anchor)
+- Content margin: `theme.spacing(1)` (8px, left or right based on anchor)
 - Box shadow: `0px 2px 4px` with theme color
 - Variant: `persistent` (non-modal)
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

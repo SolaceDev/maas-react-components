@@ -69,7 +69,7 @@ export default {
 				type: "select"
 			},
 			description:
-				"The type of tooltip behavior. 'text' shows on hover/focus, 'overflow' only shows when content is truncated, 'rich' allows complex HTML content with enhanced styling and positioning.",
+				"The type of tooltip behavior. 'text' shows on hover/focus, 'overflow' only shows when content is truncated, 'rich' allows complex HTML content with enhanced styling and positioning. See enum at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTooltip.ts",
 			table: {
 				type: { summary: '"text" | "overflow" | "rich"' },
 				defaultValue: { summary: '"text"' }

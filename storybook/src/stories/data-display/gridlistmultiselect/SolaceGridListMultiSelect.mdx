@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceGridListMultiSelectStories} />
 
-<Title>Solace Grid List Multi-Select</Title>
+<Title>Solace Grid List Multi Select</Title>
 
 <Description of={SolaceGridListMultiSelectStories} />
 
@@ -13,29 +13,31 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Grid List Multi-Select component provides a powerful way to display collections of data with built-in multi-selection capabilities using checkboxes. It's useful for scenarios where users need to select multiple items from a structured dataset, allowing bulk operations and batch processing workflows.
+The SolaceGridListMultiSelect component extends the GridList functionality by adding multi-selection capabilities through checkboxes. It's useful for scenarios where users need to select multiple items from a structured grid layout, allowing for efficient batch operations and data management.
 
-The component implements a grid-based layout pattern with integrated selection controls, providing both individual item selection and "Select All" functionality. This pattern enables efficient data management workflows while maintaining visual organization and clear selection state feedback.
+The component implements a selectable grid pattern with the purpose of enabling bulk actions on tabular data. This pattern helps users manage multiple selections while maintaining the organized structure of a grid layout, making it ideal for administrative interfaces and data management tools.
 
 <Subtitle>When To Use It</Subtitle>
 
-Use Solace Grid List Multi-Select when you need to allow users to select multiple items from a structured dataset with clear visual feedback. This selection pattern is particularly effective for bulk operations and data management workflows.
+Use SolaceGridListMultiSelect when you need to provide users with the ability to select multiple items from a grid-based layout. This selection pattern is particularly effective for batch operations and data management.
 
 Common use cases include:
 
 - Bulk operations on event meshes, environments, or other business entities
-- Multi-select file managers or resource browsers with batch actions
-- Data management interfaces requiring selection of multiple items for processing
-- Admin interfaces where users need to perform actions on multiple selected records
+- Multi-item selection for batch processing or updates
+- Administrative interfaces requiring multiple item management
+- Data management tools with bulk action capabilities
+- Resource selection interfaces for batch operations
+- List management with checkbox-based selection
 
 <Subtitle>When Not To Use It</Subtitle>
 
-- For single-selection scenarios - use SolaceGridList for single-item selection
-- When no selection is needed - use SolaceGridList for display-only lists
-- For simple checkbox lists without grid layout - use standard form components with SolaceCheckBox
-- When you need complex table features like sorting or filtering - use SolaceTable with multi-selection
-- For card-based multi-selection - use SolaceCard components with individual checkboxes
-- When selection state doesn't need to be managed - use simpler list components for better performance
+- For simple data display without selection needs - use SolaceGridList instead
+- When single-item selection is sufficient - use standard GridList with clickable rows
+- For read-only data presentation - use basic grid layouts without selection
+- When complex table features are needed - use SolaceTable for full table functionality
+- For simple unstructured lists - use SolaceList for basic item listings
+- When selection is not a primary user action - use simpler display components
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -56,45 +58,95 @@ import { SolaceGridListMultiSelect } from "@SolaceDev/maas-react-components";
 
 **Main Component Classes:**
 
-- `.layoutComponent_ImageList-header` - Header container with selection controls and actions
 - `.layoutComponent_ImageList-row` - Individual grid row container
-- `.layoutComponent_ImageList-list` - Main list container (inherited from SolaceGridList)
+- `.layoutComponent_ImageList-virtualRow` - Virtual row container for virtualized lists
+- `.layoutComponent_ImageList-list` - Main list container
 - `.layoutComponent_ImageList-border` - Border wrapper around the list
-
-**Selection Classes:**
-
-- `.selectAll` - Container for the "Select All" checkbox and label
-- `.selectAllText` - Text label for the "Select All" checkbox
-- `.countItemsText` - Text showing count of selected items
-- `.selected` - Applied when a row is selected (inherited from SolaceGridList)
+- `.layoutComponent_ImageList-checkbox` - Checkbox container in selectable rows
 
 **State Classes:**
 
-- `.headerRow` - Applied to the column header row
+- `.selected` - Applied when a row is selected
+- `.headerRow` - Applied to the header row container
 - `.indicator-info` - Applied when indicatorVariant is "info"
 - `.indicator-error` - Applied when indicatorVariant is "error"
 - `.indicator-warn` - Applied when indicatorVariant is "warn"
 - `.indicator-success` - Applied when indicatorVariant is "success"
 - `.indicator-secondary` - Applied when indicatorVariant is "secondary"
 
-**Emphasis Classes:**
-
-- `.emphasized` - Applied when a row should be emphasized with special styling
-
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.wMain` - Primary text color for content
-- `theme.palette.ux.secondary.text.wMain` - Secondary text color for headers
-- `theme.palette.ux.background.w10` - Default background color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Default background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.w10 - Selected row background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Checkbox and selection indicator color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Default padding between grid items
+- theme.typography.body1 - Base typography for grid content
+- theme.components.MuiCheckbox.styleOverrides.root - Custom checkbox styling
+- theme.components.MuiImageList.styleOverrides.root - Custom grid container styling
+- theme.transitions.create(['background-color']) - Selection state transitions
+
+Available mixins for consistent styling:
+
+- theme.mixins.gridList.row - Standard row styling
+- theme.mixins.gridList.selected - Selected state styling
+- theme.mixins.gridList.checkbox - Checkbox container styling
 
 **Layout Specifications:**
 
-- Checkbox column width: `min(17px)` with 8px gap to first data column
-- Header height: `49px` when selection controls or actions are displayed
-- Grid template: Checkbox column + custom `gridTemplate` prop using CSS Grid syntax
-- Header padding: `0 64px` for proper alignment with content
-- Virtual list height: Calculated as `calc(100% - 49px)` when header is displayed
+- Grid template columns: Defined by the `gridTemplate` prop using CSS Grid syntax
+- Item height: Calculated dynamically using `getGridListItemHeight()` utility
+- Virtual list height: Configurable through `virtualizedListOption.height`
+- Checkbox column width: Fixed at `48px`
+- Row padding: `8px` (theme.spacing(1))
+- Selection transition: `200ms` background-color fade
+- Hover state opacity: 0.04
+- Selected state opacity: 0.08
+- Checkbox position: Left-aligned with `16px` margin
 
 <Subtitle>Stories</Subtitle>
 

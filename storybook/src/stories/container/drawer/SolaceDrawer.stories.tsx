@@ -91,7 +91,7 @@ export default {
 			control: { type: "select" },
 			options: ["left", "right"],
 			description:
-				"Determines which side of the screen the drawer appears from. Use 'left' for primary navigation menus and 'right' for supplementary information or actions.",
+				"Determines which side of the screen the drawer appears from. Use 'left' for primary navigation menus and 'right' for supplementary information or actions. See enum at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceDrawer.ts",
 			table: {
 				type: { summary: '"left" | "right"' },
 				defaultValue: { summary: '"right"' }

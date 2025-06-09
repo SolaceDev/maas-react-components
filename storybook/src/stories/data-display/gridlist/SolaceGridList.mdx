@@ -76,11 +76,66 @@ import { SolaceGridList } from "@SolaceDev/maas-react-components";
 - `.emphasized` - Applied when a row should be emphasized with special styling
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.wMain` - Primary text color for content
-- `theme.palette.ux.secondary.text.wMain` - Secondary text color for headers
-- `theme.palette.ux.background.w10` - Default background color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Primary text color for content</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.wMain - Secondary text color for headers</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Default background color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for default padding)
+- theme.typography.[VARIANT] - Text styles for grid list content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiImageList.styleOverrides.root - Custom styling for grid list container
+- theme.components.MuiImageListItem.styleOverrides.root - Custom styling for grid list items
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in grid list headers
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -88,6 +143,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Item height: Calculated dynamically using `getGridListItemHeight()` utility
 - Virtual list height: Configurable through `virtualizedListOption.height`
 - Scroll mask: Applied when `numOfGridListItemDisplayed` is set to create fade effect
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 

@@ -67,11 +67,52 @@ import { SolaceFeatureTag } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.secondary.text.w50` - Default border and text color
-- `theme.palette.ux.primary.wMain` - Active state border and text color
-- `theme.spacing()` - Consistent spacing for border radius and padding
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.5)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.w50 - Default border and text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Active state border and text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and border radius (e.g., theme.spacing(0.5) for border radius)
+- theme.typography.[VARIANT] - Text styles for tag content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for tag container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for tag text
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in tag groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -85,6 +126,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Box sizing: `border-box`
 - Default colors: Secondary text at 50% opacity
 - Active colors: Primary brand color
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 

@@ -22,7 +22,7 @@ export default {
 		docs: {
 			description: {
 				component:
-					"List component used for rendering collections of data based on a specified 'grid' layout. Code component name: SolaceGridList"
+					"List component used for rendering collections of data based on a specified 'grid' layout. Code component name: SolaceGridList. The component uses indicator variants (info, error, warn, success, secondary) defined at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/states.ts"
 			}
 		}
 	},

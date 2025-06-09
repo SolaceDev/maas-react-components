@@ -93,21 +93,72 @@ import {
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.background.w10` - Main background color
-- `theme.palette.ux.secondary.w20` - Border colors for tabs and sections
-- `theme.palette.ux.secondary.text.wMain` - Secondary text color
-- `theme.spacing()` - Consistent spacing system throughout the layout
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Main form background color and container backgrounds</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Border colors for tabs, sections, and dividers</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#666666",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.wMain - Secondary text color for labels and helper text</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Controls consistent spacing throughout the form:
+  - Grid column gap: theme.spacing(36/8) (18px)
+  - Grid row gap: theme.spacing(2) (16px)
+  - Form container padding: theme.spacing(2) 0 theme.spacing(1) 0
+  - Section title margin: theme.spacing(4) top margin
+  - Filter wrapper gap: theme.spacing(3) (24px)
+- theme.typography.body1 - Text style for form labels and content
+- theme.typography.h6 - Text style for section titles
+- theme.components.MuiFormControl.styleOverrides - Custom styling for form control elements
+- theme.components.MuiFormLabel.styleOverrides - Custom styling for form labels
 
 **Layout Specifications:**
 
-- Grid column gap: `theme.spacing(36/8)` (18px)
-- Grid row gap: `theme.spacing(2)` (16px)
-- Form container padding: `theme.spacing(2) 0 theme.spacing(1) 0`
-- Section title margin: `theme.spacing(4)` top margin
-- Label column padding: `4px` top padding for alignment
-- Filter wrapper gap: `theme.spacing(3)` (24px)
+- Form container: Two-column grid layout (108px label column, flexible content column)
+- Label column: 4px top padding for alignment with inputs
+- Content column: Responsive width with options for 520px or 260px fixed widths
+- Section spacing: Consistent 32px (theme.spacing(4)) margins between sections
+- Tab container: Full width with 1px borders and consistent padding
 
 <Subtitle>Stories</Subtitle>
 

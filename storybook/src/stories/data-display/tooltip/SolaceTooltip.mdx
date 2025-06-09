@@ -77,22 +77,80 @@ import { SolaceTooltip } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- Standard Material-UI tooltip theming applies for background, text color, and shadows
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Tooltip text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Tooltip background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.border.w100 - Tooltip border color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding inside tooltip
+- theme.typography.body2 - Base typography for tooltip content
+- theme.shape.borderRadius - Border radius for tooltip container
+- theme.transitions.create(['opacity', 'transform']) - Tooltip animation transitions
+- theme.components.MuiTooltip.styleOverrides.tooltip - Custom tooltip styling
+- theme.components.MuiTooltip.styleOverrides.arrow - Custom arrow styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.tooltip.fade - Opacity transition effect
+- theme.mixins.tooltip.transform - Transform transition for positioning
 
 **Layout Specifications:**
 
 - Default placement: `bottom`
-- Default max width: `small`
+- Default max width: `small` (220px)
 - Default variant: `text`
 - Enter delay: `500ms` (time before showing)
 - Enter next delay: `0ms` (time for subsequent tooltips)
 - Leave delay: `0ms` (time before hiding)
 - Transition: Fade effect with `150ms` enter, `200ms` exit
-- Overflow detection: Automatic for `overflow` variant based on scrollWidth vs clientWidth
+- Overflow detection: Automatic for `overflow` variant (scrollWidth vs clientWidth)
 - Positioning: 12 available positions (top, bottom, left, right with start/end variants)
-- Auto-generated IDs for accessibility when not provided
+- Padding: `8px 16px` (adjustable via theme.spacing)
+- Border radius: `4px` (adjustable via theme.shape.borderRadius)
+- Z-index: 1500 (ensures tooltip appears above other elements)
 
 **Special Behaviors:**
 
@@ -102,6 +160,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Controlled and uncontrolled modes supported
 - Focus and hover listeners can be independently disabled
 - Safari-specific fixes for double tooltip prevention
+- Automatic ARIA attributes for accessibility (describedby, labelledby)
 
 <Subtitle>Stories</Subtitle>
 

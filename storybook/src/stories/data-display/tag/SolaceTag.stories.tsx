@@ -47,7 +47,7 @@ export default {
 			options: [CHIP_VARIANT.FILLED, CHIP_VARIANT.OUTLINED],
 			control: { type: "radio" },
 			description:
-				"The visual style variant of the tag. 'filled' provides a solid background with high contrast for important categorization, while 'outlined' provides a border-only style for secondary information or when you need multiple tags without visual clutter.",
+				"The visual style variant of the tag. 'filled' provides a solid background with high contrast for important categorization, while 'outlined' provides a border-only style for secondary information or when you need multiple tags without visual clutter. See enum at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/modes.ts",
 			table: {
 				type: { summary: '"filled" | "outlined"' },
 				defaultValue: { summary: '"filled"' }
@@ -65,7 +65,7 @@ export default {
 		fillColor: {
 			control: { type: "color" },
 			description:
-				"Custom background color for the tag. Use this to create color-coded categorization systems or to match specific brand colors. When not specified, the tag uses the default theme colors.",
+				"Custom background color for the tag. Use this to create color-coded categorization systems or to match specific brand colors. When not specified, the tag uses the default theme colors. See color constants at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/states.ts",
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }

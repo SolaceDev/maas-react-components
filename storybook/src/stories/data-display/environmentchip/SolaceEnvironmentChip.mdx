@@ -71,12 +71,54 @@ import { SolaceEnvironmentChip } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.spacing()` - Consistent spacing for padding, border radius, and gaps
-- `theme.typography.body1` - Font family, size, and weight for text content
-- `theme.palette.ux.secondary.w100` - Border color for white backgrounds
-- `theme.palette.ux.secondary.w20` - Hover background color for delete button
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w100 - Border color for white backgrounds</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Hover background color for delete button</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding, margin, border radius, and gaps (e.g., theme.spacing(3) for height)
+- theme.typography.body1 - Font family, size, and weight for text content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for chip container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for chip text
+- theme.components.MuiChip.styleOverrides.icon - Custom styling for leading icon
+- theme.components.MuiChip.styleOverrides.deleteIcon - Custom styling for delete icon
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in chip groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -92,6 +134,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
   - Standard: `theme.spacing(0, 1, 0, 0.5)` (0px top, 8px right, 0px bottom, 4px left)
 - White background special case: Adds border using `theme.palette.ux.secondary.w100`
 - Text overflow: Ellipsis with `white-space: nowrap`
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 

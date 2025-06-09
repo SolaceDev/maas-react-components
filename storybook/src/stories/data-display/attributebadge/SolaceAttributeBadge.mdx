@@ -77,9 +77,66 @@ import { SolaceAttributeBadge } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.deprecated.chip` - Color mappings for borders, fills, and text colors
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default background color for outlined variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.info.w100 - Background color for info variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#4CAF50",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.success.w100 - Background color for success variant</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(0.25) for 2px padding)
+- theme.typography.[VARIANT] - Text styles for badge content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for badge container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for badge text
+- theme.components.MuiChip.styleOverrides.deleteIcon - Custom styling for delete icon
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in badge groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -88,8 +145,9 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Default height: `sm` (18px)
 - Default border radius: `md` (40px)
 - Default font size: `xs`
-- Padding: Adjustable via `compressed` prop (0px when true, 2px when false)
+- Padding: `theme.spacing(0)` when compressed, `theme.spacing(0.25)` (2px) otherwise
 - Font weight: 500 when `boldLabel` is true, 400 otherwise
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 

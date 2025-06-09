@@ -71,7 +71,52 @@ import { SolacePopover } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling through the `.SolacePopover` class applied to the paper element.
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Popover background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Popover border color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for default padding)
+- theme.typography.[VARIANT] - Text styles for popover content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiPopover.styleOverrides.root - Custom styling for popover container
+- theme.components.MuiPopover.styleOverrides.paper - Custom styling for popover paper element
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in popover content
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -80,6 +125,9 @@ The component uses Material-UI's theme system with custom Solace styling through
 - Positioning: Controlled by `anchorOrigin` and `transformOrigin` props
 - Margin threshold: Configurable minimum distance from viewport edges
 - Content container: Material-UI Paper component with elevation and custom styling
+- Default padding: `theme.spacing(1)` (8px)
+- Border radius: Inherited from theme (default 4px)
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

@@ -70,20 +70,75 @@ import { SolaceAccordion } from "@SolaceDev/maas-react-components";
 - `.indicator-secondary` - Secondary variant indicator styling
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.secondary.w10` - Default border color
-- `theme.palette.ux.error.w100` - Error state colors
-- `theme.palette.ux.info.w100` - Info state colors
-- `theme.palette.ux.warning.w100` - Warning state colors
-- `theme.palette.ux.success.w100` - Success state colors
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default border and divider color for accordion sections</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FF4D4D",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.w100 - Error state indicator color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.info.w100 - Info state indicator color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding between elements (e.g., theme.spacing(2) for 16px)
+- theme.typography.body1 - Text style for accordion content
+- theme.typography.subtitle1 - Text style for accordion headers
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiAccordion.styleOverrides.root - Custom styling for accordion container
+- theme.components.MuiAccordionSummary.styleOverrides.root - Custom styling for header section
+- theme.components.MuiAccordionDetails.styleOverrides.root - Custom styling for content section
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
-- Summary padding: `6px 0px 6px 8px`
-- Details padding: `8px 16px 16px 48px` (48px left aligns with summary text)
+- Summary section padding: `theme.spacing(0.75, 0, 0.75, 1)` (6px 0px 6px 8px)
+- Details section padding: `theme.spacing(1, 2, 2, 6)` (8px 16px 16px 48px)
 - Expand icon: 24x24px ArrowRight icon
-- Transition timeout: 350ms
+- Transition timeout: `350ms`
 
 <Subtitle>Stories</Subtitle>
 

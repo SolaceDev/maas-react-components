@@ -36,7 +36,7 @@ export default {
 			control: { type: "select" },
 			options: ["default", "success", "warning", "error", "info"],
 			description:
-				"The visual variant of the feature tag that determines its color scheme. Use 'success' for stable features, 'warning' for beta features, 'error' for deprecated features, or 'info' for informational tags.",
+				"The visual variant of the feature tag that determines its color scheme. Use 'success' for stable features, 'warning' for beta features, 'error' for deprecated features, or 'info' for informational tags. See enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/states.ts",
 			table: {
 				type: { summary: '"default" | "success" | "warning" | "error" | "info"' },
 				defaultValue: { summary: '"default"' }
@@ -46,7 +46,7 @@ export default {
 			control: { type: "select" },
 			options: ["small", "medium", "large"],
 			description:
-				"The size of the feature tag affecting both font size and padding. Use 'small' for compact layouts, 'medium' for standard use, and 'large' for emphasis.",
+				"The size of the feature tag affecting both font size and padding. Use 'small' for compact layouts, 'medium' for standard use, and 'large' for emphasis. See enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/sizing.ts",
 			table: {
 				type: { summary: '"small" | "medium" | "large"' },
 				defaultValue: { summary: '"medium"' }

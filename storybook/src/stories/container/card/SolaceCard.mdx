@@ -72,18 +72,61 @@ import { SolaceCard } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.spacing(2)` - Default card padding (16px)
-- `theme.spacing(0)` - Content and actions padding reset
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Default card background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default card border color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(2) for 16px)
+- theme.typography.[VARIANT] - Text styles for card content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiCard.styleOverrides.root - Custom styling for card container
+- theme.components.MuiCardContent.styleOverrides.root - Custom styling for content area
+- theme.components.MuiCardActions.styleOverrides.root - Custom styling for actions area
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in card actions
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
 - Default padding: `theme.spacing(2)` (16px)
 - Minimum width: `250px` (default)
-- Content padding: `0px` (removes MUI default padding)
-- Actions padding: `0px` (removes MUI default padding)
-- Content bottom padding: `0px` when content is last child
+- Content padding: `theme.spacing(0)` (removes MUI default padding)
+- Actions padding: `theme.spacing(0)` (removes MUI default padding)
+- Content bottom padding: `theme.spacing(0)` when content is last child
 - Role: `article` for accessibility
 
 <Subtitle>Stories</Subtitle>

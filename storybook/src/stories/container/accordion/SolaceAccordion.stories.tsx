@@ -64,7 +64,8 @@ export default {
 			table: {
 				type: { summary: '"info" | "error" | "warn" | "success" | "secondary"' },
 				defaultValue: { summary: "undefined" }
-			}
+			},
+			link: "https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceAccordion.ts"
 		},
 		disabled: {
 			control: { type: "boolean" },
@@ -134,7 +135,7 @@ export default {
 				type: "select"
 			},
 			description:
-				"The variant of the accordion border color. Use this to visually communicate the nature of the content, such as using 'error' for critical information or 'success' for positive outcomes.",
+				"The variant of the accordion border color. Use this to visually communicate the nature of the content, such as using 'error' for critical information or 'success' for positive outcomes. See enum at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/states.ts",
 			table: {
 				type: { summary: '"info" | "error" | "warn" | "success"' },
 				defaultValue: { summary: "undefined" }

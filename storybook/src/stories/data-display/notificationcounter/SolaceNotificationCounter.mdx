@@ -70,23 +70,74 @@ import { SolaceNotificationCounter } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.mixins.component_NotificationCounter.container` - Badge container styling
-- `theme.mixins.component_NotificationCounter.value` - Text value styling
-- `theme.palette.ux.info.w100` - Pulse animation colors
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FF0000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Background color for error state notifications</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#4CAF50",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.success.wMain - Background color for success state notifications</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.common.white - Text color for notification counter value</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding around counter value
+- theme.typography.body2 - Base typography for counter value
+- theme.components.MuiBadge.styleOverrides.badge - Custom badge styling
+- theme.transitions.create(['transform', 'opacity']) - Animation transitions
+
+Available mixins for consistent styling:
+
+- theme.mixins.notification.pulse - Pulse animation effect
+- theme.mixins.notification.fade - Opacity transition effect
 
 **Layout Specifications:**
 
-- Default size: `21px` (width and height)
-- Default font size: `14px`
-- Default animation duration: `1000ms`
-- Line height: Calculated as `size + 1` pixels
-- Font size calculation: `(size / 3) * 2` when not explicitly set
-- Pulse animation: Scale from 1 to 1.05 with box-shadow effect
-- Initial animation repeats: `1` cycle
-- Update animation repeats: `3` cycles
-- Show/hide opacity transition: Controlled by `showing` state
+- Badge dimensions: `21px` × `21px` (default)
+- Font size: `14px` (default), dynamically calculated as `(size / 3) * 2`
+- Line height: `size + 1px`
+- Animation duration: `1000ms`
+- Pulse animation: Scale 1.00 → 1.05
+- Initial animation: 1 cycle
+- Update animation: 3 cycles
+- Opacity transition: 0 ↔ 1 (controlled by showing state)
 
 <Subtitle>Stories</Subtitle>
 
