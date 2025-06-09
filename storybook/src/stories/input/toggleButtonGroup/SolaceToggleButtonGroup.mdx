@@ -68,21 +68,96 @@ import { SolaceToggleButtonGroup } from "@SolaceDev/maas-react-components";
 - `.Mui-focusVisible` - Applied when a button receives keyboard focus
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.brand.w10` - Selected button background color
-- `theme.palette.ux.primary.wMain` - Selected button text color
-- `theme.palette.ux.secondary.w40` - Button border color
-- `theme.palette.ux.background.w10` - Default button background
-- `theme.palette.ux.secondary.w10` - Hover state background
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w10 - Selected button background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Selected button text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Button border color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Default button background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Hover state background</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiToggleButtonGroup.styleOverrides.root - Customize the root toggle button group container
+- theme.components.MuiToggleButtonGroup.styleOverrides.grouped - Customize individual toggle button elements
+- theme.components.MuiToggleButton.styleOverrides.root - Customize individual button styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
-- Button height: `32px` (theme.spacing(4))
-- Button padding: `0 16px` (theme.spacing(0, 2))
-- Border style: `1px solid` with theme colors
-- Font weight: Regular for unselected, Medium for selected
-- Text transform: `none` (preserves original casing)
+- Button height: 32px (theme.spacing(4))
+- Button padding: 0 16px (theme.spacing(0, 2))
+- Border style: 1px solid with theme colors
+- Font weight: Regular (400) for unselected, Medium (500) for selected
+- Text transform: none (preserves original casing)
+- Border radius: 4px (theme.shape.borderRadius)
+- Transition: 150ms cubic-bezier(0.4, 0, 0.2, 1) for background-color and box-shadow
 
 <Subtitle>Stories</Subtitle>
 

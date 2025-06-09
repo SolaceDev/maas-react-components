@@ -68,13 +68,47 @@ import { SolaceEnvironmentLabel } from "@SolaceDev/maas-react-components";
 - `variant="title"` - Title styling with h1 typography for prominence
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.wMain` - Label text color
-- `theme.typography.body1` - Standard variant typography
-- `theme.typography.h1` - Title variant typography
-- `theme.spacing(3)` - Component height and icon minimum width
-- `theme.spacing(2)` - Gap between icon and label
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Label text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.common.white - Icon border color for white backgrounds</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body1 - Standard variant typography
+- theme.typography.h1 - Title variant typography
+- theme.spacing(3) - Component height and icon minimum width
+- theme.spacing(2) - Gap between icon and label
+- theme.spacing(0.5) - Icon border radius
 
 **Layout Specifications:**
 
@@ -84,6 +118,8 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Icon border radius: `4px` (theme.spacing(0.5))
 - Text overflow: `ellipsis` with `white-space: nowrap`
 - Icon border: `1px solid` (transparent unless white background)
+- Container layout: `inline-flex` with `align-items: center`
+- Label max-width: `calc(100% - 40px)` to accommodate icon and spacing
 
 <Subtitle>Stories</Subtitle>
 

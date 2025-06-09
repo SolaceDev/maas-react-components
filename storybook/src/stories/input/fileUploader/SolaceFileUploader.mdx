@@ -1,0 +1,158 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceFileUploaderStories from "./SolaceFileUploader.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceFileUploaderStories} />
+
+<Title>Solace File Uploader</Title>
+
+<Description of={SolaceFileUploaderStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceFileUploader`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace File Uploader component provides a drag-and-drop interface for file uploads with progress tracking and validation. It's useful for applications that require file handling capabilities, allowing users to easily upload single or multiple files while providing visual feedback on the upload status and any validation errors.
+
+The component implements a comprehensive file upload pattern with the purpose of making file selection and upload intuitive and user-friendly. This pattern helps users understand file requirements, track upload progress, and handle any validation or upload errors effectively.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace File Uploader when you need a robust file upload interface with drag-and-drop support. This upload pattern is particularly effective for applications requiring file handling with clear user feedback.
+
+Common use cases include:
+
+- Document upload interfaces where users need to submit files
+- Profile picture or avatar upload forms
+- Bulk file upload scenarios with multiple file support
+- Configuration file uploads with validation requirements
+- Media upload interfaces for images, videos, or audio files
+- Document management systems requiring file upload capabilities
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- For simple single file selection - use a basic file input instead
+- When drag-and-drop is not required - use standard file input buttons
+- For very large file uploads - consider using a chunked upload solution
+- When immediate file processing is needed - use direct file input handlers
+- For read-only file viewing - use file preview components instead
+- When upload validation is not required - use simpler file input methods
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceFileUploader } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceFileUploader.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/fileuploader/SolaceFileUploader.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=formComponent_FileUploader" target="_blank">theme.ts (formComponent_FileUploader styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceFileUploaderStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.dropzone` - Root container for the drag-and-drop area
+- `.dropzone--active` - Applied when files are being dragged over
+- `.dropzone--disabled` - Applied when uploader is disabled
+- `.file-list` - Container for uploaded file items
+- `.file-item` - Individual file item in the list
+
+**State Classes:**
+
+- `.file-item--uploading` - Applied during file upload
+- `.file-item--error` - Applied when file has validation errors
+- `.file-item--success` - Applied when file upload is complete
+- `.progress-bar` - Upload progress indicator container
+- `.progress-bar--determinate` - Progress bar with known progress
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w10 - Dropzone background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.wMain - Progress bar fill color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#4CAF50",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.success.wMain - Success state color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F44336",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Error state color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.mixins.formComponent_FileUploader.dropzone - Dropzone container styling
+- theme.mixins.formComponent_FileUploader.fileList - File list container styling
+- theme.mixins.formComponent_FileUploader.fileItem - Individual file item styling
+- theme.mixins.formComponent_FileUploader.progressBar - Progress bar styling
+
+**Layout Specifications:**
+
+- Dropzone min-height: `120px` (theme.spacing(15))
+- Dropzone padding: `24px` (theme.spacing(3))
+- File item height: `48px` (theme.spacing(6))
+- File item padding: `8px 16px` (theme.spacing(1, 2))
+- Progress bar height: `4px` (theme.spacing(0.5))
+- Border radius: `4px` (theme.spacing(0.5))
+- Gap between items: `8px` (theme.spacing(1))
+- Icon sizes: `24px` (theme.spacing(3))
+- List max-height: `240px` (theme.spacing(30))
+- Transition duration: `200ms` for hover and focus effects
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

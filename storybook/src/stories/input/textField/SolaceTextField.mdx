@@ -59,36 +59,122 @@ import { SolaceTextField } from "@SolaceDev/maas-react-components";
 **Main Component Classes:**
 
 - `.MuiTextField-root` - Root text field container
-- `.MuiInputBase-root` - Input base container
+- `.MuiInputBase-root` - Input base wrapper
 - `.MuiInputBase-input` - Input element
-- `.MuiFormLabel-root` - Label element
-- `.MuiFormHelperText-root` - Helper text container
-- `.MuiInputAdornment-root` - Container for start/end adornments
+- `.MuiInputLabel-root` - Input label element
+- `.MuiFormHelperText-root` - Helper text element
 
 **State Classes:**
 
 - `.Mui-focused` - Applied when the text field has focus
 - `.Mui-disabled` - Applied when the text field is disabled
-- `.Mui-error` - Applied when hasErrors is true
-- `.Mui-required` - Applied when the field is required
-- `.read-only` - Applied when readOnly is true
+- `.Mui-error` - Applied when the text field has an error state
+- `.Mui-required` - Applied when the text field is required
+
+**Variant Classes:**
+
+- `.MuiTextField-outlined` - Outlined variant styling
+- `.MuiTextField-filled` - Filled variant styling
+- `.MuiTextField-standard` - Standard variant styling
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.spacing(4)` - Height of the input field
-- `theme.palette.text.primary` - Text color
-- `theme.palette.error.main` - Error state color
-- `theme.palette.warning.main` - Warning state color
-- `theme.typography.body1` - Font styling for input text
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#212121",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Primary text color for input value</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.w50 - Label and placeholder text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Border color in default state</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#007DBA",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Focus state border and label color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E73C7E",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Error state border and helper text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(4) - Input field height
+- theme.spacing(2) - Padding inside input field
+- theme.typography.body1 - Text style for input value
+- theme.typography.body2 - Text style for label and helper text
+- theme.breakpoints.values.sm - Responsive behavior breakpoint
+- theme.components.MuiTextField.styleOverrides.root - Root container overrides
+- theme.components.MuiInputBase.styleOverrides.input - Input element overrides
+
+Available mixins for consistent styling:
+
+- theme.mixins.textField.outlined - Standard outlined text field styling patterns
+- theme.mixins.textField.filled - Standard filled text field styling patterns
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
-- Height: `theme.spacing(4)`
-- Width: Controlled by width prop or fullWidth prop
-- Minimum width: Controlled by minWidth prop
-- Input size: Controlled by size prop (character width)
-- Icon size: Standard Material-UI icon size
+- Input field height: `theme.spacing(4)` (32px)
+- Label font size: `14px` (shrunk to `12px` when focused/filled)
+- Helper text font size: `12px`
+- Border radius: `4px`
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 

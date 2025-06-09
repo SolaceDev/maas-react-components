@@ -69,16 +69,97 @@ import { SolaceToggle } from "@SolaceDev/maas-react-components";
 - `.Mui-focusVisible` - Applied when the switch has keyboard focus
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.wMain` - Label text color
-- `theme.palette.ux.secondary.text.w50` - Disabled label text color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Switch thumb color when checked</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#90CAF9",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.light - Switch track color when checked</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.common.white - Switch thumb color when unchecked</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Label text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.disabled - Disabled label text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiSwitch.styleOverrides.root - Customize the root switch container
+- theme.components.MuiSwitch.styleOverrides.switchBase - Customize the base of the switch
+- theme.components.MuiSwitch.styleOverrides.thumb - Customize the circular thumb of the switch
+- theme.components.MuiSwitch.styleOverrides.track - Customize the track that the thumb slides on
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
 - Switch Size: small (Material-UI default small size)
+- Switch Width: 34px
+- Switch Height: 18px
+- Thumb Diameter: 14px
 - Label Position: To the right of the switch
 - Helper Text: Below the switch and label
+- Spacing between switch and label: 8px (theme.spacing(1))
 
 <Subtitle>Stories</Subtitle>
 

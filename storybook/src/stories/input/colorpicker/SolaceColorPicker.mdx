@@ -78,33 +78,75 @@ import { SolacePicker } from "@SolaceDev/maas-react-components";
 - `EmptyMessageContainer` - Centered empty state message styling for when no colors are available
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.w100` - Text color for light background color options
-- `theme.palette.ux.primary.text.w10` - Text color for dark background color options
-- `theme.palette.ux.background.w10` - Default light background color option
-- `theme.palette.ux.accent.n2.w20` - Light blue color option
-- `theme.palette.ux.accent.n1.w20` - Light accent color option
-- `theme.palette.ux.accent.n6.w30` - Medium accent color option
-- `theme.palette.ux.accent.n5.w60` - Darker accent color option
-- `theme.palette.ux.accent.n7.wMain` - Main accent color option
-- `theme.palette.ux.accent.n0.wMain` - Primary brand color option
-- `theme.palette.ux.accent.n3.wMain` - Secondary accent color option
-- `theme.palette.ux.accent.n4.wMain` - Tertiary accent color option
-- `theme.palette.ux.accent.n9.wMain` - Dark accent color option
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#ffffff",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.w100 - Text color for light background options</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976d2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.accent.n0.wMain - Primary brand color option</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#f5f5f5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Default light background color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(3) - Color item size (24px width and height)
+- theme.spacing(1) - Gap between grid color items (8px)
+- theme.typography.caption - Font style for "Aa" preview text
+- theme.components.MuiSelect.styleOverrides.root - Select input container customization
+- theme.components.MuiMenuItem.styleOverrides.root - Color option item customization
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Used for maintaining consistent height with toolbar components
 
 **Layout Specifications:**
 
-- Color item size: `24px` (theme.spacing(3)) width and height
-- Item gap: `8px` spacing between grid color items
-- Default colors per row: `5` color items in grid layout
-- Default rows displayed: `5` rows maximum before scrolling
-- Content padding: `16px` (theme.spacing(2)) around dropdown content
-- Select display padding: `4px 40px 4px 4px` for dropdown indicator spacing
-- Border radius: `4px` (theme.spacing(0.5)) for color preview squares
-- Typography: `caption` font size and weight for "Aa" preview text
-- Menu max height: `calc(100% - 96px)` with custom height calculations
-- Grid template columns: `repeat(5, 1fr)` for equal column distribution
+- Color item dimensions: theme.spacing(3) × theme.spacing(3) (24px × 24px)
+- Grid gap: theme.spacing(1) (8px) between items
+- Grid layout: 5 columns with equal distribution
+- Maximum rows: 5 before scrolling
+- Dropdown content padding: theme.spacing(2) (16px)
+- Select input padding: 4px 40px 4px 4px
+- Color preview border radius: theme.spacing(0.5) (4px)
+- Menu max height: calc(100% - 96px)
 
 <Subtitle>Stories</Subtitle>
 

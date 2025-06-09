@@ -80,25 +80,101 @@ import { SolaceChipTextArea } from "@SolaceDev/maas-react-components";
 - `.no-status` - Applied to chips that pass validation successfully
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.wMain` - Focus border color for input container
-- `theme.palette.ux.secondary.w40` - Default border color for input container
-- `theme.palette.ux.error.wMain` - Error state border color and chip error styling
-- `theme.palette.ux.error.w100` - Error icon fill color within invalid chips
-- `theme.palette.ux.secondary.w20` - Chip hover background color for delete icons
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#007DBA",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Focus border color for input container</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Default border color for input container</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#D32F2F",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Error state border color and chip error styling</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFCDD2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.w100 - Error icon fill color within invalid chips</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#EEEEEE",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Chip hover background color for delete icons</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(4) - Container min-height for consistent form field height
+- theme.typography.body1 - Text style for input and chip text
+- theme.components.MuiInputBase.styleOverrides.root - Base input styling
+- theme.components.MuiChip.styleOverrides.root - Chip styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.chip.base - Standard chip styling patterns
 
 **Layout Specifications:**
 
-- Container min-height: `theme.spacing(4)` (32px) for consistent form field height
-- Container padding: `2px 4px` for inner content spacing around chips and input
-- Container border: `1px solid` with dynamic color based on state (default, focus, error)
-- Container border-radius: `4px` for consistent form field appearance
-- Chip margin: `theme.spacing(0.5)` (4px) for spacing between individual chips
-- Input wrapper flex-grow: `1` to fill remaining space after chips
-- Input wrapper min-width: `50px` to ensure minimum typing space
-- Input field height: `120px` with multiline support for 4 rows maximum
-- Chip positioning: `inline-flex` layout with `flex-start` alignment for proper wrapping
+- Container min-height: `theme.spacing(4)` (32px)
+- Container padding: `2px 4px`
+- Container border: `1px solid` with dynamic color
+- Container border-radius: `4px`
+- Chip margin: `theme.spacing(0.5)` (4px)
+- Input wrapper min-width: `50px`
+- Input field height: `120px` (4 rows maximum)
+- Chip layout: `inline-flex` with `flex-start` alignment
+- Transition duration: `200ms` for hover and focus effects
 
 <Subtitle>Stories</Subtitle>
 

@@ -83,15 +83,59 @@ import { SolaceCodeEditor } from "@SolaceDev/maas-react-components";
 - `.CodeMirror-foldgutter` - Fold/unfold indicators for collapsible code blocks
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.mixins.formComponent_CodeEditor.OuterWrapper` - Outer container styling and expanded mode backdrop
-- `theme.mixins.formComponent_CodeEditor.InnerWrapper` - Inner wrapper with expanded mode positioning and dimensions
-- `theme.mixins.formComponent_CodeEditor.EditorWrapper` - Editor container styling with borders and readonly states
-- `theme.mixins.formComponent_CodeEditor.IconWrapper` - Expand/collapse button positioning and styling
-- `theme.palette.ux.secondary.wMain` - Icon fill color for expand/collapse buttons
-- `theme.palette.ux.secondary.w8040` - Backdrop overlay color with 40% opacity
-- `theme.palette.background.w10` - Background color for expanded mode container
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.wMain - Icon fill color for expand/collapse buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(117, 117, 117, 0.4)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w8040 - Backdrop overlay color with 40% opacity</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.background.w10 - Background color for expanded mode container</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.mixins.formComponent_CodeEditor.OuterWrapper - Outer container styling and expanded mode backdrop
+- theme.mixins.formComponent_CodeEditor.InnerWrapper - Inner wrapper with expanded mode positioning and dimensions
+- theme.mixins.formComponent_CodeEditor.EditorWrapper - Editor container styling with borders and readonly states
+- theme.mixins.formComponent_CodeEditor.IconWrapper - Expand/collapse button positioning and styling
 
 **Layout Specifications:**
 
@@ -103,6 +147,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Container padding: `4px` for expanded mode content spacing
 - Icon z-index: `20` to ensure visibility above CodeMirror content (z-index: 9)
 - Default CodeMirror height: `100%` when in expanded mode for full utilization
+- Transition duration: `300ms` for smooth expand/collapse animations
 
 <Subtitle>Stories</Subtitle>
 

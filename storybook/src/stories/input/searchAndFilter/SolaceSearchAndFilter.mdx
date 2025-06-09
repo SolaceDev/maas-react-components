@@ -73,19 +73,74 @@ import { SolaceSearchAndFilter } from "@SolaceDev/maas-react-components";
 - `.Mui-error` - Applied when hasErrors is true
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.secondary.wMain` - Icon color
-- `theme.spacing(1)` - Icon margin spacing
-- `theme.spacing(0.5)` - Icon negative margin adjustment
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.wMain - Icon color for search and filter icons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976d2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Focus and hover states</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#d32f2f",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Error state indication</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Icon margin spacing
+- theme.spacing(0.5) - Icon negative margin adjustment
+- theme.typography.body1 - Text style for input
+- theme.components.MuiTextField.styleOverrides.root - TextField container customization
+- theme.components.MuiInputBase.styleOverrides.root - Input base customization
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Used for maintaining consistent height with toolbar components
 
 **Layout Specifications:**
 
-- Icon Size: 20px
+- Icon Size: 20px × 20px
 - Icon Position: End of input field
 - Clear Button: Appears when input has value
-- Width: Controlled by width prop
+- Width: Controlled by width prop (default: 100%)
+- Input Height: 40px (matches standard input components)
 - Focus Behavior: Maintains focus after clearing input
+- Transition: 200ms for hover and focus effects
 
 <Subtitle>Stories</Subtitle>
 

@@ -69,16 +69,66 @@ import { SolaceLabel } from "@SolaceDev/maas-react-components";
 - `.read-only` - Applied when the readOnly prop is true
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.text.primary` - Main label text color
-- `theme.palette.text.disabled` - Color for disabled state
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Main label text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.wMain - Disabled label text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F44336",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Error state text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body1 - Base typography styles for the label
+- theme.spacing(0.5) - Margin bottom for the label
 
 **Layout Specifications:**
 
 - Label display: `block`
 - White space: `normal` (or `nowrap` if noWrap prop is true)
-- Transition: Inherits MUI's default transition for smooth state changes
+- Margin bottom: `4px` (theme.spacing(0.5))
+- Font size: Inherits from theme.typography.body1
+- Line height: Inherits from theme.typography.body1
+- Transition: `color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms` for smooth state changes
 
 <Subtitle>Stories</Subtitle>
 

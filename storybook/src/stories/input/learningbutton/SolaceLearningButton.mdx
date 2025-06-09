@@ -76,16 +76,81 @@ import { SolaceLearningButton } from "@SolaceDev/maas-react-components";
 - `.icon-button` - Applied to icon variant
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.primary.main` - Main color for call-to-action buttons
-- `theme.palette.ux.accent.n2.wMain` - Used for focus outlines
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.wMain - Main color for call-to-action buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Text color for call-to-action buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Text color for dark variants</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.accent.n2.wMain - Used for focus outlines</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.button - Typography styles for button text
+- theme.spacing(1) - Used for padding and gap calculations
+- theme.shape.borderRadius - Border radius for buttons
 
 **Layout Specifications:**
 
-- Button padding: Varies based on variant and presence of icons
-- Icon button size: `large`
-- Transition: Inherits MUI's default transition for smooth state changes
+- Button height: `36px` (theme.spacing(4.5))
+- Button padding: `8px 16px` (theme.spacing(1, 2))
+- Icon button size: `40px` (theme.spacing(5))
+- Border radius: Inherits from theme.shape.borderRadius
+- Gap between icon and text: `8px` (theme.spacing(1))
+- Focus outline offset: `2px`
+- Transition: `background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`
 
 <Subtitle>Stories</Subtitle>
 

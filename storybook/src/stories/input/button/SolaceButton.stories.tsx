@@ -42,7 +42,7 @@ export default {
 				type: "select"
 			},
 			description:
-				"The visual style variant of the button. Use 'call-to-action' for primary actions, 'outline' for secondary actions, 'text' for tertiary actions, and 'icon' for icon-only buttons.",
+				"The visual style variant of the button. Use 'call-to-action' for primary actions, 'outline' for secondary actions, 'text' for tertiary actions, and 'icon' for icon-only buttons. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceButton.ts",
 			table: {
 				type: { summary: '"call-to-action" | "outline" | "text" | "icon"' },
 				defaultValue: { summary: '"text"' }
@@ -89,7 +89,7 @@ export default {
 			options: ["button", "submit", "reset"],
 			control: { type: "select" },
 			description:
-				"The button type attribute. Use 'submit' for form submission, 'reset' for form reset, or 'button' for general actions.",
+				"The button type attribute. Use 'submit' for form submission, 'reset' for form reset, or 'button' for general actions. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/buttonTypes.ts",
 			table: {
 				type: { summary: '"button" | "submit" | "reset"' },
 				defaultValue: { summary: '"button"' }
@@ -99,7 +99,7 @@ export default {
 			options: ["small", "medium", "large"],
 			control: { type: "select" },
 			description:
-				"Controls the size of the button. Use 'small' for compact layouts, 'medium' for standard usage, and 'large' for prominent actions.",
+				"Controls the size of the button. Use 'small' for compact layouts, 'medium' for standard usage, and 'large' for prominent actions. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/sizing.ts",
 			table: {
 				type: { summary: '"small" | "medium" | "large"' },
 				defaultValue: { summary: '"medium"' }

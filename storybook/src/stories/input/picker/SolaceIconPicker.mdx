@@ -1,0 +1,155 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceIconPickerStories from "./SolaceIconPicker.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceIconPickerStories} />
+
+<Title>Solace Icon Picker</Title>
+
+<Description of={SolaceIconPickerStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceIconPicker`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Icon Picker component provides a customizable interface for selecting icons from a predefined set. It's useful for applications that need icon selection capabilities, allowing users to browse and choose icons with visual preview and search functionality.
+
+The component implements an intuitive icon selection pattern with the purpose of making icon choice efficient and user-friendly. This pattern helps users quickly find and select appropriate icons while maintaining a clean and organized interface.
+
+<Subtitle>When To Use It</Subtitle>
+
+Use Solace Icon Picker when you need to provide users with a way to select icons from a predefined set. This picker pattern is particularly effective for interfaces requiring icon selection capabilities.
+
+Common use cases include:
+
+- Customization interfaces where users can select icons for their content
+- Form builders that allow icon selection for elements
+- Settings panels where icons can be chosen for various features
+- Menu or navigation builders requiring icon selection
+- Profile or avatar customization with icon options
+- Content creation tools needing icon integration
+
+<Subtitle>When Not To Use It</Subtitle>
+
+- When only a single fixed icon is needed (use a static icon component)
+- For image upload functionality (use a file uploader component)
+- When custom icon upload is required (use an image upload component)
+- In space-constrained interfaces (consider a simpler icon selection method)
+- When icons aren't part of the core functionality (use simpler alternatives)
+- For purely decorative purposes where user selection isn't needed
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceIconPicker } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceIconPicker.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolacePicker.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiPicker" target="_blank">theme.ts (MuiPicker styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceIconPickerStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.picker-container` - Root container for the picker
+- `.picker-grid` - Grid layout for icon display
+- `.picker-search` - Search input container
+- `.picker-item` - Individual icon item container
+- `.picker-item-selected` - Applied to the selected icon
+
+**State Classes:**
+
+- `.picker-item-hover` - Applied on icon item hover
+- `.picker-item-disabled` - Applied to disabled icon items
+- `.picker-search-active` - Applied when search is active
+- `.picker-empty` - Applied when no icons match search
+- `.picker-loading` - Applied during loading states
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Picker background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w10 - Selected icon background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.04)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.stateLayer.w10 - Hover state background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w100 - Icon color in default state</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body1 - Search input text styling
+- theme.spacing(1) - Grid gap and padding calculations
+- theme.shape.borderRadius - Border radius for containers and items
+
+**Layout Specifications:**
+
+- Picker container max-height: `320px` (theme.spacing(40))
+- Grid item size: `40px` (theme.spacing(5))
+- Grid gap: `8px` (theme.spacing(1))
+- Search input height: `40px` (theme.spacing(5))
+- Border radius: `4px` (theme.spacing(0.5))
+- Icon size: `24px` (theme.spacing(3))
+- Padding: `16px` (theme.spacing(2))
+- Transition: `background-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

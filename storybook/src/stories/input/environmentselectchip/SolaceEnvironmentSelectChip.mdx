@@ -83,13 +83,86 @@ import { SolaceEnvironmentSelectChip } from "@SolaceDev/maas-react-components";
 - `StickyChildren` - Bottom-positioned sticky content area
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.background.w10` - Dropdown background color
-- `theme.palette.ux.brand.w10` - Selected/highlighted option background
-- `theme.palette.ux.stateLayer.w10` - Hover state background
-- `theme.palette.ux.stateLayer.w20` - Expanded state background
-- `theme.palette.ux.secondary.w100` - Border color for white backgrounds
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Dropdown background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w10 - Selected/highlighted option background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.04)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.stateLayer.w10 - Hover state background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.08)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.stateLayer.w20 - Expanded state background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w100 - Border color for white backgrounds</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body1 - Text styling for chip and options
+- theme.spacing(0.5) - Border radius and icon padding
+- theme.spacing(1, 2) - Option padding
+- theme.spacing(2) - Gap between elements
+- theme.mixins.chip.base - Standard chip styling patterns
 
 **Layout Specifications:**
 
@@ -101,6 +174,8 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Dropdown min height: `80px` (theme.spacing(10))
 - Dropdown min width: `320px` (theme.spacing(40))
 - Text max width: `134px` with ellipsis overflow
+- Chip height: `32px` (theme.spacing(4))
+- Transition duration: `200ms` for hover and focus effects
 
 <Subtitle>Stories</Subtitle>
 

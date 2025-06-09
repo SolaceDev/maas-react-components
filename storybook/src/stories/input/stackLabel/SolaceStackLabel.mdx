@@ -63,19 +63,69 @@ import { SolaceStackLabel } from "@SolaceDev/maas-react-components";
 - `.read-only` - Applied when the readOnly prop is true
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.typography.body1` - Default font size and style
-- `theme.typography.subtitle1` - Font size and style when large prop is true
-- `theme.palette.text.primary` - Text color
-- `theme.palette.text.disabled` - Disabled text color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Default text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.disabled - Disabled text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FF0000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Required asterisk color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body1 - Default font size and style
+- theme.typography.subtitle1 - Font size and style when large prop is true
+- theme.components.MuiFormLabel.styleOverrides.root - Customize the root label container
+- theme.components.MuiFormLabel.styleOverrides.asterisk - Customize the required indicator asterisk
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify typography using predefined variants.
 
 **Layout Specifications:**
 
 - Display: block (stacked layout)
 - Font size: Controlled by the large prop (body1 or subtitle1)
-- Font weight: Controlled by the bold prop
-- White space: Controlled by the noWrap prop
+- Font weight: Controlled by the bold prop (400 for normal, 700 for bold)
+- White space: Controlled by the noWrap prop (normal or nowrap)
+- Margin bottom: 8px (theme.spacing(1))
 
 <Subtitle>Stories</Subtitle>
 

@@ -58,7 +58,7 @@ export default {
 			options: [CHIP_VARIANT.FILLED, CHIP_VARIANT.OUTLINED],
 			control: { type: "radio" },
 			description:
-				"The visual style variant of the tag. 'filled' provides a solid background with high contrast for important categorization, while 'outlined' provides a border-only style for secondary information or when you need multiple tags without visual clutter.",
+				"The visual style variant of the tag. 'filled' provides a solid background with high contrast for important categorization, while 'outlined' provides a border-only style for secondary information or when you need multiple tags without visual clutter. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceChip.ts",
 			table: {
 				type: { summary: '"filled" | "outlined"' },
 				defaultValue: { summary: '"filled"' }

@@ -72,20 +72,116 @@ import { SolaceSelect } from "@SolaceDev/maas-react-components";
 - `.emptySelect` - Applied when no value is selected
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.spacing(4)` - Height of the select input
-- `theme.palette.text.primary` - Text color
-- `theme.palette.error.main` - Error state color
-- `theme.palette.action.disabled` - Disabled state color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Select text and icon color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.secondary - Placeholder text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#D32F2F",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Error state border and text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Focus state border color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Default border color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w20 - Menu item hover background</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiSelect.styleOverrides.root - Customize the root select container
+- theme.components.MuiSelect.styleOverrides.select - Customize the select input element
+- theme.components.MuiSelect.styleOverrides.icon - Customize the dropdown icon
+- theme.components.MuiMenuItem.styleOverrides.root - Customize menu item styling
+- theme.components.MuiMenu.styleOverrides.paper - Customize the dropdown menu paper
+- theme.components.MuiMenu.styleOverrides.list - Customize the dropdown menu list
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
-- Select height: `theme.spacing(4)`
-- Menu max height: Customizable through maxHeight prop
+- Select height: 32px (theme.spacing(4))
+- Select padding: 8px 32px 8px 12px (theme.spacing(1, 4, 1, 1.5))
+- Menu max height: 300px (customizable through maxHeight prop)
 - Menu width: Matches select width by default
-- Menu item padding: Inherits from MUI MenuItem
-- Transition: Uses Collapse transition for menu animation
+- Menu item height: 36px
+- Menu item padding: 6px 16px
+- Border radius: 4px (theme.shape.borderRadius)
+- Border width: 1px
+- Font size: 14px
+- Line height: 1.4375em
+- Transition: 150ms cubic-bezier(0.4, 0, 0.2, 1) for background-color, border-color and box-shadow
 
 <Subtitle>Stories</Subtitle>
 

@@ -69,13 +69,63 @@ import { SolaceTextArea } from "@SolaceDev/maas-react-components";
 - `.Mui-required` - Applied when the field is required
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.spacing(4)` - Height of the input field
-- `theme.palette.text.primary` - Text color
-- `theme.palette.error.main` - Error state color
-- `theme.typography.body1` - Font styling for input text
-- `theme.shape.borderRadius` - Border radius of the input field
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.secondary - Placeholder text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FF0000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Error state color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(4) - Height of the input field
+- theme.typography.body1 - Font styling for input text
+- theme.shape.borderRadius - Border radius of the input field
+- theme.components.MuiTextField.styleOverrides.root - Customize the root text area container
+- theme.components.MuiInputBase.styleOverrides.root - Customize the input base container
+- theme.components.MuiInputBase.styleOverrides.input - Customize the input element
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and shape using the borderRadius property.
 
 **Layout Specifications:**
 
@@ -83,6 +133,9 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Maximum rows: Controlled by the maxRows prop (default: 4)
 - Width: Can be controlled by the width prop or fullWidth prop
 - Resizability: Controlled by the resizable prop
+- Padding: 16.5px 14px (theme.spacing(2, 1.75))
+- Font size: 1rem (16px)
+- Line height: 1.4375em (23px)
 
 <Subtitle>Stories</Subtitle>
 

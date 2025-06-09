@@ -71,18 +71,71 @@ import { SolaceCheckBox } from "@SolaceDev/maas-react-components";
 - `.Mui-focused` - Applied when the checkbox has focus
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary` - Color for the checked state
-- `theme.palette.ux.secondary` - Color for the unchecked state
-- `theme.palette.ux.error` - Color for error states
-- `theme.palette.ux.warning` - Color for warning states
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#007DBA",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Color for the checked state and focus ring</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.main - Color for the unchecked state</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#D32F2F",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Color for error states</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding between checkbox and label
+- theme.typography.body1 - Text style for checkbox label
+- theme.components.MuiCheckbox.styleOverrides.root - Base checkbox styling
+- theme.components.MuiFormControlLabel.styleOverrides.root - Label container styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.checkbox.base - Standard checkbox styling patterns
 
 **Layout Specifications:**
 
-- Checkbox size: 18x18 pixels (default)
-- Label padding: 9px left of the checkbox
-- Transition duration: 150ms for state changes
+- Checkbox size: `18px × 18px` (default)
+- Label padding: `theme.spacing(1)` (9px) left of the checkbox
+- Focus ring size: `2px` width
+- Transition duration: `150ms`
+- Icon size: `18px`
 
 <Subtitle>Stories</Subtitle>
 
