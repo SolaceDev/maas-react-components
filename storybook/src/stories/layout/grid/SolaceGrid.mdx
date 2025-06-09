@@ -109,13 +109,82 @@ The SolaceGrid component inherits all Material-UI Grid classes and behaviors:
 - `column`: items arranged vertically
 - `column-reverse`: items arranged vertically in reverse
 
-**Theme Integration:**
-The component uses Solace theme values for:
+**Theme Customization:**
 
-- Default spacing calculations
-- Responsive breakpoint definitions
-- Typography scale integration
-- Color palette integration when used with other Solace components
+**Color Theming:**
+The SolaceGrid component primarily uses structural styling and doesn't rely heavily on color theming. However, it can inherit colors from its parent container or child elements. Key color considerations:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.background.default - Default background color for grid items</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.text.primary - Default text color for grid item content</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration or apply custom styles to grid items.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiGrid.styleOverrides.root - Customize the base grid container/item
+- theme.components.MuiGrid.styleOverrides.container - Customize grid container behavior
+- theme.components.MuiGrid.styleOverrides.item - Customize grid item behavior
+- theme.components.MuiGrid.styleOverrides.spacing - Customize grid spacing behavior
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
+
+**Layout Specifications:**
+
+- Uses CSS Grid and Flexbox for layout management
+- Default spacing follows Material-UI spacing system (8px base unit)
+- Supports 12-column grid system by default
+- Responsive breakpoints: xs (0px+), sm (600px+), md (900px+), lg (1200px+), xl (1536px+)
+
+**Spacing System:**
+
+- Spacing values: 0-10 (each unit equals 8px)
+- theme.spacing(1) = 8px
+- Applied as margin between grid items
+
+**Alignment and Direction:**
+
+- justifyContent: flex-start, center, flex-end, space-between, space-around, space-evenly
+- alignItems: flex-start, center, flex-end, stretch, baseline
+- alignContent: flex-start, center, flex-end, space-between, space-around, stretch
+- direction: row (default), row-reverse, column, column-reverse
+
+**Responsive Behavior:**
+
+- Supports different column sizes for each breakpoint (xs, sm, md, lg, xl)
+- Auto-layout: 'auto' sizing and 'true' for equal width
+- Responsive spacing adjustments
+- Flex-grow behavior for adaptive layouts
+
+**Accessibility Considerations:**
+
+- Maintains logical source order for screen readers
+- Supports keyboard navigation through proper HTML structure
+- Allows for semantic markup within grid items
 
 <Subtitle>Stories</Subtitle>
 

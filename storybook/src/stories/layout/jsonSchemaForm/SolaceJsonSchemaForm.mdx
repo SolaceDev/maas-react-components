@@ -78,20 +78,69 @@ import { SolaceJsonSchemaForm } from "@SolaceDev/maas-react-components";
 - `.form-group.field-object` - Object field with nested structure
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.secondary.w20` - Border color for array field containers
-- `theme.spacing(2)` - Standard field bottom padding
-- `theme.spacing(3, 0)` - Form title padding
-- `theme.spacing(1, 0, 0, 0)` - Array container top margin
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Border color for array field containers</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F44336",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Error text and border color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Primary text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.SolaceJsonSchemaForm.styleOverrides.root - Customize the root form container
+- theme.components.MuiFormControl.styleOverrides.root - Customize individual form field containers
+- theme.components.MuiFormGroup.styleOverrides.root - Customize form field wrappers
+- theme.components.MuiPaper.styleOverrides.root - Customize array field containers
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
-- Form max width: `585px`
-- Field bottom padding: `16px` (theme.spacing(2))
-- Form title padding: `24px 0` (theme.spacing(3, 0))
-- Array container margin: `8px 0 0 0` (theme.spacing(1, 0, 0, 0))
-- Grid margin override: `0 16px 0 0`
+- Form max width: 585px
+- Field bottom padding: 16px (theme.spacing(2))
+- Form title padding: 24px 0 (theme.spacing(3, 0))
+- Array container margin: 8px 0 0 0 (theme.spacing(1, 0, 0, 0))
+- Grid margin override: 0 16px 0 0
 
 <Subtitle>Stories</Subtitle>
 

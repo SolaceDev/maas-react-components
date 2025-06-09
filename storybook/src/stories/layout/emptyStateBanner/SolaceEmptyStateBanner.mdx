@@ -89,12 +89,114 @@ import { SolaceEmptyStateBanner } from "@SolaceDev/maas-react-components";
 - Secondary button: `variant="dark-call-to-action"`
 
 **Theme Customization:**
-The component uses Solace learning theme colors and branding:
 
-- Learning background colors: `theme.palette.ux.learning.w10`, `theme.palette.ux.learning.w20`
-- Learning main colors: `theme.palette.ux.learning.wMain`, `theme.palette.ux.learning.w100`
-- Brand accent color: `theme.palette.ux.brand.w30`
-- Inverted text color: `theme.palette.ux.primary.text.w10`
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.learning.w10 - Image container background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BBDEFB",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.learning.w20 - Image container border color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.learning.wMain - Banner gradient start color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#0D47A1",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.learning.w100 - Banner gradient end color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFA726",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w30 - Subtitle text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.w10 - Title and description text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.SolaceEmptyStateBanner.styleOverrides.root - Customize the root container
+- theme.components.SolaceEmptyStateBanner.styleOverrides.imageContainer - Customize the image container
+- theme.components.SolaceEmptyStateBanner.styleOverrides.banner - Customize the main banner
+- theme.components.SolaceEmptyStateBanner.styleOverrides.subtitle - Customize the subtitle text
+- theme.components.SolaceEmptyStateBanner.styleOverrides.title - Customize the title text
+- theme.components.SolaceEmptyStateBanner.styleOverrides.description - Customize the description text
+- theme.components.SolaceEmptyStateBanner.styleOverrides.buttonStack - Customize the button container
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
+
+**Layout Specifications:**
+
+- Wrapper container: width: 100%, height: 100%, centered flex layout
+- Main banner: width: 825px with height: 261px
+- Image container: padding: theme.spacing(3) theme.spacing(3) 0px theme.spacing(3)
+- Image container border radius: theme.spacing(1.25) theme.spacing(1.25) 0 0
+- Banner padding: theme.spacing(5) (40px)
+- Banner border radius: theme.spacing(2.5) (20px)
+- Banner background: radial gradient from learning.wMain to learning.w100
+- Button stack: direction="row", alignItems="center", paddingTop: theme.spacing(3), spacing={1.5}
 
 <Subtitle>Stories</Subtitle>
 

@@ -49,7 +49,8 @@ export default {
 			control: {
 				type: "select"
 			},
-			description: "The type/style of button to render",
+			description:
+				"The type/style of button to render. Enum definition: https://github.com/SolaceDev/maas-react-components/blob/main/storybook/src/stories/input/learningbutton/SolaceLearningButton.stories.tsx#L9-L14",
 			table: {
 				defaultValue: {
 					summary: "text"

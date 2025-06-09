@@ -42,7 +42,7 @@ export default {
 				type: "select"
 			},
 			description:
-				"The visual style variant of the button. Use 'call-to-action' for primary actions, 'outline' for secondary actions, 'text' for tertiary actions, and 'icon' for icon-only buttons. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceButton.ts",
+				"The visual style variant of the button. Use 'call-to-action' for primary actions, 'outline' for secondary actions, 'text' for tertiary actions, and 'icon' for icon-only buttons. Enum definition: https://github.com/SolaceDev/maas-react-components/blob/main/storybook/src/stories/input/button/SolaceButton.stories.tsx#L10-L15",
 			table: {
 				type: { summary: '"call-to-action" | "outline" | "text" | "icon"' },
 				defaultValue: { summary: '"text"' }

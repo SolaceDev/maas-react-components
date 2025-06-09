@@ -80,23 +80,85 @@ import { SolaceSidePanelLayout, SolacePanelPosition } from "@SolaceDev/maas-reac
 - `.main` - Main content area that responds to panel state changes
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace transitions:
 
-- Panel transition duration: `theme.transitions.duration.enteringScreen` (225ms) for opening
-- Panel transition duration: `theme.transitions.duration.leavingScreen` (195ms) for closing
-- Panel transition easing: `theme.transitions.easing.easeOut` for smooth animations
-- Default panel width: `320px` when no width is specified
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.paper - Side panel background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Side panel text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.5)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.action.active - Backdrop color (when overlay is active)</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiDrawer.styleOverrides.root - Customize the root drawer container
+- theme.components.MuiDrawer.styleOverrides.paper - Customize the drawer paper (panel content)
+- theme.components.MuiBackdrop.styleOverrides.root - Customize the backdrop overlay
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
-- Container display: `flex` with full width and height (`100%`)
-- Container position: `relative` with `overflow: hidden` for proper clipping
-- Panel width transition: `0.25s` for smooth width changes when toggling
-- Panel positioning: `absolute` within the container for proper layering
+- Container display: flex with full width and height (100%)
+- Container position: relative with overflow: hidden for proper clipping
+- Panel width transition: 0.25s for smooth width changes when toggling
+- Panel positioning: absolute within the container for proper layering
 - Main content margin: Dynamic based on panel state, position, and overlay mode
-- Flex direction: `row-reverse` when panel is positioned on the right side
+- Flex direction: row-reverse when panel is positioned on the right side
 - Panel paper width: Consistent with sidePanelWidth prop for proper sizing
-- Backdrop display: `none` when using persistent (non-overlay) mode
+- Backdrop display: none when using persistent (non-overlay) mode
+
+**Transition Specifications:**
+
+- Panel transition duration (opening): theme.transitions.duration.enteringScreen (225ms)
+- Panel transition duration (closing): theme.transitions.duration.leavingScreen (195ms)
+- Panel transition easing: theme.transitions.easing.easeOut for smooth animations
+- Default panel width: 320px when no width is specified
+
+**Accessibility Considerations:**
+
+- Proper focus management when opening/closing the panel
+- Keyboard navigation support for panel content
+- ARIA attributes for describing the panel's state (expanded/collapsed)
+- Screen reader announcements for panel open/close actions
 
 <Subtitle>Stories</Subtitle>
 

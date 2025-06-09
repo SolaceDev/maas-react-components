@@ -70,20 +70,91 @@ import { SolaceStack } from "@SolaceDev/maas-react-components";
 - `.MuiStack-root[data-direction="column"]` - Applied when direction is set to vertical (column)
 
 **Theme Customization:**
-The component uses Material-UI's theme system with Solace styling defaults:
 
-- Default spacing: `theme.spacing(2)` (16px) when no spacing is specified
-- Text color: `theme.palette.ux.primary.text.wMain` for consistent text appearance
-- Supports all standard MUI spacing values and responsive breakpoint configurations
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Stack item text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.default - Stack container background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.paper - Stack item background when container prop is true</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiStack.styleOverrides.root - Customize the root stack container
+- theme.components.MuiStack.styleOverrides.spacing - Customize spacing between stack items
+- theme.components.MuiStack.styleOverrides.direction - Customize stack direction behavior
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
-- Default direction: `column` for vertical stacking of elements
-- Default spacing: `2` (16px) between items when container prop is used
+- Default direction: column for vertical stacking of elements
+- Default spacing: theme.spacing(2) (16px) between items when container prop is used
 - Supports responsive direction changes using breakpoint objects
 - Supports responsive spacing adjustments across different screen sizes
 - Flexible item sizing based on content and available space
 - Automatic overflow handling for content that exceeds container bounds
+
+**Spacing Configuration:**
+
+- Uses theme.spacing() for consistent spacing units
+- Default spacing: 2 units (16px) when container prop is true
+- Customizable through spacing prop (accepts numbers 0-10)
+- Responsive spacing with breakpoint objects
+- Negative margins for container edge compensation
+
+**Responsive Behavior:**
+
+- Direction changes based on breakpoint props
+- Spacing adjustments across screen sizes
+- Automatic content wrapping when needed
+- Flexible item sizing for different viewports
+
+**Accessibility:**
+
+- Proper DOM nesting for screen readers
+- Maintains content flow for keyboard navigation
+- Preserves semantic HTML structure
+- Supports ARIA attributes on container and items
 
 <Subtitle>Stories</Subtitle>
 

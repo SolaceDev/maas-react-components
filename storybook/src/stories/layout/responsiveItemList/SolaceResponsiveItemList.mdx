@@ -125,14 +125,85 @@ const ItemsContainer = styled("div")<{
 - Difference calculation between all items and visible items
 - Tooltip content generation from hidden items
 
-**Theme Integration:**
-The component uses Solace design tokens for:
+**Theme Customization:**
 
-- Default spacing calculations (`theme.spacing()`)
-- Tooltip styling and behavior
-- Button styling for "show more" controls
-- Typography scaling for item content
-- Color palette for interactive states
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - "Show more" button color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.default - Container background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Item text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.SolaceResponsiveItemList.styleOverrides.root - Customize the root container
+- theme.components.SolaceResponsiveItemList.styleOverrides.item - Customize individual item styling
+- theme.components.SolaceResponsiveItemList.styleOverrides.showMoreButton - Customize the "show more" button
+- theme.components.SolaceTooltip - Customize the tooltip for hidden items
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
+
+**Layout Specifications:**
+
+- Container display: flex
+- Flex-wrap: configurable (nowrap for single-line, wrap for multi-line)
+- Column gap: customizable (default: theme.spacing(1))
+- Row gap: customizable (default: theme.spacing(1))
+- Align-items: center (single-line) or flex-start (multi-line)
+- Max-height: configurable for multi-line mode
+- Show more button: uses SolaceButton component with variant="text"
+- Tooltip: uses SolaceTooltip component for hidden items display
+
+**Responsive Behavior:**
+
+- Automatically adjusts visible items based on container width
+- Recalculates on window resize and content changes
+- Supports both horizontal and vertical overflow handling
+
+**Accessibility:**
+
+- Keyboard navigation support for interactive elements
+- ARIA labels for overflow controls
+- Screen reader friendly tooltip integration
 
 **Performance Considerations:**
 

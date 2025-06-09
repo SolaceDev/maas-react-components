@@ -67,26 +67,99 @@ import { SolaceDetailMessage } from "@SolaceDev/maas-react-components";
 - `.DetailsContainer` - Details text wrapper with medium font size
 - `.ButtonGroup` - Horizontal flex container for action buttons
 
-**Layout Specifications:**
-
-- Container display: `flex` with `flexDirection: column` and `alignItems: center`
-- Container font family: `theme.typography.fontFamily`
-- Image container margin: `0px 0px 40px 0px` (40px bottom spacing)
-- Title text margin: `0px 0px 14px 0px` (14px bottom spacing)
-- Title font size: `BASE_FONT_PX_SIZES.xl` (20px)
-- Title color: `theme.palette.ux.primary.text.wMain`
-- Title alignment: `center`
-- Details container margin: `0px 0px 14px 0px` (14px bottom spacing)
-- Details font size: `BASE_FONT_PX_SIZES.sm` (14px)
-- Details color: `theme.palette.ux.primary.text.wMain`
-- Button group display: `flex` with `flexDirection: row` and `alignItems: center`
+**Theme Customization:**
 
 **Theme Customization:**
-The component uses Solace theme system for consistent typography and spacing:
 
-- Primary text color: `theme.palette.ux.primary.text.wMain` for titles and details
-- Font family: Inherited from `theme.typography.fontFamily`
-- Font sizes: `BASE_FONT_PX_SIZES.xl` (20px) for titles, `BASE_FONT_PX_SIZES.sm` (14px) for details
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Title text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#666666",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.secondary - Details text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Primary action button color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.SolaceDetailMessage.styleOverrides.root - Customize the root container
+- theme.components.SolaceDetailMessage.styleOverrides.imgContainer - Customize the image container
+- theme.components.SolaceDetailMessage.styleOverrides.titleText - Customize the title text
+- theme.components.SolaceDetailMessage.styleOverrides.detailsContainer - Customize the details container
+- theme.components.SolaceDetailMessage.styleOverrides.buttonGroup - Customize the button group container
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
+
+**Layout Specifications:**
+
+- Container display: flex with flexDirection: column and alignItems: center
+- Container font family: theme.typography.fontFamily
+- Image container margin: theme.spacing(5) bottom (40px)
+- Title text margin: theme.spacing(1.75) bottom (14px)
+- Title font size: theme.typography.h5.fontSize (20px)
+- Title alignment: center
+- Details container margin: theme.spacing(1.75) bottom (14px)
+- Details font size: theme.typography.body2.fontSize (14px)
+- Button group display: flex with flexDirection: row and alignItems: center
+- Button group spacing: theme.spacing(1) between buttons (8px)
+
+**Typography Configuration:**
+
+- Title: Uses theme.typography.h5 variant
+- Details: Uses theme.typography.body2 variant
+- Button text: Uses theme.typography.button variant
+
+**Spacing Configuration:**
+
+- Uses theme.spacing() for consistent spacing units
+- Vertical spacing between elements follows 8px grid
+- Image container: 40px bottom margin (theme.spacing(5))
+- Title and details: 14px bottom margin (theme.spacing(1.75))
+- Button group: 8px gap between buttons (theme.spacing(1))
+
+**Responsive Behavior:**
+
+- Container width adapts to parent container
+- Image scales proportionally with container width
+- Text content wraps naturally based on container width
+- Button group maintains spacing on narrow screens
 
 <Subtitle>Stories</Subtitle>
 
