@@ -1,8 +1,18 @@
-import React, { useState } from "react";
-import { SolaceStepper, DeleteIcon, StepsProps, Box } from "@SolaceDev/maas-react-components";
+import {
+	Box,
+	DeleteIcon,
+	SolaceButton,
+	SolaceConfirmationDialog,
+	SolaceStepper,
+	StepsProps
+} from "@SolaceDev/maas-react-components";
 import type { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
+import React, { ReactNode, useState } from "react";
 
 (SolaceStepper as React.FC & { displayName?: string }).displayName = "SolaceStepper";
+(SolaceConfirmationDialog as React.FC & { displayName?: string }).displayName = "SolaceConfirmationDialog";
+(SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
 (Box as React.FC & { displayName?: string }).displayName = "Box";
 
 const meta: Meta<typeof SolaceStepper> = {
@@ -128,4 +138,94 @@ export const ErrorOnCurrentStepAndSubmitDisabled: Story = {
 export const SecondaryButtonEnabled: Story = {
 	render: ComponentWithSecondaryButton,
 	args: { steps: initialSteps }
+};
+
+// Dialog Wrapper Component to manage open state
+interface DialogWrapperProps {
+	children: (isOpen: boolean, handleClose: () => void) => ReactNode;
+	buttonText?: string;
+}
+
+const DialogWrapper = ({ children, buttonText = "Open Dialog" }: DialogWrapperProps) => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const handleOpen = () => {
+		setIsOpen(true);
+	};
+
+	const handleClose = () => {
+		setIsOpen(false);
+	};
+
+	return (
+		<>
+			<SolaceButton onClick={handleOpen} variant="outline">
+				{buttonText}
+			</SolaceButton>
+
+			{children(isOpen, handleClose)}
+		</>
+	);
+};
+
+const ComponentInDialog = ({ ...args }) => {
+	const [activeStep, setActiveStep] = useState(0);
+
+	return (
+		<DialogWrapper>
+			{(isOpen, handleClose) => (
+				<SolaceConfirmationDialog
+					maxWidth="lg"
+					title={
+						<Box paddingLeft={3} paddingRight={3} paddingTop={3}>
+							Stepper in a dialog
+						</Box>
+					}
+					isOpen={isOpen}
+					contentLayout="contents"
+					actions={[]}
+					disableDefaultPadding
+				>
+					<Box overflow={"hidden"} display={"flex"} height={"300px"} width={"800px"}>
+						<SolaceStepper
+							steps={initialSteps}
+							{...args}
+							activeStep={activeStep}
+							setActiveStep={setActiveStep}
+							onClose={() => {
+								onCloseAlert();
+								handleClose();
+							}}
+							onSubmit={() => {
+								onSubmitAlert();
+								handleClose();
+							}}
+							onSecondarySubmit={() => {
+								onSecondarySubmitAlert();
+								handleClose();
+							}}
+							submitLabel="Submit"
+							secondarySubmitLabel="Secondary Submit"
+						>
+							{getStepText(activeStep, initialSteps.length)}
+						</SolaceStepper>
+					</Box>
+				</SolaceConfirmationDialog>
+			)}
+		</DialogWrapper>
+	);
+};
+
+export const InDialog: Story = {
+	render: ComponentInDialog,
+	args: { steps: initialSteps }
+};
+
+InDialog.play = async ({ canvasElement }) => {
+	// Starts querying the component from its root element
+	const canvas = within(canvasElement);
+
+	// Find the clear button using role and its accessible name (aria-label)
+	const clearButton = canvas.getByRole("button");
+	await userEvent.click(clearButton);
 };

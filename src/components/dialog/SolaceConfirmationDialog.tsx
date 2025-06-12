@@ -21,8 +21,13 @@ const CustomAction = styled("div")(({ theme }) => ({
 export interface SolaceConfirmationDialogProps {
 	title?: string | JSX.Element;
 	contentText?: string;
-	actions: actionProps[];
+	actions?: actionProps[];
 	customAction?: JSX.Element;
+	/**
+	 * whether to disable the default padding of Dialog and Dialog Title components
+	 * @default false
+	 */
+	disableDefaultPadding?: boolean;
 	isOpen: boolean;
 	/**
 	 * whether to show an indeterminate linear progress indicator at the bottom border of the dialog
@@ -42,14 +47,17 @@ function SolaceConfirmationDialog({
 	contentText,
 	actions,
 	customAction,
+	disableDefaultPadding = false,
 	isOpen = false,
 	maxWidth = "dialogMd",
 	contentLayout = "block",
 	linearProgressIndicator = false,
 	children
 }: SolaceConfirmationDialogProps): JSX.Element {
+	const linearProgressIndicatorClass = linearProgressIndicator ? "linearProgressIndicator" : "";
+	const disablePaddingClass = disableDefaultPadding ? "disableDefaultPadding" : "";
 	return (
-		<Dialog open={isOpen} maxWidth={maxWidth} className={linearProgressIndicator ? "linearProgressIndicator" : ""}>
+		<Dialog open={isOpen} maxWidth={maxWidth} className={`${linearProgressIndicatorClass} ${disablePaddingClass}`}>
 			<DialogTitle>
 				<div data-qa="title" style={{ wordBreak: "break-word" }}>
 					{title}
@@ -59,21 +67,23 @@ function SolaceConfirmationDialog({
 				{contentText && <DialogContentText>{contentText}</DialogContentText>}
 				{children}
 			</DialogContent>
-			<DialogActions>
-				{customAction && <CustomAction>{customAction}</CustomAction>}
-				{actions?.map((action) => (
-					<SolaceButton
-						dataQa={action.dataQa}
-						key={action.label}
-						onClick={action.onClick}
-						variant={action.variant ?? "text"}
-						isDisabled={action.isDisabled}
-						endIcon={action.endIcon}
-					>
-						{action.label}
-					</SolaceButton>
-				))}
-			</DialogActions>
+			{(customAction || (actions && actions.length > 0)) && (
+				<DialogActions>
+					{customAction && <CustomAction>{customAction}</CustomAction>}
+					{actions?.map((action) => (
+						<SolaceButton
+							dataQa={action.dataQa}
+							key={action.label}
+							onClick={action.onClick}
+							variant={action.variant ?? "text"}
+							isDisabled={action.isDisabled}
+							endIcon={action.endIcon}
+						>
+							{action.label}
+						</SolaceButton>
+					))}
+				</DialogActions>
+			)}
 		</Dialog>
 	);
 }

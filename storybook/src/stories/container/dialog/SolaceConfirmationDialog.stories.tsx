@@ -1,20 +1,20 @@
-import React, { useState, ReactNode } from "react";
 import { Stack } from "@mui/material";
-import { action } from "@storybook/addon-actions";
-import { Meta } from "@storybook/react";
 import {
+	CheckCircleIcon,
+	MenuItem,
+	SolaceAccordion,
+	SolaceButton,
+	SolaceCheckBox,
 	SolaceConfirmationDialog,
 	SolaceSelect,
 	SolaceTextField,
-	MenuItem,
-	styled,
-	SolaceAccordion,
-	SolaceCheckBox,
-	CheckCircleIcon,
-	SolaceButton
+	styled
 } from "@SolaceDev/maas-react-components";
-import { DefaultTable } from "../../data-display/SolaceTable.stories";
+import { action } from "@storybook/addon-actions";
+import { Meta } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
+import React, { ReactNode, useState } from "react";
+import { DefaultTable } from "../../data-display/SolaceTable.stories";
 
 (SolaceConfirmationDialog as React.FC & { displayName?: string }).displayName = "SolaceConfirmationDialog";
 (SolaceSelect as React.FC & { displayName?: string }).displayName = "SolaceSelect";
@@ -118,6 +118,16 @@ export default {
 		linearProgressIndicator: {
 			description:
 				"When true, displays an indeterminate linear progress indicator at the bottom border of the dialog. Use this to indicate background processing while the dialog is open."
+		},
+		disableDefaultPadding: {
+			control: { type: "boolean" },
+			description:
+				"Disables the default padding applied to the dialog and dialog title components. Use this when you want to control padding manually or when using custom layouts.",
+			table: {
+				defaultValue: {
+					summary: "false"
+				}
+			}
 		},
 		children: {
 			description:
@@ -850,6 +860,100 @@ export const WithCustomActions = {
     }
   ]}
   customAction={<SolaceCheckBox {...args} />}
+/>`,
+				language: "jsx",
+				type: "code"
+			}
+		}
+	},
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from its root element
+		const canvas = within(canvasElement);
+
+		// Find the clear button using role and its accessible name (aria-label)
+		const clearButton = canvas.getByRole("button");
+		await userEvent.click(clearButton);
+	}
+};
+
+export const WithoutActions = {
+	render: () => (
+		<DialogWrapper buttonText="Open Dialog without Actions">
+			{(isOpen) => (
+				<SolaceConfirmationDialog title="Without Actions" contentText="Some content" isOpen={isOpen} actions={[]} />
+			)}
+		</DialogWrapper>
+	),
+	parameters: {
+		docs: {
+			story: {
+				before:
+					"A dialog without any actions. Use this when component displayed in dialog content has its own actions defined."
+			},
+			source: {
+				code: `<SolaceConfirmationDialog
+  title="Dialog without any buttons"
+  contentText="Some content"
+  isOpen={isOpen}
+  actions={[]}
+/>`,
+				language: "jsx",
+				type: "code"
+			}
+		}
+	},
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from its root element
+		const canvas = within(canvasElement);
+
+		// Find the clear button using role and its accessible name (aria-label)
+		const clearButton = canvas.getByRole("button");
+		await userEvent.click(clearButton);
+	}
+};
+
+export const WithoutDefaultPadding = {
+	render: () => (
+		<DialogWrapper buttonText="Open Dialog without Default Padding">
+			{(isOpen, handleClose) => (
+				<SolaceConfirmationDialog
+					title={"Without Default Padding"}
+					contentText={"Some content"}
+					isOpen={isOpen}
+					actions={[
+						{
+							label: "Submit",
+							onClick: () => {
+								action(BUTTON_CLICK_ACTION_CALLBACK)();
+								handleClose();
+							}
+						}
+					]}
+					disableDefaultPadding
+				/>
+			)}
+		</DialogWrapper>
+	),
+	parameters: {
+		docs: {
+			story: {
+				before:
+					"A dialog without default padding applied to the dialog and dialog title. Use this when you want to control padding manually or when using custom layouts. It is not recommended to use this property unless the dialog content is complex and requires custom styling."
+			},
+			source: {
+				code: `<SolaceConfirmationDialog
+  title={"Without Default Padding"}
+  contentText={"Some content"}
+  isOpen={isOpen}
+  actions={[
+    {
+      label: "Submit",
+      onClick: () => {
+        action(BUTTON_CLICK_ACTION_CALLBACK)();
+        handleClose();
+      }
+    }
+  ]}
 />`,
 				language: "jsx",
 				type: "code"

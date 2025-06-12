@@ -1591,6 +1591,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 									: themeMapping.palette.accent.n2.wMain
 							}
 						},
+						"&.disableDefaultPadding": {
+							".MuiDialog-paper": {
+								padding: "0"
+							},
+							".MuiDialogTitle-root": {
+								padding: "0"
+							}
+						},
 						"&.linearProgressIndicator": {
 							".MuiDialog-paper": {
 								position: "absolute",
