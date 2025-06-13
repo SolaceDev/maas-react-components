@@ -1,7 +1,7 @@
 import { Box, Divider, styled, useTheme } from "@mui/material";
-import SolaceButton from "../SolaceButton";
-import { SolaceStepperFooterProps } from "../../../types";
 import { ArrowLeft24Icon, ArrowRight24Icon } from "@SolaceDev/maas-icons";
+import { SolaceStepperFooterProps } from "../../../types";
+import SolaceButton from "../SolaceButton";
 
 const buttonStrings = {
 	cancel: "Cancel",
@@ -85,11 +85,7 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 	};
 
 	const handleSecondaryNext = () => {
-		if (onLastStep) {
-			onSecondarySubmit?.();
-			return;
-		}
-		setActiveStep(activeStep + 1);
+		onSecondarySubmit?.();
 	};
 
 	const handleBack = () => {

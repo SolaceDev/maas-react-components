@@ -86,7 +86,7 @@ const Component = ({ ...args }) => {
 	);
 };
 
-const ComponentWithSecondaryButton = ({ ...args }) => {
+const ComponentWithSecondaryButtonOnLastStep = ({ ...args }) => {
 	const [activeStep, setActiveStep] = useState(0);
 
 	return (
@@ -100,13 +100,36 @@ const ComponentWithSecondaryButton = ({ ...args }) => {
 				onSubmit={onSubmitAlert}
 				onSecondarySubmit={onSecondarySubmitAlert}
 				submitLabel="Submit"
-				secondarySubmitLabel="Secondary Submit"
+				secondarySubmitLabel={activeStep === initialSteps.length - 1 ? "Secondary Submit" : undefined}
 			>
 				{getStepText(activeStep, initialSteps.length)}
 			</SolaceStepper>
 		</Box>
 	);
 };
+
+const ComponentWithSecondaryButtonOnNonLastStep = ({ ...args }) => {
+	const [activeStep, setActiveStep] = useState(0);
+
+	return (
+		<Box display="flex" border="1px solid grey" borderRadius="4px" height="300px">
+			<SolaceStepper
+				steps={initialSteps}
+				{...args}
+				activeStep={activeStep}
+				setActiveStep={setActiveStep}
+				onClose={onCloseAlert}
+				onSubmit={onSubmitAlert}
+				onSecondarySubmit={onSecondarySubmitAlert}
+				submitLabel="Submit"
+				secondarySubmitLabel={activeStep < initialSteps.length - 1 ? "Secondary Submit" : undefined}
+			>
+				{getStepText(activeStep, initialSteps.length)}
+			</SolaceStepper>
+		</Box>
+	);
+};
+
 export const Primary: Story = {
 	render: Component,
 	args: { steps: initialSteps }
@@ -135,8 +158,13 @@ export const ErrorOnCurrentStepAndSubmitDisabled: Story = {
 	args: { steps: errorOnCurrentStep, disableSubmit: true }
 };
 
-export const SecondaryButtonEnabled: Story = {
-	render: ComponentWithSecondaryButton,
+export const SecondaryButtonOnLastStep: Story = {
+	render: ComponentWithSecondaryButtonOnLastStep,
+	args: { steps: initialSteps }
+};
+
+export const SecondaryButtonOnNonLastStep: Story = {
+	render: ComponentWithSecondaryButtonOnNonLastStep,
 	args: { steps: initialSteps }
 };
 
