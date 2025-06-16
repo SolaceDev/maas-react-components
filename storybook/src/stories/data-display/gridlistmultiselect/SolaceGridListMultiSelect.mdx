@@ -17,29 +17,14 @@ The SolaceGridListMultiSelect component extends the GridList functionality by ad
 
 The component implements a selectable grid pattern with the purpose of enabling bulk actions on tabular data. This pattern helps users manage multiple selections while maintaining the organized structure of a grid layout, making it ideal for administrative interfaces and data management tools.
 
-<Subtitle>When To Use It</Subtitle>
+<Subtitle>Usage</Subtitle>
 
-Use SolaceGridListMultiSelect when you need to provide users with the ability to select multiple items from a grid-based layout. This selection pattern is particularly effective for batch operations and data management.
+- **Organized Collections**: Use to display a collection of items (typically images or cards) in an organized grid format.
+- **Visual Comprehension**: Helps improve the visual understanding and scannability of the content presented.
+- **Uniform Items**: Standard grid lists are ideal when all items have equal importance, maintaining consistent container size, aspect ratio, and spacing.
+- **Hierarchical Display**: For emphasizing certain items, consider a quilted layout (if supported, or by customizing item sizes) to create visual hierarchy through varied container dimensions.
 
-Common use cases include:
-
-- Bulk operations on event meshes, environments, or other business entities
-- Multi-item selection for batch processing or updates
-- Administrative interfaces requiring multiple item management
-- Data management tools with bulk action capabilities
-- Resource selection interfaces for batch operations
-- List management with checkbox-based selection
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For simple data display without selection needs - use SolaceGridList instead
-- When single-item selection is sufficient - use standard GridList with clickable rows
-- For read-only data presentation - use basic grid layouts without selection
-- When complex table features are needed - use SolaceTable for full table functionality
-- For simple unstructured lists - use SolaceList for basic item listings
-- When selection is not a primary user action - use simpler display components
-
-<Subtitle>Import Statement</Subtitle>
+  <Subtitle>Import Statement</Subtitle>
 
 ```tsx
 import { SolaceGridListMultiSelect } from "@SolaceDev/maas-react-components";

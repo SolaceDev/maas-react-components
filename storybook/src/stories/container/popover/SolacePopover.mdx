@@ -17,29 +17,12 @@ The SolacePopover component provides a floating container that displays content 
 
 The component implements a popover pattern with the purpose of creating non-modal overlays that can display rich content positioned relative to trigger elements. This pattern helps reduce cognitive load by keeping related actions and information spatially connected while providing flexible positioning options for various layout requirements.
 
-<Subtitle>When To Use It</Subtitle>
+<Subtitle>Usage</Subtitle>
 
-Use SolacePopover when you need to display contextual content that's directly related to a specific element or action on the page. This interaction pattern is particularly effective for supplementary information, quick actions, or input forms that don't require full page navigation.
-
-Common use cases include:
-
-- Contextual menus with actions related to specific items or areas of the interface
-- Detailed information panels that provide additional context about selected elements without leaving the current view
-- Quick input forms for tasks like adding comments, tags, or making simple edits while maintaining page context
-- Help tooltips or explanatory content that users can access on-demand for specific features or controls
-- Filter panels or configuration options that apply to specific sections of content
-- Rich media previews or expanded views of list items that show additional details on demand
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Critical user flows that require full attention and shouldn't be interrupted by other page content (use modals instead)
-- Simple text-only tooltips that don't require interaction (use SolaceTooltip for better performance and accessibility)
-- Primary navigation that needs to be persistent and always accessible to users
-- Complex multi-step workflows that require significant screen space and user focus
-- Content that needs to be accessible via keyboard navigation as the primary interaction method
-- Mobile interfaces where popovers might be difficult to position appropriately or could obstruct important content
-- Alert messages or notifications that need to capture immediate user attention regardless of context
-- Content that users need to reference while interacting with multiple other elements on the page simultaneously
+- Popovers display supplementary information or interactive content triggered by a user action (e.g., clicking an element), appearing in-context near the trigger or at a fixed page location.
+- Use Standard Popovers for displaying overflow information or quick actions that don't require input to dismiss. Use Input Popovers to collect user input while maintaining page context.
+- Popovers typically close when the user successfully submits content (if applicable) or clicks outside the popover.
+- For Input Popovers with unsaved changes, prevent closing on an outside click and instead prompt the user to save or discard changes.
 
 <Subtitle>Import Statement</Subtitle>
 

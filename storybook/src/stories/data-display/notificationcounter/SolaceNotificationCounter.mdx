@@ -17,29 +17,12 @@ The SolaceNotificationCounter component provides a visual badge that displays nu
 
 The component implements an animated notification badge pattern with the purpose of providing immediate visual feedback about quantifiable information. This pattern helps users stay informed about system state changes while offering customizable animations and styling to match different urgency levels and design requirements.
 
-<Subtitle>When To Use It</Subtitle>
+<Subtitle>Usage</Subtitle>
 
-Use SolaceNotificationCounter when you need to display numeric values or status indicators that represent countable items or states requiring user attention. This interaction pattern is particularly effective for alerting users to new or updated content without being overly intrusive.
-
-Common use cases include:
-
-- Unread message counts in messaging applications or notification systems
-- Pending task counters in workflow management or todo applications
-- New item indicators for feeds, dashboards, or content management systems
-- Error or warning counts in system monitoring or validation interfaces
-- Shopping cart item counts in e-commerce applications
-- Status badges showing the number of active connections, processes, or system states
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Static information that doesn't change or require user attention (use regular text or labels instead)
-- Complex data that requires more context than a simple number or short text can provide
-- Primary navigation elements where the badge might distract from the main interface flow
-- Large numbers that won't fit comfortably in a circular badge format (consider alternative layouts)
-- Time-sensitive information that requires immediate action (use alerts or modal dialogs for critical notifications)
-- Decorative purposes where the badge doesn't represent actual actionable data
-- Mobile interfaces where small badges might be difficult to read or interact with
-- Accessibility-critical scenarios where color or animation might not be perceivable by all users
+- **Placement:** Typically positioned at the top-right of the element they relate to (e.g., an icon, button, or navigation item).
+- **Purpose:** Used to indicate a numerical count of items, such as unread notifications, new messages, or items in a cart.
+- **Visibility:** Can be conditionally displayed based on the count (e.g., hidden when the count is zero).
+- **Content:** Usually displays a number, but can also be a simple dot for a non-numeric indication.
 
 <Subtitle>Import Statement</Subtitle>
 

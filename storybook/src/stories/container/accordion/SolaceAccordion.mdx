@@ -17,20 +17,17 @@ The SolaceAccordion component provides an expandable/collapsible container that 
 
 The component implements a progressive disclosure pattern with the purpose of only revealing essential information up front, and moving secondary/complex content out of the main interface into an expandable area. This pattern keeps users on track of the main task while still making additional information available.
 
-<Subtitle>When To Use It</Subtitle>
+<Subtitle>Usage</Subtitle>
 
-Use accordions when you have multiple sections of related content that don't need to be visible simultaneously. This interaction pattern is particularly effective for organizing large amounts of content without overwhelming the user interface.
-
-Common use cases include FAQ sections, settings panels with advanced options, table row details, list item expansions, and card-based layouts where additional information needs to be accessible but not always visible.
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- The content is critical and should always be visible to users
-- There are only a few short sections that could easily fit on the screen at once
-- Users need to compare information across multiple sections simultaneously
-- The accordion would create an unnecessary extra step for frequently accessed content
-- The content has a natural sequential flow that users should follow step by step
-- The collapsed state might hide important information that users need to see immediately
+- **Organize Content**: Use accordions to hide secondary or less frequently accessed information under clear, clickable headers. This helps keep the page concise, focused on primary content, and reduces the need for excessive scrolling.
+- **Relevance**: Ensure the hidden content is closely related to its header to maintain clarity and user expectation.
+- **Interaction Best Practices**:
+  - The entire header/title area should be clickable to expand or collapse the section, not just the expand/collapse icon.
+  - If an "Expand All" functionality is provided for a set of accordions, a corresponding "Collapse All" should also be available.
+- **Content & Structure Guidelines**:
+  - Avoid making the content within an accordion so long that its expanded state significantly exceeds the viewport height.
+  - If the expanded content is brief and there's other content below the accordion, ensure it doesn't push subsequent content too far down the page. If it might cause drastic shifts, consider alternative progressive disclosure methods.
+  - Generally, avoid nesting accordions within one another as this can create confusion.
 
 <Subtitle>Import Statement</Subtitle>
 

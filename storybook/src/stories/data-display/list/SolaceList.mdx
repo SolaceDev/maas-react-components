@@ -17,25 +17,12 @@ The Solace List component provides a simple and flexible way to display collecti
 
 The component implements a standard list layout pattern with the purpose of organizing content into a scannable, vertical structure. This pattern is ideal for displaying collections of related items, navigation menus, or any content that benefits from a simple, linear arrangement.
 
-<Subtitle>When To Use It</Subtitle>
+<Subtitle>Usage</Subtitle>
 
-Use Solace List when you need to display collections of items in a simple, vertical layout without complex interactions or data management features. This basic list pattern is particularly effective for straightforward content presentation.
-
-Common use cases include:
-
-- Simple navigation menus with list items and buttons
-- Basic content listings without selection or complex interactions
-- Static information displays where items are presented sequentially
-- Foundation for more complex list components when combined with SolaceListItem and SolaceListItemButton
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For data with multi-selection capabilities - use SolaceGridListMultiSelect for checkbox-based selection
-- When you need structured grid layouts - use SolaceGridList for tabular data presentation
-- For complex data tables with sorting and filtering - use SolaceTable for full table functionality
-- When you need advanced list features like virtualization - use SolaceGridList with virtualization options
-- For card-based layouts - use SolaceCard components for richer content presentation
-- When displaying hierarchical data - consider SolaceTree for parent-child relationships
+- Lists are primarily used to display a continuous, vertical index of text or images.
+- They consist of individual `ListItem` components which can contain primary text, secondary text, icons, avatars, and actions.
+- `ListItemButton` can be used within `ListItem` to make items interactive, such as for navigation or triggering actions.
+- Lists can be nested to create hierarchical structures, or customized with dividers and subheaders for better organization.
 
 <Subtitle>Import Statement</Subtitle>
 

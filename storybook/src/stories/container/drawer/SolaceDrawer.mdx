@@ -17,29 +17,12 @@ The SolaceDrawer component provides a sliding panel that enters from the edge of
 
 The component implements a persistent drawer pattern with the purpose of creating a non-modal overlay that can coexist with the main content. This pattern provides additional workspace without completely interrupting the user's current task while offering optional resizing capabilities for user customization.
 
-<Subtitle>When To Use It</Subtitle>
+<Subtitle>Usage</Subtitle>
 
-Use SolaceDrawer when you need to display supplementary content that supports the main page workflow without completely taking over the interface. This interaction pattern is particularly effective for complex applications where users need access to additional tools or information while maintaining their current context.
-
-Common use cases include:
-
-- Complex task workflows that require additional tools or reference information alongside the main content
-- Filter and search panels for data tables or content listings that need to remain accessible while browsing results
-- Property panels or configuration interfaces that allow users to modify settings while seeing real-time previews
-- Navigation menus in applications where users need to switch contexts while maintaining their current work state
-- Detail panels that provide additional information about selected items without leaving the current view
-- Multi-step workflows where users need access to supporting tools or reference materials throughout the process
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Simple tasks that don't require users to reference the main page content (use a dialog or modal instead for better focus)
-- Basic interactions like selecting a single item from a list (use dropdown menus or simple selection components)
-- Mobile interfaces where screen space is limited and drawers would create cramped user experiences
-- Workflows where the cognitive load of managing both main content and drawer content would be overwhelming
-- Single-purpose forms or actions that are better suited to modal dialogs with clear start and end points
-- Contexts where users need to focus entirely on one task without distractions from the main page content
-- Applications where the drawer would cover critical information that users need to see constantly
-- Scenarios where simpler components like autocomplete dropdowns or inline expansion would be more appropriate
+- Drawers provide additional functionality or information related to the main page content without navigating away or blocking interaction with the page.
+- Use drawers for tasks that are too complex or would take up too much space if embedded directly on the page (e.g., detailed settings, selection from a large list with filtering).
+- Drawers are typically triggered by a user action, appear locked to one edge of the screen, and slide in over the page content.
+- Consider that drawer content is often temporary; if frequent switching or persistent input is needed, alternative patterns might be more suitable.
 
 <Subtitle>Import Statement</Subtitle>
 

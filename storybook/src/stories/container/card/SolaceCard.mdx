@@ -17,29 +17,13 @@ The SolaceCard component provides a customizable card container for displaying l
 
 The component implements a flexible card layout pattern with the purpose of creating visually distinct content containers that can serve both as information displays and navigation entry points. This pattern helps organize complex interfaces while maintaining clean visual hierarchy and consistent spacing.
 
-<Subtitle>When To Use It</Subtitle>
+<Subtitle>Usage</Subtitle>
 
-Use SolaceCard when you need to group related information or functionality into distinct, visually separated containers. This layout pattern is particularly effective for dashboard layouts, content galleries, and resource libraries.
-
-Common use cases include:
-
-- Learning resource cards with tutorials, documentation, and quick actions
-- Dashboard widgets displaying metrics, status information, and related controls
-- Product or service listings with descriptions, features, and action buttons
-- Content previews with titles, summaries, and navigation links
-- Settings panels that group related configuration options
-- Interactive tiles in grid layouts for navigation or content discovery
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Simple text content that doesn't need visual separation or grouping
-- Single pieces of information that would look better in inline layouts
-- Content that needs to be read in a specific sequential order without interruption
-- Forms where fields need to flow naturally without visual breaks between sections
-- Dense data tables where cards would create unnecessary visual noise and spacing
-- Mobile interfaces where card borders and padding might consume too much screen space
-- Content that changes frequently and would benefit from more fluid, list-based layouts
-- Interfaces where users need to compare multiple items side-by-side without visual barriers
+- Cards are designed to display content focused on a single, independent topic. The elements within a card should be organized hierarchically to facilitate easy scanning by the user.
+- They can function either as interactive elements, serving as gateways to more detailed information or navigation paths, or as read-only containers for laying out information.
+- Interactive cards are typically used as entry points that users can click to trigger actions or navigate deeper into content (e.g., clicking an object card for more details).
+- Read-only cards are primarily for visual organization, helping to categorize and group distinct topics or sections on a page (e.g., different setting categories on a User Settings page).
+- It is recommended to place cards on a `ux-background-w20` background rather than plain white to enhance the visual distinction and the interactive feel provided by the drop shadow.
 
 <Subtitle>Import Statement</Subtitle>
 
