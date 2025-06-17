@@ -17,28 +17,6 @@ The Solace Message Box component provides a dismissible notification banner for 
 
 The component implements a message notification pattern with the purpose of providing contextual feedback about system state or user actions. This pattern helps users understand the outcome of their actions or be aware of important system information while maintaining workflow continuity.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Message Box when you need to display important information that requires user awareness but doesn't block their workflow. This message pattern is particularly effective for persistent notifications that remain visible until dismissed.
-
-Common use cases include:
-
-- Displaying form validation errors or field-level feedback
-- Showing system status messages or configuration warnings
-- Confirming successful operations like saves or updates
-- Alerting users to important information or policy changes
-- Providing contextual help or informational guidance
-- Displaying error states that don't require immediate action
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For critical errors that require immediate action (use modal dialogs instead)
-- For temporary notifications that should auto-dismiss (use toast notifications instead)
-- When the message blocks user workflow (use inline validation instead)
-- For promotional or marketing content (use learning banners instead)
-- When messages need to persist across page navigation (use global notifications instead)
-- For progress updates or loading states (use progress indicators instead)
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx

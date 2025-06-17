@@ -17,28 +17,6 @@ The Solace Circular Progress component provides a spinning circular indicator to
 
 The component implements a progress indicator pattern with the purpose of providing visual feedback during loading or processing operations. This pattern helps users understand that an action is in progress while maintaining engagement and reducing perceived wait time.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Circular Progress when you need to indicate loading or processing states. This progress pattern is particularly effective for operations that take time to complete.
-
-Common use cases include:
-
-- Loading data from APIs or external services
-- Processing forms or file uploads
-- Waiting for authentication or login processes
-- Indicating background tasks or calculations
-- Showing progress of multi-step operations with determinate variant
-- Displaying loading states in modals or overlays
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For very quick operations (less than 1-2 seconds) where the spinner would flash briefly
-- When you need to show progress through multiple distinct steps (use stepper component instead)
-- For large content areas where skeleton loading would be more appropriate
-- When the loading state needs to show specific progress percentages with text (use linear progress instead)
-- For indicating status that isn't related to loading (use status indicators instead)
-- When users need to continue working while something loads in background (use toast notifications instead)
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx

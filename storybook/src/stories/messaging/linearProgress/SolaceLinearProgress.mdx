@@ -17,28 +17,6 @@ The Solace Linear Progress component provides a horizontal progress bar to displ
 
 The component implements a linear progress indicator pattern with the purpose of providing visual feedback during loading or processing operations. This pattern helps users track progress over time and provides better perceived performance for longer operations.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Linear Progress when you need to show progress of operations that can be measured. This progress pattern is particularly effective for operations with known duration or completion percentage.
-
-Common use cases include:
-
-- File upload or download progress tracking
-- Form submission progress with multiple steps
-- Data processing operations with measurable progress
-- Installation or setup wizards
-- Page loading progress at the top of content areas
-- Background task progress in headers or status bars
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For operations with unknown duration (use circular progress instead)
-- When progress happens too quickly to be meaningful (under 2-3 seconds)
-- For step-by-step processes where discrete steps matter more than overall progress (use stepper instead)
-- When the progress area is very small or constrained (use circular progress instead)
-- For status indicators that aren't about progress (use status badges instead)
-- When users need detailed progress information beyond percentage (use custom progress components with text)
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx
