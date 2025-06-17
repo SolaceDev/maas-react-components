@@ -17,31 +17,6 @@ The Solace Chip Text Area component provides a multi-line text input interface t
 
 The component implements a tag input pattern with the purpose of making multi-value entry efficient and visually organized. This pattern helps users add, edit, and remove multiple text values through automatic tokenization while maintaining form consistency and providing accessible multi-value input workflows.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Chip Text Area when you need users to input multiple discrete text values with visual feedback. This input pattern is particularly effective for applications requiring collection management and multi-value data entry.
-
-Common use cases include:
-
-- Email recipient lists where users enter multiple email addresses separated by delimiters for mailing functionality
-- Tag and keyword entry for content categorization, search optimization, or metadata management
-- Multi-value form fields like skills, interests, or categories where users add multiple related items
-- Contact list management for adding multiple phone numbers, addresses, or other contact information
-- Configuration settings where users specify multiple values like server names, domains, or file paths
-- Search filter inputs where users can add multiple search terms or criteria as individual chips
-- Permission and access control where users specify multiple users, roles, or resource identifiers
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For single-value text input without tokenization - use SolaceTextField for simple text entry instead
-- When users need to enter long-form text content - use SolaceTextArea for paragraph or document text
-- For predefined option selection - use SolaceSelect or SolaceAutocomplete with multiple selection instead
-- When chip deletion should be restricted or controlled - consider using read-only chips or controlled deletion patterns
-- For numeric value ranges or calculations - use specialized numeric input components instead
-- When validation needs are complex or require server-side verification - implement custom validation workflows
-- For mobile-first applications where chip manipulation is difficult - consider simplified list interfaces or alternative input methods
-- When accessibility requires keyboard-only navigation of individual chips - ensure proper ARIA support and focus management
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx

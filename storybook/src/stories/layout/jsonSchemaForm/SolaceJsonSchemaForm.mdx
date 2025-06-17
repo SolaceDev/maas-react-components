@@ -17,29 +17,6 @@ The Solace JSON Schema Form component provides a dynamic form generator based on
 
 The component implements React JSON Schema Form (RJSF) with custom Solace design system integration. This pattern enables rapid form development while maintaining consistency with Solace UI patterns and providing powerful validation capabilities.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace JSON Schema Form when you have dynamic form requirements that can't be easily handled with static form components. This schema-driven pattern is particularly effective for configuration forms, API integration forms, and scenarios where form structure changes based on data or user permissions.
-
-Common use cases include:
-
-- Configuration forms where field requirements vary based on selected options
-- API endpoint configuration with dynamic parameter validation
-- Multi-step forms with conditional field visibility
-- Data entry forms that need to adapt to different schemas
-- Forms that require complex validation rules and error handling
-- Integration with backend systems that provide JSON Schema definitions
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Simple static forms with a few fixed fields - use individual Solace form components instead
-- Forms that require highly customized layouts or styling beyond what RJSF supports
-- Performance-critical scenarios where the overhead of schema parsing is problematic
-- When you need fine-grained control over individual field rendering and behavior
-- Forms with complex custom widgets that don't fit the RJSF widget model
-- Mobile-first applications where the generated markup may not be optimal for touch interfaces
-- When form validation logic is better handled at the application level rather than schema level
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx

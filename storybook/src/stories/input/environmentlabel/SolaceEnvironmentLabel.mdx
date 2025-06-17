@@ -17,27 +17,6 @@ The Solace Environment Label component provides a visual identifier for environm
 
 The component implements a horizontal layout pattern with the purpose of showing environment context at a glance. This pattern helps users distinguish between different environments while maintaining visual consistency across the application.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Environment Label when you need to display environment information in a compact, visual format. This display pattern is particularly effective for environment identification and context-aware interfaces.
-
-Common use cases include:
-
-- Dropdown menu items showing available environments with visual distinction
-- Environment selection interfaces where users need to choose between multiple environments
-- Dashboard headers or status bars displaying current environment context
-- Form fields requiring environment selection with clear visual identification
-- Environment listings where users need to quickly scan and identify different environments
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For actionable environment switching - use SolaceEnvironmentChip with click handlers instead
-- When environments need to be removable - use SolaceEnvironmentChip with onDelete functionality
-- For very long environment names in constrained spaces - consider using tooltips with shortened labels
-- When you need interactive behaviors like hover states - use button or chip components instead
-- For non-environment categorization - use regular labels or tags for other types of content
-- When color coding is not important - use simple text labels for better accessibility
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx

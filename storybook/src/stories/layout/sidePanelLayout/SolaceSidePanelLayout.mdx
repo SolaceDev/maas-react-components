@@ -17,30 +17,6 @@ The Solace Side Panel Layout component provides a flexible container that manage
 
 The component implements a drawer pattern with the purpose of providing contextual information, navigation, or additional tools while maintaining the main workflow. It supports both persistent and temporary panel modes, making it adaptable to various use cases and screen sizes.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Side Panel Layout when you need to display supplementary content alongside your main interface without navigating away from the current context. This layout pattern is particularly effective for responsive applications that need flexible content organization.
-
-Common use cases include:
-
-- Application navigation where the side panel contains menu items, user profile, or app-level settings
-- Detail views where the main content shows a list and the side panel displays detailed information about selected items
-- Configuration interfaces where the main area shows content and the side panel contains settings or controls
-- Dashboard layouts where the side panel houses filters, search, or secondary data while the main area displays primary metrics
-- Documentation or help systems where the side panel contains table of contents or related topics
-- Multi-step workflows where the side panel shows progress, navigation, or contextual assistance
-- Content editing interfaces where the side panel provides tools, properties, or preview functionality
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For simple modal dialogs or overlays - use SolacePopover or Material-UI Dialog components instead
-- When the secondary content is brief and doesn't warrant a dedicated panel - consider using tooltips or inline expansion
-- For mobile-first applications where screen real estate is limited - consider full-screen navigation or bottom sheet patterns
-- When the side content is the primary focus - restructure to make it the main content area instead
-- For temporary notifications or alerts - use SolaceToasts or notification components
-- When users need to compare content side-by-side equally - use SolaceSplitPane for balanced layouts
-- For complex multi-panel layouts - consider custom grid layouts or specialized dashboard components
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx

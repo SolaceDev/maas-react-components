@@ -17,31 +17,6 @@ The Solace Detail Message component provides a centered layout for displaying im
 
 The component implements a vertical card layout pattern with the purpose of drawing attention to critical information. This pattern helps users focus on the message content while still providing clear pathways for next steps.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Detail Message when you need to display important information that requires user attention and potentially action. This layout pattern is particularly effective for states where the main interface is temporarily unavailable or when providing clear feedback.
-
-Common use cases include:
-
-- Empty state messages when no data is available to display
-- Error screens that explain what went wrong and how to recover
-- Success confirmation pages after completing important actions
-- Onboarding or welcome messages with introductory content
-- "No results found" states in search or filtering scenarios
-- Maintenance or system status notifications
-- Permission denied or access restriction messages
-- Loading completion states with next step guidance
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For inline messages within forms or content areas - use SolaceMessageBox or validation messages instead
-- When displaying brief notifications - use SolaceToasts for temporary alerts
-- For complex multi-column layouts - use SolaceGrid or custom layout components
-- When the message is secondary to other content - use callout boxes or inline text
-- For navigation-heavy interfaces - use SolacePageHeader with breadcrumbs
-- When displaying tabular data or lists - use appropriate data display components
-- For real-time status updates - use progress indicators or live updating components
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx

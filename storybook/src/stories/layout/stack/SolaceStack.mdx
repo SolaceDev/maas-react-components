@@ -17,30 +17,6 @@ The Solace Stack component is concerned with one-dimensional layouts, providing 
 
 The component extends Material-UI's Stack component with Solace-specific styling and defaults, making it easy to create consistent layouts throughout Solace applications while maintaining the flexibility of the underlying MUI Stack component.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Stack when you need to arrange elements in a single direction (horizontal or vertical) with consistent spacing. This layout pattern is particularly effective for creating organized, linear arrangements of components.
-
-Common use cases include:
-
-- Form layouts where you need to stack input fields vertically with consistent spacing
-- Button groups arranged horizontally or vertically with proper spacing between actions
-- Card layouts where multiple cards are arranged in rows or columns with uniform gaps
-- Navigation items arranged in horizontal or vertical lists with consistent spacing
-- Tool palettes or action bars where related controls are grouped together
-- Content sections that need to be stacked with predictable spacing patterns
-- Responsive layouts that adapt between horizontal and vertical arrangements
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For two-dimensional layouts with complex grid patterns - use SolaceGrid for grid-based layouts instead
-- When you need precise positioning control - use CSS Grid or Flexbox directly for complex positioning
-- For overlapping or absolute positioned elements - use positioned containers or custom styling
-- When elements need to wrap in multiple directions - consider SolaceGrid with flexible wrapping
-- For complex responsive layouts with breakpoint-specific arrangements - use SolaceGrid with responsive props
-- When you need elements to fill available space proportionally - use Flexbox properties directly
-- For layouts that require custom alignment patterns not supported by Stack - implement custom flex containers
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx

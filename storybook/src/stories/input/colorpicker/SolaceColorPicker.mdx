@@ -17,29 +17,6 @@ The Solace Color Picker component provides a grid-based selection interface for 
 
 The component implements a custom dropdown select pattern with the purpose of making color selection intuitive through visual grid layouts. This pattern helps users quickly identify and select colors through visual representation while maintaining form consistency and providing accessible color selection workflows.
 
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Color Picker when you need visual color selection from predefined color sets in a grid format. This selection pattern is particularly effective for applications requiring visual categorization and color-based identification.
-
-Common use cases include:
-
-- Environment selection where colors represent different deployment stages (development, staging, production)
-- Status indicator selection for tagging items with visual state representations using color coding
-- Category assignment using color-coded classification systems for organizing content
-- Theme customization interfaces where users select from predefined brand color palettes
-- Visual workflow configuration where colors represent different process stages or states
-- Badge and label color assignment for content categorization and visual organization
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For custom color selection with full RGB/HSL controls - use a comprehensive color picker component with color wheel and input fields instead
-- When only text-based options are needed without visual representation - use regular SolaceSelect for non-visual selections
-- For large sets of color options (>20 colors) - consider autocomplete or search-based color selection instead
-- When colors don't have semantic meaning or purpose - use standard dropdown components for arbitrary non-visual choices
-- For single true/false color scenarios - use radio buttons or toggle switches for binary color selections
-- When accessibility requires text-only alternatives - ensure color selections have proper text equivalents and ARIA labels
-- For icon selection needs - use SolacePicker with variant="icons" for icon-based selection instead
-
 <Subtitle>Import Statement</Subtitle>
 
 ```tsx
