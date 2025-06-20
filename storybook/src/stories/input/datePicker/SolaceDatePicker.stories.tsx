@@ -24,6 +24,32 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Date Picker/Standard",
 	component: SolaceDatePicker,
+	args: {
+		value: "",
+		defaultValue: "",
+		variant: SolaceDatePickerVariant.FORMAT_YEAR_MONTH_DAY,
+		timezone: "",
+		label: "",
+		helperText: "",
+		hasErrors: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		disableFuture: false,
+		disablePast: false,
+		minDate: "",
+		maxDate: "",
+		placeholder: "",
+		name: "",
+		id: "",
+		hasWarnings: false,
+		onChange: undefined,
+		onClear: undefined,
+		onBlur: undefined,
+		onFocus: undefined,
+		dataQa: "",
+		dataTags: ""
+	},
 	properties: {
 		docs: {
 			description: {
@@ -37,7 +63,7 @@ export default {
 			description:
 				"The current date value in ISO 8601 format (e.g., '2025-05-12T00:00:00Z'). Use this for controlled components where you manage the date state externally. Should be paired with an onChange handler.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -46,7 +72,7 @@ export default {
 			description:
 				"The default date value for uncontrolled components in ISO 8601 format. Use this when you want to set an initial date but don't need to control the state.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -56,7 +82,7 @@ export default {
 			description:
 				"The display format variant of the date picker. Use FORMAT_YEAR_MONTH_DAY for full date selection or FORMAT_MONTH_YEAR for month/year only selection.",
 			table: {
-				type: { summary: "SolaceDatePickerVariant" },
+				type: { summary: "SolaceDatePickerVariant | undefined" },
 				defaultValue: { summary: "FORMAT_YEAR_MONTH_DAY" }
 			}
 		},
@@ -65,7 +91,7 @@ export default {
 			description:
 				"The timezone to use for date calculations (e.g., 'UTC', 'America/New_York'). Use this to ensure dates are displayed and calculated in the correct timezone context.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "browser timezone" }
 			}
 		},
@@ -74,7 +100,7 @@ export default {
 			description:
 				"The label text displayed above the date picker field. Use this to clearly describe what date the user is selecting. Labels should be concise and descriptive.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -83,7 +109,7 @@ export default {
 			description:
 				"Additional text displayed below the date picker to provide guidance or error messages. Use this to give users context about date requirements or validation rules.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -92,7 +118,7 @@ export default {
 			description:
 				"If true, displays the date picker in an error state with red styling. Use this to indicate validation failures. Often paired with error text in helperText.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -101,7 +127,7 @@ export default {
 			description:
 				"If true, marks the date picker as required and displays an asterisk (*) next to the label. Use this to indicate mandatory date fields in forms.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -110,7 +136,7 @@ export default {
 			description:
 				"If true, disables the date picker preventing user interaction. Use this when the date field is not applicable based on current form state or user permissions.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -119,7 +145,7 @@ export default {
 			description:
 				"If true, makes the date picker read-only. Users can see the selected date but cannot change it. Use this for displaying computed dates or information that shouldn't be modified.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -128,7 +154,7 @@ export default {
 			description:
 				"If true, disables future dates from being selected. Use this for date fields where only past or current dates are valid, such as birth dates or historical events.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -137,7 +163,7 @@ export default {
 			description:
 				"If true, disables past dates from being selected. Use this for date fields where only future or current dates are valid, such as event scheduling or deadlines.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -146,7 +172,7 @@ export default {
 			description:
 				"The minimum selectable date in ISO 8601 format. Use this to restrict date selection to a specific range, ensuring users can only select valid dates.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -155,7 +181,7 @@ export default {
 			description:
 				"The maximum selectable date in ISO 8601 format. Use this to restrict date selection to a specific range, ensuring users can only select valid dates.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -164,7 +190,7 @@ export default {
 			description:
 				"Placeholder text displayed when no date is selected. Use this to provide guidance about the expected date format or selection instructions.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -173,7 +199,7 @@ export default {
 			description:
 				"The name attribute for the date picker, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -181,7 +207,7 @@ export default {
 			control: { type: "text" },
 			description: "Unique identifier for the date picker component. Used for accessibility and programmatic access.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -192,7 +218,7 @@ export default {
 			description:
 				"If true, displays the date picker in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the date selection.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -200,7 +226,7 @@ export default {
 			description:
 				"Callback function fired when the date selection changes. Receives the new date value in ISO 8601 format. Essential for controlled components and form state management.",
 			table: {
-				type: { summary: "(date: string) => void" },
+				type: { summary: "(date: string) => void | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -208,7 +234,7 @@ export default {
 			description:
 				"Callback function fired when the date is cleared. Use this to handle clearing actions and update form state appropriately.",
 			table: {
-				type: { summary: "() => void" },
+				type: { summary: "() => void | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -216,7 +242,7 @@ export default {
 			description:
 				"Callback function fired when the date picker loses focus. Use this for validation or other actions that should occur when the user finishes date selection.",
 			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
+				type: { summary: "(event: React.FocusEvent) => void | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -224,7 +250,7 @@ export default {
 			description:
 				"Callback function fired when the date picker gains focus. Use this for tracking user interaction or showing additional UI elements.",
 			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
+				type: { summary: "(event: React.FocusEvent) => void | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -232,7 +258,7 @@ export default {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify the date picker during automated testing.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -240,7 +266,7 @@ export default {
 			control: { type: "text" },
 			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		}

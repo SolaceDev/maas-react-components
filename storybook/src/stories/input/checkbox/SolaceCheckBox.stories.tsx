@@ -11,6 +11,30 @@ const TITLE = "Demo Checkbox";
 export default {
 	title: "Input/Checkbox",
 	component: SolaceCheckBox,
+	args: {
+		label: "",
+		helperText: "",
+		hasErrors: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		checked: false,
+		defaultChecked: false,
+		indeterminate: false,
+		boldLabel: false,
+		largeLabel: false,
+		subTextProps: undefined,
+		name: "",
+		id: "",
+		title: "",
+		value: "",
+		onChange: undefined,
+		onBlur: undefined,
+		onFocus: undefined,
+		dataQa: "",
+		dataTags: "",
+		hasWarnings: false
+	},
 	parameters: {
 		design: {
 			type: "figma",
@@ -30,7 +54,7 @@ export default {
 			description:
 				"The label text displayed next to the checkbox. Use this to clearly describe what the checkbox represents. Labels should be concise and descriptive.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -41,7 +65,7 @@ export default {
 			description:
 				"Additional text displayed below the checkbox to provide guidance or error messages. Use this to give users context about the checkbox purpose or validation requirements.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -52,7 +76,7 @@ export default {
 			description:
 				"If true, displays the checkbox in an error state with red styling. Use this to indicate validation failures. Often paired with error text in helperText.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -63,7 +87,7 @@ export default {
 			description:
 				"If true, marks the checkbox as required and displays an asterisk (*) next to the label. Use this to indicate mandatory checkboxes in forms and ensure proper validation.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -74,7 +98,7 @@ export default {
 			description:
 				"If true, disables the checkbox preventing user interaction. Use this when the checkbox is not applicable based on current form state or user permissions.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -85,7 +109,7 @@ export default {
 			description:
 				"If true, makes the checkbox read-only. Users can see the checked state but cannot change it. Use this for displaying computed values or information that shouldn't be modified.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -96,7 +120,7 @@ export default {
 			description:
 				"Controls the checked state of the checkbox. Use this for controlled components where you manage the checkbox state externally. Should be paired with an onChange handler.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -107,7 +131,7 @@ export default {
 			description:
 				"The default checked state for uncontrolled components. Use this when you want to set an initial checked state but don't need to control it.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -118,7 +142,7 @@ export default {
 			description:
 				"If true, displays the checkbox in an indeterminate state (partially checked). Use this for parent checkboxes when some but not all child items are selected.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -129,7 +153,7 @@ export default {
 			description:
 				"If true, displays the label text in bold font weight. Use this to emphasize important checkboxes or primary options.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -140,7 +164,7 @@ export default {
 			description:
 				"If true, displays the label text in a larger font size. Use this for prominent checkboxes or when you need better readability.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -151,7 +175,7 @@ export default {
 			description:
 				"Configuration object for displaying additional subtext below the main label. Should include 'label' (string) and optionally 'light' (boolean) properties.",
 			table: {
-				type: { summary: "{label: string, light?: boolean}" },
+				type: { summary: "{label: string, light?: boolean} | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -162,7 +186,7 @@ export default {
 			description:
 				"The name attribute for the checkbox, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -172,7 +196,7 @@ export default {
 			},
 			description: "Unique identifier for the checkbox component. Used for accessibility and programmatic access.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -183,7 +207,7 @@ export default {
 			description:
 				"The title attribute for the checkbox, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -194,7 +218,7 @@ export default {
 			description:
 				"The value attribute for the checkbox. This is the value that will be submitted when the checkbox is checked in a form.",
 			table: {
-				type: { summary: "string | number" },
+				type: { summary: "string | number | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -202,7 +226,7 @@ export default {
 			description:
 				"Callback function fired when the checkbox state changes. Receives an event object with the new checked state. Essential for controlled components and form state management.",
 			table: {
-				type: { summary: "(event: {checked: boolean, name: string, value: any}) => void" },
+				type: { summary: "(event: {checked: boolean, name: string, value: any}) => void | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -210,7 +234,7 @@ export default {
 			description:
 				"Callback function fired when the checkbox loses focus. Use this for validation or other actions that should occur when the user finishes interacting with the checkbox.",
 			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
+				type: { summary: "(event: React.FocusEvent) => void | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -218,7 +242,7 @@ export default {
 			description:
 				"Callback function fired when the checkbox gains focus. Use this for tracking user interaction or showing additional UI elements.",
 			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
+				type: { summary: "(event: React.FocusEvent) => void | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -226,7 +250,7 @@ export default {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify the checkbox during automated testing.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -234,7 +258,7 @@ export default {
 			control: { type: "text" },
 			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -245,7 +269,7 @@ export default {
 			description:
 				"If true, displays the checkbox in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the checkbox selection.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		}

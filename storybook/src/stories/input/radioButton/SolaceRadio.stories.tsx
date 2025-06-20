@@ -9,6 +9,34 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Radio Button",
 	component: SolaceRadio,
+	args: {
+		label: "",
+		subText: "",
+		helperText: "",
+		hasErrors: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		checked: false,
+		defaultChecked: false,
+		largeLabel: false,
+		lightSubText: false,
+		value: "",
+		name: "",
+		id: "",
+		title: "",
+		inline: false,
+		inlineLabel: false,
+		stackLabel: true,
+		bold: false,
+		large: false,
+		onChange: undefined,
+		onBlur: undefined,
+		onFocus: undefined,
+		children: undefined,
+		dataQa: "",
+		dataTags: ""
+	},
 	parameters: {
 		design: {
 			type: "figma",
@@ -254,35 +282,7 @@ export default {
 				"Callback function fired when the radio button loses focus. Use this for validation or other actions that should occur when the user finishes selecting.",
 			table: {
 				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the radio button gains focus. Use this for tracking user interaction or showing additional UI elements.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		children: {
-			control: { type: "object" },
-			description:
-				"SolaceRadio components that represent the available options in a radio group. Use SolaceRadio components from the library to ensure proper styling and behavior.",
-			table: {
-				type: { summary: "React.ReactNode" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		dataQa: {
-			control: { type: "text" },
-			description: "Data attribute for QA testing. Use this to identify the radio button during automated testing.",
-			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		dataTags: {
+			
 			control: { type: "text" },
 			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {

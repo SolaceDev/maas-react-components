@@ -30,12 +30,21 @@ const SELECT_OPTIONS: Array<JSX.Element> = [
 export default {
 	title: "Layout/Stack",
 	component: SolaceStack,
+	args: {
+		id: "",
+		hasWarnings: false,
+		spacing: 2,
+		direction: "column",
+		divider: undefined,
+		sx: undefined,
+		children: undefined
+	},
 	argTypes: {
 		id: {
 			control: { type: "text" },
 			description: "Unique identifier for the stack component. Used for accessibility and programmatic access.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -46,7 +55,7 @@ export default {
 			description:
 				"If true, displays the stack in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the stack content.",
 			table: {
-				type: { summary: "boolean" },
+				type: { summary: "boolean | undefined" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -55,15 +64,17 @@ export default {
 			description:
 				"If customSpacing is passed in the default 16px would be replaced by the appropriate value. eg: if 3 is passed in the result would be theme.spacing(3) = 24px between all elements.If 0 is passed in all spacing is disabled.For detailed documentation please refer to https://mui.com/api/stack/. Code component name: SolaceStack",
 			table: {
+				type: { summary: "number | undefined" },
 				defaultValue: {
 					summary: "2"
 				}
 			}
 		},
 		direction: {
-			options: ["column-reverse", "column", "row-reverse", "row", "column-reverse", "column", "row-reverse", "row"],
+			options: ["column-reverse", "column", "row-reverse", "row"],
 			control: { type: "select" },
 			table: {
+				type: { summary: '"column-reverse" | "column" | "row-reverse" | "row" | undefined' },
 				defaultValue: {
 					summary: "column"
 				}
@@ -72,12 +83,30 @@ export default {
 				"To align child elements in vertical or horizontal direction.For detailed documentation please refer to https://mui.com/api/stack/"
 		},
 		divider: {
-			control: { type: "text" },
-
+			control: { type: "object" },
 			description:
-				"Add an element between each child.For detailed documentation please refer to https://mui.com/api/stack/"
+				"Add an element between each child.For detailed documentation please refer to https://mui.com/api/stack/",
+			table: {
+				type: { summary: "React.ReactNode | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
-		sx: { control: { type: "object" } }
+		sx: {
+			control: { type: "object" },
+			description: "System prop for custom styling",
+			table: {
+				type: { summary: "object | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		children: {
+			control: { type: "object" },
+			description: "The content of the stack component",
+			table: {
+				type: { summary: "React.ReactNode | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		}
 	},
 	parameters: {
 		docs: {
