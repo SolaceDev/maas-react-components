@@ -16,62 +16,89 @@ export default {
 			}
 		}
 	},
+	args: {
+		message: "helpful information.",
+		showIcon: true,
+		showCloseButton: false,
+		onClose: undefined,
+		variant: "info",
+		color: "",
+		dense: false,
+		details: undefined,
+		dataQa: "",
+		dataTags: ""
+	},
 	argTypes: {
 		message: {
-			control: {
-				type: "text"
-			},
-			description: "The message to render",
+			control: { type: "text" },
+			description: "The message to render (string or JSX element)",
 			table: {
-				defaultValue: {
-					summary: "text"
-				}
+				defaultValue: { summary: "required" }
 			}
 		},
 		showIcon: {
-			control: {
-				type: "boolean"
-			},
+			control: { type: "boolean" },
 			description: "Whether to show icon",
 			table: {
-				defaultValue: {
-					summary: "true"
-				}
+				defaultValue: { summary: "true" }
 			}
 		},
 		showCloseButton: {
-			control: {
-				type: "boolean"
-			},
+			control: { type: "boolean" },
 			description: "Whether to show the close button",
 			table: {
-				defaultValue: {
-					summary: "false"
-				}
+				defaultValue: { summary: "false" }
+			}
+		},
+		onClose: {
+			action: "message box closed",
+			description: "Callback function after the message box is closed",
+			table: {
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		variant: {
 			options: ["info", "error", "warn", "success"],
-			control: {
-				type: "select"
-			},
+			control: { type: "select" },
 			description:
 				"The type/style of message box to render. Uses status enum values similar to STATUSES from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/statuses.ts",
 			table: {
-				defaultValue: {
-					summary: "text"
-				}
+				defaultValue: { summary: '"info"' }
 			}
 		},
 		color: {
-			control: {
-				type: "text"
-			},
-			description: "specify the message text color",
+			control: { type: "text" },
+			description: "Specify the message text color (overrides default variant color)",
 			table: {
-				defaultValue: {
-					summary: "text"
-				}
+				defaultValue: { summary: '""' }
+			}
+		},
+		dense: {
+			control: { type: "boolean" },
+			description: "If true, compact vertical padding is used",
+			table: {
+				defaultValue: { summary: "false" }
+			}
+		},
+		details: {
+			control: false,
+			description: "To display further details about the message (string or JSX element)",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute for testing",
+			table: {
+				defaultValue: { summary: '""' }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute for additional metadata",
+			table: {
+				defaultValue: { summary: '""' }
 			}
 		}
 	}

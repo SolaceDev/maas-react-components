@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 import { SolacePagination } from "@SolaceDev/maas-react-components";
@@ -10,48 +11,141 @@ export default {
 	parameters: {
 		docs: {
 			description: {
-				component: "Code component name: SolacePagination"
+				component:
+					"Pagination component for navigating through large sets of data with page controls. Code component name: SolacePagination"
 			}
 		}
 	},
+	args: {
+		id: "",
+		activePage: 1,
+		totalResults: 156,
+		pageSize: 10,
+		displayText: "Showing {start} to {end} of {total} results",
+		loading: false,
+		dataQa: "",
+		dataTags: "",
+		// Future accessibility and interaction props (not currently implemented in component)
+		"aria-label": "",
+		"aria-labelledby": "",
+		startIcon: null,
+		endIcon: null,
+		onClick: undefined
+	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Optional ID of this component",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
 		activePage: {
-			control: {
-				type: "number",
-				defaultValue: 1
-			},
-			description: "The current active page"
+			control: { type: "number" },
+			description: "The current active page",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "1" }
+			}
 		},
 		totalResults: {
-			control: {
-				type: "number",
-				defaultValue: 156
-			},
-			description: "The total number of results"
+			control: { type: "number" },
+			description: "The total number of results",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "156" }
+			}
 		},
 		pageSize: {
 			control: {
 				type: "select",
 				options: [10, 20, 50, 100]
 			},
-			description: "The number of items per page"
+			description: "The number of items per page",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "10" }
+			}
 		},
 		displayText: {
-			control: {
-				type: "text"
-			},
-			description: "The string template to use for communicating pagination details"
+			control: { type: "text" },
+			description: "The string template to use for communicating pagination details",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: '"Showing {start} to {end} of {total} results"' }
+			}
 		},
 		onPageSelection: {
 			action: "page selected",
-			description: "Callback function to notify which page was clicked/selected by the end user"
+			description: "Callback function to notify which page was clicked/selected by the end user",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		loading: {
-			control: {
-				type: "boolean"
-			},
+			control: { type: "boolean" },
 			description: "The loading state flag for pagination component",
-			defaultValue: false
+			table: {
+				type: { summary: "boolean | undefined" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute for testing",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute for additional metadata",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		// Future accessibility and interaction props (not currently implemented in component)
+		"aria-label": {
+			control: { type: "text" },
+			description: "Accessibility label for the pagination component",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		"aria-labelledby": {
+			control: { type: "text" },
+			description: "ID of element that labels the pagination component for accessibility",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		startIcon: {
+			control: false,
+			description: "Element placed before the pagination controls",
+			table: {
+				type: { summary: "React.ReactNode | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		endIcon: {
+			control: false,
+			description: "Element placed after the pagination controls",
+			table: {
+				type: { summary: "React.ReactNode | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onClick: {
+			action: "clicked",
+			description: "Optional click handler for pagination component",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolacePagination>;

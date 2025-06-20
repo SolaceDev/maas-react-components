@@ -31,21 +31,59 @@ export default {
 				type: "select"
 			},
 			description:
-				"**Deprecated** - This prop will be removed in a future version. Uses status enum values similar to STATUSES from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/statuses.ts",
+				"**Deprecated** - This prop will be removed in a future version (Target: August 2025). Determines the toast variant with corresponding icon and styling.",
 			table: {
-				type: { summary: '"success" | "info" | "warning" | "error"' },
+				type: { summary: '"success" | "info" | "warning" | "error" | undefined' },
 				defaultValue: { summary: "undefined" }
 			}
 		},
 		message: {
-			control: { type: "object" },
-			description: "Title displayed at the top of the tooltip"
+			control: {
+				type: "text"
+			},
+			description: "The message content to display in the toast. Can be a string or JSX element for rich content.",
+			table: {
+				type: { summary: "string | React.ReactNode" },
+				defaultValue: { summary: "required" }
+			}
 		},
 		open: {
-			control: { type: "boolean" }
+			control: {
+				type: "boolean"
+			},
+			description: "Controls the visibility of the toast. When true, the toast is displayed.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		action: {
+			control: false,
+			description:
+				"Optional action element(s) to display in the toast, such as buttons or icons. Extends auto-hide duration to 8 seconds when present.",
+			table: {
+				type: { summary: "React.ReactNode | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		autoDismiss: {
-			control: { type: "boolean" }
+			control: {
+				type: "boolean"
+			},
+			description:
+				"Controls automatic dismissal behavior. When true, toast auto-hides after 4 seconds (8 seconds with action). When false, toast remains visible until manually closed.",
+			table: {
+				type: { summary: "boolean | undefined" },
+				defaultValue: { summary: "true" }
+			}
+		},
+		onClose: {
+			control: false,
+			description:
+				"Required callback function triggered when the toast is closed. Receives the event that caused the closure.",
+			table: {
+				defaultValue: { summary: "required" }
+			}
 		}
 	}
 } as Meta<typeof SolaceToasts>;

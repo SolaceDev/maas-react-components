@@ -14,22 +14,39 @@ const meta: Meta<typeof SolaceIconTabs> = {
 	parameters: {
 		docs: {
 			description: {
-				component: "Code component name: SolaceIconTabs"
+				component:
+					"Icon tabs component for view switching with icon-based navigation. Code component name: SolaceIconTabs"
 			}
 		}
+	},
+	args: {
+		views: [
+			{ tooltip: "Graph View", icon: <GraphViewIcon />, value: "view_graph" },
+			{ tooltip: "Components", icon: <ListViewIcon />, value: "view_components" }
+		],
+		activeViewValue: "view_graph"
 	},
 	argTypes: {
 		views: {
 			control: { type: "object" },
-			description: "Array of views (typical is 2 views but could be more)"
+			description: "Array of views (typical is 2 views but could be more)",
+			table: {
+				defaultValue: { summary: "[]" }
+			}
 		},
 		activeViewValue: {
 			control: { type: "text" },
-			description: "The value of the active view"
+			description: "The value of the active view",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		onViewClick: {
 			action: "clicked",
-			description: "Callback fired when the value changes"
+			description: "Callback fired when the value changes",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 };

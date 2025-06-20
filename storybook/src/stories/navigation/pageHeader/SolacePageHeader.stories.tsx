@@ -31,17 +31,16 @@ const DemoMenu = (): JSX.Element => {
 			buttonProps={{
 				children: <MoreHorizOutlinedIcon />,
 				title: "Actions",
-				variant: "icon",
-				dataQa: "actions"
+				variant: "icon"
 			}}
 			anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
 			transformOrigin={{ horizontal: "right", vertical: "top" }}
-			id={"actions"}
+			id="actions"
 			items={[
-				{ name: "Menu Item 1" },
-				{ name: "Menu Item 2" },
-				{ name: "Menu Item 3", divider: true },
-				{ name: "Menu Item 4" }
+				{ name: "Menu Item 1", onMenuItemClick: action("menu-item-1") },
+				{ name: "Menu Item 2", onMenuItemClick: action("menu-item-2") },
+				{ name: "Menu Item 3", onMenuItemClick: action("menu-item-3"), divider: true },
+				{ name: "Menu Item 4", onMenuItemClick: action("menu-item-4") }
 			]}
 		/>
 	);
@@ -58,62 +57,120 @@ export default {
 			}
 		}
 	},
+	args: {
+		id: "",
+		title: "Page Name",
+		subTitle: "",
+		release: "",
+		environment: undefined,
+		borderTop: "",
+		breadcrumbs: undefined,
+		actions: undefined,
+		actionMenu: undefined,
+		tabs: undefined,
+		iconTabs: undefined,
+		returnTo: undefined,
+		dataQa: "",
+		dataTags: ""
+	},
 	argTypes: {
 		id: {
 			control: { type: "text" },
-			description: "Optional id to be used"
+			description: "Optional id to be used",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		title: {
 			control: { type: "text" },
-			description: "The header's title to display"
+			description: "The header's title to display",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		subTitle: {
 			control: { type: "text" },
-			description: "The sub-title to display next to the title"
+			description: "The sub-title to display next to the title",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		release: {
 			control: { type: "text" },
-			description: "The release string (e.g. 'BETA')"
+			description: "The release string (e.g. 'BETA')",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		environment: {
 			control: { type: "object" },
-			description: "The environment's chip (SolaceEnvironmentChip or SolaceEnvironmentSelectChip)"
+			description: "The environment's chip (SolaceEnvironmentChip or SolaceEnvironmentSelectChip)",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		borderTop: {
 			control: { type: "text" },
-			description: "The header's top border color"
+			description: "The header's top border color",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		breadcrumbs: {
 			control: { type: "object" },
-			description: "Breadcrumbs where the last path should be the current one"
+			description: "Breadcrumbs where the last path should be the current one",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		actions: {
 			control: { type: "object" },
-			description: "Array of actions (like SolaceButton)"
+			description: "Array of actions (like SolaceButton)",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		actionMenu: {
 			control: { type: "object" },
-			description: "The action menu (usually with a '...' icon)"
+			description: "The action menu (usually with a '...' icon)",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		tabs: {
 			control: { type: "object" },
-			description: "The tabs (SolaceTabs) to be displayed next to the title/sub-title"
+			description: "The tabs (SolaceTabs) to be displayed next to the title/sub-title",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		iconTabs: {
 			control: { type: "object" },
-			description: "The icon tabs (SolaceIconTabs) to be displayed before the title/sub-title"
+			description: "The icon tabs (SolaceIconTabs) to be displayed before the title/sub-title",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		returnTo: {
 			control: { type: "object" },
-			description: "Used to add a 'Return to X' link in front of the breadcrumbs"
+			description: "Used to add a 'Return to X' link in front of the breadcrumbs",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataQa: {
 			control: { type: "text" },
-			description: "Data QA attribute"
+			description: "Data QA attribute for testing",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		dataTags: {
 			control: { type: "text" },
-			description: "Data tags attribute"
+			description: "Data tags attribute for additional metadata",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		}
 	}
 } as Meta<typeof SolacePageHeader>;

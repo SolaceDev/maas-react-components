@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 // SolaceTypography.stories.tsx
 
 import React from "react";
@@ -30,7 +31,7 @@ export default {
 					summary: "body1"
 				},
 				type: {
-					summary: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'body1' | 'caption'"
+					summary: '"h1" | "h2" | "h3" | "h4" | "h5" | "body1" | "caption" | undefined'
 				}
 			},
 			description:
@@ -41,7 +42,7 @@ export default {
 			control: { type: "select" },
 			table: {
 				type: {
-					summary: "'success' | 'error' | 'warning' | 'info'"
+					summary: '"success" | "error" | "warning" | "info" | undefined'
 				}
 			},
 			description:
@@ -56,7 +57,7 @@ export default {
 					summary: "false"
 				},
 				type: {
-					summary: "bool"
+					summary: "boolean | undefined"
 				}
 			}
 		},
@@ -68,7 +69,7 @@ export default {
 					summary: "false"
 				},
 				type: {
-					summary: "bool"
+					summary: "boolean | undefined"
 				}
 			}
 		},
@@ -80,7 +81,7 @@ export default {
 					summary: "false"
 				},
 				type: {
-					summary: "bool"
+					summary: "boolean | undefined"
 				}
 			}
 		},
@@ -89,7 +90,7 @@ export default {
 			description: "The component used for the root node. Either a string to use a HTML element or a component.",
 			table: {
 				type: {
-					summary: "elementType"
+					summary: "React.ElementType | undefined"
 				}
 			}
 		},
@@ -101,7 +102,7 @@ export default {
 					summary: "inherit"
 				},
 				type: {
-					summary: "'center' | 'inherit' | 'justify' | 'left' | 'right'"
+					summary: '"center" | "inherit" | "justify" | "left" | "right" | undefined'
 				}
 			},
 			description: "Set the text-align on the component."
@@ -110,9 +111,21 @@ export default {
 			control: {
 				type: "object"
 			},
-			description: "Override or extend the styles applied to the component. See CSS API in mui for more details."
+			description: "Override or extend the styles applied to the component. See CSS API in mui for more details.",
+			table: {
+				type: {
+					summary: "object | undefined"
+				}
+			}
 		},
-		sx: { control: { type: "object" } },
+		sx: {
+			control: { type: "object" },
+			table: {
+				type: {
+					summary: "object | undefined"
+				}
+			}
+		},
 		variantMapping: {
 			control: {
 				type: "object"
@@ -120,13 +133,20 @@ export default {
 			table: {
 				type: {
 					summary:
-						"{ h1: 'h1', h2: 'h2', h3: 'h3', h4: 'h4', h5: 'h5', h6: 'h6', subtitle1: 'h6', subtitle2: 'h6', body1: 'p', body2: 'p', inherit: 'p', }"
+						"{ h1?: string; h2?: string; h3?: string; h4?: string; h5?: string; body1?: string; caption?: string; } | undefined"
 				}
 			},
 			description:
 				"The component maps the variant prop to a range of different HTML element types. For instance, subtitle1 to <h6>. If you wish to change that mapping, you can provide your own. Alternatively, you can use the component prop."
 		},
-		backgroundColor: { control: "color" }
+		backgroundColor: {
+			control: "color",
+			table: {
+				type: {
+					summary: "string | undefined"
+				}
+			}
+		}
 	}
 } as Meta;
 const Template: StoryFn<typeof SolaceTypography> = (args) => <Box {...args} />;

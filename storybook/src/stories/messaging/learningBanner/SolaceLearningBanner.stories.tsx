@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React, { ReactNode } from "react";
 import { Meta } from "@storybook/react";
 import { SolaceButton, SolaceLearningBanner } from "@SolaceDev/maas-react-components";
@@ -15,13 +16,46 @@ export default {
 			}
 		}
 	},
+	args: {
+		title: "",
+		children: undefined,
+		showCloseButton: false,
+		onClose: undefined,
+		backgroundColor: "",
+		dataQa: "",
+		dataTags: ""
+	},
 	argTypes: {
+		title: {
+			control: { type: "text" },
+			description: "The title of the banner (can be string or JSX element)",
+			table: {
+				type: { summary: "string | JSX.Element | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		children: {
+			control: false,
+			description: "The content of the banner (JSX element)",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "required" }
+			}
+		},
+		onClose: {
+			action: "banner closed",
+			description: "Callback function after the banner is closed",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
+		},
 		showCloseButton: {
 			control: {
 				type: "boolean"
 			},
 			description: "Whether to show the close button",
 			table: {
+				type: { summary: "boolean" },
 				defaultValue: {
 					summary: "false"
 				}
@@ -33,9 +67,26 @@ export default {
 			},
 			description: "specify the background color",
 			table: {
+				type: { summary: "string | undefined" },
 				defaultValue: {
-					summary: "text"
+					summary: "undefined"
 				}
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute for testing",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute for additional metadata",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	}

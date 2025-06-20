@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { SolaceBreadcrumb } from "@SolaceDev/maas-react-components";
@@ -15,37 +16,79 @@ export default {
 			}
 		}
 	},
+	args: {
+		id: "",
+		paths: [
+			{
+				title: "Home",
+				link: "/",
+				current: true
+			}
+		],
+		maxItems: 8,
+		dataQa: "breadcrumbs",
+		dataTags: ""
+	},
 	argTypes: {
 		id: {
 			control: { type: "text" },
-			description: "Optional ID of this component"
+			description: "Optional ID of this component",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		paths: {
 			control: {
 				type: "object"
 			},
 			description:
-				"Array of Paths, each containing title, link, current (optional), tooltip (optional), progress (optional), and progressTooltip (optional)"
+				"Array of Paths, each containing title, link, current (optional), tooltip (optional), progress (optional), and progressTooltip (optional)",
+			table: {
+				type: {
+					summary:
+						"Array<{ title: string; link: string; current?: boolean; tooltip?: string; progress?: boolean; progressTooltip?: string }>"
+				},
+				defaultValue: {
+					summary: '[{ "title": "Home", "link": "/", "current": true }]'
+				}
+			}
 		},
 		maxItems: {
 			control: {
 				type: "number"
 			},
-			defaultValue: 8,
+			table: {
+				type: { summary: "number | undefined" },
+				defaultValue: { summary: "8" }
+			},
 			description: "Maximum of displayed paths (to see ... when there's more)"
 		},
 		onRouteClick: {
-			control: false,
-			description: "Optional click handler. When not set, it's assume a React Router's Link will be used"
+			action: "route clicked",
+			description: "Callback function triggered when a route is clicked",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data QA attribute for testing",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: {
+					summary: '"breadcrumbs"'
+				}
+			},
 			defaultValue: "breadcrumbs"
 		},
 		dataTags: {
 			control: { type: "text" },
-			description: "Data tags attribute for additional metadata"
+			description: "Data tags attribute for additional metadata",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceBreadcrumb>;

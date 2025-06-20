@@ -12,32 +12,81 @@ export default {
 	parameters: {
 		docs: {
 			description: {
-				component: "Code component name: SolaceTabs"
+				component:
+					"Tabs component for organizing content into different sections with navigation. Code component name: SolaceTabs"
 			}
 		}
 	},
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one", href: "#" },
+			{ label: "Tab Two", value: "tab_two", href: "#" },
+			{ label: "Tab Three", value: "tab_three", href: "#" }
+		],
+		activeTabValue: "tab_one",
+		size: "sm",
+		variant: "standard",
+		dataQa: "",
+		dataTags: ""
+	},
 	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Optional ID of this component",
+			table: {
+				defaultValue: { summary: '""' }
+			}
+		},
 		tabs: {
 			control: { type: "object" },
-			description: "Array of tab objects with label, value, and optional properties"
+			description: "Array of tab objects with label, value, and optional properties",
+			table: {
+				defaultValue: { summary: "[]" }
+			}
 		},
 		activeTabValue: {
 			control: { type: "text" },
-			description: "The value of the active tab"
+			description: "The value of the active tab",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		onTabClick: {
 			action: "clicked",
-			description: "Callback fired when a tab is clicked"
+			description: "Callback fired when a tab is clicked",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		size: {
-			control: "select",
+			control: { type: "select", options: ["sm", "md"] },
 			description:
-				"Size of the tab font. Uses TabSize enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTabs.ts"
+				"Size of the tab font. Uses TabSize enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTabs.ts",
+			table: {
+				defaultValue: { summary: '"sm"' }
+			}
 		},
 		variant: {
-			control: "select",
+			control: { type: "select", options: ["standard", "fullWidth", "scrollable"] },
 			description:
-				"The variant to use. Uses TabVariant enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTabs.ts"
+				"The variant to use. Uses TabVariant enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceTabs.ts",
+			table: {
+				defaultValue: { summary: '"standard"' }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data QA attribute for testing",
+			table: {
+				defaultValue: { summary: '""' }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute for additional metadata",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		}
 	}
 } as Meta<typeof SolaceTabs>;

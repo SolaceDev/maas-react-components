@@ -24,43 +24,75 @@ export default {
 	parameters: {
 		docs: {
 			description: {
-				component: "Code component name: SolaceTruncatableLink"
+				component:
+					"Truncatable link component that displays text with ellipsis when it exceeds the specified width, with tooltip on hover. Code component name: SolaceTruncatableLink"
 			}
 		}
+	},
+	args: {
+		id: "",
+		text: "This is a truncatable link with loooong name",
+		href: "",
+		maxWidth: "200px",
+		marginRight: "",
+		dataQa: ""
 	},
 	argTypes: {
 		id: {
 			control: { type: "text" },
-			description: "Unique identifier for the component"
+			description: "Unique identifier for the component",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		text: {
 			control: { type: "text" },
 			description: "This is the text that will be displayed in the button",
 			table: {
-				defaultValue: {
-					summary: "false"
-				}
+				defaultValue: { summary: '""' }
 			}
 		},
 		href: {
 			control: { type: "text" },
-			description: "URL to navigate in new tab while on click"
+			description: "URL to navigate in new tab while on click",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		maxWidth: {
 			control: { type: "text" },
-			description: "This is the max width for the wrapper component"
+			description: "This is the max width for the wrapper component",
+			table: {
+				defaultValue: { summary: '"auto"' }
+			}
 		},
 		marginRight: {
 			control: { type: "text" },
-			description: "This is the margin right for the wrapper component"
+			description: "This is the margin right for the wrapper component",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		},
 		onClick: {
-			control: { type: "text" },
-			description: "Optional click handler"
+			action: "clicked",
+			description: "Optional click handler",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataQa: {
 			control: { type: "text" },
-			description: "Data QA attribute for testing purposes"
+			description: "Data QA attribute for testing purposes",
+			table: {
+				defaultValue: { summary: '""' }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data tags attribute for additional metadata",
+			table: {
+				defaultValue: { summary: '""' }
+			}
 		}
 	},
 	decorators: [withSnapshotContainer]

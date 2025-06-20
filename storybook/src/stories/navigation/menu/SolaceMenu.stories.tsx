@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React, { useState } from "react";
 import { Decorator, Meta } from "@storybook/react";
 import {
@@ -39,73 +40,138 @@ export default {
 		chromatic: { delay: 1000 },
 		docs: {
 			description: {
-				component: "Code component name: SolaceMenu"
+				component: "Menu component that displays a list of options in a dropdown. Code component name: SolaceMenu"
 			}
 		}
+	},
+	args: {
+		id: "",
+		buttonProps: {
+			variant: "icon",
+			children: <MoreHorizOutlinedIcon />
+		},
+		header: "",
+		anchorOrigin: { vertical: "bottom", horizontal: "left" },
+		transformOrigin: { vertical: "top", horizontal: "left" },
+		multiline: false,
+		propagateMenuClick: false,
+		closeOnSelect: true,
+		numOfMenuItemDisplayed: 9,
+		maxWidth: 335,
+		dataQa: "",
+		dataTags: ""
 	},
 	argTypes: {
 		id: {
 			control: { type: "text" },
-			description: "Optional ID of this component"
+			description: "Optional ID of this component",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		buttonProps: {
 			control: { type: "object" },
-			description: "Attributes to customize menu button"
+			description: "Attributes to customize menu button",
+			table: {
+				type: { summary: "object | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		items: {
 			control: { type: "object" },
-			description: "An array of options when using default menu"
+			description: "An array of options when using default menu",
+			table: {
+				type: { summary: "SolaceMenuItemProps[] | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		header: {
 			control: { type: "text" },
-			description: "Header of menu when using default menu"
+			description: "Header of menu when using default menu",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		anchorOrigin: {
 			control: { type: "object" },
 			description: "Optional attribute to change the position of menu popper only for default menu",
-			defaultValue: { vertical: "bottom", horizontal: "left" }
+			table: {
+				type: { summary: "{ vertical: string; horizontal: string } | undefined" },
+				defaultValue: { summary: '{ vertical: "bottom", horizontal: "left" }' }
+			}
 		},
 		transformOrigin: {
 			control: { type: "object" },
 			description: "Optional attribute to change the position of menu popper only for default menu",
-			defaultValue: { vertical: "top", horizontal: "left" }
+			table: {
+				type: { summary: "{ vertical: string; horizontal: string } | undefined" },
+				defaultValue: { summary: '{ vertical: "top", horizontal: "left" }' }
+			}
 		},
 		multiline: {
 			control: { type: "boolean" },
 			description: "Optional boolean flag to adjust the maxHeight of menu",
-			defaultValue: false
+			table: {
+				type: { summary: "boolean | undefined" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		propagateMenuClick: {
 			control: { type: "boolean" },
 			description: "Optional attribute to propagate menu button click event to parent",
-			defaultValue: false
+			table: {
+				type: { summary: "boolean | undefined" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		closeOnSelect: {
 			control: { type: "boolean" },
 			description: "Optional flag to close the menu on menuItemClick",
-			defaultValue: true
+			table: {
+				type: { summary: "boolean | undefined" },
+				defaultValue: { summary: "true" }
+			}
 		},
 		onMenuItemClick: {
 			action: "clicked",
-			description: "The callback function runs when the user clicks on a menu item"
+			description: "The callback function runs when the user clicks on a menu item",
+			table: {
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		numOfMenuItemDisplayed: {
 			control: { type: "number" },
 			description: "Optional flag to specify the number of menu items to be displayed",
-			defaultValue: 9
+			table: {
+				type: { summary: "number | undefined" },
+				defaultValue: { summary: "9" }
+			}
 		},
 		maxWidth: {
 			control: { type: "number" },
 			description: "Optional attribute to define the maximum width of menu popper",
-			defaultValue: 335
+			table: {
+				type: { summary: "number | undefined" },
+				defaultValue: { summary: "335" }
+			}
 		},
 		dataQa: {
 			control: { type: "text" },
-			description: "Data QA attribute for testing"
+			description: "Data QA attribute for testing",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataTags: {
 			control: { type: "text" },
-			description: "Data tags attribute for additional metadata"
+			description: "Data tags attribute for additional metadata",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	},
 	decorators: [withSnapshotContainer]

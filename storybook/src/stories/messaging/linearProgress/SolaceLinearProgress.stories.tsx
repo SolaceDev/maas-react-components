@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import { SolaceLinearProgress } from "@SolaceDev/maas-react-components";
@@ -14,11 +15,27 @@ export default {
 			}
 		}
 	},
+	args: {
+		variant: "indeterminate",
+		value: undefined,
+		height: "md",
+		color: "default",
+		dataQa: undefined,
+		dataTags: undefined,
+		eventName: undefined
+	},
 	argTypes: {
 		variant: {
 			options: ["determinate", "indeterminate"],
 			control: {
 				type: "select"
+			},
+			description: "The variant style to use. Use indeterminate when there is no progress value to showcase.",
+			table: {
+				type: { summary: '"indeterminate" | "determinate"' },
+				defaultValue: {
+					summary: '"indeterminate"'
+				}
 			}
 		},
 		value: {
@@ -27,6 +44,14 @@ export default {
 				min: 0,
 				max: 100,
 				step: 1
+			},
+			description:
+				"Represent the progress value in percentage (useful only if the variant is 'determinate', value between 0 and 100).",
+			table: {
+				type: { summary: "number | undefined" },
+				defaultValue: {
+					summary: "undefined"
+				}
 			}
 		},
 		height: {
@@ -34,13 +59,61 @@ export default {
 			control: {
 				type: "select"
 			},
-			description:
-				"Height of the linear indicator. Uses BASE_SIZE_TYPES enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/sizing.ts"
+			description: "Height of the linear indicator. xs: 4px, sm: 6px, md: 10px, lg: 14px. Uses BASE_SIZE_TYPES enum.",
+			table: {
+				type: { summary: '"xs" | "sm" | "md" | "lg"' },
+				defaultValue: {
+					summary: '"md"'
+				}
+			}
 		},
 		color: {
 			options: ["default", "learning"],
 			control: {
 				type: "select"
+			},
+			description: "Color to style the progress bar with.",
+			table: {
+				type: { summary: '"default" | "learning"' },
+				defaultValue: {
+					summary: '"default"'
+				}
+			}
+		},
+		dataQa: {
+			control: {
+				type: "text"
+			},
+			description: "Data QA attribute for testing purposes.",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: {
+					summary: "undefined"
+				}
+			}
+		},
+		dataTags: {
+			control: {
+				type: "text"
+			},
+			description: "Data tags attribute for additional metadata.",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: {
+					summary: "undefined"
+				}
+			}
+		},
+		eventName: {
+			control: {
+				type: "text"
+			},
+			description: "Event name to be used in tracking facility.",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: {
+					summary: "undefined"
+				}
 			}
 		}
 	}

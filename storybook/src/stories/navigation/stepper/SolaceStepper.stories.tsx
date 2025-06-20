@@ -12,7 +12,8 @@ const meta: Meta<typeof SolaceStepper> = {
 		docs: {
 			story: { height: "300px" },
 			description: {
-				component: "Code component name: SolaceStepper"
+				component:
+					"Stepper component for multi-step forms and processes with navigation controls. Code component name: SolaceStepper"
 			}
 		},
 		design: {
@@ -20,21 +21,79 @@ const meta: Meta<typeof SolaceStepper> = {
 			url: "https://www.figma.com/file/FsVh1zud1IAaXHRn9oIkB7/DATAGOMILE-154---Connector-Flows-Phase-1?type=design&node-id=1096-6315&mode=design&t=IlWw05RJHzNzB8Mi-0"
 		}
 	},
+	args: {
+		steps: [],
+		activeStep: 0,
+		setActiveStep: undefined,
+		onClose: undefined,
+		onSubmit: undefined,
+		submitLabel: "Submit",
+		stepContentOverflow: StepContentOverflow.Auto,
+		disableSubmit: false,
+		onSecondarySubmit: undefined,
+		secondarySubmitLabel: ""
+	},
 	argTypes: {
-		steps: { control: "object", description: "Array of step objects" },
-		activeStep: { control: "number", description: "Index of the current active step" },
-		setActiveStep: { action: "setActiveStep", description: "Function to set the active step" },
-		onClose: { action: "onClose", description: "Function called when stepper is closed" },
-		onSubmit: { action: "onSubmit", description: "Function called when stepper is submitted" },
-		submitLabel: { control: "text", description: "Label for the submit button" },
+		steps: {
+			control: "object",
+			description: "Array of step objects",
+			table: {
+				defaultValue: { summary: "[]" }
+			}
+		},
+		activeStep: {
+			control: "number",
+			description: "Index of the current active step",
+			table: {
+				defaultValue: { summary: "0" }
+			}
+		},
+		setActiveStep: {
+			action: "setActiveStep",
+			description: "Function to set the active step"
+		},
+		onClose: {
+			action: "onClose",
+			description: "Function called when stepper is closed"
+		},
+		onSubmit: {
+			action: "onSubmit",
+			description: "Function called when stepper is submitted"
+		},
+		submitLabel: {
+			control: "text",
+			description: "Label for the submit button",
+			table: {
+				defaultValue: { summary: '"Submit"' }
+			}
+		},
 		stepContentOverflow: {
 			control: "select",
+			options: Object.values(StepContentOverflow),
 			description:
-				"Controls how content overflows within each step. Uses StepContentOverflow enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceStepper.ts"
+				"Controls how content overflows within each step. Uses StepContentOverflow enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceStepper.ts",
+			table: {
+				defaultValue: { summary: "StepContentOverflow.Auto" }
+			}
 		},
-		disableSubmit: { control: "boolean", description: "Whether to disable the submit button" },
-		onSecondarySubmit: { action: "onSecondarySubmit", description: "Function called for secondary submit action" },
-		secondarySubmitLabel: { control: "text", description: "Label for the secondary submit button" }
+		disableSubmit: {
+			control: "boolean",
+			description: "Whether to disable the submit button",
+			table: {
+				defaultValue: { summary: "false" }
+			}
+		},
+		onSecondarySubmit: {
+			action: "onSecondarySubmit",
+			description: "Function called for secondary submit action"
+		},
+		secondarySubmitLabel: {
+			control: "text",
+			description: "Label for the secondary submit button",
+			table: {
+				defaultValue: { summary: '""' }
+			}
+		}
 	}
 };
 
@@ -119,9 +178,9 @@ export const Primary: Story = {
 	args: {
 		steps: initialSteps,
 		activeStep: 0,
-		setActiveStep: () => {},
-		onClose: onCloseAlert,
-		onSubmit: onSubmitAlert,
+		setActiveStep: undefined,
+		onClose: undefined,
+		onSubmit: undefined,
 		submitLabel: "Submit",
 		stepContentOverflow: StepContentOverflow.Auto,
 		disableSubmit: false,
