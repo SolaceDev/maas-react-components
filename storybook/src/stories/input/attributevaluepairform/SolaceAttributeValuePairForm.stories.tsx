@@ -16,6 +16,23 @@ import {
 export default {
 	title: "Input/Textfield/Attribute Pair",
 	component: SolaceAttributeValuePairForm,
+	args: {
+		id: "",
+		name: "",
+		labelForKeys: "Keys",
+		labelForValues: "Values",
+		avpList: [],
+		hasWarnings: false,
+		hasErrors: false,
+		helperText: "",
+		disableReorder: false,
+		readOnly: false,
+		emptyFieldDisplayValue: "",
+		enableRequiredKeyFieldIndicator: false,
+		keyIsRequiredMessage: "",
+		avpListMaxHeight: "",
+		virtualizedAvpListOption: undefined
+	},
 	parameters: {
 		docs: {
 			story: { height: "500px" },

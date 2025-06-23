@@ -281,27 +281,15 @@ export default {
 		},
 		onChange: {
 			description:
-				"Callback function fired when the selection changes. Receives an event object with the new value. Essential for controlled components and form state management.",
-			table: {
-				type: { summary: "(event: {value: any, name: string}) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the selection changes. Receives an event object with the new value. Essential for controlled components and form state management."
 		},
 		onBlur: {
 			description:
-				"Callback function fired when the select field loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes selecting.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the select field loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes selecting."
 		},
 		onFocus: {
 			description:
-				"Callback function fired when the select field gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for selection.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the select field gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for selection."
 		},
 		children: {
 			control: { type: "object" },
@@ -314,11 +302,7 @@ export default {
 		},
 		getOptionDisplayValue: {
 			description:
-				"Function to customize how selected values are displayed in the input field. Use this when you need to show different text than the MenuItem content.",
-			table: {
-				type: { summary: "(value: any) => string" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Function to customize how selected values are displayed in the input field. Use this when you need to show different text than the MenuItem content."
 		},
 		open: {
 			control: {
@@ -333,19 +317,11 @@ export default {
 		},
 		onOpen: {
 			description:
-				"Callback function fired when the dropdown opens. Use this for controlled dropdown state or to trigger actions when the dropdown becomes visible.",
-			table: {
-				type: { summary: "() => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the dropdown opens. Use this for controlled dropdown state or to trigger actions when the dropdown becomes visible."
 		},
 		onClose: {
 			description:
-				"Callback function fired when the dropdown closes. Use this for controlled dropdown state or to trigger actions when the dropdown becomes hidden.",
-			table: {
-				type: { summary: "() => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the dropdown closes. Use this for controlled dropdown state or to trigger actions when the dropdown becomes hidden."
 		},
 		dataQa: {
 			control: { type: "text" },

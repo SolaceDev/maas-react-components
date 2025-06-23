@@ -13,6 +13,12 @@ options.push({ value: "option3", label: "Pub" });
 export default {
 	title: "Input/Toggle Button",
 	component: SolaceToggleButtonGroup,
+	args: {
+		options: [],
+		activeValue: "",
+		isDisabled: false,
+		dataQa: ""
+	},
 	parameters: {
 		design: {
 			type: "figma",

@@ -12,6 +12,30 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Textfield/Standard",
 	component: SolaceTextField,
+	args: {
+		id: "",
+		name: "",
+		title: "",
+		label: "",
+		placeholder: "",
+		helperText: "",
+		value: "",
+		hasErrors: false,
+		hasWarnings: false,
+		autoFocus: false,
+		inlineLabel: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		type: "text",
+		size: undefined,
+		width: undefined,
+		minWidth: undefined,
+		customIcon: undefined,
+		endAdornment: undefined,
+		dataQa: "",
+		dataTags: ""
+	},
 	parameters: {
 		design: {
 			type: "figma",

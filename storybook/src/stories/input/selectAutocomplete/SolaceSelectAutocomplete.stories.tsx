@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable sonarjs/no-duplicate-string */
 import React, { useCallback, useState } from "react";
 import { Meta, Decorator } from "@storybook/react";
@@ -36,6 +37,35 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Dropdown/Autocomplete",
 	component: SolaceSelectAutocomplete,
+	args: {
+		id: "",
+		name: "",
+		title: "",
+		label: "",
+		placeholder: "",
+		width: "",
+		helperText: "",
+		hasErrors: false,
+		inlineLabel: false,
+		required: false,
+		disabled: false,
+		disableCloseOnSelect: true,
+		readOnly: false,
+		multiple: false,
+		limitTags: undefined,
+		maxHeight: "",
+		fullWidth: false,
+		minWidth: "",
+		clearSearchOnSelect: false,
+		tagMaxWidth: "",
+		freeSolo: false,
+		startAdornment: undefined,
+		endAdornment: undefined,
+		showSupplementalTextOrSecondaryAction: false,
+		showLeftIcon: false,
+		options: [],
+		value: undefined
+	},
 	parameters: {
 		controls: { sort: "alpha" },
 		chromatic: { delay: 500 },

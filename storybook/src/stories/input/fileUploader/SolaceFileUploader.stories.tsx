@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { SolaceFileUploader } from "@SolaceDev/maas-react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 

@@ -8,6 +8,12 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Code/Diff",
 	component: SolaceTextDiff,
+	args: {
+		id: "",
+		text1: "",
+		text2: "",
+		hasWarnings: false
+	},
 	parameters: {
 		docs: {
 			description: {

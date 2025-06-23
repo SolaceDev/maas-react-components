@@ -11,6 +11,19 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Code/Editor",
 	component: SolaceCodeEditor,
+	args: {
+		id: "",
+		name: "",
+		value: "",
+		mode: "json",
+		readOnly: false,
+		expandable: false,
+		fullScreen: false,
+		hasErrors: false,
+		hasWarnings: false,
+		helperText: "",
+		dataQa: ""
+	},
 	parameters: {
 		docs: {
 			description: {
@@ -55,11 +68,7 @@ export default {
 		},
 		onChange: {
 			description:
-				"Callback function triggered when the code content changes. Receives (editor, data, value) parameters.",
-			table: {
-				type: { summary: "(editor: any, data: any, value: string) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when the code content changes. Receives (editor, data, value) parameters."
 		},
 		readOnly: {
 			control: { type: "boolean" },

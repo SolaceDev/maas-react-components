@@ -282,7 +282,34 @@ export default {
 				"Callback function fired when the radio button loses focus. Use this for validation or other actions that should occur when the user finishes selecting.",
 			table: {
 				type: { summary: "(event: React.FocusEvent) => void" },
-			
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onFocus: {
+			description:
+				"Callback function fired when the radio button gains focus. Use this for analytics or other actions that should occur when the user interacts with the field.",
+			table: {
+				type: { summary: "(event: React.FocusEvent) => void" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		children: {
+			description:
+				"Content to be rendered inside the radio component. This can be used to add custom content or icons alongside the radio button.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify the radio button during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
 			control: { type: "text" },
 			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {

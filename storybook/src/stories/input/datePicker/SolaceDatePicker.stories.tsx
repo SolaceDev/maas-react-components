@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React from "react";
 import { Decorator, StoryFn, Meta } from "@storybook/react";
 import { SolaceDatePicker, SolaceDatePickerVariant } from "@SolaceDev/maas-react-components";
@@ -224,35 +225,19 @@ export default {
 		},
 		onChange: {
 			description:
-				"Callback function fired when the date selection changes. Receives the new date value in ISO 8601 format. Essential for controlled components and form state management.",
-			table: {
-				type: { summary: "(date: string) => void | undefined" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the date selection changes. Receives the new date value in ISO 8601 format. Essential for controlled components and form state management."
 		},
 		onClear: {
 			description:
-				"Callback function fired when the date is cleared. Use this to handle clearing actions and update form state appropriately.",
-			table: {
-				type: { summary: "() => void | undefined" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the date is cleared. Use this to handle clearing actions and update form state appropriately."
 		},
 		onBlur: {
 			description:
-				"Callback function fired when the date picker loses focus. Use this for validation or other actions that should occur when the user finishes date selection.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void | undefined" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the date picker loses focus. Use this for validation or other actions that should occur when the user finishes date selection."
 		},
 		onFocus: {
 			description:
-				"Callback function fired when the date picker gains focus. Use this for tracking user interaction or showing additional UI elements.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void | undefined" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the date picker gains focus. Use this for tracking user interaction or showing additional UI elements."
 		},
 		dataQa: {
 			control: { type: "text" },
