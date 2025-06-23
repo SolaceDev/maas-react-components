@@ -42,7 +42,9 @@ export default {
 		fgColor: "#ffffff",
 		bgColor: "#7841A8",
 		icon: undefined,
-		variant: "standard"
+		variant: "standard",
+		dataQa: "",
+		dataTags: ""
 	},
 	parameters: {
 		docs: {
@@ -72,13 +74,69 @@ export default {
 				defaultValue: { summary: "false" }
 			}
 		},
-		label: { control: { type: "text" } },
-		fgColor: { control: { type: "color" } },
-		bgColor: { control: { type: "color" } },
+		label: {
+			control: { type: "text" },
+			description:
+				"The text displayed on the environment label. This should be a concise name that clearly identifies the environment (e.g., 'Production', 'Development', 'Staging').",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		fgColor: {
+			control: { type: "color" },
+			description:
+				"The foreground (text) color for the environment label. Use this to ensure proper contrast against the background color for accessibility and visual clarity.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		bgColor: {
+			control: { type: "color" },
+			description:
+				"The background color for the environment label. Use distinct colors for different environment types to provide visual differentiation and quick recognition.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		icon: {
+			description:
+				"Icon component to display alongside the environment label text. Use this to provide visual context about the environment type or status.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
 		variant: {
 			options: ["standard", "title"],
 			control: {
 				type: "select"
+			},
+			description:
+				"Visual variant of the environment label. 'standard' provides normal sizing, while 'title' offers larger, more prominent styling for headings or emphasis.",
+			table: {
+				type: { summary: "'standard' | 'title'" },
+				defaultValue: { summary: "'standard'" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description:
+				"Data attribute for QA testing. Use this to identify the environment label during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description:
+				"Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata related to the environment label.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	},

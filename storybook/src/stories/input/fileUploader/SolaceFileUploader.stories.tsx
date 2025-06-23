@@ -84,11 +84,7 @@ const meta: Meta<typeof SolaceFileUploader> = {
 		},
 		onFileChange: {
 			description:
-				"Callback function fired when files are added or removed. Receives an array of File objects. Essential for handling file upload state and processing uploaded files.",
-			table: {
-				type: { summary: "(files: File[]) => void | undefined" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when files are added or removed. Receives an array of File objects. Essential for handling file upload state and processing uploaded files."
 		},
 		dataQa: {
 			control: { type: "text" },

@@ -178,8 +178,8 @@ export default {
 			description:
 				"The input type which affects validation, keyboard behavior on mobile devices, and browser auto-completion. Choose the most appropriate type for your data to improve user experience.",
 			table: {
-				type: { summary: '"text" | "number" | "password" | "email" | "url"' },
-				defaultValue: { summary: '"text"' }
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		size: {
@@ -249,7 +249,6 @@ export default {
 			description:
 				"Callback function fired when the input value changes. Receives an event object with the new value. Essential for controlled components and form state management.",
 			table: {
-				type: { summary: "(event: {value: string, name: string}) => void" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -257,7 +256,6 @@ export default {
 			description:
 				"Callback function fired when the input loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes editing.",
 			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -265,7 +263,6 @@ export default {
 			description:
 				"Callback function fired when the input gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for input.",
 			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
 				defaultValue: { summary: "undefined" }
 			}
 		},

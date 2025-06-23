@@ -33,14 +33,23 @@ export default {
 	},
 	argTypes: {
 		options: {
-			description: "An array of label - value toggle options"
+			description: "An array of label - value toggle options",
+			table: {
+				defaultValue: {
+					summary: "[]"
+				}
+			}
 		},
 		onChange: {
-			description:
-				"A function handler for toggle changes with parameters: (event: React.MouseEvent<HTMLElement>, value: string)"
+			description: "A function handler for toggle changes"
 		},
 		activeValue: {
-			description: "The value of the active toggle value"
+			description: "The value of the active toggle value",
+			table: {
+				defaultValue: {
+					summary: ""
+				}
+			}
 		},
 		isDisabled: {
 			control: { type: "boolean" },
@@ -48,6 +57,14 @@ export default {
 			table: {
 				defaultValue: {
 					summary: "false"
+				}
+			}
+		},
+		dataQa: {
+			description: "The data-qa attribute for the toggle button group.",
+			table: {
+				defaultValue: {
+					summary: ""
 				}
 			}
 		}

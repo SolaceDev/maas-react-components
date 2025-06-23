@@ -97,11 +97,7 @@ export default {
 		},
 		onChange: {
 			description:
-				"Callback function triggered when environment selection changes. Receives the new selected value as parameter.",
-			table: {
-				type: { summary: "(value: string) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when environment selection changes. Receives the new selected value as parameter."
 		},
 		label: {
 			control: { type: "text" },

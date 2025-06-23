@@ -271,27 +271,15 @@ export default {
 		},
 		onChange: {
 			description:
-				"Callback function fired when the radio selection changes. Receives an event object with the new selected value. Essential for controlled components and form state management.",
-			table: {
-				type: { summary: "(event: {value: any, name: string}) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the radio selection changes. Receives an event object with the new selected value. Essential for controlled components and form state management."
 		},
 		onBlur: {
 			description:
-				"Callback function fired when the radio button loses focus. Use this for validation or other actions that should occur when the user finishes selecting.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the radio button loses focus. Use this for validation or other actions that should occur when the user finishes selecting."
 		},
 		onFocus: {
 			description:
-				"Callback function fired when the radio button gains focus. Use this for analytics or other actions that should occur when the user interacts with the field.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the radio button gains focus. Use this for analytics or other actions that should occur when the user interacts with the field."
 		},
 		children: {
 			description:

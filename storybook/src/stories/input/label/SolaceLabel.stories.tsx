@@ -13,7 +13,9 @@ export default {
 		htmlForId: "",
 		required: false,
 		disabled: false,
-		children: "Label"
+		children: "Label",
+		dataQa: "",
+		dataTags: ""
 	},
 	parameters: {
 		docs: {
@@ -23,19 +25,80 @@ export default {
 		}
 	},
 	argTypes: {
+		id: {
+			control: {
+				type: "text"
+			},
+			description:
+				"Unique identifier for the label element. Used for accessibility and programmatic access to the label component.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
 		htmlForId: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The ID of the form element this label is associated with. Creates an accessible relationship between the label and its corresponding input field for screen readers and assistive technology.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		required: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays a required indicator (typically an asterisk *) next to the label text. Use this to indicate mandatory form fields to users.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		disabled: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the label in a disabled state with reduced opacity. Use this when the associated form field is disabled or not currently interactive.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		children: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The label text content to display. This should be descriptive and concise, clearly indicating what the associated form field is for.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: {
+				type: "text"
+			},
+			description: "Data attribute for QA testing. Use this to identify the label element during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: {
+				type: "text"
+			},
+			description:
+				"Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata related to the label.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	}

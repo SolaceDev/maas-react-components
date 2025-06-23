@@ -6,37 +6,116 @@ import { userEvent, within } from "@storybook/testing-library";
 
 (SolaceSearchAndFilter as React.FC & { displayName?: string }).displayName = "SolaceSearchAndFilter";
 
+const SEARCH_AND_FILTER = "search-and-filter";
+
 export default {
 	title: "Input/Search & Filter/Standard",
 	component: SolaceSearchAndFilter,
 	args: {
-		id: "",
-		name: "",
-		label: "",
+		id: SEARCH_AND_FILTER,
+		name: SEARCH_AND_FILTER,
+		label: "Search",
 		value: "",
-		placeholder: "",
-		width: "",
+		placeholder: "Search...",
+		width: "100%",
 		helperText: "",
 		hasErrors: false,
 		disabled: false,
-		type: FIELD_TYPES.DEFAULT
+		type: FIELD_TYPES.SEARCH
 	},
 	parameters: {
 		docs: {
 			description: {
-				component: "Code component name: SolaceSearchAndFilter"
+				component: "A search and filter component that can be used to search or filter a list of items."
 			}
 		}
 	},
 	argTypes: {
+		id: {
+			description:
+				"Unique identifier ... if `id` is not specified, `name` value will be used in order to make `label` and `helperText` accessible for screen readers",
+			defaultValue: {
+				summary: SEARCH_AND_FILTER
+			}
+		},
+		name: {
+			description: "Name attribute to assign to the `input` element",
+			defaultValue: {
+				summary: SEARCH_AND_FILTER
+			}
+		},
+		label: {
+			description: "The label content to display on the screen",
+			defaultValue: {
+				summary: "Search"
+			}
+		},
+		value: {
+			description: "The value of the `input` element, required for controlled component",
+			defaultValue: {
+				summary: ""
+			}
+		},
+		placeholder: {
+			description: "Short hint displayed in the `input` before user enters a value",
+			defaultValue: {
+				summary: "Search..."
+			}
+		},
 		width: {
+			description: "Custom Width of the component.",
 			control: {
 				type: "text"
+			},
+			defaultValue: {
+				summary: "100%"
+			}
+		},
+		helperText: {
+			description: "Content to display as supportive/explanitory text",
+			defaultValue: {
+				summary: ""
+			}
+		},
+		hasErrors: {
+			description: "Boolean flag to mark the field in error state",
+			defaultValue: {
+				summary: false
+			}
+		},
+		disabled: {
+			description: "Boolean flag to disable the `input`",
+			defaultValue: {
+				summary: false
+			}
+		},
+		autoFocus: {
+			description: "Boolean flag to keep the `input` focused",
+			defaultValue: {
+				summary: false
 			}
 		},
 		type: {
+			description:
+				'Indicates whether this is a "search" or "filter" field (appropriate icon will show as the adornment)',
 			options: [FIELD_TYPES.DEFAULT, FIELD_TYPES.FILTER, FIELD_TYPES.SEARCH],
-			control: { type: "radio" }
+			control: { type: "radio" },
+			defaultValue: {
+				summary: "FIELD_TYPES.DEFAULT"
+			}
+		},
+		onChange: {
+			description: "Callback function to trigger whenever the value of the `input` is changed"
+		},
+		onFocus: {
+			description: "Callback function to notify the callee when the `input` is focused"
+		},
+		onBlur: {
+			description: "Callback function to notify the callee when the `input` is blurred"
+		},
+		onClearAll: {
+			description:
+				"Callback function to notify the callee when the clear (x) button is clicked (in case the callee wishes to perform any additional operations other than clearing the search/filter text)"
 		}
 	}
 } as Meta<typeof SolaceSearchAndFilter>;

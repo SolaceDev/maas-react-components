@@ -88,8 +88,7 @@ export default {
 			description:
 				"The label text displayed above or inline with the select field. Use this to clearly describe what the user is selecting. Labels should be concise and descriptive.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		helperText: {
@@ -99,8 +98,7 @@ export default {
 			description:
 				"Additional text displayed below the select field to provide guidance or error messages. Use this to give users context about available options or validation requirements.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		hasErrors: {
@@ -176,7 +174,6 @@ export default {
 			description:
 				"The current selected value of the select field. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
 			table: {
-				type: { summary: "string | number | Array<string | number>" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -187,7 +184,6 @@ export default {
 			description:
 				"The default selected value for uncontrolled components. Use this when you want to set an initial value but don't need to control the selection state.",
 			table: {
-				type: { summary: "string | number | Array<string | number>" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -209,7 +205,6 @@ export default {
 			description:
 				"The width of the select field. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
 			table: {
-				type: { summary: "string | number" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -220,7 +215,6 @@ export default {
 			description:
 				"Maximum height of the dropdown menu. Use this to limit the dropdown height and enable scrolling when there are many options.",
 			table: {
-				type: { summary: "string | number" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -242,8 +236,7 @@ export default {
 			description:
 				"Placeholder text displayed when no value is selected and displayEmpty is true. Use this to provide guidance about what the user should select.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		name: {
@@ -253,8 +246,7 @@ export default {
 			description:
 				"The name attribute for the select field, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		id: {
@@ -264,8 +256,7 @@ export default {
 			description:
 				"Unique identifier for the select field. Used to associate the label with the input for accessibility and to reference the field programmatically.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		title: {
@@ -275,8 +266,7 @@ export default {
 			description:
 				"The title attribute for the select field, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		onChange: {
@@ -296,7 +286,6 @@ export default {
 			description:
 				"MenuItem components that represent the available options. Use MenuItem components from the library to ensure proper styling and behavior.",
 			table: {
-				type: { summary: "React.ReactNode" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -327,16 +316,14 @@ export default {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify the select field during automated testing.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		dataTags: {
 			control: { type: "text" },
 			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		}
 	},

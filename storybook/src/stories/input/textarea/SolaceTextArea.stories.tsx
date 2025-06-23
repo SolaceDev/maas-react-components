@@ -53,8 +53,7 @@ export default {
 			description:
 				"The label text displayed above or inline with the text area. Use this to clearly describe what information the user should enter. Labels should be concise and descriptive.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		helperText: {
@@ -64,8 +63,7 @@ export default {
 			description:
 				"Additional text displayed below the text area to provide guidance or error messages. Use this to give users context about expected input format or validation requirements.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		hasErrors: {
@@ -152,8 +150,7 @@ export default {
 			description:
 				"The current value of the text area. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		placeholder: {
@@ -163,8 +160,7 @@ export default {
 			description:
 				"Placeholder text displayed when the field is empty. Use this to provide examples of expected input format or additional guidance. Should not replace proper labels.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		type: {
@@ -230,7 +226,6 @@ export default {
 			description:
 				"The width of the text area. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
 			table: {
-				type: { summary: "string | number" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -251,8 +246,7 @@ export default {
 			description:
 				"The name attribute for the text area, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		id: {
@@ -261,8 +255,7 @@ export default {
 			},
 			description: "Unique identifier for the textarea component. Used for accessibility and programmatic access.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		title: {
@@ -272,8 +265,7 @@ export default {
 			description:
 				"The title attribute for the text area, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		onChange: {
@@ -300,16 +292,14 @@ export default {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify the text area during automated testing.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		dataTags: {
 			control: { type: "text" },
 			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		}
 	}
