@@ -16,12 +16,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=4434%3A30917"
-		},
-		docs: {
-			description: {
-				component:
-					"SolaceToasts component for reuse in all Solace based applications. Code component name: SolaceToasts"
-			}
 		}
 	},
 	argTypes: {

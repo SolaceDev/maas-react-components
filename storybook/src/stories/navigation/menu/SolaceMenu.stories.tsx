@@ -37,12 +37,7 @@ export default {
 	title: "Navigation/Menu",
 	component: SolaceMenu,
 	parameters: {
-		chromatic: { delay: 1000 },
-		docs: {
-			description: {
-				component: "Menu component that displays a list of options in a dropdown. Code component name: SolaceMenu"
-			}
-		}
+		chromatic: { delay: 1000 }
 	},
 	args: {
 		id: "",

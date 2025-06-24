@@ -8,14 +8,7 @@ import { SolaceMessageBox, SolaceButton } from "@SolaceDev/maas-react-components
 export default {
 	title: "Messaging/Banner/Notification",
 	component: SolaceMessageBox,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"MessageBox component for reuse in all Solace based applications. Code component name: SolaceMessageBox"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		message: "helpful information.",
 		showIcon: true,

@@ -15,13 +15,7 @@ import { Meta } from "@storybook/react";
 export default {
 	title: "Style/Typography",
 	component: SolaceTypography,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceTypography"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		variant: {
 			options: ["h1", "h2", "h3", "h4", "h5", "body1", "caption"],

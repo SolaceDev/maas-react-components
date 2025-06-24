@@ -9,13 +9,6 @@ const meta: Meta<typeof SolaceStepper> = {
 	title: "Navigation/Step Form",
 	component: SolaceStepper,
 	parameters: {
-		docs: {
-			story: { height: "300px" },
-			description: {
-				component:
-					"Stepper component for multi-step forms and processes with navigation controls. Code component name: SolaceStepper"
-			}
-		},
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/FsVh1zud1IAaXHRn9oIkB7/DATAGOMILE-154---Connector-Flows-Phase-1?type=design&node-id=1096-6315&mode=design&t=IlWw05RJHzNzB8Mi-0"

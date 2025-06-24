@@ -9,13 +9,7 @@ import { SolaceButton, SolaceLearningBanner } from "@SolaceDev/maas-react-compon
 export default {
 	title: "Messaging/Banner/Learning",
 	component: SolaceLearningBanner,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceLearningBanner"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		title: "",
 		children: undefined,

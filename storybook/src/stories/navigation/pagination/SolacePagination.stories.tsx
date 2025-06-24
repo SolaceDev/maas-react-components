@@ -8,14 +8,7 @@ import { SolacePagination } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Navigation/Pagination",
 	component: SolacePagination,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Pagination component for navigating through large sets of data with page controls. Code component name: SolacePagination"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		id: "",
 		activePage: 1,

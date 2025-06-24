@@ -8,13 +8,7 @@ import { SolaceLinearProgress } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Messaging/Progress Indicator/Linear",
 	component: SolaceLinearProgress,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceLinearProgress"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		variant: "indeterminate",
 		value: undefined,

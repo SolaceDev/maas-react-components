@@ -8,14 +8,7 @@ import { SolaceBreadcrumb } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Navigation/Breadcrumb",
 	component: SolaceBreadcrumb,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Breadcrumb component for mapping out navigation breadcrumb links (as buttons). On click, the component shall send back the targeted route as a string (for the containing applicaiton to react to). Code component name: SolaceBreadcrumb"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		id: "",
 		paths: [

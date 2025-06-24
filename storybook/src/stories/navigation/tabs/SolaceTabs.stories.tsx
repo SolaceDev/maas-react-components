@@ -9,14 +9,7 @@ import { SolaceTabs, SolaceNotificationCounter, SolaceButton } from "@SolaceDev/
 export default {
 	title: "Navigation/Tabs/Standard",
 	component: SolaceTabs,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Tabs component for organizing content into different sections with navigation. Code component name: SolaceTabs"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		tabs: [
 			{ label: "Tab One", value: "tab_one", href: "#" },

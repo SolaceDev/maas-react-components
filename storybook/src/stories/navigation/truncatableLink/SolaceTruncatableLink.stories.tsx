@@ -21,14 +21,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Navigation/Link/Truncated",
 	component: SolaceTruncatableLink,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Truncatable link component that displays text with ellipsis when it exceeds the specified width, with tooltip on hover. Code component name: SolaceTruncatableLink"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		id: "",
 		text: "This is a truncatable link with loooong name",

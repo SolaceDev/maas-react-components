@@ -11,14 +11,7 @@ import { ListViewIcon } from "../../../resources/images/ListViewIcon";
 const meta: Meta<typeof SolaceIconTabs> = {
 	title: "Navigation/Tabs/Icons",
 	component: SolaceIconTabs,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Icon tabs component for view switching with icon-based navigation. Code component name: SolaceIconTabs"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		views: [
 			{ tooltip: "Graph View", icon: <GraphViewIcon />, value: "view_graph" },

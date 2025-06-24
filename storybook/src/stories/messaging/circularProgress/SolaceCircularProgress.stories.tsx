@@ -6,13 +6,7 @@ import { SolaceCircularProgress } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Messaging/Progress Indicator/Circular",
 	component: SolaceCircularProgress,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceCircularProgress"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		variant: "indeterminate",
 		size: "sm",

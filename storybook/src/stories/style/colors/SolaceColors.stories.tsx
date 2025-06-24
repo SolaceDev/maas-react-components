@@ -217,14 +217,7 @@ const ColorPaletteStoryViewer = ({ currentTheme }: { currentTheme: string }) => 
 const meta: Meta<typeof ColorPaletteStoryViewer> = {
 	title: "Style/Color Palette",
 	component: ColorPaletteStoryViewer,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Displays the complete color palette for the current theme (showcasing the color swatch, palette key and color value). Switch themes using the Storybook theme switcher extension to see different color palettes. Click the copy icon next to any color to copy its full theme path."
-			}
-		}
-	}
+	parameters: {}
 };
 
 export default meta;

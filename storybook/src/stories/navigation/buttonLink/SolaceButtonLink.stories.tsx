@@ -16,12 +16,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=1%3A2"
-		},
-		docs: {
-			description: {
-				component:
-					"Button component for reuse in all Solace based applications as a link. Code component name: SolaceButton"
-			}
 		}
 	},
 	args: {

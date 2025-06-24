@@ -49,14 +49,7 @@ const DemoMenu = (): JSX.Element => {
 export default {
 	title: "Navigation/Page Header",
 	component: SolacePageHeader,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Page Header component for displaying the title, subtitle, breadcrumbs, tabs, and actions for a page. Code component name: SolacePageHeader"
-			}
-		}
-	},
+	parameters: {},
 	args: {
 		id: "",
 		title: "Page Name",
