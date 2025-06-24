@@ -23,12 +23,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/OSo8hNAnLk3cGhtizCxjzs/Endpoints---April-2022---Designer?node-id=902%3A99398"
-		},
-		docs: {
-			description: {
-				component:
-					"A toggle button group component for reuse in all Solace based applications. Typically used to control filtering. Code component name: SolaceToggleButtonGroup"
-			}
 		}
 	},
 	argTypes: {

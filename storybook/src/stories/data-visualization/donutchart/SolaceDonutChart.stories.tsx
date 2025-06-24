@@ -30,13 +30,7 @@ export default {
 		dataQa: "",
 		dataTags: ""
 	},
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceDonutChart"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		data: {
 			control: { type: "object" },

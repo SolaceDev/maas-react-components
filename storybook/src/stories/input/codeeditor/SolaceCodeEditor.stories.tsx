@@ -24,13 +24,7 @@ export default {
 		helperText: "",
 		dataQa: ""
 	},
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceCodeEditor"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },

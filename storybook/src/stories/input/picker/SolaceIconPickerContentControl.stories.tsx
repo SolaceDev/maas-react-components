@@ -81,12 +81,7 @@ export default {
 		customEmptyMessage: ""
 	},
 	parameters: {
-		controls: { sort: "alpha" },
-		docs: {
-			description: {
-				component: "Code component name: SolacePicker"
-			}
-		}
+		controls: { sort: "alpha" }
 	},
 	argTypes: {
 		id: {

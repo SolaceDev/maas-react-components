@@ -21,14 +21,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 		secondaryButton: undefined,
 		dataQa: ""
 	},
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Empty state banner component for displaying helpful messages when no content is available. Code component name: SolaceEmptyStateBanner"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		bannerImage: {
 			control: { type: "object" },

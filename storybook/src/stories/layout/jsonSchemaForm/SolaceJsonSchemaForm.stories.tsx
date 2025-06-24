@@ -161,13 +161,7 @@ export const Standard: Story = {
 		},
 		onChange: (data) => action("onChangeHandler")(data)
 	},
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceJsonSchemaForm"
-			}
-		}
-	}
+	parameters: {}
 };
 
 export const Password: Story = {

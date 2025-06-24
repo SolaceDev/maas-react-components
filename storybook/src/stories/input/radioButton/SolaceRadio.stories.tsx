@@ -41,11 +41,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2931%3A22385"
-		},
-		docs: {
-			description: {
-				component: "Code component name: SolaceRadio"
-			}
 		}
 	},
 	argTypes: {

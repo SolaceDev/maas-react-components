@@ -197,14 +197,7 @@ export default {
 			}
 		}
 	},
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Component to handle 2 dimensional layouts. For detailed documentation and more examples please refer to https://mui.com/components/grid/. Code component name: SolaceGrid"
-			}
-		}
-	}
+	parameters: {}
 } as Meta;
 const Template: StoryFn<typeof SolaceGrid> = (args) => <SolaceGrid container {...args} />;
 

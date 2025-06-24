@@ -19,13 +19,7 @@ export default {
 		details: "",
 		actions: undefined
 	},
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceDetailMessage"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },

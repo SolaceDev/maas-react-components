@@ -40,12 +40,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=430%3A548"
-		},
-		docs: {
-			description: {
-				component:
-					"Text field component for reuse in all Solace based applications. Code component name: SolaceTextField"
-			}
 		}
 	},
 	argTypes: {
