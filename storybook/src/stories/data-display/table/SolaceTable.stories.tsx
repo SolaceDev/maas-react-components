@@ -221,11 +221,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2558%3A9993"
-		},
-		docs: {
-			description: {
-				component: "Table component for reuse in all Solace based applications. Code component name: SolaceTable"
-			}
 		}
 	},
 	argTypes: {

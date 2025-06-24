@@ -6,13 +6,7 @@ import { SolaceFeatureTag } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Data Display/Badge/Feature",
 	component: SolaceFeatureTag,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceFeatureTag"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		text: {
 			control: { type: "text" },

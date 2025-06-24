@@ -17,12 +17,6 @@ export default {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=1060%3A0"
 		},
-		docs: {
-			description: {
-				component:
-					"The accordion component provides an expandable/collapsible container that helps organize content into sections. It's useful for reducing visual clutter by hiding content until needed, allowing users to focus on specific information. Use accordions when you have multiple sections of related content that don't need to be visible simultaneously."
-			}
-		},
 		preview: {
 			tab: "Code",
 			code: `<MyComponent prop="value" />`

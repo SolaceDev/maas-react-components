@@ -21,11 +21,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=19215-2455&p=f&t=FAQR9BgIIAEYGEql-0"
-		},
-		docs: {
-			description: {
-				component: "Code component name: SolaceCard"
-			}
 		}
 	},
 	argTypes: {

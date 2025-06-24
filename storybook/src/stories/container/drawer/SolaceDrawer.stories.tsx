@@ -51,14 +51,7 @@ export default {
 	title: "Container/Drawer",
 	component: SolaceDrawer,
 	tags: ["!autodocs"],
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"The Drawer component provides a sliding panel that appears from the edge of the screen. Drawers are commonly used for navigation menus, filter panels, or displaying additional information without leaving the current context. They can be anchored to either the left or right side of the screen and can be made resizable to allow users to adjust the viewing area."
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		open: {
 			control: { type: "boolean" },

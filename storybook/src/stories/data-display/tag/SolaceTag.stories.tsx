@@ -26,13 +26,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Data Display/Badge/Tag",
 	component: SolaceTag,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceTag"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		label: {
 			control: { type: "text" },

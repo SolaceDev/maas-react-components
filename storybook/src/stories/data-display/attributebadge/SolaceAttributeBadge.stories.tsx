@@ -21,13 +21,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Data Display/Badge/Attribute",
 	component: SolaceAttributeBadge,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceAttributeBadge"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		label: {
 			control: { type: "text" },

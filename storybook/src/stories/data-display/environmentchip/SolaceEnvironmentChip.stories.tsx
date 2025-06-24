@@ -27,13 +27,7 @@ const Grid = styled("div")`
 export default {
 	title: "Data Display/Chip/Environment",
 	component: SolaceEnvironmentChip,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceEnvironmentChip"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		label: {
 			control: { type: "text" },

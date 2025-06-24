@@ -34,12 +34,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21909-955&p=f&t=nZPRTnBQWGY5q2cb-0"
-		},
-		docs: {
-			description: {
-				component:
-					"A Popover can be used to display some content on top of another. Popovers can appear in-context, aligned to the anchor element. Alignment can vary depending on where the anchor element is placed on a page."
-			}
 		}
 	},
 	argTypes: {

@@ -18,14 +18,7 @@ const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
 export default {
 	title: "Data Display/List/Single Selection",
 	component: SolaceGridList,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"List component used for rendering collections of data based on a specified 'grid' layout. Code component name: SolaceGridList. The component uses indicator variants (info, error, warn, success, secondary) defined at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/states.ts"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },

@@ -27,13 +27,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Data Display/Chip/Standard",
 	component: SolaceChip,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceChip"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		label: {
 			control: { type: "text" },

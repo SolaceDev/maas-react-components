@@ -61,12 +61,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/UI-Library%3A-Patterns?node-id=1%3A3"
-		},
-		docs: {
-			description: {
-				component:
-					"The Dialog component creates modal dialogs that appear in front of the main content to provide critical information, require decisions, or involve multiple tasks. Dialogs are purposefully interruptive, so they should be used sparingly and only when user attention and decision are required."
-			}
 		}
 	},
 	argTypes: {

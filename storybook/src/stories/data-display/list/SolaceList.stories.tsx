@@ -12,14 +12,7 @@ import { Divider, Paper } from "@mui/material";
 export default {
 	title: "Data Display/List/Standard",
 	component: SolaceList,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Helper layout component to display a list of items. For more examples and documentation please refer to https://mui.com/material-ui/react-list/. Code component name: SolaceList"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		disablePadding: {
 			control: { type: "boolean" },

@@ -7,13 +7,7 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Data Display/Chip/Input",
 	component: SolaceChip,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceChip"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		label: {
 			control: { type: "text" },
