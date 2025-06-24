@@ -83,20 +83,12 @@ export default {
 		rowMapping: {
 			control: false,
 			description:
-				"A callback function that maps an individual object into an ordered array of React elements defining how to render each attribute in the grid columns.",
-			table: {
-				type: { summary: "(item: object) => React.ReactElement[]" },
-				defaultValue: { summary: "undefined" }
-			}
+				"A callback function that maps an individual object into an ordered array of React elements defining how to render each attribute in the grid columns."
 		},
 		onSelection: {
 			control: false,
 			description:
-				"Callback function triggered when a row is selected. Receives the data object associated with the selected row.",
-			table: {
-				type: { summary: "(item: object) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when a row is selected. Receives the data object associated with the selected row."
 		},
 		background: {
 			control: { type: "text" },

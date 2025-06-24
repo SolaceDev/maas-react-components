@@ -152,11 +152,7 @@ export default {
 		},
 		onClose: {
 			description:
-				"Callback function triggered when the dialog should be closed. Called when clicking outside the dialog, pressing escape, or clicking the close button if present.",
-			table: {
-				type: { summary: "(event: Event, reason: string) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when the dialog should be closed. Called when clicking outside the dialog, pressing escape, or clicking the close button if present."
 		},
 		disableBackdropClick: {
 			control: { type: "boolean" },

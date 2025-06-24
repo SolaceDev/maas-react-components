@@ -103,11 +103,7 @@ export default {
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the chip is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the chip is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter."
 		},
 		dataQa: {
 			control: { type: "text" },

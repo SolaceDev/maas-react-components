@@ -77,7 +77,7 @@ export default {
 			description:
 				"Custom border color for the attribute badge. Use this to create color-coded categorization systems or to match specific design requirements. Only applicable when variant is 'outlined'.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "CHIP_COLORS" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -112,7 +112,7 @@ export default {
 			description:
 				"Custom background color for the attribute badge. Use this to create color-coded categorization systems or to match specific brand colors. Only applicable when variant is 'filled'.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "CHIP_COLORS" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -135,7 +135,7 @@ export default {
 			description:
 				"Custom text color for the attribute badge label. Use this in conjunction with fillColor or borderColor to ensure proper contrast and readability.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "CHIP_COLORS" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -181,20 +181,12 @@ export default {
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the attribute badge is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the attribute badge is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter."
 		},
 		onDelete: {
 			control: false,
 			description:
-				"Callback function that fires when the delete button is clicked. When provided, a delete button will be added to the badge. Use this for removable attributes or tags.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLButtonElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the delete button is clicked. When provided, a delete button will be added to the badge. Use this for removable attributes or tags."
 		},
 		dataQa: {
 			control: { type: "text" },

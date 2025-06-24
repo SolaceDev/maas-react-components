@@ -68,11 +68,7 @@ export default {
 		onRowHighlight: {
 			control: false,
 			description:
-				"Callback function triggered when a row is highlighted (clicked). Receives the data object associated with the highlighted row.",
-			table: {
-				type: { summary: "(item: object) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when a row is highlighted (clicked). Receives the data object associated with the highlighted row."
 		},
 		selectedRowIds: {
 			control: { type: "object" },
@@ -86,11 +82,7 @@ export default {
 		onSelection: {
 			control: false,
 			description:
-				"Callback function triggered when row selection changes (checkbox clicked). Receives array of all selected data objects.",
-			table: {
-				type: { summary: "(selectedItems: object[]) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when row selection changes (checkbox clicked). Receives array of all selected data objects."
 		},
 		gridTemplate: {
 			control: { type: "text" },
@@ -113,11 +105,7 @@ export default {
 		rowMapping: {
 			control: false,
 			description:
-				"A callback function that maps an individual object into an ordered array of React elements defining how to render each attribute in the grid columns.",
-			table: {
-				type: { summary: "(item: object) => React.ReactElement[]" },
-				defaultValue: { summary: "undefined" }
-			}
+				"A callback function that maps an individual object into an ordered array of React elements defining how to render each attribute in the grid columns."
 		},
 		selectAll: {
 			control: { type: "boolean" },

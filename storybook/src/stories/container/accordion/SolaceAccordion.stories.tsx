@@ -105,11 +105,7 @@ export default {
 		},
 		onChange: {
 			description:
-				"A callback function that fires when the expand/collapse state of the Accordion component is changed. Use this to perform actions when the accordion state changes, such as loading additional data, updating other UI elements, or tracking user interactions.",
-			table: {
-				type: { summary: "(event: React.SyntheticEvent, expanded: boolean) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"A callback function that fires when the expand/collapse state of the Accordion component is changed. Use this to perform actions when the accordion state changes, such as loading additional data, updating other UI elements, or tracking user interactions."
 		},
 		backgroundColor: {
 			control: { type: "color" },

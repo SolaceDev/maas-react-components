@@ -99,11 +99,7 @@ export default {
 		},
 		onResizeDone: {
 			description:
-				"Callback function that fires when the user finishes resizing the drawer. Use this to capture the new width for persistence or other state management needs.",
-			table: {
-				type: { summary: "(newWidth: number) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the user finishes resizing the drawer. Use this to capture the new width for persistence or other state management needs."
 		},
 		minWidth: {
 			control: { type: "number" },

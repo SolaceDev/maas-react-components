@@ -287,20 +287,12 @@ export default {
 		selectionChangedCallback: {
 			control: false,
 			description:
-				"Callback function fired when row selection changes. Receives an array of selected row IDs. Use this to handle selection state in parent components.",
-			table: {
-				type: { summary: "(selectedRowIds: string[]) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when row selection changes. Receives an array of selected row IDs. Use this to handle selection state in parent components."
 		},
 		sortCallback: {
 			control: false,
 			description:
-				"Callback function fired when column sorting is requested. Receives the column definition and sort direction. Implement custom sorting logic here.",
-			table: {
-				type: { summary: "(column: SolaceTableColumn, direction: SolaceTableSortDirection) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when column sorting is requested. Receives the column definition and sort direction. Implement custom sorting logic here."
 		},
 		selectedRowIds: {
 			control: { type: "object" },
@@ -413,11 +405,7 @@ export default {
 		onRowClick: {
 			control: false,
 			description:
-				"Callback function fired when a table row is clicked. Receives the clicked row data. Use this for row navigation or detailed view actions.",
-			table: {
-				type: { summary: "(row: SolaceTableRow) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when a table row is clicked. Receives the clicked row data. Use this for row navigation or detailed view actions."
 		}
 	}
 } as Meta<typeof SolaceTable>;

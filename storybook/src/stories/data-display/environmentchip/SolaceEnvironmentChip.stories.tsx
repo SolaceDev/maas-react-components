@@ -83,20 +83,12 @@ export default {
 		onDelete: {
 			control: false,
 			description:
-				"Callback function that fires when the delete button is clicked. When provided, a delete button will be added to the chip. Use this for removable environment selections.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLButtonElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the delete button is clicked. When provided, a delete button will be added to the chip. Use this for removable environment selections."
 		},
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the environment chip is clicked. Use this when the chip should trigger an action such as environment selection or navigation.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the environment chip is clicked. Use this when the chip should trigger an action such as environment selection or navigation."
 		},
 		dataQa: {
 			control: { type: "text" },

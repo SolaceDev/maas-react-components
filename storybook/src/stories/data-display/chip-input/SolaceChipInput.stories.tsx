@@ -75,20 +75,12 @@ export default {
 		onDelete: {
 			control: false,
 			description:
-				"Callback function that fires when the delete button is clicked. When provided, a delete button will be added to the chip for removing the input value.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLButtonElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the delete button is clicked. When provided, a delete button will be added to the chip for removing the input value."
 		},
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the input chip is clicked. Only functional when the 'clickable' prop is true.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the input chip is clicked. Only functional when the 'clickable' prop is true."
 		},
 		maxWidth: {
 			control: { type: "number" },

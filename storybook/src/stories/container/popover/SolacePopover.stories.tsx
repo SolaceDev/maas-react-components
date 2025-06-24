@@ -115,11 +115,7 @@ export default {
 		onClose: {
 			control: false,
 			description:
-				"Callback fired when the popover requests to be closed. This function is triggered when the user clicks outside the popover or presses the escape key (unless these behaviors are disabled). The callback receives the event that triggered the close action as its parameter. This is essential for controlled components to update their state and close the popover.",
-			table: {
-				type: { summary: "(event: Event | React.SyntheticEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback fired when the popover requests to be closed. This function is triggered when the user clicks outside the popover or presses the escape key (unless these behaviors are disabled). The callback receives the event that triggered the close action as its parameter. This is essential for controlled components to update their state and close the popover."
 		},
 		marginThreshold: {
 			control: { type: "number" },

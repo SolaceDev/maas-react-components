@@ -55,11 +55,7 @@ export default {
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the feature tag is clicked. Use this when the tag should trigger an action such as toggling a feature or showing more information.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the feature tag is clicked. Use this when the tag should trigger an action such as toggling a feature or showing more information."
 		},
 		dataQa: {
 			control: { type: "text" },

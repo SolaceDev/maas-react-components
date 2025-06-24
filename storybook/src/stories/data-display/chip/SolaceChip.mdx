@@ -1,12 +1,10 @@
 import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
 import * as SolaceChipStories from "./SolaceChip.stories.tsx";
-import * as SolaceChipChoiceStories from "./SolaceChipChoice.stories.tsx";
-import * as SolaceChipInputStories from "./SolaceChipInput.stories.tsx";
 import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceChipStories} />
 
-<Title>Solace Chip</Title>
+<Title>Chip</Title>
 
 <Description of={SolaceChipStories} />
 
@@ -167,4 +165,4 @@ To customize layout and structure, override the component styleOverrides in your
 
 <Subtitle>Stories</Subtitle>
 
-<CustomStories stories={[SolaceChipStories, SolaceChipChoiceStories, SolaceChipInputStories]} />
+<CustomStories stories={SolaceChipStories} />

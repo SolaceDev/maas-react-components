@@ -75,11 +75,7 @@ export default {
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the choice chip is clicked. Essential for handling selection state changes.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the choice chip is clicked. Essential for handling selection state changes."
 		},
 		maxWidth: {
 			control: { type: "number" },
