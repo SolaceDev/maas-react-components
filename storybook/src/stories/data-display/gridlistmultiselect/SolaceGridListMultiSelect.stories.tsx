@@ -112,7 +112,7 @@ export default {
 		numOfGridListItemDisplayed: {
 			control: { type: "number" },
 			description:
-				"Maximum number of items to display in the list. When set, the list will be contained and show only the specified number of items.",
+				"Maximum number of items to display in the list viewport. When set, the list will be contained to show only the specified number of items at once, with the remaining items accessible through scrolling within the container.",
 			table: {
 				type: { summary: "number" },
 				defaultValue: { summary: "undefined" }
