@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # Manual trigger
   push:
     branches:
-      - main # Trigger on pushes to the main branch
+      - iphadte/DATAGO-103052 # Trigger on pushes to the main branch
 
 jobs:
   generate-and-publish-report:
