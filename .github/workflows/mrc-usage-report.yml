@@ -1,0 +1,80 @@
+name: MRC Usage Report Generation
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # Daily at 8 AM UTC
+  workflow_dispatch: # Manual trigger
+  push:
+    branches:
+      - main # Trigger on pushes to the main branch
+
+jobs:
+  generate-and-publish-report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # For checking out repositories
+      pages: write # For publishing to GitHub Pages
+      id-token: write # For OIDC authentication with GitHub Pages
+
+    steps:
+      - name: Checkout maas-react-components (current repo)
+        uses: actions/checkout@v4
+        with:
+          path: maas-react-components-repo
+
+      - name: Checkout maas-ui
+        uses: actions/checkout@v4
+        with:
+          repository: SolaceDev/maas-ui
+          ref: sthomas/mrc-usage-report
+          path: maas-ui-repo
+
+      - name: Checkout maas-ops-ui
+        uses: actions/checkout@v4
+        with:
+          repository: SolaceDev/maas-ops-ui
+          ref: iphadte/DATAGO-103044
+          path: maas-ops-ui-repo
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Step 1. Generate maas-ui report
+        run: |
+          npm install
+          npm start -- -b ../../maas-ui-repo -r ../../../maas-react-components-repo -f json > maas-ui-report.json
+        working-directory: maas-ui-repo/tools/mrc-usage-report
+
+      - name: Step 2. Generate maas-react-components report
+        run: |
+          npm install
+          npm start -- -b ../../maas-react-components-repo -r ../../maas-react-components-repo -f json > maas-react-components-report.json
+        working-directory: maas-ops-ui-repo/tools/mrc-usage-report
+
+      - name: Step 3. Merge reports
+        run: |
+          npm install
+          npm start -- -i maas-ui-report.json maas-react-components-report.json -o merged-report.json -h merged-report.html
+        working-directory: maas-ops-ui-repo/tools/mrc-report-merger
+
+      - name: Step 4. Split merged JSON
+        run: |
+          npm install
+          npm start -- -i merged-report.json
+        working-directory: maas-ops-ui-repo/tools/json-splitter
+
+      - name: Step 5. Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mrc-usage-reports
+          path: |
+            merged-report.json
+            merged-report.html
+
+      - name: Step 6. Deploy to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: maas-ops-ui-repo/tools/mrc-report-merger/merged-report.html # Path to the HTML report to be published
+
