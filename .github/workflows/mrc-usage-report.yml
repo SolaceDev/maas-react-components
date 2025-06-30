@@ -90,9 +90,9 @@ jobs:
           npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f json > maas-ui-report.json
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
-      - name: Step 2. Generate maas-react-components report
+      - name: Step 2. Generate maas-ops-ui report
         run: |
-          echo "==== STEP 2: GENERATE MAAS-REACT-COMPONENTS REPORT ===="
+          echo "==== STEP 2: GENERATE MAAS-OPS-UI REPORTS ===="
           echo "Current working directory: $(pwd)"
           echo "Working directory for this step: $(pwd)/maas-ops-ui-repo/tools/mrc-usage-report"
           ls -la
@@ -105,7 +105,10 @@ jobs:
           npm run build
           echo "Checking for dist directory after npm install:"
           ls -la dist || echo "dist directory not found after npm install"
-          npm start -- -b ../../maas-react-components-repo -r ../../maas-react-components-repo -f json > maas-react-components-report.json
+
+          echo "Generating maas-ops-ui report..."
+          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f json > maas-ops-ui-report.json
+
         working-directory: maas-ops-ui-repo/tools/mrc-usage-report
 
       - name: Step 3. Merge reports
@@ -116,13 +119,13 @@ jobs:
           ls -la
           echo "Checking for input files:"
           ls -la ../../maas-ui-report.json || echo "maas-ui-report.json not found"
-          ls -la ../../maas-react-components-report.json || echo "maas-react-components-report.json not found"
+          ls -la ../../maas-ops-ui-report.json || echo "maas-ops-ui-report.json not found"
           echo "Creating reports directory if it doesn't exist..."
           mkdir -p reports
           echo "Installing dependencies..."
           npm install
           echo "Running npm start with parameters..."
-          npm start -- -i maas-ui-report.json maas-react-components-report.json -o merged-report.json -h merged-report.html
+          npm start -- -i maas-ui-report.json maas-ops-ui-report.json -o merged-report.json -h merged-report.html
         working-directory: maas-ops-ui-repo/tools/mrc-report-merger
 
       - name: Step 4. Split merged JSON
