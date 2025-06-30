@@ -89,24 +89,24 @@ jobs:
           npm run build
 
           echo "Generating JSON report..."
-          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f json > maas-ui-report.json
+          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f json 
 
           echo "Generating HTML report..."
-          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html > maas-ui-report.html
+          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html
 
-          echo "Line count for HTML report:"
-          cat maas-ui-report.html | wc -l
+          # echo "Line count for HTML report:"
+          # cat maas-ui-report.html | wc -l
 
-          echo "Contents of JSON report:"
-          echo "Line count for JSON report:"
-          cat maas-ui-report.json | wc -l
+          # echo "Contents of JSON report:"
+          # echo "Line count for JSON report:"
+          # cat maas-ui-report.json | wc -l
 
           pwd
           ls 
 
+          cd reports
 
-          echo "Contents of HTML report:"
-          cat maas-ui-report.html
+          ls
 
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
