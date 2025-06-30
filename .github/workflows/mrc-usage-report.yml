@@ -97,8 +97,14 @@ jobs:
           echo "Contents of JSON report:"
           cat maas-ui-report.json 
 
+          cat reports/maas-ui-report.json
+
+
           echo "Contents of HTML report:"
           cat maas-ui-report.html
+
+          cat reports/maas-ui-report.html
+
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
       - name: Step 2. Generate maas-ops-ui report
