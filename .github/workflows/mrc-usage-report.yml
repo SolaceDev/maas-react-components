@@ -111,6 +111,10 @@ jobs:
           cat mrc-usage-report.html
           cat mrc-usage-report.json
 
+
+          cat mrc-usage-report.html | wc -l
+          cat mrc-usage-report.json | wc -l
+
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
       - name: Step 2. Generate maas-ops-ui report
