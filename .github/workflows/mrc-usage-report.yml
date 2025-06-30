@@ -95,12 +95,10 @@ jobs:
           npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html > maas-ui-report.html
 
           echo "Contents of JSON report:"
-          cat maas-ui-report.json | head -n 50
-          echo "... (truncated for readability) ..."
+          cat maas-ui-report.json 
 
           echo "Contents of HTML report:"
-          cat maas-ui-report.html | head -n 50
-          echo "... (truncated for readability) ..."
+          cat maas-ui-report.html
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
       - name: Step 2. Generate maas-ops-ui report
@@ -119,9 +117,19 @@ jobs:
           echo "Checking for dist directory after npm install:"
           ls -la dist || echo "dist directory not found after npm install"
 
-          echo "Generating maas-ops-ui report..."
+          echo "Generating JSON report..."
           npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f json > maas-ops-ui-report.json
 
+          echo "Generating HTML report..."
+          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html > maas-ops-ui-report.html
+
+          echo "Contents of JSON report:"
+          cat maas-ops-ui-report.json | head -n 50
+          echo "... (truncated for readability) ..."
+
+          echo "Contents of HTML report:"
+          cat maas-ops-ui-report.html | head -n 50
+          echo "... (truncated for readability) ..."
         working-directory: maas-ops-ui-repo/tools/mrc-usage-report
 
       - name: Step 3. Merge reports
@@ -139,6 +147,14 @@ jobs:
           npm install
           echo "Running npm start with parameters..."
           npm start -- -i maas-ui-report.json maas-ops-ui-report.json -o merged-report.json -h merged-report.html
+
+          echo "Contents of merged JSON report:"
+          cat merged-report.json | head -n 50
+          echo "... (truncated for readability) ..."
+
+          echo "Contents of merged HTML report:"
+          cat merged-report.html | head -n 50
+          echo "... (truncated for readability) ..."
         working-directory: maas-ops-ui-repo/tools/mrc-report-merger
 
       - name: Step 4. Split merged JSON
@@ -155,6 +171,13 @@ jobs:
           npm install
           echo "Running npm start with parameters..."
           npm start -- -i merged-report.json
+
+          echo "Listing generated files:"
+          find . -type f -name "*.json" | sort
+
+          echo "Contents of first split file (if any):"
+          find . -type f -name "*.json" | sort | head -n 1 | xargs cat | head -n 50 || echo "No split files found"
+          echo "... (truncated for readability) ..."
         working-directory: maas-ops-ui-repo/tools/json-splitter
 
       - name: Step 5. Upload artifacts
