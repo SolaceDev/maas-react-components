@@ -87,7 +87,20 @@ jobs:
           echo "Installing dependencies..."
           npm install
           npm run build
+
+          echo "Generating JSON report..."
           npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f json > maas-ui-report.json
+
+          echo "Generating HTML report..."
+          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html > maas-ui-report.html
+
+          echo "Contents of JSON report:"
+          cat maas-ui-report.json | head -n 50
+          echo "... (truncated for readability) ..."
+
+          echo "Contents of HTML report:"
+          cat maas-ui-report.html | head -n 50
+          echo "... (truncated for readability) ..."
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
       - name: Step 2. Generate maas-ops-ui report
