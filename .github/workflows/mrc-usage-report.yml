@@ -150,6 +150,9 @@ jobs:
           echo "Running npm start with parameters..."
           npm start -- -p1 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json -p2 ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.json -o merged-report.json -h merged-report.html
 
+          chmod 777 merged-report.json
+          chmod 777 merged-report.html
+
         working-directory: maas-ops-ui-repo/tools/mrc-report-merger
 
       - name: Step 4. Split merged JSON
@@ -159,13 +162,12 @@ jobs:
           echo "Working directory for this step: $(pwd)/maas-ops-ui-repo/tools/json-splitter"
           ls -la
           echo "Checking for input file:"
-          ls -la ../../merged-report.json || echo "merged-report.json not found"
+          ls -la ../mrc-report-merger/merged-report.json || echo "merged-report.json not found"
           echo "Creating reports directory if it doesn't exist..."
-          mkdir -p reports
           echo "Installing dependencies..."
           npm install
           echo "Running npm start with parameters..."
-          npm start -- -i merged-report.json
+          npm start -- -i ../mrc-report-merger/merged-report.json
 
           echo "Listing generated files:"
           find . -type f -name "*.json" | sort
@@ -175,13 +177,13 @@ jobs:
 
         working-directory: maas-ops-ui-repo/tools/json-splitter
 
-      - name: Step 5. Upload artifacts
+      - name: Step 5. Upload merged reports
         uses: actions/upload-artifact@v4
         with:
-          name: mrc-usage-reports
+          name: merged-reports
           path: |
-            merged-report.json
-            merged-report.html
+            maas-ops-ui-repo/tools/mrc-report-merger/merged-report.json
+            maas-ops-ui-repo/tools/mrc-report-merger/merged-report.html
 
       - name: Step 6. Deploy to GitHub Pages
         uses: actions/upload-pages-artifact@v3
