@@ -28,10 +28,10 @@ jobs:
           repository: SolaceDev/maas-ui
           ref: sthomas/mrc-usage-report
           path: maas-ui-repo
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GIT_REPO_TOKEN }}
 
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
 
       - name: Checkout maas-ops-ui
         uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
           repository: SolaceDev/maas-ops-ui
           ref: iphadte/DATAGO-103044
           path: maas-ops-ui-repo
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GIT_REPO_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
