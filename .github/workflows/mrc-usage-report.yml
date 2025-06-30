@@ -140,7 +140,7 @@ jobs:
           echo "Installing dependencies..."
           npm install 
           echo "Running npm start with parameters..."
-          npm start -- -p1 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json ../../../maas-ui/mrc-maas-ui-report.json -o merged-report.json -h merged-report.html
+          npm start -- -p1 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json -p2 ../../../maas-ui/mrc-maas-ui-report.json -o merged-report.json -h merged-report.html
 
           echo "Contents of merged JSON report:"
           cat merged-report.json
