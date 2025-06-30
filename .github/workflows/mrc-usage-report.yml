@@ -97,6 +97,8 @@ jobs:
           echo "Contents of JSON report:"
           cat maas-ui-report.json 
 
+          pwd
+
           cat reports/maas-ui-report.json
 
 
