@@ -101,12 +101,7 @@ jobs:
           # echo "Line count for JSON report:"
           # cat maas-ui-report.json | wc -l
 
-          pwd
-          ls 
-
           cd reports
-
-          ls
 
           cat mrc-usage-report.html
           cat mrc-usage-report.json
@@ -128,16 +123,16 @@ jobs:
           echo "Creating reports directory if it doesn't exist..."
           mkdir -p reports
           echo "Installing dependencies..."
-          npm install
+          npm install @types/babel__traverse
           npm run build
           echo "Checking for dist directory after npm install:"
           ls -la dist || echo "dist directory not found after npm install"
 
           echo "Generating JSON report..."
-          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f json > maas-ops-ui-report.json
+          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f json 
 
           echo "Generating HTML report..."
-          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html > maas-ops-ui-report.html
+          npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html
 
           echo "Contents of JSON report:"
           cat maas-ui-report.json
@@ -149,6 +144,7 @@ jobs:
 
           echo "Contents of HTML report:"
           cat maas-ops-ui-report.html
+
         working-directory: maas-ops-ui-repo/tools/mrc-usage-report
 
       - name: Step 3. Merge reports
@@ -163,7 +159,7 @@ jobs:
           echo "Creating reports directory if it doesn't exist..."
           mkdir -p reports
           echo "Installing dependencies..."
-          npm install
+          npm install @types/babel__traverse
           echo "Running npm start with parameters..."
           npm start -- -i maas-ui-report.json maas-ops-ui-report.json -o merged-report.json -h merged-report.html
 
