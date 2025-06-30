@@ -134,13 +134,21 @@ jobs:
           echo "==== STEP 3: MERGE REPORTS ===="
           echo "Current working directory: $(pwd)"
           ls -la
+
+          echo "Changing permissions for report files..."
+          chmod 777 ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.json
+          chmod 777 ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.html
+          chmod 777 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json
+          chmod 777 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.html
+
+
           echo "Checking for input files:"
           ls -la ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json || echo "maas-ui-report.json not found"
-          ls -la ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-report.json || echo "maas-ops-ui-report.json not found"
+          ls -la ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.json || echo "maas-ops-ui-report.json not found"
           echo "Installing dependencies..."
           npm install 
           echo "Running npm start with parameters..."
-          npm start -- -p1 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json -p2 ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-report.json -o merged-report.json -h merged-report.html
+          npm start -- -p1 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json -p2 ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.json -o merged-report.json -h merged-report.html
 
           echo "Contents of merged JSON report:"
           cat merged-report.json
