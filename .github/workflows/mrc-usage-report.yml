@@ -101,13 +101,8 @@ jobs:
           ls 
 
 
-          cat reports/maas-ui-report.json
-
-
           echo "Contents of HTML report:"
           cat maas-ui-report.html
-
-          cat reports/maas-ui-report.html
 
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
@@ -134,12 +129,15 @@ jobs:
           npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html > maas-ops-ui-report.html
 
           echo "Contents of JSON report:"
-          cat maas-ops-ui-report.json | head -n 50
-          echo "... (truncated for readability) ..."
+          cat maas-ui-report.json
 
           echo "Contents of HTML report:"
-          cat maas-ops-ui-report.html | head -n 50
-          echo "... (truncated for readability) ..."
+          cat maas-ui-report.html
+          echo "Contents of JSON report:"
+          cat maas-ops-ui-report.json
+
+          echo "Contents of HTML report:"
+          cat maas-ops-ui-report.html
         working-directory: maas-ops-ui-repo/tools/mrc-usage-report
 
       - name: Step 3. Merge reports
@@ -159,12 +157,10 @@ jobs:
           npm start -- -i maas-ui-report.json maas-ops-ui-report.json -o merged-report.json -h merged-report.html
 
           echo "Contents of merged JSON report:"
-          cat merged-report.json | head -n 50
-          echo "... (truncated for readability) ..."
+          cat merged-report.json
 
           echo "Contents of merged HTML report:"
-          cat merged-report.html | head -n 50
-          echo "... (truncated for readability) ..."
+          cat merged-report.html
         working-directory: maas-ops-ui-repo/tools/mrc-report-merger
 
       - name: Step 4. Split merged JSON
@@ -186,8 +182,7 @@ jobs:
           find . -type f -name "*.json" | sort
 
           echo "Contents of first split file (if any):"
-          find . -type f -name "*.json" | sort | head -n 1 | xargs cat | head -n 50 || echo "No split files found"
-          echo "... (truncated for readability) ..."
+          find . -type f -name "*.json" | sort | head -n 1 | xargs cat || echo "No split files found"
         working-directory: maas-ops-ui-repo/tools/json-splitter
 
       - name: Step 5. Upload artifacts
