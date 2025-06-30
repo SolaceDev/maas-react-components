@@ -22,6 +22,13 @@ jobs:
         with:
           path: maas-react-components-repo
 
+      - name: Print directory structure (maas-react-components)
+        run: |
+          echo "==== DIRECTORY STRUCTURE INFORMATION ===="
+          echo "Current working directory: $(pwd)"
+          echo "maas-react-components-repo location: $(pwd)/maas-react-components-repo"
+          ls -la maas-react-components-repo
+
       - name: Checkout maas-ui
         uses: actions/checkout@v4
         with:
@@ -29,6 +36,16 @@ jobs:
           ref: sthomas/mrc-usage-report
           path: maas-ui-repo
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+
+      - name: Print directory structure (maas-ui)
+        run: |
+          echo "==== MAAS-UI DIRECTORY STRUCTURE ===="
+          echo "maas-ui-repo location: $(pwd)/maas-ui-repo"
+          ls -la maas-ui-repo
+          echo "maas-ui-repo/tools location: $(pwd)/maas-ui-repo/tools"
+          ls -la maas-ui-repo/tools || echo "tools directory not found"
+          echo "maas-ui-repo/tools/mrc-usage-report location: $(pwd)/maas-ui-repo/tools/mrc-usage-report"
+          ls -la maas-ui-repo/tools/mrc-usage-report || echo "mrc-usage-report directory not found"
 
       - name: Checkout maas-ops-ui
         uses: actions/checkout@v4
@@ -38,6 +55,20 @@ jobs:
           path: maas-ops-ui-repo
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
+      - name: Print directory structure (maas-ops-ui)
+        run: |
+          echo "==== MAAS-OPS-UI DIRECTORY STRUCTURE ===="
+          echo "maas-ops-ui-repo location: $(pwd)/maas-ops-ui-repo"
+          ls -la maas-ops-ui-repo
+          echo "maas-ops-ui-repo/tools location: $(pwd)/maas-ops-ui-repo/tools"
+          ls -la maas-ops-ui-repo/tools || echo "tools directory not found"
+          echo "maas-ops-ui-repo/tools/mrc-usage-report location: $(pwd)/maas-ops-ui-repo/tools/mrc-usage-report"
+          ls -la maas-ops-ui-repo/tools/mrc-usage-report || echo "mrc-usage-report directory not found"
+          echo "maas-ops-ui-repo/tools/mrc-report-merger location: $(pwd)/maas-ops-ui-repo/tools/mrc-report-merger"
+          ls -la maas-ops-ui-repo/tools/mrc-report-merger || echo "mrc-report-merger directory not found"
+          echo "maas-ops-ui-repo/tools/json-splitter location: $(pwd)/maas-ops-ui-repo/tools/json-splitter"
+          ls -la maas-ops-ui-repo/tools/json-splitter || echo "json-splitter directory not found"
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -45,25 +76,70 @@ jobs:
 
       - name: Step 1. Generate maas-ui report
         run: |
+          echo "==== STEP 1: GENERATE MAAS-UI REPORT ===="
+          echo "Current working directory: $(pwd)"
+          echo "Working directory for this step: $(pwd)/maas-ui-repo/tools/mrc-usage-report"
+          ls -la
+          echo "Checking for package.json:"
+          cat package.json || echo "package.json not found"
+          echo "Checking for dist directory:"
+          ls -la dist || echo "dist directory not found"
+          echo "Installing dependencies..."
           npm install
+          echo "Checking for dist directory after npm install:"
+          ls -la dist || echo "dist directory not found after npm install"
+          echo "Checking npm scripts:"
+          npm run || echo "No scripts found"
+          echo "Running npm start with parameters..."
           npm start -- -b ../../maas-ui-repo -r ../../../maas-react-components-repo -f json > maas-ui-report.json
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
       - name: Step 2. Generate maas-react-components report
         run: |
+          echo "==== STEP 2: GENERATE MAAS-REACT-COMPONENTS REPORT ===="
+          echo "Current working directory: $(pwd)"
+          echo "Working directory for this step: $(pwd)/maas-ops-ui-repo/tools/mrc-usage-report"
+          ls -la
+          echo "Checking for package.json:"
+          cat package.json || echo "package.json not found"
+          echo "Checking for dist directory:"
+          ls -la dist || echo "dist directory not found"
+          echo "Installing dependencies..."
           npm install
+          echo "Checking for dist directory after npm install:"
+          ls -la dist || echo "dist directory not found after npm install"
+          echo "Checking npm scripts:"
+          npm run || echo "No scripts found"
+          echo "Running npm start with parameters..."
           npm start -- -b ../../maas-react-components-repo -r ../../maas-react-components-repo -f json > maas-react-components-report.json
         working-directory: maas-ops-ui-repo/tools/mrc-usage-report
 
       - name: Step 3. Merge reports
         run: |
+          echo "==== STEP 3: MERGE REPORTS ===="
+          echo "Current working directory: $(pwd)"
+          echo "Working directory for this step: $(pwd)/maas-ops-ui-repo/tools/mrc-report-merger"
+          ls -la
+          echo "Checking for input files:"
+          ls -la ../../maas-ui-report.json || echo "maas-ui-report.json not found"
+          ls -la ../../maas-react-components-report.json || echo "maas-react-components-report.json not found"
+          echo "Installing dependencies..."
           npm install
+          echo "Running npm start with parameters..."
           npm start -- -i maas-ui-report.json maas-react-components-report.json -o merged-report.json -h merged-report.html
         working-directory: maas-ops-ui-repo/tools/mrc-report-merger
 
       - name: Step 4. Split merged JSON
         run: |
+          echo "==== STEP 4: SPLIT MERGED JSON ===="
+          echo "Current working directory: $(pwd)"
+          echo "Working directory for this step: $(pwd)/maas-ops-ui-repo/tools/json-splitter"
+          ls -la
+          echo "Checking for input file:"
+          ls -la ../../merged-report.json || echo "merged-report.json not found"
+          echo "Installing dependencies..."
           npm install
+          echo "Running npm start with parameters..."
           npm start -- -i merged-report.json
         working-directory: maas-ops-ui-repo/tools/json-splitter
 
@@ -79,4 +155,3 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: maas-ops-ui-repo/tools/mrc-report-merger/merged-report.html # Path to the HTML report to be published
-
