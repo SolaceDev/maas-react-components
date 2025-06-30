@@ -133,23 +133,21 @@ jobs:
         run: |
           echo "==== STEP 3: MERGE REPORTS ===="
           echo "Current working directory: $(pwd)"
-          echo "Working directory for this step: $(pwd)/maas-ops-ui-repo/tools/mrc-report-merger"
           ls -la
           echo "Checking for input files:"
-          ls -la ../../maas-ui-report.json || echo "maas-ui-report.json not found"
-          ls -la ../../maas-ops-ui-report.json || echo "maas-ops-ui-report.json not found"
-          echo "Creating reports directory if it doesn't exist..."
-          mkdir -p reports
+          ls -la ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json || echo "maas-ui-report.json not found"
+          ls -la ../../../maas-ui/mrc-maas-ui-report.json || echo "maas-ops-ui-report.json not found"
           echo "Installing dependencies..."
-          npm install @types/babel__traverse
+          npm install 
           echo "Running npm start with parameters..."
-          npm start -- -i maas-ui-report.json maas-ops-ui-report.json -o merged-report.json -h merged-report.html
+          npm start -- -p1 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json ../../../maas-ui/mrc-maas-ui-report.json -o merged-report.json -h merged-report.html
 
           echo "Contents of merged JSON report:"
           cat merged-report.json
 
           echo "Contents of merged HTML report:"
           cat merged-report.html
+
         working-directory: maas-ops-ui-repo/tools/mrc-report-merger
 
       - name: Step 4. Split merged JSON
