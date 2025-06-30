@@ -98,6 +98,8 @@ jobs:
           cat maas-ui-report.json 
 
           pwd
+          ls 
+
 
           cat reports/maas-ui-report.json
 
