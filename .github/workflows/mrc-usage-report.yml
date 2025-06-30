@@ -30,9 +30,6 @@ jobs:
           path: maas-ui-repo
           token: ${{ secrets.GIT_REPO_TOKEN }}
 
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_REPO_TOKEN }}
-
       - name: Checkout maas-ops-ui
         uses: actions/checkout@v4
         with:
