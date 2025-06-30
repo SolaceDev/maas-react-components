@@ -82,8 +82,6 @@ jobs:
           ls -la
           echo "Checking for package.json:"
           cat package.json || echo "package.json not found"
-          echo "Checking for dist directory:"
-          ls -la dist || echo "dist directory not found"
           echo "Installing dependencies..."
           npm install
           echo "Checking for dist directory after npm install:"
