@@ -78,7 +78,6 @@ jobs:
         run: |
           echo "==== STEP 1: GENERATE MAAS-UI REPORT ===="
           echo "Current working directory: $(pwd)"
-          echo "Working directory for this step: $(pwd)/maas-ui-repo/tools/mrc-usage-report"
           ls -la
           echo "Checking for package.json:"
           cat package.json || echo "package.json not found"
@@ -94,21 +93,15 @@ jobs:
           echo "Generating HTML report..."
           npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html
 
-          # echo "Line count for HTML report:"
-          # cat maas-ui-report.html | wc -l
 
-          # echo "Contents of JSON report:"
-          # echo "Line count for JSON report:"
-          # cat maas-ui-report.json | wc -l
+          # cd reports
 
-          cd reports
-
-          cat mrc-usage-report.html
-          cat mrc-usage-report.json
+          # cat mrc-usage-report.html
+          # cat mrc-usage-report.json
 
 
-          cat mrc-usage-report.html | wc -l
-          cat mrc-usage-report.json | wc -l
+          # cat mrc-usage-report.html | wc -l
+          # cat mrc-usage-report.json | wc -l
 
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
@@ -116,8 +109,8 @@ jobs:
         run: |
           echo "==== STEP 2: GENERATE MAAS-OPS-UI REPORTS ===="
           echo "Current working directory: $(pwd)"
-          echo "Working directory for this step: $(pwd)/maas-ops-ui-repo/tools/mrc-usage-report"
-          ls -la
+          pwd 
+          ls
           echo "Checking for package.json:"
           cat package.json || echo "package.json not found"
           echo "Creating reports directory if it doesn't exist..."
@@ -133,17 +126,6 @@ jobs:
 
           echo "Generating HTML report..."
           npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html
-
-          echo "Contents of JSON report:"
-          cat maas-ui-report.json
-
-          echo "Contents of HTML report:"
-          cat maas-ui-report.html
-          echo "Contents of JSON report:"
-          cat maas-ops-ui-report.json
-
-          echo "Contents of HTML report:"
-          cat maas-ops-ui-report.html
 
         working-directory: maas-ops-ui-repo/tools/mrc-usage-report
 
