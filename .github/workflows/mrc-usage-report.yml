@@ -85,7 +85,7 @@ jobs:
           echo "Installing dependencies..."
           npm install
           npm run build
-          npm start -- -b ../../maas-ui-repo -r ../../../maas-react-components-repo -f json > maas-ui-report.json
+          npm start -- -b ../.. -r ../../../maas-react-components-repo -f json > maas-ui-report.json
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
       - name: Step 2. Generate maas-react-components report
