@@ -84,11 +84,6 @@ jobs:
           cat package.json || echo "package.json not found"
           echo "Installing dependencies..."
           npm install
-          echo "Checking for dist directory after npm install:"
-          ls -la dist || echo "dist directory not found after npm install"
-          echo "Checking npm scripts:"
-          npm run || echo "No scripts found"
-          echo "Running npm start with parameters..."
           npm start -- -b ../../maas-ui-repo -r ../../../maas-react-components-repo -f json > maas-ui-report.json
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
