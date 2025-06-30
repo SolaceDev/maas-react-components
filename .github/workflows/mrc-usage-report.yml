@@ -94,8 +94,12 @@ jobs:
           echo "Generating HTML report..."
           npm start -- -b ../.. -r ../../maas-react-components/maas-react-components-repo -f html > maas-ui-report.html
 
+          echo "Line count for HTML report:"
+          cat maas-ui-report.html | wc -l
+
           echo "Contents of JSON report:"
-          cat maas-ui-report.json 
+          echo "Line count for JSON report:"
+          cat maas-ui-report.json | wc -l
 
           pwd
           ls 
