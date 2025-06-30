@@ -143,18 +143,12 @@ jobs:
 
 
           echo "Checking for input files:"
-          ls -la ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json || echo "maas-ui-report.json not found"
-          ls -la ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.json || echo "maas-ops-ui-report.json not found"
+          ls -la ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json || echo "mrc-maas-ops-ui-usage-report.json not found"
+          ls -la ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.json || echo "mrc-maas-ui-usage-report.json not found"
           echo "Installing dependencies..."
           npm install 
           echo "Running npm start with parameters..."
           npm start -- -p1 ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json -p2 ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.json -o merged-report.json -h merged-report.html
-
-          echo "Contents of merged JSON report:"
-          cat merged-report.json
-
-          echo "Contents of merged HTML report:"
-          cat merged-report.html
 
         working-directory: maas-ops-ui-repo/tools/mrc-report-merger
 
@@ -178,6 +172,7 @@ jobs:
 
           echo "Contents of first split file (if any):"
           find . -type f -name "*.json" | sort | head -n 1 | xargs cat || echo "No split files found"
+
         working-directory: maas-ops-ui-repo/tools/json-splitter
 
       - name: Step 5. Upload artifacts
