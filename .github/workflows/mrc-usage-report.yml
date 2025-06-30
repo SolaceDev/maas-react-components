@@ -98,7 +98,7 @@ jobs:
           cat package.json || echo "package.json not found"
           echo "Installing dependencies..."
           npm install
-          npn run build
+          npm run build
           echo "Checking for dist directory after npm install:"
           ls -la dist || echo "dist directory not found after npm install"
           npm start -- -b ../../maas-react-components-repo -r ../../maas-react-components-repo -f json > maas-react-components-report.json
