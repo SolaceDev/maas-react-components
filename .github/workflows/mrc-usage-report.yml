@@ -84,7 +84,7 @@ jobs:
           cat package.json || echo "package.json not found"
           echo "Installing dependencies..."
           npm install
-          npn run build
+          npm run build
           npm start -- -b ../../maas-ui-repo -r ../../../maas-react-components-repo -f json > maas-ui-report.json
         working-directory: maas-ui-repo/tools/mrc-usage-report
 
