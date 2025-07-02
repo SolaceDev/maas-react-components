@@ -69,7 +69,7 @@ jobs:
           echo "maas-ops-ui-repo/tools/json-splitter location: $(pwd)/maas-ops-ui-repo/tools/json-splitter"
           ls -la maas-ops-ui-repo/tools/json-splitter || echo "json-splitter directory not found"
 
-      - name: Checkout broker
+      - name: Checkout broker manager
         uses: actions/checkout@v4
         with:
           repository: SolaceDev/broker-manager
