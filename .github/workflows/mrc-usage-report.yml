@@ -166,8 +166,8 @@ jobs:
           echo "Running npm start with parameters..."
           npm start --  ../mrc-usage-report/reports/mrc-maas-ops-ui-usage-report.json ../../../maas-ui-repo/tools/mrc-usage-report/reports/mrc-maas-ui-usage-report.json ../../../broker-manager-repo/tools/mrc-usage-report/reports/mrc-broker-manager-usage-report.json
 
-          chmod 777 merged-report.json
-          chmod 777 merged-report.html
+          chmod 777 merged-mrc-usage-report.json
+          chmod 777 merged-mrc-usage-report.html
 
         working-directory: maas-ops-ui-repo/tools/mrc-report-merger
 
@@ -198,5 +198,5 @@ jobs:
         with:
           name: merged-reports
           path: |
-            maas-ops-ui-repo/tools/mrc-report-merger/merged-report.json
-            maas-ops-ui-repo/tools/mrc-report-merger/merged-report.html
+            maas-ops-ui-repo/tools/mrc-report-merger/merged-mrc-usage-report.json
+            maas-ops-ui-repo/tools/mrc-report-merger/merged-mrc-usage-report.html
