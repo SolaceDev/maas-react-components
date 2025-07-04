@@ -132,6 +132,7 @@ jobs:
         run: |
           echo "==== STEP 3: GENERATE BROKER REPORT ===="
           echo "Current working directory: $(pwd)"
+          mkdir -p reports
           npm install
           npm run build
 
@@ -156,16 +157,40 @@ jobs:
 
 
           echo "Checking for input files:"
-          ls -la ../../../maas-react-components-repo/tools/mrc-usage-report-maas-ops-ui/reports/mrc-maas-ops-ui-usage-report.json || echo "mrc-maas-ops-ui-usage-report.json not found"
-          ls -la ../../../maas-react-components-repo/tools/mrc-usage-report-maas-ui/reports/mrc-maas-ui-usage-report.json || echo "mrc-maas-ui-usage-report.json not found"
-          ls -la ../../../maas-react-components-repo/tools/mrc-usage-report-broker-manager/reports/mrc-broker-manager-usage-report.json || echo "mrc-broker-manager-usage-report.json not found"
+          REPORTS_TO_MERGE=""
+          MAAS_OPS_UI_REPORT_PATH="../../../maas-react-components-repo/tools/mrc-usage-report-maas-ops-ui/reports/mrc-maas-ops-ui-usage-report.json"
+          MAAS_UI_REPORT_PATH="../../../maas-react-components-repo/tools/mrc-usage-report-maas-ui/reports/mrc-maas-ui-usage-report.json"
+          BROKER_MANAGER_REPORT_PATH="../../../maas-react-components-repo/tools/mrc-usage-report-broker-manager/reports/mrc-broker-manager-usage-report.json"
+
+          if [ -f "$MAAS_OPS_UI_REPORT_PATH" ]; then
+            REPORTS_TO_MERGE="$REPORTS_TO_MERGE $MAAS_OPS_UI_REPORT_PATH"
+          else
+            echo "$MAAS_OPS_UI_REPORT_PATH not found."
+          fi
+
+          if [ -f "$MAAS_UI_REPORT_PATH" ]; then
+            REPORTS_TO_MERGE="$REPORTS_TO_MERGE $MAAS_UI_REPORT_PATH"
+          else
+            echo "$MAAS_UI_REPORT_PATH not found."
+          fi
+
+          if [ -f "$BROKER_MANAGER_REPORT_PATH" ]; then
+            REPORTS_TO_MERGE="$REPORTS_TO_MERGE $BROKER_MANAGER_REPORT_PATH"
+          else
+            echo "$BROKER_MANAGER_REPORT_PATH not found."
+          fi
+
           echo "Installing dependencies..."
           npm install
-          echo "Running npm start with parameters..."
-          npm start -- ../../../maas-react-components-repo/tools/mrc-usage-report-maas-ops-ui/reports/mrc-maas-ops-ui-usage-report.json ../../../maas-react-components-repo/tools/mrc-usage-report-maas-ui/reports/mrc-maas-ui-usage-report.json ../../../maas-react-components-repo/tools/mrc-usage-report-broker-manager/reports/mrc-broker-manager-usage-report.json
 
-          chmod 777 merged-mrc-usage-report.json
-          chmod 777 merged-mrc-usage-report.html
+          if [ -n "$REPORTS_TO_MERGE" ]; then
+            echo "Running npm start with parameters: $REPORTS_TO_MERGE"
+            npm start -- $REPORTS_TO_MERGE
+            chmod 777 merged-mrc-usage-report.json
+            chmod 777 merged-mrc-usage-report.html
+          else
+            echo "No reports found to merge."
+          fi
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report-merger
 
