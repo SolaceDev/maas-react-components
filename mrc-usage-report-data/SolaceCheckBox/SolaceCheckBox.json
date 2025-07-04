@@ -1,0 +1,131 @@
+{
+  "componentName": "SolaceCheckBox",
+  "totalUsages": 99,
+  "usagesByMfe": {
+    "maas-ops-react": 17,
+    "ep": 45,
+    "intg": 1,
+    "mc": 9,
+    "saas": 27
+  },
+  "commonProps": [
+    {
+      "name": "name",
+      "count": 98
+    },
+    {
+      "name": "checked",
+      "count": 94
+    },
+    {
+      "name": "onChange",
+      "count": 86
+    },
+    {
+      "name": "label",
+      "count": 72
+    },
+    {
+      "name": "dataQa",
+      "count": 81
+    },
+    {
+      "name": "title",
+      "count": 7
+    },
+    {
+      "name": "subTextProps",
+      "count": 4
+    },
+    {
+      "name": "boldLabel",
+      "count": 3
+    },
+    {
+      "name": "data-qa",
+      "count": 2
+    },
+    {
+      "name": "readOnly",
+      "count": 22
+    },
+    {
+      "name": "id",
+      "count": 29
+    },
+    {
+      "name": "hasErrors",
+      "count": 11
+    },
+    {
+      "name": "helperText",
+      "count": 11
+    },
+    {
+      "name": "disabled",
+      "count": 10
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerDetailsOrgLimits.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/insights/components/OrganizationMonitoringSettings.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringConfigurations.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/SystemControls.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/Runs.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/RequestSection.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/topology/messagingService/SchemaRegistryAuthList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/topology/messagingService/KafkaAuthList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/entityList/FailDownloadAsyncApi.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/customHooks/useCheckbox.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/designer/details/DeleteEntityVersionDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/runtime/CustomDiscoveryScanDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/PageContent.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultFilter.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/ConfirmTagAssociationDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/TagsQuickActions.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewVersionDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domains/DomainsList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/eventApis/EventApiForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/schemas/SchemaForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/consumers/SuggestedEvents.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/enumerations/EnumerationForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationRuntimeTab.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domainEdit/DomainForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domainEdit/DomainDetails.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/components/atoms/AtomCheckBox.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/RotatePasswordsCard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/create/components/FieldPort.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/create/components/FieldMateLinkEncryption.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/create/components/FieldCloneCertificateAuth.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/ASEnvironmentDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/DeleteEnvironmentsDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

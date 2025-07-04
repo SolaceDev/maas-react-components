@@ -1,0 +1,25 @@
+{
+  "componentName": "SolaceMenuItem",
+  "totalUsages": 1,
+  "usagesByMfe": {
+    "ep": 1
+  },
+  "commonProps": [
+    {
+      "name": "key",
+      "count": 1
+    },
+    {
+      "name": "...",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SolaceGraph/utils/miscUtils.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

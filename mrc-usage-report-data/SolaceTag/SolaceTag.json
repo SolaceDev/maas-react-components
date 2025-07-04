@@ -1,0 +1,45 @@
+{
+  "componentName": "SolaceTag",
+  "totalUsages": 10,
+  "usagesByMfe": {
+    "maas-ops-react": 6,
+    "ep": 4
+  },
+  "commonProps": [
+    {
+      "name": "label",
+      "count": 10
+    },
+    {
+      "name": "fillColor",
+      "count": 8
+    },
+    {
+      "name": "labelColor",
+      "count": 8
+    },
+    {
+      "name": "clickable",
+      "count": 2
+    },
+    {
+      "name": "variant",
+      "count": 3
+    },
+    {
+      "name": "key",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

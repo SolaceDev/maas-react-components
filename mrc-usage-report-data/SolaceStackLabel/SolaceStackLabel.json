@@ -1,0 +1,41 @@
+{
+  "componentName": "SolaceStackLabel",
+  "totalUsages": 10,
+  "usagesByMfe": {
+    "maas-ops-react": 8,
+    "saas": 2
+  },
+  "commonProps": [
+    {
+      "name": "id",
+      "count": 10
+    },
+    {
+      "name": "bold",
+      "count": 5
+    },
+    {
+      "name": "required",
+      "count": 6
+    },
+    {
+      "name": "htmlForId",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

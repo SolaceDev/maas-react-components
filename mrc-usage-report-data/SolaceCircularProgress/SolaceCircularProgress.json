@@ -1,0 +1,79 @@
+{
+  "componentName": "SolaceCircularProgress",
+  "totalUsages": 37,
+  "usagesByMfe": {
+    "maas-ops-react": 9,
+    "infra": 1,
+    "ep": 7,
+    "intg": 3,
+    "mc": 11,
+    "saas": 6
+  },
+  "commonProps": [
+    {
+      "name": "size",
+      "count": 23
+    },
+    {
+      "name": "data-qa",
+      "count": 1
+    },
+    {
+      "name": "variant",
+      "count": 13
+    },
+    {
+      "name": "message",
+      "count": 5
+    },
+    {
+      "name": "dataQa",
+      "count": 1
+    },
+    {
+      "name": "disableShrink",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/ToggleButtonWithDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesListView.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/PositionedCircularProgress/PositionedCircularProgress.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScansTable.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateSchemasDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/dialogs/AiMappingConfirmationDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/Template/VendorTemplates.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/components/dialogs/CloneServiceDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/upscales/ScaleUpStatus.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/dialogs/CreateHostnameDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/upgrades/UpgradesLegacy.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/MonitoringCard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/common/icons/LoadingSpinner.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/UserAccessDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/privateRegions/components/DataCenterTable.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

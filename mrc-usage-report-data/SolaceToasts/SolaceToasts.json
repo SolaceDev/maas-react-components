@@ -1,0 +1,49 @@
+{
+  "componentName": "SolaceToasts",
+  "totalUsages": 6,
+  "usagesByMfe": {
+    "maas-ops-react": 3,
+    "infra": 1,
+    "ep": 1,
+    "intg": 1
+  },
+  "commonProps": [
+    {
+      "name": "open",
+      "count": 6
+    },
+    {
+      "name": "onClose",
+      "count": 6
+    },
+    {
+      "name": "message",
+      "count": 6
+    },
+    {
+      "name": "severity",
+      "count": 5
+    },
+    {
+      "name": "action",
+      "count": 2
+    },
+    {
+      "name": "autoDismiss",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/NotificationContacts.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/monitoringJobs/MonitoringJobs.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/contexts/SolaceToastProvider.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/contexts/SnackBarSolaceToast.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

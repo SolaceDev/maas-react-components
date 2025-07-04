@@ -1,0 +1,76 @@
+{
+  "componentName": "SolaceRadioGroup",
+  "totalUsages": 16,
+  "usagesByMfe": {
+    "maas-ops-react": 1,
+    "ep": 9,
+    "intg": 2,
+    "mc": 3,
+    "saas": 1
+  },
+  "commonProps": [
+    {
+      "name": "name",
+      "count": 16
+    },
+    {
+      "name": "value",
+      "count": 15
+    },
+    {
+      "name": "onChange",
+      "count": 16
+    },
+    {
+      "name": "inline",
+      "count": 9
+    },
+    {
+      "name": "required",
+      "count": 3
+    },
+    {
+      "name": "id",
+      "count": 13
+    },
+    {
+      "name": "dataQa",
+      "count": 4
+    },
+    {
+      "name": "hasErrors",
+      "count": 3
+    },
+    {
+      "name": "helperText",
+      "count": 3
+    },
+    {
+      "name": "label",
+      "count": 2
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/customHooks/useRadioGroup.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/events/schemaDrawer/ManageEventSchemas.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/create/components/FieldEndpointSelector.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/create/components/FormServiceTypes.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

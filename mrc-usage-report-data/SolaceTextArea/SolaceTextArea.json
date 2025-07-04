@@ -1,0 +1,85 @@
+{
+  "componentName": "SolaceTextArea",
+  "totalUsages": 22,
+  "usagesByMfe": {
+    "maas-ops-react": 1,
+    "ep": 10,
+    "intg": 1,
+    "mc": 1,
+    "saas": 9
+  },
+  "commonProps": [
+    {
+      "name": "...",
+      "count": 1
+    },
+    {
+      "name": "name",
+      "count": 22
+    },
+    {
+      "name": "dataQa",
+      "count": 19
+    },
+    {
+      "name": "value",
+      "count": 19
+    },
+    {
+      "name": "onChange",
+      "count": 19
+    },
+    {
+      "name": "hasErrors",
+      "count": 12
+    },
+    {
+      "name": "helperText",
+      "count": 13
+    },
+    {
+      "name": "maxLength",
+      "count": 14
+    },
+    {
+      "name": "label",
+      "count": 14
+    },
+    {
+      "name": "resizable",
+      "count": 7
+    },
+    {
+      "name": "onBlur",
+      "count": 5
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesEditor.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RequestHeaderDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/aiWizard/components/shared.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributeForm.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/requests/RevokeEventAccessDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordionList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/components/atoms/AtomTextArea.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/userGroups/components/CreateEditUserGroupsDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/drawdownUsage/components/NoDrawdownUsage/NoDrawdownUsageContactUs.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/privateRegions/components/RequestNewDatacenter.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/accountSettings/SetUpSso.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/support/GetSupport.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

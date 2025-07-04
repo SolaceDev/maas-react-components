@@ -1,0 +1,26 @@
+{
+  "componentName": "SolaceTextDiff",
+  "totalUsages": 2,
+  "usagesByMfe": {
+    "ep": 2
+  },
+  "commonProps": [
+    {
+      "name": "text1",
+      "count": 2
+    },
+    {
+      "name": "text2",
+      "count": 2
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/CompareConfigurationDialog.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

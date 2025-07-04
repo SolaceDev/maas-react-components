@@ -1,0 +1,58 @@
+{
+  "componentName": "SolaceList",
+  "totalUsages": 19,
+  "usagesByMfe": {
+    "maas-ops-react": 5,
+    "ep": 7,
+    "intg": 5,
+    "saas": 2
+  },
+  "commonProps": [
+    {
+      "name": "sx",
+      "count": 12
+    },
+    {
+      "name": "disablePadding",
+      "count": 5
+    },
+    {
+      "name": "key",
+      "count": 4
+    },
+    {
+      "name": "dense",
+      "count": 2
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/EmailChipList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/resources/SamplesList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/resources/EntitiesToDeleteListingPanel.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/resources/GettingStartedListItem.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplates.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/HeaderSection.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/ConstantSection.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 12,
+    "overriddenPropertiesCounts": {
+      "justifyContent": 2,
+      "display": 1,
+      "flexDirection": 1,
+      "marginTop": 1,
+      "padding": 6,
+      "bgcolor": 5,
+      "li": 1,
+      "p": 1
+    }
+  }
+}

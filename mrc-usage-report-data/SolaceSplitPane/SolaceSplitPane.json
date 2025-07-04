@@ -1,0 +1,30 @@
+{
+  "componentName": "SolaceSplitPane",
+  "totalUsages": 2,
+  "usagesByMfe": {
+    "ep": 2
+  },
+  "commonProps": [
+    {
+      "name": "minSize",
+      "count": 2
+    },
+    {
+      "name": "defaultSize",
+      "count": 2
+    },
+    {
+      "name": "maxSize",
+      "count": 2
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

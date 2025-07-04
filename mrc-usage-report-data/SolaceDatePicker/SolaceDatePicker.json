@@ -1,0 +1,50 @@
+{
+  "componentName": "SolaceDatePicker",
+  "totalUsages": 5,
+  "usagesByMfe": {
+    "maas-ops-react": 3,
+    "ep": 1,
+    "saas": 1
+  },
+  "commonProps": [
+    {
+      "name": "onClear",
+      "count": 3
+    },
+    {
+      "name": "onChange",
+      "count": 4
+    },
+    {
+      "name": "disableFuture",
+      "count": 3
+    },
+    {
+      "name": "value",
+      "count": 4
+    },
+    {
+      "name": "timezone",
+      "count": 2
+    },
+    {
+      "name": "dataQa",
+      "count": 1
+    },
+    {
+      "name": "variant",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.styles.ts",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

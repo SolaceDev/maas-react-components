@@ -1,0 +1,72 @@
+{
+  "componentName": "SolaceSearchAndFilter",
+  "totalUsages": 13,
+  "usagesByMfe": {
+    "maas-ops-react": 2,
+    "infra": 1,
+    "ep": 8,
+    "intg": 2
+  },
+  "commonProps": [
+    {
+      "name": "name",
+      "count": 13
+    },
+    {
+      "name": "value",
+      "count": 13
+    },
+    {
+      "name": "onChange",
+      "count": 13
+    },
+    {
+      "name": "width",
+      "count": 10
+    },
+    {
+      "name": "type",
+      "count": 13
+    },
+    {
+      "name": "id",
+      "count": 12
+    },
+    {
+      "name": "dataQa",
+      "count": 10
+    },
+    {
+      "name": "placeholder",
+      "count": 11
+    },
+    {
+      "name": "onClearAll",
+      "count": 4
+    },
+    {
+      "name": "onFocus",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SearchPanel/SearchPanel.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/PageContent.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/import/AddToExistingVersionsDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/templates/TemplateList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domains/Domains.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/DomainGraphSearchV2.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/filters/SearchPanel.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "componentName": "SolacePageHeader",
+  "totalUsages": 22,
+  "usagesByMfe": {
+    "maas-ops-react": 4,
+    "infra": 1,
+    "ep": 4,
+    "intg": 6,
+    "mc": 5,
+    "saas": 2
+  },
+  "commonProps": [
+    {
+      "name": "title",
+      "count": 20
+    },
+    {
+      "name": "breadcrumbs",
+      "count": 16
+    },
+    {
+      "name": "actions",
+      "count": 9
+    },
+    {
+      "name": "tabs",
+      "count": 3
+    },
+    {
+      "name": "subTitle",
+      "count": 5
+    },
+    {
+      "name": "actionMenu",
+      "count": 3
+    },
+    {
+      "name": "environment",
+      "count": 10
+    },
+    {
+      "name": "borderTop",
+      "count": 10
+    },
+    {
+      "name": "release",
+      "count": 3
+    },
+    {
+      "name": "...",
+      "count": 2
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/RunsHeader.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/PlansHeader.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunHeader.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationDashboard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SolacePageHeaderWithProgress/SolacePageHeaderWithProgress.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/home/Home.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/IntegrationEnvironmentWrapper.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/agents/Agents.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/ServiceDetails.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/create/CreateService.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/userSettingsShell/UserSettingsShell.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "componentName": "SolaceListItemButton",
+  "totalUsages": 5,
+  "usagesByMfe": {
+    "ep": 5
+  },
+  "commonProps": [
+    {
+      "name": "selected",
+      "count": 5
+    },
+    {
+      "name": "onClick",
+      "count": 5
+    },
+    {
+      "name": "sx",
+      "count": 3
+    },
+    {
+      "name": "divider",
+      "count": 2
+    },
+    {
+      "name": "disableGutters",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/resources/SamplesList.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/resources/GettingStartedListItem.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplates.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 3,
+    "overriddenPropertiesCounts": {
+      "paddingTop": 3,
+      "paddingBottom": 3,
+      "paddingLeft": 2,
+      "background": 1,
+      "height": 1,
+      "border": 1,
+      "borderBottom": 1
+    }
+  }
+}

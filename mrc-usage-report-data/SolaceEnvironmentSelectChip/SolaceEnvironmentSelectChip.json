@@ -1,0 +1,42 @@
+{
+  "componentName": "SolaceEnvironmentSelectChip",
+  "totalUsages": 4,
+  "usagesByMfe": {
+    "ep": 1,
+    "intg": 2,
+    "mc": 1
+  },
+  "commonProps": [
+    {
+      "name": "name",
+      "count": 4
+    },
+    {
+      "name": "value",
+      "count": 4
+    },
+    {
+      "name": "onChange",
+      "count": 4
+    },
+    {
+      "name": "options",
+      "count": 4
+    },
+    {
+      "name": "dataQa",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/agents/Agents.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/list/Services.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}
