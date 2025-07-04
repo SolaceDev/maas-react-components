@@ -95,6 +95,7 @@ jobs:
           npm install
           npm run build
 
+
           echo "Generating JSON report..."
           npm start -- -b ../../../maas-ui-repo -r maas-react-components-repo -f json
 
