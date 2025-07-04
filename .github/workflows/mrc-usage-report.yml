@@ -25,6 +25,7 @@ jobs:
 
       - name: Clean up old report data
         run: rm -rf maas-react-components-repo/mrc-usage-report-data
+
       - name: Print directory structure (maas-react-components)
         run: |
           echo "==== DIRECTORY STRUCTURE INFORMATION ===="
