@@ -184,10 +184,11 @@ jobs:
           npm install
 
           if [ -n "$REPORTS_TO_MERGE" ]; then
+            mkdir -p merged-reports
             echo "Running npm start with parameters: $REPORTS_TO_MERGE"
-            npm start -- $REPORTS_TO_MERGE
-            chmod 777 merged-mrc-usage-report.json
-            chmod 777 merged-mrc-usage-report.html
+            npm start -- --output-json merged-reports/merged-mrc-usage-report.json --output-html merged-reports/merged-mrc-usage-report.html $REPORTS_TO_MERGE
+            chmod 777 merged-reports/merged-mrc-usage-report.json
+            chmod 777 merged-reports/merged-mrc-usage-report.html
           else
             echo "No reports found to merge."
           fi
@@ -220,8 +221,7 @@ jobs:
         with:
           name: merged-reports
           path: |
-            maas-react-components-repo/tools/mrc-usage-report-merger/merged-mrc-usage-report.json
-            maas-react-components-repo/tools/mrc-usage-report-merger/merged-mrc-usage-report.html
+            maas-react-components-repo/tools/mrc-usage-report-merger/merged-reports/
             maas-react-components-repo/mrc-usage-report-data
 
       - name: Step 7. Commit and push report data

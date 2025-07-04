@@ -16,16 +16,8 @@ program
 	.description("Merge multiple MRC usage report JSON files and generate a combined HTML report")
 	.version("1.0.1")
 	.argument("<json_files...>", "Paths to the MRC usage report JSON files to merge")
-	.option(
-		"-o, --output-json <path>",
-		"Output path for the merged JSON report",
-		"merged-mrc-usage-report.json"
-	)
-	.option(
-		"-h, --output-html <path>",
-		"Output path for the merged HTML report",
-		"merged-mrc-usage-report.html"
-	);
+	.option("-o, --output-json <path>", "Output path for the merged JSON report", "merged-mrc-usage-report.json")
+	.option("-h, --output-html <path>", "Output path for the merged HTML report", "merged-mrc-usage-report.html");
 
 program.parse(process.argv);
 
