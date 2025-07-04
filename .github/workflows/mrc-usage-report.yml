@@ -182,7 +182,7 @@ jobs:
           echo "Installing dependencies..."
           npm install
           echo "Running npm start with parameters..."
-          npm start -- -i ../mrc-report-merger/merged-report.json -o ../../mrc-usage-report-data
+          npm start -- -i ../mrc-report-merger/merged-mrc-usage-report.json -o ../../mrc-usage-report-data
 
           echo "Listing generated files:"
           find . -type f -name "*.json" | sort
