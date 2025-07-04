@@ -97,10 +97,10 @@ jobs:
 
 
           echo "Generating JSON report..."
-          npm start -- -b ../../../maas-ui-repo -r maas-react-components-repo -f json
+          npm start -- -b ../../../maas-ui-repo -r ../maas-react-components-repo -f json
 
           echo "Generating HTML report..."
-          npm start -- -b ../../../maas-ui-repo -r maas-react-components-repo -f html
+          npm start -- -b ../../../maas-ui-repo -r ../maas-react-components-repo -f html
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report-maas-ui
 
@@ -121,10 +121,10 @@ jobs:
           ls -la dist || echo "dist directory not found after npm install"
 
           echo "Generating JSON report..."
-          npm start -- -b ../../../maas-ops-ui-repo -r maas-react-components-repo -f json
+          npm start -- -b ../../../maas-ops-ui-repo -r ../maas-react-components-repo -f json
 
           echo "Generating HTML report..."
-          npm start -- -b ../../../maas-ops-ui-repo -r maas-react-components-repo -f html
+          npm start -- -b ../../../maas-ops-ui-repo -r ../maas-react-components-repo -f html
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report-maas-ops-ui
 
@@ -136,10 +136,10 @@ jobs:
           npm run build
 
           echo "Generating JSON report..."
-          npm start -- -b ../../../broker-manager-repo -r maas-react-components-repo -f json
+          npm start -- -b ../../../broker-manager-repo -r ../maas-react-components-repo -f json
 
           echo "Generating HTML report..."
-          npm start -- -b ../../../broker-manager-repo -r maas-react-components-repo -f html
+          npm start -- -b ../../../broker-manager-repo -r ../maas-react-components-repo -f html
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report-broker-manager
 
