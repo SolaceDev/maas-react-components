@@ -8,3 +8,5 @@ storybook/coverage
 storybook/.nyc_output
 *.iml
 .DS_Store
+
+# tools/mrc-usage-report-json-splitter/output
