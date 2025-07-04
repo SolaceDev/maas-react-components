@@ -1,0 +1,41 @@
+{
+  "componentName": "SolaceStackLabel",
+  "totalUsages": 10,
+  "usagesByMfe": {
+    "maas-ops-react": 8,
+    "saas": 2
+  },
+  "commonProps": [
+    {
+      "name": "id",
+      "count": 10
+    },
+    {
+      "name": "required",
+      "count": 6
+    },
+    {
+      "name": "bold",
+      "count": 5
+    },
+    {
+      "name": "htmlForId",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "componentName": "HelperText",
+  "totalUsages": 2,
+  "usagesByMfe": {
+    "maas-ops-react": 2
+  },
+  "commonProps": [
+    {
+      "name": "details",
+      "count": 1
+    },
+    {
+      "name": "isFetching",
+      "count": 1
+    },
+    {
+      "name": "isError",
+      "count": 1
+    },
+    {
+      "name": "configs",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

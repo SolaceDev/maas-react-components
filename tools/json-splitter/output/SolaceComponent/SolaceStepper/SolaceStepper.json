@@ -1,0 +1,60 @@
+{
+  "componentName": "SolaceStepper",
+  "totalUsages": 3,
+  "usagesByMfe": {
+    "ep": 1,
+    "intg": 2
+  },
+  "commonProps": [
+    {
+      "name": "steps",
+      "count": 3
+    },
+    {
+      "name": "activeStep",
+      "count": 3
+    },
+    {
+      "name": "setActiveStep",
+      "count": 3
+    },
+    {
+      "name": "onClose",
+      "count": 3
+    },
+    {
+      "name": "onSubmit",
+      "count": 3
+    },
+    {
+      "name": "submitLabel",
+      "count": 3
+    },
+    {
+      "name": "onSecondarySubmit",
+      "count": 2
+    },
+    {
+      "name": "secondarySubmitLabel",
+      "count": 2
+    },
+    {
+      "name": "disableSubmit",
+      "count": 1
+    },
+    {
+      "name": "stepContentOverflow",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/StepperWrapper.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/pages/connectors/CreateConnectorV2.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

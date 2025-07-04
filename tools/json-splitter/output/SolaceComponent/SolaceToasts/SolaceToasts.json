@@ -1,0 +1,47 @@
+{
+  "componentName": "SolaceToasts",
+  "totalUsages": 5,
+  "usagesByMfe": {
+    "maas-ops-react": 3,
+    "ep": 1,
+    "intg": 1
+  },
+  "commonProps": [
+    {
+      "name": "message",
+      "count": 5
+    },
+    {
+      "name": "open",
+      "count": 5
+    },
+    {
+      "name": "onClose",
+      "count": 5
+    },
+    {
+      "name": "severity",
+      "count": 4
+    },
+    {
+      "name": "action",
+      "count": 2
+    },
+    {
+      "name": "autoDismiss",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/monitoringJobs/MonitoringJobs.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/NotificationContacts.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/contexts/SolaceToastProvider.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/contexts/SnackBarSolaceToast.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "componentName": "SolaceStack",
+  "totalUsages": 144,
+  "usagesByMfe": {
+    "maas-ops-react": 12,
+    "ep": 64,
+    "intg": 53,
+    "mc": 3,
+    "saas": 12
+  },
+  "commonProps": [
+    {
+      "name": "direction",
+      "count": 37
+    },
+    {
+      "name": "spacing",
+      "count": 62
+    },
+    {
+      "name": "alignItems",
+      "count": 10
+    },
+    {
+      "name": "my",
+      "count": 1
+    },
+    {
+      "name": "data-testid",
+      "count": 1
+    },
+    {
+      "name": "justifyContent",
+      "count": 11
+    },
+    {
+      "name": "mb",
+      "count": 1
+    },
+    {
+      "name": "gap",
+      "count": 1
+    },
+    {
+      "name": "width",
+      "count": 10
+    },
+    {
+      "name": "padding",
+      "count": 10
+    },
+    {
+      "name": "height",
+      "count": 7
+    },
+    {
+      "name": "bgcolor",
+      "count": 4
+    },
+    {
+      "name": "paddingLeft",
+      "count": 3
+    },
+    {
+      "name": "paddingTop",
+      "count": 3
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceOperations/ServiceOperations.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/DeleteServicePackage.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductsList.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/BulkActions/BulkMoveDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironmentDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/environment/DeployRDPApplicationDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/environment/UpdateEnvironmentDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/AddToEnvironmentDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/resources/SuccessDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/resources/EventPortalResourceProgressBanner.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/resources/EventPortalResourceDeleteSampleBanner.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributes.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesView.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesEditor.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/dashboard/ReuseIndexStats.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/dashboard/EducationalPopup.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/ApplicationVersionAccordion.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/AddToExistingVersionsDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/resources/SampleLoadingBanner.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterInviteUsersCard.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/resources/EventPortalResourcesList.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointInformation.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributeForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/EventApiList.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/FilterHelper.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/EventApiProductDownloadDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Policies.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/VersionPlansDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/VersionPlansForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductVersionDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/PolicyDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationRuntimeTab.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentialsDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/filters/SearchPanel.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/CustomTransformationNode.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditHeaderDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddHeaderDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/DeleteEdgeConfirmationDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/ConnectorStateUpdateDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/TopicHeaderMapping.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/ConnectorVendorTemplate.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/ConnectorDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/connectorCards/ConnectorCardsPage.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/connectorCards/ConnectorCards.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/ConnectionCards.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/authentication/OAuthDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectionTabSummary.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorMetrics.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorViewDetailsTab.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorEditDetailsTab.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/summary/CreateSummaryStepView.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/summary/HeaderMappingTab.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/layout/SolaceHeader.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentLearningBlurb.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/common/BaseTableList.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/create/CreateService.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/userManagement/components/ViewDetailsDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/privateRegions/components/EmaConfirmationDialog.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 1,
+    "overriddenPropertiesCounts": {
+      "minHeight": 1
+    }
+  }
+}

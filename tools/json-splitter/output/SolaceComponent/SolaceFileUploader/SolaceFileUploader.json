@@ -1,0 +1,55 @@
+{
+  "componentName": "SolaceFileUploader",
+  "totalUsages": 3,
+  "usagesByMfe": {
+    "intg": 3
+  },
+  "commonProps": [
+    {
+      "name": "onFileChange",
+      "count": 3
+    },
+    {
+      "name": "maxFiles",
+      "count": 2
+    },
+    {
+      "name": "errorText",
+      "count": 2
+    },
+    {
+      "name": "dataQa",
+      "count": 2
+    },
+    {
+      "name": "readOnly",
+      "count": 2
+    },
+    {
+      "name": "fileNames",
+      "count": 2
+    },
+    {
+      "name": "accept",
+      "count": 1
+    },
+    {
+      "name": "id",
+      "count": 1
+    },
+    {
+      "name": "label",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

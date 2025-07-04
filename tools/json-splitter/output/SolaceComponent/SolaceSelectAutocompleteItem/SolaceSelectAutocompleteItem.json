@@ -1,0 +1,92 @@
+{
+  "componentName": "SolaceSelectAutocompleteItem",
+  "totalUsages": 57,
+  "usagesByMfe": {
+    "maas-ops-react": 4,
+    "ep": 35,
+    "intg": 4,
+    "mc": 5,
+    "saas": 9
+  },
+  "commonProps": [
+    {
+      "name": "name",
+      "count": 9
+    },
+    {
+      "name": "supplementalText",
+      "count": 6
+    },
+    {
+      "name": "value",
+      "count": 9
+    },
+    {
+      "name": "...",
+      "count": 10
+    },
+    {
+      "name": "subText",
+      "count": 4
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsOrgDetailsForm.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/insightsOrganizations/InsightsOrganizations.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/monitoringJobs/MonitoringJobs.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/ConnectorUpgradeDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/utils/topology/eventBrokerUtils.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/MessagingServiceAssociationForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/DeployToEnvironmentDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/environment/ApplicationVersionAssociationForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessSelectAutocomplete.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeMultiValueEditor.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinition.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/customHooks/useApplicationDomainSelect.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/AdditionalFilterMultiSelect.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/DefaultFilterMultiSelect.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/BulkAddDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/filters/DefaultFilterMultiSelect.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageSolaceQueueConfiguration.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageClientProfileName.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/SearchEventAPIs.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/TopicFilterForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/EventApiProductDownloadDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSearchAndFilter.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemas.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/filters/DefaultFilterMultiSelect.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/CustomTransformationNode.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/SelectFieldNode.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessSelectAutocomplete.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/MoveHostnameDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldRegion.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldClusterName.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessSelectAutocomplete.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/userManagement/components/DeleteUserDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/userGroups/components/CreateEditUserGroupsDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

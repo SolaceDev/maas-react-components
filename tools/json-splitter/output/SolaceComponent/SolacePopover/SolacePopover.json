@@ -1,0 +1,38 @@
+{
+  "componentName": "SolacePopover",
+  "totalUsages": 6,
+  "usagesByMfe": {
+    "intg": 6
+  },
+  "commonProps": [
+    {
+      "name": "maxWidth",
+      "count": 6
+    },
+    {
+      "name": "title",
+      "count": 6
+    },
+    {
+      "name": "placement",
+      "count": 5
+    },
+    {
+      "name": "id",
+      "count": 2
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/HeaderExpression.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/connectorCards/ConnectorCards.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

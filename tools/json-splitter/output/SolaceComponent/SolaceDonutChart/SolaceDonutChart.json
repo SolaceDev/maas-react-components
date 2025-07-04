@@ -1,0 +1,29 @@
+{
+  "componentName": "SolaceDonutChart",
+  "totalUsages": 1,
+  "usagesByMfe": {
+    "ep": 1
+  },
+  "commonProps": [
+    {
+      "name": "data",
+      "count": 1
+    },
+    {
+      "name": "showTooltip",
+      "count": 1
+    },
+    {
+      "name": "icon",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useEventAccessRequests.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

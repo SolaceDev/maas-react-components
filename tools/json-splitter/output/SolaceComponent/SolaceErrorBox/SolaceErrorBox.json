@@ -1,0 +1,48 @@
+{
+  "componentName": "SolaceErrorBox",
+  "totalUsages": 12,
+  "usagesByMfe": {
+    "maas-ops-react": 4,
+    "ep": 1,
+    "mc": 5,
+    "saas": 2
+  },
+  "commonProps": [
+    {
+      "name": "message",
+      "count": 12
+    },
+    {
+      "name": "dataQa",
+      "count": 1
+    },
+    {
+      "name": "showCloseButton",
+      "count": 2
+    },
+    {
+      "name": "onClose",
+      "count": 2
+    },
+    {
+      "name": "showErrorIcon",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/OrganizationMonitoringSettings.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDisableDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

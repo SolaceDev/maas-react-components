@@ -1,0 +1,61 @@
+{
+  "componentName": "SolacePicker",
+  "totalUsages": 13,
+  "usagesByMfe": {
+    "ep": 11,
+    "saas": 2
+  },
+  "commonProps": [
+    {
+      "name": "name",
+      "count": 13
+    },
+    {
+      "name": "onChange",
+      "count": 13
+    },
+    {
+      "name": "value",
+      "count": 13
+    },
+    {
+      "name": "variant",
+      "count": 13
+    },
+    {
+      "name": "icons",
+      "count": 12
+    },
+    {
+      "name": "dataQa",
+      "count": 11
+    },
+    {
+      "name": "numOfItemsPerRow",
+      "count": 11
+    },
+    {
+      "name": "label",
+      "count": 11
+    },
+    {
+      "name": "iconKeyOrderedList",
+      "count": 10
+    },
+    {
+      "name": "inlineLabel",
+      "count": 9
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/AppearanceDetailsForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

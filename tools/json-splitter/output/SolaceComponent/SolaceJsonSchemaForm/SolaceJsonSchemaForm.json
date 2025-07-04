@@ -1,0 +1,58 @@
+{
+  "componentName": "SolaceJsonSchemaForm",
+  "totalUsages": 2,
+  "usagesByMfe": {
+    "ep": 2
+  },
+  "commonProps": [
+    {
+      "name": "formData",
+      "count": 2
+    },
+    {
+      "name": "formItem",
+      "count": 2
+    },
+    {
+      "name": "formOptions",
+      "count": 2
+    },
+    {
+      "name": "onChange",
+      "count": 2
+    },
+    {
+      "name": "transformError",
+      "count": 2
+    },
+    {
+      "name": "transformWidget",
+      "count": 2
+    },
+    {
+      "name": "readOnly",
+      "count": 1
+    },
+    {
+      "name": "disabled",
+      "count": 1
+    },
+    {
+      "name": "ajvClass",
+      "count": 1
+    },
+    {
+      "name": "transformTitle",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTConsumerJsonSchemaForm.tsx",
+    "/Users/ishanphadte/Desktop/maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeConfigurationJsonSchemaForm.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}

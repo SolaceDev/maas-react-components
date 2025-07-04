@@ -1,0 +1,43 @@
+{
+  "componentName": "SolaceLearningBanner",
+  "totalUsages": 7,
+  "usagesByMfe": {
+    "maas-ops-react": 7
+  },
+  "commonProps": [
+    {
+      "name": "backgroundColor",
+      "count": 4
+    },
+    {
+      "name": "title",
+      "count": 3
+    },
+    {
+      "name": "dataQa",
+      "count": 2
+    },
+    {
+      "name": "showCloseButton",
+      "count": 1
+    },
+    {
+      "name": "onClose",
+      "count": 1
+    }
+  ],
+  "files": [
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "/Users/ishanphadte/Documents/Github/maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  }
+}
