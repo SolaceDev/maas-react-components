@@ -96,10 +96,10 @@ jobs:
           npm run build
 
           echo "Generating JSON report..."
-          npm start -- -b ../../../maas-ui-repo -r ../.. -f json
+          npm start -- -b ../../../maas-ui-repo -r .. -f json
 
           echo "Generating HTML report..."
-          npm start -- -b ../../../maas-ui-repo -r ../.. -f html
+          npm start -- -b ../../../maas-ui-repo -r .. -f html
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report-maas-ui
 
