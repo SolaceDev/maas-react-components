@@ -200,3 +200,31 @@ jobs:
             maas-ops-ui-repo/tools/mrc-report-merger/merged-mrc-usage-report.json
             maas-ops-ui-repo/tools/mrc-report-merger/merged-mrc-usage-report.html
             maas-ops-ui-repo/mrc-usage-report-data
+
+      - name: Step 7. Commit and push report data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+
+          # Move the report data to the root of the main repo checkout
+          mv maas-ops-ui-repo/mrc-usage-report-data ./maas-react-components-repo/
+
+          cd maas-react-components-repo
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          BRANCH_NAME="feature/mrc-usage-report-data"
+          git checkout -b $BRANCH_NAME
+
+          git add mrc-usage-report-data/
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
+            git commit --no-verify -m "$COMMIT_MESSAGE"
+            git push --set-upstream origin $BRANCH_NAME
+          fi
