@@ -205,6 +205,9 @@ jobs:
           echo "Creating reports directory if it doesn't exist..."
           echo "Installing dependencies..."
           npm install
+
+          npm run build
+
           echo "Running npm start with parameters..."
           npm start -- -i ../../../maas-react-components-repo/tools/mrc-usage-report-merger/merged-reports/merged-mrc-usage-report.json -o ../../../maas-react-components-repo/mrc-usage-report-data
 
