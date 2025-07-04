@@ -8,3 +8,9 @@ storybook/coverage
 storybook/.nyc_output
 *.iml
 .DS_Store
+
+tools/mrc-usage-report-json-splitter/output
+tools/mrc-usage-report-broker-manager/reports
+tools/mrc-usage-report-maas-ops-ui/reports
+tools/mrc-usage-report-maas-ui/reports
+tools/mrc-usage-report-merger/merged-reports

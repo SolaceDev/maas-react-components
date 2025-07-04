@@ -1,0 +1,21 @@
+{
+	"name": "json-splitter",
+	"version": "1.0.0",
+	"description": "A tool to split the merged MRC usage report JSON into individual component files.",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"start": "node dist/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"chalk": "^5.3.0",
+		"commander": "^11.1.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.14.10",
+		"typescript": "^5.5.3"
+	}
+}
