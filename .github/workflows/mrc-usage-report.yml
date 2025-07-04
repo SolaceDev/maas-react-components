@@ -201,12 +201,12 @@ jobs:
           echo "Current working directory: $(pwd)"
           ls -la
           echo "Checking for input file:"
-          ls -la ../../../maas-react-components-repo/tools/mrc-usage-report-merger/merged-mrc-usage-report.json || echo "merged-report.json not found"
+          ls -la ../../../maas-react-components-repo/tools/mrc-usage-report-merger/merged-reports/merged-mrc-usage-report.json || echo "merged-report.json not found"
           echo "Creating reports directory if it doesn't exist..."
           echo "Installing dependencies..."
           npm install
           echo "Running npm start with parameters..."
-          npm start -- -i ../../../maas-react-components-repo/tools/mrc-usage-report-merger/merged-mrc-usage-report.json -o ../../../maas-react-components-repo/mrc-usage-report-data
+          npm start -- -i ../../../maas-react-components-repo/tools/mrc-usage-report-merger/merged-reports/merged-mrc-usage-report.json -o ../../../maas-react-components-repo/mrc-usage-report-data
 
           echo "Listing generated files:"
           find . -type f -name "*.json" | sort
