@@ -20,8 +20,11 @@ jobs:
       - name: Checkout maas-react-components (current repo)
         uses: actions/checkout@v4
         with:
+          ref: feature/mrc-usage-report-data
           path: maas-react-components-repo
 
+      - name: Clean up old report data
+        run: rm -rf maas-react-components-repo/mrc-usage-report-data
       - name: Print directory structure (maas-react-components)
         run: |
           echo "==== DIRECTORY STRUCTURE INFORMATION ===="
@@ -206,6 +209,7 @@ jobs:
           echo "Installing dependencies..."
           npm install
 
+          npm install
           npm run build
 
           echo "Running npm start with parameters..."
@@ -236,18 +240,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          BRANCH_NAME="feature/mrc-usage-report-data"
-
-          # Check if the branch exists on the remote
-          if git ls-remote --exit-code --heads origin $BRANCH_NAME; then
-            echo "Branch $BRANCH_NAME exists on remote. Pulling latest changes."
-            git checkout $BRANCH_NAME
-            git pull origin $BRANCH_NAME --rebase
-          else
-            echo "Branch $BRANCH_NAME does not exist on remote. Creating new branch."
-            git checkout -b $BRANCH_NAME
-          fi
-
           git add mrc-usage-report-data/
 
           if git diff --staged --quiet; then
@@ -256,5 +248,5 @@ jobs:
             set -e
             COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
             git commit --no-verify -m "$COMMIT_MESSAGE"
-            git push --set-upstream origin $BRANCH_NAME
+            git push
           fi
