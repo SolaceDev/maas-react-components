@@ -175,7 +175,6 @@ jobs:
         run: |
           echo "==== STEP 5: SPLIT MERGED JSON ===="
           echo "Current working directory: $(pwd)"
-          echo "Working directory for this step: $(pwd)/maas-ops-ui-repo/tools/json-splitter"
           ls -la
           echo "Checking for input file:"
           ls -la ../mrc-report-merger/merged-report.json || echo "merged-report.json not found"
@@ -183,7 +182,7 @@ jobs:
           echo "Installing dependencies..."
           npm install
           echo "Running npm start with parameters..."
-          npm start -- -i ../mrc-report-merger/merged-report.json
+          npm start -- -i ../mrc-report-merger/merged-report.json -o ../../mrc-usage-report-data
 
           echo "Listing generated files:"
           find . -type f -name "*.json" | sort
@@ -200,3 +199,4 @@ jobs:
           path: |
             maas-ops-ui-repo/tools/mrc-report-merger/merged-mrc-usage-report.json
             maas-ops-ui-repo/tools/mrc-report-merger/merged-mrc-usage-report.html
+            maas-ops-ui-repo/mrc-usage-report-data
