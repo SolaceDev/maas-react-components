@@ -23,7 +23,7 @@ export class HtmlReporter {
 		// Write the HTML to the output file
 		fs.writeFileSync(outputPath, html);
 
-		console.log(`HTML report generated at ${outputPath}`);
+		// console.log(`HTML report generated at ${outputPath}`);
 	}
 
 	/**
@@ -202,10 +202,14 @@ export class HtmlReporter {
     }
     
     .search-container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: center;
       margin-bottom: 20px;
     }
-    
-    #componentSearch {
+
+    .search-container input {
       width: 100%;
       padding: 10px;
       border: 1px solid var(--border-color);
@@ -285,7 +289,12 @@ export class HtmlReporter {
       <div id="components-chart" class="chart-container"></div>
       
       <div class="search-container">
-        <input type="text" id="componentSearch" placeholder="Search components...">
+        <label for="componentNameSearch">Component Name:</label>
+        <input type="text" id="componentNameSearch" placeholder="Search components...">
+        <label for="propNameSearch">Prop Name:</label>
+        <input type="text" id="propNameSearch" placeholder="Search by prop name...">
+        <label for="propValueSearch">Prop Value:</label>
+        <input type="text" id="propValueSearch" placeholder="Search by prop value...">
       </div>
       
       <h3>Component Details</h3>
@@ -551,20 +560,66 @@ export class HtmlReporter {
       });
     });
     
-    // Component search
-    document.getElementById('componentSearch').addEventListener('input', function() {
-      const searchTerm = this.value.toLowerCase();
-      
-      document.querySelectorAll('.component-details').forEach(component => {
+    // Search functionality
+    const componentNameSearch = document.getElementById('componentNameSearch');
+    const propNameSearch = document.getElementById('propNameSearch');
+    const propValueSearch = document.getElementById('propValueSearch');
+    const componentDetails = document.querySelectorAll('.component-details');
+
+    function filterComponents() {
+      const componentNameFilter = componentNameSearch.value.toLowerCase();
+      const propNameFilter = propNameSearch.value.toLowerCase();
+      const propValueFilter = propValueSearch.value.toLowerCase();
+
+      componentDetails.forEach(component => {
         const componentName = component.dataset.component.toLowerCase();
-        
-        if (componentName.includes(searchTerm)) {
-          component.style.display = '';
-        } else {
-          component.style.display = 'none';
+        const instances = component.querySelectorAll('.instance-details');
+        let componentVisible = false;
+
+        if (componentName.includes(componentNameFilter)) {
+          let visibleInstances = 0;
+          instances.forEach(instance => {
+            const props = instance.querySelectorAll('tbody tr');
+            let instanceVisible = true;
+
+            if (propNameFilter) {
+              const hasPropName = Array.from(props).some(prop => {
+                const propName = prop.cells[0].textContent.toLowerCase();
+                return propName.includes(propNameFilter);
+              });
+              if (!hasPropName) {
+                instanceVisible = false;
+              }
+            }
+
+            if (propValueFilter) {
+              const hasPropValue = Array.from(props).some(prop => {
+                const propValue = prop.cells[1].textContent.toLowerCase();
+                return propValue.includes(propValueFilter);
+              });
+              if (!hasPropValue) {
+                instanceVisible = false;
+              }
+            }
+            
+            if (instanceVisible) {
+              instance.style.display = '';
+              visibleInstances++;
+            } else {
+              instance.style.display = 'none';
+            }
+          });
+          
+          componentVisible = visibleInstances > 0;
         }
+        
+        component.style.display = componentVisible ? '' : 'none';
       });
-    });
+    }
+
+    componentNameSearch.addEventListener('input', filterComponents);
+    propNameSearch.addEventListener('input', filterComponents);
+    propValueSearch.addEventListener('input', filterComponents);
     
     // Draw charts
     function drawComponentsChart() {
