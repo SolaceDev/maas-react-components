@@ -288,6 +288,7 @@ const DefaultSelectionTemplate = ({
 	getOptionValidationErrorCallback,
 	showSupplementalTextOrSecondaryAction,
 	showLeftIcon,
+	textEllipsisPosition,
 	// storybook specific
 	disabledItems = false,
 	withDividers = false,
@@ -319,6 +320,7 @@ const DefaultSelectionTemplate = ({
 	longLabel?: boolean;
 	showSupplementalTextOrSecondaryAction?: boolean;
 	showLeftIcon?: boolean;
+	textEllipsisPosition?: "start" | "end";
 }): JSX.Element => {
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 	const dropdownOptions = options;
@@ -386,6 +388,7 @@ const DefaultSelectionTemplate = ({
 				minWidth={minWidth}
 				showSupplementalTextOrSecondaryAction={showSupplementalTextOrSecondaryAction}
 				showLeftIcon={showLeftIcon}
+				textEllipsisPosition={textEllipsisPosition}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
@@ -1742,5 +1745,17 @@ export const ShowIconMenuItemOnLeftShowingLeftIconAndSupplementaryTextInInput = 
 		showSupplementalTextOrSecondaryAction: true,
 		value: SELECT_OPTIONS_FOR_LEFT_ICON[0],
 		options: SELECT_OPTIONS_FOR_LEFT_ICON
+	}
+};
+
+export const WithEllipsisAtStart = {
+	render: DefaultSelectionTemplate,
+	args: {
+		label: "Ellipsis at Start",
+		value: {
+			name: "This is a very long option name that will be truncated with an ellipsis at the start instead of the end, very very long text so that it can show the ellipsis at the start",
+			value: "long-option"
+		},
+		textEllipsisPosition: "start"
 	}
 };

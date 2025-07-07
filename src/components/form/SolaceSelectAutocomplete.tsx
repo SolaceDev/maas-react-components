@@ -32,6 +32,11 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	 */
 	id?: string;
 	/**
+	 * Controls the position of the ellipsis when text overflows
+	 * @default 'end'
+	 */
+	textEllipsisPosition?: "start" | "end";
+	/**
 	 * Name attribute to assign to the `input` element
 	 */
 	name: string;
@@ -202,11 +207,17 @@ export interface SolaceSelectAutoCompleteProps<T, V> extends SolaceComponentProp
 	showLeftIcon?: boolean;
 }
 
-const CustomHeightTextField = styled(TextField)(() => ({
-	"& .MuiOutlinedInput-input": {
-		height: "32px"
-	}
-}));
+const CustomHeightTextField = styled(TextField)<{ textEllipsisPosition?: "start" | "end" }>(
+	({ textEllipsisPosition }) => ({
+		"& .MuiOutlinedInput-input": {
+			height: "32px",
+			...(textEllipsisPosition === "start" && {
+				direction: "rtl",
+				textAlign: "left"
+			})
+		}
+	})
+);
 
 const GroupItems = styled("ul")(() => ({
 	padding: 0
@@ -285,7 +296,8 @@ function SolaceSelectAutocomplete<T, V>({
 	minWidth,
 	tagMaxWidth = "200px",
 	showSupplementalTextOrSecondaryAction = false,
-	showLeftIcon = false
+	showLeftIcon = false,
+	textEllipsisPosition = "end"
 }: SolaceSelectAutoCompleteProps<T, V>): JSX.Element {
 	const theme = useTheme();
 	const [selectedValue, setSelectedValue] = useState(value || null);
@@ -713,6 +725,7 @@ function SolaceSelectAutocomplete<T, V>({
 				return (
 					<CustomHeightTextField
 						{...rest}
+						textEllipsisPosition={textEllipsisPosition}
 						title={title}
 						autoComplete="off"
 						placeholder={placeholder}
