@@ -154,6 +154,13 @@ export class HtmlReporter {
       padding: 15px;
       overflow-y: auto;
     }
+
+    .instance-details {
+      border: 1px solid #eee;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+    }
     
     .badge {
       display: inline-block;
@@ -372,10 +379,36 @@ export class HtmlReporter {
 								: ""
 						}
             
-            <h4>Files (${stats.files.length})</h4>
-            <ul>
-              ${stats.files.map((file) => `<li>${file}</li>`).join("")}
-            </ul>
+            <h4>Instances (${stats.instances.length})</h4>
+            ${stats.instances
+							.map(
+								(instance) => `
+              <div class="instance-details">
+                <p><strong>File:</strong> ${instance.filePath}:${instance.line}</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Prop Name</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${instance.props
+											.map(
+												(prop) => `
+                      <tr>
+                        <td>${prop.name}</td>
+                        <td><pre>${prop.value}</pre></td>
+                      </tr>
+                    `
+											)
+											.join("")}
+                  </tbody>
+                </table>
+              </div>
+            `
+							)
+							.join("")}
           </div>
         </div>
       `

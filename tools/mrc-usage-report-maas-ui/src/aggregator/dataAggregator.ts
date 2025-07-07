@@ -1,4 +1,4 @@
-import { ComponentUsage, ComponentStats, ReportData, AnalysisConfig } from "../types";
+import { ComponentUsage, ComponentStats, ReportData, AnalysisConfig, ComponentInstance } from "../types";
 
 /**
  * Aggregates component usage data into statistics
@@ -12,9 +12,14 @@ export class DataAggregator {
 	 * @param mrcVersions MRC version information by MFE
 	 * @returns Report data
 	 */
-	aggregate(usages: ComponentUsage[], config: AnalysisConfig, allComponents: { name: string; path: string }[], mrcVersions: Record<string, string>): ReportData {
+	aggregate(
+		usages: any[],
+		config: AnalysisConfig,
+		allComponents: { name: string; path: string }[],
+		mrcVersions: Record<string, string>
+	): ReportData {
 		// Group usages by component name
-		const usagesByComponent = new Map<string, ComponentUsage[]>();
+		const usagesByComponent = new Map<string, any[]>();
 
 		for (const usage of usages) {
 			const { componentName } = usage;
@@ -26,8 +31,21 @@ export class DataAggregator {
 
 		// Generate component stats
 		const componentStats: ComponentStats[] = [];
+		const aggregatedUsages: ComponentUsage[] = [];
 
 		for (const [componentName, componentUsages] of usagesByComponent.entries()) {
+			const instances: ComponentInstance[] = componentUsages.map((usage) => ({
+				filePath: usage.filePath,
+				line: usage.line,
+				props: usage.props
+			}));
+
+			aggregatedUsages.push({
+				component: componentName,
+				count: instances.length,
+				instances
+			});
+
 			// Count usages by MFE
 			const usagesByMfe: Record<string, number> = {};
 			for (const usage of componentUsages) {
@@ -81,7 +99,8 @@ export class DataAggregator {
 					styledComponentCount,
 					customStylesCount,
 					overriddenPropertiesCounts
-				}
+				},
+				instances
 			});
 		}
 
@@ -163,7 +182,7 @@ export class DataAggregator {
 				totalUnusedComponents: unusedComponents.length
 			},
 			rawData: {
-				componentUsages: usages
+				componentUsages: aggregatedUsages
 			}
 		};
 
