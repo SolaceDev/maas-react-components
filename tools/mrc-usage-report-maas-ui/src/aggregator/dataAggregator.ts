@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable sonarjs/cognitive-complexity */
 import { ComponentUsage, ComponentStats, ReportData, AnalysisConfig, ComponentInstance } from "../types";
 
 /**

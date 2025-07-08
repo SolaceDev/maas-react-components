@@ -10,28 +10,28 @@ export interface AnalysisConfig {
 
 export type MrcSourceType = "local" | "github";
 
-export interface ComponentUsage {
-	componentName: string;
-	filePath: string;
-	mfe: string;
-	lineNumber: number;
-	props: ComponentProp[];
-	customization: {
-		styledComponent: boolean;
-		customStyles: boolean;
-		overriddenProperties: string[];
-	};
-}
-
+// Represents a prop passed to a component
 export interface ComponentProp {
 	name: string;
-	type: string;
-	value?: any;
-	isFunction?: boolean;
-	isJSX?: boolean;
-	isSpread?: boolean;
+	value: string; // The value of the prop
+	type?: string; // This can remain as is
 }
 
+// Represents a single instance of a component being used
+export interface ComponentInstance {
+	filePath: string;
+	line: number;
+	props: ComponentProp[];
+}
+
+// Represents the aggregated usage data for a component
+export interface ComponentUsage {
+	component: string;
+	count: number;
+	instances: ComponentInstance[];
+}
+
+// Aggregated data for a component
 export interface ComponentStats {
 	componentName: string;
 	totalUsages: number;
@@ -43,6 +43,8 @@ export interface ComponentStats {
 		customStylesCount: number;
 		overriddenPropertiesCounts: Record<string, number>;
 	};
+	// All instances of the component
+	instances: ComponentInstance[];
 }
 
 export interface ReportData {

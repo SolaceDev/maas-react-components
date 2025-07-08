@@ -103,7 +103,7 @@ class ComponentParser {
     parseFile(filePath, mfe) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const content = fs_1.default.readFileSync(filePath, "utf8");
+                const content = fs_1.default.readFileSync(filePath, "utf-8");
                 const usages = [];
                 // Parse the file
                 const ast = parser.parse(content, {
@@ -111,7 +111,7 @@ class ComponentParser {
                     plugins: ["jsx", "typescript", "decorators-legacy"]
                 });
                 // Track imported MRC components
-                const importedComponents = new Map(); // Map<localName, componentName>
+                const importedComponents = new Map();
                 // Track imported components that are considered used just by being imported
                 const importedComponentUsages = new Map();
                 // Traverse the AST
@@ -134,8 +134,7 @@ class ComponentParser {
                                         isComponent = true;
                                     }
                                     // Then check if it matches a file name and get the corresponding exported name
-                                    else if (this.mrcFileNames.has(importedName) &&
-                                        this.fileNameToExportName.has(importedName)) {
+                                    else if (this.mrcFileNames.has(importedName) && this.fileNameToExportName.has(importedName)) {
                                         componentName = this.fileNameToExportName.get(importedName);
                                         isComponent = true;
                                         // console.log(`Found component by file name: ${importedName} -> ${componentName}`);
@@ -149,12 +148,7 @@ class ComponentParser {
                                             filePath: filePath,
                                             mfe: mfe,
                                             lineNumber: lineNumber,
-                                            props: [],
-                                            customization: {
-                                                styledComponent: false,
-                                                customStyles: false,
-                                                overriddenProperties: []
-                                            }
+                                            props: []
                                         });
                                     }
                                 }
@@ -182,8 +176,7 @@ class ComponentParser {
                                 // Direct usage of an MRC component not necessarily imported with a local name
                                 componentName = elementName;
                             }
-                            else if (this.mrcFileNames.has(elementName) &&
-                                this.fileNameToExportName.has(elementName)) {
+                            else if (this.mrcFileNames.has(elementName) && this.fileNameToExportName.has(elementName)) {
                                 // Usage by file name
                                 componentName = this.fileNameToExportName.get(elementName);
                             }
@@ -194,79 +187,82 @@ class ComponentParser {
                                     if (t.isJSXAttribute(attr) && t.isJSXIdentifier(attr.name)) {
                                         const propName = attr.name.name;
                                         let propType = "unknown";
-                                        let propValue = undefined;
-                                        let isFunction = false;
-                                        let isJSX = false;
-                                        // Extract prop value and type
+                                        let propValue = ""; // value is always a string now
                                         if (attr.value) {
                                             if (t.isStringLiteral(attr.value)) {
                                                 propType = "string";
                                                 propValue = attr.value.value;
                                             }
-                                            else if (t.isJSXExpressionContainer(attr.value)) {
+                                            else if (t.isJSXExpressionContainer(attr.value) &&
+                                                !t.isJSXEmptyExpression(attr.value.expression)) {
                                                 const expression = attr.value.expression;
                                                 if (t.isNumericLiteral(expression)) {
                                                     propType = "number";
-                                                    propValue = expression.value;
+                                                    propValue = String(expression.value);
                                                 }
                                                 else if (t.isBooleanLiteral(expression)) {
                                                     propType = "boolean";
-                                                    propValue = expression.value;
+                                                    propValue = String(expression.value);
                                                 }
                                                 else if (t.isNullLiteral(expression)) {
                                                     propType = "null";
-                                                    propValue = null;
-                                                }
-                                                else if (t.isObjectExpression(expression)) {
-                                                    propType = "object";
-                                                }
-                                                else if (t.isArrayExpression(expression)) {
-                                                    propType = "array";
-                                                }
-                                                else if (t.isArrowFunctionExpression(expression) ||
-                                                    t.isFunctionExpression(expression)) {
-                                                    propType = "function";
-                                                    isFunction = true;
-                                                }
-                                                else if (t.isJSXElement(expression) || t.isJSXFragment(expression)) {
-                                                    propType = "jsx";
-                                                    isJSX = true;
+                                                    propValue = "null";
                                                 }
                                                 else if (t.isIdentifier(expression)) {
                                                     propType = "variable";
                                                     propValue = expression.name;
                                                 }
+                                                else {
+                                                    if (t.isObjectExpression(expression)) {
+                                                        propType = "object";
+                                                    }
+                                                    else if (t.isArrayExpression(expression)) {
+                                                        propType = "array";
+                                                    }
+                                                    else if (t.isArrowFunctionExpression(expression) || t.isFunctionExpression(expression)) {
+                                                        propType = "function";
+                                                    }
+                                                    else if (t.isJSXElement(expression) || t.isJSXFragment(expression)) {
+                                                        propType = "jsx";
+                                                    }
+                                                    else {
+                                                        propType = "expression";
+                                                    }
+                                                    propValue = content.substring(expression.start, expression.end);
+                                                }
                                             }
+                                        }
+                                        else {
+                                            // Boolean prop without value
+                                            propType = "boolean";
+                                            propValue = "true";
                                         }
                                         props.push({
                                             name: propName,
                                             type: propType,
-                                            value: propValue,
-                                            isFunction: isFunction,
-                                            isJSX: isJSX
+                                            value: propValue
                                         });
                                     }
                                     else if (t.isJSXSpreadAttribute(attr)) {
+                                        const argument = attr.argument;
                                         props.push({
                                             name: "...",
                                             type: "spread",
-                                            isSpread: true
+                                            value: content.substring(argument.start, argument.end)
                                         });
                                     }
                                 });
                                 // Get line number
                                 const lineNumber = ((_a = path.node.loc) === null || _a === void 0 ? void 0 : _a.start.line) || 0;
-                                // Check for customization
-                                const customization = this.detectCustomization(path);
+                                // Add the usage
                                 usages.push({
                                     componentName,
                                     filePath,
                                     mfe,
                                     lineNumber,
-                                    props,
-                                    customization
+                                    props
                                 });
-                                // Remove from importedComponentUsages since it's directly used as JSX
+                                // Remove from importedComponentUsages since we've found an actual JSX usage
                                 importedComponentUsages.delete(componentName);
                             }
                         }
@@ -281,51 +277,6 @@ class ComponentParser {
                 return [];
             }
         });
-    }
-    /**
-     * Detects if a component has custom styling or is a styled-component
-     * @param path The JSX element path
-     * @returns Customization information
-     */
-    detectCustomization(path) {
-        const customization = {
-            styledComponent: false,
-            customStyles: false,
-            overriddenProperties: []
-        };
-        // Check if the component is wrapped in a styled-component
-        let parent = path.parentPath;
-        while (parent) {
-            if (parent.node.type === "VariableDeclarator" &&
-                parent.node.init &&
-                parent.node.init.type === "CallExpression" &&
-                parent.node.init.callee &&
-                parent.node.init.callee.type === "MemberExpression" &&
-                parent.node.init.callee.object.name === "styled") {
-                customization.styledComponent = true;
-                break;
-            }
-            parent = parent.parentPath;
-        }
-        // Check for style props
-        path.node.attributes.forEach((attr) => {
-            if (t.isJSXAttribute(attr) &&
-                t.isJSXIdentifier(attr.name) &&
-                (attr.name.name === "style" || attr.name.name === "sx" || attr.name.name === "css")) {
-                customization.customStyles = true;
-                // Try to extract overridden properties
-                if (attr.value &&
-                    t.isJSXExpressionContainer(attr.value) &&
-                    t.isObjectExpression(attr.value.expression)) {
-                    attr.value.expression.properties.forEach((prop) => {
-                        if (t.isObjectProperty(prop) && t.isIdentifier(prop.key)) {
-                            customization.overriddenProperties.push(prop.key.name);
-                        }
-                    });
-                }
-            }
-        });
-        return customization;
     }
 }
 exports.ComponentParser = ComponentParser;

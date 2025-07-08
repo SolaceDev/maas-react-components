@@ -6,42 +6,39 @@ import { ReportData } from "../types";
  * Generates an HTML report from the component usage data
  */
 export class HtmlReporter {
-  /**
-   * Generates an HTML report from the component usage data
-   * @param reportData The report data
-   * @param outputPath The path to write the report to
-   */
-  async generateReport(
-    reportData: ReportData,
-    outputPath: string
-  ): Promise<void> {
-    const html = this.generateHtml(reportData);
+	/**
+	 * Generates an HTML report from the component usage data
+	 * @param reportData The report data
+	 * @param outputPath The path to write the report to
+	 */
+	async generateReport(reportData: ReportData, outputPath: string): Promise<void> {
+		const html = this.generateHtml(reportData);
 
-    // Create the output directory if it doesn't exist
-    const outputDir = path.dirname(outputPath);
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
-    }
+		// Create the output directory if it doesn't exist
+		const outputDir = path.dirname(outputPath);
+		if (!fs.existsSync(outputDir)) {
+			fs.mkdirSync(outputDir, { recursive: true });
+		}
 
-    // Write the HTML to the output file
-    fs.writeFileSync(outputPath, html);
+		// Write the HTML to the output file
+		fs.writeFileSync(outputPath, html);
 
-    console.log(`HTML report generated at ${outputPath}`);
-  }
+		console.log(`HTML report generated at ${outputPath}`);
+	}
 
-  /**
-   * Generates the HTML for the report
-   * @param reportData The report data
-   * @returns The HTML string
-   */
-  private generateHtml(reportData: ReportData): string {
-    const { componentStats, overallStats, generatedAt, config } = reportData;
+	/**
+	 * Generates the HTML for the report
+	 * @param reportData The report data
+	 * @returns The HTML string
+	 */
+	private generateHtml(reportData: ReportData): string {
+		const { componentStats, overallStats, generatedAt, config } = reportData;
 
-    // Format date
-    const formattedDate = new Date(generatedAt).toLocaleString();
+		// Format date
+		const formattedDate = new Date(generatedAt).toLocaleString();
 
-    // Generate HTML
-    return `
+		// Generate HTML
+		return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -156,6 +153,13 @@ export class HtmlReporter {
       max-height: 500px;
       padding: 15px;
       overflow-y: auto;
+    }
+
+    .instance-details {
+      border: 1px solid #eee;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
     }
     
     .badge {
@@ -286,8 +290,8 @@ export class HtmlReporter {
       
       <h3>Component Details</h3>
       ${componentStats
-        .map(
-          (stats) => `
+				.map(
+					(stats) => `
         <div class="component-details" data-component="${stats.componentName}">
           <div class="component-header">
             <div>
@@ -307,15 +311,15 @@ export class HtmlReporter {
               </thead>
               <tbody>
                 ${Object.entries(stats.usagesByMfe)
-                  .map(
-                    ([mfe, count]) => `
+									.map(
+										([mfe, count]) => `
                   <tr>
                     <td>${mfe}</td>
                     <td>${count}</td>
                   </tr>
                 `
-                  )
-                  .join("")}
+									)
+									.join("")}
               </tbody>
             </table>
             
@@ -329,15 +333,15 @@ export class HtmlReporter {
               </thead>
               <tbody>
                 ${stats.commonProps
-                  .map(
-                    (prop) => `
+									.map(
+										(prop) => `
                   <tr>
                     <td>${prop.name}</td>
                     <td>${prop.count}</td>
                   </tr>
                 `
-                  )
-                  .join("")}
+									)
+									.join("")}
               </tbody>
             </table>
             
@@ -348,9 +352,8 @@ export class HtmlReporter {
             </p>
             
             ${
-              Object.keys(stats.customization.overriddenPropertiesCounts)
-                .length > 0
-                ? `
+							Object.keys(stats.customization.overriddenPropertiesCounts).length > 0
+								? `
               <h5>Overridden Properties</h5>
               <table>
                 <thead>
@@ -360,33 +363,57 @@ export class HtmlReporter {
                   </tr>
                 </thead>
                 <tbody>
-                  ${Object.entries(
-                    stats.customization.overriddenPropertiesCounts
-                  )
-                    .map(
-                      ([prop, count]) => `
+                  ${Object.entries(stats.customization.overriddenPropertiesCounts)
+										.map(
+											([prop, count]) => `
                     <tr>
                       <td>${prop}</td>
                       <td>${count}</td>
                     </tr>
                   `
-                    )
-                    .join("")}
+										)
+										.join("")}
                 </tbody>
               </table>
             `
-                : ""
-            }
+								: ""
+						}
             
-            <h4>Files (${stats.files.length})</h4>
-            <ul>
-              ${stats.files.map((file) => `<li>${file}</li>`).join("")}
-            </ul>
+            <h4>Instances (${stats.instances.length})</h4>
+            ${stats.instances
+							.map(
+								(instance) => `
+              <div class="instance-details">
+                <p><strong>File:</strong> ${instance.filePath}:${instance.line}</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Prop Name</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${instance.props
+											.map(
+												(prop) => `
+                      <tr>
+                        <td>${prop.name}</td>
+                        <td><pre>${prop.value}</pre></td>
+                      </tr>
+                    `
+											)
+											.join("")}
+                  </tbody>
+                </table>
+              </div>
+            `
+							)
+							.join("")}
           </div>
         </div>
       `
-        )
-        .join("")}
+				)
+				.join("")}
     </div>
     
     <div class="tab-content" id="mfes-tab">
@@ -403,16 +430,16 @@ export class HtmlReporter {
         </thead>
         <tbody>
           ${Object.entries(overallStats.mfeUsages)
-            .map(
-              ([mfe, count]) => `
+						.map(
+							([mfe, count]) => `
             <tr>
               <td>${mfe}</td>
               <td>${count}</td>
               <td>${reportData.mrcVersions[mfe] || "N/A"}</td>
             </tr>
           `
-            )
-            .join("")}
+						)
+						.join("")}
         </tbody>
       </table>
     </div>
@@ -431,15 +458,15 @@ export class HtmlReporter {
         </thead>
         <tbody>
           ${reportData.unusedComponents
-            .map(
-              (comp) => `
+						.map(
+							(comp) => `
             <tr>
               <td>${comp.name}</td>
               <td>${comp.path}</td>
             </tr>
           `
-            )
-            .join("")}
+						)
+						.join("")}
         </tbody>
       </table>
       
@@ -447,8 +474,8 @@ export class HtmlReporter {
       <p>These components are used in some MFEs but not in others. Consider standardizing component usage across MFEs.</p>
       
       ${Object.entries(reportData.unusedComponentsByMfe)
-        .map(
-          ([mfe, components]) => `
+				.map(
+					([mfe, components]) => `
         <div class="component-details">
           <div class="component-header">
             <div>
@@ -466,21 +493,21 @@ export class HtmlReporter {
               </thead>
               <tbody>
                 ${components
-                  .map(
-                    (comp) => `
+									.map(
+										(comp) => `
                   <tr>
                     <td>${comp}</td>
                   </tr>
                 `
-                  )
-                  .join("")}
+									)
+									.join("")}
               </tbody>
             </table>
           </div>
         </div>
       `
-        )
-        .join("")}
+				)
+				.join("")}
     </div>
     
     <div class="footer">
@@ -588,9 +615,7 @@ export class HtmlReporter {
     }
     
     function drawMfesChart() {
-      const data = Object.entries(${JSON.stringify(
-        overallStats.mfeUsages
-      )}).map(([name, count]) => ({name, count}));
+      const data = Object.entries(${JSON.stringify(overallStats.mfeUsages)}).map(([name, count]) => ({name, count}));
       
       // Clear previous chart
       d3.select('#mfes-chart').html('');
@@ -660,5 +685,5 @@ export class HtmlReporter {
 </body>
 </html>
     `;
-  }
+	}
 }

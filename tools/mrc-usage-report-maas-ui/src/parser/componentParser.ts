@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable sonarjs/cognitive-complexity */
 import * as parser from "@babel/parser";
 import traverse from "@babel/traverse";
 import * as t from "@babel/types";

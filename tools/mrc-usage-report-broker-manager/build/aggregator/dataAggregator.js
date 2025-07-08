@@ -26,7 +26,18 @@ class DataAggregator {
         }
         // Generate component stats
         const componentStats = [];
-        for (const [componentName, componentUsages,] of usagesByComponent.entries()) {
+        const aggregatedUsages = [];
+        for (const [componentName, componentUsages] of usagesByComponent.entries()) {
+            const instances = componentUsages.map((usage) => ({
+                filePath: usage.filePath,
+                line: usage.line,
+                props: usage.props
+            }));
+            aggregatedUsages.push({
+                component: componentName,
+                count: instances.length,
+                instances
+            });
             // Count usages by MFE
             const usagesByMfe = {};
             for (const usage of componentUsages) {
@@ -59,8 +70,7 @@ class DataAggregator {
                 }
                 if ((_c = usage.customization) === null || _c === void 0 ? void 0 : _c.overriddenProperties) {
                     for (const prop of usage.customization.overriddenProperties) {
-                        overriddenPropertiesCounts[prop] =
-                            (overriddenPropertiesCounts[prop] || 0) + 1;
+                        overriddenPropertiesCounts[prop] = (overriddenPropertiesCounts[prop] || 0) + 1;
                     }
                 }
             }
@@ -74,8 +84,9 @@ class DataAggregator {
                 customization: {
                     styledComponentCount,
                     customStylesCount,
-                    overriddenPropertiesCounts,
+                    overriddenPropertiesCounts
                 },
+                instances
             });
         }
         // Sort component stats by total usages
@@ -85,7 +96,7 @@ class DataAggregator {
         // Most used components
         const mostUsedComponents = componentStats.slice(0, 10).map((stats) => ({
             name: stats.componentName,
-            count: stats.totalUsages,
+            count: stats.totalUsages
         }));
         // Most used props
         const allPropCounts = new Map();
@@ -144,11 +155,11 @@ class DataAggregator {
                 mostUsedComponents,
                 mostUsedProps,
                 mfeUsages,
-                totalUnusedComponents: unusedComponents.length,
+                totalUnusedComponents: unusedComponents.length
             },
             rawData: {
-                componentUsages: usages,
-            },
+                componentUsages: aggregatedUsages
+            }
         };
         return reportData;
     }
