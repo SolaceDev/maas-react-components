@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>New Components Report</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+<h1>New Components Report (2025-04-08 to 2025-07-08)</h1>
+
+<h2>New Components</h2>
+
+<h3>SolaceCategorizedSearch</h3>
+<p><b>File Path:</b> <a href="src/components/SolaceCategorizedSearch.tsx">src/components/SolaceCategorizedSearch.tsx</a></p>
+<p><b>Purpose:</b> A compound component that combines <code>SolaceToggleButtonGroup</code> and <code>SolaceSearchAndFilter</code> to allow users to switch between different categories and then search within the selected category.</p>
+<p><b>PR:</b> <a href="https://github.com/SolaceDev/maas-react-components/pull/1036">#1036</a></p>
+<h4>Props</h4>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td>id?</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>categoryOptions?</td>
+    <td>SolaceToggleButtonGroupOptionProps[]</td>
+  </tr>
+  <tr>
+    <td>categoryOptionsWidth?</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>selectedCategoryValue?</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>onCategoryChange</td>
+    <td>(event: React.MouseEvent<HTMLElement, MouseEvent>, value: string) => void</td>
+  </tr>
+  <tr>
+    <td>helperText?</td>
+    <td>string | JSX.Element</td>
+  </tr>
+  <tr>
+    <td>searchValue?</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>placeholder?</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>searchInputWidth?</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>disabled?</td>
+    <td>boolean</td>
+  </tr>
+  <tr>
+    <td>autoFocus?</td>
+    <td>boolean</td>
+  </tr>
+  <tr>
+    <td>hasErrors?</td>
+    <td>boolean</td>
+  </tr>
+  <tr>
+    <td>onSearchValueChange</td>
+    <td>(event: SolaceTextFieldChangeEvent) => void</td>
+  </tr>
+  <tr>
+    <td>onSearchInputFocus?</td>
+    <td>(event: React.FocusEvent<HTMLInputElement>) => void</td>
+  </tr>
+  <tr>
+    <td>onSearchInputBlur?</td>
+    <td>(event: React.FocusEvent<HTMLInputElement>) => void</td>
+  </tr>
+  <tr>
+    <td>onClearAll?</td>
+    <td>() => void</td>
+  </tr>
+  <tr>
+    <td>layout?</td>
+    <td>SolaceCategorizedSearchLayout</td>
+  </tr>
+  <tr>
+    <td>equalButtonWidth?</td>
+    <td>boolean</td>
+  </tr>
+  <tr>
+    <td>dataQa?</td>
+    <td>string</td>
+  </tr>
+</table>
+
+<h3>SolaceLearningBanner</h3>
+<p><b>File Path:</b> <a href="src/components/SolaceLearningBanner.tsx">src/components/SolaceLearningBanner.tsx</a></p>
+<p><b>Purpose:</b> A banner-style component with a title and close button.</p>
+<p><b>PR:</b> <a href="https://github.com/SolaceDev/maas-react-components/pull/1047">#1047</a></p>
+<h4>Props</h4>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td>title?</td>
+    <td>string | JSX.Element</td>
+  </tr>
+  <tr>
+    <td>children</td>
+    <td>JSX.Element</td>
+  </tr>
+  <tr>
+    <td>showCloseButton?</td>
+    <td>boolean</td>
+  </tr>
+  <tr>
+    <td>onClose?</td>
+    <td>() => void</td>
+  </tr>
+  <tr>
+    <td>backgroundColor?</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>dataQa?</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>dataTags?</td>
+    <td>string</td>
+  </tr>
+</table>
+
+<h3>SolaceChipTextArea</h3>
+<p><b>File Path:</b> <a href="src/components/form/SolaceChipTextArea/SolaceChipTextArea.tsx">src/components/form/SolaceChipTextArea/SolaceChipTextArea.tsx</a></p>
+<p><b>Purpose:</b> An experimental component that allows for entering text that gets converted into chips. It supports typing in values separated by comma, semicolon, space and enter button, and pasting from the clipboard. It also has an optional validation function property.</p>
+<p><b>PR:</b> <a href="https://github.com/SolaceDev/maas-react-components/pull/1041">#1041</a></p>
+<h4>Props</h4>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+    </tr>
+    <tr>
+        <td>id?</td>
+        <td>string</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>string</td>
+    </tr>
+    <tr>
+        <td>label?</td>
+        <td>string | JSX.Element</td>
+    </tr>
+    <tr>
+        <td>value?</td>
+        <td>string</td>
+    </tr>
+    <tr>
+        <td>helperText?</td>
+        <td>string | JSX.Element</td>
+    </tr>
+    <tr>
+        <td>maxLength?</td>
+        <td>number</td>
+    </tr>
+    <tr>
+        <td>title?</td>
+        <td>string</td>
+    </tr>
+    <tr>
+        <td>autoFocus?</td>
+        <td>boolean</td>
+    </tr>
+    <tr>
+        <td>hasErrors?</td>
+        <td>boolean</td>
+    </tr>
+    <tr>
+        <td>required?</td>
+        <td>boolean</td>
+    </tr>
+    <tr>
+        <td>inlineLabel?</td>
+        <td>boolean</td>
+    </tr>
+    <tr>
+        <td>onChange?</td>
+        <td>(event: SolaceChipTextAreaChangeEvent) => void</td>
+    </tr>
+    <tr>
+        <td>onBlur?</td>
+        <td>(event: React.FocusEvent<HTMLInputElement>) => void</td>
+    </tr>
+    <tr>
+        <td>onKeyDown?</td>
+        <td>(event: React.KeyboardEvent<HTMLInputElement>) => void</td>
+    </tr>
+    <tr>
+        <td>onKeyUp?</td>
+        <td>(event: React.KeyboardEvent<HTMLInputElement>) => void</td>
+    </tr>
+    <tr>
+        <td>onFocus?</td>
+        <td>(event: React.FocusEvent<HTMLInputElement>) => void</td>
+    </tr>
+    <tr>
+        <td>width?</td>
+        <td>string</td>
+    </tr>
+    <tr>
+        <td>validateChip?</td>
+        <td>(text: string) => string | undefined</td>
+    </tr>
+</table>
+
+<h2>Summary</h2>
+<p><b>Total New Components:</b> 3</p>
+
+</body>
+</html>

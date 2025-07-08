@@ -1,0 +1,67 @@
+name: New Components Report
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Generate new components report
+        run: |
+          set -e
+
+          MARKDOWN_REPORT_PATH="prompts/new-components-report/new-components-report.md"
+          HTML_REPORT_PATH="prompts/new-components-report/new-components-report.html"
+
+          mkdir -p "$(dirname "$MARKDOWN_REPORT_PATH")"
+
+          NEW_FILES=$(git log --diff-filter=A --name-only --since="3 months ago" -- "src/components/**/*.tsx")
+
+          if [ -z "$NEW_FILES" ]; then
+            echo "No new components added in the last 3 months." > "$MARKDOWN_REPORT_PATH"
+            echo "<html><body><h1>No new components added in the last 3 months.</h1></body></html>" > "$HTML_REPORT_PATH"
+          else
+            echo "# New Components Report (Last 3 Months)" > "$MARKDOWN_REPORT_PATH"
+            echo "" >> "$MARKDOWN_REPORT_PATH"
+            echo "$NEW_FILES" | while IFS= read -r file; do
+              echo "- \`$file\`" >> "$MARKDOWN_REPORT_PATH"
+            done
+            
+            echo "<html><body><h1>New Components Report (Last 3 Months)</h1><ul>" > "$HTML_REPORT_PATH"
+            echo "$NEW_FILES" | while IFS= read -r file; do
+              echo "<li><code>$file</code></li>" >> "$HTML_REPORT_PATH"
+            done
+            echo "</ul></body></html>" >> "$HTML_REPORT_PATH"
+          fi
+
+          echo "Reports generated:"
+          echo "Markdown: $MARKDOWN_REPORT_PATH"
+          echo "HTML: $HTML_REPORT_PATH"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: new-components-report
+          path: |
+            prompts/new-components-report/new-components-report.md
+            prompts/new-components-report/new-components-report.html
+
+      - name: Set current date
+        run: echo "CURRENT_DATE=$(date +'%Y-%m-%d %H:%M')" >> $GITHUB_ENV
+
+      - name: Commit report files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update new components report (${{ env.CURRENT_DATE }})"
+          branch: feature/new-component-data
+          file_pattern: prompts/new-components-report/new-components-report.md prompts/new-components-report/new-components-report.html
