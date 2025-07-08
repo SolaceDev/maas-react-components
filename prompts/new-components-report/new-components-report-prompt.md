@@ -20,6 +20,7 @@ Please follow these steps:
     *   Pay special attention to the creation of new `.tsx` files within the `src/components` directory and its subdirectories, as this is a strong indicator of a new component.
     *   Enhancements or modifications to existing components should be ignored.
     *   For each new component, get the file contents to understand its purpose and props.
+    *   If the file for a new component is not available locally, gather the necessary information from the pull request details and commit history.
 
 3.  **Generate Markdown Report:**
     *   Compile a markdown report with the following sections:
