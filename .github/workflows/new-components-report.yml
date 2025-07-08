@@ -20,36 +20,42 @@ jobs:
           ref: main
 
       - name: Generate new components report
+        env:
+          LITELLM_API_KEY: ${{ secrets.LITELLM_API_KEY }}
         run: |
           set -e
 
-          MARKDOWN_REPORT_PATH="prompts/new-components-report/new-components-report.md"
-          HTML_REPORT_PATH="prompts/new-components-report/new-components-report.html"
+          PROMPT_FILE="prompts/new-components-report/new-components-report-prompt.md"
+          PROMPT_CONTENT=$(cat "$PROMPT_FILE")
 
-          mkdir -p "$(dirname "$MARKDOWN_REPORT_PATH")"
+          JSON_PAYLOAD=$(jq -n \
+            --arg prompt "$PROMPT_CONTENT" \
+            '{
+              "model": "claude-3-5-sonnet",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": $prompt
+                }
+              ]
+            }')
 
-          NEW_FILES=$(git log --diff-filter=A --name-only --since="3 months ago" -- "src/components/**/*.tsx")
+          API_RESPONSE=$(curl -s -X POST "https://lite-llm.mymaas.net/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $LITELLM_API_KEY" \
+            -d "$JSON_PAYLOAD")
 
-          if [ -z "$NEW_FILES" ]; then
-            echo "No new components added in the last 3 months." > "$MARKDOWN_REPORT_PATH"
-            echo "<html><body><h1>No new components added in the last 3 months.</h1></body></html>" > "$HTML_REPORT_PATH"
-          else
-            echo "# New Components Report (Last 3 Months)" > "$MARKDOWN_REPORT_PATH"
-            echo "" >> "$MARKDOWN_REPORT_PATH"
-            echo "$NEW_FILES" | while IFS= read -r file; do
-              echo "- \`$file\`" >> "$MARKDOWN_REPORT_PATH"
-            done
-            
-            echo "<html><body><h1>New Components Report (Last 3 Months)</h1><ul>" > "$HTML_REPORT_PATH"
-            echo "$NEW_FILES" | while IFS= read -r file; do
-              echo "<li><code>$file</code></li>" >> "$HTML_REPORT_PATH"
-            done
-            echo "</ul></body></html>" >> "$HTML_REPORT_PATH"
-          fi
+          REPORT_CONTENT=$(echo "$API_RESPONSE" | jq -r '.choices[0].message.content')
+
+          MARKDOWN_REPORT=$(echo "$REPORT_CONTENT" | awk '/```markdown/{flag=1; next} /```/{flag=0} flag')
+          HTML_REPORT=$(echo "$REPORT_CONTENT" | awk '/```html/{flag=1; next} /```/{flag=0} flag')
+
+          echo "$MARKDOWN_REPORT" > prompts/new-components-report/new-components-report.md
+          echo "$HTML_REPORT" > prompts/new-components-report/new-components-report.html
 
           echo "Reports generated:"
-          echo "Markdown: $MARKDOWN_REPORT_PATH"
-          echo "HTML: $HTML_REPORT_PATH"
+          echo "Markdown: prompts/new-components-report/new-components-report.md"
+          echo "HTML: prompts/new-components-report/new-components-report.html"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
