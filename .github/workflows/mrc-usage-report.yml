@@ -86,126 +86,19 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Step 1. Generate maas-ui report
+      - name: Generate all usage reports
         run: |
-          echo "==== STEP 1: GENERATE MAAS-UI REPORT ===="
-          echo "Current working directory: $(pwd)"
-          ls -la
-          echo "Checking for package.json:"
-          cat package.json || echo "package.json not found"
-          echo "Creating reports directory if it doesn't exist..."
-          mkdir -p reports
-          echo "Installing dependencies..."
-          npm install
-          npm run build
+          npm ci
+          npm start -- --all --maas-ui-path ../../maas-ui-repo --maas-ops-ui-path ../../maas-ops-ui-repo --broker-manager-path ../../broker-manager-repo --format json,html
+        working-directory: maas-react-components-repo/tools/mrc-usage-report
 
-
-          echo "Generating JSON report..."
-          npm start -- -b ../../../maas-ui-repo -r ../maas-react-components-repo -f json
-
-          echo "Generating HTML report..."
-          npm start -- -b ../../../maas-ui-repo -r ../maas-react-components-repo -f html
-
-        working-directory: maas-react-components-repo/tools/mrc-usage-report-maas-ui
-
-      - name: Step 2. Generate maas-ops-ui report
+      - name: Split merged JSON
         run: |
-          echo "==== STEP 2: GENERATE MAAS-OPS-UI REPORTS ===="
-          echo "Current working directory: $(pwd)"
-          pwd
-          ls
-          echo "Checking for package.json:"
-          cat package.json || echo "package.json not found"
-          echo "Creating reports directory if it doesn't exist..."
-          mkdir -p reports
-          echo "Installing dependencies..."
-          npm install @types/babel__traverse
-          npm run build
-          echo "Checking for dist directory after npm install:"
-          ls -la dist || echo "dist directory not found after npm install"
-
-          echo "Generating JSON report..."
-          npm start -- -b ../../../maas-ops-ui-repo -r ../maas-react-components-repo -f json
-
-          echo "Generating HTML report..."
-          npm start -- -b ../../../maas-ops-ui-repo -r ../maas-react-components-repo -f html
-
-        working-directory: maas-react-components-repo/tools/mrc-usage-report-maas-ops-ui
-
-      - name: Step 3. Generate broker report
-        run: |
-          echo "==== STEP 3: GENERATE BROKER REPORT ===="
-          echo "Current working directory: $(pwd)"
-          mkdir -p reports
-          npm install
-          npm run build
-
-          echo "Generating JSON report..."
-          npm start -- -b ../../../broker-manager-repo -r ../maas-react-components-repo -f json
-
-          echo "Generating HTML report..."
-          npm start -- -b ../../../broker-manager-repo -r ../maas-react-components-repo -f html
-
-        working-directory: maas-react-components-repo/tools/mrc-usage-report-broker-manager
-
-      - name: Step 4. Merge reports
-        run: |
-          echo "==== STEP 4: MERGE REPORTS ===="
-          echo "Current working directory: $(pwd)"
-          ls -la
-
-          echo "Changing permissions for report files..."
-          chmod -R 777 ../../../maas-react-components-repo/tools/mrc-usage-report-maas-ui/reports/
-          chmod -R 777 ../../../maas-react-components-repo/tools/mrc-usage-report-maas-ops-ui/reports/
-          chmod -R 777 ../../../maas-react-components-repo/tools/mrc-usage-report-broker-manager/reports/
-
-
-          echo "Checking for input files:"
-          REPORTS_TO_MERGE=""
-          MAAS_OPS_UI_REPORT_PATH="../../../maas-react-components-repo/tools/mrc-usage-report-maas-ops-ui/reports/mrc-maas-ops-ui-usage-report.json"
-          MAAS_UI_REPORT_PATH="../../../maas-react-components-repo/tools/mrc-usage-report-maas-ui/reports/mrc-maas-ui-usage-report.json"
-          BROKER_MANAGER_REPORT_PATH="../../../maas-react-components-repo/tools/mrc-usage-report-broker-manager/reports/mrc-broker-manager-usage-report.json"
-
-          if [ -f "$MAAS_OPS_UI_REPORT_PATH" ]; then
-            REPORTS_TO_MERGE="$REPORTS_TO_MERGE $MAAS_OPS_UI_REPORT_PATH"
-          else
-            echo "$MAAS_OPS_UI_REPORT_PATH not found."
-          fi
-
-          if [ -f "$MAAS_UI_REPORT_PATH" ]; then
-            REPORTS_TO_MERGE="$REPORTS_TO_MERGE $MAAS_UI_REPORT_PATH"
-          else
-            echo "$MAAS_UI_REPORT_PATH not found."
-          fi
-
-          if [ -f "$BROKER_MANAGER_REPORT_PATH" ]; then
-            REPORTS_TO_MERGE="$REPORTS_TO_MERGE $BROKER_MANAGER_REPORT_PATH"
-          else
-            echo "$BROKER_MANAGER_REPORT_PATH not found."
-          fi
-
-          echo "Installing dependencies..."
-          npm install
-
-          if [ -n "$REPORTS_TO_MERGE" ]; then
-            mkdir -p merged-reports
-            echo "Running npm start with parameters: $REPORTS_TO_MERGE"
-            npm start -- --output-json merged-reports/merged-mrc-usage-report.json --output-html merged-reports/merged-mrc-usage-report.html $REPORTS_TO_MERGE
-            chmod 777 merged-reports/merged-mrc-usage-report.json
-            chmod 777 merged-reports/merged-mrc-usage-report.html
-          else
-            echo "No reports found to merge."
-          fi
-
-        working-directory: maas-react-components-repo/tools/mrc-usage-report-merger
-
-      - name: Step 5. Split merged JSON
-        run: |
-          echo "==== STEP 5: SPLIT MERGED JSON ===="
+          echo "==== SPLIT MERGED JSON ===="
           echo "Current working directory: $(pwd)"
           ls -la
           echo "Checking for input file:"
-          ls -la ../../../maas-react-components-repo/tools/mrc-usage-report-merger/merged-reports/merged-mrc-usage-report.json || echo "merged-report.json not found"
+          ls -la ../mrc-usage-report/reports/mrc-usage-report-all.json || echo "merged-report.json not found"
           echo "Creating reports directory if it doesn't exist..."
           echo "Installing dependencies..."
           npm install
@@ -214,7 +107,7 @@ jobs:
           npm run build
 
           echo "Running npm start with parameters..."
-          npm start -- -i ../../../maas-react-components-repo/tools/mrc-usage-report-merger/merged-reports/merged-mrc-usage-report.json -o ../../../maas-react-components-repo/mrc-usage-report-data
+          npm start -- -i ../mrc-usage-report/reports/mrc-usage-report-all.json -o ../../../maas-react-components-repo/mrc-usage-report-data
 
           echo "Listing generated files:"
           find . -type f -name "*.json" | sort
@@ -224,15 +117,15 @@ jobs:
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report-json-splitter
 
-      - name: Step 6. Upload merged reports
+      - name: Upload merged reports
         uses: actions/upload-artifact@v4
         with:
           name: merged-reports
           path: |
-            maas-react-components-repo/tools/mrc-usage-report-merger/merged-reports/
+            maas-react-components-repo/tools/mrc-usage-report/reports/
             maas-react-components-repo/mrc-usage-report-data
 
-      - name: Step 7. Commit and push report data
+      - name: Commit and push report data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
