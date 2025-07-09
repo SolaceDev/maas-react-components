@@ -1,0 +1,946 @@
+{
+  "componentName": "SolaceRadio",
+  "totalUsages": 28,
+  "usagesByMfe": {
+    "ep": 13,
+    "intg": 4,
+    "mc": 5,
+    "saas": 3,
+    "maas-ops-react": 3
+  },
+  "commonProps": [
+    {
+      "name": "label",
+      "count": 28
+    },
+    {
+      "name": "name",
+      "count": 28
+    },
+    {
+      "name": "value",
+      "count": 26
+    },
+    {
+      "name": "dataQa",
+      "count": 16
+    },
+    {
+      "name": "key",
+      "count": 14
+    },
+    {
+      "name": "disabled",
+      "count": 8
+    },
+    {
+      "name": "id",
+      "count": 7
+    },
+    {
+      "name": "subText",
+      "count": 5
+    },
+    {
+      "name": "checked",
+      "count": 4
+    },
+    {
+      "name": "onChange",
+      "count": 4
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useRadioGroup.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/ManageEventSchemas.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/GroupMenu.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/SortMenu.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEndpointSelector.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Existing Application\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "existingApplication"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"false\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "existingApplication"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"New Application\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "newApplication"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"true\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "newApplication"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useRadioGroup.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "option.value"
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "option.value"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "option.value"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "option.label"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+      "props": [
+        {
+          "name": "disabled",
+          "type": "variable",
+          "value": "disabled"
+        },
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`messagingService-${item.id}`"
+        },
+        {
+          "name": "label",
+          "type": "jsx",
+          "value": "<SolaceAccordion\n\t\t\t\t\t\t\t\tdataQa=\"demoAccordionList\"\n\t\t\t\t\t\t\t\texpanded={serviceAccordionControl[item.id]}\n\t\t\t\t\t\t\t\tonChange={() => handleServiceAccordionControl(item.id)}\n\t\t\t\t\t\t\t\tdetails={renderAccordionDetail(item)}\n\t\t\t\t\t\t\t\tsummary={\n\t\t\t\t\t\t\t\t\t<SummaryContainer className={disabled ? \"text-disabled\" : \"\"}>\n\t\t\t\t\t\t\t\t\t\t<BoldText>{item.name}</BoldText>\n\t\t\t\t\t\t\t\t\t\t{item?.solaceCloudMessagingServiceId && <SolaceCloudIcon />}\n\t\t\t\t\t\t\t\t\t\t{isScanInProgress && <span>Discovery Scan in progress</span>}\n\t\t\t\t\t\t\t\t\t</SummaryContainer>\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t/>"
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "item.id"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "item.id"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`selectResultTypeOption_${resultType}`"
+        },
+        {
+          "name": "label",
+          "type": "jsx",
+          "value": "<SelectionInfo key={`selectionInfo_${resultType}`} data-qa={`selectionInfo_${resultType}`}>\n\t\t\t\t\t\t\t\t\t<SelectionValue>{auditResultTypeCount}</SelectionValue>\n\t\t\t\t\t\t\t\t\t{AUDIT_RESULT_CHIPS[resultType]}\n\t\t\t\t\t\t\t\t\t{!!showExceedsLimitError[resultType] && renderExceedsLimitError(resultType)}\n\t\t\t\t\t\t\t\t</SelectionInfo>"
+        },
+        {
+          "name": "name",
+          "type": "variable",
+          "value": "resultType"
+        },
+        {
+          "name": "value",
+          "type": "variable",
+          "value": "resultType"
+        },
+        {
+          "name": "disabled",
+          "type": "expression",
+          "value": "auditResultTypeCount === 0 || isLoading"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultList.tsx",
+      "props": [
+        {
+          "name": "checked",
+          "type": "expression",
+          "value": "resultPerPage === pageSize"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "() => handleResultsPerPageChange(resultPerPage)"
+        },
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`resultsPerPage_${resultPerPage}`"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "resultsPerPage"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "`${resultPerPage}`"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "`${resultPerPage}`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "variable",
+          "value": "key"
+        },
+        {
+          "name": "name",
+          "type": "variable",
+          "value": "key"
+        },
+        {
+          "name": "value",
+          "type": "variable",
+          "value": "key"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "brokerTypeLabel[key]"
+        },
+        {
+          "name": "disabled",
+          "type": "expression",
+          "value": "!allowChangeBrokerType"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`brokerType[${key}]`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "en.eventApi.labels.json"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "json"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "value": "json"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "en.eventApi.labels.yaml"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "yaml"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "value": "yaml"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "option.value"
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "option.value"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "option.value"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "option.label"
+        },
+        {
+          "name": "subText",
+          "type": "expression",
+          "value": "option.subText"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/ManageEventSchemas.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "variable",
+          "value": "value"
+        },
+        {
+          "name": "name",
+          "type": "variable",
+          "value": "value"
+        },
+        {
+          "name": "value",
+          "type": "variable",
+          "value": "value"
+        },
+        {
+          "name": "label",
+          "type": "variable",
+          "value": "value"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`schemaType[${value}]`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Add to Existing Consumer\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "existingConsumer"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"existingConsumer\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "existingConsumer"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Create New Consumer\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "newConsumer"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"newConsumer\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "newConsumer"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "en.connectors.labels.constantBooleanTrue"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "constantBooleanTrue"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"true\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "constantBooleanTrue"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "en.connectors.labels.constantBooleanFalse"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "constantBooleanFalse"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"false\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "constantBooleanFalse"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "en.connectors.labels.constantBooleanTrue"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "constantBooleanTrue"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"true\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "constantBooleanTrue"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "en.connectors.labels.constantBooleanFalse"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "constantBooleanFalse"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"false\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "constantBooleanFalse"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/GroupMenu.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "i18n._(label)"
+        },
+        {
+          "name": "name",
+          "type": "variable",
+          "value": "option"
+        },
+        {
+          "name": "checked",
+          "type": "variable",
+          "value": "checked"
+        },
+        {
+          "name": "onChange",
+          "type": "expression",
+          "value": "handleMenuClick[index]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/SortMenu.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "i18n._(label)"
+        },
+        {
+          "name": "name",
+          "type": "variable",
+          "value": "option"
+        },
+        {
+          "name": "checked",
+          "type": "variable",
+          "value": "checked"
+        },
+        {
+          "name": "onChange",
+          "type": "expression",
+          "value": "handleMenuClick[index]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEndpointSelector.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "endpointsSelector"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`\"endpointsSelector\"[${id}]`"
+        },
+        {
+          "name": "label",
+          "type": "variable",
+          "value": "label"
+        },
+        {
+          "name": "lightSubText",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "value",
+          "type": "variable",
+          "value": "id"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "systemType"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`systemType[${id}]`"
+        },
+        {
+          "name": "label",
+          "type": "variable",
+          "value": "label"
+        },
+        {
+          "name": "subText",
+          "type": "variable",
+          "value": "subText"
+        },
+        {
+          "name": "lightSubText",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "value",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "readOnly",
+          "type": "variable",
+          "value": "readOnly"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "serviceType"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`serviceType[${id}]`"
+        },
+        {
+          "name": "label",
+          "type": "variable",
+          "value": "label"
+        },
+        {
+          "name": "subText",
+          "type": "variable",
+          "value": "subText"
+        },
+        {
+          "name": "lightSubText",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "value",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "readOnly",
+          "type": "variable",
+          "value": "readOnly"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "string",
+          "value": "nonprod"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "nonprod"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"false\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "isProduction"
+        },
+        {
+          "name": "label",
+          "type": "variable",
+          "value": "nonProductionLabel"
+        },
+        {
+          "name": "subText",
+          "type": "expression",
+          "value": "en.environments.labels.nonProdSubText"
+        },
+        {
+          "name": "disabled",
+          "type": "variable",
+          "value": "isDisabled"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "string",
+          "value": "prod"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "prod"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "\"true\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "isProduction"
+        },
+        {
+          "name": "label",
+          "type": "variable",
+          "value": "productionLabel"
+        },
+        {
+          "name": "subText",
+          "type": "expression",
+          "value": "en.environments.labels.prodSubText"
+        },
+        {
+          "name": "disabled",
+          "type": "variable",
+          "value": "isDisabled"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+      "props": [
+        {
+          "name": "checked",
+          "type": "expression",
+          "value": "resultPerPage === selectedPageSize"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "() => handleResultsPerPageChange(resultPerPage)"
+        },
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`resultsPerPage_${resultPerPage}`"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "resultsPerPage"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "`${resultPerPage}`"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "`${resultPerPage}`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+      "props": [
+        {
+          "name": "disabled",
+          "type": "variable",
+          "value": "isPerformingRequest"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "value": "Upgrade"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Upgrade"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "CollectorModificationAction.UPGRADE"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "upgrade"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+      "props": [
+        {
+          "name": "disabled",
+          "type": "variable",
+          "value": "isPerformingRequest"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "value": "Rollback"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Rollback"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "CollectorModificationAction.ROLLBACK"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "rollback"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+      "props": [
+        {
+          "name": "disabled",
+          "type": "variable",
+          "value": "isPerformingRequest"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "value": "Redeploy"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Redeploy"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "CollectorModificationAction.REDEPLOY"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "redeploy"
+        }
+      ]
+    }
+  ]
+}

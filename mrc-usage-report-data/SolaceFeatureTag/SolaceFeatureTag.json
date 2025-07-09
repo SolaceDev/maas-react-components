@@ -1,0 +1,55 @@
+{
+  "componentName": "SolaceFeatureTag",
+  "totalUsages": 3,
+  "usagesByMfe": {
+    "intg": 3
+  },
+  "commonProps": [
+    {
+      "name": "text",
+      "count": 3
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/dialogs/AiMappingConfirmationDialog.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+      "props": [
+        {
+          "name": "text",
+          "type": "string",
+          "value": "beta"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+      "props": [
+        {
+          "name": "text",
+          "type": "string",
+          "value": "beta"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/dialogs/AiMappingConfirmationDialog.tsx",
+      "props": [
+        {
+          "name": "text",
+          "type": "string",
+          "value": "Experimental"
+        }
+      ]
+    }
+  ]
+}

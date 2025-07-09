@@ -1,0 +1,257 @@
+{
+  "componentName": "SolaceTag",
+  "totalUsages": 10,
+  "usagesByMfe": {
+    "ep": 4,
+    "maas-ops-react": 6
+  },
+  "commonProps": [
+    {
+      "name": "label",
+      "count": 10
+    },
+    {
+      "name": "fillColor",
+      "count": 8
+    },
+    {
+      "name": "labelColor",
+      "count": 8
+    },
+    {
+      "name": "variant",
+      "count": 3
+    },
+    {
+      "name": "clickable",
+      "count": 2
+    },
+    {
+      "name": "key",
+      "count": 1
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "AUDIT_RESULT_STATUS[AUDIT_RESULT_VALUES.match]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "AUDIT_RESULT_STATUS[AUDIT_RESULT_VALUES.partialMatch]"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "CHIP_VARIANT.OUTLINED"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "AUDIT_RESULT_STATUS[AUDIT_RESULT_VALUES.designerOnly]"
+        },
+        {
+          "name": "fillColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.infoBgBlue"
+        },
+        {
+          "name": "labelColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.DARK_GREY"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "AUDIT_RESULT_STATUS[AUDIT_RESULT_VALUES.runtimeOnly]"
+        },
+        {
+          "name": "fillColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.infoBgBlue"
+        },
+        {
+          "name": "labelColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.DARK_GREY"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"ENABLED\""
+        },
+        {
+          "name": "fillColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.SUCCESS_BG_GREEN"
+        },
+        {
+          "name": "labelColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.SUCCESS_GREEN_LABEL"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"DISABLED\""
+        },
+        {
+          "name": "fillColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.ERROR_BG_RED"
+        },
+        {
+          "name": "labelColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.ERROR_RED_LABEL"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+      "props": [
+        {
+          "name": "clickable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "TaskStatus.COMPLETED"
+        },
+        {
+          "name": "fillColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.SUCCESS_BG_GREEN"
+        },
+        {
+          "name": "labelColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.SUCCESS_GREEN_LABEL"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+      "props": [
+        {
+          "name": "clickable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "TaskStatus.FAILED"
+        },
+        {
+          "name": "fillColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.ERROR_BG_RED"
+        },
+        {
+          "name": "labelColor",
+          "type": "expression",
+          "value": "CHIP_COLORS.ERROR_RED_LABEL"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "`${row.daemonSetStatus.desired}/${row.daemonSetStatus.currentScheduled}/${row.daemonSetStatus.ready}/${row.daemonSetStatus.upToDate}/${row.daemonSetStatus.available}`"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "CHIP_VARIANT.FILLED"
+        },
+        {
+          "name": "fillColor",
+          "type": "expression",
+          "value": "(allEleInArrayAreSame(Object.values(row.daemonSetStatus))) ? CHIP_COLORS.SUCCESS_BG_GREEN : CHIP_COLORS.ERROR_BG_RED"
+        },
+        {
+          "name": "labelColor",
+          "type": "expression",
+          "value": "(allEleInArrayAreSame(Object.values(row.daemonSetStatus)))? CHIP_COLORS.SUCCESS_GREEN_LABEL : CHIP_COLORS.ERROR_RED_LABEL"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`podStatus-${index}`"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "row.podStatus"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "CHIP_VARIANT.FILLED"
+        },
+        {
+          "name": "fillColor",
+          "type": "expression",
+          "value": "row.podStatus === \"Running\" ? CHIP_COLORS.SUCCESS_BG_GREEN : CHIP_COLORS.ERROR_BG_RED"
+        },
+        {
+          "name": "labelColor",
+          "type": "expression",
+          "value": "row.podStatus === \"Running\" ? CHIP_COLORS.SUCCESS_GREEN_LABEL : CHIP_COLORS.ERROR_RED_LABEL"
+        }
+      ]
+    }
+  ]
+}
