@@ -27,6 +27,37 @@ export class HtmlReporter {
 	}
 
 	/**
+	 * Converts a file path to a GitHub link
+	 * @param filePath The file path to convert
+	 * @returns The GitHub link
+	 */
+	private getGitHubLink(filePath: string): string {
+		const baseUrl = "https://github.com/SolaceDev/";
+
+		// Handle paths from different repositories
+		const repoMappings: { [key: string]: { repo: string; branch: string } } = {
+			"../../../maas-ui/": { repo: "maas-ui", branch: "develop" },
+			"../../../broker-manager/": { repo: "broker-manager", branch: "main" },
+			"../../../maas-ops-ui/": { repo: "maas-ops-ui", branch: "develop" }
+		};
+
+		for (const prefix in repoMappings) {
+			if (filePath.startsWith(prefix)) {
+				const { repo, branch } = repoMappings[prefix];
+				const [file, line] = filePath.substring(prefix.length).split(":");
+				let url = `${baseUrl}${repo}/blob/${branch}/${file}`;
+				if (line) {
+					url += `#L${line}`;
+				}
+				return url;
+			}
+		}
+
+		// Fallback for unknown paths
+		return "#";
+	}
+
+	/**
 	 * Generates the HTML for the report
 	 * @param reportData The report data
 	 * @returns The HTML string
@@ -410,7 +441,9 @@ export class HtmlReporter {
 							.map(
 								(instance) => `
               <div class="instance-details">
-                <p><strong>File:</strong> ${instance.filePath}:${instance.line}</p>
+                <p><strong>File:</strong> <a href="${this.getGitHubLink(
+									`${instance.filePath}:${instance.line}`
+								)}" target="_blank">${instance.filePath}:${instance.line}</a></p>
                 <table>
                   <thead>
                     <tr>
@@ -490,7 +523,7 @@ export class HtmlReporter {
 							(comp) => `
             <tr>
               <td>${comp.name}</td>
-              <td>${comp.path}</td>
+              <td><a href="${this.getGitHubLink(comp.path)}" target="_blank">${comp.path}</a></td>
             </tr>
           `
 						)
@@ -498,53 +531,16 @@ export class HtmlReporter {
         </tbody>
       </table>
       
-      <h3>Unused Components by MFE</h3>
-      <p>These components are used in some MFEs but not in others. Consider standardizing component usage across MFEs.</p>
-      
-      ${Object.entries(reportData.unusedComponentsByMfe)
-				.map(
-					([mfe, components]) => `
-        <div class="component-details">
-          <div class="component-header">
-            <div>
-              <strong>${mfe}</strong>
-              <span class="badge">${components.length} unused components</span>
-            </div>
-            <span class="toggle-icon">▼</span>
-          </div>
-          <div class="component-content">
-            <table>
-              <thead>
-                <tr>
-                  <th>Component Name</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${components
-									.map(
-										(comp) => `
-                  <tr>
-                    <td>${comp}</td>
-                  </tr>
-                `
-									)
-									.join("")}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      `
-				)
-				.join("")}
     </div>
-    
+
     <div class="footer">
-      <p>MRC Usage Report | &copy; 2023</p>
+      <p>Powered by MRC Usage Report Generator</p>
     </div>
   </div>
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Tab functionality
       const tabs = document.querySelectorAll('.tab');
       const tabContents = document.querySelectorAll('.tab-content');
       
@@ -553,134 +549,133 @@ export class HtmlReporter {
           tabs.forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
           
-          tabContents.forEach(content => {
-            content.classList.remove('active');
-          });
-          
+          tabContents.forEach(content => content.classList.remove('active'));
           document.getElementById(tab.dataset.tab + '-tab').classList.add('active');
         });
       });
-      
-      const componentDetails = document.querySelectorAll('.component-details');
-      componentDetails.forEach(detail => {
-        const header = detail.querySelector('.component-header');
-        const content = detail.querySelector('.component-content');
-        const icon = header.querySelector('.toggle-icon');
-        
+
+      // Accordion functionality
+      const componentHeaders = document.querySelectorAll('.component-header');
+      componentHeaders.forEach(header => {
         header.addEventListener('click', () => {
-          content.classList.toggle('active');
-          icon.textContent = content.classList.contains('active') ? '▲' : '▼';
+          const content = header.nextElementSibling;
+          const icon = header.querySelector('.toggle-icon');
+          
+          if (content.classList.contains('active')) {
+            content.classList.remove('active');
+            icon.textContent = '▼';
+          } else {
+            content.classList.add('active');
+            icon.textContent = '▲';
+          }
         });
       });
-      
+
+      // Search functionality
       const componentNameSearch = document.getElementById('componentNameSearch');
       const propNameSearch = document.getElementById('propNameSearch');
       const propValueSearch = document.getElementById('propValueSearch');
-      
+      const componentDetails = document.querySelectorAll('.component-details');
+
       function filterComponents() {
         const nameFilter = componentNameSearch.value.toLowerCase();
         const propNameFilter = propNameSearch.value.toLowerCase();
         const propValueFilter = propValueSearch.value.toLowerCase();
-        
+
         componentDetails.forEach(detail => {
           const componentName = detail.dataset.component.toLowerCase();
-          const instances = detail.querySelectorAll('.instance-details');
-          let show = componentName.includes(nameFilter);
+          const propRows = detail.querySelectorAll('.instance-details table tbody tr');
           
+          let hasMatchingProp = !propNameFilter && !propValueFilter;
           if (propNameFilter || propValueFilter) {
-            let hasMatch = false;
-            instances.forEach(instance => {
-              const props = instance.querySelectorAll('tbody tr');
-              let instanceMatch = false;
-              props.forEach(prop => {
-                const propName = prop.children[0].textContent.toLowerCase();
-                const propValue = prop.children[1].textContent.toLowerCase();
-                
-                if (propName.includes(propNameFilter) && propValue.includes(propValueFilter)) {
-                  instanceMatch = true;
-                }
-              });
-              if (instanceMatch) {
-                hasMatch = true;
+            propRows.forEach(row => {
+              const propName = row.cells[0].textContent.toLowerCase();
+              const propValue = row.cells[1].textContent.toLowerCase();
+              if (propName.includes(propNameFilter) && propValue.includes(propValueFilter)) {
+                hasMatchingProp = true;
               }
             });
-            show = show && hasMatch;
           }
-          
-          detail.style.display = show ? '' : 'none';
+
+          if (componentName.includes(nameFilter) && hasMatchingProp) {
+            detail.style.display = '';
+          } else {
+            detail.style.display = 'none';
+          }
         });
       }
-      
+
       componentNameSearch.addEventListener('input', filterComponents);
       propNameSearch.addEventListener('input', filterComponents);
       propValueSearch.addEventListener('input', filterComponents);
 
       // D3 Charts
-      const reportDataJson = ${JSON.stringify(reportData, null, 2)};
-      const componentData = reportDataJson.componentStats;
-      const mfeUsageData = reportDataJson.overallStats.mfeUsages;
+      const componentData = ${JSON.stringify(
+				componentStats.map((s) => ({ name: s.componentName, value: s.totalUsages }))
+			)}.slice(0, 20);
+      
+      const mfeData = ${JSON.stringify(
+				Object.entries(overallStats.mfeUsages).map(([name, value]) => ({ name, value }))
+			)};
 
-      const mostUsedComponents = componentData
-        .map(c => ({ name: c.componentName, count: c.totalUsages }))
-        .sort((a, b) => b.count - a.count)
-        .slice(0, 20);
-        
-      const mfeUsages = Object.entries(mfeUsageData).map(([name, count]) => ({ name, count }));
+      function createBarChart(selector, data) {
+        const container = d3.select(selector);
+        if (container.empty()) return;
 
-      function createBarChart(selector, data, xKey, yKey, title) {
         const margin = { top: 20, right: 20, bottom: 100, left: 40 };
-        const width = 800 - margin.left - margin.right;
+        const width = container.node().getBoundingClientRect().width - margin.left - margin.right;
         const height = 300 - margin.top - margin.bottom;
-        
-        const svg = d3.select(selector)
-          .append("svg")
+
+        const svg = container.append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-          
+          .attr("transform", \`translate(\${margin.left},\${margin.top})\`);
+
         const x = d3.scaleBand()
           .range([0, width])
           .padding(0.1)
-          .domain(data.map(d => d[xKey]));
-          
+          .domain(data.map(d => d.name));
+
         const y = d3.scaleLinear()
           .range([height, 0])
-          .domain([0, d3.max(data, d => d[yKey])]);
-          
+          .domain([0, d3.max(data, d => d.value)]);
+
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", \`translate(0,\${height})\`)
+          .call(d3.axisBottom(x))
+          .selectAll("text")
+          .attr("transform", "rotate(-45)")
+          .style("text-anchor", "end");
+
+        svg.append("g")
+          .attr("class", "axis")
+          .call(d3.axisLeft(y));
+
         svg.selectAll(".bar")
           .data(data)
           .enter().append("rect")
           .attr("class", "bar")
-          .attr("x", d => x(d[xKey]))
+          .attr("x", d => x(d.name))
           .attr("width", x.bandwidth())
-          .attr("y", d => y(d[yKey]))
-          .attr("height", d => height - y(d[yKey]));
-          
-        svg.append("g")
-          .attr("class", "axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(x))
-          .selectAll("text")
-          .style("text-anchor", "end")
-          .attr("dx", "-.8em")
-          .attr("dy", ".15em")
-          .attr("transform", "rotate(-45)");
-          
-        svg.append("g")
-          .attr("class", "axis")
-          .call(d3.axisLeft(y));
+          .attr("y", d => y(d.value))
+          .attr("height", d => height - y(d.value));
       }
-      
-      createBarChart('#components-chart', mostUsedComponents, 'name', 'count', 'Most Used Components');
-      createBarChart('#mfes-chart', mfeUsages, 'name', 'count', 'Component Usage by MFE');
 
-      document.getElementById('downloadJsonBtn').addEventListener('click', () => {
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportDataJson, null, 2));
+      createBarChart('#components-chart', componentData);
+      createBarChart('#mfes-chart', mfeData);
+
+      // Download JSON
+      const downloadJsonBtn = document.getElementById('downloadJsonBtn');
+      downloadJsonBtn.addEventListener('click', () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(${JSON.stringify(
+					reportData
+				)}, null, 2));
         const downloadAnchorNode = document.createElement('a');
         downloadAnchorNode.setAttribute("href", dataStr);
         downloadAnchorNode.setAttribute("download", "mrc-usage-report.json");
-        document.body.appendChild(downloadAnchorNode); // required for firefox
+        document.body.appendChild(downloadAnchorNode);
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
       });
@@ -688,6 +683,6 @@ export class HtmlReporter {
   </script>
 </body>
 </html>
-		`;
+    `;
 	}
 }
