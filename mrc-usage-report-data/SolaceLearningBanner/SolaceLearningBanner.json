@@ -27,17 +27,107 @@
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx"
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.common.white"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "jsx",
+          "value": "<CardTitle status={errorStatus} start={maintenanceStart} end={maintenanceEnd} services={services} />"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.background.paper"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "value": "Plan Description"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "drawdownUsage.messages.title"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "drawdownUsageFormulaCard"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "value": "#E6F2FF"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseDisplayMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.primary.contrastText"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "drawdownCard"
+        }
+      ]
+    }
+  ]
 }

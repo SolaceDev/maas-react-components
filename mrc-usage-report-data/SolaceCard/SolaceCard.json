@@ -6,7 +6,7 @@
     "intg": 6,
     "mc": 5,
     "saas": 10,
-    "": 2
+    "broker-manager": 2
   },
   "commonProps": [
     {
@@ -34,22 +34,6 @@
       "count": 2
     },
     {
-      "name": "height",
-      "count": 1
-    },
-    {
-      "name": "padding",
-      "count": 1
-    },
-    {
-      "name": "onClick",
-      "count": 1
-    },
-    {
-      "name": "cardContent",
-      "count": 1
-    },
-    {
       "name": "minWidth",
       "count": 1
     },
@@ -60,64 +44,989 @@
     {
       "name": "cardHeaderProps",
       "count": 1
+    },
+    {
+      "name": "height",
+      "count": 1
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/topology/RuntimeEntityList.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/dashboard/EducationalPopup.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/designer/topicAddress/SubscriptionEditorList.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/DesignAuditSingleSelectionContent.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/SidePanelSummaryActionCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/ConfirmTagAssociationDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/MatchFoundTile.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/TagsQuickActions.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateExistingVersionsDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/import/SubjectVersionInfoCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/runtimeAgents/components/SetupAgentsBanner.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughInstallEMA.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughRunDiscoveryScanEMA.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/templates/TemplateInfoBlurb.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/events/EventFlowConfig.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/events/EventVersionForm.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointInformation.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/consumers/SuggestedEvents.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/consumers/AttractedEvents.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domainEdit/DomainEdit.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/agents/agentsListView/AgentLearningBlurb.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/topicHeader/EducationBlurb.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/LearningBlurb.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/summary/SummarySection.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/summary/HeaderMappingTab.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/tokenManagement/Tokens.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/insightsSettings/components/LogsRetention.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/broker-manager-repo/src/pages/help/learning-centre/react-components/top-level-card.js",
-    "/home/runner/work/maas-react-components/maas-react-components/broker-manager-repo/src/pages/help/learning-centre/react-components/standard-card.js"
+    "../../../maas-ui/micro-frontends/ep/src/components/topology/RuntimeEntityList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/dashboard/EducationalPopup.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/SubscriptionEditorList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughInstallEMA.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughRunDiscoveryScanEMA.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/components/SetupAgentsBanner.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignAuditSingleSelectionContent.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ConfirmTagAssociationDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SidePanelSummaryActionCard.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/TagsQuickActions.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateExistingVersionsDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/SubjectVersionInfoCard.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MatchFoundTile.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/TemplateInfoBlurb.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointInformation.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/AttractedEvents.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/SuggestedEvents.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainEdit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventVersionForm.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventFlowConfig.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/LearningBlurb.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/EducationBlurb.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SummarySection.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/HeaderMappingTab.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentLearningBlurb.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/LogsRetention.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/Tokens.tsx",
+    "../../../broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+    "../../../broker-manager/src/pages/help/learning-centre/react-components/top-level-card.js"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/RuntimeEntityList.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "value": "What is an Event Management Agent?"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoBlurb"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "title",
+          "type": "jsx",
+          "value": "<h1 className=\"MEM-info-header\">{brandableTextValueConverter(\"Environments in PubSub+ Cloud\", \"string\")}</h1>"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/dashboard/EducationalPopup.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleDismissEducationalCard"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/SubscriptionEditorList.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "value": "Want to subscribe to specific values?"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setShowInfoBlurb(false)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "addSubscriptionInfoBlurb"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughInstallEMA.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.background.w20"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughRunDiscoveryScanEMA.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.background.w20"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughRunDiscoveryScanEMA.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/components/SetupAgentsBanner.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignAuditSingleSelectionContent.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "getCardTitle(selectedAudit.auditEntityType)"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ConfirmTagAssociationDialog.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SidePanelSummaryActionCard.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.warning.w10"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInstructionMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/TagsQuickActions.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateExistingVersionsDialog.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/SubjectVersionInfoCard.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInstructionMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MatchFoundTile.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/TemplateInfoBlurb.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "onClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleDismissReuseIndexInfoCard"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointInformation.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setShowRDPInfo(false)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "restDeliveryPointInformation"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.warning.w10"
+        },
+        {
+          "name": "dataQa",
+          "type": "variable",
+          "value": "dataQa"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "\"Upload From JSON File\""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseEnumVauesHelp"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.background.default"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"enumValuesHelp\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "jsx",
+          "value": "<Box display=\"flex\" alignItems=\"center\" gap={1}>\n\t\t\t\t\t<WarningIcon />\n\t\t\t\t\t<SolaceTypography variant=\"h5\">Referenced Schema Names Require Manual Updates</SolaceTypography>\n\t\t\t\t</Box>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "reasonKey === AsyncAPIDownloadCollisionReason.ambiguousChannelTopic ? \"Conflicting Topic Address\" : \"Conflicting Objects\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/AttractedEvents.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "attractedEventsNoResults"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/SuggestedEvents.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainEdit.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "value": "Defining Topic Domains"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "closeInfoBox"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "topicAddressResources"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "topicAddressResourcesMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventVersionForm.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "\"Tips and Tricks for Topic Addresses\""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseTopicAddressHelp"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"topicAddressHelp\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventFlowConfig.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "eventBrokers-noBrokers"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "eventBrokers-noMatchingBrokers"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "messages.projectDefinition.help"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "projectDefinitionHelp"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/LearningBlurb.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setTranformationBlurbDismissedAtom(true)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/EducationBlurb.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "popover ? \"popoverInfo\" : \"infoCard\""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "expression",
+          "value": "!popover"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => (popover ? undefined : onClose && onClose)"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "value": "Setting Values for Target Headers"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "popover ? \"inherit\" : undefined"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => handleCloseDisplayMessage()"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SummarySection.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/HeaderMappingTab.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentLearningBlurb.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "title",
+          "type": "variable",
+          "value": "title"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => {\n\t\t\t\t\t\tsetShowEducationBlurb(false);\n\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "value": "What is an Automated Upgrade?"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.ux.learning.w10"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setNeedHelp(false)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "value": "What is an Automated Upgrade?"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.background.paper"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "value": "Release Notes"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "value": "#ffffff"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "brokerSSOCard"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "value": "rgba(236, 240, 252, 1)"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "environmentsStr.messages.firstOpenBottomInfoTitle"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "environmentFirstUseCardBottom"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "value": "#E6F2FF"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseBottomMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "drawdownUsage.messages.title"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "drawdownUsageFormulaCard"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "value": "#E6F2FF"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseDisplayMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.primary.contrastText"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "drawdownCard"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "value": "rgba(236, 240, 252, 1)"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "jsx",
+          "value": "<div style={{ display: \"flex\", alignItems: \"center\", padding: theme.spacing() }}>\n\t\t\t\t\t\t\t\t<SolaceTypography variant=\"h3\" sx={{ paddingRight: theme.spacing() }}>\n\t\t\t\t\t\t\t\t\tMessage Service Alerts & Notification\n\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t<NotificationStatusChip isActive={NotificationIsActive} />\n\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "value": "#fff"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/LogsRetention.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "value": "Logs Retention"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "value": "#fff"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "logsRetentionCard"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "value": "Who Can Receive Notifications?"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "notificationAd"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/Tokens.tsx",
+      "props": [
+        {
+          "name": "backgroundColor",
+          "type": "expression",
+          "value": "theme.palette.background.paper"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "standard-card"
+        },
+        {
+          "name": "minWidth",
+          "type": "string",
+          "value": "371px"
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "value": "475px"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "cardHeaderProps",
+          "type": "object",
+          "value": "{\n        title: title,\n        subTitle: description,\n        icon: (\n          <img \n            width=\"80px\"\n            height=\"40px\"\n            src={image}\n            style={{\n              display: \"block\",\n              objectFit: \"cover\",\n              objectPosition: \"center\",\n            }}\n          />\n        ),\n        actionElements: (\n          <div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>\n            <SolaceButton onClick={handleTutorialClick} variant=\"text\">\n              Tutorials\n            </SolaceButton>\n            <SolaceMenu\n              buttonProps={{\n                'aria-label': 'Actions menu',\n                children: <MoreHorizOutlinedIcon />,\n                title: 'Actions',\n                variant: 'icon',\n              }}\n              items={generateMenuItems()}\n              numOfMenuItemDisplayed={3}\n            />\n          </div>\n        ),\n      }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/top-level-card.js",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "top-level-card"
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "value": "300px"
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "value": "300px"
+        },
+        {
+          "name": "padding",
+          "type": "string",
+          "value": "0px"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => window.open(url, \"_blank\")"
+        },
+        {
+          "name": "cardContent",
+          "type": "jsx",
+          "value": "<div className='top-level-card'>\n          {image && <img src={image} className='image'/>}\n          <div className='description'>\n            <h5>{title}</h5>              \n            <p className=\"margin\">{description}</p>\n          </div>\n        </div>"
+        }
+      ]
+    }
+  ]
 }

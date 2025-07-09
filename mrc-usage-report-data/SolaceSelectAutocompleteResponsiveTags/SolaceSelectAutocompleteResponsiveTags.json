@@ -40,18 +40,345 @@
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SearchPanel/filters/DefaultFilterMultiSelect.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SearchPanel/filters/CustomAttributeFilter.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SearchPanel/filters/AdditionalFilterMultiSelect.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SearchPanel/filters/EventMeshFilter.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/filters/DefaultFilterMultiSelect.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/requests/RequestSearchAndFilter.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/filters/DefaultFilterMultiSelect.tsx"
+    "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/AdditionalFilterMultiSelect.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/EventMeshFilter.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/CustomAttributeFilter.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/DefaultFilterMultiSelect.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/filters/DefaultFilterMultiSelect.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSearchAndFilter.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/filters/DefaultFilterMultiSelect.tsx"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/AdditionalFilterMultiSelect.tsx",
+      "props": [
+        {
+          "name": "containerWidth",
+          "type": "variable",
+          "value": "containerWidth"
+        },
+        {
+          "name": "tags",
+          "type": "variable",
+          "value": "selectedTags"
+        },
+        {
+          "name": "tagMaxWidth",
+          "type": "expression",
+          "value": "containerWidth ? `${containerWidth - 190}px` : null"
+        },
+        {
+          "name": "overflowIndicatorLabel",
+          "type": "expression",
+          "value": "\"Filters\""
+        },
+        {
+          "name": "overflowIndicatorLabelSingular",
+          "type": "expression",
+          "value": "\"Filter\""
+        },
+        {
+          "name": "onDelete",
+          "type": "variable",
+          "value": "handleDeleteTag"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${filterType}Select-tags`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/EventMeshFilter.tsx",
+      "props": [
+        {
+          "name": "containerWidth",
+          "type": "variable",
+          "value": "containerWidth"
+        },
+        {
+          "name": "tags",
+          "type": "variable",
+          "value": "selectedTags"
+        },
+        {
+          "name": "tagMaxWidth",
+          "type": "expression",
+          "value": "containerWidth ? `${containerWidth - 180}px` : null"
+        },
+        {
+          "name": "overflowIndicatorLabel",
+          "type": "expression",
+          "value": "\"Filters\""
+        },
+        {
+          "name": "overflowIndicatorLabelSingular",
+          "type": "expression",
+          "value": "\"Filter\""
+        },
+        {
+          "name": "onDelete",
+          "type": "variable",
+          "value": "handleDeleteTag"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${FilterType.eventMesh}Select-tags`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/CustomAttributeFilter.tsx",
+      "props": [
+        {
+          "name": "containerWidth",
+          "type": "variable",
+          "value": "containerWidth"
+        },
+        {
+          "name": "tags",
+          "type": "variable",
+          "value": "selectedTags"
+        },
+        {
+          "name": "tagMaxWidth",
+          "type": "expression",
+          "value": "containerWidth ? `${containerWidth - 190}px` : null"
+        },
+        {
+          "name": "overflowIndicatorLabel",
+          "type": "expression",
+          "value": "\"Filters\""
+        },
+        {
+          "name": "overflowIndicatorLabelSingular",
+          "type": "expression",
+          "value": "\"Filter\""
+        },
+        {
+          "name": "onDelete",
+          "type": "variable",
+          "value": "handleDeleteTag"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${customAttributeFilterType}Select-tags`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/DefaultFilterMultiSelect.tsx",
+      "props": [
+        {
+          "name": "containerWidth",
+          "type": "variable",
+          "value": "containerWidth"
+        },
+        {
+          "name": "tags",
+          "type": "variable",
+          "value": "selectedTags"
+        },
+        {
+          "name": "tagMaxWidth",
+          "type": "expression",
+          "value": "containerWidth ? `${containerWidth - 180}px` : null"
+        },
+        {
+          "name": "overflowIndicatorLabel",
+          "type": "expression",
+          "value": "\"Filters\""
+        },
+        {
+          "name": "overflowIndicatorLabelSingular",
+          "type": "expression",
+          "value": "\"Filter\""
+        },
+        {
+          "name": "onDelete",
+          "type": "variable",
+          "value": "handleDeleteTag"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${filterType}Select-tags`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/filters/DefaultFilterMultiSelect.tsx",
+      "props": [
+        {
+          "name": "containerWidth",
+          "type": "variable",
+          "value": "containerWidth"
+        },
+        {
+          "name": "tags",
+          "type": "variable",
+          "value": "selectedTags"
+        },
+        {
+          "name": "tagMaxWidth",
+          "type": "expression",
+          "value": "containerWidth ? `${containerWidth - 180}px` : null"
+        },
+        {
+          "name": "overflowIndicatorLabel",
+          "type": "expression",
+          "value": "\"Filters\""
+        },
+        {
+          "name": "overflowIndicatorLabelSingular",
+          "type": "expression",
+          "value": "\"Filter\""
+        },
+        {
+          "name": "onDelete",
+          "type": "variable",
+          "value": "handleDeleteTag"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${filterType}Select-tags`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSearchAndFilter.tsx",
+      "props": [
+        {
+          "name": "containerWidth",
+          "type": "expression",
+          "value": "filtersWidth[FilterType.requestor] ?? requestorFilterRef?.current?.offsetWidth"
+        },
+        {
+          "name": "tags",
+          "type": "variable",
+          "value": "selectedTags"
+        },
+        {
+          "name": "tagMaxWidth",
+          "type": "expression",
+          "value": "filtersWidth[FilterType.requestor] ? `${filtersWidth[FilterType.requestor] - 180}px` : null"
+        },
+        {
+          "name": "overflowIndicatorLabel",
+          "type": "expression",
+          "value": "\"Filters\""
+        },
+        {
+          "name": "overflowIndicatorLabelSingular",
+          "type": "expression",
+          "value": "\"Filter\""
+        },
+        {
+          "name": "onDelete",
+          "type": "variable",
+          "value": "handleDeleteTag"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${FilterType.requestor}-tags`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
+      "props": [
+        {
+          "name": "containerWidth",
+          "type": "expression",
+          "value": "filtersWidth[FilterType.eventMesh]"
+        },
+        {
+          "name": "tags",
+          "type": "variable",
+          "value": "selectedTags"
+        },
+        {
+          "name": "numOfRowsToShow",
+          "type": "number",
+          "value": "1"
+        },
+        {
+          "name": "tagMaxWidth",
+          "type": "expression",
+          "value": "filtersWidth[FilterType.eventMesh] ? `${filtersWidth[FilterType.eventMesh] - 100}px` : null"
+        },
+        {
+          "name": "onDelete",
+          "type": "variable",
+          "value": "handleDeleteTag"
+        },
+        {
+          "name": "overflowIndicatorLabel",
+          "type": "expression",
+          "value": "\"Filters\""
+        },
+        {
+          "name": "overflowIndicatorLabelSingular",
+          "type": "expression",
+          "value": "\"Filter\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"eventMeshSearchSelect-tags\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/DefaultFilterMultiSelect.tsx",
+      "props": [
+        {
+          "name": "containerWidth",
+          "type": "number",
+          "value": "300"
+        },
+        {
+          "name": "tags",
+          "type": "variable",
+          "value": "selectedTags"
+        },
+        {
+          "name": "tagMaxWidth",
+          "type": "expression",
+          "value": "\"200px\""
+        },
+        {
+          "name": "overflowIndicatorLabel",
+          "type": "expression",
+          "value": "\"Filters\""
+        },
+        {
+          "name": "overflowIndicatorLabelSingular",
+          "type": "expression",
+          "value": "\"Filter\""
+        },
+        {
+          "name": "onDelete",
+          "type": "variable",
+          "value": "handleDeleteTag"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${filterType}Select-tags`"
+        }
+      ]
+    }
+  ]
 }

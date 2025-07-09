@@ -2,13 +2,13 @@
   "componentName": "SolaceMenu",
   "totalUsages": 69,
   "usagesByMfe": {
-    "maas-ops-react": 2,
-    "infra": 1,
     "ep": 42,
     "intg": 2,
     "mc": 13,
     "saas": 8,
-    "": 1
+    "infra": 1,
+    "maas-ops-react": 2,
+    "broker-manager": 1
   },
   "commonProps": [
     {
@@ -20,14 +20,6 @@
       "count": 69
     },
     {
-      "name": "dataQa",
-      "count": 27
-    },
-    {
-      "name": "closeOnSelect",
-      "count": 5
-    },
-    {
       "name": "anchorOrigin",
       "count": 38
     },
@@ -36,12 +28,20 @@
       "count": 38
     },
     {
+      "name": "dataQa",
+      "count": 27
+    },
+    {
       "name": "id",
       "count": 23
     },
     {
       "name": "key",
       "count": 12
+    },
+    {
+      "name": "closeOnSelect",
+      "count": 5
     },
     {
       "name": "numOfMenuItemDisplayed",
@@ -53,73 +53,1850 @@
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/SidekickDeploymentDetails.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SolaceGraph/GraphToolbar.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/resources/EventPortalResourceProgressBanner.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/EntityDetailModal/EventDetailModalHeader.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/entityList/BulkActions/BulkActions.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/VersionList/VersionItem.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/designer/details/EntityVersionEditContainer.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/designer/details/EntityDetailsHeader.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/ReferencedVersions/EntityDetailAccordion.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/ReferencedVersions/ReferencedMessagingServiceListItem.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/ReferencedVersions/TopicDomainListItem.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionListItem.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/ReferencedVersions/EventApiItems.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScanButton.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/ModeledEventMeshes.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshGraph.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/mapEntityVersionItem.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/renderBulkAction.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/ModeledEventMeshDesignAudit.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/import/AuditImportMenu.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgents.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/runtimeAgents/MessagingServiceAccordion.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domains/DesignerActionMenu.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domains/DomainActionMenu.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domains/DomainsList.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applications/Applications.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/eventApiProducts/association/IncludedEventApiProducts.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/graph/searchPanel/mapEntityItem.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/graph/sidePanel/CommonDetails.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/useApplicationFlow.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/domainEdit/DomainEdit.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/utils/RenderActions.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/list/components/GroupMenu.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/list/components/SortMenu.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/list/components/ServiceMenu.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/dialogs/components/LibraryHeader.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/dialogs/LdapManagementAccessDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/SyslogForwardingCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityClientProfiles.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingsActionsRowItem.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/tokenManagement/components/TokensAccordion.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/broker-manager-repo/src/pages/help/learning-centre/react-components/standard-card.js"
+    "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/BulkActions/BulkActions.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/resources/EventPortalResourceProgressBanner.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/VersionList/VersionItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/EventDetailModalHeader.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityDetailsHeader.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityVersionEditContainer.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbar.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionListItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EventApiItems.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedMessagingServiceListItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EntityDetailAccordion.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/TopicDomainListItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgents.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/MessagingServiceAccordion.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScanButton.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/mapEntityVersionItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/renderBulkAction.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/ModeledEventMeshes.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshGraph.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ModeledEventMeshDesignAudit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/AuditImportMenu.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DesignerActionMenu.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DomainsList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DomainActionMenu.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/CommonDetails.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/searchPanel/mapEntityItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/association/IncludedEventApiProducts.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applications/Applications.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainEdit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useApplicationFlow.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/utils/RenderActions.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/components/LibraryHeader.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LdapManagementAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/SyslogForwardingCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityClientProfiles.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceMenu.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/GroupMenu.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/SortMenu.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingsActionsRowItem.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokensAccordion.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
+    "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/SidekickDeploymentDetails.tsx",
+    "../../../broker-manager/src/pages/help/learning-centre/react-components/standard-card.js"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\t\t\t\tvariant: \"text\",\n\t\t\t\t\t\t\t\t\t\t\t\tchildren: \"Add Protocol\"\n\t\t\t\t\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "solaceAddProtocolMenuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/BulkActions/BulkActions.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tvariant: \"outline\",\n\t\t\t\t\t\t\tendIcon: <SelectDropdownIcon />,\n\t\t\t\t\t\t\tchildren: \"Actions\",\n\t\t\t\t\t\t\tisDisabled: isEmpty(selectedRowIds),\n\t\t\t\t\t\t\tdataQa: \"selectedEntityActions\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tvertical: \"bottom\",\n\t\t\t\t\t\t\thorizontal: \"right\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tvertical: \"top\",\n\t\t\t\t\t\t\thorizontal: \"right\"\n\t\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\ttitle: messages.updateButton,\n\t\t\t\t\tvariant: \"outline\",\n\t\t\t\t\tchildren: messages.updateButton,\n\t\t\t\t\tisDisabled: isDisabled,\n\t\t\t\t\tdataQa: \"addUserAccess\"\n\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t{\n\t\t\t\t\t\tname: messages.addUserGroup,\n\t\t\t\t\t\tonMenuItemClick: () => onAddResourceAssignment(UserType.userGroup),\n\t\t\t\t\t\tdataQa: \"addUserGroup\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tname: messages.addUser,\n\t\t\t\t\t\tonMenuItemClick: () => onAddResourceAssignment(UserType.user),\n\t\t\t\t\t\tdataQa: \"addUser\"\n\t\t\t\t\t}\n\t\t\t\t]"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EventPortalResourceProgressBanner.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tdataQa: \"versionDetailMoreAction\",\n\t\t\t\t\t\t\t\tchildren: <EllipsisIcon fill={\"white\"} />,\n\t\t\t\t\t\t\t\ttitle: en.eventPortalResources.labels.deleteSample.actionMenuTitle\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "getMenuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionList/VersionItem.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\tvariant: \"icon\",\n\t\t\t\tdataQa: \"versionMoreAction\",\n\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\ttitle: \"More Actions\"\n\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "wrappedMenuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/EventDetailModalHeader.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tdataQa: \"eventDetailModalMoreAction\",\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityDetailsHeader.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tdataQa: \"moreActionMenuButton\",\n\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityVersionEditContainer.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\t\t\t\t\t\tdataQa: \"versionDetailMoreAction\",\n\t\t\t\t\t\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "getMenuItemsForEntityDetail()"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbar.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}graphSettings`"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tchildren: <SettingsIcon width={24} height={24} />,\n\t\t\t\t\t\t\t\ttitle: \"Settings\",\n\t\t\t\t\t\t\t\tdataQa: `${dataQa ? dataQa + \"-\" : \"\"}graphSettings-button`\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "settingsMenuItemsProps"
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvertical: \"bottom\",\n\t\t\t\t\t\t\t\thorizontal: \"left\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvertical: \"top\",\n\t\t\t\t\t\t\t\thorizontal: \"left\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}graphSettings-menu`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}graphSettings`"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tchildren: <SettingsIcon width={24} height={24} fillOpacity={graphEmpty ? 0.5 : 1} />,\n\t\t\t\t\t\t\t\ttitle: \"Settings\",\n\t\t\t\t\t\t\t\tisDisabled: graphEmpty,\n\t\t\t\t\t\t\t\tdataQa: `${dataQa ? dataQa + \"-\" : \"\"}graphSettings-button`\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "settingsMenuItemsProps"
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvertical: \"bottom\",\n\t\t\t\t\t\t\t\thorizontal: \"left\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvertical: \"top\",\n\t\t\t\t\t\t\t\thorizontal: \"left\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}graphSettings-menu`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\tvariant: \"text\",\n\t\t\t\tchildren: \"Add Filters\"\n\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "filterMenuItems"
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "value": "false"
+        },
+        {
+          "name": "numOfMenuItemDisplayed",
+          "type": "number",
+          "value": "9"
+        },
+        {
+          "name": "dataQa",
+          "type": "variable",
+          "value": "dataQa"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionListItem.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tdataQa: actionMenuDataQa ?? \"accordionMoreAction\",\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EventApiItems.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tdataQa: \"accordionMoreAction\",\n\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedMessagingServiceListItem.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tdataQa: actionMenuDataQa ?? \"accordionMoreAction\",\n\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EntityDetailAccordion.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tdataQa: actionMenuDataQa ?? \"accordionMoreAction\",\n\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/TopicDomainListItem.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tdataQa: actionMenuDataQa ?? \"accordionMoreAction\",\n\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgents.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "string",
+          "value": "createEventManagementAgent"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tvariant: \"call-to-action\",\n\t\t\t\t\tchildren: \"Set Up Event Management Agent\"\n\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "CREATE_MENU_ITEMS"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/MessagingServiceAccordion.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\t\tdataQa: \"accordionMoreAction\",\n\t\t\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScanButton.tsx",
+      "props": [
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "getRunDiscoveryScanOptionsItems()"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tvariant: variant,\n\t\t\t\t\t\tchildren: \"Run Discovery Scan\",\n\t\t\t\t\t\tdataQa: \"runDiscoveryScan\",\n\t\t\t\t\t\tisDisabled:\n\t\t\t\t\t\t\thasScanInProgress(newScans, selectedMessagingService?.id, SCAN_TYPE.KAFKA_ALL) &&\n\t\t\t\t\t\t\thasScanInProgress(newScans, selectedMessagingService?.id, SCAN_TYPE.CONFLUENT_SCHEMA_REGISTRY_SCHEMA)\n\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"left\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"left\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "\"moreActions\""
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tdataQa: \"messagingServicesDetailsMoreAction\",\n\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "messagingServicesDetailsMoreActionMenu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`messagingService_${entity.id}-moreActions`"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tdataQa: \"memMessagingServiceDetailsMoreAction\",\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "getMoreOptionsItemsForMessagingService(entity, true)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "memMessagingServiceDetailsMoreActionMenu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "items"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\ttitle: \"More Actions\",\n\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\tdataQa: \"messagingServiceMoreActionsButton\"\n\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"View Event Management Agent\",\n\t\t\t\t\t\t\tonMenuItemClick: (e) => handleViewRuntimeAgent(e, agent),\n\t\t\t\t\t\t\tdataQa: \"viewRuntimeAgentActionMenu\"\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\ttitle: \"More Actions\",\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\tdataQa: \"runtimeAgentMoreActionsButton\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "string",
+          "value": "createEventManagementAgent"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\t\t\t\t\tvariant: \"call-to-action\",\n\t\t\t\t\t\t\t\t\t\t\t\t\tchildren: \"Connect to an Event Management Agent\"\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "CREATE_MENU_ITEMS"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\tchildren: <SettingsIcon width={24} height={24} />,\n\t\t\t\t\ttitle: \"Settings\",\n\t\t\t\t\tdataQa: dataQa + \"-button\"\n\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "getMenuItemsProps()"
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "value": "false"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tvertical: \"bottom\",\n\t\t\t\t\thorizontal: \"right\"\n\t\t\t\t}"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tvertical: \"top\",\n\t\t\t\t\thorizontal: \"right\"\n\t\t\t\t}"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa}-menu`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/mapEntityVersionItem.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tdataQa: \"memEntityVersionDetailsMoreAction\",\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "actionMenuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "memEntityVersionDetailsMoreActionMenu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/renderBulkAction.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"custom-solace-menu\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "actionMenuForEntityVersionList"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tvariant: \"outline\",\n\t\t\t\t\tisDisabled: numberOfSelection === 0,\n\t\t\t\t\tendIcon: (\n\t\t\t\t\t\t<span style={{ marginTop: \"-2px\" }}>\n\t\t\t\t\t\t\t<SelectDropdownIcon />\n\t\t\t\t\t\t</span>\n\t\t\t\t\t),\n\t\t\t\t\tchildren: \"Actions\"\n\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/ModeledEventMeshes.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "\"moreActions\""
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tdataQa: \"memMoreActions\",\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshGraph.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "\"moreActions\""
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tdataQa: \"memDetailsMoreAction\",\n\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "memDetailsMoreActionMenu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "\"moreActions\""
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tdataQa: \"memDetailsMoreAction\",\n\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "memDetailsMoreActionMenu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ModeledEventMeshDesignAudit.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "\"moreActions\""
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tdataQa: \"memDetailsMoreAction\",\n\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "memDetailsMoreActionMenu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/AuditImportMenu.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tvariant: buttonVariant || \"outline\",\n\t\t\t\t\t\t\tchildren: buttonText || \"Import\",\n\t\t\t\t\t\t\tisDisabled: disabled,\n\t\t\t\t\t\t\tdataQa: \"chooseImportOptionButton\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "maxWidth",
+          "type": "expression",
+          "value": "readyForCalculation ? importButtonRef.current.offsetWidth - 6 : undefined"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "dataQa ?? \"auditImportMenu\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DesignerActionMenu.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\tdataQa: \"designerMoreAction\",\n\t\t\t\tvariant: \"icon\",\n\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\ttitle: \"More Actions\"\n\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DomainsList.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tvariant: \"outline\",\n\t\t\t\t\t\tendIcon: <SelectDropdownIcon />,\n\t\t\t\t\t\tchildren: \"Actions\",\n\t\t\t\t\t\tisDisabled: !isChecked,\n\t\t\t\t\t\tdataQa: \"selectedDomainsActions\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: \"Export\",\n\t\t\t\t\t\t\tonMenuItemClick: () => onExport(selectedDomainIds),\n\t\t\t\t\t\t\tdataQa: \"selectedDomainsExport\"\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DomainActionMenu.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\tvariant: \"icon\",\n\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\tdataQa: \"domainMoreAction\",\n\t\t\t\ttitle: \"More Actions\"\n\t\t\t}"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "domainMoreActionMenu"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/CommonDetails.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tdataQa: `${selectedNode?.type ?? \"\"}NodeSidePanelMoreAction`,\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "actionMenuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${selectedNode?.type ?? \"\"}NodeSidePanelMoreActionMenu`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/searchPanel/mapEntityItem.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tdataQa: \"appDomainEntityVersionDetailsMoreAction\",\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "actionMenuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "appDomainEntityVersionDetailsMoreActionMenu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/association/IncludedEventApiProducts.tsx",
+      "props": [
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: en.eventApiProduct.buttons.openEventApiProduct,\n\t\t\t\t\t\t\tonMenuItemClick: (e) => handleViewVersionDetail(e, item, false)\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\ttitle: en.common.button.moreActions,\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\tdataQa: \"memListMoreAction\"\n\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applications/Applications.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "\"createApplication-menu\""
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tchildren: createLabel,\n\t\t\t\t\t\tvariant: \"outline\",\n\t\t\t\t\t\tendIcon: <SelectDropdownIcon />,\n\t\t\t\t\t\tdataQa: \"createApplication-button\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: en.application.applicationType.standard,\n\t\t\t\t\t\t\tonMenuItemClick: handleCreate,\n\t\t\t\t\t\t\tdataQa: \"createStandardApplication\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: en.application.applicationType.restDeliveryPoint,\n\t\t\t\t\t\t\tonMenuItemClick: (event) => handleCreate(event, EntitySubType.restDeliveryPoint),\n\t\t\t\t\t\t\tdataQa: \"createRestDeliveryPointApplication\"\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainEdit.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\t\t\t\tdataQa: \"moreActionsButton\",\n\t\t\t\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\t\t\t\tdataQa: `${eventBroker.id}-moreOptionMenuButton`,\n\t\t\t\t\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\t\t\t\t\ttitle: common.button.moreActions\n\t\t\t\t\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "moreOptions"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${eventBroker.id}-moreOptionMenu`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useApplicationFlow.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tdataQa: \"accordionMoreAction\",\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "getVersionDetailMenuItem(version, mode)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\t\t\t\ttitle: \"Actions\",\n\t\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\t\tdataQa: \"connectors_additional_actions\"\n\t\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"connectors_additional_actions\""
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "connectors_additional_actions_menu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "string",
+          "value": "actionitems"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\t\t\ttitle: \"Actions\",\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tdataQa: \"connectors_additional_actions\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"connectors_additional_actions\""
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/utils/RenderActions.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        },
+        {
+          "name": "dataQa",
+          "type": "variable",
+          "value": "dataQa"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\tvariant: \"outline\",\n\t\t\t\t\tisDisabled: selectedCount < minimalCount,\n\t\t\t\t\tendIcon: (\n\t\t\t\t\t\t<span style={{ marginTop: \"-2px\" }}>\n\t\t\t\t\t\t\t<SelectDropdownIcon />\n\t\t\t\t\t\t</span>\n\t\t\t\t\t),\n\t\t\t\t\tchildren: t({ id: \"id_actions\", message: \"Actions\" })\n\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "items"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\ttitle: messages.updateButton,\n\t\t\t\t\tvariant: \"outline\",\n\t\t\t\t\tchildren: messages.updateButton,\n\t\t\t\t\tisDisabled: isDisabled,\n\t\t\t\t\tdataQa: \"addUserAccess\"\n\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t{\n\t\t\t\t\t\tname: messages.addUserGroup,\n\t\t\t\t\t\tonMenuItemClick: () => onAddResourceAssignment(UserType.userGroup),\n\t\t\t\t\t\tdataQa: \"addUserGroup\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tname: messages.addUser,\n\t\t\t\t\t\tonMenuItemClick: () => onAddResourceAssignment(UserType.user),\n\t\t\t\t\t\tdataQa: \"addUser\"\n\t\t\t\t\t}\n\t\t\t\t]"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\t\t\t\tvariant: \"icon\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "actions"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${eventMesh.id}_actions`"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tname: t({ id: \"id_event_mesh_details\", message: \"Event Mesh Details\" }),\n\t\t\t\t\t\t\t\tonMenuItemClick: () => history.push(`/mesh-manager/${eventMesh.id}`),\n\t\t\t\t\t\t\t\tdivider: true\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\t\tdisabled: !hasWriteAccess\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/components/LibraryHeader.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tchildren: t({ id: \"id_download\", message: \"Download\" }),\n\t\t\t\t\t\t\tendIcon: <DownloadIcon width={16} height={16} />,\n\t\t\t\t\t\t\tvariant: \"text\",\n\t\t\t\t\t\t\tdataQa: \"download\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "download"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "links.download.map<SolaceMenuItemProps>((dw) => ({\n\t\t\t\t\t\t\tname: dw.name,\n\t\t\t\t\t\t\tonMenuItemClick: () => openLink(dw.url)\n\t\t\t\t\t\t}))"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LdapManagementAccessDialog.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\tdataQa: \"actions\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${id}-actions-menu`"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tname: t({ id: \"id_edit\", message: \"Edit\" }),\n\t\t\t\t\t\t\t\t\tdataQa: \"ldap-groups-menu-edit\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: handleEdit(idx)\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\t\t\tdataQa: \"ldap-groups-menu-delete\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: handleDelete(idx)\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tdataQa: `actions[${index}]`\n\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`cp_${index}-actions-menu`"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "canConfigure\n\t\t\t\t\t\t\t? [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_set_as_default\", message: \"Set as Default\" }),\n\t\t\t\t\t\t\t\t\t\tdataQa: \"hostnames-menu-set-default\",\n\t\t\t\t\t\t\t\t\t\tdisabled: !item.canSetAsDefault || !!isInProgress,\n\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\t\tchangeHostnameDefaultMutation.mutate(item.name);\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_move\", message: \"Move\" }),\n\t\t\t\t\t\t\t\t\t\tdataQa: \"hostnames-menu-move\",\n\t\t\t\t\t\t\t\t\t\tdisabled: item.isLocked || item.isDefault || !!isInProgress,\n\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\t\tsetResetFields();\n\t\t\t\t\t\t\t\t\t\t\tsetShowMoveDialog(item);\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_copy_clipboard\", message: \"Copy to Clipboard\" }),\n\t\t\t\t\t\t\t\t\t\tdataQa: \"hostnames-menu-copy-cliboard\",\n\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\t\tcopy(item.name).then((isSuccess) => {\n\t\t\t\t\t\t\t\t\t\t\t\tif (isSuccess) {\n\t\t\t\t\t\t\t\t\t\t\t\t\taddToast(t({ id: \"id_copied\", message: \"Copied\" }));\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\t\t\t\tdataQa: \"hostnames-menu-delete\",\n\t\t\t\t\t\t\t\t\t\tdisabled: item.isLocked || item.isDefault || !!isInProgress,\n\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\t\tsetShowDeleteDialog(item);\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t  ]\n\t\t\t\t\t\t\t: [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_move\", message: \"Copy to Clipboard\" }),\n\t\t\t\t\t\t\t\t\t\tdataQa: \"hostnames-menu-copy-cliboard\",\n\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\t\tcopy(item.name).then((isSuccess) => {\n\t\t\t\t\t\t\t\t\t\t\t\tif (isSuccess) {\n\t\t\t\t\t\t\t\t\t\t\t\t\taddToast(t({ id: \"id_copied\", message: \"Copied\" }));\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t  ]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\t\t\t\t\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\t\t\t\t\t\t\t\t\t\tvariant: \"icon\"\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "actions"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`public_actions`"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_edit\", message: \"Edit\" }),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tdisabled: !allowServiceQueries,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => handleEditEndpoint(index)\n\t\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tdisabled: connectionEndpoints.length === 1 || isDefault || !allowServiceQueries,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => setShowDeleteDialog(endpoint)\n\t\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/SyslogForwardingCard.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tdataQa: `actions[${index}]`\n\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`cp_${index}-actions-menu`"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "canConfigure\n\t\t\t\t\t\t\t? [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_edit\", message: \"Edit\" }),\n\t\t\t\t\t\t\t\t\t\tdataQa: \"syslog-config-menu-edit\",\n\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\t\tsetResetFields(item);\n\t\t\t\t\t\t\t\t\t\t\tsetShowDialogIndex(index);\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\t\t\t\tdataQa: \"syslog-config-menu-delete\",\n\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => setDeleteIndex(index)\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t  ]\n\t\t\t\t\t\t\t: [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_view\", message: \"View\" }),\n\t\t\t\t\t\t\t\t\t\tdataQa: \"syslog-config-menu-view\",\n\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\t\tsetResetFields(item);\n\t\t\t\t\t\t\t\t\t\t\tsetShowDialogIndex(index);\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t  ]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\tdataQa: `actions[${index}]`\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"left\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"left\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`cp_${index}-actions-menu`"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "certType === \"client\"\n\t\t\t\t\t\t\t\t? [\n\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\tname: canConfigure ? t({ id: \"id_edit\", message: \"Edit\" }) : t({ id: \"id_view\", message: \"View\" }),\n\t\t\t\t\t\t\t\t\t\t\tdataQa: \"client-profile-menu-edit\",\n\t\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\t\t\tsetResetFields();\n\t\t\t\t\t\t\t\t\t\t\t\tsetFetchName(item.name);\n\t\t\t\t\t\t\t\t\t\t\t\tsetAddMode(false);\n\t\t\t\t\t\t\t\t\t\t\t\tsetShowDialogIndex(index);\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\t\t\t\t\tdataQa: \"client-profile-menu-delete\",\n\t\t\t\t\t\t\t\t\t\t\tdisabled: !canConfigure,\n\t\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => setDeleteIndex(index)\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t  ]\n\t\t\t\t\t\t\t\t: [\n\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\t\t\t\t\tdataQa: \"client-profile-menu-delete\",\n\t\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => setDeleteIndex(index),\n\t\t\t\t\t\t\t\t\t\t\tdisabled: index === 0 || !canConfigure\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t  ]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityClientProfiles.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tdataQa: `actions[${index}]`\n\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`cp_${index}-actions-menu`"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: canConfigure ? t({ id: \"id_edit\", message: \"Edit\" }) : t({ id: \"id_view\", message: \"View\" }),\n\t\t\t\t\t\t\tdataQa: \"client-profile-menu-edit\",\n\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\tsetResetFields();\n\t\t\t\t\t\t\t\tsetFetchName(item.name);\n\t\t\t\t\t\t\t\tsetShowDialogIndex(index);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\tdataQa: \"client-profile-menu-delete\",\n\t\t\t\t\t\t\tdisabled: item.id === DEFAULT_PROFILE || !canConfigure,\n\t\t\t\t\t\t\tonMenuItemClick: () => setDeleteIndex(index)\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceMenu.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\tvariant: \"icon\",\n\t\t\t\tdataQa: \"actions\",\n\t\t\t\tonClick: handleMenuClick\n\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${service.id}_actions`"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/GroupMenu.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\tchildren: <TuneIcon />,\n\t\t\t\ttitle: t({ id: \"id_sort\", message: \"Sort\" }),\n\t\t\t\tvariant: \"icon\"\n\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "sort"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "sort"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "items"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/SortMenu.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\tchildren: <TuneIcon />,\n\t\t\t\ttitle: t({ id: \"id_sort\", message: \"Sort\" }),\n\t\t\t\tvariant: \"icon\"\n\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "sort"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "sort"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "items"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\ttitle: messages.updateButton,\n\t\t\t\t\tvariant: \"outline\",\n\t\t\t\t\tchildren: messages.updateButton,\n\t\t\t\t\tisDisabled: isDisabled,\n\t\t\t\t\tdataQa: \"addUserAccess\"\n\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t{\n\t\t\t\t\t\tname: messages.addUserGroup,\n\t\t\t\t\t\tonMenuItemClick: () => onAddResourceAssignment(UserType.userGroup),\n\t\t\t\t\t\tdataQa: \"addUserGroup\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tname: messages.addUser,\n\t\t\t\t\t\tonMenuItemClick: () => onAddResourceAssignment(UserType.user),\n\t\t\t\t\t\tdataQa: \"addUser\"\n\t\t\t\t\t}\n\t\t\t\t]"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
+      "props": [
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tvariant: \"call-to-action\",\n\t\t\t\t\t\t\t\tendIcon: <SelectDropdownIcon />,\n\t\t\t\t\t\t\t\tchildren: \"Actions\",\n\t\t\t\t\t\t\t\tisDisabled: updateBrokerLoading || !selectedBroker || selectedBroker.currentState === \"unsupported\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "actionItems"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tchildren: <MoreHorizIcon />,\n\t\t\t\t\t\t\t\tvariant: \"icon\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "msg-spool-menu"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "msg-spool-menu"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tname: en.serviceLimits.buttons.viewDetails,\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\tsetViewLimitsRow(row);\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tname: en.serviceLimits.buttons.requestLimitChange,\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\tsetNewServiceLimit(row.limit ?? 0);\n\t\t\t\t\t\t\t\t\t\tsetEditLimitsRow(row);\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\tchildren: <MoreHorizIcon />,\n\t\t\t\t\t\t\t\tvariant: \"icon\"\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "msg-spool-menu"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "msg-spool-menu"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tname: en.serviceLimits.buttons.viewDetails,\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => {\n\t\t\t\t\t\t\t\t\t\tsetViewLimitsRow(row);\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+      "props": [
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "items"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\ttitle: `${environmentsStr.environmentList.moreActionLabel}`,\n\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\tdataQa: \"environmentMoreActions\"\n\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ vertical: \"bottom\", horizontal: \"right\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ vertical: \"top\", horizontal: \"right\" }"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingsActionsRowItem.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\t\tvariant: \"icon\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "claimMappingActions"
+        },
+        {
+          "name": "dataTags",
+          "type": "string",
+          "value": "claimMappingActions"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "claimMappingActions"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tname: userGroupManagement.edit,\n\t\t\t\t\t\t\t\tonMenuItemClick: () => editClaimMappingHandler(rowData.id, rowData.claimValues, rowData.userGroups),\n\t\t\t\t\t\t\t\tdisabled: groupMappingState\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tname: userGroupManagement.remove,\n\t\t\t\t\t\t\t\tonMenuItemClick: () => removeClaimMappingHandler(rowData.id)\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t]"
+        },
+        {
+          "name": "numOfMenuItemDisplayed",
+          "type": "number",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokensAccordion.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\tdataQa: `${token.name}-menu`,\n\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\tchildren: <CommonEllipsisIcon />,\n\t\t\t\t\t\ttitle: \"More\"\n\t\t\t\t\t}"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: `View Token`,\n\t\t\t\t\t\t\tonMenuItemClick: onViewToken,\n\t\t\t\t\t\t\tdataQa: `${token.name}-view`\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: `Regenerate Token`,\n\t\t\t\t\t\t\tonMenuItemClick: onRegenerateToken,\n\t\t\t\t\t\t\tdataQa: `${token.name}-regenerate`\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: `Delete Token`,\n\t\t\t\t\t\t\tonMenuItemClick: onDeleteToken,\n\t\t\t\t\t\t\tdataQa: `${token.name}-delete`\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`${item.serviceId}-menu`"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t{\n\t\t\t\t\t\tname: (\n\t\t\t\t\t\t\t<MenuItemContainer>\n\t\t\t\t\t\t\t\t<SolaceButton href={`/services/${item.serviceId}`} variant=\"link\">\n\t\t\t\t\t\t\t\t\tService Details\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t</MenuItemContainer>\n\t\t\t\t\t\t),\n\t\t\t\t\t\tonMenuItemClick: () => window.open(`/services/${item.serviceId}`, \"_blank\")?.focus()\n\t\t\t\t\t}\n\t\t\t\t]"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\ttitle: \"More Actions\",\n\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />\n\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx",
+      "props": [
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "actionMenuItems()"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n                                variant: \"icon\",\n                                title: \"Actions\",\n                                dataQa: \"clusterDetailsActionMenuButton\",\n                                children: <MoreHorizOutlinedIcon />,\n                            }"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "value": "cloudProviderLink"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "filterMenu"
+        },
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{ variant: \"icon\", children: <Filter24Icon />, dataQa: \"filter\" }"
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "value": "false"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "value": "[\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tcategoryHeading: \"Channel\",\n\t\t\t\t\t\t\t\t\tname: filters.includes(Filter.PREVIEW) ? <BrandedLink>Preview</BrandedLink> : \"Preview\",\n\t\t\t\t\t\t\t\t\tdataQa: \"preview\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => modifyFilters().addFilter(Filter.PREVIEW)\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tcategoryHeading: \"Channel\",\n\t\t\t\t\t\t\t\t\tname: filters.includes(Filter.PRODUCTION) ? <BrandedLink>Production</BrandedLink> : \"Production\",\n\t\t\t\t\t\t\t\t\tdataQa: \"production\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => modifyFilters().addFilter(Filter.PRODUCTION)\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tcategoryHeading: \"Channel\",\n\t\t\t\t\t\t\t\t\tname: filters.includes(Filter.LTS) ? <BrandedLink>LTS</BrandedLink> : \"LTS\",\n\t\t\t\t\t\t\t\t\tdataQa: \"lts\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => modifyFilters().addFilter(Filter.LTS)\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tcategoryHeading: \"Channel\",\n\t\t\t\t\t\t\t\t\tname: filters.includes(Filter.ROLLING) ? <BrandedLink>Rolling</BrandedLink> : \"Rolling\",\n\t\t\t\t\t\t\t\t\tdataQa: \"rolling\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => modifyFilters().addFilter(Filter.ROLLING)\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tcategoryHeading: \"Channel\",\n\t\t\t\t\t\t\t\t\tname: filters.includes(Filter.DECLINED) ? <BrandedLink>Declined</BrandedLink> : \"Declined\",\n\t\t\t\t\t\t\t\t\tdataQa: \"declined\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => modifyFilters().addFilter(Filter.DECLINED),\n\t\t\t\t\t\t\t\t\tdivider: true\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tcategoryHeading: \"Status\",\n\t\t\t\t\t\t\t\t\tname: filters.includes(Filter.RELEASED) ? <BrandedLink>Released</BrandedLink> : \"Released\",\n\t\t\t\t\t\t\t\t\tdataQa: \"released\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => modifyFilters().addFilter(Filter.RELEASED)\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tcategoryHeading: \"Status\",\n\t\t\t\t\t\t\t\t\tname: filters.includes(Filter.NOT_RELEASED) ? (\n\t\t\t\t\t\t\t\t\t\t<BrandedLink>Not Released</BrandedLink>\n\t\t\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t\t\t\"Not Released\"\n\t\t\t\t\t\t\t\t\t),\n\t\t\t\t\t\t\t\t\tdivider: true,\n\t\t\t\t\t\t\t\t\tdataQa: \"notReleased\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => modifyFilters().addFilter(Filter.NOT_RELEASED)\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\tcategoryHeading: \"Views\",\n\t\t\t\t\t\t\t\t\tname:\n\t\t\t\t\t\t\t\t\t\tfilters.includes(Filter.PRODUCTION) &&\n\t\t\t\t\t\t\t\t\t\tfilters.includes(Filter.RELEASED) &&\n\t\t\t\t\t\t\t\t\t\tfilters.includes(Filter.PREVIEW) &&\n\t\t\t\t\t\t\t\t\t\tfilters.includes(Filter.LTS) ? (\n\t\t\t\t\t\t\t\t\t\t\t<BrandedLink>Active</BrandedLink>\n\t\t\t\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t\t\t\t\"Active\"\n\t\t\t\t\t\t\t\t\t\t),\n\t\t\t\t\t\t\t\t\tdataQa: \"active\",\n\t\t\t\t\t\t\t\t\tonMenuItemClick: () => modifyFilters().addFilter(Filter.ACTIVE)\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/SidekickDeploymentDetails.tsx",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon size={24} />,\n\t\t\t\t\t\t\ttitle: \"Actions\",\n\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\tdataQa: \"connectors_additional_actions\"\n\t\t\t\t\t\t}"
+        },
+        {
+          "name": "anchorOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"bottom\" }"
+        },
+        {
+          "name": "transformOrigin",
+          "type": "object",
+          "value": "{ horizontal: \"right\", vertical: \"top\" }"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"connectors_additional_actions\""
+        },
+        {
+          "name": "items",
+          "type": "variable",
+          "value": "menuItems"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "connectors_additional_actions_menu"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+      "props": [
+        {
+          "name": "buttonProps",
+          "type": "object",
+          "value": "{\n                'aria-label': 'Actions menu',\n                children: <MoreHorizOutlinedIcon />,\n                title: 'Actions',\n                variant: 'icon',\n              }"
+        },
+        {
+          "name": "items",
+          "type": "expression",
+          "value": "generateMenuItems()"
+        },
+        {
+          "name": "numOfMenuItemDisplayed",
+          "type": "number",
+          "value": "3"
+        }
+      ]
+    }
+  ]
 }

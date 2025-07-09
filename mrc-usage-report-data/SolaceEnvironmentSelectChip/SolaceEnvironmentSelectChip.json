@@ -29,14 +29,121 @@
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/agents/Agents.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/list/Services.tsx"
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "MEMListEnvironmentSelector"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "selectedEnvironment?.environmentId"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "({ value }) => handleChangeEnvironmentSelector(value, selectedEnvironment.showAllResources)"
+        },
+        {
+          "name": "options",
+          "type": "variable",
+          "value": "environmentOptions"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "REMHeaderEnvironmentSelector"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "environment"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "selectedEnvironment.environmentId"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleSetEnvironment"
+        },
+        {
+          "name": "options",
+          "type": "variable",
+          "value": "environmentOptions"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "environment"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "selectedEnvironment.environmentId"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleSetEnvironment"
+        },
+        {
+          "name": "options",
+          "type": "variable",
+          "value": "environmentOptions"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "environment"
+        },
+        {
+          "name": "value",
+          "type": "expression",
+          "value": "selectedEnvironment.environmentId"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleSetEnvironment"
+        },
+        {
+          "name": "options",
+          "type": "variable",
+          "value": "environmentOptions"
+        }
+      ]
+    }
+  ]
 }

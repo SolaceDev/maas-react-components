@@ -19,11 +19,33 @@
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/designer/applicationDetails/useEventAccessRequests.tsx"
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useEventAccessRequests.tsx"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useEventAccessRequests.tsx",
+      "props": [
+        {
+          "name": "data",
+          "type": "expression",
+          "value": "getPieChartData()"
+        },
+        {
+          "name": "showTooltip",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "icon",
+          "type": "jsx",
+          "value": "<LockIcon fill={theme.palette.ux.secondary.w40} />"
+        }
+      ]
+    }
+  ]
 }
