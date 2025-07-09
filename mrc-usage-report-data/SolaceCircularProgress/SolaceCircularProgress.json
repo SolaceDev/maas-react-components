@@ -2,21 +2,17 @@
   "componentName": "SolaceCircularProgress",
   "totalUsages": 37,
   "usagesByMfe": {
-    "maas-ops-react": 9,
-    "infra": 1,
     "ep": 7,
     "intg": 3,
     "mc": 11,
-    "saas": 6
+    "saas": 6,
+    "infra": 1,
+    "maas-ops-react": 9
   },
   "commonProps": [
     {
       "name": "size",
       "count": 23
-    },
-    {
-      "name": "data-qa",
-      "count": 1
     },
     {
       "name": "variant",
@@ -33,47 +29,444 @@
     {
       "name": "disableShrink",
       "count": 1
+    },
+    {
+      "name": "data-qa",
+      "count": 1
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/ToggleButtonWithDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesListView.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/components/PositionedCircularProgress/PositionedCircularProgress.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScansTable.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateSchemasDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/dialogs/AiMappingConfirmationDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/Template/VendorTemplates.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/components/dialogs/CloneServiceDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/upscales/ScaleUpStatus.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/dialogs/CreateHostnameDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/upgrades/UpgradesLegacy.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/MonitoringCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/common/icons/LoadingSpinner.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/UserAccessDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/privateRegions/components/DataCenterTable.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx"
+    "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/PositionedCircularProgress/PositionedCircularProgress.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScansTable.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateSchemasDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/Template/VendorTemplates.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/dialogs/AiMappingConfirmationDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CloneServiceDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upscales/ScaleUpStatus.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/UpgradesLegacy.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/CreateHostnameDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/MonitoringCard.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/common/icons/LoadingSpinner.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/DataCenterTable.tsx",
+    "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesListView.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/ToggleButtonWithDialog.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/PositionedCircularProgress/PositionedCircularProgress.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "variable",
+          "value": "testId"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "variable",
+          "value": "size"
+        },
+        {
+          "name": "disableShrink",
+          "type": "variable",
+          "value": "disableShrink"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "message"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScansTable.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateSchemasDialog.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/Template/VendorTemplates.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/dialogs/AiMappingConfirmationDialog.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "lg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CloneServiceDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upscales/ScaleUpStatus.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "xs"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/UpgradesLegacy.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "xs"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/CreateHostnameDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Trans id=\"id_fetch_certificates\">Retrieving event broker service details...</Trans>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "xs"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "xs"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "xs"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Trans id=\"id_deploying_license\">Deploying license to broker...</Trans>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Trans id=\"id_removing_license\">Removing Distributed Tracing license from broker...</Trans>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/MonitoringCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "configuringMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/common/icons/LoadingSpinner.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "variable",
+          "value": "size"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/UserAccessDialog.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/DataCenterTable.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "indeterminate"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "value": "xs"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesListView.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/ToggleButtonWithDialog.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+      "props": []
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        },
+        {
+          "name": "data-qa",
+          "type": "string",
+          "value": "loading-spinner"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "value": "sm"
+        },
+        {
+          "name": "variant",
+          "type": "variable",
+          "value": "loadingVariant"
+        }
+      ]
+    }
+  ]
 }

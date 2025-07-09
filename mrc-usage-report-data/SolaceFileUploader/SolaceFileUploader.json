@@ -43,13 +43,110 @@
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx"
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+      "props": [
+        {
+          "name": "maxFiles",
+          "type": "number",
+          "value": "1"
+        },
+        {
+          "name": "accept",
+          "type": "object",
+          "value": "{\n\t\t\t\t\t\t\t\t\"application/json\": [\".json\"]\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "onFileChange",
+          "type": "function",
+          "value": "(files) => {\n\t\t\t\t\t\t\t\tsetUploadDialogErrorText(\"\");\n\t\t\t\t\t\t\t\tsetFileImported(files);\n\t\t\t\t\t\t\t}"
+        },
+        {
+          "name": "errorText",
+          "type": "variable",
+          "value": "uploadDialogErrorText"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "props.id"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "props.label"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "sslKeyStoreFileUploader"
+        },
+        {
+          "name": "maxFiles",
+          "type": "number",
+          "value": "1"
+        },
+        {
+          "name": "onFileChange",
+          "type": "function",
+          "value": "async (files) => props.onChange(await fileUpload(files))"
+        },
+        {
+          "name": "readOnly",
+          "type": "expression",
+          "value": "props.readOnly"
+        },
+        {
+          "name": "fileNames",
+          "type": "expression",
+          "value": "props.value ? [\"<encrypted>\"] : []"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "sslKeyStoreFileUploader"
+        },
+        {
+          "name": "onFileChange",
+          "type": "variable",
+          "value": "handleFileChange"
+        },
+        {
+          "name": "readOnly",
+          "type": "variable",
+          "value": "readOnly"
+        },
+        {
+          "name": "fileNames",
+          "type": "expression",
+          "value": "clientCertValues.sslKeyStore ? [clientCertValues.sslKeyStore] : []"
+        },
+        {
+          "name": "errorText",
+          "type": "expression",
+          "value": "solaceValidationErrors.sslKeyStore"
+        }
+      ]
+    }
+  ]
 }

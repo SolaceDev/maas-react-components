@@ -19,12 +19,54 @@
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx"
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "minSize",
+          "type": "number",
+          "value": "500"
+        },
+        {
+          "name": "defaultSize",
+          "type": "number",
+          "value": "500"
+        },
+        {
+          "name": "maxSize",
+          "type": "expression",
+          "value": "-700"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx",
+      "props": [
+        {
+          "name": "minSize",
+          "type": "number",
+          "value": "500"
+        },
+        {
+          "name": "defaultSize",
+          "type": "number",
+          "value": "500"
+        },
+        {
+          "name": "maxSize",
+          "type": "expression",
+          "value": "Math.max(500, leftPanelMaxWidth)"
+        }
+      ]
+    }
+  ]
 }

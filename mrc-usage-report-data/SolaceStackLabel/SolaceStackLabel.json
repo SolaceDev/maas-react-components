@@ -2,8 +2,8 @@
   "componentName": "SolaceStackLabel",
   "totalUsages": 10,
   "usagesByMfe": {
-    "maas-ops-react": 8,
-    "saas": 2
+    "saas": 2,
+    "maas-ops-react": 8
   },
   "commonProps": [
     {
@@ -11,12 +11,12 @@
       "count": 10
     },
     {
-      "name": "bold",
-      "count": 5
-    },
-    {
       "name": "required",
       "count": 6
+    },
+    {
+      "name": "bold",
+      "count": 5
     },
     {
       "name": "htmlForId",
@@ -24,18 +24,180 @@
     }
   ],
   "files": [
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ops-ui-repo/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
-    "/home/runner/work/maas-react-components/maas-react-components/maas-ui-repo/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx"
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx"
   ],
   "customization": {
     "styledComponentCount": 0,
     "customStylesCount": 0,
     "overriddenPropertiesCounts": {}
-  }
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`environment-type-label`"
+        },
+        {
+          "name": "htmlForId",
+          "type": "expression",
+          "value": "`isProduction`"
+        },
+        {
+          "name": "bold",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+      "props": [
+        {
+          "name": "required",
+          "type": "expression",
+          "value": "!!required"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "id ?? name.toLowerCase()"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
+      "props": [
+        {
+          "name": "required",
+          "type": "variable",
+          "value": "required"
+        },
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
+      "props": [
+        {
+          "name": "required",
+          "type": "variable",
+          "value": "required"
+        },
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+      "props": [
+        {
+          "name": "required",
+          "type": "variable",
+          "value": "required"
+        },
+        {
+          "name": "bold",
+          "type": "variable",
+          "value": "bold"
+        },
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "metadata"
+        },
+        {
+          "name": "bold",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+      "props": [
+        {
+          "name": "bold",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "currentDatacenterIdField"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+      "props": [
+        {
+          "name": "bold",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "sourceDatacenterIdField"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "id"
+        }
+      ]
+    }
+  ]
 }
