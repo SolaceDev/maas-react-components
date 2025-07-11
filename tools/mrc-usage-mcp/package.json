@@ -1,0 +1,26 @@
+{
+	"name": "mrc-usage-mcp",
+	"version": "0.1.0",
+	"description": "A Model Context Protocol server for MRC usage",
+	"type": "module",
+	"bin": {
+		"mrc-usage-mcp": "./build/index.js"
+	},
+	"files": [
+		"build"
+	],
+	"scripts": {
+		"build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+		"watch": "tsc --watch",
+		"start": "node build/index.js"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "0.6.0",
+		"@octokit/rest": "^20.0.2",
+		"axios": "^1.9.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.24",
+		"typescript": "^5.3.3"
+	}
+}
