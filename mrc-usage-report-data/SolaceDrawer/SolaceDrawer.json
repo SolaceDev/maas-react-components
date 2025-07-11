@@ -1,0 +1,790 @@
+{
+  "componentName": "SolaceDrawer",
+  "totalUsages": 16,
+  "usagesByMfe": {
+    "ep": 15,
+    "saas": 1
+  },
+  "commonProps": [
+    {
+      "name": "open",
+      "count": 16
+    },
+    {
+      "name": "width",
+      "count": 16
+    },
+    {
+      "name": "top",
+      "count": 16
+    },
+    {
+      "name": "height",
+      "count": 15
+    },
+    {
+      "name": "resizable",
+      "count": 15
+    },
+    {
+      "name": "maxWidth",
+      "count": 15
+    },
+    {
+      "name": "onResizeDone",
+      "count": 14
+    },
+    {
+      "name": "minWidth",
+      "count": 14
+    },
+    {
+      "name": "anchor",
+      "count": 3
+    },
+    {
+      "name": "offset",
+      "count": 3
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphDragAndDrop.stories.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/LeftSidePanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraphSearchPanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/TopicFilterSidePanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/CreateEventApi.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApiEdit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductNew.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductEdit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaEdit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaNew.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventEdit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventNew.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationNew.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationEdit.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogDetails.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphDragAndDrop.stories.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "DEFAULT_LEFT_SIDE_PANEL_WIDTH_IN_PIXEL"
+        },
+        {
+          "name": "top",
+          "type": "expression",
+          "value": "\"50px\""
+        },
+        {
+          "name": "anchor",
+          "type": "string",
+          "value": "left"
+        },
+        {
+          "name": "offset",
+          "type": "expression",
+          "value": "\"0px\""
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - 100px)`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT} - ${DEFAULT_FORM_FOOTER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/LeftSidePanel.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initSearchPanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "minWidth"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "variable",
+          "value": "resizable"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "expression",
+          "value": "`${DEFAULT_HEADER_HEIGHT_IN_PIXEL + DEFAULT_GRAPH_TOOLBAR_HEIGHT_IN_PIXEL}px`"
+        },
+        {
+          "name": "offset",
+          "type": "expression",
+          "value": "`${leftOffset}px`"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT} - ${DEFAULT_GRAPH_TOOLBAR_HEIGHT})`"
+        },
+        {
+          "name": "anchor",
+          "type": "string",
+          "value": "left"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraphSearchPanel.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initSearchPanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SEARCH_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "expression",
+          "value": "`${DEFAULT_HEADER_HEIGHT_IN_PIXEL + DEFAULT_GRAPH_TOOLBAR_HEIGHT_IN_PIXEL}px`"
+        },
+        {
+          "name": "offset",
+          "type": "expression",
+          "value": "`${leftOffset}px`"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT} - ${DEFAULT_GRAPH_TOOLBAR_HEIGHT})`"
+        },
+        {
+          "name": "anchor",
+          "type": "string",
+          "value": "left"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/TopicFilterSidePanel.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "minWidth"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/CreateEventApi.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApiEdit.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductNew.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductEdit.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaEdit.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaNew.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventEdit.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventNew.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationNew.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT})`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationEdit.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "variable",
+          "value": "sidePanelOpen"
+        },
+        {
+          "name": "width",
+          "type": "variable",
+          "value": "initialSidePanelWidth"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onResizeDone",
+          "type": "variable",
+          "value": "handleResizeSidePanel"
+        },
+        {
+          "name": "minWidth",
+          "type": "variable",
+          "value": "SIDE_PANEL_MIN_WIDTH"
+        },
+        {
+          "name": "maxWidth",
+          "type": "variable",
+          "value": "sidePanelMaxWidth"
+        },
+        {
+          "name": "top",
+          "type": "variable",
+          "value": "DEFAULT_HEADER_HEIGHT"
+        },
+        {
+          "name": "height",
+          "type": "expression",
+          "value": "`calc(100vh - ${DEFAULT_HEADER_HEIGHT} )`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogDetails.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "expression",
+          "value": "!!rowDetails"
+        },
+        {
+          "name": "resizable",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "top",
+          "type": "string",
+          "value": "10.65%"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "value": "400"
+        },
+        {
+          "name": "maxWidth",
+          "type": "number",
+          "value": "500"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "componentName": "SolaceMenuItem",
+  "totalUsages": 1,
+  "usagesByMfe": {
+    "ep": 1
+  },
+  "commonProps": [
+    {
+      "name": "key",
+      "count": 1
+    },
+    {
+      "name": "...",
+      "count": 1
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/utils/miscUtils.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/utils/miscUtils.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`graphContextMenu_${menuItem.id ?? index}`"
+        },
+        {
+          "name": "...",
+          "type": "spread",
+          "value": "menuItem"
+        }
+      ]
+    }
+  ]
+}

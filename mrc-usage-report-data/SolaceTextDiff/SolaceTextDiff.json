@@ -1,0 +1,58 @@
+{
+  "componentName": "SolaceTextDiff",
+  "totalUsages": 2,
+  "usagesByMfe": {
+    "ep": 2
+  },
+  "commonProps": [
+    {
+      "name": "text1",
+      "count": 2
+    },
+    {
+      "name": "text2",
+      "count": 2
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareConfigurationDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareConfigurationDialog.tsx",
+      "props": [
+        {
+          "name": "text1",
+          "type": "variable",
+          "value": "runtimeAttributes"
+        },
+        {
+          "name": "text2",
+          "type": "variable",
+          "value": "designerAttributes"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+      "props": [
+        {
+          "name": "text1",
+          "type": "variable",
+          "value": "schemaBody"
+        },
+        {
+          "name": "text2",
+          "type": "variable",
+          "value": "secondSchemaBody"
+        }
+      ]
+    }
+  ]
+}

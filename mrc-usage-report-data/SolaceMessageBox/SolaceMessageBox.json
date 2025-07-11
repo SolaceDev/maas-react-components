@@ -1,0 +1,5803 @@
+{
+  "componentName": "SolaceMessageBox",
+  "totalUsages": 283,
+  "usagesByMfe": {
+    "ep": 146,
+    "intg": 16,
+    "mc": 38,
+    "saas": 33,
+    "maas-ops-react": 50
+  },
+  "commonProps": [
+    {
+      "name": "variant",
+      "count": 283
+    },
+    {
+      "name": "message",
+      "count": 283
+    },
+    {
+      "name": "dataQa",
+      "count": 82
+    },
+    {
+      "name": "showCloseButton",
+      "count": 66
+    },
+    {
+      "name": "onClose",
+      "count": 57
+    },
+    {
+      "name": "showIcon",
+      "count": 37
+    },
+    {
+      "name": "dense",
+      "count": 13
+    },
+    {
+      "name": "details",
+      "count": 5
+    },
+    {
+      "name": "key",
+      "count": 3
+    },
+    {
+      "name": "color",
+      "count": 2
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/components/topology/AddExistingMessagingServiceDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/PasswordConnectionBox.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeployToEnvironmentDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/BulkActions/BulkMoveDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironmentDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/DeployRDPApplicationDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/UpdateEnvironmentDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/EntityListMultiSelect.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddToEnvironmentDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeleteEntityConfirmationDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinitionsDialogView.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/NodeAppearanceEditor.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityVersionListContainer.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityVersionDetailsCommon.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/details/DuplicateVersionDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/details/RefreshEntityConfirmationDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/TopicAddressLevelTooltipContent.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/list/EntitySidePanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedVersions.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EventManagementAgentUpgradeVersionIndicator.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughInstallEMA.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughRunDiscoveryScanEMA.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/InstallScanFromEPModeAgent.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/runtimeAgentsUtils.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgents.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/DeleteRuntimeAgentDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/AgentSidePanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DeleteDataCollectionDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/BulkAddDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/ManageAssociations.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/Banners.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignAuditEmptyStateContent.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SubjectRelationshipDetail.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DiscoveryScanProgress.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateExistingVersionsDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewMultipleSchemasDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewVersionDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewMultipleEventsDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/auditImportCustomHooks.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/AuditImportCheckResult.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportProgress.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeConfigurationBanner.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/Domains.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/export/DomainExportPreviewDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/KafkaPreferencesDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionDetails.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributesEdit.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApiVersionDetails.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionDetails.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionForm.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/schemaDrawer/ReferencedSchemasList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ManageSubscriptions.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConsumerListForm.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomains.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomainSaveDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventVersionForm.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventVersionDetails.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemas.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useEventAccessRequests.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationRuntimeTab.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordionList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationVersionDetails.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentialsDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/shared.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/TransformationDialog.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/ConstantSection.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/HeaderSection.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorValidationErrorDetails.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SummaryErrorMessageBox.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorSummary.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/common/BaseTableList.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CustomizeMessageSpoolDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CloneServiceDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Status.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/MessageDeclinedSP.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/MessageUpgradeFailed.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/AutoUpgradeLogsDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/SyslogConfigDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/ClientAuthenticationDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/MoveHostnameDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LdapManagementAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/LdapManagementAccessCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/SyslogForwardingCard.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/ServiceAuthentications.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/InfoNodePort.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEndpointPorts.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerVersion.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/AupWarning.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/components/ViewMessageSpoolDetails.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/DeleteEnvironmentsDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/resetPassword/ResetPassword.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/notificationsUnsubscribeSettings/NotificationsUnsubscribeSettings.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/MoveDatacenterEnvironmentDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/EmaConfirmationDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/dialogs/RegenerateTokenDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/dialogs/DeleteTokenDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDialog.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/AgentStatusDialog.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringConfigurations.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/checks/PostUpgradeCheck.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/checks/PreUpgradeCheck.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/Run.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/Runs.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/DeleteServicePackage.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/CreateBizOrganization.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsErrorBanner.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSection.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/RequestSection.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/AccountAdminsSection.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/PrivateRegions.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/AddCompatibilityDialog.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/AddExistingMessagingServiceDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitWarning.message"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/AddExistingMessagingServiceDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/PasswordConnectionBox.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t<BoldText>Event Portal does not require your authentication passwords.</BoldText> After Event Portal generates the connection file, replace\n\t\t\t\t\tthe environment variables with your passwords in the installation command, so you can keep them secure.{\" \"}\n\t\t\t\t\t<SolaceButton variant=\"link\" href={\"https://docs.solace.com/Cloud/Event-Portal/event-portal-event-management-agents.htm\"}>\n\t\t\t\t\t\tLearn more about authentication passwords\n\t\t\t\t\t</SolaceButton>\n\t\t\t\t</div>"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "variable",
+          "value": "showCloseButton"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "onClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Before you connect a Kafka event broker, Kafka delimiter preferences must be set for the account in Designer.\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeployToEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/BulkActions/BulkMoveDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.entities.labels.bulkMove.bulkMoveInfo[entityType]"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"info\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "error.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorMessageBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "eventAccessRequestError"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "eventAccessRequestErrorMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ display: \"flex\", justifyContent: \"space-between\", alignItems: \"center\", columnGap: \"16px\" }}>\n\t\t\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t\t\t<span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{`${discrepancyCount} event flow mismatches detected that may result in unintended behavior in the runtime. Review them to make sure event flows are configured as intended.`}\n\t\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t\t\t\t\t<div style={{ whiteSpace: \"nowrap\", display: \"flex\", alignItems: \"center\" }}>\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleDisplayDiscrepancyTable}>\n\t\t\t\t\t\t\t\t\t\t\t\t\tView Mismatches\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<ManageCredentialDescription />"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"info\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/DeployRDPApplicationDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "error.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorMessageBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/DeployRDPApplicationDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "eventAccessRequestError"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "eventAccessRequestErrorMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/DeployRDPApplicationDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ display: \"flex\", justifyContent: \"space-between\", alignItems: \"center\", columnGap: \"16px\" }}>\n\t\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t\t<span>\n\t\t\t\t\t\t\t\t\t\t\t\t{`${discrepancyCount} event flow mismatches detected that may result in unintended behavior in the runtime. Review them to make sure event flows are configured as intended.`}\n\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t\t\t\t<div style={{ whiteSpace: \"nowrap\", display: \"flex\", alignItems: \"center\" }}>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleDisplayDiscrepancyTable}>\n\t\t\t\t\t\t\t\t\t\t\t\tView Mismatches\n\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "getErrorMessage(errors)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "previewErrorMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"aclProfileMessageBox\""
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t\t\t\t\t{messages.preview.aclProfileInfo}{\" \"}\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href=\"https://www.solace.com\">\n\t\t\t\t\t\t\t\t\t\t{messages.preview.learnMoreAboutACLProfiles}\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => handleCloseAclProfileInfoMessage()"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/UpdateEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/UpdateEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "eventAccessRequestError"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "eventAccessRequestErrorMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/EntityListMultiSelect.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.entities.labels.bulkMove.inProgress"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"info\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddToEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeleteEntityConfirmationDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Deleting this event deletes all event broker configuration data for topic addresses not used in any other event.\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "variable",
+          "value": "showCloseButton"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setError(null)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinitionsDialogView.tsx",
+      "props": [
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "addHelpText"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => onCloseAddHelp()"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"info\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinitionsDialogView.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "deleteHelpText"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/NodeAppearanceEditor.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "unsavedChangesWarningMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"After an object version is Retired, you cannot associate it to other object versions.\""
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`This version will be replaced in the graph view with the latest non-retired version or this ${entityTypeToLabelLowercase(\n\t\t\t\t\t\t\t\tentityType\n\t\t\t\t\t\t\t)} will be removed from the graph view if all versions are in retired state.`"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "stateChangeErrorMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "color",
+          "type": "expression",
+          "value": "theme.palette.ux.error.w100"
+        },
+        {
+          "name": "details",
+          "type": "expression",
+          "value": "getDetails()"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Objects must be in Draft state to edit most attributes.\""
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Changing object versions back to Draft state is not recommended. Consider creating a new Draft version of the object instead.\""
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityVersionListContainer.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`Unable to close object details. ${numberOfEditing} ${numberOfEditing > 1 ? \"versions\" : \"version\"} open for editing`"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setShowUnsavedWarning(false)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityVersionDetailsCommon.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Objects must be in Draft state to edit most attributes. Duplicate this version to create a new draft version that you can edit.\""
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "closeInfoBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/DuplicateVersionDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/DuplicateVersionDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "versionWarningMsg"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "versionWarningMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/RefreshEntityConfirmationDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Any unsaved changes will be lost if you reload the page.\""
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"unsavedWarning\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "backendErrorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "enumErrorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "enumWarningMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/TopicAddressLevelTooltipContent.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/TopicAddressLevelTooltipContent.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "warning"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/list/EntitySidePanel.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "getDeletionErrorMessageCausedByReference(item.name)"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleDismissErrorStatus"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"deletionErrorMsgBoxSidePanel\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionList.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorReferencedGatewayMessaggingServices"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedVersions.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorReferencedVersions"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EventManagementAgentUpgradeVersionIndicator.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t{eventManagementAgentResources.version.needUpgradePrompt}\n\t\t\t\t\t<SolaceButton variant=\"link\" dataQa=\"latestJarFileLink\" href={eventManagementAgentResources.version.needUpgradeLink}>\n\t\t\t\t\t\t{eventManagementAgentResources.version.needUpgradeLinkText}\n\t\t\t\t\t</SolaceButton>\n\t\t\t\t</div>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Connection details updated. Download the file and run it with the Event Management Agent to update the connection.\""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "closeInfoBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Unable to create connections to Event Management Agents."
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "validationError.eventBrokerError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "string",
+          "value": "The event broker must be in a modeled event mesh to receive runtime data or send configuration data."
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t\t\t\t\tUnable to delete connection to{\" \"}\n\t\t\t\t\t\t\t\t\t<span className=\"messagingServiceName\">\n\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\tselectedMessagingServices.filter((service) => {\n\t\t\t\t\t\t\t\t\t\t\t\treturn service.id === messagingServiceToBeDeleted || service.serviceId === messagingServiceToBeDeleted;\n\t\t\t\t\t\t\t\t\t\t\t})[0]?.name\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t. It is associated with one or more objects in the environment.\n\t\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughInstallEMA.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`Event Management agent ${emsStatus}`"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughRunDiscoveryScanEMA.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Event Management Agent installation setup complete"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/InstallScanFromEPModeAgent.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Ensure that your filename is wrapped in quotation marks or does not contain spaces or special characters to avoid OS-dependent filename restriction errors.\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/runtimeAgentsUtils.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"The next steps require you be on the system hosting the connected agent.\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgents.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box display=\"flex\" gap={1}>\n\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\tYou can also connect datacenters to Event Portal to enable discovery, audit, and configuration for event brokers created in those\n\t\t\t\t\t\t\t\t\t\tdatacenters.\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href=\"/account-details/private-regions\">\n\t\t\t\t\t\t\t\t\t\tView Datacenters\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</Box>"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setViewDatacentersInfoBanner(false)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgents.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "One or more Event Management Agent connection file is updated. Download the file and update the Event Management Agent with it to update the list of event brokers that the agent connects to."
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/DeleteRuntimeAgentDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/AgentSidePanel.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t\t\t\tConnection file is updated. Download the file and update the Event Management Agent with it to update the list of event brokers that\n\t\t\t\t\t\t\t\tthe agent connects to.\n\t\t\t\t\t\t\t\t<ButtonContainer>\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"call-to-action\" onClick={() => handleDownloadConnectionFile(item.id, item.name)}>\n\t\t\t\t\t\t\t\t\t\tDownload Connection File\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</ButtonContainer>\n\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/AgentSidePanel.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t{ConnectionStatusLabel.connectionIncomplete}\n\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\tInstall the Event Management Agent and run the connection file to connect to Event Portal.{\" \"}\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href=\"https://github.com/SolaceLabs/event-management-agent/blob/main/README.md\">\n\t\t\t\t\t\t\t\t\t\tDownload and install the Event Management Agent.\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t</>"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DeleteDataCollectionDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Event management agent not connected to Event Portal. View logs for details."
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>{dataCollectionErrorMessage}</div>"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "closeInfoBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box display=\"flex\" alignItems=\"center\" gap={2}>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t\tYour event broker is managed by PubSub+ Cloud. To take advantage of the latest updates, remove your model event broker and\n\t\t\t\t\t\t\t\t\t\t\t\tre-add it to the modelled event mesh\n\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\n\t\t\t\t\t\t\t\t\t\t\t<Box sx={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={() => handleDeleteMessagingService(selectedMessagingService)}>\n\t\t\t\t\t\t\t\t\t\t\t\t\tDelete From Event Portal\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t\t</Box>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>{renderDataCollectionError}</div>"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "closeInfoBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t\t\t\t\t\t\tUnable to delete connection to <span className=\"messagingServiceName\">{selectedMessagingService.name}</span>. It is associated\n\t\t\t\t\t\t\t\t\t\t\twith one or more objects in the environment.\n\t\t\t\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "closeInfoBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/BulkAddDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/ManageAssociations.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "message"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "closeInfoMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/ManageAssociations.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "submitError.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleErrorBoxClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/Banners.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<span>\n\t\t\t\t\t\tModeled event meshes represent operational event meshes in specific runtime environments. They help you define and visualize event flows\n\t\t\t\t\t\tbetween publishing and subscribing applications.{\" \"}\n\t\t\t\t\t\t<SolaceButton variant=\"link\" href={brandableTextValueConverter(\"modeledEventMesh\", \"link\")}>\n\t\t\t\t\t\t\tLearn more about modeled event meshes\n\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t</span>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "onClose"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "memInfoMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "warningInfoBoxMessage"
+        },
+        {
+          "name": "details",
+          "type": "jsx",
+          "value": "<SelectionWarningSection>\n\t\t\t\t\t\t\t{showServiceWarning && (\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t<SelectionLabel style={{ paddingBottom: \"0px\" }}>Choose Event Broker</SelectionLabel>\n\t\t\t\t\t\t\t\t\t<SelectionStats>{renderMessagingServiceSelect()}</SelectionStats>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<SelectionLabel style={{ paddingBottom: \"0px\" }}>\n\t\t\t\t\t\t\t\t\t{showAuditResultTypeWarning ? \"Choose Audit Result Type\" : \"Selected Objects\"}\n\t\t\t\t\t\t\t\t</SelectionLabel>\n\t\t\t\t\t\t\t\t<SelectionStats>{renderSelectionStats()}</SelectionStats>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</SelectionWarningSection>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Objects that are already in Event Portal do not need to be imported again.\""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"matchFoundMessage\""
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseMatchFoundMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div className=\"auditImportMessage\">\n\t\t\t\t\t\t\t\t\t<div>{errorMessage}</div>\n\t\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignAuditEmptyStateContent.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "AUDIT_NOT_FINDING_DESIGNER_OBJ_INFO"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SubjectRelationshipDetail.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Resolve partial matches caused by runtime configuration changes by updating the event from the audit results."
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "string",
+          "value": "No differences found in the compared version configurations."
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DiscoveryScanProgress.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "variable",
+          "value": "variantType"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "_message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "variable",
+          "value": "dismissible"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => handleMessageBoxOnClose(variantType)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateExistingVersionsDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "NONDRAFT_WARNING"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"info\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "nonDraftWarning"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewMultipleSchemasDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "SCHEMA_NAME_DUPLICATION_MESSAGE"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "duplicateNamesError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewVersionDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`Selected ${\n\t\t\t\t\tAUDIT_ENTITY_TYPE_LABELS_PLURALS_LOWERCASE[auditEntityType]\n\t\t\t\t} are partially matching with ${count} ${entityTypeToLabelLowercasePlural(\n\t\t\t\t\tentityType\n\t\t\t\t)}. A new version will be created for each ${entityTypeToLabelLowercase(entityType)}.`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewVersionDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewMultipleEventsDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "EVENT_NAME_DUPLICATION_MESSAGE"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "duplicateNamesError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/auditImportCustomHooks.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ display: \"flex\", flexDirection: \"row\", alignItems: \"center\", justifyContent: \"space-between\", gap: \"8px\" }}>\n\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t<span>Unable to import </span>\n\t\t\t\t\t\t\t\t\t<SolaceTooltip variant=\"html\" title={tooltipBody} placement={\"bottom-start\"} maxWidth=\"medium\">\n\t\t\t\t\t\t\t\t\t\t<span className=\"hasTooltip\">\n\t\t\t\t\t\t\t\t\t\t\t{invalidAudits.length} of {audits.length} selected {auditEntityType}\n\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t</SolaceTooltip>\n\t\t\t\t\t\t\t\t\t<span> because more recent audit results exist. Deselect the outdated {auditEntityType} to import the others.</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<SolaceButton dense variant=\"text\" onClick={handleDeselect} dataQa=\"validationErrorDeselect\">\n\t\t\t\t\t\t\t\t\tDeselect\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "auditValidationErrorWithDeselect"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/auditImportCustomHooks.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`Unable to import selected ${auditEntityType} because more recent audit results exist. Refresh the audit table and try again.`"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "auditValidationError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/auditImportCustomHooks.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "submitError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/AuditImportCheckResult.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<span>\n\t\t\t\t\t\t\t<span>If you plan to create objects on the event broker, consider to tag them as </span>\n\t\t\t\t\t\t\t<span style={{ fontWeight: 500 }}>To Be Created</span>\n\t\t\t\t\t\t\t<span> using the Quick Actions.</span>\n\t\t\t\t\t\t</span>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportProgress.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div className=\"auditImportMessage\" data-qa={`auditImport-${variant}`}>\n\t\t\t\t\t\t\t<div>{`${status} ${subStatus ?? \"\"}`}</div>\n\t\t\t\t\t\t\t{actionText && (\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" dataQa=\"auditImport-action\" onClick={action} underline=\"none\" dense>\n\t\t\t\t\t\t\t\t\t<div className=\"auditImportAction\">\n\t\t\t\t\t\t\t\t\t\t{actionIcon}\n\t\t\t\t\t\t\t\t\t\t{actionText}\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "variant",
+          "type": "variable",
+          "value": "variant"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "false"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "onAuditImportDone"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.kpiMetricsDashboard.appDomainFilterError"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => {\n\t\t\t\t\t\t\t\t\tsetAppDomainFilterError(false);\n\t\t\t\t\t\t\t\t\tsetSelectedAppDomainId(\"all\");\n\t\t\t\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.kpiMetricsDashboard.tableFilterError"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\tsetTableFiltersError(false);\n\t\t\t\t\t\t\t\t\t\t\tsetSelectedSharedType(null);\n\t\t\t\t\t\t\t\t\t\t\tsetSelectedBrokerType(null);\n\t\t\t\t\t\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "message"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "expression",
+          "value": "!!onClose"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "onClose"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "action?.label && !!action?.onClick ? (\n\t\t\t\t\t\t<Box display=\"flex\" justifyContent=\"space-between\" alignItems=\"flex-start\" gap={1}>\n\t\t\t\t\t\t\t<Box display=\"flex\" flex={1} marginTop={\"2px\"}>\n\t\t\t\t\t\t\t\t{message}\n\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t<SolaceButton variant={action.variant || \"text\"} onClick={action.onClick} dataQa={action.dataQa}>\n\t\t\t\t\t\t\t\t{action.label}\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t</Box>\n\t\t\t\t\t) : (\n\t\t\t\t\t\tmessage\n\t\t\t\t\t)"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dense",
+          "type": "variable",
+          "value": "dense"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeConfigurationBanner.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<SolaceTypography variant=\"body1\">{error}</SolaceTypography>"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeConfigurationBanner.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`runtimeConfigurationBanner-${applicationVersion.id}`"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<RuntimeConfigurationBannerWrapper>\n\t\t\t\t\t\t\t<SolaceTypography variant=\"body1\">{application.configuration.warningOutOfSync}</SolaceTypography>\n\t\t\t\t\t\t</RuntimeConfigurationBannerWrapper>"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/Domains.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "getEmptyMessageDetails(true)"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "closeInfoBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/export/DomainExportPreviewDialog.tsx",
+      "props": [
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "EXPORT_MESSAGE"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"info\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/KafkaPreferencesDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "message"
+        },
+        {
+          "name": "variant",
+          "type": "variable",
+          "value": "messageType"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionDetails.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "getDeletionErrorMessageCausedByReference(enumerationVersion.displayName || enumerationVersion.version, true)"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setVersionIdWithDeletionError(null)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "deletionErrorMsgVersion"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributesEdit.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "unsavedChangesWarningMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "versionWarningMsg"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "versionWarningMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "unsavedChangesWarningMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.eventApiProduct.labels.downloadInfo"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "conflictMessage"
+        },
+        {
+          "name": "details",
+          "type": "expression",
+          "value": "getErrorDetails()"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApiVersionDetails.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "getDeletionErrorMessageCausedByReference(eventApiVersion.displayName || eventApiVersion.version, true)"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setVersionIdWithDeletionError(null)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "deletionErrorMsgVersion"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionDetails.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "getDeletionErrorMessageCausedByReference(schemaVersion.displayName || schemaVersion.version, true)"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setVersionIdWithDeletionError(null)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "deletionErrorMsgVersion"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionForm.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<ImportedSchemaInfoContent>\n\t\t\t\t\t\t\t\t<div>Imported schema Content and Referenced Schemas fields cannot be modified. Duplicate this version to modify these fields.</div>\n\t\t\t\t\t\t\t\t<div style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={() => setTriggerVersionDuplication(true)}>\n\t\t\t\t\t\t\t\t\t\tDuplicate Version\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</ImportedSchemaInfoContent>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setShowImportedSchemaInfoBanner(false)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "editImportedSchemaWarning"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "schemaVersionReferencesError.message"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "manageReferencedSchemasErrorText"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/schemaDrawer/ReferencedSchemasList.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "SCHEMA_TYPE_MISMATCH"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/schemaDrawer/ReferencedSchemasList.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "SHARED_VALUE_MISMATCH"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/schemaDrawer/ReferencedSchemasList.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "SCHEMA_VERSION_NOT_FOUND"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "noOptionSelectedError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ManageSubscriptions.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "kafkaWarningMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConsumerListForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "backendValidationErrorMsg"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomains.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "kafkaWarningMessage"
+        },
+        {
+          "name": "dense",
+          "type": "variable",
+          "value": "userHasEditorAccess"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomains.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<span>\n\t\t\t\t\t\t\tCannot delete the last topic domain when{\" \"}\n\t\t\t\t\t\t\t<span className=\"fontMedium\">All topic addresses within this application domain must use a topic domain</span> is selected.\n\t\t\t\t\t\t</span>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomainSaveDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "applicationDomainMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomainSaveDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "topicDomainSuccessMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomainSaveDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"One or more topic domains were not created successfully.\""
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "details",
+          "type": "expression",
+          "value": "renderTopicDomain(failedTopicDomains, false)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomainSaveDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "duplicateTopicDomainMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "details",
+          "type": "expression",
+          "value": "renderTopicDomain(duplicateTopicDomainEntries, true)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "string",
+          "value": "The link opens a browser tab for any site you specify. You should ensure that the destination conforms to your organization's security polices."
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "topicAddressResourcesWarning"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"All versions of an event have the same broker type. It cannot be changed after the event is created\""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseBrokerTypeHelp"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "brokerTypeWarning"
+        },
+        {
+          "name": "dense",
+          "type": "variable",
+          "value": "userHasEditorAccess"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"brokerTypeWarning\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "errors.event.shared.message"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventVersionForm.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t\t\t\t<span style={{ marginRight: \"4px\" }}>\n\t\t\t\t\t\t\t\t\tAll versions of a Kafka event use the same topic address and use versions from the same schema object.\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href={brandableTextValueConverter(\"kafkaEvents\", \"link\")}>\n\t\t\t\t\t\t\t\t\t{\"Learn more about creating Kafka events\"}\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => handleCloseInfoMessage()"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "kafkaEventInfoBanner"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventVersionDetails.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "getDeletionErrorMessageCausedByReference(eventVersionRefetched.displayName || eventVersionRefetched.version, true)"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setVersionIdWithDeletionError(null)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "deletionErrorMsgVersion"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemas.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`This ${pageID === PageID.eventSearchSchemas ? \"event\" : \"schema\"} is shared. Only shared schemas can be selected.`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "messages.credentials.removeCredentialsWarning"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useEventAccessRequests.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<FlexColumn>\n\t\t\t\t\t\t\t\t{`Some consumer subscriptions attract ${nonSharedEventIds.length} non-shared event${nonSharedEventIds.length > 1 ? \"s\" : \"\"}. `}\n\t\t\t\t\t\t\t\t<ul key={\"warningBox\"} style={{ paddingLeft: \"16px\", margin: 0 }}>\n\t\t\t\t\t\t\t\t\t{renderWarningDetails()}\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t</FlexColumn>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "nonSharedEventWarning"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "NO_TOPIC_ADDRESS_MSG"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "NO_PUBLISHER_MSG"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "NO_MATCHED_SUBSCRIPTION"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "subEventVersionsErrorMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMessageForPubEvents"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "errorMessageForPubEvents || subEventVersionsErrorMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "ADDITIONAL_CONSUMED_EVENTS_INFO"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setDismissAdditionalConsumedEventsInfo(true)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`This application version consumes over ${MAX_ADDITIONAL_EVENTS_TO_SHOW} events. Refine the consumer subscriptions if this number is unintended.`"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setDismissAdditionalConsumedEventsWarning(true)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMessageForAdditionalEvents"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationRuntimeTab.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setShowUndeployedInformation(false)"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "messages.add.addApplicationDescription"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordionList.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "eventsMap[item.eventId]?.name ? `Event is not shared across application domains.` : \"You do not have access to this event.\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationVersionDetails.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "getDeletionErrorMessageCausedByReference(applicationVersionRefetched.displayName || applicationVersionRefetched.version, true)"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setVersionIdWithDeletionError(null)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "deletionErrorMsgVersion"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "messages.credentials.configurationWarning"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "configurationError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentialsDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "onCloseError"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "credentialsError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`Returning to an earlier step will reset your progress. `"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/shared.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`The maximum number of ${type} we can create is ${limit}. Please remove some assets to enable moving to the next step.`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/shared.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box display={\"flex\"} gap={1} alignItems={\"center\"}>\n\t\t\t\t\t\t\t<SparklesIcon fill={theme.palette.ux.info.wMain} />\n\t\t\t\t\t\t\t<span>{messages.info}</span>\n\t\t\t\t\t\t\t{getWizardButton(\"text\", goToWizard, false)}\n\t\t\t\t\t\t</Box>"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setShowMessageBox(false)"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "messages.projectDefinition.guide"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/TransformationDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorText"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "sourceTransformationGraphError"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        },
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`${direction}GraphError`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "targetTransformationGraphError"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        },
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "`${direction}GraphError`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.connectors.helperText.payloadMessage"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setPayloadInfoDismissed(!payloadInfoDismissed)"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.connectors.labels.reImportWarning(direction.toLowerCase())"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "payloadMappingsValidationErrors.apiError"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/ConstantSection.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "max-header-count-info-msg"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.connectors.labels.maxConstantCountReached"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/HeaderSection.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "max-header-count-info-msg"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.connectors.labels.maxHeaderCountReached"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorValidationErrorDetails.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box>{renderErrorMessages(step, validationErrors)}</Box>"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "down_state_error_message"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box>\n\t\t\t\t\t\t\t\t\t<SolaceGrid container spacing={1}>\n\t\t\t\t\t\t\t\t\t\t<SolaceGrid item xs={7}>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography color={\"error\"}>\n\t\t\t\t\t\t\t\t\t\t\t\t{selectedRowData?.state === ConnectorState.error\n\t\t\t\t\t\t\t\t\t\t\t\t\t? en.connectors.labels.errorStateMessage\n\t\t\t\t\t\t\t\t\t\t\t\t\t: en.connectors.labels.downStateMessage}\n\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t{selectedRowData?.state === ConnectorState.error && (\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography color={\"error\"} sx={{ width: \"90%\", wordWrap: \"break-word\" }}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{selectedRowData.microIntegrationDeploymentDetail?.details?.details ?? \"Unknown error\"}\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography color={\"error\"}>\n\t\t\t\t\t\t\t\t\t\t\t\t{en.connectors.labels.additionalSupportMessage}\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href=\"https://solace-sso.solace.cloud/support/question\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t{en.connectors.buttons.contactSupport}\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t</SolaceGrid>\n\t\t\t\t\t\t\t\t\t\t<SolaceGrid item xs={5}>\n\t\t\t\t\t\t\t\t\t\t\t<Box style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleViewErrorLogs}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{en.connectors.buttons.viewErrorLogs}\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t\t</SolaceGrid>\n\t\t\t\t\t\t\t\t\t</SolaceGrid>\n\t\t\t\t\t\t\t\t</Box>"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.connectors.labels.stateInfoBanner(selectedRowData?.state ?? \"\")"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"info\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "deploying_state_message"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SummaryErrorMessageBox.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "buildSummaryErrorMessage(\n\t\t\t\t\t\t\t\tvendorValidationErrors,\n\t\t\t\t\t\t\t\tsolaceValidationErrors,\n\t\t\t\t\t\t\t\tdetailsStepValidationErrors,\n\t\t\t\t\t\t\t\tisEqual(connectorTypeDetails.direction, ConnectorDirection.Source),\n\t\t\t\t\t\t\t\ttrue,\n\t\t\t\t\t\t\t\tpayloadMappingsValidationErrors,\n\t\t\t\t\t\t\t\tapiErrorResponseError,\n\t\t\t\t\t\t\t\tsourceTransformationGraphError,\n\t\t\t\t\t\t\t\ttargetTransformationGraphError,\n\t\t\t\t\t\t\t\tshowGaMiTransformation\n\t\t\t\t\t\t\t) ?? \"\""
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorSummary.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "buildSummaryErrorMessage(\n\t\t\t\t\t\t\t\tvendorValidationErrors,\n\t\t\t\t\t\t\t\tsolaceValidationErrors,\n\t\t\t\t\t\t\t\tinitialStepValidationErrors,\n\t\t\t\t\t\t\t\tvendorSourceDirection,\n\t\t\t\t\t\t\t\tfalse,\n\t\t\t\t\t\t\t\tpayloadMappingsValidationErrors,\n\t\t\t\t\t\t\t\tapiErrorResponseError,\n\t\t\t\t\t\t\t\tsourceTransformationGraphError,\n\t\t\t\t\t\t\t\ttargetTransformationGraphError,\n\t\t\t\t\t\t\t\tshowGaMiTransformation\n\t\t\t\t\t\t\t) ?? \"\""
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/common/BaseTableList.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "downErrorMessage"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setShowDownError(false)"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box style={{ verticalAlign: \"middle\" }}>\n\t\t\t\t\t\t\t\t{errorMessageDetails ?? \"\"}\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href=\"https://solace-sso.solace.cloud/support/question\">\n\t\t\t\t\t\t\t\t\t{en.connectors.buttons.contactSupport}\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t<Box style={{ float: \"right\" }} m={-0.5}>\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleViewErrorLogs}>\n\t\t\t\t\t\t\t\t\t\t{en.connectors.buttons.viewErrorLogs}\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t</Box>"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "error_message_box"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.connectors.labels.stateInfoBanner(connectorState ?? \"\")"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "deploying_message_box"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CustomizeMessageSpoolDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_edit_msg_spool_info\", message: \"This change will not impact queue size.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CustomizeMessageSpoolDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_customize_msg_spool_info\", message: \"You cannot decrease the message spool size after creating the service, but you can increase it without service interruption.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CustomizeMessageSpoolDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<ErrorMessage size={-difference} />"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CustomizeMessageSpoolDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<SuccessMessage size={extraSpoolUsage} defaultMessageSpoolSize={defaultMessageSpoolSize} isEdit={isEdit} />"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CloneServiceDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "variable",
+          "value": "type"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "title"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "variable",
+          "value": "showCloseButton"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setError(null)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "eventMesh.errorMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Status.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t<Trans id=\"id_service_create_failed\">Sorry, a problem occurred trying to create your service.</Trans>{\" \"}\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" dense dataQa=\"open-ticket\" href={buildSupportURL(isSAP, service.errorId, service.id)}>\n\t\t\t\t\t\t\t\t\t\t<Trans id=\"id_open_support_ticket\">Open Support Ticket</Trans>\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Status.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({\n\t\t\t\t\t\t\t\t\tid: \"id_sso_out_of_sync\",\n\t\t\t\t\t\t\t\t\tmessage: \"The broker's SSO configuration is out-of-sync. Contact an Administrator or troubleshoot Broker SSO Settings in Account Details.\"\n\t\t\t\t\t\t\t\t})"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/MessageDeclinedSP.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "organization?.orgAutomatedUpgradeEnabled && showUpgrades ? (\n\t\t\t\t\t\t<ButtonContainer>\n\t\t\t\t\t\t\t{message}\n\t\t\t\t\t\t\t<SolaceButton variant=\"outline\" dataQa=\"plan-upgrade-open\" onClick={onOpen}>\n\t\t\t\t\t\t\t\t<Trans id=\"id_plan_upgrade\">Plan Upgrade</Trans>\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t</ButtonContainer>\n\t\t\t\t\t) : (\n\t\t\t\t\t\tmessage\n\t\t\t\t\t)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/MessageUpgradeFailed.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box alignItems=\"center\" display=\"flex\" flexGrow=\"1\" flexWrap=\"wrap\" justifyContent=\"space-between\">\n\t\t\t\t\t\t<Box p=\"4px 0px\">\n\t\t\t\t\t\t\t{t({\n\t\t\t\t\t\t\t\tid: \"id_auto_upgrade_failed\",\n\t\t\t\t\t\t\t\tmessage: `Upgrade steps have failed. Contact Solace for support.`\n\t\t\t\t\t\t\t})}\n\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t<Box ml=\"auto\" whiteSpace=\"nowrap\">\n\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={() => setViewLogs(true)}>\n\t\t\t\t\t\t\t\t<Trans id=\"id_auto_upgrade_view_logs\">View Upgrade Logs</Trans>\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t</Box>\n\t\t\t\t\t</Box>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/AutoUpgradeLogsDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Upgrade steps have failed. Contact Solace for support."
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/SyslogConfigDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_error_facilities\", message: \"At least one facility must be selected.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/ClientAuthenticationDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_warn_auth_disabled\", message: \"You have authentication disabled. Your event broker service is accessible by everyone.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/MoveHostnameDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "warningMessage.join(\" \")"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LdapManagementAccessDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/LdapManagementAccessCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "pickMessage(isProfileConfigured, isAccessConfigured)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_dt_error_deployment\", message: \"There was an issue with the deployment of the Distributed Tracing Collector. For support, contact Solace.\" })"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "disable-distributed-tracing-error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_dt_destination_out_of_date\", message: \"Tracing destination is out of date on this service.\" })"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "event-broker-version-banner"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_dt_error_retrieving_details\", message: \"An error occurred while retrieving Distributed Tracing details, please try again.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "enableDistributedTracingErrorMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "patchBrandingText(t({ id: \"id_dt_error_disabling\", message: \"An error occurred while disabling Distributed Tracing. For support, contact Solace.\" }))"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_dt_not_supported\", message: \"Distributed Tracing requires broker version 10.2 or later, upgrade to enable this feature.\" })"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "event-broker-version-banner"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_configuration_progress\", message: \"Configuration in progress...\" })"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "configuration-progress"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_collector_running\", message: \"Collector is running.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_collector_down\", message: \"Collector is down.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_retrieving_collector_status\", message: \"Retrieving collector status...\" })"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "pending-collector-status"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_connection_service_active\", message: \"Connection to the service is active.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "brokerConnectionErrorMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_retrieving_service_status\", message: \"Retrieving service status...\" })"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "pending-service-status"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/SyslogForwardingCard.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_syslog_error\", message: \"Failed to retrieve the configuration for Syslog Forwarding.\" })"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "syslog-error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/ServiceAuthentications.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_warn_auth_disabled\", message: \"You have authentication disabled. Your event broker service is accessible by everyone.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/InfoNodePort.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({\n\t\t\t\t\tid: \"id_nodeport_info\",\n\t\t\t\t\tmessage: \"You cannot modify the port numbers because NodePort is being used for this event broker service. Port numbers will be auto-generated after service creation.\"\n\t\t\t\t})"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEndpointPorts.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "i18n._(meta.errorMessage)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEndpointPorts.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "i18n._(meta.warningMessage)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerVersion.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_warn_not_latest_version\", message: \"Consider using the latest version. (Recommended)\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "t({ id: \"id_error_max_spool_size\", message: \"Select a different region. You have reached your limits for this service.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "isSAP\n\t\t\t\t\t\t\t\t\t? t({\n\t\t\t\t\t\t\t\t\t\t\tid: \"id_error_limits_sap\",\n\t\t\t\t\t\t\t\t\t\t\tmessage: \"You do not have the appropriate entitlements to be able to create this service. Please ensure your entitlements are correctly set in the BTP Cockpit.\"\n\t\t\t\t\t\t\t\t\t  })\n\t\t\t\t\t\t\t\t\t: t({ id: \"id_error_limits\", message: \"Select another service type. You have either reached your limits, or the region does not support this service type.\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "variable",
+          "value": "showCloseButton"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setError(null)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
+      "props": [
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box\n\t\t\t\t\t\t\t\t\t\tsx={{\n\t\t\t\t\t\t\t\t\t\t\tdisplay: \"flex\",\n\t\t\t\t\t\t\t\t\t\t\tjustifyContent: \"space-between\",\n\t\t\t\t\t\t\t\t\t\t\talignItems: \"center\",\n\t\t\t\t\t\t\t\t\t\t\tpadding: \"6px 0px\"\n\t\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t<Box>\n\t\t\t\t\t\t\t\t\t\t\t<TextHighlight>{createSsoBrokerSettingWarning(ssoBrokerSettingsRequirementsList)} </TextHighlight>\n\t\t\t\t\t\t\t\t\t\t\t{en.brokerSSOConfig.message.brokerSsoSetup}\n\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t\t<Box>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceButton onClick={handleViewSettingMapping} variant=\"link\" dense>\n\t\t\t\t\t\t\t\t\t\t\t\t{en.brokerSSOConfig.message.viewSettings}\n\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t</Box>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/AupWarning.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div\n\t\t\t\t\t\t\tstyle={{\n\t\t\t\t\t\t\t\talignItems: \"center\",\n\t\t\t\t\t\t\t\tdisplay: \"flex\",\n\t\t\t\t\t\t\t\tflexGrow: 1,\n\t\t\t\t\t\t\t\tjustifyContent: \"space-between\"\n\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t{text + \" \"}\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href={hyperLink}>\n\t\t\t\t\t\t\t\t\t{link}\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"call-to-action\" isDisabled={aupIsLoading} onClick={handleAgree}>\n\t\t\t\t\t\t\t\t\tI Agree\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/components/ViewMessageSpoolDetails.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.viewMessageSpoolDetails.dialog.info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t\t\t\t\t\t{environmentsStr.messages.firstOpenTopInfo}{\" \"}\n\t\t\t\t\t\t\t\t\t\t<SolaceButton href=\"https://docs.solace.com/Cloud/environments.htm\" variant=\"link\">\n\t\t\t\t\t\t\t\t\t\t\t{environmentsStr.messages.firstOpenBottomInfoLearnMore}\n\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "environmentFirstUseCardTop"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseTopMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/DeleteEnvironmentsDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "deleteError"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/DeleteEnvironmentsDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t\t\t\t{en.environments.labels.deleteDialogMessage}\n\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href=\"https://docs.solace.com/Cloud/environments.htm\">\n\t\t\t\t\t\t\t\tLearn more in the documentation\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.environments.errors.duplicateName"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.environments.createDialogLabels.error.typeRequired"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.environments.createDialogLabels.info.typeCannotBeChanged"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "messages.warning"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "configurationTemplateWarning"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.accountSettings.configNotComplete"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.accountSettings.configNotYetApplied"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "userGroupManagement.jitInfoMessage"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+      "props": [
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box sx={{ display: \"flex\", justifyContent: \"space-between\", alignItems: \"center !important\" }}>\n\t\t\t\t\t\t\t<SolaceTypography>{userGroupManagement.saveChangesText}</SolaceTypography>\n\t\t\t\t\t\t\t<SolaceButton isDisabled={!claimId} onClick={handleTestAccessClick} variant=\"text\">\n\t\t\t\t\t\t\t\t{userGroupManagement.testAccess}\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t</Box>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "userGroupManagement.noAdminMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.overview.banner.WE_HIT_AN_ISSUE"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/resetPassword/ResetPassword.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.forgotPassword.errorSendingResetEmail"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationsUnsubscribeSettings/NotificationsUnsubscribeSettings.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.notifications.fetchingNotificationsErrorNotLoggedIn"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/MoveDatacenterEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div>\n\t\t\t\t<span style={{ marginRight: \"4px\" }}>\n\t\t\t\t\t{environments.moveDialogLabels.warningMessages.movingDCWarning(dcName)}\n\t\t\t\t</span>\n\t\t\t\t<SolaceButton\n\t\t\t\t\tvariant=\"link\"\n\t\t\t\t\thref={patchDocumentationUrl(isSAP, \"https://docs.solace.com/Cloud/environments.htm\")}\n\t\t\t\t>\n\t\t\t\t\t{environments.moveDialogLabels.warningMessages.learnMore}\n\t\t\t\t</SolaceButton>\n\t\t\t</div>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/EmaConfirmationDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<span>\n\t\t\t\t\t{en.privateRegions.emaInfoBanner.title}{\" \"}\n\t\t\t\t\t<SolaceButton variant=\"link\" dense href={brandableTextValueConverter(\"eventPortalCloudEma\", \"link\")}>\n\t\t\t\t\t\t{en.privateRegions.emaInfoBanner.linkText}\n\t\t\t\t\t</SolaceButton>\n\t\t\t\t</span>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/dialogs/RegenerateTokenDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.tokens.text.anyApplicationsOrScriptsUsingThisToken"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/dialogs/RegenerateTokenDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMessage"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/dialogs/DeleteTokenDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "en.tokens.text.thisCannotBeUndone"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"warn\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/dialogs/DeleteTokenDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMessage"
+        },
+        {
+          "name": "variant",
+          "type": "expression",
+          "value": "\"error\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<span>\n\t\t\t\t\t\t\t\t\t{en.tokens.text.description}\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href={brandableTextValueConverter(\"solaceOpenAPIV2\", \"link\")}>\n\t\t\t\t\t\t\t\t\t\t{en.tokens.text.learnMore}\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</span>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "variable",
+          "value": "handleCloseInfoMessage"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "failed-to-synch"
+        },
+        {
+          "name": "key",
+          "type": "expression",
+          "value": "item.serviceId"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "tracingSynchDialog.error(item.serviceName)"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t<Typography>{modifyError.message}</Typography>\n\t\t\t\t\t\t\t\t{modifyError.id && <Typography variant=\"caption\">{\"Error ID: \" + modifyError.id}</Typography>}\n\t\t\t\t\t\t\t</>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorModifyingProfile"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t<span>{tracingProfile.infoMessage.text}</span>\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href={tracingProfile.infoMessage.link.href}>\n\t\t\t\t\t\t\t\t\t{tracingProfile.infoMessage.link.text}\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t</>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "infoBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+      "props": [
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<MessageContainer>\n\t\t\t\t\t\t\t\t{outOfSynchMessageBox.outOfDate({\n\t\t\t\t\t\t\t\t\toutOfSynchServices: outOfSynchServices.length,\n\t\t\t\t\t\t\t\t\tassociatedServices: associateServicesCount\n\t\t\t\t\t\t\t\t})}\n\n\t\t\t\t\t\t\t\t<ButtonContainer>\n\t\t\t\t\t\t\t\t\t<SolaceButton dataQa=\"viewServicesButton\" variant=\"text\" onClick={() => setSynchTracingDialog(true)}>\n\t\t\t\t\t\t\t\t\t\t{outOfSynchMessageBox.viewServices}\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</ButtonContainer>\n\t\t\t\t\t\t\t</MessageContainer>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "tracingLimits.errorMessage.retrieve"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorRetrievingTracingLimits"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "tracingProfile.errorMessage.delete"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorDeletingTracingDestination"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "tracingProfile.errorMessage.retrieve"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorRetrievingTracingDestinations"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa}Success`"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "successMessage || \"Success\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+      "props": [
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa}Error`"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ alignItems: \"center\", display: \"flex\", flexGrow: 1, justifyContent: \"space-between\" }}>\n\t\t\t\t\t\t\t\t{errorMessage || \"Validation failed. Please try again.\"}\n\t\t\t\t\t\t\t\t<div style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t\t<SolaceButton dataQa=\"moreDetailsErrorButton\" variant=\"text\" onClick={() => handleDetails(errorKey)}>\n\t\t\t\t\t\t\t\t\t\tMore Details\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Note: It can take several minutes for resources to be deployed to Datadog. Please wait before validating."
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/AgentStatusDialog.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${service.name}_agentStatusWarning`"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`${warnings}`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/AgentStatusDialog.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${service.name}_agentStatusError`"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`${errors.filter(e => e && String(e).trim() !== '')}.`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringConfigurations.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "warnUpdateServicesPagination"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`This section updates services shown in current page ${currentPage}. To apply monitoring configurations to all services, make sure you run Update Services on all service pages.`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringConfigurations.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Note: solace-datadog-agent version cannot be overridden for k8s services"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t<b>Note:</b> If this step fails because rbac is not enabled, please contact Datadog Support to enable\n\t\t\t\t\t\t\t\trbac for Datadog Sub-Org.\n\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t\t<b>Note:</b> You may need to switch to the customer Sub-Org.\n\t\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t\t<b>Note: </b>It might take up to a minute for the log to be visible in Datadog.\n\t\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<b>Note:</b> Don’t enable PE profile for Insights onboarding. For RMMS consider\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tnotifying to their handle.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t\t<b>Note:</b> It can take several minutes for resources to be deployed to Datadog. Please wait before\n\t\t\t\t\t\t\t\t\t\tvalidating.\n\t\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t\t<b>Note: </b>Insights policy should not be enabled for RMMS accounts.\n\t\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/checks/PostUpgradeCheck.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t\t{hasFailures && \"Post-upgrade validations have failed. \"}\n\t\t\t\t\t\t\t\t\t\t{!lastValidation &&\n\t\t\t\t\t\t\t\t\t\t\t\"Unhandled server exception, missing attributes: contact the development team for review.\"}\n\t\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/checks/PreUpgradeCheck.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t\t{hasFailures && \"Pre-upgrade validations have failed. \"}\n\t\t\t\t\t\t\t\t\t\t{missingAttributes &&\n\t\t\t\t\t\t\t\t\t\t\t\"Unhandled server exception, missing attributes: contact the development team for review.\"}\n\t\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/Run.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Upgrade has been paused. Verify upgrade status before proceeding. In progress operations will complete."
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/Run.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Upgrade has been cancelled. In progress operations will complete."
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/Runs.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "!autoUpgrades && !customerUpgrades\n\t\t\t\t\t\t\t\t\t? \"Automated and customer upgrades are disabled. No scheduled or immediate upgrades can take place.\"\n\t\t\t\t\t\t\t\t\t: !autoUpgrades\n\t\t\t\t\t\t\t\t\t? \"Automated upgrades are disabled. Customers can still trigger upgrades from the Console UI.\"\n\t\t\t\t\t\t\t\t\t: !customerUpgrades\n\t\t\t\t\t\t\t\t\t? \"Customer upgrades are disabled. Customers will not be able to trigger upgrades from the Console UI.\"\n\t\t\t\t\t\t\t\t\t: \"\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "ema.latestDeployment?.error?.message"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMessage"
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "onClose",
+          "type": "function",
+          "value": "() => setErrorMessage(\"\")"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/DeleteServicePackage.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorDialog"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "error ? error : IN_USE_MESSAGE"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "error"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "releaseNotesError"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "value": "Release Notes should be provided"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/CreateBizOrganization.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "createBizOrganization.messages.editDeleteMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsErrorBanner.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ alignItems: \"center\", display: \"flex\", flexGrow: 1, justifyContent: \"space-between\" }}>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<span>{` ${createBizOrganization.orgDetails.errorFound}`} </span>\n\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\thref=\"https://sol-jira.atlassian.net/wiki/spaces/MPE/pages/3361506021/Runbook+for+New+Order+Fulfillment\"\n\t\t\t\t\t\t\t\t\tvariant=\"link\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t{createBizOrganization.orgDetails.purchaseOrderRunbook}\n\t\t\t\t\t\t\t\t</SolaceButton>{\" \"}\n\t\t\t\t\t\t\t\t<span>{createBizOrganization.orgDetails.contactPeTeam} </span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t{/* <div style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\">Contact PE</SolaceButton>\n\t\t\t\t\t\t\t</div> */}\n\t\t\t\t\t\t</div>"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsErrorBanner.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "successMsgBox"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "createBizOrganization.orgDetails.organizationSaveSuccess"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSection.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<MessageBox>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<span>{createBizOrganization.messages.errorFound}</span>\n\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\thref={createBizOrganization.messages.runbookLink}\n\t\t\t\t\t\t\t\t\tvariant=\"link\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t<SolaceTypography variant=\"h3\" fontSize={\"14px\"}>\n\t\t\t\t\t\t\t\t\t\t{createBizOrganization.messages.purchaseOrder}\n\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t{createBizOrganization.messages.contactPeTeam}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\">{createBizOrganization.messages.contactPE}</SolaceButton>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</MessageBox>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "color",
+          "type": "expression",
+          "value": "theme.palette.error.light"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSection.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<Box display={\"flex\"}>\n\t\t\t\t\t\t\t\t<SolaceTypography pr={0.5}>{createBizOrganization.products.products}</SolaceTypography>\n\t\t\t\t\t\t\t\t{createBizOrganization.messages.successMessage}\n\t\t\t\t\t\t\t</Box>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "prodValidatedMessageQa"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/RequestSection.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "createBizOrganization.requests.successBannerMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "createBizOrganization.messages.editDeleteMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "createBizOrganization.orgDetails.orgIdWarning"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/AccountAdminsSection.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "createBizOrganization.accountAdmins.successBannerMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMessage"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"For the latest Connector Details, please click the Connector Deployment Info Refresh icon.\""
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`deleting-${request.deploymentId}`"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "false"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ display: \"flex\" }}>\n\t\t\t\t\t\t\t\t\t<SpinnerIcon size={18} sx={{ marginRight: theme.spacing() }} />\n\t\t\t\t\t\t\t\t\t<SolaceTypography>\n\t\t\t\t\t\t\t\t\t\tDeleting the Connector with Deployment ID: {request.deploymentId} and Service ID:{\" \"}\n\t\t\t\t\t\t\t\t\t\t{request.serviceId}\n\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t</div>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`error-${request.deploymentId}`"
+        },
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ display: \"flex\", justifyContent: \"space-between\", alignItems: \"center\" }}>\n\t\t\t\t\t\t\t\t\t<SolaceTypography>\n\t\t\t\t\t\t\t\t\t\tFailed to delete the Connector with Deployment ID: {request.deploymentId} and Service ID:{\" \"}\n\t\t\t\t\t\t\t\t\t\t{request.serviceId}\n\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\t\tdense\n\t\t\t\t\t\t\t\t\t\tvariant=\"text\"\n\t\t\t\t\t\t\t\t\t\tdataQa={`details-${request.deploymentId}`}\n\t\t\t\t\t\t\t\t\t\tonClick={() => setErrorDetails(`${request.deploymentId}-disable`)}\n\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\tShow Details\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</div>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/PrivateRegions.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "deleteDialog.contentText"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/PrivateRegions.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "`Note: This page consists of private regions specific to ${orgId} organization.`"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "info"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "note"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "cloneError"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "(error as Error)?.data?.message ?? `Failed to clone ${datacenterId} from ${selectedDatacenterId}`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "sameDCError"
+        },
+        {
+          "name": "message",
+          "type": "expression",
+          "value": "\"Unable to clone a datacenter from itself\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t<Typography>{modifyError.message}</Typography>\n\t\t\t\t\t\t\t\t{modifyError.id && <Typography variant=\"caption\">{\"Error ID: \" + modifyError.id}</Typography>}\n\t\t\t\t\t\t\t</>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorModifyingProfile"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/AddCompatibilityDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t<Typography>{modifyError.message}</Typography>\n\t\t\t\t\t\t\t\t\t{modifyError.id && <Typography variant=\"caption\">{\"Error ID: \" + modifyError.id}</Typography>}\n\t\t\t\t\t\t\t\t</>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorModifyingProfile"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/AddCompatibilityDialog.tsx",
+      "props": [
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t<Typography>{modifyError.message}</Typography>\n\t\t\t\t\t\t\t\t\t{modifyError.id && <Typography variant=\"caption\">{\"Error ID: \" + modifyError.id}</Typography>}\n\t\t\t\t\t\t\t\t</>"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorModifyingProfile"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "warn"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`deleting-${request.infrastructureId}`"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "false"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ display: \"flex\" }}>\n\t\t\t\t\t\t\t\t\t<SpinnerIcon size={18} sx={{ marginRight: theme.spacing() }} />\n\t\t\t\t\t\t\t\t\t<Typography>Deleting the collector associated with service {request.serviceName}</Typography>\n\t\t\t\t\t\t\t\t</div>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`error-${request.infrastructureId}`"
+        },
+        {
+          "name": "dense",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "jsx",
+          "value": "<div style={{ display: \"flex\", justifyContent: \"space-between\", alignItems: \"center\" }}>\n\t\t\t\t\t\t\t\t\t<Typography>Failed to delete the collector associated with service {request.serviceName}</Typography>\n\t\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\t\tdense\n\t\t\t\t\t\t\t\t\t\tvariant=\"text\"\n\t\t\t\t\t\t\t\t\t\tdataQa={`details-${request.infrastructureId}`}\n\t\t\t\t\t\t\t\t\t\tonClick={() => setErrorDetails(request.infrastructureId)}\n\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\tShow Details\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</div>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "success"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "successMessage"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "successMsgBox"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "string",
+          "value": "error"
+        },
+        {
+          "name": "showIcon",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "message",
+          "type": "variable",
+          "value": "errorMessage"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "errorMsgBox"
+        }
+      ]
+    }
+  ]
+}
