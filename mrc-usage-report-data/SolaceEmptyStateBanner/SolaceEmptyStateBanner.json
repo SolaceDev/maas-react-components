@@ -1,0 +1,78 @@
+{
+  "componentName": "SolaceEmptyStateBanner",
+  "totalUsages": 1,
+  "usagesByMfe": {
+    "intg": 1
+  },
+  "commonProps": [
+    {
+      "name": "bannerImage",
+      "count": 1
+    },
+    {
+      "name": "subtitle",
+      "count": 1
+    },
+    {
+      "name": "title",
+      "count": 1
+    },
+    {
+      "name": "description",
+      "count": 1
+    },
+    {
+      "name": "primaryButton",
+      "count": 1
+    },
+    {
+      "name": "secondaryButton",
+      "count": 1
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorsEmptyState.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorsEmptyState.tsx",
+      "props": [
+        {
+          "name": "bannerImage",
+          "type": "jsx",
+          "value": "<ConnectorsEmptyStateBanner />"
+        },
+        {
+          "name": "subtitle",
+          "type": "expression",
+          "value": "en.connectors.labels.emptyState.subtitle"
+        },
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "en.connectors.labels.emptyState.title"
+        },
+        {
+          "name": "description",
+          "type": "expression",
+          "value": "en.connectors.labels.emptyState.description"
+        },
+        {
+          "name": "primaryButton",
+          "type": "object",
+          "value": "{\n\t\t\t\tlabel: en.connectors.buttons.checkoutAvailableConnectors,\n\t\t\t\tonClick: onPrimaryButtonClick,\n\t\t\t\tdataQa: \"connectors-empty-state-primary-button\"\n\t\t\t}"
+        },
+        {
+          "name": "secondaryButton",
+          "type": "object",
+          "value": "{\n\t\t\t\tlabel: en.connectors.buttons.exploreOnMyOwn,\n\t\t\t\tonClick: onSecondaryButtonClick,\n\t\t\t\tdataQa: \"connectors-empty-state-secondary-button\"\n\t\t\t}"
+        }
+      ]
+    }
+  ]
+}

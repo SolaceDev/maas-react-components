@@ -1,0 +1,1005 @@
+{
+  "componentName": "SolaceTruncatableLink",
+  "totalUsages": 48,
+  "usagesByMfe": {
+    "ep": 46,
+    "intg": 2
+  },
+  "commonProps": [
+    {
+      "name": "id",
+      "count": 48
+    },
+    {
+      "name": "text",
+      "count": 48
+    },
+    {
+      "name": "onClick",
+      "count": 31
+    },
+    {
+      "name": "dataQa",
+      "count": 8
+    },
+    {
+      "name": "href",
+      "count": 2
+    },
+    {
+      "name": "key",
+      "count": 1
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddToEnvironmentDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/VersionList/VersionItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/dashboard/DashboardEventTableCell.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/designer/graph/ReferencingApplicationItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionListItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EntityDetailAccordion.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/ExistingMessagingServices.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/MessagingServiceAccordion.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/mapEntityVersionItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/RemTable.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareConfigurationDialog.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/ApplicationsContent.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/EventsContent.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignerEntityName.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SubjectRelationshipDetail.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/TemplateList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeContextSelector.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DomainsList.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/Enumerations.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/searchPanel/mapEntityItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApi.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProducts.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/Schemas.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestTable.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSidePanel.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applications/Applications.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/Events.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/ExpandedSchemaItem.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "eventBrokerNameValue"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "selectedEventBroker.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => {\n\t\t\t\t\t\t\t\twindow.open(\n\t\t\t\t\t\t\t\t\t`/ep/runtime/modeled-event-meshes/${selectedEventMesh.id}/eventBrokers?selectedMessagingServiceId=${selectedEventBroker.id}`\n\t\t\t\t\t\t\t\t);\n\t\t\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "applicationNameValue"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "selectedApplication.name"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "authenticationTypeValue"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "getCredentialsLabel(credentials)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "authenticationTypeAValue"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "getCredentialsFieldValue(credentials, \"inputA\")"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "authenticationTypeBValue"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "getCredentialsFieldValue(credentials, \"inputB\")"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "clientProfile"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "selectedClientProfileName ?? \"default\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "restDeliveryPointNameValue"
+        },
+        {
+          "name": "text",
+          "type": "variable",
+          "value": "rdpName"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "clientProfileValue"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "selectedClientProfileName ?? \"default\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddToEnvironmentDialog.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${entityType}NameValue`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "entity.name"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionList/VersionItem.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "version.id"
+        },
+        {
+          "name": "text",
+          "type": "jsx",
+          "value": "<>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<Name>{`${version.parentName} `}</Name>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{version.display || version.semver}\n\t\t\t\t\t\t\t\t\t\t\t\t</>"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionList/VersionItem.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "version.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "onVersionNameClick ? version.display || version.semver : <Name>{version.display || version.semver}</Name>"
+        },
+        {
+          "name": "onClick",
+          "type": "expression",
+          "value": "onVersionNameClick ? () => onVersionNameClick(version) : undefined"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/dashboard/DashboardEventTableCell.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "event.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "event.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => eventSelectionCallback(event)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/graph/ReferencingApplicationItem.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "applicationVersion.id"
+        },
+        {
+          "name": "text",
+          "type": "jsx",
+          "value": "<Name>{`${applicationVersion.parent.name} `}</Name>"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "(event) => {\n\t\t\t\t\t\t\t\t\tevent.stopPropagation();\n\t\t\t\t\t\t\t\t\tonVersionClick({\n\t\t\t\t\t\t\t\t\t\tentityId: applicationVersion.parent.id,\n\t\t\t\t\t\t\t\t\t\tentityVersionId: applicationVersion.id,\n\t\t\t\t\t\t\t\t\t\tentityType: EntityType.application,\n\t\t\t\t\t\t\t\t\t\tnodeId: null\n\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/graph/ReferencingApplicationItem.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "applicationVersion.id"
+        },
+        {
+          "name": "text",
+          "type": "jsx",
+          "value": "<VersionName>{applicationVersion.displayName || applicationVersion.version}</VersionName>"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "(event) => {\n\t\t\t\t\t\t\t\t\tevent.stopPropagation();\n\t\t\t\t\t\t\t\t\tonVersionClick({\n\t\t\t\t\t\t\t\t\t\tentityId: applicationVersion.parent.id,\n\t\t\t\t\t\t\t\t\t\tentityVersionId: applicationVersion.id,\n\t\t\t\t\t\t\t\t\t\tentityType: EntityType.application,\n\t\t\t\t\t\t\t\t\t\tnodeId: null\n\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionListItem.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "eventApiProductVersion.id"
+        },
+        {
+          "name": "text",
+          "type": "variable",
+          "value": "eventApiProductName"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "(e) => {\n\t\t\t\t\t\t\t\t\te.stopPropagation();\n\t\t\t\t\t\t\t\t\tonNameClick(eventApiProductVersion);\n\t\t\t\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EntityDetailAccordion.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "item.id"
+        },
+        {
+          "name": "text",
+          "type": "variable",
+          "value": "itemName"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "(e) => {\n\t\t\t\t\t\t\te.stopPropagation();\n\t\t\t\t\t\t\tonNameClick(item);\n\t\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/ExistingMessagingServices.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.name"
+        },
+        {
+          "name": "href",
+          "type": "expression",
+          "value": "`/services/${row.serviceId ?? row.solaceCloudMessagingServiceId}`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/MessagingServiceAccordion.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "messagingService.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "messagingService.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => onTitleLinkClick(messagingService)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "messagingService[Accordion][Title]"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/mapEntityVersionItem.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${entityVersion.parent.id}-${entityVersion.id}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "entityVersion.parent.name"
+        },
+        {
+          "name": "onClick",
+          "type": "expression",
+          "value": "handleViewSelectedEntityVersionFromList && (!applicationDomainLocked || isSharedEntityVersion(entityVersion))\n\t\t\t\t\t\t? (e) => handleViewSelectedEntityVersionFromList(e, entityVersion)\n\t\t\t\t\t\t: null"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/RemTable.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id + \"_name\""
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.eventMeshName"
+        },
+        {
+          "name": "onClick",
+          "type": "expression",
+          "value": "hasAccess ? () => handleViewDetail(row) : undefined"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareConfigurationDialog.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${associatedEvents?.[0]?.id}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "associatedEvents?.[0]?.name ?? \"\""
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleDetailDialogOpen(associatedEvents?.[0])"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${associatedEvents?.[0]?.name}`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/ApplicationsContent.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`appVersionSummaryPopoverText=${applicationVersion.id}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "applicationVersion.displayName || applicationVersion.version"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/ApplicationsContent.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`appVersionName-${applicationVersion.id}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "applicationVersion.displayName || applicationVersion.version"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => openApplicationDetails(applicationVersion.parent, applicationVersion)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/ApplicationsContent.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`appName-${application.id}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "application.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => openApplicationDetails(application)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/EventsContent.tsx",
+      "props": [
+        {
+          "name": "key",
+          "type": "variable",
+          "value": "index"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "event?.name"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "event?.name ?? \"\""
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleDetailDialogOpen(event)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/EventsContent.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "associatedEventParents?.[0]?.name"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "associatedEventParents?.[0]?.name ?? \"\""
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleDetailDialogOpen(associatedEventParents?.[0])"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignerEntityName.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${schemaDetail?.name}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "schemaDetail?.name ?? \"\""
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleDetailDialogOpen(null)"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${schemaDetail?.name}`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignerEntityName.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${applicationDetail?.parent?.name}-${applicationDetail?.version}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "applicationDetail?.parent?.name ?? \"\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignerEntityName.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${eventDetail?.parent?.name}-${eventDetail?.version}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "eventDetail?.parent?.name ?? \"\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SubjectRelationshipDetail.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${versionNumber}`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "`Version ${versionNumber}`"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleVersionLinkClick(relation)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/TemplateList.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${row.id}-templateLink`"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleSelectTemplate(row.id)"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.templateName"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeContextSelector.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"contextSelector-title\""
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "`${contextId ? contextOptions.find((contextOption) => contextOption.contextId === contextId)?.name : \"\"}`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DomainsList.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "item.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "item.name"
+        },
+        {
+          "name": "onClick",
+          "type": "expression",
+          "value": "canOpen ? () => onOpen(item) : undefined"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/Enumerations.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleEdit(row)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/searchPanel/mapEntityItem.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "node.versionId"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "node.name"
+        },
+        {
+          "name": "onClick",
+          "type": "expression",
+          "value": "handleViewSelectedEntityVersionFromList ? (e) => handleViewSelectedEntityVersionFromList(e, node) : null"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApi.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleEdit(row)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProducts.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleEdit(row)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/Schemas.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleEdit(row)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestTable.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.eventId"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.eventName"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "(e) => {\n\t\t\t\t\t\te.stopPropagation();\n\t\t\t\t\t\thandleRowHighlight(row);\n\t\t\t\t\t\tonEventClick(row.event);\n\t\t\t\t\t}"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestTable.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.applicationId"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.application?.name ?? \"-\""
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSidePanel.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "request.applicationId"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "request.application.name"
+        },
+        {
+          "name": "onClick",
+          "type": "expression",
+          "value": "applicationDomainLocked ? null : () => onApplicationClick(request.application)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applications/Applications.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleEdit(row)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/Events.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.name"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => handleEdit(row)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/ExpandedSchemaItem.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "`${schemaVersion.id}-link`"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "schemaVersion.displayName ? schemaVersion.displayName : schemaVersion.version"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() => onViewSchemaVersionDetails(schema, schemaVersion)"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${schemaVersion.id}-viewDetails`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+      "props": [
+        {
+          "name": "onClick",
+          "type": "expression",
+          "value": "environmentAuth.canOpenModelEventBroker ? () => handleOpenEventMesh(eventMesh.id, eventBroker.id) : undefined"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "eventBroker.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "eventBroker.name"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+      "props": [
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${applicationVersion.id}-applicationVersion-link`"
+        },
+        {
+          "name": "href",
+          "type": "expression",
+          "value": "`/ep/designer/domains/${application?.applicationDomainId}/applications/${application?.id}?selectedVersionId=${applicationVersion?.id}&selectedTab=details`"
+        },
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "applicationVersion.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "applicationVersion.displayName || applicationVersion.version"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "limitString(row.name, 35)"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${camelCase(row.name)}_button`"
+        },
+        {
+          "name": "onClick",
+          "type": "function",
+          "value": "() =>\n\t\t\t\t\t\t\t\t\tstartTransition(() => {\n\t\t\t\t\t\t\t\t\t\thistory.push(`/micro-integrations/${row.id}`);\n\t\t\t\t\t\t\t\t\t})"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "row.id"
+        },
+        {
+          "name": "text",
+          "type": "expression",
+          "value": "row.name"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`row.name_button`"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1192 @@
+{
+  "componentName": "SolaceToggle",
+  "totalUsages": 35,
+  "usagesByMfe": {
+    "ep": 25,
+    "intg": 2,
+    "mc": 3,
+    "saas": 2,
+    "maas-ops-react": 3
+  },
+  "commonProps": [
+    {
+      "name": "name",
+      "count": 35
+    },
+    {
+      "name": "onChange",
+      "count": 35
+    },
+    {
+      "name": "isOn",
+      "count": 34
+    },
+    {
+      "name": "id",
+      "count": 24
+    },
+    {
+      "name": "label",
+      "count": 22
+    },
+    {
+      "name": "dataQa",
+      "count": 20
+    },
+    {
+      "name": "helperText",
+      "count": 6
+    },
+    {
+      "name": "disabled",
+      "count": 4
+    },
+    {
+      "name": "...",
+      "count": 3
+    },
+    {
+      "name": "title",
+      "count": 2
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbar.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraph.stories.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultParentSchemaConf.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultKafkaTopicConf.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplate.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTConsumers.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+    "../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/components/atoms/AtomToggle.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/Security.tsx",
+    "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/CreatePrivateRegion.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbar.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"shouldGroupEdges\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"shouldGroupEdges\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}shouldGroupEdges`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShouldGroupEdges?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "shouldGroupEdges"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbar.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showWarnings\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showWarnings\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}showWarnings`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShowWarnings?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbar.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showFullName\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showFullName\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}showFullName`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShowFullNames?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showFullNames"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"shouldGroupEdges\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"shouldGroupEdges\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}shouldGroupEdges`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShouldGroupEdges?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "shouldGroupEdges"
+        },
+        {
+          "name": "disabled",
+          "type": "variable",
+          "value": "disableActionToChangeGraph"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showWarnings\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showWarnings\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}showWarnings`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShowWarnings?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showFullName\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showFullName\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}showFullName`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShowFullNames?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showFullNames"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showNewEventVersionIndicator\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showNewEventVersionIndicator\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}showNewEventVersionIndicator`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShowNewEventVersionIndicator?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showNewEventVersionIndicator"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphToolbarV2.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"snapNodeToGrid\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"snapNodeToGrid\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${dataQa ? dataQa + \"-\" : \"\"}snapNodeToGrid`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setSnapNodeToGrid?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "snapNodeToGrid"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Show Warnings\""
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => handleShowWarningsChange(event.value)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Show Warnings\""
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => handleShowWarningsChange(event.value)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Show Warnings\""
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => handleShowWarningsChange(event.value)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Show Warnings\""
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => handleShowWarningsChange(event.value)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Show Warnings\""
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => handleShowWarningsChange(event.value)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraph.stories.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "showWarnings"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Show Warnings\""
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => handleShowWarningsChange(event.value)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraph.stories.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "disableMultiSelect"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Disable Multi Select\""
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "disableMultiSelect"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setDisableMultiSelect(event.value)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraph.stories.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "disableMoveNodes"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Disable Move Nodes\""
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "disableMoveNodes"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setDisableMoveNodes(event.value)"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showWarnings\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showWarnings\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"showWarnings\""
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShowWarnings?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showWarnings"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showFullNames\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showFullNames\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"showFullNames\""
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShowFullNames?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showFullNames"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showSchema\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showSchema\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"showSchema\""
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => setShowSchema?.(event.value)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showSchema"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "show_all_resources"
+        },
+        {
+          "name": "isOn",
+          "type": "expression",
+          "value": "selectedEnvironment?.showAllResources"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "({ value }) => handleChangeEnvironmentSelector(selectedEnvironment.environmentId, value)"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "show_all_envs"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "messages.header.showAllResources"
+        },
+        {
+          "name": "helperText",
+          "type": "expression",
+          "value": "messages.header.helperText"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "REMHeaderShowAllResources"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultParentSchemaConf.tsx",
+      "props": [
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "hideMatches"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "hide-match"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "value": "Hide Matches"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleHideMatch"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultKafkaTopicConf.tsx",
+      "props": [
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "hideSubRelationshipsMatches"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "hide-match"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "value": "Hide Matches"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleSubjectRelationshipHideMatch"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplate.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "showPropertyNames"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "application.configuration.showPropertyNames"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showPropertyNames"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "() => setShowPropertyNames(!showPropertyNames)"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "showPropertyNamesToggle"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTConsumers.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showAdvancedProperties\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showAdvancedProperties\""
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "\"Show Advanced Properties\""
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "\"showAdvancedPropertiesToggle\""
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "() => setShowAdvancedProperties((prevValue) => !prevValue)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showAdvancedProperties"
+        },
+        {
+          "name": "disabled",
+          "type": "expression",
+          "value": "!restDeliveryPoint?.restConsumerConfiguration"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTConsumers.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "expression",
+          "value": "\"showAdvancedProperties\""
+        },
+        {
+          "name": "name",
+          "type": "expression",
+          "value": "\"showAdvancedProperties\""
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "en.application.configuration.restDeliveryPoint.showAdvancedProperties"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`showAdvancedProperties`"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "() => setShowAdvancedProperties((prevValue) => !prevValue)"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showAdvancedProperties"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "show_all"
+        },
+        {
+          "name": "isOn",
+          "type": "expression",
+          "value": "selectedEnvironment.showAllResources"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleShowAllEnvs"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "show_all_envs"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "t({ id: \"id_show_all_environments\", message: \"Show resources in all environments\" })"
+        },
+        {
+          "name": "helperText",
+          "type": "expression",
+          "value": "t({\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tid: \"id_show_all_environments_help\",\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tmessage: \"Enable to manage resources across environments\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t})"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "show_all"
+        },
+        {
+          "name": "isOn",
+          "type": "expression",
+          "value": "selectedEnvironment.showAllResources"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleShowAllEnvs"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "show_all_envs"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "t({ id: \"id_show_all_environments\", message: \"Show resources in all environments\" })"
+        },
+        {
+          "name": "helperText",
+          "type": "expression",
+          "value": "t({\n\t\t\t\t\t\t\t\t\t\t\t\tid: \"id_show_all_environments_help\",\n\t\t\t\t\t\t\t\t\t\t\t\tmessage: \"Enable to manage resources across environments\"\n\t\t\t\t\t\t\t\t\t\t\t})"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/components/atoms/AtomToggle.tsx",
+      "props": [
+        {
+          "name": "...",
+          "type": "spread",
+          "value": "props"
+        },
+        {
+          "name": "id",
+          "type": "variable",
+          "value": "name"
+        },
+        {
+          "name": "name",
+          "type": "variable",
+          "value": "name"
+        },
+        {
+          "name": "dataQa",
+          "type": "variable",
+          "value": "name"
+        },
+        {
+          "name": "hasErrors",
+          "type": "variable",
+          "value": "hasErrors"
+        },
+        {
+          "name": "helperText",
+          "type": "expression",
+          "value": "errorText || helperText"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "value"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleChange"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/Security.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "delete_protection"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "delete_protection"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "delete-protection"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "isLocked"
+        },
+        {
+          "name": "disabled",
+          "type": "expression",
+          "value": "!canConfigure"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleDeleteProtection"
+        },
+        {
+          "name": "stateText",
+          "type": "boolean",
+          "value": "true"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "t({ id: \"id_delete_protection\", message: \"Delete Protection\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "show_all"
+        },
+        {
+          "name": "isOn",
+          "type": "expression",
+          "value": "selectedEnvironment.showAllResources"
+        },
+        {
+          "name": "onChange",
+          "type": "variable",
+          "value": "handleShowAllEnvs"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "show_all_envs"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "t({ id: \"id_show_all_environments\", message: \"Show resources in all environments\" })"
+        },
+        {
+          "name": "helperText",
+          "type": "expression",
+          "value": "t({ id: \"id_show_all_environments_help\", message: \"Enable to manage resources across environments\" })"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "value": "securitySettingsPreAuth"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "brandableTextValueConverter(\"PubSub+\", \"string\") + \" \" + en.accountSettings.preAuthText"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "securitySettingsPreAuth"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(value) => togglePreAuth(value.value)"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "value": "Security Settings Pre Auth"
+        },
+        {
+          "name": "isOn",
+          "type": "expression",
+          "value": "!preOrgConfigResponse?.data.useAuthWebUILinks"
+        },
+        {
+          "name": "disabled",
+          "type": "expression",
+          "value": "preAuthDisabled || isLoadingAuthConfig || isFetchingAuthConfig"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "preAuthText"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+      "props": [
+        {
+          "name": "helperText",
+          "type": "expression",
+          "value": "en.notifications[showUnreadNotifications ? \"showingUnreadNotifications\" : \"showingAllNotifications\"]"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "value": "showUnreadNotifications"
+        },
+        {
+          "name": "dataQa",
+          "type": "string",
+          "value": "showUnreadNotifications"
+        },
+        {
+          "name": "label",
+          "type": "expression",
+          "value": "en.notifications.showUnreadNotifications"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "showUnreadNotifications"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(e) => setShowUnreadNotifications(e.value)"
+        },
+        {
+          "name": "title",
+          "type": "expression",
+          "value": "en.notifications.showUnreadNotifications"
+        },
+        {
+          "name": "isOn",
+          "type": "variable",
+          "value": "showUnreadNotifications"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "value": "profileToggle"
+        },
+        {
+          "name": "isOn",
+          "type": "expression",
+          "value": "resource.enabled"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "() => handleResourceToggle(resource.profile)"
+        },
+        {
+          "name": "dataQa",
+          "type": "expression",
+          "value": "`${resource.profile}_toggle`"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/CreatePrivateRegion.tsx",
+      "props": [
+        {
+          "name": "...",
+          "type": "spread",
+          "value": "rest"
+        },
+        {
+          "name": "isOn",
+          "type": "expression",
+          "value": "rest.value"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "datacenterVisibility"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => rest.onChange(event.value)"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "value": "Visible"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/CreatePrivateRegion.tsx",
+      "props": [
+        {
+          "name": "...",
+          "type": "spread",
+          "value": "rest"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "datacenterAvailability"
+        },
+        {
+          "name": "onChange",
+          "type": "function",
+          "value": "(event) => rest.onChange(event.value)"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "value": "Available"
+        }
+      ]
+    }
+  ]
+}

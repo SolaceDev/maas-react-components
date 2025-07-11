@@ -1,8 +1,8 @@
 name: MRC Usage Report Generation
 
 on:
-  schedule:
-    - cron: "0 8 * * *" # Daily at 8 AM UTC
+  # schedule:
+  #   - cron: "0 8 * * *" # Daily at 8 AM UTC
   workflow_dispatch: # Manual trigger
   push:
     branches:

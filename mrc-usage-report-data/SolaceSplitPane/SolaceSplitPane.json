@@ -1,0 +1,72 @@
+{
+  "componentName": "SolaceSplitPane",
+  "totalUsages": 2,
+  "usagesByMfe": {
+    "ep": 2
+  },
+  "commonProps": [
+    {
+      "name": "minSize",
+      "count": 2
+    },
+    {
+      "name": "defaultSize",
+      "count": 2
+    },
+    {
+      "name": "maxSize",
+      "count": 2
+    }
+  ],
+  "files": [
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx"
+  ],
+  "customization": {
+    "styledComponentCount": 0,
+    "customStylesCount": 0,
+    "overriddenPropertiesCounts": {}
+  },
+  "instances": [
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+      "props": [
+        {
+          "name": "minSize",
+          "type": "number",
+          "value": "500"
+        },
+        {
+          "name": "defaultSize",
+          "type": "number",
+          "value": "500"
+        },
+        {
+          "name": "maxSize",
+          "type": "expression",
+          "value": "-700"
+        }
+      ]
+    },
+    {
+      "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx",
+      "props": [
+        {
+          "name": "minSize",
+          "type": "number",
+          "value": "500"
+        },
+        {
+          "name": "defaultSize",
+          "type": "number",
+          "value": "500"
+        },
+        {
+          "name": "maxSize",
+          "type": "expression",
+          "value": "Math.max(500, leftPanelMaxWidth)"
+        }
+      ]
+    }
+  ]
+}
