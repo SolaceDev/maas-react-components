@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - iphadte/DATAGO-103052 # Trigger on pushes to the main branch
-      - feature/mrc-usage-report-data # Trigger on pushes to the main branch
+      # - feature/mrc-usage-report-data # Trigger on pushes to the main branch
 
 jobs:
   generate-and-publish-report:
