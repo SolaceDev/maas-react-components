@@ -3,7 +3,7 @@ import axios from "axios";
 export async function getAllComponents() {
 	try {
 		const response = await axios.get(
-			"https://api.github.com/repos/SolaceDev/maas-react-components/contents/mrc-usage-report-data?ref=feature/mrc-usage-report-data",
+			"https://api.github.com/repos/SolaceDev/maas-react-components/contents/mrc-usage-report-data/per-component?ref=feature/mrc-usage-report-data",
 			{
 				headers: {
 					Accept: "application/vnd.github+json",

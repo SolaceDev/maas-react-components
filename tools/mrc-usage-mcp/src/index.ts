@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable sonarjs/no-duplicated-branches */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -14,12 +15,18 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { getUsageForComponent } from "./tools/getUsageForComponent.js";
 import { getAllComponents } from "./tools/getAllComponents.js";
+import { getComponentsByApplication } from "./tools/getComponentsByApplication.js";
+import { getComponentsByMfe } from "./tools/getComponentsByMfe.js";
+import { getApplicationStats } from "./tools/getApplicationStats.js";
+import { getMfeStats } from "./tools/getMfeStats.js";
 import axios from "axios";
 
 // Component data types
 interface ComponentData {
 	[key: string]: unknown;
 }
+
+const APPLICATION_NAME_DESCRIPTION = "The name of the application.";
 
 class MrcUsageServer {
 	private server: Server;
@@ -31,7 +38,10 @@ class MrcUsageServer {
 		this.server = new Server(
 			{
 				name: "mrc-usage-mcp",
-				version: "0.1.0"
+				version: "0.1.0",
+				description:
+					"MaaS React Components usage analysis and optimization server - tracks component imports, props usage, and patterns across the codebase",
+				keywords: ["react", "components", "usage", "maas", "mrc", "patterns", "props"]
 			},
 			{
 				capabilities: {
@@ -66,7 +76,7 @@ class MrcUsageServer {
 	private async fetchAllComponents(): Promise<string[]> {
 		try {
 			const response = await axios.get(
-				"https://api.github.com/repos/SolaceDev/maas-react-components/contents/mrc-usage-report-data?ref=feature/mrc-usage-report-data",
+				"https://api.github.com/repos/SolaceDev/maas-react-components/contents/mrc-usage-report-data/per-component?ref=feature/mrc-usage-report-data",
 				{
 					headers: {
 						Accept: "application/vnd.github+json",
@@ -192,39 +202,139 @@ class MrcUsageServer {
 		this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
 			tools: [
 				{
-					name: "get_usage_for_component",
-					description: "Retrieves usage data for a specific MRC component from the maas-react-components repository.",
+					name: "mrc_analyze_component_usage",
+					description:
+						"Analyze how MaaS React Components are used across the codebase - imports, props, patterns, and usage statistics. Perfect for questions like 'How is SolaceButton used?' or 'What are the usage patterns for this component?'",
 					inputSchema: {
 						type: "object",
 						properties: {
 							componentName: {
 								type: "string",
-								description: "The name of the MRC component (e.g., 'SolaceButton')."
+								description: "The name of the MRC component to analyze usage for (e.g., 'SolaceButton', 'SolaceCard')"
+							},
+							analysisType: {
+								type: "string",
+								enum: ["imports", "props", "patterns", "statistics", "all"],
+								description: "Type of usage analysis to perform",
+								default: "all"
 							}
 						},
 						required: ["componentName"]
 					}
 				},
 				{
-					name: "get_all_components",
-					description: "Retrieves a list of all MRC components.",
+					name: "mrc_get_all_components",
+					description:
+						"Retrieve a comprehensive list of all MaaS React Components available in the design system. Use this for component discovery, auditing, and getting an overview of the component library.",
 					inputSchema: {
 						type: "object",
-						properties: {}
+						properties: {
+							includeUsageStats: {
+								type: "boolean",
+								description: "Whether to include basic usage statistics for each component",
+								default: false
+							}
+						}
 					}
 				},
 				{
-					name: "get_resource_info",
-					description: "Get information about the cached component resources for debugging purposes.",
+					name: "mrc_find_component_dependencies",
+					description:
+						"Find dependencies and relationships between MaaS React Components. Identifies which components depend on others and usage patterns across the codebase.",
+					inputSchema: {
+						type: "object",
+						properties: {
+							componentName: {
+								type: "string",
+								description: "The component to analyze dependencies for"
+							},
+							direction: {
+								type: "string",
+								enum: ["depends-on", "used-by", "both"],
+								description: "Direction of dependency analysis",
+								default: "both"
+							}
+						},
+						required: ["componentName"]
+					}
+				},
+				{
+					name: "mrc_usage_diagnostics",
+					description:
+						"Get diagnostic information about the MRC usage analysis system - cached data, component availability, and system status. Useful for debugging and understanding data freshness.",
 					inputSchema: {
 						type: "object",
 						properties: {
 							component: {
 								type: "string",
 								description:
-									"Optional: Get information about a specific component. If not provided, returns general resource information."
+									"Optional: Get diagnostics for a specific component. If not provided, returns general system diagnostics."
 							}
 						}
+					}
+				},
+				{
+					name: "get_components_by_application",
+					description: "Get a list of all components used in a specific application.",
+					inputSchema: {
+						type: "object",
+						properties: {
+							applicationName: {
+								type: "string",
+								description: APPLICATION_NAME_DESCRIPTION
+							}
+						},
+						required: ["applicationName"]
+					}
+				},
+				{
+					name: "get_components_by_mfe",
+					description: "Get a list of all components used in a specific MFE (Micro Frontend).",
+					inputSchema: {
+						type: "object",
+						properties: {
+							applicationName: {
+								type: "string",
+								description: APPLICATION_NAME_DESCRIPTION
+							},
+							mfeName: {
+								type: "string",
+								description: "The name of the MFE (Micro Frontend)."
+							}
+						},
+						required: ["applicationName", "mfeName"]
+					}
+				},
+				{
+					name: "get_application_stats",
+					description: "Get usage statistics for a specific application.",
+					inputSchema: {
+						type: "object",
+						properties: {
+							applicationName: {
+								type: "string",
+								description: APPLICATION_NAME_DESCRIPTION
+							}
+						},
+						required: ["applicationName"]
+					}
+				},
+				{
+					name: "get_mfe_stats",
+					description: "Get usage statistics for a specific MFE (Micro Frontend).",
+					inputSchema: {
+						type: "object",
+						properties: {
+							applicationName: {
+								type: "string",
+								description: APPLICATION_NAME_DESCRIPTION
+							},
+							mfeName: {
+								type: "string",
+								description: "The name of the MFE (Micro Frontend)."
+							}
+						},
+						required: ["applicationName", "mfeName"]
 					}
 				}
 			]
@@ -232,6 +342,7 @@ class MrcUsageServer {
 
 		this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
 			switch (request.params.name) {
+				case "mrc_analyze_component_usage":
 				case "get_usage_for_component": {
 					if (!request.params.arguments) {
 						throw new McpError(ErrorCode.InvalidParams, "Missing arguments");
@@ -249,6 +360,7 @@ class MrcUsageServer {
 						]
 					};
 				}
+				case "mrc_get_all_components":
 				case "get_all_components": {
 					// Use cached component list if available, otherwise fetch from GitHub
 					let allComponents;
@@ -272,6 +384,25 @@ class MrcUsageServer {
 						]
 					};
 				}
+				case "mrc_find_component_dependencies": {
+					if (!request.params.arguments) {
+						throw new McpError(ErrorCode.InvalidParams, "Missing arguments");
+					}
+
+					const componentName = request.params.arguments.componentName as string;
+					const result = await this.fetchComponentData(componentName);
+
+					// For now, return the component data - you can enhance this later to specifically analyze dependencies
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify(result, null, 2)
+							}
+						]
+					};
+				}
+				case "mrc_usage_diagnostics":
 				case "get_resource_info": {
 					const component = request.params.arguments?.component as string | undefined;
 
@@ -308,6 +439,74 @@ class MrcUsageServer {
 							{
 								type: "text",
 								text: JSON.stringify(info, null, 2)
+							}
+						]
+					};
+				}
+				case "get_components_by_application": {
+					const { applicationName } = request.params.arguments as { applicationName: string };
+					const result = await getComponentsByApplication(applicationName);
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify(result, null, 2)
+							}
+						]
+					};
+				}
+				case "get_components_by_mfe":
+				case "get_components_by_sub_application": {
+					const { applicationName, mfeName, subApplicationName } = request.params.arguments as {
+						applicationName: string;
+						mfeName?: string;
+						subApplicationName?: string;
+					};
+					// Support both old and new parameter names
+					const mfeNameToUse = mfeName || subApplicationName;
+					if (!mfeNameToUse) {
+						throw new McpError(ErrorCode.InvalidParams, "Missing mfeName parameter");
+					}
+					const result = await getComponentsByMfe(applicationName, mfeNameToUse);
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify(result, null, 2)
+							}
+						]
+					};
+				}
+				case "get_application_stats": {
+					const { applicationName } = request.params.arguments as { applicationName: string };
+					const result = await getApplicationStats(applicationName);
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify(result, null, 2)
+							}
+						]
+					};
+				}
+				case "get_mfe_stats":
+				case "get_sub_application_stats": {
+					const { applicationName, mfeName, subApplicationName } = request.params.arguments as {
+						applicationName: string;
+						mfeName?: string;
+						subApplicationName?: string;
+					};
+					// Support both old and new parameter names
+					const mfeNameToUse = mfeName || subApplicationName;
+					if (!mfeNameToUse) {
+						throw new McpError(ErrorCode.InvalidParams, "Missing mfeName parameter");
+					}
+					const result = await getMfeStats(applicationName, mfeNameToUse);
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify(result, null, 2)
 							}
 						]
 					};
