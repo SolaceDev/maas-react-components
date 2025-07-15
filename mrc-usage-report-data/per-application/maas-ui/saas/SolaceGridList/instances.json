@@ -1,0 +1,197 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "getServiceLimits() as LimitsData[]"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "rowMapping",
+        "type": "expression",
+        "value": "rowMapping(false)"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceLimitsList"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "convertMsgSpoolLimits()"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "rowMapping",
+        "type": "expression",
+        "value": "rowMapping(true)"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "msgSpoolLimitsList"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "sapAddonLimitsData"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "rowMapping",
+        "type": "expression",
+        "value": "rowMapping(false)"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "erpLimitsList"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "convertConnectorLimits()"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "rowMapping",
+        "type": "expression",
+        "value": "rowMapping(false)"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "connectorsLimitsList"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "environments ? environments : []"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleRowSelection"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "withActionColumnMapping"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "expression",
+        "value": "isSidePanelOpen ? selectedId : 0"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(350px, 2fr) 200px 200px 200px 24px"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environmentGridList"
+      },
+      {
+        "name": "numOfGridListItemDisplayed",
+        "type": "expression",
+        "value": "gridRowMaxVisible()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "_.concat(outOfSyncServices, syncedServices)"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(350px, 2fr) 120px 24px"
+      },
+      {
+        "name": "numOfGridListItemDisplayed",
+        "type": "number",
+        "value": "10"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "out-of-sync-collectors"
+      }
+    ]
+  }
+]

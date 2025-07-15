@@ -1,0 +1,9 @@
+[
+  "../../../maas-ui/micro-frontends/mc/src/components/atoms/AtomCheckBox.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/RotatePasswordsCard.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldMateLinkEncryption.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldCloneCertificateAuth.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldPort.tsx"
+]

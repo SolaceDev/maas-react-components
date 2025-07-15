@@ -1,0 +1,632 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/AppearanceDetailsForm.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${entityType}-customColour-picker`"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "variable",
+        "value": "SupportedNodeColorVariations"
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "entityColourBlocks"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\tsetSelectedColorVariation(e.value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icons"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/AppearanceDetailsForm.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${entityType}-customIconLogo-picker`"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "filteredIcons"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "expression",
+        "value": "selectedCategory === \"logos\" ? imageOrderedKeys : iconOrderedKeys"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "6"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\tsetSelectedIconLogo?.(e.value);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icons"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "variable",
+        "value": "getOptionDisplayValue"
+      },
+      {
+        "name": "autoFocusItem",
+        "type": "variable",
+        "value": "autoFocusItem"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "\"No Results Found\""
+      },
+      {
+        "name": "contentControlPanel",
+        "type": "variable",
+        "value": "contentControlPanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "applicationColorPicker"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "applicationColorPicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Application Color\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "applicationColorBlocks"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "variable",
+        "value": "SupportedNodeColorVariations"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedAppColorVariation"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedAppColorVariation(event.value)"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventColorPicker"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventColorPicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Event Color\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "eventColorBlocks"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "variable",
+        "value": "SupportedNodeColorVariations"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventColorVariation"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedEventColorVariation(event.value)"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "domainColorPicker"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "domainColorPicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Domain Color\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "domainColorBlocks"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "variable",
+        "value": "SupportedNodeColorVariations"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedDomainColorVariation"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedDomainColorVariation(event.value)"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "iconPicker"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "iconPicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Select App Icon\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "filteredIcons"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "expression",
+        "value": "selectedCategory === \"logos\" ? imageOrderedKeys : iconOrderedKeys"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedIconValue"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedIconValue(event.value)"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "6"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "variable",
+        "value": "getOptionDisplayValue"
+      },
+      {
+        "name": "autoFocusItem",
+        "type": "variable",
+        "value": "autoFocusItem"
+      },
+      {
+        "name": "contentControlPanel",
+        "type": "variable",
+        "value": "contentControlPanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "applicationColorPicker"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "applicationColorPicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Application Color\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "applicationColorBlocks"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "variable",
+        "value": "SupportedNodeColorVariations"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedAppColorVariation"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedAppColorVariation(event.value)"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventColorPicker"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventColorPicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Event Color\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "eventColorBlocks"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "variable",
+        "value": "SupportedNodeColorVariations"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventColorVariation"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedEventColorVariation(event.value)"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "domainColorPicker"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "domainColorPicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Domain Color\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "domainColorBlocks"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "variable",
+        "value": "SupportedNodeColorVariations"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedDomainColorVariation"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedDomainColorVariation(event.value)"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "iconPicker"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "iconPicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Select App Icon\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "filteredIcons"
+      },
+      {
+        "name": "iconKeyOrderedList",
+        "type": "expression",
+        "value": "selectedCategory === \"logos\" ? imageOrderedKeys : iconOrderedKeys"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedIconValue"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedIconValue(event.value)"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "6"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "variable",
+        "value": "getOptionDisplayValue"
+      },
+      {
+        "name": "autoFocusItem",
+        "type": "variable",
+        "value": "autoFocusItem"
+      },
+      {
+        "name": "contentControlPanel",
+        "type": "variable",
+        "value": "contentControlPanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "themePicker"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Select Color Theme\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icons\""
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "applicationColorBlocks"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedAppColorVariation"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedAppColorVariation(event.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "themePicker"
+      },
+      {
+        "name": "numOfItemsPerRow",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  }
+]

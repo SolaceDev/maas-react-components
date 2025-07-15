@@ -1,0 +1,8 @@
+[
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx"
+]

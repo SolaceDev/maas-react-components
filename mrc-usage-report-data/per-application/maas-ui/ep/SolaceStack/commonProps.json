@@ -1,0 +1,70 @@
+[
+  {
+    "name": "spacing",
+    "count": 29
+  },
+  {
+    "name": "direction",
+    "count": 12
+  },
+  {
+    "name": "width",
+    "count": 9
+  },
+  {
+    "name": "alignItems",
+    "count": 4
+  },
+  {
+    "name": "paddingLeft",
+    "count": 3
+  },
+  {
+    "name": "justifyContent",
+    "count": 1
+  },
+  {
+    "name": "paddingTop",
+    "count": 1
+  },
+  {
+    "name": "p",
+    "count": 1
+  },
+  {
+    "name": "maxHeight",
+    "count": 1
+  },
+  {
+    "name": "mb",
+    "count": 1
+  },
+  {
+    "name": "m",
+    "count": 1
+  },
+  {
+    "name": "textAlign",
+    "count": 1
+  },
+  {
+    "name": "my",
+    "count": 1
+  },
+  {
+    "name": "marginTop",
+    "count": 1
+  },
+  {
+    "name": "gap",
+    "count": 1
+  },
+  {
+    "name": "marginBottom",
+    "count": 1
+  },
+  {
+    "name": "data-qa",
+    "count": 1
+  }
+]

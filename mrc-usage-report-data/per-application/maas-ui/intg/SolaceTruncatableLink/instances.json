@@ -1,0 +1,47 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "row.id"
+      },
+      {
+        "name": "text",
+        "type": "expression",
+        "value": "limitString(row.name, 35)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${camelCase(row.name)}_button`"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() =>\n\t\t\t\t\t\t\t\t\tstartTransition(() => {\n\t\t\t\t\t\t\t\t\t\thistory.push(`/micro-integrations/${row.id}`);\n\t\t\t\t\t\t\t\t\t})"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "row.id"
+      },
+      {
+        "name": "text",
+        "type": "expression",
+        "value": "row.name"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`row.name_button`"
+      }
+    ]
+  }
+]

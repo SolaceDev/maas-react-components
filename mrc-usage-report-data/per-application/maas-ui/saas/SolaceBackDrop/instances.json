@@ -1,0 +1,77 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "open",
+        "type": "variable",
+        "value": "saveInProgress"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/AccountDetailsShell.tsx",
+    "props": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/Tokens.tsx",
+    "props": [
+      {
+        "name": "open",
+        "type": "variable",
+        "value": "isTokensListLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "open",
+        "type": "expression",
+        "value": "isPageLoading || createTokenIsLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/TokenDetails.tsx",
+    "props": [
+      {
+        "name": "open",
+        "type": "variable",
+        "value": "tokenIsLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "open",
+        "type": "variable",
+        "value": "loading"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "loading"
+      }
+    ]
+  }
+]

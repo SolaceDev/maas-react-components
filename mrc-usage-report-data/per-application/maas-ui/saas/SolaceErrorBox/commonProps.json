@@ -1,0 +1,18 @@
+[
+  {
+    "name": "message",
+    "count": 2
+  },
+  {
+    "name": "showErrorIcon",
+    "count": 1
+  },
+  {
+    "name": "showCloseButton",
+    "count": 1
+  },
+  {
+    "name": "onClose",
+    "count": 1
+  }
+]

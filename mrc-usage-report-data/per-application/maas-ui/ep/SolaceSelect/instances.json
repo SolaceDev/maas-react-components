@@ -1,0 +1,3142 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleTypeChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventMesh[type]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventMesh[type]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventMesh[type]"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "LABEL_TYPE"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "memContent.brokerType"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "mode === \"create\""
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "mode !== \"create\""
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SchemaRegistryConfigCard.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "schemaRegistry[type]"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "schemaRegistry[type]"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Type"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "schemaRegistry[type]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => undefined"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "content.type"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SchemaRegistryAuthList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`eventBroker[kafka][schemaRegistry][${selectedAuthType}][${inputField}]`"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`eventBroker[kafka][schemaRegistry][${selectedAuthType}][${inputField}]`"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels[inputField]"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message ? en.common.error.selectValueRequired : \"\""
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\tconst match = environmentVariableMenuOptions.find((props) => props.value === value);\n\n\t\t\t\t\t\t\t\t\t\t\t\t\treturn match ? match.name : \"\";\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SchemaRegistryAuthList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[kafka][schemaRegistry][authType]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[kafka][schemaRegistry][authType]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.authentication"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\tclearErrors(`kafka.schemaRegistry.${index}.${selectedAuthType}`);\n\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/KafkaAuthList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`eventBroker[kafka][authentication][${authKey}][${inputField}]`"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "kafkaDelimiterIsNotSet || loading"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`eventBroker[kafka][authentication][${KafkaAuthTypes[authKey]}][${inputField}]`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels[inputField]"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "isJaasConfigPassword || readOnly"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message ? en.common.error.selectValueRequired : \"\""
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\tconst match = environmentVariableMenuOptions.find((props) => props.value === value);\n\n\t\t\t\t\t\t\t\t\t\t\t\t\treturn match ? match.name : \"\";\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/KafkaAuthList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[kafka][authentication][authType]"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "kafkaDelimiterIsNotSet || loading"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[kafka][authentication][authType]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.authentication"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\tclearErrors(`kafka.authentication.auth.${selectedAuthType}`);\n\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/KafkaAuthList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`eventBroker[kafka][authentication][saslscram][saslMechanism]`"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "kafkaDelimiterIsNotSet || loading"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[kafka][authentication][saslscram][saslMechanism]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.saslMechanism"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SolaceMessagingServiceDialogCard.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[solace][messaging][type]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[type]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.transport"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => handleTransportChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[type]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[type]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.type"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "readOnly || !!type || !!content.messagingServiceType || !!content.solaceCloudMessagingServiceId"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/MessagingServiceAssociationForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "id"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environment[select]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`Environment`"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onEnvironmantChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEnvironmentId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!selectQueryError.environmentError || !!validationError.environmentError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "selectQueryError.environmentError ?? validationError.environmentError"
+      },
+      {
+        "name": "maxHeight",
+        "type": "variable",
+        "value": "DROPDOWN_LIST_MAX_HEIGHT"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeployToEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "memAssociation[environment]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "memAssociation[environment]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "memAssociation[environment]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.environment"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEnvironmentSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEnvironmentId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.environmentError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.environmentError"
+      },
+      {
+        "name": "maxHeight",
+        "type": "variable",
+        "value": "dropdownListMaxHeight"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeployToEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "memAssociation[eventMesh]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "memAssociation[eventMesh]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "memAssociation[eventMesh]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.mem"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEventMeshSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventMeshId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!selectedEnvironmentId"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.eventMeshError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.eventMeshError"
+      },
+      {
+        "name": "maxHeight",
+        "type": "variable",
+        "value": "dropdownListMaxHeight"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeployToEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "memAssociation[messagingService]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "memAssociation[messagingService]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "memAssociation[messagingService]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.messagingService"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleMessagingServiceSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedMessagingServiceId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!selectedEventMeshId"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.messagingServiceError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.messagingServiceError"
+      },
+      {
+        "name": "maxHeight",
+        "type": "variable",
+        "value": "dropdownListMaxHeight"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/ApplicationVersionAssociationForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "id"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "applicationVersion[select]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`Application version to add`"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onApplicationVersionChange"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedApplicationVersion?.id"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxHeight",
+        "type": "variable",
+        "value": "DROPDOWN_LIST_MAX_HEIGHT"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "helperText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eapAssociation[domain]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eapAssociation[domain]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eapAssociation[domain]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.applicationDomain"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleApplicationDomainChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedApplicationDomainId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.applicationDomainError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.applicationDomainError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eapAssociation[eventApiProduct]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eapAssociation[eventApiProduct]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eapAssociation[eventApiProduct]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.eventApiProduct"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEventApiProductSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventApiProductId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!selectedApplicationDomainId"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.eventApiProductError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.eventApiProductError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eapAssociation[eventApiProductVersion]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eapAssociation[eventApiProductVersion]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eapAssociation[eventApiProductVersion]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.eventApiProductVersion"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEventApiProductVersionSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventApiProductVersionId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!selectedEventApiProductId"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.eventApiProductVersionError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.eventApiProductVersionError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isDisabled"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "role"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onResourceRoleChange(resourceAssignment, event.value)"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value: string) => RESOURCE_LABEL_BY_ROLE[value]"
+      },
+      {
+        "name": "menuAnchorOrigin",
+        "type": "object",
+        "value": "{ vertical: \"bottom\", horizontal: \"left\" }"
+      },
+      {
+        "name": "menuTransformOrigin",
+        "type": "object",
+        "value": "{ vertical: \"top\", horizontal: \"left\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SelectEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "envDialog-select-environment"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "envDialog-select-environment"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "envDialog-select-environment"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/EntityDetailModal.tsx",
+    "props": [
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "version.id"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "Entity List"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChangeVersion"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "entityVersionSelect"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinition.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t\t\thandleSelectUpdate(e.value, \"valueType\");\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\tconst match = customAttributesValueTypeOptionsWithMultiValue.find((props) => props.value === value);\n\n\t\t\t\t\t\t\t\t\t\t\t\t\treturn match ? match.name : \"\";\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${caKey}-value-type-select`"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"100%\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!nameErrorMsg && !!attributeErrorMsg"
+      },
+      {
+        "name": "menuAnchorOrigin",
+        "type": "object",
+        "value": "{ vertical: \"bottom\", horizontal: \"left\" }"
+      },
+      {
+        "name": "menuTransformOrigin",
+        "type": "object",
+        "value": "{ vertical: \"top\", horizontal: \"left\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinition.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t\t\thandleSelectUpdate(e.value, \"scope\");\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${caKey}-scope-select`"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"100%\""
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "isDomainManager"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!nameErrorMsg && !!attributeErrorMsg && !isDomainManager"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${entityName}[versionState]`"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleStateSelectionChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "versionStateId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "stateSelect"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "enumerationVersion"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Version"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "enumerationVersionName"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleVersionChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEnumVersionId"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!selectedEnumOption || getEnumVersions.isLoading"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value) => valueToMenuItemMap.get(value) || \"\""
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "35%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useApplicationDomainSelect.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "applicationDomainSelect-readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "title ? title : \"Application Domain\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "variable",
+        "value": "inlineLabel"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedApplicationDomain?.value"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useCatalogEntityVersionSelect.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`${entityTypeToLabel(entityType)} Version`"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEntityVersionId"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "Entity List"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEntityVersionChange"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "entityVersionSelect"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useEntityVersionIncrementSelect.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "versionIncrementStrategySelect"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleStateSelectionChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedVersionIncrementStrategy"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? \"versionIncrementStrategySelect\""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Version Incrementing"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "width ?? \"100%\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/DefaultFilterSingleSelect.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel[filterType]"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSharedTypeChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedValue"
+      },
+      {
+        "name": "displayEmpty",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onOpen",
+        "type": "variable",
+        "value": "handleOpen"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleClose"
+      },
+      {
+        "name": "open",
+        "type": "variable",
+        "value": "openDropdown"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/ObjectRelationshipGraph.stories.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleTypeChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "objectRelationship[type]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "objectRelationship[type]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "objectRelationship[type]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Graph Type\""
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "layoutType"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+    "props": [
+      {
+        "name": "aria-label",
+        "type": "string",
+        "value": "Agent Mode"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "loading"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value: string) => EMA_MODES_LABELS[value]"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!getRuntimeAgentModeErrorMessage"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "getRuntimeAgentModeErrorMessage"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "agent mode"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleDiscoveryScanModeChange"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!agentId"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "620px"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "eventManagementAgent.runtimeAgentMode"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/ExistingMessagingServices.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "messagingServiceTypeSelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "messagingServiceTypeSelect"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "messagingServiceTypeSelect"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Type"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleMessagingServiceTypeChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedMessagingServiceType"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "30%"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"layoutOptions\""
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"layoutOptions\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"layoutOptions\""
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "layoutType"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleLayoutTypeChange"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"90px\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/objectRelationGraph/ObjectRelationshipGraphSettingsMenu.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"levelDepthOptions\""
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"levelDepthOptions\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"levelDepthOptions\""
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "levelDepthString"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleLevelDepthChange"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"55px\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/BulkAddDialog.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEnvironmentChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "addToAppVersions[environmentSelect]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "addToAppVersions[environmentSelect]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "addToAppVersionsBulkPromotion[environmentSelect]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Environment\""
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEnvironmentId"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.environmentInputError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.environmentInputError"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/BulkAddDialog.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEventMeshChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "addToAppVersions[eventMeshSelect]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "addToAppVersions[eventMeshSelect]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "addToAppVersionsBulkPromotion[eventMeshSelect]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Modeled Event Mesh\""
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "isLoading || selectedEnvironmentId === \"\" || eventMeshSelectOptions.length === 0"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventMeshId"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.eventMeshInputError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.eventMeshInputError"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/BulkAddDialog.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleMessagingServiceChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "addToAppVersions[messagingServiceSelect]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "addToAppVersions[messagingServiceSelect]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "addToAppVersionsBulkPromotion[messagingServiceSelect]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Event Broker\""
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "isLoading || selectedEventMeshId === \"\" || messagingServiceOptions.length === 0"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedMessagingServiceId"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.messagingServiceInputError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.messagingServiceInputError"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshGraphPanel.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEventFlowFilterChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventFlowSelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventFlowSelect"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventFlowSelect"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "eventFlowOption"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "graphLoading || graphUpdating || drawInProgress || graphNodeExceeded"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "280px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"configurationVersionSelect\""
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleOnChange"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "audits[0].id"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"configurationVersionSelect\""
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"100%\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/filters/DefaultFilterSingleSelect.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "filterLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedValue"
+      },
+      {
+        "name": "displayEmpty",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onOpen",
+        "type": "variable",
+        "value": "handleOpen"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleClose"
+      },
+      {
+        "name": "open",
+        "type": "variable",
+        "value": "openDropdown"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "selectMessagingService"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "selectMessagingService"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "selectMessagingService"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSelectMessagingServiceChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedMessagingServiceId"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewSchemaConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleVersionChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "version-selector-runtime"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "version-selector-runtime"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "versionSelectorRuntime"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Version"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedVersionId"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "350px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleVersionChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "version-selector-runtime"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "version-selector-runtime"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "versionSelectorRuntime"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Version"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedVersionId"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "315px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSecondVersionChange"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "version-selector-runtime"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "version-selector-runtime"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "versionSelectorRuntime"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Version"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedSecondVersionId"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "315px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "async (e) => {\n\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\ttrigger(`${configurationName}-postRequestTarget`);\n\t\t\t\t\t\t\t\t\t\tupdateConfiguration();\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!getValues(`${configurationName}-postRequestTarget`)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${configurationName}-requestTargetEvaluation`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RequestHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.application.configuration.restDeliveryPoint.requestHeaderType"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${configurationName}-request`"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "requestHeaderType"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setRequestHeaderType(e.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointConfiguration.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\thandleUpdateConfigurationTypeId(e.value as RDPConfigurationTypeId);\n\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "restDeliveryPointConfigurationType-selector"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeContextSelector.tsx",
+    "props": [
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "context.value"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "contextSelector"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "contextSelector"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleContextOptionChange"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!!isDisabled"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "400px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/KafkaPreferencesDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "kafkaDelimiter"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "kafkaDelimiter"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleDelimiterChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "delimiter"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "hasFetchError"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "150px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"AsyncAPI Version\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "AsyncAPI Version"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "version"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\tsetVersion(e.value as EPSupportedAsyncApiVersion);\n\n\t\t\t\tif (localStorageKey) localStorage.setItem(localStorageKey, `${e.value}`);\n\t\t\t}"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value) => ASYNCAPI_VERSION_OPTIONS.find((props) => props.value === value).name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Document Extensions\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "documentExtensions"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "extension"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\tsetExtension(e.value as SupportedAsyncApiExtensionOptions);\n\n\t\t\t\tif (localStorageKey) localStorage.setItem(localStorageKey, `${e.value}`);\n\t\t\t}"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value) => {\n\t\t\t\tconst match = documentExtensionOptions.find((props) => props.value === value);\n\n\t\t\t\treturn match ? match.name : \"\";\n\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/EventApiProductDownloadDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? en.eventApi.error.requiredPlan : null"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.plan"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "621px"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApiForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t// borkerType is used in the parent, pass the value back.\n\t\t\t\t\t\t\t\tonBrokerTypeChange?.(e.value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "isEdit"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventApi[brokerType]"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"526px\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Policies.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`messagingSelect-${index}`"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"556px\""
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "`${value}`"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "mode === \"view\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Policies.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`accessTypeSelect-${index}`"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"556px\""
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "mode === \"view\""
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Policies.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`queueTypeSelect-${index}`"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"556px\""
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "mode === \"view\""
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "`${value}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/ApprovalType.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${versionObjectName}[approvalType]`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || brokerTypes[0].value"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "isEdit"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(value) => brokerTypes.find((type) => type.value === value)?.name || \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventApiProduct[brokerType]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\tsetSelectedSchemaType(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || schemaTypes[0]?.value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schema[schemaType]\""
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "isEdit"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConsumerItemForm.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!isNew || consumerTypeMenuItems?.length === 1"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "consumerIdInSidepanel === id && sidePanelOpen"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tconst consumerTypeSelection = e.value;\n\n\t\t\t\t\t\t\t\t\t\t// clear any configuration when changing consumer type\n\t\t\t\t\t\t\t\t\t\tsetValue(`applicationVersion[consumers].${index}.configuration`, undefined);\n\t\t\t\t\t\t\t\t\t\tsetValue(`applicationVersion[consumers].${index}.configurations`, []);\n\n\t\t\t\t\t\t\t\t\t\tonChange(consumerTypeSelection);\n\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "variable",
+        "value": "getOptionDisplayValue"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`applicationVersion[consumers].${index}.consumerType`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/AttractedEvents.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"memSelect\""
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"memSelect\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`Modeled Event Mesh`"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChangeHandler"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventMeshId"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "memSelect"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomains.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`brokerType-${topicDomain.id}`"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "brokerType"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => updateBrokerType(e.value, index)"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "topicDomain.brokerType"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomains.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`brokerType-${topicDomain.id}`"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "brokerType"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "topicDomain.brokerType"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\thandleBrokerTypeChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"event[brokerType]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"event[requiresApproval]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SchemaVersionDetailsTitleContent.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "schemaVersionSelect"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChangeSchemaVersion"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "viewedSchemaVersion?.id"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "schemaVersionSelect"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Schema Type\""
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\tsetImpliedContentType(schemaTypeMapToCodeEditorMode[e.value]);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || schemaTypes[0]?.value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schema[schemaType]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Access Approval\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"event[accessApproval]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\tonBrokerTypeChange?.(e.value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "isEdit || !onBrokerTypeChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/MemFilter.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "selectedMem"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "memIds?.length > 0 && eventMeshesById && selectedMemId ? selectedMemId : designedEventFlowOption.value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\tconst memId = e.value === designedEventFlowOption.value ? \"\" : e.value;\n\n\t\t\t\t\t\tsetSelectedMemId(memId);\n\t\t\t\t\t}"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "variable",
+        "value": "getOptionDisplayValue"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`appVersionDetailMemFilter`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/NewConsumerForm.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.application.consumer.consumerType"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tconst consumerTypeSelection = e.value;\n\n\t\t\t\t\t\t\t\tonChange(consumerTypeSelection);\n\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`consumerType`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/ExistingConsumerForm.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.application.consumer.label"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\ttrigger(\"subscriptions\"); // trigger validation\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "consumerSelect"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "configurationTypeId"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "configurationTypeId"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "configurationTypeId"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "messages.credentials.configurationTypeId"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChangeConfigurationType"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "configuration.typeId"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "isEditing"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!isEditing"
+      }
+    ]
+  }
+]

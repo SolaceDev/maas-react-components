@@ -1,0 +1,27 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clustersListStatus"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "state"
+      },
+      {
+        "name": "fillColor",
+        "type": "variable",
+        "value": "fillColor"
+      },
+      {
+        "name": "labelColor",
+        "type": "variable",
+        "value": "labelColor"
+      }
+    ]
+  }
+]

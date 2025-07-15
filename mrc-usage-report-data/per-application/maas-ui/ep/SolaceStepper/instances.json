@@ -1,0 +1,42 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+    "props": [
+      {
+        "name": "steps",
+        "type": "variable",
+        "value": "steps"
+      },
+      {
+        "name": "activeStep",
+        "type": "variable",
+        "value": "activeStep"
+      },
+      {
+        "name": "setActiveStep",
+        "type": "variable",
+        "value": "handleSetActiveStepRequest"
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => history.push(\"/ep/designer\")"
+      },
+      {
+        "name": "onSubmit",
+        "type": "variable",
+        "value": "handleSubmit"
+      },
+      {
+        "name": "submitLabel",
+        "type": "expression",
+        "value": "messages.aiWizardButton.submit"
+      },
+      {
+        "name": "disableSubmit",
+        "type": "variable",
+        "value": "isLoading"
+      }
+    ]
+  }
+]

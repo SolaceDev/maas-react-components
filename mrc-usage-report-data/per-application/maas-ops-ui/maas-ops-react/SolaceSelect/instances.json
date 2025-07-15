@@ -1,0 +1,557 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "width",
+        "type": "string",
+        "value": "270px"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "searchBySelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchBySelect"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "searchByOption"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchByOptions"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "t.profile"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`artifactResources_${t.profile}`"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`Version in Datadog Sub-Org (${t.profile}):`"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "t.version || \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "artifactResource"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Latest Version:"
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "value": "artifactVersion"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceOperations/ServiceOperations.tsx",
+    "props": [
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "search"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Filter By"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "filter by"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "250px"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setSearch(e.value as FilterKey)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceOperations/ServiceOperations.tsx",
+    "props": [
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "pageSize.toString()"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Page Size"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "page size"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "125px"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => {\n\t\t\t\t\t\t\tsetPageNumber(1);\n\t\t\t\t\t\t\tsetPageSize(parseInt(event.value));\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "attribute"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "attribute"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setAttribute(event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "comparison"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "operator"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setOperator(event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onChange(event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onChange(event.value)"
+      },
+      {
+        "name": "maxHeight",
+        "type": "expression",
+        "value": "\"40vh\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onChange(event.value)"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "maxHeight",
+        "type": "expression",
+        "value": "\"30vh\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onChange(event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value ?? \"preview\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/DrawdownSelection.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "createBizOrganization.products.rateSet"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "prodRateSet"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "prodRateSet"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleProdRateSetChange"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "rateSetValues ? prodRateSetValue : \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "prodRateSetDropdownQa"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSection.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "createBizOrganization.products.productConsumptionType"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "productConsumptionType"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "productConsumptionType"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleProdConsumptionChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "productType"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "450px"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "productConsumptionDropdownQa"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "productDrawdown.readonly || productSubscriptions.readonly"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsOrgDetailsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "organizationType"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "organizationType"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "inputHandler"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "80%"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!!validationErrors"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.accountType"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "accountTypeDropdown"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "(orgDetails[\"organizationType\"].isEdited || !isSaveAllowed) &&\n\t\t\t\t\t\t\torgDetails[\"organizationType\"].errors.validationErrors.concat(\n\t\t\t\t\t\t\t\torgDetails[\"organizationType\"].errors.inputErrors\n\t\t\t\t\t\t\t).length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationErrors\n\t\t\t\t\t\t\t\t? \"\"\n\t\t\t\t\t\t\t\t: orgDetails[\"organizationType\"].errors.validationErrors.concat(\n\t\t\t\t\t\t\t\t\t\torgDetails[\"organizationType\"].errors.inputErrors\n\t\t\t\t\t\t\t\t  )[0]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/insightsOrganizations/InsightsOrganizations.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Page Size"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "pageSize"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "200px"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "pageSize.toString()"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => {\n\t\t\t\t\t\t\tsetPageNumber(1);\n\t\t\t\t\t\t\tsetPageSize(parseInt(event.value));\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/monitoringJobs/MonitoringJobs.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Page Size"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "pageSize"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "200px"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "pageSize.toString()"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => {\n\t\t\t\t\t\t\tsetPageNumber(1);\n\t\t\t\t\t\t\tsetPageSize(parseInt(event.value));\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/ConnectorUpgradeDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "availableVersions"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "availableVersions"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "inputHandler"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Available Versions"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "availableVersions"
+      }
+    ]
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${id}`"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${id}`"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setNameFilter(e.value)"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "nameFilter"
+      },
+      {
+        "name": "placeholder",
+        "type": "variable",
+        "value": "searchPlaceholder"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "500px"
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "FIELD_TYPES.SEARCH"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanel.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"connectorNameFilter\""
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"connectorNameFilter\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setNameFilter(e.value)"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "nameFilter"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "en.connectors.searchPlaceholder"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "500px"
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "FIELD_TYPES.SEARCH"
+      }
+    ]
+  }
+]

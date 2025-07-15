@@ -1,0 +1,17 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/utils/miscUtils.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`graphContextMenu_${menuItem.id ?? index}`"
+      },
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "menuItem"
+      }
+    ]
+  }
+]

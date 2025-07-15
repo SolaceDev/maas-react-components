@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/ServiceAuthentications.tsx",
+    "props": [
+      {
+        "name": "paths",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t{ title: t({ id: \"id_auth_security\", message: \"Authentication and Security\" }), link: linkAuthSecurity },\n\t\t\t\t\t\t\t\t{ title: t({ id: \"id_service_authentications\", message: \"Service Authentications\" }), link: \"\", current: true }\n\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+    "props": [
+      {
+        "name": "paths",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t{ title: t({ id: \"id_auth_security\", message: \"Authentication and Security\" }), link: linkAuthSecurity },\n\t\t\t\t\t\t\t\t{ title: t({ id: \"id_cert_auths\", message: \"Certificate Authorities\" }), link: \"\", current: true }\n\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityClientProfiles.tsx",
+    "props": [
+      {
+        "name": "paths",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t{ title: t({ id: \"id_auth_security\", message: \"Authentication and Security\" }), link: linkAuthSecurity },\n\t\t\t\t\t\t\t\t{ title: t({ id: \"id_client_profiles\", message: \"Client Profiles\" }), link: \"\", current: true }\n\t\t\t\t\t\t\t]"
+      }
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "variant",
+    "count": 100
+  },
+  {
+    "name": "onClick",
+    "count": 62
+  },
+  {
+    "name": "dataQa",
+    "count": 58
+  },
+  {
+    "name": "href",
+    "count": 42
+  },
+  {
+    "name": "isDisabled",
+    "count": 34
+  },
+  {
+    "name": "dense",
+    "count": 15
+  },
+  {
+    "name": "title",
+    "count": 4
+  },
+  {
+    "name": "key",
+    "count": 4
+  },
+  {
+    "name": "id",
+    "count": 3
+  },
+  {
+    "name": "type",
+    "count": 2
+  },
+  {
+    "name": "endIcon",
+    "count": 2
+  },
+  {
+    "name": "dataTags",
+    "count": 1
+  }
+]

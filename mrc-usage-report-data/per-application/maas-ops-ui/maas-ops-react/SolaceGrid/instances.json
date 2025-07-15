@@ -1,0 +1,2701 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "variable",
+        "value": "itemWidth"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "8"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerSummaryCard.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"flex\""
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ padding: 1, paddingLeft: 3 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/PlansSidebar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "xs",
+        "type": "variable",
+        "value": "xs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/PlansSidebar.tsx",
+    "props": [
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ marginTop: \"8px\" }"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "run.id"
+      },
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/PlansSidebar.tsx",
+    "props": [
+      {
+        "name": "p",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "rowSpacing",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "columnSpacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "0.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "textAlign",
+        "type": "string",
+        "value": "right"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "column"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "9"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "textAlign",
+        "type": "string",
+        "value": "right"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "style",
+        "type": "expression",
+        "value": "styles.column"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/components/FormLabel.util.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "6"
+      },
+      {
+        "name": "style",
+        "type": "expression",
+        "value": "styles.row"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "fit-content"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunDetails.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatus.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatus.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatus.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "columns",
+        "type": "number",
+        "value": "14"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "peNotificationStatus"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "mt",
+        "type": "string",
+        "value": "30px"
+      },
+      {
+        "name": "pr",
+        "type": "string",
+        "value": "32px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "column"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ alignContent: \"end\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunStatusBar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "column"
+      },
+      {
+        "name": "pr",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "6"
+      },
+      {
+        "name": "style",
+        "type": "expression",
+        "value": "style.max"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "auto"
+      },
+      {
+        "name": "ml",
+        "type": "string",
+        "value": "1px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "6"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "6"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "search-page-form"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "11"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "11"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ margin: \"auto\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "10"
+      },
+      {
+        "name": "sm",
+        "type": "number",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "editForm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "5.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "5.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "variable",
+        "value": "xs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "variable",
+        "value": "xs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "createForm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "5.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "5.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "variable",
+        "value": "xs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "releaseDialog"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "justifyContent",
+        "type": "string",
+        "value": "space-between"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "ml",
+        "type": "string",
+        "value": "auto"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "0"
+      },
+      {
+        "name": "mt",
+        "type": "expression",
+        "value": "theme.spacing(1)"
+      },
+      {
+        "name": "mb",
+        "type": "expression",
+        "value": "theme.spacing(1)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "mr",
+        "type": "expression",
+        "value": "theme.spacing(1.5)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "justifyContent",
+        "type": "string",
+        "value": "center"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductsList.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`container${key}`"
+      },
+      {
+        "name": "data-qa",
+        "type": "expression",
+        "value": "`qacx-${key}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductsList.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "7"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductsList.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductsList.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductsList.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "9"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductsList.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSubscriptionDialog.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "data-qa",
+        "type": "expression",
+        "value": "`subscription-products-container`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSubscriptionDialog.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSubscriptionDialog.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSubscriptionDialog.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSubscriptionDialog.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSubscriptionDialog.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/CreateBizOrganization.styles.ts",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "xs",
+        "type": "variable",
+        "value": "xs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "p",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "rowSpacing",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "columnSpacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/NotificationContacts.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/NotificationContacts.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/NotificationContacts.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ padding: 3 }"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sm",
+        "type": "expression",
+        "value": "\"auto\""
+      },
+      {
+        "name": "md",
+        "type": "expression",
+        "value": "\"auto\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sm",
+        "type": "expression",
+        "value": "\"auto\""
+      },
+      {
+        "name": "md",
+        "type": "expression",
+        "value": "\"auto\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  }
+]

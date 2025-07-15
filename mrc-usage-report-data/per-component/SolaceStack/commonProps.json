@@ -1,0 +1,42 @@
+[
+  {
+    "name": "spacing",
+    "count": 72
+  },
+  {
+    "name": "direction",
+    "count": 49
+  },
+  {
+    "name": "padding",
+    "count": 17
+  },
+  {
+    "name": "alignItems",
+    "count": 15
+  },
+  {
+    "name": "justifyContent",
+    "count": 14
+  },
+  {
+    "name": "width",
+    "count": 10
+  },
+  {
+    "name": "height",
+    "count": 7
+  },
+  {
+    "name": "data-qa",
+    "count": 6
+  },
+  {
+    "name": "bgcolor",
+    "count": 6
+  },
+  {
+    "name": "marginTop",
+    "count": 4
+  }
+]

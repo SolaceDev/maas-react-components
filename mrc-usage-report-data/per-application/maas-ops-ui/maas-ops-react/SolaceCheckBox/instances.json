@@ -1,0 +1,557 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/components/CustomerDetailsOrgLimits.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "hideUnusedLimitsRows"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setHideUnusedLimitsRows((state) => !state)"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "customers.orgLimitsCard.hideUnusedLimit"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "customers.orgLimitsCard.hideUnusedLimit"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "hideUnusedLimitsCheckboxQa"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/OrganizationMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "field.value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => field.onChange(!field.value)"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "field.name"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Datadog Monitoring Enabled Checkbox"
+      },
+      {
+        "name": "boldLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Datadog Monitoring Enabled"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\t\t\tlabel: \"Default for Datadog Monitoring Agent (Enabled/Disabled) when creating new services\"\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "monitoringEnabledCheckbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/OrganizationMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "field.value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => field.onChange(!field.value)"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "field.name"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Datadog Monitoring Proxy Enabled Checkbox"
+      },
+      {
+        "name": "boldLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Datadog Monitoring Proxy Enabled"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\t\t\tlabel: \"Default for Datadog Monitoring Proxy server (Enabled/Disabled) for services\"\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "monitoringProxyEnabledCheckbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringConfigurations.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "field.value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tsetValue(\"PullDatadogAgentImage\", e.value);\n\t\t\t\t\t\t\t\t\tfield.onChange(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "field.name"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Pull Datadog Agent Image"
+      },
+      {
+        "name": "boldLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Pull Datadog Agent Image"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\t\t\tlabel: \"Forces docker to pull latest datadog-agent image\"\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "PullDatadogAgentImageCheckbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "checked"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\trow[propertyName] = !row[propertyName];\n\t\t\t\t}"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "propertyName"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "indeterminate",
+        "type": "variable",
+        "value": "indeterminate"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "field.value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\tfield.onChange(!field.value);\n\t\t\t\t\t\t\t\t\t\t// update button should only show if there is a change in rmms status\n\t\t\t\t\t\t\t\t\t\tsetShowRMMSUpdateButton(\n\t\t\t\t\t\t\t\t\t\t\tddOrgData?.apiKey !== undefined && getValues(\"rmmsManaged\") !== monitoringOrgData?.isRMMS\n\t\t\t\t\t\t\t\t\t\t);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "field.name"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Managed by RMMS Checkbox"
+      },
+      {
+        "name": "largeLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Managed by RMMS"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "rmmsManaged"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/SystemControls.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "Automated Upgrades"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Automated Upgrades"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "autoChecked"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/SystemControls.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "Customer Upgrades"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Customer Upgrades"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "customerChecked"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/Runs.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "hideCompletedRuns"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "hideCompletedRuns"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "hide-completed-runs"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleToggleHideCompletedRuns()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "all"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "searchStr.searchArea.types.all"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "infra && orgs && services && users"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "searchIndicesChangeHandler"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "search-all-checkbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "infrastructure"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "searchStr.searchArea.types.infra"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "infra"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "searchIndicesChangeHandler"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "search-infra-checkbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "organization"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "searchStr.searchArea.types.orgs"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "orgs"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "searchIndicesChangeHandler"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "search-orgs-checkbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "service"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "searchStr.searchArea.types.services"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "services"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "searchIndicesChangeHandler"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "search-services-checkbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "user"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "searchStr.searchArea.types.users"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "users"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "searchIndicesChangeHandler"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "search-users-checkbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "useGlobalSearch"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "searchStr.searchArea.useGlobalSearch"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "globalSearchEnabled"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\tonGlobalSearchChange(!globalSearchEnabled);\n\t\t\t\t\t\t\t\tsetGlobalSearchEnabled(!globalSearchEnabled);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "enable-global-search-checkbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/RequestSection.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "requestCheckbox"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "createBizOrganization.requests.checkBoxLabel"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "requestCheckbox"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "requestCheckboxQa"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setIsAdvancedInsightsChecked(value)"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\tlabel: `${createBizOrganization.requests.productCode}`,\n\t\t\t\t\t\tlight: true\n\t\t\t\t\t}"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "createBizOrganization.requests.checkBoxTitle"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isFieldReadOnly"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "isAdvancedInsightSelected ? true : false"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<Box marginTop={\"2px\"}>{createBizOrganization.requests.checkBoxLabel}</Box>"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "advInsights"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Advanced Insights Checkbox"
+      }
+    ]
+  }
+]

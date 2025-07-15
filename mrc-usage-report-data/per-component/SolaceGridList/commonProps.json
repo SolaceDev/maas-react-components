@@ -1,0 +1,42 @@
+[
+  {
+    "name": "items",
+    "count": 30
+  },
+  {
+    "name": "rowMapping",
+    "count": 30
+  },
+  {
+    "name": "gridTemplate",
+    "count": 30
+  },
+  {
+    "name": "dataQa",
+    "count": 27
+  },
+  {
+    "name": "headers",
+    "count": 13
+  },
+  {
+    "name": "selectedItemId",
+    "count": 9
+  },
+  {
+    "name": "onSelection",
+    "count": 9
+  },
+  {
+    "name": "virtualizedListOption",
+    "count": 4
+  },
+  {
+    "name": "numOfGridListItemDisplayed",
+    "count": 4
+  },
+  {
+    "name": "indicatorVariantIdentifier",
+    "count": 3
+  }
+]

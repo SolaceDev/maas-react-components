@@ -1,0 +1,70 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessSelectAutocomplete.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/DeleteUserDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/CreateEditUserGroupsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "tracingProfile.tracingType[TracingType.Insights]"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "TracingType.Insights"
+      },
+      {
+        "name": "supplementalText",
+        "type": "expression",
+        "value": "isInsights ? \"Default\" : \"Not Available\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "tracingProfile.tlsConnectionType[TlsConnectionType.SecureSkipValidation]"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "TlsConnectionType.SecureSkipValidation"
+      },
+      {
+        "name": "subText",
+        "type": "string",
+        "value": "Skips certificate authority validation"
+      }
+    ]
+  }
+]

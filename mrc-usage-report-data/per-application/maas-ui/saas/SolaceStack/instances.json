@@ -1,0 +1,145 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
+    "props": [
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ minHeight: \"45vh\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/ViewDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/ViewDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "marginTop",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "bgcolor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      },
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/ViewDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/ViewDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "marginTop",
+        "type": "variable",
+        "value": "marginTop"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/EmaConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "gap",
+        "type": "number",
+        "value": "0.5"
+      }
+    ]
+  }
+]

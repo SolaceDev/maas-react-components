@@ -1,0 +1,5 @@
+[
+  "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx"
+]

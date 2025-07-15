@@ -1,0 +1,27 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/DeleteEdgeConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "affectedTransformations.map((transformation) => ({\n\t\t\t\t\t\t\tsource: findFieldData(transformation.source.solGraphNodeId, ConnectorDirection.Source)?.propertyName,\n\t\t\t\t\t\t\ttarget: findFieldData(transformation.target.solGraphNodeId, ConnectorDirection.Target)?.propertyName\n\t\t\t\t\t\t}))"
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": "[en.connectors.labels.source, en.connectors.labels.target]"
+      },
+      {
+        "name": "rowMapping",
+        "type": "function",
+        "value": "(item, index) => [\n\t\t\t\t\t\t\t<Box key={`${index}_source`}>\n\t\t\t\t\t\t\t\t<SolaceTooltip variant={TooltipVariant.overflow} title={item.source}>\n\t\t\t\t\t\t\t\t\t<SolaceTypography noWrap={true}>{item.source}</SolaceTypography>\n\t\t\t\t\t\t\t\t</SolaceTooltip>\n\t\t\t\t\t\t\t</Box>,\n\t\t\t\t\t\t\t<Box key={`${index}_target`}>\n\t\t\t\t\t\t\t\t<SolaceTooltip variant={TooltipVariant.overflow} title={item.target}>\n\t\t\t\t\t\t\t\t\t<SolaceTypography noWrap={true}>{item.target}</SolaceTypography>\n\t\t\t\t\t\t\t\t</SolaceTooltip>\n\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t]"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "expression",
+        "value": "\"1fr 1fr\""
+      }
+    ]
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/utils/EnvironmentUtils.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "item.environmentOption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "standard"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventMesh[environment]"
+      },
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "environmentOption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SelectEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "fgColor",
+        "type": "variable",
+        "value": "fgColor"
+      },
+      {
+        "name": "bgColor",
+        "type": "variable",
+        "value": "bgColor"
+      },
+      {
+        "name": "icon",
+        "type": "variable",
+        "value": "icon"
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+[
+  "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerListTable.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogsDataTable.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx"
+]

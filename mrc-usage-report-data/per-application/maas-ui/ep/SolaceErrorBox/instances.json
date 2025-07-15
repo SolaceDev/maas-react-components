@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "submitError.message"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleErrorBoxClose"
+      }
+    ]
+  }
+]

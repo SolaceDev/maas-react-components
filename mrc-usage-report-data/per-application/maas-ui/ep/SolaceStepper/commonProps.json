@@ -1,0 +1,30 @@
+[
+  {
+    "name": "steps",
+    "count": 1
+  },
+  {
+    "name": "activeStep",
+    "count": 1
+  },
+  {
+    "name": "setActiveStep",
+    "count": 1
+  },
+  {
+    "name": "onClose",
+    "count": 1
+  },
+  {
+    "name": "onSubmit",
+    "count": 1
+  },
+  {
+    "name": "submitLabel",
+    "count": 1
+  },
+  {
+    "name": "disableSubmit",
+    "count": 1
+  }
+]

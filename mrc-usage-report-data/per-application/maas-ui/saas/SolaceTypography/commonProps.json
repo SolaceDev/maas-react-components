@@ -1,0 +1,86 @@
+[
+  {
+    "name": "variant",
+    "count": 49
+  },
+  {
+    "name": "fontWeight",
+    "count": 19
+  },
+  {
+    "name": "mt",
+    "count": 16
+  },
+  {
+    "name": "sx",
+    "count": 16
+  },
+  {
+    "name": "className",
+    "count": 13
+  },
+  {
+    "name": "mb",
+    "count": 12
+  },
+  {
+    "name": "fontSize",
+    "count": 9
+  },
+  {
+    "name": "display",
+    "count": 8
+  },
+  {
+    "name": "key",
+    "count": 6
+  },
+  {
+    "name": "textAlign",
+    "count": 5
+  },
+  {
+    "name": "style",
+    "count": 5
+  },
+  {
+    "name": "mr",
+    "count": 4
+  },
+  {
+    "name": "data-qa",
+    "count": 4
+  },
+  {
+    "name": "pb",
+    "count": 4
+  },
+  {
+    "name": "component",
+    "count": 3
+  },
+  {
+    "name": "marginTop",
+    "count": 2
+  },
+  {
+    "name": "marginBottom",
+    "count": 2
+  },
+  {
+    "name": "ml",
+    "count": 2
+  },
+  {
+    "name": "pt",
+    "count": 2
+  },
+  {
+    "name": "color",
+    "count": 2
+  },
+  {
+    "name": "paddingTop",
+    "count": 1
+  }
+]

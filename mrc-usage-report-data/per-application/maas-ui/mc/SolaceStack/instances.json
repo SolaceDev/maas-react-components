@@ -1,0 +1,47 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "props": [
+      {
+        "name": "width",
+        "type": "string",
+        "value": "38rem"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "auto"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "justifyContent",
+        "type": "string",
+        "value": "end"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/CreateService.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "justifyContent",
+        "type": "string",
+        "value": "end"
+      }
+    ]
+  }
+]

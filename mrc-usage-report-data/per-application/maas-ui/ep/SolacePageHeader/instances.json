@@ -1,0 +1,62 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolacePageHeaderWithProgress/SolacePageHeaderWithProgress.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "overrideProps"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolacePageHeaderWithProgress/SolacePageHeaderWithProgress.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "props"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/home/Home.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Event Portal"
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "variable",
+        "value": "screenPath"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "solace-header"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Event Portal AI Designer"
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t{ title: \"Designer\", link: \"/ep/designer\" },\n\t\t\t\t\t{ title: messages.aiWizardButton.action, link: \"/ep/designer/wizard\", current: true }\n\t\t\t\t]"
+      },
+      {
+        "name": "release",
+        "type": "string",
+        "value": "EXPERIMENTAL"
+      }
+    ]
+  }
+]

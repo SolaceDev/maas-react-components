@@ -1,0 +1,212 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "meshes"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "meshes"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "headers"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "event-meshes"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/ClientLibraries.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "libraries"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "libraries"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "90px 1fr 1fr 120px"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "librarySummaries"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "selectedId"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleSelection"
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": "[\n\t\t\t\tt({ id: \"id_technology\", message: \"Technology\" }),\n\t\t\t\tt({ id: \"id_library\", message: \"Library\" }),\n\t\t\t\tview === \"language\" ? t({ id: \"id_protocol\", message: \"Protocol\" }) : t({ id: \"id_language\", message: \"Language\" }),\n\t\t\t\t\"\"\n\t\t\t]"
+      },
+      {
+        "name": "rowMapping",
+        "type": "function",
+        "value": "(item) => [\n\t\t\t\t<SmallLogo key={`${item.id}-key1`}>\n\t\t\t\t\t<img src={item.logo} alt={item.name} style={{ height: 20 }} />\n\t\t\t\t</SmallLogo>,\n\t\t\t\t<Cell id={item.id} key={`${item.id}-key2`} onClick={() => handleSelection(item)}>\n\t\t\t\t\t{item.name}\n\t\t\t\t</Cell>,\n\t\t\t\t<Cell key={`${item.id}-key3`} onClick={() => handleSelection(item)}>\n\t\t\t\t\t{view === \"language\" ? item.protocol : item.languages}\n\t\t\t\t</Cell>,\n\t\t\t\t<Cell key={`${item.id}-key4`}>\n\t\t\t\t\t<SolaceButton variant=\"text\" onClick={() => handleSelection(item)}>\n\t\t\t\t\t\t<Trans id=\"id_get_started\">Get Started</Trans>\n\t\t\t\t\t</SolaceButton>\n\t\t\t\t</Cell>\n\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LdapManagementAccessDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`ldap-groups-${id}`"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "1fr"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "items"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "hostnames"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "hostnames"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "hostnames"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/SyslogForwardingCard.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "syslog-forwarding"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "syslogs"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`client-profiles`"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "clientCertAuths"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityClientProfiles.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`client-profiles`"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "profiles"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  }
+]

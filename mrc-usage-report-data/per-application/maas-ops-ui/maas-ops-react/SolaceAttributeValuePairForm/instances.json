@@ -1,0 +1,62 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "avpList",
+        "type": "expression",
+        "value": "value || []"
+      },
+      {
+        "name": "labelForKeys",
+        "type": "string",
+        "value": "Key"
+      },
+      {
+        "name": "labelForValues",
+        "type": "string",
+        "value": "Value"
+      },
+      {
+        "name": "keyRequired",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "keyIsRequiredMessage",
+        "type": "string",
+        "value": "Key should exist with the value"
+      },
+      {
+        "name": "onAVPListUpdate",
+        "type": "function",
+        "value": "(e) => onChange(e)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      },
+      {
+        "name": "disableReorder",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  }
+]

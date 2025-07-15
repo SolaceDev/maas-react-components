@@ -1,0 +1,982 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "sortedMessagingServiceList"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "getMessagingServiceRow"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "expression",
+        "value": "selectedMessagingService?.id"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleSelectMessagingService"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "expression",
+        "value": "\"minmax(10ch,auto) 1fr\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "messagingServiceListOfSelectedMEM"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/SchemaVersionList.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "listItems"
+      },
+      {
+        "name": "indicatorVariantIdentifier",
+        "type": "expression",
+        "value": "\"variant\""
+      },
+      {
+        "name": "emphasizedIdentifier",
+        "type": "expression",
+        "value": "\"emphasized\""
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderSchemaVersionRow"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "highlightedEntityVersionId"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleEntityVersionHighlight"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "expression",
+        "value": "\"minmax(auto, auto) minmax(auto, auto) 16px\""
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "schemaListDataQa"
+      },
+      {
+        "name": "virtualizedListOption",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\theight: listHeight ? getVirtualVersionListHeight(listHeight, true, false) - 74 : undefined, // minus select all section height\n\t\t\t\t\t\t\titemHeight: 52,\n\t\t\t\t\t\t\toverscanCount: 20\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/EventVersionList.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "listItems"
+      },
+      {
+        "name": "indicatorVariantIdentifier",
+        "type": "expression",
+        "value": "\"variant\""
+      },
+      {
+        "name": "emphasizedIdentifier",
+        "type": "expression",
+        "value": "\"emphasized\""
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderEventVersionRow"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "highlightedEntityVersionId"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleEntityVersionHighlight"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "expression",
+        "value": "\"minmax(auto, auto) minmax(auto, auto) 16px\""
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "eventListDataQa"
+      },
+      {
+        "name": "virtualizedListOption",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\theight: listHeight ? getVirtualVersionListHeight(listHeight, true, false) : undefined, // minus select all section height\n\t\t\t\t\t\t\titemHeight: 74,\n\t\t\t\t\t\t\toverscanCount: 20\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/ApplicationVersionList.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "listItems"
+      },
+      {
+        "name": "indicatorVariantIdentifier",
+        "type": "expression",
+        "value": "\"variant\""
+      },
+      {
+        "name": "emphasizedIdentifier",
+        "type": "expression",
+        "value": "\"emphasized\""
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderAppVersionRow"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "highlightedEntityVersionId"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleEntityVersionHighlight"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "expression",
+        "value": "\"minmax(auto, auto) minmax(auto, auto) 16px\""
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "appVersionListDataQa"
+      },
+      {
+        "name": "virtualizedListOption",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\theight: listHeight ? getVirtualVersionListHeight(listHeight, true, true) : undefined,\n\t\t\t\t\t\t\titemHeight: 74,\n\t\t\t\t\t\t\toverscanCount: 20\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/searchPanel/EntityVersionList.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "entityVersions"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "mapEntity"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "highlightedEntityVersionId"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "processEntityVersionHighlight"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(auto, auto) minmax(auto, auto) 16px"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"appDomainGraphSearchResultsGrid_\" + entityType"
+      },
+      {
+        "name": "virtualizedListOption",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\theight: listHeight ? listHeight - SEARCH_LIST_TABS_HEIGHT : undefined,\n\t\t\t\t\t\titemHeight: SEARCH_LIST_ITEM_HEIGHT,\n\t\t\t\t\t\toverscanCount: 20\n\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/association/IncludedEventApiProducts.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "eventApiProductVersions"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "getListRow"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "auto 0fr"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventApiProductList"
+      },
+      {
+        "name": "background",
+        "type": "string",
+        "value": "white"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/ManageEventSchemas.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "primitiveSchemaTypeOptions"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "onPrimitiveTypeChange"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "getPrimitiveTypeRowComponents"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "selectedPrimitiveType"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "auto"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "primitiveTypes"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/LinkedApplicationsEdit.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "sortedRelationshipVersions"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "getListRow"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "auto 0fr"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/LinkedApplicationsView.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "filteredAndSortedVersions"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "getListRow"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "auto 0fr"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/DeleteEdgeConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "affectedTransformations.map((transformation) => ({\n\t\t\t\t\t\t\tsource: findFieldData(transformation.source.solGraphNodeId, ConnectorDirection.Source)?.propertyName,\n\t\t\t\t\t\t\ttarget: findFieldData(transformation.target.solGraphNodeId, ConnectorDirection.Target)?.propertyName\n\t\t\t\t\t\t}))"
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": "[en.connectors.labels.source, en.connectors.labels.target]"
+      },
+      {
+        "name": "rowMapping",
+        "type": "function",
+        "value": "(item, index) => [\n\t\t\t\t\t\t\t<Box key={`${index}_source`}>\n\t\t\t\t\t\t\t\t<SolaceTooltip variant={TooltipVariant.overflow} title={item.source}>\n\t\t\t\t\t\t\t\t\t<SolaceTypography noWrap={true}>{item.source}</SolaceTypography>\n\t\t\t\t\t\t\t\t</SolaceTooltip>\n\t\t\t\t\t\t\t</Box>,\n\t\t\t\t\t\t\t<Box key={`${index}_target`}>\n\t\t\t\t\t\t\t\t<SolaceTooltip variant={TooltipVariant.overflow} title={item.target}>\n\t\t\t\t\t\t\t\t\t<SolaceTypography noWrap={true}>{item.target}</SolaceTypography>\n\t\t\t\t\t\t\t\t</SolaceTooltip>\n\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t]"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "expression",
+        "value": "\"1fr 1fr\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "meshes"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "meshes"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "headers"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "event-meshes"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/ClientLibraries.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "libraries"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "libraries"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "90px 1fr 1fr 120px"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "librarySummaries"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "selectedId"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleSelection"
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": "[\n\t\t\t\tt({ id: \"id_technology\", message: \"Technology\" }),\n\t\t\t\tt({ id: \"id_library\", message: \"Library\" }),\n\t\t\t\tview === \"language\" ? t({ id: \"id_protocol\", message: \"Protocol\" }) : t({ id: \"id_language\", message: \"Language\" }),\n\t\t\t\t\"\"\n\t\t\t]"
+      },
+      {
+        "name": "rowMapping",
+        "type": "function",
+        "value": "(item) => [\n\t\t\t\t<SmallLogo key={`${item.id}-key1`}>\n\t\t\t\t\t<img src={item.logo} alt={item.name} style={{ height: 20 }} />\n\t\t\t\t</SmallLogo>,\n\t\t\t\t<Cell id={item.id} key={`${item.id}-key2`} onClick={() => handleSelection(item)}>\n\t\t\t\t\t{item.name}\n\t\t\t\t</Cell>,\n\t\t\t\t<Cell key={`${item.id}-key3`} onClick={() => handleSelection(item)}>\n\t\t\t\t\t{view === \"language\" ? item.protocol : item.languages}\n\t\t\t\t</Cell>,\n\t\t\t\t<Cell key={`${item.id}-key4`}>\n\t\t\t\t\t<SolaceButton variant=\"text\" onClick={() => handleSelection(item)}>\n\t\t\t\t\t\t<Trans id=\"id_get_started\">Get Started</Trans>\n\t\t\t\t\t</SolaceButton>\n\t\t\t\t</Cell>\n\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LdapManagementAccessDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`ldap-groups-${id}`"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "1fr"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "items"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "hostnames"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "hostnames"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "hostnames"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/SyslogForwardingCard.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "syslog-forwarding"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "syslogs"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`client-profiles`"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "clientCertAuths"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityClientProfiles.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`client-profiles`"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "profiles"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "getServiceLimits() as LimitsData[]"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "rowMapping",
+        "type": "expression",
+        "value": "rowMapping(false)"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceLimitsList"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "convertMsgSpoolLimits()"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "rowMapping",
+        "type": "expression",
+        "value": "rowMapping(true)"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "msgSpoolLimitsList"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "sapAddonLimitsData"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "rowMapping",
+        "type": "expression",
+        "value": "rowMapping(false)"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "erpLimitsList"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "convertConnectorLimits()"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "rowMapping",
+        "type": "expression",
+        "value": "rowMapping(false)"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "connectorsLimitsList"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "environments ? environments : []"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "columnHeaders"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleRowSelection"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "withActionColumnMapping"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "expression",
+        "value": "isSidePanelOpen ? selectedId : 0"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(350px, 2fr) 200px 200px 200px 24px"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environmentGridList"
+      },
+      {
+        "name": "numOfGridListItemDisplayed",
+        "type": "expression",
+        "value": "gridRowMaxVisible()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "_.concat(outOfSyncServices, syncedServices)"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(350px, 2fr) 120px 24px"
+      },
+      {
+        "name": "numOfGridListItemDisplayed",
+        "type": "number",
+        "value": "10"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "out-of-sync-collectors"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDatacenters.tsx",
+    "props": [
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "headers"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "datacenterQueries.data"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "datacenter-list"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterNetwork.tsx",
+    "props": [
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "subnetHeaders"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "subnetGridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "cluster.virtualNetwork.subnets"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "subnet-list"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/NotificationContacts.tsx",
+    "props": [
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "headers"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "items"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "250px 1fr 100px 50px"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "platform-notification-contacts-list"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "dcTuningstate"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "wanTuningDaemonSetStatus"
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": "['Service Tier', 'Version', 'Status(D/C/R/U/A)', 'Up-To-Date Services', 'All Services']"
+      },
+      {
+        "name": "numOfGridListItemDisplayed",
+        "type": "number",
+        "value": "4"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(100px, 150px) 100px minmax(50px, 150px) minmax(50px, 150px) minmax(120px, 1fr) "
+      },
+      {
+        "name": "onSelection",
+        "type": "function",
+        "value": "(item) => {\n                        setSelectedItemId(item.serviceTier as ServiceTier)\n                        setActiveTabFeature(WanTuningFeatures.CHECK_DAEMON_SET_POD)\n                        dispatch(clearDaemonSetPodStatus())\n                    }"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "selectedItemId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "service-tier-grid-list"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "wanTuningPodStatus"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "200px 90px 400px 400px 400px"
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": "[\"Pod Name\", \"Pod Status\", \"Attached Node\", \"Message Broker Pod\", \"Recent Events\"]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/TracingDestinationTable.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "tracingProfile"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "numOfGridListItemDisplayed",
+        "type": "number",
+        "value": "10"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "tracing-destinations-table"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(5px, 15px) minmax(120px, 300px) minmax(120px, 1fr) minmax(120px, 150px) 150px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "noItemsFound"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "emptyRowMapping"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "empty-tracing-destinations-table"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "1fr"
+      }
+    ]
+  }
+]

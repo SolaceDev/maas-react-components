@@ -1,0 +1,42 @@
+[
+  {
+    "name": "name",
+    "count": 13
+  },
+  {
+    "name": "value",
+    "count": 13
+  },
+  {
+    "name": "onChange",
+    "count": 13
+  },
+  {
+    "name": "type",
+    "count": 13
+  },
+  {
+    "name": "id",
+    "count": 12
+  },
+  {
+    "name": "placeholder",
+    "count": 11
+  },
+  {
+    "name": "dataQa",
+    "count": 10
+  },
+  {
+    "name": "width",
+    "count": 10
+  },
+  {
+    "name": "onClearAll",
+    "count": 4
+  },
+  {
+    "name": "onFocus",
+    "count": 1
+  }
+]

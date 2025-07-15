@@ -1,0 +1,1407 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceLimitValue"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.serviceLimits.labels.newServiceLimit"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "number"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onServiceLimitChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "newServiceLimit"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"serviceLimitValue\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "environmentFilter"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "environmentsStr.environmentList.filterPlaceholder"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[<Search key=\"search\" />]"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearch"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environmentFilterInput"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"313px\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.environments.labels.environmentName"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "dialogState.name"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "environmentName"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "100"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEnvNameChange"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "isDuplicate || hasError || hasNameRequiredError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "handleErrorText()"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "envNameTestId"
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "firstNameError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "firstNameError ? myProfile.firstNameError : \"\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userFirstName"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "userFirstName"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userFirstName"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "firstNameValue"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "150"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleFirstName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "lastNameError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "lastNameError ? myProfile.lastNameError : \"\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userLastName"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "userLastName"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userLastName"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "lastNameValue"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "150"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleLastName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "oldPasswordReq"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "oldPasswordReq ? myProfile.oldPasswordReq : \"\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userOldPassword"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "password"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "userOldPassword"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userOldPassword"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "oldPasswordValue"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "50"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleOldPasswordChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "newPasswordError.length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "newPasswordError"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userNewPassword"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "userNewPassword"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "password"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userNewPassword"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "newPasswordValue"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "50"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleNewPasswordChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "confirmPasswordError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "confirmPasswordError ? newPasswordConfirmError : myProfile.changeWarning"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userNewConfirmation"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "userNewConfirmation"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "password"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userNewConfirmation"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "newPasswordValueConfirm"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "50"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleNewPasswordConfirmChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/CreateEditUserGroupsDialog.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "userGroups.ugDialog.ugName"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "dialogState.name"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userGroupName"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "100"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleUGNameChange"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "hasNameError || isDuplicate || hasNoNameError || isDefaultError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "handleErrorText()"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userGroupNameQa"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userGroupSearch"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userGroupSearchQa"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "userGroupSearchValue"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleUserGroupSearchValue"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "userGroups.userGroupsHome.search"
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "value": "155"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\tuserGroupSearchValue ? (\n\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={handleClearInput}>\n\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t<SolaceButton key={\"searchIcon\"} variant=\"icon\" onClick={handleClearInput}>\n\t\t\t\t\t\t\t\t<Search key=\"search\" />\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t]"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "20rem"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "configSettings.clientId?.errors?.length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "configSettings.clientId.errors?.length > 0 ? configSettings.clientId.errors[0] : \"\""
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientId"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ name, value }) => {\n\t\t\t\t\t\t\t\tconst errors: string[] = [];\n\n\t\t\t\t\t\t\t\tif (value.length < 1) {\n\t\t\t\t\t\t\t\t\terrors.push(en.accountSettings.clientIdErrorMsg);\n\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\thandleConfigureSettingsChange();\n\n\t\t\t\t\t\t\t\tsetConfigSettings((config) => {\n\t\t\t\t\t\t\t\t\treturn { ...config, [name]: { ...config.clientId, value, errors } };\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.accountSettings.clientId"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "configSettings.clientId.value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "configSettings.clientSecretKey.errors?.length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "configSettings.clientSecretKey.errors?.length > 0 ? configSettings.clientSecretKey.errors[0] : \"\""
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "hideSecretKey ? \"password\" : \"text\""
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientSecretKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ name, value }) => {\n\t\t\t\t\t\t\t\t\tconst errors: string[] = [];\n\n\t\t\t\t\t\t\t\t\tif (value.length < 1) {\n\t\t\t\t\t\t\t\t\t\terrors.push(en.accountSettings.clientSecretKeyErrorMsg);\n\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\thandleConfigureSettingsChange();\n\n\t\t\t\t\t\t\t\t\tsetConfigSettings((config) => {\n\t\t\t\t\t\t\t\t\t\treturn { ...config, [name]: { ...config.clientSecretKey, value, errors } };\n\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.accountSettings.clientSecretKey"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "configSettings.clientSecretKey.value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "configSettings.oidcDiscoveryUrl.errors?.length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "configSettings.oidcDiscoveryUrl.errors?.length > 0\n\t\t\t\t\t\t\t\t\t? configSettings.oidcDiscoveryUrl.errors[0]\n\t\t\t\t\t\t\t\t\t: en.accountSettings.discoveryUrlExpectedFormat"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "oidcDiscoveryUrl"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ name, value }) => {\n\t\t\t\t\t\t\t\tconst errors: string[] = [];\n\n\t\t\t\t\t\t\t\tif (value.length < 1) {\n\t\t\t\t\t\t\t\t\terrors.push(en.accountSettings.oidcDiscoveryUrlErrorMsg);\n\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\thandleConfigureSettingsChange();\n\n\t\t\t\t\t\t\t\tsetConfigSettings((config) => {\n\t\t\t\t\t\t\t\t\treturn { ...config, [name]: { ...config.oidcDiscoveryUrl, value, errors } };\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.accountSettings.discoveryUrl"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "configSettings.oidcDiscoveryUrl.value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "configSettings.additionalScopes.errors?.length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "configSettings.additionalScopes.errors?.length > 0\n\t\t\t\t\t\t\t\t\t? configSettings.additionalScopes.errors[0]\n\t\t\t\t\t\t\t\t\t: en.accountSettings.additionalScopesExpectedFormat"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "additionalScopes"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ name, value }) => {\n\t\t\t\t\t\t\t\tconst errors: string[] = [];\n\n\t\t\t\t\t\t\t\tif (value.indexOf(\" \") >= 0) {\n\t\t\t\t\t\t\t\t\terrors.push(en.accountSettings.noWhiteSpaceAllowed);\n\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\thandleConfigureSettingsChange();\n\n\t\t\t\t\t\t\t\tsetConfigSettings((config) => {\n\t\t\t\t\t\t\t\t\treturn { ...config, [name]: { ...config.additionalScopes, value, errors } };\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.accountSettings.additionalScopes"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "configSettings.additionalScopes.value as string"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/SetUpSso.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.accountSettings.preferredSubdomain"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "preferredSubdomain"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setPreferredSubdomainText({ edited: true, text: e.value })"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.accountSettings.preferredSubdomain"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "preferredSubdomain.text"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "preferredSubdomain.edited && !canSendRequest"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "preferredSubdomain.edited && !canSendRequest ? en.accountSettings.validSubdomain : \"\""
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "preferredSubdomainTextField"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/GroupManagement.tsx",
+    "props": [
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "userGroupManagement[\n\t\t\t\t\t\t\t\t\tclaimIdChanged && claimId.trim().length < 1 ? \"claimIdError\" : \"identityProviderHelperText\"\n\t\t\t\t\t\t\t\t]"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "claimIdChanged && claimId.trim().length < 1"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "userGroupManagement.identityProviderLabel"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "claimId"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => claimIdChangeHandler(value)"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "claimId"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "roleId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimValueRowItem.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "editClaimValuesFieldId"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "editClaimValuesField"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "claimValuesMapping"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setClaimValuesMapping(value)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "claimValueError ? userGroupManagement.claimValueErrorMessage : <span>&#160;</span>"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "claimValueError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "addClaimValuesField"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "addClaimValuesField"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "claimValuesMapping"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setClaimValuesMapping(value)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "claimValueError ? userGroupManagement.claimValueErrorMessage : undefined"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "claimValueError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "summaryError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "handleSummaryError()"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "summaryfield"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "supportPageSummary"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "supportPageSummary"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "summaryValue"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSummaryFieldValue"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "150"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "errorIdError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "handleErrorIdError()"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "errorField"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "supportPageErrorId"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "supportPageErrorId"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "errorIdValue"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleErrorIdFieldValue"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "350"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "limitRequestNumber"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "limitRequestNumber"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setLimitRequestNumber(+value)"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "number"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "limitRequestNumber"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.overview.eventPortalSection.totalObjects"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "15rem"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "limitRequestNumberInput"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.overview.banner.contactEmail"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "en.overview.banner.contactEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setContactEmail(e.value)"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.overview.banner.contactEmail"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "contactEmail"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!contactEmail && !isValidEmail(contactEmail)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!!contactEmail && !isValidEmail(contactEmail) ? (\n\t\t\t\t\t\t\t\t<span data-qa=\"contactEmailError\" id=\"contactEmailError\" style={{ color: \"inherit\" }}>\n\t\t\t\t\t\t\t\t\t{en.overview.banner.errorHelperText}\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t) : undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AdvancedSettingsSection.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.overview.advancedSettingsSection.password"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "en.overview.advancedSettingsSection.password"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setPassword(value)"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.overview.advancedSettingsSection.password"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "password"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "password"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "45rem"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "inCorrectPassword"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "password"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "inCorrectPassword ? en.overview.advancedSettingsSection.incorrectPasswordError : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/resetPassword/ResetPassword.tsx",
+    "props": [
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "resetPasswordEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "resetPasswordEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.forgotPassword.resetPasswordFieldTitle"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "en.forgotPassword.email"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "resetPasswordEmailInput"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationTextField.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "List of Emails"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "handle"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setHandle(value)"
+      },
+      {
+        "name": "onFocus",
+        "type": "function",
+        "value": "() =>\n\t\t\t\t\t!helper.hasErrors &&\n\t\t\t\t\tsetHelper((previous: any) => ({ ...previous, [name]: { hasErrors: false, helperText: helperText.info } }))"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() =>\n\t\t\t\t\t!helper.hasErrors &&\n\t\t\t\t\tsetHelper((previous: any) => ({\n\t\t\t\t\t\t...previous,\n\t\t\t\t\t\t[name]: { hasErrors: false, helperText: handle ? \"\" : helperText.warning(name) }\n\t\t\t\t\t}))"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "helper.hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "helper.helperText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/AvailablePrivateRegions.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "search"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "45%"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Search..."
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSearch(event.value)"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "search"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "tokenFormValues.name"
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "value": "Name"
+      },
+      {
+        "name": "data-lpignore",
+        "type": "string",
+        "value": "true"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "500px"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "name"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!nameError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "nameError ?? undefined"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => dispatch(setTokenName(e.value))"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "tokenName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDetails.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "details_displayName"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "tracingProfile.formFields.name.field"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "tracingDestination?.displayName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDetails.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "tracingProfile.formFields.type.field"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "tracingProfile.tracingType[tracingDestination?.tracingBackendType]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDetails.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "tracingProfile.formFields.connectionType.field"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "tracingProfile.tlsConnectionType[tracingDestination.connectionType]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDetails.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "tracingProfile.formFields.region.field"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "tracingProfile.datadogSite[tracingDestination.datadogSite]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDetails.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "tracingProfile.formFields.endpoint.field"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "tracingDestination.endpoint"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDetails.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "details_apiKey"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "tracingProfile.formFields.datadogApiKey.field"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "tracingDestination.datadogApiKey"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!_.isEmpty(error)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? name"
+      }
+    ]
+  }
+]

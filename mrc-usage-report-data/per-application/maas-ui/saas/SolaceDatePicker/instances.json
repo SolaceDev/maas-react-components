@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "onClear",
+        "type": "function",
+        "value": "() => clearSelectedDate()"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "setSelectedDate"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "SolaceDatePickerVariant.FORMAT_MONTH_YEAR"
+      },
+      {
+        "name": "disableFuture",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedDate"
+      }
+    ]
+  }
+]

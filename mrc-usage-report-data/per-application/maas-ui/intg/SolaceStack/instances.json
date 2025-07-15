@@ -1,0 +1,650 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "value": "84"
+      },
+      {
+        "name": "bgcolor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w10"
+      },
+      {
+        "name": "borderBottom",
+        "type": "expression",
+        "value": "showFilterSection ? `1px solid ${theme.palette.ux.secondary.w20}` : undefined"
+      },
+      {
+        "name": "alignItems",
+        "type": "expression",
+        "value": "\"center\""
+      },
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanel.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "value": "84"
+      },
+      {
+        "name": "bgcolor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w10"
+      },
+      {
+        "name": "borderBottom",
+        "type": "expression",
+        "value": "showFilterSection ? `1px solid ${theme.palette.ux.secondary.w20}` : undefined"
+      },
+      {
+        "name": "alignItems",
+        "type": "expression",
+        "value": "\"center\""
+      },
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "5"
+      },
+      {
+        "name": "margin",
+        "type": "expression",
+        "value": "createMode ? 0 : 3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/CustomTransformationNode.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      },
+      {
+        "name": "alignItems",
+        "type": "expression",
+        "value": "\"center\""
+      },
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      },
+      {
+        "name": "justifyContent",
+        "type": "expression",
+        "value": "\"flex-end\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      },
+      {
+        "name": "justifyContent",
+        "type": "expression",
+        "value": "\"flex-end\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      },
+      {
+        "name": "justifyContent",
+        "type": "expression",
+        "value": "\"flex-end\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      },
+      {
+        "name": "justifyContent",
+        "type": "expression",
+        "value": "\"flex-end\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/DeleteEdgeConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorStateUpdateDialog.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/TopicHeaderMapping.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "5"
+      },
+      {
+        "name": "margin",
+        "type": "expression",
+        "value": "createMode ? 0 : 3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/TopicHeaderMapping.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/TopicHeaderMapping.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "useFlexGap",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "flexWrap",
+        "type": "string",
+        "value": "wrap"
+      },
+      {
+        "name": "height",
+        "type": "expression",
+        "value": "data && isFetched && data.length === 0 ? `calc(100vh - 178px)` : undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorVendorTemplate.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "5"
+      },
+      {
+        "name": "margin",
+        "type": "expression",
+        "value": "createMode ? 0 : 3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorVendorTemplate.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorDetails.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorDetails.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorCards/ConnectorCardsPage.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "height",
+        "type": "expression",
+        "value": "`calc(100vh - 80px)`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorCards/ConnectorCards.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorCards/ConnectorCards.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      },
+      {
+        "name": "useFlexGap",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "flexWrap",
+        "type": "expression",
+        "value": "\"wrap\""
+      },
+      {
+        "name": "pl",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "pr",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "height",
+        "type": "expression",
+        "value": "data && isFetched && data.length === 0 ? `calc(100vh - 178px)` : undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectionCards.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "connectorsSidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/OAuthDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectionTabSummary.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorMetrics.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "6"
+      },
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorMetrics.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "0"
+      },
+      {
+        "name": "ml",
+        "type": "expression",
+        "value": "\"auto\""
+      },
+      {
+        "name": "mt",
+        "type": "expression",
+        "value": "\"auto\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorViewDetailsTab.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "4.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorEditDetailsTab.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/CreateSummaryStepView.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "padding",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "justifyContent",
+        "type": "string",
+        "value": "start"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/HeaderMappingTab.tsx",
+    "props": [
+      {
+        "name": "ml",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/layout/SolaceHeader.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"row\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentLearningBlurb.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/common/BaseTableList.tsx",
+    "props": [
+      {
+        "name": "height",
+        "type": "expression",
+        "value": "allItems.length !== 0 ? `calc(100vh + 80px)` : \"100%\""
+      },
+      {
+        "name": "bgcolor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "justifyContent",
+        "type": "string",
+        "value": "end"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "props": [
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "row"
+      },
+      {
+        "name": "justifyContent",
+        "type": "string",
+        "value": "end"
+      }
+    ]
+  }
+]

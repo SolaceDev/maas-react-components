@@ -1,0 +1,392 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/DefaultFilterSingleSelect.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSharedTypeChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedValue"
+      },
+      {
+        "name": "displayEmpty",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onOpen",
+        "type": "variable",
+        "value": "handleOpen"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleClose"
+      },
+      {
+        "name": "open",
+        "type": "variable",
+        "value": "openDropdown"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "authenticationType"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "authenticationType"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.authenticationType"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"authenticationType\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: authType }) => {\n\t\t\t\t\t\t\t\t\t\tsetSolaceConnectionValues({\n\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues,\n\t\t\t\t\t\t\t\t\t\t\tauthenticationType: authType as AuthenticationType\n\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "solaceConnectionValues.authenticationType"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"solaceDestinationType\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: destinationType }) =>\n\t\t\t\t\t\t\t\t\t\tsetSolaceConnectionValues({\n\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues,\n\t\t\t\t\t\t\t\t\t\t\tbinding: {\n\t\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues.binding,\n\t\t\t\t\t\t\t\t\t\t\t\tdestinationType: destinationType\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t})"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "solaceConnectionValues.binding.destinationType"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.destinationType"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "isEqual(solaceDirection, ConnectorDirection.Source) ? true : false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "solaceDestinationType"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"dataType\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: dataType }) => {\n\t\t\t\t\t\tsetConstantNameError(\"\");\n\t\t\t\t\t\tsetConstantField({\n\t\t\t\t\t\t\t...constantField,\n\t\t\t\t\t\t\tdataType: dataType,\n\t\t\t\t\t\t\tconstantValue: getDefaultConstantValue(dataType)\n\t\t\t\t\t\t});\n\t\t\t\t\t}"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.dataType"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "constantField.dataType"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "constant-datatype-selection"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"dataType\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: dataType }) => {\n\t\t\t\t\t\tsetCustomHeaderField({ ...customHeaderField, dataType: dataType });\n\t\t\t\t\t}"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.dataType"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "customHeaderField.dataType"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "header-datatype-selection"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"dataType\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: dataType }) => {\n\t\t\t\t\t\tsetHeaderDataType(dataType);\n\t\t\t\t\t}"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.dataType"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "headerDataType"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "header-datatype-selection"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"dataType\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: dataType }) => {\n\t\t\t\t\t\tsetConstantDataType(dataType);\n\t\t\t\t\t\tsetDefaultConstantValue(dataType);\n\t\t\t\t\t\tsetConstantNameError(\"\");\n\t\t\t\t\t}"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.dataType"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "constantDataType"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "header-datatype-selection"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "props.label"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "props.name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChangeTrigger(props, e)"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "props.value"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "props.readonly"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "props.required && !props.readonly"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "props.disabled"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "props.title"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "props.id"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "sslKeyStoreFormatTypeField"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "sslKeyStoreFormatType"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.sslKeyStoreFormat"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"sslKeyStoreFormat\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: sslKeyStoreFormat }) => {\n\t\t\t\t\t\t\t\tsetClientCertValues({\n\t\t\t\t\t\t\t\t\t...clientCertValues,\n\t\t\t\t\t\t\t\t\tsslKeyStoreFormat: sslKeyStoreFormat as SslKeyStoreFormatType\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "clientCertValues.sslKeyStoreFormat"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/dialogs/SelectEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  }
+]

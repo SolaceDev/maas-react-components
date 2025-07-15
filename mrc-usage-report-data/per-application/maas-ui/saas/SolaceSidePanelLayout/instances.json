@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "variable",
+        "value": "panelOpen"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "sidePanelMessage"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "variable",
+        "value": "MAX_WIDTH"
+      }
+    ]
+  }
+]

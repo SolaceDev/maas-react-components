@@ -1,0 +1,157 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/filterChips/MultiSelectFilterChip.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"html\""
+      },
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<ChipPopoverContent selectedFilters={selectedValues} />"
+      },
+      {
+        "name": "open",
+        "type": "variable",
+        "value": "tooltipOpen"
+      },
+      {
+        "name": "onOpen",
+        "type": "variable",
+        "value": "handleTooltipOpen"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleTooltipClose"
+      },
+      {
+        "name": "maxWidth",
+        "type": "expression",
+        "value": "\"medium\""
+      },
+      {
+        "name": "placement",
+        "type": "expression",
+        "value": "\"bottom-start\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/BaseDisplayField.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "TooltipVariant.overflow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/DeleteEdgeConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "TooltipVariant.overflow"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "item.source"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/DeleteEdgeConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "TooltipVariant.overflow"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "item.target"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/DropElement.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.connectors.labels.nonDroppableTooltip"
+      },
+      {
+        "name": "open",
+        "type": "expression",
+        "value": "isActive && !canDrop"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "connectors.labels.source"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "connectors.labels.target"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "connectors.labels.source"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "connectors.labels.target"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/icons/RoleIcon.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "role.title"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`roleIcon-${resourceRole || \"none\"}`"
+      }
+    ]
+  }
+]

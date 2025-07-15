@@ -1,0 +1,5 @@
+[
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx"
+]

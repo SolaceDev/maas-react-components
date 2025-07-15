@@ -1,0 +1,6 @@
+[
+  "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityClientProfiles.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx"
+]

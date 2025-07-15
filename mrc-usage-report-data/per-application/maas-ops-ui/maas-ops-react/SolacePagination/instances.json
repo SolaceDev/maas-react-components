@@ -1,0 +1,417 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/Customers.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "getMetadata().count"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "getMetadata().pageSize"
+      },
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "selectedPage"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "onSelectPage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/aggregation/Aggregation.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "getMetadata().count"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "getMetadata().pageSize"
+      },
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "selectedPage"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "onSelectPage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsList.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "paginationData.total"
+      },
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "paginationData.currentPage"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "paginationData.pageSize"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "onSelectDifferentPage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "(adminServiceResponse?.meta?.pageNumber ?? -1) + 1"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "adminServiceResponse?.meta?.pageSize ?? 20"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "adminServiceResponse?.meta?.count ?? 0"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "adminServiceResponseIsLoading"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(selectedPage) => {\n\t\t\t\t\t\tsetPageNumber(selectedPage - 1);\n\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceOperations/ServiceOperations.tsx",
+    "props": [
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "pageNumber"
+      },
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "jobsCount"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(page) => setPageNumber(page)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/SelfManagedEmaTable.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "activePage"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "setActivePage"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "pagination?.pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "pagination?.count"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "activePage"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "managementAgentsIsLoading"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "setActivePage"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "pagination.pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "pagination.count"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchList.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "paginationData?.count"
+      },
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "paginationData?.pageNumber"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "paginationData?.pageSize"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "setPage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "page"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "tableRows.length"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "loadingServicePackages"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageSelection"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "paginationData.total"
+      },
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "paginationData.currentPage"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "paginationData.pageSize"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/insightsOrganizations/InsightsOrganizations.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "pageNumber"
+      },
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "totalResults"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(selectedPage) => setPageNumber(selectedPage)"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "loadingOrgs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/monitoringJobs/MonitoringJobs.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "pageNumber"
+      },
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "totalResults"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(selectedPage) => setPageNumber(selectedPage)"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "loadingJobs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "pageNumber"
+      },
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "connectorCount"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(selectedPage) => {\n\t\t\t\t\t\t\tsetPageNumber(selectedPage);\n\t\t\t\t\t\t\tsetConnectorQuery(queryBuilder({ orgId, pageSize, pageNumber: selectedPage }));\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "loading",
+        "type": "expression",
+        "value": "isLoading && isLoadingMicroIntegrations && isLoadingAgents"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "brokerCompatibility?.meta?.pageNumber ?? 0"
+      },
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "brokerCompatibility?.meta?.count ?? 0"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(selectedPage) => {\n\t\t\t\t\t\t\t\tsetPageNumber(selectedPage);\n\t\t\t\t\t\t\t\tsetBrokerQuery(queryBuilder({ pageSize, pageNumber: selectedPage }));\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "brokerCompatibilityIsLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "helmChartCompatibility?.meta?.pageNumber ?? 0"
+      },
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "helmChartCompatibility?.meta?.count ?? 0"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(selectedPage) => {\n\t\t\t\t\t\t\t\tsetPageNumber(selectedPage);\n\t\t\t\t\t\t\t\tsetHelmChartQuery(queryBuilder({ pageSize, pageNumber: selectedPage }));\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "brokerCompatibilityIsLoading"
+      }
+    ]
+  }
+]

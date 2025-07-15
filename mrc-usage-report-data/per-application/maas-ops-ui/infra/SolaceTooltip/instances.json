@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersList.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "dateStr"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDatacenters.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${item.name}-key4`"
+      }
+    ]
+  }
+]

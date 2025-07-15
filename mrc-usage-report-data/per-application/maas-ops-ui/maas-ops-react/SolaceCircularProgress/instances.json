@@ -1,0 +1,90 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+    "props": [
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesListView.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/ToggleButtonWithDialog.tsx",
+    "props": [
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+    "props": [
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "loading-spinner"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
+    "props": [
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      },
+      {
+        "name": "variant",
+        "type": "variable",
+        "value": "loadingVariant"
+      }
+    ]
+  }
+]

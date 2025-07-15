@@ -1,0 +1,37 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/DefaultAttributeBadge.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "default-env"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_default\", message: \"Default\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "props"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "ConnectorStateLabel[state as keyof typeof ConnectorStateLabel]"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? \"connector_status_badge\""
+      }
+    ]
+  }
+]

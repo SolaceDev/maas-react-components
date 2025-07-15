@@ -1,0 +1,34 @@
+[
+  {
+    "name": "label",
+    "count": 12
+  },
+  {
+    "name": "...",
+    "count": 11
+  },
+  {
+    "name": "bgColor",
+    "count": 8
+  },
+  {
+    "name": "fgColor",
+    "count": 8
+  },
+  {
+    "name": "icon",
+    "count": 8
+  },
+  {
+    "name": "dataQa",
+    "count": 7
+  },
+  {
+    "name": "maxWidth",
+    "count": 4
+  },
+  {
+    "name": "onDelete",
+    "count": 1
+  }
+]

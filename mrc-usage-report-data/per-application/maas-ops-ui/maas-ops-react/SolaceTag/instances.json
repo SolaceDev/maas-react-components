@@ -1,0 +1,147 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"ENABLED\""
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.SUCCESS_BG_GREEN"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.SUCCESS_GREEN_LABEL"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"DISABLED\""
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.ERROR_BG_RED"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.ERROR_RED_LABEL"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "clickable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "TaskStatus.COMPLETED"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.SUCCESS_BG_GREEN"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.SUCCESS_GREEN_LABEL"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "clickable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "TaskStatus.FAILED"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.ERROR_BG_RED"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.ERROR_RED_LABEL"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`${row.daemonSetStatus.desired}/${row.daemonSetStatus.currentScheduled}/${row.daemonSetStatus.ready}/${row.daemonSetStatus.upToDate}/${row.daemonSetStatus.available}`"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "(allEleInArrayAreSame(Object.values(row.daemonSetStatus))) ? CHIP_COLORS.SUCCESS_BG_GREEN : CHIP_COLORS.ERROR_BG_RED"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "(allEleInArrayAreSame(Object.values(row.daemonSetStatus)))? CHIP_COLORS.SUCCESS_GREEN_LABEL : CHIP_COLORS.ERROR_RED_LABEL"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`podStatus-${index}`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "row.podStatus"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "row.podStatus === \"Running\" ? CHIP_COLORS.SUCCESS_BG_GREEN : CHIP_COLORS.ERROR_BG_RED"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "row.podStatus === \"Running\" ? CHIP_COLORS.SUCCESS_GREEN_LABEL : CHIP_COLORS.ERROR_RED_LABEL"
+      }
+    ]
+  }
+]

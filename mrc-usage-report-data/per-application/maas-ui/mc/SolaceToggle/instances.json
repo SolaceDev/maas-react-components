@@ -1,0 +1,127 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/atoms/AtomToggle.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "props"
+      },
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorText || helperText"
+      },
+      {
+        "name": "isOn",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/Security.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "delete_protection"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "delete_protection"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "delete-protection"
+      },
+      {
+        "name": "isOn",
+        "type": "variable",
+        "value": "isLocked"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!canConfigure"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleDeleteProtection"
+      },
+      {
+        "name": "stateText",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_delete_protection\", message: \"Delete Protection\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "show_all"
+      },
+      {
+        "name": "isOn",
+        "type": "expression",
+        "value": "selectedEnvironment.showAllResources"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleShowAllEnvs"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "show_all_envs"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_show_all_environments\", message: \"Show resources in all environments\" })"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "t({ id: \"id_show_all_environments_help\", message: \"Enable to manage resources across environments\" })"
+      }
+    ]
+  }
+]

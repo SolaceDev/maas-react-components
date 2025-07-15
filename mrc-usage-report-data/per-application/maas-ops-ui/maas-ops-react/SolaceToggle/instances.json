@@ -1,0 +1,82 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "profileToggle"
+      },
+      {
+        "name": "isOn",
+        "type": "expression",
+        "value": "resource.enabled"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleResourceToggle(resource.profile)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${resource.profile}_toggle`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/CreatePrivateRegion.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "rest"
+      },
+      {
+        "name": "isOn",
+        "type": "expression",
+        "value": "rest.value"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "datacenterVisibility"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => rest.onChange(event.value)"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Visible"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/CreatePrivateRegion.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "rest"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "datacenterAvailability"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => rest.onChange(event.value)"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Available"
+      }
+    ]
+  }
+]

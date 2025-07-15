@@ -1,0 +1,4 @@
+[
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDisableDialog.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx"
+]

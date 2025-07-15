@@ -1,0 +1,27 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedEnvironment.environmentId"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSetEnvironment"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "environmentOptions"
+      }
+    ]
+  }
+]

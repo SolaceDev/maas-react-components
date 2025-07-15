@@ -1,0 +1,286 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "paddingTop",
+        "type": "expression",
+        "value": "theme.spacing(1)"
+      },
+      {
+        "name": "paddingBottom",
+        "type": "expression",
+        "value": "theme.spacing()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersSummary.tsx",
+    "props": [
+      {
+        "name": "align",
+        "type": "string",
+        "value": "left"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "fontWeight",
+        "type": "string",
+        "value": "bold"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersSummary.tsx",
+    "props": [
+      {
+        "name": "align",
+        "type": "string",
+        "value": "right"
+      },
+      {
+        "name": "noWrap",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersSummary.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "marginTop",
+        "type": "string",
+        "value": "auto"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersSummary.tsx",
+    "props": [
+      {
+        "name": "align",
+        "type": "string",
+        "value": "right"
+      },
+      {
+        "name": "noWrap",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersSummary.tsx",
+    "props": [
+      {
+        "name": "align",
+        "type": "string",
+        "value": "right"
+      },
+      {
+        "name": "noWrap",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersExportDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "exportClustersTitle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersExportDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "exportClustersLoadingMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersExportDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "exportClustersSuccessMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/CommonComponents.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: \"text.secondary\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/CommonComponents.tsx",
+    "props": [
+      {
+        "name": "data-qa",
+        "type": "variable",
+        "value": "dataQa"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      },
+      {
+        "name": "minHeight",
+        "type": "expression",
+        "value": "theme.spacing(4)"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterSystemComponents.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "padding",
+        "type": "expression",
+        "value": "theme.spacing(1)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterSystemComponents.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      },
+      {
+        "name": "padding",
+        "type": "expression",
+        "value": "theme.spacing(1)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterSystemComponents.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      },
+      {
+        "name": "padding",
+        "type": "expression",
+        "value": "theme.spacing(1)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterNetwork.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterNetwork.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "padding",
+        "type": "expression",
+        "value": "theme.spacing(1)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterNetwork.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "padding",
+        "type": "expression",
+        "value": "theme.spacing(1)"
+      }
+    ]
+  }
+]

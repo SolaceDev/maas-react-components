@@ -1,0 +1,60 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "What is an Automated Upgrade?"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => setNeedHelp(false)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "What is an Automated Upgrade?"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.background.paper"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Release Notes"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
+    "props": []
+  }
+]

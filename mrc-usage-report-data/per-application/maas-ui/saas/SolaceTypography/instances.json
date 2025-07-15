@@ -1,0 +1,1806 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "key",
+        "type": "string",
+        "value": "role"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`roles-${label}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "16"
+      },
+      {
+        "name": "mr",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "14"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.primary.main }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "role"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "component",
+        "type": "string",
+        "value": "div"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      },
+      {
+        "name": "component",
+        "type": "string",
+        "value": "div"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      },
+      {
+        "name": "component",
+        "type": "string",
+        "value": "div"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ASEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ASEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "4"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.styles.ts",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ fontSize: \"14px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ fontSize: \"16px\", fontWeight: \"500\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ fontSize: \"14px\" }"
+      },
+      {
+        "name": "marginTop",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "marginBottom",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "marginTop",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "marginBottom",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "fontSize",
+        "type": "string",
+        "value": "24px"
+      },
+      {
+        "name": "fontWeight",
+        "type": "string",
+        "value": "500"
+      },
+      {
+        "name": "textAlign",
+        "type": "string",
+        "value": "right"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "pcuCostValue"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/NoDrawdownUsage/NoDrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/NoDrawdownUsage/NoDrawdownUsage.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.styles.ts",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/about/AboutPage.tsx",
+    "props": [
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ alignContent: \"center\" }"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "24"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/about/AboutPage.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/about/AboutPage.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/about/AboutPage.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "4"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsZeroState.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsZeroState.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.grey[600] }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/CreateEditUserGroupsDialog.tsx",
+    "props": [
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"inline-block\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/CreateEditUserGroupsDialog.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"inline-block\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/DeleteUserGroupsDialog.tsx",
+    "props": [
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"inline-block\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/DeleteUserGroupsDialog.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"inline-block\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "16"
+      },
+      {
+        "name": "mr",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "14"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.primary.main }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "14"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "14"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.primary.main }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/EnableSso.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/TestSsoConfiguration.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/SetUpSso.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/SetUpSso.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "3.3"
+      },
+      {
+        "name": "ml",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/SetUpSso.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "string",
+        "value": "1rem"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ opacity: 0.8 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/SetUpSso.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": [
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "securitySettingsWarning"
+      },
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettingsTile.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogsDataTable.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "title"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogsDataTable.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "subTitle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogDetails.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogDetails.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ whiteSpace: \"initial\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogs.styles.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/GroupManagement.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/GroupManagement.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ fontWeight: \"bolder\", color: \"inherit\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/utils/groupManagement.styles.ts",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/RemoveClaimMapping.tsx",
+    "props": [
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"inline-block\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingsRoleRowItem.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "item"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingsRoleRowItem.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementHeader.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementHeader.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "0.5"
+      },
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "0.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementHeader.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementHeader.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ fontSize: \"1.33rem\", marginBottom: \".3rem\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": [
+      {
+        "name": "mr",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": [
+      {
+        "name": "mr",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingUserGroupRowItem.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingUserGroupRowItem.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "400"
+      },
+      {
+        "name": "textAlign",
+        "type": "expression",
+        "value": "\"center\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "14"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"block\""
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "supportModalSuccessMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"contents\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "display",
+        "type": "expression",
+        "value": "\"block\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "400"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportTicketCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "value": "message"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      },
+      {
+        "name": "pt",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "pb",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "pb",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "pb",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "pt",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "pb",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountUserCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountUserCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountUserCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountUserCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountDetailsOverviewSection.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ paddingLeft: \"0\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountDetailsOverviewSection.tsx",
+    "props": [
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ paddingLeft: \"0\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "desc"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AdvancedSettingsSection.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AdvancedSettingsSection.tsx",
+    "props": [
+      {
+        "name": "ml",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "index"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AdvancedSettingsSection.tsx",
+    "props": [
+      {
+        "name": "color",
+        "type": "string",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AdvancedSettingsSection.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/AccountDetailsShell.style.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/RouteNotFound.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/RouteNotFound.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/AccountDetailsShell.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "detailsLabel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/AccountDetailsShell.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/AccountDetailsShell.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "detailsLabel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/AccountDetailsShell.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "capitalize"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/resetPassword/ResetPassword.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/resetPassword/ResetPassword.tsx",
+    "props": [
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "noProblemText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationsUnsubscribeSettings/NotificationsUnsubscribeSettings.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ paddingRight: theme.spacing() }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "color",
+        "type": "string",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.text.secondary }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/LogsRetention.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationTextField.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ paddingRight: theme.spacing() }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationTextField.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "textAlign",
+        "type": "expression",
+        "value": "\"center\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ wordBreak: \"break-all\", whiteSpace: \"normal\" }"
+      },
+      {
+        "name": "textAlign",
+        "type": "expression",
+        "value": "\"center\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h2"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ wordBreak: \"break-all\", whiteSpace: \"normal\" }"
+      },
+      {
+        "name": "textAlign",
+        "type": "expression",
+        "value": "\"center\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/MoveDatacenterEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/NotificationDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/NotificationDetails.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "messageHeading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/NotificationDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/NotificationDetails.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "messageHeading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/NotificationDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/NotificationDetails.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "value": "messageHeading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/NotificationDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "variable",
+        "value": "attachReadStateClassName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "props": [
+      {
+        "name": "className",
+        "type": "variable",
+        "value": "attachReadStateClassName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  }
+]

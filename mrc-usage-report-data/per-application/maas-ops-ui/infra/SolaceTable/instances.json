@@ -1,0 +1,92 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersList.tsx",
+    "props": [
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "ClusterListTableColumns"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SELECTION_TYPE.NONE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "string",
+        "value": "No clusters found"
+      },
+      {
+        "name": "minHeight",
+        "type": "expression",
+        "value": "theme.spacing(54)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterServices.tsx",
+    "props": [
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "ServiceListTableColumns"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SELECTION_TYPE.NONE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "() => void 0"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "isPending"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "string",
+        "value": "No services found"
+      },
+      {
+        "name": "minHeight",
+        "type": "expression",
+        "value": "theme.spacing(72)"
+      }
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userSettingsShell/UserSettingsShell.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      },
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "TABS"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/AccountDetailsShell.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      },
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "TABS"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      }
+    ]
+  }
+]

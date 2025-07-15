@@ -1,0 +1,52 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/SelectEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "fgColor",
+        "type": "variable",
+        "value": "fgColor"
+      },
+      {
+        "name": "bgColor",
+        "type": "variable",
+        "value": "bgColor"
+      },
+      {
+        "name": "icon",
+        "type": "variable",
+        "value": "icon"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceListView.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "environment.label"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "environment.fgColor"
+      },
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "environment.bgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "environment.icon"
+      }
+    ]
+  }
+]

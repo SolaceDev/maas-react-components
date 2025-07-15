@@ -1,0 +1,52 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "meta.pagination.count ?? 0"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "meta.pagination.pageSize"
+      },
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "meta.pagination.pageNumber"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageSelection"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "meta.pagination.count ?? 0"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "meta.pagination.pageSize"
+      },
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "meta.pagination.pageNumber"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageSelection"
+      }
+    ]
+  }
+]

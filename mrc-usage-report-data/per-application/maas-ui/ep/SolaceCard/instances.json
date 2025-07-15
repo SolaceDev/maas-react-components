@@ -1,0 +1,520 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/RuntimeEntityList.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "What is an Event Management Agent?"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseInfoBlurb"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+    "props": [
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<h1 className=\"MEM-info-header\">{brandableTextValueConverter(\"Environments in PubSub+ Cloud\", \"string\")}</h1>"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseInfoMessage"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/dashboard/EducationalPopup.tsx",
+    "props": [
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleDismissEducationalCard"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/SubscriptionEditorList.tsx",
+    "props": [
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Want to subscribe to specific values?"
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => setShowInfoBlurb(false)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "addSubscriptionInfoBlurb"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughInstallEMA.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughRunDiscoveryScanEMA.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/WalkthroughRunDiscoveryScanEMA.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/components/SetupAgentsBanner.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/DesignAuditSingleSelectionContent.tsx",
+    "props": [
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "getCardTitle(selectedAudit.auditEntityType)"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseInfoMessage"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ConfirmTagAssociationDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SidePanelSummaryActionCard.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.warning.w10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseInstructionMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/TagsQuickActions.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseInfoMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateExistingVersionsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/SubjectVersionInfoCard.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseInstructionMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MatchFoundTile.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/TemplateInfoBlurb.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "onClose"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleDismissReuseIndexInfoCard"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointInformation.tsx",
+    "props": [
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => setShowRDPInfo(false)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "restDeliveryPointInformation"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.warning.w10"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "dataQa"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "\"Upload From JSON File\""
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseEnumVauesHelp"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.background.default"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"enumValuesHelp\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<Box display=\"flex\" alignItems=\"center\" gap={1}>\n\t\t\t\t\t<WarningIcon />\n\t\t\t\t\t<SolaceTypography variant=\"h5\">Referenced Schema Names Require Manual Updates</SolaceTypography>\n\t\t\t\t</Box>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "reasonKey === AsyncAPIDownloadCollisionReason.ambiguousChannelTopic ? \"Conflicting Topic Address\" : \"Conflicting Objects\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/AttractedEvents.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "attractedEventsNoResults"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/SuggestedEvents.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainEdit.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Defining Topic Domains"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "closeInfoBox"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "topicAddressResources"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "topicAddressResourcesMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventVersionForm.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "\"Tips and Tricks for Topic Addresses\""
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseTopicAddressHelp"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"topicAddressHelp\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventFlowConfig.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.learning.w10"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "handleCloseInfoMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBrokers-noBrokers"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBrokers-noMatchingBrokers"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "messages.projectDefinition.help"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "projectDefinitionHelp"
+      }
+    ]
+  }
+]

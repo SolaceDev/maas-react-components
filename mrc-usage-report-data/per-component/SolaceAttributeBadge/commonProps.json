@@ -1,0 +1,42 @@
+[
+  {
+    "name": "label",
+    "count": 62
+  },
+  {
+    "name": "size",
+    "count": 24
+  },
+  {
+    "name": "fillColor",
+    "count": 24
+  },
+  {
+    "name": "labelColor",
+    "count": 21
+  },
+  {
+    "name": "boldLabel",
+    "count": 20
+  },
+  {
+    "name": "dataQa",
+    "count": 14
+  },
+  {
+    "name": "height",
+    "count": 13
+  },
+  {
+    "name": "variant",
+    "count": 10
+  },
+  {
+    "name": "...",
+    "count": 10
+  },
+  {
+    "name": "compressed",
+    "count": 9
+  }
+]

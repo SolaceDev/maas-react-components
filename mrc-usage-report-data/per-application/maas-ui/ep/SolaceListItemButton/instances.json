@@ -1,0 +1,107 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/GettingStartedListItem.tsx",
+    "props": [
+      {
+        "name": "selected",
+        "type": "expression",
+        "value": "!currentTab || currentTab === \"get-started\""
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\thistory.push(TabsPath.getStarted);\n\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SamplesList.tsx",
+    "props": [
+      {
+        "name": "selected",
+        "type": "expression",
+        "value": "currentTab === \"acme-retail-sample\""
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\thistory.push(TabsPath.acmeRetail);\n\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplates.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ paddingTop: 1.5, paddingBottom: 1.5, paddingLeft: 3 }"
+      },
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "selected",
+        "type": "expression",
+        "value": "selectedTemplateType === ConfigurationTypeId.solaceQueue"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => handleSelectTemplateType(ConfigurationTypeId.solaceQueue)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplates.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ paddingTop: 1.5, paddingBottom: 1.5, paddingLeft: 3 }"
+      },
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "selected",
+        "type": "expression",
+        "value": "selectedTemplateType === ConfigurationTypeId.solaceClientProfileName"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => handleSelectTemplateType(ConfigurationTypeId.solaceClientProfileName)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\tbackground: theme.palette.ux.primary.text.w10,\n\t\t\t\t\t\t\theight: \"100%\",\n\t\t\t\t\t\t\tpaddingBottom: \"0\",\n\t\t\t\t\t\t\tpaddingTop: \"0\",\n\t\t\t\t\t\t\tborder: `1px solid ${theme.palette.ux.secondary.w20}`,\n\t\t\t\t\t\t\tborderBottom: index === data.items.length - 1 ? undefined : \"0\"\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "disableGutters",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "selected",
+        "type": "variable",
+        "value": "selected"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setSelectedIndex(index)"
+      }
+    ]
+  }
+]

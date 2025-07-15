@@ -1,0 +1,147 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgents.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(value) => setActiveTab(value as EMA_TYPES)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "lg"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationDashboard.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/MonitoringDashboard.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTab(tab as MonitoringTabs)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/SidekickDeploymentDetails.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTab(tab)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "wanTuningFeaturesTabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTabFeature"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTabFeature(tab as WanTuningFeatures)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "fullWidth"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTab(tab)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/utils/helper.tsx",
+    "props": [
+      {
+        "name": "href",
+        "type": "variable",
+        "value": "link"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!link"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "openLinkInNewTab",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`link-${text}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersMain.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "toggleShowExportDialog"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "exportCSVButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleToggleSearchPanel"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "openFilterIcon"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Manage Filters"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleClearAllFilters"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clearAllButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersExportDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onClose"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "exportCloseButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersExportDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "downloadCSV"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "isFetching || !!error"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "exportDownloadButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDatacenters.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "`/datacenters/${item.name}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onRefresh"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!cluster?.id || isRefreshing"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "refresh-cluster-button"
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+    "props": [
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "endOfLifeDate"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEndOfLifeDateChange"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "endOfLifeDateSelect"
+      }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "collectorRadioGroup"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "action"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => dispatch(setAction(event.value))"
+      },
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  }
+]

@@ -1,0 +1,412 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CustomizeMessageSpoolDialog.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "t({ id: \"id_spool_resource_calc\", message: \"Expanded Spool Size Billing\" })"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "showCalculations"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleShowCalculations"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<MessageSpoolCalculations messageSpoolSize={messageSpoolSize} defaultMessageSpoolSize={defaultMessageSpoolSize} messageSpoolLimits={messageSpoolLimits} />"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Connect.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "id"
+      },
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "id"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "expanded[id]"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<InfoSummary id={id} label={name} description={description} image={logo} imageHeight={logoHeight} />"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleExpanded"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<ClientLibraries view={view} librarySummaries={libraries} onSelectLibrary={handleSelectLibrary} />"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/ClientProfileDialog.tsx",
+    "props": [
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "square",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "client-profile-advanced-settings"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "t({ id: \"id_advanced_settings\", message: \"Advanced Settings\" })"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<AdvancedSettings canEdit={canConfigure} />"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "advancedSettings"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(_, expanded) => setAdvancedSettings(expanded)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${endpoint.id}Accordion`"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "endpoint.id"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<Grid>\n\t\t\t\t\t\t\t\t\t\t<Item>\n\t\t\t\t\t\t\t\t\t\t\t<TextWithIcon>\n\t\t\t\t\t\t\t\t\t\t\t\t{endpoint.name}\n\t\t\t\t\t\t\t\t\t\t\t\t{isInProgress && isInProgress.serviceConnectionEndpoint.name === endpoint.name && <OperationInProgress type={isInProgress.type} />}\n\t\t\t\t\t\t\t\t\t\t\t</TextWithIcon>\n\t\t\t\t\t\t\t\t\t\t</Item>\n\t\t\t\t\t\t\t\t\t\t<Item>{i18n._(accessTypes[endpoint.accessType])}</Item>\n\t\t\t\t\t\t\t\t\t\t<Item>{endpoint.description}</Item>\n\t\t\t\t\t\t\t\t\t\t<Item>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceMenu\n\t\t\t\t\t\t\t\t\t\t\t\tbuttonProps={{\n\t\t\t\t\t\t\t\t\t\t\t\t\tchildren: <MoreHorizOutlinedIcon />,\n\t\t\t\t\t\t\t\t\t\t\t\t\ttitle: t({ id: \"id_actions\", message: \"Actions\" }),\n\t\t\t\t\t\t\t\t\t\t\t\t\tvariant: \"icon\"\n\t\t\t\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t\t\t\t\tdataQa=\"actions\"\n\t\t\t\t\t\t\t\t\t\t\t\tid={`public_actions`}\n\t\t\t\t\t\t\t\t\t\t\t\titems={[\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_edit\", message: \"Edit\" }),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tdisabled: !allowServiceQueries,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => handleEditEndpoint(index)\n\t\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tname: t({ id: \"id_delete\", message: \"Delete\" }),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tdisabled: connectionEndpoints.length === 1 || isDefault || !allowServiceQueries,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tonMenuItemClick: () => setShowDeleteDialog(endpoint)\n\t\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t\t]}\n\t\t\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t\t</Item>\n\t\t\t\t\t\t\t\t\t</Grid>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<div>\n\t\t\t\t\t\t\t\t\t\t<Header>\n\t\t\t\t\t\t\t\t\t\t\t<Grid>\n\t\t\t\t\t\t\t\t\t\t\t\t<Item>Protocols</Item>\n\t\t\t\t\t\t\t\t\t\t\t\t<Item>Status</Item>\n\t\t\t\t\t\t\t\t\t\t\t\t<Item>Port</Item>\n\t\t\t\t\t\t\t\t\t\t\t\t<Item></Item>\n\t\t\t\t\t\t\t\t\t\t\t</Grid>\n\t\t\t\t\t\t\t\t\t\t</Header>\n\t\t\t\t\t\t\t\t\t\t<Grid>\n\t\t\t\t\t\t\t\t\t\t\t{protocols.map((port) => {\n\t\t\t\t\t\t\t\t\t\t\t\tconst value = ports.get(port.protocol);\n\t\t\t\t\t\t\t\t\t\t\t\treturn (\n\t\t\t\t\t\t\t\t\t\t\t\t\t<Fragment key={port.protocol}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Item>{port.label}</Item>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Item>{value?.port ? \"Enabled\" : \"Disabled\"}</Item>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Item>{value?.port ? value.port : \"-\"}</Item>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Item></Item>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</Fragment>\n\t\t\t\t\t\t\t\t\t\t\t\t);\n\t\t\t\t\t\t\t\t\t\t\t})}\n\t\t\t\t\t\t\t\t\t\t</Grid>\n\t\t\t\t\t\t\t\t\t</div>"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "expandPublicEndpoint[index]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(_e, expanded) => setExpandPublicEndpoint([...expandPublicEndpoint.slice(0, index), expanded, ...expandPublicEndpoint.slice(index + 1)] as boolean[])"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/ClusterNameCard.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "t({ id: \"id_used_by_n_services\", message: plural(cluster?.serviceNames.length ?? 0, { one: \"Used by # service\", other: \"Used by # services\" }) })"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "cluster-name-services"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t{cluster.serviceNames.map((serviceName) => (\n\t\t\t\t\t\t\t\t\t<div key={serviceName}>{serviceName}</div>\n\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<Summary>\n\t\t\t\t\t\t\t\t<SummaryText>\n\t\t\t\t\t\t\t\t\t<Trans id=\"id_dt_step_1\">\n\t\t\t\t\t\t\t\t\t\tStep 1: <Bold>Configuration on the Event Broker</Bold>\n\t\t\t\t\t\t\t\t\t</Trans>\n\t\t\t\t\t\t\t\t</SummaryText>\n\t\t\t\t\t\t\t</Summary>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<div>\n\t\t\t\t\t\t\t\t<Trans id=\"id_distributed_tracing_desc\">\n\t\t\t\t\t\t\t\t\tYou must configure Telemetry Profiles and Topic Filters in Broker Manager before moving to step 2.{\" \"}\n\t\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\t\tvariant=\"link\"\n\t\t\t\t\t\t\t\t\t\tdense\n\t\t\t\t\t\t\t\t\t\thref={(allowBrokerRequests && getBrokerWebUI(TELEMETRY_PROFILE_PATH)) || \"\"}\n\t\t\t\t\t\t\t\t\t\tdataQa=\"launchBrokerManagerTelemetryProfiles\"\n\t\t\t\t\t\t\t\t\t\tonClick={handleOpenBrokerManager}\n\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\tOpen Broker Manager&apos;s Telemetry\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</Trans>\n\t\t\t\t\t\t\t</div>"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "step-1-accordion"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expandStep1"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleExpandStep1Click"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<Summary>\n\t\t\t\t\t\t\t\t<SummaryText>\n\t\t\t\t\t\t\t\t\t<Trans id=\"id_dt_step_2\">\n\t\t\t\t\t\t\t\t\t\tStep 2: <Bold>Trace Collection</Bold>\n\t\t\t\t\t\t\t\t\t</Trans>\n\t\t\t\t\t\t\t\t\t<CollectorRunningStatus collectorRunningStatus={collectorRunningStatus} brokerConnectionStatus={brokerConnectionStatus} />\n\t\t\t\t\t\t\t\t</SummaryText>\n\t\t\t\t\t\t\t\t<SummaryActions>\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleCheckConnectionStatus} isDisabled={!isConfigured || !allowServiceQueries} dataQa=\"dt-button-status\">\n\t\t\t\t\t\t\t\t\t\t<Trans id=\"id_dt_status_btn\">Check Status</Trans>\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"outline\" onClick={handleConfigureDataCollection} isDisabled={!allowServiceQueries} dataQa=\"dt-button-deploy\">\n\t\t\t\t\t\t\t\t\t\t{isConfigured ? <Trans id=\"id_dt_update_deploy_btn\">Update Configuration</Trans> : <Trans id=\"id_dt_deploy_btn\">Deploy Configuration</Trans>}\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</SummaryActions>\n\t\t\t\t\t\t\t</Summary>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<div>\n\t\t\t\t\t\t\t\t{distributedTracingStatus === \"notConfigured\" || distributedTracingStatus === \"pending\" || !telemetryProfileName ? (\n\t\t\t\t\t\t\t\t\t<>\n\t\t\t\t\t\t\t\t\t\t{distributedTracingStatus === \"pending\" ? (\n\t\t\t\t\t\t\t\t\t\t\t<SolaceMessageBox variant=\"info\" message={t({ id: \"id_configuration_progress\", message: \"Configuration in progress...\" })} dataQa=\"configuration-progress\" />\n\t\t\t\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t\t\t<Trans id=\"id_dt_data_collection_not_config\">Data Collection is not configured.</Trans>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t</>\n\t\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t\t<Row>\n\t\t\t\t\t\t\t\t\t\t{collectorRunningStatus === \"success\" && <SolaceMessageBox variant=\"success\" message={t({ id: \"id_collector_running\", message: \"Collector is running.\" })} />}\n\t\t\t\t\t\t\t\t\t\t{collectorRunningStatus === \"error\" && <SolaceMessageBox variant=\"error\" message={t({ id: \"id_collector_down\", message: \"Collector is down.\" })} />}\n\t\t\t\t\t\t\t\t\t\t{collectorRunningStatus === \"pending\" && (\n\t\t\t\t\t\t\t\t\t\t\t<SolaceMessageBox variant=\"info\" message={t({ id: \"id_retrieving_collector_status\", message: \"Retrieving collector status...\" })} dataQa=\"pending-collector-status\" />\n\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t\t{brokerConnectionStatus === \"success\" && (\n\t\t\t\t\t\t\t\t\t\t\t<SolaceMessageBox variant=\"success\" message={t({ id: \"id_connection_service_active\", message: \"Connection to the service is active.\" })} />\n\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t\t{brokerConnectionStatus === \"error\" && <SolaceMessageBox variant=\"error\" message={brokerConnectionErrorMessage} />}\n\t\t\t\t\t\t\t\t\t\t{brokerConnectionStatus === \"pending\" && (\n\t\t\t\t\t\t\t\t\t\t\t<SolaceMessageBox variant=\"info\" message={t({ id: \"id_retrieving_service_status\", message: \"Retrieving service status...\" })} dataQa=\"pending-service-status\" />\n\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t\t<Grid>\n\t\t\t\t\t\t\t\t\t\t\t<GridRow>\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTextField name=\"tracingProfileName\" inlineLabel label={t({ id: \"id_tracing_destination\", message: \"Tracing Destination\" })} value={tracingProfileName} readOnly />\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTextField\n\t\t\t\t\t\t\t\t\t\t\t\t\tname=\"tracingClientUsername\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tinlineLabel\n\t\t\t\t\t\t\t\t\t\t\t\t\tlabel={t({ id: \"id_tracing_client_username\", message: \"Tracing Client Username\" })}\n\t\t\t\t\t\t\t\t\t\t\t\t\tvalue={\"sc-dt-trace-collector\"}\n\t\t\t\t\t\t\t\t\t\t\t\t\treadOnly\n\t\t\t\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t\t\t</GridRow>\n\t\t\t\t\t\t\t\t\t\t\t<GridRow>\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTextField name=\"telemetryProfileName\" inlineLabel label={t({ id: \"id_telemetry_profile\", message: \"Telemetry Profile\" })} value={telemetryProfileName} readOnly />\n\t\t\t\t\t\t\t\t\t\t\t</GridRow>\n\t\t\t\t\t\t\t\t\t\t</Grid>\n\t\t\t\t\t\t\t\t\t</Row>\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t</div>"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "step-2-accordion"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expandStep2"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleExpandStep2Click"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "section.label"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "expanded[index]"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "section.label"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleSection(index)"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Grid key={section.id}>{renderProperties(section.data, section.properties)}</Grid>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormAdvancedOptions.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<AccordionLabel>\n\t\t\t\t\t\t<Trans id=\"id_advanced_connection_options\">Advanced Connection Options</Trans>\n\t\t\t\t\t</AccordionLabel>"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "advanced_connection_options"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "showAdvancedProps"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleShowAdvancedProps"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<AdvancedOptionsDetails />"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormCloneOptions.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<AccordionLabel>\n\t\t\t\t\t\t<Trans id=\"id_clone_options\">Clone Options</Trans>\n\t\t\t\t\t</AccordionLabel>"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clone_options"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "showCloneProps"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleShowCloneProps"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<FormCloneOptionsDetails />"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEndpoint.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<EndpointType label={value} type={i18n._(accessTypes[endpoint.accessType])} onClick={handleResetToDefault} />"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "showEndpoints"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleShowEndpoint"
+      },
+      {
+        "name": "square",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<FieldProtocols endpoint={endpoint} />"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldProtocol.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<ProtocolName name={state.meta.label} selected={numOfEnabledPorts} count={state.meta.ports.length} />"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleExpanded"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "indicatorVariant",
+        "type": "expression",
+        "value": "state.showError ? \"error\" : state.showWarning ? \"warn\" : undefined"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<FieldEndpointPorts protocolState={state} accessType={accessType} portsStateAtoms={portsStateAtoms} />"
+      }
+    ]
+  }
+]

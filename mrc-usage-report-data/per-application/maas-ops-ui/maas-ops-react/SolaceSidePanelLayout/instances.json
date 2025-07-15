@@ -1,0 +1,42 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/Plans.tsx",
+    "props": [
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "500"
+      },
+      {
+        "name": "showSidePanel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "jsx",
+        "value": "<PlansSidebar plan={plan} />"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationDashboardSidePanel.tsx",
+    "props": [
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "400"
+      },
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedRowId"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "jsx",
+        "value": "<IntegrationOrganizationSidebar selectedOrg={updatedSelectedOrg} />"
+      }
+    ]
+  }
+]

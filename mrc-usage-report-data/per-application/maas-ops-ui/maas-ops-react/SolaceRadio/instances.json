@@ -1,0 +1,92 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isPerformingRequest"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Upgrade"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "Upgrade"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "CollectorModificationAction.UPGRADE"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "upgrade"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isPerformingRequest"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Rollback"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "Rollback"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "CollectorModificationAction.ROLLBACK"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "rollback"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isPerformingRequest"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Redeploy"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "Redeploy"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "CollectorModificationAction.REDEPLOY"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "redeploy"
+      }
+    ]
+  }
+]

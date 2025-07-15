@@ -1,0 +1,107 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/ServiceDetails.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "environment"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "environment.fgColor"
+      },
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "environment.bgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "environment.icon"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/CreateService.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "environment"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEnvironment.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "environment.label"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "environment.fgColor"
+      },
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "environment.bgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "environment.icon"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environment"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEnvironment.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "environment.label"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "environment.fgColor"
+      },
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "environment.bgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "environment.icon"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environment"
+      }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "variant",
+    "count": 38
+  },
+  {
+    "name": "message",
+    "count": 38
+  },
+  {
+    "name": "dataQa",
+    "count": 7
+  },
+  {
+    "name": "showIcon",
+    "count": 1
+  },
+  {
+    "name": "showCloseButton",
+    "count": 1
+  },
+  {
+    "name": "onClose",
+    "count": 1
+  },
+  {
+    "name": "dense",
+    "count": 1
+  }
+]

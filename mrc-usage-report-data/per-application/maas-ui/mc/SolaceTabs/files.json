@@ -1,0 +1,5 @@
+[
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LibraryDialog.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/ServiceDetails.tsx"
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "name",
+    "count": 9
+  },
+  {
+    "name": "checked",
+    "count": 9
+  },
+  {
+    "name": "onChange",
+    "count": 9
+  },
+  {
+    "name": "dataQa",
+    "count": 8
+  },
+  {
+    "name": "label",
+    "count": 8
+  },
+  {
+    "name": "id",
+    "count": 6
+  },
+  {
+    "name": "boldLabel",
+    "count": 3
+  },
+  {
+    "name": "subTextProps",
+    "count": 2
+  },
+  {
+    "name": "readOnly",
+    "count": 2
+  },
+  {
+    "name": "...",
+    "count": 1
+  },
+  {
+    "name": "hasErrors",
+    "count": 1
+  },
+  {
+    "name": "helperText",
+    "count": 1
+  }
+]

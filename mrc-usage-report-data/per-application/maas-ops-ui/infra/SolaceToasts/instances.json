@@ -1,0 +1,27 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "showToast.message"
+      },
+      {
+        "name": "severity",
+        "type": "expression",
+        "value": "showToast.severity"
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => setShowToast(null)"
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  }
+]

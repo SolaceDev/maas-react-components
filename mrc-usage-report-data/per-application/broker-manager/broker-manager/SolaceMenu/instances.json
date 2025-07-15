@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+    "props": [
+      {
+        "name": "buttonProps",
+        "type": "object",
+        "value": "{\n                'aria-label': 'Actions menu',\n                children: <MoreHorizOutlinedIcon />,\n                title: 'Actions',\n                variant: 'icon',\n              }"
+      },
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "generateMenuItems()"
+      },
+      {
+        "name": "numOfMenuItemDisplayed",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  }
+]

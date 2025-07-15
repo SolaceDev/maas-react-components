@@ -1,0 +1,19 @@
+[
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/EducationBlurb.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/WrapIfAdditionalTemplate.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorDetails.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectionCards.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorMetrics.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorEditDetailsTab.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/CreateSummaryStepView.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/HeaderMappingTab.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/SolaceMdEditor/SolaceMdEditor.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/icons/RoleIcon.tsx"
+]

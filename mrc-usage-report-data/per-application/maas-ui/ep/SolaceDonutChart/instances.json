@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useEventAccessRequests.tsx",
+    "props": [
+      {
+        "name": "data",
+        "type": "expression",
+        "value": "getPieChartData()"
+      },
+      {
+        "name": "showTooltip",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "icon",
+        "type": "jsx",
+        "value": "<LockIcon fill={theme.palette.ux.secondary.w40} />"
+      }
+    ]
+  }
+]

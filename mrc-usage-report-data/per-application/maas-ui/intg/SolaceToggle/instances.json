@@ -1,0 +1,72 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "show_all"
+      },
+      {
+        "name": "isOn",
+        "type": "expression",
+        "value": "selectedEnvironment.showAllResources"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleShowAllEnvs"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "show_all_envs"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_show_all_environments\", message: \"Show resources in all environments\" })"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "t({\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tid: \"id_show_all_environments_help\",\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tmessage: \"Enable to manage resources across environments\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t})"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "show_all"
+      },
+      {
+        "name": "isOn",
+        "type": "expression",
+        "value": "selectedEnvironment.showAllResources"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleShowAllEnvs"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "show_all_envs"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_show_all_environments\", message: \"Show resources in all environments\" })"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "t({\n\t\t\t\t\t\t\t\t\t\t\t\tid: \"id_show_all_environments_help\",\n\t\t\t\t\t\t\t\t\t\t\t\tmessage: \"Enable to manage resources across environments\"\n\t\t\t\t\t\t\t\t\t\t\t})"
+      }
+    ]
+  }
+]

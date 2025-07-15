@@ -1,0 +1,122 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+    "props": [
+      {
+        "name": "displayText",
+        "type": "expression",
+        "value": "t({ id: \"id_pagination\", message: \"Showing {0}-{1} of {2} results\", values: { 0: firstItemIndex, 1: lastItemIndex, 2: totalResults } })"
+      },
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "pagination.pageNumber + 1"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "pagination.pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "totalResults"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "() => 1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+    "props": [
+      {
+        "name": "displayText",
+        "type": "expression",
+        "value": "t({ id: \"id_pagination\", message: \"Showing {0}-{1} of {2} results\", values: { 0: firstItemIndex, 1: lastItemIndex, 2: totalResults } })"
+      },
+      {
+        "name": "activePage",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "pageSize",
+        "type": "number",
+        "value": "100"
+      },
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "totalResults"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageSelection"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityClientProfiles.tsx",
+    "props": [
+      {
+        "name": "displayText",
+        "type": "expression",
+        "value": "t({ id: \"id_pagination\", message: \"Showing {0}-{1} of {2} results\", values: { 0: firstItemIndex, 1: lastItemIndex, 2: totalResults } })"
+      },
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "pagination.pageNumber"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "pagination.pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "totalResults"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageSelection"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "props": [
+      {
+        "name": "displayText",
+        "type": "expression",
+        "value": "t({ id: \"id_pagination\", message: \"Showing {0}-{1} of {2} results\", values: { 0: firstItemIndex, 1: lastItemIndex, 2: totalResults } })"
+      },
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "pagination.pageNumber"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "pagination.pageSize"
+      },
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "totalResults"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageSelection"
+      }
+    ]
+  }
+]

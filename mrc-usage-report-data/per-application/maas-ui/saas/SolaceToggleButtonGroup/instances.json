@@ -1,0 +1,27 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagementMainPage.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userManagementToggle"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "TAB_OPTIONS"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onToggleChangeHandler"
+      },
+      {
+        "name": "activeValue",
+        "type": "variable",
+        "value": "filter"
+      }
+    ]
+  }
+]

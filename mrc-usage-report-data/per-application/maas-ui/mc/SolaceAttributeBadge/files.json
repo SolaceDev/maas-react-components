@@ -1,0 +1,8 @@
+[
+  "../../../maas-ui/micro-frontends/mc/src/components/DefaultAttributeBadge.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Status.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/components/LibraryHeader.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceListView.tsx"
+]

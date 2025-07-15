@@ -1,0 +1,132 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
+    "props": [
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "cloudProvider"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Cloud Provider"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "cloudProviderSelect"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "300px"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "filteredCloudProviderOptions"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "filterCloudProviderOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(item: { value: string; name: string; }) => item"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "filteredCloudProviders"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleCloudProviderChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
+    "props": [
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "k8sVersion"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Kubernetes Version"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "k8sVersionSelect"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "300px"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "filteredK8sVersionOptions"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "filterK8sVersionOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(item: { value: string; name: string; }) => item"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "filteredK8sVersions"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleK8sVersionChange"
+      }
+    ]
+  }
+]

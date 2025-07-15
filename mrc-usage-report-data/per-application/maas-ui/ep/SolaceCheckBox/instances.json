@@ -1,0 +1,1486 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SchemaRegistryAuthList.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[kafka][schemaRegistry][tls]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "schemaRegistry[tls]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.addTLS"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\n\t\t\t\t\t\t\t\t\t\t\t\tif (!e.value) clearErrors(`kafka.schemaRegistry.0.${selectedAuthType}.trustStorePassword`);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/KafkaAuthList.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "isTLSChecked"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "schemaRegistry[tls]"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "schemaRegistry[tls]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.addTLS"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\n\t\t\t\t\t\t\t\t\tif (!e.value) clearErrors(`kafka.authentication.auth.${selectedAuthType}.trustStorePassword`);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "readOnly || loading || kafkaDelimiterIsNotSet"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/FailDownloadAsyncApi.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "option.name"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "option.name"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "namingStrategy[option.name]"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleCheckboxChange"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "option.name"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "option.label"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "option.value"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "option.name"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "checkedItems[option.value]"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleCheckboxChange"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "option.name"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "optionDisabled(option, selectedMessagingService)"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "option.name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "subscribeToEvent"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tif (eventFlowError) {\n\t\t\t\t\t\t\t\t\t\tsetEventFlowError(null);\n\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\tsetSubscribeToEvent(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "subscribeToEvent"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "isSubscribeReadOnly"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "addEventToApplicationSubscribeToEvent"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Subscribe to Event"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "publishEvent"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tif (eventFlowError) {\n\t\t\t\t\t\t\t\t\t\tsetEventFlowError(null);\n\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\tsetPublishEvent(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "publishEvent"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "isPublishReadOnly"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "addEventToApplicationPublishEvent"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Publish Event"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!eventFlowError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "eventFlowError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/DeleteEntityVersionDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"keepParent\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"keepEntityCheckbox\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => handleKeepParentChange(e.value)"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{ label: `Creates a new version of the ${entityType}`, light: true }"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "keepParent"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`I want to keep the ${entityType}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useCheckbox.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "checkboxName ?? \"customhookCheckbox\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? \"\""
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "FilterType.applicationDomain"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel.applicationDomain"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa + \"-\" + FilterType.applicationDomain"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "FilterType.state"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel.state"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa + \"-\" + FilterType.state"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "FilterType.shared"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel.shared"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa + \"-\" + FilterType.shared"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "FilterType.brokerType"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel.brokerType"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa + \"-\" + FilterType.brokerType"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "FilterType.eventMesh"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel.eventMesh"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa + \"-\" + FilterType.eventMesh"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "FilterType.applicationType"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel.applicationType"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa + \"-\" + FilterType.applicationType"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "filterType"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel[filterType]"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "currentFilters.includes(filterType)"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event: SolaceCheckboxChangeEvent) => handleAdditionalFilterChange(filterType, event.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa + \"-\" + filterType"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/ManageFiltersMenu.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "filterType"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "renderCheckboxLabel(customAttributes[0].name)"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "!!selectedFilters.find((filter) => filter.type === filterType)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa + \"-\" + filterType"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => handleFilterChange(filterType, customAttributes[0].name, event.value, filterTypeToCustomAttributes)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/CustomDiscoveryScanDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "broker"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Broker"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleBrokerOnChange"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "!!brokerEnabled && !toDisableBrokerScan()"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\tlabel: \"Discover consumer groups and topics.\",\n\t\t\t\t\t\tlight: true\n\t\t\t\t\t}"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "toDisableBrokerScan()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/CustomDiscoveryScanDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "confluentSchemaRegistry"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Confluent Schema Registry"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSchemaRegistryOnChange"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "!!schemaRegistryEnabled && !toDisableSchemaRegistryScan()"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\tlabel: \"Discover schemas from Confluent.\",\n\t\t\t\t\t\tlight: true\n\t\t\t\t\t}"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "toDisableSchemaRegistryScan()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/PageContent.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Show only the modeled event meshes I can access"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "Filter By Access"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "filterByAccess"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "toggleFilterByAccessOnChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ConfirmTagAssociationDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"dontShowConfirmBoxCheckbox\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`Don't show this message again.`"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "!showDialogAgain"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"dontShowConfirmBox-checkbox\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setShowDialogAgain(!event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/TagsQuickActions.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"requiredConfirmBoxCheckbox\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Require confirmation\""
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "showConfirmDialogBox"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"requiredConfirmBox-checkbox\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => handleRequireConfirmCheckbox(event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultFilter.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"hideAuditResults\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`Display all hidden objects (${hiddenAuditResultCount ?? 0}) in the audit result.`"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "showHiddenAudits !== \"false\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"hideAuditResults-checkbox\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => handleHideTagCheckbox(event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewVersionDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DomainsList.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`checkDomain-${item.id}`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`checkDomain-${item.id}`"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e: SolaceCheckboxChangeEvent) => onCheck(item, e.value)"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "checked"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/DomainsList.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"selectAllDomains\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"selectAllDomainsCheckbox\""
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onAllDomainsCheck"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "isChecked"
+      },
+      {
+        "name": "indeterminate",
+        "type": "expression",
+        "value": "isChecked && selectedDomainIds.length !== items.length"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "enumeration[shared]"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Allow Enumeration to be shared across application domains"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tsetIsDirty(true);\n\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`Allow ${entityTypeToLabelLowercase(entityType)} to be shared across application domains`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${entityType}[shared]`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "option.name"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "option.name"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "namingStrategy[option.name]"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleNamingStrategyChange"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "option.name"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "option.label"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApiForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApi.labels.sharedCheckbox"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"eventApi[shared]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.sharedCheckbox"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"eventApiProduct[shared]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\tonSharedChange?.(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Allow schema to be shared across application domains"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schema[shared]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/SuggestedEvents.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "onlyShowEventsWithoutSubscription"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\tsetOnlyShowEventsWithoutSubscription(e.value);\n\t\t\t\t\t}"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "onlyShowEventsWithoutSubscription"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Show events without a consumer subscription"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "uniqueTopicAddressEnforcementEnabled"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<span>\n\t\t\t\t\t\t\t\t\t\tAll topic addresses within this application domain <span className=\"fontMedium\">must be unique</span>\n\t\t\t\t\t\t\t\t\t</span>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\tsetTopicDomainEnforcement(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!value && !hasValidTopicDomain"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "topicDomainEnforcementEnabled"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<span>\n\t\t\t\t\t\t\t\t\t\tAll topic addresses within this application domain <span className=\"fontMedium\">must use a topic domain</span>\n\t\t\t\t\t\t\t\t\t</span>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "nonDraftDescriptionsEditable"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<span>Allow object descriptions to be editable in all lifecyle states</span>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"applicationDomain[uniqueTopicAddressEnforcementEnabled]\""
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "domainValues?.uniqueTopicAddressEnforcementEnabled"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"uniqueTopicAddressEnforcementEnabled\""
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<span>\n\t\t\t\t\t\t\t\t\t\t\tAll topic addresses within this application domain <span className=\"fontMedium\">must be unique</span>\n\t\t\t\t\t\t\t\t\t\t</span>"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"applicationDomain[topicDomainEnforcementEnabled]\""
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "domainValues?.topicDomainEnforcementEnabled"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "topicDomainEnforcementEnabled"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<span>\n\t\t\t\t\t\t\t\t\t\t\tAll topic addresses within this application domain <span className=\"fontMedium\">must use a topic domain</span>\n\t\t\t\t\t\t\t\t\t\t</span>"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"applicationDomain[nonDraftDescriptionsEditable]\""
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "domainValues?.nonDraftDescriptionsEditable"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "nonDraftDescriptionsEditable"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<span>Allow object descriptions to be editable in all lifecyle states</span>"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\tonSharedChange?.(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Allow event to be shared across application domains"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"event[shared]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "sharedSchema"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Allow schema to be shared across application domains"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schema[shared]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\thandleSharedChanged(e.value);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Allow event to be shared across application domains"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"event[shared]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tif (eventFlowError) {\n\t\t\t\t\t\t\t\t\t\t\tsetEventFlowError(null);\n\t\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "subscribeToEvent"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Subscribe to Event"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\tif (eventFlowError) {\n\t\t\t\t\t\t\t\t\t\t\t\tsetEventFlowError(null);\n\t\t\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "value || false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "publishEvent"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Publish Event"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!eventFlowError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "eventFlowError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationRuntimeTab.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "filter.value"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "filter.name"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "filtersMap[application?.id]?.[filter.value]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "filter.name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleFilterChipClick(filter.value, !filtersMap[application?.id]?.[filter.value])"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`environment-filters-${filter.value}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"doNotShowAgain\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Do not show this warning again\""
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleCloseInfoMessage"
+      }
+    ]
+  }
+]

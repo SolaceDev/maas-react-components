@@ -1,0 +1,97 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceTypes.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceType"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceType"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceType"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "serviceType"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleServiceTypeChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEndpointSelector.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "endpointsSelector"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "endpointsSelector"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "endpointsSelector"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "endpointsSelector"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "systemType"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "systemType"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "systemType"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "systemType"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSystemTypeChange"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      }
+    ]
+  }
+]

@@ -1,0 +1,347 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/useNodeAppearanceEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"iconCategorizedSearch\""
+      },
+      {
+        "name": "searchValue",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onSearchValueChange",
+        "type": "variable",
+        "value": "handleSearchValueChanged"
+      },
+      {
+        "name": "selectedCategoryValue",
+        "type": "variable",
+        "value": "selectedCategory"
+      },
+      {
+        "name": "onCategoryChange",
+        "type": "variable",
+        "value": "handleCategoryChanged"
+      },
+      {
+        "name": "categoryOptions",
+        "type": "variable",
+        "value": "toggleGroupOptions"
+      },
+      {
+        "name": "equalButtonWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "searchInputWidth",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "categoryOptionsWidth",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/AppearanceDetailsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"iconSearchAndFilter\""
+      },
+      {
+        "name": "searchValue",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onSearchValueChange",
+        "type": "variable",
+        "value": "handleSearchValueChagned"
+      },
+      {
+        "name": "selectedCategoryValue",
+        "type": "variable",
+        "value": "selectedCategory"
+      },
+      {
+        "name": "onCategoryChange",
+        "type": "variable",
+        "value": "handleCategoryChanged"
+      },
+      {
+        "name": "categoryOptions",
+        "type": "variable",
+        "value": "toggleGroupOptions"
+      },
+      {
+        "name": "equalButtonWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onSearchInputFocus",
+        "type": "function",
+        "value": "() => setAutoFocusItem(false)"
+      },
+      {
+        "name": "onSearchInputBlur",
+        "type": "function",
+        "value": "() => setAutoFocusItem(true)"
+      },
+      {
+        "name": "searchInputWidth",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "categoryOptionsWidth",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphPredefinedColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"iconSearchAndFilter\""
+      },
+      {
+        "name": "searchValue",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onSearchValueChange",
+        "type": "variable",
+        "value": "handleSearchValueChagned"
+      },
+      {
+        "name": "selectedCategoryValue",
+        "type": "variable",
+        "value": "selectedCategory"
+      },
+      {
+        "name": "onCategoryChange",
+        "type": "variable",
+        "value": "handleCategoryChanged"
+      },
+      {
+        "name": "categoryOptions",
+        "type": "variable",
+        "value": "toggleGroupOptions"
+      },
+      {
+        "name": "equalButtonWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onSearchInputFocus",
+        "type": "function",
+        "value": "() => setAutoFocusItem(false)"
+      },
+      {
+        "name": "onSearchInputBlur",
+        "type": "function",
+        "value": "() => setAutoFocusItem(true)"
+      },
+      {
+        "name": "searchInputWidth",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "categoryOptionsWidth",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/stories/components/SolaceGraphCustomColourAndIcon.stories.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"iconSearchAndFilter\""
+      },
+      {
+        "name": "searchValue",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onSearchValueChange",
+        "type": "variable",
+        "value": "handleSearchValueChagned"
+      },
+      {
+        "name": "selectedCategoryValue",
+        "type": "variable",
+        "value": "selectedCategory"
+      },
+      {
+        "name": "onCategoryChange",
+        "type": "variable",
+        "value": "handleCategoryChanged"
+      },
+      {
+        "name": "categoryOptions",
+        "type": "variable",
+        "value": "toggleGroupOptions"
+      },
+      {
+        "name": "equalButtonWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onSearchInputFocus",
+        "type": "function",
+        "value": "() => setAutoFocusItem(false)"
+      },
+      {
+        "name": "onSearchInputBlur",
+        "type": "function",
+        "value": "() => setAutoFocusItem(true)"
+      },
+      {
+        "name": "searchInputWidth",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "categoryOptionsWidth",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultFilter.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Filter by Name"
+      },
+      {
+        "name": "layout",
+        "type": "expression",
+        "value": "SolaceCategorizedSearchLayout.horizontal"
+      },
+      {
+        "name": "categoryOptions",
+        "type": "expression",
+        "value": "entityFilterOptions.length > 0 ? entityFilterOptions : []"
+      },
+      {
+        "name": "selectedCategoryValue",
+        "type": "variable",
+        "value": "selectedEntityTypeFilter"
+      },
+      {
+        "name": "onCategoryChange",
+        "type": "variable",
+        "value": "handleEntityTypeFilterChange"
+      },
+      {
+        "name": "searchValue",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onSearchValueChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "searchInputWidth",
+        "type": "expression",
+        "value": "\"280px\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSearchAndFilter.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Filter by Name"
+      },
+      {
+        "name": "layout",
+        "type": "expression",
+        "value": "SolaceCategorizedSearchLayout.horizontal"
+      },
+      {
+        "name": "categoryOptions",
+        "type": "variable",
+        "value": "tabOptions"
+      },
+      {
+        "name": "selectedCategoryValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onCategoryChange",
+        "type": "variable",
+        "value": "handleTabChange"
+      },
+      {
+        "name": "searchValue",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onSearchValueChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      }
+    ]
+  }
+]

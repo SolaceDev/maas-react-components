@@ -1,0 +1,212 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "overflow"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "userName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Configuration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "html"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "maxQueueMsgsInfo"
+      },
+      {
+        "name": "placement",
+        "type": "expression",
+        "value": "\"bottom-start\""
+      },
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "small"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Status.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"service-auth-tooltip\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "html"
+      },
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<UsernamePasswordTip broker={service.broker} />"
+      },
+      {
+        "name": "placement",
+        "type": "expression",
+        "value": "\"right\""
+      },
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "medium"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "html"
+      },
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "medium"
+      },
+      {
+        "name": "placement",
+        "type": "string",
+        "value": "bottom"
+      },
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<SolaceCard title=\"What is an Automated Upgrade?\" backgroundColor={theme.palette.background.paper}>\n\t\t\t\t\t\t\t\t\t<SolaceTypography mt={theme.spacing(1)}>{helpMessage}</SolaceTypography>\n\t\t\t\t\t\t\t\t</SolaceCard>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "t({ id: \"id_view_tiles\", message: \"Grid View\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "t({ id: \"id_view_list\", message: \"List View\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "email"
+      },
+      {
+        "name": "placement",
+        "type": "string",
+        "value": "top-start"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "servicesInMeshes.get(service.id as string)?.name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "organization?.orgAutomatedUpgradeEnabled\n\t\t\t\t\t\t\t\t\t\t? t({ id: \"id_release_revoked_icon_auto\", message: \"The event broker requires an upgrade. Plan upgrade on the service's Status tab.\" })\n\t\t\t\t\t\t\t\t\t\t: t({ id: \"id_release_revoked_icon\", message: \"The event broker requires an upgrade.\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "userAccessInfo.userAccessText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "environment.label || \"n/a\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceListView.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "servicesInMeshes.get(serviceId)?.name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceListView.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "userAccessInfo.userAccessText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceListView.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "organization?.orgAutomatedUpgradeEnabled\n\t\t\t\t\t\t\t\t\t\t? t({ id: \"id_release_revoked_icon_auto\", message: \"The event broker requires an upgrade. Plan upgrade on the service's Status tab.\" })\n\t\t\t\t\t\t\t\t\t\t: t({ id: \"id_release_revoked_icon\", message: \"The event broker requires an upgrade.\" })"
+      }
+    ]
+  }
+]

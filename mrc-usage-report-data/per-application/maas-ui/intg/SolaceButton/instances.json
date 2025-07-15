@@ -1,0 +1,1347 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icon\""
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleFilterToggle"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${id}_filterToggleButton`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => handleClearFilters()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/EmptyFilterPanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onClearFilterClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/EmptyFilterPanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"link\""
+      },
+      {
+        "name": "href",
+        "type": "variable",
+        "value": "href"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"icon\""
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleFilterToggle"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "filterToggleButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => handleClearFilters()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/NodeElement.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "viewTransformationButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => handleAddTransformation(ShowTransformation.READ_ONLY)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/NodeElement.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "addTransformationButton"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "addTransformationButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => handleAddTransformation(ShowTransformation.CREATE)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/NodeElement.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "editTransformationButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => handleAddTransformation(ShowTransformation.EDIT)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/NodeElement.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "removeRelation"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/NodeElement.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setSelectedRelation(relation)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/ViewTransformationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "en.connectors.buttons.transformationsLink.hrefLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/MultipleInputOutput.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onAdd"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`add_${inputOrOutput}_button`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/MultipleInputOutput.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => onRemove(handle)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/TransformationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "en.connectors.buttons.transformationsLink.hrefLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "openUploadModal"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\tsetReImport(true);\n\t\t\t\t\t\t\t\topenUploadModal();\n\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "close-edit-constant-dialog"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\tsetShowEditDialog(false);\n\t\t\t\t\t\t\tsetConstantField({});\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "edit-constant-button"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "edit-constant-button"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "applyConstantEdit"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!!constantNameError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "close-add-header-dialog"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\tsetShowEditDialog(false);\n\t\t\t\t\t\t\tsetCustomHeaderField({});\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "edit-custom-header-button"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`edit-custom-header-button-${direction}`"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "applyHeaderEdit"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/MappingFieldPopOver.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`edit-${fieldType}-button`"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleEdit"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/MappingFieldPopOver.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`delete-${fieldType}-button`"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\tsetIdToDelete(id);\n\t\t\t\t\t\t\tsetShowDeleteDialog(true);\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "close-add-header-dialog"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleCancel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`add-custom-header-button-${direction}`"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleAddHeader"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "close-add-header-dialog"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleCancel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "add-constant-button"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleAddConstant"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!!constantNameError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "startIcon",
+        "type": "jsx",
+        "value": "<AutoAwesomeIcon />"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleMapWithAI"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/ConstantSection.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "maxTargetHeaderCountReached()"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`add-constant-button-${direction}`"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\tsetAddConstantDialog(true);\n\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/HeaderSection.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "maxTargetHeaderCountReached()"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`add-header-button-${direction}`"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\tsetAddHeaderDialog(true);\n\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/EducationBlurb.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "en.connectors.targetHeaderMapping.learnMore.href"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/TopicHeaderMapping.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "en.connectors.targetHeaderMapping.learnMore.href"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "headerLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "showSensitiveField ? \"eyeIcon\" : \"hideEyeIcon\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "showSensitiveField ? \"showPasswordButton\" : \"hidePasswordButton\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setShowSensitiveField(!showSensitiveField)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "(e: any) => onClick && onClick(e)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/WrapIfAdditionalTemplate.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Delete"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "expression",
+        "value": "onDropPropertyClick(label)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorZeroState.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "zeroStateDocLink"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Micro-Integrations/Managed/managed-micro-integrations-overview.htm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "goToDocumentationButtonLink"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "connectorType.integrationHubUrl"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => history.push(CONNECTOR_AVAILABLE)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorCards/ConnectorCards.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "goToDocumentationButtonLink"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "connectorType.integrationHubUrl"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "deployButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleDeployState"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "openConnectorFlowButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleViewDetails"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "`/services/${serviceDetails?.id}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setSelectedRowIds([])"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "closeButton"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.connectors.buttons.close"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://solace-sso.solace.cloud/support/question"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleViewErrorLogs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/OAuthDetails.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "showClientSecret ? \"eyeIcon\" : \"hideEyeIcon\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "showClientSecret ? \"showClientSecretButton\" : \"hideClientSecretButton\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setShowClientSecret(!showClientSecret)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/BasicAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "showPassword ? \"eyeIcon\" : \"hideEyeIcon\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "showPassword ? \"showPasswordButton\" : \"hidePasswordButton\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setShowPassword(!showPassword)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "showSslKeyStorePassword ? \"eyeIcon\" : \"hideEyeIcon\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "showSslKeyStorePassword ? \"showPasswordButton\" : \"hidePasswordButton\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setShowSslKeyStorePassword(!showSslKeyStorePassword)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "showSslPrivateKeyPassword ? \"eyeIcon\" : \"hideEyeIcon\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "showSslPrivateKeyPassword ? \"showPasswordButton\" : \"hidePasswordButton\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setShowSslPrivateKeyPassword(!showSslPrivateKeyPassword)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "showPassword ? \"eyeIcon\" : \"hideEyeIcon\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "showPassword ? \"showPasswordButton\" : \"hidePasswordButton\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setShowPassword(!showPassword)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "connectorTypeDetails?.integrationHubUrl\n\t\t\t\t\t\t\t\t\t\t? connectorTypeDetails?.integrationHubUrl\n\t\t\t\t\t\t\t\t\t\t: en.connectors.buttons.integrationHub.hrefLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/ToastAction.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "intg-toast-action"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleRedirect"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/layout/SolaceHeader.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`solace-header-action-${getDataQaValue(action.title)}`"
+      },
+      {
+        "name": "dataTags",
+        "type": "expression",
+        "value": "action.title"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleAction"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "action.disabled"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentLearningBlurb.tsx",
+    "props": [
+      {
+        "name": "href",
+        "type": "variable",
+        "value": "href"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/dialogs/SelectEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "help_environments"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Cloud/environments.htm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "editButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleEditButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://solace-sso.solace.cloud/support/question"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleViewErrorLogs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "discard"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "discard"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onDiscard"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "cloneButton"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "cloneButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => onSubmit(false)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "cloneAndDeployButton"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "cloneAndDeployButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => onSubmit(true)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "createconnector"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\thistory.push(\"/micro-integrations/availableMicroIntegrations\");\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`solace-header-action-${getDataQaValue(en.connectors.labels.createConnectorFlow)}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "discard"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "discard"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onDiscard"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "save"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "save"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => onSubmit(false)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "saveDeploy"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "saveDeploy"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => onSubmit(true)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleDownloadLog"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "createAgent"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\treturn null;\n\t\t\t\t\t\t\t\t\t}"
+      }
+    ]
+  }
+]

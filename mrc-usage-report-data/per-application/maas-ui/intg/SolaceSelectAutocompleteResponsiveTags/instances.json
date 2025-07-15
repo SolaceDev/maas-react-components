@@ -1,0 +1,42 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/DefaultFilterMultiSelect.tsx",
+    "props": [
+      {
+        "name": "containerWidth",
+        "type": "number",
+        "value": "300"
+      },
+      {
+        "name": "tags",
+        "type": "variable",
+        "value": "selectedTags"
+      },
+      {
+        "name": "tagMaxWidth",
+        "type": "expression",
+        "value": "\"200px\""
+      },
+      {
+        "name": "overflowIndicatorLabel",
+        "type": "expression",
+        "value": "\"Filters\""
+      },
+      {
+        "name": "overflowIndicatorLabelSingular",
+        "type": "expression",
+        "value": "\"Filter\""
+      },
+      {
+        "name": "onDelete",
+        "type": "variable",
+        "value": "handleDeleteTag"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${filterType}Select-tags`"
+      }
+    ]
+  }
+]

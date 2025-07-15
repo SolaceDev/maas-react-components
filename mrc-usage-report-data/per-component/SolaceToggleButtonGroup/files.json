@@ -1,0 +1,12 @@
+[
+  "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/InstructionButtonGroup.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributesEdit.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributesView.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventReferencedList.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/LinkedApplicationsEdit.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/LinkedApplicationsView.tsx",
+  "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagementMainPage.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/Runs.tsx"
+]

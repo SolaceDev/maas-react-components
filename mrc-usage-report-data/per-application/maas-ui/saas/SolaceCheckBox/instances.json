@@ -1,0 +1,877 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/DeleteEnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "confirmDeleteCheckbox"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.environments.labels.confirmDeleteEnvironment"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "confirmDeleteCheckbox"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleConfirmDelete"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "confirmDelete"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "confirmDeleteCheckbox"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isDeleting"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ASEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceCreationCheckbox"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.environments.labels.confirmASEnvironment"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceCreationCheckbox"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleCheckboxChange"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "isServiceCreationAllowed"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceCreationCheckbox"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "isError || dialogState.updating"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "templateType"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "templateType"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${templateType}Checkbox`"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<Box display={\"flex\"} alignItems={\"center\"} height={4}>\n\t\t\t\t\t\t\t<SolaceTypography>{environments.configurationTemplates[templateType].label}</SolaceTypography>\n\t\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "updateTemplateTypeEnforcement"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "templateStatus.isEnforced"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"scOutage\"].email : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scOutageEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scOutageEmail"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scOutageEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scOutage\", \"email\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"scOutage\"].console : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scOutageConsole"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scOutageConsole"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scOutageConsole"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scOutage\", \"console\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"scMaintenance\"].email : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scMaintenanceEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scMaintenanceEmail"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scMaintenanceEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scMaintenance\", \"email\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"scMaintenance\"].console : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scMaintenanceConsole"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scMaintenanceConsole"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scMaintenanceConsole"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scMaintenance\", \"console\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"serviceOutage\"].email : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceOutageEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceOutageEmail"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceOutageEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"serviceOutage\", \"email\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"serviceOutage\"].console : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceOutageConsole"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceOutageConsole"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceOutageConsole"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"serviceOutage\", \"console\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"serviceMaintenance\"].email : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceMaintenanceEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceMaintenanceEmail"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceMaintenanceEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"serviceMaintenance\", \"email\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"serviceMaintenance\"].console : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceMaintenanceConsole"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceMaintenanceConsole"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceMaintenanceConsole"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"serviceMaintenance\", \"console\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"scEpEventAccessApprover\"].email : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scEpEventAccessApproverEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scEpEventAccessApproverEmail"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scEpEventAccessApproverEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scEpEventAccessApprover\", \"email\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"scEpEventAccessApprover\"].console : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scEpEventAccessApproverConsole"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scEpEventAccessApproverConsole"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scEpEventAccessApproverConsole"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scEpEventAccessApprover\", \"console\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"scEpEventAccessRequestor\"].email : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scEpEventAccessRequestorEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scEpEventAccessRequestorEmail"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scEpEventAccessRequestorEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scEpEventAccessRequestor\", \"email\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings[\"scEpEventAccessRequestor\"].console : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scEpEventAccessRequestorConsole"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scEpEventAccessRequestorConsole"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scEpEventAccessRequestorConsole"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scEpEventAccessRequestor\", \"console\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings?.[\"scInfo\"].email : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scInfoEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scInfoEmail"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scInfoEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scInfo\", \"email\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings?.[\"scInfo\"].console : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "scInfoConsole"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scInfoConsole"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scInfoConsole"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"scInfo\", \"console\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "savedSettings ? savedSettings?.[\"marketing\"]?.email : false"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "marketingEmail"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "marketingEmail"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "marketingEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(value) => updateNotifyPreferences(\"marketing\", \"email\", value.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "jitProvisionCheckboxId"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<SolaceTypography>\n\t\t\t\t\t\t<span style={{ fontWeight: \"bold\" }}>{userGroupManagement.jitProvisionMainText}</span>\n\t\t\t\t\t\t{userGroupManagement.jitProvisionSubText}\n\t\t\t\t\t</SolaceTypography>"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "jitProvisionCheckboxId"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setIsJitProvisioningChecked(e.value)"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{\n\t\t\t\t\tlabel: (\n\t\t\t\t\t\t<Box mt={1} mb={1} sx={{ width: \"100% !important\" }}>\n\t\t\t\t\t\t\t<SolaceMessageBox message={userGroupManagement.jitInfoMessage} showCloseButton variant=\"info\" />\n\t\t\t\t\t\t</Box>\n\t\t\t\t\t)\n\t\t\t\t}"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "isJitProvisioningChecked"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Enable Just-in-Time provisioning"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "jitProvisionCheckboxId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "customizeDefaultUserGroupCheckboxId"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "customizeDefaultUserGroupCheckboxId"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<SolaceTypography mb={1}>\n\t\t\t\t\t\t<span style={{ fontWeight: \"bold\" }}>{userGroupManagement.customizeGroupMainText}</span>\n\t\t\t\t\t\t{userGroupManagement.customizeGroupSubText}\n\t\t\t\t\t</SolaceTypography>"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "customizeDefaultUserGroupCheckboxId"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "isCustomizeUserGroupChecked"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => customizeDefaultUserGroupCheck(e.value)"
+      },
+      {
+        "name": "subTextProps",
+        "type": "object",
+        "value": "{\n\t\t\t\t\tlabel: (\n\t\t\t\t\t\t<SolaceSelectContainer>\n\t\t\t\t\t\t\t{isCustomizeUserGroupChecked ? (\n\t\t\t\t\t\t\t\t<SolaceSelectAutocomplete\n\t\t\t\t\t\t\t\t\tlabel={userGroupManagement.defaultUserGroupLabel}\n\t\t\t\t\t\t\t\t\thasErrors={true}\n\t\t\t\t\t\t\t\t\tid=\"customizeUserGroup\"\n\t\t\t\t\t\t\t\t\tname=\"customizeUserGroup\"\n\t\t\t\t\t\t\t\t\tdataQa=\"customizeUserGroup\"\n\t\t\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\t\t\thelperText={!selectedUserGroup ? userGroupManagement.selectDefaultGroup : \"\"}\n\t\t\t\t\t\t\t\t\tplaceholder={selectedUserGroup?.name}\n\t\t\t\t\t\t\t\t\toptions={userGroupFilter ? matchingUserGroups : getUserGroups(userGroupsDataResponse?.data)}\n\t\t\t\t\t\t\t\t\titemComponent={(item: SolaceSelectAutocompleteItemProps & { roles?: string[] }) => {\n\t\t\t\t\t\t\t\t\t\treturn SolaceSelectAutocompleteItem({\n\t\t\t\t\t\t\t\t\t\t\tname: item.name,\n\t\t\t\t\t\t\t\t\t\t\tsubText: item.roles?.join(\", \"),\n\t\t\t\t\t\t\t\t\t\t\tvalue: item.name\n\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t\titemMappingCallback={(option) => option}\n\t\t\t\t\t\t\t\t\toptionsLabelCallback={getSolaceSelectAutocompleteOptionLabel}\n\t\t\t\t\t\t\t\t\tonChange={handleUserGroupSelectChange}\n\t\t\t\t\t\t\t\t\tfetchOptionsCallback={handleFetchProtocolOptionsCallback}\n\t\t\t\t\t\t\t\t\tisOptionEqualToValueCallback={isSolaceSelectAutocompleteOptionEqual}\n\t\t\t\t\t\t\t\t\twidth=\"30rem\"\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t) : null}\n\t\t\t\t\t\t</SolaceSelectContainer>\n\t\t\t\t\t)\n\t\t\t\t}"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Customize Default UserGroup"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventMeshCheckbox"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventMeshCheckbox"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.overview.banner.eventMesh"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventMeshCheckbox"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setIsEventMeshFeatureChecked(e.value)"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.overview.banner.eventMesh"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventPortalCheckbox"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventPortalCheckbox"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.overview.banner.eventPortal"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventPortalCheckbox"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setIsEventPortalFeatureChecked(e.value)"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.overview.banner.eventPortal"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "expression",
+        "value": "onBulkPermissionCheckboxChange(readPermissions)"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${categoryName}-read`"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "readChecked"
+      },
+      {
+        "name": "indeterminate",
+        "type": "expression",
+        "value": "!readChecked && readIndeterminate"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "expression",
+        "value": "onBulkPermissionCheckboxChange(writePermissions)"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${categoryName}-write`"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "writeChecked"
+      },
+      {
+        "name": "indeterminate",
+        "type": "expression",
+        "value": "!writeChecked && writeIndeterminate"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "expression",
+        "value": "onPermissionCheckboxChange(permission.id)"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "permission.id"
+      },
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "!!isPermissionSelected[permission.id]"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "permission.id"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "expression",
+        "value": "onBulkPermissionCheckboxChange(readPermissions)"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${categoryName}-read`"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "readChecked"
+      },
+      {
+        "name": "indeterminate",
+        "type": "expression",
+        "value": "!readChecked && readIndeterminate"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "expression",
+        "value": "onBulkPermissionCheckboxChange(writePermissions)"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${categoryName}-write`"
+      },
+      {
+        "name": "checked",
+        "type": "variable",
+        "value": "writeChecked"
+      },
+      {
+        "name": "indeterminate",
+        "type": "expression",
+        "value": "!writeChecked && writeIndeterminate"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      }
+    ]
+  }
+]

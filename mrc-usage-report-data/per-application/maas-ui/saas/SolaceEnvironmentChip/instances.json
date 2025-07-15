@@ -1,0 +1,27 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "dialogState.name || \"Environment Name\""
+      },
+      {
+        "name": "fgColor",
+        "type": "variable",
+        "value": "fgColor"
+      },
+      {
+        "name": "bgColor",
+        "type": "variable",
+        "value": "bgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "Icons16[dialogState.icon as SolaceEnvironmentIcons]"
+      }
+    ]
+  }
+]

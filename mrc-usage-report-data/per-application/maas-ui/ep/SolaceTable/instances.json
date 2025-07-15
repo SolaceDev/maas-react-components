@@ -1,0 +1,1342 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/RuntimeEntityList.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${entityType}Table`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SELECTION_TYPE.SINGLE"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "expression",
+        "value": "hasColumnHiding ?? true"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "expression",
+        "value": "renderCustomRowActionItem?.length > 0 ? renderCustomRowActionItem : null"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "expression",
+        "value": "customRowCellRenderer\n\t\t\t\t\t\t\t? (row: SolaceTableRow) => {\n\t\t\t\t\t\t\t\t\treturn customRowCellRenderer(row, columnsHiddenInfo);\n\t\t\t\t\t\t\t  }\n\t\t\t\t\t\t\t: undefined"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "`No ${entityTypeToLabelLowercase(entityType)}s have been created`"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "variable",
+        "value": "expandableRowOptions"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/AddExistingMessagingServiceDialog.tsx",
+    "props": [
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "mem?.brokerType === BrokerTypes.kafka ? SolaceTableSelectionType.SINGLE : SolaceTableSelectionType.MULTI"
+      },
+      {
+        "name": "independentRowHighlight",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "highlightedRowId",
+        "type": "variable",
+        "value": "highlightedRowId"
+      },
+      {
+        "name": "rowHighlightChangedCallback",
+        "type": "variable",
+        "value": "handleRowHighlight"
+      },
+      {
+        "name": "disabledRowIds",
+        "type": "variable",
+        "value": "disabledRowIds"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/EntityList.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${entityType}Table`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "selectionType ?? SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "expression",
+        "value": "hasColumnHiding ?? true"
+      },
+      {
+        "name": "rowActionMenuItems",
+        "type": "expression",
+        "value": "rowActionMenuItems?.length > 0 ? rowActionMenuItems : null"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "variable",
+        "value": "renderCustomRowActionItem"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "expression",
+        "value": "customRowCellRenderer\n\t\t\t\t\t\t\t? (row: SolaceTableRow) => {\n\t\t\t\t\t\t\t\t\treturn customRowCellRenderer(row, columnsHiddenInfo);\n\t\t\t\t\t\t\t  }\n\t\t\t\t\t\t\t: undefined"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "variable",
+        "value": "expandableRowOptions"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "expression",
+        "value": "renderCustomEmptyState ?? defaultEmptyState"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/EventFlowDiscrepancyPreviewDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "event-flow-discrepancy-preview-table"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SELECTION_TYPE.NONE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "paginatedRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/EntityListMultiSelect.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${entityType}Table`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.MULTI"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "expression",
+        "value": "hasColumnHiding ?? true"
+      },
+      {
+        "name": "rowActionMenuItems",
+        "type": "expression",
+        "value": "rowActionMenuItems?.length > 0 ? rowActionMenuItems : null"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "variable",
+        "value": "renderCustomRowActionItem"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "expression",
+        "value": "customRowCellRenderer\n\t\t\t\t\t\t\t? (row: SolaceTableRow) => {\n\t\t\t\t\t\t\t\t\treturn customRowCellRenderer(row, columnsHiddenInfo);\n\t\t\t\t\t\t\t  }\n\t\t\t\t\t\t\t: undefined"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "variable",
+        "value": "expandableRowOptions"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "expression",
+        "value": "renderCustomEmptyState ?? defaultEmptyState"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      },
+      {
+        "name": "independentRowHighlight",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "highlightedRowId",
+        "type": "variable",
+        "value": "highlightedRowId"
+      },
+      {
+        "name": "rowHighlightChangedCallback",
+        "type": "variable",
+        "value": "handleRowHighlight"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/catalog/CatalogEntityList.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${entityType}Table`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SELECTION_TYPE.SINGLE"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "expression",
+        "value": "hasColumnHiding ?? true"
+      },
+      {
+        "name": "rowActionMenuItems",
+        "type": "expression",
+        "value": "rowActionMenuItems?.length > 0 ? rowActionMenuItems : null"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "variable",
+        "value": "renderCustomRowActionItems"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "expression",
+        "value": "customRowCellRenderer\n\t\t\t\t\t\t\t? (row: SolaceTableRow) => {\n\t\t\t\t\t\t\t\t\treturn customRowCellRenderer(row, columnsHiddenInfo);\n\t\t\t\t\t\t\t  }\n\t\t\t\t\t\t\t: undefined"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "variable",
+        "value": "customEmptyState"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "variable",
+        "value": "expandableRowOptions"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/dashboard/DashboardTable.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"metricsDashboardTable\""
+      },
+      {
+        "name": "rows",
+        "type": "expression",
+        "value": "handleProcessEntities(entities)"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "rowActionMenuItems",
+        "type": "null",
+        "value": "null"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "function",
+        "value": "(row: SolaceTableRow) => {\n\t\t\t\treturn renderRowCells(row);\n\t\t\t}"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "variable",
+        "value": "customEmptyState"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "expression",
+        "value": "!entities || entities.length === 0"
+      },
+      {
+        "name": "sortCallback",
+        "type": "null",
+        "value": "null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/ExistingMessagingServices.tsx",
+    "props": [
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderCustomRowCells"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ScanLogsDialog.tsx",
+    "props": [
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableRows"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderRowCells"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/RemTable.tsx",
+    "props": [
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "remTable"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderCustomRow"
+      },
+      {
+        "name": "maxHeight",
+        "type": "expression",
+        "value": "`calc(100vh - ${HEADER_AND_PAGINATION_HEIGHT}px)`"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "remEntities"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "array",
+        "value": "[selectedMem?.id]"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelection"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SELECTION_TYPE.SINGLE"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/entityList/AuditEntityList.tsx",
+    "props": [
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${entityType}Table`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SELECTION_TYPE.MULTI"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "independentRowHighlight",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "highlightedRowId",
+        "type": "variable",
+        "value": "highlightedRowId"
+      },
+      {
+        "name": "rowHighlightChangedCallback",
+        "type": "variable",
+        "value": "handleRowHighlight"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "rowActionMenuItems",
+        "type": "expression",
+        "value": "rowActionMenuItems?.length > 0 ? rowActionMenuItems : null"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "variable",
+        "value": "renderCustomRowActionItem"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "expression",
+        "value": "customRowCellRenderer\n\t\t\t\t\t\t\t? (row: SolaceTableRow) => {\n\t\t\t\t\t\t\t\t\treturn customRowCellRenderer(row, columnsHiddenInfo);\n\t\t\t\t\t\t\t  }\n\t\t\t\t\t\t\t: undefined"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "`No ${entityTypeToLabelLowercase(entityType)}s have been created`"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "variable",
+        "value": "expandableRowOptions"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "variable",
+        "value": "renderCustomEmptyState"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      },
+      {
+        "name": "customContentDefinitions",
+        "type": "variable",
+        "value": "customContentDefinitions"
+      },
+      {
+        "name": "displayedCustomContent",
+        "type": "variable",
+        "value": "displayedCustomContent"
+      },
+      {
+        "name": "customContentDisplayChangeCallback",
+        "type": "variable",
+        "value": "customContentDisplayChangeCallback"
+      },
+      {
+        "name": "customMenuActions",
+        "type": "variable",
+        "value": "customMenuActions"
+      },
+      {
+        "name": "crossPageRowSelectionSupported",
+        "type": "expression",
+        "value": "auditEntityType === null ? false : true"
+      },
+      {
+        "name": "totalObjectCount",
+        "type": "variable",
+        "value": "entityCount"
+      },
+      {
+        "name": "deselectedRowIds",
+        "type": "variable",
+        "value": "deselectedRowIds"
+      },
+      {
+        "name": "allPagesSelectedByDefault",
+        "type": "variable",
+        "value": "allPagesSelectedByDefault"
+      },
+      {
+        "name": "crossPageSelectionChangedCallback",
+        "type": "variable",
+        "value": "handleCrossPageRowSelectionsChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/TemplateList.tsx",
+    "props": [
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "() => null"
+      },
+      {
+        "name": "rows",
+        "type": "expression",
+        "value": "getFilteredRows()"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderRowCells"
+      },
+      {
+        "name": "columns",
+        "type": "expression",
+        "value": "TEMPLATE_TYPES[type].tableColumns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "messages[type].emptyTableMessage"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsTable.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`parentEventsTable`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "displayedRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "null",
+        "value": "null"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderRowCells"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "disabledRowIds",
+        "type": "variable",
+        "value": "existingSharedEventIds"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "`No matching events have been found`"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\tallowToggle: false,\n\t\t\t\trenderChildren: renderExpandedRow,\n\t\t\t\texpandedRowIds: expandedRowIds,\n\t\t\t\tsetExpandedRowIds: setExpandedRowIds\n\t\t\t}"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/SearchEventAPIs.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`parentEventsTable`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "function",
+        "value": "(row: SolaceTableRow) => {\n\t\t\t\t\t\treturn renderRowCells(row, columnsHiddenInfo);\n\t\t\t\t\t}"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "en.eventApi.labels.emptyState"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\tallowToggle: true,\n\t\t\t\t\t\trenderChildren: renderExpandedRowContent,\n\t\t\t\t\t\texpandedRowIds: expandedRowIds,\n\t\t\t\t\t\tsetExpandedRowIds: setExpandedRowIds,\n\t\t\t\t\t\tselectRowWhenClickOnChildren: false\n\t\t\t\t\t}"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestTable.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`eventAccessRequestTable`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableData"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderRowCells"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "variable",
+        "value": "renderEmptyState"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "expression",
+        "value": "tableDataAvailable && !loading"
+      },
+      {
+        "name": "independentRowHighlight",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "highlightedRowId",
+        "type": "expression",
+        "value": "highlightedRow?.id"
+      },
+      {
+        "name": "rowHighlightChangedCallback",
+        "type": "variable",
+        "value": "handleRowHighlight"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\tallowToggle: false,\n\t\t\t\t\t\trenderChildren: (row) => renderExpandedRowContent(row),\n\t\t\t\t\t\texpandedRowIds: [],\n\t\t\t\t\t\tsetExpandedRowIds: () => {\n\t\t\t\t\t\t\tvoid 0;\n\t\t\t\t\t\t}\n\t\t\t\t\t}"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "loading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SelectSchemaVersion.tsx",
+    "props": [
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderCustomRowCells"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemasTable.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`parentSchemasTable`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "displayedRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "null",
+        "value": "null"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderRowCells"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "`No matching schemas have been found`"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "expression",
+        "value": "hasFilter && clearFilterEmptyState"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\tallowToggle: true,\n\t\t\t\trenderChildren: renderExpandedRow,\n\t\t\t\texpandedRowIds: expandedRowIds,\n\t\t\t\tsetExpandedRowIds: setExpandedRowIds\n\t\t\t}"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEventsTable.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`parentEventsTable`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "displayedRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "null",
+        "value": "null"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderRowCells"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "`No matching events have been found`"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "expression",
+        "value": "hasFilter && clearFilterEmptyState"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\tallowToggle: true,\n\t\t\t\trenderChildren: renderExpandedRow,\n\t\t\t\texpandedRowIds: expandedRowIds,\n\t\t\t\tsetExpandedRowIds: setExpandedRowIds\n\t\t\t}"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchApplicationsTable.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`parentApplicationsTable`"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "displayedRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "null",
+        "value": "null"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "variable",
+        "value": "renderRowCells"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "displayedColumns"
+      },
+      {
+        "name": "displayedColumnsChangedCallback",
+        "type": "variable",
+        "value": "handleDisplayedColumnsChanged"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "`No matching applications have been found`"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "expression",
+        "value": "hasFilter && clearFilterEmptyState"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\tallowToggle: true,\n\t\t\t\trenderChildren: renderExpandedRow,\n\t\t\t\texpandedRowIds: expandedRowIds,\n\t\t\t\tsetExpandedRowIds: setExpandedRowIds\n\t\t\t}"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "variable",
+        "value": "tableDataAvailable"
+      }
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "tabs",
+    "count": 20
+  },
+  {
+    "name": "activeTabValue",
+    "count": 20
+  },
+  {
+    "name": "onTabClick",
+    "count": 17
+  },
+  {
+    "name": "size",
+    "count": 9
+  },
+  {
+    "name": "variant",
+    "count": 3
+  },
+  {
+    "name": "...",
+    "count": 2
+  }
+]

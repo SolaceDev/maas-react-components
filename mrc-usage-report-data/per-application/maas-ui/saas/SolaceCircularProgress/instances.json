@@ -1,0 +1,48 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/common/icons/LoadingSpinner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "indeterminate"
+      },
+      {
+        "name": "size",
+        "type": "variable",
+        "value": "size"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/UserAccessDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/DataCenterTable.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "indeterminate"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "xs"
+      }
+    ]
+  }
+]

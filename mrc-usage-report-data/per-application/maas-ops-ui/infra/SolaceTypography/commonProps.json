@@ -1,0 +1,50 @@
+[
+  {
+    "name": "variant",
+    "count": 15
+  },
+  {
+    "name": "padding",
+    "count": 5
+  },
+  {
+    "name": "align",
+    "count": 4
+  },
+  {
+    "name": "data-qa",
+    "count": 4
+  },
+  {
+    "name": "noWrap",
+    "count": 3
+  },
+  {
+    "name": "paddingTop",
+    "count": 1
+  },
+  {
+    "name": "paddingBottom",
+    "count": 1
+  },
+  {
+    "name": "fontWeight",
+    "count": 1
+  },
+  {
+    "name": "marginTop",
+    "count": 1
+  },
+  {
+    "name": "sx",
+    "count": 1
+  },
+  {
+    "name": "minHeight",
+    "count": 1
+  },
+  {
+    "name": "alignItems",
+    "count": 1
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsOrgDetailsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.EnterpriseAcc"
+      },
+      {
+        "name": "supplementalText",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.defaultAcc"
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "value": "enterprise"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/insightsOrganizations/InsightsOrganizations.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/monitoringJobs/MonitoringJobs.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/ConnectorUpgradeDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "item.id ?? \"\""
+      },
+      {
+        "name": "supplementalText",
+        "type": "string",
+        "value": "Current Version"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "connectorVersion ?? \"\""
+      }
+    ]
+  }
+]

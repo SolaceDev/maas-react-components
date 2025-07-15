@@ -1,0 +1,412 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerListTable.tsx",
+    "props": [
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "rowData"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "sortFunc"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "onRowSelected"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "props": [
+      {
+        "name": "selectionChangedCallback",
+        "type": "function",
+        "value": "() => undefined"
+      },
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "() => undefined"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "userManagementColumns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "expression",
+        "value": "tableRows.length < 1"
+      },
+      {
+        "name": "minHeight",
+        "type": "string",
+        "value": "476px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageTable.tsx",
+    "props": [
+      {
+        "name": "rows",
+        "type": "expression",
+        "value": "showEmptyState ? [] : tableRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "variable",
+        "value": "sortedColumn"
+      },
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "(columm) => handleSort(columm, drawdownData)"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "drawdownUsageTable"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "function",
+        "value": "() => (\n\t\t\t\t\t\t<SolaceDetailMessage\n\t\t\t\t\t\t\tdetails={drawdownUsage.noDrawdownUsage.noDrawdownUsageSub}\n\t\t\t\t\t\t\tmsgImg={<NoDrawdownUsageSVG />}\n\t\t\t\t\t\t\ttitle={drawdownUsage.noDrawdownUsage.noDrawdownUsage}\n\t\t\t\t\t\t/>\n\t\t\t\t\t)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+    "props": [
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "tableRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "handleSort"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "rowActionMenuItems",
+        "type": "variable",
+        "value": "rowActionMenuItems"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userGroupsTableQA"
+      },
+      {
+        "name": "customMenuActions",
+        "type": "variable",
+        "value": "resultsPerPageActions"
+      },
+      {
+        "name": "hasColumnHiding",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogsDataTable.tsx",
+    "props": [
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelectionsChange"
+      },
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "() => null"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "auditLogsRows"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "AuditLogsTableColumns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "variable",
+        "value": "emptyState"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "loadingMessage",
+        "type": "expression",
+        "value": "en.auditLogs.loadingMessage"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "loading"
+      },
+      {
+        "name": "maxHeight",
+        "type": "string",
+        "value": "40rem"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "props": [
+      {
+        "name": "selectionChangedCallback",
+        "type": "function",
+        "value": "() => undefined"
+      },
+      {
+        "name": "sortCallback",
+        "type": "variable",
+        "value": "sortClaimValuesDirection"
+      },
+      {
+        "name": "rows",
+        "type": "expression",
+        "value": "groupMappingState ? [addMappingRow, ...tableRows] : tableRows"
+      },
+      {
+        "name": "columns",
+        "type": "expression",
+        "value": "columns(groupMappingState)"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "showEmptyState",
+        "type": "expression",
+        "value": "rows.length < 1"
+      },
+      {
+        "name": "minHeight",
+        "type": "string",
+        "value": "476px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "notificationsTable"
+      },
+      {
+        "name": "loading",
+        "type": "expression",
+        "value": "isLoading || isFetchingNotifications || deletingNotification"
+      },
+      {
+        "name": "loadingMessage",
+        "type": "expression",
+        "value": "en.notifications[deletingNotification ? \"deletingNotifications\" : \"fetchingNotifications\"]"
+      },
+      {
+        "name": "emptyStateMessage",
+        "type": "expression",
+        "value": "en.notifications.emptyStateMessage(showUnreadNotifications)"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "NOTIFICATION_TABLE_COLUMNS"
+      },
+      {
+        "name": "displayedColumns",
+        "type": "variable",
+        "value": "NOTIFICATION_TABLE_COLUMNS"
+      },
+      {
+        "name": "customContentDisplayChangeCallback",
+        "type": "function",
+        "value": "() => null"
+      },
+      {
+        "name": "displayedCustomContent",
+        "type": "array",
+        "value": "[]"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "variable",
+        "value": "getRowActionMenuItem"
+      },
+      {
+        "name": "expandableRowOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\t\tallowToggle: true,\n\t\t\t\t\t\t\t\texpandedRowIds: expandedRowIds,\n\t\t\t\t\t\t\t\trenderChildren: (data) => {\n\t\t\t\t\t\t\t\t\treturn (\n\t\t\t\t\t\t\t\t\t\t<MenuItemDetails className=\"tct-expanded-body\">\n\t\t\t\t\t\t\t\t\t\t\t<NotificationTemplates notification={data.data} />\n\t\t\t\t\t\t\t\t\t\t</MenuItemDetails>\n\t\t\t\t\t\t\t\t\t);\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\tsetExpandedRowIds: expandRowHandler\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "rows",
+        "type": "expression",
+        "value": "notifications ?? []"
+      },
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "() => null"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SELECTION_TYPE.NONE"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "() => undefined"
+      },
+      {
+        "name": "rows",
+        "type": "expression",
+        "value": "distributedTracingLimits ?? []"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "limitColumn"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "function",
+        "value": "() => <span className=\"emptyTable\">{tracingLimits.emptyStateMessage}</span>"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "function",
+        "value": "() => undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "() => undefined"
+      },
+      {
+        "name": "rows",
+        "type": "expression",
+        "value": "tracingProfiles ?? []"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.NONE"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "variable",
+        "value": "customRowActionMenuItems"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "function",
+        "value": "() => <span className=\"emptyTable\">{tracingProfile.emptyStateMessage}</span>"
+      }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "title",
+    "count": 34
+  },
+  {
+    "name": "isOpen",
+    "count": 34
+  },
+  {
+    "name": "actions",
+    "count": 34
+  },
+  {
+    "name": "linearProgressIndicator",
+    "count": 20
+  },
+  {
+    "name": "maxWidth",
+    "count": 16
+  },
+  {
+    "name": "contentText",
+    "count": 4
+  },
+  {
+    "name": "contentLayout",
+    "count": 1
+  }
+]

@@ -1,0 +1,177 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "upgradeMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/PlansSidebar.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<EmptyStateUpgradeRuns />"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "No plan selected"
+      },
+      {
+        "name": "details",
+        "type": "string",
+        "value": "Create or select a listed plan to view its details."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/Run.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<FailedFetchImg />"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Failed to fetch upgrade run"
+      },
+      {
+        "name": "details",
+        "type": "string",
+        "value": "Run data could not be retrieved. It may have been deleted or does not exist."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/Runs.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<EmptyStateUpgradeRuns />"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "No scheduled upgrade runs"
+      },
+      {
+        "name": "details",
+        "type": "string",
+        "value": "No upgrade runs returned. Open the create modal to schedule based off an existing Plan."
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[{ children: \"Schedule Upgrade Run\", variant: \"outline\", onClick: setCreateOpen }]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "drawdownUsage.drawdownUsageNotAvailable_subtext1"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<DrawdownUsageEmptyState height={\"100px\"} width={\"100px\"} />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "drawdownUsage.drawdownUsageNotAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageTable.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsageSub"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<DrawdownUsageEmptyState height={\"100px\"} width={\"100px\"} />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "integrationStrings.sidebar.noSelection.title"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "integrationStrings.sidebar.noSelection.details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/MonitoringDashboard.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<NoAccessImg />"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "You do not have access to view this tab"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/SidekickDeploymentDetails.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<FailedFetchImg />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "(serviceError as any)?.data?.message ??\n\t\t\t\t\t\t(infrastructureError as any)?.data?.message ??\n\t\t\t\t\t\t\"There is no connector deployment for this service!\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/CollectorDetails.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<FailedFetchImg />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "(serviceError as any)?.data?.message ??\n\t\t\t\t\t\t(infrastructureError as any)?.data?.message ??\n\t\t\t\t\t\t\"There is no collector for this service!\""
+      }
+    ]
+  }
+]

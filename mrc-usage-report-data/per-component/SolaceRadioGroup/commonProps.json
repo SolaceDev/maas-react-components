@@ -1,0 +1,42 @@
+[
+  {
+    "name": "name",
+    "count": 16
+  },
+  {
+    "name": "onChange",
+    "count": 16
+  },
+  {
+    "name": "value",
+    "count": 15
+  },
+  {
+    "name": "id",
+    "count": 13
+  },
+  {
+    "name": "inline",
+    "count": 9
+  },
+  {
+    "name": "dataQa",
+    "count": 4
+  },
+  {
+    "name": "hasErrors",
+    "count": 3
+  },
+  {
+    "name": "helperText",
+    "count": 3
+  },
+  {
+    "name": "required",
+    "count": 3
+  },
+  {
+    "name": "label",
+    "count": 2
+  }
+]

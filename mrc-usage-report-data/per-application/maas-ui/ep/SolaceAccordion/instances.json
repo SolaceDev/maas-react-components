@@ -1,0 +1,1862 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/SelectedEntityVersion.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "getEntityDetailsTitle"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "getEntityDetailsPanel"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${entityType}DetailsAccordion`"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "accordionExpanded"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => toggleAccordion()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getSummary(group, item, messages.preview.toBeAdded, null, CHIP_COLORS.SUCCESS_BG_GREEN)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetails(item, group)"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "accordionOpenStatus[key]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleChangeAccordion(key)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "key"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getSummary(group, item, messages.preview.toBeDeleted, null, CHIP_COLORS.ERROR_BG_RED)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetails(item, group)"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "accordionOpenStatus[key]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleChangeAccordion(key)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "key"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getSummary(group, item, messages.preview.toBeUpdated, null, CHIP_COLORS.INFO_LIGHT_BG_BLUE)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetails(item, group)"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "accordionOpenStatus[key]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleChangeAccordion(key)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "key"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getSummary(group, item, messages.preview.noChange, null, null)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetails(item, group)"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "accordionOpenStatus[key]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleChangeAccordion(key)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "key"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EntitiesToDeleteListingPanel.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "applicationsToDelete"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "applicationsExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleApplicationClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderEntitySummary(\"Application Domains\", appDomains.length)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderEntityDetails(appDomains)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "applicationsToDelete"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EntitiesToDeleteListingPanel.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "memsToDelete"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "memsExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleMEMClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderEntitySummary(\"Modeled Event Meshes\", mems.length)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderEntityDetails(mems)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "memsToDelete"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EntitiesToDeleteListingPanel.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "environmentsToDelete"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "environmentsExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEnvironmentClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderEntitySummary(\"Environments\", environments.length)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderEntityDetails(environments)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environmentsToDelete"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/EventDetailModal.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "catalogEventVersionDetails"
+      },
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "getEventDetailsTitle"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetailsPanel(true)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "accordionExpanded"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.background.default"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => toggleAccordion()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributes.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "entityType ? `customAttributes-${entityType}-accordion` : null"
+      },
+      {
+        "name": "hover",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<Box display={\"flex\"} alignItems={\"center\"} columnGap={1}>\n\t\t\t\t\t\t<CustomAttributeTitle>{`Custom Attributes (${count})`}</CustomAttributeTitle>\n\t\t\t\t\t\t<SolaceTooltip variant=\"html\" title={getCustomAttributesHelpTooltipContent()} placement={\"right\"} maxWidth={\"medium\"}>\n\t\t\t\t\t\t\t<IconContainer>\n\t\t\t\t\t\t\t\t<HelpIcon />\n\t\t\t\t\t\t\t</IconContainer>\n\t\t\t\t\t\t</SolaceTooltip>\n\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t{\" \"}\n\t\t\t\t\t\t{errorMsg && (\n\t\t\t\t\t\t\t<ErrorContainer>\n\t\t\t\t\t\t\t\t<WarningIcon />\n\t\t\t\t\t\t\t\t{errorMsg}\n\t\t\t\t\t\t\t</ErrorContainer>\n\t\t\t\t\t\t)}\n\t\t\t\t\t\t{!errorMsg && <>{customAttributeValueList}</>}\n\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/EntityAppearance.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<TitleRow data-qa={\"entityAppearance-title\"}>Appearance</TitleRow>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Content>\n\t\t\t\t\t\t\t{formMethods && (\n\t\t\t\t\t\t\t\t<AppearanceDetailsForm\n\t\t\t\t\t\t\t\t\tformMethods={formMethods}\n\t\t\t\t\t\t\t\t\tentityType={entityType}\n\t\t\t\t\t\t\t\t\tlabelColumnWidth={labelColumnWidth}\n\t\t\t\t\t\t\t\t\tsetSelectedColorVariation={setSelectedColorVariation}\n\t\t\t\t\t\t\t\t\tsetSelectedIconLogo={setSelectedIconLogo}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t<EntityPreview\n\t\t\t\t\t\t\t\tnodeColorVariation={NodeColorVariationValue?.[selectedColorVariation]}\n\t\t\t\t\t\t\t\tentityType={entityType}\n\t\t\t\t\t\t\t\tselectedIconLogo={selectedIconLogo}\n\t\t\t\t\t\t\t\tpreviewWidth={200}\n\t\t\t\t\t\t\t\tmode={mode}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</Content>"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "entityAppearance"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "summary"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isErrorDetailsExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event, expanded) => errorDetailsMessageExpandHandler(expanded)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/VersionState/VersionStateDialog.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "summary"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isErrorDetailsExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event, expanded) => errorDetailsMessageExpandHandler(expanded)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/ClientProfileName.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetails(associatedEnvironmentList)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionListItem.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "eventApiProductVersion.id"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleItemClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetail()"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? `eap-${eventApiProductVersion.id}`"
+      },
+      {
+        "name": "hover",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedMessagingServiceListItem.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "item.environmentId"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleItemClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetail()"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? `messagingService-${item.environmentId}`"
+      },
+      {
+        "name": "indicatorVariant",
+        "type": "expression",
+        "value": "environmentAuth.canViewConfigPushJobStatus && isPollingError(environmentSummaryConfigPushStatus) ? \"error\" : undefined"
+      },
+      {
+        "name": "hover",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EntityDetailAccordion.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "item.id"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleItemClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "accordionDetails"
+      },
+      {
+        "name": "indicatorVariant",
+        "type": "expression",
+        "value": "indicatorVariant ?? null"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? null"
+      },
+      {
+        "name": "hover",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/EMAWalkthrough/runtimeAgentsUtils.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<Summary>\n\t\t\t\t\t\t<span>{title}</span>\n\t\t\t\t\t\t<div className=\"summary-button-container\">\n\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\tvariant=\"icon\"\n\t\t\t\t\t\t\t\tid={downloadButtonId}\n\t\t\t\t\t\t\t\tdataQa={downloadButtonId}\n\t\t\t\t\t\t\t\tonClick={(evt) => handleDownloadFile(evt, details, emaType, downloadButtonId)}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<DownloadIcon />\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\tvariant=\"icon\"\n\t\t\t\t\t\t\t\tid={copyButtonId}\n\t\t\t\t\t\t\t\tdataQa={copyButtonId}\n\t\t\t\t\t\t\t\tonClick={(evt) => handleCopyFile(evt, details, emaType, copyButtonId)}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<CopyIcon />\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</Summary>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Details>{details}</Details>"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => onToggle()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/ConnectionFileDownloadDialog.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<Summary>\n\t\t\t\t\t\t\t<span>Connection File Details</span>\n\t\t\t\t\t\t\t<div className=\"summary-button-container\">\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"outline\" onClick={(evt) => handleDownloadFile(evt)}>\n\t\t\t\t\t\t\t\t\tDownload\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"call-to-action\" onClick={handleCopyFile}>\n\t\t\t\t\t\t\t\t\tCopy\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</Summary>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Details>{confFileContent}</Details>"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleChange(\"confFile\")"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isExpanded"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "connectionFileDownloadDialog"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/components/PreflightCheckListAccordion.tsx",
+    "props": [
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.background.default"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "EmaPreflightCheckListAccordion"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderSummary(emaMode)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isOpen"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "toggle"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderSideInfoBlurbSummary()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/MessagingServiceAccordion.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "messagingService[Accordion]"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<Summary>\n\t\t\t\t\t\t<SummaryTitle>\n\t\t\t\t\t\t\t<SolaceTruncatableLink\n\t\t\t\t\t\t\t\tid={messagingService.id}\n\t\t\t\t\t\t\t\ttext={messagingService.name}\n\t\t\t\t\t\t\t\tonClick={() => onTitleLinkClick(messagingService)}\n\t\t\t\t\t\t\t\tdataQa=\"messagingService[Accordion][Title]\"\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t<IconBox>\n\t\t\t\t\t\t\t\t{isCloudBased && <SolaceCloudIcon />} {!messagingService?.eventMeshId && <Warning />}\n\t\t\t\t\t\t\t</IconBox>\n\t\t\t\t\t\t</SummaryTitle>\n\n\t\t\t\t\t\t<SummaryAction>\n\t\t\t\t\t\t\t<SolaceLabel id={`serviceLabel-${messagingService.id}`}>\n\t\t\t\t\t\t\t\t{brokerTypeLabel[messagingService.messagingServiceType] ?? \"Solace\"}\n\t\t\t\t\t\t\t</SolaceLabel>\n\t\t\t\t\t\t\t{messagingService.eventManagementAgentId && (\n\t\t\t\t\t\t\t\t<SolaceMenu\n\t\t\t\t\t\t\t\t\tbuttonProps={{\n\t\t\t\t\t\t\t\t\t\tdataQa: \"accordionMoreAction\",\n\t\t\t\t\t\t\t\t\t\tvariant: \"icon\",\n\t\t\t\t\t\t\t\t\t\tchildren: <EllipsisIcon />,\n\t\t\t\t\t\t\t\t\t\ttitle: \"More Actions\"\n\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t\titems={menuItems}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t{!messagingService.eventManagementAgentId && (\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"icon\" onClick={() => removeMessagingService(messagingService)} title=\"Remove\" dataQa=\"removeMessagingService\">\n\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</SummaryAction>\n\t\t\t\t\t</Summary>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Details>\n\t\t\t\t\t\t<SolaceLabel id={\"connectedMem\"}>Connected Modeled Event Mesh</SolaceLabel>\n\t\t\t\t\t\t{eventMesh ? (\n\t\t\t\t\t\t\t<Box display={\"flex\"} alignItems={\"center\"} gap={1}>\n\t\t\t\t\t\t\t\t{eventMesh?.name}{\" \"}\n\t\t\t\t\t\t\t\t<EnvironmentChip\n\t\t\t\t\t\t\t\t\tenvironmentOption={getEnvironmentChipObject(environmentOptions, eventMesh?.environmentId)}\n\t\t\t\t\t\t\t\t\thasIconOnly={true}\n\t\t\t\t\t\t\t\t\thasTooltip={true}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t<NoneValue id={\"none\"}>None</NoneValue>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</Details>"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isExpanded"
+      },
+      {
+        "name": "indicatorVariant",
+        "type": "expression",
+        "value": "hasIndicator ? \"info\" : undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "demoAccordionList"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "serviceAccordionControl[item.id]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleServiceAccordionControl(item.id)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetail(item)"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<SummaryContainer className={disabled ? \"text-disabled\" : \"\"}>\n\t\t\t\t\t\t\t\t\t\t<BoldText>{item.name}</BoldText>\n\t\t\t\t\t\t\t\t\t\t{item?.solaceCloudMessagingServiceId && <SolaceCloudIcon />}\n\t\t\t\t\t\t\t\t\t\t{isScanInProgress && <span>Discovery Scan in progress</span>}\n\t\t\t\t\t\t\t\t\t</SummaryContainer>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "existingMessagingServiceList"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderRuntimeAgentSummary(runtimeAgent as EventManagementAgent)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderRuntimeAgentDetails(runtimeAgent as EventManagementAgent)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "existingMessagingServiceList"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleRuntimeAgentExpanded"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/SharedComponents.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "dataQa"
+      },
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "summaryElement"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChange"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "dataQa"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/simplified/ImportPreviewAccordion.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? \"importPreviewAccordion\""
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderDetails()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/ApplicationVersionAccordion.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "applicationVersion.id"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleItemClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderDetails()"
+      },
+      {
+        "name": "indicatorVariant",
+        "type": "expression",
+        "value": "isSelected ? \"success\" : null"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? null"
+      },
+      {
+        "name": "hover",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplateHelp.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "summary"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<SolaceTypography variant=\"h5\">{summary}</SolaceTypography>"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/enums/Enums.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "catalogEnumVersionDetails"
+      },
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "getEnumDetailsTitle"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetailsPanel(true)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "accordionExpanded"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => toggleAccordion()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApiProducts/Utils.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "catalogEventApiProductVersionDetails"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getEventApiProductDetailsTitle(selectedEventApiProduct)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "eventApiProductDetailsPanel(selectedEventApiProduct, applicationDomainName, true)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onAccordionChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/schemas/Schemas.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "catalogSchemaVersionDetails"
+      },
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "getSchemaDetailsTitle"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetailsPanel(true)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "accordionExpanded"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => toggleAccordion()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/applications/Applications.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "catalogApplicationVersionDetails"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getApplicationDetailsTitle()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetailsPanel(true)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "accordionExpanded"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => toggleAccordion()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApi/Utils.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "catalogEventApiVersionDetails"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getEventApiDetailsTitle(selectedEventApi)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "eventApiDetailsPanel(selectedEventApi, applicationDomainName, true)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onAccordionChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
+    "props": [
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<LearningCenterList data={data} selectedIndexHandler={selectedIndexHandler} sampleSetup={sampleSetup} />"
+      },
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "dataQa"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetails()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleAccordionClick"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${configurationName}-${type}-${index}-requestHeader`"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getRequestHeaderSummary(header, type, index)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getRequestHeaderDetails(header, type, index)"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "expandedHeaders[expandKey]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\tsetExpandedHeaders((prev) => {\n\t\t\t\t\t\tprev[expandKey] = !prev[expandKey];\n\n\t\t\t\t\t\treturn { ...prev };\n\t\t\t\t\t});\n\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "queueBindingSummary"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "queueBindingDetails"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "queueBindingSummary"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getQueueBindingDetails()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointConfiguration.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`restDeliveryPointAccordion`"
+      },
+      {
+        "name": "summary",
+        "type": "variable",
+        "value": "accordionSummary"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "restConsumers"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/export/DomainExportPreviewDialog.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getDomainAccordionSummary(domain)"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDomainAccordionDetails(domain)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`domainAccordion-${domain.id}`"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "expandedDomainMap[domain.id] === true"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => onAccordionChange(domain.id, expandedDomainMap)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/import/DomainImportValidateDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"importDomainValidationAccordion\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "importDomainValidationAccordion"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "customAttributeValidations?.validationMessage"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "customAttributeValidations?.validations"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.ux.background.w20"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "square",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/AddNewNode.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`newNodeAccordion-${brokerType.value}`"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "brokerType.value"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "dragNDropPanelExpansions[brokerType.value]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() =>\n\t\t\t\t\t\tsetDragNDropPanelExpansions((prev) => {\n\t\t\t\t\t\t\tconst newState = { ...prev };\n\n\t\t\t\t\t\t\tnewState[brokerType.value] = !prev[brokerType.value];\n\n\t\t\t\t\t\t\treturn newState;\n\t\t\t\t\t\t})"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<SolaceTypography variant=\"h5\">{`${brokerType.label} Objects`}</SolaceTypography>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Container>\n\t\t\t\t\t\t\t<DraggableObject id={DraggableNewNodeId[brokerType.value].application} draggableRef={draggableRef}>\n\t\t\t\t\t\t\t\t<ObjectBlock\n\t\t\t\t\t\t\t\t\tclassName={activeDraggingId === DraggableNewNodeId[brokerType.value].application ? \"dragging\" : \"\"}\n\t\t\t\t\t\t\t\t\tonClick={(e) => {\n\t\t\t\t\t\t\t\t\t\tonNodeClick(e, DraggableNewNodeId[brokerType.value].application);\n\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t<ApplicationInDraftIcon />\n\t\t\t\t\t\t\t\t\t<SolaceTypography variant=\"body1\">New Application</SolaceTypography>\n\t\t\t\t\t\t\t\t</ObjectBlock>\n\t\t\t\t\t\t\t</DraggableObject>\n\t\t\t\t\t\t\t<DraggableObject id={DraggableNewNodeId[brokerType.value].event} draggableRef={draggableRef}>\n\t\t\t\t\t\t\t\t<ObjectBlock\n\t\t\t\t\t\t\t\t\tclassName={activeDraggingId === DraggableNewNodeId[brokerType.value].event ? \"dragging event\" : \"event\"}\n\t\t\t\t\t\t\t\t\tonClick={(e) => {\n\t\t\t\t\t\t\t\t\t\tonNodeClick(e, DraggableNewNodeId[brokerType.value].event);\n\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t<EventInDraftIcon />\n\t\t\t\t\t\t\t\t\t<SolaceTypography variant=\"body1\">New Event</SolaceTypography>\n\t\t\t\t\t\t\t\t</ObjectBlock>\n\t\t\t\t\t\t\t</DraggableObject>\n\t\t\t\t\t\t\t<DraggableObject id={DraggableNewNodeId[brokerType.value].eventExternal} draggableRef={draggableRef}>\n\t\t\t\t\t\t\t\t<ObjectBlock\n\t\t\t\t\t\t\t\t\tclassName={activeDraggingId === DraggableNewNodeId[brokerType.value].eventExternal ? \"dragging event\" : \"event\"}\n\t\t\t\t\t\t\t\t\tonClick={(e) => {\n\t\t\t\t\t\t\t\t\t\tonNodeClick(e, DraggableNewNodeId[brokerType.value].eventExternal);\n\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t<EventExternalIcon />\n\t\t\t\t\t\t\t\t\t<SolaceTypography variant=\"body1\">Shared Event</SolaceTypography>\n\t\t\t\t\t\t\t\t</ObjectBlock>\n\t\t\t\t\t\t\t</DraggableObject>\n\t\t\t\t\t\t\t<DragOverlay dropAnimation={null} style={{ cursor: \"grabbing\" }} modifiers={[restrictToWindowEdges]}>\n\t\t\t\t\t\t\t\t{(activeDraggingId === DraggableNewNodeId.solace.application || activeDraggingId === DraggableNewNodeId.kafka.application) && (\n\t\t\t\t\t\t\t\t\t<IconContainer>\n\t\t\t\t\t\t\t\t\t\t<ApplicationInDraftIcon />\n\t\t\t\t\t\t\t\t\t</IconContainer>\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t{(activeDraggingId === DraggableNewNodeId.solace.event || activeDraggingId === DraggableNewNodeId.kafka.event) && (\n\t\t\t\t\t\t\t\t\t<IconContainer>\n\t\t\t\t\t\t\t\t\t\t<EventInDraftIcon />\n\t\t\t\t\t\t\t\t\t</IconContainer>\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t{(activeDraggingId === DraggableNewNodeId.solace.eventExternal || activeDraggingId === DraggableNewNodeId.kafka.eventExternal) && (\n\t\t\t\t\t\t\t\t\t<IconContainer>\n\t\t\t\t\t\t\t\t\t\t<EventExternalIcon />\n\t\t\t\t\t\t\t\t\t</IconContainer>\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t</DragOverlay>\n\t\t\t\t\t\t</Container>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<ValueItem className=\"bold\">Conflicting Objects</ValueItem>"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "conflictingObjects"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/Subscriptions.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetails()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleExpandClick()"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConsumerItem.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${consumer.name}-consumerAccordion`"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetails()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConfigurationItem.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "getAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getAccordionDetails()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomainSaveDialog.tsx",
+    "props": [
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "`${topicDomain.length} affected Topic Domains`"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<AccordionDetails>\n\t\t\t\t\t\t\t{topicDomain.map((topicDomainEntry) => (\n\t\t\t\t\t\t\t\t<div key={topicDomainEntry.id}>\n\t\t\t\t\t\t\t\t\t<TopicAddressInfoLabel>\n\t\t\t\t\t\t\t\t\t\t<TopicAddressInfo\n\t\t\t\t\t\t\t\t\t\t\tname={`topicDomainRef-${topicDomainEntry.id}`}\n\t\t\t\t\t\t\t\t\t\t\ttopicAddressLevels={topicDomainEntry.topicAddressLevels}\n\t\t\t\t\t\t\t\t\t\t\tdelimiter={topicAddressDelimiters?.[topicDomainEntry.brokerType]}\n\t\t\t\t\t\t\t\t\t\t\tdataQa={\"topicDomainRef-topicAddressInfo\"}\n\t\t\t\t\t\t\t\t\t\t\tdisableTooltip={true}\n\t\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t</TopicAddressInfoLabel>\n\t\t\t\t\t\t\t\t\t{duplicate && (\n\t\t\t\t\t\t\t\t\t\t<ApplicationDomains>\n\t\t\t\t\t\t\t\t\t\t\tUsed in\n\t\t\t\t\t\t\t\t\t\t\t{topicDomainEntry?.applicationDomains?.map(({ name }) => (\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTooltip\n\t\t\t\t\t\t\t\t\t\t\t\t\tvariant=\"html\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tkey={`tooltip-${name}`}\n\t\t\t\t\t\t\t\t\t\t\t\t\tmaxWidth=\"medium\"\n\t\t\t\t\t\t\t\t\t\t\t\t\ttitle={applicatonDomainPopoverContent(name)}\n\t\t\t\t\t\t\t\t\t\t\t\t\tplacement=\"bottom-end\"\n\t\t\t\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceChip label={name} maxWidth={200} />\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceTooltip>\n\t\t\t\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t\t\t\t\t{renderOtherApplicationDomains(topicDomainEntry?.applicationDomainCount, topicDomainEntry?.applicationDomains)}\n\t\t\t\t\t\t\t\t\t\t</ApplicationDomains>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t</AccordionDetails>"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "accordionExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => toggleAccordion()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"topicAddressHelp\""
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<TopicAddressHelp topicAddressDelimiters={topicAddressDelimiters} brokerType={brokerType} />"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<InfoBlurbTitle>\n\t\t\t\t\t\t\t\t\t<SolaceTypography variant=\"h3\">Tips and Tricks for Topic Addresses</SolaceTypography>\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"icon\" onClick={handleCloseTopicAddressHelp} data-qa=\"topicAddressHelpCloseButton\">\n\t\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</InfoBlurbTitle>"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expandTopicAddressHelp"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpandTopicAddressHelp(!expandTopicAddressHelp)"
+      },
+      {
+        "name": "backgroundColor",
+        "type": "expression",
+        "value": "theme.palette.background.default"
+      },
+      {
+        "name": "square",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleAccordianClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetail()"
+      },
+      {
+        "name": "hover",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordion.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "request.id"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleItemClick"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "accordionDetails"
+      },
+      {
+        "name": "indicatorVariant",
+        "type": "expression",
+        "value": "indicatorVariant ?? null"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? null"
+      },
+      {
+        "name": "hover",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${application.applicationName}-events`"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<SolaceTypography variant=\"h5\">{\"Published Events\"}</SolaceTypography>"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetails()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "application.applicationName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${application.applicationName}-subscriptions`"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<SolaceTypography variant=\"h5\">{\"Subscribed Events\"}</SolaceTypography>"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetails()"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "application.applicationName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "applicationDomainName"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<ReviewGrid key={applicationDomainName}>\n\t\t\t\t\t\t<SolaceLabel id=\"applicationDomainLabel\">{messages.applicationDomain.label}</SolaceLabel>\n\t\t\t\t\t\t<SolaceTypography>{applicationDomainName}</SolaceTypography>\n\t\t\t\t\t</ReviewGrid>"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "getDetails(applications)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setExpanded(!expanded)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "applicationDomainName"
+      }
+    ]
+  }
+]

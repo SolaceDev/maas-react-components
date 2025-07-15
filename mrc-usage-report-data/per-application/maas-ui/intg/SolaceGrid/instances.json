@@ -1,0 +1,532 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "value": "filterItem"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "columnSpacing",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "value": "filterItem"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanel.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "columnSpacing",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "borderRight",
+        "type": "expression",
+        "value": "`1px solid ${theme.palette.ux.secondary.w20}`"
+      },
+      {
+        "name": "overflow",
+        "type": "expression",
+        "value": "\"scroll\""
+      },
+      {
+        "name": "height",
+        "type": "expression",
+        "value": "\"inherit\""
+      },
+      {
+        "name": "onScroll",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tconst { scrollTop } = e.target as HTMLElement;\n\n\t\t\t\t\t\t\t\t\tif (leftScrollTop !== scrollTop && relations.length > 0) {\n\t\t\t\t\t\t\t\t\t\tsetLeftScrollTop(scrollTop);\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "6"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ backgroundColor: theme.palette.ux.background.w20 }"
+      },
+      {
+        "name": "justifyItems",
+        "type": "expression",
+        "value": "\"center\""
+      },
+      {
+        "name": "height",
+        "type": "expression",
+        "value": "\"inherit\""
+      },
+      {
+        "name": "alignContent",
+        "type": "expression",
+        "value": "relations.length === 0 && !initalDrag ? \"center\" : undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "borderLeft",
+        "type": "expression",
+        "value": "`1px solid ${theme.palette.ux.secondary.w20}`"
+      },
+      {
+        "name": "overflow",
+        "type": "expression",
+        "value": "\"scroll\""
+      },
+      {
+        "name": "height",
+        "type": "expression",
+        "value": "\"inherit\""
+      },
+      {
+        "name": "onScroll",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tconst { scrollTop } = e.target as HTMLElement;\n\n\t\t\t\t\t\t\t\t\tif (rightScrollTop !== scrollTop && relations.length > 0) {\n\t\t\t\t\t\t\t\t\t\tsetRightScrollTop(scrollTop);\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/WrapIfAdditionalTemplate.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${id}-key`"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "className",
+        "type": "variable",
+        "value": "classNames"
+      },
+      {
+        "name": "style",
+        "type": "variable",
+        "value": "style"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/WrapIfAdditionalTemplate.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/WrapIfAdditionalTemplate.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/WrapIfAdditionalTemplate.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "7"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "8"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "8"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/Utils.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      }
+    ]
+  }
+]

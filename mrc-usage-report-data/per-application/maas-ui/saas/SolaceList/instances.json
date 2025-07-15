@@ -1,0 +1,27 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ li: { listStyleType: \"disc\" } }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ p: 2 }"
+      }
+    ]
+  }
+]

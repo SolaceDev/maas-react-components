@@ -1,0 +1,277 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "props": [
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "applicationRadioGroup"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "applicationRadioGroup"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\tsetIsNewApplication(e.value === \"true\");\n\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "isNewApplication ? \"true\" : \"false\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useRadioGroup.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "radioGroupName ?? \"customhookRadioGroup\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? \"\""
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationErrorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "validationErrorMsg"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "messagingServiceSelectorRadioGroup"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "messagingServiceRadioGroup"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedMessagingService"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tsetSelectedMessagingService(e.value);\n\t\t\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "selectResultTypeRadioGroup"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "selectResultTypeRadioGroup"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleAuditResultTypeChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "auditResultTypeToImport"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"brokerTypeRadioButtons\""
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"brokerTypeRadioButtons\""
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "brokerType"
+      },
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tsetBrokerType(e.value);\n\t\t\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "downloadFormatRadioGroup"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApi.labels.format"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "downloadFormatRadioGroup"
+      },
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\tsetFormat(e.value as SupportedAsyncApiDownloadFormat);\n\n\t\t\t\tif (localStorageKey) localStorage.setItem(localStorageKey, `${e.value}`);\n\t\t\t}"
+      },
+      {
+        "name": "stackLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "format"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "review"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleReviewChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/ManageEventSchemas.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"SchemaTypeRadioButtons\""
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"SchemaTypeRadioButtons\""
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "schemaInfo?.schemaType"
+      },
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\tsetSelectedSchemaType(e.value === SchemaType.complex ? SchemaType.complex : SchemaType.primitive);\n\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+    "props": [
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "addSubscriptionRadioGroup"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "addSubscriptionRadioGroup"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\tsetMode(e.value);\n\t\t\t\t\t\t\tresetField(\"consumerId\");\n\t\t\t\t\t\t\tresetField(\"consumerName\");\n\t\t\t\t\t\t\tresetField(\"consumerType\");\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "mode"
+      }
+    ]
+  }
+]

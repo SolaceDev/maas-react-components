@@ -1,0 +1,337 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "resourceType"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "nameHeader"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "typeHeader"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "accessHeader"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"resourceAssignmentListLoading\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/components/FileUploader.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${id}-label\"`"
+      },
+      {
+        "name": "htmlForId",
+        "type": "variable",
+        "value": "htmlForId"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEndpoints.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "endpointsLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "endpoints"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldMateLinkEncryption.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "mateLinkEncryptionLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "mateLinkEncryption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldCloneCertificateAuth.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "certAuthoritiesLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "cloneCertificateAuthorities"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceTypes.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceTypeLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "serviceType"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldEnvironment.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "environmentLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!!serviceId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldPort.tsx",
+    "props": [
+      {
+        "name": "htmlForId",
+        "type": "variable",
+        "value": "nameCheck"
+      },
+      {
+        "name": "noWrap",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${nameCheck}-label`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerFamily.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "brokerFamilyLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "brokerFamilyVersion"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldMsgVpnName.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "msgVpnNameLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "msgVpnName"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldRegion.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "regionLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "region"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldName.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceNameLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "serviceName"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerVersion.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "brokerVersionLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "brokerVersion"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldCloud.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "cloudLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "cloud"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldClusterName.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "clusterNameLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "clusterName"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!!edit"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FormServiceType.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "systemTypeLabel"
+      },
+      {
+        "name": "htmlForId",
+        "type": "string",
+        "value": "systemType"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+[
+  "../../../maas-ui/micro-frontends/intg/src/components/filters/filterChips/MultiSelectFilterChip.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/BaseDisplayField.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/DeleteEdgeConfirmationDialog.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/DropElement.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/icons/RoleIcon.tsx"
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "message",
+    "count": 1
+  },
+  {
+    "name": "showCloseButton",
+    "count": 1
+  },
+  {
+    "name": "onClose",
+    "count": 1
+  }
+]

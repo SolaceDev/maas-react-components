@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "actionMenuItems()"
+      },
+      {
+        "name": "buttonProps",
+        "type": "object",
+        "value": "{\n                                variant: \"icon\",\n                                title: \"Actions\",\n                                dataQa: \"clusterDetailsActionMenuButton\",\n                                children: <MoreHorizOutlinedIcon />,\n                            }"
+      },
+      {
+        "name": "key",
+        "type": "string",
+        "value": "cloudProviderLink"
+      }
+    ]
+  }
+]

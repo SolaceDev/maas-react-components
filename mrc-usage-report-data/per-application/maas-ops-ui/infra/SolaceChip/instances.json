@@ -1,0 +1,47 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/common/components/CommonAppBar.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "value": "BETA"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "xs"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.LIGHT_GREY"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
+    "props": [
+      {
+        "name": "clickable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`${label}: ${value}`"
+      },
+      {
+        "name": "onDelete",
+        "type": "variable",
+        "value": "onDeleteFunc"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "dataQaId"
+      }
+    ]
+  }
+]

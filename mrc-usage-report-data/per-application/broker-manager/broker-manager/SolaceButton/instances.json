@@ -1,0 +1,52 @@
+[
+  {
+    "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+    "props": [
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "sublink.url"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "target",
+        "type": "string",
+        "value": "_blank"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleTutorialClick"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/section.js",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "footer.url"
+      }
+    ]
+  }
+]

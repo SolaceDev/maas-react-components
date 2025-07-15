@@ -1,0 +1,82 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorSummary.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "expression",
+        "value": "tabs(setActiveTab, showMiTransformation, showGaMiTransformation)"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "expression",
+        "value": "tabs(setActiveTab, showMiTransformation, showGaMiTransformation)"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "expression",
+        "value": "tabs(setActiveTab, showMiTransformation, showGaMiTransformation)"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "expression",
+        "value": "tabs(setActiveTab, showMiTransformation, showGaMiTransformation)"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      }
+    ]
+  }
+]

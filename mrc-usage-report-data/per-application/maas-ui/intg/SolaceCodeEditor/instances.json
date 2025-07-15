@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorlog-stackTrace"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "errorlog-stackTrace"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(logData.attributes.attributes.stack_trace, null, 2)"
+      }
+    ]
+  }
+]

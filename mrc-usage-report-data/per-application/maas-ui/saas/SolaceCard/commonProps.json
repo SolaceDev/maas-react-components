@@ -1,0 +1,22 @@
+[
+  {
+    "name": "backgroundColor",
+    "count": 9
+  },
+  {
+    "name": "dataQa",
+    "count": 6
+  },
+  {
+    "name": "title",
+    "count": 5
+  },
+  {
+    "name": "showCloseButton",
+    "count": 4
+  },
+  {
+    "name": "onClose",
+    "count": 2
+  }
+]

@@ -1,0 +1,127 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/HeaderExpression.tsx",
+    "props": [
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "full"
+      },
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<EducationBlurb popover />"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSample.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "handleHover(connectorType)"
+      },
+      {
+        "name": "placement",
+        "type": "string",
+        "value": "bottom"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`connector-card-popover-${connectorType.id}`"
+      },
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "medium"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorCards/ConnectorCards.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "handleHover(connectorType)"
+      },
+      {
+        "name": "placement",
+        "type": "string",
+        "value": "bottom"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`connector-card-popover-${connectorType.id}`"
+      },
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "medium"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx",
+    "props": [
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "medium"
+      },
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<NamePopoverContent label=\"Environment\" name={miEnvironment.label} />"
+      },
+      {
+        "name": "placement",
+        "type": "string",
+        "value": "bottom-end"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "medium"
+      },
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<NamePopoverContent label=\"Environment\" name={miEnvironment.label} />"
+      },
+      {
+        "name": "placement",
+        "type": "string",
+        "value": "bottom-end"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx",
+    "props": [
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "medium"
+      },
+      {
+        "name": "title",
+        "type": "jsx",
+        "value": "<NamePopoverContent label=\"Environment\" name={miEnvironment.label} />"
+      },
+      {
+        "name": "placement",
+        "type": "string",
+        "value": "bottom-end"
+      }
+    ]
+  }
+]

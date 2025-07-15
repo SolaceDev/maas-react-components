@@ -1,0 +1,56 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/PositionedCircularProgress/PositionedCircularProgress.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "testId"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "indeterminate"
+      },
+      {
+        "name": "size",
+        "type": "variable",
+        "value": "size"
+      },
+      {
+        "name": "disableShrink",
+        "type": "variable",
+        "value": "disableShrink"
+      },
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "message"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScansTable.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateSchemasDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "props": []
+  }
+]

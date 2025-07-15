@@ -1,0 +1,137 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "avpList",
+        "type": "expression",
+        "value": "value || []"
+      },
+      {
+        "name": "labelForKeys",
+        "type": "expression",
+        "value": "\"Value\""
+      },
+      {
+        "name": "labelForValues",
+        "type": "expression",
+        "value": "\"Description\""
+      },
+      {
+        "name": "avpKeyValidationCallback",
+        "type": "variable",
+        "value": "validateEnumKeys"
+      },
+      {
+        "name": "avpValueValidationCallback",
+        "type": "variable",
+        "value": "validateEnumValues"
+      },
+      {
+        "name": "enableRequiredKeyFieldIndicator",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "keyIsRequiredMessage",
+        "type": "string",
+        "value": "Enumeration value is required"
+      },
+      {
+        "name": "onAVPListUpdate",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tonChange(e);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "emptyFieldDisplayValue",
+        "type": "string",
+        "value": "-"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? getErrorMessage(error) : null"
+      },
+      {
+        "name": "avpListMaxHeight",
+        "type": "expression",
+        "value": "enumVersionValuesFormValues?.length <= VIRTUALIZED_LIST_THRESHOLD ? `${VIRTUALIZED_LIST_HEIGHT}px` : undefined"
+      },
+      {
+        "name": "virtualizedAvpListOption",
+        "type": "expression",
+        "value": "enumVersionValuesFormValues?.length <= VIRTUALIZED_LIST_THRESHOLD\n\t\t\t\t\t\t\t\t\t\t\t? undefined\n\t\t\t\t\t\t\t\t\t\t\t: {\n\t\t\t\t\t\t\t\t\t\t\t\t\theight: VIRTUALIZED_LIST_HEIGHT,\n\t\t\t\t\t\t\t\t\t\t\t\t\tincreaseViewportBy: 50,\n\t\t\t\t\t\t\t\t\t\t\t\t\tinitialTopMostItemIndex: VIRTUALIZED_LIST_THRESHOLD\n\t\t\t\t\t\t\t\t\t\t\t  }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionDetails.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"enumerationVersion[values]\""
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"enumerationVersion[values]\""
+      },
+      {
+        "name": "avpList",
+        "type": "expression",
+        "value": "enumerationVersion.values"
+      },
+      {
+        "name": "labelForKeys",
+        "type": "expression",
+        "value": "\"Value\""
+      },
+      {
+        "name": "labelForValues",
+        "type": "expression",
+        "value": "\"Description\""
+      },
+      {
+        "name": "enableRequiredKeyFieldIndicator",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "emptyFieldDisplayValue",
+        "type": "string",
+        "value": "-"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "avpListMaxHeight",
+        "type": "expression",
+        "value": "enumerationVersion?.values?.length <= VIRTUALIZED_LIST_THRESHOLD ? `${VIRTUALIZED_LIST_HEIGHT}px` : undefined"
+      },
+      {
+        "name": "virtualizedAvpListOption",
+        "type": "expression",
+        "value": "enumerationVersion?.values?.length <= VIRTUALIZED_LIST_THRESHOLD\n\t\t\t\t\t\t\t\t\t\t\t? undefined\n\t\t\t\t\t\t\t\t\t\t\t: {\n\t\t\t\t\t\t\t\t\t\t\t\t\theight: VIRTUALIZED_LIST_HEIGHT,\n\t\t\t\t\t\t\t\t\t\t\t\t\tincreaseViewportBy: 50\n\t\t\t\t\t\t\t\t\t\t\t  }"
+      }
+    ]
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/SearchPanel.tsx",
+    "props": [
+      {
+        "name": "containerWidth",
+        "type": "variable",
+        "value": "filterContainerWidth"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "filterChips"
+      },
+      {
+        "name": "showAll",
+        "type": "expression",
+        "value": "!!showFilterSection"
+      },
+      {
+        "name": "numOfRowsToShow",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "onItemsRendered",
+        "type": "variable",
+        "value": "handleItemsRendered"
+      },
+      {
+        "name": "onItemsOverflow",
+        "type": "variable",
+        "value": "handleItemsOverflow"
+      },
+      {
+        "name": "onItemsOverflowIndicatorClick",
+        "type": "variable",
+        "value": "handleItemsHiddenIndicatorClick"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"filterChipsItemList\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultFilter.tsx",
+    "props": [
+      {
+        "name": "containerWidth",
+        "type": "variable",
+        "value": "filterContainerWidth"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "filterChips"
+      },
+      {
+        "name": "showAll",
+        "type": "expression",
+        "value": "!!showFilterSection"
+      },
+      {
+        "name": "numOfRowsToShow",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "onItemsRendered",
+        "type": "variable",
+        "value": "handleItemsRendered"
+      },
+      {
+        "name": "onItemsOverflow",
+        "type": "variable",
+        "value": "handleItemsOverflow"
+      },
+      {
+        "name": "onItemsOverflowIndicatorClick",
+        "type": "variable",
+        "value": "handleItemsHiddenIndicatorClick"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"filterChipsItemList\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/AssociateEnvironment.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "displayedEnvironments.map((env) => {\n\t\t\t\t\t\treturn {\n\t\t\t\t\t\t\tid: env.id,\n\t\t\t\t\t\t\tcontent: (\n\t\t\t\t\t\t\t\t<EnvironmentChip\n\t\t\t\t\t\t\t\t\tkey={env.id}\n\t\t\t\t\t\t\t\t\tenvironmentOption={environmentOptions?.find((option) => option.value === env.id)}\n\t\t\t\t\t\t\t\t\thasTooltip={true}\n\t\t\t\t\t\t\t\t\tdataQa={env.id}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t};\n\t\t\t\t\t})"
+      },
+      {
+        "name": "containerWidth",
+        "type": "variable",
+        "value": "containerWidth"
+      },
+      {
+        "name": "showAll",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/AssociateEnvironment.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "displayedEnvironments.map((env) => {\n\t\t\t\t\t\t\t\treturn {\n\t\t\t\t\t\t\t\t\tid: env.id,\n\t\t\t\t\t\t\t\t\tcontent: (\n\t\t\t\t\t\t\t\t\t\t<EnvironmentChip\n\t\t\t\t\t\t\t\t\t\t\tkey={env.id}\n\t\t\t\t\t\t\t\t\t\t\tenvironmentOption={getEnvironmentChipObject(environmentOptions, env.id)}\n\t\t\t\t\t\t\t\t\t\t\thasTooltip={true}\n\t\t\t\t\t\t\t\t\t\t\tdataQa={env.id}\n\t\t\t\t\t\t\t\t\t\t\tonDelete={() => handleDeleteTag(env.id)}\n\t\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t};\n\t\t\t\t\t\t\t})"
+      },
+      {
+        "name": "columnGap",
+        "type": "number",
+        "value": "8"
+      },
+      {
+        "name": "showAll",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "containerWidth",
+        "type": "expression",
+        "value": "containerWidth ?? getContainerWidth(autocompleteRef.current?.offsetWidth)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSearchAndFilter.tsx",
+    "props": [
+      {
+        "name": "containerWidth",
+        "type": "variable",
+        "value": "filterContainerWidth"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "filterChips"
+      },
+      {
+        "name": "showAll",
+        "type": "expression",
+        "value": "!!showFilterSection"
+      },
+      {
+        "name": "numOfRowsToShow",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "onItemsRendered",
+        "type": "variable",
+        "value": "handleItemsRendered"
+      },
+      {
+        "name": "onItemsOverflow",
+        "type": "variable",
+        "value": "handleItemsOverflow"
+      },
+      {
+        "name": "onItemsOverflowIndicatorClick",
+        "type": "variable",
+        "value": "handleItemsHiddenIndicatorClick"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"filterChipsItemList\""
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "onChange",
+    "count": 7
+  },
+  {
+    "name": "summary",
+    "count": 7
+  },
+  {
+    "name": "expanded",
+    "count": 7
+  },
+  {
+    "name": "details",
+    "count": 7
+  },
+  {
+    "name": "dataQa",
+    "count": 4
+  },
+  {
+    "name": "key",
+    "count": 2
+  },
+  {
+    "name": "border",
+    "count": 2
+  },
+  {
+    "name": "disablePadding",
+    "count": 1
+  },
+  {
+    "name": "square",
+    "count": 1
+  }
+]

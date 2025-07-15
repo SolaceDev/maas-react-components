@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/common/BaseTableList.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!isEmpty(selectedRowIds)"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "400"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "expression",
+        "value": "renderSidePanel()"
+      }
+    ]
+  }
+]

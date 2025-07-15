@@ -1,0 +1,547 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/atoms/AtomSelect.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "props"
+      },
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorText || helperText"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/dialogs/SelectEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isDisabled"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "role"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onResourceRoleChange(resourceAssignment, event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Connect.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "view"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_view_by\", message: \"View by\" })"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "view"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChangeView"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"connect-view-by\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LibraryDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "protocol"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "protocol"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "protocol"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_protocol\", message: \"Protocol\" })"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "protocolIndex.toString()"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleProtocolChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LibraryDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "hosturi"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "hosturi"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "hosturi"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_hosturi\", message: \"Host URI\" })"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "hostUri"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleHostUriChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "selectedTracingProfileId"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "selectedTracingProfileId"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_tracing_destination\", message: \"Tracing Destination\" })"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedTracingProfileId"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!selectedTracingProfileId && isSubmitted"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "selectedTracingProfileId || !isSubmitted ? \"\" : t({ id: \"id_dt_select_tracing_dest\", message: \"Required. Select a tracing destination.\" })"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setSelectedTracingProfileId(event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldServiceClass.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceClass"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceClass"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceClass"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "serviceClass.value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleServiceClassChange"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasServiceClassErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "serviceClassErrorText"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "isSAP ? t({ id: \"id_service_class\", message: \"Service Class\" }) : t({ id: \"id_connections\", message: \"Connections\" })"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "activeServiceClasses.length === 0"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldServiceClass.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "serviceClass"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "serviceClass"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "serviceClass"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "serviceClass.value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleServiceClassChange"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasServiceClassErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "serviceClassErrorText"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "isSAP ? t({ id: \"id_service_class\", message: \"Service Class\" }) : t({ id: \"id_connections\", message: \"Connections\" })"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "activeServiceClasses.length === 0"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerFamily.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "brokerFamilyVersion"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "brokerFamilyVersion"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "brokerFamilyVersion"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "errorText"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerVersion.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "brokerVersion"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "brokerVersion"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "brokerVersion"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "errorText"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldCloud.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "cloud"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "cloud"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "cloud"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "errorText"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "cloudDisabled"
+      }
+    ]
+  }
+]

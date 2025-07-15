@@ -1,0 +1,832 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/EventBrokerDialogTab.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tabValue) => setActiveTab(tabValue)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tabValue) => setActiveTab(tabValue)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityDetails/EntityConfigSidePanel.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "tabProps"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServicesReferences.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tabValue) => setActiveTab(tabValue)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshEdit.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "fullWidth"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewSchemaConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "tabProps"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplate.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTab(tab)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/header/TopologyHeader.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabArray"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/header/CatalogHeader.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeEntityType"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "selectedTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      },
+      {
+        "name": "tabs",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t\t\t{ label: `${en.kpiMetricsDashboard.reuseFilter.mostReused}`, value: \"mostUsed\" },\n\t\t\t\t\t\t\t\t\t\t{ label: `${en.kpiMetricsDashboard.reuseFilter.leastReused}`, value: \"leastused\" }\n\t\t\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageSolaceQueueConfiguration.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => handleTabClick(tab)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionDetails.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraph.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "brokerTypeOptions"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "addObjectsActiveTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleAddObjectTabClick"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/DomainGraphSearchV2.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "fullWidth"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraphSearchPanel.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "fullWidth"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApiVersionDetails.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionDetails.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tabValue) => setActiveTab(tabValue)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventVersionDetails.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tabValue) => setActiveTab(tabValue)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventFlowConfig.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationEdit.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "actionTabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleActionTabClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationVersionDetails.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/header/DomainHeader.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeEntityType"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorSummary.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "expression",
+        "value": "tabs(setActiveTab, showMiTransformation, showGaMiTransformation)"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "expression",
+        "value": "tabs(setActiveTab, showMiTransformation, showGaMiTransformation)"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "expression",
+        "value": "tabs(setActiveTab, showMiTransformation, showGaMiTransformation)"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "expression",
+        "value": "tabs(setActiveTab, showMiTransformation, showGaMiTransformation)"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/LibraryDialog.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeStep"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "setActiveStep"
+      },
+      {
+        "name": "tabs",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t{ value: \"1\", label: t({ id: \"id_get_api\", message: \"1. Get API\" }) },\n\t\t\t\t\t{ value: \"2\", label: t({ id: \"id_connect_service\", message: \"2. Connect to Service\" }) },\n\t\t\t\t\t{ value: \"3\", label: t({ id: \"id_learn_more\", message: \"3. Learn with Tutorials\" }) }\n\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/panels/SecurityCertificateAuthorities.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "certType"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "setCertType"
+      },
+      {
+        "name": "tabs",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t\t{ value: \"client\", label: t({ id: \"id_client_cert_auths\", message: \"Client Certificate Authorities\" }) },\n\t\t\t\t\t\t\t\t\t{ value: \"domain\", label: t({ id: \"id_domain_cert_auths\", message: \"Domain Certificate Authorities\" }) }\n\t\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/ServiceDetails.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "tab"
+      },
+      {
+        "name": "tabs",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t{ label: t({ id: \"id_status\", message: \"Status\" }), value: \"status\" },\n\t\t\t\t\t\t\t{ label: t({ id: \"id_connect\", message: \"Connect\" }), value: \"connect\", disabled: areTabsDisabled },\n\t\t\t\t\t\t\t{ label: t({ id: \"id_manage\", message: \"Manage\" }), value: \"manage\", disabled: areTabsDisabled },\n\t\t\t\t\t\t\t{ label: t({ id: \"id_monitoring\", message: \"Monitoring\" }), value: \"monitoring\", disabled: areTabsDisabled },\n\t\t\t\t\t\t\t{ label: t({ id: \"id_configuration\", message: \"Configuration\" }), value: \"configuration\", disabled: isInProgress },\n\t\t\t\t\t\t\t{ label: t({ id: \"id_tryme\", message: \"Try Me!\" }), value: \"tryme\", disabled: areTabsDisabled }\n\t\t\t\t\t\t]"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(value) => {\n\t\t\t\t\t\t\tif (value === \"manage\") {\n\t\t\t\t\t\t\t\tif (missionControl?.manageUI) {\n\t\t\t\t\t\t\t\t\thistory.push(routeSetParams(ROUTER_SERVICES_DETAILS_MANAGE, { serviceId, category: \"security\" }));\n\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\thistory.push(routeSetParams(ROUTER_SERVICES_DETAILS_MANAGE_LEGACY, { serviceId }));\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\thistory.push(routeSetParams(ROUTER_SERVICES_DETAILS, { serviceId: service?.id as string, tab: value }));\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userSettingsShell/UserSettingsShell.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      },
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "TABS"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/AccountDetailsShell.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "scrollable"
+      },
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "TABS"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "tab"
+      },
+      {
+        "name": "tabs",
+        "type": "array",
+        "value": "[\n                            { label: \"Datacenters\", value: \"datacenters\" },\n                            { label: \"Preupgrade Validation\", value: \"preupgrade-validation\" },\n                            { label: \"System Components\", value: \"system-components\" },\n                            { label: \"Network\", value: \"network\" },\n                            { label: \"Services\", value: \"services\" },\n                        ]"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => history.push(`/clusters/${clusterId}/${tab}`)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgents.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(value) => setActiveTab(value as EMA_TYPES)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "lg"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationDashboard.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "variable",
+        "value": "handleTabChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/MonitoringDashboard.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTab(tab as MonitoringTabs)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/SidekickDeploymentDetails.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTab(tab)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "wanTuningFeaturesTabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTabFeature"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTabFeature(tab as WanTuningFeatures)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "fullWidth"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "props": [
+      {
+        "name": "tabs",
+        "type": "variable",
+        "value": "tabs"
+      },
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "activeTab"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => setActiveTab(tab)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "md"
+      }
+    ]
+  }
+]

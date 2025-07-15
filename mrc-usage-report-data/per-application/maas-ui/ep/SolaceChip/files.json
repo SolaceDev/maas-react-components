@@ -1,0 +1,17 @@
+[
+  "../../../maas-ui/micro-frontends/ep/src/components/topology/SolaceSelectionChip.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filterChips/FilterChip.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionListItem.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedMessagingServiceListItem.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedApplicationDomainChip.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/MemGraphNodeTooltipContent.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/filterChips/FilterChip.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultList.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraphNodeTooltipContent.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/EventApiList.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/FilterHelper.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomainSaveDialog.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+  "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx"
+]

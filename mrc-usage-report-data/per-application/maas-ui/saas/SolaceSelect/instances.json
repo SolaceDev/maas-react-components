@@ -1,0 +1,387 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "resourceRoleSelect"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isDisabled"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "role"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onResourceRoleChange(resourceAssignment, event.value as ResourceRole)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "width",
+        "type": "string",
+        "value": "20rem"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "userGroupDropdownId"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userGroupDropdown"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userGroupDropdownQa"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSelectedUserGroupRole"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "User Group Select"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedUserGroupRole"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.auditLogs.timeRange"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "timeRange"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => handleFilterChange(e)"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Time Range"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "filters.timeRange.value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.auditLogs.status"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "status"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => handleFilterChange(e)"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Status"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "filters.status.value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.auditLogs.category"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "category"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => handleFilterChange(e)"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Category"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "filters.category.value"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "categoryFilter"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!filters.category.value"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.auditLogs.event"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "event"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => handleFilterChange(e)"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Event"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "filters.event.value"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!filters.category.value ? en.auditLogs.selectCategory : \"\""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventFilter"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/MoveDatacenterEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "environments.moveDialogLabels.destinationEnvironment"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!_.isEmpty(error)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!_.isEmpty(error)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!_.isEmpty(error)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? name"
+      },
+      {
+        "name": "getOptionDisplayValue",
+        "type": "function",
+        "value": "(connectionType) => getOptionDisplayValue(connectionType as TlsConnectionType)"
+      }
+    ]
+  }
+]

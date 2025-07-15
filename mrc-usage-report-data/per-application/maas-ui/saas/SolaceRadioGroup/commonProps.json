@@ -1,0 +1,26 @@
+[
+  {
+    "name": "id",
+    "count": 1
+  },
+  {
+    "name": "name",
+    "count": 1
+  },
+  {
+    "name": "required",
+    "count": 1
+  },
+  {
+    "name": "bold",
+    "count": 1
+  },
+  {
+    "name": "value",
+    "count": 1
+  },
+  {
+    "name": "onChange",
+    "count": 1
+  }
+]

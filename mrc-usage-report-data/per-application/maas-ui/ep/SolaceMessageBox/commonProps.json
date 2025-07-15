@@ -1,0 +1,38 @@
+[
+  {
+    "name": "variant",
+    "count": 146
+  },
+  {
+    "name": "message",
+    "count": 146
+  },
+  {
+    "name": "showCloseButton",
+    "count": 57
+  },
+  {
+    "name": "onClose",
+    "count": 50
+  },
+  {
+    "name": "dataQa",
+    "count": 35
+  },
+  {
+    "name": "showIcon",
+    "count": 25
+  },
+  {
+    "name": "details",
+    "count": 5
+  },
+  {
+    "name": "dense",
+    "count": 5
+  },
+  {
+    "name": "color",
+    "count": 1
+  }
+]

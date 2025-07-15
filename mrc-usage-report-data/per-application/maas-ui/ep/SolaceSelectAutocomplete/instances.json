@@ -1,0 +1,2382 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/MessagingServiceAssociationForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "modeledEventMesh[select]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "modeledEventMesh[select]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "modeledEventMesh[select]"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Modeled Event Mesh"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!selectedEnvironmentId"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.eventMeshError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.eventMeshError"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedEventMeshes[0]"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingEventMeshes"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEventMeshSelectChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchEventMeshOptionsCallback"
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "variable",
+        "value": "handleOptionDisabled"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/MessagingServiceAssociationForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "messagingService[select]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "messagingService[select]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "messagingService[select]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Event Broker\""
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "selectedEventMeshes.length === 0"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!selectQueryError.messagingServiceError || !!validationError.messagingServiceError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "selectQueryError.messagingServiceError ?? validationError.messagingServiceError"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedMessagingServices[0]"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingMessagingServices"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleMessagingServiceSelectChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchMessagingServiceOptionsCallback"
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "variable",
+        "value": "handleOptionDisabled"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeployToEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "memAssociation[protocols]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "memAssociation[protocols]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "memAssociation[protocols]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.supportedProtocols"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.protocolsError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.protocolsError"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!selectedMessagingServiceId"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedProtocols"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingProtocols"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleProtocolSelectChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchProtocolOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eapAssociation[protocols]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eapAssociation[protocols]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eapAssociation[protocols]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.supportedProtocols"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationError.protocolsError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationError.protocolsError"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!selectedEventApiProductVersionId"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedProtocols"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingProtocols"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleProtocolSelectChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchProtocolOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "messagingService"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "messagingServiceAutocomplete"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "messagingService"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Event Broker Context (optional)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "selectQueryError.messagingServiceError ?? validationError.messagingServiceError"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!selectQueryError.messagingServiceError || !!validationError.messagingServiceError"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedMessagingService"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingMessagingServices"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleMessagingServiceSelectChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchMessagingServiceOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "variable",
+        "value": "handleOptionDisabled"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessSelectAutocomplete.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userAccessSelect-search"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`userAccessSelect-${resourceAssignment.userId}`"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "function",
+        "value": "(option, value) => option?.value === value?.value"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option ?? { name: \"\", value: \"\" }"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "function",
+        "value": "(searchTerm) => setSearchTerm(searchTerm)"
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "function",
+        "value": "(option) => !!emptyOptionMapByValue[option?.value as keyof typeof emptyOptionMapByValue]"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "userOptions"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedOption"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleOnChange"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!resourceAssignment.error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "resourceAssignment.error"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeMultiValueEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "values"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingValues"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "variable",
+        "value": "handleOptionDisabledCallback"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "debouncedFetchOptionsCallback"
+      },
+      {
+        "name": "shouldClearSearchOnSelectCallback",
+        "type": "variable",
+        "value": "shouldClearSearchOnSelectCallback"
+      },
+      {
+        "name": "maxHeight",
+        "type": "string",
+        "value": "400px"
+      },
+      {
+        "name": "validateInputCallback",
+        "type": "variable",
+        "value": "validateInputValue"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "helperText"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "dataQa"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "enumeration"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "enumerationName"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Enumeration"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "searchLocalEnums"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingEnumOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEnumChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEnumOption"
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "expression",
+        "value": "sharedSearchCriteria ? handleOptionDisabled : undefined"
+      },
+      {
+        "name": "groupByCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteGroupBy"
+      },
+      {
+        "name": "showGroupDivider",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "sharedSearchCriteria ? \"You can associate only shared enumerations with shared events.\" : null"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "65%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useApplicationDomainSelect.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "applicationDomainSelect-search"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "title ? title : \"Application Domain\""
+      },
+      {
+        "name": "inlineLabel",
+        "type": "variable",
+        "value": "inlineLabel"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleApplicationDomainChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedApplicationDomain"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingApplicationDomains"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchApplicationDomainOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "getShowOptionDividerCallback",
+        "type": "variable",
+        "value": "getShowSolaceSelectAutocompleteOptionDivider"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!readOnly"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!selectQueryError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "showHelperText"
+      },
+      {
+        "name": "maxHeight",
+        "type": "string",
+        "value": "370px"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "applicationDomainSelect"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useApplicationVersionSelect.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "applicationVersionSelect-search"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "title ?? \"Application Version\""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleApplicationVersionChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedApplicationVersions"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "applicationVersionOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "getApplicationVersionSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() =>\n\t\t\t\tselectedApplicationVersions?.[0] && (\n\t\t\t\t\t<span style={{ maxWidth: \"calc(100% - 46px)\" }}>{getApplicationVersionSelectAutocompleteItem(selectedApplicationVersions[0])}</span>\n\t\t\t\t)"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchApplicationVersionOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isApplicationVersionSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "getShowOptionDividerCallback",
+        "type": "variable",
+        "value": "getShowSolaceSelectAutocompleteOptionDivider"
+      },
+      {
+        "name": "groupByCallback",
+        "type": "expression",
+        "value": "applicationVersionOptions.some((option) => option.categoryHeading) ? getSolaceSelectAutocompleteGroupBy : undefined"
+      },
+      {
+        "name": "showGroupDivider",
+        "type": "expression",
+        "value": "applicationVersionOptions.some((option) => option.divider) ? true : false"
+      },
+      {
+        "name": "disableCloseOnSelect",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!selectQueryError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "selectQueryError || helperText || \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "applicationVersionSelect"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/AdditionalFilterMultiSelect.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel[filterType]"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "selectedItemValues?.length ? \"\" : \"No Filters\""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedItemValues"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() => (\n\t\t\t\t\t\t<>\n\t\t\t\t\t\t\t{debouncedSelectedItemValues && debouncedSelectedItemValues.length > 0 && (\n\t\t\t\t\t\t\t\t<SolaceSelectAutocompleteResponsiveTags\n\t\t\t\t\t\t\t\t\tcontainerWidth={containerWidth}\n\t\t\t\t\t\t\t\t\ttags={selectedTags}\n\t\t\t\t\t\t\t\t\t// The \"190\" includes 40 for input area to type search criteria, 70 for \"+ N Filters\", and arrow and clear button.\n\t\t\t\t\t\t\t\t\t// If tagMaxWidth too big, the calculation will make no tags displayed, so make sure the value is not too big.\n\t\t\t\t\t\t\t\t\ttagMaxWidth={containerWidth ? `${containerWidth - 190}px` : null}\n\t\t\t\t\t\t\t\t\toverflowIndicatorLabel={\"Filters\"}\n\t\t\t\t\t\t\t\t\toverflowIndicatorLabelSingular={\"Filter\"}\n\t\t\t\t\t\t\t\t\tonDelete={handleDeleteTag}\n\t\t\t\t\t\t\t\t\tdataQa={`${filterType}Select-tags`}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</>\n\t\t\t\t\t)"
+      },
+      {
+        "name": "openOnFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inputRef",
+        "type": "function",
+        "value": "(input) => {\n\t\t\t\t\t\tfilterInputRefs.current[filterType] = input;\n\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/EventMeshFilter.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${FilterType.eventMesh}Select`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${FilterType.eventMesh}Select`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${FilterType.eventMesh}Select`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel.eventMesh"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "selectedEventMeshes?.length ? \"\" : \"No Filters\""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventMeshes"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingEventMeshes"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "getEventMeshSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getEventMeshSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChangeEventMeshes"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchEventMeshOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isEventMeshSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() => (\n\t\t\t\t\t<>\n\t\t\t\t\t\t{debouncedSelectedEventMeshes && debouncedSelectedEventMeshes.length > 0 && (\n\t\t\t\t\t\t\t<SolaceSelectAutocompleteResponsiveTags\n\t\t\t\t\t\t\t\tcontainerWidth={containerWidth}\n\t\t\t\t\t\t\t\ttags={selectedTags}\n\t\t\t\t\t\t\t\t// The \"180\" includes 40 for input area to type search criteria, 70 for \"+ N Filters\", and arrow and clear button.\n\t\t\t\t\t\t\t\t// If tagMaxWidth too big, the calculation will make no tags displayed, so make sure the value is not too big.\n\t\t\t\t\t\t\t\ttagMaxWidth={containerWidth ? `${containerWidth - 180}px` : null}\n\t\t\t\t\t\t\t\toverflowIndicatorLabel={\"Filters\"}\n\t\t\t\t\t\t\t\toverflowIndicatorLabelSingular={\"Filter\"}\n\t\t\t\t\t\t\t\tonDelete={handleDeleteTag}\n\t\t\t\t\t\t\t\tdataQa={`${FilterType.eventMesh}Select-tags`}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</>\n\t\t\t\t)"
+      },
+      {
+        "name": "openOnFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inputRef",
+        "type": "function",
+        "value": "(input) => {\n\t\t\t\t\tfilterInputRef.current = input;\n\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/CustomAttributeFilter.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${customAttributeFilterType}Select`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${customAttributeFilterType}Select`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${customAttributeFilterType}Select`"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<CustomAttributeFilterLabel customAttributeName={customAttributeName} />"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "selectedOptions.length > 0 ? \"\" : \"No Filters\""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedOptions"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "CustomAttributeValueAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getCustomAttributeValueOptionLabel"
+      },
+      {
+        "name": "getShowOptionDividerCallback",
+        "type": "variable",
+        "value": "getShowCustomAttributeValueOptionDivider"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChangeCustomAttributeValues"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchCustomAttributeValueOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isCustomAttributeValueOptionEqual"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() =>\n\t\t\t\t\t\tdebouncedSelectedOptions &&\n\t\t\t\t\t\tdebouncedSelectedOptions.length > 0 && (\n\t\t\t\t\t\t\t<SolaceSelectAutocompleteResponsiveTags\n\t\t\t\t\t\t\t\tcontainerWidth={containerWidth}\n\t\t\t\t\t\t\t\ttags={selectedTags}\n\t\t\t\t\t\t\t\t// The \"190\" includes 40 for input area to type search criteria, 70 for \"+ N Filters\", and arrow and clear button.\n\t\t\t\t\t\t\t\t// If tagMaxWidth too big, the calculation will make no tags displayed, so make sure the value is not too big.\n\t\t\t\t\t\t\t\ttagMaxWidth={containerWidth ? `${containerWidth - 190}px` : null}\n\t\t\t\t\t\t\t\toverflowIndicatorLabel={\"Filters\"}\n\t\t\t\t\t\t\t\toverflowIndicatorLabelSingular={\"Filter\"}\n\t\t\t\t\t\t\t\tonDelete={handleDeleteTag}\n\t\t\t\t\t\t\t\tdataQa={`${customAttributeFilterType}Select-tags`}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t)"
+      },
+      {
+        "name": "openOnFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inputRef",
+        "type": "function",
+        "value": "(input) => {\n\t\t\t\t\t\tfilterInputRefs.current[customAttributeFilterType] = input;\n\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/DefaultFilterMultiSelect.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "FilterTypeLabel[filterType]"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "selectedItemValues?.length ? \"\" : \"No Filters\""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedItemValues"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() => (\n\t\t\t\t\t<>\n\t\t\t\t\t\t{debouncedSelectedItemValues && debouncedSelectedItemValues.length > 0 && (\n\t\t\t\t\t\t\t<SolaceSelectAutocompleteResponsiveTags\n\t\t\t\t\t\t\t\tcontainerWidth={containerWidth}\n\t\t\t\t\t\t\t\ttags={selectedTags}\n\t\t\t\t\t\t\t\t// The \"180\" includes 40 for input area to type search criteria, 70 for \"+ N Filters\", and arrow and clear button.\n\t\t\t\t\t\t\t\t// If tagMaxWidth too big, the calculation will make no tags displayed, so make sure the value is not too big.\n\t\t\t\t\t\t\t\ttagMaxWidth={containerWidth ? `${containerWidth - 180}px` : null}\n\t\t\t\t\t\t\t\toverflowIndicatorLabel={\"Filters\"}\n\t\t\t\t\t\t\t\toverflowIndicatorLabelSingular={\"Filter\"}\n\t\t\t\t\t\t\t\tonDelete={handleDeleteTag}\n\t\t\t\t\t\t\t\tdataQa={`${filterType}Select-tags`}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</>\n\t\t\t\t)"
+      },
+      {
+        "name": "openOnFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inputRef",
+        "type": "function",
+        "value": "(input) => {\n\t\t\t\t\tfilterInputRef.current = input;\n\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/filters/DefaultFilterMultiSelect.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${filterType}Select`"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "filterLabel"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "selectedItemValues?.length ? \"\" : \"No Filters\""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedItemValues"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() => (\n\t\t\t\t\t<>\n\t\t\t\t\t\t{debouncedSelectedItemValues && debouncedSelectedItemValues.length > 0 && (\n\t\t\t\t\t\t\t<SolaceSelectAutocompleteResponsiveTags\n\t\t\t\t\t\t\t\tcontainerWidth={containerWidth}\n\t\t\t\t\t\t\t\ttags={selectedTags}\n\t\t\t\t\t\t\t\t// The \"180\" includes 40 for input area to type search criteria, 70 for \"+ N Filters\", and arrow and clear button.\n\t\t\t\t\t\t\t\t// If tagMaxWidth too big, the calculation will make no tags displayed, so make sure the value is not too big.\n\t\t\t\t\t\t\t\ttagMaxWidth={containerWidth ? `${containerWidth - 180}px` : null}\n\t\t\t\t\t\t\t\toverflowIndicatorLabel={\"Filters\"}\n\t\t\t\t\t\t\t\toverflowIndicatorLabelSingular={\"Filter\"}\n\t\t\t\t\t\t\t\tonDelete={handleDeleteTag}\n\t\t\t\t\t\t\t\tdataQa={`${filterType}Select-tags`}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</>\n\t\t\t\t)"
+      },
+      {
+        "name": "openOnFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inputRef",
+        "type": "function",
+        "value": "(input) => {\n\t\t\t\t\tfilterInputRef.current = input;\n\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/AssociateEnvironment.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "templateEnvironmentAssociation"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "templateEnvironmentAssociation"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "templateEnvironmentAssociation"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "displayedEnvironments?.length ? \"\" : \"Select environments\""
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!!isRequired"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!!isReadOnly"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "displayedEnvironments"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingEnvironments"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChangeEnvironments"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "EnvironmentMultiSelectOption"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => {\n\t\t\t\t\treturn {\n\t\t\t\t\t\t...option,\n\t\t\t\t\t\tenvironmentOption: getEnvironmentChipObject(environmentOptions, option.id)\n\t\t\t\t\t};\n\t\t\t\t}"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchEnvironmentsOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isEnvironmentSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "helperText"
+      },
+      {
+        "name": "inputRef",
+        "type": "function",
+        "value": "(input) => {\n\t\t\t\t\tautocompleteRef.current = input;\n\t\t\t\t}"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() =>\n\t\t\t\t\tdisplayedEnvironments?.length > 0 && (\n\t\t\t\t\t\t<SolaceResponsiveItemList\n\t\t\t\t\t\t\titems={displayedEnvironments.map((env) => {\n\t\t\t\t\t\t\t\treturn {\n\t\t\t\t\t\t\t\t\tid: env.id,\n\t\t\t\t\t\t\t\t\tcontent: (\n\t\t\t\t\t\t\t\t\t\t<EnvironmentChip\n\t\t\t\t\t\t\t\t\t\t\tkey={env.id}\n\t\t\t\t\t\t\t\t\t\t\tenvironmentOption={getEnvironmentChipObject(environmentOptions, env.id)}\n\t\t\t\t\t\t\t\t\t\t\thasTooltip={true}\n\t\t\t\t\t\t\t\t\t\t\tdataQa={env.id}\n\t\t\t\t\t\t\t\t\t\t\tonDelete={() => handleDeleteTag(env.id)}\n\t\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t};\n\t\t\t\t\t\t\t})}\n\t\t\t\t\t\t\tcolumnGap={8}\n\t\t\t\t\t\t\tshowAll={false}\n\t\t\t\t\t\t\tcontainerWidth={containerWidth ?? getContainerWidth(autocompleteRef.current?.offsetWidth)}\n\t\t\t\t\t\t/>\n\t\t\t\t\t)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "shareFilterSelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "shareFilterSelect"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "shareFilterSelect"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.kpiMetricsDashboard.sharedFilter"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedSharedType"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "filteredSharedTypeOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleShareFilterChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "filterSharedTypeOptions"
+      },
+      {
+        "name": "openOnFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "minWidth",
+        "type": "string",
+        "value": "175px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "brokerFilterSelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "brokerFilterSelect"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "brokerFilterSelect"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.kpiMetricsDashboard.brokerTypeFilter"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedBrokerType"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "filteredBrokerTypeOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleBrokerTypeFilterChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "filterBrokerTypeOptions"
+      },
+      {
+        "name": "openOnFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "minWidth",
+        "type": "string",
+        "value": "175px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageSolaceQueueConfiguration.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "FormNameTemplate"
+      },
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "templateOptionSelected"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "updateTemplateOptions"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "templateOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\n\t\t\t\t\t\t\t\t\t\t\tif (e.value?.value) {\n\t\t\t\t\t\t\t\t\t\t\t\tselectTemplate(templates.find((template) => template.id === e.value.value));\n\t\t\t\t\t\t\t\t\t\t\t\t// template changed - keep queue name, clear other properties\n\t\t\t\t\t\t\t\t\t\t\t\tupdateUserConfigValues({ queueName: queueName }, true);\n\t\t\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\t\t\tresetTemplate();\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "isTemplateSelectionDisabled(templates, templateOutOfSync)"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageClientProfileName.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "FormNameClientProfileName"
+      },
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "templateOptionSelected"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "updateTemplateOptions"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "templateOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\n\t\t\t\t\t\t\t\t\t\t\tif (e.value?.value) {\n\t\t\t\t\t\t\t\t\t\t\t\t// template selected\n\t\t\t\t\t\t\t\t\t\t\t\tconst template = templates.find((template) => template.id === e.value?.value);\n\t\t\t\t\t\t\t\t\t\t\t\tconst clientProfileName = getClientProfileNameStringFromTemplateValue(template.value);\n\n\t\t\t\t\t\t\t\t\t\t\t\tsetTemplateOptionSelected({\n\t\t\t\t\t\t\t\t\t\t\t\t\tname: template.name,\n\t\t\t\t\t\t\t\t\t\t\t\t\tvalue: template.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\tdescription: template.description,\n\t\t\t\t\t\t\t\t\t\t\t\t\tclientProfileName: clientProfileName\n\t\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t\t\tsetObservedConfiguration(clientProfileName);\n\t\t\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\t\t\t// template cleared\n\t\t\t\t\t\t\t\t\t\t\t\treset(true);\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "templates.length === 0"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "All Domains"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "fetchDomains"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingDomainOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onDomainSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedDomain"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/SearchEventAPIs.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "fetchDomains"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingDomainOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onDomainSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedDomain"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/TopicFilterForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "options",
+        "type": "expression",
+        "value": "getAutoCompleteOptions(level)"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "filterValues"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getAutoCompleteValue(value, level, name)"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "minWidth",
+        "type": "string",
+        "value": "622px"
+      },
+      {
+        "name": "limitTags",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/EventApiProductDownloadDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApiProduct.labels.messagingService"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "fetchMems"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? en.eventApi.error.requiredGatewayMessagingService : null"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "621px"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSearchAndFilter.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "requestorSelect"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "requestorSelect"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "requestorSelect"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Requestor"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "selectedRequestors?.length ? \"\" : \"No Filters\""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedRequestors"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "function",
+        "value": "(option) => option.name"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleRequestorChange"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "function",
+        "value": "(option, value) => option.value === value.value"
+      },
+      {
+        "name": "openOnFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inputRef",
+        "type": "function",
+        "value": "(input) => {\n\t\t\t\t\t\t\t\t\t\t\t\trequestorInputRef.current = input;\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() => (\n\t\t\t\t\t\t\t\t\t\t\t\t<>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{debouncedSelectedRequestors && debouncedSelectedRequestors.length > 0 && (\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceSelectAutocompleteResponsiveTags\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tcontainerWidth={filtersWidth[FilterType.requestor] ?? requestorFilterRef?.current?.offsetWidth}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttags={selectedTags}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// The \"180\" includes 40 for input area to type search criteria, 70 for \"+ N Filters\", and arrow and clear button.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// If tagMaxWidth too big, the calculation will make no tags displayed, so make sure the value is not too big.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttagMaxWidth={filtersWidth[FilterType.requestor] ? `${filtersWidth[FilterType.requestor] - 180}px` : null}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\toverflowIndicatorLabel={\"Filters\"}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\toverflowIndicatorLabelSingular={\"Filter\"}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tonDelete={handleDeleteTag}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdataQa={`${FilterType.requestor}-tags`}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t\t\t\t</>\n\t\t\t\t\t\t\t\t\t\t\t)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemas.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "All Domains"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "searchLocalDomains"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingDomainOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onDomainSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedDomain"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "domainsSearch"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "All Domains"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "fetchDomains"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingDomainOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onDomainSelectChange"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedDomain"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventMeshSearch"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventMeshSearch"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventMeshSearch"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "selectedEventMeshes?.length ? \"\" : \"No Filters\""
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedEventMeshes"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingEventMeshes"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "getEventMeshSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getEventMeshSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChangeEventMeshes"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFetchEventMeshOptionsCallback"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isEventMeshSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "renderTags",
+        "type": "function",
+        "value": "() => (\n\t\t\t\t\t\t\t\t<>\n\t\t\t\t\t\t\t\t\t{selectedEventMeshes?.length > 0 && (\n\t\t\t\t\t\t\t\t\t\t<SolaceSelectAutocompleteResponsiveTags\n\t\t\t\t\t\t\t\t\t\t\tcontainerWidth={filtersWidth[FilterType.eventMesh]}\n\t\t\t\t\t\t\t\t\t\t\ttags={selectedTags}\n\t\t\t\t\t\t\t\t\t\t\tnumOfRowsToShow={1}\n\t\t\t\t\t\t\t\t\t\t\ttagMaxWidth={filtersWidth[FilterType.eventMesh] ? `${filtersWidth[FilterType.eventMesh] - 100}px` : null}\n\t\t\t\t\t\t\t\t\t\t\tonDelete={handleDeleteTag}\n\t\t\t\t\t\t\t\t\t\t\toverflowIndicatorLabel={\"Filters\"}\n\t\t\t\t\t\t\t\t\t\t\toverflowIndicatorLabelSingular={\"Filter\"}\n\t\t\t\t\t\t\t\t\t\t\tdataQa={\"eventMeshSearchSelect-tags\"}\n\t\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t</>\n\t\t\t\t\t\t\t)"
+      }
+    ]
+  }
+]

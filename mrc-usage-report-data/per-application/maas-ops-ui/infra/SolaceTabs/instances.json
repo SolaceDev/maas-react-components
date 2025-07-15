@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx",
+    "props": [
+      {
+        "name": "activeTabValue",
+        "type": "variable",
+        "value": "tab"
+      },
+      {
+        "name": "tabs",
+        "type": "array",
+        "value": "[\n                            { label: \"Datacenters\", value: \"datacenters\" },\n                            { label: \"Preupgrade Validation\", value: \"preupgrade-validation\" },\n                            { label: \"System Components\", value: \"system-components\" },\n                            { label: \"Network\", value: \"network\" },\n                            { label: \"Services\", value: \"services\" },\n                        ]"
+      },
+      {
+        "name": "onTabClick",
+        "type": "function",
+        "value": "(tab) => history.push(`/clusters/${clusterId}/${tab}`)"
+      }
+    ]
+  }
+]

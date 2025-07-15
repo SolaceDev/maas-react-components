@@ -1,0 +1,357 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Existing Application\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "existingApplication"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"false\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "existingApplication"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"New Application\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "newApplication"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"true\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "newApplication"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useRadioGroup.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "option.value"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "option.value"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "option.value"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "option.label"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/InitiateDataCollectionDialog.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`messagingService-${item.id}`"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<SolaceAccordion\n\t\t\t\t\t\t\t\tdataQa=\"demoAccordionList\"\n\t\t\t\t\t\t\t\texpanded={serviceAccordionControl[item.id]}\n\t\t\t\t\t\t\t\tonChange={() => handleServiceAccordionControl(item.id)}\n\t\t\t\t\t\t\t\tdetails={renderAccordionDetail(item)}\n\t\t\t\t\t\t\t\tsummary={\n\t\t\t\t\t\t\t\t\t<SummaryContainer className={disabled ? \"text-disabled\" : \"\"}>\n\t\t\t\t\t\t\t\t\t\t<BoldText>{item.name}</BoldText>\n\t\t\t\t\t\t\t\t\t\t{item?.solaceCloudMessagingServiceId && <SolaceCloudIcon />}\n\t\t\t\t\t\t\t\t\t\t{isScanInProgress && <span>Discovery Scan in progress</span>}\n\t\t\t\t\t\t\t\t\t</SummaryContainer>\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t/>"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "item.id"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "item.id"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/MultiSelectImportActionPanel.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`selectResultTypeOption_${resultType}`"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<SelectionInfo key={`selectionInfo_${resultType}`} data-qa={`selectionInfo_${resultType}`}>\n\t\t\t\t\t\t\t\t\t<SelectionValue>{auditResultTypeCount}</SelectionValue>\n\t\t\t\t\t\t\t\t\t{AUDIT_RESULT_CHIPS[resultType]}\n\t\t\t\t\t\t\t\t\t{!!showExceedsLimitError[resultType] && renderExceedsLimitError(resultType)}\n\t\t\t\t\t\t\t\t</SelectionInfo>"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "resultType"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "resultType"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "auditResultTypeCount === 0 || isLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultList.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "resultPerPage === pageSize"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleResultsPerPageChange(resultPerPage)"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`resultsPerPage_${resultPerPage}`"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "resultsPerPage"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "`${resultPerPage}`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`${resultPerPage}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "key"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "brokerTypeLabel[key]"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!allowChangeBrokerType"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`brokerType[${key}]`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApi.labels.json"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "value": "json"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventApi.labels.yaml"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "yaml"
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "value": "yaml"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "option.value"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "option.value"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "option.value"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "option.label"
+      },
+      {
+        "name": "subText",
+        "type": "expression",
+        "value": "option.subText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/ManageEventSchemas.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`schemaType[${value}]`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Add to Existing Consumer\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "existingConsumer"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"existingConsumer\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "existingConsumer"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Create New Consumer\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "newConsumer"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"newConsumer\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "newConsumer"
+      }
+    ]
+  }
+]

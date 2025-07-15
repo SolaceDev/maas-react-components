@@ -1,0 +1,22 @@
+[
+  {
+    "name": "label",
+    "count": 6
+  },
+  {
+    "name": "bgColor",
+    "count": 6
+  },
+  {
+    "name": "fgColor",
+    "count": 6
+  },
+  {
+    "name": "icon",
+    "count": 6
+  },
+  {
+    "name": "variant",
+    "count": 1
+  }
+]

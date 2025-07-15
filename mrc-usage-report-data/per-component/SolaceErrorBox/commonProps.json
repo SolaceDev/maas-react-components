@@ -1,0 +1,26 @@
+[
+  {
+    "name": "message",
+    "count": 13
+  },
+  {
+    "name": "showCloseButton",
+    "count": 2
+  },
+  {
+    "name": "onClose",
+    "count": 2
+  },
+  {
+    "name": "showErrorIcon",
+    "count": 1
+  },
+  {
+    "name": "data-qa",
+    "count": 1
+  },
+  {
+    "name": "dataQa",
+    "count": 1
+  }
+]

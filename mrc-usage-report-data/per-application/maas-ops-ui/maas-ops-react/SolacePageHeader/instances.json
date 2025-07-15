@@ -1,0 +1,82 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/PlansHeader.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Manage Upgrade Plans"
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "variable",
+        "value": "breadcrumbs"
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[\n\t\t\t\t<SolaceButton key=\"create-plan\" variant=\"text\" onClick={() => handleModal()}>\n\t\t\t\t\tCreate Plan\n\t\t\t\t</SolaceButton>\n\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/components/RunHeader.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "`Upgrade Run${runId ? `: ${runId}` : \"\"}`"
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "variable",
+        "value": "breadcrumbs"
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t<div key=\"run-controls\" style={{ display: \"flex\", gap: \"10px\" }}>\n\t\t\t\t\t\t{renderButton(\"Resume\", () => handleAction(resumeUpgradeRun), \"text\", status === \"PAUSED\")}\n\t\t\t\t\t\t{renderButton(\"Pause\", () => openModal(\"pause\"), \"text\", status !== \"PAUSED\")}\n\t\t\t\t\t\t{renderButton(\"Cancel\", () => openModal(\"cancel\"), \"outline\", true)}\n\t\t\t\t\t</div>\n\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/RunsHeader.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Upgrades"
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "variable",
+        "value": "breadcrumbs"
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[\n\t\t\t\t<SolaceButton key=\"manage-upgrade-button\" onClick={() => handlePlanRoute()} variant=\"text\" dataQa=\"create\">\n\t\t\t\t\tManage Upgrade Plans\n\t\t\t\t</SolaceButton>,\n\t\t\t\t<SystemControls key=\"system-controls\" />\n\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationDashboard.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "integrationStrings.mainPage.pageTitle"
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "jsx",
+        "value": "<SolaceBreadcrumb paths={breadcrumbs} />"
+      },
+      {
+        "name": "tabs",
+        "type": "jsx",
+        "value": "<SolaceTabs tabs={tabs} activeTabValue={activeTab} onTabClick={handleTabChange} />"
+      }
+    ]
+  }
+]

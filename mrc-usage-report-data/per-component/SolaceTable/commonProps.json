@@ -1,0 +1,42 @@
+[
+  {
+    "name": "rows",
+    "count": 67
+  },
+  {
+    "name": "columns",
+    "count": 67
+  },
+  {
+    "name": "selectionType",
+    "count": 67
+  },
+  {
+    "name": "sortCallback",
+    "count": 67
+  },
+  {
+    "name": "renderCustomRowCells",
+    "count": 38
+  },
+  {
+    "name": "selectionChangedCallback",
+    "count": 35
+  },
+  {
+    "name": "loading",
+    "count": 24
+  },
+  {
+    "name": "hasColumnHiding",
+    "count": 23
+  },
+  {
+    "name": "showEmptyState",
+    "count": 20
+  },
+  {
+    "name": "renderCustomRowActionItem",
+    "count": 19
+  }
+]

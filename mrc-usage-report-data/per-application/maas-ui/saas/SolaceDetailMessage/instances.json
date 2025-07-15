@@ -1,0 +1,71 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageTable.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage.noDrawdownUsageSub"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<NoDrawdownUsageSVG />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage.noDrawdownUsage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/NoDrawdownUsage/NoDrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Box sx={{ display: \"flex\", justifyContent: \"center\" }}>\n\t\t\t\t\t\t<Box sx={{ textAlign: \"center\", width: \"70%\" }}>\n\t\t\t\t\t\t\t<SolaceTypography mb={2}>{drawdownUsage.noDrawdownUsage.subTitle}</SolaceTypography>\n\t\t\t\t\t\t\t<SolaceTypography>{drawdownUsage.noDrawdownUsage.message}</SolaceTypography>\n\t\t\t\t\t\t</Box>\n\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<NoDrawdownUsageSVG />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage.title"
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t{\n\t\t\t\t\t\tchildren: drawdownUsage.noDrawdownUsage.contactUs,\n\t\t\t\t\t\tid: \"contactUs-btn\",\n\t\t\t\t\t\tonClick: () => toggleContactUsModalOpenState(),\n\t\t\t\t\t\tvariant: \"call-to-action\"\n\t\t\t\t\t}\n\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Box maxWidth={400}>\n\t\t\t\t\t\t\t<SolaceTypography variant=\"h3\" fontWeight={400} textAlign={\"center\"}>\n\t\t\t\t\t\t\t\t<SolaceTypography>{supportPage.freeTrialDescription}</SolaceTypography>\n\t\t\t\t\t\t\t\t<SolaceTypography mt={2}>\n\t\t\t\t\t\t\t\t\t{supportPage.freeTrialDescriptionExt}\n\t\t\t\t\t\t\t\t\t<HelpOutlineIcon\n\t\t\t\t\t\t\t\t\t\tcolor=\"primary\"\n\t\t\t\t\t\t\t\t\t\tfontSize=\"medium\"\n\t\t\t\t\t\t\t\t\t\tsx={{ ml: 0.5, mr: 0.5, display: \"inline-block\", verticalAlign: \"bottom\", \":hover\": \"false\" }}\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t{supportPage.freeTrialDescriptionExt2}\n\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<LearnAndHelpSupport />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "supportPage.freeTrialTitle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": []
+  }
+]

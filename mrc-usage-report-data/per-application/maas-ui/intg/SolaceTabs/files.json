@@ -1,0 +1,6 @@
+[
+  "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorSummary.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+  "../../../maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx"
+]

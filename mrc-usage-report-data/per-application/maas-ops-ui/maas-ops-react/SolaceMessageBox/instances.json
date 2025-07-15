@@ -1,0 +1,952 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${dataQa}Success`"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "success"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "successMessage || \"Success\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+    "props": [
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${dataQa}Error`"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<div style={{ alignItems: \"center\", display: \"flex\", flexGrow: 1, justifyContent: \"space-between\" }}>\n\t\t\t\t\t\t\t\t{errorMessage || \"Validation failed. Please try again.\"}\n\t\t\t\t\t\t\t\t<div style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t\t<SolaceButton dataQa=\"moreDetailsErrorButton\" variant=\"text\" onClick={() => handleDetails(errorKey)}>\n\t\t\t\t\t\t\t\t\t\tMore Details\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "value": "Note: It can take several minutes for resources to be deployed to Datadog. Please wait before validating."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/AgentStatusDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${service.name}_agentStatusWarning`"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "`${warnings}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/AgentStatusDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${service.name}_agentStatusError`"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "`${errors.filter(e => e && String(e).trim() !== '')}.`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringConfigurations.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "warnUpdateServicesPagination"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "`This section updates services shown in current page ${currentPage}. To apply monitoring configurations to all services, make sure you run Update Services on all service pages.`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringConfigurations.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "value": "Note: solace-datadog-agent version cannot be overridden for k8s services"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t<b>Note:</b> If this step fails because rbac is not enabled, please contact Datadog Support to enable\n\t\t\t\t\t\t\t\trbac for Datadog Sub-Org.\n\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t\t<b>Note:</b> You may need to switch to the customer Sub-Org.\n\t\t\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t\t<b>Note: </b>It might take up to a minute for the log to be visible in Datadog.\n\t\t\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<b>Note:</b> Don’t enable PE profile for Insights onboarding. For RMMS consider\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tnotifying to their handle.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t\t<b>Note:</b> It can take several minutes for resources to be deployed to Datadog. Please wait before\n\t\t\t\t\t\t\t\t\t\tvalidating.\n\t\t\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t\t<b>Note: </b>Insights policy should not be enabled for RMMS accounts.\n\t\t\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/checks/PostUpgradeCheck.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t\t{hasFailures && \"Post-upgrade validations have failed. \"}\n\t\t\t\t\t\t\t\t\t\t{!lastValidation &&\n\t\t\t\t\t\t\t\t\t\t\t\"Unhandled server exception, missing attributes: contact the development team for review.\"}\n\t\t\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/checks/PreUpgradeCheck.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t\t{hasFailures && \"Pre-upgrade validations have failed. \"}\n\t\t\t\t\t\t\t\t\t\t{missingAttributes &&\n\t\t\t\t\t\t\t\t\t\t\t\"Unhandled server exception, missing attributes: contact the development team for review.\"}\n\t\t\t\t\t\t\t\t\t</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/Run.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "value": "Upgrade has been paused. Verify upgrade status before proceeding. In progress operations will complete."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/Run.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "value": "Upgrade has been cancelled. In progress operations will complete."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/Runs.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "!autoUpgrades && !customerUpgrades\n\t\t\t\t\t\t\t\t\t? \"Automated and customer upgrades are disabled. No scheduled or immediate upgrades can take place.\"\n\t\t\t\t\t\t\t\t\t: !autoUpgrades\n\t\t\t\t\t\t\t\t\t? \"Automated upgrades are disabled. Customers can still trigger upgrades from the Console UI.\"\n\t\t\t\t\t\t\t\t\t: !customerUpgrades\n\t\t\t\t\t\t\t\t\t? \"Customer upgrades are disabled. Customers will not be able to trigger upgrades from the Console UI.\"\n\t\t\t\t\t\t\t\t\t: \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "ema.latestDeployment?.error?.message"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgentTable.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "errorMessage"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => setErrorMessage(\"\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/EditServicePackage.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "error"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "error"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/DeleteServicePackage.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorDialog"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "error ? error : IN_USE_MESSAGE"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "error"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ReleaseServicePackage.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "releaseNotesError"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "value": "Release Notes should be provided"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/CreateBizOrganization.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "createBizOrganization.messages.editDeleteMessage"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsErrorBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<div style={{ alignItems: \"center\", display: \"flex\", flexGrow: 1, justifyContent: \"space-between\" }}>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<span>{` ${createBizOrganization.orgDetails.errorFound}`} </span>\n\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\thref=\"https://sol-jira.atlassian.net/wiki/spaces/MPE/pages/3361506021/Runbook+for+New+Order+Fulfillment\"\n\t\t\t\t\t\t\t\t\tvariant=\"link\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t{createBizOrganization.orgDetails.purchaseOrderRunbook}\n\t\t\t\t\t\t\t\t</SolaceButton>{\" \"}\n\t\t\t\t\t\t\t\t<span>{createBizOrganization.orgDetails.contactPeTeam} </span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t{/* <div style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\">Contact PE</SolaceButton>\n\t\t\t\t\t\t\t</div> */}\n\t\t\t\t\t\t</div>"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorMsgBox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsErrorBanner.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "successMsgBox"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.organizationSaveSuccess"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "success"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSection.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<MessageBox>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<span>{createBizOrganization.messages.errorFound}</span>\n\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\thref={createBizOrganization.messages.runbookLink}\n\t\t\t\t\t\t\t\t\tvariant=\"link\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t<SolaceTypography variant=\"h3\" fontSize={\"14px\"}>\n\t\t\t\t\t\t\t\t\t\t{createBizOrganization.messages.purchaseOrder}\n\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t{createBizOrganization.messages.contactPeTeam}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\">{createBizOrganization.messages.contactPE}</SolaceButton>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</MessageBox>"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "color",
+        "type": "expression",
+        "value": "theme.palette.error.light"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSection.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<Box display={\"flex\"}>\n\t\t\t\t\t\t\t\t<SolaceTypography pr={0.5}>{createBizOrganization.products.products}</SolaceTypography>\n\t\t\t\t\t\t\t\t{createBizOrganization.messages.successMessage}\n\t\t\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "success"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "prodValidatedMessageQa"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/RequestSection.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "createBizOrganization.requests.successBannerMessage"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "success"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "createBizOrganization.messages.editDeleteMessage"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.orgIdWarning"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/AccountAdminsSection.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "createBizOrganization.accountAdmins.successBannerMessage"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "success"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "errorMessage"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "errorMessage"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "\"For the latest Connector Details, please click the Connector Deployment Info Refresh icon.\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`deleting-${request.deploymentId}`"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<div style={{ display: \"flex\" }}>\n\t\t\t\t\t\t\t\t\t<SpinnerIcon size={18} sx={{ marginRight: theme.spacing() }} />\n\t\t\t\t\t\t\t\t\t<SolaceTypography>\n\t\t\t\t\t\t\t\t\t\tDeleting the Connector with Deployment ID: {request.deploymentId} and Service ID:{\" \"}\n\t\t\t\t\t\t\t\t\t\t{request.serviceId}\n\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t</div>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`error-${request.deploymentId}`"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<div style={{ display: \"flex\", justifyContent: \"space-between\", alignItems: \"center\" }}>\n\t\t\t\t\t\t\t\t\t<SolaceTypography>\n\t\t\t\t\t\t\t\t\t\tFailed to delete the Connector with Deployment ID: {request.deploymentId} and Service ID:{\" \"}\n\t\t\t\t\t\t\t\t\t\t{request.serviceId}\n\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\t\tdense\n\t\t\t\t\t\t\t\t\t\tvariant=\"text\"\n\t\t\t\t\t\t\t\t\t\tdataQa={`details-${request.deploymentId}`}\n\t\t\t\t\t\t\t\t\t\tonClick={() => setErrorDetails(`${request.deploymentId}-disable`)}\n\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\tShow Details\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</div>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/PrivateRegions.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "deleteDialog.contentText"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorMsgBox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/PrivateRegions.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "`Note: This page consists of private regions specific to ${orgId} organization.`"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "note"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "cloneError"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "(error as Error)?.data?.message ?? `Failed to clone ${datacenterId} from ${selectedDatacenterId}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "sameDCError"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "\"Unable to clone a datacenter from itself\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t<Typography>{modifyError.message}</Typography>\n\t\t\t\t\t\t\t\t{modifyError.id && <Typography variant=\"caption\">{\"Error ID: \" + modifyError.id}</Typography>}\n\t\t\t\t\t\t\t</>"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorModifyingProfile"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/AddCompatibilityDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t<Typography>{modifyError.message}</Typography>\n\t\t\t\t\t\t\t\t\t{modifyError.id && <Typography variant=\"caption\">{\"Error ID: \" + modifyError.id}</Typography>}\n\t\t\t\t\t\t\t\t</>"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorModifyingProfile"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/AddCompatibilityDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<>\n\t\t\t\t\t\t\t\t\t<Typography>{modifyError.message}</Typography>\n\t\t\t\t\t\t\t\t\t{modifyError.id && <Typography variant=\"caption\">{\"Error ID: \" + modifyError.id}</Typography>}\n\t\t\t\t\t\t\t\t</>"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorModifyingProfile"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "warn"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`deleting-${request.infrastructureId}`"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<div style={{ display: \"flex\" }}>\n\t\t\t\t\t\t\t\t\t<SpinnerIcon size={18} sx={{ marginRight: theme.spacing() }} />\n\t\t\t\t\t\t\t\t\t<Typography>Deleting the collector associated with service {request.serviceName}</Typography>\n\t\t\t\t\t\t\t\t</div>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`error-${request.infrastructureId}`"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<div style={{ display: \"flex\", justifyContent: \"space-between\", alignItems: \"center\" }}>\n\t\t\t\t\t\t\t\t\t<Typography>Failed to delete the collector associated with service {request.serviceName}</Typography>\n\t\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\t\tdense\n\t\t\t\t\t\t\t\t\t\tvariant=\"text\"\n\t\t\t\t\t\t\t\t\t\tdataQa={`details-${request.infrastructureId}`}\n\t\t\t\t\t\t\t\t\t\tonClick={() => setErrorDetails(request.infrastructureId)}\n\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\tShow Details\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</div>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "success"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "successMessage"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "successMsgBox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "errorMessage"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorMsgBox"
+      }
+    ]
+  }
+]

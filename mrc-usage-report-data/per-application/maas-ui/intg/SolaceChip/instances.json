@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/filterChips/FilterChip.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "onDelete",
+        "type": "variable",
+        "value": "onDelete"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`filterChip-${filterType}`"
+      },
+      {
+        "name": "clickable",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  }
+]

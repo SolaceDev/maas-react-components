@@ -1,0 +1,312 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/TransformationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "error"
+      },
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "errorText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "sourceTransformationGraphError"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${direction}GraphError`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "targetTransformationGraphError"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${direction}GraphError`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "en.connectors.helperText.payloadMessage"
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => setPayloadInfoDismissed(!payloadInfoDismissed)"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "en.connectors.labels.reImportWarning(direction.toLowerCase())"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"warn\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "payloadMappingsValidationErrors.apiError"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/ConstantSection.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "max-header-count-info-msg"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "en.connectors.labels.maxConstantCountReached"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/HeaderSection.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "max-header-count-info-msg"
+      },
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "en.connectors.labels.maxHeaderCountReached"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorValidationErrorDetails.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<Box>{renderErrorMessages(step, validationErrors)}</Box>"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "down_state_error_message"
+      },
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<Box>\n\t\t\t\t\t\t\t\t\t<SolaceGrid container spacing={1}>\n\t\t\t\t\t\t\t\t\t\t<SolaceGrid item xs={7}>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography color={\"error\"}>\n\t\t\t\t\t\t\t\t\t\t\t\t{selectedRowData?.state === ConnectorState.error\n\t\t\t\t\t\t\t\t\t\t\t\t\t? en.connectors.labels.errorStateMessage\n\t\t\t\t\t\t\t\t\t\t\t\t\t: en.connectors.labels.downStateMessage}\n\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t{selectedRowData?.state === ConnectorState.error && (\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography color={\"error\"} sx={{ width: \"90%\", wordWrap: \"break-word\" }}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{selectedRowData.microIntegrationDeploymentDetail?.details?.details ?? \"Unknown error\"}\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography color={\"error\"}>\n\t\t\t\t\t\t\t\t\t\t\t\t{en.connectors.labels.additionalSupportMessage}\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href=\"https://solace-sso.solace.cloud/support/question\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t{en.connectors.buttons.contactSupport}\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t</SolaceGrid>\n\t\t\t\t\t\t\t\t\t\t<SolaceGrid item xs={5}>\n\t\t\t\t\t\t\t\t\t\t\t<Box style={{ whiteSpace: \"nowrap\" }}>\n\t\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleViewErrorLogs}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{en.connectors.buttons.viewErrorLogs}\n\t\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t\t</SolaceGrid>\n\t\t\t\t\t\t\t\t\t</SolaceGrid>\n\t\t\t\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "en.connectors.labels.stateInfoBanner(selectedRowData?.state ?? \"\")"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"info\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "deploying_state_message"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SummaryErrorMessageBox.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "buildSummaryErrorMessage(\n\t\t\t\t\t\t\t\tvendorValidationErrors,\n\t\t\t\t\t\t\t\tsolaceValidationErrors,\n\t\t\t\t\t\t\t\tdetailsStepValidationErrors,\n\t\t\t\t\t\t\t\tisEqual(connectorTypeDetails.direction, ConnectorDirection.Source),\n\t\t\t\t\t\t\t\ttrue,\n\t\t\t\t\t\t\t\tpayloadMappingsValidationErrors,\n\t\t\t\t\t\t\t\tapiErrorResponseError,\n\t\t\t\t\t\t\t\tsourceTransformationGraphError,\n\t\t\t\t\t\t\t\ttargetTransformationGraphError,\n\t\t\t\t\t\t\t\tshowGaMiTransformation\n\t\t\t\t\t\t\t) ?? \"\""
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorSummary.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "buildSummaryErrorMessage(\n\t\t\t\t\t\t\t\tvendorValidationErrors,\n\t\t\t\t\t\t\t\tsolaceValidationErrors,\n\t\t\t\t\t\t\t\tinitialStepValidationErrors,\n\t\t\t\t\t\t\t\tvendorSourceDirection,\n\t\t\t\t\t\t\t\tfalse,\n\t\t\t\t\t\t\t\tpayloadMappingsValidationErrors,\n\t\t\t\t\t\t\t\tapiErrorResponseError,\n\t\t\t\t\t\t\t\tsourceTransformationGraphError,\n\t\t\t\t\t\t\t\ttargetTransformationGraphError,\n\t\t\t\t\t\t\t\tshowGaMiTransformation\n\t\t\t\t\t\t\t) ?? \"\""
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/common/BaseTableList.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "variable",
+        "value": "downErrorMessage"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => setShowDownError(false)"
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "jsx",
+        "value": "<Box style={{ verticalAlign: \"middle\" }}>\n\t\t\t\t\t\t\t\t{errorMessageDetails ?? \"\"}\n\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" href=\"https://solace-sso.solace.cloud/support/question\">\n\t\t\t\t\t\t\t\t\t{en.connectors.buttons.contactSupport}\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t<Box style={{ float: \"right\" }} m={-0.5}>\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleViewErrorLogs}>\n\t\t\t\t\t\t\t\t\t\t{en.connectors.buttons.viewErrorLogs}\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"error\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "error_message_box"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "en.connectors.labels.stateInfoBanner(connectorState ?? \"\")"
+      },
+      {
+        "name": "showIcon",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "info"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "deploying_message_box"
+      }
+    ]
+  }
+]

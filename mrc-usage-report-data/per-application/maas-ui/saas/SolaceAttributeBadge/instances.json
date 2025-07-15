@@ -1,0 +1,67 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "default-env"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "environmentsStr.labels.defaultEnvironment"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "active"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Active"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.SUCCESS_BG_GREEN"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "inactive"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Inactive"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/MoveDatacenterEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "default-env"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "environmentsStr.labels.defaultEnvironment"
+      }
+    ]
+  }
+]

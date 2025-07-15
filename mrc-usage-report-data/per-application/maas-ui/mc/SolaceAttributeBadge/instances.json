@@ -1,0 +1,157 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/DefaultAttributeBadge.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "default-env"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_default\", message: \"Default\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/meshes/list/Meshes.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "i18n._(getEventMeshState(eventMesh))"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "getEventMeshStateFillColor(eventMesh)"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "getEventMeshStateLabelColor(eventMesh)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "xs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Status.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_expired\", message: \"Expired\" })"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.ERROR_BG_RED"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.ERROR_RED_LABEL"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Status.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_expires_soon\", message: \"Expires Soon\" })"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.warnBgYellow"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.warnYellow"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/components/LibraryHeader.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "language.name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
+    "props": [
+      {
+        "name": "fillColor",
+        "type": "variable",
+        "value": "fillColor"
+      },
+      {
+        "name": "labelColor",
+        "type": "variable",
+        "value": "labelColor"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "statusChip"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceListView.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "hasSsoError ? t({ id: \"id_service_outofsync_short\", message: \"SSO out-of-sync\" }) : i18n._(getServiceState(service))"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "getServiceStateFillColor(service, hasSsoError)"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "getServiceStateLabelColor(service, hasSsoError)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "xs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceListView.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "t({ id: \"id_event_mesh\", message: \"Event Mesh\" })"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "xs"
+      }
+    ]
+  }
+]

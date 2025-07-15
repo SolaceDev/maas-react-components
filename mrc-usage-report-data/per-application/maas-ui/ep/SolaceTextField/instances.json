@@ -1,0 +1,3442 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/AddExistingMessagingServiceDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Filter by Name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "50%"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t\t\t\t\tsearchText ? (\n\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={handleClearSearchText}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t\t\t\t\t\t<SearchIcon key=\"searchIcon\" />\n\t\t\t\t\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleNameChange"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "handleNameOnBlur"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventMesh[name]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventMesh[name]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventMesh[name]"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "LABEL_NAME"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "memContent.name"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "mode === \"create\" || mode === \"edit\""
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "mode === \"view\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!getNameErrorMessage"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "getNameErrorMessage"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SchemaRegistryConfigCard.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[kafka][schemaRegistry][registryUrl]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isDisabled"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly ? error?.message ?? renderKafkaAuthHelperText(\"registryUrl\") : \"\""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "schemaRegistry[registryUrl]"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Registry URL"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SolaceManagementTab.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[solace][management][sempUsername]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "loading"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message ?? \"\""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[solace][management][sempUsername]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.sempUsername"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SolaceManagementTab.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[solace][management][sempUrl]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "loading"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message ?? \"\""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[solace][management][sempUrl]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.sempUrl"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SolaceMessagingTab.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[solace][messaging][host]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "loading"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly ? error?.message ?? \"e.g. ########.messaging.solace.cloud or 123.89.40.72\" : \"\""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[solace][messaging][host]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.host"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SchemaRegistryAuthList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`eventBroker[kafka][schemaRegistry][${selectedAuthType}][${inputField}]`"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly ? error?.message ?? helperText : \"\""
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`eventBroker[kafka][schemaRegistry][${selectedAuthType}][${inputField}]`"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t\tsetValue(name, value.trim());\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!readOnly && isRequired"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/KafkaAuthList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`eventBroker[kafka][authentication][${authKey}][${inputField}]`"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly ? error?.message ?? helperText : \"\""
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`eventBroker[kafka][authentication][${KafkaAuthTypes[authKey]}][${inputField}]`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels[inputField]"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "isRequired"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/KafkaAuthList.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[kafka][authentication][bootstrapServers]"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly ? error?.message ?? \"Use a comma (,) to separate the messaging services in the Kafka cluster.\" : \"\""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[kafka][authentication][bootstrapServers]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.bootstrapServers"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "loading || kafkaDelimiterIsNotSet"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/messagingService/SolaceMessagingServiceDialogCard.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message ?? \"\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.port"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "selectedMode === \"view\""
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "number"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "250px"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`eventBroker[solace][messaging][protocol][${index}][port]`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDetail.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`messagingServiceDetails[${attribute}]`"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`messagingServiceDetails[${attribute}]`"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`messagingServiceDetails[${attribute}]`"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "attributeValue"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[name]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message ?? \"\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "readOnly || !!content.solaceCloudMessagingServiceId"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!readOnly"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MessagingServiceDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventBroker[solace][messageVpn]"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message ?? \"\""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "eventBroker[solace][messageVpn]"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventBrokerFormFieldLabels.messageVPN"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "required"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"authenticationB\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"authenticationB\""
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getCredentialsFieldValue(credentials, \"inputB\")"
+      },
+      {
+        "name": "type",
+        "type": "variable",
+        "value": "inputBType"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinition.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!nameErrorMsg || !!attributeErrorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "nameErrorMsg || null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t\t\thandleNameUpdate(e.value);\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t\t\thandleNameUpdate(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${caKey}-input`"
+      },
+      {
+        "name": "dataTags",
+        "type": "expression",
+        "value": "`hasFocus=${customAttribute.hasFocus}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinition.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!nameErrorMsg || !!attributeErrorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "nameErrorMsg || null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t\thandleNameUpdate(e.value);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t\thandleNameUpdate(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${caKey}-input`"
+      },
+      {
+        "name": "dataTags",
+        "type": "expression",
+        "value": "`hasFocus=${customAttribute.hasFocus}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!errorMsgs[index]"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorMsgs[index] || null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tconst newValue = e.value;\n\n\t\t\t\t\t\t\t\t\t\t\t\tif (value !== newValue) {\n\t\t\t\t\t\t\t\t\t\t\t\t\tonChange(newValue);\n\t\t\t\t\t\t\t\t\t\t\t\t\thandleValueUpdate(index, customAttributeValue, errorMsgs, newValue, valueType);\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t\thandleValueUpdate(index, customAttributeValue, errorMsgs, value.trim(), valueType);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${caKey}-value-input`"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "251"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityVersionBaseForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? getVersionErrorMessage(value, error) : \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(semverValid(e.value.trim()) ?? e.value.trim())"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\tonUpdateVersionProperty?.(VERSION_PROPERTY.semver, value);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${versionObjectName}[version]`"
+      },
+      {
+        "name": "autoFocus",
+        "type": "expression",
+        "value": "mode === \"edit\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/EntityVersionBaseForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\tonUpdateVersionProperty?.(VERSION_PROPERTY.display, value.trim());\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${versionObjectName}[displayName]`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/DuplicateVersionDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? getVersionErrorMessage(value, error) : \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tconst newValue = e.value.trim();\n\t\t\t\t\t\t\t\t\t\tconst validVersion = semverValid(newValue) ?? newValue;\n\n\t\t\t\t\t\t\t\t\t\tonChange(validVersion);\n\t\t\t\t\t\t\t\t\t\tcheckVersionAndSetWarning(validVersion);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"DuplicateEntityVersion[version]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "name"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "variableName"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleNameChange"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => handleNameValidate()"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!nameErrorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "nameErrorMsg"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useEntityNameTextField.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "textFieldName ?? \"entityNameTextField\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? \"\""
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "entityName"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "maxLength",
+        "type": "expression",
+        "value": "maxLength + 1"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationErrorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "validationErrorMsg"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEntityNameChange"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "handleOnBlur"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useCreateApplicationDomainTextField.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "createInlineApplicationDomain"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "createInlineApplicationDomain"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "New Application Domain Name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationErrorMsg || !!backendErrorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationErrorMsg || backendErrorMsg || SHARE_WARNING"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEntityNameChange"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "handleOnBlur"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useEntityVersionTextField.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "textFieldName ?? \"entityVersionTextField\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "dataQa ?? \"\""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Version"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "version"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationErrorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationErrorMsg ? validationErrorMsg : versionTextFieldHelperText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleVersionChange"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "handleOnBlur"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useCreateApplicationTextField.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "createInlineApplication"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "createInlineApplication"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "New Application Name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!validationErrorMsg || !!backendErrorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationErrorMsg || backendErrorMsg || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEntityNameChange"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "handleOnBlur"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!domainId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+    "props": [
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleNameChange"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "handleNameOnBlur"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "runtimeAgent[name]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "runtimeAgent[name]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "runtimeAgent[name]"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "eventManagementAgent.name"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!getNameErrorMessage"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "getNameErrorMessage"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "loading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "runtimeAgent[id]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "runtimeAgent[id]"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "runtimeAgent[id]"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "agentId"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/ExistingMessagingServices.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Search"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\tsearchText ? (\n\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={handleClearSearchText}>\n\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t<SearchIcon key=\"searchIcon\" />\n\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ScanLogsDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"Event Broker\""
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Event Broker\""
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "scan.messagingServiceName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewSingleEventDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "topicAddress"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Topic Address"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedAudits[0].identifier"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplateEdit.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`detailsName`"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "256"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ClientProfileName.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "clientProfileName"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : messages[ConfigurationTypeId.solaceClientProfileName].contentFieldHelperText"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tsetClientProfileName(e.value);\n\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`clientProfileName`"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "33"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterInviteUsersCard.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "email-input"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "email-input"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "email"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.eventPortalResources.labels.startJourney.inviteUsers.emailAddress"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!isValid ? (\n\t\t\t\t\t\t\t\t\t\t\t\t\ten.eventPortalResources.labels.startJourney.inviteUsers.helperTextError\n\t\t\t\t\t\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t{en.eventPortalResources.labels.startJourney.inviteUsers.helperText}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"link\" dense onClick={handleOpenUserManagement}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{en.eventPortalResources.labels.startJourney.inviteUsers.userManagementLink}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!isValid"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEmailInput"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "email"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "validateEmail"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\tupdateConfiguration();\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\tonChange(value?.trim());\n\t\t\t\t\t\t\t\t\t\tupdateConfiguration();\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${configurationName}-postRequestTarget`"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message || \"\""
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "2001"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RequestHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.application.configuration.restDeliveryPoint.requestHeaderName"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\tvalue && onChange(value.trim());\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "configurationNameRequestHeaderName"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointConfiguration.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : en.application.configuration.restDeliveryPoint.restDeliveryPointNameDescription"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t\t\thandleUpdateRestDeliveryPointName(value);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t\thandleUpdateRestDeliveryPointName(value ? value.trim() : \"\");\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`restDeliveryPointName-editor`"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!getValues(`${formName}.configurationTypeId`)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageClientProfileName.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "FormCustomizedClientProfileName"
+      },
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "messagesConfiguration.solaceClientProfileName.clientProfileName"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\n\t\t\t\t\t\t\t\t\t\t\t\tif (e.value) {\n\t\t\t\t\t\t\t\t\t\t\t\t\tsetObservedConfiguration(e.value);\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "33"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/export/DomainExportPreviewDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!errorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorMsg || null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\thandleFilenameUpdate(e.value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\thandleFilenameUpdate(value.trim());\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`filenameInput`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"enumeration[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributeForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!errorMsgs[index]"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorMsgs[index] || null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tconst newValue = e.value;\n\n\t\t\t\t\t\t\t\t\t\t\t\tif (value !== newValue) {\n\t\t\t\t\t\t\t\t\t\t\t\t\tonChange(newValue);\n\t\t\t\t\t\t\t\t\t\t\t\t\thandleValueUpdate(index, customAttributeValue, errorMsgs, newValue, valueType);\n\t\t\t\t\t\t\t\t\t\t\t\t\tsetIsDirty(true);\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t\thandleValueUpdate(index, customAttributeValue, errorMsgs, value.trim(), valueType);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${caKey}-value-input`"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "251"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? getVersionErrorMessage(value, error) : \"\""
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tsetIsDirty(true);\n\n\t\t\t\t\t\t\t\t\t\t\t\tconst newValue = e.value.trim();\n\n\t\t\t\t\t\t\t\t\t\t\t\tif (semverValid(newValue) !== null) {\n\t\t\t\t\t\t\t\t\t\t\t\t\tcheckIfVersionStillLatestAfterUpdate(newValue, versionId);\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(semverValid(newValue) ?? newValue);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${versionObjectName}[version]`"
+      },
+      {
+        "name": "autoFocus",
+        "type": "variable",
+        "value": "isDuplicateVersion"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\tsetIsDirty(true);\n\t\t\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${versionObjectName}[displayName]`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventSearchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventSearchInput"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "internalSearchText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\tinternalSearchText ? (\n\t\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={() => setInternalSearchText(\"\")}>\n\t\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t\t<SearchIcon key=\"searchIcon\" />\n\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/NodeNameEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "nodeNameTextField"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "appDomain-graph-object-name-field"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "nodeName"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "handleKeyDown"
+      },
+      {
+        "name": "onFocus",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\tsetTimeout(() => e.target.select(), 100); // Delay to ensure select() works\n\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!errorMessage"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "errorMessage"
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "`${nameEditorWidth}px`"
+      },
+      {
+        "name": "maxLength",
+        "type": "expression",
+        "value": "maxNameLength + 1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/SearchEventAPIs.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventApiSearchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventApiSearchInput"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "internalSearchText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\tinternalSearchText ? (\n\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={() => setInternalSearchText(\"\")}>\n\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t<SearchIcon key=\"searchIcon\" />\n\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/TopicFilterForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${level.name}-${index}`"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error && \"Invalid Format\""
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value.trim())"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "minWidth",
+        "type": "string",
+        "value": "622px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApiForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"eventApi[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"526px\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Policies.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`maxTTLTextField-${index}`"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value.trim())"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "mode === \"view\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Policies.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`maxMsgSpoolUsageTextField-${index}`"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value.trim())"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "mode === \"view\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/VersionPlansForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`planNameTextField-${index}`"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"eventApiProduct[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schema[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "2049"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConsumerItemForm.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "autoFocus",
+        "type": "expression",
+        "value": "value === \"\""
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`applicationVersion[consumers].${index}.name`"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "256"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!isGlobal"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/DomainForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"applicationDomain[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "256"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "topicAddressResourcesDisplayName"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicAddressResources.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "topicAddressResourcesLink"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "url"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"event[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "2049"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemas.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "schemaSearchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "schemaSearchInput"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "internalSearchText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\tinternalSearchText ? (\n\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={handleClearSearchText}>\n\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t<SearchIcon key=\"searchIcon\" />\n\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SelectSchemaVersion.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchInput"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Search"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\tsearchText ? (\n\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={handleClearSearchText}>\n\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t<SearchIcon key=\"searchIcon\" />\n\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Name\""
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schema[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "2049"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "getVersionErrorMessage(value, error)"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(semverValid(e.value.trim()) ?? e.value.trim())"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schemaVersion[version]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Name\""
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"event[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "2049"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "getVersionErrorMessage(value, error)"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(semverValid(e.value.trim()) ?? e.value.trim())"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"eventVersion[version]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventSearchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "eventSearchInput"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "internalSearchText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\tinternalSearchText ? (\n\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={() => setInternalSearchText(\"\")}>\n\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t<SearchIcon key=\"searchIcon\" />\n\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"application[name]\""
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "256"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchApplications.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "applicationSearchInput"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "applicationSearchInput"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "internalSearchText"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextChange"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\tinternalSearchText ? (\n\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={() => setInternalSearchText(\"\")}>\n\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t<SearchIcon key=\"searchIcon\" />\n\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/NewConsumerForm.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.common.labels.name"
+      },
+      {
+        "name": "autoFocus",
+        "type": "expression",
+        "value": "value === \"\""
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onBlur"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`consumerName`"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "256"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"configurationInputA\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"configurationInputA\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "messages.credentials[configuration.typeId].inputA"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "inputA ?? \"\""
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "isEditing"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!inputAValidationError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "inputAValidationError"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChangeInputA"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!isEditing"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"configurationInputB\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"configurationInputB\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "messages.credentials[configuration.typeId].inputB"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "inputB || \"\""
+      },
+      {
+        "name": "type",
+        "type": "variable",
+        "value": "inputBType"
+      },
+      {
+        "name": "required",
+        "type": "variable",
+        "value": "isEditing"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "isLoading || (configuration.inputB.type === \"password\" && !isEditing)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!inputBValidationError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "inputBValidationError || messages.credentials[configuration.typeId].inputBSubtext"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChangeInputB"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "configuration.inputB.type !== \"password\" && !isEditing"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/shared.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "name ?? \"emptyName\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "label ?? \"Name\""
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\tconst newName = e.value ?? \"\";\n\n\t\t\t\tif (!shouldValidate) {\n\t\t\t\t\tsetErrorMsg(validator(newName));\n\t\t\t\t}\n\n\t\t\t\tsetName(newName);\n\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\tconst newName = name.trim();\n\n\t\t\t\tif (!shouldValidate) {\n\t\t\t\t\tsetErrorMsg(validator(newName));\n\t\t\t\t}\n\n\t\t\t\tsetName(newName);\n\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!errorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "errorMsg"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"name\""
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "256"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "placeholder",
+        "type": "variable",
+        "value": "placeholder"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/shared.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "topic ?? \"emptyTopic\""
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "topic"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\tconst newTopic = e.value ?? \"\";\n\n\t\t\t\tif (!shouldValidate) {\n\t\t\t\t\tsetErrorMsg(validator(newTopic));\n\t\t\t\t}\n\n\t\t\t\tsetTopic(newTopic);\n\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\tconst newTopic = topic.trim();\n\n\t\t\t\tif (!shouldValidate) {\n\t\t\t\t\tsetErrorMsg(validator(newTopic));\n\t\t\t\t}\n\n\t\t\t\tsetTopic(newTopic);\n\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!errorMsg"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "errorMsg"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "maxLength",
+        "type": "variable",
+        "value": "maxLength"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  }
+]

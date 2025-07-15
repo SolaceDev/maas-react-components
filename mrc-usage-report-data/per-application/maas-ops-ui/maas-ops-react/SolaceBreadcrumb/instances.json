@@ -1,0 +1,172 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "onRouteClick",
+        "type": "variable",
+        "value": "onBreadcumbClick"
+      },
+      {
+        "name": "paths",
+        "type": "variable",
+        "value": "customerDetailsPath"
+      },
+      {
+        "name": "maxItems",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "onRouteClick",
+        "type": "variable",
+        "value": "onBreadcumbClick"
+      },
+      {
+        "name": "paths",
+        "type": "variable",
+        "value": "customerDetailsPath"
+      },
+      {
+        "name": "maxItems",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/environments/Environments.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "environmentsBreadcrumb"
+      },
+      {
+        "name": "maxItems",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "environmentsBreadcrumb"
+      },
+      {
+        "name": "onRouteClick",
+        "type": "function",
+        "value": "(link) => history.push(link)"
+      },
+      {
+        "name": "paths",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: \"/organizations\",\n\t\t\t\t\t\t\ttitle: \"Organizations\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: \"/organizations/\" + orgId,\n\t\t\t\t\t\t\ttitle: orgId\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: true,\n\t\t\t\t\t\t\tlink: \"\",\n\t\t\t\t\t\t\ttitle: \"Environments\"\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationDashboard.tsx",
+    "props": [
+      {
+        "name": "paths",
+        "type": "variable",
+        "value": "breadcrumbs"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "connectorBreadcrumb"
+      },
+      {
+        "name": "maxItems",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "connectorBreadcrumb"
+      },
+      {
+        "name": "onRouteClick",
+        "type": "function",
+        "value": "(link) => history.push(link)"
+      },
+      {
+        "name": "paths",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: \"/organizations\",\n\t\t\t\t\t\t\ttitle: \"Organizations\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: \"/organizations/\" + orgId,\n\t\t\t\t\t\t\ttitle: orgId\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: true,\n\t\t\t\t\t\t\tlink: \"\",\n\t\t\t\t\t\t\ttitle: \"Connector Deployments\"\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/CollectorDetails.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "distributedTracingBreadcrumb"
+      },
+      {
+        "name": "maxItems",
+        "type": "number",
+        "value": "4"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "distributedTracingBreadcrumb"
+      },
+      {
+        "name": "onRouteClick",
+        "type": "function",
+        "value": "(link) => history.push(link)"
+      },
+      {
+        "name": "paths",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: \"/organizations\",\n\t\t\t\t\t\t\ttitle: \"Organizations\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: \"/organizations/\" + service?.orgId,\n\t\t\t\t\t\t\ttitle: service?.orgId as string\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: `/organizations/${service?.orgId}/distributed-tracing`,\n\t\t\t\t\t\t\ttitle: \"Distributed Tracing\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: true,\n\t\t\t\t\t\t\tlink: \"\",\n\t\t\t\t\t\t\ttitle: \"Distributed Tracing Collector Details\"\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "distributedTracingBreadcrumb"
+      },
+      {
+        "name": "maxItems",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "distributedTracingBreadcrumb"
+      },
+      {
+        "name": "onRouteClick",
+        "type": "function",
+        "value": "(link) => history.push(link)"
+      },
+      {
+        "name": "paths",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: \"/organizations\",\n\t\t\t\t\t\t\ttitle: \"Organizations\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: false,\n\t\t\t\t\t\t\tlink: \"/organizations/\" + orgId,\n\t\t\t\t\t\t\ttitle: orgId\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tcurrent: true,\n\t\t\t\t\t\t\tlink: \"\",\n\t\t\t\t\t\t\ttitle: \"Distributed Tracing\"\n\t\t\t\t\t\t}\n\t\t\t\t\t]"
+      }
+    ]
+  }
+]

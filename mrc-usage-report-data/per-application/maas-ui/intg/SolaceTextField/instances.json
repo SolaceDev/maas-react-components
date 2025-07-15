@@ -1,0 +1,1392 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "host"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "solaceConnectionValues.authentication.host"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.host"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "connectionDetailsHostTextField"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\tif (isEmpty(solaceConnectionValues.authentication.host)) {\n\t\t\t\t\t\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\t\t\t\t\t\thost: en.connectors.labels.validationErrors.missingRequiredField(en.connectors.labels.host)\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\t\t\t\t\t\thost: \"\"\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: host }) => {\n\t\t\t\t\t\t\t\t\t\tsetSolaceConnectionValues({\n\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues,\n\t\t\t\t\t\t\t\t\t\t\tauthentication: {\n\t\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues.authentication,\n\t\t\t\t\t\t\t\t\t\t\t\thost: host\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "validationEnabled && !!solaceValidationErrors.host"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationEnabled && solaceValidationErrors.host\n\t\t\t\t\t\t\t\t\t\t\t? solaceValidationErrors.host\n\t\t\t\t\t\t\t\t\t\t\t: en.connectors.helperText.host"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "msgVpn"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "solaceConnectionValues.authentication.messageVpn"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.msgVpn"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "msgVpnTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: msgVpn }) => {\n\t\t\t\t\t\t\t\t\t\tsetSolaceConnectionValues({\n\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues,\n\t\t\t\t\t\t\t\t\t\t\tauthentication: {\n\t\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues.authentication,\n\t\t\t\t\t\t\t\t\t\t\t\tmessageVpn: msgVpn\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\tif (isEmpty(solaceConnectionValues.authentication.messageVpn)) {\n\t\t\t\t\t\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\t\t\t\t\t\tmessageVpn: en.connectors.labels.validationErrors.missingRequiredField(\n\t\t\t\t\t\t\t\t\t\t\t\t\ten.connectors.labels.msgVpn\n\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\t\t\t\t\t\tmessageVpn: \"\"\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "validationEnabled && !!solaceValidationErrors.messageVpn"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationEnabled && solaceValidationErrors.messageVpn ? solaceValidationErrors.messageVpn : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "solaceBindingDestination"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: destination }) => {\n\t\t\t\t\t\t\t\t\t\tsetSolaceConnectionValues({\n\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues,\n\t\t\t\t\t\t\t\t\t\t\tbinding: {\n\t\t\t\t\t\t\t\t\t\t\t\t...solaceConnectionValues.binding,\n\t\t\t\t\t\t\t\t\t\t\t\tdestination: destination\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "solaceConnectionValues.binding.destination"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.bindingDestination"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "solaceBindingDestinationTextField"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\tvalidateDestination();\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "validationEnabled && !!solaceValidationErrors.destination"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "solaceValidationErrors.destination && validationEnabled\n\t\t\t\t\t\t\t\t\t\t\t? solaceValidationErrors.destination\n\t\t\t\t\t\t\t\t\t\t\t: // flipped because solaceDirection is the opposite of the actual connector direction\n\t\t\t\t\t\t\t\t\t\t\tisEqual(solaceDirection, ConnectorDirection.Source)\n\t\t\t\t\t\t\t\t\t\t\t? en.connectors.helperText.destinationTarget\n\t\t\t\t\t\t\t\t\t\t\t: en.connectors.helperText.destinationSource"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "constantName"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.customConstantValue"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "constant-name-textfield"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "255"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!constantNameError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "constantNameError"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "String(constantField.constantValue)"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\tsetConstantNameError(\"\");\n\t\t\t\t\t\t\tsetConstantField({ ...constantField, constantValue: e.value });\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "headerName"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.customHeaderName"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "header-name-textfield"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "255"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!headerNameError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "headerNameError"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "customHeaderField.headerName"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\tsetHeaderNameError(\"\");\n\t\t\t\t\t\tsetCustomHeaderField({ ...customHeaderField, headerName: e.value });\n\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "headerName"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.customHeaderName"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "header-name-textfield"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "255"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "headerName"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!headerNameError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "headerNameError"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\tsetHeaderName(e.value);\n\t\t\t\t\t\tsetHeaderNameError(\"\");\n\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "constantName"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.customConstantValue"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "constant-name-textfield"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "255"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "constantValue"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!constantNameError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "constantNameError"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\tonConstantValueChange(e);\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/EducationBlurb.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "targetHeaderExample"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "en.connectors.targetHeaderMapping.targetHeaderExample"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/EducationBlurb.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "headerExpressionExample"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "en.connectors.targetHeaderMapping.headerExpressionExample"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "props": [
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "sensitiveField && !showSensitiveField ? \"password\" : \"text\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "props.label"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "props.name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChangeTrigger(props, e)"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "fieldValue"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "props.readonly"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "props.required && !props.readonly"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "props.disabled"
+      },
+      {
+        "name": "endAdornment",
+        "type": "variable",
+        "value": "endAdornment"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${props.label}-form-textField`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "sslKeyStoreReadOnlyBlank"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "props.value ? \"<encrypted>\" : \"-\""
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "values.name"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "details_name_field"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: name }) => setValues({ ...values, name })"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.name"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\tif (isEmpty(values.name)) {\n\t\t\t\t\t\t\t\tsetInitialStepValidationErrors({\n\t\t\t\t\t\t\t\t\t...initialStepValidationErrors,\n\t\t\t\t\t\t\t\t\tname: en.connectors.labels.validationErrors.missingRequiredField(en.connectors.labels.name)\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\tsetInitialStepValidationErrors({ ...initialStepValidationErrors, name: \"\" });\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "validationEnabled && !!initialStepValidationErrors.name"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationEnabled ? initialStepValidationErrors.name : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/OAuthDetails.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!readOnly"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "tokenUri"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly ? getConnectorSummaryValue(oauthValues.tokenUri) : oauthValues.tokenUri"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.tokenUri"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "tokenUriTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: tokenUri }) => {\n\t\t\t\t\tsetOauthValues({\n\t\t\t\t\t\t...oauthValues,\n\t\t\t\t\t\ttokenUri: tokenUri\n\t\t\t\t\t});\n\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\tif (isEmpty(oauthValues.tokenUri)) {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\ttokenUri: en.connectors.labels.validationErrors.missingRequiredField(en.connectors.labels.tokenUri)\n\t\t\t\t\t\t});\n\t\t\t\t\t} else {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\ttokenUri: \"\"\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!solaceValidationErrors.tokenUri"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly && validationEnabled && solaceValidationErrors.tokenUri ? solaceValidationErrors.tokenUri : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/OAuthDetails.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!readOnly"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientId"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly ? getConnectorSummaryValue(oauthValues.clientId) : oauthValues.clientId"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.clientId"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "tclientIdTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: clientId }) => {\n\t\t\t\t\tsetOauthValues({\n\t\t\t\t\t\t...oauthValues,\n\t\t\t\t\t\tclientId: clientId\n\t\t\t\t\t});\n\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\tif (isEmpty(oauthValues.clientId)) {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\tclientId: en.connectors.labels.validationErrors.missingRequiredField(en.connectors.labels.clientId)\n\t\t\t\t\t\t});\n\t\t\t\t\t} else {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\tclientId: \"\"\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!solaceValidationErrors.clientId"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly && validationEnabled && solaceValidationErrors.clientId ? solaceValidationErrors.clientId : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/OAuthDetails.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!readOnly"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientSecret"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly ? getConnectorSummaryValue(oauthValues.clientSecret) : oauthValues.clientSecret"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.clientSecret"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clientSecretTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: clientSecret }) => {\n\t\t\t\t\tsetOauthValues({\n\t\t\t\t\t\t...oauthValues,\n\t\t\t\t\t\tclientSecret: clientSecret\n\t\t\t\t\t});\n\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\tif (isEmpty(oauthValues.clientSecret)) {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\tclientSecret: en.connectors.labels.validationErrors.missingRequiredField(\n\t\t\t\t\t\t\t\ten.connectors.labels.clientSecret\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t});\n\t\t\t\t\t} else {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\tclientSecret: \"\"\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!solaceValidationErrors.clientSecret"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly && validationEnabled && solaceValidationErrors.clientSecret\n\t\t\t\t\t\t? solaceValidationErrors.clientSecret\n\t\t\t\t\t\t: \"\""
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "showClientSecret ? \"text\" : \"password\""
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\tkey={showClientSecret ? \"eyeIcon\" : \"hideEyeIcon\"}\n\t\t\t\t\t\tdataQa={showClientSecret ? \"showClientSecretButton\" : \"hideClientSecretButton\"}\n\t\t\t\t\t\tvariant=\"icon\"\n\t\t\t\t\t\tonClick={() => setShowClientSecret(!showClientSecret)}\n\t\t\t\t\t>\n\t\t\t\t\t\t{showClientSecret ? <VisibilityShow24Icon /> : <VisibilityHide24Icon />}\n\t\t\t\t\t</SolaceButton>\n\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/OAuthDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "scopes"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly ? getConnectorSummaryValue(oauthValues.scopes) : oauthValues.scopes"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.scopes"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "scopesTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: scopes }) => {\n\t\t\t\t\t\t\t\tsetOauthValues({\n\t\t\t\t\t\t\t\t\t...oauthValues,\n\t\t\t\t\t\t\t\t\tscopes: scopes\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/OAuthDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientName"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly ? getConnectorSummaryValue(oauthValues.clientName) : oauthValues.clientName"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.clientName"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clientNameTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: clientName }) => {\n\t\t\t\t\t\t\t\tsetOauthValues({\n\t\t\t\t\t\t\t\t\t...oauthValues,\n\t\t\t\t\t\t\t\t\tclientName: clientName\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/BasicAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!readOnly"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientUsername"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "basicAuthValues.clientUsername"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.clientUsername"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clientUsernameBasicAuthTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: clientUsername }) => {\n\t\t\t\t\tsetBasicAuthValues({\n\t\t\t\t\t\t...basicAuthValues,\n\t\t\t\t\t\tclientUsername: clientUsername\n\t\t\t\t\t});\n\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\tif (isEmpty(basicAuthValues.clientUsername)) {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\tbasicAuthUsername: en.connectors.labels.validationErrors.missingRequiredField(\n\t\t\t\t\t\t\t\ten.connectors.labels.clientUsername\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t});\n\t\t\t\t\t} else {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\tbasicAuthUsername: \"\"\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "validationEnabled && !!solaceValidationErrors.basicAuthUsername"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly\n\t\t\t\t\t\t? solaceValidationErrors.basicAuthUsername && validationEnabled\n\t\t\t\t\t\t\t? solaceValidationErrors.basicAuthUsername\n\t\t\t\t\t\t\t: en.connectors.helperText.clientUsername\n\t\t\t\t\t\t: undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/BasicAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!readOnly"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientPassword"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.clientPassword"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clientPasswordTextField"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "basicAuthValues.clientPassword"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: clientPassword }) => {\n\t\t\t\t\tsetBasicAuthValues({\n\t\t\t\t\t\t...basicAuthValues,\n\t\t\t\t\t\tclientPassword: clientPassword\n\t\t\t\t\t});\n\t\t\t\t}"
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "showPassword ? \"text\" : \"password\""
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\tkey={showPassword ? \"eyeIcon\" : \"hideEyeIcon\"}\n\t\t\t\t\t\tdataQa={showPassword ? \"showPasswordButton\" : \"hidePasswordButton\"}\n\t\t\t\t\t\tvariant=\"icon\"\n\t\t\t\t\t\tonClick={() => setShowPassword(!showPassword)}\n\t\t\t\t\t>\n\t\t\t\t\t\t{showPassword ? <VisibilityShow24Icon /> : <VisibilityHide24Icon />}\n\t\t\t\t\t</SolaceButton>\n\t\t\t\t]"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\tif (isEmpty(basicAuthValues.clientPassword)) {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\tclientPassword: en.connectors.labels.validationErrors.missingRequiredField(\n\t\t\t\t\t\t\t\ten.connectors.labels.clientPassword\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t});\n\t\t\t\t\t} else {\n\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\tclientPassword: \"\"\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "validationEnabled && !!solaceValidationErrors.clientPassword"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly\n\t\t\t\t\t\t? solaceValidationErrors.clientPassword && validationEnabled\n\t\t\t\t\t\t\t? solaceValidationErrors.clientPassword\n\t\t\t\t\t\t\t: en.connectors.helperText.clientPassword\n\t\t\t\t\t\t: undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "sslKeyStoreReadOnlyBlank"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"-\""
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "sslKeyStorePassword"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly\n\t\t\t\t\t\t\t\t\t? getConnectorSummaryValue(clientCertValues.sslKeyStorePassword)\n\t\t\t\t\t\t\t\t\t: clientCertValues.sslKeyStorePassword"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.sslKeyStorePassword"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "sslKeyStorePasswordTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: sslKeyStorePassword }) => {\n\t\t\t\t\t\t\t\tsetClientCertValues({\n\t\t\t\t\t\t\t\t\t...clientCertValues,\n\t\t\t\t\t\t\t\t\tsslKeyStorePassword: sslKeyStorePassword\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "showSslKeyStorePassword ? \"text\" : \"password\""
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\tkey={showSslKeyStorePassword ? \"eyeIcon\" : \"hideEyeIcon\"}\n\t\t\t\t\t\t\t\t\tdataQa={showSslKeyStorePassword ? \"showPasswordButton\" : \"hidePasswordButton\"}\n\t\t\t\t\t\t\t\t\tvariant=\"icon\"\n\t\t\t\t\t\t\t\t\tonClick={() => setShowSslKeyStorePassword(!showSslKeyStorePassword)}\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t{showSslKeyStorePassword ? <VisibilityShow24Icon /> : <VisibilityHide24Icon />}\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "sslPrivateKeyAliasName"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly\n\t\t\t\t\t\t\t\t\t? getConnectorSummaryValue(clientCertValues.sslPrivateKeyAliasName)\n\t\t\t\t\t\t\t\t\t: clientCertValues.sslPrivateKeyAliasName"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.sslPrivateKeyAliasName"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "sslPrivateKeyAliasNameTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: sslPrivateKeyAliasName }) => {\n\t\t\t\t\t\t\t\tsetClientCertValues({\n\t\t\t\t\t\t\t\t\t...clientCertValues,\n\t\t\t\t\t\t\t\t\tsslPrivateKeyAliasName: sslPrivateKeyAliasName\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "sslPrivateKeyPassword"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly\n\t\t\t\t\t\t\t\t\t? getConnectorSummaryValue(clientCertValues.sslPrivateKeyPassword)\n\t\t\t\t\t\t\t\t\t: clientCertValues.sslPrivateKeyPassword"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.sslPrivateKeyPassword"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "sslPrivateKeyPasswordTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: sslPrivateKeyPassword }) => {\n\t\t\t\t\t\t\t\tsetClientCertValues({\n\t\t\t\t\t\t\t\t\t...clientCertValues,\n\t\t\t\t\t\t\t\t\tsslPrivateKeyPassword: sslPrivateKeyPassword\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "showSslPrivateKeyPassword ? \"text\" : \"password\""
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t<SolaceButton\n\t\t\t\t\t\t\t\t\tkey={showSslPrivateKeyPassword ? \"eyeIcon\" : \"hideEyeIcon\"}\n\t\t\t\t\t\t\t\t\tdataQa={showSslPrivateKeyPassword ? \"showPasswordButton\" : \"hidePasswordButton\"}\n\t\t\t\t\t\t\t\t\tvariant=\"icon\"\n\t\t\t\t\t\t\t\t\tonClick={() => setShowSslPrivateKeyPassword(!showSslPrivateKeyPassword)}\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t{showSslPrivateKeyPassword ? <VisibilityShow24Icon /> : <VisibilityHide24Icon />}\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/authentication/ClientCertAuthenticationDetails.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientUsername"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "readOnly ? getConnectorSummaryValue(clientCertValues.clientUsername) : clientCertValues.clientUsername"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnly"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.clientUsername"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clientUsernameClientCertAuthTextField"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: clientUsername }) => {\n\t\t\t\t\t\t\t\tsetClientCertValues({\n\t\t\t\t\t\t\t\t\t...clientCertValues,\n\t\t\t\t\t\t\t\t\tclientUsername: clientUsername\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\tif (isEmpty(clientCertValues.clientUsername)) {\n\t\t\t\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\t\t\t\tclientCertUsername: en.connectors.labels.validationErrors.missingRequiredField(\n\t\t\t\t\t\t\t\t\t\t\ten.connectors.labels.clientUsername\n\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\tsetSolaceValidationErrors({\n\t\t\t\t\t\t\t\t\t\t...solaceValidationErrors,\n\t\t\t\t\t\t\t\t\t\tclientCertUsername: \"\"\n\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!readOnly && !!solaceValidationErrors.clientCertUsername"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!readOnly\n\t\t\t\t\t\t\t\t\t? solaceValidationErrors.clientCertUsername && validationEnabled\n\t\t\t\t\t\t\t\t\t\t? solaceValidationErrors.clientCertUsername\n\t\t\t\t\t\t\t\t\t\t: en.connectors.helperText.clientUsername\n\t\t\t\t\t\t\t\t\t: undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/ConnectorEditDetailsTab.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "connectorDetails.name"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "details_name_field"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value: name }) => {\n\t\t\t\t\t\tsetConnectorDetails({ ...connectorDetails, name });\n\t\t\t\t\t}"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.name"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\tif (isEmpty(connectorDetails.name)) {\n\t\t\t\t\t\t\tsetDetailsStepValidationErrors({\n\t\t\t\t\t\t\t\t...detailsStepValidationErrors,\n\t\t\t\t\t\t\t\tname: en.connectors.labels.validationErrors.missingRequiredField(en.connectors.labels.name)\n\t\t\t\t\t\t\t});\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\tsetDetailsStepValidationErrors({ ...detailsStepValidationErrors, name: \"\" });\n\t\t\t\t\t\t}\n\t\t\t\t\t}"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!detailsStepValidationErrors.name"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "detailsStepValidationErrors.name ? detailsStepValidationErrors.name : en.connectors.helperText.uniqueName"
+      },
+      {
+        "name": "autoFocus",
+        "type": "variable",
+        "value": "clone"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "eventBrokerService"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.eventBrokerService"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(solaceConnectionStepAtom.brokerName)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "host"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.host"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(solaceConnectionStepAtom.authentication.host)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "msgVpn"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.msgVpn"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(solaceConnectionStepAtom.authentication.messageVpn)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "authenticationTypeReadOnlyField"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.authenticationType"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(solaceConnectionStepAtom.authenticationType)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientUsername"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.clientUsername"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(basicAuthValues.clientUsername)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clientPassword"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.clientPassword"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "clientPassword"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "destinationType"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.destinationType"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(solaceConnectionStepAtom.binding.destinationType)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "bindingDestination"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.bindingDestination"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(solaceConnectionStepAtom.binding.destination)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/HeaderMappingTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "key"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(key)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/HeaderMappingTab.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "value"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getConnectorSummaryValue(value)"
+      }
+    ]
+  }
+]

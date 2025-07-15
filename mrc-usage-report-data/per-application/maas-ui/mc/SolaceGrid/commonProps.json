@@ -1,0 +1,38 @@
+[
+  {
+    "name": "item",
+    "count": 6
+  },
+  {
+    "name": "xs",
+    "count": 6
+  },
+  {
+    "name": "display",
+    "count": 3
+  },
+  {
+    "name": "justifyContent",
+    "count": 3
+  },
+  {
+    "name": "container",
+    "count": 2
+  },
+  {
+    "name": "spacing",
+    "count": 1
+  },
+  {
+    "name": "alignItems",
+    "count": 1
+  },
+  {
+    "name": "justify-content",
+    "count": 1
+  },
+  {
+    "name": "textAlign",
+    "count": 1
+  }
+]

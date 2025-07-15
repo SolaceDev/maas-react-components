@@ -1,0 +1,9 @@
+[
+  "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingsActionsRowItem.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokensAccordion.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx"
+]

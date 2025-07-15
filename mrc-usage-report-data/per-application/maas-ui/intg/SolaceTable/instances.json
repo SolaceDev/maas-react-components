@@ -1,0 +1,167 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "connector-flow-list-table"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "connector-flow-list-table"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "allConnectors"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "(column: SolaceTableColumn | undefined) => {\n\t\t\t\t\tsetConnectorSort(`sort=${column?.field}:${column?.sortDirection}`);\n\t\t\t\t}"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "expression",
+        "value": "columns.find((column) => column.field === connectorSort.split(\":\")[0])"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "function",
+        "value": "(row: SolaceTableRow) => {\n\t\t\t\t\treturn renderRowCells(row);\n\t\t\t\t}"
+      },
+      {
+        "name": "renderCustomRowActionItem",
+        "type": "variable",
+        "value": "customRowActionMenuItems"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      },
+      {
+        "name": "renderCustomEmptyState",
+        "type": "function",
+        "value": "() => (\n\t\t\t\t\t<Box display={\"flex\"} justifyContent={\"center\"} height={\"100%\"}>\n\t\t\t\t\t\t<EmptyFilterPanel\n\t\t\t\t\t\t\tid={\"connectorFlowListEmptyFilterPanel\"}\n\t\t\t\t\t\t\ttitle={en.connectors.labels.filterEmptyState.title}\n\t\t\t\t\t\t\tdetails={en.connectors.labels.filterEmptyState.details}\n\t\t\t\t\t\t\tonClearFilterClick={handleClearFilters}\n\t\t\t\t\t\t\tshowSecondDetailsSection={false}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</Box>\n\t\t\t\t)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "agent-list-table"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "agent-list-table"
+      },
+      {
+        "name": "rows",
+        "type": "variable",
+        "value": "allAgents"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "(column: SolaceTableColumn | undefined) => {\n\t\t\t\t\tsetAgentSort(`sort=${column?.field}`);\n\t\t\t\t}"
+      },
+      {
+        "name": "sortedColumn",
+        "type": "expression",
+        "value": "columns.find((column) => column.field === agentSort)"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "function",
+        "value": "(row: SolaceTableRow) => {\n\t\t\t\t\treturn renderRowCells(row);\n\t\t\t\t}"
+      },
+      {
+        "name": "selectionChangedCallback",
+        "type": "variable",
+        "value": "handleRowSelections"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedRowIds"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewErrorLogs.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "connector-flow-list-table"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "connector-flow-list-table"
+      },
+      {
+        "name": "rows",
+        "type": "expression",
+        "value": "connectorErrorLogs ?? []"
+      },
+      {
+        "name": "columns",
+        "type": "variable",
+        "value": "columns"
+      },
+      {
+        "name": "selectionType",
+        "type": "expression",
+        "value": "SolaceTableSelectionType.SINGLE"
+      },
+      {
+        "name": "sortCallback",
+        "type": "function",
+        "value": "function (): void {\n\t\t\t\t\t\t\treturn;\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "renderCustomRowCells",
+        "type": "function",
+        "value": "(row: SolaceTableRow) => {\n\t\t\t\t\t\t\treturn renderRowCells(row);\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "logsFetching"
+      }
+    ]
+  }
+]

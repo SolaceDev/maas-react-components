@@ -1,0 +1,106 @@
+[
+  {
+    "name": "name",
+    "count": 34
+  },
+  {
+    "name": "value",
+    "count": 32
+  },
+  {
+    "name": "onChange",
+    "count": 28
+  },
+  {
+    "name": "hasErrors",
+    "count": 22
+  },
+  {
+    "name": "helperText",
+    "count": 22
+  },
+  {
+    "name": "dataQa",
+    "count": 21
+  },
+  {
+    "name": "width",
+    "count": 11
+  },
+  {
+    "name": "id",
+    "count": 11
+  },
+  {
+    "name": "label",
+    "count": 9
+  },
+  {
+    "name": "maxLength",
+    "count": 9
+  },
+  {
+    "name": "required",
+    "count": 8
+  },
+  {
+    "name": "title",
+    "count": 8
+  },
+  {
+    "name": "type",
+    "count": 7
+  },
+  {
+    "name": "readOnly",
+    "count": 7
+  },
+  {
+    "name": "placeholder",
+    "count": 4
+  },
+  {
+    "name": "endAdornment",
+    "count": 2
+  },
+  {
+    "name": "disabled",
+    "count": 2
+  },
+  {
+    "name": "onBlur",
+    "count": 2
+  },
+  {
+    "name": "autoFocus",
+    "count": 1
+  },
+  {
+    "name": "size",
+    "count": 1
+  },
+  {
+    "name": "data-qa",
+    "count": 1
+  },
+  {
+    "name": "fullWidth",
+    "count": 1
+  },
+  {
+    "name": "inlineLabel",
+    "count": 1
+  },
+  {
+    "name": "onFocus",
+    "count": 1
+  },
+  {
+    "name": "aria-label",
+    "count": 1
+  },
+  {
+    "name": "data-lpignore",
+    "count": 1
+  }
+]

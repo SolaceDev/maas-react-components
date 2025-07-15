@@ -1,0 +1,227 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "brokerSSONestedAccordion"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => toggleBrokerAccordion()"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "en.brokerSSOConfig.instructionsText"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isBrokerAccordionExpanded"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Box>\n\t\t\t\t\t\t\t<Box>\n\t\t\t\t\t\t\t\t1. Click <TextHighlight>Manage Brokers</TextHighlight>, then select which event broker services to\n\t\t\t\t\t\t\t\tenable to use Broker SSO. <br />\n\t\t\t\t\t\t\t\t2. Click <TextHighlight>Enable SSO.</TextHighlight>\n\t\t\t\t\t\t\t\t<br />\n\t\t\t\t\t\t\t\t3. Click <TextHighlight>Copy Broker URIs.</TextHighlight> <br />\n\t\t\t\t\t\t\t\t4. Add the URIs you&apos;ve copied to your <TextHighlight>identity provider.</TextHighlight>\n\t\t\t\t\t\t\t\t<br />\n\t\t\t\t\t\t\t\t5. After you complete these steps for your event broker services, you can use SSO to access them.\n\t\t\t\t\t\t\t\t<br />\n\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t<TroubleshootingTip>\n\t\t\t\t\t\t\t\t<TextHighlight>Troubleshooting tip</TextHighlight>\n\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\tIf a broker has more than one URI, the URIs are copied as comma-separated list. If your identity\n\t\t\t\t\t\t\t\t\tprovider does not support this format, manually enter each URI separately.\n\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t</TroubleshootingTip>\n\t\t\t\t\t\t</Box>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/components/ViewMessageSpoolDetails.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "id"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<ServiceSummary\n\t\t\t\t\t\t\t\t\t\tname={name}\n\t\t\t\t\t\t\t\t\t\tserviceClassId={serviceClassId}\n\t\t\t\t\t\t\t\t\t\tmessageStorage={messageSpoolDetails}\n\t\t\t\t\t\t\t\t\t\tserviceClasses={serviceClasses}\n\t\t\t\t\t\t\t\t\t\tserviceId={id}\n\t\t\t\t\t\t\t\t\t/>"
+      },
+      {
+        "name": "expanded",
+        "type": "expression",
+        "value": "expanded[index]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleExpanded(index)"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<MessageSpoolCalculations\n\t\t\t\t\t\t\t\t\t\tmessageSpoolSize={messageSpoolDetails?.totalGbSize ?? 0}\n\t\t\t\t\t\t\t\t\t\texpandedGbBilled={messageSpoolDetails?.expandedGbBilled ?? 0}\n\t\t\t\t\t\t\t\t\t\tdefaultMessageSpoolSize={messageSpoolDetails?.defaultGbSize ?? 0}\n\t\t\t\t\t\t\t\t\t/>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "usersAccordion"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderUserSummary(0)"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Box>\n\t\t\t\t\t\t\t\t\t<Box maxHeight={\"200px\"} overflow={\"auto\"}>\n\t\t\t\t\t\t\t\t\t\t<SolaceChipContainer paddingLeft={4}>\n\t\t\t\t\t\t\t\t\t\t\t{usersList.map((user, index) => {\n\t\t\t\t\t\t\t\t\t\t\t\treturn (\n\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTooltip\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tkey={user.email}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tvariant=\"html\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ttitle={\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceStack>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Box>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography fontWeight={500}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{userGroups.viewDetailsDialog.usersDropdown.userToolTip.name}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.firstName ? `${user.firstName} ${user.lastName}` : \"-\"}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Box>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography fontWeight={500}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{userGroups.viewDetailsDialog.usersDropdown.userToolTip.email}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceTypography>{user.email}</SolaceTypography>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</SolaceStack>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tplacement=\"bottom\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div ref={index === usersList.length - 1 ? lastUserRef : null}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<SolaceChip label={user.email} maxWidth={\"fit-content\"} />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</SolaceTooltip>\n\t\t\t\t\t\t\t\t\t\t\t\t);\n\t\t\t\t\t\t\t\t\t\t\t})}\n\t\t\t\t\t\t\t\t\t\t</SolaceChipContainer>\n\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t{isLoading && (\n\t\t\t\t\t\t\t\t\t\t<LoadingContainer>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceCircularProgress />\n\t\t\t\t\t\t\t\t\t\t</LoadingContainer>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t{hasMore && !showMore && !isLoading && (\n\t\t\t\t\t\t\t\t\t\t<Box paddingLeft={2} paddingY={1}>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleShowMore}>\n\t\t\t\t\t\t\t\t\t\t\t\t{userGroups.viewDetailsDialog.usersDropdown.showMore}\n\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t{showMore && (\n\t\t\t\t\t\t\t\t\t\t<Box paddingLeft={2} paddingY={1}>\n\t\t\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" onClick={handleShowLess}>\n\t\t\t\t\t\t\t\t\t\t\t\t{userGroups.viewDetailsDialog.usersDropdown.showLess}\n\t\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t\t</Box>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isExpanded"
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "openAuditFilterOptionsSection"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<FilterContainer>\n\t\t\t\t\t\t<FiltersOptions>\n\t\t\t\t\t\t\t<SolaceSelect\n\t\t\t\t\t\t\t\tlabel={en.auditLogs.timeRange}\n\t\t\t\t\t\t\t\tname=\"timeRange\"\n\t\t\t\t\t\t\t\tonChange={(e) => handleFilterChange(e)}\n\t\t\t\t\t\t\t\ttitle=\"Time Range\"\n\t\t\t\t\t\t\t\tvalue={filters.timeRange.value}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{timeRangeLabels?.map(({ label, value }, index) => (\n\t\t\t\t\t\t\t\t\t<MenuItem key={index} value={value}>\n\t\t\t\t\t\t\t\t\t\t{label}\n\t\t\t\t\t\t\t\t\t</MenuItem>\n\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t</SolaceSelect>\n\t\t\t\t\t\t\t<SolaceSelect\n\t\t\t\t\t\t\t\tlabel={en.auditLogs.status}\n\t\t\t\t\t\t\t\tname=\"status\"\n\t\t\t\t\t\t\t\tonChange={(e) => handleFilterChange(e)}\n\t\t\t\t\t\t\t\ttitle=\"Status\"\n\t\t\t\t\t\t\t\tvalue={filters.status.value}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{statusLabels?.map(({ label, value }, index) => (\n\t\t\t\t\t\t\t\t\t<MenuItem key={index} value={value}>\n\t\t\t\t\t\t\t\t\t\t{label}\n\t\t\t\t\t\t\t\t\t</MenuItem>\n\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t</SolaceSelect>\n\t\t\t\t\t\t\t<SolaceSelect\n\t\t\t\t\t\t\t\tlabel={en.auditLogs.category}\n\t\t\t\t\t\t\t\tname=\"category\"\n\t\t\t\t\t\t\t\tonChange={(e) => handleFilterChange(e)}\n\t\t\t\t\t\t\t\ttitle=\"Category\"\n\t\t\t\t\t\t\t\tvalue={filters.category.value}\n\t\t\t\t\t\t\t\tid=\"categoryFilter\"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{auditCategoriesEventTypes?.map((item: { category: string }, index: number) => (\n\t\t\t\t\t\t\t\t\t<MenuItem key={index} value={item.category}>\n\t\t\t\t\t\t\t\t\t\t{item.category}\n\t\t\t\t\t\t\t\t\t</MenuItem>\n\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t</SolaceSelect>\n\t\t\t\t\t\t\t{autoCompleteField()}\n\t\t\t\t\t\t\t<SolaceSelect\n\t\t\t\t\t\t\t\tdisabled={!filters.category.value}\n\t\t\t\t\t\t\t\tlabel={en.auditLogs.event}\n\t\t\t\t\t\t\t\tname=\"event\"\n\t\t\t\t\t\t\t\tonChange={(e) => handleFilterChange(e)}\n\t\t\t\t\t\t\t\ttitle=\"Event\"\n\t\t\t\t\t\t\t\tvalue={filters.event.value}\n\t\t\t\t\t\t\t\thelperText={!filters.category.value ? en.auditLogs.selectCategory : \"\"}\n\t\t\t\t\t\t\t\tid=\"eventFilter\"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{eventsOptions?.types?.map((item: { name: string; description: string }, index: number) => (\n\t\t\t\t\t\t\t\t\t<MenuItem selected={true} key={index} value={item.name}>\n\t\t\t\t\t\t\t\t\t\t{item.description}\n\t\t\t\t\t\t\t\t\t</MenuItem>\n\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t</SolaceSelect>\n\t\t\t\t\t\t</FiltersOptions>\n\t\t\t\t\t</FilterContainer>"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => setShowFilterOptions((state) => !state)"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "showFilterOptions"
+      },
+      {
+        "name": "summary",
+        "type": "jsx",
+        "value": "<FiltersHeader>\n\t\t\t\t\t\t<Box>\n\t\t\t\t\t\t\t<SolaceTypography>{en.auditLogs.filters}</SolaceTypography>\n\t\t\t\t\t\t\t<FilterPillsContainer>\n\t\t\t\t\t\t\t\t{selectedFilters?.map((filter, index) => (\n\t\t\t\t\t\t\t\t\t<SolaceChip\n\t\t\t\t\t\t\t\t\t\tkey={index}\n\t\t\t\t\t\t\t\t\t\tlabel={filter.name + \" : \" + filter.value}\n\t\t\t\t\t\t\t\t\t\tonDelete={() => deleteFilter(filter.key)}\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t\t{selectedFilters.length > 0 ? (\n\t\t\t\t\t\t\t\t\t<SolaceButton variant=\"text\" dataQa=\"clearAllButton\" onClick={discardFilterChanges}>\n\t\t\t\t\t\t\t\t\t\t{en.auditLogs.clearAll}\n\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t) : null}\n\t\t\t\t\t\t\t</FilterPillsContainer>\n\t\t\t\t\t\t</Box>\n\t\t\t\t\t</FiltersHeader>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokensAccordion.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "token.id"
+      },
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "expanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChange"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetails()"
+      },
+      {
+        "name": "square",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChange"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "`${categoryName} (${numberOfSelectedPermissions}/${permissions.length})`"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<>{renderDetails(false)}</>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/dialogs/CopyTokenDialog.tsx",
+    "props": [
+      {
+        "name": "expanded",
+        "type": "variable",
+        "value": "isExpanded"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "summary",
+        "type": "expression",
+        "value": "renderAccordionSummary()"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "renderAccordionDetails()"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "tokenDetailsAccordion"
+      }
+    ]
+  }
+]

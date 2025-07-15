@@ -1,0 +1,62 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDatacenters.tsx",
+    "props": [
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "headers"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "datacenterQueries.data"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "datacenter-list"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterNetwork.tsx",
+    "props": [
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "subnetHeaders"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "subnetGridTemplate"
+      },
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "cluster.virtualNetwork.subnets"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "renderRow"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "subnet-list"
+      }
+    ]
+  }
+]

@@ -1,0 +1,1073 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "7"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "5"
+      },
+      {
+        "name": "textAlign",
+        "type": "expression",
+        "value": "\"end\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerSSOZeroStateCx.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "column"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "justifyContent",
+        "type": "string",
+        "value": "center"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerSSOZeroStateCx.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerSSOZeroStateCx.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerSSOZeroStateCx.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerSSOZeroStateCx.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1.4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "10.6"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "9"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mr",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mr",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "11"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountDetailsOverview.tsx",
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountDetailsOverview.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "6"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountDetailsOverview.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "6"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountDetailsOverview.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mt",
+        "type": "number",
+        "value": "1.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountDetailsOverview.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountDetailsOverview.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ paddingTop: 2 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ paddingTop: 2 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "column"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ padding: 2 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ padding: 2 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "value": "column"
+      },
+      {
+        "name": "alignItems",
+        "type": "string",
+        "value": "center"
+      },
+      {
+        "name": "spacing",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ padding: 4 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"column\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "item",
+        "type": "variable",
+        "value": "isParentCategory"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "permission.id"
+      },
+      {
+        "name": "paddingTop",
+        "type": "expression",
+        "value": "theme.spacing(0.5)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "0.5"
+      },
+      {
+        "name": "style",
+        "type": "variable",
+        "value": "categoryDetailsSectionStyle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "style",
+        "type": "variable",
+        "value": "categoryDetailsSectionStyle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "6"
+      },
+      {
+        "name": "style",
+        "type": "variable",
+        "value": "categoryDetailsSectionStyle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "categoryName"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ padding: theme.spacing(0.25) }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "style",
+        "type": "variable",
+        "value": "permissionTitleSectionStyle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "0.5"
+      },
+      {
+        "name": "style",
+        "type": "variable",
+        "value": "bulkPermissionCheckboxStyle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "0.5"
+      },
+      {
+        "name": "style",
+        "type": "variable",
+        "value": "bulkPermissionCheckboxStyle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "marginTop",
+        "type": "expression",
+        "value": "categoryName ? theme.spacing(0.5) : theme.spacing(0.25)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "direction",
+        "type": "expression",
+        "value": "\"column\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "container",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "10.8"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "0.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "item",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "xs",
+        "type": "number",
+        "value": "0.5"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "value": "readWrite"
+      }
+    ]
+  }
+]

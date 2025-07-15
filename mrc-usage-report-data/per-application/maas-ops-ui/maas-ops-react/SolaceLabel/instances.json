@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`description-label-${selectedItem.id}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationTypesDetailsPanel.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`state-label-${selectedItem.id}`"
+      }
+    ]
+  }
+]

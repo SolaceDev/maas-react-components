@@ -1,0 +1,62 @@
+[
+  {
+    "name": "name",
+    "count": 9
+  },
+  {
+    "name": "label",
+    "count": 8
+  },
+  {
+    "name": "onChange",
+    "count": 8
+  },
+  {
+    "name": "dataQa",
+    "count": 7
+  },
+  {
+    "name": "value",
+    "count": 6
+  },
+  {
+    "name": "fullWidth",
+    "count": 5
+  },
+  {
+    "name": "maxLength",
+    "count": 5
+  },
+  {
+    "name": "helperText",
+    "count": 5
+  },
+  {
+    "name": "hasErrors",
+    "count": 4
+  },
+  {
+    "name": "resizable",
+    "count": 4
+  },
+  {
+    "name": "title",
+    "count": 3
+  },
+  {
+    "name": "disabled",
+    "count": 2
+  },
+  {
+    "name": "width",
+    "count": 2
+  },
+  {
+    "name": "onBlur",
+    "count": 1
+  },
+  {
+    "name": "id",
+    "count": 1
+  }
+]

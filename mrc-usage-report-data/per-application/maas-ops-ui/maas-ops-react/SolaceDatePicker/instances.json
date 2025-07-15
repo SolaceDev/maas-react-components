@@ -1,0 +1,66 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "onClear",
+        "type": "function",
+        "value": "() => setSelectedStartDate(null)"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(date) => setSelectedStartDate(moment(date).startOf(\"day\"))"
+      },
+      {
+        "name": "disableFuture",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedStartDate?.toISOString()"
+      },
+      {
+        "name": "timezone",
+        "type": "string",
+        "value": "UTC"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "onClear",
+        "type": "function",
+        "value": "() => setSelectedEndDate(null)"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(date) => setSelectedEndDate(moment(date))"
+      },
+      {
+        "name": "disableFuture",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedEndDate?.toISOString()"
+      },
+      {
+        "name": "timezone",
+        "type": "string",
+        "value": "UTC"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.styles.ts",
+    "props": []
+  }
+]

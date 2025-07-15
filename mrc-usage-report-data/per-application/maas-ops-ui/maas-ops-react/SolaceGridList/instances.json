@@ -1,0 +1,162 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/NotificationContacts.tsx",
+    "props": [
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "headers"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "items"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "250px 1fr 100px 50px"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "platform-notification-contacts-list"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "dcTuningstate"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "wanTuningDaemonSetStatus"
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": "['Service Tier', 'Version', 'Status(D/C/R/U/A)', 'Up-To-Date Services', 'All Services']"
+      },
+      {
+        "name": "numOfGridListItemDisplayed",
+        "type": "number",
+        "value": "4"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(100px, 150px) 100px minmax(50px, 150px) minmax(50px, 150px) minmax(120px, 1fr) "
+      },
+      {
+        "name": "onSelection",
+        "type": "function",
+        "value": "(item) => {\n                        setSelectedItemId(item.serviceTier as ServiceTier)\n                        setActiveTabFeature(WanTuningFeatures.CHECK_DAEMON_SET_POD)\n                        dispatch(clearDaemonSetPodStatus())\n                    }"
+      },
+      {
+        "name": "selectedItemId",
+        "type": "variable",
+        "value": "selectedItemId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "service-tier-grid-list"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "wanTuningPodStatus"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "200px 90px 400px 400px 400px"
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": "[\"Pod Name\", \"Pod Status\", \"Attached Node\", \"Message Broker Pod\", \"Recent Events\"]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/TracingDestinationTable.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "tracingProfile"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "numOfGridListItemDisplayed",
+        "type": "number",
+        "value": "10"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "tracing-destinations-table"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "minmax(5px, 15px) minmax(120px, 300px) minmax(120px, 1fr) minmax(120px, 150px) 150px"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "noItemsFound"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "emptyRowMapping"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "empty-tracing-destinations-table"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "string",
+        "value": "1fr"
+      }
+    ]
+  }
+]

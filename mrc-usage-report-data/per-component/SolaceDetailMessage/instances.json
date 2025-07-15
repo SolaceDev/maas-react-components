@@ -1,0 +1,676 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[0] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[0] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[1] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[1] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[0] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[0] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[1] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[1] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/EmptyStateConfiguration.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<ApplicationDomainIcon />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "messages[configType].emptyConfigurationTitle"
+      },
+      {
+        "name": "actions",
+        "type": "jsx",
+        "value": "<SolaceButton variant={\"link\"} href={messages[configType].emptyLinkref}>\n\t\t\t\t\t\t{messages[configType].emptyLinkToDocumentation}\n\t\t\t\t\t</SolaceButton>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Box textAlign={\"center\"}>{messages[configType].emptyConfigurationDetail}</Box>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[0] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[0] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[1] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[1] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/EmptyFilterPanel.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<CouldNotFindIllustration height={\"130px\"} width={\"130px\"} />"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "jsx",
+        "value": "<SolaceButton variant=\"outline\" onClick={onClearFilterClick}>\n\t\t\t\t\t\t\t{en.connectors.buttons.clearFilters}\n\t\t\t\t\t\t</SolaceButton>"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/EmptyFilterPanel.tsx",
+    "props": [
+      {
+        "name": "actions",
+        "type": "jsx",
+        "value": "<SolaceButton variant={\"link\"} href={href}>\n\t\t\t\t\t\t\t\t\t{secondSectionActionString}\n\t\t\t\t\t\t\t\t</SolaceButton>"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "secondSectionDetails"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/EmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<NoMappingIllustration height={\"144px\"} width={\"144px\"} />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "readOnlyMode ? en.connectors.labels.noMapping : en.connectors.labels.beginMapping"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "readOnlyMode ? en.connectors.labels.readOnlyMappingDescription : en.connectors.labels.mappingDescription"
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t{\n\t\t\t\t\t\tid: \"learn-about-mapping-btn\",\n\t\t\t\t\t\tvariant: \"link\",\n\t\t\t\t\t\tdataQa: \"learn-about-mapping-btn\",\n\t\t\t\t\t\tchildren: en.connectors.buttons.learnMapping,\n\t\t\t\t\t\thref: \"https://docs.solace.com/Micro-Integrations/Managed/create-message-headers.htm\"\n\t\t\t\t\t}\n\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/TableEmptyState.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.connectors.labels.noConnectorFlows"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<ConnectorsLandingPage height={\"130px\"} width={\"130px\"} />"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "en.connectors.labels.tableEmptyDescription"
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t{\n\t\t\t\t\t\tid: \"create-connector-flow-btn\",\n\t\t\t\t\t\tvariant: \"call-to-action\",\n\t\t\t\t\t\tdataQa: \"create-connector-flow-btn\",\n\t\t\t\t\t\tchildren: en.connectors.create,\n\t\t\t\t\t\tonClick: onCreateConnectorFlow\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tid: \"view-all-connector-btn\",\n\t\t\t\t\t\tvariant: \"text\",\n\t\t\t\t\t\tdataQa: \"view-all-connector-btn\",\n\t\t\t\t\t\tchildren: en.connectors.buttons.viewAllTypes,\n\t\t\t\t\t\tonClick: OnViewAllConnectorType\n\t\t\t\t\t}\n\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/layout/EmptyPanel.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "expression",
+        "value": "illustration ?? <FetchFailedComputer />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "title ?? \"Nothing to see here!\""
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details ?? \"Please try returning to main page.\""
+      },
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "!hideEscapeRoute\n\t\t\t\t\t\t\t? [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tid: \"empty-panel-btn\",\n\t\t\t\t\t\t\t\t\t\tvariant: variant ?? \"call-to-action\",\n\t\t\t\t\t\t\t\t\t\tdataQa: dataQa ?? \"back-integration\",\n\t\t\t\t\t\t\t\t\t\tchildren: buttonLabel ?? \"Go to Integration\",\n\t\t\t\t\t\t\t\t\t\tonClick\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t  ]\n\t\t\t\t\t\t\t: undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/layout/EmptyPanel.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "expression",
+        "value": "illustration ?? <FetchFailedComputer />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "title ?? t({ id: \"id_nothing_here\", message: \"Nothing to see here!\" })"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details ?? t({ id: \"id_return_home\", message: \"Please try returning to main page.\" })"
+      },
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "!hideEscapeRoute\n\t\t\t\t\t\t\t? [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\tid: \"empty-panel-btn\",\n\t\t\t\t\t\t\t\t\t\tvariant: variant ?? \"call-to-action\",\n\t\t\t\t\t\t\t\t\t\tdataQa: dataQa ?? \"back-mission-control\",\n\t\t\t\t\t\t\t\t\t\tchildren: buttonLabel ?? t({ id: \"id_goto_mc\", message: \"Go to Mission Control\" }),\n\t\t\t\t\t\t\t\t\t\tonClick\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t  ]\n\t\t\t\t\t\t\t: undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageTable.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage.noDrawdownUsageSub"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<NoDrawdownUsageSVG />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage.noDrawdownUsage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/NoDrawdownUsage/NoDrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Box sx={{ display: \"flex\", justifyContent: \"center\" }}>\n\t\t\t\t\t\t<Box sx={{ textAlign: \"center\", width: \"70%\" }}>\n\t\t\t\t\t\t\t<SolaceTypography mb={2}>{drawdownUsage.noDrawdownUsage.subTitle}</SolaceTypography>\n\t\t\t\t\t\t\t<SolaceTypography>{drawdownUsage.noDrawdownUsage.message}</SolaceTypography>\n\t\t\t\t\t\t</Box>\n\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<NoDrawdownUsageSVG />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage.title"
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t{\n\t\t\t\t\t\tchildren: drawdownUsage.noDrawdownUsage.contactUs,\n\t\t\t\t\t\tid: \"contactUs-btn\",\n\t\t\t\t\t\tonClick: () => toggleContactUsModalOpenState(),\n\t\t\t\t\t\tvariant: \"call-to-action\"\n\t\t\t\t\t}\n\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/SupportPageHome.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Box maxWidth={400}>\n\t\t\t\t\t\t\t<SolaceTypography variant=\"h3\" fontWeight={400} textAlign={\"center\"}>\n\t\t\t\t\t\t\t\t<SolaceTypography>{supportPage.freeTrialDescription}</SolaceTypography>\n\t\t\t\t\t\t\t\t<SolaceTypography mt={2}>\n\t\t\t\t\t\t\t\t\t{supportPage.freeTrialDescriptionExt}\n\t\t\t\t\t\t\t\t\t<HelpOutlineIcon\n\t\t\t\t\t\t\t\t\t\tcolor=\"primary\"\n\t\t\t\t\t\t\t\t\t\tfontSize=\"medium\"\n\t\t\t\t\t\t\t\t\t\tsx={{ ml: 0.5, mr: 0.5, display: \"inline-block\", verticalAlign: \"bottom\", \":hover\": \"false\" }}\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t{supportPage.freeTrialDescriptionExt2}\n\t\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t\t</SolaceTypography>\n\t\t\t\t\t\t</Box>"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<LearnAndHelpSupport />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "supportPage.freeTrialTitle"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/Upgrades.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "upgradeMessage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/PlansSidebar.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<EmptyStateUpgradeRuns />"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "No plan selected"
+      },
+      {
+        "name": "details",
+        "type": "string",
+        "value": "Create or select a listed plan to view its details."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/run/Run.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<FailedFetchImg />"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Failed to fetch upgrade run"
+      },
+      {
+        "name": "details",
+        "type": "string",
+        "value": "Run data could not be retrieved. It may have been deleted or does not exist."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/Runs.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<EmptyStateUpgradeRuns />"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "No scheduled upgrade runs"
+      },
+      {
+        "name": "details",
+        "type": "string",
+        "value": "No upgrade runs returned. Open the create modal to schedule based off an existing Plan."
+      },
+      {
+        "name": "actions",
+        "type": "array",
+        "value": "[{ children: \"Schedule Upgrade Run\", variant: \"outline\", onClick: setCreateOpen }]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "drawdownUsage.drawdownUsageNotAvailable_subtext1"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<DrawdownUsageEmptyState height={\"100px\"} width={\"100px\"} />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "drawdownUsage.drawdownUsageNotAvailable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/drawdownUsage/components/DrawdownUsageTable.tsx",
+    "props": [
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsageSub"
+      },
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<DrawdownUsageEmptyState height={\"100px\"} width={\"100px\"} />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationSidebar.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "integrationStrings.sidebar.noSelection.title"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "integrationStrings.sidebar.noSelection.details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/MonitoringDashboard.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<NoAccessImg />"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "You do not have access to view this tab"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/SidekickDeploymentDetails.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<FailedFetchImg />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "(serviceError as any)?.data?.message ??\n\t\t\t\t\t\t(infrastructureError as any)?.data?.message ??\n\t\t\t\t\t\t\"There is no connector deployment for this service!\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/CollectorDetails.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<FailedFetchImg />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "(serviceError as any)?.data?.message ??\n\t\t\t\t\t\t(infrastructureError as any)?.data?.message ??\n\t\t\t\t\t\t\"There is no collector for this service!\""
+      }
+    ]
+  }
+]

@@ -1,0 +1,172 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/insightsOrganizations/InsightsOrganizations.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "filterBy"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "filterBy"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Filter By"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "500px"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => {\n\t\t\t\t\t\t\tsetPageNumber(1);\n\t\t\t\t\t\t\tsetCurrentFilters(event.value as { name: string; value: string }[]);\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "currentFilters"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "filterOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "getShowOptionDividerCallback",
+        "type": "variable",
+        "value": "getShowSolaceSelectAutocompleteOptionDivider"
+      },
+      {
+        "name": "groupByCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteGroupBy"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFiltersCallback"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/monitoringJobs/MonitoringJobs.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "filterBy"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "filterBy"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Filter By"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "500px"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => {\n\t\t\t\t\t\t\tsetPageNumber(1);\n\t\t\t\t\t\t\tsetCurrentFilters(event.value as Filter[]);\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "currentFilters"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "filterOptions"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "getShowOptionDividerCallback",
+        "type": "variable",
+        "value": "getShowSolaceSelectAutocompleteOptionDivider"
+      },
+      {
+        "name": "groupByCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteGroupBy"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "handleFiltersCallback"
+      }
+    ]
+  }
+]

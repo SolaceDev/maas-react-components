@@ -1,0 +1,18 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/DefaultFilterMultiSelect.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/CustomTransformationNode.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/reactFlow/SelectFieldNode.tsx",
+    "props": []
+  }
+]

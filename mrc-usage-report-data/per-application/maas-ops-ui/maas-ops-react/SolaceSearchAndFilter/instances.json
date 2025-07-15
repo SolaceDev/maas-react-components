@@ -1,0 +1,77 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "searchAndFilterID"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchByInfrastructureId"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "searchInfrastructureId"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => {\n\t\t\t\t\t\tsetSearchInfrastructureId(event.value);\n\t\t\t\t\t}"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "250px"
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "FIELD_TYPES.SEARCH"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchByInfrastructureId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationOrganizationsTab.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "organizationNameFilter"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "integrationStrings.organizations.filters.nameFilter.placeholder"
+      },
+      {
+        "name": "type",
+        "type": "expression",
+        "value": "FIELD_TYPES.FILTER"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "nameFilter"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleNameFilterChange"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "425px"
+      }
+    ]
+  }
+]

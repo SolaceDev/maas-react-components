@@ -1,0 +1,162 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerListTable.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "getMetadata().count"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "getMetadata().pageSize"
+      },
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "selectedPage"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "onSelectPage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "userTablePage"
+      },
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "USER_LIST_DATA_PER_PAGE"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "pageCount || 0"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(page) => setUserTablePage(page)"
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "getMetadata().count"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "getMetadata().pageSize"
+      },
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "selectedPage"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "onSelectPage"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogsDataTable.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "meta?.pagination.pageNumber + 1"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(page) => fetchNewPage(page)"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "meta?.pagination.totalHitCount"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "meta?.pagination.pageSize"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "pageSize",
+        "type": "number",
+        "value": "10"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "rows.length"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "() => undefined"
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "props": [
+      {
+        "name": "activePage",
+        "type": "expression",
+        "value": "notificationsResponse?.meta?.pageNumber + 1"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "function",
+        "value": "(page) => {\n\t\t\t\t\t\t\t\t\tsetPageNumber(page);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "totalResults",
+        "type": "expression",
+        "value": "notificationsResponse?.meta?.count"
+      },
+      {
+        "name": "pageSize",
+        "type": "expression",
+        "value": "notificationsResponse?.meta?.pageSize"
+      }
+    ]
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.constantBooleanTrue"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "constantBooleanTrue"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"true\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "constantBooleanTrue"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.constantBooleanFalse"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "constantBooleanFalse"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"false\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "constantBooleanFalse"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.constantBooleanTrue"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "constantBooleanTrue"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"true\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "constantBooleanTrue"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.connectors.labels.constantBooleanFalse"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "constantBooleanFalse"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"false\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "constantBooleanFalse"
+      }
+    ]
+  }
+]

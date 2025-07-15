@@ -1,0 +1,5 @@
+[
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/CheckPodStatus.tsx"
+]

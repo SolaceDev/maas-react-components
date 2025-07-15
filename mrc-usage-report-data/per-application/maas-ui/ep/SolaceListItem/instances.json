@@ -1,0 +1,97 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/GettingStartedListItem.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EntitiesToDeleteListingPanel.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "entity.id"
+      },
+      {
+        "name": "data-qa",
+        "type": "expression",
+        "value": "`entityId-${entity.id}`"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ paddingLeft: \"48px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SamplesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "props": [
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disableGutters",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ height: theme.spacing(sampleSetup ? 7 : 9) }"
+      },
+      {
+        "name": "secondaryAction",
+        "type": "jsx",
+        "value": "<Box mr={3}>{getSecondaryAction()}</Box>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", listStyleType: \"disc\", marginLeft: \"16px\", padding: \"0px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", listStyleType: \"disc\", marginLeft: \"16px\", padding: \"0px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", listStyleType: \"disc\", marginLeft: \"16px\", padding: \"0px\" }"
+      }
+    ]
+  }
+]

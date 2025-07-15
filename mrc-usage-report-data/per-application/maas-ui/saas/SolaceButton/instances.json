@@ -1,0 +1,2107 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "resourceAssignmentDelete"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "messages.remove"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => onRemoveResourceAssignment(resourceAssignment)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"outline\""
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => onAddResourceAssignment(displayedUserTypes[0])"
+      },
+      {
+        "name": "isDisabled",
+        "type": "variable",
+        "value": "isDisabled"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "addUser"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
+    "props": [
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!ssoBrokerEnabled"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleManageBrokerButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "manageBrokerButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleViewSettingMapping"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/ManageBrokersDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Cloud/configure-oauth-for-broker-services.htm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerSSOZeroStateCx.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleButtonClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"group-management-link\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleGotoUserGroups"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/AupWarning.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "variable",
+        "value": "hyperLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/AupWarning.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "isDisabled",
+        "type": "variable",
+        "value": "aupIsLoading"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleAgree"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`limitChangeButton-${index}`"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`limitChangeButton-${index}`"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\tsetNewServiceLimit(row.limit ?? 0);\n\t\t\t\t\t\t\tsetEditLimitsRow(row);\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "/ep/runtime/event-management-agents"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Cloud/Event-Portal/event-portal-runtime-config.htm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+    "props": [
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Cloud/environments.htm"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
+    "props": [
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Cloud/environments.htm"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/DeleteEnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Cloud/environments.htm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/DeleteEnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "href",
+        "type": "string",
+        "value": "/ep/runtime?sortBy=environment"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ViewEnvironmentsGrid.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${testItem.id}-${testItem.name}-template-enabled`"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\thistory.push(`/ep/runtime/templates`);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "runtimeTemplatesLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"environmentTypeInfo\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"environmentsInfo\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onClose"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "memSidePanelCloseButton"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Close Side Panel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentDetailsSidePanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleButtonClick"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "buttonEventManager"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ASEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "patchDocumentationUrl(isSAP, \"https://docs.solace.com/Cloud/environments.htm\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "/ep/runtime/templates"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Cloud/Event-Portal/event-portal-runtime-templates.htm"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/Environments.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "createEnvButton"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onCreateEnvClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "discardChanges"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "checkIfChangesDone()"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleCancelButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/myProfile/MyProfile.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "checkIfSaveDisabled()"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "saveProfileButton"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "saveButton"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleApplyButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://docs.solace.com/Cloud/drawdown.htm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+    "props": [
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!canSave"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => saveNotifyPreferences()"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/about/AboutPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://api.solace.dev/cloud/reference/using-the-v2-rest-apis-for-pubsub-cloud"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsZeroState.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"group-management-link\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsZeroState.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleCreateGroup"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "createGroupButton2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleShowMore"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleShowLess"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleGroupMapping"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "groupManagementButton"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "ugCount <= 0"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleCreateGroup"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "createGroupButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"group-management-link\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"group-management-link\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "\"closeIcon\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleClearInput"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "\"searchIcon\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleClearInput"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/EnableSso.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setIsDialogOpen(true)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "enableSsoConfigurationButton"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "enableSsoConfigurationButton"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!isSsoConfigured"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "editSsoConfigurationButton"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "editSsoConfigurationButton"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => editSSOConfiguration()"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!hasLoginSubdomain"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/ConfigureSettings.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setHideSecretKey((state) => !state)"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.accountSettings[hideSecretKey ? \"showKey\" : \"hideKey\"]"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/SsoConfigurationActions.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => updateSsoConfiguration({ state: \"enabled\" })"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "saveSsoConfigurationButton"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "saveSsoConfigurationButton"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!haveStagedChangesToSave"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/TestSsoConfiguration.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setIsDialogOpen(true)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "testSsoConfigurationButton"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "testSsoConfiguration"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!isSsoConfigured"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/SetUpSso.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleSsoSetup"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "setupSsoButton"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "setUpSsoButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/AccountSettings.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "en.accountSettings.learnMoreSSODoc"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogsDataTable.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "discardFilterChanges"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "downloadAuditLogs"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "downloadAuditLogsJsonLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clearAllButton"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "discardFilterChanges"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogDetails.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setSelectedRow(null)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "logDetailsCloseButton"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Close"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/GroupManagement.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"group-management-link\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/GroupManagement.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"setup-idp-link\", \"link\")"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleGroupClaimHelpLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementHeader.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://solace.com"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementHeader.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setIsDialogOpen(true)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://solace.com"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleTestAccessClick"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": [
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!claimId"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleTestAccessClick"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": [
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!canDiscardChanges"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "discardChanges"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "discardChangesButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementFooter.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "expression",
+        "value": "!isEnabled ? () => setIsDialogOpen(true) : () => setIsEditDialogOpen(true)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!canSave || !(canDiscardChanges || !isEnabled)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "saveChangesButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "cancelAddMapping"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "cancelAddClaimMapping"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "addMappingHandler"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!groupMappingState ||\n\t\t\t\t\t\tselectedUserGroups.length < 1 ||\n\t\t\t\t\t\t!claimValuesMapping ||\n\t\t\t\t\t\tclaimValueError ||\n\t\t\t\t\t\tclaimValuesMapping.trim().length < 1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMapping.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "addGroupMappingHandler"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "claimMappingToEdit !== -1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingsActionsRowItem.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "cancelClaimMappingEditHandler"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/ClaimMappingsActionsRowItem.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => saveMappingDetails(rowData.id)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!claimValuesMapping || selectedUserGroups.length < 1 || claimValueError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "supportFormCancel"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleCancelButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "supportFormSubmit"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleSaveButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"solaceCloudStatus\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountUserCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => history.push(`/account-details/users`)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setIsRequestLimitChangeDialogOpen(true)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => history.push(`/support/question`)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "en.overview.eventPortalSection.objectCountHelpLink"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/ServiceLimitsCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => history.push(`/account-details/service-limits`)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setIsRequestUpgradeDialogOpen(true)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AdvancedSettingsSection.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "advancedSettingsButton"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setIsAdvancedSettingsHidden((x) => !x)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AdvancedSettingsSection.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "deleteAccountButton"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setIsDeleteAccountDialogOpen(true)"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsShell/RouteNotFound.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => history.push(\"/\")"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/resetPassword/ResetPassword.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "sendEmailButton"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!email.isValid"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "submit"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleSubmit"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/resetPassword/ResetPassword.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleNavigateToLogin"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"insights-notifications\", \"link\")"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "stopNotification"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "isFetching || mutating"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setOpenConfirmationDialog(true)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "discardChanges"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "isFetching || !formIsDirty || mutating"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onDiscardChanges"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "NotificationIsActive ? \"updateNotifications\" : \"activateNotifications\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "isFetching || !formIsDirty || mutating"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onSubmission"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"insights-email-integrations\", \"link\")"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "value": "https://solace.com/contact/"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/MoveDatacenterEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "patchDocumentationUrl(isSAP, \"https://docs.solace.com/Cloud/environments.htm\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/DataCenterTable.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.privateRegions.contactSupport"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"supportPage\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/EmaConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"eventPortalCloudEma\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/Tokens.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "underline",
+        "type": "string",
+        "value": "always"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"tokenManagementHelpLink\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/Tokens.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onCreateTokenClick"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "isDisabled",
+        "type": "variable",
+        "value": "hasMaxNumberOfTokens"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "createApiTokenButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/dialogs/CopyTokenDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleCopyToken"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "copyTokenButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"solaceOpenAPIV2\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "mode === \"create\" ? \"text\" : \"call-to-action\""
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleCancel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/TokenForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      },
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "handleSubmit"
+      },
+      {
+        "name": "isDisabled",
+        "type": "variable",
+        "value": "createTokenIsLoading"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "createTokenBtn"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/TokenDetails.tsx",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "variable",
+        "value": "onRegenerateTokenClick"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "regenerateTokenButton"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => history.push(`/user-settings/notify-settings`)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "notificationSettingsButton"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.notifications.settings"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "refreshNotificationSettingsButton"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => refetchNotifications()"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "outline"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/notifications/Notifications.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "markAllNotificationsReadButton"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => markAllRead()"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "call-to-action"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDetails.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${header.key}-copy`"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => navigator.clipboard.writeText(header.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "update"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`${item.serviceId}-update`"
+      },
+      {
+        "name": "isDisabled",
+        "type": "expression",
+        "value": "!!readOnlyAccess || item.collectorTracingProfileStatus?.startsWith(CollectorTracingProfileStatus.INIT_SYNC)"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => handleUpdate(item)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingSynchDialog.tsx",
+    "props": [
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "`/services/${item.serviceId}`"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/DistributedTracingInfoBox.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "brandableTextValueConverter(\"tracingDestinationLink\", \"link\")"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "tracingProfile.infoMessage.link.href"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "links.otlpHttp"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/TracingDestinationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "links.otlpHttp"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "viewServicesButton"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "text"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setSynchTracingDialog(true)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "link"
+      },
+      {
+        "name": "href",
+        "type": "expression",
+        "value": "tracingLimits.infoMessage.link.href"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "tracingDestinationCreationIsDisabled ? \"text\" : \"outline\""
+      },
+      {
+        "name": "isDisabled",
+        "type": "variable",
+        "value": "tracingDestinationCreationIsDisabled"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => setTracingDialog({ mode: Mode.Create, isOpen: true })"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "createTracingProfile"
+      }
+    ]
+  }
+]

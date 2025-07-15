@@ -1,0 +1,382 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/SolaceSelectionChip.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.OUTLINED"
+      },
+      {
+        "name": "state",
+        "type": "expression",
+        "value": "selected ? STATES.ACTIVE : STATES.NOT_SELECTED"
+      },
+      {
+        "name": "clickable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "borderRadius",
+        "type": "expression",
+        "value": "\"sm\""
+      },
+      {
+        "name": "boldLabel",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "selectedEventMesh.name"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filterChips/FilterChip.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "onDelete",
+        "type": "variable",
+        "value": "onDelete"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`filterChip-${filterType}`"
+      },
+      {
+        "name": "clickable",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedEventApiProductVersionListItem.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "protocolName.name"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedMessagingServiceListItem.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "messages.configuration.enabled"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedMessagingServiceListItem.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "messagingService.eventMeshId"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "messagingService.eventMeshName"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      },
+      {
+        "name": "maxWidth",
+        "type": "string",
+        "value": "200px"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "toBeRemoved"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedMessagingServiceListItem.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`Protocols: ${messagingService.supportedProtocols?.length ?? 0}`"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/ReferencedApplicationDomainChip.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "applicationDomainName"
+      },
+      {
+        "name": "maxWidth",
+        "type": "expression",
+        "value": "isSidePanel ? 100 : 150"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/MemGraphNodeTooltipContent.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<DomainIconChipContainer hasLockIcon={isAppDomainLocked}>\n\t\t\t\t\t\t\t\t<DomainName>{applicationDomainName}</DomainName>\n\t\t\t\t\t\t\t\t{isAppDomainLocked && <LockIcon width={14} />}\n\t\t\t\t\t\t\t</DomainIconChipContainer>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/filterChips/FilterChip.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "onDelete",
+        "type": "variable",
+        "value": "onDelete"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`filterChip-${filterType}`"
+      },
+      {
+        "name": "clickable",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultList.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "tag.id"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "tag.name"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      },
+      {
+        "name": "borderRadius",
+        "type": "expression",
+        "value": "\"sm\""
+      },
+      {
+        "name": "boldLabel",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultList.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<WithIconChipContent>\n\t\t\t\t\t\t\t\t\t\t\t<HideIcon /> {AUDIT_TAGS_LABELS.Hide}\n\t\t\t\t\t\t\t\t\t\t</WithIconChipContent>"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      },
+      {
+        "name": "borderRadius",
+        "type": "expression",
+        "value": "\"sm\""
+      },
+      {
+        "name": "boldLabel",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraphNodeTooltipContent.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "node.name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraphNodeTooltipContent.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "applicationDomainName"
+      },
+      {
+        "name": "icon",
+        "type": "jsx",
+        "value": "<ApplicationDomainIcon width={14} height={14} />"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/EventApiList.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "domainInfoMap[item.id].name"
+      },
+      {
+        "name": "maxWidth",
+        "type": "number",
+        "value": "150"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/FilterHelper.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domainEdit/TopicDomainSaveDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "maxWidth",
+        "type": "number",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "messages.configuration.enabled"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "eventMesh.name"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventList.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<SolaceTooltip variant={TooltipVariant.overflow} title={`Consumer${consumersCount > 1 ? \"s\" : \"\"}: ${consumersCount}`}>\n\t\t\t\t\t\t{`Consumer${consumersCount > 1 ? \"s\" : \"\"}: ${consumersCount}`}\n\t\t\t\t\t</SolaceTooltip>"
+      },
+      {
+        "name": "maxWidth",
+        "type": "number",
+        "value": "110"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`consumerChip-${eventVersionId}`"
+      }
+    ]
+  }
+]

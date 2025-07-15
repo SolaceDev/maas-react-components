@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "MEMListEnvironmentSelector"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedEnvironment?.environmentId"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => handleChangeEnvironmentSelector(value, selectedEnvironment.showAllResources)"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "environmentOptions"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "REMHeaderEnvironmentSelector"
+      }
+    ]
+  }
+]

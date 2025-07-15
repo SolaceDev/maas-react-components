@@ -1,0 +1,12 @@
+[
+  {
+    "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/section.js",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  }
+]

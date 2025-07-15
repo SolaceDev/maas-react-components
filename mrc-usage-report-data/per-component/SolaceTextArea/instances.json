@@ -1,0 +1,1012 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!errorMsgs[index]"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorMsgs[index] || (\n\t\t\t\t\t\t\t\t\t\t\t\t\t<Box textAlign={\"right\"}>{`${value.trim().length.toLocaleString()}/${complexValueTypeCharLimit.toLocaleString()}`}</Box>\n\t\t\t\t\t\t\t\t\t\t\t\t)"
+      },
+      {
+        "name": "minRows",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "maxRows",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "maxLength",
+        "type": "variable",
+        "value": "complexValueTypeCharLimit"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tconst newValue = e.value;\n\n\t\t\t\t\t\t\t\t\t\t\t\tif (value !== newValue) {\n\t\t\t\t\t\t\t\t\t\t\t\t\tonChange(newValue);\n\t\t\t\t\t\t\t\t\t\t\t\t\thandleValueUpdate(index, customAttributeValue, errorMsgs, newValue, valueType);\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t\thandleValueUpdate(index, customAttributeValue, errorMsgs, value.trim(), valueType);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${caKey}-value-input`"
+      },
+      {
+        "name": "resizable",
+        "type": "expression",
+        "value": "\"vertical\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`postRequestTargetValue`"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "queueBindingConfiguration.postRequestTarget"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`postRequestTargetValue`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`${prefix}Value`"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "displayedHeaderValue"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${prefix}Value`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RequestHeaderDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.application.configuration.restDeliveryPoint.requestHeaderValue"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "2001"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\tvalue && onChange(value.trim());\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "configurationNameRequestHeaderValue"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributeForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!errorMsgs[index]"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorMsgs[index] || (\n\t\t\t\t\t\t\t\t\t\t\t\t\t<Box textAlign={\"right\"}>{`${value.trim().length.toLocaleString()}/${complexValueTypeCharLimit.toLocaleString()}`}</Box>\n\t\t\t\t\t\t\t\t\t\t\t\t)"
+      },
+      {
+        "name": "minRows",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "maxRows",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "maxLength",
+        "type": "variable",
+        "value": "complexValueTypeCharLimit"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\tconst newValue = e.value;\n\n\t\t\t\t\t\t\t\t\t\t\t\tif (value !== newValue) {\n\t\t\t\t\t\t\t\t\t\t\t\t\tonChange(newValue);\n\t\t\t\t\t\t\t\t\t\t\t\t\thandleValueUpdate(index, customAttributeValue, errorMsgs, newValue, valueType);\n\t\t\t\t\t\t\t\t\t\t\t\t\tsetIsDirty(true);\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\t\t\t\t\t\t\t\t\tonBlur();\n\t\t\t\t\t\t\t\t\t\t\t\tonChange(value.trim());\n\t\t\t\t\t\t\t\t\t\t\t\thandleValueUpdate(index, customAttributeValue, errorMsgs, value.trim(), valueType);\n\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${caKey}-value-input`"
+      },
+      {
+        "name": "resizable",
+        "type": "expression",
+        "value": "\"vertical\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/EntityAndVersionEditor.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? error.message : null"
+      },
+      {
+        "name": "onKeyDown",
+        "type": "variable",
+        "value": "blockEnterKey"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\tsetIsDirty(true);\n\t\t\t\t\t\t\t\t\tonChange(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${entityType}[name]`"
+      },
+      {
+        "name": "autoFocus",
+        "type": "expression",
+        "value": "!isDuplicateVersion"
+      },
+      {
+        "name": "maxLength",
+        "type": "expression",
+        "value": "nameMaxLength + 1"
+      },
+      {
+        "name": "minRows",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "maxRows",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RevokeEventAccessDialog.tsx",
+    "props": [
+      {
+        "name": "width",
+        "type": "string",
+        "value": "550px"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "declineReason"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "declineReason"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleReasonChange"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Reason for Revocation\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!declineReasonError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "declineReasonError"
+      },
+      {
+        "name": "maxLength",
+        "type": "variable",
+        "value": "MAX_REASON_LENGTH"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "declineReason"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestReviewDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "declineReason"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "declineReason"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleReasonChange"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Reason for Decline\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!declineReasonError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "declineReasonError"
+      },
+      {
+        "name": "maxLength",
+        "type": "variable",
+        "value": "MAX_REASON_LENGTH"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "reviewDecision !== ReviewDecision.declined"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "declineReason"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordionList.tsx",
+    "props": [
+      {
+        "name": "aria-label",
+        "type": "string",
+        "value": "Comment"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "comment"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "item?.comments"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => handleOnCommentChange(e, item)"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"Comment\""
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/shared.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "description ?? \"emptyDescription\""
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "label ?? \"Description\""
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "description"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\tsetDescription(e.value ?? \"\");\n\t\t\t}"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => {\n\t\t\t\tsetDescription(description.trim());\n\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"description\""
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "10000"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "placeholder ?? \"\""
+      },
+      {
+        "name": "resizable",
+        "type": "variable",
+        "value": "resizable"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "props.name"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "props.label"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChangeTrigger(props, e)"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "fieldValue"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "props.readonly"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "props.required && !props.readonly"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "props.disabled"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "maxLength",
+        "type": "expression",
+        "value": "props.schema.maxLength"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${props.label}-form-textArea`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/atoms/AtomTextArea.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "props"
+      },
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorText || helperText"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/serviceLimits/ServiceLimits.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "limitChangeDetails"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.serviceLimits.labels.details"
+      },
+      {
+        "name": "onBlur",
+        "type": "variable",
+        "value": "onDetailsChange"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"limitChangeDetails\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "1500"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.environments.labels.descripiton"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "dialogState.description"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "environmentDescription"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEnvDescriptionChange"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "handleDescriptionErrorText()"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasDescError"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "envDescriptionTestId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/NoDrawdownUsage/NoDrawdownUsageContactUs.tsx",
+    "props": [
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "3000"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "drawdownUsage.noDrawdownUsage.details"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "contactUsTextField"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "contactUsTextField"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setContactUseMessage(value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!validateText(contactUseMessage) ? false : true"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "!validateText(contactUseMessage) ? \"\" : drawdownUsage.noDrawdownUsage.containsScript"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/CreateEditUserGroupsDialog.tsx",
+    "props": [
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "255"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "userGroups.ugDialog.descripiton"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "dialogState.description"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userGroupsDescription"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleUGDescriptionChange"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "userGroupsDescriptionQa"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "handleDescriptionCount()"
+      },
+      {
+        "name": "resizable",
+        "type": "string",
+        "value": "vertical"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountSettings/SetUpSso.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.accountSettings.additionalComments"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "additionalComments"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setAdditionalCommentsText(e.value)"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.accountSettings.additionalComments"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "additionalCommentsText"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "additionalCommentsTextField"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "additionalCommentsText.length >= 255"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "additionalCommentsText.length >= 255 ? en.accountSettings.characterLimit : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/support/GetSupport.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "descriptionError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "handleDescriptionError()"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "descriptionField"
+      },
+      {
+        "name": "resizable",
+        "type": "string",
+        "value": "vertical"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "descriptionValue"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleDescriptionFieldValue"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "5000"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "supportPageIssue"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/EventPortalLimitsCard.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "limitRequestTextArea"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "limitRequestTextArea"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setRequestDetailsTexts(value)"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.overview.eventPortalSection.requestDetailsTextArea"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "requestDetailsTexts"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.overview.eventPortalSection.requestDetailsTextArea"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "40rem"
+      },
+      {
+        "name": "resizable",
+        "type": "string",
+        "value": "vertical"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.overview.banner.additionalComments"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "en.overview.banner.additionalComments"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setAdditionalComments(e.value)"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.overview.banner.additionalComments"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "additionalComments"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "30vw"
+      },
+      {
+        "name": "resizable",
+        "type": "string",
+        "value": "vertical"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "additionalCommentsId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/RequestNewDatacenter.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "\"sendRequest\""
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "1000"
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "en.privateRegions.labels.newRequestDetails"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setTicketBody(event.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "rest"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      }
+    ]
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "AUDIT_RESULT_STATUS[AUDIT_RESULT_VALUES.match]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "AUDIT_RESULT_STATUS[AUDIT_RESULT_VALUES.partialMatch]"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.OUTLINED"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "AUDIT_RESULT_STATUS[AUDIT_RESULT_VALUES.designerOnly]"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.infoBgBlue"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.DARK_GREY"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sharedAuditStyles.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "AUDIT_RESULT_STATUS[AUDIT_RESULT_VALUES.runtimeOnly]"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.infoBgBlue"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "CHIP_COLORS.DARK_GREY"
+      }
+    ]
+  }
+]

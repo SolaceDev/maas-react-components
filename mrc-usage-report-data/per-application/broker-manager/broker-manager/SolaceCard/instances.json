@@ -1,0 +1,67 @@
+[
+  {
+    "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "standard-card"
+      },
+      {
+        "name": "minWidth",
+        "type": "string",
+        "value": "371px"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "475px"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "cardHeaderProps",
+        "type": "object",
+        "value": "{\n        title: title,\n        subTitle: description,\n        icon: (\n          <img \n            width=\"80px\"\n            height=\"40px\"\n            src={image}\n            style={{\n              display: \"block\",\n              objectFit: \"cover\",\n              objectPosition: \"center\",\n            }}\n          />\n        ),\n        actionElements: (\n          <div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>\n            <SolaceButton onClick={handleTutorialClick} variant=\"text\">\n              Tutorials\n            </SolaceButton>\n            <SolaceMenu\n              buttonProps={{\n                'aria-label': 'Actions menu',\n                children: <MoreHorizOutlinedIcon />,\n                title: 'Actions',\n                variant: 'icon',\n              }}\n              items={generateMenuItems()}\n              numOfMenuItemDisplayed={3}\n            />\n          </div>\n        ),\n      }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../broker-manager/src/pages/help/learning-centre/react-components/top-level-card.js",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "top-level-card"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "300px"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "300px"
+      },
+      {
+        "name": "padding",
+        "type": "string",
+        "value": "0px"
+      },
+      {
+        "name": "onClick",
+        "type": "function",
+        "value": "() => window.open(url, \"_blank\")"
+      },
+      {
+        "name": "cardContent",
+        "type": "jsx",
+        "value": "<div className='top-level-card'>\n          {image && <img src={image} className='image'/>}\n          <div className='description'>\n            <h5>{title}</h5>              \n            <p className=\"margin\">{description}</p>\n          </div>\n        </div>"
+      }
+    ]
+  }
+]

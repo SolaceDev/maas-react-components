@@ -1,0 +1,1362 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/aggregation/Aggregation.tsx",
+    "props": [
+      {
+        "name": "customIcon",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\ticon: <SearchIcon />,\n\t\t\t\t\t\tposition: \"end\"\n\t\t\t\t\t}"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "50%"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "customers.searchAggregationName"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchCustomerTextbox"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSearchTextSearch"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "customers.searchAggregationName"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchCustomerTextbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizations/organizationsList/OrganizationsFilter.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "orgSearchBox"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "orgSearchBox"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "orgSearchBox"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "400px"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "searchText"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => handleSearchField(event.value)"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\tsearchText ? (\n\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={() => handleSearchField(EMPTY_STRING)}>\n\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t<Search key=\"search\" style={{ marginRight: \"4px\" }} />\n\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringConfigurations.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "SolaceDatadogAgentVersion"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Enter to override Production Datadog Agent Version"
+      },
+      {
+        "name": "helperText",
+        "type": "string",
+        "value": "Overrides solace-datadog-agent image version, default: latest"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => setValue(\"SolaceDatadogAgentVersion\", e.value)"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "SolaceDatadogAgentVersionTextBox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "orgIdField"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Organization Id"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "orgId"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "orgIdField"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "apiKeyField"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "API Key"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "ddOrgData?.apiKey ?? \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "apiKeyTextField"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "orgNameField"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Organization Display Name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "ddOrgData?.orgPublicId ?? \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "orgNameField"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "appKeyField"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "APP Key"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "ddOrgData?.appKey ?? \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "appKeyTextField"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "ddSubOrgName"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Datadog Sub-Org Name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "subOrgName"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Enter Datadog Sub-Org name"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\thandleSubOrgNameInput(e.value);\n\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "ddSubOrgNameTextBox"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "50%"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "value": "32"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "subOrgNameInvalid"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "subOrgNameInvalid\n\t\t\t\t\t\t\t\t\t\t? \"Datadog Sub-Org Name does not start with 'PI - ' or 'RMMS - ' , change the name and retry\"\n\t\t\t\t\t\t\t\t\t\t: \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "alertHandles"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Alert Handles"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\thandleHandlesUpdate(resource.profile, e.name, convertToArray(e.value));\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "resource.alertHandles ?? \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${resource.profile}_alertHandlesTextBox`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "warningHandles"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Warning Handles"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\thandleHandlesUpdate(resource.profile, e.name, convertToArray(e.value));\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "resource.warningHandles ?? \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${resource.profile}_warningHandlesTextBox`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "recoveryHandles"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Recovery Handles"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\thandleHandlesUpdate(resource.profile, e.name, convertToArray(e.value));\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "resource.recoveryHandles ?? \"\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${resource.profile}_recoveryHandlesTextBox`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "inviteUsersInput"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Provide a list of comma-separated solace.com email addresses"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "adminUsersList"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\tsetAdminUsersList(e.value);\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "inviteUsersTextBox"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "60%"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceOperations/ServiceOperations.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "search === \"none\""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Search"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "search"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "375px"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "filters[search]"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setFilters({ ...filters, [search]: event.value })"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[<SearchIcon key=\"searchIcon\" sx={{ marginRight: \"8px\", fontSize: \"1rem\" }} />]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/QueryBuilder.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "value"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => setValue(event?.value)"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "operator === \"=in=\" || operator === \"=out=\" ? \"value1,value2,value3\" : \"Enter value\""
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onChange(event.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "plan-name"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/plans/components/plansForm/PlansForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onChange(event.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "plan-description"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/runsForm/RunsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => onChange(event.value)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "run-description"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchFor"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "searchBoxChangeHandler"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "search-for-textbox"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "rest"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChange(e.value)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/DeleteServicePackage.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "confirmationBox"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "confirmationText"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "confirmationBox"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setConfirmationText(value)"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<SolaceTypography>\n\t\t\t\t\t\t\t\tPlease type <Bold>DELETE</Bold> to confirm.\n\t\t\t\t\t\t\t</SolaceTypography>"
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ManageServiceTypes.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "search"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "search"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Search by event broker version"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "400px"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "search"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(input) => setSearch(input.value)"
+      },
+      {
+        "name": "customIcon",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\t\ticon: search ? <Close24Icon /> : <Search24Icon />,\n\t\t\t\t\t\t\t\tposition: \"end\",\n\t\t\t\t\t\t\t\thandleClick: search ? handleClearSearch : undefined\n\t\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/DrawdownSelection.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "quantityTextfieldId"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "quantityTextfield"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => validateQuantity(value)"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "prodQuantityValue"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "quantityTextfieldQa"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "productDrawdown.inputError"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "prodQuantityErrors[0]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductsList.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "readOnlyProducts || isFieldReadOnly"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "value": "number"
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "value": "5"
+      },
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "`countField${key}`"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "prod.count !== 0 ? prod.count : undefined"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => handleCountSet(key, parseInt(e.value))"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "!(readOnlyProducts || isFieldReadOnly) ? \"100%\" : \"auto\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsOrgDetailsForm.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "(orgDetails[\"orgDisplayName\"].isEdited || !isSaveAllowed) &&\n\t\t\t\t\t\t\torgDetails[\"orgDisplayName\"].errors.validationErrors.concat(\n\t\t\t\t\t\t\t\torgDetails[\"orgDisplayName\"].errors.inputErrors\n\t\t\t\t\t\t\t).length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "orgDetails[\"orgDisplayName\"].errors.validationErrors.concat(\n\t\t\t\t\t\t\t\torgDetails[\"orgDisplayName\"].errors.inputErrors\n\t\t\t\t\t\t\t)[0]"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "orgDisplayName"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "inputHandler"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "80%"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.orgDisplayName"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!!validationErrors"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsOrgDetailsForm.tsx",
+    "props": [
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "(orgDetails[\"orgId\"].isEdited || !isSaveAllowed) &&\n\t\t\t\t\t\t\torgDetails[\"orgId\"].errors.validationErrors.concat(orgDetails[\"orgId\"].errors.inputErrors).length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "validationErrors\n\t\t\t\t\t\t\t\t? \"\"\n\t\t\t\t\t\t\t\t: orgDetails[\"orgId\"].errors.validationErrors.concat(orgDetails[\"orgId\"].errors.inputErrors)[0] ||\n\t\t\t\t\t\t\t\t  createBizOrganization.orgDetails.orgIdWarning"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "orgId"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "inputHandler"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "80%"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.orgId"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!!validationErrors"
+      },
+      {
+        "name": "hasWarnings",
+        "type": "expression",
+        "value": "!validationErrors"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsOrgDetailsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "accountName"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "inputHandler"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "80%"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.accountName"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!!validationErrors"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "(orgDetails[\"accountName\"].isEdited || !isSaveAllowed) &&\n\t\t\t\t\t\t\torgDetails[\"accountName\"].errors.validationErrors.concat(orgDetails[\"accountName\"].errors.inputErrors)\n\t\t\t\t\t\t\t\t.length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "orgDetails[\"accountName\"].errors.validationErrors.concat(\n\t\t\t\t\t\t\t\torgDetails[\"accountName\"].errors.inputErrors\n\t\t\t\t\t\t\t)[0] || createBizOrganization.orgDetails.accountNameHelperText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsOrgDetailsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "accountId"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "inputHandler"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "80%"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!!validationErrors"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.accountId"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "(orgDetails[\"accountId\"].isEdited || !isSaveAllowed) &&\n\t\t\t\t\t\t\torgDetails[\"accountId\"].errors.validationErrors.concat(orgDetails[\"accountId\"].errors.inputErrors)\n\t\t\t\t\t\t\t\t.length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "orgDetails[\"accountId\"].errors.validationErrors.concat(orgDetails[\"accountId\"].errors.inputErrors)[0] ||\n\t\t\t\t\t\t\tcreateBizOrganization.orgDetails.accountIdHelperText"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/BizOpsOrgDetailsForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "costCenter"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "inputHandler"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "80%"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "orgDetails[\"costCenter\"].value"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!!validationErrors"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "createBizOrganization.orgDetails.costCenter"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "costCenterInput"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "(orgDetails[\"costCenter\"].isEdited || !isSaveAllowed) && getCostCenterErrors().length > 0"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "((orgDetails[\"costCenter\"].isEdited || !isSaveAllowed) && getCostCenterErrors()[0]) || \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/ProductSubscriptionDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "domainNameFilter"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "nameFilter"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleFilterChange"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "readOnlyProducts"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "filterDomainName"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "i18nStrings.filterByNameLabel"
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "value": "155"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "endAdornment",
+        "type": "array",
+        "value": "[\n\t\t\t\t\t\t\t\t\tnameFilter ? (\n\t\t\t\t\t\t\t\t\t\t<SolaceButton key={\"closeIcon\"} variant=\"icon\" onClick={handleClearSearchText}>\n\t\t\t\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\t\t\t<div key=\"searchIcon\" style={{ marginRight: \"8px\", height: \"24px\" }}>\n\t\t\t\t\t\t\t\t\t\t<SearchIcon />\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/AccountAdminsSection.tsx",
+    "props": [
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "currentEmailEntry.length > 0 && !isEmailValid ? (\n\t\t\t\t\t\t\t\t\t<span data-qa=\"accountAdminEmailError\" id=\"accountAdminEmailError\" style={{ color: \"inherit\" }}>\n\t\t\t\t\t\t\t\t\t\t{createBizOrganization.accountAdmins.errorHelperText}\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t) : emailList.length === 0 && !isSaveAllowed ? (\n\t\t\t\t\t\t\t\t\t<span data-qa=\"accountAdminEmailError\" id=\"accountAdminEmailError\" style={{ color: 'inherit' }}>\n\t\t\t\t\t\t\t\t\t\t{createBizOrganization.accountAdmins.requiredFieldError}\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t\tcreateBizOrganization.accountAdmins.emailsPlaceholder\n\t\t\t\t\t\t\t\t)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "(currentEmailEntry.length > 0 && !isEmailValid) || (emailList.length === 0 && !isSaveAllowed)"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "accountAdminEmail"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => setCurrentEmailEntry(value)"
+      },
+      {
+        "name": "onBlur",
+        "type": "function",
+        "value": "() => { setIsEmailValid(isEmail(currentEmailEntry)) }"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "currentEmailEntry"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "accountAdminTextField"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/insightsOrganizations/InsightsOrganizations.tsx",
+    "props": [
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchByOrgId"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchByOrgId"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Search By Organization ID"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "500px"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "orgId"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => (!loadingOrgs ? setOrgId(event.value) : undefined)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/monitoringJobs/MonitoringJobs.tsx",
+    "props": [
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "searchByOrgId"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "searchByOrgId"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Search By Organization ID"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "500px"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "orgId"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => (!loadingJobs ? setOrgId(event.value) : undefined)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "datacenterId"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "datacenterId"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/privateRegions/components/CloneDialog.tsx",
+    "props": [
+      {
+        "name": "inlineLabel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "value": "Type a datacenter ID ..."
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "sourceDatacenterId"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "sourceDatacenterId"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedDatacenterId"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isLoading"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "({ value }) => {\n\t\t\t\t\t\t\tsetSelectedDatacenterId(value);\n\t\t\t\t\t\t\treset();\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isPerformingRequest"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Image Tag"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "imageTag"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Image Tag"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "imageTag"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => dispatch(setImageTag(event.value.trim()))"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "imageTag"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/CollectorModificationDialog.tsx",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isPerformingRequest"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Helm Chart Version"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "helmChartVersion"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Helm Chart Version"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "helmChartVersion"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => dispatch(setHelmChartVersion(event.value.trim()))"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "helmChartVersion"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`environment-type-label`"
+      },
+      {
+        "name": "htmlForId",
+        "type": "expression",
+        "value": "`isProduction`"
+      },
+      {
+        "name": "bold",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!!required"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "id ?? name.toLowerCase()"
+      }
+    ]
+  }
+]

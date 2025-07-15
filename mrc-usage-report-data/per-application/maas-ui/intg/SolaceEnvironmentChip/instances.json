@@ -1,0 +1,102 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/IntegrationEnvironmentWrapper.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "environment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "environment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "environment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "environment.label"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewConnectorV2.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "miEnvironment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "miEnvironment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "miEnvironment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "miEnvironment.label"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CloneConnector.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "miEnvironment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "miEnvironment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "miEnvironment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "miEnvironment.label"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/EditConnectorV2.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "miEnvironment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "miEnvironment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "miEnvironment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "miEnvironment.label"
+      }
+    ]
+  }
+]

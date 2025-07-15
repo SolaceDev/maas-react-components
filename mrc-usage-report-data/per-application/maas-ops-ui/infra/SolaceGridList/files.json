@@ -1,0 +1,4 @@
+[
+  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDatacenters.tsx",
+  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterNetwork.tsx"
+]

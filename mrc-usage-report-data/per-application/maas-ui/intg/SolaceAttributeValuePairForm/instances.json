@@ -1,0 +1,42 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/TopicHeaderMapping.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "targetHeaderMapping"
+      },
+      {
+        "name": "avpList",
+        "type": "variable",
+        "value": "values"
+      },
+      {
+        "name": "labelForValues",
+        "type": "expression",
+        "value": "(<HeaderExpression />) as unknown as string"
+      },
+      {
+        "name": "labelForKeys",
+        "type": "expression",
+        "value": "en.connectors.targetHeaderMapping.targetHeader"
+      },
+      {
+        "name": "onAVPListUpdate",
+        "type": "function",
+        "value": "(avpList) => setValues([...avpList])"
+      },
+      {
+        "name": "disableReorder",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "keyRequired",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  }
+]

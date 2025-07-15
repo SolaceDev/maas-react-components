@@ -1,0 +1,387 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/components/atoms/AtomSelectAutocomplete.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "props"
+      },
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorText || helperText"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessSelectAutocomplete.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "userAccessSelect-search"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`userAccessSelect-${resourceAssignment.userId}`"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "function",
+        "value": "(option, value) => option?.value === value?.value"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option ?? { name: \"\", value: \"\" }"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "function",
+        "value": "(searchTerm) => setSearchTerm(searchTerm)"
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "function",
+        "value": "(option) => !!emptyOptionMapByValue[option?.value as keyof typeof emptyOptionMapByValue]"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "userOptions"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "selectedOption"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleOnChange"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!resourceAssignment.error"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "resourceAssignment.error"
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+    "props": [
+      {
+        "name": "required",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "version"
+      },
+      {
+        "name": "maxHeight",
+        "type": "string",
+        "value": "30vh"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "targetVersion"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Target Version"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!formError"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "filterOptions"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "function",
+        "value": "(option) => option"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "formError ? formError : \"\""
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "function",
+        "value": "(option) => option.value === currentVersion"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "expression",
+        "value": "useDebouncedCallback(fetchOptionsCallback, 150)"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(event) => {\n\t\t\t\t\t\tsetFormError(\"\");\n\t\t\t\t\t\tsetVersion(event.value as SolaceSelectAutocompleteItemProps);\n\t\t\t\t\t}"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "getSolaceSelectAutocompleteOptionLabel"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isSolaceSelectAutocompleteOptionEqual"
+      },
+      {
+        "name": "getShowOptionDividerCallback",
+        "type": "variable",
+        "value": "getShowSolaceSelectAutocompleteOptionDivider"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldRegion.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "region"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "region"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "region"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "errorText"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "regionDisabled"
+      },
+      {
+        "name": "placeholder",
+        "type": "expression",
+        "value": "getPlaceholder()"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "fetchOptions"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isOptionEqual"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "regionToString"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "variable",
+        "value": "itemToRegion"
+      },
+      {
+        "name": "groupByCallback",
+        "type": "variable",
+        "value": "getGroupBy"
+      },
+      {
+        "name": "getOptionDisabledCallback",
+        "type": "variable",
+        "value": "isOptionDisabled"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingRegions"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldClusterName.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "clusterName"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "clusterName"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "clusterName"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "isCloning"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "!!edit"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "disabled"
+      },
+      {
+        "name": "fetchOptionsCallback",
+        "type": "variable",
+        "value": "fetchOptions"
+      },
+      {
+        "name": "isOptionEqualToValueCallback",
+        "type": "variable",
+        "value": "isOptionEqual"
+      },
+      {
+        "name": "itemComponent",
+        "type": "variable",
+        "value": "SolaceSelectAutocompleteItem"
+      },
+      {
+        "name": "optionsLabelCallback",
+        "type": "variable",
+        "value": "clusterNameToString"
+      },
+      {
+        "name": "itemMappingCallback",
+        "type": "variable",
+        "value": "itemMappingCallback"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "errorText ? errorText : t({ id: \"id_cluster_name_info\", message: \"Type a new cluster name or select an existing one.\" })"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "matchingClusterNames"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "value"
+      },
+      {
+        "name": "hasErrors",
+        "type": "variable",
+        "value": "hasErrors"
+      },
+      {
+        "name": "maxHeight",
+        "type": "expression",
+        "value": "theme.spacing(30)"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleChange"
+      }
+    ]
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "name": "name",
+    "count": 2
+  },
+  {
+    "name": "value",
+    "count": 2
+  },
+  {
+    "name": "onChange",
+    "count": 2
+  },
+  {
+    "name": "width",
+    "count": 2
+  },
+  {
+    "name": "type",
+    "count": 2
+  },
+  {
+    "name": "id",
+    "count": 1
+  },
+  {
+    "name": "dataQa",
+    "count": 1
+  },
+  {
+    "name": "placeholder",
+    "count": 1
+  }
+]

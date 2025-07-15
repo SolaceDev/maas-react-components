@@ -1,0 +1,62 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersList.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "totalClusterLength"
+      },
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "pageNumber"
+      },
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageChange"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "isLoading"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterServices.tsx",
+    "props": [
+      {
+        "name": "totalResults",
+        "type": "variable",
+        "value": "totalCount"
+      },
+      {
+        "name": "activePage",
+        "type": "variable",
+        "value": "currentPage"
+      },
+      {
+        "name": "pageSize",
+        "type": "variable",
+        "value": "pageSize"
+      },
+      {
+        "name": "loading",
+        "type": "variable",
+        "value": "isPending"
+      },
+      {
+        "name": "onPageSelection",
+        "type": "variable",
+        "value": "handlePageChange"
+      }
+    ]
+  }
+]

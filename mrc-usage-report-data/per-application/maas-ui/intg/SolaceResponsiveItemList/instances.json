@@ -1,0 +1,92 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanelV2.tsx",
+    "props": [
+      {
+        "name": "containerWidth",
+        "type": "number",
+        "value": "600"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "filterChips"
+      },
+      {
+        "name": "showAll",
+        "type": "expression",
+        "value": "!!showFilterSection"
+      },
+      {
+        "name": "numOfRowsToShow",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "onItemsRendered",
+        "type": "variable",
+        "value": "handleItemsRendered"
+      },
+      {
+        "name": "onItemsOverflow",
+        "type": "variable",
+        "value": "handleItemsOverflow"
+      },
+      {
+        "name": "onItemsOverflowIndicatorClick",
+        "type": "variable",
+        "value": "handleItemsHiddenIndicatorClick"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"filterChipsItemList\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/filters/SearchPanel.tsx",
+    "props": [
+      {
+        "name": "containerWidth",
+        "type": "number",
+        "value": "600"
+      },
+      {
+        "name": "items",
+        "type": "variable",
+        "value": "filterChips"
+      },
+      {
+        "name": "showAll",
+        "type": "expression",
+        "value": "!!showFilterSection"
+      },
+      {
+        "name": "numOfRowsToShow",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "onItemsRendered",
+        "type": "variable",
+        "value": "handleItemsRendered"
+      },
+      {
+        "name": "onItemsOverflow",
+        "type": "variable",
+        "value": "handleItemsOverflow"
+      },
+      {
+        "name": "onItemsOverflowIndicatorClick",
+        "type": "variable",
+        "value": "handleItemsHiddenIndicatorClick"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"filterChipsItemList\""
+      }
+    ]
+  }
+]

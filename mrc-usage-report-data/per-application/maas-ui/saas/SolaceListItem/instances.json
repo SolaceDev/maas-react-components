@@ -1,0 +1,52 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", paddingLeft: 0, marginLeft: theme.spacing(2) }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", paddingLeft: 0, marginLeft: theme.spacing(2) }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", paddingLeft: 0, marginLeft: theme.spacing(2) }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ listStyleType: \"disc\", display: \"list-item\", pl: 0, pt: 0 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ listStyleType: \"disc\", display: \"list-item\", pl: 0, pt: 0 }"
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx",
+    "props": [
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "viewOptions"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleToggleView"
+      },
+      {
+        "name": "activeValue",
+        "type": "variable",
+        "value": "selectedView"
+      }
+    ]
+  }
+]

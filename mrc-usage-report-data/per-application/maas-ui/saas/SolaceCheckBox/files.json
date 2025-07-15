@@ -1,0 +1,10 @@
+[
+  "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/DeleteEnvironmentsDialog.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/ASEnvironmentDialog.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/RuntimeConfigurationTemplatesDialog.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/notificationSettings/NotificationSettings.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/GroupManagement/components/GroupManagementChecks.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/accountDetailsOverview/AccountExpiryBanner.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+  "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/PermissionSet.tsx"
+]

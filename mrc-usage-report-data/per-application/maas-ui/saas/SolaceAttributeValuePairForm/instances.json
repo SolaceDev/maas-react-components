@@ -1,0 +1,82 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "name",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "avpList",
+        "type": "expression",
+        "value": "value || []"
+      },
+      {
+        "name": "labelForKeys",
+        "type": "string",
+        "value": "Key"
+      },
+      {
+        "name": "labelForValues",
+        "type": "string",
+        "value": "Value"
+      },
+      {
+        "name": "enableRequiredKeyFieldIndicator",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "enableRequiredValueFieldIndicator",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "false"
+      },
+      {
+        "name": "keyRequired",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "keyIsRequiredMessage",
+        "type": "string",
+        "value": "Required Field!"
+      },
+      {
+        "name": "avpKeyValidationCallback",
+        "type": "function",
+        "value": "(currentInput, values) => keyValidator(currentInput, values)"
+      },
+      {
+        "name": "avpValueValidationCallback",
+        "type": "function",
+        "value": "(currentInput, values) => valueValidator(currentInput, values)"
+      },
+      {
+        "name": "onAVPListUpdate",
+        "type": "function",
+        "value": "(e) => onChange(e)"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!_.isEmpty(error)"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      }
+    ]
+  }
+]

@@ -1,0 +1,2522 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/utils/designer/importDomainUtils.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/DeleteModeledEventMeshDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/DeleteModeledEventMeshDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/SelectedEntityVersion.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/SelectedEntityVersion.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/SelectedEntityVersion.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/topology/MEMDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/FailDownloadAsyncApi.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"h3\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/FailDownloadAsyncApi.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"h5\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/FailDownloadAsyncApi.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"h5\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/BulkActions/BulkMoveDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/BulkActions/BulkActions.tsx",
+    "props": [
+      {
+        "name": "ml",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "color",
+        "type": "expression",
+        "value": "bulkMoveLimitExceeded ? \"error\" : undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/BulkActions/BulkMoveErrorDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "marginTop",
+        "type": "number",
+        "value": "0.5"
+      },
+      {
+        "name": "marginBottom",
+        "type": "number",
+        "value": "0.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/ApplicationVersionAssociationForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/AddApplicationToEnvironment.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/UpdateEnvironmentDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddToEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/badges/ErrorBadge.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "props": [
+      {
+        "name": "align",
+        "type": "string",
+        "value": "left"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "key",
+        "type": "string",
+        "value": "role"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "component",
+        "type": "string",
+        "value": "span"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`roles-${label}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessInfo.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/GettingStartedListItem.tsx",
+    "props": [
+      {
+        "name": "pl",
+        "type": "number",
+        "value": "3"
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "400"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "14"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SuccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SuccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "paddingBottom",
+        "type": "number",
+        "value": "1.5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SamplesList.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "12"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "paddingLeft",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SamplesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EventPortalResourceProgressBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: \"primary\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EventPortalResourceProgressBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: \"primary\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "value": "12"
+      },
+      {
+        "name": "paddingTop",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "paddingLeft",
+        "type": "number",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.text.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.text.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SetupSampleListDetails.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "2"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.text.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SetupSampleListDetails.tsx",
+    "props": [
+      {
+        "name": "mb",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/EventDetailModal.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/EventDetailModal.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EntityDetailModal/AddEventToApplication.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"h3\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinition.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinition.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      },
+      {
+        "name": "color",
+        "type": "expression",
+        "value": "\"error\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesView.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "expression",
+        "value": "fromGraphView ? { color: \"text.secondary\" } : undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesView.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: \"text.secondary\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesView.tsx",
+    "props": [
+      {
+        "name": "noWrap",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesEditor.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributesEditor.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: \"text.secondary\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/dashboard/EducationalPopup.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/dashboard/EmptyStatePage.tsx",
+    "props": [
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"max-content\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/dashboard/EmptyStatePage.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "messageDetailsAddEvents"
+      },
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "\"max-content\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/EntityPreview.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/EntityPreview.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/EntityPreview.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/AppearanceCustomization/NodeAppearanceEditor.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"body1\""
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ marginBottom: 1, color: ux.secondary.text.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/ClientProfileName.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/ClientProfileName.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "clientProfileNameValue"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/ClientProfileName.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/details/ClientProfileName.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/SubscriptionEditorList.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphLegendItem.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphLegendItem.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphLegendItem.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useApplicationVersionSelect.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EventApiItems.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/EntityDetailAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServices.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/memDetailsContentUtils.tsx",
+    "props": [
+      {
+        "name": "noWrap",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/memDetailsContentUtils.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"caption\""
+      },
+      {
+        "name": "noWrap",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SidePanelSummaryActionCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/SidePanelSummaryActionCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/sidePanel/SharedComponents.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultKafkaTopicConf.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultKafkaTopicConf.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultKafkaTopicConf.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/AuditImportMenu.tsx",
+    "props": [
+      {
+        "name": "noWrap",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateExistingVersionsDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"updateLabel\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/AddToExistingVersionsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/CreateNewApplicationDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultList.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplateHelp.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplateHelp.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplates.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplates.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/TemplateInfoBlurb.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/TemplateInfoBlurb.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplateEdit.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplateEdit.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/enums/Enums.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApiProducts/Utils.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApiProducts/Utils.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApiProducts/Utils.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/schemas/Schemas.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/schemas/Schemas.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/applications/Applications.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/applications/Applications.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApi/Utils.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApi/Utils.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApi/Utils.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/events/Events.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "topicAddress"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/events/Events.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/events/Events.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.deprecated.secondary.text.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "expression",
+        "value": "selected && 500"
+      },
+      {
+        "name": "pl",
+        "type": "expression",
+        "value": "imageComponent ? 2 : 5.25"
+      },
+      {
+        "name": "pr",
+        "type": "number",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/SampleLoadingBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"caption\""
+      },
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "600"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.brand.w30 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/SampleLoadingBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h2"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "value": "600"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ fontSize: \"1.5rem\", color: invertTextColor }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/SampleLoadingBanner.tsx",
+    "props": [
+      {
+        "name": "width",
+        "type": "expression",
+        "value": "showGraphic ? 500 : \"100%\""
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: invertTextColor }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/SampleLoadingBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/SampleLoadingBanner.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "ml",
+        "type": "number",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h2"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ fontSize: \"1.5rem\", color: `${theme.palette.ux.primary.text.w10}` }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: `${theme.palette.ux.primary.text.w10}` }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterInviteUsersCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"h3\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterInviteUsersCard.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterInviteUsersCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterInviteUsersCard.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterInviteUsersCard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListDetails.tsx",
+    "props": [
+      {
+        "name": "mr",
+        "type": "number",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.text.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "fontSize",
+        "type": "expression",
+        "value": "`24px`"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.text.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.text.wMain }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "reuseIndexPurposeQuestionTooltip"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "reuseIndexPurposeDescriptionTooltip"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "reuseIndexPurposeQuestionPopup"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": [
+      {
+        "name": "data-qa",
+        "type": "string",
+        "value": "reuseIndexPurposeDescriptionPopup"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointQueueBinding.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointInformation.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointConfiguration.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTDeliveryPointConfiguration.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/shared.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeContextSelector.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeContextSelector.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeContextSelector.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeConfigurationBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeConfigurationBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageClientProfileName.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeConfigurationTab.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraph.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraph.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributeForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/sidePanel/customAttributePanel/CustomAttributeForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: \"text.secondary\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/AddNewNodeV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/AddNewNodeV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/AddNewNodeV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/AddNewNodeV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/leftSidePanel/AddNewNodeV2.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      },
+      {
+        "name": "style",
+        "type": "object",
+        "value": "{ marginBottom: \"16px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DomainGraphPanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DragAndDropPanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/DragAndDropPanel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/searchPanel/EntityVersionList.tsx",
+    "props": [
+      {
+        "name": "fontWeight",
+        "type": "number",
+        "value": "500"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/AddNewNode.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/AddNewNode.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/AddNewNode.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/AddNewNode.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/EventApiList.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/EventApiFlowConfig.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/FilterHelper.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`filtername-${index}`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/TopicFilterForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/TopicFilterForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"body1\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "align",
+        "type": "string",
+        "value": "left"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/EventApiProductDownloadDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Policies.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/VersionPlansDetails.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/VersionPlansDetails.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/VersionPlansForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/VersionPlansForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductVersionDetails.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductVersionDetails.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/PolicyDetails.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Utils.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/Utils.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaEdit.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RevokeEventAccessDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/Subscriptions.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConfigurationItem.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConfigurationItem.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${consumer.name}-template`"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/PreventNewEventVersionDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/EventFlowConfig.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      },
+      {
+        "name": "color",
+        "type": "expression",
+        "value": "\"warning\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/QuickCreateEvent.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestsTab.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestsTab.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestsTab.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EnvironmentAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "caption"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/useApplicationFlow.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventAccessRequestInfoBlurb.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventAccessRequestInfoBlurb.tsx",
+    "props": [
+      {
+        "name": "pl",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"body1\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventAccessRequestInfoBlurb.tsx",
+    "props": [
+      {
+        "name": "pl",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"body1\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/EventAccessRequestInfoBlurb.tsx",
+    "props": [
+      {
+        "name": "pl",
+        "type": "number",
+        "value": "1"
+      },
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "\"body1\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/ApplicationRuntimeTab.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h4"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordionList.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h2"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/AddSubscriptionFromEventTab/AddSubscriptionForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/AIWizard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/EventForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/EventForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "applicationDomainName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/EventForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/shared.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ color: theme.palette.ux.secondary.text.wMain }"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "body1"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ApplicationForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ApplicationForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "applicationDomainName"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ReviewForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ApplicationDomainForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h3"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "h5"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/aiWizard/components/ProjectDefinitionForm.tsx",
+    "props": []
+  }
+]

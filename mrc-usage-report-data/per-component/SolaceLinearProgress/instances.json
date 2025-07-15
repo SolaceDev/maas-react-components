@@ -1,0 +1,112 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EventPortalResourceProgressBanner.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "determinate"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "value": "learning"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "completionPercentage"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "dataQa"
+      },
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "dataQa"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/CreatingProgress.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "percent >= 99 ? \"indeterminate\" : \"determinate\""
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "sm"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "percent"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "determinate"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "sm"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getCreationPercentage(service.creationState, service.createdTime as Date)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerVersion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "indeterminate"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersExportDialog.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "determinate"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "loadingPercentage"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "lg"
+      }
+    ]
+  }
+]

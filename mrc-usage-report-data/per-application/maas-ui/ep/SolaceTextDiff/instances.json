@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "text1",
+        "type": "variable",
+        "value": "runtimeAttributes"
+      },
+      {
+        "name": "text2",
+        "type": "variable",
+        "value": "designerAttributes"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "text1",
+        "type": "variable",
+        "value": "schemaBody"
+      },
+      {
+        "name": "text2",
+        "type": "variable",
+        "value": "secondSchemaBody"
+      }
+    ]
+  }
+]

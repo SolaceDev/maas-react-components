@@ -1,0 +1,67 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "color"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Color"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "colors"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "dialogState.color"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEnvColorChange"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "icon"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "value": "Icon"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "icons"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "dialogState.icon"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleEnvIconChange"
+      },
+      {
+        "name": "icons",
+        "type": "variable",
+        "value": "Icons24"
+      }
+    ]
+  }
+]

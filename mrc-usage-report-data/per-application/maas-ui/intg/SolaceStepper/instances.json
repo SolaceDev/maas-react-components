@@ -1,0 +1,97 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/StepperWrapper.tsx",
+    "props": [
+      {
+        "name": "steps",
+        "type": "expression",
+        "value": "renderSteps()"
+      },
+      {
+        "name": "activeStep",
+        "type": "variable",
+        "value": "activeStep"
+      },
+      {
+        "name": "setActiveStep",
+        "type": "function",
+        "value": "(step) => setActiveStep(step)"
+      },
+      {
+        "name": "onClose",
+        "type": "variable",
+        "value": "onClose"
+      },
+      {
+        "name": "onSubmit",
+        "type": "variable",
+        "value": "onSubmit"
+      },
+      {
+        "name": "onSecondarySubmit",
+        "type": "variable",
+        "value": "onSecondarySubmit"
+      },
+      {
+        "name": "submitLabel",
+        "type": "variable",
+        "value": "submitLabel"
+      },
+      {
+        "name": "secondarySubmitLabel",
+        "type": "expression",
+        "value": "activeStep === steps.length - 1 ? secondarySubmitLabel : undefined"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/CreateConnectorV2.tsx",
+    "props": [
+      {
+        "name": "steps",
+        "type": "variable",
+        "value": "steps"
+      },
+      {
+        "name": "activeStep",
+        "type": "variable",
+        "value": "activeStep"
+      },
+      {
+        "name": "setActiveStep",
+        "type": "function",
+        "value": "(step) => setActiveStep(step)"
+      },
+      {
+        "name": "onClose",
+        "type": "function",
+        "value": "() => discardChangesAndClose()"
+      },
+      {
+        "name": "onSubmit",
+        "type": "function",
+        "value": "() => onSubmit(true)"
+      },
+      {
+        "name": "secondarySubmitLabel",
+        "type": "expression",
+        "value": "activeStep === steps.length - 1 ? en.connectors.buttons.create : undefined"
+      },
+      {
+        "name": "onSecondarySubmit",
+        "type": "function",
+        "value": "() => onSubmit(false)"
+      },
+      {
+        "name": "submitLabel",
+        "type": "expression",
+        "value": "en.connectors.buttons.createDeploy"
+      },
+      {
+        "name": "stepContentOverflow",
+        "type": "expression",
+        "value": "showMiTransformation && activeStep === 2 ? StepContentOverflow.Hidden : StepContentOverflow.Auto"
+      }
+    ]
+  }
+]

@@ -1,0 +1,127 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/components/BrokerTableChipWithLabel.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "CHIP_VARIANT.FILLED"
+      },
+      {
+        "name": "labelColor",
+        "type": "expression",
+        "value": "chipProps.labelColor"
+      },
+      {
+        "name": "fillColor",
+        "type": "expression",
+        "value": "chipProps.fillColor"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "md"
+      },
+      {
+        "name": "label",
+        "type": "jsx",
+        "value": "<strong style={{ fontSize: \"12px\" }}>{chipProps.label}</strong>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/ViewDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "dialogState.user?.email"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "dialogState.user?.email"
+      },
+      {
+        "name": "maxWidth",
+        "type": "expression",
+        "value": "\"fit-content\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/ViewDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "dialogState.user?.email"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "dialogState.user?.email"
+      },
+      {
+        "name": "maxWidth",
+        "type": "expression",
+        "value": "\"fit-content\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/components/ViewDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "group.id"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "group.name"
+      },
+      {
+        "name": "maxWidth",
+        "type": "expression",
+        "value": "\"fit-content\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "user.email"
+      },
+      {
+        "name": "maxWidth",
+        "type": "expression",
+        "value": "\"fit-content\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AudiLogs.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "variable",
+        "value": "index"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "filter.name + \" : \" + filter.value"
+      },
+      {
+        "name": "onDelete",
+        "type": "function",
+        "value": "() => deleteFilter(filter.key)"
+      }
+    ]
+  }
+]

@@ -1,0 +1,672 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`itemDetail-${item.identifier}`"
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`itemDetail-${item.identifier}`"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "item.value ? JSON.stringify(jsonValue, null, 2) : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/SchemaVersionAccordionDetails.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`${schemaVersion?.id}-schemaVersion[content]`"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "schemaVersion?.content || \"\""
+      },
+      {
+        "name": "mode",
+        "type": "expression",
+        "value": "schemaTypeMapToCodeEditorMode[schemaVersion?.parent?.schemaType]"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schemaVersion[content]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ViewCollectedData.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`dataCollected[${row.id}]`"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "row.data"
+      },
+      {
+        "name": "mode",
+        "type": "expression",
+        "value": "\"json\""
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"dataCollected[content]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"auditResultConfig[content]\""
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "runtimeAttributes || designerAttributes"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"auditResultConfig[content]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewSchemaConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"auditResultConfig[schemaBody]\""
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"auditResultConfig[schemaBody]\""
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "schemaBody"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewSchemaConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"auditResultConfig[schemaReferences]\""
+      },
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"auditResultConfig[schemaReferences]\""
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "schemaReferences"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplate.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "observedConfiguration.value"
+      },
+      {
+        "name": "mode",
+        "type": "expression",
+        "value": "\"json\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(editor, data, value) => setObservedConfiguration({ name, value })"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "configurationName"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message ?? \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error?.message"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "false"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/TemplateFullConfiguration.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "dataQa",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "observedConfiguration"
+      },
+      {
+        "name": "mode",
+        "type": "expression",
+        "value": "\"json\""
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(editor, data, value) => {\n\t\t\t\t\t\t\t\t// onChange will break this because it will compete with the other debounced error flow\n\t\t\t\t\t\t\t\thandleChangeCustomConfiguration(value);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error?.message"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "mode === Mode.template"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionDetails.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "\"schemaVersion[content]\""
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "schemaVersionRefetched.content || \"\""
+      },
+      {
+        "name": "mode",
+        "type": "expression",
+        "value": "schemaTypeMapToCodeEditorMode[schemaVersionRefetched?.parent?.schemaType]"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "expandable",
+        "type": "expression",
+        "value": "!shownInCatalogDetailContainer"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schemaVersion[content]\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionForm.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "mode",
+        "type": "variable",
+        "value": "impliedContentType"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(editor, data, value) => {\n\t\t\t\t\t\t\t\t\t\tonChange(value);\n\t\t\t\t\t\t\t\t\t\ttrigger(\"schemaVersion[content]\");\n\t\t\t\t\t\t\t\t\t\tvalidateSchemaSpec(value);\n\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schemaVersion[content]\""
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? getValidationErrorMessage(error) : editorWarningMsg ? editorWarningMsg : \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "hasWarnings",
+        "type": "expression",
+        "value": "!error && !!editorWarningMsg"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "variable",
+        "value": "isImportedSchemaVersion"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConfigurationItem.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "`applicationVersion[consumers].${index}.configuration`"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "prettifiedConfiguration"
+      },
+      {
+        "name": "mode",
+        "type": "expression",
+        "value": "\"json\""
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`applicationVersion[consumers].${index}.configuration`"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "variable",
+        "value": "name"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "value || \"\""
+      },
+      {
+        "name": "mode",
+        "type": "variable",
+        "value": "impliedContentType"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(editor, data, value) => {\n\t\t\t\t\t\t\t\t\t\t\tonChange(value);\n\t\t\t\t\t\t\t\t\t\t\ttrigger(\"schemaVersion.content\");\n\t\t\t\t\t\t\t\t\t\t\tvalidateSchemaSpec(value);\n\t\t\t\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "\"schemaVersion[content]\""
+      },
+      {
+        "name": "helperText",
+        "type": "expression",
+        "value": "error ? getValidationErrorMessage(error) : editorWarningMsg ? editorWarningMsg : \"\""
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!error"
+      },
+      {
+        "name": "hasWarnings",
+        "type": "expression",
+        "value": "!error && !!editorWarningMsg"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/ErrorLogsDetails.tsx",
+    "props": [
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "errorlog-stackTrace"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "errorlog-stackTrace"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(logData.attributes.attributes.stack_trace, null, 2)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ViewDetails.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "codeEditor"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(servicePackage, null, 2)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/insightsOrganizations/InsightsOrganizations.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "detailsDialog.org.organizationId"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(detailsDialog.org, null, 2)"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "codeEditor"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(details, null, 2)"
+      },
+      {
+        "name": "helperText",
+        "type": "jsx",
+        "value": "<HelperText details={details} isFetching={isFetching} isError={isError} />"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "details?.isError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(\n\t\t\t\t\t\t\t\tinfrastructureRequests[`${deleteConfirmation.infrastructureId}-disable`].error,\n\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t2\n\t\t\t\t\t\t\t)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/UpdateConfig.tsx",
+    "props": [
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "protobuf"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "currentConfig.config"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "codeEditor"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(configs?.data, null, 2)"
+      },
+      {
+        "name": "helperText",
+        "type": "jsx",
+        "value": "<HelperText configs={configs} />"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "configs?.isError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(infrastructureRequests[errorDetails].error, null, 2)"
+      }
+    ]
+  }
+]

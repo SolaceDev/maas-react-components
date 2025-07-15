@@ -1,0 +1,31 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "indeterminate"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/Template/VendorTemplates.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/dialogs/AiMappingConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "size",
+        "type": "string",
+        "value": "lg"
+      }
+    ]
+  }
+]

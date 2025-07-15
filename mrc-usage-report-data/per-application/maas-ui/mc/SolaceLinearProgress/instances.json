@@ -1,0 +1,57 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/CreatingProgress.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "expression",
+        "value": "percent >= 99 ? \"indeterminate\" : \"determinate\""
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "sm"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "percent"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "determinate"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "sm"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "getCreationPercentage(service.creationState, service.createdTime as Date)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerVersion.tsx",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "indeterminate"
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "value": "sm"
+      }
+    ]
+  }
+]

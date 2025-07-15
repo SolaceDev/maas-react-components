@@ -1,0 +1,117 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "nonprod"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "nonprod"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"false\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "isProduction"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "nonProductionLabel"
+      },
+      {
+        "name": "subText",
+        "type": "expression",
+        "value": "en.environments.labels.nonProdSubText"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isDisabled"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "string",
+        "value": "prod"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "prod"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "\"true\""
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "isProduction"
+      },
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "productionLabel"
+      },
+      {
+        "name": "subText",
+        "type": "expression",
+        "value": "en.environments.labels.prodSubText"
+      },
+      {
+        "name": "disabled",
+        "type": "variable",
+        "value": "isDisabled"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/UserGroupsTable.tsx",
+    "props": [
+      {
+        "name": "checked",
+        "type": "expression",
+        "value": "resultPerPage === selectedPageSize"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "() => handleResultsPerPageChange(resultPerPage)"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`resultsPerPage_${resultPerPage}`"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "resultsPerPage"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "`${resultPerPage}`"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "`${resultPerPage}`"
+      }
+    ]
+  }
+]

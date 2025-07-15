@@ -1,0 +1,187 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/ViewDetails.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "codeEditor"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(servicePackage, null, 2)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/insightsOrganizations/InsightsOrganizations.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "expression",
+        "value": "detailsDialog.org.organizationId"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(detailsDialog.org, null, 2)"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/components/components.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "codeEditor"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(details, null, 2)"
+      },
+      {
+        "name": "helperText",
+        "type": "jsx",
+        "value": "<HelperText details={details} isFetching={isFetching} isError={isError} />"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "details?.isError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/connector/Connector.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(\n\t\t\t\t\t\t\t\tinfrastructureRequests[`${deleteConfirmation.infrastructureId}-disable`].error,\n\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t2\n\t\t\t\t\t\t\t)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/UpdateConfig.tsx",
+    "props": [
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "protobuf"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "currentConfig.config"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/collectorDetails/components/components.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "expandable",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "codeEditor"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(configs?.data, null, 2)"
+      },
+      {
+        "name": "helperText",
+        "type": "jsx",
+        "value": "<HelperText configs={configs} />"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "configs?.isError"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracing.tsx",
+    "props": [
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "value": "json"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "JSON.stringify(infrastructureRequests[errorDetails].error, null, 2)"
+      }
+    ]
+  }
+]

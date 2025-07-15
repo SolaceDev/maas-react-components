@@ -1,0 +1,52 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedEnvironment.environmentId"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSetEnvironment"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "environmentOptions"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "value": "environment"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "selectedEnvironment.environmentId"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleSetEnvironment"
+      },
+      {
+        "name": "options",
+        "type": "variable",
+        "value": "environmentOptions"
+      }
+    ]
+  }
+]

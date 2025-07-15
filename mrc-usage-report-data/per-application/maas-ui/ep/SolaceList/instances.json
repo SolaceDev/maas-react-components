@@ -1,0 +1,81 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/GettingStartedListItem.tsx",
+    "props": [
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EntitiesToDeleteListingPanel.tsx",
+    "props": [
+      {
+        "name": "dense",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ marginTop: \"-10px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SamplesList.tsx",
+    "props": [
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplates.tsx",
+    "props": [
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\t\"&& .Mui-selected\": {\n\t\t\t\t\t\t\t\tbackgroundColor: theme.palette.ux.background.w20,\n\t\t\t\t\t\t\t\tborderRight: \"0\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"&& .Mui-selected:hover\": {\n\t\t\t\t\t\t\t\tbackgroundColor: theme.palette.ux.background.w20\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}"
+      },
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ padding: \"0px\" }"
+      }
+    ]
+  }
+]

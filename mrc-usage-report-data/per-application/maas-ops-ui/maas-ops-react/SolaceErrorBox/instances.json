@@ -1,0 +1,47 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/CustomerDetails.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "customers.accIdNotFound(customerId)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/customers/AggregationDetails.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "customers.aggregationIdNotFound(aggregationId)"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/OrganizationMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "\"Unable to retrieve organization details from monitoring. Please try refreshing the page.\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/components/ServicesMonitoringSettings.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "\"Unable to retrieve all service details from monitoring. Please try refreshing the page.\""
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "fetchServiceErrorBox"
+      }
+    ]
+  }
+]

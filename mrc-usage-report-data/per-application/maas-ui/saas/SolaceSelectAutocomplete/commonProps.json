@@ -1,0 +1,86 @@
+[
+  {
+    "name": "name",
+    "count": 7
+  },
+  {
+    "name": "dataQa",
+    "count": 7
+  },
+  {
+    "name": "itemComponent",
+    "count": 7
+  },
+  {
+    "name": "optionsLabelCallback",
+    "count": 7
+  },
+  {
+    "name": "isOptionEqualToValueCallback",
+    "count": 7
+  },
+  {
+    "name": "itemMappingCallback",
+    "count": 7
+  },
+  {
+    "name": "fetchOptionsCallback",
+    "count": 7
+  },
+  {
+    "name": "options",
+    "count": 7
+  },
+  {
+    "name": "onChange",
+    "count": 7
+  },
+  {
+    "name": "id",
+    "count": 6
+  },
+  {
+    "name": "value",
+    "count": 5
+  },
+  {
+    "name": "required",
+    "count": 5
+  },
+  {
+    "name": "hasErrors",
+    "count": 3
+  },
+  {
+    "name": "helperText",
+    "count": 3
+  },
+  {
+    "name": "multiple",
+    "count": 3
+  },
+  {
+    "name": "label",
+    "count": 3
+  },
+  {
+    "name": "getShowOptionDividerCallback",
+    "count": 3
+  },
+  {
+    "name": "getOptionDisabledCallback",
+    "count": 2
+  },
+  {
+    "name": "width",
+    "count": 2
+  },
+  {
+    "name": "title",
+    "count": 1
+  },
+  {
+    "name": "placeholder",
+    "count": 1
+  }
+]

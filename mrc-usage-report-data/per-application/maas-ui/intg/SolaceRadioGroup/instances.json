@@ -1,0 +1,82 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/EditConstantDialog.tsx",
+    "props": [
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "constant-radio-group"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "constantValue"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!constantNameError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "constantNameError"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tsetConstantField({ ...constantField, constantValue: e.value });\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "constantField.constantValue ? \"true\" : \"false\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/popoverDialogs/AddConstantDialog.tsx",
+    "props": [
+      {
+        "name": "inline",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "value": "constant-radio-group"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "constantValue"
+      },
+      {
+        "name": "hasErrors",
+        "type": "expression",
+        "value": "!!constantNameError"
+      },
+      {
+        "name": "helperText",
+        "type": "variable",
+        "value": "constantNameError"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => {\n\t\t\t\t\t\t\t\tonConstantValueChange(e);\n\t\t\t\t\t\t\t}"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "constantValue ? \"true\" : \"false\""
+      }
+    ]
+  }
+]

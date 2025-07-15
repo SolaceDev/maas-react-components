@@ -1,0 +1,57 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/formUtils/ConnectorFormUtils.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "props.name"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "props.label"
+      },
+      {
+        "name": "onChange",
+        "type": "function",
+        "value": "(e) => onChangeTrigger(props, e)"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "fieldValue"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "props.readonly"
+      },
+      {
+        "name": "required",
+        "type": "expression",
+        "value": "props.required && !props.readonly"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "props.disabled"
+      },
+      {
+        "name": "width",
+        "type": "string",
+        "value": "100%"
+      },
+      {
+        "name": "maxLength",
+        "type": "expression",
+        "value": "props.schema.maxLength"
+      },
+      {
+        "name": "dataQa",
+        "type": "expression",
+        "value": "`${props.label}-form-textArea`"
+      }
+    ]
+  }
+]

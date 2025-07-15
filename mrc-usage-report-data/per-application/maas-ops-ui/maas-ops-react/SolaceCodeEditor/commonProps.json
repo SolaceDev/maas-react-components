@@ -1,0 +1,34 @@
+[
+  {
+    "name": "mode",
+    "count": 7
+  },
+  {
+    "name": "value",
+    "count": 7
+  },
+  {
+    "name": "readOnly",
+    "count": 6
+  },
+  {
+    "name": "dataQa",
+    "count": 3
+  },
+  {
+    "name": "expandable",
+    "count": 2
+  },
+  {
+    "name": "helperText",
+    "count": 2
+  },
+  {
+    "name": "hasErrors",
+    "count": 2
+  },
+  {
+    "name": "id",
+    "count": 1
+  }
+]

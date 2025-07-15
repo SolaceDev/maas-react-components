@@ -1,0 +1,287 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/utils/topology/eventBrokerUtils.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "option"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/MessagingServiceAssociationForm.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "option"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DeployToEnvironmentDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/ApplicationVersionAssociationForm.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "option"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessSelectAutocomplete.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "RESOURCE_LABEL_BY_ROLE[role]"
+      },
+      {
+        "name": "value",
+        "type": "variable",
+        "value": "role"
+      },
+      {
+        "name": "subText",
+        "type": "expression",
+        "value": "RESOURCE_DESCRIPTION_BY_ROLE[role]"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeMultiValueEditor.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/CustomAttributes/CustomAttributeDefinition.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "option"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/designer/topicAddress/ConfigVariableDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/customHooks/useApplicationDomainSelect.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/AdditionalFilterMultiSelect.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SearchPanel/filters/DefaultFilterMultiSelect.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "EMA_MODES_LABELS.scanWithEventPortal"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "EMA_MODES.scanFromEventPortal"
+      },
+      {
+        "name": "subText",
+        "type": "string",
+        "value": "Event Portal connects directly to event brokers through the agent. Recommended for one-click discovery scans and required to enable runtime configuration from Event Portal."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgentForm.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "EMA_MODES_LABELS.uploadScanFile"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "EMA_MODES.uploadScanFile"
+      },
+      {
+        "name": "subText",
+        "type": "string",
+        "value": "Use a standalone agent connected to event brokers to run discovery scans and another agent connected to Event Portal to upload the data. Recommended for closed systems. Runtime configuration is not supported in offline mode."
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/BulkAddDialog.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "option"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/BulkAddDialog.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "eventMesh"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/filters/DefaultFilterMultiSelect.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/CompareSchemaConfigurationDialog.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "version"
+      },
+      {
+        "name": "supplementalText",
+        "type": "expression",
+        "value": "isSecondVersionOptions && selectedVersionId === version.id ? \"No Difference\" : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/dashboard/Dashboard.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageSolaceQueueConfiguration.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/ManageClientProfileName.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/SearchEventAPIs.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/topicFilters/TopicFilterForm.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "option"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/DownloadDialogHelper.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "option"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/download/EventApiProductDownloadDialog.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProductForm.tsx",
+    "props": [
+      {
+        "name": "...",
+        "type": "spread",
+        "value": "option"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/RequestSearchAndFilter.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemas.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "messages.credentials.solaceClientUsername.label"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "CONFIGURATION_TYPES.solaceClientUsername"
+      },
+      {
+        "name": "supplementalText",
+        "type": "expression",
+        "value": "isEditing ? messages.credentials.solaceClientUsername.supplementalLabel : \"\""
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/credentials/ManageCredentials.tsx",
+    "props": [
+      {
+        "name": "name",
+        "type": "expression",
+        "value": "messages.credentials.solaceAuthorizationGroup.label"
+      },
+      {
+        "name": "value",
+        "type": "expression",
+        "value": "CONFIGURATION_TYPES.solaceAuthorizationGroup"
+      },
+      {
+        "name": "supplementalText",
+        "type": "expression",
+        "value": "isEditing ? messages.credentials.solaceAuthorizationGroup.supplementalLabel : \"\""
+      }
+    ]
+  }
+]

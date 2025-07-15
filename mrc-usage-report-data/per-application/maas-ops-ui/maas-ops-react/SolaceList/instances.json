@@ -1,0 +1,34 @@
+[
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ justifyContent: \"space-between\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ justifyContent: \"space-between\", display: \"flex\", flexDirection: \"column\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/EmailChipList.tsx",
+    "props": []
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/EnvironmentsDialog.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "value": "Page Title"
+      },
+      {
+        "name": "environment",
+        "type": "jsx",
+        "value": "<SolaceEnvironmentChip\n\t\t\t\t\t\t\t\t\t\t\tlabel={dialogState.name || \"Environment Name\"}\n\t\t\t\t\t\t\t\t\t\t\tfgColor={fgColor}\n\t\t\t\t\t\t\t\t\t\t\tbgColor={bgColor}\n\t\t\t\t\t\t\t\t\t\t\ticon={Icons16[dialogState.icon as SolaceEnvironmentIcons]}\n\t\t\t\t\t\t\t\t\t\t/>"
+      },
+      {
+        "name": "borderTop",
+        "type": "variable",
+        "value": "bgColor"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/userSettingsShell/UserSettingsShell.tsx",
+    "props": [
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "en.accountDetails.userSettings.settings"
+      },
+      {
+        "name": "tabs",
+        "type": "jsx",
+        "value": "<SolaceTabs\n\t\t\t\t\t\tactiveTabValue={activeTab}\n\t\t\t\t\t\tvariant=\"scrollable\"\n\t\t\t\t\t\ttabs={TABS}\n\t\t\t\t\t\tsize=\"md\"\n\t\t\t\t\t\tonTabClick={handleTabClick}\n\t\t\t\t\t></SolaceTabs>"
+      }
+    ]
+  }
+]

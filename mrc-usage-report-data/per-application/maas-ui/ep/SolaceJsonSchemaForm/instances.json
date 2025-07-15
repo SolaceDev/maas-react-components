@@ -1,0 +1,92 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/restDeliveryPoint/RESTConsumerJsonSchemaForm.tsx",
+    "props": [
+      {
+        "name": "formData",
+        "type": "variable",
+        "value": "formData"
+      },
+      {
+        "name": "formItem",
+        "type": "object",
+        "value": "{\n\t\t\t\t\tid: \"restConsumerJsonSchemaForm\",\n\t\t\t\t\tschema: cloneDeep(schema)\n\t\t\t\t}"
+      },
+      {
+        "name": "formOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\t\tisHidden: (fieldType) => {\n\t\t\t\t\t\tswitch (fieldType) {\n\t\t\t\t\t\t\tcase \"submitButton\":\n\t\t\t\t\t\t\tcase \"title\":\n\t\t\t\t\t\t\tcase \"description\":\n\t\t\t\t\t\t\t\treturn true;\n\t\t\t\t\t\t\tdefault:\n\t\t\t\t\t\t\t\treturn false;\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t\ttagName: \"div\"\n\t\t\t\t}"
+      },
+      {
+        "name": "readOnly",
+        "type": "expression",
+        "value": "!onChange"
+      },
+      {
+        "name": "disabled",
+        "type": "expression",
+        "value": "!enabled"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "onChange"
+      },
+      {
+        "name": "transformError",
+        "type": "function",
+        "value": "(error: any) => {\n\t\t\t\t\tconst { name, message } = error;\n\t\t\t\t\tlet newMessage;\n\n\t\t\t\t\tif (name === \"required\") {\n\t\t\t\t\t\tnewMessage = \"Required. Enter a value\";\n\t\t\t\t\t} else if (name === \"pattern\") {\n\t\t\t\t\t\tnewMessage = `Value ${message}`;\n\t\t\t\t\t} else if (name === \"const\" || name === \"oneOf\") {\n\t\t\t\t\t\tnewMessage = \"\"; // hide errors the user can do nothing about\n\t\t\t\t\t} else if (message) {\n\t\t\t\t\t\tnewMessage = `Value ${message}`;\n\t\t\t\t\t} else if (name) {\n\t\t\t\t\t\tnewMessage = \"Value is invalid\";\n\t\t\t\t\t}\n\n\t\t\t\t\terror.message = newMessage;\n\n\t\t\t\t\treturn error;\n\t\t\t\t}"
+      },
+      {
+        "name": "transformWidget",
+        "type": "function",
+        "value": "(props) => {\n\t\t\t\t\tconst newProps = { ...props };\n\n\t\t\t\t\tnewProps.label = messages[newProps.label] ?? newProps.label;\n\t\t\t\t\tnewProps.title = messages[newProps.title] ?? newProps.title;\n\n\t\t\t\t\tif (newProps.schema?.const !== undefined) {\n\t\t\t\t\t\tnewProps.readonly = true;\n\t\t\t\t\t}\n\n\t\t\t\t\tif (!onChange && newProps.id === \"restConsumerJsonSchemaForm__oneof_select\") {\n\t\t\t\t\t\tnewProps.readonly = true;\n\t\t\t\t\t}\n\n\t\t\t\t\treturn newProps;\n\t\t\t\t}"
+      },
+      {
+        "name": "ajvClass",
+        "type": "variable",
+        "value": "Ajv2019"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/RuntimeConfigurationJsonSchemaForm.tsx",
+    "props": [
+      {
+        "name": "formData",
+        "type": "variable",
+        "value": "formData"
+      },
+      {
+        "name": "formItem",
+        "type": "object",
+        "value": "{\n\t\t\t\tid: \"solaceQueueForm\",\n\t\t\t\tschema: cloneDeep(schema)\n\t\t\t}"
+      },
+      {
+        "name": "formOptions",
+        "type": "object",
+        "value": "{\n\t\t\t\torder: getOrder(schema.properties),\n\t\t\t\tisHidden\n\t\t\t}"
+      },
+      {
+        "name": "onChange",
+        "type": "variable",
+        "value": "handleOnChange"
+      },
+      {
+        "name": "transformError",
+        "type": "function",
+        "value": "(error: any) => {\n\t\t\t\tconst { name, message, property } = error;\n\t\t\t\tlet newMessage;\n\n\t\t\t\tif (name === \"required\") {\n\t\t\t\t\tnewMessage = \"Required. Enter a value\";\n\t\t\t\t} else if (name === \"pattern\") {\n\t\t\t\t\t// display any available placeholder value if it's a pattern error\n\t\t\t\t\tif (property === \".queueName\" && schema.properties.queueName.placeholder) {\n\t\t\t\t\t\tnewMessage = `Value ${message} (${schema.properties.queueName.placeholder})`;\n\t\t\t\t\t} else if (property === \".deadMsgQueue\" && schema.properties.deadMsgQueue.placeholder) {\n\t\t\t\t\t\tnewMessage = `Value ${message} (${schema.properties.deadMsgQueue.placeholder})`;\n\t\t\t\t\t} else {\n\t\t\t\t\t\tnewMessage = `Value ${message}`;\n\t\t\t\t\t}\n\t\t\t\t} else if (message) {\n\t\t\t\t\tnewMessage = `Value ${message}`;\n\t\t\t\t} else if (name) {\n\t\t\t\t\t// i.e. no detail message\n\t\t\t\t\tnewMessage = \"Value is invalid\";\n\t\t\t\t}\n\n\t\t\t\terror.message = newMessage;\n\n\t\t\t\treturn error;\n\t\t\t}"
+      },
+      {
+        "name": "transformTitle",
+        "type": "function",
+        "value": "(props) => transformProps(props, showPropertyNames)"
+      },
+      {
+        "name": "transformWidget",
+        "type": "function",
+        "value": "(props) => transformProps(props, showPropertyNames)"
+      }
+    ]
+  }
+]

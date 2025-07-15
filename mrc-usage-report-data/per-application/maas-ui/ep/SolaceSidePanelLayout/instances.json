@@ -1,0 +1,367 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/runtimeAgents/RuntimeAgents.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedRow"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "400"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "sidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/PageContent.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedMem"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "400"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "expression",
+        "value": "selectedMem ? (\n\t\t\t\t\t\t<MEMSidePanel\n\t\t\t\t\t\t\tenvironmentOptions={environmentOptions}\n\t\t\t\t\t\t\teventManagementAgents={emaEntities}\n\t\t\t\t\t\t\thandleViewDetail={handleViewDetail}\n\t\t\t\t\t\t\titem={selectedMem}\n\t\t\t\t\t\t\tonClose={handleCloseSidePanel}\n\t\t\t\t\t\t\tonViewDetail={() => undefined}\n\t\t\t\t\t\t\tuserMap={entityCreateUpdateUsersMap}\n\t\t\t\t\t\t/>\n\t\t\t\t\t) : null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditResultList.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/ConfigurationTemplates.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "394"
+      },
+      {
+        "name": "sidePanelPosition",
+        "type": "expression",
+        "value": "SolacePanelPosition.LEFT"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "expression",
+        "value": "renderSidePanelContent()"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/enums/Enums.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedEnum"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApiProducts/EventApiProducts.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedEventApiProduct"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/schemas/Schemas.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedSchema"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/applications/Applications.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedApplication"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/eventApi/EventApi.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedEventApi"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/catalog/events/Events.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedEvent"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/domains/Domains.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedDomain"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "expression",
+        "value": "renderSidePanel()"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/Enumerations.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedRow"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/EventApi.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedRow"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApiProducts/EventApiProducts.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedRow"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/Schemas.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedRow"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/requests/Requests.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!highlightedRow"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/applications/Applications.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedRow"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/Events.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "expression",
+        "value": "!!selectedRow"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "427"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "variable",
+        "value": "entitySidePanel"
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+[
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/eventPortal/eventManagementAgentsList/EventManagementAgents.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/integrationDashboard/IntegrationDashboard.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/monitoringDashboard/MonitoringDashboard.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/sidekickDeployments/SidekickDeploymentDetails.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/wanTuningManagement/DatacenterTuningState.tsx",
+  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/distributedTracing/DistributedTracingCollectorsTab.tsx"
+]

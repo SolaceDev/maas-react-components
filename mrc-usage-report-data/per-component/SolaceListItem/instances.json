@@ -1,0 +1,257 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/GettingStartedListItem.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/EntitiesToDeleteListingPanel.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "entity.id"
+      },
+      {
+        "name": "data-qa",
+        "type": "expression",
+        "value": "`entityId-${entity.id}`"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ paddingLeft: \"48px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/SamplesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/resources/ResourcesList.tsx",
+    "props": []
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx",
+    "props": [
+      {
+        "name": "disablePadding",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "disableGutters",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ height: theme.spacing(sampleSetup ? 7 : 9) }"
+      },
+      {
+        "name": "secondaryAction",
+        "type": "jsx",
+        "value": "<Box mr={3}>{getSecondaryAction()}</Box>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", listStyleType: \"disc\", marginLeft: \"16px\", padding: \"0px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", listStyleType: \"disc\", marginLeft: \"16px\", padding: \"0px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/resources/GetStartedResources.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", listStyleType: \"disc\", marginLeft: \"16px\", padding: \"0px\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/PayloadSection.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{\n\t\t\t\t\t\t\tborderTop: index === 0 ? 0 : \"1px solid\",\n\t\t\t\t\t\t\tborderColor: theme.palette.grey[300],\n\t\t\t\t\t\t\tpl: field?.parentId ? getIndentationLevel(field?.parentId) : 3\n\t\t\t\t\t\t}"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", paddingLeft: 0, marginLeft: theme.spacing(2) }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", paddingLeft: 0, marginLeft: theme.spacing(2) }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"list-item\", paddingLeft: 0, marginLeft: theme.spacing(2) }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ listStyleType: \"disc\", display: \"list-item\", pl: 0, pt: 0 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/authPages/landing/CommonLandingPage.tsx",
+    "props": [
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ listStyleType: \"disc\", display: \"list-item\", pl: 0, pt: 0 }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "sx",
+        "type": "object",
+        "value": "{ display: \"flex\", alignItems: \"flex-start\" }"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/insights/OnboardingConfiguration.tsx",
+    "props": [
+      {
+        "name": "divider",
+        "type": "boolean",
+        "value": "true"
+      },
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "resource.profile"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/organizationDetails/components/EmailChipList.tsx",
+    "props": [
+      {
+        "name": "key",
+        "type": "expression",
+        "value": "`hidden-${index}-${email}`"
+      }
+    ]
+  }
+]

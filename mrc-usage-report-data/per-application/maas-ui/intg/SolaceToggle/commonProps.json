@@ -1,0 +1,26 @@
+[
+  {
+    "name": "id",
+    "count": 2
+  },
+  {
+    "name": "isOn",
+    "count": 2
+  },
+  {
+    "name": "onChange",
+    "count": 2
+  },
+  {
+    "name": "name",
+    "count": 2
+  },
+  {
+    "name": "label",
+    "count": 2
+  },
+  {
+    "name": "helperText",
+    "count": 2
+  }
+]

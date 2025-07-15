@@ -1,0 +1,52 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceListView.tsx",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "value": "services"
+      },
+      {
+        "name": "items",
+        "type": "expression",
+        "value": "services ?? []"
+      },
+      {
+        "name": "headers",
+        "type": "variable",
+        "value": "headers"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "rowMapping",
+        "type": "variable",
+        "value": "rowMapping"
+      },
+      {
+        "name": "gridTemplate",
+        "type": "variable",
+        "value": "gridTemplate"
+      },
+      {
+        "name": "dataQa",
+        "type": "string",
+        "value": "services"
+      },
+      {
+        "name": "selectedRowIds",
+        "type": "variable",
+        "value": "selectedIds"
+      },
+      {
+        "name": "onSelection",
+        "type": "variable",
+        "value": "handleRowSelection"
+      }
+    ]
+  }
+]

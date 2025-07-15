@@ -1,0 +1,292 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[0] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[0] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[1] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[1] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[0] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[0] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[1] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[1] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/EmptyStateConfiguration.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "jsx",
+        "value": "<ApplicationDomainIcon />"
+      },
+      {
+        "name": "title",
+        "type": "expression",
+        "value": "messages[configType].emptyConfigurationTitle"
+      },
+      {
+        "name": "actions",
+        "type": "jsx",
+        "value": "<SolaceButton variant={\"link\"} href={messages[configType].emptyLinkref}>\n\t\t\t\t\t\t{messages[configType].emptyLinkToDocumentation}\n\t\t\t\t\t</SolaceButton>"
+      },
+      {
+        "name": "details",
+        "type": "jsx",
+        "value": "<Box textAlign={\"center\"}>{messages[configType].emptyConfigurationDetail}</Box>"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "variable",
+        "value": "actions"
+      },
+      {
+        "name": "details",
+        "type": "variable",
+        "value": "details"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "msgImg",
+        "type": "variable",
+        "value": "msgImg"
+      },
+      {
+        "name": "title",
+        "type": "variable",
+        "value": "title"
+      },
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[0] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[0] ?? null"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/GraphEmptyState.tsx",
+    "props": [
+      {
+        "name": "actions",
+        "type": "expression",
+        "value": "actions[1] ?? null"
+      },
+      {
+        "name": "details",
+        "type": "expression",
+        "value": "details[1] ?? null"
+      }
+    ]
+  }
+]

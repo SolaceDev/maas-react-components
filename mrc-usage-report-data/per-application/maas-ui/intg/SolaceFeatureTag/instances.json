@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/transformations/Mapping.tsx",
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "value": "beta"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorUtils.tsx",
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "value": "beta"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/dialogs/AiMappingConfirmationDialog.tsx",
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "value": "Experimental"
+      }
+    ]
+  }
+]

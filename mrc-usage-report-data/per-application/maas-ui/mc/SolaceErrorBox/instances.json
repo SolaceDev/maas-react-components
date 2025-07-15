@@ -1,0 +1,52 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDisableDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "t({ id: \"id_dt_disable_error\", message: \"An error occurred while disabling Distributed Tracing, please try again.\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "t({ id: \"id_dt_failed_conf_collector\", message: \"Failed to configure and deploy the collector. For support, contact Solace.\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "t({ id: \"id_dt_telemetry_profile_not_created\", message: \"This service requires a telemetry profile. Create a telemetry profile in Broker Manager to proceed.\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "t({ id: \"id_dt_telemetry_no_connection\", message: \"Cannot retrieve the telemetry profile due to lack of connection.\" })"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
+    "props": [
+      {
+        "name": "message",
+        "type": "expression",
+        "value": "t({\n\t\t\t\t\t\t\tid: \"id_dt_tracing_dest_not_defined\",\n\t\t\t\t\t\t\tmessage: \"A tracing destination has not been defined for this organization. Define a tracing destination in the account details area to proceed.\"\n\t\t\t\t\t\t})"
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/Connect.tsx",
+    "props": [
+      {
+        "name": "showSidePanel",
+        "type": "variable",
+        "value": "showPanel"
+      },
+      {
+        "name": "sidePanelWidth",
+        "type": "number",
+        "value": "480"
+      },
+      {
+        "name": "sidePanelContent",
+        "type": "expression",
+        "value": "selectedLibrary ? (\n\t\t\t\t\t<>\n\t\t\t\t\t\t<PanelHeader>\n\t\t\t\t\t\t\t<SolaceTypography variant=\"h2\">{selectedLibrary.displayName}</SolaceTypography>\n\t\t\t\t\t\t\t<SolaceButton variant=\"icon\" onClick={() => handleSelectLibrary(null)}>\n\t\t\t\t\t\t\t\t<CloseIcon />\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t</PanelHeader>\n\t\t\t\t\t\t<Container>\n\t\t\t\t\t\t\t<ConnectionDetails service={service} showMsgVpnName={selectedLibrary.protocol.usesVPN} />\n\t\t\t\t\t\t\t<HostUris hostUris={hostUris} showTrustStore={selectedLibrary.protocol.type === \"smf\"} truststoreUri={truststoreUri} />\n\t\t\t\t\t\t\t<SolaceButton variant=\"outline\" onClick={handleShowLibraryDialog}>\n\t\t\t\t\t\t\t\t<Trans id=\"id_get_started\">Get Started</Trans>\n\t\t\t\t\t\t\t</SolaceButton>\n\t\t\t\t\t\t</Container>\n\t\t\t\t\t</>\n\t\t\t\t) : undefined"
+      }
+    ]
+  }
+]

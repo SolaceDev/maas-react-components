@@ -1,0 +1,177 @@
+[
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/SolaceConnectionDetails.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "environment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "environment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "environment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "environment.label"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "standard"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "miEnvironment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "miEnvironment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "miEnvironment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "miEnvironment.label"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "standard"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/ConnectorSidePanel.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "miEnvironment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "miEnvironment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "miEnvironment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "\"\""
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "standard"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/connectors/summary/SolaceConnectionTab.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "miEnvironment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "miEnvironment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "miEnvironment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "miEnvironment.label"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "standard"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx",
+    "props": [
+      {
+        "name": "bgColor",
+        "type": "expression",
+        "value": "miEnvironment.bgColor"
+      },
+      {
+        "name": "fgColor",
+        "type": "expression",
+        "value": "miEnvironment.fgColor"
+      },
+      {
+        "name": "icon",
+        "type": "expression",
+        "value": "miEnvironment.icon"
+      },
+      {
+        "name": "label",
+        "type": "expression",
+        "value": "miEnvironment.label"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "value": "standard"
+      }
+    ]
+  },
+  {
+    "filePath": "../../../maas-ui/micro-frontends/intg/src/components/dialogs/SelectEnvironmentDialog.tsx",
+    "props": [
+      {
+        "name": "label",
+        "type": "variable",
+        "value": "label"
+      },
+      {
+        "name": "fgColor",
+        "type": "variable",
+        "value": "fgColor"
+      },
+      {
+        "name": "bgColor",
+        "type": "variable",
+        "value": "bgColor"
+      },
+      {
+        "name": "icon",
+        "type": "variable",
+        "value": "icon"
+      }
+    ]
+  }
+]
