@@ -73,16 +73,20 @@ export type SolaceStepperFooterProps = {
  * @property {string} label - The label for the step.
  * @property {JSX.Element} icon - The icon to display for the step.
  * @property {string} [subText] - Optional subtext for the step.
+ * @property {boolean} [hideOptionalLabel] - Whether to hide the optional label displayed inside step button.
  * @property {boolean} [error] - Whether the step has an error.
  * @property {boolean} [completed] - Whether the step is completed.
+ * @property {boolean} [disabled] - Whether the step is disabled.
  */
 
 export type StepProp = {
 	label: string;
 	icon: JSX.Element;
 	subText?: string;
+	hideOptionalLabel?: boolean;
 	error?: boolean;
 	completed?: boolean;
+	disabled?: boolean;
 };
 
 /**

@@ -15,10 +15,10 @@
  */
 
 import { Box, Step, StepButton, StepLabel, Stepper, useTheme } from "@mui/material";
-import SolaceTypography from "../../SolaceTypography";
-import SolaceStepperFooter from "./SolaceStepperFooter";
 import { SolaceStepperProps, StepProp } from "../../../types";
+import SolaceTypography from "../../SolaceTypography";
 import SolaceStepIcon from "./SolaceStepIcon";
+import SolaceStepperFooter from "./SolaceStepperFooter";
 
 /**
  * SolaceStepper component.
@@ -56,16 +56,20 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 						<Step key={step.label}>
 							<StepButton
 								optional={
-									<SolaceTypography sx={{ color: labelColor }} variant="caption">
-										{`Step ${index + 1} ${step?.subText ?? ""}`}
-									</SolaceTypography>
+									step.hideOptionalLabel ? undefined : (
+										<SolaceTypography sx={{ color: labelColor }} variant="caption">
+											{`Step ${index + 1} ${step?.subText ?? ""}`}
+										</SolaceTypography>
+									)
 								}
 								color="inherit"
-								onClick={handleStep(index)}
+								onClick={step.disabled ? undefined : handleStep(index)}
 								sx={{
 									textAlign: "left",
+									opacity: step.disabled ? 0.35 : 1,
+									cursor: step.disabled ? "default" : "pointer",
 									"&:hover .MuiTypography-root": {
-										color: theme.palette.common.black
+										color: step.disabled ? undefined : theme.palette.ux.primary.text.wMain
 									}
 								}}
 							>

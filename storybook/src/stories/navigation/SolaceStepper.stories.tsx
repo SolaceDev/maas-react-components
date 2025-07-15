@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-import React, { useState, ReactNode } from "react";
+import { Delete24Icon } from "@SolaceDev/maas-icons";
 import {
 	Box,
-	DeleteIcon,
 	SolaceButton,
 	SolaceConfirmationDialog,
 	SolaceStepper,
-	StepsProps
+	StepProp,
+	StepsProps,
+	useTheme
 } from "@SolaceDev/maas-react-components";
+import { expect } from "@storybook/jest";
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
+import React, { ReactNode, useMemo, useState } from "react";
 
 (SolaceStepper as React.FC & { displayName?: string }).displayName = "SolaceStepper";
 (SolaceConfirmationDialog as React.FC & { displayName?: string }).displayName = "SolaceConfirmationDialog";
@@ -52,10 +55,21 @@ export default meta;
 
 type Story = StoryObj<typeof SolaceStepper>;
 
+function DeleteIconWithColor() {
+	const theme = useTheme();
+
+	return <Delete24Icon fill={theme.palette.ux.secondary.wMain} />;
+}
+
+const DETAILS_STEP = "Details";
+const SOURCE_CONNECTION_STEP = "Source Connection";
+const TARGET_HEADER_MAPPING_STEP = "Target Header Mapping";
+const SUBTEXT_OPTIONAL = "(Optional)";
+
 const initialSteps: StepsProps = [
-	{ label: "Details", icon: <DeleteIcon /> },
-	{ label: "Source Connection", icon: <DeleteIcon />, subText: "(Optional)" },
-	{ label: "Target Header Mapping", icon: <DeleteIcon /> }
+	{ label: DETAILS_STEP, icon: <DeleteIconWithColor /> },
+	{ label: SOURCE_CONNECTION_STEP, icon: <DeleteIconWithColor />, subText: SUBTEXT_OPTIONAL },
+	{ label: TARGET_HEADER_MAPPING_STEP, icon: <DeleteIconWithColor /> }
 ];
 
 const getStepText = (activeStep: number, stepsLength: number) => {
@@ -152,9 +166,9 @@ export const Primary: Story = {
 };
 
 const errorAndSuccess: StepsProps = [
-	{ label: "Details", icon: <DeleteIcon /> },
-	{ label: "Error", icon: <DeleteIcon />, subText: "(optional)", error: true },
-	{ label: "Success", icon: <DeleteIcon />, completed: true }
+	{ label: DETAILS_STEP, icon: <DeleteIconWithColor /> },
+	{ label: "Error", icon: <DeleteIconWithColor />, subText: SUBTEXT_OPTIONAL, error: true },
+	{ label: "Success", icon: <DeleteIconWithColor />, completed: true }
 ];
 
 export const ErrorAndSuccess: Story = {
@@ -163,10 +177,10 @@ export const ErrorAndSuccess: Story = {
 };
 
 const errorOnCurrentStep: StepsProps = [
-	{ label: "Details", icon: <DeleteIcon />, error: true },
-	{ label: "Step 2", icon: <DeleteIcon />, subText: "(some sub text)" },
-	{ label: "Step 3", icon: <DeleteIcon />, completed: true },
-	{ label: "Step 4", icon: <DeleteIcon />, completed: true }
+	{ label: DETAILS_STEP, icon: <DeleteIconWithColor />, error: true },
+	{ label: "Step 2", icon: <DeleteIconWithColor />, subText: "(some sub text)" },
+	{ label: "Step 3", icon: <DeleteIconWithColor />, completed: true },
+	{ label: "Step 4", icon: <DeleteIconWithColor />, completed: true }
 ];
 
 export const ErrorOnCurrentStepAndSubmitDisabled: Story = {
@@ -182,6 +196,123 @@ export const SecondaryButtonOnLastStep: Story = {
 export const SecondaryButtonOnNonLastStep: Story = {
 	render: ComponentWithSecondaryButtonOnNonLastStep,
 	args: { steps: initialSteps }
+};
+
+const stepsWithHiddenOptionalLabels: StepsProps = [
+	{ label: DETAILS_STEP, icon: <DeleteIconWithColor />, hideOptionalLabel: true },
+	{ label: SOURCE_CONNECTION_STEP, icon: <DeleteIconWithColor />, subText: SUBTEXT_OPTIONAL, hideOptionalLabel: true },
+	{ label: TARGET_HEADER_MAPPING_STEP, icon: <DeleteIconWithColor />, hideOptionalLabel: true }
+];
+
+export const HideOptionalLabels: Story = {
+	render: Component,
+	args: { steps: stepsWithHiddenOptionalLabels }
+};
+
+const stepsWithDisabled: StepsProps = [
+	{ label: DETAILS_STEP, icon: <DeleteIconWithColor />, disabled: false },
+	{ label: SOURCE_CONNECTION_STEP, icon: <DeleteIconWithColor />, subText: SUBTEXT_OPTIONAL, disabled: true },
+	{ label: TARGET_HEADER_MAPPING_STEP, icon: <DeleteIconWithColor />, disabled: false }
+];
+
+export const DisabledSteps: Story = {
+	render: Component,
+	args: { steps: stepsWithDisabled },
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		// Assert next button is disabled (since step 1 is disabled)
+		const nextButton = canvas.getByRole("button", { name: /next/i });
+		expect(nextButton).toBeDisabled();
+
+		// Click on Target Header Mapping to jump to step 3
+		const targetHeaderMappingStep = canvas.getByText("Target Header Mapping");
+		await userEvent.click(targetHeaderMappingStep);
+
+		// Assert back button is disabled (since step 1 is disabled, can't go back)
+		const backButton = canvas.getByRole("button", { name: /back/i });
+		expect(backButton).toBeDisabled();
+	}
+};
+
+const stepsWithMixedStates: StepsProps = [
+	{ label: "Completed Step", icon: <DeleteIconWithColor />, completed: true, disabled: false },
+	{ label: "Disabled Step", icon: <DeleteIconWithColor />, subText: "(Disabled)", disabled: true },
+	{ label: "Error Step", icon: <DeleteIconWithColor />, error: true, disabled: true },
+	{ label: "Normal Step", icon: <DeleteIconWithColor />, disabled: false }
+];
+
+export const MixedStepStates: Story = {
+	render: Component,
+	args: { steps: stepsWithMixedStates }
+};
+
+const ComponentWithToggleDisabled = () => {
+	const [activeStep, setActiveStep] = useState(0);
+	const initialSteps: StepProp[] = useMemo(
+		() => [
+			{ label: DETAILS_STEP, icon: <DeleteIconWithColor />, disabled: false },
+			{ label: SOURCE_CONNECTION_STEP, icon: <DeleteIconWithColor />, subText: SUBTEXT_OPTIONAL, disabled: true },
+			{ label: TARGET_HEADER_MAPPING_STEP, icon: <DeleteIconWithColor />, disabled: true }
+		],
+		[]
+	);
+
+	const [dynamicSteps, setDynamicSteps] = useState<StepProp[]>(initialSteps);
+
+	const handleToggleDisableRemainingSteps = () => {
+		setDynamicSteps((prevSteps) =>
+			prevSteps.map((step, index) => (index > 0 ? { ...step, disabled: !step.disabled } : step))
+		);
+	};
+
+	const getStepContent = (step: number) => {
+		if (step === 0) {
+			return (
+				<Box>
+					<Box height="50px">Step 1 - Details</Box>
+					<SolaceButton variant="outline" onClick={() => handleToggleDisableRemainingSteps()}>
+						{"Toggle Remaining Steps"}
+					</SolaceButton>
+				</Box>
+			);
+		}
+		return <Box height="100px">{`Step ${step + 1}`}</Box>;
+	};
+
+	return (
+		<Box display="flex" border="1px solid grey" borderRadius="4px" height="300px">
+			<SolaceStepper
+				steps={dynamicSteps}
+				activeStep={activeStep}
+				setActiveStep={setActiveStep}
+				onClose={onCloseAlert}
+				onSubmit={onSubmitAlert}
+				submitLabel="Submit"
+			>
+				{getStepContent(activeStep)}
+			</SolaceStepper>
+		</Box>
+	);
+};
+
+export const InteractiveDisabledSteps: Story = {
+	render: ComponentWithToggleDisabled,
+	args: {},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		// Assert next button is initially disabled (since remaining steps are disabled)
+		const nextButton = canvas.getByRole("button", { name: /next/i });
+		expect(nextButton).toBeDisabled();
+
+		// Click on Toggle Remaining Steps button
+		const toggleButton = canvas.getByRole("button", { name: /toggle remaining steps/i });
+		await userEvent.click(toggleButton);
+
+		// Assert next button is now enabled (since remaining steps are no longer disabled)
+		expect(nextButton).toBeEnabled();
+	}
 };
 
 // Dialog Wrapper Component to manage open state

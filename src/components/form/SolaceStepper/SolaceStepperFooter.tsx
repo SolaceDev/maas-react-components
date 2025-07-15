@@ -115,9 +115,14 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 			<StyledButtonGroupBox>
 				<StyledButtonBox direction="left">
 					{!onFirstStep && (
-						<SolaceButton variant="text" onClick={handleBack}>
+						<SolaceButton variant="text" onClick={handleBack} isDisabled={steps[activeStep - 1].disabled}>
 							<ButtonContent>
-								<ArrowLeft24Icon fill={theme.palette.ux.primary.wMain} sx={{ padding: "4px 0px 4px 4px" }} />
+								<ArrowLeft24Icon
+									fill={
+										steps[activeStep - 1].disabled ? theme.palette.ux.secondary.w40 : theme.palette.ux.primary.wMain
+									}
+									sx={{ padding: "4px 0px 4px 4px" }}
+								/>
 								{`${buttonStrings.back}: ${steps[activeStep - 1].label}`}
 							</ButtonContent>
 						</SolaceButton>
@@ -137,7 +142,11 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 					</Box>
 				)}
 				<StyledButtonBox direction="right" onLastStep={onLastStep}>
-					<SolaceButton variant="call-to-action" onClick={handleNext} isDisabled={onLastStep && disableSubmit}>
+					<SolaceButton
+						variant="call-to-action"
+						onClick={handleNext}
+						isDisabled={(onLastStep && disableSubmit) || (!onLastStep && steps[activeStep + 1].disabled)}
+					>
 						{onLastStep ? (
 							submitLabel
 						) : (
