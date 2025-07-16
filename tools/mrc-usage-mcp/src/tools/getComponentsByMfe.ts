@@ -1,14 +1,5 @@
 import axios from "axios";
-
-// Hardcoded list of valid applications
-const VALID_APPLICATIONS = ["broker-manager", "maas-ops-ui", "maas-ui"];
-
-// Hardcoded list of valid MFEs for each application
-const VALID_MFES: Record<string, string[]> = {
-	"broker-manager": ["broker-manager"],
-	"maas-ops-ui": ["maas-ops-react", "infra"],
-	"maas-ui": ["ep", "intg", "mc", "saas"]
-};
+import { getApplicationForMfe } from "./getMfeInfo.js";
 
 async function fetchDirectoryContents(url: string): Promise<string[]> {
 	try {
@@ -57,21 +48,14 @@ async function fetchJsonFile(url: string) {
 	}
 }
 
-export async function getComponentsByMfe(applicationName: string, mfeName: string): Promise<string[]> {
-	// Check if the application name is valid
-	if (!VALID_APPLICATIONS.includes(applicationName)) {
-		throw new Error(
-			`Invalid application name: ${applicationName}. Valid applications are: ${VALID_APPLICATIONS.join(", ")}`
-		);
-	}
-
-	// Check if the MFE name is valid for the given application
-	if (!VALID_MFES[applicationName]?.includes(mfeName)) {
-		throw new Error(
-			`Invalid MFE name: ${mfeName} for application: ${applicationName}. Valid MFEs are: ${VALID_MFES[
-				applicationName
-			]?.join(", ")}`
-		);
+export async function getComponentsByMfe(mfeName: string, applicationName?: string): Promise<string[]> {
+	// If applicationName is not provided, look it up
+	if (!applicationName) {
+		const appName = await getApplicationForMfe(mfeName);
+		if (!appName) {
+			throw new Error(`MFE not found: ${mfeName}`);
+		}
+		applicationName = appName;
 	}
 
 	// First try to get components from the directory structure

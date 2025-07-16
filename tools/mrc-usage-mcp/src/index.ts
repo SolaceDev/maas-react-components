@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* eslint-disable sonarjs/cognitive-complexity */
+/* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable sonarjs/no-duplicated-branches */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -16,9 +18,10 @@ import {
 import { getUsageForComponent } from "./tools/getUsageForComponent.js";
 import { getAllComponents } from "./tools/getAllComponents.js";
 import { getComponentsByApplication } from "./tools/getComponentsByApplication.js";
-import { getComponentsByMfe } from "./tools/getComponentsByMfe.js";
+// import { getComponentsByMfe } from "./tools/getComponentsByMfe.js";
 import { getApplicationStats } from "./tools/getApplicationStats.js";
 import { getMfeStats } from "./tools/getMfeStats.js";
+import { getMfeInfo, listAllMfes } from "./tools/getMfeInfo.js";
 import axios from "axios";
 
 // Component data types
@@ -334,7 +337,40 @@ class MrcUsageServer {
 								description: "The name of the MFE (Micro Frontend)."
 							}
 						},
-						required: ["applicationName", "mfeName"]
+						required: ["mfeName"]
+					}
+				},
+				{
+					name: "get_mfe_info",
+					description: "Get information about an MFE, including which application it belongs to.",
+					inputSchema: {
+						type: "object",
+						properties: {
+							mfeName: {
+								type: "string",
+								description: "The name of the MFE (Micro Frontend)."
+							},
+							forceRefresh: {
+								type: "boolean",
+								description: "Force refresh of MFE mapping data from GitHub",
+								default: false
+							}
+						},
+						required: ["mfeName"]
+					}
+				},
+				{
+					name: "list_all_mfes",
+					description: "List all available MFEs across all applications.",
+					inputSchema: {
+						type: "object",
+						properties: {
+							forceRefresh: {
+								type: "boolean",
+								description: "Force refresh of MFE mapping data from GitHub",
+								default: false
+							}
+						}
 					}
 				}
 			]
@@ -455,28 +491,28 @@ class MrcUsageServer {
 						]
 					};
 				}
-				case "get_components_by_mfe":
-				case "get_components_by_sub_application": {
-					const { applicationName, mfeName, subApplicationName } = request.params.arguments as {
-						applicationName: string;
-						mfeName?: string;
-						subApplicationName?: string;
-					};
-					// Support both old and new parameter names
-					const mfeNameToUse = mfeName || subApplicationName;
-					if (!mfeNameToUse) {
-						throw new McpError(ErrorCode.InvalidParams, "Missing mfeName parameter");
-					}
-					const result = await getComponentsByMfe(applicationName, mfeNameToUse);
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
-							}
-						]
-					};
-				}
+				// case "get_components_by_mfe":
+				// case "get_components_by_sub_application": {
+				// 	const { applicationName, mfeName, subApplicationName } = request.params.arguments as {
+				// 		applicationName?: string;
+				// 		mfeName?: string;
+				// 		subApplicationName?: string;
+				// 	};
+				// 	// Support both old and new parameter names
+				// 	const mfeNameToUse = mfeName || subApplicationName;
+				// 	if (!mfeNameToUse) {
+				// 		throw new McpError(ErrorCode.InvalidParams, "Missing mfeName parameter");
+				// 	}
+				// 	const result = await getComponentsByMfe(mfeNameToUse, applicationName);
+				// 	return {
+				// 		content: [
+				// 			{
+				// 				type: "text",
+				// 				text: JSON.stringify(result, null, 2)
+				// 			}
+				// 		]
+				// 	};
+				// }
 				case "get_application_stats": {
 					const { applicationName } = request.params.arguments as { applicationName: string };
 					const result = await getApplicationStats(applicationName);
@@ -492,7 +528,7 @@ class MrcUsageServer {
 				case "get_mfe_stats":
 				case "get_sub_application_stats": {
 					const { applicationName, mfeName, subApplicationName } = request.params.arguments as {
-						applicationName: string;
+						applicationName?: string;
 						mfeName?: string;
 						subApplicationName?: string;
 					};
@@ -501,7 +537,7 @@ class MrcUsageServer {
 					if (!mfeNameToUse) {
 						throw new McpError(ErrorCode.InvalidParams, "Missing mfeName parameter");
 					}
-					const result = await getMfeStats(applicationName, mfeNameToUse);
+					const result = await getMfeStats(mfeNameToUse, applicationName);
 					return {
 						content: [
 							{
@@ -511,6 +547,40 @@ class MrcUsageServer {
 						]
 					};
 				}
+				case "get_mfe_info": {
+					const { mfeName, forceRefresh } = request.params.arguments as {
+						mfeName: string;
+						forceRefresh?: boolean;
+					};
+
+					if (!mfeName) {
+						throw new McpError(ErrorCode.InvalidParams, "Missing mfeName parameter");
+					}
+
+					const result = await getMfeInfo(mfeName, forceRefresh);
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify(result, null, 2)
+							}
+						]
+					};
+				}
+
+				case "list_all_mfes": {
+					const { forceRefresh } = request.params.arguments as { forceRefresh?: boolean };
+					const result = await listAllMfes(forceRefresh);
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify(result, null, 2)
+							}
+						]
+					};
+				}
+
 				default:
 					throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${request.params.name}`);
 			}

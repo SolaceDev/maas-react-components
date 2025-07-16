@@ -9,9 +9,21 @@ This server provides tools to query MRC component usage.
 - `mrc_find_component_dependencies`: Find dependencies and relationships between components
 - `mrc_usage_diagnostics`: Get diagnostic information about the MRC usage analysis system
 - `get_components_by_application`: Get components used in a specific application
-- `get_components_by_mfe`: Get components used in a specific MFE
+- `get_components_by_mfe`: Get components used in a specific MFE (now only requires MFE name)
 - `get_application_stats`: Get usage statistics for a specific application
-- `get_mfe_stats`: Get usage statistics for a specific MFE
+- `get_mfe_stats`: Get usage statistics for a specific MFE (now only requires MFE name)
+- `get_mfe_info`: Get information about an MFE, including which application it belongs to
+- `list_all_mfes`: List all available MFEs across all applications
+
+## Dynamic MFE Discovery
+
+The server now dynamically discovers MFEs and their parent applications from GitHub. This means:
+
+1. You no longer need to specify the application name when querying MFE information
+2. The `get_components_by_mfe` and `get_mfe_stats` tools now only require the MFE name
+3. New MFEs are automatically discovered without code changes
+4. The `get_mfe_info` tool can be used to look up which application an MFE belongs to
+5. The `list_all_mfes` tool provides a list of all available MFEs across all applications
 
 ## Running Locally
 
