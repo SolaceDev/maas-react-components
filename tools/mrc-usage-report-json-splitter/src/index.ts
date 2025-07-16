@@ -90,6 +90,31 @@ function calculateCommonProps(instances: Instance[]): CommonProp[] {
 		.sort((a, b) => b.count - a.count);
 }
 
+function optimizeInstances(instances: Instance[]) {
+	const keyMap = {
+		filePath: "a",
+		name: "b",
+		props: "c",
+		type: "d",
+		value: "e"
+	};
+
+	const data = instances.map((instance) => {
+		return {
+			[keyMap.filePath]: instance.filePath,
+			[keyMap.props]: instance.props.map((prop) => {
+				return {
+					[keyMap.name]: prop.name,
+					[keyMap.type]: prop.type,
+					[keyMap.value]: prop.value
+				};
+			})
+		};
+	});
+
+	return { keyMap, data };
+}
+
 function generatePerComponentStructure(report: MergedReport, outputDirPath: string) {
 	const perComponentDir = path.join(outputDirPath, "per-component");
 	fs.mkdirSync(perComponentDir, { recursive: true });
@@ -98,12 +123,12 @@ function generatePerComponentStructure(report: MergedReport, outputDirPath: stri
 		const componentDir = path.join(perComponentDir, component.componentName);
 		fs.mkdirSync(componentDir, { recursive: true });
 
-		fs.writeFileSync(path.join(componentDir, "totalUsages.json"), JSON.stringify(component.totalUsages, null, 2));
-		fs.writeFileSync(path.join(componentDir, "usagesByMfe.json"), JSON.stringify(component.usagesByMfe, null, 2));
-		fs.writeFileSync(path.join(componentDir, "commonProps.json"), JSON.stringify(component.commonProps, null, 2));
-		fs.writeFileSync(path.join(componentDir, "files.json"), JSON.stringify(component.files, null, 2));
-		fs.writeFileSync(path.join(componentDir, "instances.json"), JSON.stringify(component.instances, null, 2));
-		fs.writeFileSync(path.join(componentDir, "customization.json"), JSON.stringify(component.customization, null, 2));
+		fs.writeFileSync(path.join(componentDir, "totalUsages.json"), JSON.stringify(component.totalUsages));
+		fs.writeFileSync(path.join(componentDir, "usagesByMfe.json"), JSON.stringify(component.usagesByMfe));
+		fs.writeFileSync(path.join(componentDir, "commonProps.json"), JSON.stringify(component.commonProps));
+		fs.writeFileSync(path.join(componentDir, "files.json"), JSON.stringify(component.files));
+		fs.writeFileSync(path.join(componentDir, "instances.json"), JSON.stringify(optimizeInstances(component.instances)));
+		fs.writeFileSync(path.join(componentDir, "customization.json"), JSON.stringify(component.customization));
 	}
 }
 
@@ -134,18 +159,15 @@ function processComponentForApplication(
 			const componentDir = path.join(perApplicationDir, app, mfe, component.componentName);
 			fs.mkdirSync(componentDir, { recursive: true });
 
-			fs.writeFileSync(
-				path.join(componentDir, "totalUsages.json"),
-				JSON.stringify(component.usagesByMfe[mfe], null, 2)
-			);
+			fs.writeFileSync(path.join(componentDir, "totalUsages.json"), JSON.stringify(component.usagesByMfe[mfe]));
 			fs.writeFileSync(
 				path.join(componentDir, "usagesByMfe.json"),
-				JSON.stringify({ [mfe]: component.usagesByMfe[mfe] }, null, 2)
+				JSON.stringify({ [mfe]: component.usagesByMfe[mfe] })
 			);
-			fs.writeFileSync(path.join(componentDir, "commonProps.json"), JSON.stringify(mfeCommonProps, null, 2));
-			fs.writeFileSync(path.join(componentDir, "files.json"), JSON.stringify(mfeFiles, null, 2));
-			fs.writeFileSync(path.join(componentDir, "instances.json"), JSON.stringify(mfeInstances, null, 2));
-			fs.writeFileSync(path.join(componentDir, "customization.json"), JSON.stringify(component.customization, null, 2));
+			fs.writeFileSync(path.join(componentDir, "commonProps.json"), JSON.stringify(mfeCommonProps));
+			fs.writeFileSync(path.join(componentDir, "files.json"), JSON.stringify(mfeFiles));
+			fs.writeFileSync(path.join(componentDir, "instances.json"), JSON.stringify(optimizeInstances(mfeInstances)));
+			fs.writeFileSync(path.join(componentDir, "customization.json"), JSON.stringify(component.customization));
 		}
 	}
 }
@@ -154,14 +176,14 @@ function writeStatsFiles(perApplicationDir: string, appStats: AppStats, mfeStats
 	for (const app in appStats) {
 		const appDir = path.join(perApplicationDir, app);
 		fs.mkdirSync(appDir, { recursive: true });
-		fs.writeFileSync(path.join(appDir, "total_stats.json"), JSON.stringify(appStats[app], null, 2));
+		fs.writeFileSync(path.join(appDir, "total_stats.json"), JSON.stringify(appStats[app]));
 	}
 
 	for (const app in mfeStats) {
 		for (const mfe in mfeStats[app]) {
 			const mfeDir = path.join(perApplicationDir, app, mfe);
 			fs.mkdirSync(mfeDir, { recursive: true });
-			fs.writeFileSync(path.join(mfeDir, "total_stats.json"), JSON.stringify(mfeStats[app][mfe], null, 2));
+			fs.writeFileSync(path.join(mfeDir, "total_stats.json"), JSON.stringify(mfeStats[app][mfe]));
 		}
 	}
 }
