@@ -1,3 +1,7 @@
+// This file is commented out as it's not needed
+// Keeping a dummy export to avoid breaking imports
+
+/*
 import axios from "axios";
 import { getApplicationForMfe } from "./getMfeInfo.js";
 
@@ -48,37 +52,14 @@ async function fetchJsonFile(url: string) {
 	}
 }
 
+*/
+
+/**
+ * This function is commented out as it's not needed
+ * @deprecated This function is no longer used
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function getComponentsByMfe(mfeName: string, applicationName?: string): Promise<string[]> {
-	// If applicationName is not provided, look it up
-	if (!applicationName) {
-		const appName = await getApplicationForMfe(mfeName);
-		if (!appName) {
-			throw new Error(`MFE not found: ${mfeName}`);
-		}
-		applicationName = appName;
-	}
-
-	// First try to get components from the directory structure
-	const baseUrl = `https://api.github.com/repos/SolaceDev/maas-react-components/contents/mrc-usage-report-data/per-application/${applicationName}/${mfeName}`;
-	const statsUrl = `${baseUrl}/total_stats.json`;
-	const ref = "feature/mrc-usage-report-data";
-
-	try {
-		// First try to get the stats file which contains component usage information
-		const stats = await fetchJsonFile(`${statsUrl}?ref=${ref}`);
-
-		if (stats) {
-			// If we have stats, extract component names from the keys
-			return Object.keys(stats);
-		}
-
-		// If no stats file, fall back to directory listing
-		const components = await fetchDirectoryContents(`${baseUrl}?ref=${ref}`);
-		if (components.length === 0) {
-			throw new Error(`MFE not found or has no components: ${applicationName}/${mfeName}`);
-		}
-		return components;
-	} catch (error) {
-		throw new Error(`Could not fetch components for MFE ${applicationName}/${mfeName}: ${error}`);
-	}
+	// Function is deprecated and will be removed in a future release
+	return [];
 }

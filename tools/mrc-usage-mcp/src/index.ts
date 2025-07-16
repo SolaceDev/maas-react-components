@@ -17,7 +17,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { getUsageForComponent } from "./tools/getUsageForComponent.js";
 import { getAllComponents } from "./tools/getAllComponents.js";
-import { getComponentsByApplication } from "./tools/getComponentsByApplication.js";
+// import { getComponentsByApplication } from "./tools/getComponentsByApplication.js";
 // import { getComponentsByMfe } from "./tools/getComponentsByMfe.js";
 import { getApplicationStats } from "./tools/getApplicationStats.js";
 import { getMfeStats } from "./tools/getMfeStats.js";
@@ -276,38 +276,38 @@ class MrcUsageServer {
 						}
 					}
 				},
-				{
-					name: "get_components_by_application",
-					description: "Get a list of all components used in a specific application.",
-					inputSchema: {
-						type: "object",
-						properties: {
-							applicationName: {
-								type: "string",
-								description: APPLICATION_NAME_DESCRIPTION
-							}
-						},
-						required: ["applicationName"]
-					}
-				},
-				{
-					name: "get_components_by_mfe",
-					description: "Get a list of all components used in a specific MFE (Micro Frontend).",
-					inputSchema: {
-						type: "object",
-						properties: {
-							applicationName: {
-								type: "string",
-								description: APPLICATION_NAME_DESCRIPTION
-							},
-							mfeName: {
-								type: "string",
-								description: "The name of the MFE (Micro Frontend)."
-							}
-						},
-						required: ["applicationName", "mfeName"]
-					}
-				},
+				// {
+				// 	name: "get_components_by_application",
+				// 	description: "Get a list of all components used in a specific application.",
+				// 	inputSchema: {
+				// 		type: "object",
+				// 		properties: {
+				// 			applicationName: {
+				// 				type: "string",
+				// 				description: APPLICATION_NAME_DESCRIPTION
+				// 			}
+				// 		},
+				// 		required: ["applicationName"]
+				// 	}
+				// },
+				// {
+				// 	name: "get_components_by_mfe",
+				// 	description: "Get a list of all components used in a specific MFE (Micro Frontend).",
+				// 	inputSchema: {
+				// 		type: "object",
+				// 		properties: {
+				// 			applicationName: {
+				// 				type: "string",
+				// 				description: APPLICATION_NAME_DESCRIPTION
+				// 			},
+				// 			mfeName: {
+				// 				type: "string",
+				// 				description: "The name of the MFE (Micro Frontend)."
+				// 			}
+				// 		},
+				// 		required: ["applicationName", "mfeName"]
+				// 	}
+				// },
 				{
 					name: "get_application_stats",
 					description: "Get usage statistics for a specific application.",
@@ -479,18 +479,18 @@ class MrcUsageServer {
 						]
 					};
 				}
-				case "get_components_by_application": {
-					const { applicationName } = request.params.arguments as { applicationName: string };
-					const result = await getComponentsByApplication(applicationName);
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
-							}
-						]
-					};
-				}
+				// case "get_components_by_application": {
+				// 	const { applicationName } = request.params.arguments as { applicationName: string };
+				// 	const result = await getComponentsByApplication(applicationName);
+				// 	return {
+				// 		content: [
+				// 			{
+				// 				type: "text",
+				// 				text: JSON.stringify(result, null, 2)
+				// 			}
+				// 		]
+				// 	};
+				// }
 				// case "get_components_by_mfe":
 				// case "get_components_by_sub_application": {
 				// 	const { applicationName, mfeName, subApplicationName } = request.params.arguments as {
