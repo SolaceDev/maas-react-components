@@ -117,6 +117,7 @@ const getOrder = (order: any) => {
 /**
  * Recursively hides properties based on the isHidden function
  */
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const hideProperties = (isHidden: any, uiSchema: UiSchema, schema: any) => {
 	if (!schema) {
 		return;
@@ -128,7 +129,6 @@ const hideProperties = (isHidden: any, uiSchema: UiSchema, schema: any) => {
 		for (const property in properties) {
 			// hide all errors - errors are displayed with custom widgets
 			uiSchema[property] = { "ui:hideError": true };
-
 			if (isHidden(FormFieldType.property, property, properties[property])) {
 				// hide rjsf property widget
 				uiSchema[property]["ui:widget"] = "hidden";
@@ -136,9 +136,14 @@ const hideProperties = (isHidden: any, uiSchema: UiSchema, schema: any) => {
 				// hide rjsf property description via custom handling - descriptions are displayed with custom widgets
 				uiSchema[property]["ui:description"] = CustomProperty.hidden;
 			}
+			// Recursively process nested properties
+			if (properties[property] && typeof properties[property] === "object") {
+				if (!uiSchema[property]) {
+					uiSchema[property] = {};
+				}
+				hideProperties(isHidden, uiSchema[property], properties[property]);
+			}
 		}
-
-		hideProperties(isHidden, uiSchema, properties);
 	} else if (typeof schema === "object") {
 		for (const property in schema) {
 			hideProperties(isHidden, uiSchema, schema[property]);
