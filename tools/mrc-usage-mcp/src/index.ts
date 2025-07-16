@@ -602,3 +602,7 @@ class MrcUsageServer {
 
 const server = new MrcUsageServer();
 server.run().catch(console.error);
+
+export * from "./tools/getUsageForComponentByApplication";
+export * from "./tools/getUsageForComponentByMFE";
+export * from "./tools/getUsageForComponentSolace";
