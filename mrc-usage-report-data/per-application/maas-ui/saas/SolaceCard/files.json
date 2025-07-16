@@ -1,12 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/LogsRetention.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/Tokens.tsx"
-]
+["../../../maas-ui/micro-frontends/saas/src/pages/brokerSSO/BrokerSSOConfig.tsx","../../../maas-ui/micro-frontends/saas/src/pages/userManagement/UserManagement.tsx","../../../maas-ui/micro-frontends/saas/src/pages/environments/components/GridContainer.tsx","../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/DrawdownUsage.tsx","../../../maas-ui/micro-frontends/saas/src/pages/drawdownUsage/components/DrawdownUsageCostCard/DrawdownUsageCostCard.tsx","../../../maas-ui/micro-frontends/saas/src/pages/userGroups/UserGroups.tsx","../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/InsightsSettings.tsx","../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/LogsRetention.tsx","../../../maas-ui/micro-frontends/saas/src/pages/insightsSettings/components/NotificationAd.tsx","../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/Tokens.tsx"]

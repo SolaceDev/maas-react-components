@@ -1,14 +1,1 @@
-[
-  {
-    "name": "options",
-    "count": 1
-  },
-  {
-    "name": "onChange",
-    "count": 1
-  },
-  {
-    "name": "activeValue",
-    "count": 1
-  }
-]
+[{"name":"options","count":1},{"name":"onChange","count":1},{"name":"activeValue","count":1}]

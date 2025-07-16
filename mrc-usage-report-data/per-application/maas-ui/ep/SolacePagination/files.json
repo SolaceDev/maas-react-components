@@ -1,16 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/ep/src/components/entityList/EntityList.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/EventFlowDiscrepancyPreviewDialog.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServicesReferences.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ScanLogsDialog.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/SchemaVersionList.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/EventVersionList.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/ApplicationVersionList.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/RemTable.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/SearchEventAPIs.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemas.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchApplications.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordionList.tsx"
-]
+["../../../maas-ui/micro-frontends/ep/src/components/entityList/EntityList.tsx","../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/EventFlowDiscrepancyPreviewDialog.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ModeledEventMeshMessagingServicesReferences.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ScanLogsDialog.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/SchemaVersionList.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/EventVersionList.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/entityList/ApplicationVersionList.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/RemTable.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/SearchSharedEventsDialog.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/eventApis/manageEventApisSideBar/SearchEventAPIs.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/SearchSchemas.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchEvents.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/SearchApplications.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/applicationDetails/RequestAccordionList.tsx"]

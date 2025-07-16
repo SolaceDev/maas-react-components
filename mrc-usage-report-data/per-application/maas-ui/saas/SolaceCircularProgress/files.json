@@ -1,8 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/common/icons/LoadingSpinner.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/environments/components/UserAccessDialog.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/DataCenterTable.tsx"
-]
+["../../../maas-ui/micro-frontends/saas/src/userAccess/rrbac/components/UserAccessDialog.tsx","../../../maas-ui/micro-frontends/saas/src/common/icons/LoadingSpinner.tsx","../../../maas-ui/micro-frontends/saas/src/pages/environments/components/UserAccessDialog.tsx","../../../maas-ui/micro-frontends/saas/src/pages/userGroups/components/ViewUserGroupDetailsDialog.tsx","../../../maas-ui/micro-frontends/saas/src/pages/support/components/SupportOutageCard.tsx","../../../maas-ui/micro-frontends/saas/src/pages/privateRegions/components/DataCenterTable.tsx"]

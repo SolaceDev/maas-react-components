@@ -1,9 +1,1 @@
-{
-  "ep": 42,
-  "intg": 2,
-  "mc": 13,
-  "saas": 8,
-  "infra": 1,
-  "maas-ops-react": 2,
-  "broker-manager": 1
-}
+{"ep":42,"intg":2,"mc":13,"saas":8,"infra":1,"maas-ops-react":2,"broker-manager":1}

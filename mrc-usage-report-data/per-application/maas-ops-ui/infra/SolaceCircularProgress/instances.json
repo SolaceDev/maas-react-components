@@ -1,12 +1,1 @@
-[
-  {
-    "filePath": "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
-    "props": [
-      {
-        "name": "size",
-        "type": "string",
-        "value": "sm"
-      }
-    ]
-  }
-]
+{"keyMap":{"filePath":"a","name":"b","props":"c","type":"d","value":"e"},"data":[{"a":"../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx","c":[{"b":"size","d":"string","e":"sm"}]}]}

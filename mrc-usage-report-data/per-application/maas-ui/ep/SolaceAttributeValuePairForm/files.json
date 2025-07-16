@@ -1,4 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionDetails.tsx"
-]
+["../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionDetails.tsx"]

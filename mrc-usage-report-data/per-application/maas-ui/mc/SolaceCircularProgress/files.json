@@ -1,12 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/mc/src/components/dialogs/CloneServiceDialog.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upscales/ScaleUpStatus.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/UpgradesLegacy.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/CreateHostnameDialog.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/MonitoringCard.tsx"
-]
+["../../../maas-ui/micro-frontends/mc/src/components/dialogs/CloneServiceDialog.tsx","../../../maas-ui/micro-frontends/mc/src/rrbac/components/UserAccessDialog.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upscales/ScaleUpStatus.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/UpgradesLegacy.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/CreateHostnameDialog.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/dialogs/DistributedTracingDeployDialog.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/HostnamesCard.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/PortConfigurationCard.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/DistributedTracingCard.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/manage/cards/MonitoringCard.tsx"]

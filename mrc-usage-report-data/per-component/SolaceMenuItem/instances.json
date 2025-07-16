@@ -1,17 +1,1 @@
-[
-  {
-    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/utils/miscUtils.tsx",
-    "props": [
-      {
-        "name": "key",
-        "type": "expression",
-        "value": "`graphContextMenu_${menuItem.id ?? index}`"
-      },
-      {
-        "name": "...",
-        "type": "spread",
-        "value": "menuItem"
-      }
-    ]
-  }
-]
+{"keyMap":{"filePath":"a","name":"b","props":"c","type":"d","value":"e"},"data":[{"a":"../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/utils/miscUtils.tsx","c":[{"b":"key","d":"expression","e":"`graphContextMenu_${menuItem.id ?? index}`"},{"b":"...","d":"spread","e":"menuItem"}]}]}

@@ -1,4 +1,1 @@
-[
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersList.tsx",
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterServices.tsx"
-]
+["../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersList.tsx","../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterServices.tsx"]

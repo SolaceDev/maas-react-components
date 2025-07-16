@@ -1,18 +1,1 @@
-[
-  {
-    "name": "title",
-    "count": 3
-  },
-  {
-    "name": "backgroundColor",
-    "count": 2
-  },
-  {
-    "name": "showCloseButton",
-    "count": 1
-  },
-  {
-    "name": "onClose",
-    "count": 1
-  }
-]
+[{"name":"title","count":3},{"name":"backgroundColor","count":2},{"name":"showCloseButton","count":1},{"name":"onClose","count":1}]

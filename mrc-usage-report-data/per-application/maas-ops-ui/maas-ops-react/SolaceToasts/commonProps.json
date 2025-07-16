@@ -1,18 +1,1 @@
-[
-  {
-    "name": "message",
-    "count": 3
-  },
-  {
-    "name": "open",
-    "count": 3
-  },
-  {
-    "name": "onClose",
-    "count": 3
-  },
-  {
-    "name": "severity",
-    "count": 2
-  }
-]
+[{"name":"message","count":3},{"name":"open","count":3},{"name":"onClose","count":3},{"name":"severity","count":2}]

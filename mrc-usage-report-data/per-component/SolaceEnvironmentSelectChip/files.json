@@ -1,6 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx",
-  "../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx",
-  "../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx"
-]
+["../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/architecture/ModeledEventMeshes/components/EnvironmentSelector.tsx","../../../maas-ui/micro-frontends/intg/src/pages/connectors/Connectors.tsx","../../../maas-ui/micro-frontends/intg/src/pages/agents/Agents.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/list/Services.tsx"]

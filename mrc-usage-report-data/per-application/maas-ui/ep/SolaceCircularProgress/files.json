@@ -1,9 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/components/PositionedCircularProgress/PositionedCircularProgress.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScansTable.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateSchemasDialog.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx"
-]
+["../../../maas-ui/micro-frontends/ep/src/components/userAccess/rrbac/components/UserAccessDialog.tsx","../../../maas-ui/micro-frontends/ep/src/components/PositionedCircularProgress/PositionedCircularProgress.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/DiscoveryScansTable.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/AuditImportJob.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/import/UpdateSchemasDialog.tsx","../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterListWrapper.tsx","../../../maas-ui/micro-frontends/ep/src/pages/resources/LearningCenterList.tsx"]

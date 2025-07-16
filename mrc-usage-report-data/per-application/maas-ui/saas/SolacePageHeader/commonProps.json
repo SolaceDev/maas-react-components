@@ -1,18 +1,1 @@
-[
-  {
-    "name": "title",
-    "count": 2
-  },
-  {
-    "name": "environment",
-    "count": 1
-  },
-  {
-    "name": "borderTop",
-    "count": 1
-  },
-  {
-    "name": "tabs",
-    "count": 1
-  }
-]
+[{"name":"title","count":2},{"name":"environment","count":1},{"name":"borderTop","count":1},{"name":"tabs","count":1}]

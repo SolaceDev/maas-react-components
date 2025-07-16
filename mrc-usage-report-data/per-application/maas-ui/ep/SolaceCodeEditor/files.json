@@ -1,13 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/SchemaVersionAccordionDetails.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ViewCollectedData.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewConfigurationDialog.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewSchemaConfigurationDialog.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplate.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/TemplateFullConfiguration.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionDetails.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionForm.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConfigurationItem.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx"
-]
+["../../../maas-ui/micro-frontends/ep/src/components/entityList/environment/QueueConfigPreview.tsx","../../../maas-ui/micro-frontends/ep/src/components/ReferencedVersions/SchemaVersionAccordionDetails.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/runtime/ViewCollectedData.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewConfigurationDialog.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/mems/audit/ViewSchemaConfigurationDialog.tsx","../../../maas-ui/micro-frontends/ep/src/pages/topology/templates/SolaceQueueTemplate.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/TemplateFullConfiguration.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionDetails.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/schemas/SchemaVersionForm.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/consumers/ConfigurationItem.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/events/schemaDrawer/QuickCreateSchema.tsx"]

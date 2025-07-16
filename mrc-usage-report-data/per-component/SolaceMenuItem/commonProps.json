@@ -1,10 +1,1 @@
-[
-  {
-    "name": "key",
-    "count": 1
-  },
-  {
-    "name": "...",
-    "count": 1
-  }
-]
+[{"name":"key","count":1},{"name":"...","count":1}]

@@ -1,18 +1,1 @@
-[
-  {
-    "name": "id",
-    "count": 2
-  },
-  {
-    "name": "text",
-    "count": 2
-  },
-  {
-    "name": "dataQa",
-    "count": 2
-  },
-  {
-    "name": "onClick",
-    "count": 1
-  }
-]
+[{"name":"id","count":2},{"name":"text","count":2},{"name":"dataQa","count":2},{"name":"onClick","count":1}]

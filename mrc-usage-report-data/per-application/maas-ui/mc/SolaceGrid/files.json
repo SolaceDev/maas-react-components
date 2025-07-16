@@ -1,4 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/UpgradesAutomatic.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx"
-]
+["../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/UpgradesAutomatic.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx"]

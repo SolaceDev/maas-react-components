@@ -1,14 +1,1 @@
-[
-  {
-    "name": "dataQa",
-    "count": 4
-  },
-  {
-    "name": "label",
-    "count": 4
-  },
-  {
-    "name": "fillColor",
-    "count": 1
-  }
-]
+[{"name":"dataQa","count":4},{"name":"label","count":4},{"name":"fillColor","count":1}]

@@ -1,10 +1,1 @@
-[
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx",
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersList.tsx",
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersSummary.tsx",
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersExportDialog.tsx",
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx",
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx",
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterSystemComponents.tsx",
-  "../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterNetwork.tsx"
-]
+["../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersFilter.tsx","../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersList.tsx","../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersSummary.tsx","../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/ClustersExportDialog.tsx","../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetails.tsx","../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterDetailsStatus.tsx","../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterSystemComponents.tsx","../../../maas-ops-ui/micro-frontends/infra/src/pages/clusters/clusterDetails/ClusterNetwork.tsx"]

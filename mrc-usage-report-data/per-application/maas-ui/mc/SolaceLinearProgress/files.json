@@ -1,5 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/CreatingProgress.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx",
-  "../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerVersion.tsx"
-]
+["../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/CreatingProgress.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/list/components/ServiceCard.tsx","../../../maas-ui/micro-frontends/mc/src/pages/services/create/components/FieldBrokerVersion.tsx"]

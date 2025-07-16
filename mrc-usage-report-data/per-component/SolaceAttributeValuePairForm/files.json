@@ -1,7 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionDetails.tsx",
-  "../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/TopicHeaderMapping.tsx",
-  "../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx",
-  "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx"
-]
+["../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionForm.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/enumerations/EnumerationVersionDetails.tsx","../../../maas-ui/micro-frontends/intg/src/components/connectors/topicHeader/TopicHeaderMapping.tsx","../../../maas-ui/micro-frontends/saas/src/pages/distributedTracing/components/formComponents.tsx","../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/serviceTypes/CreateServiceType.tsx"]

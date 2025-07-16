@@ -1,6 +1,1 @@
-[
-  "../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/EmptyStateConfiguration.tsx",
-  "../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/GraphEmptyState.tsx"
-]
+["../../../maas-ui/micro-frontends/ep/src/components/EmptyState/EmptyState.tsx","../../../maas-ui/micro-frontends/ep/src/components/SolaceGraph/GraphEmptyState.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/configuration/EmptyStateConfiguration.tsx","../../../maas-ui/micro-frontends/ep/src/pages/designer/graph/GraphEmptyState.tsx"]
