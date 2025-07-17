@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Box, Step, StepButton, StepLabel, Stepper, useTheme } from "@mui/material";
+import { Box, Step, StepButton, StepLabel, Stepper, Tooltip, useTheme } from "@mui/material";
 import { SolaceStepperProps, StepProp } from "../../../types";
 import SolaceTypography from "../../SolaceTypography";
 import SolaceStepIcon from "./SolaceStepIcon";
@@ -52,33 +52,58 @@ export default function SolaceStepper(props: SolaceStepperProps) {
 						activeStep === index
 							? theme.palette.ux.primary.text.wMain
 							: theme.palette.ux.deprecated.secondary.text.wMain;
+					const stepButton = (
+						<StepButton
+							optional={
+								step.hideOptionalLabel ? undefined : (
+									<SolaceTypography sx={{ color: labelColor }} variant="caption">
+										{`Step ${index + 1} ${step?.subText ?? ""}`}
+									</SolaceTypography>
+								)
+							}
+							color="inherit"
+							onClick={step.disabled ? undefined : handleStep(index)}
+							sx={{
+								textAlign: "left",
+								opacity: step.disabled ? 0.35 : 1,
+								cursor: step.disabled ? "default" : "pointer",
+								"&:hover .MuiTypography-root": {
+									color: step.disabled ? undefined : theme.palette.ux.primary.text.wMain
+								}
+							}}
+						>
+							<StepLabel StepIconComponent={() => getSolaceIconComponent(step, activeStep === index)}>
+								<SolaceTypography variant="h5" sx={{ color: labelColor }}>
+									{step.label}
+								</SolaceTypography>
+							</StepLabel>
+						</StepButton>
+					);
+
 					return (
 						<Step key={step.label}>
-							<StepButton
-								optional={
-									step.hideOptionalLabel ? undefined : (
-										<SolaceTypography sx={{ color: labelColor }} variant="caption">
-											{`Step ${index + 1} ${step?.subText ?? ""}`}
-										</SolaceTypography>
-									)
-								}
-								color="inherit"
-								onClick={step.disabled ? undefined : handleStep(index)}
-								sx={{
-									textAlign: "left",
-									opacity: step.disabled ? 0.35 : 1,
-									cursor: step.disabled ? "default" : "pointer",
-									"&:hover .MuiTypography-root": {
-										color: step.disabled ? undefined : theme.palette.ux.primary.text.wMain
-									}
-								}}
-							>
-								<StepLabel StepIconComponent={() => getSolaceIconComponent(step, activeStep === index)}>
-									<SolaceTypography variant="h5" sx={{ color: labelColor }}>
-										{step.label}
-									</SolaceTypography>
-								</StepLabel>
-							</StepButton>
+							{step.disabled && step.disabledReason ? (
+								<Tooltip
+									title={step.disabledReason}
+									placement="bottom-start"
+									slotProps={{
+										popper: {
+											modifiers: [
+												{
+													name: "offset",
+													options: {
+														offset: [0, -24]
+													}
+												}
+											]
+										}
+									}}
+								>
+									{stepButton}
+								</Tooltip>
+							) : (
+								stepButton
+							)}
 						</Step>
 					);
 				})}

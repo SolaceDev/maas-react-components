@@ -65,6 +65,7 @@ const DETAILS_STEP = "Details";
 const SOURCE_CONNECTION_STEP = "Source Connection";
 const TARGET_HEADER_MAPPING_STEP = "Target Header Mapping";
 const SUBTEXT_OPTIONAL = "(Optional)";
+const SUBTEXT_DISABLED = "(Disabled)";
 
 const initialSteps: StepsProps = [
 	{ label: DETAILS_STEP, icon: <DeleteIconWithColor /> },
@@ -211,8 +212,27 @@ export const HideOptionalLabels: Story = {
 
 const stepsWithDisabled: StepsProps = [
 	{ label: DETAILS_STEP, icon: <DeleteIconWithColor />, disabled: false },
-	{ label: SOURCE_CONNECTION_STEP, icon: <DeleteIconWithColor />, subText: SUBTEXT_OPTIONAL, disabled: true },
+	{ label: SOURCE_CONNECTION_STEP, icon: <DeleteIconWithColor />, subText: SUBTEXT_DISABLED, disabled: true },
 	{ label: TARGET_HEADER_MAPPING_STEP, icon: <DeleteIconWithColor />, disabled: false }
+];
+
+const stepsWithDisabledReasons: StepsProps = [
+	{ label: DETAILS_STEP, icon: <DeleteIconWithColor />, disabled: false, hideOptionalLabel: true },
+	{
+		label: SOURCE_CONNECTION_STEP,
+		icon: <DeleteIconWithColor />,
+		subText: SUBTEXT_DISABLED,
+		disabled: true,
+		disabledReason: "Complete the previous step before proceeding",
+		hideOptionalLabel: true
+	},
+	{
+		label: TARGET_HEADER_MAPPING_STEP,
+		icon: <DeleteIconWithColor />,
+		disabled: true,
+		disabledReason: "Source connection must be configured first",
+		hideOptionalLabel: true
+	}
 ];
 
 export const DisabledSteps: Story = {
@@ -221,30 +241,71 @@ export const DisabledSteps: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 
-		// Assert next button is disabled (since step 1 is disabled)
+		// Assert next button is step 3 since step 2 is disabled)
 		const nextButton = canvas.getByRole("button", { name: /next/i });
-		expect(nextButton).toBeDisabled();
+		expect(nextButton).toBeEnabled();
+		expect(nextButton).toHaveTextContent(stepsWithDisabled[2].label);
 
 		// Click on Target Header Mapping to jump to step 3
 		const targetHeaderMappingStep = canvas.getByText("Target Header Mapping");
 		await userEvent.click(targetHeaderMappingStep);
 
-		// Assert back button is disabled (since step 1 is disabled, can't go back)
+		// Assert back button is step 1 since step 2 is disabled
 		const backButton = canvas.getByRole("button", { name: /back/i });
-		expect(backButton).toBeDisabled();
+		expect(backButton).toBeEnabled();
+		expect(backButton).toHaveTextContent(stepsWithDisabled[0].label);
 	}
 };
 
 const stepsWithMixedStates: StepsProps = [
-	{ label: "Completed Step", icon: <DeleteIconWithColor />, completed: true, disabled: false },
-	{ label: "Disabled Step", icon: <DeleteIconWithColor />, subText: "(Disabled)", disabled: true },
-	{ label: "Error Step", icon: <DeleteIconWithColor />, error: true, disabled: true },
-	{ label: "Normal Step", icon: <DeleteIconWithColor />, disabled: false }
+	{ label: "Step 1", icon: <DeleteIconWithColor />, completed: true, disabled: false },
+	{ label: "Step 2", icon: <DeleteIconWithColor />, completed: true, disabled: false },
+	{ label: "Error Step 3", icon: <DeleteIconWithColor />, subText: "(Disabled)", error: true, disabled: true },
+	{ label: "Step 4", icon: <DeleteIconWithColor />, disabled: false },
+	{ label: "Step 5", icon: <DeleteIconWithColor />, disabled: true }
 ];
 
 export const MixedStepStates: Story = {
 	render: Component,
-	args: { steps: stepsWithMixedStates }
+	args: { steps: stepsWithMixedStates },
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		// Assert initial state - should be on first step (Completed Step)
+		const step1NextButton = canvas.getByRole("button", { name: /next/i });
+		expect(step1NextButton).toBeEnabled();
+		expect(step1NextButton).toHaveTextContent("Step 2");
+
+		// Click next to go to Step 2
+		await userEvent.click(step1NextButton);
+
+		const step2NextButton = canvas.getByRole("button", { name: /next/i });
+		expect(step2NextButton).toBeEnabled();
+		expect(step2NextButton).toHaveTextContent("Step 4");
+
+		// Assert back button shows correct previous enabled step
+		const step2BackButton = canvas.getByRole("button", { name: /back/i });
+		expect(step2BackButton).toBeEnabled();
+		expect(step2BackButton).toHaveTextContent("Step 1");
+
+		// Click next to go to Step 4
+		await userEvent.click(step2NextButton);
+
+		// Assert next button is disabled since step 4 is disabled
+		const step4NextButton = canvas.getByRole("button", { name: /next/i });
+		expect(step4NextButton).toBeDisabled();
+		expect(step4NextButton).toHaveTextContent("Step 5");
+
+		// Assert back button shows correct previous enabled step
+		const step4BackButton = canvas.getByRole("button", { name: /back/i });
+		expect(step4BackButton).toBeEnabled();
+		expect(step4BackButton).toHaveTextContent("Step 2");
+	}
+};
+
+export const DisabledStepsWithTooltips: Story = {
+	render: Component,
+	args: { steps: stepsWithDisabledReasons }
 };
 
 const ComponentWithToggleDisabled = () => {
@@ -252,8 +313,19 @@ const ComponentWithToggleDisabled = () => {
 	const initialSteps: StepProp[] = useMemo(
 		() => [
 			{ label: DETAILS_STEP, icon: <DeleteIconWithColor />, disabled: false },
-			{ label: SOURCE_CONNECTION_STEP, icon: <DeleteIconWithColor />, subText: SUBTEXT_OPTIONAL, disabled: true },
-			{ label: TARGET_HEADER_MAPPING_STEP, icon: <DeleteIconWithColor />, disabled: true }
+			{
+				label: SOURCE_CONNECTION_STEP,
+				icon: <DeleteIconWithColor />,
+				subText: SUBTEXT_DISABLED,
+				disabled: true,
+				disabledReason: "Complete the previous step before proceeding"
+			},
+			{
+				label: TARGET_HEADER_MAPPING_STEP,
+				icon: <DeleteIconWithColor />,
+				disabled: true,
+				disabledReason: "Source connection must be configured first"
+			}
 		],
 		[]
 	);
@@ -397,6 +469,20 @@ export const InDialog: Story = {
 };
 
 InDialog.play = async ({ canvasElement }) => {
+	// Starts querying the component from its root element
+	const canvas = within(canvasElement);
+
+	// Find the clear button using role and its accessible name (aria-label)
+	const clearButton = canvas.getByRole("button");
+	await userEvent.click(clearButton);
+};
+
+export const InDialogWithDisabledSteps: Story = {
+	render: ComponentInDialog,
+	args: { steps: stepsWithDisabledReasons }
+};
+
+InDialogWithDisabledSteps.play = async ({ canvasElement }) => {
 	// Starts querying the component from its root element
 	const canvas = within(canvasElement);
 

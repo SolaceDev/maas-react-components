@@ -77,6 +77,7 @@ export type SolaceStepperFooterProps = {
  * @property {boolean} [error] - Whether the step has an error.
  * @property {boolean} [completed] - Whether the step is completed.
  * @property {boolean} [disabled] - Whether the step is disabled.
+ * @property {string} [disabledReason] - Reason for the step being disabled.
  */
 
 export type StepProp = {
@@ -87,6 +88,7 @@ export type StepProp = {
 	error?: boolean;
 	completed?: boolean;
 	disabled?: boolean;
+	disabledReason?: string;
 };
 
 /**
