@@ -123,3 +123,205 @@ The inconsistent path resolution between different tools needs to be fixed:
 - `getMfeStats.ts` goes up two levels to reach the project root
 
 This should be standardized to ensure consistent behavior across all tools.
+
+---
+
+## Tool Reference
+
+### `getAllComponents`
+
+Retrieves a list of all available MaaS React Components.
+
+**Type:** Composite/Internal Call
+
+**Sample Input**
+
+```json
+{
+	"tool": "getAllComponents"
+}
+```
+
+**Sample Output**
+
+```json
+["SolaceAccordion", "SolaceButton", "SolaceCard"]
+```
+
+### `getApplicationStats`
+
+Retrieves usage statistics for a specific application.
+
+**Type:** Composite/Internal Call
+
+**Sample Input**
+
+```json
+{
+	"tool": "getApplicationStats",
+	"applicationName": "maas-ui"
+}
+```
+
+**Sample Output**
+
+```json
+{
+	"totalInstances": 100,
+	"componentUsage": {
+		"SolaceButton": 50,
+		"SolaceCard": 30,
+		"SolaceTable": 20
+	},
+	"uniqueComponents": 3
+}
+```
+
+### `getMfeInfo`
+
+Retrieves information about a specific Micro-Frontend (MFE), including the application it belongs to.
+
+**Type:** Composite/Internal Call
+
+**Sample Input**
+
+```json
+{
+	"tool": "getMfeInfo",
+	"mfeName": "ep"
+}
+```
+
+**Sample Output**
+
+```json
+{
+	"mfeName": "ep",
+	"applicationName": "maas-ui",
+	"isValid": true
+}
+```
+
+### `getMfeStats`
+
+Retrieves usage statistics for a specific MFE.
+
+**Type:** Composite/Internal Call
+
+**Sample Input**
+
+```json
+{
+	"tool": "getMfeStats",
+	"mfeName": "ep"
+}
+```
+
+**Sample Output**
+
+```json
+{
+	"totalInstances": 80,
+	"componentUsage": {
+		"SolaceButton": 30,
+		"SolaceCard": 20,
+		"SolaceTable": 10
+	},
+	"uniqueComponents": 3
+}
+```
+
+### `getUsageForComponentByApplication`
+
+Retrieves all instances of a specific component within a given application.
+
+**Type:** Composite/Internal Call
+
+**Sample Input**
+
+```json
+{
+	"tool": "getUsageForComponentByApplication",
+	"applicationName": "maas-ui",
+	"componentName": "SolaceButton"
+}
+```
+
+**Sample Output**
+
+```json
+[
+	{
+		"a": "apps/maas-ui/src/app/modules/ep/components/some.component.ts",
+		"c": [
+			{
+				"b": "variant",
+				"d": "string",
+				"e": "primary"
+			}
+		]
+	}
+]
+```
+
+### `getUsageForComponentByMFE`
+
+Retrieves all instances of a specific component within a given MFE.
+
+**Type:** File-Associated
+
+**Sample Input**
+
+```json
+{
+	"tool": "getUsageForComponentByMFE",
+	"applicationName": "maas-ui",
+	"mfeName": "ep",
+	"componentName": "SolaceButton"
+}
+```
+
+**Sample Output**
+
+```json
+[
+	{
+		"a": "apps/maas-ui/src/app/modules/ep/components/some.component.ts",
+		"c": [
+			{
+				"b": "variant",
+				"d": "string",
+				"e": "primary"
+			}
+		]
+	}
+]
+```
+
+### `getUsageForComponentSolace`
+
+Retrieves all instances of a specific component across all applications and MFEs.
+
+**Type:** File-Associated
+
+**Sample Input**
+
+```json
+{
+	"tool": "getUsageForComponentSolace",
+	"componentName": "SolaceButton"
+}
+```
+
+**Sample Output**
+
+```json
+[
+	{
+		"file": "apps/maas-ui/src/app/modules/ep/components/some.component.ts",
+		"line": 10,
+		"character": 5,
+		"variant": "primary"
+	}
+]
+```
