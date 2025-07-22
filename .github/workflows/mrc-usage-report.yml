@@ -1,8 +1,8 @@
 name: MRC Usage Report Generation
 
 on:
-  # schedule:
-  #   - cron: "0 8 * * *" # Daily at 8 AM UTC
+  schedule:
+    - cron: "0 12 * * *" # Daily at 8 AM EST
   workflow_dispatch: # Manual trigger
   push:
     branches:
@@ -136,7 +136,11 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+          echo "--- Git status before add ---"
+          git status
           git add mrc-usage-report-data/
+          echo "--- Git status after add ---"
+          git status
 
           if git diff --staged --quiet; then
             echo "No changes to commit."
