@@ -1,7 +1,24 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint-disable sonarjs/no-duplicate-string */
 import { alpha, hexToRgb, ThemeOptions } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { SupportedThemes, ThemeMapping, ThemeMappingPalette } from "../types";
 import getThemeMappings from "../theming/themeUtils";
+import { SupportedThemes, ThemeMapping, ThemeMappingPalette } from "../types";
 import { BASE_FONT_PX_SIZES } from "./typography";
 
 const noneImportant = "none !important";
@@ -835,61 +852,177 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 				styleOverrides: {
 					root: {
 						marginRight: "16px",
-						rect: {
-							fill: themeMapping.palette.background.w10
+						width: "24px",
+						height: "24px",
+						border: `1px solid ${themeMapping.palette.secondary.w40}`,
+						borderRadius: "4px",
+						//This overrides the thick border
+						color: "#FFFFFF",
+
+						// Unselected, Enabled
+						"&.MuiButtonBase-root": {
+							//Color of the area between checkmark and border (Fill)
+							backgroundColor: themeMapping.palette.background.w10,
+							//Color of the Border(Stroke)
+							borderColor: themeMapping.palette.secondary.w40
 						},
-						".SolaceCheckboxContainer": {
-							stroke: themeMapping.palette.secondary.w40
-						},
-						"&.Mui-checked .MuiSvgIcon-root": {
-							".SolaceCheckboxCheckmark": {
+
+						// Selected, Enabled
+						"&.Mui-checked": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.w40
+							},
+
+							"& .MuiSvgIcon-root path": {
+								//Color of Selection Indicator
 								fill: themeMapping.palette.accent.n2.wMain
-							},
-							".SolaceCheckboxIndeterminant": {
-								stroke: themeMapping.palette.accent.n2.wMain
 							}
 						},
-						"&:hover .MuiSvgIcon-root rect.SolaceCheckboxContainer": {
-							stroke: themeMapping.palette.secondary.wMain
+
+						//(Unselected, Hover)
+						"&:not(.Mui-checked):hover": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.wMain
+							}
 						},
-						"&.Mui-focusVisible": {
-							outline: `1px solid ${themeMapping.palette.accent.n2.wMain}`,
-							borderRadius: "4px"
+
+						// (Selected, Hover)
+						"&.Mui-checked:hover": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.wMain
+							},
+
+							"& .MuiSvgIcon-root path": {
+								//Color of Selection Indicator
+								fill: themeMapping.palette.accent.n2.wMain
+							}
 						},
-						"&.Mui-disabled .MuiSvgIcon-root": {
-							rect: {
-								fill: themeMapping.palette.background.w10
+
+						// (Unselected, Read-only)
+						".readOnly": {
+							"&.MuiButtonBase-root": {
+								//Color of the area  (Fill)
+								backgroundColor: themeMapping.palette.background.w20,
+								// backgroundColor: "red",
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.w40,
+								color: themeMapping.palette.background.w20
+							}
+						},
+
+						// (Selected, Read-only)
+						"&.Mui-checked.readOnly": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w20 + " !important",
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.w40 + " !important"
 							},
-							".SolaceCheckboxContainer": {
-								stroke: themeMapping.palette.secondary.w20
+
+							"& .MuiSvgIcon-root path": {
+								//Color of Selection Indicator
+								fill: themeMapping.palette.secondary.wMain + " !important"
+							}
+						},
+
+						// (Unselected, Disabled)
+						"&.Mui-disabled": {
+							"&.MuiButtonBase-root": {
+								//Color of the area  (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.w20,
+
+								color: themeMapping.palette.background.w10
+							}
+						},
+
+						// (Selected, Disabled)
+						"&.Mui-disabled.Mui-checked": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.w20
 							},
-							".SolaceCheckboxCheckmark": {
+
+							"& .MuiSvgIcon-root path": {
+								//Color of Selection Indicator
 								fill: themeMapping.palette.accent.n2.w30
-							},
-							".SolaceCheckboxIndeterminant": {
-								stroke: themeMapping.palette.accent.n2.w30
 							}
 						},
-						"&.readOnly .MuiSvgIcon-root": {
-							rect: {
-								fill: themeMapping.palette.background.w20
+
+						//  Indeterminate state (unselected)
+						"&.MuiCheckbox-indeterminate:not(.Mui-checked)": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.w40
 							},
-							".SolaceCheckboxContainer": {
-								stroke: themeMapping.palette.secondary.w40
-							},
-							".SolaceCheckboxCheckmark": {
-								fill: themeMapping.palette.deprecated.secondary.wMain
-							},
-							".SolaceCheckboxIndeterminant": {
-								stroke: themeMapping.palette.deprecated.secondary.wMain
+
+							"& .MuiSvgIcon-root": {
+								// Hide the icon when indeterminate but not checked
+								display: "none"
 							}
 						},
-						// other
+
+						// Indeterminate state (unselected) - hover state
+						"&.MuiCheckbox-indeterminate:not(.Mui-checked):hover": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.wMain
+							}
+						},
+
+						// (Indeterminate, Enabled)
+						"&.MuiCheckbox-indeterminate.Mui-checked": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.w40
+							},
+
+							"& .MuiSvgIcon-root path": {
+								//Color of Selection Indicator
+								fill: themeMapping.palette.accent.n2.wMain
+							}
+						},
+
+						// (Indeterminate, Hover and Enabled)
+						"&.MuiCheckbox-indeterminate.Mui-checked:hover": {
+							"&.MuiButtonBase-root": {
+								//Color of the area between checkmark and border (Fill)
+								backgroundColor: themeMapping.palette.background.w10,
+								//Color of the Border(Stroke)
+								borderColor: themeMapping.palette.secondary.wMain
+							},
+
+							"& .MuiSvgIcon-root path": {
+								//Color of Selection Indicator
+								fill: themeMapping.palette.accent.n2.wMain
+							}
+						},
+
+						// Other styling
 						"+.MuiFormLabel-root": {
 							marginLeft: "16px",
-							color: themeMapping.palette.secondary.wMain,
+							color: themeMapping.palette.primary.text.wMain,
+							lineHeight: 1.5,
 							"&.Mui-disabled": {
-								color: themeMapping.palette.secondary.w40
+								color: themeMapping.palette.secondary.text.w50
 							}
 						},
 						padding: "0"
@@ -1497,6 +1630,14 @@ const getThemeOptions = (themeName: SupportedThemes) => {
 								fill: isCurrentSolace
 									? themeMapping.palette.deprecated.accent.n2.wMain
 									: themeMapping.palette.accent.n2.wMain
+							}
+						},
+						"&.disableDefaultPadding": {
+							".MuiDialog-paper": {
+								padding: "0"
+							},
+							".MuiDialogTitle-root": {
+								padding: "0"
 							}
 						},
 						"&.linearProgressIndicator": {

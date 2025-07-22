@@ -1,3 +1,19 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React from "react";
 import { Meta } from "@storybook/react";
 import { SolaceToasts, SolaceButton, IconButton } from "@SolaceDev/maas-react-components";
@@ -29,6 +45,11 @@ export default {
 			options: ["success", "info", "warning", "error"],
 			control: {
 				type: "select"
+			},
+			description: "**Deprecated** - This prop will be removed in a future version",
+			table: {
+				type: { summary: '"success" | "info" | "warning" | "error"' },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		message: {
@@ -49,42 +70,6 @@ const buttonClickedAction = action("action button clicked");
 export const DefaultToast = {
 	args: {
 		message: "This is a default toast",
-		open: true,
-		onClose: action("closing")
-	}
-};
-
-export const SuccessToast = {
-	args: {
-		severity: "success",
-		message: "This is a sample success toast",
-		open: true,
-		onClose: action("closing")
-	}
-};
-
-export const InfoToast = {
-	args: {
-		severity: "info",
-		message: "This is a sample info toast",
-		open: true,
-		onClose: action("closing")
-	}
-};
-
-export const WarningToast = {
-	args: {
-		severity: "warning",
-		message: "This is a sample warning toast",
-		open: true,
-		onClose: action("closing")
-	}
-};
-
-export const ErrorToast = {
-	args: {
-		severity: "error",
-		message: "This is a sample error toast",
 		open: true,
 		onClose: action("closing")
 	}

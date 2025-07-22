@@ -1,14 +1,27 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { Box, Checkbox, FormHelperText, useTheme, FormLabel } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import React, { useEffect, useState } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import SolaceHTMLAttributeProps from "../SolaceHTMLAttributesProps";
-import {
-	IndeterminateCheckBoxIcon,
-	RestingCheckBoxIcon,
-	SelectedCheckBoxIcon
-} from "../../resources/icons/CheckBoxIcons";
 import clsx from "clsx";
+import { Remove } from "@mui/icons-material";
 
 export interface SolaceCheckboxChangeEvent {
 	name: string;
@@ -161,21 +174,7 @@ const SolaceCheckBox = ({
 		return id ? id : name;
 	};
 
-	const getCheckboxIcon = () => {
-		if (indeterminate) {
-			return IndeterminateCheckBoxIcon;
-		} else {
-			return RestingCheckBoxIcon;
-		}
-	};
-
-	const getSelectedIcon = () => {
-		if (indeterminate) {
-			return IndeterminateCheckBoxIcon;
-		} else {
-			return SelectedCheckBoxIcon;
-		}
-	};
+	// No need to get custom icons as we're using MUI's built-in icons
 
 	return (
 		<React.Fragment>
@@ -183,8 +182,7 @@ const SolaceCheckBox = ({
 				<Checkbox
 					id={`${getId()}-checkbox`}
 					name={name}
-					icon={getCheckboxIcon()}
-					checkedIcon={getSelectedIcon()}
+					indeterminate={indeterminate}
 					inputProps={
 						{
 							"aria-labelledby": label ? `${getId()}-label` : "",
@@ -199,6 +197,8 @@ const SolaceCheckBox = ({
 					disableRipple
 					checked={selected}
 					onChange={handleChange}
+					checkedIcon={<CheckIcon />}
+					indeterminateIcon={<Remove />}
 				/>
 				{label && (
 					<Box>

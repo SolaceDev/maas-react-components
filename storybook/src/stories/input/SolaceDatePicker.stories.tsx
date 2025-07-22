@@ -1,3 +1,19 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React from "react";
 import { Decorator, StoryFn, Meta } from "@storybook/react";
 import { SolaceDatePicker, SolaceDatePickerVariant } from "@SolaceDev/maas-react-components";
@@ -6,7 +22,10 @@ import { userEvent, within } from "@storybook/test";
 
 (SolaceDatePicker as React.FC & { displayName?: string }).displayName = "SolaceDatePicker";
 
-const DateStringInISOFormat = "2022-01-01T00:00:00Z";
+const DateStringInISOFormat = "2025-05-12T00:00:00Z";
+const UTC_TIMEZONE = "UTC";
+const DATE_CHANGED_EVENT = "Date Changed";
+const CLEARED_EVENT = "Cleared";
 
 const withSnapshotContainer: Decorator = (Story) => {
 	return (
@@ -43,8 +62,8 @@ export default {
 export const DefaultSolaceDatePicker = {
 	args: {
 		value: DateStringInISOFormat, // in ISO 8601 format
-		onChange: action("Date Changed"),
-		onClear: action("Cleared")
+		onChange: action(DATE_CHANGED_EVENT),
+		onClear: action(CLEARED_EVENT)
 	},
 	decorators: [withSnapshotContainer],
 	play: async ({ canvasElement }) => {
@@ -66,13 +85,34 @@ export const UncontrolledDatePicker = {
 	args: {}
 };
 
+export const DatePickerWithTimezoneUTC = {
+	render: Template,
+	decorators: [withSnapshotContainer],
+	args: {
+		value: DateStringInISOFormat,
+		timezone: UTC_TIMEZONE,
+		onChange: action(DATE_CHANGED_EVENT)
+	}
+};
+
+export const DatePickerWithFutureDateDisabled = {
+	render: Template,
+	decorators: [withSnapshotContainer],
+	args: {
+		value: DateStringInISOFormat,
+		disableFuture: true,
+		timezone: UTC_TIMEZONE,
+		onChange: action(DATE_CHANGED_EVENT)
+	}
+};
+
 export const ControlledDatePicker = {
 	render: Template,
 	decorators: [withSnapshotContainer],
 	args: {
 		value: DateStringInISOFormat, // in ISO 8601 format
-		onChange: action("Date Changed"),
-		onClear: action("Cleared")
+		onChange: action(DATE_CHANGED_EVENT),
+		onClear: action(CLEARED_EVENT)
 	}
 };
 

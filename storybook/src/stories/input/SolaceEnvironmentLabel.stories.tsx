@@ -1,12 +1,19 @@
-import React from "react";
-import { Decorator, Meta } from "@storybook/react";
-import {
-	MenuItem,
-	SolaceEnvironmentChipProps,
-	SolaceEnvironmentLabel,
-	SolaceSelect,
-	useTheme
-} from "@SolaceDev/maas-react-components";
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import {
 	Broker16Icon,
 	Bug16Icon,
@@ -19,6 +26,16 @@ import {
 	TestTube16Icon,
 	Toolkit16Icon
 } from "@SolaceDev/maas-icons";
+import {
+	MenuItem,
+	SolaceEnvironmentChipProps,
+	SolaceEnvironmentLabel,
+	SolaceSelect,
+	useTheme
+} from "@SolaceDev/maas-react-components";
+import { Decorator, Meta } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
+import React from "react";
 
 (SolaceEnvironmentLabel as React.FC & { displayName?: string }).displayName = "SolaceEnvironmentLabel";
 (Broker16Icon as React.FC & { displayName?: string }).displayName = "Broker16Icon";
@@ -51,7 +68,8 @@ export default {
 			control: {
 				type: "select"
 			}
-		}
+		},
+		disabled: { control: { type: "boolean" } }
 	},
 	decorators: [withSnapshotContainer]
 } as Meta<typeof SolaceEnvironmentLabel>;
@@ -86,7 +104,18 @@ export const LongTitle = {
 	}
 };
 
-export const WithinSelect = (): JSX.Element => {
+export const DisabledEnvironmentLabel = {
+	args: {
+		label: "Disabled",
+		fgColor: "#ffffff",
+		bgColor: "#7841A8",
+		icon: <Broker16Icon />,
+		variant: "standard",
+		disabled: true
+	}
+};
+
+const WithinSelectTemplate = (menuItemDisabled = false, selectDisabled = false): JSX.Element => {
 	const {
 		palette: { ux }
 	} = useTheme();
@@ -113,12 +142,40 @@ export const WithinSelect = (): JSX.Element => {
 		}
 	];
 	return (
-		<SolaceSelect name="select" value="Environment 10">
-			{examples.map((props) => (
-				<MenuItem key={props.label} value={props.label}>
+		<SolaceSelect
+			name="select"
+			value="Environment 10"
+			disabled={selectDisabled}
+			getOptionDisplayValue={(option) => {
+				const env = examples.find((e) => e.label === option);
+				return env ? <SolaceEnvironmentLabel {...env} disabled={selectDisabled} /> : option;
+			}}
+		>
+			{examples.map((props, index) => (
+				<MenuItem key={props.label} value={props.label} disabled={menuItemDisabled && index % 2 === 0}>
 					<SolaceEnvironmentLabel {...props} />
 				</MenuItem>
 			))}
 		</SolaceSelect>
 	);
+};
+
+export const WithinSelect = {
+	render: () => WithinSelectTemplate()
+};
+
+export const WithinSelectDisabled = {
+	render: () => WithinSelectTemplate(false, true)
+};
+
+export const WithinSelectMenuItemDisabled = {
+	render: () => WithinSelectTemplate(true, false),
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from its root element
+		const canvas = within(canvasElement);
+
+		// Find the clear button using role and its accessible name (aria-label)
+		const select = canvas.getByRole("combobox");
+		await userEvent.click(select);
+	}
 };

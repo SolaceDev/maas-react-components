@@ -1,3 +1,19 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /* eslint-disable sonarjs/no-duplicate-string */
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { Meta, Decorator } from "@storybook/react";
@@ -272,6 +288,7 @@ const DefaultSelectionTemplate = ({
 	getOptionValidationErrorCallback,
 	showSupplementalTextOrSecondaryAction,
 	showLeftIcon,
+	textEllipsisPosition,
 	// storybook specific
 	disabledItems = false,
 	withDividers = false,
@@ -303,6 +320,7 @@ const DefaultSelectionTemplate = ({
 	longLabel?: boolean;
 	showSupplementalTextOrSecondaryAction?: boolean;
 	showLeftIcon?: boolean;
+	textEllipsisPosition?: "start" | "end";
 }): JSX.Element => {
 	const [matchingValues, setMatchingValues] = useState<SolaceSelectAutocompleteItemProps[]>([]);
 	const dropdownOptions = options;
@@ -370,6 +388,7 @@ const DefaultSelectionTemplate = ({
 				minWidth={minWidth}
 				showSupplementalTextOrSecondaryAction={showSupplementalTextOrSecondaryAction}
 				showLeftIcon={showLeftIcon}
+				textEllipsisPosition={textEllipsisPosition}
 			></SolaceSelectAutocomplete>
 		</div>
 	);
@@ -1726,5 +1745,17 @@ export const ShowIconMenuItemOnLeftShowingLeftIconAndSupplementaryTextInInput = 
 		showSupplementalTextOrSecondaryAction: true,
 		value: SELECT_OPTIONS_FOR_LEFT_ICON[0],
 		options: SELECT_OPTIONS_FOR_LEFT_ICON
+	}
+};
+
+export const WithEllipsisAtStart = {
+	render: DefaultSelectionTemplate,
+	args: {
+		label: "Ellipsis at Start",
+		value: {
+			name: "This is a very long option name that will be truncated with an ellipsis at the start instead of the end, very very long text so that it can show the ellipsis at the start",
+			value: "long-option"
+		},
+		textEllipsisPosition: "start"
 	}
 };

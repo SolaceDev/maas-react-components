@@ -1,0 +1,12 @@
+# FOSSA configuration file
+# This configuration ignores dev dependencies and excludes the storybook directory
+
+version: 3
+
+project:
+  name: "maas-react-components"
+
+paths:
+  # Exclude the storybook directory from analysis
+  exclude:
+    - "storybook/"

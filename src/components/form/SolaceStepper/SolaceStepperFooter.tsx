@@ -1,7 +1,24 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { Box, Divider, styled, useTheme } from "@mui/material";
-import SolaceButton from "../SolaceButton";
-import { SolaceStepperFooterProps } from "../../../types";
 import { ArrowLeft24Icon, ArrowRight24Icon } from "@SolaceDev/maas-icons";
+import { useMemo } from "react";
+import { SolaceStepperFooterProps } from "../../../types";
+import SolaceButton from "../SolaceButton";
 
 const buttonStrings = {
 	cancel: "Cancel",
@@ -74,6 +91,34 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 	const onLastStep = activeStep === steps.length - 1;
 	const onFirstStep = activeStep === 0;
 
+	// The first step after activeStep in enabled state, if such step not found, return activeStep + 1
+	const nextStepAllowed = useMemo(() => {
+		if (activeStep === steps.length - 1) return activeStep;
+
+		let nextEnabledStep = -1;
+		for (let index = activeStep + 1; index < steps.length; index++) {
+			if (!steps[index].disabled) {
+				nextEnabledStep = index;
+				break;
+			}
+		}
+
+		return nextEnabledStep === -1 ? activeStep + 1 : nextEnabledStep;
+	}, [steps, activeStep]);
+	const previousStepAllowed = useMemo(() => {
+		if (activeStep === 0) return activeStep;
+
+		let previousEnabledStep = -1;
+		for (let index = activeStep - 1; index >= 0; index--) {
+			if (!steps[index].disabled) {
+				previousEnabledStep = index;
+				break;
+			}
+		}
+
+		return previousEnabledStep === -1 ? activeStep - 1 : previousEnabledStep;
+	}, [steps, activeStep]);
+
 	const theme = useTheme();
 
 	const handleNext = () => {
@@ -81,20 +126,16 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 			onSubmit();
 			return;
 		}
-		setActiveStep(activeStep + 1);
+		setActiveStep(nextStepAllowed);
 	};
 
-	const handleSecondaryNext = () => {
-		if (onLastStep) {
-			onSecondarySubmit?.();
-			return;
-		}
-		setActiveStep(activeStep + 1);
+	const handleSecondarySubmit = () => {
+		onSecondarySubmit?.();
 	};
 
 	const handleBack = () => {
 		if (onFirstStep) return;
-		setActiveStep(activeStep - 1);
+		setActiveStep(previousStepAllowed);
 	};
 
 	return (
@@ -103,10 +144,17 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 			<StyledButtonGroupBox>
 				<StyledButtonBox direction="left">
 					{!onFirstStep && (
-						<SolaceButton variant="text" onClick={handleBack}>
+						<SolaceButton variant="text" onClick={handleBack} isDisabled={steps[previousStepAllowed].disabled}>
 							<ButtonContent>
-								<ArrowLeft24Icon fill={theme.palette.ux.primary.wMain} sx={{ padding: "4px 0px 4px 4px" }} />
-								{`${buttonStrings.back}: ${steps[activeStep - 1].label}`}
+								<ArrowLeft24Icon
+									fill={
+										steps[previousStepAllowed].disabled
+											? theme.palette.ux.secondary.w40
+											: theme.palette.ux.primary.wMain
+									}
+									sx={{ padding: "4px 0px 4px 4px" }}
+								/>
+								{`${buttonStrings.back}: ${steps[previousStepAllowed].label}`}
 							</ButtonContent>
 						</SolaceButton>
 					)}
@@ -119,18 +167,22 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 				</Box>
 				{secondarySubmitLabel && (
 					<Box sx={{ mr: 1 }}>
-						<SolaceButton variant="outline" onClick={handleSecondaryNext} isDisabled={onLastStep && disableSubmit}>
+						<SolaceButton variant="outline" onClick={handleSecondarySubmit} isDisabled={onLastStep && disableSubmit}>
 							{secondarySubmitLabel}
 						</SolaceButton>
 					</Box>
 				)}
 				<StyledButtonBox direction="right" onLastStep={onLastStep}>
-					<SolaceButton variant="call-to-action" onClick={handleNext} isDisabled={onLastStep && disableSubmit}>
+					<SolaceButton
+						variant="call-to-action"
+						onClick={handleNext}
+						isDisabled={(onLastStep && disableSubmit) || (!onLastStep && steps[nextStepAllowed].disabled)}
+					>
 						{onLastStep ? (
 							submitLabel
 						) : (
 							<ButtonContent>
-								{`${buttonStrings.next}: ${steps[activeStep + 1]?.label}`}
+								{`${buttonStrings.next}: ${steps[nextStepAllowed]?.label}`}
 								<ArrowRight24Icon fill={theme.palette.ux.primary.text.w10} sx={{ padding: "4px 4px 4px 0px" }} />
 							</ButtonContent>
 						)}

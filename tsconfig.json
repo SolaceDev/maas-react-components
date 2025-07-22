@@ -26,7 +26,11 @@
 		"noFallthroughCasesInSwitch": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"noEmit": true
+		"noEmit": true,
+		"baseUrl": ".",
+		"paths": {
+			"@src/*": ["src/*"]
+		}
 	},
 	"include": ["./src/**/*.ts", "./src/**/*.tsx", "jest.setup.js"],
 	"exclude": ["./node_modules", "./node_modules/*", "dist", "example"]

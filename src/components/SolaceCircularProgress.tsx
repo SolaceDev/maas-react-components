@@ -1,3 +1,19 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { CircularProgress, styled, useTheme } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { BASE_SIZE_TYPES } from "../types/sizing";
@@ -16,12 +32,12 @@ const PROGRESS_SIZES: BASE_SIZE_TYPES = {
 	lg: 42
 };
 
-const Container = styled("div")(({ theme }) => ({
+const Container = styled("div")<{ inline?: boolean }>(({ theme, inline }) => ({
 	width: "fit-content",
 	display: "flex",
-	flexDirection: "column",
+	flexDirection: inline ? "row" : "column",
 	alignItems: "center",
-	rowGap: theme.spacing(1.5)
+	gap: theme.spacing(1.5)
 }));
 
 export interface SolaceCircularProgressProps extends SolaceComponentProps {
@@ -52,12 +68,17 @@ export interface SolaceCircularProgressProps extends SolaceComponentProps {
 	 * @default false
 	 */
 	disableShrink?: boolean;
+	/**
+	 * If `true`, the spinner and message are displayed side by side.
+	 * @default false
+	 */
+	inline?: boolean;
 }
 
 export default function SolaceCircularProgress(props: SolaceCircularProgressProps): JSX.Element {
-	const { variant, value, size, disableShrink, dataQa, message } = props;
+	const { variant, value, size, disableShrink, dataQa, message, inline } = props;
 	return (
-		<Container data-qa={dataQa ?? "loading-spinner"}>
+		<Container data-qa={dataQa ?? "loading-spinner"} inline={inline}>
 			<CircularProgress
 				variant={variant ?? "indeterminate"}
 				value={variant === "determinate" ? value : undefined}

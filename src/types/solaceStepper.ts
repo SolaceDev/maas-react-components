@@ -1,3 +1,19 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /**
  * Enum representing the possible overflow behaviors for step content.
  *
@@ -57,16 +73,22 @@ export type SolaceStepperFooterProps = {
  * @property {string} label - The label for the step.
  * @property {JSX.Element} icon - The icon to display for the step.
  * @property {string} [subText] - Optional subtext for the step.
+ * @property {boolean} [hideOptionalLabel] - Whether to hide the optional label displayed inside step button.
  * @property {boolean} [error] - Whether the step has an error.
  * @property {boolean} [completed] - Whether the step is completed.
+ * @property {boolean} [disabled] - Whether the step is disabled.
+ * @property {string} [disabledReason] - Reason for the step being disabled.
  */
 
 export type StepProp = {
 	label: string;
 	icon: JSX.Element;
 	subText?: string;
+	hideOptionalLabel?: boolean;
 	error?: boolean;
 	completed?: boolean;
+	disabled?: boolean;
+	disabledReason?: string;
 };
 
 /**
