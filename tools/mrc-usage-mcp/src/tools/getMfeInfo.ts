@@ -88,6 +88,7 @@ async function discoverMfes(forceRefresh = false): Promise<Record<string, string
 /**
  * Get information about an MFE, including which application it belongs to
  */
+/** @deprecated */
 export async function getMfeInfo(mfeName: string, forceRefresh = false): Promise<MfeInfo> {
 	const mfeMapping = await discoverMfes(forceRefresh);
 

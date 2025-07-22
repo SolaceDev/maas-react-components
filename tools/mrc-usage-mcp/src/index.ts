@@ -17,7 +17,6 @@ import {
 	ListResourcesRequestSchema
 } from "@modelcontextprotocol/sdk/types.js";
 import { getUsageForComponentSolace } from "./tools/getUsageForComponentSolace.js";
-import { getAllComponents } from "./tools/getAllComponents.js";
 import { getApplicationStats } from "./tools/getApplicationStats.js";
 import { getMfeStats } from "./tools/getMfeStats.js";
 import { getMfeInfo, listAllMfes } from "./tools/getMfeInfo.js";
@@ -211,22 +210,6 @@ class MrcUsageServer {
 
 	private tools = [
 		{
-			//Provides a list of all components (Has a file for tool call)
-			name: "mrc_get_all_components",
-			description:
-				"Retrieve a comprehensive list of all MaaS React Components available in the design system. Use this for component discovery, auditing, and getting an overview of the component library.",
-			inputSchema: {
-				type: "object",
-				properties: {
-					includeUsageStats: {
-						type: "boolean",
-						description: "Whether to include basic usage statistics for each component",
-						default: false
-					}
-				}
-			}
-		},
-		{
 			name: "get_usage_for_component_by_application",
 			description: "Get usage for a component in a specific application.",
 			inputSchema: {
@@ -377,35 +360,12 @@ class MrcUsageServer {
 
 		this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
 			switch (request.params.name) {
-				case "get_all_components": {
-					// Use cached component list if available, otherwise fetch from GitHub
-					let allComponents;
-					if (this.componentList.length > 0) {
-						allComponents = this.componentList;
-					} else {
-						allComponents = await getAllComponents();
-						// Update our cache
-						if (allComponents.length > 0) {
-							this.componentList = allComponents;
-							this.lastFetched = new Date();
-						}
-					}
-
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(allComponents, null, 2)
-							}
-						]
-					};
-				}
 				case "get_usage_for_component_by_application": {
 					const { componentName, applicationName } = request.params.arguments as {
 						componentName: string;
 						applicationName: string;
 					};
-					const result = await getUsageForComponentByApplication(componentName, applicationName);
+					const result = await getUsageForComponentByApplication(applicationName, componentName);
 					return {
 						content: [
 							{

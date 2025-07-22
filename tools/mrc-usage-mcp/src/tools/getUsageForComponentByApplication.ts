@@ -1,4 +1,4 @@
-import axios from "axios";
+import ApplicationMfeCache from "../ApplicationMfeCache.js";
 import { getUsageForComponentByMFE } from "./getUsageForComponentByMFE.js";
 
 // From instances.json
@@ -14,60 +14,59 @@ interface RawInstance {
 	c: RawProp[]; // props
 }
 
-interface DirectoryItem {
-	type: string;
-	name: string;
-}
-
-async function fetchDirectoryContents(url: string): Promise<DirectoryItem[]> {
-	try {
-		const response = await axios.get(url, {
-			headers: {
-				Accept: "application/vnd.github+json",
-				Authorization: `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`,
-				"X-GitHub-Api-Version": "2022-11-28"
-			}
-		});
-
-		if (Array.isArray(response.data)) {
-			return response.data.filter((item: { type: string }) => item.type === "dir");
-		}
-
-		return [];
-	} catch (error) {
-		if (axios.isAxiosError(error) && error.response?.status === 404) {
-			return [];
-		}
-		throw new Error(`Could not fetch directory contents from GitHub: ${url}. Error: ${error}`);
-	}
-}
-
 export async function getUsageForComponentByApplication(
 	applicationName: string,
 	componentName: string
 ): Promise<RawInstance[]> {
-	const baseUrl = `https://api.github.com/repos/SolaceDev/maas-react-components/contents/mrc-usage-report-data/per-application/${applicationName}`;
-	const ref = "feature/mrc-usage-report-data";
-	const url = `${baseUrl}?ref=${ref}`;
-
-	try {
-		const mfeDirs = await fetchDirectoryContents(url);
-		let allInstances: RawInstance[] = [];
-
-		for (const mfeDir of mfeDirs) {
-			const mfeName = mfeDir.name;
-			const instances = await getUsageForComponentByMFE(applicationName, mfeName, componentName);
-			allInstances = allInstances.concat(instances);
-		}
-
-		return allInstances;
-	} catch (error: unknown) {
-		const nodeError = error as NodeJS.ErrnoException;
-		if (nodeError.code === "ENOENT") {
-			// Directory not found for the application, which is a valid case
+	// eslint-disable-next-line no-console
+	console.error(`[DEBUG] Starting getUsageForComponentByApplication for ${componentName} in ${applicationName}`);
+	const cache = ApplicationMfeCache.getInstance();
+	// eslint-disable-next-line no-console
+	console.error("[DEBUG] ApplicationMfeCache instance obtained.");
+	if (!cache.isInitialized()) {
+		// eslint-disable-next-line no-console
+		console.error("[DEBUG] Cache not initialized. Initializing...");
+		try {
+			await cache.initializeCache();
+			// eslint-disable-next-line no-console
+			console.error("[DEBUG] Cache initialized successfully.");
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error("Failed to initialize ApplicationMfeCache:", error);
 			return [];
 		}
-		// For other errors, re-throw
-		throw new Error(`Could not read directory for application ${applicationName}: ${nodeError.message}`);
 	}
+
+	const mfes = cache.getMfes(applicationName);
+	if (!mfes || mfes.length === 0) {
+		// eslint-disable-next-line no-console
+		console.error(`No MFEs found for application: ${applicationName}`);
+		return [];
+	}
+	// eslint-disable-next-line no-console
+	console.error(`[DEBUG] Found ${mfes.length} MFEs for application ${applicationName}: ${mfes.join(", ")}`);
+
+	let allInstances: RawInstance[] = [];
+
+	// eslint-disable-next-line no-console
+	console.error("[DEBUG] Starting to fetch usage for each MFE...");
+	for (const mfeName of mfes) {
+		try {
+			// eslint-disable-next-line no-console
+			console.error(`[DEBUG] Getting usage for ${componentName} in MFE ${mfeName}`);
+			const instances = await getUsageForComponentByMFE(applicationName, mfeName, componentName);
+			allInstances = allInstances.concat(instances);
+			// eslint-disable-next-line no-console
+			console.error(`[DEBUG] Successfully fetched ${instances.length} instances for MFE ${mfeName}`);
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.error(`[ERROR] Failed to get usage for component ${componentName} in MFE ${mfeName}:`, error);
+		}
+	}
+	// eslint-disable-next-line no-console
+	console.error("[DEBUG] Finished fetching usage for all MFEs.");
+
+	// eslint-disable-next-line no-console
+	console.error(`[DEBUG] Returning a total of ${allInstances.length} instances.`);
+	return allInstances;
 }
