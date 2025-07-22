@@ -110,6 +110,8 @@ jobs:
 
           echo "Running npm start with parameters..."
           npm start -- -i ../mrc-usage-report/reports/mrc-usage-report-all.json -o ../../../maas-react-components-repo/mrc-usage-report-data
+          echo "--- Verifying contents of output directory ---"
+          ls -lR ../../../maas-react-components-repo/mrc-usage-report-data
 
           echo "Listing generated files:"
           find . -type f -name "*.json" | sort
@@ -138,15 +140,15 @@ jobs:
 
           echo "--- Git status before add ---"
           git status
-          git add mrc-usage-report-data/
+          git add .
           echo "--- Git status after add ---"
           git status
 
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-          else
-            set -e
-            COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
-            git commit --no-verify -m "$COMMIT_MESSAGE"
-            git push
-          fi
+          # if git diff --staged --quiet; then
+          #   echo "No changes to commit."
+          # else
+          #   set -e
+          #   COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
+          #   git commit --no-verify -m "$COMMIT_MESSAGE"
+          #   git push
+          # fi
