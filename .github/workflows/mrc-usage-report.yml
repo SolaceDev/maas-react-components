@@ -111,6 +111,7 @@ jobs:
           echo "Running npm start with parameters..."
           npm start -- -i ../mrc-usage-report/reports/mrc-usage-report-all.json -o ../../../maas-react-components-repo/mrc-usage-report-data
           echo "--- Verifying contents of output directory ---"
+          pwd
           ls -lR ../../../maas-react-components-repo/mrc-usage-report-data
 
           echo "Listing generated files:"
@@ -133,7 +134,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+
           cd maas-react-components-repo
+          echo "--- Verifying directory before git add ---"
+          echo "Current working directory: $(pwd)"
+          echo "Listing contents of current directory:"
+          ls -la
+          echo "Checking mrc-usage-report-data directory:"
+          ls -lR mrc-usage-report-data
+          pwd
 
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
