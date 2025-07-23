@@ -1,0 +1,1 @@
+{"keyMap":{"filePath":"a","name":"b","props":"c","type":"d","value":"e"},"data":[{"a":"../../../maas-ui/micro-frontends/saas/src/pages/auditLogs/AuditLogDetails.tsx","c":[{"b":"open","d":"expression","e":"!!rowDetails"},{"b":"resizable","d":"boolean","e":"true"},{"b":"top","d":"string","e":"10.65%"},{"b":"width","d":"number","e":"400"},{"b":"maxWidth","d":"number","e":"500"}]}]}
