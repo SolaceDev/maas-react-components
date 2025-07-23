@@ -153,11 +153,11 @@ jobs:
           echo "--- Git status after add ---"
           git status
 
-          # if git diff --staged --quiet; then
-          #   echo "No changes to commit."
-          # else
-          #   set -e
-          #   COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
-          #   git commit --no-verify -m "$COMMIT_MESSAGE"
-          #   git push
-          # fi
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            set -e
+            COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
+            git commit --no-verify -m "$COMMIT_MESSAGE"
+            git push
+          fi
