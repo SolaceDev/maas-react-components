@@ -2,9 +2,6 @@ name: New Components Report
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feature/mrc-usage-report-data
 
 permissions:
   contents: write
