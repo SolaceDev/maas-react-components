@@ -4,10 +4,6 @@ on:
   schedule:
     - cron: "0 12 * * *" # Daily at 8 AM EST
   workflow_dispatch: # Manual trigger
-  push:
-    branches:
-      - iphadte/DATAGO-103052 # Trigger on pushes to the main branch
-      # - feature/mrc-usage-report-data # Trigger on pushes to the main branch
 
 jobs:
   generate-and-publish-report:
