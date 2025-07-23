@@ -18,8 +18,11 @@ jobs:
           ref: feature/mrc-usage-report-data
           path: maas-react-components-repo
 
-      - name: Clean up old report data
-        run: rm -rf maas-react-components-repo/mrc-usage-report-data
+      - name: Clean up old report data and files
+        run: |
+          rm -rf maas-react-components-repo/mrc-usage-report-data
+          rm -f maas-react-components-repo/tools/mrc-usage-report/reports/mrc-usage-report-all.json
+          rm -f maas-react-components-repo/tools/mrc-usage-report/reports/mrc-usage-report-all.html
 
       - name: Print directory structure (maas-react-components)
         run: |
