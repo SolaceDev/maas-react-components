@@ -88,7 +88,9 @@ jobs:
         run: |
           npm i
           npm run build
-          npm start -- --all --maas-ui-path ../../../maas-ui-repo --maas-ops-ui-path ../../../maas-ops-ui-repo --broker-manager-path ../../../broker-manager-repo --format json,html
+          npm start -- --all --maas-ui-path ../../../maas-ui-repo --maas-ops-ui-path ../../../maas-ops-ui-repo --broker-manager-path ../../../broker-manager-repo --format html
+          npm start -- --all --maas-ui-path ../../../maas-ui-repo --maas-ops-ui-path ../../../maas-ops-ui-repo --broker-manager-path ../../../broker-manager-repo --format json
+
         working-directory: maas-react-components-repo/tools/mrc-usage-report
 
       - name: Split merged JSON
