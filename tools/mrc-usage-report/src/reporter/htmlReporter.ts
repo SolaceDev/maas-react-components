@@ -406,36 +406,36 @@ export class HtmlReporter {
 								: ""
 						}
             
-            <h4>Instances (${stats.instances.length})</h4>
+            <h4>Component Usage Instances (${stats.instances.length})</h4>
             ${stats.instances
 							.map((instance) => {
 								return `
-							       <div class="instance-details">
-							         <p><strong>File:</strong> <a href="${instance.filePath.url}" target="_blank">${instance.filePath.original}${
-													instance.line ? `:${instance.line}` : ""
-												}</a></p>
-							         <table>
-							           <thead>
-							             <tr>
-							               <th>Prop Name</th>
-							               <th>Value</th>
-							             </tr>
-							           </thead>
-							           <tbody>
-							             ${instance.props
-															.map(
-																(prop) => `
-							               <tr>
-							                 <td>${prop.name}</td>
-							                 <td><pre>${prop.value}</pre></td>
-							               </tr>
-							             `
-															)
-															.join("")}
-							           </tbody>
-							         </table>
-							       </div>
-							     `;
+         <div class="instance-details">
+          <p>
+           <strong>URL:</strong> <a href="${instance.filePath.url}" target="_blank">${instance.filePath.url}</a>
+          </p>
+          <table>
+           <thead>
+            <tr>
+            	<th>Prop Name</th>
+            	<th>Value</th>
+            </tr>
+           </thead>
+           <tbody>
+            ${instance.props
+							.map(
+								(prop) => `
+            	<tr>
+            		<td>${prop.name}</td>
+            		<td><pre>${prop.value}</pre></td>
+            	</tr>
+            `
+							)
+							.join("")}
+           </tbody>
+          </table>
+         </div>
+        `;
 							})
 							.join("")}
           </div>
@@ -493,7 +493,9 @@ export class HtmlReporter {
 							(comp) => `
             <tr>
               <td>${comp.name}</td>
-              <td><a href="${transformFilePath(comp.path).url}" target="_blank">${comp.path}</a></td>
+              <td><a href="${transformFilePath(comp.path).url}" target="_blank">${
+								transformFilePath(comp.path).url
+							}</a></td>
             </tr>
           `
 						)
