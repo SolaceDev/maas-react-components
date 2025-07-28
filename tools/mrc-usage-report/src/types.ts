@@ -51,7 +51,6 @@ export interface ComponentProp {
 // Represents a single instance of a component being used
 export interface ComponentInstance {
 	filePath: {
-		original: string;
 		url: string;
 	};
 	line: number;
@@ -78,10 +77,7 @@ export interface ComponentStats {
 		count: number;
 	}[];
 	// Files where the component is used
-	files: {
-		original: string;
-		url: string;
-	}[];
+	files: string[];
 	// Customization stats
 	customization: {
 		styledComponentCount: number;

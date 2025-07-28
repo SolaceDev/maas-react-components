@@ -3,7 +3,7 @@
  * @param filePath - The local file path.
  * @returns An object with the original path and the transformed GitHub URL.
  */
-export const transformFilePath = (filePath: string): { original: string; url: string } => {
+export const transformFilePath = (filePath: string): { url: string } => {
 	const baseUrl = "https://github.com/SolaceDev/";
 	let repo = "";
 	let branch = "";
@@ -11,7 +11,7 @@ export const transformFilePath = (filePath: string): { original: string; url: st
 
 	// If it's already a GitHub URL, just return it.
 	if (filePath.startsWith("https://github.com/")) {
-		return { original: filePath, url: filePath };
+		return { url: filePath };
 	}
 
 	const parts = filePath.replace(/\\/g, "/").split("/");
@@ -36,12 +36,11 @@ export const transformFilePath = (filePath: string): { original: string; url: st
 	} else {
 		// Log a warning and return the original path
 		// console.warn(`[transformFilePath] Could not determine repository for path: ${filePath}. Returning original path.`);
-		return { original: filePath, url: filePath };
+		return { url: filePath };
 	}
 
 	const url = `${baseUrl}${repo}/blob/${branch}/${relativePath}`;
 	return {
-		original: filePath,
 		url: url
 	};
 };

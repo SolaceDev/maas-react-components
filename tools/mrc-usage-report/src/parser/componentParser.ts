@@ -13,7 +13,6 @@ import { transformFilePath } from "../utils";
 export interface FoundComponentInstance {
 	componentName: string;
 	filePath: {
-		original: string;
 		url: string;
 	};
 	mfe: string;
