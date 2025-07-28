@@ -50,9 +50,7 @@ export interface ComponentProp {
 
 // Represents a single instance of a component being used
 export interface ComponentInstance {
-	filePath: {
-		url: string;
-	};
+	filePath: string;
 	line: number;
 	props: ComponentProp[];
 }

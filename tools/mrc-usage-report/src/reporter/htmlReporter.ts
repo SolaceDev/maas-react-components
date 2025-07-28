@@ -412,7 +412,7 @@ export class HtmlReporter {
 								return `
          <div class="instance-details">
           <p>
-           <strong>URL:</strong> <a href="${instance.filePath.url}" target="_blank">${instance.filePath.url}</a>
+           <strong>URL:</strong> <a href="${instance.filePath}" target="_blank">${instance.filePath}</a>
           </p>
           <table>
            <thead>

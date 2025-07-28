@@ -12,9 +12,7 @@ import { transformFilePath } from "../utils";
 // Represents a single found instance of a component
 export interface FoundComponentInstance {
 	componentName: string;
-	filePath: {
-		url: string;
-	};
+	filePath: string;
 	mfe: string;
 	lineNumber: number;
 	props: ComponentProp[];
@@ -132,7 +130,7 @@ export class ComponentParser {
 									// This handles cases where components are imported but not used as JSX elements
 									importedComponentUsages.set(componentName, {
 										componentName,
-										filePath: transformFilePath(filePath),
+										filePath: transformFilePath(filePath).url,
 										mfe,
 										lineNumber,
 										props: []
@@ -225,7 +223,7 @@ export class ComponentParser {
 						// Add the usage
 						usages.push({
 							componentName,
-							filePath: transformFilePath(filePath),
+							filePath: transformFilePath(filePath).url,
 							mfe,
 							lineNumber,
 							props

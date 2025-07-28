@@ -69,7 +69,7 @@ export class DataAggregator {
 				.slice(0, 10);
 
 			// Get files where the component is used
-			const files = Array.from(new Set(componentUsages.map((usage) => usage.filePath.url)));
+			const files = Array.from(new Set(componentUsages.map((usage) => usage.filePath)));
 
 			// Count customization stats
 			let styledComponentCount = 0;
