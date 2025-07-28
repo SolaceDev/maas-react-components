@@ -224,7 +224,19 @@ async function main() {
 				await htmlReporter.generateReport(reportData, currentOutputPath);
 				console.log(`HTML report generated at ${currentOutputPath}`);
 			} else if (format === "json") {
-				const jsonOutput = JSON.stringify(reportData, null, 2);
+				// Create a deep copy for transformation to avoid affecting other reporters
+				const transformedReportData = JSON.parse(JSON.stringify(reportData));
+
+				// Transform the filePath in componentStats.instances
+				for (const componentStat of transformedReportData.componentStats) {
+					for (const instance of componentStat.instances) {
+						instance.filePath = instance.filePath.url;
+					}
+					// also transform the files property on componentStat
+					componentStat.files = componentStat.files.map((file: any) => file.url);
+				}
+
+				const jsonOutput = JSON.stringify(transformedReportData, null, 2);
 				require("fs").writeFileSync(currentOutputPath, jsonOutput);
 				console.log(`JSON report generated at ${currentOutputPath}`);
 			} else if (format === "yaml") {

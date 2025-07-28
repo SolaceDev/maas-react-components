@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { ReportData } from "../types";
+import { transformFilePath } from "../utils";
 
 /**
  * Generates an HTML report from the component usage data
@@ -24,37 +25,6 @@ export class HtmlReporter {
 		fs.writeFileSync(outputPath, html);
 
 		// console.log(`HTML report generated at ${outputPath}`);
-	}
-
-	/**
-	 * Converts a file path to a GitHub link
-	 * @param filePath The file path to convert
-	 * @returns The GitHub link
-	 */
-	private getGitHubLink(filePath: string): string {
-		const baseUrl = "https://github.com/SolaceDev/";
-
-		// Handle paths from different repositories
-		const repoMappings: { [key: string]: { repo: string; branch: string } } = {
-			"../../../maas-ui/": { repo: "maas-ui", branch: "develop" },
-			"../../../broker-manager/": { repo: "broker-manager", branch: "main" },
-			"../../../maas-ops-ui/": { repo: "maas-ops-ui", branch: "develop" }
-		};
-
-		for (const prefix in repoMappings) {
-			if (filePath.startsWith(prefix)) {
-				const { repo, branch } = repoMappings[prefix];
-				const [file, line] = filePath.substring(prefix.length).split(":");
-				let url = `${baseUrl}${repo}/blob/${branch}/${file}`;
-				if (line) {
-					url += `#L${line}`;
-				}
-				return url;
-			}
-		}
-
-		// Fallback for unknown paths
-		return "#";
 	}
 
 	/**
@@ -439,10 +409,11 @@ export class HtmlReporter {
             <h4>Instances (${stats.instances.length})</h4>
             ${stats.instances
 							.map((instance) => {
-								const githubLink = this.getGitHubLink(`${instance.filePath}:${instance.line}`);
 								return `
 							       <div class="instance-details">
-							         <p><strong>File:</strong> <a href="${githubLink}" target="_blank">${githubLink}</a></p>
+							         <p><strong>File:</strong> <a href="${instance.filePath.url}" target="_blank">${instance.filePath.original}${
+													instance.line ? `:${instance.line}` : ""
+												}</a></p>
 							         <table>
 							           <thead>
 							             <tr>
@@ -522,7 +493,7 @@ export class HtmlReporter {
 							(comp) => `
             <tr>
               <td>${comp.name}</td>
-              <td><a href="${this.getGitHubLink(comp.path)}" target="_blank">${comp.path}</a></td>
+              <td><a href="${transformFilePath(comp.path).url}" target="_blank">${comp.path}</a></td>
             </tr>
           `
 						)

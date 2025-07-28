@@ -7,11 +7,15 @@ import fs from "fs";
 import path from "path";
 import { ComponentProp } from "../types";
 import { MrcSourceType } from "../types";
+import { transformFilePath } from "../utils";
 
 // Represents a single found instance of a component
 export interface FoundComponentInstance {
 	componentName: string;
-	filePath: string;
+	filePath: {
+		original: string;
+		url: string;
+	};
 	mfe: string;
 	lineNumber: number;
 	props: ComponentProp[];
@@ -128,7 +132,7 @@ export class ComponentParser {
 									// This handles cases where components are imported but not used as JSX elements
 									importedComponentUsages.set(componentName, {
 										componentName,
-										filePath,
+										filePath: transformFilePath(filePath),
 										mfe,
 										lineNumber,
 										props: []
@@ -221,7 +225,7 @@ export class ComponentParser {
 						// Add the usage
 						usages.push({
 							componentName,
-							filePath,
+							filePath: transformFilePath(filePath),
 							mfe,
 							lineNumber,
 							props
