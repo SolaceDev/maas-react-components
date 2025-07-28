@@ -1,1 +1,1 @@
-["../../../maas-ui-repo/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx","../../../maas-ui-repo/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx","../../../maas-ui-repo/micro-frontends/intg/src/pages/connectors/ViewErrorLogs.tsx"]
+["../../../maas-ui/micro-frontends/intg/src/components/connectors/connectorsListView/ConnectorTable.tsx","../../../maas-ui/micro-frontends/intg/src/components/agents/agentsListView/AgentTable.tsx","../../../maas-ui/micro-frontends/intg/src/pages/connectors/ViewErrorLogs.tsx"]
