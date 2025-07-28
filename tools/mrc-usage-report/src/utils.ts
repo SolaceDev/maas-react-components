@@ -7,27 +7,41 @@ export const transformFilePath = (filePath: string): { original: string; url: st
 	const baseUrl = "https://github.com/SolaceDev/";
 	let repo = "";
 	let branch = "";
-	let path = "";
+	let relativePath = "";
 
-	if (filePath.startsWith("../../../maas-ui-repo")) {
-		repo = "maas-ui";
-		branch = "develop";
-		path = filePath.replace("../../../maas-ui-repo/", "");
-	} else if (filePath.startsWith("../../../maas-ops-ui")) {
-		repo = "maas-ops-ui";
-		branch = "develop";
-		path = filePath.replace("../../../maas-ops-ui/", "");
-	} else if (filePath.startsWith("../../../broker-manager")) {
-		repo = "broker-manager";
-		branch = "main";
-		path = filePath.replace("../../../broker-manager/", "");
-	} else {
-		// Return the original path if no mapping is found
+	// If it's already a GitHub URL, just return it.
+	if (filePath.startsWith("https://github.com/")) {
 		return { original: filePath, url: filePath };
 	}
 
+	const parts = filePath.replace(/\\/g, "/").split("/");
+
+	const maasUiIndex = parts.indexOf("maas-ui");
+	const maasOpsUiIndex = parts.indexOf("maas-ops-ui");
+	const brokerManagerIndex = parts.indexOf("broker-manager");
+
+	if (maasUiIndex !== -1) {
+		repo = "maas-ui";
+		branch = "develop";
+		// we need to get the path relative to the repo root
+		relativePath = parts.slice(maasUiIndex + 1).join("/");
+	} else if (maasOpsUiIndex !== -1) {
+		repo = "maas-ops-ui";
+		branch = "develop";
+		relativePath = parts.slice(maasOpsUiIndex + 1).join("/");
+	} else if (brokerManagerIndex !== -1) {
+		repo = "broker-manager";
+		branch = "main";
+		relativePath = parts.slice(brokerManagerIndex + 1).join("/");
+	} else {
+		// Log a warning and return the original path
+		// console.warn(`[transformFilePath] Could not determine repository for path: ${filePath}. Returning original path.`);
+		return { original: filePath, url: filePath };
+	}
+
+	const url = `${baseUrl}${repo}/blob/${branch}/${relativePath}`;
 	return {
 		original: filePath,
-		url: `${baseUrl}${repo}/blob/${branch}/${path}`
+		url: url
 	};
 };

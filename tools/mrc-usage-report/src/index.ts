@@ -2,7 +2,6 @@
 
 import { Command } from "commander";
 import path from "path";
-import chalk from "chalk";
 import yaml from "js-yaml";
 import fs from "fs";
 import { FileScanner } from "./scanner/fileScanner";
@@ -47,18 +46,18 @@ if (options.github) {
 // Main function
 async function main() {
 	try {
-		console.log(chalk.blue("MRC Component Usage Report Generator"));
-		console.log(chalk.gray("----------------------------------------"));
+		// console.log(chalk.blue("MRC Component Usage Report Generator"));
+		// console.log(chalk.gray("----------------------------------------"));
 
 		// Validate options
 		if (!options.mfes && !options.all) {
-			console.error(chalk.red("Error: Either --mfes or --all must be specified."));
+			// console.error(chalk.red("Error: Either --mfes or --all must be specified."));
 			program.help();
 			process.exit(1);
 		}
 
 		if (options.mfes && options.all) {
-			console.error(chalk.red("Error: --mfes and --all cannot be used together."));
+			// console.error(chalk.red("Error: --mfes and --all cannot be used together."));
 			program.help();
 			process.exit(1);
 		}
@@ -94,67 +93,65 @@ async function main() {
 			mfeInfos
 		};
 
-		console.log(chalk.yellow("Configuration:"));
-		console.log(`  Base Path: ${basePath}`);
-		console.log(`  MRC Path: ${mrcPath}`);
-		console.log(`  MFEs: ${mfes.join(", ")}`);
-		console.log(`  Output Directory: ${outputDir}`);
-		console.log(`  Output Format: ${outputFormat}`);
-		console.log(`  MRC Source Type: ${mrcSourceType}`);
-		if (mrcSourceType === "github") {
-			console.log(`  MRC GitHub URL: ${mrcGithubUrl}`);
-			console.log(`  MRC GitHub Branch: ${mrcGithubBranch}`);
-		}
-		console.log("");
+		// console.log(chalk.yellow("Configuration:"));
+		// console.log(`  Base Path: ${basePath}`);
+		// console.log(`  MRC Path: ${mrcPath}`);
+		// console.log(`  MFEs: ${mfes.join(", ")}`);
+		// console.log(`  Output Directory: ${outputDir}`);
+		// console.log(`  Output Format: ${outputFormat}`);
+		// console.log(`  MRC Source Type: ${mrcSourceType}`);
+		// if (mrcSourceType === "github") {
+		// 	console.log(`  MRC GitHub URL: ${mrcGithubUrl}`);
+		// 	console.log(`  MRC GitHub Branch: ${mrcGithubBranch}`);
+		// }
+		// console.log("");
 
 		// Step 1: Scan for files
-		console.log(chalk.yellow("Step 1: Scanning for files..."));
+		// console.log(chalk.yellow("Step 1: Scanning for files..."));
 		const fileScanner = new FileScanner(basePath, mfeInfos, mrcSourceType, mrcGithubUrl, mrcGithubBranch);
 		const files = await fileScanner.scanForFiles();
-		console.log(`Found ${files.length} files to analyze`);
+		// console.log(`Found ${files.length} files to analyze`);
 
 		// Step 2: Scan for MRC components
-		console.log(chalk.yellow("Step 2: Scanning for MRC components..."));
+		// console.log(chalk.yellow("Step 2: Scanning for MRC components..."));
 		const componentFiles = await fileScanner.scanForMrcComponents(mrcPath);
-		console.log(`Found ${componentFiles.length} MRC component files`);
+		// console.log(`Found ${componentFiles.length} MRC component files`);
 
 		// Get component information
 		const allComponents = await fileScanner.getMrcComponentInfo(componentFiles, mrcPath);
 
 		// Step 3: Parse files for component usage
-		console.log(chalk.yellow("Step 3: Parsing files for component usage..."));
+		// console.log(chalk.yellow("Step 3: Parsing files for component usage..."));
 		const componentParser = new ComponentParser(mrcPath, mrcSourceType);
 		await componentParser.initialize(allComponents);
 
-		let totalUsages = 0;
 		const allUsages = [];
 
 		for (let i = 0; i < files.length; i++) {
 			const file = files[i];
 			const fileMfeInfo = mfeInfos.find((info) => file.startsWith(info.path));
 			if (!fileMfeInfo) {
-				console.warn(`Could not determine MFE for file: ${file}`);
+				// console.warn(`Could not determine MFE for file: ${file}`);
 				continue;
 			}
 
 			try {
 				const usages = await componentParser.parseFile(file, fileMfeInfo.name);
-				totalUsages += usages.length;
 				allUsages.push(...usages);
 
 				// Log progress every 100 files
 				if ((i + 1) % 100 === 0 || i === files.length - 1) {
-					console.log(`  Processed ${i + 1}/${files.length} files, found ${totalUsages} component usages so far`);
+					// console.log(`  Processed ${i + 1}/${files.length} files, found ${totalUsages} component usages so far`);
 				}
 			} catch (error) {
-				console.error(`Error parsing file ${file}:`, error);
+				// console.error(`Error parsing file ${file}:`, error);
 			}
 		}
 
-		console.log(`Found ${totalUsages} total component usages`);
+		// console.log(`Found ${totalUsages} total component usages`);
 
 		// Step 4: Detect MRC versions for each MFE
-		console.log(chalk.yellow("Step 4: Detecting MRC versions..."));
+		// console.log(chalk.yellow("Step 4: Detecting MRC versions..."));
 		const mrcVersions: Record<string, string> = {};
 
 		for (const mfeInfo of mfeInfos) {
@@ -173,33 +170,33 @@ async function main() {
 
 					if (dependencies[mrcPackageName]) {
 						mrcVersions[mfeInfo.name] = dependencies[mrcPackageName];
-						console.log(`  ${mfeInfo.name}: MRC version ${dependencies[mrcPackageName]}`);
+						// console.log(`  ${mfeInfo.name}: MRC version ${dependencies[mrcPackageName]}`);
 					} else if (devDependencies[mrcPackageName]) {
 						mrcVersions[mfeInfo.name] = devDependencies[mrcPackageName];
-						console.log(`  ${mfeInfo.name}: MRC version ${devDependencies[mrcPackageName]}`);
+						// console.log(`  ${mfeInfo.name}: MRC version ${devDependencies[mrcPackageName]}`);
 					} else {
 						mrcVersions[mfeInfo.name] = "not found";
-						console.log(`  ${mfeInfo.name}: MRC version not found`);
+						// console.log(`  ${mfeInfo.name}: MRC version not found`);
 					}
 				} else {
 					mrcVersions[mfeInfo.name] = "package.json not found";
-					console.log(`  ${mfeInfo.name}: package.json not found`);
+					// console.log(`  ${mfeInfo.name}: package.json not found`);
 				}
 			} catch (error) {
 				mrcVersions[mfeInfo.name] = "error";
-				console.error(`  Error getting MRC version for ${mfeInfo.name}:`, error);
+				// console.error(`  Error getting MRC version for ${mfeInfo.name}:`, error);
 			}
 		}
 
 		// Step 5: Aggregate data
-		console.log(chalk.yellow("Step 5: Aggregating data..."));
+		// console.log(chalk.yellow("Step 5: Aggregating data..."));
 		const dataAggregator = new DataAggregator();
 		const reportData = dataAggregator.aggregate(allUsages, config, allComponents, mrcVersions);
-		console.log(`Generated report data with ${reportData.componentStats.length} component statistics`);
-		console.log(`Found ${reportData.unusedComponents.length} unused components`);
+		// console.log(`Generated report data with ${reportData.componentStats.length} component statistics`);
+		// console.log(`Found ${reportData.unusedComponents.length} unused components`);
 
 		// Step 5: Generate report
-		console.log(chalk.yellow("Step 5: Generating report..."));
+		// console.log(chalk.yellow("Step 5: Generating report..."));
 		const reportName = options.all ? "mrc-usage-report-all" : `mrc-usage-report-${mfes.join("-")}`;
 
 		let outputFormats: string[];
@@ -222,38 +219,31 @@ async function main() {
 			if (format === "html") {
 				const htmlReporter = new HtmlReporter();
 				await htmlReporter.generateReport(reportData, currentOutputPath);
-				console.log(`HTML report generated at ${currentOutputPath}`);
+				// console.log(`HTML report generated at ${currentOutputPath}`);
 			} else if (format === "json") {
 				// Create a deep copy for transformation to avoid affecting other reporters
 				const transformedReportData = JSON.parse(JSON.stringify(reportData));
 
-				// Transform the filePath in componentStats.instances
-				for (const componentStat of transformedReportData.componentStats) {
-					for (const instance of componentStat.instances) {
-						instance.filePath = instance.filePath.url;
-					}
-					// also transform the files property on componentStat
-					componentStat.files = componentStat.files.map((file: any) => file.url);
-				}
+				// The filePath is already transformed, so no need to do it again here.
 
 				const jsonOutput = JSON.stringify(transformedReportData, null, 2);
-				require("fs").writeFileSync(currentOutputPath, jsonOutput);
-				console.log(`JSON report generated at ${currentOutputPath}`);
+				fs.writeFileSync(currentOutputPath, jsonOutput);
+				// console.log(`JSON report generated at ${currentOutputPath}`);
 			} else if (format === "yaml") {
 				const yamlOutput = yaml.dump(reportData, { indent: 2 });
-				require("fs").writeFileSync(currentOutputPath, yamlOutput);
-				console.log(`YAML report generated at ${currentOutputPath}`);
+				fs.writeFileSync(currentOutputPath, yamlOutput);
+				// console.log(`YAML report generated at ${currentOutputPath}`);
 			} else if (format === "csv") {
-				console.error("CSV format not yet implemented");
+				// console.error("CSV format not yet implemented");
 				// Optionally, you could decide to exit or continue if other formats are requested
 			} else {
-				console.error(`Unsupported format: ${format}`);
+				// console.error(`Unsupported format: ${format}`);
 			}
 		}
 
-		console.log(chalk.green("Report generation completed successfully!"));
+		// console.log(chalk.green("Report generation completed successfully!"));
 	} catch (error) {
-		console.error(chalk.red("Error generating report:"), error);
+		// console.error(chalk.red("Error generating report:"), error);
 		process.exit(1);
 	}
 }
@@ -329,7 +319,7 @@ async function discoverMfes(
 						repository
 					});
 				} else {
-					console.warn(`MFE not found in maas-ui or maas-ops-ui: ${mfe}`);
+					// console.warn(`MFE not found in maas-ui or maas-ops-ui: ${mfe}`);
 				}
 			}
 		}
