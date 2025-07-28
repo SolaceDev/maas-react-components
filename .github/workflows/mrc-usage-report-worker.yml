@@ -36,47 +36,47 @@ jobs:
         with:
           repository: SolaceDev/maas-ui
           ref: sthomas/mrc-usage-report
-          path: maas-ui-repo
+          path: maas-ui
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
       - name: Print directory structure (maas-ui)
         run: |
           echo "==== MAAS-UI DIRECTORY STRUCTURE ===="
-          echo "maas-ui-repo location: $(pwd)/maas-ui-repo"
-          ls -la maas-ui-repo
-          echo "maas-ui-repo/tools location: $(pwd)/maas-ui-repo/tools"
-          ls -la maas-ui-repo/tools || echo "tools directory not found"
-          echo "maas-ui-repo/tools/mrc-usage-report location: $(pwd)/maas-ui-repo/tools/mrc-usage-report"
-          ls -la maas-ui-repo/tools/mrc-usage-report || echo "mrc-usage-report directory not found"
+          echo "maas-ui-repo location: $(pwd)/maas-ui"
+          ls -la maas-ui
+          echo "maas-ui-repo/tools location: $(pwd)/maas-ui/tools"
+          ls -la maas-ui/tools || echo "tools directory not found"
+          echo "maas-ui-repo/tools/mrc-usage-report location: $(pwd)/maas-ui/tools/mrc-usage-report"
+          ls -la maas-ui/tools/mrc-usage-report || echo "mrc-usage-report directory not found"
 
       - name: Checkout maas-ops-ui
         uses: actions/checkout@v4
         with:
           repository: SolaceDev/maas-ops-ui
           ref: iphadte/DATAGO-103044
-          path: maas-ops-ui-repo
+          path: maas-ops-ui
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
       - name: Print directory structure (maas-ops-ui)
         run: |
           echo "==== MAAS-OPS-UI DIRECTORY STRUCTURE ===="
-          echo "maas-ops-ui-repo location: $(pwd)/maas-ops-ui-repo"
-          ls -la maas-ops-ui-repo
-          echo "maas-ops-ui-repo/tools location: $(pwd)/maas-ops-ui-repo/tools"
-          ls -la maas-ops-ui-repo/tools || echo "tools directory not found"
-          echo "maas-ops-ui-repo/tools/mrc-usage-report location: $(pwd)/maas-ops-ui-repo/tools/mrc-usage-report"
-          ls -la maas-ops-ui-repo/tools/mrc-usage-report || echo "mrc-usage-report directory not found"
-          echo "maas-ops-ui-repo/tools/mrc-report-merger location: $(pwd)/maas-ops-ui-repo/tools/mrc-report-merger"
-          ls -la maas-ops-ui-repo/tools/mrc-report-merger || echo "mrc-report-merger directory not found"
-          echo "maas-ops-ui-repo/tools/json-splitter location: $(pwd)/maas-ops-ui-repo/tools/json-splitter"
-          ls -la maas-ops-ui-repo/tools/json-splitter || echo "json-splitter directory not found"
+          echo "maas-ops-ui-repo location: $(pwd)/maas-ops-ui"
+          ls -la maas-ops-ui
+          echo "maas-ops-ui-repo/tools location: $(pwd)/maas-ops-ui/tools"
+          ls -la maas-ops-ui/tools || echo "tools directory not found"
+          echo "maas-ops-ui-repo/tools/mrc-usage-report location: $(pwd)/maas-ops-ui/tools/mrc-usage-report"
+          ls -la maas-ops-ui/tools/mrc-usage-report || echo "mrc-usage-report directory not found"
+          echo "maas-ops-ui-repo/tools/mrc-report-merger location: $(pwd)/maas-ops-ui/tools/mrc-report-merger"
+          ls -la maas-ops-ui/tools/mrc-report-merger || echo "mrc-report-merger directory not found"
+          echo "maas-ops-ui-repo/tools/json-splitter location: $(pwd)/maas-ops-ui/tools/json-splitter"
+          ls -la maas-ops-ui/tools/json-splitter || echo "json-splitter directory not found"
 
       - name: Checkout broker manager
         uses: actions/checkout@v4
         with:
           repository: SolaceDev/broker-manager
           ref: mrc-usage-report
-          path: broker-manager-repo
+          path: broker-manager
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
       - name: Set up Node.js
@@ -88,8 +88,8 @@ jobs:
         run: |
           npm i
           npm run build
-          npm start -- --all --maas-ui-path ../../../maas-ui-repo --maas-ops-ui-path ../../../maas-ops-ui-repo --broker-manager-path ../../../broker-manager-repo --format html
-          npm start -- --all --maas-ui-path ../../../maas-ui-repo --maas-ops-ui-path ../../../maas-ops-ui-repo --broker-manager-path ../../../broker-manager-repo --format json
+          npm start -- --all --maas-ui-path ../../../maas-ui --maas-ops-ui-path ../../../maas-ops-ui --broker-manager-path ../../../broker-manager --format html
+          npm start -- --all --maas-ui-path ../../../maas-ui --maas-ops-ui-path ../../../maas-ops-ui --broker-manager-path ../../../broker-manager --format json
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report
 
