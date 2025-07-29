@@ -149,7 +149,7 @@ This should be standardized to ensure consistent behavior across all tools.
 ```json
 [
 	{
-		"filePath": "../../../maas-ui/micro-frontends/ep/src/utils/schemaUtils.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/utils/schemaUtils.tsx",
 		"props": [
 			{
 				"name": "variant",
@@ -169,7 +169,7 @@ This should be standardized to ensure consistent behavior across all tools.
 		]
 	},
 	{
-		"filePath": "../../../maas-ui/micro-frontends/ep/src/utils/designer/topicUtils.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/utils/designer/topicUtils.tsx",
 		"props": [
 			{
 				"name": "variant",
@@ -184,7 +184,7 @@ This should be standardized to ensure consistent behavior across all tools.
 		]
 	},
 	{
-		"filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
 		"props": [
 			{
 				"name": "variant",
@@ -222,11 +222,11 @@ This should be standardized to ensure consistent behavior across all tools.
 ```json
 [
 	{
-		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
 		"props": []
 	},
 	{
-		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
 		"props": [
 			{ "name": "title", "type": "string", "value": "What is an Automated Upgrade?" },
 			{ "name": "backgroundColor", "type": "expression", "value": "theme.palette.ux.learning.w10" },
@@ -235,18 +235,18 @@ This should be standardized to ensure consistent behavior across all tools.
 		]
 	},
 	{
-		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
 		"props": [
 			{ "name": "title", "type": "string", "value": "What is an Automated Upgrade?" },
 			{ "name": "backgroundColor", "type": "expression", "value": "theme.palette.background.paper" }
 		]
 	},
 	{
-		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
 		"props": [{ "name": "title", "type": "string", "value": "Release Notes" }]
 	},
 	{
-		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
 		"props": []
 	}
 ]
@@ -270,7 +270,7 @@ This should be standardized to ensure consistent behavior across all tools.
 ```json
 [
 	{
-		"filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+		"filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
 		"props": [
 			{
 				"name": "message",
@@ -334,7 +334,7 @@ This should be standardized to ensure consistent behavior across all tools.
 ```json
 [
   {
-    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+    "filePath": "https://github.com/SolaceDev/maas-ops-ui/blob/develop/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
     "props": [
       { "name": "checked", "type": "expression", "value": "isAdvancedInsightSelected ? true : false" },
       { "name": "readOnly", "type": "boolean", "value": "true" },
@@ -344,7 +344,7 @@ This should be standardized to ensure consistent behavior across all tools.
     ]
   },
   {
-    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "filePath": "https://github.com/SolaceDev/maas-ops-ui/blob/develop/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
     "props": [
       { "name": "name", "type": "string", "value": "all" },
       { "name": "label", "type": "expression", "value": "searchStr.searchArea.types.all" },
@@ -354,7 +354,7 @@ This should be standardized to ensure consistent behavior across all tools.
     ]
   },
   {
-    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/SystemControls.tsx",
+    "filePath": "https://github.com/SolaceDev/maas-ops-ui/blob/develop/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/SystemControls.tsx",
     "props": [
       { "name": "name", "type": "string", "value": "Automated Upgrades" },
       { "name": "label", "type": "string", "value": "Automated Upgrades" },
@@ -362,7 +362,7 @@ This should be standardized to ensure consistent behavior across all tools.
     ]
   },
   {
-    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
     "props": [
       { "name": "key", "type": "expression", "value": "option.value" },
       { "name": "name", "type": "expression", "value": "option.name" },
@@ -374,7 +374,7 @@ This should be standardized to ensure consistent behavior across all tools.
     ]
   },
   {
-    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+    "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
     "props": [
       { "name": "id", "type": "string", "value": "showDiffs" },
       { "name": "name", "type": "string", "value": "showDiffs" },
@@ -384,7 +384,7 @@ This should be standardized to ensure consistent behavior across all tools.
     ]
   },
   {
-    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
     "props": [
       { "name": "onChange", "type": "expression", "value": "onBulkPermissionCheckboxChange(readPermissions)" },
       { "name": "name", "type": "expression", "value": "`${categoryName}-read`" },
