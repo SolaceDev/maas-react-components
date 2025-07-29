@@ -16,12 +16,12 @@ import {
 	ReadResourceRequestSchema,
 	ListResourcesRequestSchema
 } from "@modelcontextprotocol/sdk/types.js";
-import { getUsageForComponentSolace } from "./tools/getUsageForComponentSolace.js";
+import { getComponentUsageAll } from "./tools/getComponentUsageAll.js";
 import { getApplicationStats } from "./tools/getApplicationStats.js";
 import { getMfeStats } from "./tools/getMfeStats.js";
 import { getMfeInfo, listAllMfes } from "./tools/getMfeInfo.js";
-import { getUsageForComponentByApplication } from "./tools/getUsageForComponentByApplication.js";
-import { getUsageForComponentByMFE } from "./tools/getUsageForComponentByMFE.js";
+import { getComponentUsageByApplication } from "./tools/getComponentUsageByApplication.js";
+import { getComponentUsageByMfe } from "./tools/getComponentUsageByMfe.js";
 import axios from "axios";
 import ApplicationMfeCache from "./ApplicationMfeCache.js";
 
@@ -116,7 +116,7 @@ class MrcUsageServer {
 		}
 
 		try {
-			const data = await getUsageForComponentSolace(componentName);
+			const data = await getComponentUsageAll(componentName);
 			if (data) {
 				// Cache the data
 				this.componentData[componentName] = data;
@@ -210,7 +210,7 @@ class MrcUsageServer {
 
 	private tools = [
 		{
-			name: "get_usage_for_component_by_application",
+			name: "get_component_usage_by_application",
 			description: "Get usage for a component in a specific application.",
 			inputSchema: {
 				type: "object",
@@ -229,7 +229,7 @@ class MrcUsageServer {
 			}
 		},
 		{
-			name: "get_usage_for_component_by_mfe",
+			name: "get_component_usage_by_mfe",
 			description: "Get usage for a component in a specific MFE.",
 			inputSchema: {
 				type: "object",
@@ -247,8 +247,8 @@ class MrcUsageServer {
 			}
 		},
 		{
-			name: "get_usage_for_component_solace",
-			description: "Get usage for a component in Solace.",
+			name: "get_component_usage_all",
+			description: "Get usage for a component across applications.",
 			inputSchema: {
 				type: "object",
 				properties: {
@@ -262,7 +262,8 @@ class MrcUsageServer {
 		},
 		{
 			name: "get_application_stats",
-			description: "Get usage statistics for a specific application.",
+			description:
+				"Returns usage statistics for a specified application, including component counts and other metrics.",
 			inputSchema: {
 				type: "object",
 				properties: {
@@ -276,7 +277,8 @@ class MrcUsageServer {
 		},
 		{
 			name: "get_mfe_stats",
-			description: "Get usage statistics for a specific MFE (Micro Frontend).",
+			description:
+				"Returns usage statistics for a specified Micro-Frontend (MFE), including component counts and other metrics. The `applicationName` is optional but helps to disambiguate if MFE names are not unique across applications.",
 			inputSchema: {
 				type: "object",
 				properties: {
@@ -294,7 +296,7 @@ class MrcUsageServer {
 		},
 		{
 			name: "get_mfe_info",
-			description: "Get information about an MFE, including which application it belongs to.",
+			description: "Retrieves information about a specified Micro-Frontend (MFE), including its parent application.",
 			inputSchema: {
 				type: "object",
 				properties: {
@@ -315,7 +317,7 @@ class MrcUsageServer {
 			// Lists all available MFEs and their parent applications
 			// Useful for discovering MFEs and their relationships to applications
 			name: "list_all_mfes",
-			description: "List all available MFEs across all applications.",
+			description: "Returns a list of all available Micro-Frontends (MFEs) across all applications.",
 			inputSchema: {
 				type: "object",
 				properties: {
@@ -329,7 +331,7 @@ class MrcUsageServer {
 		},
 		{
 			name: "list_all_applications",
-			description: "List all applications that have usage data",
+			description: "Returns a list of all applications with available usage data.",
 			inputSchema: {
 				type: "object",
 				properties: {}
@@ -337,7 +339,7 @@ class MrcUsageServer {
 		},
 		{
 			name: "list_all_tools",
-			description: "List all available tools in the MCP server",
+			description: "Returns a list of all available tools in the MCP server.",
 			inputSchema: {
 				type: "object",
 				properties: {}
@@ -345,7 +347,7 @@ class MrcUsageServer {
 		},
 		{
 			name: "list_applications_and_mfes",
-			description: "List all applications and their associated MFEs",
+			description: "Returns a list of all applications and their associated Micro-Frontends (MFEs).",
 			inputSchema: {
 				type: "object",
 				properties: {}
@@ -360,12 +362,12 @@ class MrcUsageServer {
 
 		this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
 			switch (request.params.name) {
-				case "get_usage_for_component_by_application": {
+				case "get_component_usage_by_application": {
 					const { componentName, applicationName } = request.params.arguments as {
 						componentName: string;
 						applicationName: string;
 					};
-					const result = await getUsageForComponentByApplication(applicationName, componentName);
+					const result = await getComponentUsageByApplication(applicationName, componentName);
 					return {
 						content: [
 							{
@@ -375,13 +377,13 @@ class MrcUsageServer {
 						]
 					};
 				}
-				case "get_usage_for_component_by_mfe": {
+				case "get_component_usage_by_mfe": {
 					const { componentName, mfeName } = request.params.arguments as { componentName: string; mfeName: string };
 					const mfeInfo = await getMfeInfo(mfeName);
 					if (!mfeInfo.applicationName) {
 						throw new McpError(ErrorCode.InvalidParams, `Could not determine application for MFE '${mfeName}'`);
 					}
-					const result = await getUsageForComponentByMFE(mfeInfo.applicationName, mfeName, componentName);
+					const result = await getComponentUsageByMfe(mfeInfo.applicationName, mfeName, componentName);
 					return {
 						content: [
 							{
@@ -391,13 +393,13 @@ class MrcUsageServer {
 						]
 					};
 				}
-				case "get_usage_for_component_solace": {
+				case "get_component_usage_all": {
 					if (!request.params.arguments) {
 						throw new McpError(ErrorCode.InvalidParams, "Missing arguments");
 					}
 
 					const componentName = request.params.arguments.componentName as string;
-					const result = await getUsageForComponentSolace(componentName);
+					const result = await getComponentUsageAll(componentName);
 
 					return {
 						content: [

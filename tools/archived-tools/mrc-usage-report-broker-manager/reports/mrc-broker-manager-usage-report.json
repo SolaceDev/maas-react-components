@@ -1,0 +1,993 @@
+{
+  "generatedAt": "2025-07-08T21:31:53.155Z",
+  "config": {
+    "mfes": [
+      "broker-manager"
+    ],
+    "mrcPath": "/Users/ishanphadte/Documents/Github/maas-react-components",
+    "outputDir": "/Users/ishanphadte/Documents/GitHub/maas-react-components/tools/mrc-usage-report-broker-manager/reports",
+    "outputFormats": [
+      "json"
+    ],
+    "mrcSourceType": "local",
+    "mrcGithubUrl": "https://github.com/SolaceDev/maas-react-components",
+    "mrcGithubBranch": "main"
+  },
+  "mrcVersions": {
+    "broker-manager": "package.json not found"
+  },
+  "componentStats": [
+    {
+      "componentName": "SolaceButton",
+      "totalUsages": 3,
+      "usagesByMfe": {
+        "broker-manager": 3
+      },
+      "commonProps": [
+        {
+          "name": "variant",
+          "count": 3
+        },
+        {
+          "name": "href",
+          "count": 2
+        },
+        {
+          "name": "target",
+          "count": 1
+        },
+        {
+          "name": "onClick",
+          "count": 1
+        }
+      ],
+      "files": [
+        "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+        "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/section.js"
+      ],
+      "customization": {
+        "styledComponentCount": 0,
+        "customStylesCount": 0,
+        "overriddenPropertiesCounts": {}
+      },
+      "instances": [
+        {
+          "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+          "props": [
+            {
+              "name": "href",
+              "type": "expression",
+              "value": "sublink.url"
+            },
+            {
+              "name": "variant",
+              "type": "string",
+              "value": "link"
+            },
+            {
+              "name": "target",
+              "type": "string",
+              "value": "_blank"
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+          "props": [
+            {
+              "name": "onClick",
+              "type": "variable",
+              "value": "handleTutorialClick"
+            },
+            {
+              "name": "variant",
+              "type": "string",
+              "value": "text"
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/section.js",
+          "props": [
+            {
+              "name": "variant",
+              "type": "string",
+              "value": "link"
+            },
+            {
+              "name": "href",
+              "type": "expression",
+              "value": "footer.url"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "componentName": "SolaceCard",
+      "totalUsages": 2,
+      "usagesByMfe": {
+        "broker-manager": 2
+      },
+      "commonProps": [
+        {
+          "name": "dataQa",
+          "count": 2
+        },
+        {
+          "name": "width",
+          "count": 2
+        },
+        {
+          "name": "minWidth",
+          "count": 1
+        },
+        {
+          "name": "readOnly",
+          "count": 1
+        },
+        {
+          "name": "cardHeaderProps",
+          "count": 1
+        },
+        {
+          "name": "height",
+          "count": 1
+        },
+        {
+          "name": "padding",
+          "count": 1
+        },
+        {
+          "name": "onClick",
+          "count": 1
+        },
+        {
+          "name": "cardContent",
+          "count": 1
+        }
+      ],
+      "files": [
+        "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+        "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/top-level-card.js"
+      ],
+      "customization": {
+        "styledComponentCount": 0,
+        "customStylesCount": 0,
+        "overriddenPropertiesCounts": {}
+      },
+      "instances": [
+        {
+          "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+          "props": [
+            {
+              "name": "dataQa",
+              "type": "string",
+              "value": "standard-card"
+            },
+            {
+              "name": "minWidth",
+              "type": "string",
+              "value": "371px"
+            },
+            {
+              "name": "width",
+              "type": "string",
+              "value": "475px"
+            },
+            {
+              "name": "readOnly",
+              "type": "boolean",
+              "value": "true"
+            },
+            {
+              "name": "cardHeaderProps",
+              "type": "object",
+              "value": "{\n        title: title,\n        subTitle: description,\n        icon: (\n          <img \n            width=\"80px\"\n            height=\"40px\"\n            src={image}\n            style={{\n              display: \"block\",\n              objectFit: \"cover\",\n              objectPosition: \"center\",\n            }}\n          />\n        ),\n        actionElements: (\n          <div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>\n            <SolaceButton onClick={handleTutorialClick} variant=\"text\">\n              Tutorials\n            </SolaceButton>\n            <SolaceMenu\n              buttonProps={{\n                'aria-label': 'Actions menu',\n                children: <MoreHorizOutlinedIcon />,\n                title: 'Actions',\n                variant: 'icon',\n              }}\n              items={generateMenuItems()}\n              numOfMenuItemDisplayed={3}\n            />\n          </div>\n        ),\n      }"
+            }
+          ]
+        },
+        {
+          "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/top-level-card.js",
+          "props": [
+            {
+              "name": "dataQa",
+              "type": "string",
+              "value": "top-level-card"
+            },
+            {
+              "name": "height",
+              "type": "string",
+              "value": "300px"
+            },
+            {
+              "name": "width",
+              "type": "string",
+              "value": "300px"
+            },
+            {
+              "name": "padding",
+              "type": "string",
+              "value": "0px"
+            },
+            {
+              "name": "onClick",
+              "type": "function",
+              "value": "() => window.open(url, \"_blank\")"
+            },
+            {
+              "name": "cardContent",
+              "type": "jsx",
+              "value": "<div className='top-level-card'>\n          {image && <img src={image} className='image'/>}\n          <div className='description'>\n            <h5>{title}</h5>              \n            <p className=\"margin\">{description}</p>\n          </div>\n        </div>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "componentName": "SolaceMenu",
+      "totalUsages": 1,
+      "usagesByMfe": {
+        "broker-manager": 1
+      },
+      "commonProps": [
+        {
+          "name": "buttonProps",
+          "count": 1
+        },
+        {
+          "name": "items",
+          "count": 1
+        },
+        {
+          "name": "numOfMenuItemDisplayed",
+          "count": 1
+        }
+      ],
+      "files": [
+        "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js"
+      ],
+      "customization": {
+        "styledComponentCount": 0,
+        "customStylesCount": 0,
+        "overriddenPropertiesCounts": {}
+      },
+      "instances": [
+        {
+          "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+          "props": [
+            {
+              "name": "buttonProps",
+              "type": "object",
+              "value": "{\n                'aria-label': 'Actions menu',\n                children: <MoreHorizOutlinedIcon />,\n                title: 'Actions',\n                variant: 'icon',\n              }"
+            },
+            {
+              "name": "items",
+              "type": "expression",
+              "value": "generateMenuItems()"
+            },
+            {
+              "name": "numOfMenuItemDisplayed",
+              "type": "number",
+              "value": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "componentName": "SolaceTypography",
+      "totalUsages": 1,
+      "usagesByMfe": {
+        "broker-manager": 1
+      },
+      "commonProps": [
+        {
+          "name": "variant",
+          "count": 1
+        }
+      ],
+      "files": [
+        "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/section.js"
+      ],
+      "customization": {
+        "styledComponentCount": 0,
+        "customStylesCount": 0,
+        "overriddenPropertiesCounts": {}
+      },
+      "instances": [
+        {
+          "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/section.js",
+          "props": [
+            {
+              "name": "variant",
+              "type": "string",
+              "value": "body1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unusedComponents": [
+    {
+      "name": "SolaceToasts",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceToasts.tsx"
+    },
+    {
+      "name": "SolaceLinearProgress",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceLinearProgress.tsx"
+    },
+    {
+      "name": "SolaceTextDiff",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceTextDiff.tsx"
+    },
+    {
+      "name": "jsonSchemaFormUtils",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/jsonschemaform/jsonSchemaFormUtils.tsx"
+    },
+    {
+      "name": "SolaceJsonSchemaForm",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/jsonschemaform/SolaceJsonSchemaForm.tsx"
+    },
+    {
+      "name": "SolacePagination",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolacePagination.tsx"
+    },
+    {
+      "name": "SolaceAttributeBadge",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceAttributeBadge.tsx"
+    },
+    {
+      "name": "SolaceCheckBox",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceCheckBox.tsx"
+    },
+    {
+      "name": "SolaceTextArea",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceTextArea.tsx"
+    },
+    {
+      "name": "WarningText",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/WarningText.tsx"
+    },
+    {
+      "name": "SolaceStackLabel",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceStackLabel.tsx"
+    },
+    {
+      "name": "SolaceTextField",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceTextField.tsx"
+    },
+    {
+      "name": "HelperText",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/HelperText.tsx"
+    },
+    {
+      "name": "SolaceSelectAutocompleteItem",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceSelectAutocompleteItem.tsx"
+    },
+    {
+      "name": "SolaceStepper",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceStepper/SolaceStepper.tsx"
+    },
+    {
+      "name": "SolaceStepperFooter",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceStepper/SolaceStepperFooter.tsx"
+    },
+    {
+      "name": "SolaceStepIcon",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceStepper/SolaceStepIcon.tsx"
+    },
+    {
+      "name": "SolaceSelectAutocomplete",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceSelectAutocomplete.tsx"
+    },
+    {
+      "name": "FormChildBase",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/FormChildBase.tsx"
+    },
+    {
+      "name": "SolaceAttributeValuePair",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceAttributeValuePair.tsx"
+    },
+    {
+      "name": "SolaceAttributeValuePairForm",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceAttributeValuePairForm.tsx"
+    },
+    {
+      "name": "SolaceLearningButton",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/Button/SolaceLearningButton.tsx"
+    },
+    {
+      "name": "SolacePicker",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolacePicker.tsx"
+    },
+    {
+      "name": "SolaceRadio",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceRadio.tsx"
+    },
+    {
+      "name": "ErrorText",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/ErrorText.tsx"
+    },
+    {
+      "name": "SolaceToggleButtonGroup",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceToggleButtonGroup.tsx"
+    },
+    {
+      "name": "SolaceToggle",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceToggle.tsx"
+    },
+    {
+      "name": "SolaceSelectAutocompleteResponsiveTags",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceSelectAutocompleteResponsiveTags.tsx"
+    },
+    {
+      "name": "SolaceAutoCompleteTextField",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceAutoCompleteTextField.tsx"
+    },
+    {
+      "name": "SolaceCodeEditor",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceCodeEditor.tsx"
+    },
+    {
+      "name": "SolaceRadioGroup",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceRadioGroup.tsx"
+    },
+    {
+      "name": "SolaceLabel",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceLabel.tsx"
+    },
+    {
+      "name": "SolaceSelect",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/form/SolaceSelect.tsx"
+    },
+    {
+      "name": "SolaceTree",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceTree.tsx"
+    },
+    {
+      "name": "SolaceDatePicker",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceDatePicker.tsx"
+    },
+    {
+      "name": "SolaceNotificationCounter",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceNotificationCounter.tsx"
+    },
+    {
+      "name": "NoAccess",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/NoAccess.tsx"
+    },
+    {
+      "name": "SolaceTruncatableLink",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceTruncatableLink.tsx"
+    },
+    {
+      "name": "SolaceMenuItem",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceMenuItem.tsx"
+    },
+    {
+      "name": "SolaceListItem",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceListItem.tsx"
+    },
+    {
+      "name": "SolaceStack",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceStack.tsx"
+    },
+    {
+      "name": "SolacePageHeader",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolacePageHeader.tsx"
+    },
+    {
+      "name": "SolaceSidePanelLayout",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceSidePanelLayout.tsx"
+    },
+    {
+      "name": "SolaceSplitPane",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceSplitPane.tsx"
+    },
+    {
+      "name": "SolaceTabs",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceTabs.tsx"
+    },
+    {
+      "name": "SolaceGridListMultiSelect",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceGridListMultiSelect.tsx"
+    },
+    {
+      "name": "SolaceListItemButton",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceListItemButton.tsx"
+    },
+    {
+      "name": "SolaceGridList",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceGridList.tsx"
+    },
+    {
+      "name": "SolaceIconTabs",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceIconTabs.tsx"
+    },
+    {
+      "name": "SolaceList",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceList.tsx"
+    },
+    {
+      "name": "SolaceGrid",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/layout/SolaceGrid.tsx"
+    },
+    {
+      "name": "SolaceEnvironmentSelectChip",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceEnvironmentSelectChip.tsx"
+    },
+    {
+      "name": "SolaceEmptyStateBanner",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceEmptyStateBanner.tsx"
+    },
+    {
+      "name": "SolaceDrawer",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceDrawer.tsx"
+    },
+    {
+      "name": "SolaceTag",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceTag.tsx"
+    },
+    {
+      "name": "SolaceConfirmationDialog",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/dialog/SolaceConfirmationDialog.tsx"
+    },
+    {
+      "name": "SolaceBreadcrumb",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceBreadcrumb.tsx"
+    },
+    {
+      "name": "SolaceCardHeader",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceCardHeader.tsx"
+    },
+    {
+      "name": "SolaceMessageBox",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceMessageBox.tsx"
+    },
+    {
+      "name": "SolaceErrorBox",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceErrorBox.tsx"
+    },
+    {
+      "name": "SolaceHTMLAttributesProps",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceHTMLAttributesProps.ts"
+    },
+    {
+      "name": "SolaceComponentProps",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceComponentProps.ts"
+    },
+    {
+      "name": "SolaceAccordion",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceAccordion.tsx"
+    },
+    {
+      "name": "SolaceBackDrop",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceBackDrop.tsx"
+    },
+    {
+      "name": "SolaceEnvironmentChip",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceEnvironmentChip.tsx"
+    },
+    {
+      "name": "SolaceTable",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/table/SolaceTable.tsx"
+    },
+    {
+      "name": "ContentControlMenu",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/table/components/ContentControlMenu.tsx"
+    },
+    {
+      "name": "useClickedOutside",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/table/hooks/useClickedOutside.tsx"
+    },
+    {
+      "name": "useExpandableRows",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/table/hooks/useExpandableRows.tsx"
+    },
+    {
+      "name": "useTableHeaderRenderHelper",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/table/hooks/useTableHeaderRenderHelper.tsx"
+    },
+    {
+      "name": "useTableBodyRenderHelper",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/table/hooks/useTableBodyRenderHelper.tsx"
+    },
+    {
+      "name": "useSolaceTable",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/table/hooks/useSolaceTable.tsx"
+    },
+    {
+      "name": "table-utils",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/table/table-utils.tsx"
+    },
+    {
+      "name": "SolaceFeatureTag",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceFeatureTag.tsx"
+    },
+    {
+      "name": "SolaceCategorizedSearch",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceCategorizedSearch.tsx"
+    },
+    {
+      "name": "SolaceToolTip",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceToolTip.tsx"
+    },
+    {
+      "name": "SolaceLearningBanner",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceLearningBanner.tsx"
+    },
+    {
+      "name": "SolaceResponsiveItemList",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceResponsiveItemList.tsx"
+    },
+    {
+      "name": "fileUploaderUtils",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/fileuploader/fileUploaderUtils.ts"
+    },
+    {
+      "name": "SolaceFileUploader",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/fileuploader/SolaceFileUploader.tsx"
+    },
+    {
+      "name": "SolaceDetailMessage",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceDetailMessage.tsx"
+    },
+    {
+      "name": "SolaceSearchAndFilter",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceSearchAndFilter.tsx"
+    },
+    {
+      "name": "SolaceDonutChart",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceDonutChart.tsx"
+    },
+    {
+      "name": "SolaceCircularProgress",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceCircularProgress.tsx"
+    },
+    {
+      "name": "SolaceChip",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceChip.tsx"
+    },
+    {
+      "name": "SolaceEnvironmentLabel",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolaceEnvironmentLabel.tsx"
+    },
+    {
+      "name": "SolacePopover",
+      "path": "/Users/ishanphadte/Documents/Github/maas-react-components/src/components/SolacePopover.tsx"
+    }
+  ],
+  "unusedComponentsByMfe": {
+    "broker-manager": [
+      "SolaceToasts",
+      "SolaceLinearProgress",
+      "SolaceTextDiff",
+      "jsonSchemaFormUtils",
+      "SolaceJsonSchemaForm",
+      "SolacePagination",
+      "SolaceAttributeBadge",
+      "SolaceCheckBox",
+      "SolaceTextArea",
+      "WarningText",
+      "SolaceStackLabel",
+      "SolaceTextField",
+      "HelperText",
+      "SolaceSelectAutocompleteItem",
+      "SolaceStepper",
+      "SolaceStepperFooter",
+      "SolaceStepIcon",
+      "SolaceSelectAutocomplete",
+      "FormChildBase",
+      "SolaceAttributeValuePair",
+      "SolaceAttributeValuePairForm",
+      "SolaceLearningButton",
+      "SolacePicker",
+      "SolaceRadio",
+      "ErrorText",
+      "SolaceToggleButtonGroup",
+      "SolaceToggle",
+      "SolaceSelectAutocompleteResponsiveTags",
+      "SolaceAutoCompleteTextField",
+      "SolaceCodeEditor",
+      "SolaceRadioGroup",
+      "SolaceLabel",
+      "SolaceSelect",
+      "SolaceTree",
+      "SolaceDatePicker",
+      "SolaceNotificationCounter",
+      "NoAccess",
+      "SolaceTruncatableLink",
+      "SolaceMenuItem",
+      "SolaceListItem",
+      "SolaceStack",
+      "SolacePageHeader",
+      "SolaceSidePanelLayout",
+      "SolaceSplitPane",
+      "SolaceTabs",
+      "SolaceGridListMultiSelect",
+      "SolaceListItemButton",
+      "SolaceGridList",
+      "SolaceIconTabs",
+      "SolaceList",
+      "SolaceGrid",
+      "SolaceEnvironmentSelectChip",
+      "SolaceEmptyStateBanner",
+      "SolaceDrawer",
+      "SolaceTag",
+      "SolaceConfirmationDialog",
+      "SolaceBreadcrumb",
+      "SolaceCardHeader",
+      "SolaceMessageBox",
+      "SolaceErrorBox",
+      "SolaceHTMLAttributesProps",
+      "SolaceComponentProps",
+      "SolaceAccordion",
+      "SolaceBackDrop",
+      "SolaceEnvironmentChip",
+      "SolaceTable",
+      "ContentControlMenu",
+      "useClickedOutside",
+      "useExpandableRows",
+      "useTableHeaderRenderHelper",
+      "useTableBodyRenderHelper",
+      "useSolaceTable",
+      "table-utils",
+      "SolaceFeatureTag",
+      "SolaceCategorizedSearch",
+      "SolaceToolTip",
+      "SolaceLearningBanner",
+      "SolaceResponsiveItemList",
+      "fileUploaderUtils",
+      "SolaceFileUploader",
+      "SolaceDetailMessage",
+      "SolaceSearchAndFilter",
+      "SolaceDonutChart",
+      "SolaceCircularProgress",
+      "SolaceChip",
+      "SolaceEnvironmentLabel",
+      "SolacePopover"
+    ]
+  },
+  "overallStats": {
+    "totalUsages": 7,
+    "mostUsedComponents": [
+      {
+        "name": "SolaceButton",
+        "count": 3
+      },
+      {
+        "name": "SolaceCard",
+        "count": 2
+      },
+      {
+        "name": "SolaceMenu",
+        "count": 1
+      },
+      {
+        "name": "SolaceTypography",
+        "count": 1
+      }
+    ],
+    "mostUsedProps": [
+      {
+        "name": "variant",
+        "count": 4
+      },
+      {
+        "name": "href",
+        "count": 2
+      },
+      {
+        "name": "dataQa",
+        "count": 2
+      },
+      {
+        "name": "width",
+        "count": 2
+      },
+      {
+        "name": "onClick",
+        "count": 2
+      },
+      {
+        "name": "target",
+        "count": 1
+      },
+      {
+        "name": "minWidth",
+        "count": 1
+      },
+      {
+        "name": "readOnly",
+        "count": 1
+      },
+      {
+        "name": "cardHeaderProps",
+        "count": 1
+      },
+      {
+        "name": "buttonProps",
+        "count": 1
+      }
+    ],
+    "mfeUsages": {
+      "broker-manager": 7
+    },
+    "totalUnusedComponents": 87
+  },
+  "rawData": {
+    "componentUsages": [
+      {
+        "component": "SolaceButton",
+        "count": 3,
+        "instances": [
+          {
+            "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+            "props": [
+              {
+                "name": "href",
+                "type": "expression",
+                "value": "sublink.url"
+              },
+              {
+                "name": "variant",
+                "type": "string",
+                "value": "link"
+              },
+              {
+                "name": "target",
+                "type": "string",
+                "value": "_blank"
+              }
+            ]
+          },
+          {
+            "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+            "props": [
+              {
+                "name": "onClick",
+                "type": "variable",
+                "value": "handleTutorialClick"
+              },
+              {
+                "name": "variant",
+                "type": "string",
+                "value": "text"
+              }
+            ]
+          },
+          {
+            "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/section.js",
+            "props": [
+              {
+                "name": "variant",
+                "type": "string",
+                "value": "link"
+              },
+              {
+                "name": "href",
+                "type": "expression",
+                "value": "footer.url"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "SolaceCard",
+        "count": 2,
+        "instances": [
+          {
+            "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+            "props": [
+              {
+                "name": "dataQa",
+                "type": "string",
+                "value": "standard-card"
+              },
+              {
+                "name": "minWidth",
+                "type": "string",
+                "value": "371px"
+              },
+              {
+                "name": "width",
+                "type": "string",
+                "value": "475px"
+              },
+              {
+                "name": "readOnly",
+                "type": "boolean",
+                "value": "true"
+              },
+              {
+                "name": "cardHeaderProps",
+                "type": "object",
+                "value": "{\n        title: title,\n        subTitle: description,\n        icon: (\n          <img \n            width=\"80px\"\n            height=\"40px\"\n            src={image}\n            style={{\n              display: \"block\",\n              objectFit: \"cover\",\n              objectPosition: \"center\",\n            }}\n          />\n        ),\n        actionElements: (\n          <div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>\n            <SolaceButton onClick={handleTutorialClick} variant=\"text\">\n              Tutorials\n            </SolaceButton>\n            <SolaceMenu\n              buttonProps={{\n                'aria-label': 'Actions menu',\n                children: <MoreHorizOutlinedIcon />,\n                title: 'Actions',\n                variant: 'icon',\n              }}\n              items={generateMenuItems()}\n              numOfMenuItemDisplayed={3}\n            />\n          </div>\n        ),\n      }"
+              }
+            ]
+          },
+          {
+            "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/top-level-card.js",
+            "props": [
+              {
+                "name": "dataQa",
+                "type": "string",
+                "value": "top-level-card"
+              },
+              {
+                "name": "height",
+                "type": "string",
+                "value": "300px"
+              },
+              {
+                "name": "width",
+                "type": "string",
+                "value": "300px"
+              },
+              {
+                "name": "padding",
+                "type": "string",
+                "value": "0px"
+              },
+              {
+                "name": "onClick",
+                "type": "function",
+                "value": "() => window.open(url, \"_blank\")"
+              },
+              {
+                "name": "cardContent",
+                "type": "jsx",
+                "value": "<div className='top-level-card'>\n          {image && <img src={image} className='image'/>}\n          <div className='description'>\n            <h5>{title}</h5>              \n            <p className=\"margin\">{description}</p>\n          </div>\n        </div>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "SolaceMenu",
+        "count": 1,
+        "instances": [
+          {
+            "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/standard-card.js",
+            "props": [
+              {
+                "name": "buttonProps",
+                "type": "object",
+                "value": "{\n                'aria-label': 'Actions menu',\n                children: <MoreHorizOutlinedIcon />,\n                title: 'Actions',\n                variant: 'icon',\n              }"
+              },
+              {
+                "name": "items",
+                "type": "expression",
+                "value": "generateMenuItems()"
+              },
+              {
+                "name": "numOfMenuItemDisplayed",
+                "type": "number",
+                "value": "3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "SolaceTypography",
+        "count": 1,
+        "instances": [
+          {
+            "filePath": "/Users/ishanphadte/Documents/GitHub/broker-manager/src/pages/help/learning-centre/react-components/section.js",
+            "props": [
+              {
+                "name": "variant",
+                "type": "string",
+                "value": "body1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

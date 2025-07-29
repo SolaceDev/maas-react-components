@@ -64,8 +64,8 @@ class ApplicationMfeCache {
 			this.data.applications = await this.fetchDirectoryContents(url);
 
 			// For each application, fetch its MFEs
-			for (const app of this.data.applications) {
-				this.data.mfes[app] = await this.fetchMfesForApplication(app);
+			for (const application of this.data.applications) {
+				this.data.mfes[application] = await this.fetchMfesForApplication(application);
 			}
 
 			// Remove console.log statements
@@ -88,9 +88,9 @@ class ApplicationMfeCache {
 	}
 
 	public getApplicationForMfe(mfe: string): string | undefined {
-		for (const [app, mfes] of Object.entries(this.data.mfes)) {
+		for (const [application, mfes] of Object.entries(this.data.mfes)) {
 			if (mfes.includes(mfe)) {
-				return app;
+				return application;
 			}
 		}
 		return undefined;

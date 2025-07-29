@@ -63,14 +63,14 @@ async function discoverMfes(forceRefresh = false): Promise<Record<string, string
 		const applications = await fetchDirectoryContents(`${baseUrl}?ref=${ref}`);
 
 		// For each application, get its MFEs
-		for (const app of applications) {
-			const appName = app.name;
-			const mfes = await fetchDirectoryContents(`${baseUrl}/${appName}?ref=${ref}`);
+		for (const application of applications) {
+			const applicationName = application.name;
+			const mfes = await fetchDirectoryContents(`${baseUrl}/${applicationName}?ref=${ref}`);
 
 			// Add each MFE to the mapping
 			for (const mfe of mfes) {
 				if (mfe.name !== "total_stats.json") {
-					mapping[mfe.name] = appName;
+					mapping[mfe.name] = applicationName;
 				}
 			}
 		}
