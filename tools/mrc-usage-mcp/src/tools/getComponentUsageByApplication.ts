@@ -1,23 +1,11 @@
 import ApplicationMfeCache from "../ApplicationMfeCache.js";
 import { getComponentUsageByMfe } from "./getComponentUsageByMfe.js";
-
-// From instances.json
-// "keyMap":{"filePath":"a","name":"b","props":"c","type":"d","value":"e"}
-interface RawProp {
-	b: string; // name
-	d: string; // type
-	e: string; // value
-}
-
-interface RawInstance {
-	a: string; // filePath
-	c: RawProp[]; // props
-}
+import { Instance } from "../utils/keyTransformer.js";
 
 export async function getComponentUsageByApplication(
 	applicationName: string,
 	componentName: string
-): Promise<RawInstance[]> {
+): Promise<Instance[]> {
 	// eslint-disable-next-line no-console
 	console.error(`[DEBUG] Starting getComponentUsageByApplication for ${componentName} in ${applicationName}`);
 	const cache = ApplicationMfeCache.getInstance();
@@ -46,7 +34,7 @@ export async function getComponentUsageByApplication(
 	// eslint-disable-next-line no-console
 	console.error(`[DEBUG] Found ${mfes.length} MFEs for application ${applicationName}: ${mfes.join(", ")}`);
 
-	let allInstances: RawInstance[] = [];
+	let allInstances: Instance[] = [];
 
 	// eslint-disable-next-line no-console
 	console.error("[DEBUG] Starting to fetch usage for each MFE...");

@@ -149,52 +149,52 @@ This should be standardized to ensure consistent behavior across all tools.
 ```json
 [
 	{
-		"a": "../../../maas-ui/micro-frontends/ep/src/utils/schemaUtils.tsx",
-		"c": [
+		"filePath": "../../../maas-ui/micro-frontends/ep/src/utils/schemaUtils.tsx",
+		"props": [
 			{
-				"b": "variant",
-				"d": "string",
-				"e": "link"
+				"name": "variant",
+				"type": "string",
+				"value": "link"
 			},
 			{
-				"b": "dataQa",
-				"d": "string",
-				"e": "jsonSchemaSpecLink"
+				"name": "dataQa",
+				"type": "string",
+				"value": "jsonSchemaSpecLink"
 			},
 			{
-				"b": "href",
-				"d": "string",
-				"e": "https://json-schema.org/specification.html"
+				"name": "href",
+				"type": "string",
+				"value": "https://json-schema.org/specification.html"
 			}
 		]
 	},
 	{
-		"a": "../../../maas-ui/micro-frontends/ep/src/utils/designer/topicUtils.tsx",
-		"c": [
+		"filePath": "../../../maas-ui/micro-frontends/ep/src/utils/designer/topicUtils.tsx",
+		"props": [
 			{
-				"b": "variant",
-				"d": "string",
-				"e": "link"
+				"name": "variant",
+				"type": "string",
+				"value": "link"
 			},
 			{
-				"b": "href",
-				"d": "expression",
-				"e": "brandableTextValueConverter(\"smfTopics\", \"link\")"
+				"name": "href",
+				"type": "expression",
+				"value": "brandableTextValueConverter(\"smfTopics\", \"link\")"
 			}
 		]
 	},
 	{
-		"a": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
-		"c": [
+		"filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+		"props": [
 			{
-				"b": "variant",
-				"d": "string",
-				"e": "text"
+				"name": "variant",
+				"type": "string",
+				"value": "text"
 			},
 			{
-				"b": "onClick",
-				"d": "variable",
-				"e": "toggleCheckbox"
+				"name": "onClick",
+				"type": "variable",
+				"value": "toggleCheckbox"
 			}
 		]
 	}
@@ -203,11 +203,11 @@ This should be standardized to ensure consistent behavior across all tools.
 
 ### `get_component_usage_by_mfe`
 
-**Description:** Get usage for a component in a specific MFE.
+**Description:** Get usage for a component in a specific MFE. You can optionally filter by a prop's presence, or by a prop's name and value.
 
-**Sample Prompt:** "Get the usage for the Solace Card component in the mc mfe"
+**Sample Prompt (no filter):** "Get the usage for the Solace Card component in the mc mfe"
 
-**Internal Call:**
+**Internal Call (no filter):**
 
 ```json
 {
@@ -217,39 +217,101 @@ This should be standardized to ensure consistent behavior across all tools.
 }
 ```
 
-**Sample Output:**
+**Sample Output (no filter):**
 
 ```json
 [
 	{
-		"a": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
-		"c": []
+		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+		"props": []
 	},
 	{
-		"a": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
-		"c": [
-			{ "b": "title", "d": "string", "e": "What is an Automated Upgrade?" },
-			{ "b": "backgroundColor", "d": "expression", "e": "theme.palette.ux.learning.w10" },
-			{ "b": "showCloseButton", "d": "boolean", "e": "true" },
-			{ "b": "onClose", "d": "function", "e": "() => setNeedHelp(false)" }
+		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+		"props": [
+			{ "name": "title", "type": "string", "value": "What is an Automated Upgrade?" },
+			{ "name": "backgroundColor", "type": "expression", "value": "theme.palette.ux.learning.w10" },
+			{ "name": "showCloseButton", "type": "boolean", "value": "true" },
+			{ "name": "onClose", "type": "function", "value": "() => setNeedHelp(false)" }
 		]
 	},
 	{
-		"a": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
-		"c": [
-			{ "b": "title", "d": "string", "e": "What is an Automated Upgrade?" },
-			{ "b": "backgroundColor", "d": "expression", "e": "theme.palette.background.paper" }
+		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+		"props": [
+			{ "name": "title", "type": "string", "value": "What is an Automated Upgrade?" },
+			{ "name": "backgroundColor", "type": "expression", "value": "theme.palette.background.paper" }
 		]
 	},
 	{
-		"a": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
-		"c": [{ "b": "title", "d": "string", "e": "Release Notes" }]
+		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+		"props": [{ "name": "title", "type": "string", "value": "Release Notes" }]
 	},
 	{
-		"a": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
-		"c": []
+		"filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
+		"props": []
 	}
 ]
+```
+
+**Sample Prompt (prop presence filter):** "for the mrc-mcp, get all usage of SolaceErrorbox in EP w/ prop showCloseButton"
+
+**Internal Call (prop presence filter):**
+
+```json
+{
+	"tool": "get_component_usage_by_mfe",
+	"componentName": "SolaceErrorBox",
+	"mfeName": "ep",
+	"propIdentifier": "showCloseButton"
+}
+```
+
+**Sample Output (prop presence filter):**
+
+```json
+[
+	{
+		"filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+		"props": [
+			{
+				"name": "message",
+				"type": "expression",
+				"value": "submitError.message"
+			},
+			{
+				"name": "showCloseButton",
+				"type": "boolean",
+				"value": "true"
+			},
+			{
+				"name": "onClose",
+				"type": "variable",
+				"value": "handleErrorBoxClose"
+			}
+		]
+	}
+]
+```
+
+**Sample Prompt (prop and value filter):** "for the mrc-mcp, get all usage of SolaceErrorbox in EP w/ prop showCloseButton value is false"
+
+**Internal Call (prop and value filter):**
+
+```json
+{
+	"tool": "get_component_usage_by_mfe",
+	"componentName": "SolaceErrorBox",
+	"mfeName": "ep",
+	"propIdentifier": {
+		"name": "showCloseButton",
+		"value": "false"
+	}
+}
+```
+
+**Sample Output (prop and value filter):**
+
+```json
+[]
 ```
 
 ### `get_component_usage_all`
@@ -272,63 +334,63 @@ This should be standardized to ensure consistent behavior across all tools.
 ```json
 [
   {
-    "a": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
-    "c": [
-      { "b": "checked", "d": "expression", "e": "isAdvancedInsightSelected ? true : false" },
-      { "b": "readOnly", "d": "boolean", "e": "true" },
-      { "b": "label", "d": "jsx", "e": "<Box marginTop={\\"2px\\"}>{createBizOrganization.requests.checkBoxLabel}</Box>" },
-      { "b": "name", "d": "string", "e": "advInsights" },
-      { "b": "title", "d": "string", "e": "Advanced Insights Checkbox" }
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+    "props": [
+      { "name": "checked", "type": "expression", "value": "isAdvancedInsightSelected ? true : false" },
+      { "name": "readOnly", "type": "boolean", "value": "true" },
+      { "name": "label", "type": "jsx", "value": "<Box marginTop={\\"2px\\"}>{createBizOrganization.requests.checkBoxLabel}</Box>" },
+      { "name": "name", "type": "string", "value": "advInsights" },
+      { "name": "title", "type": "string", "value": "Advanced Insights Checkbox" }
     ]
   },
   {
-    "a": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
-    "c": [
-      { "b": "name", "d": "string", "e": "all" },
-      { "b": "label", "d": "expression", "e": "searchStr.searchArea.types.all" },
-      { "b": "checked", "d": "expression", "e": "infra && orgs && services && users" },
-      { "b": "onChange", "d": "variable", "e": "searchIndicesChangeHandler" },
-      { "b": "dataQa", "d": "string", "e": "search-all-checkbox" }
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      { "name": "name", "type": "string", "value": "all" },
+      { "name": "label", "type": "expression", "value": "searchStr.searchArea.types.all" },
+      { "name": "checked", "type": "expression", "value": "infra && orgs && services && users" },
+      { "name": "onChange", "type": "variable", "value": "searchIndicesChangeHandler" },
+      { "name": "dataQa", "type": "string", "value": "search-all-checkbox" }
     ]
   },
   {
-    "a": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/SystemControls.tsx",
-    "c": [
-      { "b": "name", "d": "string", "e": "Automated Upgrades" },
-      { "b": "label", "d": "string", "e": "Automated Upgrades" },
-      { "b": "checked", "d": "variable", "e": "autoChecked" }
+    "filePath": "../../../maas-ops-ui/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/SystemControls.tsx",
+    "props": [
+      { "name": "name", "type": "string", "value": "Automated Upgrades" },
+      { "name": "label", "type": "string", "value": "Automated Upgrades" },
+      { "name": "checked", "type": "variable", "value": "autoChecked" }
     ]
   },
   {
-    "a": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
-    "c": [
-      { "b": "key", "d": "expression", "e": "option.value" },
-      { "b": "name", "d": "expression", "e": "option.name" },
-      { "b": "checked", "d": "expression", "e": "checkedItems[option.value]" },
-      { "b": "onChange", "d": "variable", "e": "handleCheckboxChange" },
-      { "b": "dataQa", "d": "expression", "e": "option.name" },
-      { "b": "disabled", "d": "expression", "e": "optionDisabled(option, selectedMessagingService)" },
-      { "b": "label", "d": "expression", "e": "option.name" }
+    "filePath": "../../../maas-ui/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "props": [
+      { "name": "key", "type": "expression", "value": "option.value" },
+      { "name": "name", "type": "expression", "value": "option.name" },
+      { "name": "checked", "type": "expression", "value": "checkedItems[option.value]" },
+      { "name": "onChange", "type": "variable", "value": "handleCheckboxChange" },
+      { "name": "dataQa", "type": "expression", "value": "option.name" },
+      { "name": "disabled", "type": "expression", "value": "optionDisabled(option, selectedMessagingService)" },
+      { "name": "label", "type": "expression", "value": "option.name" }
     ]
   },
   {
-    "a": "../../../maas-ui/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
-    "c": [
-      { "b": "id", "d": "string", "e": "showDiffs" },
-      { "b": "name", "d": "string", "e": "showDiffs" },
-      { "b": "label", "d": "expression", "e": "t({ id: \\"id_show_differences\\", message: \\"Show only differences\\" })" },
-      { "b": "checked", "d": "variable", "e": "showDiffs" },
-      { "b": "onChange", "d": "variable", "e": "handleShowDiffs" }
+    "filePath": "../../../maas-ui/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+    "props": [
+      { "name": "id", "type": "string", "value": "showDiffs" },
+      { "name": "name", "type": "string", "value": "showDiffs" },
+      { "name": "label", "type": "expression", "value": "t({ id: \\"id_show_differences\\", message: \\"Show only differences\\" })" },
+      { "name": "checked", "type": "variable", "value": "showDiffs" },
+      { "name": "onChange", "type": "variable", "value": "handleShowDiffs" }
     ]
   },
   {
-    "a": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
-    "c": [
-      { "b": "onChange", "d": "expression", "e": "onBulkPermissionCheckboxChange(readPermissions)" },
-      { "b": "name", "d": "expression", "e": "`${categoryName}-read`" },
-      { "b": "checked", "d": "variable", "e": "readChecked" },
-      { "b": "indeterminate", "d": "expression", "e": "!readChecked && readIndeterminate" },
-      { "b": "readOnly", "d": "expression", "e": "!!readOnly" }
+    "filePath": "../../../maas-ui/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      { "name": "onChange", "type": "expression", "value": "onBulkPermissionCheckboxChange(readPermissions)" },
+      { "name": "name", "type": "expression", "value": "`${categoryName}-read`" },
+      { "name": "checked", "type": "variable", "value": "readChecked" },
+      { "name": "indeterminate", "type": "expression", "value": "!readChecked && readIndeterminate" },
+      { "name": "readOnly", "type": "expression", "value": "!!readOnly" }
     ]
   }
 ]

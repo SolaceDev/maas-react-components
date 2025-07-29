@@ -230,7 +230,7 @@ class MrcUsageServer {
 		},
 		{
 			name: "get_component_usage_by_mfe",
-			description: "Get usage for a component in a specific MFE.",
+			description: "Get usage for a component in a specific MFE, with an option to filter by prop with fuzzy matching.",
 			inputSchema: {
 				type: "object",
 				properties: {
@@ -241,6 +241,15 @@ class MrcUsageServer {
 					mfeName: {
 						type: "string",
 						description: "The name of the MFE."
+					},
+					propIdentifier: {
+						type: ["string", "object"],
+						description:
+							"Optional. The prop to search for. Can be a string (for fuzzy presence check) or an object with name and value (for fuzzy name and exact value matching).",
+						properties: {
+							name: { type: "string" },
+							value: { type: "string" }
+						}
 					}
 				},
 				required: ["componentName", "mfeName"]
@@ -378,12 +387,16 @@ class MrcUsageServer {
 					};
 				}
 				case "get_component_usage_by_mfe": {
-					const { componentName, mfeName } = request.params.arguments as { componentName: string; mfeName: string };
+					const { componentName, mfeName, propIdentifier } = request.params.arguments as {
+						componentName: string;
+						mfeName: string;
+						propIdentifier?: string | { name: string; value: string };
+					};
 					const mfeInfo = await getMfeInfo(mfeName);
 					if (!mfeInfo.applicationName) {
 						throw new McpError(ErrorCode.InvalidParams, `Could not determine application for MFE '${mfeName}'`);
 					}
-					const result = await getComponentUsageByMfe(mfeInfo.applicationName, mfeName, componentName);
+					const result = await getComponentUsageByMfe(mfeInfo.applicationName, mfeName, componentName, propIdentifier);
 					return {
 						content: [
 							{

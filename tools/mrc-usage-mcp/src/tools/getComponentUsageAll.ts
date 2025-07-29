@@ -1,18 +1,6 @@
 import axios from "axios";
 import { getComponentUsageByApplication } from "./getComponentUsageByApplication.js";
-
-// From instances.json
-// "keyMap":{"filePath":"a","name":"b","props":"c","type":"d","value":"e"}
-interface RawProp {
-	b: string; // name
-	d: string; // type
-	e: string; // value
-}
-
-interface RawInstance {
-	a: string; // filePath
-	c: RawProp[]; // props
-}
+import { Instance } from "../utils/keyTransformer.js";
 
 interface DirectoryItem {
 	type: string;
@@ -55,7 +43,7 @@ async function fetchDirectoryContents(url: string): Promise<DirectoryItem[]> {
 	}
 }
 
-export async function getComponentUsageAll(componentName: string): Promise<RawInstance[]> {
+export async function getComponentUsageAll(componentName: string): Promise<Instance[]> {
 	// eslint-disable-next-line no-console
 	console.error(`[DEBUG] Starting getComponentUsageAll for component: ${componentName}`);
 	const baseUrl =
@@ -65,7 +53,7 @@ export async function getComponentUsageAll(componentName: string): Promise<RawIn
 	// eslint-disable-next-line no-console
 	console.error(`[DEBUG] Constructed GitHub API URL for applications: ${url}`);
 
-	let allInstances: RawInstance[] = [];
+	let allInstances: Instance[] = [];
 
 	try {
 		const applicationDirs = await fetchDirectoryContents(url);

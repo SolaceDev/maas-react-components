@@ -1,17 +1,6 @@
 import axios from "axios";
-
-// From instances.json
-// "keyMap":{"filePath":"a","name":"b","props":"c","type":"d","value":"e"}
-interface RawProp {
-	b: string; // name
-	d: string; // type
-	e: string; // value
-}
-
-interface RawInstance {
-	a: string; // filePath
-	c: RawProp[]; // props
-}
+import Fuse from "fuse.js";
+import { transformResponse, RawInstance, Instance } from "../utils/keyTransformer.js";
 
 interface KeyMap {
 	filePath: string;
@@ -29,8 +18,9 @@ interface InstancesFile {
 export async function getComponentUsageByMfe(
 	applicationName: string,
 	mfeName: string,
-	componentName: string
-): Promise<RawInstance[]> {
+	componentName: string,
+	propIdentifier?: string | { name: string; value: string }
+): Promise<Instance[]> {
 	// eslint-disable-next-line no-console
 	console.error(
 		`[DEBUG] Starting getComponentUsageByMfe for ${componentName} in MFE ${mfeName} of application ${applicationName}`
@@ -64,10 +54,26 @@ export async function getComponentUsageByMfe(
 			return [];
 		}
 
-		const instances = instancesFile.data || [];
+		let instances = instancesFile.data || [];
 		// eslint-disable-next-line no-console
 		console.error(`[DEBUG] Parsed ${instances.length} instances from the file.`);
-		return instances;
+
+		if (propIdentifier) {
+			if (typeof propIdentifier === "string") {
+				instances = instances.filter((instance) => {
+					const fuse = new Fuse(instance.c, { keys: ["b"] });
+					return fuse.search(propIdentifier).length > 0;
+				});
+			} else {
+				instances = instances.filter((instance) => {
+					const fuse = new Fuse(instance.c, { keys: ["b"] });
+					const results = fuse.search(propIdentifier.name);
+					return results.some((result) => result.item.e === propIdentifier.value);
+				});
+			}
+		}
+
+		return transformResponse(instances);
 	} catch (error) {
 		if (axios.isAxiosError(error) && error.response?.status === 404) {
 			// eslint-disable-next-line no-console
