@@ -18,12 +18,6 @@ jobs:
           ref: feature/mrc-usage-report-data
           path: maas-react-components-repo
 
-      - name: Clean up old report data and files
-        run: |
-          rm -rf maas-react-components-repo/mrc-usage-report-data
-          rm -f maas-react-components-repo/tools/mrc-usage-report/reports/mrc-usage-report-all.json
-          rm -f maas-react-components-repo/tools/mrc-usage-report/reports/mrc-usage-report-all.html
-
       - name: Print directory structure (maas-react-components)
         run: |
           echo "==== DIRECTORY STRUCTURE INFORMATION ===="
@@ -108,10 +102,10 @@ jobs:
           npm run build
 
           echo "Running npm start with parameters..."
-          npm start -- -i ../mrc-usage-report/reports/mrc-usage-report-all.json -o ../../../maas-react-components-repo/mrc-usage-report-data
+          npm start -- -i ../mrc-usage-report/reports/mrc-usage-report-all.json -o ../../../maas-react-components-repo/mrc-usage-report-data-new
           echo "--- Verifying contents of output directory ---"
           pwd
-          ls -lR ../../../maas-react-components-repo/mrc-usage-report-data
+          ls -lR ../../../maas-react-components-repo/mrc-usage-report-data-new
 
           echo "Listing generated files:"
           find . -type f -name "*.json" | sort
@@ -121,6 +115,30 @@ jobs:
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report-json-splitter
 
+      - name: Validate generated report
+        working-directory: maas-react-components-repo/tools/mrc-usage-report
+        run: |
+          npm run validate-report -- reports/mrc-usage-report-all.json
+
+      - name: Swap and commit report data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd maas-react-components-repo
+          rm -rf mrc-usage-report-data-old
+          mv mrc-usage-report-data mrc-usage-report-data-old || true
+          mv mrc-usage-report-data-new mrc-usage-report-data
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
+            git commit --no-verify -m "$COMMIT_MESSAGE"
+            git push
+          fi
+
       - name: Upload merged reports
         uses: actions/upload-artifact@v4
         with:
@@ -128,35 +146,3 @@ jobs:
           path: |
             maas-react-components-repo/tools/mrc-usage-report/reports/
             maas-react-components-repo/mrc-usage-report-data
-
-      - name: Commit and push report data
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-
-          cd maas-react-components-repo
-          echo "--- Verifying directory before git add ---"
-          echo "Current working directory: $(pwd)"
-          echo "Listing contents of current directory:"
-          ls -la
-          echo "Checking mrc-usage-report-data directory:"
-          ls -lR mrc-usage-report-data
-          pwd
-
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          echo "--- Git status before add ---"
-          git status
-          git add .
-          echo "--- Git status after add ---"
-          git status
-
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-          else
-            set -e
-            COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
-            git commit --no-verify -m "$COMMIT_MESSAGE"
-            git push
-          fi
