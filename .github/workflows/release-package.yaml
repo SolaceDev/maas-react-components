@@ -13,7 +13,7 @@ permissions:
   statuses: write
   checks: write
   repository-projects: read
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,34 +37,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  update-release-manifest:
-    name: "Update Release Manifest"
-    runs-on: ubuntu-22.04
-    timeout-minutes: 60
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Checkout SolaceDev/maas-build-actions
-        uses: actions/checkout@v4
-        with:
-          repository: SolaceDev/maas-build-actions
-          ref: refs/heads/master
-          path: maas-build-actions
-          token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-          #Packages Github token is required to checkout the private repository
-      - name: Get Version
-        id: get_version
-        run: |
-          echo "version=$(node -e "console.log(require('./package.json').version)")" >> $GITHUB_OUTPUT
-
-      - name: Update DynamoDb Release Manifest
-        uses: ./maas-build-actions/.github/actions/update-dynamodb-release-manifest
-        with:
-          sha: "${{ github.sha }}"
-          version: "${{ steps.get_version.outputs.version }}"
-          squad: "ui"
-          repository: "${{ github.event.repository.name }}"
-          release_tag: "dev"
