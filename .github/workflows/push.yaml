@@ -78,13 +78,14 @@ jobs:
         uses: "actions/checkout@v4"
         with:
           ref: ${{ github.ref }}
-          token: ${{ secrets.COMMIT_KEY }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: "cat package.json"
         run: cat ./package.json
 
       - name: "Automated Version Bump"
+        id: bump
         uses: "phips28/gh-action-bump-version@master"
         with:
           minor-wording: "solaceminor,SolaceMinor,SOLACEMINOR"
@@ -92,8 +93,30 @@ jobs:
           patch-wording: "solacepatch,SolacePatch,SOLACEPATCH"
           tag-prefix: ""
           commit-message: "CI: bumps version to {{version}} [skip ci]" # Add skip ci tag
+          skip-push: "true"
         env:
           #Required for version bumping and by-passing branch protection
-          GITHUB_TOKEN: ${{ secrets.COMMIT_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
+
+      - name: Set up SSH agent
+        if: steps.bump.outputs.newTag != ''
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.COMMIT_KEY }}
+
+      # The git push command, now authenticated with the SSH key
+      - name: Push new version and tag
+        if: steps.bump.outputs.newTag != ''
+        run: |
+          # The `phips28` action will have already committed the changes.
+          # We just need to push them to the remote.
+          # NOTE: The email "41898282+github-actions[bot]@users.noreply.github.com" is required
+          # so that GitHub recognizes the commit as made by the GitHub Actions bot,
+          # which helps with permissions and attribution.
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin git@github.com:${{ github.repository }}.git
+          git push origin main
+          git push origin ${{ steps.bump.outputs.newTag }}
