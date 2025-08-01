@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - "main"
-
 permissions:
   contents: write
   packages: write
@@ -27,19 +26,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Checkout SolaceDev/maas-build-actions
-        uses: actions/checkout@v4
-        with:
-          repository: SolaceDev/maas-build-actions
-          ref: refs/heads/master
-          path: maas-build-actions
-          token:
-            ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-            #Packages Github token is required to checkout the private repository
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
+
       - name: Install dependencies
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
@@ -74,7 +65,7 @@ jobs:
         continue-on-error: true
         with:
           whitesource_api_key: ${{ secrets.WHITESOURCE_API_KEY }}
-          whitesource_product_name: "maas_libraries"
+          whitesource_product_name: ${{ vars.WHITESOURCE_PRODUCT_NAME }}
           whitesource_project_name: ${{ github.event.repository.name }}
           target_directory: "."
 
@@ -87,7 +78,8 @@ jobs:
         uses: "actions/checkout@v4"
         with:
           ref: ${{ github.ref }}
-          token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          token: ${{ secrets.COMMIT_KEY }}
+          fetch-depth: 0
 
       - name: "cat package.json"
         run: cat ./package.json
@@ -102,6 +94,6 @@ jobs:
           commit-message: "CI: bumps version to {{version}} [skip ci]" # Add skip ci tag
         env:
           #Required for version bumping and by-passing branch protection
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.COMMIT_KEY }}
       - name: "cat package.json"
         run: cat ./package.json
