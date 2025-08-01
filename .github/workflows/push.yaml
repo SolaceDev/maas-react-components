@@ -104,7 +104,7 @@ jobs:
         if: steps.bump.outputs.newTag != ''
         uses: webfactory/ssh-agent@v0.9.1
         with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+          ssh-private-key: ${{ secrets.COMMIT_KEY }}
 
       # The git push command, now authenticated with the SSH key
       - name: Push new version and tag
