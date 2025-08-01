@@ -70,7 +70,7 @@ jobs:
 
       - name: Perform WhiteSource Scan
         id: whitesource_scan
-        uses: ./maas-build-actions/.github/actions/whitesource-scan
+        uses: SolaceDev/solace-public-workflows/.github/actions/whitesource-scan@main
         continue-on-error: true
         with:
           whitesource_api_key: ${{ secrets.WHITESOURCE_API_KEY }}
