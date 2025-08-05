@@ -20,15 +20,6 @@ jobs:
           cache: "npm"
           registry-url: https://npm.pkg.github.com/
           scope: "@SolaceDev"
-      # Generate GitHub App installation token using official action
-      - name: Generate GitHub App Token
-        id: generate_token
-
-        uses: actions/create-github-app-token@v1.10.4
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
       # Use GITHUB_TOKEN for install
       - name: Configure npm for install and publish
         run: |
