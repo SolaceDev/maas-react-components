@@ -9,7 +9,11 @@ interface DirectoryItem {
 
 async function fetchDirectoryContents(url: string): Promise<DirectoryItem[]> {
 	// eslint-disable-next-line no-console
-	console.error(`[DEBUG] Fetching directory contents from ${url}...`);
+	if (!process.env.GITHUB_PERSONAL_ACCESS_TOKEN) {
+		throw new Error(
+			"GitHub Personal Access Token is not configured. Please set GITHUB_PERSONAL_ACCESS_TOKEN environment variable."
+		);
+	}
 	try {
 		const response = await axios.get(url, {
 			headers: {
