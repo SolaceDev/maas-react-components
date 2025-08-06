@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRC Usage MCP Server</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #0052cc;
+            border-bottom: 2px solid #0052cc;
+            padding-bottom: 5px;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 2em;
+        }
+        h3 {
+            font-size: 1.5em;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        .mermaid {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0052cc;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>MRC Usage MCP Server</h1>
+<p>This server provides tools to query MRC component usage.</p>
+<h2>Available Tools</h2>
+<ul>
+<li><code>mrc_analyze_component_usage</code>: Analyze how MaaS React Components are used across the codebase</li>
+<li><code>mrc_get_all_components</code>: Retrieve a comprehensive list of all MaaS React Components</li>
+<li><code>mrc_find_component_dependencies</code>: Find dependencies and relationships between components</li>
+<li><code>mrc_usage_diagnostics</code>: Get diagnostic information about the MRC usage analysis system</li>
+<li><code>get_components_by_application</code>: Get components used in a specific application</li>
+<li><code>get_components_by_mfe</code>: Get components used in a specific MFE (now only requires MFE name)</li>
+<li><code>get_application_stats</code>: Get usage statistics for a specific application</li>
+<li><code>get_mfe_stats</code>: Get usage statistics for a specific MFE (now only requires MFE name)</li>
+<li><code>get_mfe_info</code>: Get information about an MFE, including which application it belongs to</li>
+<li><code>list_all_mfes</code>: List all available MFEs across all applications</li>
+</ul>
+<h2>Dynamic MFE Discovery</h2>
+<p>The server now dynamically discovers MFEs and their parent applications from GitHub. This means:</p>
+<ol>
+<li>You no longer need to specify the application name when querying MFE information</li>
+<li>The <code>get_components_by_mfe</code> and <code>get_mfe_stats</code> tools now only require the MFE name</li>
+<li>New MFEs are automatically discovered without code changes</li>
+<li>The <code>get_mfe_info</code> tool can be used to look up which application an MFE belongs to</li>
+<li>The <code>list_all_mfes</code> tool provides a list of all available MFEs across all applications</li>
+</ol>
+<h2>Running Locally</h2>
+<pre><code class="language-bash"># Build and run the server
+npm run build && node build/index.js
+</code></pre>
+<h2>Docker Container</h2>
+<h3>Building and Pushing to GitHub Container Registry</h3>
+<ol>
+<li>
+<p>Build the Docker image:</p>
+<pre><code class="language-bash"># Navigate to the MCP directory
+cd tools/mrc-usage-mcp
+
+# Build the image
+docker build -t mrc-usage-mcp .
+</code></pre>
+</li>
+<li>
+<p>Tag the image for GitHub Container Registry:</p>
+<pre><code class="language-bash"># Tag the image with the SolaceDev organization
+docker tag mrc-usage-mcp ghcr.io/solacedev/mrc-usage-mcp:latest
+</code></pre>
+</li>
+<li>
+<p>Login to GitHub Container Registry:</p>
+<pre><code class="language-bash"># Login to GitHub Container Registry
+# Replace YOUR_GITHUB_TOKEN with a token that has package write permissions
+echo $GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+
+# Alternatively, you can login interactively
+docker login ghcr.io -u YOUR_GITHUB_USERNAME
+</code></pre>
+</li>
+<li>
+<p>Push the image to GitHub Container Registry:</p>
+<pre><code class="language-bash"># Push the image
+docker push ghcr.io/solacedev/mrc-usage-mcp:latest
+</code></pre>
+</li>
+<li>
+<p>Make the package public (if needed):
+   After pushing, you may need to go to the GitHub repository settings and make the package public if you want others to be able to use it without authentication.</p>
+</li>
+</ol>
+<h3>Using with Cline</h3>
+<p>Add the following configuration to your Cline MCP settings file:</p>
+<pre><code class="language-json">"mrc-usage-ghcr": {
+  "disabled": false,
+  "timeout": 60,
+  "type": "stdio",
+  "command": "docker",
+  "args": [
+    "run",
+    "-i",
+    "--rm",
+    "-e",
+    "GITHUB_PERSONAL_ACCESS_TOKEN",
+    "ghcr.io/solacedev/mrc-usage-mcp:latest"
+  ],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
+  }
+}
+</code></pre>
+<h2>Known Issues</h2>
+<h3>File Access in Container</h3>
+<p>Some tools (<code>getApplicationStats.ts</code> and <code>getMfeStats.ts</code>) are currently implemented to read data from the local filesystem:</p>
+<ul>
+<li><code>getApplicationStats.ts</code> uses: <code>path.join(process.cwd(), "mrc-usage-report-data", ...)</code></li>
+<li><code>getMfeStats.ts</code> uses: <code>path.join(process.cwd(), "../../", "mrc-usage-report-data", ...)</code></li>
+</ul>
+<p>This inconsistency causes issues when running in a container. To fix this:</p>
+<ol>
+<li>Modify these files to fetch data from GitHub API instead of local filesystem</li>
+<li>
+<p>Or mount the data directory when running the container:</p>
+<pre><code class="language-bash">docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN -v /path/to/mrc-usage-report-data:/app/mrc-usage-report-data ghcr.io/solacedev/mrc-usage-mcp:latest
+</code></pre>
+</li>
+</ol>
+<h3>Path Resolution</h3>
+<p>The inconsistent path resolution between different tools needs to be fixed:</p>
+<ul>
+<li><code>getApplicationStats.ts</code> looks for data in the current working directory</li>
+<li><code>getMfeStats.ts</code> goes up two levels to reach the project root</li>
+</ul>
+<p>This should be standardized to ensure consistent behavior across all tools.</p>
+<hr />
+<h2>Tool Reference and Sample Prompts</h2>
+<h3><code>get_component_usage_by_application</code></h3>
+<p><strong>Description:</strong> Get usage for a component in a specific application.</p>
+<p><strong>Sample Prompt:</strong> "For the Solace Button, give me all usages in maas-ui"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "get_component_usage_by_application",
+    "componentName": "SolaceButton",
+    "applicationName": "maas-ui"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">[
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/utils/schemaUtils.tsx",
+        "props": [
+            {
+                "name": "variant",
+                "type": "string",
+                "value": "link"
+            },
+            {
+                "name": "dataQa",
+                "type": "string",
+                "value": "jsonSchemaSpecLink"
+            },
+            {
+                "name": "href",
+                "type": "string",
+                "value": "https://json-schema.org/specification.html"
+            }
+        ]
+    },
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/utils/designer/topicUtils.tsx",
+        "props": [
+            {
+                "name": "variant",
+                "type": "string",
+                "value": "link"
+            },
+            {
+                "name": "href",
+                "type": "expression",
+                "value": "brandableTextValueConverter(\\"smfTopics\\", \\"link\\")"
+            }
+        ]
+    },
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+        "props": [
+            {
+                "name": "variant",
+                "type": "string",
+                "value": "text"
+            },
+            {
+                "name": "onClick",
+                "type": "variable",
+                "value": "toggleCheckbox"
+            }
+        ]
+    }
+]
+</code></pre>
+<h3><code>get_component_usage_by_mfe</code></h3>
+<p><strong>Description:</strong> Get usage for a component in a specific MFE. You can optionally filter by a prop's presence, or by a prop's name and value.</p>
+<p><strong>Sample Prompt (no filter):</strong> "Get the usage for the Solace Card component in the mc mfe"</p>
+<p><strong>Internal Call (no filter):</strong></p>
+<pre><code class="language-json">{
+    "tool": "get_component_usage_by_mfe",
+    "componentName": "SolaceCard",
+    "mfeName": "mc"
+}
+</code></pre>
+<p><strong>Sample Output (no filter):</strong></p>
+<pre><code class="language-json">[
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+        "props": []
+    },
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+        "props": [
+            { "name": "title", "type": "string", "value": "What is an Automated Upgrade?" },
+            { "name": "backgroundColor", "type": "expression", "value": "theme.palette.ux.learning.w10" },
+            { "name": "showCloseButton", "type": "boolean", "value": "true" },
+            { "name": "onClose", "type": "function", "value": "() => setNeedHelp(false)" }
+        ]
+    },
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+        "props": [
+            { "name": "title", "type": "string", "value": "What is an Automated Upgrade?" },
+            { "name": "backgroundColor", "type": "expression", "value": "theme.palette.background.paper" }
+        ]
+    },
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/DialogPlanForm.tsx",
+        "props": [{ "name": "title", "type": "string", "value": "Release Notes" }]
+    },
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/details/components/upgrades/LogsProgress.tsx",
+        "props": []
+    }
+]
+</code></pre>
+<p><strong>Sample Prompt (prop presence filter):</strong> "for the mrc-mcp, get all usage of SolaceErrorbox in EP w/ prop showCloseButton"</p>
+<p><strong>Internal Call (prop presence filter):</strong></p>
+<pre><code class="language-json">{
+    "tool": "get_component_usage_by_mfe",
+    "componentName": "SolaceErrorBox",
+    "mfeName": "ep",
+    "propIdentifier": "showCloseButton"
+}
+</code></pre>
+<p><strong>Sample Output (prop presence filter):</strong></p>
+<pre><code class="language-json">[
+    {
+        "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/components/entityList/AddEventApiProductVersionDialog.tsx",
+        "props": [
+            {
+                "name": "message",
+                "type": "expression",
+                "value": "submitError.message"
+            },
+            {
+                "name": "showCloseButton",
+                "type": "boolean",
+                "value": "true"
+            },
+            {
+                "name": "onClose",
+                "type": "variable",
+                "value": "handleErrorBoxClose"
+            }
+        ]
+    }
+]
+</code></pre>
+<p><strong>Sample Prompt (prop and value filter):</strong> "for the mrc-mcp, get all usage of SolaceErrorbox in EP w/ prop showCloseButton value is false"</p>
+<p><strong>Internal Call (prop and value filter):</strong></p>
+<pre><code class="language-json">{
+    "tool": "get_component_usage_by_mfe",
+    "componentName": "SolaceErrorBox",
+    "mfeName": "ep",
+    "propIdentifier": {
+        "name": "showCloseButton",
+        "value": "false"
+    }
+}
+</code></pre>
+<p><strong>Sample Output (prop and value filter):</strong></p>
+<pre><code class="language-json">[]
+</code></pre>
+<h3><code>get_component_usage_all</code></h3>
+<p><strong>Description:</strong> Get usage for a component across all applications.</p>
+<p><strong>Sample Prompt:</strong> "get the full usage of the Solace Checkbox component across all applications"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "get_component_usage_all",
+    "componentName": "SolaceCheckBox"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">[
+  {
+    "filePath": "https://github.com/SolaceDev/maas-ops-ui/blob/develop/micro-frontends/maas-ops-react/src/pages/createBizOrganization/components/reviewDialog/ReviewDialog.tsx",
+    "props": [
+      { "name": "checked", "type": "expression", "value": "isAdvancedInsightSelected ? true : false" },
+      { "name": "readOnly", "type": "boolean", "value": "true" },
+      { "name": "label", "type": "jsx", "value": "<Box marginTop={\\"2px\\"}>{createBizOrganization.requests.checkBoxLabel}</Box>" },
+      { "name": "name", "type": "string", "value": "advInsights" },
+      { "name": "title", "type": "string", "value": "Advanced Insights Checkbox" }
+    ]
+  },
+  {
+    "filePath": "https://github.com/SolaceDev/maas-ops-ui/blob/develop/micro-frontends/maas-ops-react/src/pages/search/SearchForm.tsx",
+    "props": [
+      { "name": "name", "type": "string", "value": "all" },
+      { "name": "label", "type": "expression", "value": "searchStr.searchArea.types.all" },
+      { "name": "checked", "type": "expression", "value": "infra && orgs && services && users" },
+      { "name": "onChange", "type": "variable", "value": "searchIndicesChangeHandler" },
+      { "name": "dataQa", "type": "string", "value": "search-all-checkbox" }
+    ]
+  },
+  {
+    "filePath": "https://github.com/SolaceDev/maas-ops-ui/blob/develop/micro-frontends/maas-ops-react/src/pages/automaticUpgrades/runs/components/SystemControls.tsx",
+    "props": [
+      { "name": "name", "type": "string", "value": "Automated Upgrades" },
+      { "name": "label", "type": "string", "value": "Automated Upgrades" },
+      { "name": "checked", "type": "variable", "value": "autoChecked" }
+    ]
+  },
+  {
+    "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/ep/src/components/entityList/DownloadAsyncApiDialog.tsx",
+    "props": [
+      { "name": "key", "type": "expression", "value": "option.value" },
+      { "name": "name", "type": "expression", "value": "option.name" },
+      { "name": "checked", "type": "expression", "value": "checkedItems[option.value]" },
+      { "name": "onChange", "type": "variable", "value": "handleCheckboxChange" },
+      { "name": "dataQa", "type": "expression", "value": "option.name" },
+      { "name": "disabled", "type": "expression", "value": "optionDisabled(option, selectedMessagingService)" },
+      { "name": "label", "type": "expression", "value": "option.name" }
+    ]
+  },
+  {
+    "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/mc/src/pages/services/compare/CompareServices.tsx",
+    "props": [
+      { "name": "id", "type": "string", "value": "showDiffs" },
+      { "name": "name", "type": "string", "value": "showDiffs" },
+      { "name": "label", "type": "expression", "value": "t({ id: \\"id_show_differences\\", message: \\"Show only differences\\" })" },
+      { "name": "checked", "type": "variable", "value": "showDiffs" },
+      { "name": "onChange", "type": "variable", "value": "handleShowDiffs" }
+    ]
+  },
+  {
+    "filePath": "https://github.com/SolaceDev/maas-ui/blob/develop/micro-frontends/saas/src/pages/tokenManagement/components/CategorySection.tsx",
+    "props": [
+      { "name": "onChange", "type": "expression", "value": "onBulkPermissionCheckboxChange(readPermissions)" },
+      { "name": "name", "type": "expression", "value": "`${categoryName}-read`" },
+      { "name": "checked", "type": "variable", "value": "readChecked" },
+      { "name": "indeterminate", "type": "expression", "value": "!readChecked && readIndeterminate" },
+      { "name": "readOnly", "type": "expression", "value": "!!readOnly" }
+    ]
+  }
+]
+</code></pre>
+<h3><code>get_application_stats</code></h3>
+<p><strong>Description:</strong> Returns usage statistics for a specified application, including component counts and other metrics.</p>
+<p><strong>Sample Prompt:</strong> "get the component usage for the maas-ops-ui repo"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "get_application_stats",
+    "applicationName": "maas-ops-ui"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">{
+    "totalInstances": 996,
+    "componentUsage": {
+        "SolaceTypography": 201,
+        "SolaceButton": 107,
+        "SolaceGrid": 178,
+        "SolaceTooltip": 87,
+        "SolaceLabel": 2,
+        "SolaceMessageBox": 50,
+        "SolaceConfirmationDialog": 43,
+        "SolaceTextField": 36,
+        "SolaceStack": 25,
+        "SolaceSelect": 20,
+        "SolaceCheckBox": 17,
+        "SolaceAccordion": 11,
+        "SolaceMenu": 3,
+        "SolaceTable": 36,
+        "SolaceAttributeBadge": 14,
+        "SolaceSelectAutocompleteItem": 5,
+        "SolaceSelectAutocomplete": 4,
+        "SolacePagination": 17,
+        "SolaceChip": 15,
+        "SolaceTabs": 7,
+        "SolaceCircularProgress": 10,
+        "SolaceToggle": 3,
+        "SolaceDetailMessage": 10,
+        "SolaceGridList": 7,
+        "SolaceRadio": 3,
+        "SolaceListItem": 9,
+        "SolaceSidePanelLayout": 2,
+        "SolaceTextArea": 1,
+        "SolacePageHeader": 5,
+        "SolaceCodeEditor": 7,
+        "SolaceList": 5,
+        "SolaceEnvironmentLabel": 1,
+        "SolaceBackDrop": 7,
+        "SolaceRadioGroup": 1,
+        "SolaceBreadcrumb": 7,
+        "SolaceErrorBox": 5,
+        "SolaceSearchAndFilter": 3,
+        "SolaceToggleButtonGroup": 1,
+        "SolaceTag": 6,
+        "SolaceStackLabel": 8,
+        "SolaceLearningBanner": 7,
+        "SolaceToasts": 4,
+        "SolaceLinearProgress": 1,
+        "SolaceDatePicker": 3,
+        "SolaceAttributeValuePairForm": 1,
+        "SolaceChipTextArea": 1
+    },
+    "uniqueComponents": 46
+}
+</code></pre>
+<h3><code>get_mfe_stats</code></h3>
+<p><strong>Description:</strong> Returns usage statistics for a specified Micro-Frontend (MFE), including component counts and other metrics.</p>
+<p><strong>Sample Prompt:</strong> "get the overal componet usage information for the saas mfe"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "get_mfe_stats",
+    "mfeName": "saas"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">{
+    "totalInstances": 695,
+    "componentUsage": {
+        "SolaceTypography": 191,
+        "SolaceButton": 109,
+        "SolaceGrid": 70,
+        "SolaceTooltip": 29,
+        "SolaceLabel": 11,
+        "SolaceMessageBox": 33,
+        "SolaceConfirmationDialog": 34,
+        "SolaceTextField": 34,
+        "SolaceStack": 12,
+        "SolaceSelect": 28,
+        "SolaceCheckBox": 17,
+        "SolaceAccordion": 1,
+        "SolaceMenu": 10,
+        "SolaceTable": 12,
+        "SolaceAttributeBadge": 1,
+        "SolaceSelectAutocompleteItem": 1,
+        "SolaceSelectAutocomplete": 1,
+        "SolacePagination": 1,
+        "SolaceChip": 1,
+        "SolaceTabs": 1,
+        "SolaceCircularProgress": 1,
+        "SolaceToggle": 1,
+        "SolaceDetailMessage": 1,
+        "SolaceGridList": 1,
+        "SolaceRadio": 1,
+        "SolaceListItem": 1,
+        "SolaceSidePanelLayout": 1,
+        "SolaceTextArea": 1,
+        "SolacePageHeader": 1,
+        "SolaceCodeEditor": 1,
+        "SolaceList": 1,
+        "SolaceEnvironmentLabel": 1,
+        "SolaceBackDrop": 1,
+        "SolaceRadioGroup": 1,
+        "SolaceBreadcrumb": 1,
+        "SolaceErrorBox": 1,
+        "SolaceSearchAndFilter": 1,
+        "SolaceToggleButtonGroup": 1,
+        "SolaceTag": 1,
+        "SolaceStackLabel": 1,
+        "SolaceLearningBanner": 1,
+        "SolaceToasts": 1,
+        "SolaceLinearProgress": 1,
+        "SolaceDatePicker": 1,
+        "SolaceAttributeValuePairForm": 1,
+        "SolaceChipTextArea": 1
+    },
+    "uniqueComponents": 46
+}
+</code></pre>
+<h3><code>get_mfe_info</code></h3>
+<p><strong>Description:</strong> Retrieves information about a specified Micro-Frontend (MFE), including its parent application.</p>
+<p><strong>Sample Prompt:</strong> "for the mrc-mcp, what application is the ep mfe in?"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "get_mfe_info",
+    "mfeName": "ep"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">{
+    "applicationName": "maas-ui"
+}
+</code></pre>
+<h3><code>list_all_mfes</code></h3>
+<p><strong>Description:</strong> Returns a list of all available Micro-Frontends (MFEs) across all applications.</p>
+<p><strong>Sample Prompt:</strong> "for the mrc-mcp, list all available mfes"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "list_all_mfes"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">[
+    "broker-manager",
+    "infra",
+    "maas-ops-react",
+    "ep",
+    "intg",
+    "mc",
+    "saas"
+]
+</code></pre>
+<h3><code>list_all_applications</code></h3>
+<p><strong>Description:</strong> Returns a list of all applications with available usage data.</p>
+<p><strong>Sample Prompt:</strong> "for the mrc-mcp, list all applications"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "list_all_applications"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">[
+    "broker-manager",
+    "maas-ops-ui",
+    "maas-ui"
+]
+</code></pre>
+<h3><code>list_all_tools</code></h3>
+<p><strong>Description:</strong> Returns a list of all available tools in the MCP server.</p>
+<p><strong>Sample Prompt:</strong> "for the mrc-mcp, list all tools"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "list_all_tools"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">[
+    "get_component_usage_by_application",
+    "get_component_usage_by_mfe",
+    "get_component_usage_all",
+    "get_application_stats",
+    "get_mfe_stats",
+    "get_mfe_info",
+    "list_all_mfes",
+    "list_all_applications",
+    "list_all_tools",
+    "list_applications_and_mfes"
+]
+</code></pre>
+<h3><code>list_applications_and_mfes</code></h3>
+<p><strong>Description:</strong> Returns a list of all applications and their associated Micro-Frontends (MFEs).</p>
+<p><strong>Sample Prompt:</strong> "for the mrc-mcp, list all applications and their mfes"</p>
+<p><strong>Internal Call:</strong></p>
+<pre><code class="language-json">{
+    "tool": "list_applications_and_mfes"
+}
+</code></pre>
+<p><strong>Sample Output:</strong></p>
+<pre><code class="language-json">{
+    "broker-manager": [
+        "broker-manager"
+    ],
+    "maas-ops-ui": [
+        "infra",
+        "maas-ops-react"
+    ],
+    "maas-ui": [
+        "ep",
+        "intg",
+        "mc",
+        "saas"
+    ]
+}
+</code></pre>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+</html>
