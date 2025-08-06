@@ -115,22 +115,22 @@ function optimizeInstances(instances: Instance[]) {
 	return { keyMap, data };
 }
 
-// function generatePerComponentStructure(report: MergedReport, outputDirPath: string) {
-// 	const perComponentDir = path.join(outputDirPath, "per-component");
-// 	fs.mkdirSync(perComponentDir, { recursive: true });
-//
-// 	for (const component of report.componentStats) {
-// 		const componentDir = path.join(perComponentDir, component.componentName);
-// 		fs.mkdirSync(componentDir, { recursive: true });
-//
-// 		fs.writeFileSync(path.join(componentDir, "totalUsages.json"), JSON.stringify(component.totalUsages));
-// 		fs.writeFileSync(path.join(componentDir, "usagesByMfe.json"), JSON.stringify(component.usagesByMfe));
-// 		fs.writeFileSync(path.join(componentDir, "commonProps.json"), JSON.stringify(component.commonProps));
-// 		fs.writeFileSync(path.join(componentDir, "files.json"), JSON.stringify(component.files));
-// 		fs.writeFileSync(path.join(componentDir, "instances.json"), JSON.stringify(optimizeInstances(component.instances)));
-// 		fs.writeFileSync(path.join(componentDir, "customization.json"), JSON.stringify(component.customization));
-// 	}
-// }
+function generatePerComponentStructure(report: MergedReport, outputDirPath: string) {
+	const perComponentDir = path.join(outputDirPath, "per-component");
+	fs.mkdirSync(perComponentDir, { recursive: true });
+
+	for (const component of report.componentStats) {
+		const componentDir = path.join(perComponentDir, component.componentName);
+		fs.mkdirSync(componentDir, { recursive: true });
+
+		fs.writeFileSync(path.join(componentDir, "totalUsages.json"), JSON.stringify(component.totalUsages));
+		fs.writeFileSync(path.join(componentDir, "usagesByMfe.json"), JSON.stringify(component.usagesByMfe));
+		fs.writeFileSync(path.join(componentDir, "commonProps.json"), JSON.stringify(component.commonProps));
+		fs.writeFileSync(path.join(componentDir, "files.json"), JSON.stringify(component.files));
+		fs.writeFileSync(path.join(componentDir, "instances.json"), JSON.stringify(optimizeInstances(component.instances)));
+		fs.writeFileSync(path.join(componentDir, "customization.json"), JSON.stringify(component.customization));
+	}
+}
 
 function processComponentForApplication(
 	component: ComponentStat,
@@ -219,7 +219,7 @@ function run() {
 	const readmeDestPath = path.join(outputDirPath, "mrc-usage-data-readme.md");
 	fs.copyFileSync(readmeSrcPath, readmeDestPath);
 
-	// generatePerComponentStructure(report, outputDirPath);
+	generatePerComponentStructure(report, outputDirPath);
 	generatePerApplicationStructure(report, outputDirPath);
 }
 

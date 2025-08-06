@@ -22,6 +22,8 @@ class ApplicationMfeCache {
 	}
 
 	private async fetchDirectoryContents(url: string): Promise<string[]> {
+		console.log(`[DEBUG] Fetching contents from URL: ${url}`);
+		console.log('DEBUG: GITHUB_PERSONAL_ACCESS_TOKEN:', process.env.GITHUB_PERSONAL_ACCESS_TOKEN);
 		try {
 			const response = await axios.get(url, {
 				headers: {
@@ -42,6 +44,7 @@ class ApplicationMfeCache {
 			if (axios.isAxiosError(error) && error.response?.status === 404) {
 				return [];
 			}
+			console.error('[DEBUG] Error in fetchDirectoryContents:', error);
 			throw new Error(`Could not fetch directory contents from GitHub: ${url}. Error: ${error}`);
 		}
 	}
@@ -58,19 +61,22 @@ class ApplicationMfeCache {
 	}
 
 	public async initializeCache(): Promise<void> {
+		console.log('[DEBUG] Initializing cache...');
 		try {
 			// Fetch all application directories
 			const url = `${this.baseUrl}?ref=${this.ref}`;
 			this.data.applications = await this.fetchDirectoryContents(url);
+			console.log('[DEBUG] Fetched applications:', this.data.applications);
 
 			// For each application, fetch its MFEs
 			for (const application of this.data.applications) {
 				this.data.mfes[application] = await this.fetchMfesForApplication(application);
 			}
 
-			// Remove console.log statements
+			console.log('[DEBUG] Cache initialized successfully.');
 		} catch (error) {
 			// Instead of console.error, we'll throw the error
+			console.error('[DEBUG] Error during cache initialization:', error);
 			throw new Error(`Error initializing cache: ${error}`);
 		}
 	}
