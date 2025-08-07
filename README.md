@@ -96,7 +96,7 @@ Follow the following steps to start component development on your local machines
 
 ## View Storybook
 
-To see the storybook visit: https://solid-garbanzo-f65ff422.pages.github.io/storybook-static/
+To see the storybook visit: https://solacedev.github.io/maas-react-components/storybook-static/
 
 You do need access to this repo to see the storybook.
 
