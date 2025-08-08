@@ -83,10 +83,22 @@ export class ComponentParser {
 			const usages: FoundComponentInstance[] = [];
 
 			// Parse the file
-			const isJsx = filePath.endsWith(".tsx") || filePath.endsWith(".jsx");
 			const ast = parser.parse(content, {
 				sourceType: "module",
-				plugins: ["typescript", "decorators-legacy", ...(isJsx ? ["jsx" as const] : [])]
+				plugins: [
+					"typescript",
+					"jsx",
+					"decorators-legacy",
+					"classProperties",
+					"classPrivateMethods",
+					"classPrivateProperties",
+					"numericSeparator",
+					"optionalChaining",
+					"nullishCoalescingOperator",
+					"throwExpressions",
+					"topLevelAwait",
+					"logicalAssignment"
+				]
 			});
 
 			// Track imported MRC components

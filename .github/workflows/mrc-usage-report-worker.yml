@@ -3,10 +3,6 @@ name: MRC Usage Report Generation
 on:
   workflow_dispatch:
 
-  push:
-    branches:
-      - feature/mrc-usage-report-data
-
 jobs:
   generate-and-publish-report:
     runs-on: ubuntu-latest
