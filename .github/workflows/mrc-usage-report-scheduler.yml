@@ -24,6 +24,9 @@ on:
     # Runs daily at 8 AM EST (12 PM UTC)
     - cron: "0 12 * * *"
   workflow_dispatch: # Allows manual triggering from the Actions tab
+  push:
+    branches:
+      - feature/mrc-usage-report-data
 
 jobs:
   trigger_worker_workflow:

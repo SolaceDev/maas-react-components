@@ -16,7 +16,7 @@ COPY src ./src/
 # Install project dependencies.
 # Using ci for reproducible builds.
 # This will install ALL dependencies (including devDependencies) first.
-RUN npm ci
+RUN npm install
 
 # Now that dependencies (including typescript) are installed and source files are present,
 # explicitly run the build script.

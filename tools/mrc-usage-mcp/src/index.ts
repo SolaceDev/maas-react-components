@@ -17,20 +17,27 @@ import {
 	ListResourcesRequestSchema
 } from "@modelcontextprotocol/sdk/types.js";
 import { getComponentUsageAll } from "./tools/getComponentUsageAll.js";
-import { getApplicationStats } from "./tools/getApplicationStats.js";
-import { getMfeStats } from "./tools/getMfeStats.js";
-import { getMfeInfo, listAllMfes } from "./tools/getMfeInfo.js";
+import { fetchApplicationStats } from "./tools/getApplicationStats.js";
+import { fetchMfeStats } from "./tools/getMfeStats.js";
 import { getComponentUsageByApplication } from "./tools/getComponentUsageByApplication.js";
 import { getComponentUsageByMfe } from "./tools/getComponentUsageByMfe.js";
 import axios from "axios";
 import ApplicationMfeCache from "./ApplicationMfeCache.js";
 
 // Component data types
+interface Prop {
+	name: string;
+	value: unknown;
+}
+
+interface UsageInstance {
+	filePath: string;
+	props?: Prop[];
+}
+
 interface ComponentData {
 	[key: string]: unknown;
 }
-
-const APPLICATION_NAME_DESCRIPTION = "The name of the application.";
 
 class MrcUsageServer {
 	private server: Server;
@@ -156,7 +163,7 @@ class MrcUsageServer {
 			// Resource: List of all components
 			if (uri === "components") {
 				return {
-					content: [
+					contents: [
 						{
 							type: "text",
 							text: JSON.stringify(this.componentList, null, 2)
@@ -175,7 +182,7 @@ class MrcUsageServer {
 				};
 
 				return {
-					content: [
+					contents: [
 						{
 							type: "text",
 							text: JSON.stringify(status, null, 2)
@@ -192,7 +199,7 @@ class MrcUsageServer {
 
 				if (data) {
 					return {
-						content: [
+						contents: [
 							{
 								type: "text",
 								text: JSON.stringify(data, null, 2)
@@ -208,298 +215,208 @@ class MrcUsageServer {
 		});
 	}
 
-	private tools = [
-		{
-			name: "get_component_usage_by_application",
-			description: "Get usage for a component in a specific application.",
-			inputSchema: {
-				type: "object",
-				properties: {
-					componentName: {
-						type: "string",
-						description: "The name of the component."
+	private getTools() {
+		const applications = this.applicationMfeCache.getApplications();
+		const mfes = this.applicationMfeCache.getAllMfes();
+		const applicationList = `Available applications are: ${applications.join(", ")}.`;
+		const mfeList = `Available MFEs are: ${mfes.join(", ")}.`;
+
+		return [
+			{
+				name: "get_component_usage",
+				description: `Get usage for a component. Can be scoped to a specific application or MFE. If 'name' is omitted, usage across all applications is returned. ${applicationList} ${mfeList}`,
+				keywords: ["usage", "all", ...applications, ...mfes],
+				inputSchema: {
+					type: "object",
+					properties: {
+						componentName: {
+							type: "string",
+							description: "The name of the component."
+						},
+						applicationOrMfeName: {
+							type: "string",
+							description: "Optional. The name of the application or MFE."
+						},
+						propName: {
+							type: "string",
+							description: "Optional. The name of the prop to filter by."
+						},
+						propValue: {
+							type: "string",
+							description: "Optional. The value of the prop to filter by. Requires propName to be set."
+						}
 					},
-					applicationName: {
-						type: "string",
-						description: APPLICATION_NAME_DESCRIPTION,
-						tool_name: "list_all_applications"
-					}
-				},
-				required: ["componentName", "applicationName"]
-			}
-		},
-		{
-			name: "get_component_usage_by_mfe",
-			description: "Get usage for a component in a specific MFE, with an option to filter by prop with fuzzy matching.",
-			inputSchema: {
-				type: "object",
-				properties: {
-					componentName: {
-						type: "string",
-						description: "The name of the component."
-					},
-					mfeName: {
-						type: "string",
-						description: "The name of the MFE."
-					},
-					propIdentifier: {
-						type: ["string", "object"],
-						description:
-							"Optional. The prop to search for. Can be a string (for fuzzy presence check) or an object with name and value (for fuzzy name and exact value matching).",
-						properties: {
-							name: { type: "string" },
-							value: { type: "string" }
+					required: ["componentName"]
+				}
+			},
+			{
+				name: "get_usage_stats",
+				description:
+					"Get usage statistics for an application or MFE. If 'name' is omitted, stats for all applications are returned.",
+				keywords: ["usage", "stats", "statistics", ...applications, ...mfes],
+				inputSchema: {
+					type: "object",
+					properties: {
+						applicationOrMfeName: {
+							type: "string",
+							description: "Optional. The name of the application or MFE."
 						}
 					}
-				},
-				required: ["componentName", "mfeName"]
-			}
-		},
-		{
-			name: "get_component_usage_all",
-			description: "Get usage for a component across applications.",
-			inputSchema: {
-				type: "object",
-				properties: {
-					componentName: {
-						type: "string",
-						description: "The name of the component."
-					}
-				},
-				required: ["componentName"]
-			}
-		},
-		{
-			name: "get_application_stats",
-			description:
-				"Returns usage statistics for a specified application, including component counts and other metrics.",
-			inputSchema: {
-				type: "object",
-				properties: {
-					applicationName: {
-						type: "string",
-						description: APPLICATION_NAME_DESCRIPTION
-					}
-				},
-				required: ["applicationName"]
-			}
-		},
-		{
-			name: "get_mfe_stats",
-			description:
-				"Returns usage statistics for a specified Micro-Frontend (MFE), including component counts and other metrics. The `applicationName` is optional but helps to disambiguate if MFE names are not unique across applications.",
-			inputSchema: {
-				type: "object",
-				properties: {
-					applicationName: {
-						type: "string",
-						description: APPLICATION_NAME_DESCRIPTION
-					},
-					mfeName: {
-						type: "string",
-						description: "The name of the MFE (Micro Frontend)."
-					}
-				},
-				required: ["mfeName"]
-			}
-		},
-		{
-			name: "get_mfe_info",
-			description: "Retrieves information about a specified Micro-Frontend (MFE), including its parent application.",
-			inputSchema: {
-				type: "object",
-				properties: {
-					mfeName: {
-						type: "string",
-						description: "The name of the MFE (Micro Frontend)."
-					},
-					forceRefresh: {
-						type: "boolean",
-						description: "Force refresh of MFE mapping data from GitHub",
-						default: false
-					}
-				},
-				required: ["mfeName"]
-			}
-		},
-		{
-			// Lists all available MFEs and their parent applications
-			// Useful for discovering MFEs and their relationships to applications
-			name: "list_all_mfes",
-			description: "Returns a list of all available Micro-Frontends (MFEs) across all applications.",
-			inputSchema: {
-				type: "object",
-				properties: {
-					forceRefresh: {
-						type: "boolean",
-						description: "Force refresh of MFE mapping data from GitHub",
-						default: false
-					}
+				}
+			},
+			{
+				name: "list_all_tools",
+				description: "Returns a list of all available tools in the MCP server.",
+				keywords: ["list", "tools"],
+				inputSchema: {
+					type: "object",
+					properties: {}
+				}
+			},
+			{
+				name: "list_applications_and_mfes",
+				description: "Returns a list of all applications and their associated Micro-Frontends (MFEs).",
+				keywords: ["list", "applications", "mfes"],
+				inputSchema: {
+					type: "object",
+					properties: {}
 				}
 			}
-		},
-		{
-			name: "list_all_applications",
-			description: "Returns a list of all applications with available usage data.",
-			inputSchema: {
-				type: "object",
-				properties: {}
-			}
-		},
-		{
-			name: "list_all_tools",
-			description: "Returns a list of all available tools in the MCP server.",
-			inputSchema: {
-				type: "object",
-				properties: {}
-			}
-		},
-		{
-			name: "list_applications_and_mfes",
-			description: "Returns a list of all applications and their associated Micro-Frontends (MFEs).",
-			inputSchema: {
-				type: "object",
-				properties: {}
-			}
-		}
-	];
+		];
+	}
 
 	private setupToolHandlers() {
 		this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
-			tools: this.tools
+			tools: this.getTools()
 		}));
 
 		this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
+			const tools = this.getTools();
 			switch (request.params.name) {
-				case "get_component_usage_by_application": {
-					const { componentName, applicationName } = request.params.arguments as {
+				case "get_component_usage": {
+					const { componentName, applicationOrMfeName, propName, propValue } = request.params.arguments as {
 						componentName: string;
-						applicationName: string;
+						applicationOrMfeName?: string;
+						propName?: string;
+						propValue?: string;
 					};
-					const result = await getComponentUsageByApplication(applicationName, componentName);
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
+
+					let result: UsageInstance[];
+
+					if (applicationOrMfeName) {
+						const lowerCaseName = applicationOrMfeName.toLowerCase();
+						const applications = this.applicationMfeCache.getApplications();
+						const allMfes = this.applicationMfeCache.getAllMfes();
+
+						if (applications.includes(lowerCaseName)) {
+							result = await getComponentUsageByApplication(lowerCaseName, componentName);
+						} else if (allMfes.includes(lowerCaseName)) {
+							const applicationName = this.applicationMfeCache.getApplicationForMfe(lowerCaseName);
+							if (applicationName) {
+								result = await getComponentUsageByMfe(applicationName, lowerCaseName, componentName);
+							} else {
+								throw new McpError(
+									ErrorCode.InvalidParams,
+									`Could not determine application for MFE '${lowerCaseName}'`
+								);
 							}
-						]
-					};
-				}
-				case "get_component_usage_by_mfe": {
-					const { componentName, mfeName, propIdentifier } = request.params.arguments as {
-						componentName: string;
-						mfeName: string;
-						propIdentifier?: string | { name: string; value: string };
-					};
-					const mfeInfo = await getMfeInfo(mfeName);
-					if (!mfeInfo.applicationName) {
-						throw new McpError(ErrorCode.InvalidParams, `Could not determine application for MFE '${mfeName}'`);
-					}
-					const result = await getComponentUsageByMfe(mfeInfo.applicationName, mfeName, componentName, propIdentifier);
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
-							}
-						]
-					};
-				}
-				case "get_component_usage_all": {
-					if (!request.params.arguments) {
-						throw new McpError(ErrorCode.InvalidParams, "Missing arguments");
+						} else {
+							throw new McpError(ErrorCode.InvalidParams, `Could not find application or MFE '${lowerCaseName}'`);
+						}
+					} else {
+						result = await getComponentUsageAll(componentName);
 					}
 
-					const componentName = request.params.arguments.componentName as string;
-					const result = await getComponentUsageAll(componentName);
-
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
+					if (propName && Array.isArray(result)) {
+						result = result.filter((usage: UsageInstance) => {
+							const prop = usage.props?.find((p: Prop) => p.name === propName);
+							if (!prop) {
+								return false;
 							}
-						]
-					};
-				}
-				case "get_application_stats": {
-					const { applicationName } = request.params.arguments as { applicationName: string };
-					const result = await getApplicationStats(applicationName);
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
+							if (propValue) {
+								return prop.value === propValue;
 							}
-						]
-					};
-				}
-				case "get_mfe_stats": {
-					const { applicationName, mfeName, subApplicationName } = request.params.arguments as {
-						applicationName?: string;
-						mfeName?: string;
-						subApplicationName?: string;
-					};
-					// Support both old and new parameter names
-					const mfeNameToUse = mfeName || subApplicationName;
-					if (!mfeNameToUse) {
-						throw new McpError(ErrorCode.InvalidParams, "Missing mfeName parameter");
-					}
-					const result = await getMfeStats(mfeNameToUse, applicationName);
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
-							}
-						]
-					};
-				}
-				case "get_mfe_info": {
-					const { mfeName } = request.params.arguments as { mfeName: string };
-
-					if (!mfeName) {
-						throw new McpError(ErrorCode.InvalidParams, "Missing mfeName parameter");
+							return true;
+						});
 					}
 
-					const applicationName = this.applicationMfeCache.getApplicationForMfe(mfeName);
-					const result = { mfeName, applicationName };
 					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
-							}
-						]
+						content: result.map((item) => ({
+							type: "text",
+							text: JSON.stringify(item, null, 2)
+						}))
 					};
 				}
 
-				case "list_all_mfes": {
-					const result = {
-						applications: this.applicationMfeCache.getApplications(),
-						mfes: this.applicationMfeCache.getAllMfes()
-					};
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(result, null, 2)
-							}
-						]
-					};
-				}
+				case "get_usage_stats": {
+					const { applicationOrMfeName } = request.params.arguments as { applicationOrMfeName?: string };
 
-				case "list_all_applications": {
-					const applications = this.applicationMfeCache.getApplications();
-					return {
-						content: [
-							{
-								type: "text",
-								text: JSON.stringify(applications, null, 2)
+					if (applicationOrMfeName) {
+						const lowerCaseName = applicationOrMfeName.toLowerCase();
+						const applications = this.applicationMfeCache.getApplications();
+						const allMfes = this.applicationMfeCache.getAllMfes();
+						let result;
+
+						if (applications.includes(lowerCaseName)) {
+							result = await fetchApplicationStats(lowerCaseName);
+						} else if (allMfes.includes(lowerCaseName)) {
+							const applicationName = this.applicationMfeCache.getApplicationForMfe(lowerCaseName);
+							if (applicationName) {
+								result = await fetchMfeStats(lowerCaseName, applicationName);
+							} else {
+								throw new McpError(
+									ErrorCode.InvalidParams,
+									`Could not determine application for MFE '${lowerCaseName}'`
+								);
 							}
-						]
-					};
+						} else {
+							throw new McpError(ErrorCode.InvalidParams, `Could not find application or MFE '${lowerCaseName}'`);
+						}
+						return {
+							content: [
+								{
+									type: "text",
+									text: JSON.stringify(result, null, 2)
+								}
+							]
+						};
+					} else {
+						// New logic to handle no name provided
+						const applications = this.applicationMfeCache.getApplications();
+						let totalInstances = 0;
+						const componentUsage: { [key: string]: number } = {};
+						const uniqueComponents = new Set<string>();
+
+						for (const app of applications) {
+							const stats = await fetchApplicationStats(app);
+							if (stats) {
+								totalInstances += stats.totalInstances;
+								for (const [component, count] of Object.entries(stats.componentUsage)) {
+									if (componentUsage[component]) {
+										componentUsage[component] += count;
+									} else {
+										componentUsage[component] = count;
+									}
+									uniqueComponents.add(component);
+								}
+							}
+						}
+
+						const result = {
+							totalInstances,
+							componentUsage,
+							uniqueComponents: uniqueComponents.size
+						};
+
+						return {
+							content: [
+								{
+									type: "text",
+									text: JSON.stringify(result, null, 2)
+								}
+							]
+						};
+					}
 				}
 
 				case "list_all_tools": {
@@ -507,7 +424,7 @@ class MrcUsageServer {
 						content: [
 							{
 								type: "text",
-								text: JSON.stringify(this.tools, null, 2)
+								text: JSON.stringify(this.getTools(), null, 2)
 							}
 						]
 					};

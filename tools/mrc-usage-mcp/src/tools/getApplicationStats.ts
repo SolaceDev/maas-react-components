@@ -9,16 +9,6 @@ interface Stats {
 // Type for parsed JSON stats that might be in different formats
 type ParsedStats = Stats | { [key: string]: number };
 
-// Hardcoded list of valid applications
-const VALID_APPLICATIONS = ["broker-manager", "maas-ops-ui", "maas-ui"];
-
-// Hardcoded list of valid MFEs for each application
-const VALID_MFES: Record<string, string[]> = {
-	"broker-manager": ["broker-manager"],
-	"maas-ops-ui": ["maas-ops-react", "infra"],
-	"maas-ui": ["ep", "intg", "mc", "saas"]
-};
-
 async function fetchDirectoryContents(url: string): Promise<string[]> {
 	try {
 		const response = await axios.get(url, {
@@ -121,11 +111,14 @@ function processComponentUsage(stats: ParsedStats, aggregatedStats: Stats, allCo
 	}
 }
 
-export async function getApplicationStats(applicationName: string): Promise<Stats> {
-	// Check if the application name is valid
-	if (!VALID_APPLICATIONS.includes(applicationName)) {
+import ApplicationMfeCache from "../ApplicationMfeCache.js";
+
+export async function fetchApplicationStats(applicationName: string): Promise<Stats> {
+	const cache = ApplicationMfeCache.getInstance();
+	const validApplications = cache.getApplications();
+	if (!validApplications.includes(applicationName)) {
 		throw new Error(
-			`Invalid application name: ${applicationName}. Valid applications are: ${VALID_APPLICATIONS.join(", ")}`
+			`Invalid application name: ${applicationName}. Valid applications are: ${validApplications.join(", ")}`
 		);
 	}
 
@@ -154,10 +147,9 @@ export async function getApplicationStats(applicationName: string): Promise<Stat
 		};
 
 		const allComponents = new Set<string>();
-		const validMfes = VALID_MFES[applicationName] || [];
+		const validMfes = cache.getMfes(applicationName);
 
 		for (const mfe of mfeDirs) {
-			// Skip if not a valid MFE
 			if (!validMfes.includes(mfe)) continue;
 
 			const statsUrl = `${baseUrl}/${mfe}/total_stats.json?ref=${ref}`;
@@ -174,4 +166,8 @@ export async function getApplicationStats(applicationName: string): Promise<Stat
 	} catch (error) {
 		throw new Error(`Could not fetch stats for application ${applicationName}: ${error}`);
 	}
+}
+
+export async function getApplicationStats(applicationName: string): Promise<Stats> {
+	return fetchApplicationStats(applicationName);
 }

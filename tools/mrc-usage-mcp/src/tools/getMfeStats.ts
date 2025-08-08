@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getApplicationForMfe } from "./getMfeInfo.js";
 
 interface Stats {
 	totalInstances: number;
@@ -61,16 +60,7 @@ function parseStats(stats: unknown): Stats {
 /**
  * Get usage statistics for a specific MFE within an application
  */
-export async function getMfeStats(mfeName: string, applicationName?: string): Promise<Stats> {
-	// If applicationName is not provided, look it up
-	if (!applicationName) {
-		const appName = await getApplicationForMfe(mfeName);
-		if (!appName) {
-			throw new Error(`MFE not found: ${mfeName}`);
-		}
-		applicationName = appName;
-	}
-
+export async function fetchMfeStats(mfeName: string, applicationName: string): Promise<Stats> {
 	const baseUrl = `https://api.github.com/repos/SolaceDev/maas-react-components/contents/mrc-usage-report-data/per-application/${applicationName}/${mfeName}/total_stats.json`;
 	const ref = "feature/mrc-usage-report-data";
 
@@ -85,4 +75,8 @@ export async function getMfeStats(mfeName: string, applicationName?: string): Pr
 	} catch (error) {
 		throw new Error(`Could not fetch stats for MFE ${applicationName}/${mfeName}: ${error}`);
 	}
+}
+
+export async function getMfeStats(mfeName: string, applicationName: string): Promise<Stats> {
+	return fetchMfeStats(mfeName, applicationName);
 }

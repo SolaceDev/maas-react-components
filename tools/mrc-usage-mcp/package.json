@@ -13,15 +13,12 @@
 		"build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
 		"build:dist": "tsc -p tsconfig.dist.json",
 		"watch": "tsc --watch",
-		"start": "node build/index.js",
-		"test": "npx jest --config jest.config.cjs",
-		"test:watch": "jest --watch",
-		"test:coverage": "jest --coverage"
+		"start": "node build/index.js"
 	},
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "0.6.0",
-		"@octokit/rest": "^20.0.2",
-		"axios": "^1.9.0"
+		"axios": "^1.9.0",
+		"fuse.js": "^7.0.0"
 	},
 	"devDependencies": {
 		"@types/jest": "^29.5.12",
