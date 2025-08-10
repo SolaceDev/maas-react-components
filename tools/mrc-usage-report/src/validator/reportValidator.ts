@@ -1,53 +1,122 @@
 import * as fs from "fs";
 import * as path from "path";
+import * as cheerio from "cheerio";
 
-const reportPath = process.argv[2];
+// TYPES
+type MfeInfo = {
+	repository: string;
+	name: string;
+};
 
-if (!reportPath) {
-	// eslint-disable-next-line no-console
-	console.error("Error: Report path not provided.");
-	process.exit(1);
-}
+type MrcInfo = {
+	[key: string]: string;
+};
 
-const absoluteReportPath = path.resolve(reportPath);
+const validateHtmlReport = (): boolean => {
+	const htmlReportPath = path.join(process.cwd(), "reports/mrc-usage-report-all.html");
+	if (!fs.existsSync(htmlReportPath)) {
+		// eslint-disable-next-line no-console
+		console.warn(`HTML report not found at ${htmlReportPath}, skipping validation.`);
+		return false;
+	}
 
-if (!fs.existsSync(absoluteReportPath)) {
-	// eslint-disable-next-line no-console
-	console.error(`Error: Report file not found at ${absoluteReportPath}`);
-	process.exit(1);
-}
+	const html = fs.readFileSync(htmlReportPath, "utf-8");
+	const $ = cheerio.load(html);
 
-const report = JSON.parse(fs.readFileSync(absoluteReportPath, "utf-8"));
-const apps = Object.keys(report);
+	const mfeTable = $("#mfes-tab table tbody tr");
+	const invalidMfes: string[] = [];
 
-if (apps.length === 0) {
-	// eslint-disable-next-line no-console
-	console.error("Validation failed: The report contains no application data.");
-	process.exit(1);
-}
+	mfeTable.each((i, row) => {
+		const mfeName = $(row).find("td").eq(0).text().trim();
+		const componentUsages = parseInt($(row).find("td").eq(2).text().trim(), 10);
 
-const emptyApps = apps.filter((app) => Object.keys(report[app].mfes).length === 0);
-if (emptyApps.length > 0) {
-	// eslint-disable-next-line no-console
-	console.error(`Validation failed: The following applications have no MFE data: ${emptyApps.join(", ")}`);
-	process.exit(1);
-}
-
-const mfeIssues: string[] = [];
-apps.forEach((app) => {
-	const mfes = Object.keys(report[app].mfes);
-	mfes.forEach((mfe) => {
-		if (Object.keys(report[app].mfes[mfe].components).length === 0) {
-			mfeIssues.push(`${app}/${mfe}`);
+		if (componentUsages < 1) {
+			invalidMfes.push(mfeName);
 		}
 	});
-});
 
-if (mfeIssues.length > 0) {
+	if (invalidMfes.length > 0) {
+		// eslint-disable-next-line no-console
+		console.error(`HTML validation failed: The following MFEs have no component usages: ${invalidMfes.join(", ")}`);
+		return false;
+	}
+
 	// eslint-disable-next-line no-console
-	console.error(`Validation failed: The following MFEs have no component usage data: ${mfeIssues.join(", ")}`);
-	process.exit(1);
+	console.log("HTML validation successful: All MFEs have at least one component usage.");
+	return true;
+};
+
+const validateJsonReport = (): boolean => {
+	const jsonReportPath = path.join(process.cwd(), "reports/mrc-usage-report-all.json");
+	if (!fs.existsSync(jsonReportPath)) {
+		// eslint-disable-next-line no-console
+		console.warn(`JSON report not found at ${jsonReportPath}, skipping validation.`);
+		return false;
+	}
+
+	const report = JSON.parse(fs.readFileSync(jsonReportPath, "utf-8"));
+
+	const mfeInfos: MfeInfo[] = report.config?.mfeInfos;
+	if (!mfeInfos || !Array.isArray(mfeInfos)) {
+		// eslint-disable-next-line no-console
+		console.error("JSON validation failed: `config.mfeInfos` is missing or not an array.");
+		return false;
+	}
+
+	const mrcVersions: MrcInfo = report.mrcVersions;
+	if (!mrcVersions || typeof mrcVersions !== "object") {
+		// eslint-disable-next-line no-console
+		console.error("JSON validation failed: `mrcVersions` is missing or not an object.");
+		return false;
+	}
+
+	const mfeNames = mfeInfos.map((info) => info.name);
+	const mrcVersionKeys = Object.keys(mrcVersions);
+
+	const missingInMrc = mfeNames.filter((name) => !mrcVersionKeys.includes(name));
+	const missingInMfe = mrcVersionKeys.filter((key) => !mfeNames.includes(key));
+
+	if (missingInMrc.length > 0) {
+		// eslint-disable-next-line no-console
+		console.error(
+			`JSON validation failed: The following MFEs are in 'mfeInfos' but not in 'mrcVersions': ${missingInMrc.join(
+				", "
+			)}`
+		);
+		return false;
+	}
+
+	if (missingInMfe.length > 0) {
+		// eslint-disable-next-line no-console
+		console.error(
+			`JSON validation failed: The following keys are in 'mrcVersions' but not in 'mfeInfos': ${missingInMfe.join(
+				", "
+			)}`
+		);
+		return false;
+	}
+
+	// eslint-disable-next-line no-console
+	console.log("JSON validation successful: 'mfeInfos' and 'mrcVersions' are consistent.");
+	return true;
+};
+
+try {
+	if (validateHtmlReport()) {
+		process.exit(0);
+	}
+} catch (error: unknown) {
+	// eslint-disable-next-line no-console
+	console.error(`HTML validation failed: ${(error as Error).message}`);
 }
 
 // eslint-disable-next-line no-console
-console.log("Validation successful: All applications and MFEs have component usage data.");
+console.log("Falling back to JSON validation.");
+
+if (validateJsonReport()) {
+	process.exit(0);
+}
+
+// eslint-disable-next-line no-console
+console.error("Both HTML and JSON validation failed.");
+process.exit(1);

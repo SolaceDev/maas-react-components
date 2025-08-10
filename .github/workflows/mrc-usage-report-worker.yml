@@ -118,7 +118,7 @@ jobs:
       - name: Validate generated report
         working-directory: maas-react-components-repo/tools/mrc-usage-report
         run: |
-          npm run validate-report -- reports/mrc-usage-report-all.json
+          npm run validate-report
 
       - name: Swap and commit report data
         env:
