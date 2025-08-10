@@ -116,6 +116,7 @@ jobs:
         working-directory: maas-react-components-repo/tools/mrc-usage-report-json-splitter
 
       - name: Upload merged reports
+        id: merged-reports-artifact
         uses: actions/upload-artifact@v4
         with:
           name: merged-reports
@@ -150,7 +151,7 @@ jobs:
 
       - name: Print link
         run: |
-          echo "Link to merged reports: /merged-reports.zip"
+          echo "Link to merged reports: ${{ steps.merged-reports-artifact.outputs.artifact-url }}"
 
       # - name: Call website publisher
       #   uses: ./.github/workflows/publish-mrc-website.yml
