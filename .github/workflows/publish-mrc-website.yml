@@ -2,10 +2,11 @@ name: Publish MRC website
 
 on:
   workflow_dispatch:
+  workflow_call:
   push:
     branches:
       - "main"
-      
+
 permissions:
   contents: write
   packages: write

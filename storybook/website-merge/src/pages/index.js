@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
@@ -24,9 +23,10 @@ import Layout from "@theme/Layout";
 import styles from "./index.module.css";
 
 function HomepageHeader() {
+	const headerClasses = clsx("hero hero--primary", styles.heroBanner);
 	return (
 		<>
-			<header className={clsx("hero hero--primary", styles.heroBanner)}>
+			<header className={headerClasses}>
 				<div className="container">
 					<h1 className="hero__title">{"StoryBook"}</h1>
 					<p className="hero__subtitle">{"MRC storybook"}</p>
@@ -38,7 +38,7 @@ function HomepageHeader() {
 				</div>
 			</header>
 			<div style={{ borderTop: "8px solid #bbb", borderRadius: "5px" }}></div>
-			<header className={clsx("hero hero--primary", styles.heroBanner)}>
+			<header className={headerClasses}>
 				<div className="container">
 					<h1 className="hero__title">{"Coverage"}</h1>
 					<p className="hero__subtitle">{"MRC test coverage report"}</p>
@@ -46,6 +46,18 @@ function HomepageHeader() {
 						<Link className="button button--secondary button--lg" to="pathname:///lcov-report">
 							Go to Coverage
 						</Link>
+					</div>
+				</div>
+			</header>
+			<div style={{ borderTop: "8px solid #bbb", borderRadius: "5px" }}></div>
+			<header className={headerClasses}>
+				<div className="container">
+					<h1 className="hero__title">{"Reports"}</h1>
+					<p className="hero__subtitle">{"MRC usage reports"}</p>
+					<div className={styles.buttons}>
+						<a className="button button--secondary button--lg" href="/merged-reports.zip" download>
+							Download Merged Reports
+						</a>
 					</div>
 				</div>
 			</header>
