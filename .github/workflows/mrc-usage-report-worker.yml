@@ -125,8 +125,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd maas-react-components-repo
-          rm -rf mrc-usage-report-data-old
-          mv mrc-usage-report-data mrc-usage-report-data-old || true
+          # Remove the old report data directory completely
+          rm -rf mrc-usage-report-data
+          # Move the new, validated data into place
           mv mrc-usage-report-data-new mrc-usage-report-data
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
