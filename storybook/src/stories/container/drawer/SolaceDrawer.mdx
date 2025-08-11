@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceDrawerStories} />
 
-<Title>Solace Drawer</Title>
+<Title>Drawer</Title>
 
 <Description of={SolaceDrawerStories} />
 
@@ -13,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceDrawer component provides a sliding panel that enters from the edge of the screen to display additional content, navigation options, or contextual information without navigating away from the current view. It's useful for organizing supplementary content that supports the main workflow, allowing users to access additional tools and information when needed.
-
-The component implements a persistent drawer pattern with the purpose of creating a non-modal overlay that can coexist with the main content. This pattern provides additional workspace without completely interrupting the user's current task while offering optional resizing capabilities for user customization.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolaceDrawer when you need to display supplementary content that supports the main page workflow without completely taking over the interface. This interaction pattern is particularly effective for complex applications where users need access to additional tools or information while maintaining their current context.
-
-Common use cases include:
-
-- Complex task workflows that require additional tools or reference information alongside the main content
-- Filter and search panels for data tables or content listings that need to remain accessible while browsing results
-- Property panels or configuration interfaces that allow users to modify settings while seeing real-time previews
-- Navigation menus in applications where users need to switch contexts while maintaining their current work state
-- Detail panels that provide additional information about selected items without leaving the current view
-- Multi-step workflows where users need access to supporting tools or reference materials throughout the process
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Simple tasks that don't require users to reference the main page content (use a dialog or modal instead for better focus)
-- Basic interactions like selecting a single item from a list (use dropdown menus or simple selection components)
-- Mobile interfaces where screen space is limited and drawers would create cramped user experiences
-- Workflows where the cognitive load of managing both main content and drawer content would be overwhelming
-- Single-purpose forms or actions that are better suited to modal dialogs with clear start and end points
-- Contexts where users need to focus entirely on one task without distractions from the main page content
-- Applications where the drawer would cover critical information that users need to see constantly
-- Scenarios where simpler components like autocomplete dropdowns or inline expansion would be more appropriate
+The SolaceDrawer component provides a sliding panel that enters from the edge of the screen to display additional content, navigation options, or contextual information without navigating away from the current view. This persistent drawer pattern creates a non-modal overlay that can coexist with the main content, providing additional workspace without completely interrupting the user's current task while offering optional resizing capabilities for user customization.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -71,11 +45,65 @@ import { SolaceDrawer } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.secondary.w40` - Border colors for drawer and resize handle
-- `theme.palette.ux.background.w20` - Background color for resize handle
-- `theme.palette.ux.deprecated.secondary.w8040` - Box shadow color
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Border colors for drawer and resize handle</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#EEEEEE",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w20 - Background color for resize handle</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.15)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.secondary.w8040 - Box shadow color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for 8px content margin)
+- theme.typography.[VARIANT] - Text styles for drawer content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiDrawer.styleOverrides.root - Custom styling for drawer container
+- theme.components.MuiDrawer.styleOverrides.paper - Custom styling for drawer paper/content area
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in drawer content
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -84,9 +112,10 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Maximum width: `1000px` (when resizable)
 - Resize handle width: `8px`
 - Border radius: `2px`
-- Content margin: `8px` (left or right based on anchor)
+- Content margin: `theme.spacing(1)` (8px, left or right based on anchor)
 - Box shadow: `0px 2px 4px` with theme color
 - Variant: `persistent` (non-modal)
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

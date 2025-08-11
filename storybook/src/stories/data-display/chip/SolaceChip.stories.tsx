@@ -27,13 +27,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Data Display/Chip/Standard",
 	component: SolaceChip,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceChip"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		label: {
 			control: { type: "text" },
@@ -42,17 +36,6 @@ export default {
 			table: {
 				type: { summary: "string | React.ReactNode" },
 				defaultValue: { summary: "undefined" }
-			}
-		},
-		hasWarnings: {
-			control: {
-				type: "boolean"
-			},
-			description:
-				"If true, displays the chip in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the chip content.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
 			}
 		},
 		variant: {
@@ -114,11 +97,7 @@ export default {
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the chip is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the chip is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter."
 		},
 		dataQa: {
 			control: { type: "text" },

@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceCardStories} />
 
-<Title>Solace Card</Title>
+<Title>Card</Title>
 
 <Description of={SolaceCardStories} />
 
@@ -13,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceCard component provides a customizable card container for displaying learning resources, content sections, and interactive elements with optional headers, content areas, and action sections. It's useful for organizing information into digestible chunks, allowing users to scan and interact with grouped content efficiently.
-
-The component implements a flexible card layout pattern with the purpose of creating visually distinct content containers that can serve both as information displays and navigation entry points. This pattern helps organize complex interfaces while maintaining clean visual hierarchy and consistent spacing.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolaceCard when you need to group related information or functionality into distinct, visually separated containers. This layout pattern is particularly effective for dashboard layouts, content galleries, and resource libraries.
-
-Common use cases include:
-
-- Learning resource cards with tutorials, documentation, and quick actions
-- Dashboard widgets displaying metrics, status information, and related controls
-- Product or service listings with descriptions, features, and action buttons
-- Content previews with titles, summaries, and navigation links
-- Settings panels that group related configuration options
-- Interactive tiles in grid layouts for navigation or content discovery
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Simple text content that doesn't need visual separation or grouping
-- Single pieces of information that would look better in inline layouts
-- Content that needs to be read in a specific sequential order without interruption
-- Forms where fields need to flow naturally without visual breaks between sections
-- Dense data tables where cards would create unnecessary visual noise and spacing
-- Mobile interfaces where card borders and padding might consume too much screen space
-- Content that changes frequently and would benefit from more fluid, list-based layouts
-- Interfaces where users need to compare multiple items side-by-side without visual barriers
+The SolaceCard component provides a customizable card container for displaying learning resources, content sections, and interactive elements with optional headers, content areas, and action sections. This flexible card layout pattern helps organize complex interfaces into visually distinct content containers that can serve both as information displays and navigation entry points, allowing users to scan and interact with grouped content efficiently while maintaining clean visual hierarchy and consistent spacing.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -72,18 +46,61 @@ import { SolaceCard } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.spacing(2)` - Default card padding (16px)
-- `theme.spacing(0)` - Content and actions padding reset
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Default card background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default card border color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(2) for 16px)
+- theme.typography.[VARIANT] - Text styles for card content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiCard.styleOverrides.root - Custom styling for card container
+- theme.components.MuiCardContent.styleOverrides.root - Custom styling for content area
+- theme.components.MuiCardActions.styleOverrides.root - Custom styling for actions area
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in card actions
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
 - Default padding: `theme.spacing(2)` (16px)
 - Minimum width: `250px` (default)
-- Content padding: `0px` (removes MUI default padding)
-- Actions padding: `0px` (removes MUI default padding)
-- Content bottom padding: `0px` when content is last child
+- Content padding: `theme.spacing(0)` (removes MUI default padding)
+- Actions padding: `theme.spacing(0)` (removes MUI default padding)
+- Content bottom padding: `theme.spacing(0)` when content is last child
 - Role: `article` for accessibility
 
 <Subtitle>Stories</Subtitle>

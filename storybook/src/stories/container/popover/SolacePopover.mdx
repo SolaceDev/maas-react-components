@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolacePopoverStories} />
 
-<Title>Solace Popover</Title>
+<Title>Popover</Title>
 
 <Description of={SolacePopoverStories} />
 
@@ -13,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolacePopover component provides a floating container that displays content anchored to a specific element or position on the screen. It's useful for showing supplementary information, contextual actions, or interactive content without navigating away from the current view, allowing users to access additional functionality while maintaining their current context.
-
-The component implements a popover pattern with the purpose of creating non-modal overlays that can display rich content positioned relative to trigger elements. This pattern helps reduce cognitive load by keeping related actions and information spatially connected while providing flexible positioning options for various layout requirements.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolacePopover when you need to display contextual content that's directly related to a specific element or action on the page. This interaction pattern is particularly effective for supplementary information, quick actions, or input forms that don't require full page navigation.
-
-Common use cases include:
-
-- Contextual menus with actions related to specific items or areas of the interface
-- Detailed information panels that provide additional context about selected elements without leaving the current view
-- Quick input forms for tasks like adding comments, tags, or making simple edits while maintaining page context
-- Help tooltips or explanatory content that users can access on-demand for specific features or controls
-- Filter panels or configuration options that apply to specific sections of content
-- Rich media previews or expanded views of list items that show additional details on demand
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Critical user flows that require full attention and shouldn't be interrupted by other page content (use modals instead)
-- Simple text-only tooltips that don't require interaction (use SolaceTooltip for better performance and accessibility)
-- Primary navigation that needs to be persistent and always accessible to users
-- Complex multi-step workflows that require significant screen space and user focus
-- Content that needs to be accessible via keyboard navigation as the primary interaction method
-- Mobile interfaces where popovers might be difficult to position appropriately or could obstruct important content
-- Alert messages or notifications that need to capture immediate user attention regardless of context
-- Content that users need to reference while interacting with multiple other elements on the page simultaneously
+The SolacePopover component provides a floating container that displays content anchored to a specific element or position on the screen, useful for showing supplementary information, contextual actions, or interactive content without navigating away from the current view. This popover pattern creates non-modal overlays that display rich content positioned relative to trigger elements, helping reduce cognitive load by keeping related actions and information spatially connected while providing flexible positioning options for various layout requirements.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -71,7 +45,52 @@ import { SolacePopover } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling through the `.SolacePopover` class applied to the paper element.
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Popover background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Popover border color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for default padding)
+- theme.typography.[VARIANT] - Text styles for popover content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiPopover.styleOverrides.root - Custom styling for popover container
+- theme.components.MuiPopover.styleOverrides.paper - Custom styling for popover paper element
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in popover content
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -80,6 +99,9 @@ The component uses Material-UI's theme system with custom Solace styling through
 - Positioning: Controlled by `anchorOrigin` and `transformOrigin` props
 - Margin threshold: Configurable minimum distance from viewport edges
 - Content container: Material-UI Paper component with elevation and custom styling
+- Default padding: `theme.spacing(1)` (8px)
+- Border radius: Inherited from theme (default 4px)
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceEnvironmentChipStories} />
 
-<Title>Solace Environment Chip</Title>
+<Title>Environment Chip</Title>
 
 <Description of={SolaceEnvironmentChipStories} />
 
@@ -13,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceEnvironmentChip component provides a specialized visual element for displaying environment-specific information with custom branding colors and icons. It's useful for indicating different deployment environments, system contexts, or organizational divisions, allowing users to quickly identify the context they're working within through distinctive visual styling.
-
-The component implements a branded chip pattern with the purpose of providing clear environmental context through color-coded visual indicators. This pattern helps users maintain situational awareness while working across multiple environments or organizational contexts, reducing the risk of confusion or accidental actions in the wrong environment.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolaceEnvironmentChip when you need to display environment-specific or contextual information that requires distinctive visual branding. This interaction pattern is particularly effective for multi-environment applications and organizational context switching.
-
-Common use cases include:
-
-- Environment indicators showing "Development", "Staging", "Production" environments with distinct color schemes
-- Organizational context displays for multi-tenant applications showing different companies or divisions
-- Service or region identifiers in cloud applications indicating geographic or infrastructure contexts
-- Brand indicators for white-labeled applications showing different client or partner branding
-- System context markers indicating different operational modes or service levels
-- Security context indicators showing different access levels or classification levels with appropriate visual cues
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- General categorization where standard chips or badges would be more appropriate and don't require custom branding
-- Interactive selection interfaces where users need to choose from multiple options (use SolaceChip instead)
-- Temporary status indicators that change frequently (use status badges or notifications for dynamic information)
-- Decorative elements where the environmental context isn't functionally important to the user
-- Accessibility-critical scenarios where color is the only differentiating factor between environments
-- Mobile interfaces where custom colors might not display consistently across different devices
-- Print-friendly interfaces where color differentiation might not be preserved
-- Contexts where environmental information should be more subtle and not draw primary attention
+The SolaceEnvironmentChip component provides a visual indicator for displaying environment-specific information with customizable styling and colors, useful for showing environment states, deployment stages, or system status indicators that allow users to quickly identify and understand the current environment context or operational state. This environment badge pattern provides clear visual distinction between different environments or system states, helping users maintain situational awareness about their current working context while providing consistent visual styling across different environment types.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -71,12 +45,54 @@ import { SolaceEnvironmentChip } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.spacing()` - Consistent spacing for padding, border radius, and gaps
-- `theme.typography.body1` - Font family, size, and weight for text content
-- `theme.palette.ux.secondary.w100` - Border color for white backgrounds
-- `theme.palette.ux.secondary.w20` - Hover background color for delete button
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w100 - Border color for white backgrounds</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Hover background color for delete button</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding, margin, border radius, and gaps (e.g., theme.spacing(3) for height)
+- theme.typography.body1 - Font family, size, and weight for text content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for chip container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for chip text
+- theme.components.MuiChip.styleOverrides.icon - Custom styling for leading icon
+- theme.components.MuiChip.styleOverrides.deleteIcon - Custom styling for delete icon
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in chip groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -92,6 +108,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
   - Standard: `theme.spacing(0, 1, 0, 0.5)` (0px top, 8px right, 0px bottom, 4px left)
 - White background special case: Adds border using `theme.palette.ux.secondary.w100`
 - Text overflow: Ellipsis with `white-space: nowrap`
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 

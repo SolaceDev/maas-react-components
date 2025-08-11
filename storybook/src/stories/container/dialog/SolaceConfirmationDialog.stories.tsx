@@ -61,12 +61,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/UI-Library%3A-Patterns?node-id=1%3A3"
-		},
-		docs: {
-			description: {
-				component:
-					"The Dialog component creates modal dialogs that appear in front of the main content to provide critical information, require decisions, or involve multiple tasks. Dialogs are purposefully interruptive, so they should be used sparingly and only when user attention and decision are required."
-			}
 		}
 	},
 	argTypes: {
@@ -152,11 +146,7 @@ export default {
 		},
 		onClose: {
 			description:
-				"Callback function triggered when the dialog should be closed. Called when clicking outside the dialog, pressing escape, or clicking the close button if present.",
-			table: {
-				type: { summary: "(event: Event, reason: string) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when the dialog should be closed. Called when clicking outside the dialog, pressing escape, or clicking the close button if present."
 		},
 		disableBackdropClick: {
 			control: { type: "boolean" },

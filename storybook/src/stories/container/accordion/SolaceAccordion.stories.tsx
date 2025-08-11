@@ -17,12 +17,6 @@ export default {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=1060%3A0"
 		},
-		docs: {
-			description: {
-				component:
-					"The accordion component provides an expandable/collapsible container that helps organize content into sections. It's useful for reducing visual clutter by hiding content until needed, allowing users to focus on specific information. Use accordions when you have multiple sections of related content that don't need to be visible simultaneously."
-			}
-		},
 		preview: {
 			tab: "Code",
 			code: `<MyComponent prop="value" />`
@@ -64,7 +58,8 @@ export default {
 			table: {
 				type: { summary: '"info" | "error" | "warn" | "success" | "secondary"' },
 				defaultValue: { summary: "undefined" }
-			}
+			},
+			link: "https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceAccordion.ts"
 		},
 		disabled: {
 			control: { type: "boolean" },
@@ -104,11 +99,7 @@ export default {
 		},
 		onChange: {
 			description:
-				"A callback function that fires when the expand/collapse state of the Accordion component is changed. Use this to perform actions when the accordion state changes, such as loading additional data, updating other UI elements, or tracking user interactions.",
-			table: {
-				type: { summary: "(event: React.SyntheticEvent, expanded: boolean) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"A callback function that fires when the expand/collapse state of the Accordion component is changed. Use this to perform actions when the accordion state changes, such as loading additional data, updating other UI elements, or tracking user interactions."
 		},
 		backgroundColor: {
 			control: { type: "color" },
@@ -134,7 +125,7 @@ export default {
 				type: "select"
 			},
 			description:
-				"The variant of the accordion border color. Use this to visually communicate the nature of the content, such as using 'error' for critical information or 'success' for positive outcomes.",
+				"The variant of the accordion border color. Use this to visually communicate the nature of the content, such as using 'error' for critical information or 'success' for positive outcomes. See enum at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/states.ts",
 			table: {
 				type: { summary: '"info" | "error" | "warn" | "success"' },
 				defaultValue: { summary: "undefined" }

@@ -18,14 +18,7 @@ const ANOTHER_ENVIRONMENT_NAME = "Environment 2";
 export default {
 	title: "Data Display/List/Single Selection",
 	component: SolaceGridList,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"List component used for rendering collections of data based on a specified 'grid' layout. Code component name: SolaceGridList"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -34,17 +27,6 @@ export default {
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
-			}
-		},
-		hasWarnings: {
-			control: {
-				type: "boolean"
-			},
-			description:
-				"If true, displays the grid list in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the grid list content.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
 			}
 		},
 		items: {
@@ -94,20 +76,12 @@ export default {
 		rowMapping: {
 			control: false,
 			description:
-				"A callback function that maps an individual object into an ordered array of React elements defining how to render each attribute in the grid columns.",
-			table: {
-				type: { summary: "(item: object) => React.ReactElement[]" },
-				defaultValue: { summary: "undefined" }
-			}
+				"A callback function that maps an individual object into an ordered array of React elements defining how to render each attribute in the grid columns."
 		},
 		onSelection: {
 			control: false,
 			description:
-				"Callback function triggered when a row is selected. Receives the data object associated with the selected row.",
-			table: {
-				type: { summary: "(item: object) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when a row is selected. Receives the data object associated with the selected row."
 		},
 		background: {
 			control: { type: "text" },

@@ -51,14 +51,7 @@ export default {
 	title: "Container/Drawer",
 	component: SolaceDrawer,
 	tags: ["!autodocs"],
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"The Drawer component provides a sliding panel that appears from the edge of the screen. Drawers are commonly used for navigation menus, filter panels, or displaying additional information without leaving the current context. They can be anchored to either the left or right side of the screen and can be made resizable to allow users to adjust the viewing area."
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		open: {
 			control: { type: "boolean" },
@@ -91,7 +84,7 @@ export default {
 			control: { type: "select" },
 			options: ["left", "right"],
 			description:
-				"Determines which side of the screen the drawer appears from. Use 'left' for primary navigation menus and 'right' for supplementary information or actions.",
+				"Determines which side of the screen the drawer appears from. Use 'left' for primary navigation menus and 'right' for supplementary information or actions. See enum at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceDrawer.ts",
 			table: {
 				type: { summary: '"left" | "right"' },
 				defaultValue: { summary: '"right"' }
@@ -99,11 +92,7 @@ export default {
 		},
 		onResizeDone: {
 			description:
-				"Callback function that fires when the user finishes resizing the drawer. Use this to capture the new width for persistence or other state management needs.",
-			table: {
-				type: { summary: "(newWidth: number) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the user finishes resizing the drawer. Use this to capture the new width for persistence or other state management needs."
 		},
 		minWidth: {
 			control: { type: "number" },

@@ -221,11 +221,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2558%3A9993"
-		},
-		docs: {
-			description: {
-				component: "Table component for reuse in all Solace based applications. Code component name: SolaceTable"
-			}
 		}
 	},
 	argTypes: {
@@ -236,17 +231,6 @@ export default {
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
-			}
-		},
-		hasWarnings: {
-			control: {
-				type: "boolean"
-			},
-			description:
-				"If true, displays the table in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the table data.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
 			}
 		},
 		rows: {
@@ -268,9 +252,10 @@ export default {
 			}
 		},
 		selectionType: {
+			options: [SolaceTableSelectionType.NONE, SolaceTableSelectionType.SINGLE, SolaceTableSelectionType.MULTI],
 			control: { type: "select" },
 			description:
-				"Determines the row selection behavior. 'NONE' disables selection, 'SINGLE' allows one row selection, 'MULTI' enables multiple row selection with checkboxes. This is an enum type. See SolaceTableSelectionType enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/solaceTable.ts",
+				"Determines the row selection behavior. 'NONE' disables selection, 'SINGLE' allows one row selection, 'MULTI' enables multiple row selection with checkboxes.",
 			table: {
 				type: { summary: '"NONE" | "SINGLE" | "MULTI"' },
 				defaultValue: { summary: '"NONE"' }
@@ -297,20 +282,12 @@ export default {
 		selectionChangedCallback: {
 			control: false,
 			description:
-				"Callback function fired when row selection changes. Receives an array of selected row IDs. Use this to handle selection state in parent components.",
-			table: {
-				type: { summary: "(selectedRowIds: string[]) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when row selection changes. Receives an array of selected row IDs. Use this to handle selection state in parent components."
 		},
 		sortCallback: {
 			control: false,
 			description:
-				"Callback function fired when column sorting is requested. Receives the column definition and sort direction. Implement custom sorting logic here.",
-			table: {
-				type: { summary: "(column: SolaceTableColumn, direction: SolaceTableSortDirection) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when column sorting is requested. Receives the column definition and sort direction. Implement custom sorting logic here."
 		},
 		selectedRowIds: {
 			control: { type: "object" },
@@ -423,11 +400,7 @@ export default {
 		onRowClick: {
 			control: false,
 			description:
-				"Callback function fired when a table row is clicked. Receives the clicked row data. Use this for row navigation or detailed view actions.",
-			table: {
-				type: { summary: "(row: SolaceTableRow) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when a table row is clicked. Receives the clicked row data. Use this for row navigation or detailed view actions."
 		}
 	}
 } as Meta<typeof SolaceTable>;
@@ -2288,7 +2261,7 @@ export const MultiSelectionTableWithCrossPagesRowSelectionAndExpandedRow = {
 	}
 };
 
-export const MultiSelectionTableWithCrossPagesRowSelectionNotInPageInDefaultIfAllRowsSelectedManually = {
+export const MultiSelectionTableWithCrossPagesRowSelectionNotInPageAllSelectedByDefaultIfAllRowsSelectedManually = {
 	render: MultiSelectionTableWithCrossPagesRowSelectionTemplate,
 
 	args: {

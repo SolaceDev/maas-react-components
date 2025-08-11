@@ -20,14 +20,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Data Display/Badge/Counter",
 	component: SolaceNotificationCounter,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"NotificationCounter component for reuse in all Solace based applications. Code component name: SolaceNotificationCounter"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		value: {
 			control: { type: "text" },

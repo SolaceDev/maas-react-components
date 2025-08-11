@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceConfirmationDialogStories} />
 
-<Title>Solace Confirmation Dialog</Title>
+<Title>Confirmation Dialog</Title>
 
 <Description of={SolaceConfirmationDialogStories} />
 
@@ -13,29 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Confirmation Dialog component provides modal dialogs that appear in front of the main content to provide critical information, require decisions, or involve multiple tasks. It's useful for keeping users in context when quick actions are needed, allowing users to make decisions without losing their current workflow.
-
-The component implements a flexible dialog pattern with the purpose of drawing user attention to specific actions or information. This pattern helps users stay focused on important decisions while still maintaining their context within the application.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Confirmation Dialog when you have critical information to display or important decisions that require user acknowledgment. This interaction pattern is particularly effective for workflow-critical confirmations and contextual information display.
-
-Common use cases include:
-
-- Confirming destructive actions like deleting items or clearing data
-- Collecting user input through form fields without navigating away
-- Displaying critical alerts or warnings that require acknowledgment
-- Presenting quick tasks or decisions that progress the workflow
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Complex multi-step interactions that require extensive navigation
-- When context from the rest of the screen is needed for decision making
-- Don't open dialogs without user interaction or clear triggering events
-- Avoid for non-critical information that could be displayed inline
-- Don't use for simple notifications that don't require user decisions
-- Avoid when the interaction disrupts the user flow unnecessarily
+The SolaceConfirmationDialog component provides modal dialogs that appear in front of the main content to provide critical information, require decisions, or involve multiple tasks while keeping users in context. This flexible dialog pattern draws user attention to specific actions or information, helping users stay focused on important decisions while maintaining their context within the application and allowing for quick actions without losing their current workflow.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -73,17 +51,63 @@ import { SolaceConfirmationDialog } from "@SolaceDev/maas-react-components";
 - `.MuiDialogContentText-root` - Content text styling
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.background.w10` - Dialog background color
-- `theme.palette.ux.primary.text.wMain` - Primary text color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Dialog background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Primary text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(3, 3, 2, 3) for title padding)
+- theme.typography.[VARIANT] - Text styles for dialog content and title
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiDialog.styleOverrides.root - Custom styling for dialog container
+- theme.components.MuiDialogTitle.styleOverrides.root - Custom styling for dialog title
+- theme.components.MuiDialogContent.styleOverrides.root - Custom styling for dialog content
+- theme.components.MuiDialogActions.styleOverrides.root - Custom styling for dialog actions
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in dialog actions
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
-- Dialog title padding: `24px 24px 16px 24px`
+- Dialog title padding: `theme.spacing(3, 3, 2, 3)` (24px 24px 16px 24px)
 - Dialog content: Flexible display based on contentLayout prop
 - Action buttons: Right-aligned with consistent spacing
 - Custom actions: Left-aligned with auto margin
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

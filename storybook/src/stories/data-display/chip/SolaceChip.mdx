@@ -1,12 +1,10 @@
 import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
 import * as SolaceChipStories from "./SolaceChip.stories.tsx";
-import * as SolaceChipChoiceStories from "./SolaceChipChoice.stories.tsx";
-import * as SolaceChipInputStories from "./SolaceChipInput.stories.tsx";
 import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceChipStories} />
 
-<Title>Solace Chip</Title>
+<Title>Chip</Title>
 
 <Description of={SolaceChipStories} />
 
@@ -15,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceChip component provides an interactive element for displaying compact information with optional actions like selection, deletion, or click handling. It's useful for creating filterable tags, selectable options, or actionable labels that users can interact with, allowing for dynamic content management and user input collection.
-
-The component implements an enhanced chip pattern with the purpose of combining visual information display with user interaction capabilities. This pattern supports various states, modes, and status indicators while providing flexible styling options for different interaction contexts and visual hierarchies.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolaceChip when you need interactive compact elements that combine information display with user actions. This interaction pattern is particularly effective for selection interfaces, filtering systems, and dynamic content management.
-
-Common use cases include:
-
-- Filter interfaces where users can select and remove filter criteria for search results or data tables
-- Tag selection systems for content management, allowing users to add or remove categorization tags
-- Multi-select inputs where users can choose multiple options from a set of available choices
-- Status indicators with interactive capabilities like changing states or triggering actions
-- Choice selection interfaces for forms or configuration screens with visual feedback
-- Dynamic lists where users can add, remove, or modify items through chip interactions
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Static information display that doesn't require user interaction - use SolaceAttributeBadge for read-only labels
-- Primary navigation elements where users expect standard navigation patterns - use SolaceButton or SolaceTabs
-- Single-choice selection where radio buttons or dropdowns would be more appropriate for clarity
-- Complex forms that require detailed input rather than simple selection - use SolaceTextField or SolaceSelect
-- Critical actions that require confirmation dialogs to prevent accidental execution - use SolaceButton with confirmation
-- Large datasets where chip interfaces would become cluttered or overwhelming - use SolaceTable or SolaceGridList
-- Mobile interfaces where small interactive elements might be difficult to use accurately - consider larger touch targets
-- When content truncation would hide important information - use full-width components instead
+The SolaceChip component provides an interactive element for input, selection, or filtering with support for icons, deletable functionality, and various visual styles. This flexible chip pattern creates compact, interactive elements that can serve multiple interface functions from simple labels to complex input controls, helping organize information while providing consistent interaction patterns for selection, filtering, and data manipulation tasks.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -115,10 +87,67 @@ The component includes three different story categories with multiple examples:
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.deprecated.chip` - Color mappings for borders, fills, and text colors
-- `theme.palette.ux.error.w100` - Error icon color
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default background color for filled variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Background color for outlined variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F44336",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.w100 - Error icon color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for default padding)
+- theme.typography.[VARIANT] - Text styles for chip content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for chip container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for chip text
+- theme.components.MuiChip.styleOverrides.icon - Custom styling for leading icon
+- theme.components.MuiChip.styleOverrides.deleteIcon - Custom styling for delete icon
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in chip groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -128,9 +157,10 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Default border radius: `md` (40px)
 - Default font size: `sm`
 - Default variant: `FILLED`
-- Icon size: 14x14 pixels for leading icons
+- Icon size: `14x14` pixels for leading icons
 - Font weight: 400 by default, 500 when `boldLabel` is true
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 
-<CustomStories stories={[SolaceChipStories, SolaceChipChoiceStories, SolaceChipInputStories]} />
+<CustomStories stories={SolaceChipStories} />

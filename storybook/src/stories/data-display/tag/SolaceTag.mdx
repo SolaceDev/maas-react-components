@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceTagStories} />
 
-<Title>Solace Tag</Title>
+<Title>Tag</Title>
 
 <Description of={SolaceTagStories} />
 
@@ -13,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceTag component provides a visual label element for categorizing, organizing, or highlighting content with customizable styling options. It's useful for content classification, metadata display, or visual organization systems, allowing users to quickly identify and group related information through consistent visual markers.
-
-The component implements a flexible tagging pattern with the purpose of providing visual categorization without complex interactions. This pattern helps organize information hierarchically while offering extensive customization options for colors, variants, and visual styling to match different content types and organizational schemes.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolaceTag when you need to display categorization or classification information that helps organize content visually. This interaction pattern is particularly effective for content organization and information architecture.
-
-Common use cases include:
-
-- Content categorization with topic tags for articles, documentation, or resources to help users filter and browse
-- Metadata visualization showing content properties like difficulty levels, content types, or subject areas
-- Visual organization systems for portfolios, galleries, or content libraries with thematic grouping
-- Status or classification labels that don't require interaction but provide important contextual information
-- Keyword highlighting in search results or content discovery interfaces
-- Topic indicators for forums, discussions, or community content to facilitate browsing and discovery
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Interactive elements that require user actions like selection or deletion (use SolaceChip for interactive functionality)
-- Navigation elements where users expect standard navigation patterns and behaviors
-- Critical status information that requires immediate attention (use alerts or status indicators for urgent information)
-- Temporary or frequently changing information where static tags might become outdated quickly
-- Complex data relationships that require more context than a simple visual label can provide
-- Accessibility scenarios where color-only differentiation might not be sufficient for all users
-- Environments where visual consistency with interactive elements might confuse users about functionality
-- Mobile interfaces where small tags might be difficult to read or distinguish from actionable elements
+The SolaceTag component provides a visual label element for categorizing, organizing, or highlighting content with customizable styling options. This flexible tagging pattern helps organize information hierarchically while offering extensive customization options for colors, variants, and visual styling to match different content types, allowing users to quickly identify and group related information through consistent visual markers.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -80,21 +54,77 @@ import { SolaceTag } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.deprecated.chip` - Color mappings for borders, fills, and text colors
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.default.fill - Default tag background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.primary.fill - Primary tag background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.default.text - Default tag text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body2 - Base typography for tag text
+- theme.shape.borderRadius - Border radius for tag container
+- theme.transitions.create(['background-color', 'box-shadow']) - Tag hover and focus transitions
+- theme.components.MuiChip.styleOverrides.root - Custom tag styling
+- theme.components.MuiChip.styleOverrides.label - Custom label styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.tag.filled - Filled variant styling
+- theme.mixins.tag.outlined - Outlined variant styling
 
 **Layout Specifications:**
 
-- Height: Fixed at `sm` size (18px from CHIP_PX_HEIGHTS)
-- Border radius: Fixed at `xs` size (20px from CHIP_PX_BORDER_RADIUS)
-- Font size: Fixed at `xs` size (12px from BASE_FONT_PX_SIZES)
+- Height: Fixed at `18px` (sm size from CHIP_PX_HEIGHTS)
+- Border radius: Fixed at `20px` (xs size from CHIP_PX_BORDER_RADIUS)
+- Font size: Fixed at `12px` (xs size from BASE_FONT_PX_SIZES)
 - Font weight: `400` (regular)
 - Default variant: `FILLED`
 - Default max width: `100%`
 - Padding: `2px` left and right
 - Icon size: `14x14` pixels for leading icons
 - Size: Always `medium` (not responsive to content)
+- Clickable hover effect: Slight opacity change and elevation increase
 
 <Subtitle>Stories</Subtitle>
 

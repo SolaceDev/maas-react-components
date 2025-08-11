@@ -26,13 +26,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Data Display/Badge/Tag",
 	component: SolaceTag,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceTag"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		label: {
 			control: { type: "text" },
@@ -43,22 +37,11 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
-		hasWarnings: {
-			control: {
-				type: "boolean"
-			},
-			description:
-				"If true, displays the tag in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the tagged item.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
-			}
-		},
 		variant: {
 			options: [CHIP_VARIANT.FILLED, CHIP_VARIANT.OUTLINED],
 			control: { type: "radio" },
 			description:
-				"The visual style variant of the tag. 'filled' provides a solid background with high contrast for important categorization, while 'outlined' provides a border-only style for secondary information or when you need multiple tags without visual clutter.",
+				"The visual style variant of the tag. 'filled' provides a solid background with high contrast for important categorization, while 'outlined' provides a border-only style for secondary information or when you need multiple tags without visual clutter. See enum at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/modes.ts",
 			table: {
 				type: { summary: '"filled" | "outlined"' },
 				defaultValue: { summary: '"filled"' }
@@ -76,7 +59,7 @@ export default {
 		fillColor: {
 			control: { type: "color" },
 			description:
-				"Custom background color for the tag. Use this to create color-coded categorization systems or to match specific brand colors. When not specified, the tag uses the default theme colors.",
+				"Custom background color for the tag. Use this to create color-coded categorization systems or to match specific brand colors. When not specified, the tag uses the default theme colors. See color constants at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/states.ts",
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
@@ -112,11 +95,7 @@ export default {
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the tag is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the tag is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter."
 		},
 		dataQa: {
 			control: { type: "text" },

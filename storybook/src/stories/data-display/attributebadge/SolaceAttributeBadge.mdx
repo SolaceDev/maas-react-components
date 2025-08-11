@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceAttributeBadgeStories} />
 
-<Title>Solace Attribute Badge</Title>
+<Title>Attribute Badge</Title>
 
 <Description of={SolaceAttributeBadgeStories} />
 
@@ -13,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceAttributeBadge component provides a compact visual element for displaying attribute information, labels, or categorization data. It's useful for tagging content with metadata, showing status indicators, or grouping related information, allowing users to quickly identify and categorize content through visual cues.
-
-The component implements a customizable badge pattern with the purpose of presenting attribute data in a space-efficient manner. This pattern helps organize information hierarchically while providing flexible styling options for different content types and importance levels.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolaceAttributeBadge when you need to display compact attribute information that helps categorize, label, or provide metadata about content. This interaction pattern is particularly effective for organizing information and making it scannable at a glance.
-
-Common use cases include:
-
-- Content categorization with tags for articles, products, or resources that help users filter and organize information
-- Status indicators showing the current state of items like "Draft", "Published", or "Archived" in content management systems
-- Metadata display for showing properties like file types, versions, or technical specifications
-- User role or permission indicators in administration interfaces
-- Priority or importance levels for tasks, issues, or notifications
-- Feature flags or capability indicators showing what functionality is available
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Interactive elements that require complex user actions (use buttons or interactive components instead)
-- Primary navigation elements where users expect standard navigation patterns
-- Large amounts of text content that wouldn't fit comfortably in a compact badge format
-- Critical information that requires immediate attention (use alerts or notifications for urgent messages)
-- Time-sensitive data that changes frequently and might confuse users with outdated badge information
-- Complex data relationships that require more context than a simple label can provide
-- Accessibility-critical scenarios where color-only differentiation might not be sufficient for all users
-- Mobile interfaces where small badges might be difficult to read or distinguish
+The SolaceAttributeBadge component provides a visual indicator for displaying attributes, statuses, or categorical information with customizable styling and colors, useful for showing metadata, status indicators, or categorical labels that allow users to quickly identify different attributes or states of content items. This badge pattern provides clear visual distinction for different attributes or categories, helping users quickly scan and identify important characteristics of content while maintaining consistent visual styling across different attribute types.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -77,9 +51,66 @@ import { SolaceAttributeBadge } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.deprecated.chip` - Color mappings for borders, fills, and text colors
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default background color for outlined variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.info.w100 - Background color for info variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#4CAF50",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.success.w100 - Background color for success variant</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(0.25) for 2px padding)
+- theme.typography.[VARIANT] - Text styles for badge content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for badge container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for badge text
+- theme.components.MuiChip.styleOverrides.deleteIcon - Custom styling for delete icon
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in badge groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -88,8 +119,9 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Default height: `sm` (18px)
 - Default border radius: `md` (40px)
 - Default font size: `xs`
-- Padding: Adjustable via `compressed` prop (0px when true, 2px when false)
+- Padding: `theme.spacing(0)` when compressed, `theme.spacing(0.25)` (2px) otherwise
 - Font weight: 500 when `boldLabel` is true, 400 otherwise
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 

@@ -13,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceTooltip component provides contextual information through floating overlays that appear when users interact with trigger elements. It's useful for displaying additional details, explanations, or help text without cluttering the interface, allowing users to access supplementary information on demand while maintaining a clean visual hierarchy.
-
-The component implements an enhanced tooltip pattern with the purpose of providing just-in-time information delivery. This pattern supports multiple content types, intelligent overflow detection, and flexible positioning while offering extensive customization options for timing, behavior, and visual presentation.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolaceTooltip when you need to provide supplementary information that enhances user understanding without overwhelming the primary interface. This interaction pattern is particularly effective for progressive disclosure and contextual help systems.
-
-Common use cases include:
-
-- Explanatory text for complex UI elements, technical terms, or unfamiliar icons that need clarification
-- Additional context for form fields, buttons, or interactive elements to guide user actions
-- Overflow text display for truncated content where full text needs to be accessible on demand
-- Help documentation integration providing just-in-time assistance without navigation away from current tasks
-- Rich content presentation including formatted text, links, or structured information in compact overlays
-- Accessibility enhancement for screen readers and keyboard navigation with proper ARIA labeling
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Critical information that users must see to complete tasks (use visible labels or inline text instead)
-- Complex interactive content that requires user input or navigation (use modals or dedicated pages)
-- Information that's needed immediately upon page load (integrate into the main interface design)
-- Mobile interfaces where hover interactions aren't available or touch targets are imprecise
-- Frequently accessed information that users need repeatedly (make it permanently visible)
-- Error messages or validation feedback that requires immediate attention (use inline validation displays)
-- Primary navigation or essential functionality that shouldn't be hidden behind hover states
-- Long-form content that exceeds comfortable tooltip reading length (use expandable sections or separate pages)
+The SolaceTooltip component provides contextual information that appears when users hover over or focus on an element, useful for explaining functionality, providing additional context, or offering helpful hints without cluttering the interface. This tooltip pattern delivers just-in-time information that enhances user understanding without permanent screen real estate cost, helping reduce cognitive load by keeping interfaces clean while making helpful information readily accessible through predictable interaction patterns.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -77,22 +51,80 @@ import { SolaceTooltip } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- Standard Material-UI tooltip theming applies for background, text color, and shadows
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Tooltip text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Tooltip background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.border.w100 - Tooltip border color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding inside tooltip
+- theme.typography.body2 - Base typography for tooltip content
+- theme.shape.borderRadius - Border radius for tooltip container
+- theme.transitions.create(['opacity', 'transform']) - Tooltip animation transitions
+- theme.components.MuiTooltip.styleOverrides.tooltip - Custom tooltip styling
+- theme.components.MuiTooltip.styleOverrides.arrow - Custom arrow styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.tooltip.fade - Opacity transition effect
+- theme.mixins.tooltip.transform - Transform transition for positioning
 
 **Layout Specifications:**
 
 - Default placement: `bottom`
-- Default max width: `small`
+- Default max width: `small` (220px)
 - Default variant: `text`
 - Enter delay: `500ms` (time before showing)
 - Enter next delay: `0ms` (time for subsequent tooltips)
 - Leave delay: `0ms` (time before hiding)
 - Transition: Fade effect with `150ms` enter, `200ms` exit
-- Overflow detection: Automatic for `overflow` variant based on scrollWidth vs clientWidth
+- Overflow detection: Automatic for `overflow` variant (scrollWidth vs clientWidth)
 - Positioning: 12 available positions (top, bottom, left, right with start/end variants)
-- Auto-generated IDs for accessibility when not provided
+- Padding: `8px 16px` (adjustable via theme.spacing)
+- Border radius: `4px` (adjustable via theme.shape.borderRadius)
+- Z-index: 1500 (ensures tooltip appears above other elements)
 
 **Special Behaviors:**
 
@@ -102,6 +134,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Controlled and uncontrolled modes supported
 - Focus and hover listeners can be independently disabled
 - Safari-specific fixes for double tooltip prevention
+- Automatic ARIA attributes for accessibility (describedby, labelledby)
 
 <Subtitle>Stories</Subtitle>
 

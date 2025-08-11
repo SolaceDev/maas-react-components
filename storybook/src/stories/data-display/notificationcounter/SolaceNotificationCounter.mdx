@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceNotificationCounterStories} />
 
-<Title>Solace Notification Counter</Title>
+<Title>Notification Counter</Title>
 
 <Description of={SolaceNotificationCounterStories} />
 
@@ -13,33 +13,9 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceNotificationCounter component provides a visual badge that displays numeric values or short text to indicate counts, status updates, or notifications. It's useful for drawing user attention to important information like unread messages, pending tasks, or system alerts, allowing users to quickly identify areas that require their attention.
+The SolaceNotificationCounter component provides a visual indicator for displaying notification counts, alerts, or status badges. It's useful for showing unread counts, pending items, or status indicators, allowing users to quickly identify areas that require attention while maintaining a clean interface aesthetic.
 
-The component implements an animated notification badge pattern with the purpose of providing immediate visual feedback about quantifiable information. This pattern helps users stay informed about system state changes while offering customizable animations and styling to match different urgency levels and design requirements.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use SolaceNotificationCounter when you need to display numeric values or status indicators that represent countable items or states requiring user attention. This interaction pattern is particularly effective for alerting users to new or updated content without being overly intrusive.
-
-Common use cases include:
-
-- Unread message counts in messaging applications or notification systems
-- Pending task counters in workflow management or todo applications
-- New item indicators for feeds, dashboards, or content management systems
-- Error or warning counts in system monitoring or validation interfaces
-- Shopping cart item counts in e-commerce applications
-- Status badges showing the number of active connections, processes, or system states
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Static information that doesn't change or require user attention (use regular text or labels instead)
-- Complex data that requires more context than a simple number or short text can provide
-- Primary navigation elements where the badge might distract from the main interface flow
-- Large numbers that won't fit comfortably in a circular badge format (consider alternative layouts)
-- Time-sensitive information that requires immediate action (use alerts or modal dialogs for critical notifications)
-- Decorative purposes where the badge doesn't represent actual actionable data
-- Mobile interfaces where small badges might be difficult to read or interact with
-- Accessibility-critical scenarios where color or animation might not be perceivable by all users
+The component implements a notification badge pattern with the purpose of drawing attention to important information or actions that need user attention. This pattern helps users stay informed about system status, pending tasks, or new content without overwhelming the interface with intrusive notifications.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -70,23 +46,74 @@ import { SolaceNotificationCounter } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.mixins.component_NotificationCounter.container` - Badge container styling
-- `theme.mixins.component_NotificationCounter.value` - Text value styling
-- `theme.palette.ux.info.w100` - Pulse animation colors
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FF0000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Background color for error state notifications</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#4CAF50",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.success.wMain - Background color for success state notifications</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.common.white - Text color for notification counter value</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding around counter value
+- theme.typography.body2 - Base typography for counter value
+- theme.components.MuiBadge.styleOverrides.badge - Custom badge styling
+- theme.transitions.create(['transform', 'opacity']) - Animation transitions
+
+Available mixins for consistent styling:
+
+- theme.mixins.notification.pulse - Pulse animation effect
+- theme.mixins.notification.fade - Opacity transition effect
 
 **Layout Specifications:**
 
-- Default size: `21px` (width and height)
-- Default font size: `14px`
-- Default animation duration: `1000ms`
-- Line height: Calculated as `size + 1` pixels
-- Font size calculation: `(size / 3) * 2` when not explicitly set
-- Pulse animation: Scale from 1 to 1.05 with box-shadow effect
-- Initial animation repeats: `1` cycle
-- Update animation repeats: `3` cycles
-- Show/hide opacity transition: Controlled by `showing` state
+- Badge dimensions: `21px` × `21px` (default)
+- Font size: `14px` (default), dynamically calculated as `(size / 3) * 2`
+- Line height: `size + 1px`
+- Animation duration: `1000ms`
+- Pulse animation: Scale 1.00 → 1.05
+- Initial animation: 1 cycle
+- Update animation: 3 cycles
+- Opacity transition: 0 ↔ 1 (controlled by showing state)
 
 <Subtitle>Stories</Subtitle>
 

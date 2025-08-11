@@ -6,13 +6,7 @@ import { SolaceFeatureTag } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Data Display/Badge/Feature",
 	component: SolaceFeatureTag,
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceFeatureTag"
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		text: {
 			control: { type: "text" },
@@ -21,17 +15,6 @@ export default {
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
-			}
-		},
-		hasWarnings: {
-			control: {
-				type: "boolean"
-			},
-			description:
-				"If true, displays the feature tag in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the feature.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
 			}
 		},
 		active: {
@@ -47,7 +30,7 @@ export default {
 			control: { type: "select" },
 			options: ["default", "success", "warning", "error", "info"],
 			description:
-				"The visual variant of the feature tag that determines its color scheme. Use 'success' for stable features, 'warning' for beta features, 'error' for deprecated features, or 'info' for informational tags.",
+				"The visual variant of the feature tag that determines its color scheme. Use 'success' for stable features, 'warning' for beta features, 'error' for deprecated features, or 'info' for informational tags. See enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/states.ts",
 			table: {
 				type: { summary: '"default" | "success" | "warning" | "error" | "info"' },
 				defaultValue: { summary: '"default"' }
@@ -57,7 +40,7 @@ export default {
 			control: { type: "select" },
 			options: ["small", "medium", "large"],
 			description:
-				"The size of the feature tag affecting both font size and padding. Use 'small' for compact layouts, 'medium' for standard use, and 'large' for emphasis.",
+				"The size of the feature tag affecting both font size and padding. Use 'small' for compact layouts, 'medium' for standard use, and 'large' for emphasis. See enum at https://github.com/SolaceLabs/maas-react-components/blob/main/src/types/sizing.ts",
 			table: {
 				type: { summary: '"small" | "medium" | "large"' },
 				defaultValue: { summary: '"medium"' }
@@ -66,11 +49,7 @@ export default {
 		onClick: {
 			control: false,
 			description:
-				"Callback function that fires when the feature tag is clicked. Use this when the tag should trigger an action such as toggling a feature or showing more information.",
-			table: {
-				type: { summary: "(event: React.MouseEvent<HTMLDivElement>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function that fires when the feature tag is clicked. Use this when the tag should trigger an action such as toggling a feature or showing more information."
 		},
 		dataQa: {
 			control: { type: "text" },

@@ -21,11 +21,6 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=19215-2455&p=f&t=FAQR9BgIIAEYGEql-0"
-		},
-		docs: {
-			description: {
-				component: "Code component name: SolaceCard"
-			}
 		}
 	},
 	argTypes: {
@@ -119,19 +114,11 @@ export default {
 		},
 		onClick: {
 			description:
-				"Callback function triggered when the card is clicked. Only functional when readOnly is false. Use this to make the entire card clickable for navigation or selection purposes.",
-			table: {
-				type: { summary: "(event: React.MouseEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when the card is clicked. Only functional when readOnly is false. Use this to make the entire card clickable for navigation or selection purposes."
 		},
 		onKeyDown: {
 			description:
-				"Callback function triggered when a key is pressed while the card has focus. Enables keyboard accessibility for card interactions. Typically used to support Enter and Space key activation.",
-			table: {
-				type: { summary: "(event: React.KeyboardEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function triggered when a key is pressed while the card has focus. Enables keyboard accessibility for card interactions. Typically used to support Enter and Space key activation."
 		},
 		elevation: {
 			control: { type: "number", min: 0, max: 24 },

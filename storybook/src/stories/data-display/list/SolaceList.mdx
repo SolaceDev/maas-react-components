@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceListStories} />
 
-<Title>Solace List</Title>
+<Title>List</Title>
 
 <Description of={SolaceListStories} />
 
@@ -13,29 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace List component provides a simple and flexible way to display collections of items in a vertical list layout. It's a lightweight wrapper around Material-UI's List component that follows Solace design guidelines while maintaining full compatibility with Material-UI's list ecosystem.
-
-The component implements a standard list layout pattern with the purpose of organizing content into a scannable, vertical structure. This pattern is ideal for displaying collections of related items, navigation menus, or any content that benefits from a simple, linear arrangement.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace List when you need to display collections of items in a simple, vertical layout without complex interactions or data management features. This basic list pattern is particularly effective for straightforward content presentation.
-
-Common use cases include:
-
-- Simple navigation menus with list items and buttons
-- Basic content listings without selection or complex interactions
-- Static information displays where items are presented sequentially
-- Foundation for more complex list components when combined with SolaceListItem and SolaceListItemButton
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For data with multi-selection capabilities - use SolaceGridListMultiSelect for checkbox-based selection
-- When you need structured grid layouts - use SolaceGridList for tabular data presentation
-- For complex data tables with sorting and filtering - use SolaceTable for full table functionality
-- When you need advanced list features like virtualization - use SolaceGridList with virtualization options
-- For card-based layouts - use SolaceCard components for richer content presentation
-- When displaying hierarchical data - consider SolaceTree for parent-child relationships
+The SolaceList component provides a flexible list layout for displaying collections of items with customizable styling, selection capabilities, and interactive elements. This versatile list pattern presents collections of related content in an organized, scannable format that helps users navigate through multiple items while providing flexible interaction options and consistent visual styling across different list types and configurations.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -84,21 +62,80 @@ Since SolaceList is a wrapper around Material-UI's List component, it inherits a
 - `.Mui-focusVisible` - Applied during keyboard focus
 
 **Theme Customization:**
-The component uses Material-UI's theme system. Key theme paths for customization:
 
-- `theme.components.MuiList` - Override list component styles
-- `theme.components.MuiListItem` - Override list item styles
-- `theme.components.MuiListItemButton` - Override list item button styles
-- `theme.spacing()` - Control padding and margins
-- `theme.palette` - Control colors and text styling
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - List background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.divider.w100 - List item divider color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Selected item background color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Default padding between list items
+- theme.typography.body1 - Base typography for list items
+- theme.components.MuiList.styleOverrides.root - Custom list container styling
+- theme.components.MuiListItem.styleOverrides.root - Custom list item styling
+- theme.components.MuiListItemButton.styleOverrides.root - Custom button styling
+- theme.transitions.create(['background-color']) - List item hover transitions
+
+Available mixins for consistent styling:
+
+- theme.mixins.list.item - Standard list item styling
+- theme.mixins.list.dense - Compact list item styling
+- theme.mixins.list.button - Interactive list item styling
 
 **Layout Specifications:**
 
-- Default vertical layout with flex column direction
-- Automatic spacing between items based on Material-UI defaults
-- Dense mode reduces vertical padding for more compact display
-- Subheader support for section grouping
-- Full width container by default with optional custom styling via sx prop
+- Default padding: `8px` (theme.spacing(1))
+- Dense mode padding: `4px` (theme.spacing(0.5))
+- Item height: `48px` (standard), `32px` (dense)
+- Divider thickness: `1px`
+- Gutter spacing: `16px` (theme.spacing(2))
+- Flex direction: column
+- Width: 100% of container
+- Subheader height: `48px`
+- Hover state opacity: 0.04
+- Selected state opacity: 0.08
 
 <Subtitle>Stories</Subtitle>
 

@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceFeatureTagStories} />
 
-<Title>Solace Feature Tag</Title>
+<Title>Feature Tag</Title>
 
 <Description of={SolaceFeatureTagStories} />
 
@@ -13,33 +13,15 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The SolaceFeatureTag component provides a small, distinctive label for indicating feature status, development phases, or special designations. It's useful for communicating the maturity level of features, highlighting new functionality, or marking experimental capabilities, allowing users to understand the status and stability of different product features.
+The SolaceFeatureTag component provides a visual indicator for displaying feature states, release stages, or development status with customizable styling and colors. This feature status pattern helps users understand what to expect from different features while maintaining consistent visual styling across different feature states and development stages, allowing users to quickly identify and understand the current state or maturity level of features and functionality.
 
-The component implements a minimal feature indicator pattern with the purpose of providing clear visual communication about feature states. This pattern helps set user expectations about functionality while maintaining a clean, unobtrusive design that doesn't interfere with the main interface.
+<Subtitle>Usage Guidelines</Subtitle>
 
-<Subtitle>When To Use It</Subtitle>
+**Visual Design & Accessibility Guidelines:**
 
-Use SolaceFeatureTag when you need to communicate feature status or special designations that help users understand the maturity or characteristics of functionality. This interaction pattern is particularly effective for product development contexts and feature rollouts.
-
-Common use cases include:
-
-- Development phase indicators like "BETA", "ALPHA", or "PREVIEW" to communicate feature maturity levels
-- New feature announcements with "NEW" or "UPDATED" tags to draw attention to recent additions
-- Experimental feature marking with "EXPERIMENTAL" or "LABS" to set appropriate user expectations
-- Feature availability indicators like "PRO", "PREMIUM", or "ENTERPRISE" for tiered functionality
-- Status communication for "DEPRECATED" or "LEGACY" features that may be phased out
-- Special designation markers for "RECOMMENDED", "POPULAR", or "FEATURED" content or features
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- General content categorization where regular tags or labels would be more appropriate
-- Interactive elements that require user actions (use buttons or interactive components instead)
-- Primary status indicators for critical system states (use status badges or alerts for important information)
-- Large amounts of descriptive text that wouldn't fit in a small tag format
-- Permanent feature states that don't need special designation (integrate into normal UI patterns)
-- Mobile interfaces where very small text might be difficult to read
-- Contexts where the tag might be confused with actionable elements
-- Accessibility scenarios where color-only differentiation might not be perceivable by all users
+- **Contrast**: Ensure sufficient contrast between the tag's text/border and its background, especially when customizing colors.
+- **Sizing**: Choose appropriate size based on context and surrounding elements
+- **Placement**: Position consistently within feature lists, navigation, or content areas
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -67,11 +49,52 @@ import { SolaceFeatureTag } from "@SolaceDev/maas-react-components";
 
 **Theme Customization:**
 
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
-- `theme.palette.ux.secondary.text.w50` - Default border and text color
-- `theme.palette.ux.primary.wMain` - Active state border and text color
-- `theme.spacing()` - Consistent spacing for border radius and padding
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.5)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.w50 - Default border and text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Active state border and text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and border radius (e.g., theme.spacing(0.5) for border radius)
+- theme.typography.[VARIANT] - Text styles for tag content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for tag container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for tag text
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in tag groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
 
 **Layout Specifications:**
 
@@ -85,6 +108,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Box sizing: `border-box`
 - Default colors: Secondary text at 50% opacity
 - Active colors: Primary brand color
+- Transition timeout: `200ms`
 
 <Subtitle>Stories</Subtitle>
 
