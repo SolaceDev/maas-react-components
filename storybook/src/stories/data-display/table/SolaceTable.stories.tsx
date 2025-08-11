@@ -237,186 +237,46 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2558%3A9993"
-		}
-	},
-	argTypes: {
-		id: {
-			control: { type: "text" },
-			description:
-				"Unique identifier for the Table component. Used for accessibility and programmatic access to the table instance.",
-			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+		},
+		docs: {
+			description: {
+				component: "Table component for reuse in all Solace based applications. Code component name: SolaceTable"
 			}
 		},
-		rows: {
-			control: { type: "object" },
-			description:
-				"Array of data objects to be displayed in the table. Each object should have an 'id' field and properties that correspond to the column field names.",
-			table: {
-				type: { summary: "SolaceTableRow[]" },
-				defaultValue: { summary: "[]" }
+		argTypes: {
+			id: {
+				control: { type: "text" },
+				description: "Unique identifier for the Table component"
+			},
+			rows: {
+				control: { type: "array" },
+				description: "Array of items to be displayed"
+			},
+			columns: {
+				control: { type: "array" },
+				description: "Array of columns to be rendered"
+			},
+			selectionType: {
+				options: [SolaceTableSelectionType.NONE, SolaceTableSelectionType.SINGLE, SolaceTableSelectionType.MULTI],
+				control: { type: "select" },
+				description: "Table selection types"
+			},
+			loading: {
+				control: { type: "boolean" },
+				description: "Whether the table is in loading state, if true, a loading spinner will be displayed"
+			},
+			loadingMessage: {
+				control: { type: "text" },
+				description: "Specify a loading message if the table is in loading state"
+			},
+			selectionChangedCallback: {
+				control: false,
+				description: "Selection changed callback"
+			},
+			sortCallback: {
+				control: false,
+				description: "Sort callback when sorted column change is requested"
 			}
-		},
-		columns: {
-			control: { type: "object" },
-			description:
-				"Array of column definitions that determine how data is displayed. Each column specifies field mapping, display name, sorting capabilities, and visibility options.",
-			table: {
-				type: { summary: "SolaceTableColumn[]" },
-				defaultValue: { summary: "[]" }
-			}
-		},
-		selectionType: {
-			options: [SolaceTableSelectionType.NONE, SolaceTableSelectionType.SINGLE, SolaceTableSelectionType.MULTI],
-			control: { type: "select" },
-			description:
-				"Determines the row selection behavior. 'NONE' disables selection, 'SINGLE' allows one row selection, 'MULTI' enables multiple row selection with checkboxes.",
-			table: {
-				type: { summary: '"NONE" | "SINGLE" | "MULTI"' },
-				defaultValue: { summary: '"NONE"' }
-			}
-		},
-		loading: {
-			control: { type: "boolean" },
-			description:
-				"When true, displays a loading spinner overlay on the table. Use this during data fetching or processing operations to provide user feedback.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
-			}
-		},
-		loadingMessage: {
-			control: { type: "text" },
-			description:
-				"Custom message to display alongside the loading spinner. Provides context about what operation is in progress.",
-			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		selectionChangedCallback: {
-			control: false,
-			description:
-				"Callback function fired when row selection changes. Receives an array of selected row IDs. Use this to handle selection state in parent components."
-		},
-		sortCallback: {
-			control: false,
-			description:
-				"Callback function fired when column sorting is requested. Receives the column definition and sort direction. Implement custom sorting logic here."
-		},
-		selectedRowIds: {
-			control: { type: "object" },
-			description:
-				"Controlled state for selected rows. Array of row IDs that should be selected. Use this for external control of table selection state.",
-			table: {
-				type: { summary: "string[]" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		disabledRowIds: {
-			control: { type: "object" },
-			description:
-				"Array of row IDs that should be disabled and non-selectable. Disabled rows appear muted and cannot be selected by users.",
-			table: {
-				type: { summary: "string[]" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		independentRowHighlight: {
-			control: { type: "boolean" },
-			description:
-				"When true in MULTI selection mode, row highlighting is handled independently of checkbox selection. Allows separate visual highlighting and selection states.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
-			}
-		},
-		highlightedRowId: {
-			control: { type: "text" },
-			description:
-				"Controlled state for the currently highlighted row. Use this to programmatically highlight specific rows for focus or navigation purposes.",
-			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		hasColumnHiding: {
-			control: { type: "boolean" },
-			description:
-				"Enables column visibility controls, allowing users to show/hide columns through the table interface. Provides a column management menu.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
-			}
-		},
-		maxHeight: {
-			control: { type: "text" },
-			description:
-				"Maximum height constraint for the table container. Can be specified in any CSS unit. When exceeded, the table becomes scrollable.",
-			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		minHeight: {
-			control: { type: "text" },
-			description:
-				"Minimum height constraint for the table container. Can be specified in any CSS unit. Ensures consistent layout even with few rows.",
-			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		crossPageRowSelectionSupported: {
-			control: { type: "boolean" },
-			description:
-				"Enables selection persistence across pagination. When true, selected rows remain selected when navigating between pages in multi-selection mode.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
-			}
-		},
-		totalObjectCount: {
-			control: { type: "number" },
-			description:
-				"Total number of objects across all pages. Required for cross-page selection features and accurate selection count displays.",
-			table: {
-				type: { summary: "number" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		allPagesSelectedByDefault: {
-			control: { type: "boolean" },
-			description:
-				"When true, all pages are considered selected by default in cross-page selection mode. Users can then deselect specific items as needed.",
-			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
-			}
-		},
-		emptyStateMessage: {
-			control: { type: "text" },
-			description:
-				"Message to display when the table has no data. Provides user guidance when no results are available.",
-			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		rowActionMenuItems: {
-			control: false,
-			description:
-				"Array of action menu items for each row. Provides contextual actions like edit, delete, or view details accessible via row menu.",
-			table: {
-				type: { summary: "SolaceTableActionMenuItem[]" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		onRowClick: {
-			control: false,
-			description:
-				"Callback function fired when a table row is clicked. Receives the clicked row data. Use this for row navigation or detailed view actions."
 		}
 	}
 } as Meta<typeof SolaceTable>;
@@ -1247,7 +1107,7 @@ const ExpandableRowTableTemplate = ({
 		setDisplayedColumns(columns);
 	}, []);
 
-	const [expandedRowIds, setExpandedRowIds] = useState<string>(
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(
 		Array.isArray(initialExpandedRowIds) ? initialExpandedRowIds : []
 	);
 	const renderExpandedRowContent = useCallback(
@@ -1469,7 +1329,7 @@ const ExpandableRowMultiSelectionIndependentRowHighlightTemplate = ({
 		[data]
 	);
 
-	const [expandedRowIds, setExpandedRowIds] = useState<string>(
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(
 		Array.isArray(initialExpandedRowIds) ? initialExpandedRowIds : []
 	);
 	const renderExpandedRowContent = useCallback(
@@ -2102,7 +1962,7 @@ const MultiSelectionTableWithCrossPagesRowSelectionTemplate = ({
 		});
 	}, [columns]);
 	const [tableRows, setRows] = useState(data);
-	const [expandedRowIds, setExpandedRowIds] = useState<string>(
+	const [expandedRowIds, setExpandedRowIds] = useState<string[]>(
 		Array.isArray(initialExpandedRowIds) ? initialExpandedRowIds : []
 	);
 	const [selectedRowIds, setSelectedRowIds] = useState<string[]>(initialSelectedRowIds ?? []);

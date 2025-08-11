@@ -1,6 +1,3 @@
-<<<<<<< HEAD:storybook/src/stories/messaging/learningBanner/SolaceLearningBanner.stories.tsx
-/* eslint-disable sonarjs/no-duplicate-string */
-=======
 /*
  * Copyright 2023-2025 Solace Systems. All rights reserved.
  *
@@ -16,8 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
->>>>>>> main:storybook/src/stories/messaging/SolaceLearningBanner.stories.tsx
+/* eslint-disable sonarjs/no-duplicate-string */
 import React, { ReactNode } from "react";
 import { Meta } from "@storybook/react";
 import { SolaceButton, SolaceLearningBanner } from "@SolaceDev/maas-react-components";

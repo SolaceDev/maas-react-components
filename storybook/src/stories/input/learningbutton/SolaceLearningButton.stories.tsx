@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 /*
  * Copyright 2023-2025 Solace Systems. All rights reserved.
  *

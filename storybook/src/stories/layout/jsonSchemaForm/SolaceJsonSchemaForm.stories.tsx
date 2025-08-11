@@ -1,7 +1,3 @@
-<<<<<<< HEAD:storybook/src/stories/layout/jsonSchemaForm/SolaceJsonSchemaForm.stories.tsx
-import React from "react";
-=======
-import { expect } from "@storybook/jest";
 /*
  * Copyright 2023-2025 Solace Systems. All rights reserved.
  *
@@ -17,8 +13,8 @@ import { expect } from "@storybook/jest";
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
->>>>>>> main:storybook/src/stories/layout/SolaceJsonSchemaForm.stories.tsx
+import React from "react";
+import { expect } from "@storybook/jest";
 import { SolaceJsonSchemaForm } from "@SolaceDev/maas-react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";

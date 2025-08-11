@@ -13,8 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { useState } from "react";
-import { SolaceStepper, DeleteIcon, StepsProps, Box, StepContentOverflow } from "@SolaceDev/maas-react-components";
+
+import { Delete24Icon } from "@SolaceDev/maas-icons";
+import {
+	Box,
+	SolaceButton,
+	SolaceConfirmationDialog,
+	SolaceStepper,
+	StepProp,
+	StepsProps,
+	useTheme
+} from "@SolaceDev/maas-react-components";
+import { expect } from "@storybook/jest";
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
 import React, { ReactNode, useMemo, useState } from "react";
@@ -28,83 +38,15 @@ const meta: Meta<typeof SolaceStepper> = {
 	title: "Navigation/Step Form",
 	component: SolaceStepper,
 	parameters: {
+		docs: {
+			story: { height: "300px" },
+			description: {
+				component: "Code component name: SolaceStepper"
+			}
+		},
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/FsVh1zud1IAaXHRn9oIkB7/DATAGOMILE-154---Connector-Flows-Phase-1?type=design&node-id=1096-6315&mode=design&t=IlWw05RJHzNzB8Mi-0"
-		}
-	},
-	args: {
-		steps: [],
-		activeStep: 0,
-		setActiveStep: undefined,
-		onClose: undefined,
-		onSubmit: undefined,
-		submitLabel: "Submit",
-		stepContentOverflow: StepContentOverflow.Auto,
-		disableSubmit: false,
-		onSecondarySubmit: undefined,
-		secondarySubmitLabel: ""
-	},
-	argTypes: {
-		steps: {
-			control: "object",
-			description: "Array of step objects",
-			table: {
-				defaultValue: { summary: "[]" }
-			}
-		},
-		activeStep: {
-			control: "number",
-			description: "Index of the current active step",
-			table: {
-				defaultValue: { summary: "0" }
-			}
-		},
-		setActiveStep: {
-			action: "setActiveStep",
-			description: "Function to set the active step"
-		},
-		onClose: {
-			action: "onClose",
-			description: "Function called when stepper is closed"
-		},
-		onSubmit: {
-			action: "onSubmit",
-			description: "Function called when stepper is submitted"
-		},
-		submitLabel: {
-			control: "text",
-			description: "Label for the submit button",
-			table: {
-				defaultValue: { summary: '"Submit"' }
-			}
-		},
-		stepContentOverflow: {
-			control: "select",
-			options: Object.values(StepContentOverflow),
-			description:
-				"Controls how content overflows within each step. Uses StepContentOverflow enum from https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceStepper.ts",
-			table: {
-				defaultValue: { summary: "StepContentOverflow.Auto" }
-			}
-		},
-		disableSubmit: {
-			control: "boolean",
-			description: "Whether to disable the submit button",
-			table: {
-				defaultValue: { summary: "false" }
-			}
-		},
-		onSecondarySubmit: {
-			action: "onSecondarySubmit",
-			description: "Function called for secondary submit action"
-		},
-		secondarySubmitLabel: {
-			control: "text",
-			description: "Label for the secondary submit button",
-			table: {
-				defaultValue: { summary: '""' }
-			}
 		}
 	}
 };
@@ -197,8 +139,6 @@ const ComponentWithSecondaryButtonOnLastStep = ({ ...args }) => {
 	);
 };
 
-<<<<<<< HEAD:storybook/src/stories/navigation/stepper/SolaceStepper.stories.tsx
-=======
 const ComponentWithSecondaryButtonOnNonLastStep = ({ ...args }) => {
 	const [activeStep, setActiveStep] = useState(0);
 
@@ -221,21 +161,9 @@ const ComponentWithSecondaryButtonOnNonLastStep = ({ ...args }) => {
 	);
 };
 
->>>>>>> main:storybook/src/stories/navigation/SolaceStepper.stories.tsx
 export const Primary: Story = {
 	render: Component,
-	args: {
-		steps: initialSteps,
-		activeStep: 0,
-		setActiveStep: undefined,
-		onClose: undefined,
-		onSubmit: undefined,
-		submitLabel: "Submit",
-		stepContentOverflow: StepContentOverflow.Auto,
-		disableSubmit: false,
-		onSecondarySubmit: undefined,
-		secondarySubmitLabel: undefined
-	}
+	args: { steps: initialSteps }
 };
 
 const errorAndSuccess: StepsProps = [
@@ -246,18 +174,7 @@ const errorAndSuccess: StepsProps = [
 
 export const ErrorAndSuccess: Story = {
 	render: Component,
-	args: {
-		steps: errorAndSuccess,
-		activeStep: 0,
-		setActiveStep: () => {},
-		onClose: onCloseAlert,
-		onSubmit: onSubmitAlert,
-		submitLabel: "Submit",
-		stepContentOverflow: StepContentOverflow.Auto,
-		disableSubmit: false,
-		onSecondarySubmit: undefined,
-		secondarySubmitLabel: undefined
-	}
+	args: { steps: errorAndSuccess }
 };
 
 const errorOnCurrentStep: StepsProps = [
@@ -269,40 +186,12 @@ const errorOnCurrentStep: StepsProps = [
 
 export const ErrorOnCurrentStepAndSubmitDisabled: Story = {
 	render: Component,
-	args: {
-		steps: errorOnCurrentStep,
-		activeStep: 0,
-		setActiveStep: () => {},
-		onClose: onCloseAlert,
-		onSubmit: onSubmitAlert,
-		submitLabel: "Submit",
-		stepContentOverflow: StepContentOverflow.Auto,
-		disableSubmit: true,
-		onSecondarySubmit: undefined,
-		secondarySubmitLabel: undefined
-	}
+	args: { steps: errorOnCurrentStep, disableSubmit: true }
 };
 
-<<<<<<< HEAD:storybook/src/stories/navigation/stepper/SolaceStepper.stories.tsx
-export const SecondaryButtonEnabled: Story = {
-	render: ComponentWithSecondaryButton,
-	args: {
-		steps: initialSteps,
-		activeStep: 0,
-		setActiveStep: () => {},
-		onClose: onCloseAlert,
-		onSubmit: onSubmitAlert,
-		submitLabel: "Submit",
-		stepContentOverflow: StepContentOverflow.Auto,
-		disableSubmit: false,
-		onSecondarySubmit: onSecondarySubmitAlert,
-		secondarySubmitLabel: "Secondary Submit"
-	}
-=======
 export const SecondaryButtonOnLastStep: Story = {
 	render: ComponentWithSecondaryButtonOnLastStep,
 	args: { steps: initialSteps }
->>>>>>> main:storybook/src/stories/navigation/SolaceStepper.stories.tsx
 };
 
 export const SecondaryButtonOnNonLastStep: Story = {

@@ -30,7 +30,7 @@ import {
 import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import { DefaultTable } from "../../data-display/SolaceTable.stories";
+import { DefaultTable } from "../../data-display/table/SolaceTable.stories";
 
 (SolaceConfirmationDialog as React.FC & { displayName?: string }).displayName = "SolaceConfirmationDialog";
 (SolaceSelect as React.FC & { displayName?: string }).displayName = "SolaceSelect";

@@ -1,5 +1,4 @@
-<<<<<<< HEAD:storybook/src/stories/layout/sidePanelLayout/SolaceSidePanelLayout.stories.tsx
-=======
+/* eslint-disable sonarjs/no-duplicate-string */
 /*
  * Copyright 2023-2025 Solace Systems. All rights reserved.
  *
@@ -17,7 +16,6 @@
  */
 
 /* eslint-disable react/no-unescaped-entities */
->>>>>>> main:storybook/src/stories/layout/SolaceSidePanelLayout.stories.tsx
 import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 import {
