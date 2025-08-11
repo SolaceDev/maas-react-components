@@ -3,6 +3,11 @@ name: Publish MRC website
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      artifact-url:
+        description: "The URL of the merged reports artifact"
+        required: false
+        type: string
   push:
     branches:
       - "main"
@@ -25,6 +30,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download merged reports artifact
+        if: ${{ inputs.artifact-url }}
+        uses: actions/download-artifact@v4
+        with:
+          name: merged-reports
+          path: merged-reports-artifact
+
+      - name: Move merged reports to static assets
+        if: ${{ inputs.artifact-url }}
+        run: |
+          mv merged-reports-artifact/merged-reports.zip ./storybook/website-merge/static/
 
       - name: Setup node
         uses: actions/setup-node@v3

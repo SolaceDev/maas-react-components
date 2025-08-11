@@ -115,14 +115,19 @@ jobs:
 
         working-directory: maas-react-components-repo/tools/mrc-usage-report-json-splitter
 
+      - name: Prepare artifact
+        run: |
+          mkdir -p artifact
+          cp maas-react-components-repo/tools/mrc-usage-report/reports/*.html artifact/
+          cp maas-react-components-repo/tools/mrc-usage-report/reports/*.json artifact/
+          cp -r maas-react-components-repo/mrc-usage-report-data artifact/
+
       - name: Upload merged reports
         id: merged-reports-artifact
         uses: actions/upload-artifact@v4
         with:
           name: merged-reports
-          path: |
-            maas-react-components-repo/tools/mrc-usage-report/reports/
-            maas-react-components-repo/mrc-usage-report-data
+          path: artifact/
 
       - name: Validate generated report
         working-directory: maas-react-components-repo/tools/mrc-usage-report
@@ -140,8 +145,7 @@ jobs:
           mv mrc-usage-report-data-new mrc-usage-report-data
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git status
+          git add mrc-usage-report-data
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
@@ -154,7 +158,8 @@ jobs:
         run: |
           echo "Link to merged reports: ${{ steps.merged-reports-artifact.outputs.artifact-url }}"
 
-      # - name: Call website publisher
-      #   uses: ./.github/workflows/publish-mrc-website.yml
-      #   with:
-      #     ref: feature/mrc-usage-report-data
+      - name: Call website publisher
+        uses: ./.github/workflows/publish-mrc-website.yml
+        with:
+          ref: feature/mrc-usage-report-data
+          artifact-url: ${{ steps.merged-reports-artifact.outputs.artifact-url }}

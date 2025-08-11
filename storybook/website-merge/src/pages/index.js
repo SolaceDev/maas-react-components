@@ -55,7 +55,11 @@ function HomepageHeader() {
 					<h1 className="hero__title">{"Reports"}</h1>
 					<p className="hero__subtitle">{"MRC usage reports"}</p>
 					<div className={styles.buttons}>
-						<a className="button button--secondary button--lg" href="/merged-reports.zip" download>
+						<a
+							className="button button--secondary button--lg"
+							href="https://SolaceDev.github.io/maas-react-components/merged-reports.zip"
+							download
+						>
 							Download Merged Reports
 						</a>
 					</div>
