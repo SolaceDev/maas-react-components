@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - "main"
-
 permissions:
   contents: write
   packages: write
@@ -27,19 +26,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Checkout SolaceDev/maas-build-actions
-        uses: actions/checkout@v4
-        with:
-          repository: SolaceDev/maas-build-actions
-          ref: refs/heads/master
-          path: maas-build-actions
-          token:
-            ${{ secrets.PACKAGES_ADMIN_TOKEN }}
-            #Packages Github token is required to checkout the private repository
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
+
       - name: Install dependencies
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
@@ -62,53 +53,21 @@ jobs:
           workingDir: storybook
           exitZeroOnChanges: false
 
+      - name: Run FOSSA Scan
+        uses: fossas/fossa-action@v1.7.0 # Use a specific version if locking is preferred
+        continue-on-error: true
+        with:
+          api-key: ${{secrets.FOSSA_API_KEY}}
+
       - name: Perform WhiteSource Scan
         id: whitesource_scan
-        uses: ./maas-build-actions/.github/actions/whitesource-scan
+        uses: SolaceDev/solace-public-workflows/.github/actions/whitesource-scan@main
         continue-on-error: true
         with:
           whitesource_api_key: ${{ secrets.WHITESOURCE_API_KEY }}
-          whitesource_product_name: "maas_libraries"
+          whitesource_product_name: ${{ vars.WHITESOURCE_PRODUCT_NAME }}
           whitesource_project_name: ${{ github.event.repository.name }}
           target_directory: "."
-
-      - name: Get Commit Message
-        id: get_commit_message
-        run: |
-          echo "commit_message=$(git log --oneline -1)" >> $GITHUB_OUTPUT
-
-      - name: Whitesource Alerts Report
-        uses: ./maas-build-actions/.github/actions/whitesource-alerts-checker
-        continue-on-error: true
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          ws_api_key: ${{ secrets.WHITESOURCE_API_KEY }}
-          ws_project_token: ${{ secrets.WHITESOURCE_PROJECT_TOKEN }}
-          build_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
-          branch: "${{ github.ref_name }}"
-          commit_message: "${{ steps.get_commit_message.outputs.commit_message }}"
-          ws_scan_duration: "${{ env.scan_duration }}"
-          ws_product_name: "maas_libraries"
-          ws_project_name: "${{ github.event.repository.name }}"
-          ws_repo_name: "${{ github.event.repository.name }}"
-          fail_if_policy_violations_found: "True"
-          s3_log_path: "s3://solace-cloud-ci-logs/${{ github.event.repository.name }}/${{ github.event.repository.name }}-whitesource-scan-${{ github.sha }}.txt"
-
-      - name: Whitesource Failure Notification
-        if: failure() && steps.whitesource_scan.outcome == 'failure'
-        uses: ./maas-build-actions/.github/actions/build-finish-notifier
-        with:
-          workflow_title: "${{ github.event.repository.name }} - Whitesource Scan Failure"
-          run_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
-          notify_channel: "#whitesource-scans-updates,#devsecops-security-event-incident"
-          auto_slack_channel: "False"
-
-      - name: Build Notification
-        if: failure()
-        uses: ./maas-build-actions/.github/actions/build-finish-notifier
-        with:
-          workflow_title: "${{ github.event.repository.name }} ${{ github.workflow }}"
-          run_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
 
   bump-version:
     needs: chromatic-deployment
@@ -119,12 +78,14 @@ jobs:
         uses: "actions/checkout@v4"
         with:
           ref: ${{ github.ref }}
-          token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: "cat package.json"
         run: cat ./package.json
 
       - name: "Automated Version Bump"
+        id: bump
         uses: "phips28/gh-action-bump-version@master"
         with:
           minor-wording: "solaceminor,SolaceMinor,SOLACEMINOR"
@@ -132,8 +93,30 @@ jobs:
           patch-wording: "solacepatch,SolacePatch,SOLACEPATCH"
           tag-prefix: ""
           commit-message: "CI: bumps version to {{version}} [skip ci]" # Add skip ci tag
+          skip-push: "true"
         env:
           #Required for version bumping and by-passing branch protection
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: "cat package.json"
         run: cat ./package.json
+
+      - name: Set up SSH agent
+        if: steps.bump.outputs.newTag != ''
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.COMMIT_KEY }}
+
+      # The git push command, now authenticated with the SSH key
+      - name: Push new version and tag
+        if: steps.bump.outputs.newTag != ''
+        run: |
+          # The `phips28` action will have already committed the changes.
+          # We just need to push them to the remote.
+          # NOTE: The email "41898282+github-actions[bot]@users.noreply.github.com" is required
+          # so that GitHub recognizes the commit as made by the GitHub Actions bot,
+          # which helps with permissions and attribution.
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin git@github.com:${{ github.repository }}.git
+          git push origin main
+          git push origin ${{ steps.bump.outputs.newTag }}

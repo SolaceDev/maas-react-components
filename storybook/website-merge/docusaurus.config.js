@@ -1,3 +1,19 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /* eslint-disable sonarjs/no-duplicate-string */
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
@@ -12,10 +28,10 @@ const config = {
 	favicon: "img/solaceLogo.png",
 
 	// Set the production url of your site here
-	url: "https://solid-garbanzo-f65ff422.pages.github.io",
+	url: "https://solacedev.github.io",
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: "/",
+	baseUrl: "/maas-react-components/",
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
