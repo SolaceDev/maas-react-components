@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceSidePanelLayoutStories} />
 
-<Title>Solace Side Panel Layout</Title>
+<Title>Side Panel Layout</Title>
 
 <Description of={SolaceSidePanelLayoutStories} />
 
@@ -13,33 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Side Panel Layout component provides a flexible container that manages a main content area alongside an optional collapsible side panel. The side panel can appear from either the left or right edge and can be configured to either overlay the main content or push it aside. This component is essential for creating responsive layouts that need to accommodate secondary content or navigation without losing focus on the primary interface.
-
-The component implements a drawer pattern with the purpose of providing contextual information, navigation, or additional tools while maintaining the main workflow. It supports both persistent and temporary panel modes, making it adaptable to various use cases and screen sizes.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Side Panel Layout when you need to display supplementary content alongside your main interface without navigating away from the current context. This layout pattern is particularly effective for responsive applications that need flexible content organization.
-
-Common use cases include:
-
-- Application navigation where the side panel contains menu items, user profile, or app-level settings
-- Detail views where the main content shows a list and the side panel displays detailed information about selected items
-- Configuration interfaces where the main area shows content and the side panel contains settings or controls
-- Dashboard layouts where the side panel houses filters, search, or secondary data while the main area displays primary metrics
-- Documentation or help systems where the side panel contains table of contents or related topics
-- Multi-step workflows where the side panel shows progress, navigation, or contextual assistance
-- Content editing interfaces where the side panel provides tools, properties, or preview functionality
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For simple modal dialogs or overlays - use SolacePopover or Material-UI Dialog components instead
-- When the secondary content is brief and doesn't warrant a dedicated panel - consider using tooltips or inline expansion
-- For mobile-first applications where screen real estate is limited - consider full-screen navigation or bottom sheet patterns
-- When the side content is the primary focus - restructure to make it the main content area instead
-- For temporary notifications or alerts - use SolaceToasts or notification components
-- When users need to compare content side-by-side equally - use SolaceSplitPane for balanced layouts
-- For complex multi-panel layouts - consider custom grid layouts or specialized dashboard components
+The Solace Side Panel Layout component provides a flexible container that manages a main content area alongside an optional collapsible side panel, where the side panel can appear from either the left or right edge and can be configured to either overlay the main content or push it aside, making it essential for creating responsive layouts that need to accommodate secondary content or navigation without losing focus on the primary interface. The component implements a drawer pattern with the purpose of providing contextual information, navigation, or additional tools while maintaining the main workflow and supports both persistent and temporary panel modes, making it adaptable to various use cases and screen sizes.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -80,23 +54,85 @@ import { SolaceSidePanelLayout, SolacePanelPosition } from "@SolaceDev/maas-reac
 - `.main` - Main content area that responds to panel state changes
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace transitions:
 
-- Panel transition duration: `theme.transitions.duration.enteringScreen` (225ms) for opening
-- Panel transition duration: `theme.transitions.duration.leavingScreen` (195ms) for closing
-- Panel transition easing: `theme.transitions.easing.easeOut` for smooth animations
-- Default panel width: `320px` when no width is specified
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.paper - Side panel background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Side panel text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.5)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.action.active - Backdrop color (when overlay is active)</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiDrawer.styleOverrides.root - Customize the root drawer container
+- theme.components.MuiDrawer.styleOverrides.paper - Customize the drawer paper (panel content)
+- theme.components.MuiBackdrop.styleOverrides.root - Customize the backdrop overlay
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
-- Container display: `flex` with full width and height (`100%`)
-- Container position: `relative` with `overflow: hidden` for proper clipping
-- Panel width transition: `0.25s` for smooth width changes when toggling
-- Panel positioning: `absolute` within the container for proper layering
+- Container display: flex with full width and height (100%)
+- Container position: relative with overflow: hidden for proper clipping
+- Panel width transition: 0.25s for smooth width changes when toggling
+- Panel positioning: absolute within the container for proper layering
 - Main content margin: Dynamic based on panel state, position, and overlay mode
-- Flex direction: `row-reverse` when panel is positioned on the right side
+- Flex direction: row-reverse when panel is positioned on the right side
 - Panel paper width: Consistent with sidePanelWidth prop for proper sizing
-- Backdrop display: `none` when using persistent (non-overlay) mode
+- Backdrop display: none when using persistent (non-overlay) mode
+
+**Transition Specifications:**
+
+- Panel transition duration (opening): theme.transitions.duration.enteringScreen (225ms)
+- Panel transition duration (closing): theme.transitions.duration.leavingScreen (195ms)
+- Panel transition easing: theme.transitions.easing.easeOut for smooth animations
+- Default panel width: 320px when no width is specified
+
+**Accessibility Considerations:**
+
+- Proper focus management when opening/closing the panel
+- Keyboard navigation support for panel content
+- ARIA attributes for describing the panel's state (expanded/collapsed)
+- Screen reader announcements for panel open/close actions
 
 <Subtitle>Stories</Subtitle>
 

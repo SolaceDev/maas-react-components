@@ -22,7 +22,7 @@ export default {
 			options: [CHIP_VARIANT.FILLED, CHIP_VARIANT.OUTLINED],
 			control: { type: "radio" },
 			description:
-				"The visual style variant of the input chip. 'filled' provides a solid background for high visibility, while 'outlined' provides a border-only style for more subtle appearance.",
+				"The visual style variant of the input chip. 'filled' provides a solid background for high visibility, while 'outlined' provides a border-only style for more subtle appearance. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceChip.ts",
 			table: {
 				type: { summary: '"filled" | "outlined"' },
 				defaultValue: { summary: '"filled"' }
@@ -50,7 +50,7 @@ export default {
 			options: [MODES.LIGHT_MODE, MODES.DARK_MODE],
 			control: { type: "radio" },
 			description:
-				"The color mode for the input chip. Controls the overall color scheme to match the application's theme.",
+				"The color mode for the input chip. Controls the overall color scheme to match the application's theme. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/modes.ts",
 			table: {
 				type: { summary: '"light" | "dark"' },
 				defaultValue: { summary: '"light"' }
@@ -60,7 +60,7 @@ export default {
 			options: [STATUSES.NO_STATUS, STATUSES.ERROR_STATUS],
 			control: { type: "radio" },
 			description:
-				"The validation status of the input chip. Use 'error' to indicate invalid input that needs user attention.",
+				"The validation status of the input chip. Use 'error' to indicate invalid input that needs user attention. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/statuses.ts",
 			table: {
 				type: { summary: '"no-status" | "error"' },
 				defaultValue: { summary: '"no-status"' }

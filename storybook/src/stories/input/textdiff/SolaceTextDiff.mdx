@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceTextDiffStories} />
 
-<Title>Solace Text Diff</Title>
+<Title>Text Diff</Title>
 
 <Description of={SolaceTextDiffStories} />
 
@@ -13,30 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Text Diff component is a specialized component for displaying differences between two text strings in a side-by-side format. It utilizes the diff2html library to generate a visually appealing and easy-to-understand comparison view, highlighting additions, deletions, and modifications between the two text versions.
-
-This component is particularly useful for comparing code snippets, JSON data, or any textual content where users need to clearly see what has changed between two versions. It provides a familiar diff view similar to what developers see in version control systems.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Text Diff in the following scenarios:
-
-- Comparing two versions of code or configuration files
-- Displaying changes in JSON or other structured text data
-- Showing before/after comparisons in a review process
-- Highlighting modifications in text-based content
-- When users need to understand what has changed between two text versions
-- In dialogs or panels where text differences need to be reviewed
-- For code review interfaces or change tracking systems
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For comparing binary files or non-text content
-- When a simple text display is sufficient (use standard text components instead)
-- For real-time text comparison (the component is better suited for static comparisons)
-- When you need to compare more than two versions simultaneously
-- If you need to show inline differences rather than side-by-side comparison
-- When the text differences are very minor and a simpler highlight would suffice
+The Solace Text Diff component is a specialized component for displaying differences between two text strings in a side-by-side format, utilizing the diff2html library to generate a visually appealing and easy-to-understand comparison view that highlights additions, deletions, and modifications between the two text versions. This component is particularly useful for comparing code snippets, JSON data, or any textual content where users need to clearly see what has changed between two versions, providing a familiar diff view similar to what developers see in version control systems.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -72,11 +49,75 @@ import { SolaceTextDiff } from "@SolaceDev/maas-react-components";
 - `.d2h-emptyplaceholder` - Empty line placeholder styling
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.secondary.w40` - Border color
-- `theme.palette.ux.background.w20` - Line number background
-- `theme.palette.ux.secondary.text.wMain` - Line number text color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Border color for diff containers</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w20 - Line number background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFEBEE",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.light - Deletion background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E8F5E9",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.success.light - Addition background color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.CodeDiffContainer.styleOverrides.root - Main container styling
+- theme.components.OuterWrapper.styleOverrides.root - Expanded backdrop overlay styling
+- theme.components.InnerWrapper.styleOverrides.root - Main editor container and expanded modal styling
+- theme.components.EditorWrapper.styleOverrides.root - CodeMirror editor wrapper and borders styling
+- theme.components.IconWrapper.styleOverrides.root - Expand/collapse button positioning
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
@@ -85,5 +126,8 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Font size: 14px
 - Gap between diffs: 25px
 - Border radius: 4px
+- Padding: 16px (theme.spacing(2))
+- Line height: 1.5
+- Max height (collapsed): 400px
 
 <Subtitle>Stories</Subtitle>

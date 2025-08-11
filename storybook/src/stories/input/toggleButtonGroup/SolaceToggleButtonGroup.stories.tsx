@@ -13,28 +13,37 @@ options.push({ value: "option3", label: "Pub" });
 export default {
 	title: "Input/Toggle Button",
 	component: SolaceToggleButtonGroup,
+	args: {
+		options: [],
+		activeValue: "",
+		isDisabled: false,
+		dataQa: ""
+	},
 	parameters: {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/OSo8hNAnLk3cGhtizCxjzs/Endpoints---April-2022---Designer?node-id=902%3A99398"
-		},
-		docs: {
-			description: {
-				component:
-					"A toggle button group component for reuse in all Solace based applications. Typically used to control filtering. Code component name: SolaceToggleButtonGroup"
-			}
 		}
 	},
 	argTypes: {
 		options: {
-			description: "An array of label - value toggle options"
+			description: "An array of label - value toggle options",
+			table: {
+				defaultValue: {
+					summary: "[]"
+				}
+			}
 		},
 		onChange: {
-			description:
-				"A function handler for toggle changes with parameters: (event: React.MouseEvent<HTMLElement>, value: string)"
+			description: "A function handler for toggle changes"
 		},
 		activeValue: {
-			description: "The value of the active toggle value"
+			description: "The value of the active toggle value",
+			table: {
+				defaultValue: {
+					summary: ""
+				}
+			}
 		},
 		isDisabled: {
 			control: { type: "boolean" },
@@ -42,6 +51,14 @@ export default {
 			table: {
 				defaultValue: {
 					summary: "false"
+				}
+			}
+		},
+		dataQa: {
+			description: "The data-qa attribute for the toggle button group.",
+			table: {
+				defaultValue: {
+					summary: ""
 				}
 			}
 		}

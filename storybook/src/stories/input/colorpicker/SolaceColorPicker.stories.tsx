@@ -20,6 +20,22 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Picker/Colour",
 	component: SolacePicker,
+	args: {
+		id: "",
+		name: "",
+		label: "Color",
+		value: "",
+		variant: "colors",
+		title: "",
+		helperText: "",
+		hasErrors: false,
+		inlineLabel: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		displayEmpty: false,
+		dataQa: ""
+	},
 	parameters: {
 		controls: { sort: "alpha" },
 		docs: {

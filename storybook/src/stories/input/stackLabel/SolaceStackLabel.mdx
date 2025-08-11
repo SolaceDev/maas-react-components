@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceStackLabelStories} />
 
-<Title>Solace Stack Label</Title>
+<Title>Stack Label</Title>
 
 <Description of={SolaceStackLabelStories} />
 
@@ -13,25 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Stack Label component is a customizable label element designed for use in forms and other UI elements. It provides a consistent way to label form inputs and other components while offering various styling options and states.
-
-This component extends the functionality of a standard HTML label, adding features such as required indicators, disabled states, and customizable text styles. It's particularly useful for creating accessible and visually consistent form layouts.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Stack Label in the following scenarios:
-
-- Labeling form inputs (text fields, select dropdowns, checkboxes, etc.)
-- Creating section headers in forms or other UI components
-- Providing descriptive text for UI elements that require explanation
-- Implementing accessible form designs that clearly associate labels with their corresponding inputs
-- When you need a label with customizable styles (e.g., bold, large text) to fit your UI design
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For general text content that doesn't act as a label (use standard text components instead)
-- In situations where inline labels are more appropriate (consider using SolaceLabel for inline scenarios)
-- For complex label requirements that go beyond text and basic styling (consider creating a custom component)
+The Solace Stack Label component is a customizable label element designed for use in forms and other UI elements, providing a consistent way to label form inputs and other components while offering various styling options and states. This component extends the functionality of a standard HTML label, adding features such as required indicators, disabled states, and customizable text styles, making it particularly useful for creating accessible and visually consistent form layouts.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -63,19 +45,69 @@ import { SolaceStackLabel } from "@SolaceDev/maas-react-components";
 - `.read-only` - Applied when the readOnly prop is true
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.typography.body1` - Default font size and style
-- `theme.typography.subtitle1` - Font size and style when large prop is true
-- `theme.palette.text.primary` - Text color
-- `theme.palette.text.disabled` - Disabled text color
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Default text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.disabled - Disabled text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FF0000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Required asterisk color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body1 - Default font size and style
+- theme.typography.subtitle1 - Font size and style when large prop is true
+- theme.components.MuiFormLabel.styleOverrides.root - Customize the root label container
+- theme.components.MuiFormLabel.styleOverrides.asterisk - Customize the required indicator asterisk
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify typography using predefined variants.
 
 **Layout Specifications:**
 
 - Display: block (stacked layout)
 - Font size: Controlled by the large prop (body1 or subtitle1)
-- Font weight: Controlled by the bold prop
-- White space: Controlled by the noWrap prop
+- Font weight: Controlled by the bold prop (400 for normal, 700 for bold)
+- White space: Controlled by the noWrap prop (normal or nowrap)
+- Margin bottom: 8px (theme.spacing(1))
 
 <Subtitle>Stories</Subtitle>
 

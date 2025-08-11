@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceLearningButtonStories} />
 
-<Title>Solace Learning Button</Title>
+<Title>Learning Button</Title>
 
 <Description of={SolaceLearningButtonStories} />
 
@@ -13,31 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Learning Button component provides a customizable button for interactive learning experiences. It's useful for creating engaging call-to-action elements, allowing users to initiate learning processes or navigate through educational content.
-
-The component implements a flexible button system with the purpose of enhancing user interaction in learning environments. This pattern helps users clearly identify actionable items while maintaining a consistent and appealing visual style across the application.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Learning Button when you need to create interactive elements in learning-focused interfaces. This button pattern is particularly effective for guiding users through educational content or initiating learning processes.
-
-Common use cases include:
-
-- Starting a learning module or course
-- Navigating through steps in a tutorial
-- Submitting answers or completing learning tasks
-- Accessing additional learning resources
-- Initiating interactive learning experiences
-- Highlighting key actions in educational interfaces
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For general navigation that doesn't relate to learning experiences (use standard navigation components)
-- When a more subtle interaction is needed (consider using a text link instead)
-- For form submissions that aren't part of a learning process (use a standard submit button)
-- When the action doesn't align with the learning-focused theme of the component
-- In dense interfaces where a full button might be too prominent (consider icon buttons or text links)
-- For destructive actions or warnings (use a dedicated warning or danger button component)
+The Solace Learning Button component provides a customizable button for interactive learning experiences, useful for creating engaging call-to-action elements and allowing users to initiate learning processes or navigate through educational content. The component implements a flexible button system with the purpose of enhancing user interaction in learning environments, helping users clearly identify actionable items while maintaining a consistent and appealing visual style across the application.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -76,16 +52,81 @@ import { SolaceLearningButton } from "@SolaceDev/maas-react-components";
 - `.icon-button` - Applied to icon variant
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.primary.main` - Main color for call-to-action buttons
-- `theme.palette.ux.accent.n2.wMain` - Used for focus outlines
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.wMain - Main color for call-to-action buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Text color for call-to-action buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Text color for dark variants</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.accent.n2.wMain - Used for focus outlines</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.button - Typography styles for button text
+- theme.spacing(1) - Used for padding and gap calculations
+- theme.shape.borderRadius - Border radius for buttons
 
 **Layout Specifications:**
 
-- Button padding: Varies based on variant and presence of icons
-- Icon button size: `large`
-- Transition: Inherits MUI's default transition for smooth state changes
+- Button height: `36px` (theme.spacing(4.5))
+- Button padding: `8px 16px` (theme.spacing(1, 2))
+- Icon button size: `40px` (theme.spacing(5))
+- Border radius: Inherits from theme.shape.borderRadius
+- Gap between icon and text: `8px` (theme.spacing(1))
+- Focus outline offset: `2px`
+- Transition: `background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`
 
 <Subtitle>Stories</Subtitle>
 

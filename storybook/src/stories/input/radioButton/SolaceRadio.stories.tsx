@@ -9,15 +9,38 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Radio Button",
 	component: SolaceRadio,
+	args: {
+		label: "",
+		subText: "",
+		helperText: "",
+		hasErrors: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		checked: false,
+		defaultChecked: false,
+		largeLabel: false,
+		lightSubText: false,
+		value: "",
+		name: "",
+		id: "",
+		title: "",
+		inline: false,
+		inlineLabel: false,
+		stackLabel: true,
+		bold: false,
+		large: false,
+		onChange: undefined,
+		onBlur: undefined,
+		onFocus: undefined,
+		children: undefined,
+		dataQa: "",
+		dataTags: ""
+	},
 	parameters: {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=2931%3A22385"
-		},
-		docs: {
-			description: {
-				component: "Code component name: SolaceRadio"
-			}
 		}
 	},
 	argTypes: {
@@ -243,32 +266,19 @@ export default {
 		},
 		onChange: {
 			description:
-				"Callback function fired when the radio selection changes. Receives an event object with the new selected value. Essential for controlled components and form state management.",
-			table: {
-				type: { summary: "(event: {value: any, name: string}) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the radio selection changes. Receives an event object with the new selected value. Essential for controlled components and form state management."
 		},
 		onBlur: {
 			description:
-				"Callback function fired when the radio button loses focus. Use this for validation or other actions that should occur when the user finishes selecting.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the radio button loses focus. Use this for validation or other actions that should occur when the user finishes selecting."
 		},
 		onFocus: {
 			description:
-				"Callback function fired when the radio button gains focus. Use this for tracking user interaction or showing additional UI elements.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the radio button gains focus. Use this for analytics or other actions that should occur when the user interacts with the field."
 		},
 		children: {
-			control: { type: "object" },
 			description:
-				"SolaceRadio components that represent the available options in a radio group. Use SolaceRadio components from the library to ensure proper styling and behavior.",
+				"Content to be rendered inside the radio component. This can be used to add custom content or icons alongside the radio button.",
 			table: {
 				type: { summary: "React.ReactNode" },
 				defaultValue: { summary: "undefined" }

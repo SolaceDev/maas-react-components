@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceCodeEditorStories} />
 
-<Title>Solace Code Editor</Title>
+<Title>Code Editor</Title>
 
 <Description of={SolaceCodeEditorStories} />
 
@@ -13,34 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Code Editor component provides a powerful syntax-highlighted code editing interface built on CodeMirror. It's useful for applications where users need to edit, view, or validate structured data like JSON, XML, or Protocol Buffers, allowing users to work with code content in an intuitive and feature-rich editor environment.
-
-The component implements a comprehensive code editing pattern with the purpose of making code manipulation accessible and efficient. This pattern helps users write, edit, and validate code through syntax highlighting, error detection, and advanced editing features while maintaining consistency with form workflows and providing accessible code editing capabilities.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Code Editor when you need sophisticated code editing capabilities with syntax highlighting and validation. This editing pattern is particularly effective for applications requiring structured data manipulation and code content management.
-
-Common use cases include:
-
-- Configuration editing where users need to modify JSON, XML, or YAML configuration files
-- API payload construction for building and editing request/response bodies with proper formatting
-- Schema definition editing for creating and modifying data schemas, protobuf definitions, or API specifications
-- Data transformation workflows where users edit transformation rules or mapping configurations
-- Template editing for creating and modifying code templates, snippets, or generated content
-- Debug and troubleshooting interfaces where users need to inspect and modify structured data
-- Code review and validation tools where syntax highlighting and error detection are essential
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For simple text input without code syntax - use SolaceTextField or SolaceTextArea for plain text content instead
-- When only viewing code without editing capabilities - use a simple code display component with syntax highlighting only
-- For single-line code snippets or expressions - use SolaceTextField with monospace font styling instead
-- When users need full IDE features like debugging, intellisense, or project management - integrate with dedicated code editor solutions
-- For large file editing or multi-file projects - use dedicated development environments or file-based editors
-- When accessibility requires text-only alternatives - ensure proper ARIA labels and keyboard navigation support
-- For mobile-first applications where complex code editing is impractical - consider simplified input methods or desktop-only features
-- When performance is critical and CodeMirror overhead is unnecessary - use lightweight text areas for basic editing
+The Solace Code Editor component provides a powerful syntax-highlighted code editing interface built on CodeMirror, useful for applications where users need to edit, view, or validate structured data like JSON, XML, or Protocol Buffers and allowing users to work with code content in an intuitive and feature-rich editor environment. The component implements a comprehensive code editing pattern with the purpose of making code manipulation accessible and efficient, helping users write, edit, and validate code through syntax highlighting, error detection, and advanced editing features while maintaining consistency with form workflows and providing accessible code editing capabilities.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -83,15 +56,59 @@ import { SolaceCodeEditor } from "@SolaceDev/maas-react-components";
 - `.CodeMirror-foldgutter` - Fold/unfold indicators for collapsible code blocks
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.mixins.formComponent_CodeEditor.OuterWrapper` - Outer container styling and expanded mode backdrop
-- `theme.mixins.formComponent_CodeEditor.InnerWrapper` - Inner wrapper with expanded mode positioning and dimensions
-- `theme.mixins.formComponent_CodeEditor.EditorWrapper` - Editor container styling with borders and readonly states
-- `theme.mixins.formComponent_CodeEditor.IconWrapper` - Expand/collapse button positioning and styling
-- `theme.palette.ux.secondary.wMain` - Icon fill color for expand/collapse buttons
-- `theme.palette.ux.secondary.w8040` - Backdrop overlay color with 40% opacity
-- `theme.palette.background.w10` - Background color for expanded mode container
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.wMain - Icon fill color for expand/collapse buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(117, 117, 117, 0.4)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w8040 - Backdrop overlay color with 40% opacity</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.background.w10 - Background color for expanded mode container</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.mixins.formComponent_CodeEditor.OuterWrapper - Outer container styling and expanded mode backdrop
+- theme.mixins.formComponent_CodeEditor.InnerWrapper - Inner wrapper with expanded mode positioning and dimensions
+- theme.mixins.formComponent_CodeEditor.EditorWrapper - Editor container styling with borders and readonly states
+- theme.mixins.formComponent_CodeEditor.IconWrapper - Expand/collapse button positioning and styling
 
 **Layout Specifications:**
 
@@ -103,6 +120,7 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Container padding: `4px` for expanded mode content spacing
 - Icon z-index: `20` to ensure visibility above CodeMirror content (z-index: 9)
 - Default CodeMirror height: `100%` when in expanded mode for full utilization
+- Transition duration: `300ms` for smooth expand/collapse animations
 
 <Subtitle>Stories</Subtitle>
 

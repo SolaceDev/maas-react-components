@@ -1,3 +1,19 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /* eslint-disable sonarjs/no-duplicate-string */
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { Meta, Decorator } from "@storybook/react";
@@ -39,6 +55,60 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Dropdown/Autocomplete",
 	component: SolaceSelectAutocomplete,
+	args: {
+		label: "",
+		helperText: "",
+		placeholder: "",
+		width: undefined,
+		hasErrors: false,
+		hasWarnings: false,
+		inlineLabel: false,
+		required: false,
+		disabled: false,
+		disableCloseOnSelect: true,
+		readOnly: false,
+		multiple: false,
+		limitTags: undefined,
+		maxHeight: "",
+		fullWidth: false,
+		minWidth: "",
+		clearSearchOnSelect: false,
+		tagMaxWidth: "",
+		freeSolo: false,
+		openOnFocus: false,
+		showGroupDivider: false,
+		showSupplementalTextOrSecondaryAction: false,
+		showLeftIcon: false,
+		value: undefined,
+		defaultValue: undefined,
+		options: [],
+		id: "",
+		name: "",
+		title: "",
+		dataQa: "",
+		dataTags: "",
+		onChange: undefined,
+		onBlur: undefined,
+		onFocus: undefined,
+		onOpen: undefined,
+		onClose: undefined,
+		fetchOptionsCallback: undefined,
+		itemMappingCallback: undefined,
+		optionsLabelCallback: undefined,
+		isOptionEqualToValueCallback: undefined,
+		getOptionDisabledCallback: undefined,
+		getShowOptionDividerCallback: undefined,
+		getOptionValidationErrorCallback: undefined,
+		validateInputCallback: undefined,
+		groupByCallback: undefined,
+		renderTags: undefined,
+		getLimitTagsText: undefined,
+		onCloseCallback: undefined,
+		itemComponent: undefined,
+		startAdornment: undefined,
+		endAdornment: undefined,
+		inputRef: undefined
+	},
 	parameters: {
 		controls: { sort: "alpha" },
 		chromatic: { delay: 500 },
@@ -52,102 +122,431 @@ export default {
 		label: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The label text displayed above or inline with the autocomplete field. Use this to clearly describe what the user is selecting. Labels should be concise and descriptive.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		helperText: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Additional text displayed below the autocomplete field to provide guidance or error messages. Use this to give users context about available options or validation requirements.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		placeholder: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Placeholder text displayed when no value is selected. Use this to provide guidance about what the user should search for or select.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		width: {
 			control: {
 				type: "text"
+			},
+			description:
+				"The width of the autocomplete field. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		hasErrors: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the autocomplete field in an error state with red styling. Use this to indicate validation failures or selection errors. Often paired with error text in helperText.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the autocomplete in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the autocomplete options.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		inlineLabel: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays the label inline with the autocomplete field rather than above it. Use this for compact layouts or when you need to save vertical space.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		required: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, marks the field as required and displays an asterisk (*) next to the label. Use this to indicate mandatory fields in forms and ensure proper validation.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		disabled: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, disables the autocomplete field preventing user interaction. Use this when the field is not applicable based on current form state or user permissions.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		disableCloseOnSelect: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, keeps the dropdown open after selecting an option. Use this for multiple selection scenarios where users need to select multiple items in succession.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "true" }
 			}
 		},
 		readOnly: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, makes the autocomplete field read-only. Users can see the selected value but cannot change it. Use this for displaying computed values or information that shouldn't be modified.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		multiple: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, enables multiple selection mode. Users can select multiple options from the dropdown. The value will be an array of selected values.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		limitTags: {
 			control: {
 				type: "number"
+			},
+			description:
+				"Maximum number of tags to display in multiple selection mode. Additional selections will be shown as a count. Use this to prevent the field from becoming too cluttered.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		maxHeight: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Maximum height of the dropdown menu. Use this to limit the dropdown height and enable scrolling when there are many options.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		fullWidth: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, the autocomplete field will take up the full width of its container. Use this for responsive layouts or when you want the field to fill available space.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		minWidth: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Minimum width of the autocomplete field. Use this to ensure the field maintains a minimum width even in responsive layouts.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
 		clearSearchOnSelect: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, clears the search input after selecting an option. Use this to improve user experience in multiple selection scenarios.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		tagMaxWidth: {
 			control: {
 				type: "text"
+			},
+			description:
+				"Maximum width for tags in multiple selection mode. Tags longer than this width will be truncated with ellipsis. Use this to maintain consistent layout.",
+			table: {
+				type: { summary: "string | number" },
+				defaultValue: { summary: "undefined" }
 			}
 		},
-		itemMappingCallback: {
+		freeSolo: {
 			control: {
-				type: "object"
+				type: "boolean"
+			},
+			description:
+				"If true, allows users to enter custom values not present in the options list. Use this when you want to allow both selection from predefined options and custom input.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		openOnFocus: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, opens the dropdown when the field receives focus. Use this to improve discoverability of available options.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		showGroupDivider: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, shows dividers between option groups. Use this with grouped options to visually separate different categories.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		showSupplementalTextOrSecondaryAction: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays supplemental text or secondary actions in the selected value display. Use this to show additional context about the selected option.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		showLeftIcon: {
 			control: {
 				type: "boolean"
+			},
+			description:
+				"If true, displays icons on the left side of the selected value. Use this to provide visual context about the selected option type.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
+		},
+		value: {
+			description:
+				"The current selected value(s) of the autocomplete field. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
+			table: {
+				type: { summary: "SolaceSelectAutocompleteItemProps | Array<SolaceSelectAutocompleteItemProps>" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		defaultValue: {
+			description:
+				"The default selected value(s) for uncontrolled components. Use this when you want to set an initial value but don't need to control the selection state.",
+			table: {
+				type: { summary: "SolaceSelectAutocompleteItemProps | Array<SolaceSelectAutocompleteItemProps>" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		options: {
+			description:
+				"Array of options available for selection. Each option should conform to the SolaceSelectAutocompleteItemProps interface.",
+			table: {
+				type: { summary: "Array<SolaceSelectAutocompleteItemProps>" },
+				defaultValue: { summary: "[]" }
+			}
+		},
+		id: {
+			control: {
+				type: "text"
+			},
+			description:
+				"Unique identifier for the autocomplete field. Used to associate the label with the input for accessibility and to reference the field programmatically.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		name: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The name attribute for the autocomplete field, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		title: {
+			control: {
+				type: "text"
+			},
+			description:
+				"The title attribute for the autocomplete field, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: {
+				type: "text"
+			},
+			description:
+				"Data attribute for QA testing. Use this to identify the autocomplete field during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: {
+				type: "text"
+			},
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onChange: {
+			description:
+				"Callback function fired when the selection changes. Receives an event object with the new value. Essential for controlled components and form state management."
+		},
+		onBlur: {
+			description:
+				"Callback function fired when the autocomplete field loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes selecting."
+		},
+		onFocus: {
+			description:
+				"Callback function fired when the autocomplete field gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for selection."
+		},
+		onOpen: {
+			description:
+				"Callback function fired when the dropdown opens. Use this for controlled dropdown state or to trigger actions when the dropdown becomes visible."
+		},
+		onClose: {
+			description:
+				"Callback function fired when the dropdown closes. Use this for controlled dropdown state or to trigger actions when the dropdown becomes hidden."
+		},
+		fetchOptionsCallback: {
+			description:
+				"Callback function to fetch options asynchronously based on user input. Use this for remote data fetching or filtering large datasets."
+		},
+		itemMappingCallback: {
+			description:
+				"Function to transform option data before rendering. Use this to adapt your data structure to the expected format."
+		},
+		optionsLabelCallback: {
+			description:
+				"Function to extract the display label from option objects. Use this to customize how option labels are determined."
+		},
+		isOptionEqualToValueCallback: {
+			description:
+				"Function to determine if an option equals the current value. Use this for custom equality comparison logic."
+		},
+		getOptionDisabledCallback: {
+			description:
+				"Function to determine if an option should be disabled. Use this to conditionally disable options based on business logic."
+		},
+		getShowOptionDividerCallback: {
+			description:
+				"Function to determine if a divider should be shown after an option. Use this to add visual separation between certain options."
+		},
+		getOptionValidationErrorCallback: {
+			description:
+				"Function to provide validation error messages for specific options. Use this to show context-specific validation feedback."
+		},
+		validateInputCallback: {
+			description:
+				"Function to validate user input in real-time. Use this to provide immediate feedback on input validity."
+		},
+		groupByCallback: {
+			description:
+				"Function to group options by category. Use this to organize options into logical groups for better user experience."
+		},
+		renderTags: {
+			description:
+				"Custom function to render selected tags in multiple selection mode. Use this for complete control over tag appearance and behavior."
+		},
+		getLimitTagsText: {
+			description:
+				"Function to customize the text shown when tag limit is exceeded. Use this to provide localized or custom overflow text."
+		},
+		onCloseCallback: {
+			description:
+				"Additional callback fired when the dropdown closes. Use this for cleanup actions or additional state management."
+		},
+		itemComponent: {
+			description:
+				"React component used to render individual options. Use this to customize the appearance of dropdown options."
+		},
+		startAdornment: {
+			control: {
+				type: "object"
+			},
+			description:
+				"Element to display at the start of the input field. Use this for icons, labels, or other visual elements that provide context.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		endAdornment: {
+			control: {
+				type: "object"
+			},
+			description:
+				"Element to display at the end of the input field. Use this for action buttons, status indicators, or additional interactive elements.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		inputRef: {
+			description:
+				"Ref to access the underlying input element. Use this for programmatic focus control or direct DOM manipulation."
 		}
 	},
 	decorators: [withSnapshotContainer]

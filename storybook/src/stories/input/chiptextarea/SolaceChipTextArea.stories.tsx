@@ -25,6 +25,18 @@ const emailValidationFunction = (text: string): string | undefined => {
 export default {
 	title: "Input/Textfield/Text Area with Chips",
 	component: SolaceChipTextArea,
+	args: {
+		id: "",
+		hasWarnings: false,
+		label: "Chip Text Area",
+		helperText: "",
+		hasErrors: false,
+		autoFocus: false,
+		inlineLabel: false,
+		required: false,
+		value: "",
+		width: ""
+	},
 	parameters: {
 		docs: {
 			description: {
@@ -36,16 +48,79 @@ export default {
 	argTypes: {
 		id: {
 			control: { type: "text" },
-			description: "Unique identifier for the chip textarea component. Used for accessibility and programmatic access.",
+			description:
+				"Unique identifier for the chip textarea component. If not specified, name value will be used to make label and helperText accessible for screen readers.",
 			table: {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
+		name: {
+			control: { type: "text" },
+			description: "Name attribute to assign to the input element.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		label: {
+			control: { type: "text" },
+			description: "The label content to display on the screen.",
+			table: {
+				type: { summary: "string | JSX.Element" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		value: {
+			control: { type: "text" },
+			description: "The value of the input element, required for controlled component.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		helperText: {
+			control: { type: "text" },
+			description: "Content to display as supportive/explanatory text.",
+			table: {
+				type: { summary: "string | JSX.Element" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		maxLength: {
+			control: { type: "number" },
+			description: "The maximum number of characters which can be typed as the input value.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "constants.maxLength" }
+			}
+		},
+		title: {
+			control: { type: "text" },
+			description: "The text to display as the tooltip hint.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		autoFocus: {
+			control: { type: "boolean" },
+			description: "Boolean flag to control whether the input element is focused during first mount.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		hasErrors: {
+			control: { type: "boolean" },
+			description: "Boolean flag to mark the input in error state.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		hasWarnings: {
-			control: {
-				type: "boolean"
-			},
+			control: { type: "boolean" },
 			description:
 				"If true, displays the chip textarea in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the chip textarea content.",
 			table: {
@@ -53,44 +128,64 @@ export default {
 				defaultValue: { summary: "false" }
 			}
 		},
-		label: {
-			control: {
-				type: "text"
-			}
-		},
-		helperText: {
-			control: {
-				type: "text"
-			}
-		},
-		hasErrors: {
-			control: {
-				type: "boolean"
-			}
-		},
-		autoFocus: {
-			control: {
-				type: "boolean"
+		required: {
+			control: { type: "boolean" },
+			description: "Boolean flag used to display an indicator of whether or not this input is mandatory.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		inlineLabel: {
-			control: {
-				type: "boolean"
-			}
-		},
-		required: {
-			control: {
-				type: "boolean"
-			}
-		},
-		value: {
-			control: {
-				type: "text"
+			control: { type: "boolean" },
+			description:
+				"Boolean flag to control whether to stack the label on top of the input element (false) or place them inline to one another (true).",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		width: {
-			control: {
-				type: "text"
+			control: { type: "text" },
+			description: "Custom width of the component.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onChange: {
+			description: "Callback function to trigger whenever the value of the input is changed."
+		},
+		onBlur: {
+			description: "Callback function to trigger whenever the element of the input loses focus."
+		},
+		onKeyDown: {
+			description: "Callback function to trigger whenever the element of the input receives key down event."
+		},
+		onKeyUp: {
+			description: "Callback function to trigger whenever the element of the input receives key up event."
+		},
+		onFocus: {
+			description: "Callback function to trigger whenever the element of the input is focused."
+		},
+		validateChip: {
+			description:
+				"Callback function to validate the text before converting to a chip. Returns undefined if valid, or an error message if invalid."
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description: "Data attribute for additional tagging.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
 			}
 		}
 	}

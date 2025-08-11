@@ -46,13 +46,32 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Picker/Icon",
 	component: SolacePicker,
+	args: {
+		id: "",
+		name: "",
+		label: "Icon",
+		value: "",
+		variant: "icons",
+		title: "",
+		helperText: "",
+		hasErrors: false,
+		hasWarnings: false,
+		inlineLabel: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		displayEmpty: false,
+		numOfItemsPerRow: 4,
+		numOfRowsDisplayed: 3,
+		autoFocusItem: false,
+		icons: {},
+		iconKeyOrderedList: undefined,
+		dataQa: "",
+		dataTags: "",
+		onChange: undefined
+	},
 	parameters: {
-		controls: { sort: "alpha" },
-		docs: {
-			description: {
-				component: "Code component name: SolacePicker"
-			}
-		}
+		controls: { sort: "alpha" }
 	},
 	argTypes: {
 		id: {
@@ -63,76 +82,180 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
-		hasWarnings: {
-			control: {
-				type: "boolean"
-			},
+		name: {
+			control: { type: "text" },
+			description: "Name attribute for the icon picker input. Used for form submission and identification.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		label: {
+			control: { type: "text" },
+			description: "Label text displayed for the icon picker. Provides context for what the user is selecting.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		value: {
+			control: { type: "text" },
+			description: "The currently selected icon key. This should match one of the keys in the icons object.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		variant: {
+			control: { type: "text" },
+			description: "The variant type for the picker component. Set to 'icons' for icon picker functionality.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		title: {
+			control: { type: "text" },
+			description: "Title attribute for the icon picker, displayed as a tooltip on hover. Use for additional context.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		helperText: {
+			control: { type: "text" },
+			description: "Additional text displayed below the icon picker to provide guidance or error messages.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasErrors: {
+			control: { type: "boolean" },
 			description:
-				"If true, displays the icon picker in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the icon selection.",
+				"If true, displays the icon picker in an error state with red styling. Use to indicate validation failures.",
 			table: {
 				type: { summary: "boolean" },
 				defaultValue: { summary: "false" }
 			}
 		},
-		label: {
-			control: {
-				type: "text"
-			}
-		},
-		helperText: {
-			control: {
-				type: "text"
-			}
-		},
-		hasErrors: {
-			control: {
-				type: "boolean"
+		hasWarnings: {
+			control: { type: "boolean" },
+			description:
+				"If true, displays the icon picker in a warning state with amber styling. Use to indicate potential issues or cautionary information about the icon selection.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		inlineLabel: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description:
+				"If true, displays the label inline with the icon picker instead of above it. Use for compact form layouts.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		required: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description: "If true, marks the icon picker as required for form validation. Displays a required indicator.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		disabled: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description: "If true, disables the icon picker preventing user interaction. The picker appears grayed out.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		readOnly: {
-			control: {
-				type: "boolean"
-			}
-		},
-		value: {
-			control: {
-				type: "text"
+			control: { type: "boolean" },
+			description:
+				"If true, displays the icon picker in read-only mode. Users can see the selected icon but cannot change it.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		displayEmpty: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description:
+				"If true, displays an empty option in the icon picker. Use when you want to allow users to select no icon.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
 		},
 		numOfItemsPerRow: {
-			control: {
-				type: "number"
+			control: { type: "number" },
+			description:
+				"Number of icons to display per row in the picker dropdown. Use to control the grid layout of icon options.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "4" }
 			}
 		},
 		numOfRowsDisplayed: {
-			control: {
-				type: "number"
+			control: { type: "number" },
+			description:
+				"Number of rows to display before scrolling in the picker dropdown. Controls the maximum height of the icon grid.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "3" }
 			}
 		},
 		autoFocusItem: {
-			control: {
-				type: "boolean"
+			control: { type: "boolean" },
+			description:
+				"If true, automatically focuses the currently selected icon when the picker opens. Improves keyboard navigation.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
 			}
+		},
+		icons: {
+			control: { type: "object" },
+			description:
+				"Object mapping icon keys to React icon components. Each key should be a string and each value should be a React element.",
+			table: {
+				type: { summary: "Record<string, React.ReactElement>" },
+				defaultValue: { summary: "{}" }
+			}
+		},
+		iconKeyOrderedList: {
+			control: { type: "object" },
+			description:
+				"Array of icon keys defining the display order of icons in the picker. If not provided, icons will be displayed in object key order.",
+			table: {
+				type: { summary: "string[]" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description: "Data attribute for QA testing. Use this to identify the icon picker during automated testing.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description:
+				"Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata related to the icon picker.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onChange: {
+			description:
+				"Callback function triggered when icon selection changes. Receives the new selected icon key as parameter. Essential for handling icon picker state."
 		}
 	},
 	decorators: [withSnapshotContainer]

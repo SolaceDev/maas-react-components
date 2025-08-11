@@ -12,21 +12,23 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 	 */
 	title: "Layout/Empty State/Learning",
 	component: SolaceEmptyStateBanner,
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"Empty state banner component for displaying helpful messages when no content is available. Code component name: SolaceEmptyStateBanner"
-			}
-		}
+	args: {
+		bannerImage: undefined,
+		title: "",
+		subtitle: "",
+		description: "",
+		primaryButton: undefined,
+		secondaryButton: undefined,
+		dataQa: ""
 	},
+	parameters: {},
 	argTypes: {
 		bannerImage: {
 			control: { type: "object" },
 			description:
 				"React element representing the banner image or illustration. Use this to provide visual context for the empty state. Should be an SVG or optimized image component.",
 			table: {
-				type: { summary: "React.ReactElement" },
+				type: { summary: "React.ReactElement | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -35,7 +37,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 			description:
 				"The main heading text for the empty state banner. Use this to clearly communicate what the user can do or what they're missing. Should be concise and action-oriented.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -44,7 +46,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 			description:
 				"Secondary heading text that provides additional context. Use this to give more specific information about the empty state or the next steps the user should take.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -53,7 +55,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 			description:
 				"Detailed description text explaining the empty state and providing guidance. Use this to give users comprehensive information about why they're seeing this state and what they can do about it.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -62,7 +64,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 			description:
 				"Configuration object for the primary action button. Should include 'label' (string) and 'onClick' (function) properties. Use this for the main action you want users to take.",
 			table: {
-				type: { summary: "{label: string, onClick: () => void}" },
+				type: { summary: "{label: string, onClick: () => void} | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -71,7 +73,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 			description:
 				"Configuration object for the secondary action button. Should include 'label' (string) and 'onClick' (function) properties. Use this for alternative actions or exploration options.",
 			table: {
-				type: { summary: "{label: string, onClick: () => void}" },
+				type: { summary: "{label: string, onClick: () => void} | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -80,7 +82,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 			description:
 				"Data attribute for QA testing. Use this to identify the empty state banner during automated testing.",
 			table: {
-				type: { summary: "string" },
+				type: { summary: "string | undefined" },
 				defaultValue: { summary: "undefined" }
 			}
 		}

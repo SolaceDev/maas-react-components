@@ -22,7 +22,7 @@ export default {
 			options: [CHIP_VARIANT.FILLED, CHIP_VARIANT.OUTLINED],
 			control: { type: "radio" },
 			description:
-				"The visual style variant of the choice chip. 'filled' provides a solid background when selected, while 'outlined' provides a border-only style that's common for choice chips.",
+				"The visual style variant of the choice chip. 'filled' provides a solid background when selected, while 'outlined' provides a border-only style that's common for choice chips. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceChip.ts",
 			table: {
 				type: { summary: '"filled" | "outlined"' },
 				defaultValue: { summary: '"outlined"' }
@@ -50,7 +50,7 @@ export default {
 			options: [MODES.LIGHT_MODE, MODES.DARK_MODE],
 			control: { type: "radio" },
 			description:
-				"The color mode for the choice chip. Controls the overall color scheme to match the application's theme.",
+				"The color mode for the choice chip. Controls the overall color scheme to match the application's theme. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/modes.ts",
 			table: {
 				type: { summary: '"light" | "dark"' },
 				defaultValue: { summary: '"light"' }
@@ -60,7 +60,7 @@ export default {
 			options: [STATES.NOT_SELECTED, STATES.ACTIVE],
 			control: { type: "radio" },
 			description:
-				"The selection state of the choice chip. 'active' indicates the chip is selected, 'not-selected' indicates it's available but not chosen.",
+				"The selection state of the choice chip. 'active' indicates the chip is selected, 'not-selected' indicates it's available but not chosen. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/states.ts",
 			table: {
 				type: { summary: '"not-selected" | "active"' },
 				defaultValue: { summary: '"not-selected"' }

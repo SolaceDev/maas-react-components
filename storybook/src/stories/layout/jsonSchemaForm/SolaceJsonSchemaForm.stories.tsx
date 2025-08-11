@@ -1,3 +1,4 @@
+import React from "react";
 import { SolaceJsonSchemaForm } from "@SolaceDev/maas-react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
@@ -160,13 +161,7 @@ export const Standard: Story = {
 		},
 		onChange: (data) => action("onChangeHandler")(data)
 	},
-	parameters: {
-		docs: {
-			description: {
-				component: "Code component name: SolaceJsonSchemaForm"
-			}
-		}
-	}
+	parameters: {}
 };
 
 export const Password: Story = {

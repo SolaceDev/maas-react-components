@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceJsonSchemaFormStories} />
 
-<Title>Solace JSON Schema Form</Title>
+<Title>JSON Schema Form</Title>
 
 <Description of={SolaceJsonSchemaFormStories} />
 
@@ -13,32 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace JSON Schema Form component provides a dynamic form generator based on JSON Schema specifications. It's useful for creating complex forms programmatically, allowing users to define form structure and validation rules through schema configuration.
-
-The component implements React JSON Schema Form (RJSF) with custom Solace design system integration. This pattern enables rapid form development while maintaining consistency with Solace UI patterns and providing powerful validation capabilities.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace JSON Schema Form when you have dynamic form requirements that can't be easily handled with static form components. This schema-driven pattern is particularly effective for configuration forms, API integration forms, and scenarios where form structure changes based on data or user permissions.
-
-Common use cases include:
-
-- Configuration forms where field requirements vary based on selected options
-- API endpoint configuration with dynamic parameter validation
-- Multi-step forms with conditional field visibility
-- Data entry forms that need to adapt to different schemas
-- Forms that require complex validation rules and error handling
-- Integration with backend systems that provide JSON Schema definitions
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Simple static forms with a few fixed fields - use individual Solace form components instead
-- Forms that require highly customized layouts or styling beyond what RJSF supports
-- Performance-critical scenarios where the overhead of schema parsing is problematic
-- When you need fine-grained control over individual field rendering and behavior
-- Forms with complex custom widgets that don't fit the RJSF widget model
-- Mobile-first applications where the generated markup may not be optimal for touch interfaces
-- When form validation logic is better handled at the application level rather than schema level
+The Solace JSON Schema Form component provides a dynamic form generator based on JSON Schema specifications, useful for creating complex forms programmatically and allowing users to define form structure and validation rules through schema configuration. The component implements React JSON Schema Form (RJSF) with custom Solace design system integration, enabling rapid form development while maintaining consistency with Solace UI patterns and providing powerful validation capabilities.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -78,20 +53,69 @@ import { SolaceJsonSchemaForm } from "@SolaceDev/maas-react-components";
 - `.form-group.field-object` - Object field with nested structure
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.secondary.w20` - Border color for array field containers
-- `theme.spacing(2)` - Standard field bottom padding
-- `theme.spacing(3, 0)` - Form title padding
-- `theme.spacing(1, 0, 0, 0)` - Array container top margin
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Border color for array field containers</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F44336",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Error text and border color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Primary text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.SolaceJsonSchemaForm.styleOverrides.root - Customize the root form container
+- theme.components.MuiFormControl.styleOverrides.root - Customize individual form field containers
+- theme.components.MuiFormGroup.styleOverrides.root - Customize form field wrappers
+- theme.components.MuiPaper.styleOverrides.root - Customize array field containers
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
-- Form max width: `585px`
-- Field bottom padding: `16px` (theme.spacing(2))
-- Form title padding: `24px 0` (theme.spacing(3, 0))
-- Array container margin: `8px 0 0 0` (theme.spacing(1, 0, 0, 0))
-- Grid margin override: `0 16px 0 0`
+- Form max width: 585px
+- Field bottom padding: 16px (theme.spacing(2))
+- Form title padding: 24px 0 (theme.spacing(3, 0))
+- Array container margin: 8px 0 0 0 (theme.spacing(1, 0, 0, 0))
+- Grid margin override: 0 16px 0 0
 
 <Subtitle>Stories</Subtitle>
 

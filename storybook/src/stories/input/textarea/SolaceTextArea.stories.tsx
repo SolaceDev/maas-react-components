@@ -9,6 +9,31 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Textfield/Text Area",
 	component: SolaceTextArea,
+	args: {
+		id: "",
+		name: "",
+		title: "",
+		label: "",
+		placeholder: "",
+		helperText: "",
+		value: "",
+		hasErrors: false,
+		hasWarnings: false,
+		autoFocus: false,
+		inlineLabel: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		type: "text",
+		rows: 4,
+		maxRows: undefined,
+		minRows: undefined,
+		size: undefined,
+		width: undefined,
+		resizable: "both",
+		dataQa: "",
+		dataTags: ""
+	},
 	parameters: {
 		design: {
 			type: "figma",
@@ -28,8 +53,7 @@ export default {
 			description:
 				"The label text displayed above or inline with the text area. Use this to clearly describe what information the user should enter. Labels should be concise and descriptive.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		helperText: {
@@ -39,8 +63,7 @@ export default {
 			description:
 				"Additional text displayed below the text area to provide guidance or error messages. Use this to give users context about expected input format or validation requirements.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		hasErrors: {
@@ -127,8 +150,7 @@ export default {
 			description:
 				"The current value of the text area. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		placeholder: {
@@ -138,8 +160,7 @@ export default {
 			description:
 				"Placeholder text displayed when the field is empty. Use this to provide examples of expected input format or additional guidance. Should not replace proper labels.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		type: {
@@ -205,7 +226,6 @@ export default {
 			description:
 				"The width of the text area. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
 			table: {
-				type: { summary: "string | number" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -226,8 +246,7 @@ export default {
 			description:
 				"The name attribute for the text area, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		id: {
@@ -236,8 +255,7 @@ export default {
 			},
 			description: "Unique identifier for the textarea component. Used for accessibility and programmatic access.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		title: {
@@ -247,48 +265,41 @@ export default {
 			description:
 				"The title attribute for the text area, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		onChange: {
 			description:
-				"Callback function fired when the text area value changes. Receives an event object with the new value. Essential for controlled components and form state management.",
-			table: {
-				type: { summary: "(event: {value: string, name: string}) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the text area value changes. Receives an event object with the new value. Essential for controlled components and form state management."
 		},
 		onBlur: {
 			description:
-				"Callback function fired when the text area loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes editing.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the text area loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes editing."
+		},
+		onKeyDown: {
+			description:
+				"Callback function fired when a key is pressed down in the text area. Use this for custom keyboard shortcuts, input validation, or navigation controls."
+		},
+		onKeyUp: {
+			description:
+				"Callback function fired when a key is released in the text area. Use this for delayed validation, auto-save functionality, or character counting."
 		},
 		onFocus: {
 			description:
-				"Callback function fired when the text area gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for input.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the text area gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for input."
 		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify the text area during automated testing.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		dataTags: {
 			control: { type: "text" },
 			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		}
 	}

@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceRadioStories} />
 
-<Title>Solace Radio</Title>
+<Title>Radio</Title>
 
 <Description of={SolaceRadioStories} />
 
@@ -13,30 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Radio component provides a single radio button option for use within radio groups or as standalone selection controls. It's useful for allowing users to select one option from a set of mutually exclusive choices, with support for labels, sub-text, and various visual states.
-
-The component implements the standard radio button interaction pattern with the purpose of enabling single-selection from grouped options. This pattern helps users understand that only one choice can be made while providing clear visual feedback for the selected state.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Radio when you need individual radio button options within a radio group or for standalone binary choices. This selection pattern is particularly effective for forms where users must choose exactly one option from a set.
-
-Common use cases include:
-
-- Form fields requiring single selection from multiple options (payment methods, shipping options)
-- Settings pages where users choose one configuration option (theme selection, notification preferences)
-- Survey questions with mutually exclusive answers (yes/no, rating scales)
-- Filtering interfaces where only one filter can be applied at a time
-- Configuration wizards where users select one path or option to proceed
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For multiple selections - use checkboxes instead as they allow multiple choices
-- When you have only two options - consider using a toggle switch for better UX
-- For actions that trigger immediate effects - use action buttons instead
-- When you have more than 7-8 options - use a dropdown select for better space efficiency
-- For navigation between sections - use tabs or navigation links instead
-- When the options are not mutually exclusive - use checkboxes to allow multiple selections
+The Solace Radio component provides a single radio button option for use within radio groups or as standalone selection controls, useful for allowing users to select one option from a set of mutually exclusive choices with support for labels, sub-text, and various visual states. The component implements the standard radio button interaction pattern with the purpose of enabling single-selection from grouped options, helping users understand that only one choice can be made while providing clear visual feedback for the selected state.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -74,20 +51,82 @@ import { SolaceRadio } from "@SolaceDev/maas-react-components";
 - `.radio-btn-label` - Applied to sub-text elements for consistent styling
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary.text.wMain` - Label text color
-- `theme.palette.ux.secondary.text.w50` - Disabled text color
-- `theme.typography.subtitle1` - Large label typography
-- `theme.typography.body1` - Default label typography
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.wMain - Radio button color when checked</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Label text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.w50 - Disabled text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.accent.n2.wMain - Focus ring color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.subtitle1 - Large label typography
+- theme.typography.body1 - Default label typography
+- theme.spacing(1) - Used for padding and gap calculations
+- theme.shape.borderRadius - Border radius for the radio button
 
 **Layout Specifications:**
 
+- Radio button size: `24px` (theme.spacing(3))
 - Grid layout: `auto 1fr` columns for radio and content
 - Grid rows: `auto auto` for label and sub-text
-- Radio button height: `24px` (fixed line height for alignment)
 - Label font weight: `medium` for large labels or when sub-text is present, `regular` otherwise
 - Sub-text positioning: Grid column 2, row 2 for proper alignment
+- Focus ring offset: `2px`
+- Transition: `all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`
 
 <Subtitle>Stories</Subtitle>
 

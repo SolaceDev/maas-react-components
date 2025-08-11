@@ -16,6 +16,23 @@ import {
 export default {
 	title: "Input/Textfield/Attribute Pair",
 	component: SolaceAttributeValuePairForm,
+	args: {
+		id: "",
+		name: "",
+		labelForKeys: "Keys",
+		labelForValues: "Values",
+		avpList: [],
+		hasWarnings: false,
+		hasErrors: false,
+		helperText: "",
+		disableReorder: false,
+		readOnly: false,
+		emptyFieldDisplayValue: "",
+		enableRequiredKeyFieldIndicator: false,
+		keyIsRequiredMessage: "",
+		avpListMaxHeight: "",
+		virtualizedAvpListOption: undefined
+	},
 	parameters: {
 		docs: {
 			story: { height: "500px" },
@@ -67,11 +84,7 @@ export default {
 			}
 		},
 		onAVPListUpdate: {
-			description: "Callback function triggered when the list is updated.",
-			table: {
-				type: { summary: "(list: Array<AVPItem>) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+			description: "Callback function triggered when the list is updated."
 		},
 		hasWarnings: {
 			control: { type: "boolean" },
@@ -139,18 +152,10 @@ export default {
 			}
 		},
 		avpKeyValidationCallback: {
-			description: "Custom validation function for key fields.",
-			table: {
-				type: { summary: "(input: string, values: Array<AVPItem>) => string" },
-				defaultValue: { summary: "undefined" }
-			}
+			description: "Custom validation function for key fields."
 		},
 		avpValueValidationCallback: {
-			description: "Custom validation function for value fields.",
-			table: {
-				type: { summary: "(input: string, values: Array<AVPItem>) => string" },
-				defaultValue: { summary: "undefined" }
-			}
+			description: "Custom validation function for value fields."
 		},
 		avpListMaxHeight: {
 			control: { type: "text" },

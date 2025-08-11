@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceEnvironmentSelectChipStories} />
 
-<Title>Solace Environment Select Chip</Title>
+<Title>Environment Select Chip</Title>
 
 <Description of={SolaceEnvironmentSelectChipStories} />
 
@@ -13,30 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Environment Select Chip component provides a dropdown selection interface for choosing environments with visual color coding and icons. It's useful for environment selection in applications where users need to switch between different environments like development, staging, and production, allowing users to easily identify and select environments through distinctive visual cues.
-
-The component implements a custom select pattern with the purpose of making environment selection intuitive and visually distinctive. This pattern helps users quickly identify different environments through color coding and iconography while providing a compact dropdown interface for space-efficient layouts.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Environment Select Chip when you need environment selection with visual distinction in a compact format. This selection pattern is particularly effective for applications with multiple environments that require clear visual identification.
-
-Common use cases include:
-
-- Application headers where users need to switch between development, staging, and production environments
-- Dashboard interfaces requiring environment context selection with visual feedback
-- Form controls where environment selection affects the scope of operations or data
-- Navigation components where environment context needs to be clearly visible and selectable
-- Administrative interfaces where environment switching is a frequent user action
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For non-environment selections - use regular SolaceSelect for general purpose dropdowns
-- When environments don't have distinctive visual identities - use standard select components instead
-- For single environment applications - no need for environment selection interface
-- When space is extremely limited - consider using a simple environment indicator instead
-- For environments that don't require color coding - use text-only selection components
-- When the selection affects critical operations - consider requiring confirmation dialogs for environment switches
+The Solace Environment Select Chip component provides a dropdown selection interface for choosing environments with visual color coding and icons, useful for environment selection in applications where users need to switch between different environments like development, staging, and production and allowing users to easily identify and select environments through distinctive visual cues. The component implements a custom select pattern with the purpose of making environment selection intuitive and visually distinctive, helping users quickly identify different environments through color coding and iconography while providing a compact dropdown interface for space-efficient layouts.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -83,13 +60,86 @@ import { SolaceEnvironmentSelectChip } from "@SolaceDev/maas-react-components";
 - `StickyChildren` - Bottom-positioned sticky content area
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.background.w10` - Dropdown background color
-- `theme.palette.ux.brand.w10` - Selected/highlighted option background
-- `theme.palette.ux.stateLayer.w10` - Hover state background
-- `theme.palette.ux.stateLayer.w20` - Expanded state background
-- `theme.palette.ux.secondary.w100` - Border color for white backgrounds
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Dropdown background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w10 - Selected/highlighted option background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.04)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.stateLayer.w10 - Hover state background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.08)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.stateLayer.w20 - Expanded state background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w100 - Border color for white backgrounds</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body1 - Text styling for chip and options
+- theme.spacing(0.5) - Border radius and icon padding
+- theme.spacing(1, 2) - Option padding
+- theme.spacing(2) - Gap between elements
+- theme.mixins.chip.base - Standard chip styling patterns
 
 **Layout Specifications:**
 
@@ -101,6 +151,8 @@ The component uses Material-UI's theme system with custom Solace styling. Key th
 - Dropdown min height: `80px` (theme.spacing(10))
 - Dropdown min width: `320px` (theme.spacing(40))
 - Text max width: `134px` with ellipsis overflow
+- Chip height: `32px` (theme.spacing(4))
+- Transition duration: `200ms` for hover and focus effects
 
 <Subtitle>Stories</Subtitle>
 

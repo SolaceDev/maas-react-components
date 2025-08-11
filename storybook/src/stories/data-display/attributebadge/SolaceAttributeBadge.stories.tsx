@@ -36,7 +36,7 @@ export default {
 			options: ["outlined", "filled"],
 			control: { type: "radio" },
 			description:
-				"The visual style variant of the attribute badge. 'filled' provides a solid background for high visibility, while 'outlined' provides a border-only style for subtle categorization without visual weight.",
+				"The visual style variant of the attribute badge. 'filled' provides a solid background for high visibility, while 'outlined' provides a border-only style for subtle categorization without visual weight. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceChip.ts",
 			table: {
 				type: { summary: '"outlined" | "filled"' },
 				defaultValue: { summary: '"filled"' }
@@ -57,7 +57,7 @@ export default {
 				type: "select"
 			},
 			description:
-				"The size of the attribute badge affecting both font size and padding. Use smaller sizes for dense layouts and larger sizes for emphasis or when the badge is a primary interface element.",
+				"The size of the attribute badge affecting both font size and padding. Use smaller sizes for dense layouts and larger sizes for emphasis or when the badge is a primary interface element. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/sizing.ts",
 			table: {
 				type: { summary: '"xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "huge"' },
 				defaultValue: { summary: '"xs"' }
@@ -81,7 +81,7 @@ export default {
 				type: "select"
 			},
 			description:
-				"The border radius size of the attribute badge. Use 'sm' for sharp corners, 'md' for standard rounded corners, or 'lg' for pill-shaped badges.",
+				"The border radius size of the attribute badge. Use 'sm' for sharp corners, 'md' for standard rounded corners, or 'lg' for pill-shaped badges. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/sizing.ts",
 			table: {
 				type: { summary: '"sm" | "md" | "lg"' },
 				defaultValue: { summary: '"md"' }
@@ -139,7 +139,7 @@ export default {
 				type: "select"
 			},
 			description:
-				"The height of the attribute badge. Use this to control the vertical space the badge occupies, independent of the font size controlled by the 'size' prop.",
+				"The height of the attribute badge. Use this to control the vertical space the badge occupies, independent of the font size controlled by the 'size' prop. https://github.com/SolaceDev/maas-react-components/blob/main/src/types/sizing.ts",
 			table: {
 				type: { summary: '"sm" | "md" | "lg"' },
 				defaultValue: { summary: '"md"' }

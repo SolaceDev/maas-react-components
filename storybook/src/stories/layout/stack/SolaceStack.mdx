@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceStackStories} />
 
-<Title>Solace Stack</Title>
+<Title>Stack</Title>
 
 <Description of={SolaceStackStories} />
 
@@ -13,33 +13,9 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Stack component is concerned with one-dimensional layouts, providing a flexible way to arrange child elements in either horizontal or vertical directions. It manages spacing between items consistently and handles responsive layout patterns efficiently. This component is ideal for creating linear arrangements of UI elements with consistent spacing and alignment.
+The Solace Stack component is a flexible layout container that arranges its children in a vertical or horizontal direction with consistent spacing, providing a simple way to create organized layouts without the need for complex CSS flexbox configurations. This component is particularly useful for creating consistent spacing between elements, building form layouts, organizing content sections, and creating responsive designs that adapt to different screen sizes.
 
 The component extends Material-UI's Stack component with Solace-specific styling and defaults, making it easy to create consistent layouts throughout Solace applications while maintaining the flexibility of the underlying MUI Stack component.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Stack when you need to arrange elements in a single direction (horizontal or vertical) with consistent spacing. This layout pattern is particularly effective for creating organized, linear arrangements of components.
-
-Common use cases include:
-
-- Form layouts where you need to stack input fields vertically with consistent spacing
-- Button groups arranged horizontally or vertically with proper spacing between actions
-- Card layouts where multiple cards are arranged in rows or columns with uniform gaps
-- Navigation items arranged in horizontal or vertical lists with consistent spacing
-- Tool palettes or action bars where related controls are grouped together
-- Content sections that need to be stacked with predictable spacing patterns
-- Responsive layouts that adapt between horizontal and vertical arrangements
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For two-dimensional layouts with complex grid patterns - use SolaceGrid for grid-based layouts instead
-- When you need precise positioning control - use CSS Grid or Flexbox directly for complex positioning
-- For overlapping or absolute positioned elements - use positioned containers or custom styling
-- When elements need to wrap in multiple directions - consider SolaceGrid with flexible wrapping
-- For complex responsive layouts with breakpoint-specific arrangements - use SolaceGrid with responsive props
-- When you need elements to fill available space proportionally - use Flexbox properties directly
-- For layouts that require custom alignment patterns not supported by Stack - implement custom flex containers
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -70,20 +46,91 @@ import { SolaceStack } from "@SolaceDev/maas-react-components";
 - `.MuiStack-root[data-direction="column"]` - Applied when direction is set to vertical (column)
 
 **Theme Customization:**
-The component uses Material-UI's theme system with Solace styling defaults:
 
-- Default spacing: `theme.spacing(2)` (16px) when no spacing is specified
-- Text color: `theme.palette.ux.primary.text.wMain` for consistent text appearance
-- Supports all standard MUI spacing values and responsive breakpoint configurations
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.text.primary - Stack item text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.default - Stack container background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.paper - Stack item background when container prop is true</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiStack.styleOverrides.root - Customize the root stack container
+- theme.components.MuiStack.styleOverrides.spacing - Customize spacing between stack items
+- theme.components.MuiStack.styleOverrides.direction - Customize stack direction behavior
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
 
 **Layout Specifications:**
 
-- Default direction: `column` for vertical stacking of elements
-- Default spacing: `2` (16px) between items when container prop is used
+- Default direction: column for vertical stacking of elements
+- Default spacing: theme.spacing(2) (16px) between items when container prop is used
 - Supports responsive direction changes using breakpoint objects
 - Supports responsive spacing adjustments across different screen sizes
 - Flexible item sizing based on content and available space
 - Automatic overflow handling for content that exceeds container bounds
+
+**Spacing Configuration:**
+
+- Uses theme.spacing() for consistent spacing units
+- Default spacing: 2 units (16px) when container prop is true
+- Customizable through spacing prop (accepts numbers 0-10)
+- Responsive spacing with breakpoint objects
+- Negative margins for container edge compensation
+
+**Responsive Behavior:**
+
+- Direction changes based on breakpoint props
+- Spacing adjustments across screen sizes
+- Automatic content wrapping when needed
+- Flexible item sizing for different viewports
+
+**Accessibility:**
+
+- Proper DOM nesting for screen readers
+- Maintains content flow for keyboard navigation
+- Preserves semantic HTML structure
+- Supports ARIA attributes on container and items
 
 <Subtitle>Stories</Subtitle>
 

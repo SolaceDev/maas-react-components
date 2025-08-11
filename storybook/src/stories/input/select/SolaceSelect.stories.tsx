@@ -42,6 +42,36 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Dropdown/Standard",
 	component: SolaceSelect,
+	args: {
+		label: "",
+		helperText: "",
+		hasErrors: false,
+		hasWarnings: false,
+		inlineLabel: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		value: undefined,
+		defaultValue: undefined,
+		multiple: false,
+		width: undefined,
+		maxHeight: undefined,
+		displayEmpty: false,
+		placeholder: "",
+		name: "",
+		id: "",
+		title: "",
+		onChange: undefined,
+		onBlur: undefined,
+		onFocus: undefined,
+		children: undefined,
+		getOptionDisplayValue: undefined,
+		open: undefined,
+		onOpen: undefined,
+		onClose: undefined,
+		dataQa: "",
+		dataTags: ""
+	},
 	parameters: {
 		controls: { sort: "alpha" },
 		docs: {
@@ -58,8 +88,7 @@ export default {
 			description:
 				"The label text displayed above or inline with the select field. Use this to clearly describe what the user is selecting. Labels should be concise and descriptive.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		helperText: {
@@ -69,8 +98,7 @@ export default {
 			description:
 				"Additional text displayed below the select field to provide guidance or error messages. Use this to give users context about available options or validation requirements.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		hasErrors: {
@@ -146,7 +174,6 @@ export default {
 			description:
 				"The current selected value of the select field. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
 			table: {
-				type: { summary: "string | number | Array<string | number>" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -157,7 +184,6 @@ export default {
 			description:
 				"The default selected value for uncontrolled components. Use this when you want to set an initial value but don't need to control the selection state.",
 			table: {
-				type: { summary: "string | number | Array<string | number>" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -179,7 +205,6 @@ export default {
 			description:
 				"The width of the select field. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
 			table: {
-				type: { summary: "string | number" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -190,7 +215,6 @@ export default {
 			description:
 				"Maximum height of the dropdown menu. Use this to limit the dropdown height and enable scrolling when there are many options.",
 			table: {
-				type: { summary: "string | number" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
@@ -212,8 +236,7 @@ export default {
 			description:
 				"Placeholder text displayed when no value is selected and displayEmpty is true. Use this to provide guidance about what the user should select.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		name: {
@@ -223,8 +246,7 @@ export default {
 			description:
 				"The name attribute for the select field, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		id: {
@@ -234,8 +256,7 @@ export default {
 			description:
 				"Unique identifier for the select field. Used to associate the label with the input for accessibility and to reference the field programmatically.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		title: {
@@ -245,50 +266,32 @@ export default {
 			description:
 				"The title attribute for the select field, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		onChange: {
 			description:
-				"Callback function fired when the selection changes. Receives an event object with the new value. Essential for controlled components and form state management.",
-			table: {
-				type: { summary: "(event: {value: any, name: string}) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the selection changes. Receives an event object with the new value. Essential for controlled components and form state management."
 		},
 		onBlur: {
 			description:
-				"Callback function fired when the select field loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes selecting.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the select field loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes selecting."
 		},
 		onFocus: {
 			description:
-				"Callback function fired when the select field gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for selection.",
-			table: {
-				type: { summary: "(event: React.FocusEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the select field gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for selection."
 		},
 		children: {
 			control: { type: "object" },
 			description:
 				"MenuItem components that represent the available options. Use MenuItem components from the library to ensure proper styling and behavior.",
 			table: {
-				type: { summary: "React.ReactNode" },
 				defaultValue: { summary: "undefined" }
 			}
 		},
 		getOptionDisplayValue: {
 			description:
-				"Function to customize how selected values are displayed in the input field. Use this when you need to show different text than the MenuItem content.",
-			table: {
-				type: { summary: "(value: any) => string" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Function to customize how selected values are displayed in the input field. Use this when you need to show different text than the MenuItem content."
 		},
 		open: {
 			control: {
@@ -303,34 +306,24 @@ export default {
 		},
 		onOpen: {
 			description:
-				"Callback function fired when the dropdown opens. Use this for controlled dropdown state or to trigger actions when the dropdown becomes visible.",
-			table: {
-				type: { summary: "() => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the dropdown opens. Use this for controlled dropdown state or to trigger actions when the dropdown becomes visible."
 		},
 		onClose: {
 			description:
-				"Callback function fired when the dropdown closes. Use this for controlled dropdown state or to trigger actions when the dropdown becomes hidden.",
-			table: {
-				type: { summary: "() => void" },
-				defaultValue: { summary: "undefined" }
-			}
+				"Callback function fired when the dropdown closes. Use this for controlled dropdown state or to trigger actions when the dropdown becomes hidden."
 		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify the select field during automated testing.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		dataTags: {
 			control: { type: "text" },
 			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		}
 	},

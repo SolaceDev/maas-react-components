@@ -8,6 +8,12 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Code/Diff",
 	component: SolaceTextDiff,
+	args: {
+		id: "",
+		text1: "",
+		text2: "",
+		hasWarnings: false
+	},
 	parameters: {
 		docs: {
 			description: {
@@ -20,8 +26,7 @@ export default {
 			control: { type: "text" },
 			description: "Unique identifier for the text diff component. Used for accessibility and programmatic access.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		text1: {
@@ -29,8 +34,7 @@ export default {
 			description:
 				"First text to compare against. This will be shown as the 'before' or 'original' text in the diff view.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		text2: {
@@ -38,8 +42,7 @@ export default {
 			description:
 				"Second text to compare with. This will be shown as the 'after' or 'modified' text in the diff view.",
 			table: {
-				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: "" }
 			}
 		},
 		hasWarnings: {

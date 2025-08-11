@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceAttributeValuePairFormStories} />
 
-<Title>Solace Attribute Value Pair Form</Title>
+<Title>Attribute Value Pair Form</Title>
 
 <Description of={SolaceAttributeValuePairFormStories} />
 
@@ -13,32 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Attribute Value Pair Form component provides a dynamic form for managing key-value pairs. It's useful for creating and editing lists of attributes and their corresponding values, allowing users to add, remove, and reorder pairs as needed.
-
-The component implements a flexible input pattern with the purpose of capturing structured data in a key-value format. This pattern helps users input and manage sets of related information while providing features like validation, reordering, and bulk editing.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Attribute Value Pair Form when you need to collect or display structured data in a key-value format. This input pattern is particularly effective for:
-
-- Configuring system properties or settings
-- Managing metadata for content or resources
-- Creating custom fields or attributes for entities
-- Inputting localization or internationalization data
-- Defining parameters for API requests or configurations
-- Collecting user-defined data in a structured format
-- Managing enumeration values or lookup tables
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- When data has a fixed, predefined structure (use individual form fields instead)
-- For simple, single-value inputs (use standard text inputs or select fields)
-- When the relationship between items is more complex than key-value pairs (consider a more specialized component)
-- For large datasets that require pagination or advanced searching (use a data table component)
-- When users need to input long-form text for values (use a rich text editor or textarea)
-- If the data requires a hierarchical structure (use a tree-like component)
-- When the primary interaction is viewing rather than editing (use a read-only display component)
-- If real-time collaboration on the data is required (consider a specialized collaborative editing component)
+The Solace Attribute Value Pair Form component provides a dynamic form for managing key-value pairs, useful for creating and editing lists of attributes and their corresponding values and allowing users to add, remove, and reorder pairs as needed. The component implements a flexible input pattern with the purpose of capturing structured data in a key-value format, helping users input and manage sets of related information while providing features like validation, reordering, and bulk editing.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -72,19 +47,72 @@ import { SolaceAttributeValuePairForm } from "@SolaceDev/maas-react-components";
 - `.Mui-readOnly` - Applied when the form is in read-only mode
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.ux.primary` - Primary color for active elements
-- `theme.palette.ux.secondary` - Secondary color for inactive elements
-- `theme.palette.ux.error` - Color for error states
-- `theme.palette.ux.warning` - Color for warning states
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976d2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Primary color for active elements and focused states</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#d32f2f",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Error state indicators and validation messages</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.grey[600] - Border color in default state</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Padding between form elements
+- theme.typography.body1 - Text style for input fields
+- theme.typography.caption - Text style for helper text
+- theme.components.MuiFormControl.styleOverrides.root - Base form control styling
+- theme.components.MuiInputBase.styleOverrides.root - Input field container styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.gutters - Consistent padding for form container
 
 **Layout Specifications:**
 
-- Form padding: Follows Material-UI's default spacing
-- Input field margins: Consistent spacing between key-value pairs
-- Reorder button size: Matches the height of input fields
-- Add/Remove button placement: Aligned with the last input pair
+- Form container padding: `theme.spacing(2)`
+- Input field margins: `theme.spacing(1) 0`
+- Reorder button size: `36px` height
+- Add/Remove button placement: `theme.spacing(2)` from last input pair
+- Transition timeout: `300ms`
 
 <Subtitle>Stories</Subtitle>
 

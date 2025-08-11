@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceEmptyStateBannerStories} />
 
-<Title>Solace Empty State Banner</Title>
+<Title>Empty State Banner</Title>
 
 <Description of={SolaceEmptyStateBannerStories} />
 
@@ -13,32 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Empty State Banner component provides a visually rich, engaging layout for empty states with branded gradients, imagery, and call-to-action buttons. It's designed to guide users through onboarding flows, feature introductions, or when no content is available, offering clear pathways to get started.
-
-The component implements a full-width banner pattern with integrated imagery, typography hierarchy, and dual action buttons. This pattern helps transform potentially frustrating empty states into opportunities for user engagement and feature discovery.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Empty State Banner when you need to create an engaging, branded empty state experience that encourages user action. This component is particularly effective for:
-
-- Welcome screens and onboarding experiences
-- Feature introduction or marketing moments within the application
-- Main dashboard empty states when users haven't created any content yet
-- Product tour starting points or feature discovery screens
-- Landing pages for new user experiences
-- Empty state pages that need to feel welcoming rather than empty
-- Promotional banners for new features or capabilities
-- Getting started flows that require user education
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- For inline empty states within data tables or lists - use SolaceDetailMessage instead
-- When space is limited or the context is secondary - use simpler empty state components
-- For error states or system messages - use SolaceMessageBox or SolaceErrorBox
-- In dense interfaces where the banner would be overwhelming - use compact alternatives
-- For temporary loading states - use progress indicators instead
-- When you need simple, quick empty states without branding - use SolaceDetailMessage
-- In forms or narrow content areas where the banner would dominate the interface
+The Solace Empty State Banner component provides a visually rich, engaging layout for empty states with branded gradients, imagery, and call-to-action buttons, designed to guide users through onboarding flows, feature introductions, or when no content is available while offering clear pathways to get started. The component implements a full-width banner pattern with integrated imagery, typography hierarchy, and dual action buttons, helping transform potentially frustrating empty states into opportunities for user engagement and feature discovery.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -89,12 +64,114 @@ import { SolaceEmptyStateBanner } from "@SolaceDev/maas-react-components";
 - Secondary button: `variant="dark-call-to-action"`
 
 **Theme Customization:**
-The component uses Solace learning theme colors and branding:
 
-- Learning background colors: `theme.palette.ux.learning.w10`, `theme.palette.ux.learning.w20`
-- Learning main colors: `theme.palette.ux.learning.wMain`, `theme.palette.ux.learning.w100`
-- Brand accent color: `theme.palette.ux.brand.w30`
-- Inverted text color: `theme.palette.ux.primary.text.w10`
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.learning.w10 - Image container background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BBDEFB",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.learning.w20 - Image container border color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#2196F3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.learning.wMain - Banner gradient start color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#0D47A1",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.learning.w100 - Banner gradient end color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFA726",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w30 - Subtitle text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.w10 - Title and description text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.SolaceEmptyStateBanner.styleOverrides.root - Customize the root container
+- theme.components.SolaceEmptyStateBanner.styleOverrides.imageContainer - Customize the image container
+- theme.components.SolaceEmptyStateBanner.styleOverrides.banner - Customize the main banner
+- theme.components.SolaceEmptyStateBanner.styleOverrides.subtitle - Customize the subtitle text
+- theme.components.SolaceEmptyStateBanner.styleOverrides.title - Customize the title text
+- theme.components.SolaceEmptyStateBanner.styleOverrides.description - Customize the description text
+- theme.components.SolaceEmptyStateBanner.styleOverrides.buttonStack - Customize the button container
+
+To customize layout and structure, override the component styleOverrides in your theme configuration.
+
+**Layout Specifications:**
+
+- Wrapper container: width: 100%, height: 100%, centered flex layout
+- Main banner: width: 825px with height: 261px
+- Image container: padding: theme.spacing(3) theme.spacing(3) 0px theme.spacing(3)
+- Image container border radius: theme.spacing(1.25) theme.spacing(1.25) 0 0
+- Banner padding: theme.spacing(5) (40px)
+- Banner border radius: theme.spacing(2.5) (20px)
+- Banner background: radial gradient from learning.wMain to learning.w100
+- Button stack: direction="row", alignItems="center", paddingTop: theme.spacing(3), spacing={1.5}
 
 <Subtitle>Stories</Subtitle>
 

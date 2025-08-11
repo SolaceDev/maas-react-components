@@ -4,7 +4,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceLabelStories} />
 
-<Title>Solace Label</Title>
+<Title>Label</Title>
 
 <Description of={SolaceLabelStories} />
 
@@ -13,29 +13,7 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Subtitle>Component Description</Subtitle>
 
-The Solace Label component provides a customizable label for form elements. It's useful for creating accessible and visually consistent form labels, allowing users to clearly identify and understand the purpose of associated input fields.
-
-The component implements a flexible labeling system with the purpose of enhancing form usability and accessibility. This pattern helps users navigate forms more efficiently while still maintaining a clean and organized layout.
-
-<Subtitle>When To Use It</Subtitle>
-
-Use Solace Label when you need to provide a descriptive text label for form inputs. This labeling pattern is particularly effective for creating clear and accessible user interfaces.
-
-Common use cases include:
-
-- Labeling text input fields in forms
-- Providing descriptions for checkboxes or radio buttons
-- Creating section headers in complex forms
-- Indicating required fields with visual cues
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- When you need to display large blocks of explanatory text (use a paragraph or description component instead)
-- For clickable text that performs an action (use a button or link component)
-- As a replacement for page titles or headings (use appropriate heading components)
-- When the label text is very long and might disrupt the form layout (consider using a tooltip or help text)
-- For purely decorative text that doesn't describe an input (use a regular text component)
-- When you want to hide labels visually but keep them accessible (use a specialized visually-hidden component)
+The Solace Label component provides a customizable label for form elements, useful for creating accessible and visually consistent form labels that allow users to clearly identify and understand the purpose of associated input fields. The component implements a flexible labeling system with the purpose of enhancing form usability and accessibility, helping users navigate forms more efficiently while maintaining a clean and organized layout.
 
 <Subtitle>Import Statement</Subtitle>
 
@@ -69,16 +47,66 @@ import { SolaceLabel } from "@SolaceDev/maas-react-components";
 - `.read-only` - Applied when the readOnly prop is true
 
 **Theme Customization:**
-The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
 
-- `theme.palette.text.primary` - Main label text color
-- `theme.palette.text.disabled` - Color for disabled state
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Main label text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.wMain - Disabled label text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F44336",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Error state text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body1 - Base typography styles for the label
+- theme.spacing(0.5) - Margin bottom for the label
 
 **Layout Specifications:**
 
 - Label display: `block`
 - White space: `normal` (or `nowrap` if noWrap prop is true)
-- Transition: Inherits MUI's default transition for smooth state changes
+- Margin bottom: `4px` (theme.spacing(0.5))
+- Font size: Inherits from theme.typography.body1
+- Line height: Inherits from theme.typography.body1
+- Transition: `color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms` for smooth state changes
 
 <Subtitle>Stories</Subtitle>
 
