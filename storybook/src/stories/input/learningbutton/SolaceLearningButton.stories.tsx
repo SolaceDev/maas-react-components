@@ -40,8 +40,6 @@ export default {
 		title: "",
 		component: "button",
 		type: "button",
-		startIcon: <DeleteIcon />,
-		endIcon: <DeleteIcon />,
 		children: "Learning Button"
 	},
 	parameters: {

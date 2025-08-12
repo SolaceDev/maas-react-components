@@ -15,6 +15,7 @@
  */
 import React, { useState } from "react";
 import { Meta } from "@storybook/react";
+import { fn } from "@storybook/test";
 import { within, userEvent } from "@storybook/testing-library";
 
 import {
@@ -46,7 +47,8 @@ export default {
 		enableRequiredKeyFieldIndicator: false,
 		keyIsRequiredMessage: "",
 		avpListMaxHeight: "",
-		virtualizedAvpListOption: undefined
+		virtualizedAvpListOption: undefined,
+		onAVPListUpdate: fn()
 	},
 	parameters: {
 		docs: {
@@ -287,14 +289,15 @@ const Component = ({ ...args }) => {
 
 export const Default = {
 	render: Component,
-	args: { showOutput: true }
+	args: { showOutput: true, onAVPListUpdate: fn() }
 };
 
 export const WithInitialData = {
 	render: Component,
 	args: {
 		showOutput: true,
-		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item }))
+		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
+		onAVPListUpdate: fn()
 	}
 };
 
@@ -304,7 +307,8 @@ export const WithHelperText = {
 	render: Component,
 	args: {
 		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
-		helperText: HELPER_TEXT
+		helperText: HELPER_TEXT,
+		onAVPListUpdate: fn()
 	}
 };
 
@@ -313,7 +317,8 @@ export const WithWarnings = {
 	args: {
 		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
 		hasWarnings: true,
-		helperText: HELPER_TEXT
+		helperText: HELPER_TEXT,
+		onAVPListUpdate: fn()
 	}
 };
 
@@ -322,7 +327,8 @@ export const WithErrors = {
 	args: {
 		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
 		hasErrors: true,
-		helperText: HELPER_TEXT
+		helperText: HELPER_TEXT,
+		onAVPListUpdate: fn()
 	}
 };
 
@@ -330,7 +336,8 @@ export const WithReOrderingDisabled = {
 	render: Component,
 	args: {
 		avpList: SAMPLE_AVP_LIST.map((item) => ({ ...item })),
-		disableReorder: true
+		disableReorder: true,
+		onAVPListUpdate: fn()
 	}
 };
 
@@ -338,7 +345,8 @@ export const ReadOnly = {
 	render: Component,
 	args: {
 		avpList: SAMPLE_AVP_LIST_READ_ONLY.map((item) => ({ ...item })),
-		readOnly: true
+		readOnly: true,
+		onAVPListUpdate: fn()
 	}
 };
 
@@ -347,7 +355,8 @@ export const ReadOnlyWithEmptyFieldDisplayValue = {
 	args: {
 		avpList: SAMPLE_AVP_LIST_MISSING_VALUES.map((item) => ({ ...item })),
 		readOnly: true,
-		emptyFieldDisplayValue: "-"
+		emptyFieldDisplayValue: "-",
+		onAVPListUpdate: fn()
 	}
 };
 
@@ -356,7 +365,8 @@ export const UpdateData = {
 	args: {
 		name: "avpForm",
 		labelForKeys: "Keys",
-		labelForValues: "Values"
+		labelForValues: "Values",
+		onAVPListUpdate: fn()
 	},
 
 	play: async ({ canvasElement }) => {
@@ -426,7 +436,8 @@ export const MissingMandatoryKeyValidation = {
 	render: Component,
 	args: {
 		name: "avpForm",
-		enableRequiredKeyFieldIndicator: true
+		enableRequiredKeyFieldIndicator: true,
+		onAVPListUpdate: fn()
 	},
 
 	play: async ({ canvasElement }) => {
@@ -451,7 +462,8 @@ export const MissingMandatoryKeyWithCustomMessage = {
 	args: {
 		name: "avpForm",
 		enableRequiredKeyFieldIndicator: true,
-		keyIsRequiredMessage: "Enumeration key is required"
+		keyIsRequiredMessage: "Enumeration key is required",
+		onAVPListUpdate: fn()
 	},
 
 	play: async ({ canvasElement }) => {
@@ -484,7 +496,8 @@ export const WithCustomValidation = {
 		name: "avpForm",
 		enableRequiredKeyFieldIndicator: true,
 		avpKeyValidationCallback: validateEnumInput,
-		avpValueValidationCallback: validateEnumInput
+		avpValueValidationCallback: validateEnumInput,
+		onAVPListUpdate: fn()
 	},
 
 	play: async ({ canvasElement }) => {
@@ -664,6 +677,7 @@ export const WithInitialLargeDataDisableReorderFullWindowVirtualizedList = {
 		virtualizedAvpListOption: {
 			useWindowScrolling: true,
 			increaseViewportBy: 50
-		}
+		},
+		onAVPListUpdate: fn()
 	}
 };
