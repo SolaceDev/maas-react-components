@@ -40,9 +40,9 @@ export default {
 		title: "",
 		component: "button",
 		type: "button",
-		children: "Learning Button",
 		startIcon: <DeleteIcon />,
-		endIcon: <DeleteIcon />
+		endIcon: <DeleteIcon />,
+		children: "Learning Button"
 	},
 	parameters: {
 		design: {
