@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import React from "react";
 import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
@@ -33,16 +32,22 @@ enum VARIANT {
 export default {
 	title: "Input/Button/Learning",
 	component: SolaceLearningButton,
+	args: {
+		id: "",
+		hasWarnings: false,
+		variant: "call-to-action",
+		isDisabled: false,
+		title: "",
+		component: "button",
+		type: "button",
+		startIcon: <DeleteIcon />,
+		endIcon: <DeleteIcon />,
+		children: "Learning Button"
+	},
 	parameters: {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=1%3A2"
-		},
-		docs: {
-			description: {
-				component:
-					"Button component for reuse in all Solace based applications. Code component name: SolaceLearningButton"
-			}
 		}
 	},
 	argTypes: {
@@ -50,12 +55,24 @@ export default {
 			control: { type: "text" },
 			description: "Unique identifier for the button"
 		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the button in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the button action.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
 		variant: {
 			options: ["call-to-action", "icon", "dark-call-to-action", "dark-outline"],
 			control: {
 				type: "select"
 			},
-			description: "The type/style of button to render",
+			description:
+				"The type/style of button to render. Enum definition: https://github.com/SolaceDev/maas-react-components/blob/main/storybook/src/stories/input/learningbutton/SolaceLearningButton.stories.tsx#L9-L14",
 			table: {
 				defaultValue: {
 					summary: "text"
