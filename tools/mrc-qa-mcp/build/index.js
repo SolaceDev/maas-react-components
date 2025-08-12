@@ -16,7 +16,7 @@ const getFileContent_js_1 = require("./tools/getFileContent.js");
 const getAllComponentsByCategory_js_1 = require("./tools/getAllComponentsByCategory.js");
 class MrcQaServer {
     constructor() {
-        this.ref = "iphadte/DATAGO-103036";
+        this.ref = "main";
         this.server = new index_js_1.Server({
             name: "mrc-qa-mcp",
             version: "0.1.0",

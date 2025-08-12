@@ -6,7 +6,7 @@ import { getAllComponentsByCategory } from "./tools/getAllComponentsByCategory.j
 
 class MrcQaServer {
 	private server: Server;
-	private ref = "iphadte/DATAGO-103036";
+	private ref = "main";
 
 	constructor() {
 		this.server = new Server(
