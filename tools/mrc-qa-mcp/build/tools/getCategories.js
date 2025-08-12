@@ -31,11 +31,10 @@ exports.getCategories = {
         };
         const response = yield axios_1.default.get(url, { headers });
         if (Array.isArray(response.data)) {
-            const categories = response.data
+            return response.data
                 .filter((item) => item.type === "dir")
                 .map((item) => item.name);
-            return JSON.stringify(categories, null, 2);
         }
-        return JSON.stringify([], null, 2);
+        return [];
     })
 };

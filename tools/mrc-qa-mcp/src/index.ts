@@ -1,12 +1,12 @@
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CallToolRequestSchema, ListToolsRequestSchema, ErrorCode, McpError } from "@modelcontextprotocol/sdk/types.js";
-import { getCategories } from "./tools/getCategories.js";
-import { getComponentsForCategory } from "./tools/getComponentsForCategory.js";
 import { getFileContent } from "./tools/getFileContent.js";
+import { getAllComponentsByCategory } from "./tools/getAllComponentsByCategory.js";
 
 class MrcQaServer {
 	private server: Server;
+	private ref = "iphadte/DATAGO-103036";
 
 	constructor() {
 		this.server = new Server(
@@ -37,7 +37,7 @@ class MrcQaServer {
 	}
 
 	private getTools() {
-		return [getCategories, getComponentsForCategory, getFileContent];
+		return [getFileContent, getAllComponentsByCategory];
 	}
 
 	private setupToolHandlers() {
@@ -47,40 +47,29 @@ class MrcQaServer {
 
 		this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
 			switch (request.params.name) {
-				case "get_categories": {
-					const result = await getCategories.handler();
-					return {
-						content: [
-							{
-								type: "text",
-								text: result
-							}
-						]
-					};
-				}
-				case "get_components_for_category": {
-					const { category } = request.params.arguments as { category: string };
-					const result = await getComponentsForCategory.handler({ category });
-					return {
-						content: [
-							{
-								type: "text",
-								text: result
-							}
-						]
-					};
-				}
 				case "get_file_content": {
 					const { category, component } = request.params.arguments as {
 						category: string;
 						component: string;
 					};
-					const result = await getFileContent.handler({ category, component });
+					const result = await getFileContent.handler({ category, component, ref: this.ref });
+					const text = typeof result === "string" ? result : JSON.stringify(result, null, 2);
 					return {
 						content: [
 							{
 								type: "text",
-								text: result
+								text
+							}
+						]
+					};
+				}
+				case "get_all_components_by_category": {
+					const result = await getAllComponentsByCategory.handler({ ref: this.ref });
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify(result, null, 2)
 							}
 						]
 					};

@@ -12,11 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const index_js_1 = require("@modelcontextprotocol/sdk/server/index.js");
 const stdio_js_1 = require("@modelcontextprotocol/sdk/server/stdio.js");
 const types_js_1 = require("@modelcontextprotocol/sdk/types.js");
-const getCategories_js_1 = require("./tools/getCategories.js");
-const getComponentsForCategory_js_1 = require("./tools/getComponentsForCategory.js");
 const getFileContent_js_1 = require("./tools/getFileContent.js");
+const getAllComponentsByCategory_js_1 = require("./tools/getAllComponentsByCategory.js");
 class MrcQaServer {
     constructor() {
+        this.ref = "iphadte/DATAGO-103036";
         this.server = new index_js_1.Server({
             name: "mrc-qa-mcp",
             version: "0.1.0",
@@ -39,7 +39,7 @@ class MrcQaServer {
         }));
     }
     getTools() {
-        return [getCategories_js_1.getCategories, getComponentsForCategory_js_1.getComponentsForCategory, getFileContent_js_1.getFileContent];
+        return [getFileContent_js_1.getFileContent, getAllComponentsByCategory_js_1.getAllComponentsByCategory];
     }
     setupToolHandlers() {
         this.server.setRequestHandler(types_js_1.ListToolsRequestSchema, () => __awaiter(this, void 0, void 0, function* () {
@@ -49,37 +49,26 @@ class MrcQaServer {
         }));
         this.server.setRequestHandler(types_js_1.CallToolRequestSchema, (request) => __awaiter(this, void 0, void 0, function* () {
             switch (request.params.name) {
-                case "get_categories": {
-                    const result = yield getCategories_js_1.getCategories.handler();
-                    return {
-                        content: [
-                            {
-                                type: "text",
-                                text: result
-                            }
-                        ]
-                    };
-                }
-                case "get_components_for_category": {
-                    const { category } = request.params.arguments;
-                    const result = yield getComponentsForCategory_js_1.getComponentsForCategory.handler({ category });
-                    return {
-                        content: [
-                            {
-                                type: "text",
-                                text: result
-                            }
-                        ]
-                    };
-                }
                 case "get_file_content": {
                     const { category, component } = request.params.arguments;
-                    const result = yield getFileContent_js_1.getFileContent.handler({ category, component });
+                    const result = yield getFileContent_js_1.getFileContent.handler({ category, component, ref: this.ref });
+                    const text = typeof result === "string" ? result : JSON.stringify(result, null, 2);
                     return {
                         content: [
                             {
                                 type: "text",
-                                text: result
+                                text
+                            }
+                        ]
+                    };
+                }
+                case "get_all_components_by_category": {
+                    const result = yield getAllComponentsByCategory_js_1.getAllComponentsByCategory.handler({ ref: this.ref });
+                    return {
+                        content: [
+                            {
+                                type: "text",
+                                text: JSON.stringify(result, null, 2)
                             }
                         ]
                     };

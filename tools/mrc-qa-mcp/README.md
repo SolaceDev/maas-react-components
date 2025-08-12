@@ -1,64 +1,185 @@
 # MRC QA MCP Server
 
-## Project Overview
-
-The `mrc-qa-mcp` server is a Node.js application that provides a set of tools for quality assurance and testing of the MaaS React Components. It interacts with the project's Storybook to retrieve information about component categories, individual components, and their source files.
-
-## Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/) (v16 or higher)
-- [npm](https://www.npmjs.com/)
-
-## Setup Instructions
-
-1.  **Install Dependencies:**
-
-    Navigate to the `tools/mrc-qa-mcp` directory and run the following command to install the required dependencies:
-
-    ```bash
-    npm install
-    ```
-
-2.  **Set Up Environment Variables:**
-
-    This project requires a GitHub Personal Access Token to be set as an environment variable. You can set it in your shell for the current session like this:
-
-    ```bash
-    export GITHUB_PERSONAL_ACCESS_TOKEN=your_github_token
-    ```
-
-    Or you can prepend it to the start command.
-
-## Running the Server
-
-To start the MCP server, run the following command from the `tools/mrc-qa-mcp` directory:
-
-```bash
-GITHUB_PERSONAL_ACCESS_TOKEN=your_github_token npm start
-```
-
-The server will start and listen for requests on standard I/O.
+This server provides tools to query MRC component documentation and usage.
 
 ## Available Tools
 
-The following tools are available through the `mrc-qa-mcp` server:
+- `get_all_components_by_category`: Retrieves all component categories and their components from Storybook.
+- `get_file_content`: Retrieves the content of a component's story or documentation file from Storybook.
 
-### `get_categories`
+## Running Locally
 
-- **Description:** Retrieves a list of all component categories from the Storybook.
-- **Parameters:** None.
+```bash
+# Build and run the server
+npm run build && node build/index.js
+```
 
-### `get_components_for_category`
+## Docker Container
 
-- **Description:** Retrieves a list of components for a given category from Storybook.
-- **Parameters:**
-  - `category` (string, required): The category to retrieve components for.
+### Building and Pushing to GitHub Container Registry
+
+1.  Build the Docker image:
+
+```bash
+# Navigate to the MCP directory
+cd tools/mrc-qa-mcp
+
+# Build the image
+docker build -t mrc-qa-mcp .
+```
+
+2.  Tag the image for GitHub Container Registry:
+
+```bash
+# Tag the image with the SolaceDev organization
+docker tag mrc-qa-mcp ghcr.io/solacedev/mrc-qa-mcp:latest
+```
+
+3.  Login to GitHub Container Registry:
+
+```bash
+# Login to GitHub Container Registry
+# Replace YOUR_GITHUB_TOKEN with a token that has package write permissions
+echo $GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+
+# Alternatively, you can login interactively
+docker login ghcr.io -u YOUR_GITHUB_USERNAME
+```
+
+4.  Push the image to GitHub Container Registry:
+
+```bash
+# Push the image
+docker push ghcr.io/solacedev/mrc-qa-mcp:latest
+```
+
+5.  Make the package public (if needed): After pushing, you may need to go to the GitHub repository settings and make the package public if you want others to be able to use it without authentication.
+
+### Using with Cline
+
+Add the following configuration to your Cline MCP settings file:
+
+```json
+"mrc-qa-ghcr": {
+  "disabled": false,
+  "timeout": 60,
+  "type": "stdio",
+  "command": "docker",
+  "args": [
+    "run",
+    "-i",
+    "--rm",
+    "-e",
+    "GITHUB_PERSONAL_ACCESS_TOKEN",
+    "ghcr.io/solacedev/mrc-qa-mcp:latest"
+  ],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
+  }
+}
+```
+
+## Tool Reference and Sample Prompts
+
+### `get_all_components_by_category`
+
+**Description:** Retrieves all component categories and their components from Storybook.
+
+**Sample Prompt:** "get all components by category"
+
+**Internal Call:**
+
+```json
+{
+	"tool": "get_all_components_by_category"
+}
+```
+
+**Sample Output:**
+
+```json
+{
+	"accessiblity": ["form"],
+	"style": ["colors", "typography"],
+	"layout": [
+		"detailMessage",
+		"emptyStateBanner",
+		"grid",
+		"jsonSchemaForm",
+		"responsiveItemList",
+		"sidePanelLayout",
+		"stack"
+	],
+	"navigation": [
+		"breadcrumb",
+		"buttonLink",
+		"iconTabs",
+		"menu",
+		"pageHeader",
+		"pagination",
+		"stepper",
+		"tabs",
+		"truncatableLink"
+	],
+	"messaging": ["circularProgress", "learningBanner", "linearProgress", "messageBox", "toasts"],
+	"data-visualization": ["donutchart"],
+	"container": ["accordion", "card", "dialog", "drawer", "popover"],
+	"input": [
+		"attributevaluepairform",
+		"button",
+		"catogorizedsearch",
+		"checkbox",
+		"chiptextarea",
+		"codeeditor",
+		"colorpicker",
+		"datePicker",
+		"environmentlabel",
+		"environmentselectchip",
+		"fileUploader",
+		"label",
+		"learningbutton",
+		"picker",
+		"radioButton",
+		"searchAndFilter",
+		"select",
+		"selectAutocomplete",
+		"stackLabel",
+		"textField",
+		"textarea",
+		"textdiff",
+		"toggle",
+		"toggleButtonGroup"
+	],
+	"data-display": [
+		"attributebadge",
+		"chip-choice",
+		"chip-input",
+		"chip",
+		"environmentchip",
+		"featuretag",
+		"gridlist",
+		"gridlistmultiselect",
+		"list",
+		"notificationcounter",
+		"table",
+		"tag",
+		"tooltip"
+	]
+}
+```
 
 ### `get_file_content`
 
-- **Description:** Retrieves the content of a component's story or documentation file from Storybook.
-- **Parameters:**
-  - `category` (string, required): The category of the component.
-  - `component` (string, required): The name of the component.
+**Description:** Retrieves the content of a component's story or documentation file from Storybook.
+
+**Sample Prompt:** "get the file content for the button component in the input category"
+
+**Internal Call:**
+
+```json
+{
+	"tool": "get_file_content",
+	"category": "input",
+	"component": "button"
+}
+```

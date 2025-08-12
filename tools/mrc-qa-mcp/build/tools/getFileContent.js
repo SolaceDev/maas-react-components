@@ -32,8 +32,8 @@ exports.getFileContent = {
         required: ["category", "component"]
     },
     handler: (params) => __awaiter(void 0, void 0, void 0, function* () {
-        const { category, component } = params;
-        const url = `https://api.github.com/repos/SolaceDev/maas-react-components/contents/storybook/src/stories/${category}/${component}`;
+        const { category, component, ref } = params;
+        const url = `https://api.github.com/repos/SolaceDev/maas-react-components/contents/storybook/src/stories/${category}/${component}?ref=${ref}`;
         const headers = {
             Accept: "application/vnd.github+json",
             Authorization: `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`,
@@ -41,14 +41,16 @@ exports.getFileContent = {
         };
         const response = yield axios_1.default.get(url, { headers });
         if (Array.isArray(response.data)) {
-            let file = response.data.find((file) => file.name.endsWith(".stories.tsx"));
-            if (!file) {
-                file = response.data.find((file) => file.name.endsWith(".mdx"));
-            }
-            if (file) {
-                const contentResponse = yield axios_1.default.get(file.download_url);
-                return contentResponse.data;
-            }
+            const files = response.data.filter((file) => file.type === "file");
+            const contentPromises = files.map((file) => axios_1.default.get(file.download_url, {
+                headers: {
+                    Accept: "application/vnd.github.v3.raw",
+                    Authorization: `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`,
+                    "X-GitHub-Api-Version": "2022-11-28"
+                }
+            }));
+            const contentResponses = yield Promise.all(contentPromises);
+            return contentResponses.map((response) => response.data);
         }
         throw new Error(`Story or documentation file not found for ${category}/${component}`);
     })
