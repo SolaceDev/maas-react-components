@@ -4,19 +4,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  generate-and-publish-report:
+  generate-report:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # For checking out repositories
-      pages: write # For publishing to GitHub Pages
-      id-token: write # For OIDC authentication with GitHub Pages
-
+      contents: write # For checking out repositories and committing
+    outputs:
+      artifact_url: ${{ steps.merged-reports-artifact.outputs.artifact-url }}
     steps:
       - name: Checkout maas-react-components (current repo)
         uses: actions/checkout@v4
         with:
           ref: feature/mrc-usage-report-data
           path: maas-react-components-repo
+
+      - name: Checkout maas-react-components (main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: maas-react-components-repo-main
 
       - name: Print directory structure (maas-react-components)
         run: |
@@ -84,7 +89,6 @@ jobs:
           npm run build
           npm start -- --all --maas-ui-path ../../../maas-ui --maas-ops-ui-path ../../../maas-ops-ui --broker-manager-path ../../../broker-manager --format html
           npm start -- --all --maas-ui-path ../../../maas-ui --maas-ops-ui-path ../../../maas-ops-ui --broker-manager-path ../../../broker-manager --format json
-
         working-directory: maas-react-components-repo/tools/mrc-usage-report
 
       - name: Split merged JSON
@@ -106,13 +110,10 @@ jobs:
           echo "--- Verifying contents of output directory ---"
           pwd
           ls -lR ../../../maas-react-components-repo/mrc-usage-report-data-new
-
           echo "Listing generated files:"
           find . -type f -name "*.json" | sort
-
           echo "Contents of first split file (if any):"
           find . -type f -name "*.json" | sort | head -n 1 | xargs cat || echo "No split files found"
-
         working-directory: maas-react-components-repo/tools/mrc-usage-report-json-splitter
 
       - name: Prepare artifact
@@ -154,12 +155,12 @@ jobs:
             git push
           fi
 
+      - name: Publish Website
+        uses: ./maas-react-components-repo-main/.github/workflows/publish-mrc-website.yml
+        with:
+          artifact-url: ${{ needs.generate-report.outputs.artifact_url }}
+        secrets: inherit
+
       - name: Print link
         run: |
           echo "Link to merged reports: ${{ steps.merged-reports-artifact.outputs.artifact-url }}"
-
-      - name: Call website publisher
-        uses: ./.github/workflows/publish-mrc-website.yml
-        with:
-          ref: feature/mrc-usage-report-data
-          artifact-url: ${{ steps.merged-reports-artifact.outputs.artifact-url }}
