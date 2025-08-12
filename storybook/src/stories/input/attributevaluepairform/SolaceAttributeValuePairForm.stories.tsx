@@ -16,6 +16,7 @@
 import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
+import { fn } from "@storybook/test";
 
 import {
 	InfoIcon,
@@ -46,7 +47,8 @@ export default {
 		enableRequiredKeyFieldIndicator: false,
 		keyIsRequiredMessage: "",
 		avpListMaxHeight: "",
-		virtualizedAvpListOption: undefined
+		virtualizedAvpListOption: undefined,
+		onAVPListUpdate: fn()
 	},
 	parameters: {
 		docs: {
@@ -272,7 +274,10 @@ const Component = ({ ...args }) => {
 				labelForKeys="Keys"
 				labelForValues="Values"
 				avpList={currentAVPList}
-				onAVPListUpdate={setAVPList}
+				onAVPListUpdate={(e) => {
+					setAVPList(e);
+					args.onAVPListUpdate(e);
+				}}
 				{...args}
 			/>
 			{args?.showOutput && (
@@ -356,7 +361,8 @@ export const UpdateData = {
 	args: {
 		name: "avpForm",
 		labelForKeys: "Keys",
-		labelForValues: "Values"
+		labelForValues: "Values",
+		onAVPListUpdate: fn()
 	},
 
 	play: async ({ canvasElement }) => {
@@ -426,7 +432,8 @@ export const MissingMandatoryKeyValidation = {
 	render: Component,
 	args: {
 		name: "avpForm",
-		enableRequiredKeyFieldIndicator: true
+		enableRequiredKeyFieldIndicator: true,
+		onAVPListUpdate: fn()
 	},
 
 	play: async ({ canvasElement }) => {
@@ -451,7 +458,8 @@ export const MissingMandatoryKeyWithCustomMessage = {
 	args: {
 		name: "avpForm",
 		enableRequiredKeyFieldIndicator: true,
-		keyIsRequiredMessage: "Enumeration key is required"
+		keyIsRequiredMessage: "Enumeration key is required",
+		onAVPListUpdate: fn()
 	},
 
 	play: async ({ canvasElement }) => {
@@ -484,7 +492,8 @@ export const WithCustomValidation = {
 		name: "avpForm",
 		enableRequiredKeyFieldIndicator: true,
 		avpKeyValidationCallback: validateEnumInput,
-		avpValueValidationCallback: validateEnumInput
+		avpValueValidationCallback: validateEnumInput,
+		onAVPListUpdate: fn()
 	},
 
 	play: async ({ canvasElement }) => {

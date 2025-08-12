@@ -19,7 +19,8 @@ import { Meta } from "@storybook/react";
 
 import { SolaceChipTextArea } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { within, userEvent } from "@storybook/test";
+import { within, userEvent } from "@storybook/testing-library";
+import { fn } from "@storybook/test";
 
 // Constants for reuse
 const DEMO_TITLE = "Demo Chip Text Area";
@@ -51,7 +52,8 @@ export default {
 		inlineLabel: false,
 		required: false,
 		value: "",
-		width: ""
+		width: "",
+		onKeyDown: fn()
 	},
 	parameters: {
 		docs: {
@@ -236,7 +238,9 @@ const simulateTypingEmail = async ({ canvasElement }) => {
 
 export const DefaultTextAreaWithChips = {
 	args: {
-		onChange: action("onChange"),
+		onChange: fn(),
+		onFocus: fn(),
+		onBlur: fn(),
 		title: DEMO_TITLE,
 		id: "demoChipTextAreaId",
 		name: "demoChipTextArea",

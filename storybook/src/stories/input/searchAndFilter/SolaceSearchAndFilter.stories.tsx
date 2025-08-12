@@ -19,6 +19,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import { SolaceSearchAndFilter, FIELD_TYPES, SolaceTextFieldChangeEvent } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/testing-library";
+import { fn } from "@storybook/test";
 
 (SolaceSearchAndFilter as React.FC & { displayName?: string }).displayName = "SolaceSearchAndFilter";
 
@@ -270,8 +271,10 @@ export const ClearAllNotification = {
 		placeholder: SEARCH_PLACEHOLDER_TEXT,
 		width: "400px",
 		value: "initial value to be cleared",
-		onChange: action("key typed"),
-		onClearAll: action("clear all triggered")
+		onChange: fn(),
+		onClearAll: fn(),
+		onFocus: fn(),
+		onBlur: fn()
 	},
 
 	play: async ({ canvasElement }) => {
@@ -288,8 +291,9 @@ OnFocus.args = {
 	name: "testFieldOnFocus",
 	type: FIELD_TYPES.SEARCH,
 	placeholder: "Click or tab into me and observe the action!",
-	onChange: action("value changed"),
-	onFocus: action("input focused") // Using action() to log the onFocus event
+	onChange: fn(),
+	onFocus: fn(),
+	onBlur: fn()
 };
 
 OnFocus.play = async ({ canvasElement }) => {

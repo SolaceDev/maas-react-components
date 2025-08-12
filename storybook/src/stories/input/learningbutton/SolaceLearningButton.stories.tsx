@@ -17,7 +17,7 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
-import { within, expect } from "@storybook/test";
+import { within, expect, fn } from "@storybook/test";
 import { SolaceLearningButton, DeleteIcon } from "@SolaceDev/maas-react-components";
 
 (SolaceLearningButton as React.FC & { displayName?: string }).displayName = "SolaceLearningButton";
@@ -157,7 +157,7 @@ export const CallToActionDisabled = {
 
 export const CallToActionWithStartIcon = {
 	args: {
-		onClick: action("callback"),
+		onClick: fn(),
 		variant: VARIANT.CALL_TO_ACTION,
 		startIcon: <DeleteIcon />,
 		children: "Start The Experience"
@@ -173,7 +173,7 @@ export const CallToActionWithStartIcon = {
 
 export const CallToActionWithEndIcon = {
 	args: {
-		onClick: action("callback"),
+		onClick: fn(),
 		variant: VARIANT.CALL_TO_ACTION,
 		endIcon: <DeleteIcon />,
 		children: "Start The Experience"
