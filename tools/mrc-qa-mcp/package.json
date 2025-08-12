@@ -1,0 +1,23 @@
+{
+	"name": "mrc-qa-mcp",
+	"version": "1.0.0",
+	"description": "",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "tsc",
+		"start": "node build/index.js",
+		"dev": "ts-node src/index.ts",
+		"start:dev": "npm run build && npm start"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.17.2",
+		"axios": "^0.21.4"
+	},
+	"devDependencies": {
+		"typescript": "^4.5.4",
+		"ts-node": "^10.9.1"
+	}
+}
