@@ -1,0 +1,122 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as [COMPONENT_NAME]Stories from "./[COMPONENT_NAME].stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={[COMPONENT_NAME]Stories} />
+
+<Title>[COMPONENT_DISPLAY_NAME]</Title>
+
+<Description of={[COMPONENT_NAME]Stories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`[COMPONENT_NAME]`
+
+<Subtitle>Component Description</Subtitle>
+
+[Write a 2-3 sentence description explaining what the component does and its primary purpose. Follow this pattern:]
+The [COMPONENT_DISPLAY_NAME] component provides [main functionality]. It's useful for [primary use case], allowing users to [key benefit].
+
+The component implements [design pattern/interaction pattern] with the purpose of [specific goal]. This pattern [explain how it helps users] while still [additional benefit].
+
+<Subtitle>When To Use It</Subtitle>
+
+[Describe when developers should use this component. Include specific use cases and scenarios.]
+
+Use [COMPONENT_DISPLAY_NAME] when you have [specific scenario]. This [interaction/display] pattern is particularly effective for [use case context].
+
+Common use cases include:
+
+- [Use case 1]
+- [Use case 2]
+- [Use case 3]
+- [Use case 4]
+
+<Subtitle>When Not To Use It</Subtitle>
+
+[List scenarios when this component should NOT be used. Be specific about alternatives.]
+
+- [Scenario where component shouldn't be used]
+- [Another scenario to avoid]
+- [Third scenario with explanation]
+- [Fourth scenario]
+- [Fifth scenario]
+- [Sixth scenario with alternative suggestion]
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { [COMPONENT_NAME] } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [[COMPONENT_NAME].tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/[COMPONENT_NAME].tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=[MUI_COMPONENT_NAME]" target="_blank">theme.ts ([MUI_COMPONENT_NAME] styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={[COMPONENT_NAME]Stories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.[MUI_COMPONENT_NAME]-root` - Root [component type] container
+- `.[MUI_COMPONENT_NAME]-[ELEMENT_1]` - [Description of element 1]
+- `.[MUI_COMPONENT_NAME]-[ELEMENT_2]` - [Description of element 2]
+
+**State Classes:**
+
+- `.Mui-[STATE_1]` - Applied when [condition for state 1]
+- `.Mui-[STATE_2]` - Applied when [condition for state 2]
+- `.[CUSTOM_CLASS_NAME]` - Applied when [custom condition]
+
+**[VARIANT/INDICATOR] Classes:**
+
+- `.[VARIANT_PREFIX]-[VARIANT_1]` - [Variant 1] styling
+- `.[VARIANT_PREFIX]-[VARIANT_2]` - [Variant 2] styling
+- `.[VARIANT_PREFIX]-[VARIANT_3]` - [Variant 3] styling
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{display: 'flex', alignItems: 'center', margin: '8px 0'}}>
+  <div style={{width: '16px', height: '16px', backgroundColor: '#[HEX_COLOR_1]', border: '1px solid rgba(0,0,0,0.2)', borderRadius: '3px', marginRight: '8px'}}></div>
+  <span>theme.palette.ux.[COLOR_GROUP].[COLOR_VARIANT] - [Description of color usage - e.g., "Primary background color"]</span>
+</div>
+<div style={{display: 'flex', alignItems: 'center', margin: '8px 0'}}>
+  <div style={{width: '16px', height: '16px', backgroundColor: '#[HEX_COLOR_2]', border: '1px solid rgba(0,0,0,0.2)', borderRadius: '3px', marginRight: '8px'}}></div>
+  <span>theme.palette.ux.[COLOR_GROUP_2].[COLOR_VARIANT_2] - [Description of color usage 2 - e.g., "Border color in default state"]</span>
+</div>
+<div style={{display: 'flex', alignItems: 'center', margin: '8px 0'}}>
+  <div style={{width: '16px', height: '16px', backgroundColor: '#[HEX_COLOR_3]', border: '1px solid rgba(0,0,0,0.2)', borderRadius: '3px', marginRight: '8px'}}></div>
+  <span>theme.palette.ux.[COLOR_GROUP_3].[COLOR_VARIANT_3] - [Description of color usage 3 - e.g., "Text color for labels"]</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - [Description of spacing usage - e.g., "Padding between elements"]
+- theme.typography.[VARIANT] - [Description of typography usage - e.g., "Text style for component labels"]
+- theme.breakpoints.values.[SIZE] - [Description of breakpoint usage - e.g., "Responsive behavior"]
+- theme.components.[MUI_COMPONENT_NAME].styleOverrides.[ELEMENT] - [Description of override usage]
+
+Available mixins for consistent styling:
+- theme.mixins.[MIXIN_NAME].[ELEMENT] - [Description of mixin usage if applicable]
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- [ELEMENT_1] padding: `[PADDING_VALUES]`
+- [ELEMENT_2] dimensions: `[DIMENSIONS]`
+- [ELEMENT_3]: [SIZE_DESCRIPTION]
+- Transition timeout: `[TRANSITION_TIME]`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

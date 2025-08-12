@@ -30,7 +30,7 @@ import {
 import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import { DefaultTable } from "../../data-display/SolaceTable.stories";
+import { DefaultTable } from "../../data-display/table/SolaceTable.stories";
 
 (SolaceConfirmationDialog as React.FC & { displayName?: string }).displayName = "SolaceConfirmationDialog";
 (SolaceSelect as React.FC & { displayName?: string }).displayName = "SolaceSelect";
@@ -77,24 +77,26 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/UI-Library%3A-Patterns?node-id=1%3A3"
-		},
-		docs: {
-			description: {
-				component:
-					"The Dialog component creates modal dialogs that appear in front of the main content to provide critical information, require decisions, or involve multiple tasks. Dialogs are purposefully interruptive, so they should be used sparingly and only when user attention and decision are required."
-			}
 		}
 	},
 	argTypes: {
 		title: {
 			control: { type: "text" },
 			description:
-				"Title of the dialog. This should be concise and clearly communicate the purpose of the dialog. Can be a string or JSX element for more complex headers with icons."
+				"Title of the dialog. This should be concise and clearly communicate the purpose of the dialog. Can be a string or JSX element for more complex headers with icons.",
+			table: {
+				type: { summary: "string | React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		isOpen: {
 			control: { type: "boolean" },
 			description:
-				"Controls whether the dialog is visible or hidden. Use this prop to programmatically open or close the dialog based on user interactions or application state."
+				"Controls whether the dialog is visible or hidden. Use this prop to programmatically open or close the dialog based on user interactions or application state.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		maxWidth: {
 			options: ["sm", "md", "dialogMd", "lg", "xl"],
@@ -102,15 +104,18 @@ export default {
 			description:
 				"Determines the maximum width of the dialog. Choose based on the amount of content to display - use smaller sizes for simple messages and larger sizes for complex forms or tables.",
 			table: {
-				defaultValue: {
-					summary: "dialogMd"
-				}
+				type: { summary: '"sm" | "md" | "dialogMd" | "lg" | "xl"' },
+				defaultValue: { summary: "dialogMd" }
 			}
 		},
 		contentText: {
 			control: { type: "text" },
 			description:
-				"Text to be displayed in the dialog content section. This should provide clear information or instructions related to the purpose of the dialog."
+				"Text to be displayed in the dialog content section. This should provide clear information or instructions related to the purpose of the dialog.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		contentLayout: {
 			options: ["block", "contents", "flex"],
@@ -118,20 +123,28 @@ export default {
 			description:
 				"Overrides the display attribute of the dialog content section. Use 'flex' for layouts that need alignment control, 'contents' for custom layouts, and 'block' (default) for standard content flow.",
 			table: {
-				defaultValue: {
-					summary: "block"
-				}
+				type: { summary: '"block" | "contents" | "flex"' },
+				defaultValue: { summary: "block" }
 			}
 		},
 		actions: {
 			description:
-				"Array of action button configurations to be displayed in the dialog footer. Each action should include a label and onClick handler, and can optionally include variant, isDisabled, and other button props."
+				"Array of action button configurations to be displayed in the dialog footer. Each action should include a label and onClick handler, and can optionally include variant, isDisabled, and other button props.",
+			table: {
+				type: { summary: "DialogAction[]" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		customAction: {
 			description:
-				"Optional JSX element to display a custom action component (like a checkbox) in the dialog footer alongside the action buttons."
+				"Optional JSX element to display a custom action component (like a checkbox) in the dialog footer alongside the action buttons.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		linearProgressIndicator: {
+			control: { type: "boolean" },
 			description:
 				"When true, displays an indeterminate linear progress indicator at the bottom border of the dialog. Use this to indicate background processing while the dialog is open."
 		},
@@ -147,7 +160,159 @@ export default {
 		},
 		children: {
 			description:
-				"Content to be displayed in the dialog body below the contentText. Use this to add form elements, tables, or other complex content to the dialog."
+				"Content to be displayed in the dialog body below the contentText. Use this to add form elements, tables, or other complex content to the dialog.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		onClose: {
+			description:
+				"Callback function triggered when the dialog should be closed. Called when clicking outside the dialog, pressing escape, or clicking the close button if present."
+		},
+		disableBackdropClick: {
+			control: { type: "boolean" },
+			description:
+				"When true, prevents the dialog from closing when clicking on the backdrop. Use this for critical dialogs that require explicit user action.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		disableEscapeKeyDown: {
+			control: { type: "boolean" },
+			description:
+				"When true, prevents the dialog from closing when pressing the Escape key. Use this for critical dialogs that require explicit user action.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		fullScreen: {
+			control: { type: "boolean" },
+			description:
+				"When true, makes the dialog full screen. Useful for complex workflows or mobile interfaces where maximum screen real estate is needed.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		fullWidth: {
+			control: { type: "boolean" },
+			description:
+				"When true, makes the dialog take up the full width available up to the maxWidth constraint. Useful for responsive designs.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		scroll: {
+			options: ["paper", "body"],
+			control: { type: "select" },
+			description:
+				"Determines the scroll behavior when content overflows. 'paper' scrolls the dialog content, 'body' scrolls the entire page behind the dialog.",
+			table: {
+				type: { summary: '"paper" | "body"' },
+				defaultValue: { summary: "paper" }
+			}
+		},
+		TransitionComponent: {
+			description:
+				"Custom transition component for dialog animations. Use this to customize how the dialog appears and disappears.",
+			table: {
+				type: { summary: "React.ComponentType" },
+				defaultValue: { summary: "Fade" }
+			}
+		},
+		transitionDuration: {
+			control: { type: "number" },
+			description:
+				"Duration of the dialog transition animation in milliseconds. Controls how fast the dialog opens and closes.",
+			table: {
+				type: { summary: "number | { enter?: number, exit?: number }" },
+				defaultValue: { summary: "225" }
+			}
+		},
+		hideBackdrop: {
+			control: { type: "boolean" },
+			description:
+				"When true, hides the backdrop behind the dialog. Use sparingly as the backdrop helps focus user attention on the dialog.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		keepMounted: {
+			control: { type: "boolean" },
+			description:
+				"When true, keeps the dialog mounted in the DOM even when closed. Useful for performance optimization when the dialog is opened frequently.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		ariaDescribedBy: {
+			control: { type: "text" },
+			description:
+				"ARIA described-by attribute referencing elements that provide additional description for the dialog. Essential for accessibility.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		ariaLabelledBy: {
+			control: { type: "text" },
+			description:
+				"ARIA labelled-by attribute referencing the element that labels the dialog. Typically references the dialog title element.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		role: {
+			control: { type: "text" },
+			description:
+				"ARIA role for the dialog element. Defines the semantic meaning for assistive technologies. Common values include 'dialog' or 'alertdialog'.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "dialog" }
+			}
+		},
+		dataQa: {
+			control: { type: "text" },
+			description:
+				"Data attribute for QA testing. Use this to identify dialog elements during automated testing. Should be unique and descriptive.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		dataTags: {
+			control: { type: "text" },
+			description:
+				"Data attribute for additional tagging and metadata. Use this for analytics tracking, categorization, or any additional metadata.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		className: {
+			control: { type: "text" },
+			description:
+				"Additional CSS class names to apply to the dialog. Use this to extend styling with custom CSS while maintaining base functionality.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		id: {
+			control: { type: "text" },
+			description:
+				"Unique identifier for the dialog element. Use this when you need to reference the dialog programmatically or for linking with other elements.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceConfirmationDialog>;

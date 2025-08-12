@@ -1,4 +1,4 @@
-import { Meta, Canvas, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
 import * as SolaceDrawerStories from "./SolaceDrawer.stories.tsx";
 import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
@@ -11,82 +11,111 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 <Subtitle>Code Component Name</Subtitle>
 `SolaceDrawer`
 
-<Subtitle>How It Works</Subtitle>
+<Subtitle>Component Description</Subtitle>
 
-The `SolaceDrawer` component provides a sliding panel that enters from the edge of the screen. It can be used to display additional content, navigation options, or contextual information without navigating away from the current view. The drawer can be configured to appear from either the left or right side of the screen, and can be made resizable to allow users to adjust its width.
+The SolaceDrawer component provides a sliding panel that enters from the edge of the screen to display additional content, navigation options, or contextual information without navigating away from the current view. This persistent drawer pattern creates a non-modal overlay that can coexist with the main content, providing additional workspace without completely interrupting the user's current task while offering optional resizing capabilities for user customization.
 
-The drawer is a resizable, non-overlay version of a traditional sheet. It does not have a scrim behind it that blocks interactions, however it may visually block parts of the page.
-
-<Subtitle>When To Use It</Subtitle>
-
-- You need to complete complex tasks that would take up too much space on the page itself if embedded
-  - Example: Selecting multiple objects from a list of objects with the ability to sort and filter
-- You want to bring in additional information that isn't naturally part of the page but can be useful for reference, improving efficiency in task completion
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- The task does not require the user to refer to content in the main page (consider using a dialog instead, as it's better for focusing user on the current task and providing a clear sign of end of task)
-- You're implementing simple basic interactions, such as selecting a single object from a list
-- A simpler component can be used instead, such as an autocomplete dropdown
-- The cognitive load would be too high for users to manage both the main content and drawer content
-
-<Subtitle>Behavior</Subtitle>
-
-- Does not appear by default but can be opened by the user through a trigger on the page
-- Is locked to a single edge
-- Appears above the content of the page but does not stop the user from working in the content
-- Does not cover header the page, but covers the footer
-- By default, it does not save input entered in the sheet. If the use case requires users to switch sheets frequently, consider alternative methods of taking actions/input
-- Opens with a subtle slide-in animation
-
-<Subtitle>Details</Subtitle>
+<Subtitle>Import Statement</Subtitle>
 
 ```tsx
-// Example of a basic drawer implementation with callback functions
-import React, { useState } from "react";
-
-const MyDrawerComponent = () => {
-	// State to control drawer visibility
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-	// Callback function to open the drawer
-	const handleOpenDrawer = () => {
-		setIsDrawerOpen(true);
-	};
-
-	// Callback function to close the drawer
-	const handleCloseDrawer = () => {
-		setIsDrawerOpen(false);
-		// Additional close logic here, e.g.:
-		console.log("Drawer closed");
-	};
-
-	return (
-		<>
-			{/* Button to open the drawer */}
-			<SolaceButton variant="outline" onClick={handleOpenDrawer}>
-				Open Drawer
-			</SolaceButton>
-
-			{/* The drawer component */}
-			<SolaceDrawer open={isDrawerOpen} onClose={handleCloseDrawer} anchor="right" width={320}>
-				<div>
-					<h2>Drawer Content</h2>
-					<p>This is the content of the drawer.</p>
-				</div>
-			</SolaceDrawer>
-		</>
-	);
-};
+import { SolaceDrawer } from "@SolaceDev/maas-react-components";
 ```
 
-The source code for the `SolaceDrawer` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceDrawer.tsx)
+<Subtitle>Links</Subtitle>
 
-More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21118-35071&t=1T347Fr0kW1b1Z4A-0)
+- **GitHub Source Code**: [SolaceDrawer.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceDrawer.tsx)
+- **GitHub Theme Styles**: [theme.ts](https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts) _(Note: This component uses default Material-UI Drawer styling)_
 
-<Subtitle>Properties</Subtitle>
+<Subtitle>Props</Subtitle>
 
 <ArgTypes of={SolaceDrawerStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiDrawer-root` - Root drawer container
+- `.MuiDrawer-paper` - Drawer paper/content area with custom styling
+- `.MuiBox-root` - Content container with margin and overflow handling
+
+**Custom Classes:**
+
+- `.Dragger` - Resize handle element (when resizable is true)
+- `.VerticalDotsIcon` - Icon displayed in the resize handle
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Border colors for drawer and resize handle</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#EEEEEE",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w20 - Background color for resize handle</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "rgba(0, 0, 0, 0.15)",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.secondary.w8040 - Box shadow color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for 8px content margin)
+- theme.typography.[VARIANT] - Text styles for drawer content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiDrawer.styleOverrides.root - Custom styling for drawer container
+- theme.components.MuiDrawer.styleOverrides.paper - Custom styling for drawer paper/content area
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in drawer content
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Default width: `320px`
+- Minimum width: `100px` (when resizable)
+- Maximum width: `1000px` (when resizable)
+- Resize handle width: `8px`
+- Border radius: `2px`
+- Content margin: `theme.spacing(1)` (8px, left or right based on anchor)
+- Box shadow: `0px 2px 4px` with theme color
+- Variant: `persistent` (non-modal)
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

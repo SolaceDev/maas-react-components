@@ -1,0 +1,141 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceTooltipStories from "./SolaceTooltip.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceTooltipStories} />
+
+<Title>Solace Tooltip</Title>
+
+<Description of={SolaceTooltipStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceTooltip`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceTooltip component provides contextual information that appears when users hover over or focus on an element, useful for explaining functionality, providing additional context, or offering helpful hints without cluttering the interface. This tooltip pattern delivers just-in-time information that enhances user understanding without permanent screen real estate cost, helping reduce cognitive load by keeping interfaces clean while making helpful information readily accessible through predictable interaction patterns.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceTooltip } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceToolTip.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceToolTip.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiTooltip" target="_blank">theme.ts (MuiTooltip styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceTooltipStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiTooltip-tooltip` - Root tooltip container with Material-UI styling
+- `.MuiTooltip-arrow` - Arrow pointer element when arrow is enabled
+- `.MuiTooltip-popper` - Positioning container for tooltip placement
+
+**Variant Classes:**
+
+- `.htmlContent` - Applied when variant is "html" or "rich" for enhanced content styling
+- `.smallWidth` - Applied when maxWidth is "small" (default width constraint)
+- `.mediumWidth` - Applied when maxWidth is "medium" (larger width constraint)
+- `.fullWidth` - Applied when maxWidth is "full" (maximum available width)
+
+**Custom Classes:**
+
+- `.OverflowDiv` - Special container for overflow variant with text truncation handling
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Tooltip text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Tooltip background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.border.w100 - Tooltip border color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding inside tooltip
+- theme.typography.body2 - Base typography for tooltip content
+- theme.shape.borderRadius - Border radius for tooltip container
+- theme.transitions.create(['opacity', 'transform']) - Tooltip animation transitions
+- theme.components.MuiTooltip.styleOverrides.tooltip - Custom tooltip styling
+- theme.components.MuiTooltip.styleOverrides.arrow - Custom arrow styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.tooltip.fade - Opacity transition effect
+- theme.mixins.tooltip.transform - Transform transition for positioning
+
+**Layout Specifications:**
+
+- Default placement: `bottom`
+- Default max width: `small` (220px)
+- Default variant: `text`
+- Enter delay: `500ms` (time before showing)
+- Enter next delay: `0ms` (time for subsequent tooltips)
+- Leave delay: `0ms` (time before hiding)
+- Transition: Fade effect with `150ms` enter, `200ms` exit
+- Overflow detection: Automatic for `overflow` variant (scrollWidth vs clientWidth)
+- Positioning: 12 available positions (top, bottom, left, right with start/end variants)
+- Padding: `8px 16px` (adjustable via theme.spacing)
+- Border radius: `4px` (adjustable via theme.shape.borderRadius)
+- Z-index: 1500 (ensures tooltip appears above other elements)
+
+**Special Behaviors:**
+
+- Overflow variant only shows tooltip when content is actually truncated
+- HTML and rich variants support complex content formatting
+- Empty title prevents tooltip from showing
+- Controlled and uncontrolled modes supported
+- Focus and hover listeners can be independently disabled
+- Safari-specific fixes for double tooltip prevention
+- Automatic ARIA attributes for accessibility (describedby, labelledby)
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

@@ -1,0 +1,120 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceNotificationCounterStories from "./SolaceNotificationCounter.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceNotificationCounterStories} />
+
+<Title>Notification Counter</Title>
+
+<Description of={SolaceNotificationCounterStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceNotificationCounter`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceNotificationCounter component provides a visual indicator for displaying notification counts, alerts, or status badges. It's useful for showing unread counts, pending items, or status indicators, allowing users to quickly identify areas that require attention while maintaining a clean interface aesthetic.
+
+The component implements a notification badge pattern with the purpose of drawing attention to important information or actions that need user attention. This pattern helps users stay informed about system status, pending tasks, or new content without overwhelming the interface with intrusive notifications.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceNotificationCounter } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceNotificationCounter.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceNotificationCounter.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=component_NotificationCounter" target="_blank">theme.ts (component_NotificationCounter styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceNotificationCounterStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.notificationCounter` - Root badge container with custom Solace styling
+- `.MuiTooltip-root` - Tooltip wrapper (when title prop is provided)
+
+**Custom Classes:**
+
+- `.Badge` - Styled badge container with size and font size customization
+- `.Value` - Text content wrapper with opacity transitions
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FF0000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Background color for error state notifications</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#4CAF50",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.success.wMain - Background color for success state notifications</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "50%",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.common.white - Text color for notification counter value</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding around counter value
+- theme.typography.body2 - Base typography for counter value
+- theme.components.MuiBadge.styleOverrides.badge - Custom badge styling
+- theme.transitions.create(['transform', 'opacity']) - Animation transitions
+
+Available mixins for consistent styling:
+
+- theme.mixins.notification.pulse - Pulse animation effect
+- theme.mixins.notification.fade - Opacity transition effect
+
+**Layout Specifications:**
+
+- Badge dimensions: `21px` × `21px` (default)
+- Font size: `14px` (default), dynamically calculated as `(size / 3) * 2`
+- Line height: `size + 1px`
+- Animation duration: `1000ms`
+- Pulse animation: Scale 1.00 → 1.05
+- Initial animation: 1 cycle
+- Update animation: 3 cycles
+- Opacity transition: 0 ↔ 1 (controlled by showing state)
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

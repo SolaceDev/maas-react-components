@@ -1,0 +1,119 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceLinearProgressStories from "./SolaceLinearProgress.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceLinearProgressStories} />
+
+<Title>Linear Progress</Title>
+
+<Description of={SolaceLinearProgressStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceLinearProgress`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Linear Progress component provides a visual indicator for ongoing processes or loading states with determinate and indeterminate progress display options. It's useful for showing the completion status of operations, implementing a progress indication pattern that helps users understand system activity and estimated completion times.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceLinearProgress } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceLinearProgress.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceLinearProgress.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiLinearProgress" target="_blank">theme.ts (MuiLinearProgress styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceLinearProgressStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiLinearProgress-root` - Root linear progress container
+- `.MuiLinearProgress-bar` - Progress bar element that animates
+- `.MuiLinearProgress-bar1` - Primary progress bar for indeterminate variant
+- `.MuiLinearProgress-bar2` - Secondary progress bar for indeterminate variant
+
+**State Classes:**
+
+- `.MuiLinearProgress-indeterminate` - Applied when variant is indeterminate
+- `.MuiLinearProgress-determinate` - Applied when variant is determinate
+
+**Color Classes:**
+
+- `.default` - Default progress bar styling
+- `.learning` - Learning-themed progress bar styling
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#00C895",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.wMain - Primary progress bar color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E8F5F2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w10 - Progress bar background track color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#333333",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Label text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing() - Not directly used but can be applied through sx prop for margins
+- theme.components.MuiLinearProgress.styleOverrides.root - Override default linear progress styling
+- theme.components.MuiLinearProgress.styleOverrides.bar - Override progress bar styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, and customize the progress bar appearance through component overrides.
+
+**Layout Specifications:**
+
+- Height dimensions: xs: 4px, sm: 6px, md: 10px, lg: 14px
+- Default height: md (10px)
+- xs height: Used in modal dialog components
+- sm height: Used for small progress indicators on side panels
+- md height: Used for progress bars on main pages
+- lg height: Used for prominent progress displays
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

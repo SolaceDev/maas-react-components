@@ -67,39 +67,43 @@ export default {
 	title: "Container/Drawer",
 	component: SolaceDrawer,
 	tags: ["!autodocs"],
-	parameters: {
-		docs: {
-			description: {
-				component:
-					"The Drawer component provides a sliding panel that appears from the edge of the screen. Drawers are commonly used for navigation menus, filter panels, or displaying additional information without leaving the current context. They can be anchored to either the left or right side of the screen and can be made resizable to allow users to adjust the viewing area."
-			}
-		}
-	},
+	parameters: {},
 	argTypes: {
 		open: {
 			control: { type: "boolean" },
 			description:
-				"Controls whether the drawer is visible or hidden. Use this prop to programmatically open or close the drawer based on user interactions or application state."
+				"Controls whether the drawer is visible or hidden. Use this prop to programmatically open or close the drawer based on user interactions or application state.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		width: {
 			control: { type: "number" },
 			description:
-				"Sets the initial width of the drawer in pixels. Choose an appropriate width based on the content to be displayed - wider for complex forms or tables, narrower for simple navigation menus."
+				"Sets the initial width of the drawer in pixels. Choose an appropriate width based on the content to be displayed - wider for complex forms or tables, narrower for simple navigation menus.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "320" }
+			}
 		},
 		resizable: {
 			control: { type: "boolean" },
 			description:
-				"When true, allows users to resize the drawer by dragging its edge. Enable this when users might need to adjust the viewing area based on content needs."
+				"When true, allows users to resize the drawer by dragging its edge. Enable this when users might need to adjust the viewing area based on content needs.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		anchor: {
 			control: { type: "select" },
 			options: ["left", "right"],
 			description:
-				"Determines which side of the screen the drawer appears from. Use 'left' for primary navigation menus and 'right' for supplementary information or actions.",
+				"Determines which side of the screen the drawer appears from. Use 'left' for primary navigation menus and 'right' for supplementary information or actions. See enum at https://github.com/SolaceDev/maas-react-components/blob/main/src/types/solaceDrawer.ts",
 			table: {
-				defaultValue: {
-					summary: "right"
-				}
+				type: { summary: '"left" | "right"' },
+				defaultValue: { summary: '"right"' }
 			}
 		},
 		onResizeDone: {
@@ -111,9 +115,8 @@ export default {
 			description:
 				"Sets the minimum width (in pixels) that the drawer can be resized to. Use this to ensure content remains usable when the drawer is resized.",
 			table: {
-				defaultValue: {
-					summary: "100"
-				}
+				type: { summary: "number" },
+				defaultValue: { summary: "100" }
 			}
 		},
 		maxWidth: {
@@ -121,9 +124,8 @@ export default {
 			description:
 				"Sets the maximum width (in pixels) that the drawer can be resized to. Use this to prevent the drawer from taking up too much screen space.",
 			table: {
-				defaultValue: {
-					summary: "1000"
-				}
+				type: { summary: "number" },
+				defaultValue: { summary: "1000" }
 			}
 		},
 		top: {
@@ -131,9 +133,8 @@ export default {
 			description:
 				"CSS property that sets the top position of the drawer. Use this to position the drawer below fixed elements like headers.",
 			table: {
-				defaultValue: {
-					summary: "0"
-				}
+				type: { summary: "string" },
+				defaultValue: { summary: '"0"' }
 			}
 		},
 		height: {
@@ -141,18 +142,25 @@ export default {
 			description:
 				"CSS property that sets the height of the drawer. Use this to control how much vertical space the drawer occupies.",
 			table: {
-				defaultValue: {
-					summary: "100%"
-				}
+				type: { summary: "string" },
+				defaultValue: { summary: '"100%"' }
 			}
 		},
 		offset: {
 			control: { type: "text" },
 			description:
-				"CSS property that sets the distance from the anchor side. Use this when you need the drawer to be inset from the edge of the screen."
+				"CSS property that sets the distance from the anchor side. Use this when you need the drawer to be inset from the edge of the screen.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		children: {
-			description: "Content to be displayed inside the drawer. This can include any React components or HTML elements."
+			description: "Content to be displayed inside the drawer. This can include any React components or HTML elements.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolaceDrawer>;
