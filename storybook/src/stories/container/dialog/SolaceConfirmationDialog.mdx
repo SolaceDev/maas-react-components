@@ -1,155 +1,113 @@
-import { Meta, Description, Title, Subtitle, ArgTypes, Markdown } from "@storybook/blocks";
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
 import * as SolaceConfirmationDialogStories from "./SolaceConfirmationDialog.stories.tsx";
 import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
 <Meta of={SolaceConfirmationDialogStories} />
 
-<Title>Dialog</Title>
+<Title>Confirmation Dialog</Title>
 
 <Description of={SolaceConfirmationDialogStories} />
 
 <Subtitle>Code Component Name</Subtitle>
 `SolaceConfirmationDialog`
 
-<Subtitle>How It Works</Subtitle>
+<Subtitle>Component Description</Subtitle>
 
-The `SolaceConfirmationDialog` component displays a modal dialog that can contain various types of content and actions. Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks. The component supports various states including different sizes, content layouts, and customizable actions.
+The SolaceConfirmationDialog component provides modal dialogs that appear in front of the main content to provide critical information, require decisions, or involve multiple tasks while keeping users in context. This flexible dialog pattern draws user attention to specific actions or information, helping users stay focused on important decisions while maintaining their context within the application and allowing for quick actions without losing their current workflow.
 
-<Subtitle>When To Use It</Subtitle>
-
-- Keeping the user in context when quick actions are needed
-- Drawing users attention to that location, such as alerts and confirmations
-- Specific/quick tasks to progress the workflow
-- Additional information is needed without losing context
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- Complex interaction (multiple steps)
-- Use when context on rest of screen is needed
-- Don't open a dialog without the user having done anything.
-- They can distrupt the user flow, don't do this unless that the intent.
-
-<Subtitle>Dialog Types & Closing Behavior</Subtitle>
-
-There are two main types of dialogs with different closing behaviors:
-
-1. **Actions & Acknowledge Dialogs**
-
-- User interaction is mandatory to progress
-- Used for important decisions, preventing or correcting critical errors
-- Does NOT close when clicking outside or pressing ESC
-- Closes only when an action button is clicked
-
-2. **Informational Dialogs**
-- Used for displaying details or information
-- Can be dismissed by clicking outside the dialog or pressing ESC
-- Also closes when the Close button is clicked
-
-<Subtitle>Design Best Practices</Subtitle>
-
-<Subtitle>Number of Elements and Options</Subtitle>
-
-- **Do:** Include only essential information to keep dialogs focused
-- **Don't:** Give too many options, as users may lose attention and leave without completing the task
-
-<Subtitle>Dismissive Action Text</Subtitle>
-
-- **Do:** Use clear action text that explains what will happen (e.g., "Discard")
-- **Don't:** Use ambiguous text like "Yes" and "No" that answers the question but doesn't indicate what will happen
-
-<Subtitle>Clear Question and Options</Subtitle>
-
-- **Do:** Use words, phrases, and concepts familiar to the user, rather than system terms
-- **Do:** Clearly state what will happen once the user presses the affirmative button
-- **Don't:** Use questions that introduce extra visual clutter or ambiguous action text
-
-<Subtitle>Icons in Titles</Subtitle>
-
-- **Do:** Keep dialog titles clear without icons
-- **Don't:** Use icons in titles as they create visual noise and increase the number of icons users need to remember
-
-<Subtitle>Form Field Styles in Dialogs</Subtitle>
-
-- Use stacked labels by default in action dialogs to keep fields close together
-- Allow side-by-side fields when appropriate
-- Avoid left-aligned labels in narrow contexts as they take more space and make content less scannable
-- Maintain consistent alignment styles within the same form
-
-<Subtitle>Exceptions</Subtitle>
-
-For special cases or exceptions to these guidelines, consult with the UX team.
-
-<Subtitle>Details</Subtitle>
+<Subtitle>Import Statement</Subtitle>
 
 ```tsx
-// Example of a basic dialog implementation with callback functions
-import React, { useState } from "react";
-
-const MyComponent = () => {
-	// State to control dialog visibility
-	const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-	// Callback function to open the dialog
-	const handleOpenDialog = () => {
-		setIsDialogOpen(true);
-	};
-
-	// Callback function for the Cancel button
-	const handleCancel = () => {
-		setIsDialogOpen(false);
-		// Additional cancel logic here, e.g.:
-		console.log("Dialog cancelled");
-		// You might want to reset form values or state here
-	};
-
-	// Callback function for the Confirm button
-	const handleConfirm = () => {
-		setIsDialogOpen(false);
-		// Additional confirmation logic here, e.g.:
-		console.log("Action confirmed");
-		// Process the confirmed action, such as:
-		// - Submitting form data
-		// - Deleting an item
-		// - Navigating to another page
-		// - Triggering another operation
-	};
-
-	return (
-		<>
-			{/* Button to open the dialog */}
-			<SolaceButton variant="outline" onClick={handleOpenDialog}>
-				Open Dialog
-			</SolaceButton>
-
-			{/* The dialog component */}
-			<SolaceConfirmationDialog
-				title="Confirmation Dialog"
-				contentText="Are you sure you want to perform this action?"
-				isOpen={isDialogOpen}
-				actions={[
-					{
-						label: "Cancel",
-						onClick: handleCancel
-					},
-					{
-						label: "Confirm",
-						onClick: handleConfirm,
-						variant: "outline"
-					}
-				]}
-			/>
-		</>
-	);
-};
+import { SolaceConfirmationDialog } from "@SolaceDev/maas-react-components";
 ```
 
-The source code for the `SolaceConfirmationDialog` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/dialog/SolaceConfirmationDialog.tsx)
+<Subtitle>Links</Subtitle>
 
-More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/UI-Library%3A-Patterns?node-id=1%3A3)
+- **GitHub Source Code**: [SolaceConfirmationDialog.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/dialog/SolaceConfirmationDialog.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiDialog" target="_blank">theme.ts (MuiDialog styles)</a>
 
-<Subtitle>Properties</Subtitle>
+<Subtitle>Props</Subtitle>
 
 <ArgTypes of={SolaceConfirmationDialogStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiDialog-root` - Root dialog container
+- `.MuiDialogTitle-root` - Dialog title section
+- `.MuiDialogContent-root` - Dialog content area
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied when dialog actions are disabled
+- `.linearProgressIndicator` - Applied when linear progress indicator is enabled
+- `.CustomAction` - Applied when custom action components are present
+
+**Dialog Layout Classes:**
+
+- `.MuiDialogActions-root` - Dialog action buttons footer styling
+- `.MuiDialog-paper` - Dialog paper container styling
+- `.MuiDialogContentText-root` - Content text styling
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Dialog background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Primary text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(3, 3, 2, 3) for title padding)
+- theme.typography.[VARIANT] - Text styles for dialog content and title
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiDialog.styleOverrides.root - Custom styling for dialog container
+- theme.components.MuiDialogTitle.styleOverrides.root - Custom styling for dialog title
+- theme.components.MuiDialogContent.styleOverrides.root - Custom styling for dialog content
+- theme.components.MuiDialogActions.styleOverrides.root - Custom styling for dialog actions
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in dialog actions
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Dialog title padding: `theme.spacing(3, 3, 2, 3)` (24px 24px 16px 24px)
+- Dialog content: Flexible display based on contentLayout prop
+- Action buttons: Right-aligned with consistent spacing
+- Custom actions: Left-aligned with auto margin
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

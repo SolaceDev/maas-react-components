@@ -1,0 +1,129 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceGridListMultiSelectStories from "./SolaceGridListMultiSelect.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceGridListMultiSelectStories} />
+
+<Title>Grid List Multi Select</Title>
+
+<Description of={SolaceGridListMultiSelectStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceGridListMultiSelect`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceGridListMultiSelect component provides a grid layout with multi-selection capabilities for displaying collections of selectable items, useful for organizing content into structured grids where users need to select multiple items and enabling efficient browsing and batch selection while maintaining consistent visual alignment and clear selection states. This selectable grid pattern enables users to choose multiple items from a collection in an organized, scannable format, helping users efficiently make bulk selections while providing clear visual feedback about selected states and maintaining flexible layout options.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceGridListMultiSelect } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceGridListMultiSelect.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/layout/SolaceGridListMultiSelect.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=layoutComponent_ImageList" target="_blank">theme.ts (layoutComponent_ImageList styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceGridListMultiSelectStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.layoutComponent_ImageList-row` - Individual grid row container
+- `.layoutComponent_ImageList-virtualRow` - Virtual row container for virtualized lists
+- `.layoutComponent_ImageList-list` - Main list container
+- `.layoutComponent_ImageList-border` - Border wrapper around the list
+- `.layoutComponent_ImageList-checkbox` - Checkbox container in selectable rows
+
+**State Classes:**
+
+- `.selected` - Applied when a row is selected
+- `.headerRow` - Applied to the header row container
+- `.indicator-info` - Applied when indicatorVariant is "info"
+- `.indicator-error` - Applied when indicatorVariant is "error"
+- `.indicator-warn` - Applied when indicatorVariant is "warn"
+- `.indicator-success` - Applied when indicatorVariant is "success"
+- `.indicator-secondary` - Applied when indicatorVariant is "secondary"
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F5F5F5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Default background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E3F2FD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.w10 - Selected row background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Checkbox and selection indicator color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Default padding between grid items
+- theme.typography.body1 - Base typography for grid content
+- theme.components.MuiCheckbox.styleOverrides.root - Custom checkbox styling
+- theme.components.MuiImageList.styleOverrides.root - Custom grid container styling
+- theme.transitions.create(['background-color']) - Selection state transitions
+
+Available mixins for consistent styling:
+
+- theme.mixins.gridList.row - Standard row styling
+- theme.mixins.gridList.selected - Selected state styling
+- theme.mixins.gridList.checkbox - Checkbox container styling
+
+**Layout Specifications:**
+
+- Grid template columns: Defined by the `gridTemplate` prop using CSS Grid syntax
+- Item height: Calculated dynamically using `getGridListItemHeight()` utility
+- Virtual list height: Configurable through `virtualizedListOption.height`
+- Checkbox column width: Fixed at `48px`
+- Row padding: `8px` (theme.spacing(1))
+- Selection transition: `200ms` background-color fade
+- Hover state opacity: 0.04
+- Selected state opacity: 0.08
+- Checkbox position: Left-aligned with `16px` margin
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

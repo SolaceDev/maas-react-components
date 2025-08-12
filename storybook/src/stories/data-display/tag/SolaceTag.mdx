@@ -1,0 +1,131 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceTagStories from "./SolaceTag.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceTagStories} />
+
+<Title>Tag</Title>
+
+<Description of={SolaceTagStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceTag`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceTag component provides a visual label element for categorizing, organizing, or highlighting content with customizable styling options. This flexible tagging pattern helps organize information hierarchically while offering extensive customization options for colors, variants, and visual styling to match different content types, allowing users to quickly identify and group related information through consistent visual markers.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceTag } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceTag.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceTag.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiChip" target="_blank">theme.ts (MuiChip styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceTagStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiChip-root` - Root chip container with Material-UI styling
+- `.solaceTag` - Custom class for Solace-specific tag styling
+- `.MuiChip-label` - Text content wrapper
+- `.MuiChip-icon` - Icon container for leading icons
+
+**Variant Classes:**
+
+- `.MuiChip-filled` - Applied when variant is "filled"
+- `.MuiChip-outlined` - Applied when variant is "outlined"
+
+**State Classes:**
+
+- `.MuiChip-clickable` - Applied when clickable is true
+
+**Custom Icon Classes:**
+
+- `.leadingIcon` - Container for custom leading icons
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.default.fill - Default tag background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976D2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.primary.fill - Primary tag background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.deprecated.chip.default.text - Default tag text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.typography.body2 - Base typography for tag text
+- theme.shape.borderRadius - Border radius for tag container
+- theme.transitions.create(['background-color', 'box-shadow']) - Tag hover and focus transitions
+- theme.components.MuiChip.styleOverrides.root - Custom tag styling
+- theme.components.MuiChip.styleOverrides.label - Custom label styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.tag.filled - Filled variant styling
+- theme.mixins.tag.outlined - Outlined variant styling
+
+**Layout Specifications:**
+
+- Height: Fixed at `18px` (sm size from CHIP_PX_HEIGHTS)
+- Border radius: Fixed at `20px` (xs size from CHIP_PX_BORDER_RADIUS)
+- Font size: Fixed at `12px` (xs size from BASE_FONT_PX_SIZES)
+- Font weight: `400` (regular)
+- Default variant: `FILLED`
+- Default max width: `100%`
+- Padding: `2px` left and right
+- Icon size: `14x14` pixels for leading icons
+- Size: Always `medium` (not responsive to content)
+- Clickable hover effect: Slight opacity change and elevation increase
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

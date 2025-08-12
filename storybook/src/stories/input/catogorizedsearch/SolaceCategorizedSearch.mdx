@@ -1,0 +1,118 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceCategorizedSearchStories from "./SolaceCategorizedSearch.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceCategorizedSearchStories} />
+
+<Title>Categorized Search</Title>
+
+<Description of={SolaceCategorizedSearchStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceCategorizedSearch`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Categorized Search component provides a powerful search interface that combines text-based searching with category filtering, useful for narrowing down search results within specific categories and allowing users to efficiently find content across different sections or types of data. The component implements a combined search pattern with the purpose of enhancing search precision through categorization, helping users quickly locate relevant information by combining free-text search with predefined category filters while maintaining a clean and intuitive interface.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceCategorizedSearch } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceCategorizedSearch.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceCategorizedSearch.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiTextField" target="_blank">theme.ts (MuiTextField styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceCategorizedSearchStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiTextField-root` - Root search input container
+- `.MuiToggleButtonGroup-root` - Category buttons container
+- `.MuiToggleButton-root` - Individual category button
+- `.MuiFormHelperText-root` - Helper text container
+
+**State Classes:**
+
+- `.Mui-focused` - Applied when the search input has focus
+- `.Mui-selected` - Applied to the currently selected category button
+- `.Mui-disabled` - Applied when the component is disabled
+- `.Mui-error` - Applied when the component has an error state
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976d2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Primary color for active category buttons and focused search input</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#f5f5f5",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.default - Background color for inactive category buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#d32f2f",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Color for error states and validation</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding between category buttons (4px)
+- theme.typography.body1 - Text style for search input
+- theme.typography.button - Text style for category buttons
+- theme.components.MuiTextField.styleOverrides.root - Search input container customization
+- theme.components.MuiToggleButton.styleOverrides.root - Category button customization
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Used for maintaining consistent height with toolbar components
+
+**Layout Specifications:**
+
+- Search input padding: theme.spacing(2) vertical, theme.spacing(1.5) horizontal
+- Category button spacing: theme.spacing(1) (4px) between buttons
+- Button height: 40px (matches MUI default input height)
+- Transition timeout: 200ms for hover/focus effects
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

@@ -1,0 +1,154 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceChipTextAreaStories from "./SolaceChipTextArea.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceChipTextAreaStories} />
+
+<Title>Chip Text Area</Title>
+
+<Description of={SolaceChipTextAreaStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceChipTextArea`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Chip Text Area component provides a multi-line text input interface that automatically converts user input into visual chips based on delimiter characters (comma, semicolon, or space), useful for applications where users need to enter multiple values like email addresses, tags, or keywords and allowing users to manage collections of text values in an intuitive chip-based interface. The component implements a tag input pattern with the purpose of making multi-value entry efficient and visually organized, helping users add, edit, and remove multiple text values through automatic tokenization while maintaining form consistency and providing accessible multi-value input workflows.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceChipTextArea } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceChipTextArea.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceChipTextArea/SolaceChipTextArea.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiChip" target="_blank">theme.ts (MuiChip styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceChipTextAreaStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiInputBase-root` - Root input container for the chip text area
+- `.MuiInputBase-input` - Input field element within the chip text area
+- `.MuiChip-root` - Individual chip elements created from user input
+- `.MuiChip-deleteIcon` - Delete icon within each removable chip
+
+**State Classes:**
+
+- `.error` - Applied to container when chips have validation errors or hasErrors is true
+- `.Mui-focused` - Applied when the input area has keyboard focus
+- `.Mui-disabled` - Applied when the component is in disabled state
+- `.solaceChip` - Applied to all chip elements for consistent Solace styling
+
+**Custom Classes:**
+
+- `[data-chip="true"]` - Applied to chip container elements for event handling and styling
+- `.error-status` - Applied to chips that fail validation checks
+- `.no-status` - Applied to chips that pass validation successfully
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#007DBA",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Focus border color for input container</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#BDBDBD",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Default border color for input container</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#D32F2F",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Error state border color and chip error styling</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFCDD2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.w100 - Error icon fill color within invalid chips</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#EEEEEE",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Chip hover background color for delete icons</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(4) - Container min-height for consistent form field height
+- theme.typography.body1 - Text style for input and chip text
+- theme.components.MuiInputBase.styleOverrides.root - Base input styling
+- theme.components.MuiChip.styleOverrides.root - Chip styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.chip.base - Standard chip styling patterns
+
+**Layout Specifications:**
+
+- Container min-height: `theme.spacing(4)` (32px)
+- Container padding: `2px 4px`
+- Container border: `1px solid` with dynamic color
+- Container border-radius: `4px`
+- Chip margin: `theme.spacing(0.5)` (4px)
+- Input wrapper min-width: `50px`
+- Input field height: `120px` (4 rows maximum)
+- Chip layout: `inline-flex` with `flex-start` alignment
+- Transition duration: `200ms` for hover and focus effects
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

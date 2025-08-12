@@ -1,0 +1,117 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceCircularProgressStories from "./SolaceCircularProgress.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceCircularProgressStories} />
+
+<Title>Circular Progress</Title>
+
+<Description of={SolaceCircularProgressStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceCircularProgress`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Circular Progress component provides a circular visual indicator for ongoing processes or loading states with determinate and indeterminate progress display options. It's useful for showing loading states and operation progress in a compact circular format, implementing a progress indication pattern that helps users understand system activity without taking up significant screen space.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceCircularProgress } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceCircularProgress.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceCircularProgress.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiCircularProgress" target="_blank">theme.ts (MuiCircularProgress styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceCircularProgressStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiCircularProgress-root` - Root circular progress container
+- `.MuiCircularProgress-svg` - SVG element containing the circle
+- `.MuiCircularProgress-circle` - Circle element that animates
+
+**State Classes:**
+
+- `.MuiCircularProgress-indeterminate` - Applied when variant is indeterminate
+- `.MuiCircularProgress-determinate` - Applied when variant is determinate
+
+**Custom Classes:**
+
+- Custom Container with flex column layout and centered alignment
+- Message text styling with theme spacing
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#00C895",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.wMain - Primary progress circle color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E8F5F2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w10 - Background circle track color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#333333",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Label text color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1.5) - Gap between spinner and message text
+- theme.components.MuiCircularProgress.styleOverrides.root - Override default circular progress styling
+- theme.components.MuiCircularProgress.styleOverrides.circle - Override circle element styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, and customize the spinner appearance through component overrides.
+
+**Layout Specifications:**
+
+- Container width: fit-content for minimal space usage
+- Flex direction: column with center alignment
+- Row gap: theme.spacing(1.5) between spinner and message
+- Size dimensions: xs: 14px, sm: 24px, md: 30px, lg: 42px
+- Default size: sm (24px)
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

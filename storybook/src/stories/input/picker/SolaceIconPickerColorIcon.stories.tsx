@@ -1,0 +1,262 @@
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import React from "react";
+import { Meta, Decorator, StoryFn } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { userEvent, within } from "@storybook/test";
+import { Box, SolacePicker, styled, useTheme } from "@SolaceDev/maas-react-components";
+
+(SolacePicker as React.FC & { displayName?: string }).displayName = "SolacePicker";
+
+// Create a decorator to include the dropdown inside the snapshot"
+const withSnapshotContainer: Decorator = (Story) => {
+	return (
+		<div id="snapshot" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+			<div style={{ margin: "16px" }}>
+				<Story />
+			</div>
+		</div>
+	);
+};
+
+export default {
+	title: "Input/Picker/Icon",
+	component: SolacePicker,
+	args: {
+		id: "",
+		name: "",
+		label: "Icon",
+		value: "",
+		variant: "icons",
+		title: "",
+		helperText: "",
+		hasErrors: false,
+		hasWarnings: false,
+		inlineLabel: false,
+		required: false,
+		disabled: false,
+		readOnly: false,
+		displayEmpty: false,
+		numOfItemsPerRow: 4,
+		numOfRowsDisplayed: 3,
+		autoFocusItem: false,
+		icons: {},
+		iconKeyOrderedList: undefined,
+		dataQa: ""
+	},
+	parameters: {
+		controls: { sort: "alpha" },
+		docs: {
+			description: {
+				component: "Code component name: SolacePicker"
+			}
+		}
+	},
+	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the icon picker component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the icon picker in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the icon selection.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		label: {
+			control: {
+				type: "text"
+			}
+		},
+		helperText: {
+			control: {
+				type: "text"
+			}
+		},
+		hasErrors: {
+			control: {
+				type: "boolean"
+			}
+		},
+		inlineLabel: {
+			control: {
+				type: "boolean"
+			}
+		},
+		required: {
+			control: {
+				type: "boolean"
+			}
+		},
+		disabled: {
+			control: {
+				type: "boolean"
+			}
+		},
+		readOnly: {
+			control: {
+				type: "boolean"
+			}
+		},
+		value: {
+			control: {
+				type: "text"
+			}
+		},
+		displayEmpty: {
+			control: {
+				type: "boolean"
+			}
+		},
+		numOfItemsPerRow: {
+			control: {
+				type: "number"
+			}
+		},
+		numOfRowsDisplayed: {
+			control: {
+				type: "number"
+			}
+		},
+		autoFocusItem: {
+			control: {
+				type: "boolean"
+			}
+		}
+	},
+	decorators: [withSnapshotContainer]
+} as Meta<typeof SolacePicker>;
+
+const NodeColorBlockContainer = styled("div")(({ theme }) => ({
+	display: "inline-block",
+	width: theme.spacing(3),
+	height: theme.spacing(3),
+	boxSizing: "border-box",
+	borderRadius: theme.spacing(0.5)
+}));
+
+const NodeColorBlockDualColorContainer = styled(NodeColorBlockContainer)(() => ({
+	display: "grid",
+	gridTemplateColumns: "auto auto",
+	columnGap: "1px"
+}));
+
+const SupportedColorVariationList = ["n2", "n0", "n1", "n3", "n4", "n5", "n6", "n7", "n8"];
+
+function NodeColorBlock({ colorVariation, nodeType }: { colorVariation: string; nodeType?: string }) {
+	const theme = useTheme();
+
+	const dualColor = nodeType === "applicationDomain";
+	const accentValueWMain = theme.palette.ux.accent[colorVariation].wMain;
+	const accentValueW100 = theme.palette.ux.accent[colorVariation].w100;
+
+	if (dualColor) {
+		const bgColor = accentValueW100;
+		const bgColor2 = accentValueWMain;
+
+		return (
+			<NodeColorBlockDualColorContainer>
+				<Box
+					sx={{
+						backgroundColor: bgColor,
+						borderTopLeftRadius: theme.spacing(0.5),
+						borderBottomLeftRadius: theme.spacing(0.5)
+					}}
+				></Box>
+				<Box
+					sx={{
+						backgroundColor: bgColor2,
+						borderTopRightRadius: theme.spacing(0.5),
+						borderBottomRightRadius: theme.spacing(0.5)
+					}}
+				></Box>
+			</NodeColorBlockDualColorContainer>
+		);
+	} else {
+		const bgColor = nodeType === "event" ? accentValueWMain : accentValueW100;
+
+		return <NodeColorBlockContainer style={{ backgroundColor: bgColor }}></NodeColorBlockContainer>;
+	}
+}
+
+function getNodeColorForCustomization(nodeType: string): { [key: string]: JSX.Element } {
+	const colors = {};
+
+	SupportedColorVariationList.forEach((colorVariation) => {
+		colors[colorVariation] = (
+			<NodeColorBlock key={colorVariation} colorVariation={colorVariation} nodeType={nodeType} />
+		);
+	});
+
+	return colors;
+}
+
+const Template: StoryFn<typeof SolacePicker> = (args) => {
+	return (
+		<SolacePicker
+			{...args}
+			variant="icons"
+			name="demoIconPicker"
+			value={"n2"}
+			numOfItemsPerRow={3}
+			onChange={action("callback")}
+		/>
+	);
+};
+
+export const SingleColorIcon = {
+	render: Template,
+	args: { icons: getNodeColorForCustomization("application"), iconKeyOrderedList: SupportedColorVariationList },
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		await userEvent.click(canvas.getByRole("combobox"));
+	},
+
+	parameters: {
+		// Delay snapshot 1 second until all interactions are done
+		chromatic: { delay: 1000 }
+	}
+};
+
+export const DualColorIcon = {
+	render: Template,
+	args: { icons: getNodeColorForCustomization("applicationDomain"), iconKeyOrderedList: SupportedColorVariationList },
+
+	play: async ({ canvasElement }) => {
+		// Starts querying the component from it's root element
+		const canvas = within(canvasElement);
+
+		await userEvent.click(canvas.getByRole("combobox"));
+	},
+
+	parameters: {
+		// Delay snapshot 1 second until all interactions are done
+		chromatic: { delay: 1000 }
+	}
+};

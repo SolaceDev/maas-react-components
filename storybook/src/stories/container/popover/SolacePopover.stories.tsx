@@ -50,49 +50,77 @@ export default {
 		design: {
 			type: "figma",
 			url: "https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21909-955&p=f&t=nZPRTnBQWGY5q2cb-0"
-		},
-		docs: {
-			description: {
-				component:
-					"A Popover can be used to display some content on top of another. Popovers can appear in-context, aligned to the anchor element. Alignment can vary depending on where the anchor element is placed on a page."
-			}
 		}
 	},
 	argTypes: {
 		id: {
 			control: { type: "text" },
 			description:
-				"Unique identifier for the popover. This is important for accessibility and helps screen readers identify the popover content. It's used for ARIA attributes and should be unique across the page. The id is also used to establish the relationship between the trigger element and the popover content via aria-describedby."
+				"Unique identifier for the popover. This is important for accessibility and helps screen readers identify the popover content. It's used for ARIA attributes and should be unique across the page. The id is also used to establish the relationship between the trigger element and the popover content via aria-describedby.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		anchorElement: {
 			control: false,
 			description:
-				"The ref element the popover is going to anchor to. If no anchor element is provided, the popover will anchor to the top left of the application's client area. This is typically a button or other interactive element that triggers the popover. When using anchorElement, the anchorPosition prop is ignored."
+				"The ref element the popover is going to anchor to. If no anchor element is provided, the popover will anchor to the top left of the application's client area. This is typically a button or other interactive element that triggers the popover. When using anchorElement, the anchorPosition prop is ignored.",
+			table: {
+				type: { summary: "HTMLElement | null" },
+				defaultValue: { summary: "null" }
+			}
 		},
 		anchorPosition: {
 			control: "object",
 			description:
-				"Position of the anchor element relative to the top left corner of the application's client area. Use this when you need to position the popover relative to a specific point rather than an element. This prop is used when you want absolute positioning, such as for context menus. The object should contain 'top' and 'left' properties with numeric values representing pixel positions. When using anchorPosition, the anchorElement prop is ignored."
+				"Position of the anchor element relative to the top left corner of the application's client area. Use this when you need to position the popover relative to a specific point rather than an element. This prop is used when you want absolute positioning, such as for context menus. The object should contain 'top' and 'left' properties with numeric values representing pixel positions. When using anchorPosition, the anchorElement prop is ignored.",
+			table: {
+				type: { summary: "{ top: number; left: number }" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		anchorOrigin: {
 			control: "object",
 			description:
-				"This is the point on the referenced anchor where the popover will attach to. This is used to determine the position of the popover. Can be specified using vertical ('top', 'center', 'bottom') and horizontal ('left', 'center', 'right') values, or with numeric pixel values for precise positioning. For example, { vertical: 'bottom', horizontal: 'center' } will position the popover below the anchor, centered horizontally."
+				"This is the point on the referenced anchor where the popover will attach to. This is used to determine the position of the popover. Can be specified using vertical ('top', 'center', 'bottom') and horizontal ('left', 'center', 'right') values, or with numeric pixel values for precise positioning. For example, { vertical: 'bottom', horizontal: 'center' } will position the popover below the anchor, centered horizontally.",
+			table: {
+				type: {
+					summary:
+						"{ vertical: 'top' | 'center' | 'bottom' | number; horizontal: 'left' | 'center' | 'right' | number }"
+				},
+				defaultValue: { summary: "{ vertical: 'top', horizontal: 'left' }" }
+			}
 		},
 		transformOrigin: {
 			control: "object",
 			description:
-				"This is the point on the popover which will attach to the anchor's origin. Works in conjunction with anchorOrigin to determine the final position of the popover relative to its anchor element. For example, if anchorOrigin is { vertical: 'bottom', horizontal: 'center' } and transformOrigin is { vertical: 'top', horizontal: 'center' }, the popover's top-center will attach to the anchor's bottom-center."
+				"This is the point on the popover which will attach to the anchor's origin. Works in conjunction with anchorOrigin to determine the final position of the popover relative to its anchor element. For example, if anchorOrigin is { vertical: 'bottom', horizontal: 'center' } and transformOrigin is { vertical: 'top', horizontal: 'center' }, the popover's top-center will attach to the anchor's bottom-center.",
+			table: {
+				type: {
+					summary:
+						"{ vertical: 'top' | 'center' | 'bottom' | number; horizontal: 'left' | 'center' | 'right' | number }"
+				},
+				defaultValue: { summary: "{ vertical: 'top', horizontal: 'left' }" }
+			}
 		},
 		open: {
 			control: "boolean",
 			description:
-				"Controls whether the popover is open. Use this prop to programmatically show or hide the popover based on user interactions or application state. This makes the popover a controlled component, meaning its visibility state is fully managed by the parent component."
+				"Controls whether the popover is open. Use this prop to programmatically show or hide the popover based on user interactions or application state. This makes the popover a controlled component, meaning its visibility state is fully managed by the parent component.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		children: {
 			control: false,
 			description:
-				"The content to be displayed inside the popover. This can be any valid React node, including text, elements, or components. The content is rendered within a Paper component that provides the visual container for the popover."
+				"The content to be displayed inside the popover. This can be any valid React node, including text, elements, or components. The content is rendered within a Paper component that provides the visual container for the popover.",
+			table: {
+				type: { summary: "React.ReactNode" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		onClose: {
 			control: false,
@@ -102,21 +130,38 @@ export default {
 		marginThreshold: {
 			control: { type: "number" },
 			description:
-				"Specifies the minimum margin (in pixels) between the popover and the screen edges. This ensures the popover remains visible even when the anchor is near the edge of the viewport."
+				"Specifies the minimum margin (in pixels) between the popover and the screen edges. This ensures the popover remains visible even when the anchor is near the edge of the viewport.",
+			table: {
+				type: { summary: "number" },
+				defaultValue: { summary: "16" }
+			}
 		},
 		activateOnHover: {
 			control: "boolean",
 			description:
-				"Determines if the popover should activate on hover rather than click. When true, the popover will appear when the user hovers over the anchor element and disappear when the mouse leaves. Setting this to true also disables pointer events on the popover (sets pointerEvents: 'none'), which affects how the popover interacts with mouse events. This is useful for tooltip-like behavior where you want the popover to appear on hover but not intercept mouse events."
+				"Determines if the popover should activate on hover rather than click. When true, the popover will appear when the user hovers over the anchor element and disappear when the mouse leaves. Setting this to true also disables pointer events on the popover (sets pointerEvents: 'none'), which affects how the popover interacts with mouse events. This is useful for tooltip-like behavior where you want the popover to appear on hover but not intercept mouse events.",
+			table: {
+				type: { summary: "boolean" },
+				defaultValue: { summary: "false" }
+			}
 		},
 		dataQa: {
 			control: "text",
 			description:
-				"Data attribute for QA purposes. This attribute helps with automated testing by providing a consistent selector for test scripts. It's added as a data-qa attribute to the DOM element."
+				"Data attribute for QA purposes. This attribute helps with automated testing by providing a consistent selector for test scripts. It's added as a data-qa attribute to the DOM element.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		},
 		dataTags: {
 			control: "text",
-			description: "Data tags for the popover. These can be used for analytics tracking or other custom metadata needs."
+			description:
+				"Data tags for the popover. These can be used for analytics tracking or other custom metadata needs.",
+			table: {
+				type: { summary: "string" },
+				defaultValue: { summary: "undefined" }
+			}
 		}
 	}
 } as Meta<typeof SolacePopover>;

@@ -1,0 +1,119 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceAttributeValuePairFormStories from "./SolaceAttributeValuePairForm.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceAttributeValuePairFormStories} />
+
+<Title>Attribute Value Pair Form</Title>
+
+<Description of={SolaceAttributeValuePairFormStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceAttributeValuePairForm`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Attribute Value Pair Form component provides a dynamic form for managing key-value pairs, useful for creating and editing lists of attributes and their corresponding values and allowing users to add, remove, and reorder pairs as needed. The component implements a flexible input pattern with the purpose of capturing structured data in a key-value format, helping users input and manage sets of related information while providing features like validation, reordering, and bulk editing.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceAttributeValuePairForm } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceAttributeValuePairForm.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceAttributeValuePairForm.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiFormControl" target="_blank">theme.ts (MuiFormControl styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceAttributeValuePairFormStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiFormControl-root` - Root form control container
+- `.MuiInputBase-root` - Base input container
+- `.MuiInputLabel-root` - Label for input fields
+- `.MuiFormHelperText-root` - Helper text container
+
+**State Classes:**
+
+- `.Mui-focused` - Applied when an input field is focused
+- `.Mui-error` - Applied when an input field has an error
+- `.Mui-disabled` - Applied when the form or an input is disabled
+- `.Mui-readOnly` - Applied when the form is in read-only mode
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#1976d2",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.main - Primary color for active elements and focused states</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#d32f2f",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.main - Error state indicators and validation messages</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#757575",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.grey[600] - Border color in default state</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Padding between form elements
+- theme.typography.body1 - Text style for input fields
+- theme.typography.caption - Text style for helper text
+- theme.components.MuiFormControl.styleOverrides.root - Base form control styling
+- theme.components.MuiInputBase.styleOverrides.root - Input field container styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.gutters - Consistent padding for form container
+
+**Layout Specifications:**
+
+- Form container padding: `theme.spacing(2)`
+- Input field margins: `theme.spacing(1) 0`
+- Reorder button size: `36px` height
+- Add/Remove button placement: `theme.spacing(2)` from last input pair
+- Transition timeout: `300ms`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

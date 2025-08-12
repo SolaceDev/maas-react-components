@@ -1,0 +1,108 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceCardStories from "./SolaceCard.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceCardStories} />
+
+<Title>Card</Title>
+
+<Description of={SolaceCardStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceCard`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceCard component provides a customizable card container for displaying learning resources, content sections, and interactive elements with optional headers, content areas, and action sections. This flexible card layout pattern helps organize complex interfaces into visually distinct content containers that can serve both as information displays and navigation entry points, allowing users to scan and interact with grouped content efficiently while maintaining clean visual hierarchy and consistent spacing.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceCard } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceCard.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceCard.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiCard" target="_blank">theme.ts (MuiCard, MuiCardContent, MuiCardActions styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceCardStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiCard-root` - Root card container
+- `.MuiCardContent-root` - Content section of the card
+- `.MuiCardActions-root` - Actions section at the bottom of the card
+
+**State Classes:**
+
+- `.solaceCard` - Applied to all SolaceCard instances
+- `.readOnly` - Applied when card is in read-only mode
+- `.MuiCardContent-root:last-child` - Removes bottom padding when content is the last child
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w100 - Default card background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E0E0E0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default card border color</span>
+</div>
+
+To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(2) for 16px)
+- theme.typography.[VARIANT] - Text styles for card content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiCard.styleOverrides.root - Custom styling for card container
+- theme.components.MuiCardContent.styleOverrides.root - Custom styling for content area
+- theme.components.MuiCardActions.styleOverrides.root - Custom styling for actions area
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in card actions
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Default padding: `theme.spacing(2)` (16px)
+- Minimum width: `250px` (default)
+- Content padding: `theme.spacing(0)` (removes MUI default padding)
+- Actions padding: `theme.spacing(0)` (removes MUI default padding)
+- Content bottom padding: `theme.spacing(0)` when content is last child
+- Role: `article` for accessibility
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

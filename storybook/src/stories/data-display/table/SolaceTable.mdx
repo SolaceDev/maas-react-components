@@ -1,0 +1,92 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceTableStories from "./SolaceTable.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceTableStories} />
+
+<Title>Table</Title>
+
+<Description of={SolaceTableStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceTable`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceTable component provides a comprehensive data table solution for displaying and interacting with structured data, supporting features like sorting, row selection, column hiding, expandable rows, pagination integration, and cross-page selection. This flexible table pattern presents structured data in an organized, interactive format designed to handle complex data scenarios while maintaining optimal performance and accessibility, helping users efficiently browse, analyze, and interact with large datasets through consistent visual hierarchy and intuitive interaction patterns.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import {
+	SolaceTable,
+	SolaceTableSelectionType,
+	SolaceTableSortDirection,
+	SolaceTableColumn,
+	SolaceTableRow,
+	SolaceTableActionMenuItem
+} from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceTable.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/table/SolaceTable.tsx)
+- **GitHub Theme Styles**: [theme.ts](https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts) _(Note: This component uses custom styled components and Material-UI table components)_
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceTableStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.tableWrapper` - Root table container with border and styling
+- `.MuiTable-root` - Material-UI table root styling
+- `.MuiTableHead-root` - Table header section
+- `.MuiTableBody-root` - Table body section
+- `.MuiTableRow-root` - Individual table row styling
+
+**State Classes:**
+
+- `.Mui-selected` - Applied to selected table rows
+- `.Mui-disabled` - Applied to disabled rows
+- `.expanded` - Applied to expanded table rows
+- `.checkbox-column` - Applied to checkbox column headers and cells
+- `.action-column` - Applied to action menu column
+
+**Selection Classes:**
+
+- `.selectAllCheckbox` - Select all checkbox in header
+- `.rowCheckbox` - Individual row selection checkboxes
+- `.highlighted` - Applied to highlighted rows when independentRowHighlight is enabled
+
+**Loading and Empty State Classes:**
+
+- `.TableHeaderLoadingOverlay` - Loading overlay for table header
+- `.TableBodyLoadingOverlay` - Loading overlay for table body
+- `.EmptyStateLoadingOverlay` - Loading overlay for empty state
+- `.LoadingIndicatorWrapper` - Container for loading spinner and message
+
+**Theme Customization:**
+The component uses Material-UI's theme system with custom Solace styling. Key theme paths:
+
+- `theme.palette.ux.primary.text.wMain` - Primary text color
+- `theme.palette.ux.secondary.w20` - Border colors for rows and columns
+- `theme.palette.ux.secondary.w40` - Secondary border colors
+- `theme.palette.ux.background.w10` - Table background color
+- `theme.palette.ux.accent.n2.wMain` - Focus and selection colors
+
+**Layout Specifications:**
+
+- Table container: `border-radius: 4px`, `width: 100%`, `height: 100%`
+- Minimum height: `200px` (configurable via minHeight prop)
+- Maximum height: `100%` (configurable via maxHeight prop)
+- Table layout: `table-layout: fixed` for consistent column widths
+- Header height: `56px` for loading indicator calculations
+- Row padding: Varies based on selection type and expandable options
+- Loading overlay opacity: `rgba(255, 255, 255, 0.45)`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />
