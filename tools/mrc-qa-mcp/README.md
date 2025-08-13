@@ -12,17 +12,25 @@ Before you begin, ensure you have the following installed and configured on your
 - **Node.js and npm**: This project is a Node.js application, so you'll need Node.js and npm to install dependencies and run the server. You can download them from [https://nodejs.org/](https://nodejs.org/).
 - **Docker or Podman**: To build and run the server as a container, you will need Docker or a compatible container engine like Podman.
 
+## GitHub Personal Access Token
+
+This tool requires a GitHub Personal Access Token (PAT) to access the SolaceDev/maas-react-components repository and interact with the GitHub Container Registry (ghcr.io). You can create a PAT by following the instructions on [GitHub's documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
+When creating the token, you must grant the appropriate permissions based on your needs:
+
+- **For pulling images (standard users):**
+  - `read:packages`: Allows you to download packages from the GitHub Package Registry.
+- **For pushing images (developers):**
+  - `write:packages`: Allows you to upload packages to the GitHub Package Registry.
+- **For accessing repository content:**
+  - `repo`: Grants full control of private repositories, which is necessary for the tool to read component files.
+
+**Important**: Treat your PAT like a password. Do not share it with anyone or check it into version control.
+
 ## Available Tools
 
 - `get_all_components_by_category`: Retrieves all component categories and their components from Storybook.
 - `get_file_content`: Retrieves the content of a component's story or documentation file from Storybook.
-
-## Running Locally
-
-```bash
-# Build and run the server
-npm run build && node build/index.js
-```
 
 ## Docker Container
 
@@ -75,9 +83,9 @@ To use this MCP server with Cline, Roo or GitHub Copilot, you need to add a conf
 - **Roo (macOS):** `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
 - **GitHub Copilot (macOS):** `~/Library/Application Support/Code/User/settings.json`
 
-#### Roo
+#### Running with Docker (Recommended)
 
-Add the following configuration to Roo's MCP settings file:
+Add the following configuration to your MCP settings file to run the server as a Docker container:
 
 ```json
 "mrc-qa-ghcr": {
@@ -94,6 +102,35 @@ Add the following configuration to Roo's MCP settings file:
   }
 }
 ```
+
+#### Running Locally (for Development)
+
+If you are developing the MCP server, you can run it locally without Docker. First, install the dependencies:
+
+```bash
+cd tools/mrc-qa-mcp
+npm install
+npm run build
+```
+
+Then, add the following configuration to your MCP settings file:
+
+```json
+"mrc-qa-local": {
+  "disabled": false,
+  "timeout": 60,
+  "type": "stdio",
+  "command": "node",
+  "args": [
+    "/path/to/your/maas-react-components/tools/mrc-qa-mcp/build/index.js"
+  ],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
+  }
+}
+```
+
+**Note:** Replace `/path/to/your/maas-react-components` with the absolute path to your local repository.
 
 #### GitHub Copilot
 
