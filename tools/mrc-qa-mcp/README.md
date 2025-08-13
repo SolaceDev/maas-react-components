@@ -2,6 +2,16 @@
 
 This server provides tools to query MRC component documentation and usage.
 
+## Prerequisites
+
+Before you begin, ensure you have the following installed and configured on your machine:
+
+- **Visual Studio Code**: The recommended code editor for using this tool.
+- **AI Coding Assistant**: An AI coding assistant like Roo, Cline, or GitHub Copilot, integrated into VS Code.
+- **LiteLLM Key**: Your coding assistant must be configured with a valid LiteLLM key.
+- **Node.js and npm**: This project is a Node.js application, so you'll need Node.js and npm to install dependencies and run the server. You can download them from [https://nodejs.org/](https://nodejs.org/).
+- **Docker or Podman**: To build and run the server as a container, you will need Docker or a compatible container engine like Podman.
+
 ## Available Tools
 
 - `get_all_components_by_category`: Retrieves all component categories and their components from Storybook.
@@ -55,29 +65,39 @@ docker push ghcr.io/solacedev/mrc-qa-mcp:latest
 
 5.  Make the package public (if needed): After pushing, you may need to go to the GitHub repository settings and make the package public if you want others to be able to use it without authentication.
 
-### Using with Cline
+### Using with AI Assistants
 
-Add the following configuration to your Cline MCP settings file:
+To use this MCP server with Cline, Roo or GitHub Copilot, you need to add a configuration to the settings file.
+
+**Settings File Path:**
+
+- **Cline (macOS):** `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+- **Roo (macOS):** `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+- **GitHub Copilot (macOS):** `~/Library/Application Support/Code/User/settings.json`
+
+#### Roo
+
+Add the following configuration to Roo's MCP settings file:
 
 ```json
 "mrc-qa-ghcr": {
   "disabled": false,
   "timeout": 60,
   "type": "stdio",
-  "command": "docker",
+  "command": "sh",
   "args": [
-    "run",
-    "-i",
-    "--rm",
-    "-e",
-    "GITHUB_PERSONAL_ACCESS_TOKEN",
-    "ghcr.io/solacedev/mrc-qa-mcp:latest"
+    "-c",
+    "docker pull ghcr.io/solacedev/mrc-qa-mcp:latest && docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/solacedev/mrc-qa-mcp:latest"
   ],
   "env": {
     "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
   }
 }
 ```
+
+#### GitHub Copilot
+
+For GitHub Copilot, you can use a similar configuration in its settings file. Ensure that you have the appropriate extensions and settings to allow Copilot to use local MCP servers.
 
 ## Tool Reference and Sample Prompts
 
