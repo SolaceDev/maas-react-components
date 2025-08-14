@@ -12,107 +12,124 @@ When a component's API needs to be changed, you can use this server to find all 
 
 If you plan to deprecate a prop on a component, you can use this server to find all usages of that prop. This helps ensure that all instances are updated before the prop is removed. For example, you can find all `SolaceCard` components that use a deprecated `shadow` prop.
 
-## Dynamic MFE Discovery
+### Prerequisites
 
-The server now dynamically discovers MFEs and their parent applications from GitHub. This means:
+- **GitHub PAT Token**: A GitHub Personal Access Token with `repo` and `package` scope is required. You can create one by following [this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+- **Podman**: The Podman engine must be installed, open, and running.
+- **Podman Login**: You must be logged into `ghcr.io` using your GitHub username and PAT token.
+  ```bash
+  podman login ghcr.io -u YOUR_GITHUB_USERNAME -p YOUR_GITHUB_PAT
+  ```
+- **AI Coding Assistant**: An AI coding assistant (e.g., Cline) is recommended for interacting with the server.
 
-1.  You no longer need to specify the application name when querying MFE information
-2.  The `get_components_by_mfe` and `get_mfe_stats` tools now only require the MFE name
-3.  New MFEs are automatically discovered without code changes
-4.  The `get_mfe_info` tool can be used to look up which application an MFE belongs to
-5.  The `list_all_mfes` tool provides a list of all available MFEs across all applications
+### Using with Cline
+
+Add the following configuration to your Cline MCP settings file:
+
+```json
+"mrc-usage-mcp": {
+  "disabled": false,
+  "timeout": 60,
+  "type": "stdio",
+  "command": "podman",
+  "args": [
+    "run",
+    "-i",
+    "--rm",
+    "-e",
+    "GITHUB_PERSONAL_ACCESS_TOKEN",
+    "ghcr.io/solacedev/mrc-usage-mcp:latest"
+  ],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
+  }
+}
+```
+
+After adding the configuration, reload the VS Code window by opening the command palette (`Cmd+Shift+P` or `Ctrl+Shift+P`) and typing `>Reload Window`.
+
+## Using the mrc-usage-mcp
+
+This is a guide to using the mrc-usage-mcp.
 
 ## Available Tools
 
-- `mrc_analyze_component_usage`: Analyze how MaaS React Components are used across the codebase
-- `mrc_get_all_components`: Retrieve a comprehensive list of all MaaS React Components
-- `mrc_find_component_dependencies`: Find dependencies and relationships between components
-- `mrc_usage_diagnostics`: Get diagnostic information about the MRC usage analysis system
-- `get_components_by_application`: Get components used in a specific application
-- `get_components_by_mfe`: Get components used in a specific MFE (now only requires MFE name)
-- `get_application_stats`: Get usage statistics for a specific application
-- `get_mfe_stats`: Get usage statistics for a specific MFE (now only requires MFE name)
-- `get_mfe_info`: Get information about an MFE, including which application it belongs to
-- `list_all_mfes`: List all available MFEs across all applications
+- `get_component_usage`: Get usage for a component. Can be scoped to a specific application or MFE.
+- `get_usage_stats`: Get usage statistics for an application or MFE.
+- `list_all_tools`: Returns a list of all available tools in the MCP server.
+- `list_applications_and_mfes`: Returns a list of all applications and their associated Micro-Frontends (MFEs).
 
 ---
 
 ## Tool Reference and Sample Prompts
 
-### `get_component_usage_by_application`
+### `get_component_usage`
 
-**Description:** Get usage for a component in a specific application.
+**Description:** Get usage for a component. Can be scoped to a specific application or MFE.
 
-**Sample Prompt:** "For the Solace Button, give me all usages in maas-ui"
+**Sample Prompt (All Applications):** "Get all usages of the SolaceButton"
 
 **Internal Call:**
 
 ```json
 {
-	"tool": "get_component_usage_by_application",
+	"tool": "get_component_usage",
+	"componentName": "SolaceButton"
+}
+```
+
+**Sample Prompt (Scoped to Application):** "Get all usages of SolaceButton in maas-ui"
+
+**Internal Call:**
+
+```json
+{
+	"tool": "get_component_usage",
 	"componentName": "SolaceButton",
-	"applicationName": "maas-ui"
+	"applicationOrMfeName": "maas-ui"
 }
 ```
 
-### `get_component_usage_by_mfe`
+### `get_usage_stats`
 
-**Description:** Get usage for a component in a specific MFE. You can optionally filter by a prop's presence, or by a prop's name and value.
+**Description:** Get usage statistics for an application or MFE.
 
-**Sample Prompt (no filter):** "Get the usage for the Solace Card component in the mc mfe"
-
-**Internal Call (no filter):**
-
-```json
-{
-	"tool": "get_component_usage_by_mfe",
-	"componentName": "SolaceCard",
-	"mfeName": "mc"
-}
-```
-
-### `get_component_usage_all`
-
-**Description:** Get usage for a component across all applications.
-
-**Sample Prompt:** "get the full usage of the Solace Checkbox component across all applications"
+**Sample Prompt (Application):** "Get usage stats for maas-ui"
 
 **Internal Call:**
 
 ```json
 {
-	"tool": "get_component_usage_all",
-	"componentName": "SolaceCheckBox"
+	"tool": "get_usage_stats",
+	"applicationOrMfeName": "maas-ui"
 }
 ```
 
-### `get_application_stats`
+### `list_all_tools`
 
-**Description:** Returns usage statistics for a specified application, including component counts and other metrics.
+**Description:** Returns a list of all available tools in the MCP server.
 
-**Sample Prompt:** "get the component usage for the maas-ops-ui repo"
+**Sample Prompt:** "list all available tools"
 
 **Internal Call:**
 
 ```json
 {
-	"tool": "get_application_stats",
-	"applicationName": "maas-ops-ui"
+	"tool": "list_all_tools"
 }
 ```
 
-### `get_mfe_stats`
+### `list_applications_and_mfes`
 
-**Description:** Returns usage statistics for a specified Micro-Frontend (MFE), including component counts and other metrics.
+**Description:** Returns a list of all applications and their associated Micro-Frontends (MFEs).
 
-**Sample Prompt:** "get the overal componet usage information for the saas mfe"
+**Sample Prompt:** "list all applications and mfes"
 
 **Internal Call:**
 
 ```json
 {
-	"tool": "get_mfe_stats",
-	"mfeName": "saas"
+	"tool": "list_applications_and_mfes"
 }
 ```
 
@@ -164,27 +181,3 @@ npm run build && node build/index.js
 
 5.  Make the package public (if needed):
     After pushing, you may need to go to the GitHub repository settings and make the package public if you want others to be able to use it without authentication.
-
-### Using with Cline
-
-Add the following configuration to your Cline MCP settings file:
-
-```json
-"mrc-usage-mcp": {
-  "disabled": false,
-  "timeout": 60,
-  "type": "stdio",
-  "command": "docker",
-  "args": [
-    "run",
-    "-i",
-    "--rm",
-    "-e",
-    "GITHUB_PERSONAL_ACCESS_TOKEN",
-    "ghcr.io/solacedev/mrc-usage-mcp:latest"
-  ],
-  "env": {
-    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
-  }
-}
-```
