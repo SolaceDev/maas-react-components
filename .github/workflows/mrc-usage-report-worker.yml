@@ -154,13 +154,3 @@ jobs:
             git commit --no-verify -m "$COMMIT_MESSAGE"
             git push
           fi
-
-      - name: Publish Website
-        uses: ./maas-react-components-repo-main/.github/workflows/publish-mrc-website.yml
-        with:
-          artifact-url: ${{ needs.generate-report.outputs.artifact_url }}
-        secrets: inherit
-
-      - name: Print link
-        run: |
-          echo "Link to merged reports: ${{ steps.merged-reports-artifact.outputs.artifact-url }}"
