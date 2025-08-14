@@ -48,9 +48,9 @@ Add the following configuration to your Cline MCP settings file:
 
 After adding the configuration, reload the VS Code window by opening the command palette (`Cmd+Shift+P` or `Ctrl+Shift+P`) and typing `>Reload Window`.
 
-## Using the mrc-usage-mcp
+## Usage Tips
 
-This is a guide to using the mrc-usage-mcp.
+Start all prompts to this MCP with "Using the mrc-usage-mcp" for consistency
 
 ## Available Tools
 
