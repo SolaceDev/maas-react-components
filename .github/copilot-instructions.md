@@ -135,9 +135,14 @@ export default {
 ### Testing Guidelines
 
 #### Test Data Attributes:
-- Use `dataQa` prop for component identification in tests
-- Use `dataTags` for additional test metadata
-- Follow pattern: `data-qa="componentName-element"`
+- **Primary Testing**: Use `dataQa` prop for component identification in Jest/React Testing Library tests
+  - Renders as `data-qa` attribute (or converted to `data-testid` in some components)
+  - Use with `getByTestId()`, `findByTestId()`, `queryByTestId()` testing queries
+  - Follow pattern: `data-qa="componentName-element"`
+- **Secondary Metadata**: Use `dataTags` for additional test metadata and analytics
+  - Renders as `data-tags` attribute
+  - Used for more complex test scenarios or tracking purposes
+- **Best Practice**: Prefer `dataQa` for primary element identification in tests
 
 #### Accessibility Testing:
 - Ensure WCAG AA compliance
