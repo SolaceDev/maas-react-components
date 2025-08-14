@@ -34,7 +34,9 @@ export interface SolaceColors {
 	fgColor: string;
 }
 
-export const SolacePickerIconWrapper = styled("div")(
+export const SolacePickerIconWrapper: React.ComponentType<{
+	children?: React.ReactNode;
+}> = styled("div")(
 	({ theme }) => `
 	align-items: center;
 	display: flex;
@@ -62,7 +64,9 @@ const Color = styled(SolacePickerIconWrapper, {
 	width: ${theme.spacing(3)};`
 );
 
-export const EmptyMessageContainer = styled("div")(
+export const EmptyMessageContainer: React.ComponentType<{
+	children?: React.ReactNode;
+}> = styled("div")(
 	({ theme }) => `
 	width: 100%;
 	color: ${theme.palette.ux.deprecated.secondary.text.wMain};

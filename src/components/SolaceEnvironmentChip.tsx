@@ -18,7 +18,11 @@ import { IconButton, styled } from "@mui/material";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { CloseIcon } from "../resources/icons/CloseIcon";
 
-export const ColoredBase = styled("div", {
+export const ColoredBase: React.ComponentType<{
+	bgColor: string;
+	fgColor: string;
+	children?: React.ReactNode;
+}> = styled("div", {
 	shouldForwardProp: (key: string) => key !== "bgColor" && key !== "fgColor"
 })<{
 	bgColor: string;

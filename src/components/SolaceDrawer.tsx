@@ -117,7 +117,7 @@ function SolaceDrawer({
 	}, [drawerWidth, maxWidth]);
 
 	const handleMouseMove = useCallback(
-		(e) => {
+		(e: any) => {
 			e.preventDefault();
 			const delta = e.clientX - initialClientX.current;
 			const newWidth = anchor === ANCHOR.RIGHT ? drawerWidth - delta : drawerWidth + delta;
@@ -141,7 +141,7 @@ function SolaceDrawer({
 	}, [handleMouseMove, onResizeDone]);
 
 	const handleMouseDown = useCallback(
-		(e) => {
+		(e: any) => {
 			e.preventDefault();
 			if (initialClientX.current === 0) {
 				initialClientX.current = e.clientX;

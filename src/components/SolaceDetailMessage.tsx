@@ -92,7 +92,7 @@ function SolaceDetailMessage({ msgImg, title, details, actions }: SolaceDetailMe
 			{msgImg && <ImgContainer>{msgImg}</ImgContainer>}
 			{title && <TitleText>{title}</TitleText>}
 			{details && <DetailsContainer>{details}</DetailsContainer>}
-			{actions && <ButtonGroup>{buildActionButtons()}</ButtonGroup>}
+			{actions && <ButtonGroup>{buildActionButtons() as React.ReactNode}</ButtonGroup>}
 		</Container>
 	);
 }

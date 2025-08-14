@@ -678,7 +678,7 @@ function SolaceSelectAutocomplete<T, V>({
 			value={selectedValue}
 			inputValue={inputValue} // Use controlled input value
 			getOptionLabel={(option) => {
-				const mappedOption = itemMappingCallback(option);
+				const mappedOption = itemMappingCallback(option as any);
 				return optionsLabelCallback(mappedOption);
 			}}
 			renderOption={(props, option) => {
@@ -750,7 +750,7 @@ function SolaceSelectAutocomplete<T, V>({
 								<>
 									{InputProps.startAdornment}
 									{showLeftIcon && leftIcon && (
-										<MenuItemIcon sx={{ padding: theme.spacing(0, 1, 0, 0) }}>{leftIcon}</MenuItemIcon>
+										<MenuItemIcon sx={{ padding: theme.spacing(0, 1, 0, 0) }}>{leftIcon as React.ReactNode}</MenuItemIcon>
 									)}
 								</>
 							),
@@ -761,13 +761,13 @@ function SolaceSelectAutocomplete<T, V>({
 										<MenuItemIcon sx={{ padding: theme.spacing(0, 1) }}>{supplementalText}</MenuItemIcon>
 									)}
 									{showSupplementalTextOrSecondaryAction && secondaryAction && (
-										<MenuItemIcon sx={{ padding: theme.spacing(0, 1) }}>{secondaryAction}</MenuItemIcon>
+										<MenuItemIcon sx={{ padding: theme.spacing(0, 1) }}>{secondaryAction as React.ReactNode}</MenuItemIcon>
 									)}
 								</>
 							)
 						}}
 						inputRef={inputRef}
-						onKeyDown={(event) => {
+						onKeyDown={(event: any) => {
 							// prevent multi-selected values from being deleted when user presses backspace or delete key
 							if (event.key === "Backspace" || event.key === "Delete") {
 								event.stopPropagation();

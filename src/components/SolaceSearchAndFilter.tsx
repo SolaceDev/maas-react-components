@@ -113,7 +113,7 @@ function SolaceSearchAndFilter({
 	onBlur,
 	onClearAll
 }: SolaceSearchAndFilterProps): JSX.Element {
-	const inputRef = useRef<HTMLElement>();
+	const inputRef = useRef<HTMLElement | null>(null);
 	const getAdornment = useCallback(() => {
 		const handleClearInput = () => {
 			onChange({ name, value: "" });

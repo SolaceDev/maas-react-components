@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { Grid, ListItemIcon } from "@mui/material";
+import { ListItemIcon } from "@mui/material";
+import Grid from "@mui/material/GridLegacy";
 import clsx from "clsx";
 export interface SolaceSelectAutocompleteItemProps {
 	/**
@@ -82,7 +83,7 @@ function SolaceSelectAutocompleteItem({
 		<div style={{ display: "flex", width: "100%", alignItems: "center" }}>
 			{icon && (
 				<ListItemIcon className="menuItemIcon" style={{ paddingRight: "8px" }}>
-					{icon}
+					{icon as React.ReactNode}
 				</ListItemIcon>
 			)}
 			<Grid container direction={"column"} className={clsx({ multiline: !!subText || isNew })} py={0.5}>
@@ -120,7 +121,7 @@ function SolaceSelectAutocompleteItem({
 					alignItems={"center"}
 					className="menuItemIcon"
 				>
-					{secondaryAction}
+					{secondaryAction as React.ReactNode}
 				</Grid>
 			)}
 		</div>

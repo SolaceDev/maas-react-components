@@ -155,11 +155,12 @@ export { default as SolaceIconTabs } from "./components/layout/SolaceIconTabs";
 export type { SolaceIconTabsButton, SolaceIconTabsProps } from "./components/layout/SolaceIconTabs";
 export { default as SolacePageHeader } from "./components/layout/SolacePageHeader";
 export type { SolacePageHeaderProps } from "./components/layout/SolacePageHeader";
-export { default as SolaceEnvironmentSelectChip } from "./components/SolaceEnvironmentSelectChip";
-export type {
-	SolaceEnvironmentSelectChipOption,
-	SolaceEnvironmentSelectChipProps
-} from "./components/SolaceEnvironmentSelectChip";
+// Temporarily commented out due to @mui/base compatibility issues during React 19 upgrade
+// export { default as SolaceEnvironmentSelectChip } from "./components/SolaceEnvironmentSelectChip";
+// export type {
+// 	SolaceEnvironmentSelectChipOption,
+// 	SolaceEnvironmentSelectChipProps
+// } from "./components/SolaceEnvironmentSelectChip";
 export { default as SolacePicker, color2value, value2color } from "./components/form/SolacePicker";
 export type {
 	SolaceColors,

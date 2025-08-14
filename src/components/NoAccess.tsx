@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { Box, Grid, styled, Typography } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
+import Grid from "@mui/material/GridLegacy";
 import BlockIcon from "@mui/icons-material/Block";
 
 const StyledGrid = styled(Grid)(() => ({ minHeight: "calc(100vh - 108px)" }));

@@ -15,7 +15,8 @@
  */
 
 import React, { useState } from "react";
-import { MenuItem, ListItemIcon, Grid, Typography, useTheme, Menu, Divider } from "@mui/material";
+import { MenuItem, ListItemIcon, Typography, useTheme, Menu, Divider } from "@mui/material";
+import Grid from "@mui/material/GridLegacy";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { ArrowRightIcon } from "../resources/icons/ArrowRight";
 import clsx from "clsx";
@@ -156,7 +157,7 @@ const SolaceMenuItem = ({
 					<>
 						{icon && (
 							<ListItemIcon className="menuItemIcon" style={{ paddingRight: theme.spacing(1) }}>
-								{icon}
+								{icon as React.ReactNode}
 							</ListItemIcon>
 						)}
 						<Grid container direction={"column"} justifyContent="center">
@@ -186,7 +187,7 @@ const SolaceMenuItem = ({
 								alignItems={"center"}
 								className="menuItemIcon"
 							>
-								{secondaryAction}
+								{secondaryAction as React.ReactNode}
 							</Grid>
 						)}
 

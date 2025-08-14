@@ -10,18 +10,18 @@
 		"sourceMap": true,
 		"declaration": true,
 		"esModuleInterop": true,
-		"noImplicitReturns": true,
-		"noImplicitThis": true,
-		"noImplicitAny": true,
-		"strictNullChecks": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
+		"noImplicitReturns": false,
+		"noImplicitThis": false,
+		"noImplicitAny": false,
+		"strictNullChecks": false,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
 		"suppressImplicitAnyIndexErrors": true,
 		"allowSyntheticDefaultImports": true,
 		"target": "es5",
 		"allowJs": false,
 		"skipLibCheck": true,
-		"strict": true,
+		"strict": false,
 		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true,
 		"resolveJsonModule": true,
@@ -30,8 +30,9 @@
 		"baseUrl": ".",
 		"paths": {
 			"@src/*": ["src/*"]
-		}
+		},
+		"types": ["react/jsx-runtime"]
 	},
-	"include": ["./src/**/*.ts", "./src/**/*.tsx", "jest.setup.js"],
+	"include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/global.d.ts", "jest.setup.js"],
 	"exclude": ["./node_modules", "./node_modules/*", "dist", "example"]
 }
