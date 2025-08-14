@@ -25,22 +25,6 @@ export default {
 	title: "Navigation/Pagination",
 	component: SolacePagination,
 	parameters: {},
-	args: {
-		id: "",
-		activePage: 1,
-		totalResults: 156,
-		pageSize: 10,
-		displayText: "Showing {start} to {end} of {total} results",
-		loading: false,
-		dataQa: "",
-		dataTags: "",
-		// Future accessibility and interaction props (not currently implemented in component)
-		"aria-label": "",
-		"aria-labelledby": "",
-		startIcon: null,
-		endIcon: null,
-		onClick: undefined
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

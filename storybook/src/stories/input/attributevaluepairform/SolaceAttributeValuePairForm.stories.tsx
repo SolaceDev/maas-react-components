@@ -81,9 +81,6 @@ export default {
 				defaultValue: { summary: "[]" }
 			}
 		},
-		onAVPListUpdate: {
-			description: "Callback function triggered when the list is updated."
-		},
 		hasWarnings: {
 			control: { type: "boolean" },
 			description:
@@ -148,12 +145,6 @@ export default {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
 			}
-		},
-		avpKeyValidationCallback: {
-			description: "Custom validation function for key fields."
-		},
-		avpValueValidationCallback: {
-			description: "Custom validation function for value fields."
 		},
 		avpListMaxHeight: {
 			control: { type: "text" },

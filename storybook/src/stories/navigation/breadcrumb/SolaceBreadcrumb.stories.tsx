@@ -59,13 +59,6 @@ export default {
 			},
 			description: "Maximum of displayed paths (to see ... when there's more)"
 		},
-		onRouteClick: {
-			action: "route clicked",
-			description: "Callback function triggered when a route is clicked",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
-		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data QA attribute for testing",
