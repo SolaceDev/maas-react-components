@@ -22,7 +22,6 @@ import { SolaceLabel } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Input/Label/Inline",
 	component: SolaceLabel,
-	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -113,13 +112,24 @@ export default {
 const label = "Custom Label";
 
 export const DefaultLabel = {
-	args: {}
+	args: {
+		id: "demoTextFieldId",
+		children: label
+	}
 };
 
 export const Required = {
-	args: {}
+	args: {
+		id: "demoTextFieldId",
+		required: true,
+		children: label
+	}
 };
 
 export const Disabled = {
-	args: {}
+	args: {
+		id: "demoTextFieldId",
+		disabled: true,
+		children: label
+	}
 };

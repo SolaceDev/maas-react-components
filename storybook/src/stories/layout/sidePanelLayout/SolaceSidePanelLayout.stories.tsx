@@ -83,7 +83,6 @@ const sidePanelMessage = (
 export default {
 	title: "Layout/Side Panel",
 	component: SolaceSidePanelLayout,
-	args: {},
 	parameters: {
 		docs: {
 			description: {

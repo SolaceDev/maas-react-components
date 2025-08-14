@@ -41,7 +41,6 @@ const emailValidationFunction = (text: string): string | undefined => {
 export default {
 	title: "Input/Textfield/Text Area with Chips",
 	component: SolaceChipTextArea,
-	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -224,24 +223,78 @@ const simulateTypingEmail = async ({ canvasElement }) => {
 };
 
 export const DefaultTextAreaWithChips = {
-	args: {},
+	args: {
+		onChange: action("onChange"),
+		title: DEMO_TITLE,
+		id: "demoChipTextAreaId",
+		name: "demoChipTextArea",
+		value: "", // Start with empty value to demonstrate typing
+		placeholder: DEMO_PLACEHOLDER,
+		helperText: DEMO_HELPER_TEXT,
+		label: DEMO_LABEL
+	},
 	play: simulateTypingEmail
 };
 
 export const WithPredefinedChips = {
-	args: {}
+	args: {
+		onChange: action("onChange"),
+		title: DEMO_TITLE,
+		id: "demoChipTextAreaId",
+		name: "demoChipTextArea",
+		placeholder: DEMO_PLACEHOLDER,
+		helperText: DEMO_HELPER_TEXT,
+		label: DEMO_LABEL,
+		validateChip: emailValidationFunction,
+		value: `${DEMO_EMAIL}, another@example.com`
+	}
 };
 
 export const WithValidationErrors = {
-	args: {}
+	args: {
+		onChange: action("onChange"),
+		title: DEMO_TITLE,
+		id: "demoChipTextAreaId",
+		name: "demoChipTextArea",
+		placeholder: DEMO_PLACEHOLDER,
+		helperText: DEMO_HELPER_TEXT,
+		label: DEMO_LABEL,
+		validateChip: emailValidationFunction,
+		value: `${DEMO_EMAIL}, invalid-email`,
+		hasErrors: true
+	}
 };
 
 export const CustomWidth = {
-	args: {}
+	args: {
+		onChange: action("onChange"),
+		title: DEMO_TITLE,
+		id: "demoChipTextAreaId",
+		name: "demoChipTextArea",
+		placeholder: DEMO_PLACEHOLDER,
+		helperText: DEMO_HELPER_TEXT,
+		label: DEMO_LABEL,
+		validateChip: emailValidationFunction,
+		width: "50%"
+	}
 };
 
 export const CustomValidation = {
-	args: {}
+	args: {
+		onChange: action("onChange"),
+		title: DEMO_TITLE,
+		id: "demoChipTextAreaId",
+		name: "demoChipTextArea",
+		placeholder: DEMO_PLACEHOLDER,
+		helperText: "Only example.com email addresses are allowed",
+		label: DEMO_LABEL,
+		validateChip: (text: string) => {
+			if (!text.endsWith("@example.com")) {
+				return "Only example.com email addresses are allowed";
+			}
+			return undefined;
+		}
+	}
 };
 
 const ControlledComponent = ({ name, ...args }): JSX.Element => {
@@ -258,5 +311,12 @@ const ControlledComponent = ({ name, ...args }): JSX.Element => {
 export const Controlled = {
 	render: ControlledComponent,
 
-	args: {}
+	args: {
+		name: "controlledChipTextArea",
+		label: "Controlled Chip Text Area",
+		validateChip: emailValidationFunction,
+		placeholder: DEMO_PLACEHOLDER,
+		helperText: "The value of the text area is controlled by the change handler in the story.",
+		value: DEMO_EMAIL
+	}
 };

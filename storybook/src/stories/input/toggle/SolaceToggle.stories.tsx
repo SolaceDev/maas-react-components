@@ -17,13 +17,13 @@
 import { Meta } from "@storybook/react";
 
 import { SolaceToggle } from "@SolaceDev/maas-react-components";
+import { action } from "@storybook/addon-actions";
 
 (SolaceToggle as React.FC & { displayName?: string }).displayName = "SolaceToggle";
 
 export default {
 	title: "Input/Toggle Switch",
 	component: SolaceToggle,
-	args: {},
 	parameters: {
 		design: {
 			type: "figma",
@@ -151,33 +151,86 @@ const title = "Demo Toggle";
 const label = "Some Label";
 
 export const DefaultToggle = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		title: title,
+		id: "demoToggleId",
+		name: "demoToggle"
+	}
 };
 
 export const Labeled = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		title: title,
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: label
+	}
 };
 
 export const LargeLabel = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		title: title,
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: label,
+		largeLabel: true
+	}
 };
 
 export const LabeledWithStateText = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		title: title,
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: label,
+		stateText: true
+	}
 };
 
 export const HelperText = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		title: title,
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: label,
+		helperText: "Some helper text here"
+	}
 };
 
 export const WithErrors = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		title: title,
+		id: "demoToggleId",
+		name: "demoToggle",
+		label: label,
+		hasErrors: true,
+		helperText: "Some error occured"
+	}
 };
 
 export const Required = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoToggle",
+		title: title,
+		label: label,
+		required: true
+	}
 };
 
 export const Disabled = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoToggle",
+		title: title,
+		label: label,
+		isOn: true,
+		disabled: true
+	}
 };

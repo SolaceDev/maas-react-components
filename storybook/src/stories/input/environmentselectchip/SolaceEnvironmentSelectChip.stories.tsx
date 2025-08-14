@@ -61,21 +61,6 @@ const ToggleExample = (): JSX.Element => (
 export default {
 	title: "Input/Dropdown/Environment",
 	component: SolaceEnvironmentSelectChip,
-	args: {
-		id: "",
-		name: "",
-		value: "",
-		options: [],
-		onChange: undefined,
-		label: "",
-		fgColor: undefined,
-		bgColor: undefined,
-		disabled: false,
-		required: false,
-		maxWidth: undefined,
-		children: undefined,
-		dataQa: ""
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

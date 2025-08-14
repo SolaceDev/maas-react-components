@@ -46,7 +46,6 @@ const SELECT_OPTIONS: Array<JSX.Element> = [
 export default {
 	title: "Layout/Stack",
 	component: SolaceStack,
-	args: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -137,15 +136,23 @@ const defaultContent = (
 );
 
 export const DefaultSolaceStack = {
-	args: {}
+	args: {
+		children: defaultContent
+	}
 };
 
 export const DisabledSpacing = {
-	args: {}
+	args: {
+		children: defaultContent,
+		spacing: 0
+	}
 };
 
 export const Direction = {
-	args: {}
+	args: {
+		children: defaultContent,
+		direction: "row"
+	}
 };
 
 export const WithDivider = (): JSX.Element => {

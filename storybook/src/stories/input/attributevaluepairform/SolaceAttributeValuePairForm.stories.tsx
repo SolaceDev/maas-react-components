@@ -31,7 +31,6 @@ import {
 export default {
 	title: "Input/Textfield/Attribute Pair",
 	component: SolaceAttributeValuePairForm,
-	args: {},
 	parameters: {
 		docs: {
 			story: { height: "500px" },

@@ -54,23 +54,6 @@ export default {
 	parameters: {
 		chromatic: { delay: 1000 }
 	},
-	args: {
-		id: "",
-		buttonProps: {
-			variant: "icon",
-			children: <MoreHorizOutlinedIcon />
-		},
-		header: "",
-		anchorOrigin: { vertical: "bottom", horizontal: "left" },
-		transformOrigin: { vertical: "top", horizontal: "left" },
-		multiline: false,
-		propagateMenuClick: false,
-		closeOnSelect: true,
-		numOfMenuItemDisplayed: 9,
-		maxWidth: 335,
-		dataQa: "",
-		dataTags: ""
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

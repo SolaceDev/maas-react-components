@@ -15,6 +15,7 @@
  */
 import React from "react";
 import { Meta, Decorator } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/test";
 import { SolacePicker } from "@SolaceDev/maas-react-components";
 
@@ -34,7 +35,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Picker/Colour",
 	component: SolacePicker,
-	args: {},
 	parameters: {
 		controls: { sort: "alpha" },
 		docs: {
@@ -174,7 +174,15 @@ export default {
 } as Meta<typeof SolacePicker>;
 
 export const ColorPicker = {
-	args: {},
+	args: {
+		variant: "colors",
+		label: "Color",
+		value: "#000000,#FFFFFF",
+		onChange: action("callback"),
+		title: "Color Picker",
+		id: "demoColorPickerId",
+		name: "demoColorPicker"
+	},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

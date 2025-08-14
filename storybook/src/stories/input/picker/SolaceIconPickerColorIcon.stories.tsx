@@ -36,7 +36,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Picker/Icon",
 	component: SolacePicker,
-	args: {},
 	parameters: {
 		controls: { sort: "alpha" },
 		docs: {
@@ -208,7 +207,7 @@ const Template: StoryFn<typeof SolacePicker> = (args) => {
 
 export const SingleColorIcon = {
 	render: Template,
-	args: {},
+	args: { icons: getNodeColorForCustomization("application"), iconKeyOrderedList: SupportedColorVariationList },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -225,7 +224,7 @@ export const SingleColorIcon = {
 
 export const DualColorIcon = {
 	render: Template,
-	args: {},
+	args: { icons: getNodeColorForCustomization("applicationDomain"), iconKeyOrderedList: SupportedColorVariationList },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

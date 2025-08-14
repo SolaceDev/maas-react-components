@@ -38,14 +38,6 @@ export default {
 	title: "Navigation/Link/Truncated",
 	component: SolaceTruncatableLink,
 	parameters: {},
-	args: {
-		id: "",
-		text: "This is a truncatable link with loooong name",
-		href: "",
-		maxWidth: "200px",
-		marginRight: "",
-		dataQa: ""
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

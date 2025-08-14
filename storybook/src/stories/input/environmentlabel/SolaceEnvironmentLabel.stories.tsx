@@ -52,7 +52,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Label/Environment",
 	component: SolaceEnvironmentLabel,
-	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -152,19 +151,44 @@ export default {
 } as Meta<typeof SolaceEnvironmentLabel>;
 
 export const DefaultEnvironmentLabel = {
-	args: {}
+	args: {
+		label: "Default",
+		fgColor: "#ffffff",
+		bgColor: "#7841A8",
+		icon: <Broker16Icon />,
+		variant: "standard"
+	}
 };
 
 export const LabelTitleVariant = {
-	args: {}
+	args: {
+		label: "Default",
+		fgColor: "#ffffff",
+		bgColor: "#7841A8",
+		icon: <Broker16Icon />,
+		variant: "title"
+	}
 };
 
 export const LongTitle = {
-	args: {}
+	args: {
+		label: "This is an environment with a very long name",
+		fgColor: "#ffffff",
+		bgColor: "#7841A8",
+		icon: <Broker16Icon />,
+		variant: "standard"
+	}
 };
 
 export const DisabledEnvironmentLabel = {
-	args: {}
+	args: {
+		label: "Disabled",
+		fgColor: "#ffffff",
+		bgColor: "#7841A8",
+		icon: <Broker16Icon />,
+		variant: "standard",
+		disabled: true
+	}
 };
 
 const WithinSelectTemplate = (menuItemDisabled = false, selectDisabled = false): JSX.Element => {

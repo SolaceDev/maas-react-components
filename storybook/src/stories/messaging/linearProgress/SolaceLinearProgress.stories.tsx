@@ -23,15 +23,6 @@ export default {
 	title: "Messaging/Progress Indicator/Linear",
 	component: SolaceLinearProgress,
 	parameters: {},
-	args: {
-		variant: "indeterminate",
-		value: undefined,
-		height: "md",
-		color: "default",
-		dataQa: undefined,
-		dataTags: undefined,
-		eventName: undefined
-	},
 	argTypes: {
 		variant: {
 			options: ["determinate", "indeterminate"],

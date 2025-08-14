@@ -24,7 +24,17 @@ const meta: Meta<typeof SolaceFileUploader> = {
 	 */
 	title: "Input/File Uploader",
 	component: SolaceFileUploader,
-	args: {},
+	args: {
+		maxFiles: 1,
+		maxSize: undefined,
+		accept: undefined,
+		fileNames: [],
+		readOnly: false,
+		errorText: "",
+		onFileChange: undefined,
+		dataQa: "",
+		dataTags: ""
+	},
 	parameters: {
 		docs: {
 			description: {
@@ -119,25 +129,43 @@ export const Simple: Story = {
 };
 
 export const MaxThreeFiles: Story = {
-	args: {}
+	args: {
+		maxFiles: 3
+	}
 };
 
 export const Error: Story = {
-	args: {}
+	args: {
+		errorText: "This is an error message"
+	}
 };
 
 export const ReadOnlyMode: Story = {
-	args: {}
+	args: {
+		readOnly: true,
+		fileNames: ["file1.txt", "file2.txt"]
+	}
 };
 
 export const EditMode: Story = {
-	args: {}
+	args: {
+		onFileChange: (files: File[]) => {
+			window.alert(`Files changed: ${files.length}`);
+		},
+		fileNames: ["file1.txt", "file2.txt"]
+	}
 };
 
 export const MaxSize: Story = {
-	args: {}
+	args: {
+		maxSize: 250000
+	}
 };
 
 export const PDFOnly: Story = {
-	args: {}
+	args: {
+		accept: {
+			"application/pdf": [".pdf"]
+		}
+	}
 };

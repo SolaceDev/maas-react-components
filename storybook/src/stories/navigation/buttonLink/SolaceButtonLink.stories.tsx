@@ -33,7 +33,6 @@ export default {
 			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=1%3A2"
 		}
 	},
-	args: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -192,7 +191,11 @@ export default {
 } as Meta<typeof SolaceButton>;
 
 export const LinkButton = {
-	args: {}
+	args: {
+		onClick: action("callback"),
+		variant: VARIANT.LINK,
+		children: "Click Me!"
+	}
 };
 
 export const LinkButtonWithDenseStyle = (): JSX.Element => {
@@ -208,11 +211,20 @@ export const LinkButtonWithDenseStyle = (): JSX.Element => {
 };
 
 export const ExternalLinkButton = {
-	args: {}
+	args: {
+		variant: "link",
+		href: "http://www.cnn.com",
+		children: "Visit CNN"
+	}
 };
 
 export const ExternalLinkButtonOpenPageInSameTab = {
-	args: {}
+	args: {
+		variant: "link",
+		openLinkInNewTab: false,
+		href: "http://www.cnn.com",
+		children: "Visit CNN"
+	}
 };
 
 export const ExternaLinkWithText = (): ReactNode => {

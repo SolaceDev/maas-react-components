@@ -58,7 +58,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Dropdown/Standard",
 	component: SolaceSelect,
-	args: {},
 	parameters: {
 		controls: { sort: "alpha" },
 		docs: {
@@ -475,7 +474,13 @@ const TITLE = "Demo Select";
 const LABEL = "Some Label";
 
 export const DefaultTextfield = {
-	args: {},
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoSelectId",
+		name: "demoSelect",
+		children: SELECT_OPTIONS
+	},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -484,7 +489,14 @@ export const DefaultTextfield = {
 };
 
 export const CustomSelectWidth = {
-	args: {},
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoSelectId",
+		name: "demoSelect",
+		children: SELECT_OPTIONS_WITH_LONG_TEXT,
+		width: "350px"
+	},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -524,7 +536,15 @@ CustomMenuItemWidthAndAlignment.play = async ({ canvasElement }) => {
 };
 
 export const CustomMaxHeight = {
-	args: {},
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoSelectId",
+		name: "demoSelect",
+		children: SELECT_OPTIONS,
+		width: "350px",
+		maxHeight: "15em"
+	},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -533,15 +553,38 @@ export const CustomMaxHeight = {
 };
 
 export const StackedLabelFormat = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		name: "demoSelect",
+		label: LABEL,
+		children: SELECT_OPTIONS
+	}
 };
 
 export const InlineLabelFormat = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		inlineLabel: true
+	}
 };
 
 export const Subtext = {
-	args: {},
+	args: {
+		onChange: action("callback"),
+		getOptionDisplayValue: (value) => {
+			const match = SELECT_OPTIONS_WITH_SUBTEXT.find((props) => props.value === value);
+			return match ? match.name : "";
+		},
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: generateSelectOptionsWithSubtext()
+	},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -550,35 +593,95 @@ export const Subtext = {
 };
 
 export const DisplayEmpty = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		title: TITLE,
+		id: "demoSelectId",
+		name: "demoSelect",
+		children: SELECT_OPTIONS,
+		displayEmpty: true
+	}
 };
 
 export const HelperText = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		helperText: "Some helper text"
+	}
 };
 
 export const WithErrors = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		helperText: "The text you entered was invalid",
+		hasErrors: true
+	}
 };
 
 export const Required = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		required: true
+	}
 };
 
 export const Disabled = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		value: "option2",
+		disabled: true
+	}
 };
 
 export const ReadOnly = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		value: "option3",
+		readOnly: true
+	}
 };
 
 export const ReadOnlyAndDisabled = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: SELECT_OPTIONS,
+		value: "option3",
+		readOnly: true,
+		disabled: true
+	}
 };
 
 export const WithIcon = {
-	args: {},
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		children: generateSelectOptionsWithIcon()
+	},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -587,11 +690,27 @@ export const WithIcon = {
 };
 
 export const WithIconDisabled = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		value: "option2",
+		children: generateSelectOptionsWithIcon(),
+		disabled: true
+	}
 };
 
 export const WithIconReadonly = {
-	args: {}
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		title: TITLE,
+		label: LABEL,
+		value: "option3",
+		children: generateSelectOptionsWithIcon(),
+		readOnly: true
+	}
 };
 
 export const WithIconAndText = (): JSX.Element => {
@@ -615,7 +734,18 @@ WithIconAndText.play = async ({ canvasElement }) => {
 };
 
 export const ShowingAllDropdownOptions = {
-	args: {},
+	args: {
+		onChange: action("callback"),
+		name: "demoSelect",
+		getOptionDisplayValue: (value) => {
+			const match = SELECT_OPTIONS_WITH_SUBTEXT.find((props) => props.value === value);
+			return match ? match.name : "";
+		},
+		title: TITLE,
+		label: LABEL,
+		value: "option3",
+		children: generateSelectOptionsWithAll()
+	},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);

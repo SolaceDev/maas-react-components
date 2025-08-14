@@ -25,18 +25,6 @@ export default {
 	title: "Messaging/Banner/Notification",
 	component: SolaceMessageBox,
 	parameters: {},
-	args: {
-		message: "helpful information.",
-		showIcon: true,
-		showCloseButton: false,
-		onClose: undefined,
-		variant: "info",
-		color: "",
-		dense: false,
-		details: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
 	argTypes: {
 		message: {
 			control: { type: "text" },

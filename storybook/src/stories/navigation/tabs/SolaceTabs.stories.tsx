@@ -26,7 +26,18 @@ export default {
 	title: "Navigation/Tabs/Standard",
 	component: SolaceTabs,
 	parameters: {},
-	args: {},
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one", href: "#" },
+			{ label: "Tab Two", value: "tab_two", href: "#" },
+			{ label: "Tab Three", value: "tab_three", href: "#" }
+		],
+		activeTabValue: "tab_one",
+		size: "sm",
+		variant: "standard",
+		dataQa: "",
+		dataTags: ""
+	},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -90,15 +101,37 @@ export default {
 } as Meta<typeof SolaceTabs>;
 
 export const DefaultTabs = {
-	args: {}
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one", href: "#" },
+			{ label: "Tab Two", value: "tab_two", href: "#" },
+			{ label: "Tab Three", value: "tab_three", href: "#" }
+		],
+		activeTabValue: "tab_one"
+	}
 };
 
 export const IncreaseFontTabs = {
-	args: {}
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one" },
+			{ label: "Tab Two", value: "tab_two" },
+			{ label: "Tab Three", value: "tab_three" }
+		],
+		activeTabValue: "tab_one",
+		size: "md"
+	}
 };
 
 export const DisabledTabs = {
-	args: {}
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one", disabled: true },
+			{ label: "Tab Two", value: "tab_two" },
+			{ label: "Tab Three", value: "tab_three" }
+		],
+		activeTabValue: "tab_two"
+	}
 };
 
 export const WithCallbackTabs = (): ReactNode => {
@@ -180,11 +213,22 @@ export const WithIconTabs = (): ReactNode => {
 };
 
 export const WithSingleTab = {
-	args: {}
+	args: {
+		tabs: [{ label: "Tab One", value: "tab_one", href: "#" }],
+		activeTabValue: "tab_one"
+	}
 };
 
 export const FullWidthTabs = {
-	args: {}
+	args: {
+		tabs: [
+			{ label: "Tab One", value: "tab_one", href: "#" },
+			{ label: "Tab Two", value: "tab_two", href: "#" },
+			{ label: "Tab Three", value: "tab_three", href: "#" }
+		],
+		activeTabValue: "tab_one",
+		variant: "fullWidth"
+	}
 };
 
 export const ScrollableTabs = (): ReactNode => {

@@ -213,9 +213,6 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		}
-	},
-	args: {
-		size: "xs"
 	}
 } as Meta<typeof SolaceAttributeBadge>;
 

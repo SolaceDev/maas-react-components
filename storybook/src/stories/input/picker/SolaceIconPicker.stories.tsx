@@ -61,7 +61,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Picker/Icon",
 	component: SolacePicker,
-	args: {},
 	parameters: {
 		controls: { sort: "alpha" }
 	},
@@ -304,7 +303,7 @@ const Template: StoryFn<typeof SolacePicker> = (args) => {
 
 export const DefaultIconPicker = {
 	render: Template,
-	args: {},
+	args: { icons: iconMap },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -321,7 +320,7 @@ export const DefaultIconPicker = {
 
 export const NumberOfItemsPerRow = {
 	render: Template,
-	args: {},
+	args: { icons: longIconMap, numOfItemsPerRow: 6 },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -338,7 +337,7 @@ export const NumberOfItemsPerRow = {
 
 export const OrderedIcons = {
 	render: Template,
-	args: {},
+	args: { icons: longIconMap, iconKeyOrderedList: iconKeyOrderedList, numOfItemsPerRow: 6 },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -355,7 +354,7 @@ export const OrderedIcons = {
 
 export const MaxHeight = {
 	render: Template,
-	args: {},
+	args: { icons: longIconMap, numOfItemsPerRow: 4, numOfRowsDisplayed: 5 },
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
