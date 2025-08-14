@@ -63,6 +63,10 @@ Add the following configuration to your Cline MCP settings file:
 
 After adding the configuration, reload the VS Code window by opening the command palette (`Cmd+Shift+P` or `Ctrl+Shift+P`) and typing `>Reload Window`.
 
+## Usage Tips
+
+Start all prompts to this MCP with "Using the mrc-qa-mcp" for consistency
+
 ## Available Tools
 
 - `get_all_components_by_category`: Retrieves all component categories and their components from Storybook.
