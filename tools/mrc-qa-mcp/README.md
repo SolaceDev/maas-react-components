@@ -1,140 +1,74 @@
 # MRC QA MCP Server
 
-This server provides tools to query MRC component documentation and usage.
+This server provides tools to query MaaS React Component (MRC) documentation and usage examples from Storybook. It is a valuable resource for developers to quickly find component information, view usage examples, and understand the component library's structure.
 
-## Prerequisites
+## Use Cases
 
-Before you begin, ensure you have the following installed and configured on your machine:
+### Getting Component Information
 
-- **Visual Studio Code**: The recommended code editor for using this tool.
-- **AI Coding Assistant**: An AI coding assistant like Roo, Cline, or GitHub Copilot, integrated into VS Code.
-- **LiteLLM Key**: Your coding assistant must be configured with a valid LiteLLM key.
-- **Node.js and npm**: This project is a Node.js application, so you'll need Node.js and npm to install dependencies and run the server. You can download them from [https://nodejs.org/](https://nodejs.org/).
-- **Docker or Podman**: To build and run the server as a container, you will need Docker or a compatible container engine like Podman.
+Quickly fetch documentation and information for any MRC component to understand its props, API, and behavior without leaving your editor.
 
-## GitHub Personal Access Token
+### Finding Component Examples
 
-This tool requires a GitHub Personal Access Token (PAT) to access the SolaceDev/maas-react-components repository and interact with the GitHub Container Registry (ghcr.io). You can create a PAT by following the instructions on [GitHub's documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+Retrieve Storybook examples for components to see them in action and copy sample code, accelerating development by providing working examples that can be adapted for your needs.
 
-When creating the token, you must grant the appropriate permissions based on your needs:
+### Getting Links for Components
 
-- **For pulling images (standard users):**
-  - `read:packages`: Allows you to download packages from the GitHub Package Registry.
-- **For pushing images (developers):**
-  - `write:packages`: Allows you to upload packages to the GitHub Package Registry.
-- **For accessing repository content:**
-  - `repo`: Grants full control of private repositories, which is necessary for the tool to read component files.
+Generate direct links to component pages in Storybook for easy sharing and reference.
 
-**Important**: Treat your PAT like a password. Do not share it with anyone or check it into version control.
+### Understanding Component Structure
+
+Explore the component library's structure by listing components by category, helping developers discover available MRCs and their organization.
+
+### Prerequisites
+
+- **GitHub PAT Token**: A GitHub Personal Access Token with `repo` and `read:packages` scope is required. You can create one by following [this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+- **Podman/Docker**: The Podman or Docker engine must be installed, open, and running.
+- **Podman/Docker Login**: You must be logged into `ghcr.io` using your GitHub username and PAT token.
+
+  ```bash
+  # For Podman
+  podman login ghcr.io -u YOUR_GITHUB_USERNAME -p YOUR_GITHUB_PAT
+
+  # For Docker
+  docker login ghcr.io -u YOUR_GITHUB_USERNAME -p YOUR_GITHUB_PAT
+  ```
+
+- **LiteLLM Token**: A LiteLLM token is required and must be configured with your AI coding assistant.
+- **AI Coding Assistant**: An AI coding assistant (e.g., Cline) is recommended for interacting with the server.
+
+### Using with Cline
+
+Add the following configuration to your Cline MCP settings file:
+
+```json
+"mrc-qa-mcp": {
+  "disabled": false,
+  "timeout": 60,
+  "type": "stdio",
+  "command": "podman",
+  "args": [
+    "run",
+    "-i",
+    "--rm",
+    "-e",
+    "GITHUB_PERSONAL_ACCESS_TOKEN",
+    "ghcr.io/solacedev/mrc-qa-mcp:latest"
+  ],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
+  }
+}
+```
+
+After adding the configuration, reload the VS Code window by opening the command palette (`Cmd+Shift+P` or `Ctrl+Shift+P`) and typing `>Reload Window`.
 
 ## Available Tools
 
 - `get_all_components_by_category`: Retrieves all component categories and their components from Storybook.
 - `get_file_content`: Retrieves the content of a component's story or documentation file from Storybook.
 
-## Docker Container
-
-### Building and Pushing to GitHub Container Registry
-
-1.  Build the Docker image:
-
-```bash
-# Navigate to the MCP directory
-cd tools/mrc-qa-mcp
-
-# Build the image
-docker build -t mrc-qa-mcp .
-```
-
-2.  Tag the image for GitHub Container Registry:
-
-```bash
-# Tag the image with the SolaceDev organization
-docker tag mrc-qa-mcp ghcr.io/solacedev/mrc-qa-mcp:latest
-```
-
-3.  Login to GitHub Container Registry:
-
-```bash
-# Login to GitHub Container Registry
-# Replace YOUR_GITHUB_TOKEN with a token that has package write permissions
-echo $GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
-
-# Alternatively, you can login interactively
-docker login ghcr.io -u YOUR_GITHUB_USERNAME
-```
-
-4.  Push the image to GitHub Container Registry:
-
-```bash
-# Push the image
-docker push ghcr.io/solacedev/mrc-qa-mcp:latest
-```
-
-5.  Make the package public (if needed): After pushing, you may need to go to the GitHub repository settings and make the package public if you want others to be able to use it without authentication.
-
-### Using with AI Assistants
-
-To use this MCP server with Cline, Roo or GitHub Copilot, you need to add a configuration to the settings file.
-
-**Settings File Path:**
-
-- **Cline (macOS):** `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
-- **Roo (macOS):** `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
-- **GitHub Copilot (macOS):** `~/Library/Application Support/Code/User/settings.json`
-
-#### Running with Docker (Recommended)
-
-Add the following configuration to your MCP settings file to run the server as a Docker container:
-
-```json
-"mrc-qa-ghcr": {
-  "disabled": false,
-  "timeout": 60,
-  "type": "stdio",
-  "command": "sh",
-  "args": [
-    "-c",
-    "docker pull ghcr.io/solacedev/mrc-qa-mcp:latest && docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/solacedev/mrc-qa-mcp:latest"
-  ],
-  "env": {
-    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
-  }
-}
-```
-
-#### Running Locally (for Development)
-
-If you are developing the MCP server, you can run it locally without Docker. First, install the dependencies:
-
-```bash
-cd tools/mrc-qa-mcp
-npm install
-npm run build
-```
-
-Then, add the following configuration to your MCP settings file:
-
-```json
-"mrc-qa-local": {
-  "disabled": false,
-  "timeout": 60,
-  "type": "stdio",
-  "command": "node",
-  "args": [
-    "/path/to/your/maas-react-components/tools/mrc-qa-mcp/build/index.js"
-  ],
-  "env": {
-    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
-  }
-}
-```
-
-**Note:** Replace `/path/to/your/maas-react-components` with the absolute path to your local repository.
-
-#### GitHub Copilot
-
-For GitHub Copilot, you can use a similar configuration in its settings file. Ensure that you have the appropriate extensions and settings to allow Copilot to use local MCP servers.
+---
 
 ## Tool Reference and Sample Prompts
 
@@ -149,79 +83,6 @@ For GitHub Copilot, you can use a similar configuration in its settings file. En
 ```json
 {
 	"tool": "get_all_components_by_category"
-}
-```
-
-**Sample Output:**
-
-```json
-{
-	"accessiblity": ["form"],
-	"style": ["colors", "typography"],
-	"layout": [
-		"detailMessage",
-		"emptyStateBanner",
-		"grid",
-		"jsonSchemaForm",
-		"responsiveItemList",
-		"sidePanelLayout",
-		"stack"
-	],
-	"navigation": [
-		"breadcrumb",
-		"buttonLink",
-		"iconTabs",
-		"menu",
-		"pageHeader",
-		"pagination",
-		"stepper",
-		"tabs",
-		"truncatableLink"
-	],
-	"messaging": ["circularProgress", "learningBanner", "linearProgress", "messageBox", "toasts"],
-	"data-visualization": ["donutchart"],
-	"container": ["accordion", "card", "dialog", "drawer", "popover"],
-	"input": [
-		"attributevaluepairform",
-		"button",
-		"catogorizedsearch",
-		"checkbox",
-		"chiptextarea",
-		"codeeditor",
-		"colorpicker",
-		"datePicker",
-		"environmentlabel",
-		"environmentselectchip",
-		"fileUploader",
-		"label",
-		"learningbutton",
-		"picker",
-		"radioButton",
-		"searchAndFilter",
-		"select",
-		"selectAutocomplete",
-		"stackLabel",
-		"textField",
-		"textarea",
-		"textdiff",
-		"toggle",
-		"toggleButtonGroup"
-	],
-	"data-display": [
-		"attributebadge",
-		"chip-choice",
-		"chip-input",
-		"chip",
-		"environmentchip",
-		"featuretag",
-		"gridlist",
-		"gridlistmultiselect",
-		"list",
-		"notificationcounter",
-		"table",
-		"tag",
-		"tooltip"
-	]
 }
 ```
 
@@ -240,3 +101,52 @@ For GitHub Copilot, you can use a similar configuration in its settings file. En
 	"component": "button"
 }
 ```
+
+## Running Locally
+
+```bash
+# Build and run the server
+npm run build && node build/index.js
+```
+
+## Podman/Docker Container
+
+### Building and Pushing to GitHub Container Registry
+
+1.  Build the Podman/Docker image:
+
+    ```bash
+    # Navigate to the MCP directory
+    cd tools/mrc-qa-mcp
+
+    # Build the image (use podman or docker)
+    podman build -t mrc-qa-mcp .
+    ```
+
+2.  Tag the image for GitHub Container Registry:
+
+    ```bash
+    # Tag the image with the SolaceDev organization
+    podman tag mrc-qa-mcp ghcr.io/solacedev/mrc-qa-mcp:latest
+    ```
+
+3.  Login to GitHub Container Registry:
+
+    ```bash
+    # Login to GitHub Container Registry
+    # Replace YOUR_GITHUB_TOKEN with a token that has package write permissions
+    echo $GITHUB_TOKEN | podman login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+
+    # Alternatively, you can login interactively
+    podman login ghcr.io -u YOUR_GITHUB_USERNAME
+    ```
+
+4.  Push the image to GitHub Container Registry:
+
+    ```bash
+    # Push the image
+    podman push ghcr.io/solacedev/mrc-qa-mcp:latest
+    ```
+
+5.  Make the package public (if needed):
+    After pushing, you may need to go to the GitHub repository settings and make the package public if you want others to be able to use it without authentication.
