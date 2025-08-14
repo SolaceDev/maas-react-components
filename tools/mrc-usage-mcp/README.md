@@ -140,25 +140,25 @@ This is a guide to using the mrc-usage-mcp.
 npm run build && node build/index.js
 ```
 
-## Docker Container
+## Podman Container
 
 ### Building and Pushing to GitHub Container Registry
 
-1.  Build the Docker image:
+1.  Build the Podman image:
 
     ```bash
     # Navigate to the MCP directory
     cd tools/mrc-usage-mcp
 
     # Build the image
-    docker build -t mrc-usage-mcp .
+    podman build -t mrc-usage-mcp .
     ```
 
 2.  Tag the image for GitHub Container Registry:
 
     ```bash
     # Tag the image with the SolaceDev organization
-    docker tag mrc-usage-mcp ghcr.io/solacedev/mrc-usage-mcp:latest
+    podman tag mrc-usage-mcp ghcr.io/solacedev/mrc-usage-mcp:latest
     ```
 
 3.  Login to GitHub Container Registry:
@@ -166,17 +166,17 @@ npm run build && node build/index.js
     ```bash
     # Login to GitHub Container Registry
     # Replace YOUR_GITHUB_TOKEN with a token that has package write permissions
-    echo $GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+    echo $GITHUB_TOKEN | podman login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
 
     # Alternatively, you can login interactively
-    docker login ghcr.io -u YOUR_GITHUB_USERNAME
+    podman login ghcr.io -u YOUR_GITHUB_USERNAME
     ```
 
 4.  Push the image to GitHub Container Registry:
 
     ```bash
     # Push the image
-    docker push ghcr.io/solacedev/mrc-usage-mcp:latest
+    podman push ghcr.io/solacedev/mrc-usage-mcp:latest
     ```
 
 5.  Make the package public (if needed):
