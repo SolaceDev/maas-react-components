@@ -66,22 +66,7 @@ export default {
 	title: "Navigation/Page Header",
 	component: SolacePageHeader,
 	parameters: {},
-	args: {
-		id: "",
-		title: "Page Name",
-		subTitle: "",
-		release: "",
-		environment: undefined,
-		borderTop: "",
-		breadcrumbs: undefined,
-		actions: undefined,
-		actionMenu: undefined,
-		tabs: undefined,
-		iconTabs: undefined,
-		returnTo: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
+	args: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -185,16 +170,11 @@ export default {
 } as Meta<typeof SolacePageHeader>;
 
 export const DefaultPageHeader = {
-	args: {
-		title: "Page Name"
-	}
+	args: {}
 };
 
 export const WithSubTitle = {
-	args: {
-		title: "Title",
-		subTitle: "Sub Title"
-	}
+	args: {}
 };
 
 export const WithBreadcrumbs = (): JSX.Element => {
@@ -216,22 +196,11 @@ export const WithBreadcrumbs = (): JSX.Element => {
 };
 
 export const WithRouterBreadcrumbs = {
-	args: {
-		title: "Service Details",
-		subTitle: "My Service",
-		breadcrumbs: [
-			{ title: "Cluster Manager", link: "/#1" },
-			{ title: "Services Details", link: "/#2", current: true }
-		]
-	}
+	args: {}
 };
 
 export const WithBreadcrumbsAndRelease = {
-	args: {
-		title: "Mesh Manager",
-		breadcrumbs: [{ title: "Mesh Manager", link: "#1", current: true }],
-		release: "BETA"
-	}
+	args: {}
 };
 
 export const WithReturnTo = (): JSX.Element => {
