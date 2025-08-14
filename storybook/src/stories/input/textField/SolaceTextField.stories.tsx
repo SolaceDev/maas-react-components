@@ -18,8 +18,6 @@ import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { Search } from "@mui/icons-material";
 import { SolaceTextField, SolaceButton, CloseIcon } from "@SolaceDev/maas-react-components";
-import { action } from "@storybook/addon-actions";
-import { fn } from "@storybook/test";
 
 (SolaceTextField as React.FC & { displayName?: string }).displayName = "SolaceTextField";
 (SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
@@ -27,31 +25,7 @@ import { fn } from "@storybook/test";
 export default {
 	title: "Input/Textfield/Standard",
 	component: SolaceTextField,
-	args: {
-		id: "",
-		name: "",
-		title: "",
-		label: "",
-		placeholder: "",
-		helperText: "",
-		value: "",
-		hasErrors: false,
-		hasWarnings: false,
-		autoFocus: false,
-		inlineLabel: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		type: "text",
-		size: undefined,
-		width: undefined,
-		minWidth: undefined,
-		customIcon: undefined,
-		endAdornment: undefined,
-		dataQa: "",
-		dataTags: "",
-		onFocus: fn()
-	},
+	args: {},
 	parameters: {
 		design: {
 			type: "figma",
@@ -317,94 +291,39 @@ const DEMO_TITLE = "Demo Text Field";
 const DEMO_LABEL = "Some Label";
 
 export const DefaultTextfield = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField"
-	}
+	args: {}
 };
 
 export const CustomWidth = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField",
-		width: "50%"
-	}
+	args: {}
 };
 
 export const StackedLabelFormat = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		name: "demoTextField",
-		label: DEMO_LABEL
-	}
+	args: {}
 };
 
 export const InlineLabelFormat = {
-	args: {
-		onChange: action("text-changed"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		inlineLabel: true
-	}
+	args: {}
 };
 
 export const HelperText = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		helperText: "Some helper text"
-	}
+	args: {}
 };
 
 export const PlaceholderText = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		placeholder: "Some placeholder text"
-	}
+	args: {}
 };
 
 export const WithErrors = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		helperText: "The text you entered was invalid",
-		hasErrors: true
-	}
+	args: {}
 };
 
 export const WithWarning = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		helperText: "The text you entered triggered a warning",
-		hasWarnings: true
-	}
+	args: {}
 };
 
 export const WithIcon = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		helperText: "Text field with search icon",
-		customIcon: { position: "end", icon: <Search /> }
-	}
+	args: {}
 };
 
 const WithClearButtonComponent = (): JSX.Element => {
@@ -459,56 +378,23 @@ export const WithClearButton = {
 };
 
 export const AutoFocus = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		autoFocus: true
-	}
+	args: {}
 };
 
 export const WithOnBlurOnFocus = {
-	args: {
-		onChange: action("callback"),
-		onBlur: action("blur"),
-		onFocus: action("focus"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField"
-	}
+	args: {}
 };
 
 export const Required = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		required: true
-	}
+	args: {}
 };
 
 export const Disabled = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		value: "Some value",
-		disabled: true
-	}
+	args: {}
 };
 
 export const ReadOnly = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		value: "Some value",
-		readOnly: true
-	}
+	args: {}
 };
 
 export const ReadOnlyLongTextOverflowWithTooltip = (): JSX.Element => {
@@ -552,22 +438,11 @@ const ControlledComponent = ({ value: initialValue, name, ...args }): JSX.Elemen
 export const Controlled = {
 	render: ControlledComponent,
 
-	args: {
-		name: "controlledTextField",
-		label: "Controlled Text Field",
-		value: "Initial value",
-		helperText: "The value of the text field is controlled by the change handler in the story."
-	}
+	args: {}
 };
 
 export const Interaction = {
-	args: {
-		onChange: action("callback"),
-		id: "interactionTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		dataQa: "interactionTextField"
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

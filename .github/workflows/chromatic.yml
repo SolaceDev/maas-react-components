@@ -1,0 +1,30 @@
+name: Remote Chromatic Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to run Chromatic on"
+        required: true
+
+jobs:
+  chromatic-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Run Chromatic
+        run: |
+          URL=$(npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes | grep -Eo 'https://www.chromatic.com/build\?appId=[^ ]+')
+          echo "Chromatic build URL: $URL"
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

@@ -33,23 +33,7 @@ export default {
 			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=1%3A2"
 		}
 	},
-	args: {
-		id: "",
-		variant: "link",
-		isDisabled: false,
-		underline: "hover",
-		title: "",
-		href: "",
-		dense: false,
-		component: "button",
-		type: "button",
-		children: "Click Me!",
-		openLinkInNewTab: true,
-		disabledFocusState: false,
-		dataQa: "",
-		dataTags: "",
-		eventName: ""
-	},
+	args: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -208,11 +192,7 @@ export default {
 } as Meta<typeof SolaceButton>;
 
 export const LinkButton = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.LINK,
-		children: "Click Me!"
-	}
+	args: {}
 };
 
 export const LinkButtonWithDenseStyle = (): JSX.Element => {
@@ -228,20 +208,11 @@ export const LinkButtonWithDenseStyle = (): JSX.Element => {
 };
 
 export const ExternalLinkButton = {
-	args: {
-		variant: "link",
-		href: "http://www.cnn.com",
-		children: "Visit CNN"
-	}
+	args: {}
 };
 
 export const ExternalLinkButtonOpenPageInSameTab = {
-	args: {
-		variant: "link",
-		openLinkInNewTab: false,
-		href: "http://www.cnn.com",
-		children: "Visit CNN"
-	}
+	args: {}
 };
 
 export const ExternaLinkWithText = (): ReactNode => {

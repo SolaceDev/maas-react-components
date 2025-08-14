@@ -17,9 +17,7 @@
 import React, { useState } from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import { SolaceSearchAndFilter, FIELD_TYPES, SolaceTextFieldChangeEvent } from "@SolaceDev/maas-react-components";
-import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/testing-library";
-import { fn } from "@storybook/test";
 
 (SolaceSearchAndFilter as React.FC & { displayName?: string }).displayName = "SolaceSearchAndFilter";
 
@@ -28,19 +26,7 @@ const SEARCH_AND_FILTER = "search-and-filter";
 export default {
 	title: "Input/Search & Filter/Standard",
 	component: SolaceSearchAndFilter,
-	args: {
-		id: SEARCH_AND_FILTER,
-		name: SEARCH_AND_FILTER,
-		label: "Search",
-		value: "",
-		placeholder: "Search...",
-		width: "100%",
-		helperText: "",
-		hasErrors: false,
-		disabled: false,
-		type: FIELD_TYPES.SEARCH,
-		onFocus: fn()
-	},
+	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -153,128 +139,61 @@ const Template: StoryFn<typeof SolaceSearchAndFilter> = (args) => {
 
 export const Default = {
 	render: Template,
-	args: { name: "testField", onChange: action("key typed") }
+	args: {}
 };
 
 export const Search = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		type: FIELD_TYPES.SEARCH,
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		onChange: action("key typed")
-	}
+	args: {}
 };
 
 export const Filter = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		type: FIELD_TYPES.FILTER,
-		placeholder: FILTER_PLACEHOLDER_TEXT,
-		onChange: action("key typed")
-	}
+	args: {}
 };
 
 export const FixedWidth = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		type: FIELD_TYPES.SEARCH,
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		width: "200px",
-		onChange: action("key typed")
-	}
+	args: {}
 };
 
 export const WithLabel = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		label: "Search",
-		type: FIELD_TYPES.SEARCH,
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		onChange: action("key typed")
-	}
+	args: {}
 };
 
 export const HelperText = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		type: FIELD_TYPES.SEARCH,
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		helperText: "Showing 20 of 25 Results. Specify your search for more results",
-		onChange: action("key typed")
-	}
+	args: {}
 };
 
 export const InitialValue = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		type: FIELD_TYPES.SEARCH,
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		width: "200px",
-		value: "initial value",
-		onChange: action("key typed")
-	}
+	args: {}
 };
 
 export const HasErrors = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		type: FIELD_TYPES.SEARCH,
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		value: "some invalid search",
-		hasErrors: true,
-		helperText: "Unexpected network error, please contact your system administrator",
-		onChange: action("key typed")
-	}
+	args: {}
 };
 
 export const Disabled = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		type: FIELD_TYPES.SEARCH,
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		width: "200px",
-		disabled: true,
-		onChange: action("key typed")
-	}
+	args: {}
 };
 
 export const ClearAllNotification = {
 	render: Template,
 
-	args: {
-		id: "searchAndFilterID",
-		name: "testField",
-		type: FIELD_TYPES.SEARCH,
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		width: "400px",
-		value: "initial value to be cleared",
-		onChange: action("key typed"),
-		onClearAll: action("clear all triggered")
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -285,14 +204,7 @@ export const ClearAllNotification = {
 
 export const OnFocus = Template.bind({});
 
-OnFocus.args = {
-	id: "searchAndFilterOnFocus",
-	name: "testFieldOnFocus",
-	type: FIELD_TYPES.SEARCH,
-	placeholder: "Click or tab into me and observe the action!",
-	onChange: action("value changed"),
-	onFocus: action("input focused") // Using action() to log the onFocus event
-};
+OnFocus.args = {};
 
 OnFocus.play = async ({ canvasElement }) => {
 	// Starts querying the component from it's root element

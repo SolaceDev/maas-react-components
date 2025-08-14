@@ -442,12 +442,7 @@ const ContentControlTemplate: StoryFn<ExtendedSolacePickerProps> = (args) => {
 
 export const FilterContent = {
 	render: ContentControlTemplate,
-	args: {
-		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
-		iconLabelMap: getIconLabelMap(),
-		numOfItemsPerRow: 6,
-		numOfRowsDisplayed: 5
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -464,13 +459,7 @@ export const FilterContent = {
 
 export const FilterContentWithInitalSearchText = {
 	render: ContentControlTemplate,
-	args: {
-		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
-		iconLabelMap: getIconLabelMap(),
-		numOfItemsPerRow: 6,
-		numOfRowsDisplayed: 5,
-		searchValue: "te"
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -489,13 +478,7 @@ export const FilterContentWithInitalSearchText = {
 
 export const FilterContentWithInvalidSearchText = {
 	render: ContentControlTemplate,
-	args: {
-		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
-		iconLabelMap: getIconLabelMap(),
-		numOfItemsPerRow: 6,
-		numOfRowsDisplayed: 5,
-		searchValue: "invalid"
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -515,14 +498,7 @@ export const FilterContentWithInvalidSearchText = {
 
 export const FilterContentWithCustomEmptyMessage = {
 	render: ContentControlTemplate,
-	args: {
-		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
-		iconLabelMap: getIconLabelMap(),
-		numOfItemsPerRow: 6,
-		numOfRowsDisplayed: 5,
-		searchValue: "invalid",
-		customEmptyMessage: "No items found"
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -542,12 +518,7 @@ export const FilterContentWithCustomEmptyMessage = {
 
 export const FilterContentAndMaxHeight = {
 	render: ContentControlTemplate,
-	args: {
-		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
-		iconLabelMap: getIconLabelMap(),
-		numOfItemsPerRow: 4,
-		numOfRowsDisplayed: 5
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -564,13 +535,7 @@ export const FilterContentAndMaxHeight = {
 
 export const SearchContentAndMaxHeight = {
 	render: ContentControlTemplate,
-	args: {
-		icons: { ...getIconsWithTooltip(), ...getLogosWithTooltip(sampleColors) },
-		iconLabelMap: getIconLabelMap(),
-		numOfItemsPerRow: 6,
-		numOfRowsDisplayed: 5,
-		hideToggle: true
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

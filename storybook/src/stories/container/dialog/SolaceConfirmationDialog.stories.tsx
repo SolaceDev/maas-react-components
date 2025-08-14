@@ -990,13 +990,7 @@ export const WithElementTypeTitle = {
 	}
 };
 
-const args = {
-	onChange: action("callback"),
-	title: "Checkbox title",
-	id: "demoCheckboxId",
-	name: "demoCheckbox",
-	label: "Optional checkbox that may be clicked before submitting"
-};
+const args = {};
 
 export const WithCustomActions = {
 	render: () => (

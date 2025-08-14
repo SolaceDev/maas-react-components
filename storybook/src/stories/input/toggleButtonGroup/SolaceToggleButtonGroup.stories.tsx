@@ -15,7 +15,6 @@
  */
 
 import React, { ReactNode, useState } from "react";
-import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { SolaceToggleButtonGroup, SolaceToggleButtonGroupOptionProps } from "@SolaceDev/maas-react-components";
 
@@ -29,12 +28,7 @@ options.push({ value: "option3", label: "Pub" });
 export default {
 	title: "Input/Toggle Button",
 	component: SolaceToggleButtonGroup,
-	args: {
-		options: [],
-		activeValue: "",
-		isDisabled: false,
-		dataQa: ""
-	},
+	args: {},
 	parameters: {
 		design: {
 			type: "figma",
@@ -82,20 +76,11 @@ export default {
 } as Meta<typeof SolaceToggleButtonGroup>;
 
 export const DefaultToggleButtonGroup = {
-	args: {
-		dataQa: "testDefaultTBG",
-		options: options,
-		onChange: action("on change")
-	}
+	args: {}
 };
 
 export const ToggleButtonGroupWithSelection = {
-	args: {
-		dataQa: "testTBGWithSelection",
-		options: options,
-		onChange: action("on change"),
-		activeValue: "option1"
-	}
+	args: {}
 };
 
 export const ToggleButtonGroupWithCallback = (): ReactNode => {
@@ -114,11 +99,5 @@ export const ToggleButtonGroupWithCallback = (): ReactNode => {
 };
 
 export const ToggleButtonGroupDisabled = {
-	args: {
-		dataQa: "testTBGDisabled",
-		options: options,
-		activeValue: "option3",
-		onChange: action("on change"),
-		isDisabled: true
-	}
+	args: {}
 };

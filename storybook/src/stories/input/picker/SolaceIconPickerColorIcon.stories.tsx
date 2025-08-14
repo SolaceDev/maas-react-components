@@ -36,28 +36,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Picker/Icon",
 	component: SolacePicker,
-	args: {
-		id: "",
-		name: "",
-		label: "Icon",
-		value: "",
-		variant: "icons",
-		title: "",
-		helperText: "",
-		hasErrors: false,
-		hasWarnings: false,
-		inlineLabel: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		displayEmpty: false,
-		numOfItemsPerRow: 4,
-		numOfRowsDisplayed: 3,
-		autoFocusItem: false,
-		icons: {},
-		iconKeyOrderedList: undefined,
-		dataQa: ""
-	},
+	args: {},
 	parameters: {
 		controls: { sort: "alpha" },
 		docs: {
@@ -229,7 +208,7 @@ const Template: StoryFn<typeof SolacePicker> = (args) => {
 
 export const SingleColorIcon = {
 	render: Template,
-	args: { icons: getNodeColorForCustomization("application"), iconKeyOrderedList: SupportedColorVariationList },
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -246,7 +225,7 @@ export const SingleColorIcon = {
 
 export const DualColorIcon = {
 	render: Template,
-	args: { icons: getNodeColorForCustomization("applicationDomain"), iconKeyOrderedList: SupportedColorVariationList },
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element

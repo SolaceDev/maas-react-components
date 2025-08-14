@@ -28,25 +28,7 @@ import { Meta } from "@storybook/react";
 export default {
 	title: "Layout/Grid",
 	component: SolaceGrid,
-	args: {
-		id: "",
-		hasWarnings: false,
-		spacing: 2,
-		container: false,
-		item: false,
-		columns: 12,
-		direction: "row",
-		xs: undefined,
-		sm: undefined,
-		md: undefined,
-		lg: undefined,
-		xl: undefined,
-		justifyContent: undefined,
-		alignItems: undefined,
-		wrap: "wrap",
-		sx: undefined,
-		children: undefined
-	},
+	args: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -235,21 +217,11 @@ const defaultContent = (
 export const AutoLayoutGrid = {
 	render: Template,
 
-	args: {
-		children: defaultContent
-	}
+	args: {}
 };
 
 export const TextGrid = {
 	render: Template,
 
-	args: {
-		children: (
-			<>
-				<SolaceGrid item>{"Item 1"}</SolaceGrid>
-				<SolaceGrid item>{"Item 2"}</SolaceGrid>
-				<SolaceGrid item>{"Item 3"}</SolaceGrid>
-			</>
-		)
-	}
+	args: {}
 };

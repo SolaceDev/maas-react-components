@@ -17,16 +17,8 @@
 import React from "react";
 import { Meta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import {
-	DeleteIcon,
-	MoreHorizOutlinedIcon,
-	SolaceButton,
-	SolaceCard,
-	SolaceMenu,
-	SolaceTypography
-} from "@SolaceDev/maas-react-components";
+import { SolaceButton, SolaceCard, SolaceTypography } from "@SolaceDev/maas-react-components";
 import { SolaceCardProps } from "@SolaceDev/maas-react-components";
-import InfoIcon from "@mui/icons-material/Info";
 
 (SolaceCard as React.FC & { displayName?: string }).displayName = "SolaceCard";
 
@@ -285,14 +277,7 @@ const SolaceCardStory = (args: SolaceCardProps) => {
 export const Default = {
 	render: SolaceCardStory,
 
-	args: {
-		dataQa: "default-empty-card",
-		width: "250px",
-		height: "250px",
-		minWidth: "250px",
-		cardContent: <SolaceTypography variant="body1">Click me! I&apos;m interactive.</SolaceTypography>,
-		onClick: action("callback")
-	},
+	args: {},
 
 	parameters: {
 		docs: {
@@ -310,15 +295,7 @@ export const Default = {
 export const ReadOnly = {
 	render: SolaceCardStory,
 
-	args: {
-		dataQa: "read-only-card",
-		width: "250px",
-		height: "250px",
-		minWidth: "250px",
-		cardContent: <div></div>,
-		readOnly: true,
-		onClick: action("callback")
-	},
+	args: {},
 
 	parameters: {
 		docs: {
@@ -337,25 +314,7 @@ export const ReadOnly = {
 export const CustomContent = {
 	render: SolaceCardStory,
 
-	args: {
-		dataQa: "custom-content-card",
-		width: "400px",
-		minWidth: "300px",
-		onClick: () => {
-			alert("Card Clicked");
-		},
-		cardContent: (
-			<>
-				<SolaceTypography variant="h3" sx={{ marginBottom: "8px" }}>
-					Custom Title
-				</SolaceTypography>
-				<SolaceTypography variant="body1">
-					This is an example of a custom title as an example of what teams can do if they do not want to use the
-					built-in header styling.
-				</SolaceTypography>
-			</>
-		)
-	},
+	args: {},
 
 	parameters: {
 		docs: {
@@ -416,33 +375,7 @@ export const PaddingOptions = {
 export const WithDefaultHeader = {
 	render: SolaceCardStory,
 
-	args: {
-		dataQa: "with-header-card",
-		width: "400px",
-		minWidth: "371px",
-		readOnly: true,
-		cardHeaderProps: {
-			title: "Java",
-			icon: <InfoIcon />,
-			actionElements: (
-				<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-					<SolaceButton variant="text" onClick={action("callback")}>
-						Tutorials
-					</SolaceButton>
-					<SolaceMenu
-						buttonProps={{
-							variant: "icon",
-							title: "Actions",
-							"aria-label": "Actions menu",
-							children: <MoreHorizOutlinedIcon />
-						}}
-						items={menuItemsWithSecondaryActions.map((item) => ({ ...item }))}
-						numOfMenuItemDisplayed={menuItemsWithSecondaryActions.length}
-					/>
-				</div>
-			)
-		}
-	},
+	args: {},
 
 	parameters: {
 		docs: {
@@ -456,34 +389,7 @@ export const WithDefaultHeader = {
 export const CardWithSubTitle = {
 	render: SolaceCardStory,
 
-	args: {
-		dataQa: "With-subtitle-card",
-		width: "400px",
-		minWidth: "371px",
-		readOnly: true,
-		cardHeaderProps: {
-			title: "Go",
-			subTitle: "PubSub+ Messaging API for Go",
-			icon: <InfoIcon />,
-			actionElements: (
-				<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-					<SolaceButton variant="text" onClick={action("callback")}>
-						Tutorials
-					</SolaceButton>
-					<SolaceMenu
-						buttonProps={{
-							variant: "icon",
-							title: "actions",
-							"aria-label": "menu actions",
-							children: <MoreHorizOutlinedIcon />
-						}}
-						items={menuItemsWithSecondaryActions.map((item) => ({ ...item }))}
-						numOfMenuItemDisplayed={menuItemsWithSecondaryActions.length}
-					/>
-				</div>
-			)
-		}
-	},
+	args: {},
 
 	parameters: {
 		docs: {
@@ -496,50 +402,7 @@ export const CardWithSubTitle = {
 
 export const CompleteCard = {
 	render: SolaceCardStory,
-	args: {
-		dataQa: "complete-card-example",
-		width: "400px",
-		readOnly: true,
-		cardHeaderProps: {
-			title: "Built-in header",
-			subTitle: "subtitle",
-			actionElements: (
-				<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-					<SolaceMenu
-						buttonProps={{
-							variant: "icon",
-							title: "More actions",
-							"aria-label": "Action menu",
-							children: <MoreHorizOutlinedIcon />
-						}}
-						items={menuItemsWithSecondaryActions}
-						numOfMenuItemDisplayed={menuItemsWithSecondaryActions.length}
-					/>
-				</div>
-			)
-		},
-		cardContent: (
-			<>
-				<SolaceTypography variant="body1">Card Content</SolaceTypography>
-			</>
-		),
-		cardActions: (
-			<div
-				style={{
-					display: "flex",
-					gap: "8px",
-					justifyContent: "space-between",
-					alignItems: "center",
-					flex: "1"
-				}}
-			>
-				<SolaceTypography variant="body1">CardActions</SolaceTypography>
-				<SolaceButton variant="icon" onClick={action("callback")}>
-					<DeleteIcon />
-				</SolaceButton>
-			</div>
-		)
-	},
+	args: {},
 	parameters: {
 		docs: {
 			description: {

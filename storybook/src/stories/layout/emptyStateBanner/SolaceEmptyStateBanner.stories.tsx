@@ -17,7 +17,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SolaceEmptyStateBanner } from "@SolaceDev/maas-react-components";
 import React from "react";
-import EmptyBannerImage from "../../../resources/images/EmptyBannerImage";
 
 (SolaceEmptyStateBanner as React.FC & { displayName?: string }).displayName = "SolaceEmptyStateBanner";
 
@@ -28,15 +27,7 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 	 */
 	title: "Layout/Empty State/Learning",
 	component: SolaceEmptyStateBanner,
-	args: {
-		bannerImage: undefined,
-		title: "",
-		subtitle: "",
-		description: "",
-		primaryButton: undefined,
-		secondaryButton: undefined,
-		dataQa: ""
-	},
+	args: {},
 	parameters: {},
 	argTypes: {
 		bannerImage: {
@@ -110,19 +101,5 @@ export default meta;
 type Story = StoryObj<typeof SolaceEmptyStateBanner>;
 
 export const EmptyBanner: Story = {
-	args: {
-		bannerImage: <EmptyBannerImage />,
-		subtitle: "Get started with integration",
-		title: "Bring your data into the event mesh",
-		description:
-			"In this sample, Acme Inc. enterprise is taking their next step in optimizing their operations by using Event Portal to discover, audit, catalog, extend, and govern their event-driven architecture. Code component name: SolaceEmptyStateBanner",
-		primaryButton: {
-			label: "Check Out Available Connectors",
-			onClick: () => alert("Primary button clicked")
-		},
-		secondaryButton: {
-			label: "Explore On My Own",
-			onClick: () => alert("Secondary button clicked")
-		}
-	}
+	args: {}
 };

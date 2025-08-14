@@ -16,7 +16,6 @@
 import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
-import { fn } from "@storybook/test";
 
 import {
 	InfoIcon,
@@ -32,24 +31,7 @@ import {
 export default {
 	title: "Input/Textfield/Attribute Pair",
 	component: SolaceAttributeValuePairForm,
-	args: {
-		id: "",
-		name: "",
-		labelForKeys: "Keys",
-		labelForValues: "Values",
-		avpList: [],
-		hasWarnings: false,
-		hasErrors: false,
-		helperText: "",
-		disableReorder: false,
-		readOnly: false,
-		emptyFieldDisplayValue: "",
-		enableRequiredKeyFieldIndicator: false,
-		keyIsRequiredMessage: "",
-		avpListMaxHeight: "",
-		virtualizedAvpListOption: undefined,
-		onAVPListUpdate: fn()
-	},
+	args: {},
 	parameters: {
 		docs: {
 			story: { height: "500px" },

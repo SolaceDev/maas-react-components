@@ -36,16 +36,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Data Visualization/Donut Chart",
 	component: SolaceDonutChart,
-	args: {
-		data: [],
-		size: "md",
-		showTooltip: false,
-		icon: undefined,
-		iconWidth: undefined,
-		iconHeight: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
 	parameters: {},
 	argTypes: {
 		data: {

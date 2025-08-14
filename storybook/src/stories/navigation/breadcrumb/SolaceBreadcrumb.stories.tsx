@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 /* eslint-disable sonarjs/no-duplicate-string */
-import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
 import { SolaceBreadcrumb } from "@SolaceDev/maas-react-components";
 
@@ -24,19 +23,7 @@ export default {
 	title: "Navigation/Breadcrumb",
 	component: SolaceBreadcrumb,
 	parameters: {},
-	args: {
-		id: "",
-		paths: [
-			{
-				title: "Home",
-				link: "/",
-				current: true
-			}
-		],
-		maxItems: 8,
-		dataQa: "breadcrumbs",
-		dataTags: ""
-	},
+	args: {},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -104,175 +91,37 @@ export default {
 const ROUTE_CLICKED = "route clicked";
 
 export const CurrentLink = {
-	args: {
-		onRouteClick: action(ROUTE_CLICKED),
-		dataQa: "testBreadcrumb",
-		paths: [
-			{
-				title: "Home",
-				link: "",
-				current: true
-			}
-		]
-	}
+	args: {}
 };
 
 export const ChildLink = {
-	args: {
-		onRouteClick: action(ROUTE_CLICKED),
-		dataQa: "testBreadcrumb",
-		paths: [
-			{
-				title: "Home",
-				link: "/",
-				current: false
-			},
-			{
-				title: "Designer",
-				link: "",
-				current: true
-			}
-		]
-	}
+	args: {}
 };
 
 export const WithLongLabels = {
-	args: {
-		onRouteClick: action(ROUTE_CLICKED),
-		dataQa: "testBreadcrumb",
-		paths: [
-			{
-				title: "This is a very long label that should be clipped",
-				link: "/",
-				current: false,
-				tooltip: "Some more info about this"
-			},
-			{
-				title: "You are here",
-				link: "",
-				current: true
-			}
-		]
-	}
+	args: {}
 };
 
 export const WithRouter = {
-	args: {
-		paths: [
-			{
-				title: "Home",
-				link: "/"
-			},
-			{
-				title: "Designer",
-				link: "",
-				current: true
-			}
-		]
-	}
+	args: {}
 };
 
 export const GrandChildLink = {
-	args: {
-		onRouteClick: action(ROUTE_CLICKED),
-		dataQa: "testBreadcrumb",
-		paths: [
-			{
-				title: "Home",
-				link: "/",
-				current: false
-			},
-			{
-				title: "Designer",
-				link: "/ep/designer",
-				current: false
-			},
-			{
-				title: "Catalog",
-				link: "",
-				current: true
-			}
-		]
-	}
+	args: {}
 };
 
 export const CollapsedLinks = {
-	args: {
-		onRouteClick: action(ROUTE_CLICKED),
-		dataQa: "testBreadcrumb",
-		maxItems: 2,
-		paths: [
-			{
-				title: "Home",
-				link: "/",
-				current: false
-			},
-			{
-				title: "Designer",
-				link: "/ep/designer",
-				current: false
-			},
-			{
-				title: "Catalog",
-				link: "",
-				current: true
-			}
-		]
-	}
+	args: {}
 };
 
 export const WithPreloaderAtParentRoute = {
-	args: {
-		paths: [
-			{
-				title: "Home",
-				link: "/",
-				progress: true,
-				progressTooltip: "Loading Parent"
-			},
-			{
-				title: "Designer",
-				link: "",
-				current: true
-			}
-		]
-	}
+	args: {}
 };
 
 export const WithPreloaderAtCurrentRoute = {
-	args: {
-		paths: [
-			{
-				title: "Home",
-				link: "/"
-			},
-			{
-				title: "Designer",
-				link: "",
-				current: true,
-				progress: true,
-				progressTooltip: "Loading Child"
-			}
-		]
-	}
+	args: {}
 };
 
 export const WithPreloaderAtEveryRoute = {
-	args: {
-		paths: [
-			{
-				title: "Home",
-				link: "/",
-				progress: true,
-				progressTooltip: "Loading Parent"
-			},
-			{
-				title: "Designer",
-				link: "",
-				current: true,
-				progress: true,
-				progressTooltip: "Loading Child"
-			}
-		]
-	}
+	args: {}
 };

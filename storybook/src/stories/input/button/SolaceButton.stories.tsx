@@ -15,9 +15,8 @@
  */
 /* eslint-disable sonarjs/no-duplicate-string */
 import React, { ReactNode } from "react";
-import { action } from "@storybook/addon-actions";
 import { Meta } from "@storybook/react";
-import { SolaceButton, DeleteIcon } from "@SolaceDev/maas-react-components";
+import { SolaceButton } from "@SolaceDev/maas-react-components";
 import { userEvent } from "@storybook/testing-library";
 
 (SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
@@ -32,26 +31,7 @@ enum VARIANT {
 export default {
 	title: "Input/Button/Standard",
 	component: SolaceButton,
-	args: {
-		id: "",
-		variant: "text",
-		isDisabled: false,
-		title: "",
-		href: "",
-		component: "button",
-		type: "button",
-		size: "medium",
-		startIcon: undefined,
-		endIcon: undefined,
-		onClick: undefined,
-		children: "",
-		disabledFocusState: false,
-		fullWidth: false,
-		loading: false,
-		dataQa: "",
-		dataTags: "",
-		hasWarnings: false
-	},
+	args: {},
 	parameters: {
 		design: {
 			type: "figma",
@@ -229,45 +209,23 @@ export default {
 } as Meta<typeof SolaceButton>;
 
 export const DefaultButton = {
-	args: {
-		onClick: action("callback"),
-		dataQa: "testDataProp",
-		dataTags: "testDataTag1 testDataTag2",
-		children: "Click Me!"
-	}
+	args: {}
 };
 
 export const CallToActionButton = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.ACTION,
-		children: "Click Me!"
-	}
+	args: {}
 };
 
 export const OutlineButton = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.OUTLINE,
-		children: "Click Me!"
-	}
+	args: {}
 };
 
 export const TextButton = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.TEXT,
-		children: "Click Me!"
-	}
+	args: {}
 };
 
 export const IconButton = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.ICON,
-		title: "Delete",
-		children: <DeleteIcon />
-	},
+	args: {},
 
 	play: async () => {
 		await userEvent.tab();
@@ -275,13 +233,7 @@ export const IconButton = {
 };
 
 export const IconButtonWithDisabledFocusState = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.ICON,
-		title: "Delete",
-		children: <DeleteIcon />,
-		disabledFocusState: true
-	},
+	args: {},
 
 	play: async () => {
 		await userEvent.tab();
@@ -289,39 +241,19 @@ export const IconButtonWithDisabledFocusState = {
 };
 
 export const WithStartIcon = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.ACTION,
-		startIcon: <DeleteIcon />,
-		children: "Delete"
-	}
+	args: {}
 };
 
 export const WithEndIcon = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.ACTION,
-		endIcon: <DeleteIcon />,
-		children: "Delete"
-	}
+	args: {}
 };
 
 export const WithStartIconLong = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.ACTION,
-		startIcon: <DeleteIcon />,
-		children: "Delete is really really Long"
-	}
+	args: {}
 };
 
 export const WithEndIconLong = {
-	args: {
-		onClick: action("callback"),
-		variant: VARIANT.ACTION,
-		endIcon: <DeleteIcon />,
-		children: "Delete is really really Long"
-	}
+	args: {}
 };
 
 export const FileUpload = (): ReactNode => {

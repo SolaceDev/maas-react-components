@@ -17,7 +17,6 @@
 import { Meta } from "@storybook/react";
 
 import { SolaceCheckBox } from "@SolaceDev/maas-react-components";
-import { action } from "@storybook/addon-actions";
 
 (SolaceCheckBox as React.FC & { displayName?: string }).displayName = "SolaceCheckBox";
 
@@ -27,30 +26,7 @@ const TITLE = "Demo Checkbox";
 export default {
 	title: "Input/Checkbox",
 	component: SolaceCheckBox,
-	args: {
-		label: "",
-		helperText: "",
-		hasErrors: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		checked: false,
-		defaultChecked: false,
-		indeterminate: false,
-		boldLabel: false,
-		largeLabel: false,
-		subTextProps: undefined,
-		name: "",
-		id: "",
-		title: "",
-		value: "",
-		onChange: undefined,
-		onBlur: undefined,
-		onFocus: undefined,
-		dataQa: "",
-		dataTags: "",
-		hasWarnings: false
-	},
+	args: {},
 	parameters: {
 		design: {
 			type: "figma",
@@ -281,148 +257,53 @@ export default {
 } as Meta<typeof SolaceCheckBox>;
 
 export const DefaultCheckbox = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		id: "demoCheckboxId",
-		name: "demoCheckbox"
-	}
+	args: {}
 };
 
 export const Labeled = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		id: "demoCheckboxId",
-		name: "demoCheckbox",
-		label: LABEL
-	}
+	args: {}
 };
 
 export const BoldLabel = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		id: "demoCheckboxId",
-		name: "demoCheckbox",
-		label: LABEL,
-		boldLabel: true
-	}
+	args: {}
 };
 
 export const LargeLabel = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		id: "demoCheckboxId",
-		name: "demoCheckbox",
-		label: LABEL,
-		largeLabel: true
-	}
+	args: {}
 };
 
 export const SubText = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		id: "demoCheckboxId",
-		name: "demoCheckbox",
-		label: "Primary Label",
-		subTextProps: {
-			label: "Subtext subtext"
-		}
-	}
+	args: {}
 };
 
 export const LightSubText = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		id: "demoCheckboxId",
-		name: "demoCheckbox",
-		label: "Primary Label",
-		subTextProps: {
-			label: "This is a light subtext",
-			light: true
-		}
-	}
+	args: {}
 };
 
 export const HelperText = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		id: "demoCheckboxId",
-		name: "demoCheckbox",
-		label: LABEL,
-		helperText: "Some helper text here"
-	}
+	args: {}
 };
 
 export const WithErrors = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		id: "demoCheckboxId",
-		name: "demoCheckbox",
-		label: LABEL,
-		hasErrors: true,
-		helperText: "Some error occured"
-	}
+	args: {}
 };
 
 export const Required = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		name: "demoCheckbox",
-		label: LABEL,
-		required: true
-	}
+	args: {}
 };
 
 export const Disabled = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		name: "demoCheckbox",
-		label: LABEL,
-		checked: true,
-		disabled: true
-	}
+	args: {}
 };
 
 export const Indeterminate = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		name: "demoCheckbox",
-		label: LABEL,
-		checked: true,
-		indeterminate: true,
-		readOnly: false
-	}
+	args: {}
 };
 
 export const ReadOnly = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		name: "demoCheckbox",
-		label: LABEL,
-		checked: true,
-		readOnly: true
-	}
+	args: {}
 };
 
 export const IndeterminateAndReadOnly = {
-	args: {
-		onChange: action("callback"),
-		title: TITLE,
-		name: "demoCheckbox",
-		label: LABEL,
-		checked: true,
-		indeterminate: true,
-		readOnly: true
-	}
+	args: {}
 };

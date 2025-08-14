@@ -17,38 +17,13 @@ import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 
 import { SolaceTextArea } from "@SolaceDev/maas-react-components";
-import { action } from "@storybook/addon-actions";
 
 (SolaceTextArea as React.FC & { displayName?: string }).displayName = "SolaceTextArea";
 
 export default {
 	title: "Input/Textfield/Text Area",
 	component: SolaceTextArea,
-	args: {
-		id: "",
-		name: "",
-		title: "",
-		label: "",
-		placeholder: "",
-		helperText: "",
-		value: "",
-		hasErrors: false,
-		hasWarnings: false,
-		autoFocus: false,
-		inlineLabel: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		type: "text",
-		rows: 4,
-		maxRows: undefined,
-		minRows: undefined,
-		size: undefined,
-		width: undefined,
-		resizable: "both",
-		dataQa: "",
-		dataTags: ""
-	},
+	args: {},
 	parameters: {
 		design: {
 			type: "figma",
@@ -324,125 +299,51 @@ const DEMO_TITLE = "Demo Text Field";
 const DEMO_LABEL = "Some Label";
 
 export const DefaultTextfield = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField"
-	}
+	args: {}
 };
 
 export const CustomWidth = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField",
-		width: "40%"
-	}
+	args: {}
 };
 
 export const StackedLabeleFormat = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		name: "demoTextField",
-		label: DEMO_LABEL
-	}
+	args: {}
 };
 
 export const InlineLabeleFormat = {
-	args: {
-		onChange: action("text-changed"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		inlineLabel: true
-	}
+	args: {}
 };
 
 export const PlaceholderText = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		placeholder: "Some placeholder text"
-	}
+	args: {}
 };
 
 export const HelperText = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		helperText: "Some helper text"
-	}
+	args: {}
 };
 
 export const WithErrors = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		helperText: "The text you entered was invalid",
-		hasErrors: true
-	}
+	args: {}
 };
 
 export const AutoFocus = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		autoFocus: true
-	}
+	args: {}
 };
 
 export const WithOnBlurOnFocus = {
-	args: {
-		onChange: action("callback"),
-		onBlur: action("blur"),
-		onFocus: action("focus"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField"
-	}
+	args: {}
 };
 
 export const Required = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		required: true
-	}
+	args: {}
 };
 
 export const Disabled = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		value: "Some value",
-		disabled: true
-	}
+	args: {}
 };
 
 export const ReadOnly = {
-	args: {
-		onChange: action("callback"),
-		name: "demoTextField",
-		title: DEMO_TITLE,
-		label: DEMO_LABEL,
-		value: "Some value",
-		readOnly: true
-	}
+	args: {}
 };
 
 const ControlledComponent = ({ value: initialValue, name, ...args }): JSX.Element => {
@@ -457,43 +358,17 @@ const ControlledComponent = ({ value: initialValue, name, ...args }): JSX.Elemen
 export const Controlled = {
 	render: ControlledComponent,
 
-	args: {
-		name: "controlledTextArea",
-		label: "Controlled Text Area",
-		value: "Initial value",
-		helperText: "The value of the text area is controlled by the change handler in the story."
-	}
+	args: {}
 };
 
 export const ResizableBoth = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField",
-		width: "40%",
-		resizable: "both"
-	}
+	args: {}
 };
 
 export const ResizableVertically = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField",
-		width: "40%",
-		resizable: "vertical"
-	}
+	args: {}
 };
 
 export const ResizableHorizontal = {
-	args: {
-		onChange: action("callback"),
-		title: DEMO_TITLE,
-		id: "demoTextFieldId",
-		name: "demoTextField",
-		width: "40%",
-		resizable: "horizontal"
-	}
+	args: {}
 };

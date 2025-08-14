@@ -17,28 +17,13 @@
 import { Meta } from "@storybook/react";
 
 import { SolaceToggle } from "@SolaceDev/maas-react-components";
-import { action } from "@storybook/addon-actions";
 
 (SolaceToggle as React.FC & { displayName?: string }).displayName = "SolaceToggle";
 
 export default {
 	title: "Input/Toggle Switch",
 	component: SolaceToggle,
-	args: {
-		id: "",
-		name: "",
-		title: "",
-		label: "",
-		helperText: "",
-		isOn: false,
-		hasErrors: false,
-		required: false,
-		disabled: false,
-		largeLabel: false,
-		stateText: false,
-		dataQa: "",
-		dataTags: ""
-	},
+	args: {},
 	parameters: {
 		design: {
 			type: "figma",
@@ -166,86 +151,33 @@ const title = "Demo Toggle";
 const label = "Some Label";
 
 export const DefaultToggle = {
-	args: {
-		onChange: action("callback"),
-		title: title,
-		id: "demoToggleId",
-		name: "demoToggle"
-	}
+	args: {}
 };
 
 export const Labeled = {
-	args: {
-		onChange: action("callback"),
-		title: title,
-		id: "demoToggleId",
-		name: "demoToggle",
-		label: label
-	}
+	args: {}
 };
 
 export const LargeLabel = {
-	args: {
-		onChange: action("callback"),
-		title: title,
-		id: "demoToggleId",
-		name: "demoToggle",
-		label: label,
-		largeLabel: true
-	}
+	args: {}
 };
 
 export const LabeledWithStateText = {
-	args: {
-		onChange: action("callback"),
-		title: title,
-		id: "demoToggleId",
-		name: "demoToggle",
-		label: label,
-		stateText: true
-	}
+	args: {}
 };
 
 export const HelperText = {
-	args: {
-		onChange: action("callback"),
-		title: title,
-		id: "demoToggleId",
-		name: "demoToggle",
-		label: label,
-		helperText: "Some helper text here"
-	}
+	args: {}
 };
 
 export const WithErrors = {
-	args: {
-		onChange: action("callback"),
-		title: title,
-		id: "demoToggleId",
-		name: "demoToggle",
-		label: label,
-		hasErrors: true,
-		helperText: "Some error occured"
-	}
+	args: {}
 };
 
 export const Required = {
-	args: {
-		onChange: action("callback"),
-		name: "demoToggle",
-		title: title,
-		label: label,
-		required: true
-	}
+	args: {}
 };
 
 export const Disabled = {
-	args: {
-		onChange: action("callback"),
-		name: "demoToggle",
-		title: title,
-		label: label,
-		isOn: true,
-		disabled: true
-	}
+	args: {}
 };

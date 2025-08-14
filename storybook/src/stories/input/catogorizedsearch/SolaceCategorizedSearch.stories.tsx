@@ -18,11 +18,9 @@ import React, { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import {
 	SolaceCategorizedSearch,
-	SolaceCategorizedSearchLayout,
 	SolaceTextFieldChangeEvent,
 	SolaceToggleButtonGroupOptionProps
 } from "@SolaceDev/maas-react-components";
-import { action } from "@storybook/addon-actions";
 import { within, userEvent } from "@storybook/testing-library";
 
 (SolaceCategorizedSearch as React.FC & { displayName?: string }).displayName = "SolaceCategorizedSearch";
@@ -30,23 +28,7 @@ import { within, userEvent } from "@storybook/testing-library";
 export default {
 	title: "Input/Search & Filter/Categorized",
 	component: SolaceCategorizedSearch,
-	args: {
-		id: "",
-		name: "",
-		layout: SolaceCategorizedSearchLayout.vertical,
-		equalButtonWidth: false,
-		disabled: false,
-		autoFocus: false,
-		hasErrors: false,
-		hasWarnings: false,
-		categoryOptions: [],
-		selectedCategoryValue: "",
-		searchValue: "",
-		placeholder: "",
-		helperText: "",
-		categoryOptionsWidth: "",
-		searchInputWidth: ""
-	},
+	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -244,143 +226,53 @@ const Template: StoryFn<typeof SolaceCategorizedSearch> = (args) => {
 
 export const Default = {
 	render: Template,
-	args: {
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		placeholder: SEARCH_PLACEHOLDER_TEXT
-	}
+	args: {}
 };
 
 export const FixedWidth = {
 	render: Template,
-	args: {
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "category1",
-		categoryOptionsWidth: "300px",
-		searchInputWidth: "300px"
-	}
+	args: {}
 };
 
 export const EqualButtonWidth = {
 	render: Template,
-	args: {
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "category1",
-		equalButtonWidth: true,
-		categoryOptionsWidth: "360px",
-		searchInputWidth: "360px"
-	}
+	args: {}
 };
 
 export const HelperText = {
 	render: Template,
 
-	args: {
-		id: "testCategorizedSearch",
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "category1",
-		equalButtonWidth: true,
-		categoryOptionsWidth: "360px",
-		searchInputWidth: "360px",
-		helperText: "Showing 20 of 25 Results. Specify your search for more results"
-	}
+	args: {}
 };
 
 export const HasErrors = {
 	render: Template,
 
-	args: {
-		id: "testCategorizedSearch",
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "category1",
-		equalButtonWidth: true,
-		categoryOptionsWidth: "360px",
-		searchInputWidth: "360px",
-		hasErrors: true,
-		helperText: "Unexpected network error, please contact your system administrator"
-	}
+	args: {}
 };
 
 export const Disabled = {
 	render: Template,
 
-	args: {
-		id: "testCategorizedSearch",
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "category1",
-		equalButtonWidth: true,
-		categoryOptionsWidth: "360px",
-		searchInputWidth: "360px",
-		disabled: true
-	}
+	args: {}
 };
 
 export const OneCategoryDisabled = {
 	render: Template,
 
-	args: {
-		id: "testCategorizedSearch",
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories("category200"),
-		selectedCategoryValue: "category1",
-		equalButtonWidth: true,
-		categoryOptionsWidth: "360px",
-		searchInputWidth: "360px"
-	}
+	args: {}
 };
 
 export const WithAutoFocus = {
 	render: Template,
 
-	args: {
-		id: "testCategorizedSearch",
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "category1",
-		equalButtonWidth: true,
-		categoryOptionsWidth: "360px",
-		searchInputWidth: "360px",
-		autoFocus: true
-	}
+	args: {}
 };
 
 export const ClearAllNotification = {
 	render: Template,
 
-	args: {
-		id: "testCategorizedSearch",
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "category1",
-		searchValue: "initial value to be cleared",
-		equalButtonWidth: true,
-		categoryOptionsWidth: "360px",
-		searchInputWidth: "360px",
-		onClearAll: action("clear all triggered")
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from its root element
@@ -394,36 +286,15 @@ export const ClearAllNotification = {
 
 export const NoCategoryOptions = {
 	render: Template,
-	args: {
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		placeholder: SEARCH_PLACEHOLDER_TEXT
-	}
+	args: {}
 };
 
 export const HorizontalLayout = {
 	render: Template,
-	args: {
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "all",
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		layout: SolaceCategorizedSearchLayout.horizontal
-	}
+	args: {}
 };
 
 export const HorizontalLayoutEqualButtonWidth = {
 	render: Template,
-	args: {
-		name: "testCategorizedSearch",
-		onSearchValueChange: action(VALUE_CHANGED),
-		onCategoryChange: action(CATEGORY_CHANGED),
-		categoryOptions: getCategories(),
-		selectedCategoryValue: "all",
-		placeholder: SEARCH_PLACEHOLDER_TEXT,
-		layout: SolaceCategorizedSearchLayout.horizontal,
-		equalButtonWidth: true
-	}
+	args: {}
 };

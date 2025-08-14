@@ -22,16 +22,7 @@ import { SolaceStackLabel } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Input/Label/Stacked",
 	component: SolaceStackLabel,
-	args: {
-		id: "",
-		hasWarnings: false,
-		htmlForId: "",
-		required: false,
-		disabled: false,
-		large: false,
-		bold: false,
-		children: "Label"
-	},
+	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -131,40 +122,21 @@ export default {
 const label = "Custom Label";
 
 export const DefaultLabel = {
-	args: {
-		id: "demoTextFieldId",
-		children: label
-	}
+	args: {}
 };
 
 export const LargeLabel = {
-	args: {
-		id: "demoTextFieldId",
-		large: true,
-		children: label
-	}
+	args: {}
 };
 
 export const BoldLabel = {
-	args: {
-		id: "demoTextFieldId",
-		bold: true,
-		children: label
-	}
+	args: {}
 };
 
 export const Required = {
-	args: {
-		id: "demoTextFieldId",
-		required: true,
-		children: label
-	}
+	args: {}
 };
 
 export const Disabled = {
-	args: {
-		id: "demoTextFieldId",
-		disabled: true,
-		children: label
-	}
+	args: {}
 };

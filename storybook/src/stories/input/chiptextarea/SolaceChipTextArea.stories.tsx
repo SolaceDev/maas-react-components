@@ -20,7 +20,6 @@ import { Meta } from "@storybook/react";
 import { SolaceChipTextArea } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { within, userEvent } from "@storybook/test";
-import { fn } from "@storybook/test";
 
 // Constants for reuse
 const DEMO_TITLE = "Demo Chip Text Area";
@@ -42,21 +41,7 @@ const emailValidationFunction = (text: string): string | undefined => {
 export default {
 	title: "Input/Textfield/Text Area with Chips",
 	component: SolaceChipTextArea,
-	args: {
-		id: "",
-		hasWarnings: false,
-		label: "Chip Text Area",
-		helperText: "",
-		hasErrors: false,
-		autoFocus: false,
-		inlineLabel: false,
-		required: false,
-		value: "",
-		width: "",
-		onKeyDown: fn(),
-		onFocus: fn(),
-		onKeyUp: fn()
-	},
+	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -239,78 +224,24 @@ const simulateTypingEmail = async ({ canvasElement }) => {
 };
 
 export const DefaultTextAreaWithChips = {
-	args: {
-		onChange: action("onChange"),
-		title: DEMO_TITLE,
-		id: "demoChipTextAreaId",
-		name: "demoChipTextArea",
-		value: "", // Start with empty value to demonstrate typing
-		placeholder: DEMO_PLACEHOLDER,
-		helperText: DEMO_HELPER_TEXT,
-		label: DEMO_LABEL
-	},
+	args: {},
 	play: simulateTypingEmail
 };
 
 export const WithPredefinedChips = {
-	args: {
-		onChange: action("onChange"),
-		title: DEMO_TITLE,
-		id: "demoChipTextAreaId",
-		name: "demoChipTextArea",
-		placeholder: DEMO_PLACEHOLDER,
-		helperText: DEMO_HELPER_TEXT,
-		label: DEMO_LABEL,
-		validateChip: emailValidationFunction,
-		value: `${DEMO_EMAIL}, another@example.com`
-	}
+	args: {}
 };
 
 export const WithValidationErrors = {
-	args: {
-		onChange: action("onChange"),
-		title: DEMO_TITLE,
-		id: "demoChipTextAreaId",
-		name: "demoChipTextArea",
-		placeholder: DEMO_PLACEHOLDER,
-		helperText: DEMO_HELPER_TEXT,
-		label: DEMO_LABEL,
-		validateChip: emailValidationFunction,
-		value: `${DEMO_EMAIL}, invalid-email`,
-		hasErrors: true
-	}
+	args: {}
 };
 
 export const CustomWidth = {
-	args: {
-		onChange: action("onChange"),
-		title: DEMO_TITLE,
-		id: "demoChipTextAreaId",
-		name: "demoChipTextArea",
-		placeholder: DEMO_PLACEHOLDER,
-		helperText: DEMO_HELPER_TEXT,
-		label: DEMO_LABEL,
-		validateChip: emailValidationFunction,
-		width: "50%"
-	}
+	args: {}
 };
 
 export const CustomValidation = {
-	args: {
-		onChange: action("onChange"),
-		title: DEMO_TITLE,
-		id: "demoChipTextAreaId",
-		name: "demoChipTextArea",
-		placeholder: DEMO_PLACEHOLDER,
-		helperText: "Only example.com email addresses are allowed",
-		label: DEMO_LABEL,
-		validateChip: (text: string) => {
-			if (!text.endsWith("@example.com")) {
-				return "Only example.com email addresses are allowed";
-			}
-			return undefined;
-		}
-	}
+	args: {}
 };
 
 const ControlledComponent = ({ name, ...args }): JSX.Element => {
@@ -327,12 +258,5 @@ const ControlledComponent = ({ name, ...args }): JSX.Element => {
 export const Controlled = {
 	render: ControlledComponent,
 
-	args: {
-		name: "controlledChipTextArea",
-		label: "Controlled Chip Text Area",
-		validateChip: emailValidationFunction,
-		placeholder: DEMO_PLACEHOLDER,
-		helperText: "The value of the text area is controlled by the change handler in the story.",
-		value: DEMO_EMAIL
-	}
+	args: {}
 };

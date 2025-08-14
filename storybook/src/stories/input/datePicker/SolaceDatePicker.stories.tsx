@@ -40,32 +40,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Date Picker/Standard",
 	component: SolaceDatePicker,
-	args: {
-		value: "",
-		defaultValue: "",
-		variant: SolaceDatePickerVariant.FORMAT_YEAR_MONTH_DAY,
-		timezone: "",
-		label: "",
-		helperText: "",
-		hasErrors: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		disableFuture: false,
-		disablePast: false,
-		minDate: "",
-		maxDate: "",
-		placeholder: "",
-		name: "",
-		id: "",
-		hasWarnings: false,
-		onChange: undefined,
-		onClear: undefined,
-		onBlur: undefined,
-		onFocus: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
+	args: {},
 	properties: {
 		docs: {
 			description: {

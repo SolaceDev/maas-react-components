@@ -25,19 +25,7 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Code/Editor",
 	component: SolaceCodeEditor,
-	args: {
-		id: "",
-		name: "",
-		value: "",
-		mode: "json",
-		readOnly: false,
-		expandable: false,
-		fullScreen: false,
-		hasErrors: false,
-		hasWarnings: false,
-		helperText: "",
-		dataQa: ""
-	},
+	args: {},
 	parameters: {},
 	argTypes: {
 		id: {
@@ -188,105 +176,45 @@ message MyRecord {
 }`;
 
 export const DefaultEditor = {
-	args: {
-		onChange: action("callback")
-	}
+	args: {}
 };
 
 const NAME = "schemaVersion[content]";
 
 export const EmptyEditor = {
-	args: {
-		id: NAME,
-		name: NAME,
-		value: "",
-		hasErrors: undefined,
-		helperText: null,
-		onChange: (editor, data, value) => action(value),
-		dataQa: NAME
-	}
+	args: {}
 };
 
 export const JSONEditor = {
-	args: {
-		onChange: action("callback"),
-		id: "demoCodeEditorId",
-		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-		mode: "json"
-	}
+	args: {}
 };
 
 export const XMLEditor = {
-	args: {
-		onChange: action("callback"),
-		id: "demoCodeEditorId",
-		value: DEFAULT_XML_CONTENT,
-		mode: "xml"
-	}
+	args: {}
 };
 
 export const ProtobufEditor = {
-	args: {
-		onChange: action("callback"),
-		id: "demoCodeEditorId",
-		value: DEFAULT_PROTOBUF_CONTENT,
-		mode: "protobuf"
-	}
+	args: {}
 };
 
 export const ReadOnlyEditor = {
-	args: {
-		onChange: action("callback"),
-		id: "demoCodeEditorId",
-		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-		mode: "json",
-		readOnly: true
-	}
+	args: {}
 };
 
 export const ExpandableEditor = {
-	args: {
-		onChange: action("callback"),
-		id: "demoCodeEditorId",
-		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-		mode: "json",
-		expandable: true
-	}
+	args: {}
 };
 
 export const WithHelperText = {
-	args: {
-		onChange: action("callback"),
-		id: "demoCodeEditorId",
-		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-		mode: "json",
-		expandable: true,
-		helperText: "A sample helper text"
-	}
+	args: {}
 };
 
 export const WithError = {
-	args: {
-		onChange: action("callback"),
-		id: "demoCodeEditorId",
-		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-		mode: "json",
-		expandable: true,
-		helperText: "A sample error text",
-		hasErrors: true
-	}
+	args: {}
 };
 
 export const WithWarning = {
-	args: {
-		onChange: action("callback"),
-		id: "demoCodeEditorId",
-		value: JSON.stringify(DEFAULT_JSON_VALUE, null, " "),
-		mode: "json",
-		expandable: true,
-		helperText: "A sample warning text",
-		hasWarnings: true
-	}
+	args: {}
 };
 
 export const FullScreenEditor = (): JSX.Element => {

@@ -22,15 +22,7 @@ import { SolaceLabel } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Input/Label/Inline",
 	component: SolaceLabel,
-	args: {
-		id: "",
-		htmlForId: "",
-		required: false,
-		disabled: false,
-		children: "Label",
-		dataQa: "",
-		dataTags: ""
-	},
+	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -121,24 +113,13 @@ export default {
 const label = "Custom Label";
 
 export const DefaultLabel = {
-	args: {
-		id: "demoTextFieldId",
-		children: label
-	}
+	args: {}
 };
 
 export const Required = {
-	args: {
-		id: "demoTextFieldId",
-		required: true,
-		children: label
-	}
+	args: {}
 };
 
 export const Disabled = {
-	args: {
-		id: "demoTextFieldId",
-		disabled: true,
-		children: label
-	}
+	args: {}
 };

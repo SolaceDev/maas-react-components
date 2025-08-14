@@ -55,60 +55,7 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Dropdown/Autocomplete",
 	component: SolaceSelectAutocomplete,
-	args: {
-		label: "",
-		helperText: "",
-		placeholder: "",
-		width: undefined,
-		hasErrors: false,
-		hasWarnings: false,
-		inlineLabel: false,
-		required: false,
-		disabled: false,
-		disableCloseOnSelect: true,
-		readOnly: false,
-		multiple: false,
-		limitTags: undefined,
-		maxHeight: "",
-		fullWidth: false,
-		minWidth: "",
-		clearSearchOnSelect: false,
-		tagMaxWidth: "",
-		freeSolo: false,
-		openOnFocus: false,
-		showGroupDivider: false,
-		showSupplementalTextOrSecondaryAction: false,
-		showLeftIcon: false,
-		value: undefined,
-		defaultValue: undefined,
-		options: [],
-		id: "",
-		name: "",
-		title: "",
-		dataQa: "",
-		dataTags: "",
-		onChange: undefined,
-		onBlur: undefined,
-		onFocus: undefined,
-		onOpen: undefined,
-		onClose: undefined,
-		fetchOptionsCallback: undefined,
-		itemMappingCallback: undefined,
-		optionsLabelCallback: undefined,
-		isOptionEqualToValueCallback: undefined,
-		getOptionDisabledCallback: undefined,
-		getShowOptionDividerCallback: undefined,
-		getOptionValidationErrorCallback: undefined,
-		validateInputCallback: undefined,
-		groupByCallback: undefined,
-		renderTags: undefined,
-		getLimitTagsText: undefined,
-		onCloseCallback: undefined,
-		itemComponent: undefined,
-		startAdornment: undefined,
-		endAdornment: undefined,
-		inputRef: undefined
-	},
+	args: {},
 	parameters: {
 		controls: { sort: "alpha" },
 		chromatic: { delay: 500 },
@@ -780,10 +727,7 @@ const DefaultSelectionTemplate = ({
 export const DefaultAutocomplete = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		value: SELECT_OPTIONS[0],
-		options: SELECT_OPTIONS
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -794,11 +738,7 @@ export const DefaultAutocomplete = {
 export const WithDividers = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		value: SELECT_OPTIONS[0],
-		withDividers: true,
-		options: SELECT_OPTIONS
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -809,19 +749,13 @@ export const WithDividers = {
 export const StackedLabelFormat = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label"
-	}
+	args: {}
 };
 
 export const StackedLabelFormatWithCustomWidth = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		width: "50%",
-		longLabel: true
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -832,64 +766,43 @@ export const StackedLabelFormatWithCustomWidth = {
 export const InlineLabelFormat = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		inlineLabel: true
-	}
+	args: {}
 };
 
 export const HelperText = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		helperText: "Some helper text"
-	}
+	args: {}
 };
 
 export const WithErrors = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		helperText: "The text you entered was invalid",
-		hasErrors: true
-	}
+	args: {}
 };
 
 export const Required = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		required: true
-	}
+	args: {}
 };
 
 export const Disabled = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		disabled: true,
-		value: SELECT_OPTIONS[1]
-	}
+	args: {}
 };
 
 export const ReadOnly = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		readOnly: true,
-		value: SELECT_OPTIONS[1]
-	}
+	args: {}
 };
 
 export const WithDisabledItems = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		disabledItems: true
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -900,10 +813,7 @@ export const WithDisabledItems = {
 export const CustomHeight = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		maxHeight: "150px"
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -914,34 +824,19 @@ export const CustomHeight = {
 export const MultipleSelection = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[1], SELECT_OPTIONS[2]]
-	}
+	args: {}
 };
 
 export const MultipleSelectionWithLimitedTag = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[1], SELECT_OPTIONS[2]],
-		limitTags: 2
-	}
+	args: {}
 };
 
 export const MultipleSelectionWithLongLabel = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		value: [],
-		width: "50%",
-		longLabel: true
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -952,14 +847,7 @@ export const MultipleSelectionWithLongLabel = {
 export const MultipleSelectionWithLongLabelAndNullMaxTagWidth = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		value: [],
-		width: "50%",
-		longLabel: true,
-		tagMaxWidth: null
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -970,66 +858,31 @@ export const MultipleSelectionWithLongLabelAndNullMaxTagWidth = {
 export const MultipleSelectionWithCloseOnSelect = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		value: [],
-		disableCloseOnSelect: false
-	}
+	args: {}
 };
 
 export const MultipleSelectionWithClearSearchOnSelect = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		value: [],
-		clearSearchOnSelect: true
-	}
+	args: {}
 };
 
 export const MultiSelectionDisabled = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		disabled: true,
-		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[2]]
-	}
+	args: {}
 };
 
 export const MultiSelectionReadOnly = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		readOnly: true,
-		longLabel: true,
-		value: [SELECT_OPTIONS[0], { ...SELECT_OPTIONS[3], name: getLongLabel(SELECT_OPTIONS[3]) }]
-	}
+	args: {}
 };
 
 export const MultiSelectionWithErrors = {
 	render: DefaultSelectionTemplate,
 
-	args: {
-		label: "Some Label",
-		multiple: true,
-		helperText: "More than one values have errors. Hover on the values to see errors.",
-		hasErrors: true,
-		longLabel: true,
-		getOptionValidationErrorCallback: (option: SolaceSelectAutocompleteItemProps) => {
-			if (option.value === "option1") {
-				return "Invalid characters. Enter only alphanumeric characters, dashes and underscores.";
-			} else if (option.value === "option4") {
-				return "Exceeds limit. Enter a value under 100 characters";
-			}
-		},
-		value: [SELECT_OPTIONS[0], { ...SELECT_OPTIONS[3], name: getLongLabel(SELECT_OPTIONS[3]) }, SELECT_OPTIONS[2]]
-	}
+	args: {}
 };
 
 const SAMPLE_EVENT_MESHES: Array<SolaceSelectAutocompleteItemProps> = [
@@ -1306,39 +1159,24 @@ const MultiSelectionWithCreateNewTemplate = ({
 export const MultiSelectionWithCreateNewAndClearSearchWhenSelectNew = {
 	render: MultiSelectionWithCreateNewTemplate,
 
-	args: {
-		clearSearchOnSelect: true,
-		options: []
-	}
+	args: {}
 };
 
 export const MultiSelectionWithInitialValueCreateNewAndClearSearchWhenSelectNew = {
 	render: MultiSelectionWithCreateNewTemplate,
-	args: {
-		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[1]],
-		clearSearchOnSelect: true,
-		options: SELECT_OPTIONS
-	}
+	args: {}
 };
 
 export const MultiSelectionWithInitialValueCreateNewAndValidateInputAndClearSearchWhenSelectNew = {
 	render: MultiSelectionWithCreateNewTemplate,
 
-	args: {
-		value: [SELECT_OPTIONS[0], SELECT_OPTIONS[1]],
-		clearSearchOnSelect: true,
-		options: SELECT_OPTIONS,
-		validateInput: true
-	}
+	args: {}
 };
 
 export const MultiSelectionWithCreateNewAndNotClearSearchWhenSelectNew = {
 	render: MultiSelectionWithCreateNewTemplate,
 
-	args: {
-		clearSearchOnSelect: false,
-		options: SELECT_OPTIONS
-	}
+	args: {}
 };
 
 const SELECT_OPTIONS_WITH_CATEGORY_HEADING: Array<SolaceSelectAutocompleteItemProps> = [
@@ -1485,9 +1323,7 @@ export const MultiSelectionWithHeading = {
 export const MultiSelectionWithHeadingWithCustomHeight = {
 	render: MultiSelectionWithHeadingTemplate,
 
-	args: {
-		maxHeight: "205px"
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -1499,9 +1335,7 @@ export const MultiSelectionWithHeadingWithCustomHeight = {
 export const MultiSelectionWithHeadingAndDisabledItems = {
 	render: MultiSelectionWithHeadingTemplate,
 
-	args: {
-		disabledItems: true
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -1513,9 +1347,7 @@ export const MultiSelectionWithHeadingAndDisabledItems = {
 export const MultiSelectionWithHeadingWithDividers = {
 	render: MultiSelectionWithHeadingTemplate,
 
-	args: {
-		showGroupDivider: true
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -1527,10 +1359,7 @@ export const MultiSelectionWithHeadingWithDividers = {
 export const MultiSelectionWithHeadingWithDividersAndDisabledItems = {
 	render: MultiSelectionWithHeadingTemplate,
 
-	args: {
-		disabledItems: true,
-		showGroupDivider: true
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -1856,17 +1685,13 @@ export const MultiSelectionWithResponsiveTagRenderer = ({
 export const MultiSelectionWithResponsiveTagRendererDisabled = {
 	render: MultiSelectionWithResponsiveTagRenderer,
 
-	args: {
-		disabled: true
-	}
+	args: {}
 };
 
 export const MultiSelectionWithResponsiveTagRendererReadOnly = {
 	render: MultiSelectionWithResponsiveTagRenderer,
 
-	args: {
-		readOnly: true
-	}
+	args: {}
 };
 
 export const OpenDropDownOnButtonClick = () => {
@@ -1927,28 +1752,7 @@ export const OpenDropDownOnButtonClick = () => {
 
 export const SecondaryActionSolaceMenu = {
 	render: DefaultSelectionTemplate,
-	args: {
-		options: [
-			{
-				name: "Option 1",
-				value: "option1",
-				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-				onMenuItemClick: action("callback")
-			},
-			{
-				name: "Option 2",
-				value: "option2",
-				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-				onMenuItemClick: action("callback")
-			},
-			{
-				name: "Option 3",
-				value: "option3",
-				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-				onMenuItemClick: action("callback")
-			}
-		]
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -1958,30 +1762,7 @@ export const SecondaryActionSolaceMenu = {
 
 export const SecondaryActionSolaceMenuWithSubtext = {
 	render: DefaultSelectionTemplate,
-	args: {
-		options: [
-			{
-				name: "Option 1",
-				value: "option1",
-				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-				onMenuItemClick: action("callback"),
-				subText: SUBTEXT
-			},
-			{
-				name: "Option 2",
-				value: "option2",
-				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-				onMenuItemClick: action("callback")
-			},
-			{
-				name: "Option 3",
-				value: "option3",
-				secondaryAction: <SolaceButton href="http://www.cnn.com" variant="link" />,
-				onMenuItemClick: action("callback"),
-				subText: SUBTEXT
-			}
-		]
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -1991,43 +1772,7 @@ export const SecondaryActionSolaceMenuWithSubtext = {
 
 export const IconOnRight = {
 	render: DefaultSelectionTemplate,
-	args: {
-		id: "demo-solace-autocomplete",
-		options: [
-			{
-				name: "Option 1",
-				value: "option1",
-				secondaryAction: (
-					<SolaceTooltip title="Help">
-						<HelpOutlineOutlinedIcon />
-					</SolaceTooltip>
-				),
-				onMenuItemClick: action("callback"),
-				subText: SUBTEXT
-			},
-			{
-				name: "Option 2",
-				value: "option2",
-				secondaryAction: (
-					<SolaceTooltip title="Help">
-						<HelpOutlineOutlinedIcon />
-					</SolaceTooltip>
-				),
-				onMenuItemClick: action("callback")
-			},
-			{
-				name: "Option 3",
-				value: "option3",
-				secondaryAction: (
-					<SolaceTooltip title="Help">
-						<HelpOutlineOutlinedIcon />
-					</SolaceTooltip>
-				),
-				onMenuItemClick: action("callback"),
-				subText: SUBTEXT
-			}
-		]
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -2037,11 +1782,7 @@ export const IconOnRight = {
 
 export const IconAndTextOnRight = {
 	render: DefaultSelectionTemplate,
-	args: {
-		id: "demo-solace-autocomplete",
-		disabledItems: true,
-		options: SELECT_OPTIONS_FOR_SECONDARY_ACTION
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -2051,20 +1792,12 @@ export const IconAndTextOnRight = {
 
 export const IconMenuItemShowingSecondaryActionIconInInput = {
 	render: DefaultSelectionTemplate,
-	args: {
-		value: SELECT_OPTIONS_FOR_SECONDARY_ACTION[0],
-		showSupplementalTextOrSecondaryAction: true,
-		options: SELECT_OPTIONS_FOR_SECONDARY_ACTION
-	}
+	args: {}
 };
 
 export const IconMenuItemShowingSupplementalTextInInput = {
 	render: DefaultSelectionTemplate,
-	args: {
-		value: SELECT_OPTIONS_FOR_SECONDARY_ACTION[1],
-		showSupplementalTextOrSecondaryAction: true,
-		options: SELECT_OPTIONS_FOR_SECONDARY_ACTION
-	}
+	args: {}
 };
 
 const SELECT_OPTIONS_FOR_LEFT_ICON = [
@@ -2100,11 +1833,7 @@ const SELECT_OPTIONS_FOR_LEFT_ICON = [
 
 export const IconMenuItemOnLeft = {
 	render: DefaultSelectionTemplate,
-	args: {
-		disabledItems: true,
-		showSupplementalTextOrSecondaryAction: true,
-		options: SELECT_OPTIONS_FOR_LEFT_ICON
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -2114,31 +1843,15 @@ export const IconMenuItemOnLeft = {
 
 export const ShowIconMenuItemOnLeftShowingLeftIconInInput = {
 	render: DefaultSelectionTemplate,
-	args: {
-		showLeftIcon: true,
-		value: SELECT_OPTIONS_FOR_LEFT_ICON[0],
-		options: SELECT_OPTIONS_FOR_LEFT_ICON
-	}
+	args: {}
 };
 
 export const ShowIconMenuItemOnLeftShowingLeftIconAndSupplementaryTextInInput = {
 	render: DefaultSelectionTemplate,
-	args: {
-		showLeftIcon: true,
-		showSupplementalTextOrSecondaryAction: true,
-		value: SELECT_OPTIONS_FOR_LEFT_ICON[0],
-		options: SELECT_OPTIONS_FOR_LEFT_ICON
-	}
+	args: {}
 };
 
 export const WithEllipsisAtStart = {
 	render: DefaultSelectionTemplate,
-	args: {
-		label: "Ellipsis at Start",
-		value: {
-			name: "This is a very long option name that will be truncated with an ellipsis at the start instead of the end, very very long text so that it can show the ellipsis at the start",
-			value: "long-option"
-		},
-		textEllipsisPosition: "start"
-	}
+	args: {}
 };

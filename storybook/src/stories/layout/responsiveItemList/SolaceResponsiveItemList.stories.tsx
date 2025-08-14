@@ -34,20 +34,7 @@ import { expect } from "@storybook/jest";
 export default {
 	title: "Layout/Responsive Chip List",
 	component: SolaceResponsiveItemList,
-	args: {
-		id: "",
-		hasWarnings: false,
-		items: undefined,
-		containerWidth: undefined,
-		componentToShowOverflowItems: "popover",
-		numOfRowsToShow: 1,
-		numOfMenuItemsToDisplay: undefined,
-		showAll: false,
-		overflowIndicatorLabel: "more",
-		overflowIndicatorLabelSingular: "more",
-		onItemsOverflow: undefined,
-		onItemsOverflowIndicatorClick: undefined
-	},
+	args: {},
 	parameters: {
 		docs: {
 			description: {
@@ -388,9 +375,7 @@ const ResponsiveItemListTemplate = ({
 export const DefaultList = {
 	render: ResponsiveItemListTemplate,
 
-	args: {
-		options: DEFAULT_OPTIONS.slice(0)
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -413,10 +398,7 @@ export const DefaultList = {
 export const DefaultListManyMenuItems = {
 	render: ResponsiveItemListTemplate,
 
-	args: {
-		options: EXPANDED_OPTIONS.slice(0),
-		initSelectedOptions: new Array(20).fill(null).map((_v, i) => `option${i}`)
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -434,11 +416,7 @@ export const DefaultListManyMenuItems = {
 export const DefaultListLimitedMenuItems = {
 	render: ResponsiveItemListTemplate,
 
-	args: {
-		options: EXPANDED_OPTIONS.slice(0),
-		initSelectedOptions: new Array(20).fill(null).map((_v, i) => `option${i}`),
-		numOfMenuItemsToDisplay: 3
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -456,9 +434,7 @@ export const DefaultListLimitedMenuItems = {
 export const DefaultListShowAll = {
 	render: ResponsiveItemListTemplate,
 
-	args: {
-		options: DEFAULT_OPTIONS.slice(0)
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -476,10 +452,7 @@ export const DefaultListShowAll = {
 export const ListWithChipWithTooltip = {
 	render: ResponsiveItemListTemplate,
 
-	args: {
-		options: DEFAULT_OPTIONS.slice(0),
-		chipMaxWidth: "120px"
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -501,11 +474,7 @@ export const ListWithChipWithTooltip = {
 export const ListShowTwoRows = {
 	render: ResponsiveItemListTemplate,
 
-	args: {
-		options: DEFAULT_OPTIONS.slice(0),
-		containerWidth: 400,
-		numOfRowsToShow: 2
-	},
+	args: {},
 
 	play: async ({ canvasElement }) => {
 		// Starts querying the component from it's root element
@@ -521,20 +490,11 @@ export const ListShowTwoRows = {
 export const ListWithNullOverflowComponent = {
 	render: ResponsiveItemListTemplate,
 
-	args: {
-		options: DEFAULT_OPTIONS.slice(0),
-		initSelectedOptions: ["applicationDomain", "brokerType", "mem", "shared", "gatewayServices"],
-		componentToShowOverflowItems: null
-	}
+	args: {}
 };
 
 export const ListWithCustomOverflowLabel = {
 	render: ResponsiveItemListTemplate,
 
-	args: {
-		options: DEFAULT_OPTIONS.slice(0),
-		initSelectedOptions: ["applicationDomain", "brokerType", "mem", "shared", "gatewayServices"],
-		overflowIndicatorLabel: "Filters",
-		overflowIndicatorLabelSingular: "Filter"
-	}
+	args: {}
 };
