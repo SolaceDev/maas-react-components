@@ -99,7 +99,6 @@ export default {
 			description:
 				"If true, displays the select in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the select options.",
 			table: {
-				type: { summary: "boolean" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -235,14 +234,6 @@ export default {
 			description:
 				"Callback function fired when the selection changes. Receives an event object with the new value. Essential for controlled components and form state management."
 		},
-		onBlur: {
-			description:
-				"Callback function fired when the select field loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes selecting."
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the select field gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for selection."
-		},
 		children: {
 			control: { type: "object" },
 			description:
@@ -262,14 +253,6 @@ export default {
 			table: {
 				type: { summary: "boolean" }
 			}
-		},
-		onOpen: {
-			description:
-				"Callback function fired when the dropdown opens. Use this for controlled dropdown state or to trigger actions when the dropdown becomes visible."
-		},
-		onClose: {
-			description:
-				"Callback function fired when the dropdown closes. Use this for controlled dropdown state or to trigger actions when the dropdown becomes hidden."
 		},
 		dataQa: {
 			control: { type: "text" },

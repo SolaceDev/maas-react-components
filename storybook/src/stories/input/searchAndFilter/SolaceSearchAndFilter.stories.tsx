@@ -107,19 +107,6 @@ export default {
 			defaultValue: {
 				summary: "FIELD_TYPES.DEFAULT"
 			}
-		},
-		onChange: {
-			description: "Callback function to trigger whenever the value of the `input` is changed"
-		},
-		onFocus: {
-			description: "Callback function to notify the callee when the `input` is focused"
-		},
-		onBlur: {
-			description: "Callback function to notify the callee when the `input` is blurred"
-		},
-		onClearAll: {
-			description:
-				"Callback function to notify the callee when the clear (x) button is clicked (in case the callee wishes to perform any additional operations other than clearing the search/filter text)"
 		}
 	}
 } as Meta<typeof SolaceSearchAndFilter>;
