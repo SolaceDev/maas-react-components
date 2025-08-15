@@ -15,8 +15,7 @@
  */
 
 import { Box, Divider, styled, useTheme } from "@mui/material";
-import { ArrowLeftIcon } from "../../../resources/icons/ArrowLeft";
-import { ArrowRightIcon } from "../../../resources/icons/ArrowRight";
+import { ArrowLeft24Icon, ArrowRight24Icon } from "@SolaceDev/maas-icons";
 import { useMemo } from "react";
 import { SolaceStepperFooterProps } from "../../../types";
 import SolaceButton from "../SolaceButton";
@@ -147,8 +146,13 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 					{!onFirstStep && (
 						<SolaceButton variant="text" onClick={handleBack} isDisabled={steps[previousStepAllowed].disabled}>
 							<ButtonContent>
-								<ArrowLeftIcon
-									className=""
+								<ArrowLeft24Icon
+									fill={
+										steps[previousStepAllowed].disabled
+											? theme.palette.ux.secondary.w40
+											: theme.palette.ux.primary.wMain
+									}
+									sx={{ padding: "4px 0px 4px 4px" }}
 								/>
 								{`${buttonStrings.back}: ${steps[previousStepAllowed].label}`}
 							</ButtonContent>
@@ -179,7 +183,7 @@ export default function SolaceStepperFooter(props: SolaceStepperFooterProps) {
 						) : (
 							<ButtonContent>
 								{`${buttonStrings.next}: ${steps[nextStepAllowed]?.label}`}
-								<ArrowRightIcon className="" />
+								<ArrowRight24Icon fill={theme.palette.ux.primary.text.w10} sx={{ padding: "4px 4px 4px 0px" }} />
 							</ButtonContent>
 						)}
 					</SolaceButton>

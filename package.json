@@ -89,7 +89,7 @@
 		"@rjsf/mui": "^5.17.1",
 		"@rjsf/utils": "^5.17.1",
 		"@rjsf/validator-ajv8": "^5.18.1",
-		"@SolaceDev/maas-icons": "file:/tmp/mock-maas-icons-package",
+		"@SolaceDev/maas-icons": "npm:@SolaceDev/maas-icons@^0.2.118",
 		"@types/react-beautiful-dnd": "^13.1.2",
 		"ajv": "^8.12.0",
 		"codemirror": "^5.65.5",
