@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import React from "react";
 import SolaceMenu from "../SolaceMenu";
 import { SolaceMenuItemProps } from "../SolaceMenuItem";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -61,7 +62,7 @@ export enum SORT_DIRECTION {
 	DCS = "desc"
 }
 
-export const StyledTableRow = styled("tr")(({ theme }) => ({
+export const StyledTableRow: React.ComponentType<any> = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`,
 	"&.expanded": {
@@ -116,7 +117,7 @@ export const StyledTableRow = styled("tr")(({ theme }) => ({
 	}
 }));
 
-export const StyledTableData = styled("td")(({ theme }) => ({
+export const StyledTableData: React.ComponentType<any> = styled("td")(({ theme }) => ({
 	borderCollapse: "collapse",
 	padding: `${theme.spacing()} ${theme.spacing(2)}`,
 	height: "24px",
@@ -142,11 +143,11 @@ export const StyledTableData = styled("td")(({ theme }) => ({
 	borderRadius: 0
 }));
 
-export const StyledTableNumberData = styled(StyledTableData)(() => ({
+export const StyledTableNumberData: React.ComponentType<any> = styled(StyledTableData)(() => ({
 	textAlign: "right"
 }));
 
-export const StyledExpandedTableRow = styled("tr")(({ theme }) => ({
+export const StyledExpandedTableRow: React.ComponentType<any> = styled("tr")(({ theme }) => ({
 	borderCollapse: "collapse",
 	borderBottom: `1px solid ${theme.palette.ux.secondary.w20}`,
 	"&.clickable": {
@@ -154,7 +155,7 @@ export const StyledExpandedTableRow = styled("tr")(({ theme }) => ({
 	}
 }));
 
-export const StyledExpandedTableData = styled("td")({
+export const StyledExpandedTableData: React.ComponentType<any> = styled("td")({
 	borderCollapse: "collapse",
 	padding: 0,
 	maxWidth: "0",
@@ -164,7 +165,7 @@ export const StyledExpandedTableData = styled("td")({
 	borderRadius: 0
 });
 
-export const StyledTableHeader = styled("th", { shouldForwardProp: (prop) => prop !== "width" })<{ width?: string }>(
+export const StyledTableHeader: React.ComponentType<any> = styled("th", { shouldForwardProp: (prop) => prop !== "width" })<{ width?: string }>(
 	({ theme, width }) => ({
 		borderCollapse: "collapse",
 		padding: `0 ${theme.spacing(2)}`,

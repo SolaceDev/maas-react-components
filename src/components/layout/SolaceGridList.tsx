@@ -229,7 +229,7 @@ function SolaceGridList<T>({
 		};
 	}, [gridListRef, onScrollHandler]);
 
-	const virtualListRef = useRef<VirtualizedList<T> | null>();
+	const virtualListRef = useRef<VirtualizedList<T> | null>(null);
 
 	useEffect(() => {
 		if (selectedItemId && virtualListRef.current && items) {

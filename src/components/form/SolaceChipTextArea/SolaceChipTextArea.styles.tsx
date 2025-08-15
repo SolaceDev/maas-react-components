@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
+import React from "react";
 import { Box, InputBase, styled } from "@mui/material";
-export const ChipInputContainer = styled(Box)(({ theme }) => ({
+export const ChipInputContainer: React.ComponentType<any> = styled(Box)(({ theme }) => ({
 	display: "flex",
 	flexWrap: "wrap",
 	alignItems: "flex-start",
@@ -34,19 +35,19 @@ export const ChipInputContainer = styled(Box)(({ theme }) => ({
 	}
 }));
 
-export const ChipItem = styled(Box)(({ theme }) => ({
+export const ChipItem: React.ComponentType<any> = styled(Box)(({ theme }) => ({
 	margin: theme.spacing(0.5),
 	display: "inline-flex",
 	alignItems: "flex-start"
 }));
 
-export const InputWrapper = styled("div")({
+export const InputWrapper: React.ComponentType<any> = styled("div")({
 	display: "inline-flex",
 	flexGrow: 1,
 	minWidth: "50px"
 });
 
-export const StyledInputBase = styled(InputBase)(({ theme }) => ({
+export const StyledInputBase: React.ComponentType<any> = styled(InputBase)(({ theme }) => ({
 	flex: 1,
 	padding: theme.spacing(0.5, 0),
 	"& .MuiInputBase-input": {

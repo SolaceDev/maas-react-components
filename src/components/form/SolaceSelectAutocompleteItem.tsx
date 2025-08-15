@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { Grid, ListItemIcon } from "@mui/material";
+import { ListItemIcon } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import clsx from "clsx";
 export interface SolaceSelectAutocompleteItemProps {
 	/**
@@ -82,31 +83,30 @@ function SolaceSelectAutocompleteItem({
 		<div style={{ display: "flex", width: "100%", alignItems: "center" }}>
 			{icon && (
 				<ListItemIcon className="menuItemIcon" style={{ paddingRight: "8px" }}>
-					{icon}
+					{icon as React.ReactNode}
 				</ListItemIcon>
 			)}
 			<Grid container direction={"column"} className={clsx({ multiline: !!subText || isNew })} py={0.5}>
 				<Grid container justifyContent={"space-between"} direction={"row"} alignItems={"flex-start"}>
-					<Grid item xs={sizeOfColumn} zeroMinWidth style={{ wordBreak: "break-word", paddingRight: middlePadding }}>
+					<Grid xs={sizeOfColumn} sx={{ wordBreak: "break-word", paddingRight: middlePadding }}>
 						{name}
 					</Grid>
 					{supplementalText && (
 						<Grid
-							container
-							className="supplementalText"
-							item
 							xs={4}
+							className="supplementalText"
+							container
 							direction="column"
 							alignItems="flex-end"
 							justifyContent="flex-start"
-							style={{ marginLeft: "0px" }}
+							sx={{ marginLeft: "0px" }}
 						>
 							{supplementalText}
 						</Grid>
 					)}
 				</Grid>
 				{subText && (
-					<Grid className="subtext" item>
+					<Grid className="subtext">
 						<span className="subtext">{subText}</span>
 					</Grid>
 				)}
@@ -120,7 +120,7 @@ function SolaceSelectAutocompleteItem({
 					alignItems={"center"}
 					className="menuItemIcon"
 				>
-					{secondaryAction}
+					{secondaryAction as React.ReactNode}
 				</Grid>
 			)}
 		</div>
