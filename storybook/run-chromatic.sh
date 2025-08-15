@@ -11,6 +11,10 @@ echo "Successfully logged into Vault."
 
 echo "Fetching Chromatic token from Vault..."
 CHROMATIC_PROJECT_TOKEN=$(vault kv get -field=CHROMATIC_PROJECT_TOKEN secret/tools/githubactions/public/)
+if [[ -z "$CHROMATIC_PROJECT_TOKEN" ]]; then
+  echo "Error: Failed to retrieve Chromatic token from Vault." >&2
+  exit 1
+fi
 echo "Successfully fetched Chromatic token."
 
 # Run Chromatic and extract the build URL
