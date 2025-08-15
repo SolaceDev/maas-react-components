@@ -16,7 +16,7 @@
 		"strictNullChecks": false,
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
-		"suppressImplicitAnyIndexErrors": true,
+
 		"allowSyntheticDefaultImports": true,
 		"target": "es5",
 		"allowJs": false,
@@ -31,7 +31,7 @@
 		"paths": {
 			"@src/*": ["src/*"]
 		},
-		"types": ["react/jsx-runtime"]
+		"types": []
 	},
 	"include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/global.d.ts", "jest.setup.js"],
 	"exclude": ["./node_modules", "./node_modules/*", "dist", "example"]
