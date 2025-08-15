@@ -683,10 +683,10 @@ function SolaceSelectAutocomplete<T, V>({
 			}}
 			renderOption={(props, option) => {
 				if (option) {
-					const mappedOption = itemMappingCallback(option);
-					const showDivider = getShowOptionDividerCallback?.(option) ?? false;
-					const defaultKey = optionsLabelCallback(itemMappingCallback(option));
-					const optionKey = getOptionKeyCallback?.(option) ?? defaultKey;
+					const mappedOption = itemMappingCallback(option as V);
+					const showDivider = getShowOptionDividerCallback?.(option as V) ?? false;
+					const defaultKey = optionsLabelCallback(itemMappingCallback(option as V));
+					const optionKey = getOptionKeyCallback?.(option as V) ?? defaultKey;
 					return (
 						<Box
 							component="li"
