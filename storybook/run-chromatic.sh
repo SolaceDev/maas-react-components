@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
-export VAULT_ADDR="https://vault.maas-vault-prod.solace.cloud:8200"
+# VAULT_ADDR must be set in the environment
+if [ -z "$VAULT_ADDR" ]; then
+  echo "Error: VAULT_ADDR environment variable is not set." >&2
+  exit 1
+fi
 
 echo "--- Starting Chromatic script ---"
 
