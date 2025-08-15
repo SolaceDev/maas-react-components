@@ -18,7 +18,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@SolaceDev/maas-icons": "npm:@SolaceDev/maas-icons@^0.2.118",
+		"@SolaceDev/maas-icons": "^0.2.118",
 		"@SolaceDev/maas-react-components": "file:.."
 	},
 	"devDependencies": {
