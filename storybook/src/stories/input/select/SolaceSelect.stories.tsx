@@ -80,8 +80,7 @@ export default {
 				type: "text"
 			},
 			description:
-				"Additional text displayed below the select field to provide guidance or error messages. Use this to give users context about available options or validation requirements.",
-			table: {}
+				"Additional text displayed below the select field to provide guidance or error messages. Use this to give users context about available options or validation requirements."
 		},
 		hasErrors: {
 			control: {
@@ -207,8 +206,7 @@ export default {
 				type: "text"
 			},
 			description:
-				"Placeholder text displayed when no value is selected and displayEmpty is true. Use this to provide guidance about what the user should select.",
-			table: {}
+				"Placeholder text displayed when no value is selected and displayEmpty is true. Use this to provide guidance about what the user should select."
 		},
 		name: {
 			control: {
@@ -223,8 +221,7 @@ export default {
 				type: "text"
 			},
 			description:
-				"Unique identifier for the select field. Used to associate the label with the input for accessibility and to reference the field programmatically.",
-			table: {}
+				"Unique identifier for the select field. Used to associate the label with the input for accessibility and to reference the field programmatically."
 		},
 		title: {
 			control: {
@@ -276,13 +273,11 @@ export default {
 		},
 		dataQa: {
 			control: { type: "text" },
-			description: "Data attribute for QA testing. Use this to identify the select field during automated testing.",
-			table: {}
+			description: "Data attribute for QA testing. Use this to identify the select field during automated testing."
 		},
 		dataTags: {
 			control: { type: "text" },
-			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
-			table: {}
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata."
 		}
 	},
 	decorators: [withSnapshotContainer]
