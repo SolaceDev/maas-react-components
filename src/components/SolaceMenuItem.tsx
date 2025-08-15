@@ -16,7 +16,7 @@
 
 import React, { useState } from "react";
 import { MenuItem, ListItemIcon, Typography, useTheme, Menu, Divider } from "@mui/material";
-import Grid from "@mui/material/GridLegacy";
+import Grid from "@mui/material/Grid2";
 import SolaceComponentProps from "./SolaceComponentProps";
 import { ArrowRightIcon } from "../resources/icons/ArrowRight";
 import clsx from "clsx";
@@ -166,14 +166,14 @@ const SolaceMenuItem = ({
 									{name}
 								</Typography>
 								{supplementalText && (
-									<Grid className="supplementalText" item>
+									<Grid className="supplementalText">
 										{supplementalText}
 									</Grid>
 								)}
 							</Grid>
 
 							{subText && (
-								<Grid className="subtext" item>
+								<Grid className="subtext">
 									<span className="subtext">{subText}</span>
 								</Grid>
 							)}

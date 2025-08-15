@@ -15,7 +15,7 @@
  */
 
 import { Box, RadioGroup, useTheme } from "@mui/material";
-import Grid from "@mui/material/GridLegacy";
+import Grid from "@mui/material/Grid2";
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -187,7 +187,7 @@ function SolaceRadioGroup({
 
 	const getRadioGroup = () => {
 		const childItems: Array<React.ReactNode> = children.map((child, i) => (
-			<Grid item key={i}>
+			<Grid key={i}>
 				{child}
 			</Grid>
 		));
