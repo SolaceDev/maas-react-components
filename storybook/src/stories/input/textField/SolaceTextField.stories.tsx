@@ -236,20 +236,6 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
-		onBlur: {
-			description:
-				"Callback function fired when the input loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes editing.",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the input gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for input.",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
-		},
 		customIcon: {
 			control: { type: "object" },
 			description:
