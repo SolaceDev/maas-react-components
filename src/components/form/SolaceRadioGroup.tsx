@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { Box, RadioGroup, Grid, useTheme } from "@mui/material";
+import { Box, RadioGroup, useTheme } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import SolaceComponentProps from "../SolaceComponentProps";
 import FormChildBase from "./FormChildBase";
@@ -160,7 +161,7 @@ function SolaceRadioGroup({
 		 * */
 		return React.Children.toArray(children)
 			.filter(React.isValidElement)
-			.map((child) => (child as React.ReactElement).props.value)
+			.map((child) => (child as React.ReactElement<any>).props.value)
 			.filter((option): option is string => option !== null && option !== undefined);
 	}, [children]);
 
@@ -186,7 +187,7 @@ function SolaceRadioGroup({
 
 	const getRadioGroup = () => {
 		const childItems: Array<React.ReactNode> = children.map((child, i) => (
-			<Grid item key={i}>
+			<Grid key={i}>
 				{child}
 			</Grid>
 		));

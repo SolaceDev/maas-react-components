@@ -90,8 +90,8 @@ function SolaceLearningButton({
 					id={id}
 					data-qa={dataQa}
 					data-tags={dataTags}
-					startIcon={startIcon}
-					endIcon={endIcon}
+					startIcon={startIcon as React.ReactNode}
+					endIcon={endIcon as React.ReactNode}
 					component={component}
 					type={type}
 					disabled={isDisabled}
@@ -99,7 +99,7 @@ function SolaceLearningButton({
 					onClick={handleClick}
 					className={className}
 				>
-					{children}
+					{children as React.ReactNode}
 				</Button>
 			</SolaceTooltip>
 		);

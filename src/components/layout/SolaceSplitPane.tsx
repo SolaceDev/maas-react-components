@@ -15,6 +15,7 @@
  */
 
 import ReactDOMServer from "react-dom/server";
+import React from "react";
 import SplitPane from "react-split-pane";
 import Pane from "react-split-pane";
 import SolaceComponentProps from "../SolaceComponentProps";
@@ -107,38 +108,44 @@ function SolaceSplitPane({
 	};
 
 	return (
-		<SplitPane
-			split={split}
-			minSize={minSize}
-			maxSize={maxSize}
-			defaultSize={defaultSize}
-			allowResize={allowedResize}
-			onDragFinished={handleDragFinish}
-			resizerStyle={{
-				width: getWidth,
-				height: getHeight,
-				cursor: getCursor,
-				borderLeft: getVerticalSplitBorder,
-				borderRight: getVerticalSplitBorder,
-				borderTop: getHorizontalSplitBorder,
-				borderBottom: getHorizontalSplitBorder,
-				backgroundImage: getBackgroundImage,
-				backgroundPosition: "center",
-				backgroundRepeat: "no-repeat"
-			}}
-			style={{
-				border: `solid 1px ${borderColor}`
-			}}
-		>
-			{children &&
+		React.createElement(
+			SplitPane as any,
+			{
+				split: split,
+				minSize: minSize,
+				maxSize: maxSize,
+				defaultSize: defaultSize,
+				allowResize: allowedResize,
+				onDragFinished: handleDragFinish,
+				resizerStyle: {
+					width: getWidth,
+					height: getHeight,
+					cursor: getCursor,
+					borderLeft: getVerticalSplitBorder,
+					borderRight: getVerticalSplitBorder,
+					borderTop: getHorizontalSplitBorder,
+					borderBottom: getHorizontalSplitBorder,
+					backgroundImage: getBackgroundImage,
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat"
+				},
+				style: {
+					border: `solid 1px ${borderColor}`
+				}
+			},
+			children &&
 				children.map((content: JSX.Element, index: number) => {
-					return (
-						<Pane key={`pane${index}`} size="100%" style={{ overflow: "auto" }}>
-							{content}
-						</Pane>
+					return React.createElement(
+						Pane as any,
+						{
+							key: `pane${index}`,
+							size: "100%",
+							style: { overflow: "auto" }
+						},
+						content
 					);
-				})}
-		</SplitPane>
+				})
+		)
 	);
 }
 
