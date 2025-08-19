@@ -45,49 +45,49 @@ import { SolaceDetailMessage } from "@SolaceDev/maas-react-components";
 **Theme Customization:**
 
 **Color Theming:**
-The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+The component uses the theme.palette color system for all color-related styling. Key color theme paths:
 
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#000000",
+			backgroundColor: "#273749",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.text.primary - Title text color</span>
+	<span>theme.palette.primary.text.wMain - Title text color</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#666666",
+			backgroundColor: "#647481",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.text.secondary - Details text color</span>
+	<span>theme.palette.secondary.text.wMain - Details text color</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#1976D2",
+			backgroundColor: "#015B82",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.primary.main - Primary action button color</span>
+	<span>theme.palette.primary.wMain - Primary action button color</span>
 </div>
 
-To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
 
 **Non-Color Theming:**
 Structural and layout customization through component overrides and mixins:

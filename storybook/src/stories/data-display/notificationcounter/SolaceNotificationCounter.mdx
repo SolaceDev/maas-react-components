@@ -47,33 +47,33 @@ import { SolaceNotificationCounter } from "@SolaceDev/maas-react-components";
 **Theme Customization:**
 
 **Color Theming:**
-The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+The component uses the theme.palette color system for all color-related styling. Key color theme paths:
 
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#FF0000",
+			backgroundColor: "#E94C4E",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "50%",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.error.wMain - Background color for error state notifications</span>
+	<span>theme.palette.error.wMain - Background color for error state notifications</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#4CAF50",
+			backgroundColor: "#009A80",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "50%",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.success.wMain - Background color for success state notifications</span>
+	<span>theme.palette.success.wMain - Background color for success state notifications</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -86,10 +86,10 @@ The component uses the theme.palette.ux color system for all color-related styli
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.common.white - Text color for notification counter value</span>
+	<span>theme.palette.background.w10 - Text color for notification counter value</span>
 </div>
 
-To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
 
 **Non-Color Theming:**
 Structural and layout customization through component overrides and mixins:

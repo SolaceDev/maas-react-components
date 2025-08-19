@@ -160,18 +160,6 @@ export default {
 		onChange: {
 			description: "Callback function to trigger whenever the value of the input is changed."
 		},
-		onBlur: {
-			description: "Callback function to trigger whenever the element of the input loses focus."
-		},
-		onKeyDown: {
-			description: "Callback function to trigger whenever the element of the input receives key down event."
-		},
-		onKeyUp: {
-			description: "Callback function to trigger whenever the element of the input receives key up event."
-		},
-		onFocus: {
-			description: "Callback function to trigger whenever the element of the input is focused."
-		},
 		validateChip: {
 			description:
 				"Callback function to validate the text before converting to a chip. Returns undefined if valid, or an error message if invalid."

@@ -46,49 +46,49 @@ import { SolaceDrawer } from "@SolaceDev/maas-react-components";
 **Theme Customization:**
 
 **Color Theming:**
-The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+The component uses the theme.palette color system for all color-related styling. Key color theme paths:
 
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#BDBDBD",
+			backgroundColor: "#CFD3D9",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.secondary.w40 - Border colors for drawer and resize handle</span>
+	<span>theme.palette.secondary.w40 - Border colors for drawer and resize handle</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#EEEEEE",
+			backgroundColor: "#F7F8F9",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.background.w20 - Background color for resize handle</span>
+	<span>theme.palette.background.w20 - Background color for resize handle</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "rgba(0, 0, 0, 0.15)",
+			backgroundColor: "rgba(53, 78, 98, 0.4)",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.deprecated.secondary.w8040 - Box shadow color</span>
+	<span>theme.palette.secondary.w8040 - Box shadow color</span>
 </div>
 
-To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
 
 **Non-Color Theming:**
 Structural and layout customization through component overrides and mixins:

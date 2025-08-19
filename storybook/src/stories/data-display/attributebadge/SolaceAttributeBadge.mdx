@@ -52,49 +52,49 @@ import { SolaceAttributeBadge } from "@SolaceDev/maas-react-components";
 **Theme Customization:**
 
 **Color Theming:**
-The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+The component uses the theme.palette color system for all color-related styling. Key color theme paths:
 
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#E0E0E0",
+			backgroundColor: "#F3F4F6",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.secondary.w10 - Default background color for outlined variant</span>
+	<span>theme.palette.secondary.w10 - Default background color for outlined variant</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#2196F3",
+			backgroundColor: "#0591D3",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.info.w100 - Background color for info variant</span>
+	<span>theme.palette.info.wMain - Background color for info variant</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#4CAF50",
+			backgroundColor: "#009A80",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.success.w100 - Background color for success variant</span>
+	<span>theme.palette.success.wMain - Background color for success variant</span>
 </div>
 
-To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
 
 **Non-Color Theming:**
 Structural and layout customization through component overrides and mixins:

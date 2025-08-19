@@ -53,36 +53,36 @@ import { SolaceConfirmationDialog } from "@SolaceDev/maas-react-components";
 **Theme Customization:**
 
 **Color Theming:**
-The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+The component uses the theme.palette color system for all color-related styling. Key color theme paths:
 
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#F5F5F5",
+			backgroundColor: "#FFFFFF",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.background.w10 - Dialog background color</span>
+	<span>theme.palette.background.w10 - Dialog background color</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
 		style={{
 			width: "16px",
 			height: "16px",
-			backgroundColor: "#000000",
+			backgroundColor: "#273749",
 			border: "1px solid rgba(0,0,0,0.2)",
 			borderRadius: "3px",
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.ux.primary.text.wMain - Primary text color</span>
+	<span>theme.palette.primary.text.wMain - Primary text color</span>
 </div>
 
-To customize colors, override the palette.ux values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
 
 **Non-Color Theming:**
 Structural and layout customization through component overrides and mixins:
