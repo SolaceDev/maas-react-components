@@ -16,6 +16,7 @@
 import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
+import { fn } from "@storybook/test";
 
 import {
 	InfoIcon,

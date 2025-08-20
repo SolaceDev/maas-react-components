@@ -19,6 +19,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import { SolaceSearchAndFilter, FIELD_TYPES, SolaceTextFieldChangeEvent } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/testing-library";
+import { fn } from "@storybook/test";
 
 (SolaceSearchAndFilter as React.FC & { displayName?: string }).displayName = "SolaceSearchAndFilter";
 

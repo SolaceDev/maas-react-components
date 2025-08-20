@@ -20,6 +20,7 @@ import { Meta } from "@storybook/react";
 import { SolaceChipTextArea } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { within, userEvent } from "@storybook/test";
+import { fn } from "@storybook/test";
 
 // Constants for reuse
 const DEMO_TITLE = "Demo Chip Text Area";
