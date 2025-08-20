@@ -44,18 +44,18 @@ import { SolaceEmptyStateBanner } from "@SolaceDev/maas-react-components";
 - Wrapper container: `width: 100%`, `height: 100%`, centered flex layout
 - Main banner: `width: 825px` with `height: 261px`
 - Image container: `padding: theme.spacing(3) theme.spacing(3) 0px theme.spacing(3)`
-- Image container background: `theme.palette.learning.w10`
-- Image container border: `solid 1px theme.palette.learning.w20`
+- Image container background: `theme.palette.ux.learning.w10`
+- Image container border: `solid 1px theme.palette.ux.learning.w20`
 - Image container border radius: `theme.spacing(1.25) theme.spacing(1.25) 0 0`
-- Banner background: `radial-gradient(75.04% 70.41% at 20.32% 70.41%, theme.palette.learning.wMain 0%, theme.palette.learning.w100 100%)`
+- Banner background: `radial-gradient(75.04% 70.41% at 20.32% 70.41%, theme.palette.ux.learning.wMain 0%, theme.palette.ux.learning.w100 100%)`
 - Banner padding: `theme.spacing(5)` (40px)
 - Banner border radius: `theme.spacing(2.5)` (20px)
 
 **Typography Specifications:**
 
-- Subtitle: `variant="caption"`, `fontWeight={600}`, `color: theme.palette.brand.w30`
-- Title: `variant="h2"`, `fontSize: "1.5rem"`, `width: 600px`, `color: theme.palette.primary.text.w10`
-- Description: `width: "100%"`, `color: theme.palette.primary.text.w10`
+- Subtitle: `variant="caption"`, `fontWeight={600}`, `color: theme.palette.ux.brand.w30`
+- Title: `variant="h2"`, `fontSize: "1.5rem"`, `width: 600px`, `color: theme.palette.ux.primary.text.w10`
+- Description: `width: "100%"`, `color: theme.palette.ux.primary.text.w10`
 
 **Button Layout:**
 
@@ -66,7 +66,7 @@ import { SolaceEmptyStateBanner } from "@SolaceDev/maas-react-components";
 **Theme Customization:**
 
 **Color Theming:**
-The component uses the theme.palette color system for all color-related styling. Key color theme paths:
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -79,7 +79,7 @@ The component uses the theme.palette color system for all color-related styling.
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.learning.w10 - Image container background color</span>
+	<span>theme.palette.ux.learning.w10 - Image container background color</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -92,7 +92,7 @@ The component uses the theme.palette color system for all color-related styling.
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.learning.w20 - Image container border color</span>
+	<span>theme.palette.ux.learning.w20 - Image container border color</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -105,7 +105,7 @@ The component uses the theme.palette color system for all color-related styling.
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.learning.wMain - Banner gradient start color</span>
+	<span>theme.palette.ux.learning.wMain - Banner gradient start color</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -118,7 +118,7 @@ The component uses the theme.palette color system for all color-related styling.
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.learning.w100 - Banner gradient end color</span>
+	<span>theme.palette.ux.learning.w100 - Banner gradient end color</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -131,7 +131,7 @@ The component uses the theme.palette color system for all color-related styling.
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.brand.w30 - Subtitle text color</span>
+	<span>theme.palette.ux.brand.w30 - Subtitle text color</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -144,7 +144,7 @@ The component uses the theme.palette color system for all color-related styling.
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.primary.text.w10 - Title and description text color</span>
+	<span>theme.palette.ux.primary.text.w10 - Title and description text color</span>
 </div>
 
 To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.

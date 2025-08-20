@@ -46,7 +46,7 @@ import { SolaceEnvironmentChip } from "@SolaceDev/maas-react-components";
 **Theme Customization:**
 
 **Color Theming:**
-The component uses the theme.palette color system for all color-related styling. Key color theme paths:
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
 
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -59,7 +59,7 @@ The component uses the theme.palette color system for all color-related styling.
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.secondary.w100 - Border color for white backgrounds</span>
+	<span>theme.palette.ux.secondary.w100 - Border color for white backgrounds</span>
 </div>
 <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
 	<div
@@ -72,7 +72,7 @@ The component uses the theme.palette color system for all color-related styling.
 			marginRight: "8px"
 		}}
 	></div>
-	<span>theme.palette.secondary.w20 - Hover background color for delete button</span>
+	<span>theme.palette.ux.secondary.w20 - Hover background color for delete button</span>
 </div>
 
 To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
@@ -106,7 +106,7 @@ To customize layout and structure, override the component styleOverrides in your
   - Icon only: `theme.spacing(0, 0.5)` (0px vertical, 4px horizontal)
   - With delete: `theme.spacing(0, 0.5)` (0px vertical, 4px horizontal)
   - Standard: `theme.spacing(0, 1, 0, 0.5)` (0px top, 8px right, 0px bottom, 4px left)
-- White background special case: Adds border using `theme.palette.secondary.w100`
+- White background special case: Adds border using `theme.palette.ux.secondary.w100`
 - Text overflow: Ellipsis with `white-space: nowrap`
 - Transition timeout: `200ms`
 
