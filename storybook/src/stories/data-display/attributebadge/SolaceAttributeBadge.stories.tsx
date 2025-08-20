@@ -17,6 +17,7 @@ import React from "react";
 import { Meta, Decorator } from "@storybook/react";
 import { SolaceAttributeBadge, SolaceTooltip, CHIP_COLORS } from "@SolaceDev/maas-react-components";
 import { userEvent, within } from "@storybook/test";
+import { action } from "@storybook/addon-actions";
 
 (SolaceAttributeBadge as React.FC & { displayName?: string }).displayName = "SolaceAttributeBadge";
 (SolaceTooltip as React.FC & { displayName?: string }).displayName = "SolaceTooltip";
@@ -201,6 +202,10 @@ export default {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
 			}
+		},
+
+		args: {
+			size: "xs"
 		}
 	}
 } as Meta<typeof SolaceAttributeBadge>;
@@ -285,5 +290,12 @@ export const WithFillColorAttributeBadge = {
 	args: {
 		label: "Fill Color Attribute Badge",
 		fillColor: CHIP_COLORS.OPAQUE_BLUE
+	}
+};
+
+export const WithDeleteButtonAttributeBadge = {
+	args: {
+		label: "Attribute Badge Text",
+		onDelete: action("delete button clicked")
 	}
 };
