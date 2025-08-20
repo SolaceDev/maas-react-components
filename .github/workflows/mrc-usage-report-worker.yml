@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SolaceDev/maas-ui
-          ref: sthomas/mrc-usage-report
+          ref: develop
           path: maas-ui
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SolaceDev/maas-ops-ui
-          ref: iphadte/DATAGO-103044
+          ref: develop
           path: maas-ops-ui
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
@@ -74,7 +74,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SolaceDev/broker-manager
-          ref: mrc-usage-report
+          ref: main
           path: broker-manager
           token: ${{ secrets.PACKAGES_ADMIN_TOKEN }}
 
