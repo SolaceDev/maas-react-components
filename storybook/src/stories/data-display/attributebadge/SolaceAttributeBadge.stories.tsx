@@ -16,8 +16,8 @@
 import React from "react";
 import { Meta, Decorator } from "@storybook/react";
 import { SolaceAttributeBadge, SolaceTooltip, CHIP_COLORS } from "@SolaceDev/maas-react-components";
-import { userEvent, within } from "@storybook/test";
 import { action } from "@storybook/addon-actions";
+import { userEvent, within } from "@storybook/test";
 
 (SolaceAttributeBadge as React.FC & { displayName?: string }).displayName = "SolaceAttributeBadge";
 (SolaceTooltip as React.FC & { displayName?: string }).displayName = "SolaceTooltip";
@@ -187,6 +187,16 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
+		onClick: {
+			control: false,
+			description:
+				"Callback function that fires when the attribute badge is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter."
+		},
+		onDelete: {
+			control: false,
+			description:
+				"Callback function that fires when the delete button is clicked. When provided, a delete button will be added to the badge. Use this for removable attributes or tags."
+		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify attribute badges during automated testing.",
@@ -202,11 +212,10 @@ export default {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
 			}
-		},
-
-		args: {
-			size: "xs"
 		}
+	},
+	args: {
+		size: "xs"
 	}
 } as Meta<typeof SolaceAttributeBadge>;
 

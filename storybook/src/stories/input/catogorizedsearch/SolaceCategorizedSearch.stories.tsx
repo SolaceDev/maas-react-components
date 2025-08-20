@@ -175,13 +175,6 @@ export default {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
 			}
-		},
-		onClearAll: {
-			description: "Callback function triggered when the clear all button is clicked.",
-			table: {
-				type: { summary: "() => void" },
-				defaultValue: { summary: "undefined" }
-			}
 		}
 	}
 } as Meta;
