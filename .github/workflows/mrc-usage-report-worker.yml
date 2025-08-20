@@ -147,10 +147,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add mrc-usage-report-data
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-          else
-            COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
-            git commit --no-verify -m "$COMMIT_MESSAGE"
-            git push
-          fi
+          COMMIT_MESSAGE="feat: add mrc usage report data for $(date +'%Y-%m-%d %H:%M')"
+          git commit --no-verify -m "$COMMIT_MESSAGE"
+          git push

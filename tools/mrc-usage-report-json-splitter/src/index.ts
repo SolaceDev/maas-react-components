@@ -219,6 +219,10 @@ function run() {
 	const readmeDestPath = path.join(outputDirPath, "mrc-usage-data-readme.md");
 	fs.copyFileSync(readmeSrcPath, readmeDestPath);
 
+	// Create a time-generated file
+	const timeGeneratedPath = path.join(outputDirPath, "time-generated");
+	fs.writeFileSync(timeGeneratedPath, new Date().toISOString());
+
 	generatePerComponentStructure(report, outputDirPath);
 	generatePerApplicationStructure(report, outputDirPath);
 }
