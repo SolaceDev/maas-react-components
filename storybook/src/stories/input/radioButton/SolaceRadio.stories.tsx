@@ -251,18 +251,6 @@ export default {
 				defaultValue: { summary: "false" }
 			}
 		},
-		onChange: {
-			description:
-				"Callback function fired when the radio selection changes. Receives an event object with the new selected value. Essential for controlled components and form state management."
-		},
-		onBlur: {
-			description:
-				"Callback function fired when the radio button loses focus. Use this for validation or other actions that should occur when the user finishes selecting."
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the radio button gains focus. Use this for analytics or other actions that should occur when the user interacts with the field."
-		},
 		children: {
 			description:
 				"Content to be rendered inside the radio component. This can be used to add custom content or icons alongside the radio button.",

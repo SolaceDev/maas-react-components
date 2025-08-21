@@ -47,13 +47,6 @@ export default {
 				defaultValue: { summary: "false" }
 			}
 		},
-		onClose: {
-			action: "message box closed",
-			description: "Callback function after the message box is closed",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
-		},
 		variant: {
 			options: ["info", "error", "warn", "success"],
 			control: { type: "select" },

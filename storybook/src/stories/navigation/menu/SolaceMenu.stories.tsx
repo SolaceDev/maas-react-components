@@ -127,13 +127,6 @@ export default {
 				defaultValue: { summary: "true" }
 			}
 		},
-		onMenuItemClick: {
-			action: "clicked",
-			description: "The callback function runs when the user clicks on a menu item",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
-		},
 		numOfMenuItemDisplayed: {
 			control: { type: "number" },
 			description: "Optional flag to specify the number of menu items to be displayed",

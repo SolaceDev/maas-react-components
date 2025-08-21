@@ -24,17 +24,6 @@ const meta: Meta<typeof SolaceFileUploader> = {
 	 */
 	title: "Input/File Uploader",
 	component: SolaceFileUploader,
-	args: {
-		maxFiles: 1,
-		maxSize: undefined,
-		accept: undefined,
-		fileNames: [],
-		readOnly: false,
-		errorText: "",
-		onFileChange: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
 	parameters: {
 		docs: {
 			description: {

@@ -218,14 +218,6 @@ export default {
 			description:
 				"Callback function fired when the checkbox state changes. Receives an event object with the new checked state. Essential for controlled components and form state management."
 		},
-		onBlur: {
-			description:
-				"Callback function fired when the checkbox loses focus. Use this for validation or other actions that should occur when the user finishes interacting with the checkbox."
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the checkbox gains focus. Use this for tracking user interaction or showing additional UI elements."
-		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify the checkbox during automated testing.",

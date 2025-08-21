@@ -61,11 +61,6 @@ export default {
 				defaultValue: { summary: '"medium"' }
 			}
 		},
-		onClick: {
-			control: false,
-			description:
-				"Callback function that fires when the feature tag is clicked. Use this when the tag should trigger an action such as toggling a feature or showing more information."
-		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify feature tags during automated testing.",

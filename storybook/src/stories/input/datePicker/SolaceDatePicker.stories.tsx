@@ -220,14 +220,6 @@ export default {
 			description:
 				"Callback function fired when the date is cleared. Use this to handle clearing actions and update form state appropriately."
 		},
-		onBlur: {
-			description:
-				"Callback function fired when the date picker loses focus. Use this for validation or other actions that should occur when the user finishes date selection."
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the date picker gains focus. Use this for tracking user interaction or showing additional UI elements."
-		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify the date picker during automated testing.",

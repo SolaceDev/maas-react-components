@@ -41,13 +41,6 @@ const meta: Meta<typeof SolaceIconTabs> = {
 			table: {
 				defaultValue: { summary: '""' }
 			}
-		},
-		onViewClick: {
-			action: "clicked",
-			description: "Callback fired when the value changes",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
 		}
 	}
 };

@@ -22,16 +22,6 @@ import { SolaceStackLabel } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Input/Label/Stacked",
 	component: SolaceStackLabel,
-	args: {
-		id: "",
-		hasWarnings: false,
-		htmlForId: "",
-		required: false,
-		disabled: false,
-		large: false,
-		bold: false,
-		children: "Label"
-	},
 	parameters: {
 		docs: {
 			description: {
