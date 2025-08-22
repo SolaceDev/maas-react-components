@@ -4,3 +4,5 @@ node_modules/
 .snapshots/
 storybook/storybook-static/
 *.min.js
+
+**/*.test.tsx

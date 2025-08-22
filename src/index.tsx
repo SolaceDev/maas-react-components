@@ -155,6 +155,12 @@ export { default as SolaceIconTabs } from "./components/layout/SolaceIconTabs";
 export type { SolaceIconTabsButton, SolaceIconTabsProps } from "./components/layout/SolaceIconTabs";
 export { default as SolacePageHeader } from "./components/layout/SolacePageHeader";
 export type { SolacePageHeaderProps } from "./components/layout/SolacePageHeader";
+export { default as SolaceNavigationBar } from "./components/layout/SolaceNavigationBar";
+export type {
+	SolaceNavigationBarProps,
+	SolaceNavigationLink,
+	SolaceNavigationUserAction
+} from "./components/layout/SolaceNavigationBar";
 export { default as SolaceEnvironmentSelectChip } from "./components/SolaceEnvironmentSelectChip";
 export type {
 	SolaceEnvironmentSelectChipOption,
