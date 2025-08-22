@@ -1,0 +1,44 @@
+# .github/workflows/mrc-usage-report-scheduler.yml
+#
+# Architectural Decision: Why Two Workflows?
+#
+# This setup uses two separate GitHub Actions workflows:
+# 1. Scheduler Workflow (this file):
+#    - Runs on a schedule (`cron`) from the default branch (e.g., `main`).
+#    - GitHub requires scheduled workflows to be on the default branch to run reliably.
+#    - Its only job is to trigger the worker workflow.
+#
+# 2. Worker Workflow (`mrc-usage-report-worker.yml`):
+#    - Contains the actual logic for generating the MRC usage report.
+#    - It is triggered by this scheduler to run on a specific feature branch (`feature/mrc-usage-report-data`).
+#    - This allows development and testing of the reporting logic on a feature branch
+#      without merging it into the default branch, ensuring the production code remains stable.
+#
+# This separation ensures that we can have a reliable, scheduled trigger while still
+# having the flexibility to develop the report generation logic in an isolated branch.
+
+name: MRC Usage Report - Scheduler
+
+on:
+  schedule:
+    # Runs daily at 8 AM EST (12 PM UTC)
+    - cron: "0 12 * * *"
+  workflow_dispatch: # Allows manual triggering from the Actions tab
+
+jobs:
+  trigger_worker_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout feature branch to ensure we have the latest code
+        uses: actions/checkout@v4
+        with:
+          ref: "feature/mrc-usage-report-data"
+
+      - name: Trigger the worker workflow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WORKER_WORKFLOW: "mrc-usage-report-worker.yml"
+          FEATURE_BRANCH: "feature/mrc-usage-report-data"
+        run: |
+          echo "Triggering workflow ${{ env.WORKER_WORKFLOW }} on branch ${{ env.FEATURE_BRANCH }}"
+          gh workflow run ${{ env.WORKER_WORKFLOW }} --ref ${{ env.FEATURE_BRANCH }}
