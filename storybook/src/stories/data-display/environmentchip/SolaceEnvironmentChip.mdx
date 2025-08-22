@@ -1,0 +1,115 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceEnvironmentChipStories from "./SolaceEnvironmentChip.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceEnvironmentChipStories} />
+
+<Title>Environment Chip</Title>
+
+<Description of={SolaceEnvironmentChipStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceEnvironmentChip`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceEnvironmentChip component provides a visual indicator for displaying environment-specific information with customizable styling and colors, useful for showing environment states, deployment stages, or system status indicators that allow users to quickly identify and understand the current environment context or operational state. This environment badge pattern provides clear visual distinction between different environments or system states, helping users maintain situational awareness about their current working context while providing consistent visual styling across different environment types.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceEnvironmentChip } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceEnvironmentChip.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceEnvironmentChip.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiChip%3A%20%7B" target="_blank">theme.ts (MuiChip styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceEnvironmentChipStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.ColoredContainer` - Main styled container with custom background and foreground colors
+- `.ColoredBase` - Base styled component with core styling and color application
+- `.MuiIconButton-root` - Delete button when removable (with hover effects)
+
+**Custom Classes:**
+
+- `.Icon` - Container for the leading icon with flex display
+- `.Text` - Text label container with ellipsis overflow handling
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#000000",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w100 - Border color for white backgrounds</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E7E9EC",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Hover background color for delete button</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding, margin, border radius, and gaps (e.g., theme.spacing(3) for height)
+- theme.typography.body1 - Font family, size, and weight for text content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for chip container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for chip text
+- theme.components.MuiChip.styleOverrides.icon - Custom styling for leading icon
+- theme.components.MuiChip.styleOverrides.deleteIcon - Custom styling for delete icon
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in chip groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Height: `theme.spacing(3)` (24px typically)
+- Border radius: `theme.spacing(0.5)` (4px typically)
+- Border width: `1px` solid
+- Default max width: `200px`
+- Icon size: `16x16` pixels (for both leading icon and close icon)
+- Column gap: `theme.spacing(0.5)` (4px typically) between icon and text
+- Padding variations:
+  - Icon only: `theme.spacing(0, 0.5)` (0px vertical, 4px horizontal)
+  - With delete: `theme.spacing(0, 0.5)` (0px vertical, 4px horizontal)
+  - Standard: `theme.spacing(0, 1, 0, 0.5)` (0px top, 8px right, 0px bottom, 4px left)
+- White background special case: Adds border using `theme.palette.ux.secondary.w100`
+- Text overflow: Ellipsis with `white-space: nowrap`
+- Transition timeout: `200ms`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

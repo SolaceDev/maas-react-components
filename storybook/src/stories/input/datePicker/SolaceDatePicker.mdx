@@ -1,0 +1,122 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceDatePickerStories from "./SolaceDatePicker.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceDatePickerStories} />
+
+<Title>Date Picker</Title>
+
+<Description of={SolaceDatePickerStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceDatePicker`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Date Picker component provides a user-friendly interface for selecting dates, useful for applications where users need to input or choose dates and allowing for easy selection from a calendar view or manual input. The component implements a date selection pattern with the purpose of simplifying date entry and ensuring consistent date formats, helping users quickly select dates while maintaining data consistency and reducing input errors.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceDatePicker } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceDatePicker.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceDatePicker.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiDatePicker" target="_blank">theme.ts (MuiDatePicker styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceDatePickerStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiDatePicker-root` - Root date picker container
+- `.MuiDatePicker-inputRoot` - Input field container
+- `.MuiDatePicker-input` - Date input field
+- `.MuiDatePicker-keyboardDateInput` - Keyboard input for date
+- `.MuiDatePicker-calendar` - Calendar popup container
+- `.MuiPickersDay-root` - Individual day in the calendar
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied when the date picker is disabled
+- `.Mui-error` - Applied when the date picker has an error state
+- `.Mui-focused` - Applied when the date picker input is focused
+- `.Mui-readOnly` - Applied when the date picker is in read-only mode
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Primary color for selected date and focus indicators</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Background color for the calendar popup</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E94C4E",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Color for error states</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Standard padding for calendar days
+- theme.typography.body1 - Font styling for the input field
+- theme.typography.caption - Font styling for day numbers in the calendar
+- theme.components.MuiDatePicker.styleOverrides.root - Date picker container customization
+- theme.components.MuiPickersDay.styleOverrides.root - Calendar day customization
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Used for maintaining consistent height with toolbar components
+
+**Layout Specifications:**
+
+- Input field height: 40px (matches standard input components)
+- Calendar day size: 36px × 36px
+- Calendar header padding: theme.spacing(2) (16px)
+- Input field padding: theme.spacing(1) (8px) horizontal
+- Calendar popup max height: 350px
+- Transition duration: 300ms for hover and selection effects
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

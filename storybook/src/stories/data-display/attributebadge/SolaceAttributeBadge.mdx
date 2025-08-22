@@ -1,0 +1,128 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceAttributeBadgeStories from "./SolaceAttributeBadge.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceAttributeBadgeStories} />
+
+<Title>Attribute Badge</Title>
+
+<Description of={SolaceAttributeBadgeStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceAttributeBadge`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceAttributeBadge component provides a visual indicator for displaying attributes, statuses, or categorical information with customizable styling and colors, useful for showing metadata, status indicators, or categorical labels that allow users to quickly identify different attributes or states of content items. This badge pattern provides clear visual distinction for different attributes or categories, helping users quickly scan and identify important characteristics of content while maintaining consistent visual styling across different attribute types.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceAttributeBadge } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceAttributeBadge.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceAttributeBadge.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiChip" target="_blank">theme.ts (MuiChip styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceAttributeBadgeStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiChip-root` - Root chip container with Material-UI styling
+- `.solaceAttributeBadge` - Custom class for Solace-specific attribute badge styling
+- `.MuiChip-label` - Text content wrapper
+- `.MuiChip-deleteIcon` - Delete button icon (when onDelete is provided)
+
+**Variant Classes:**
+
+- `.MuiChip-filled` - Applied when variant is "filled"
+- `.MuiChip-outlined` - Applied when variant is "outlined"
+
+**State Classes:**
+
+- `.MuiChip-disabled` - Applied when disabled is true
+- `.MuiChip-clickable` - Applied when clickable is true
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default background color for outlined variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#0591D3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.info.wMain - Background color for info variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#009A80",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.success.wMain - Background color for success variant</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(0.25) for 2px padding)
+- theme.typography.[VARIANT] - Text styles for badge content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for badge container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for badge text
+- theme.components.MuiChip.styleOverrides.deleteIcon - Custom styling for delete icon
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in badge groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Height options: `xs: 12px`, `sm: 18px`, `md: 24px`, `lg: 30px`
+- Border radius options: `xs: 20px`, `sm: 30px`, `md: 40px`, `lg: 50px`
+- Default height: `sm` (18px)
+- Default border radius: `md` (40px)
+- Default font size: `xs`
+- Padding: `theme.spacing(0)` when compressed, `theme.spacing(0.25)` (2px) otherwise
+- Font weight: 500 when `boldLabel` is true, 400 otherwise
+- Transition timeout: `200ms`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

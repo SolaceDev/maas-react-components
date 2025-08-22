@@ -1,0 +1,132 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceBreadcrumbStories from "./SolaceBreadcrumb.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceBreadcrumbStories} />
+
+<Title>Breadcrumb</Title>
+
+<Description of={SolaceBreadcrumbStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceBreadcrumb`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Breadcrumb component provides navigation breadcrumb links that help users understand their current location within an application hierarchy. It's useful for displaying navigation paths as clickable buttons, implementing hierarchical navigation that provides clear wayfinding while maintaining the ability to quickly navigate to any parent level.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceBreadcrumb } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceBreadcrumb.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceBreadcrumb.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiBreadcrumbs" target="_blank">theme.ts (MuiBreadcrumbs styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceBreadcrumbStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiBreadcrumbs-root` - Root breadcrumb container
+- `.MuiBreadcrumbs-li` - Individual breadcrumb list item
+- `.MuiBreadcrumbs-separator` - Separator between breadcrumb items
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied when breadcrumb links are disabled
+- `.MuiLink-underlineHover` - Applied to links that show underline on hover
+- `.MuiLink-underlineNone` - Applied to current page link (no underline)
+
+**Custom Classes:**
+
+- Custom styled `SolaceLink` with max-width: 200px and text overflow ellipsis
+- Custom `RouteContainer` with flex layout and column gap
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Active breadcrumb link color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#647481",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.wMain - Current page text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#B1B9C0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.w50 - Separator color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#014968",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.w90 - Link hover color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(0.5) - Route container gap between breadcrumb elements
+- theme.components.MuiBreadcrumbs.styleOverrides.root - Override breadcrumb container styling
+- theme.components.MuiLink.styleOverrides.root - Override link styling
+- theme.typography.body2 - Breadcrumb text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and link behavior through link overrides.
+
+**Layout Specifications:**
+
+- Link max-width: 200px
+- Text overflow: ellipsis with whiteSpace: nowrap
+- Route container: flex with row direction and center alignment
+- Default maxItems: 8
+- NavigateNext icon as separator with fontSize="small"
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

@@ -1,0 +1,158 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceButtonStories from "./SolaceButton.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceButtonStories} />
+
+<Title>Button</Title>
+
+<Description of={SolaceButtonStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceButton`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Button component is a versatile and customizable button for use in all Solace-based applications, providing various visual styles, sizes, and states to accommodate different user interface needs and implement a standard button pattern for triggering actions or events within the application, helping users interact with the interface, submit forms, navigate between pages, and perform various operations.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceButton } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceButton.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceButton.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiButton" target="_blank">theme.ts (MuiButton styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceButtonStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiButton-root` - Root button container
+- `.MuiButton-text` - Applied to text variant buttons
+- `.MuiButton-outlined` - Applied to outline variant buttons
+- `.MuiButton-contained` - Applied to call-to-action variant buttons
+- `.MuiButton-startIcon` - Container for the start icon
+- `.MuiButton-endIcon` - Container for the end icon
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied when the button is disabled
+- `.Mui-focusVisible` - Applied when the button has keyboard focus
+- `.MuiButton-loading` - Applied when the button is in a loading state
+
+**Size Classes:**
+
+- `.MuiButton-sizeSmall` - Small button styling
+- `.MuiButton-sizeMedium` - Medium button styling
+- `.MuiButton-sizeLarge` - Large button styling
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Primary background color for contained buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.w10 - Text color for contained buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E7E9EC",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - Border color for outlined buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#273749",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Text color for text and outlined buttons</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Hover background color for text and outlined buttons</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding for small buttons
+- theme.spacing(2) - Padding for medium buttons
+- theme.spacing(3) - Padding for large buttons
+- theme.typography.button - Text style for button labels
+- theme.breakpoints.values.sm - Responsive behavior breakpoint
+- theme.components.MuiButton.styleOverrides.root - Root container overrides
+- theme.components.MuiButton.styleOverrides.contained - Contained variant overrides
+
+Available mixins for consistent styling:
+
+- theme.mixins.button.primary - Standard primary button styling patterns
+- theme.mixins.button.secondary - Standard secondary button styling patterns
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Small button padding: `6px 16px`
+- Medium button padding: `8px 24px`
+- Large button padding: `12px 32px`
+- Icon spacing: `8px` between icon and text
+- Border radius: `4px`
+- Transition duration: `250ms`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

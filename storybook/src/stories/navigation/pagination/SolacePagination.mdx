@@ -1,0 +1,152 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolacePaginationStories from "./SolacePagination.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolacePaginationStories} />
+
+<Title>Pagination</Title>
+
+<Description of={SolacePaginationStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolacePagination`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Pagination component provides navigation controls for large datasets split across multiple pages. It displays page numbers, navigation arrows, and result counts, implementing a pagination pattern that helps users browse through content efficiently while maintaining performance, usability, and awareness of their position within the dataset.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolacePagination } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolacePagination.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolacePagination.tsx)
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolacePaginationStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiPagination-root` - Root pagination container
+- `.MuiPagination-ul` - Pagination list container
+- `.MuiPaginationItem-root` - Individual pagination item
+- `.MuiPaginationItem-page` - Page number items
+- `.MuiPaginationItem-previous` - Previous navigation button
+- `.MuiPaginationItem-next` - Next navigation button
+- `.MuiPaginationItem-firstLast` - First/Last navigation buttons
+
+**State Classes:**
+
+- `.Mui-selected` - Applied to the currently active page
+- `.Mui-disabled` - Applied to disabled navigation buttons
+- `.MuiPaginationItem-ellipsis` - Applied to ellipsis indicators
+
+**Custom Classes:**
+
+- Result count display styling with proper typography
+- Loading state styling for skeleton placeholders
+- Responsive behavior for smaller screens
+- Custom spacing between pagination elements
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Selected page background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Selected page text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Page button hover background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#273749",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Page button text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#CFD3D9",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Page button border color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Container spacing between pagination and content
+- theme.spacing(0.5) - Item spacing between pagination items
+- theme.components.MuiPagination.styleOverrides.root - Override pagination container styling
+- theme.components.MuiPaginationItem.styleOverrides.root - Override pagination item styling
+- theme.typography.body2 - Result count text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and pagination behavior through pagination overrides.
+
+**Layout Specifications:**
+
+- Container spacing: theme.spacing(2) between pagination and content
+- Item spacing: theme.spacing(0.5) between pagination items
+- Page item size: 32px x 32px for consistent click targets
+- Border radius: 4px for page items
+- Result text: Typography body2 variant for result counts
+- Responsive breakpoints: Simplified navigation on mobile devices
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

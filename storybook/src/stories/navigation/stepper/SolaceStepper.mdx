@@ -1,0 +1,153 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceStepperStories from "./SolaceStepper.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceStepperStories} />
+
+<Title>Stepper</Title>
+
+<Description of={SolaceStepperStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceStepper`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Stepper component provides a visual progress indicator for multi-step processes with step labels and status indicators. It's useful for guiding users through sequential workflows like forms or setup processes, implementing a stepper pattern that shows progress, current position, and completion status while allowing navigation between steps.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceStepper } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceStepper.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceStepper/SolaceStepper.tsx)
+- **GitHub Source Code**: [SolaceStepperFooter.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceStepper/SolaceStepperFooter.tsx)
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceStepperStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiStepper-root` - Root stepper container
+- `.MuiStep-root` - Individual step container
+- `.MuiStepLabel-root` - Step label container
+- `.MuiStepIcon-root` - Step icon container
+- `.MuiStepContent-root` - Step content area
+- `.MuiStepConnector-root` - Connector line between steps
+
+**State Classes:**
+
+- `.Mui-active` - Applied to the currently active step
+- `.Mui-completed` - Applied to completed steps
+- `.Mui-disabled` - Applied to disabled steps
+- `.Mui-error` - Applied to steps with errors
+
+**Custom Classes:**
+
+- Custom step icon styling with error and completed states
+- Footer navigation with previous/next button styling
+- Step content area with proper padding and spacing
+- Progress indicator styling for visual feedback
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#00C895",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.wMain - Active step icon background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E6FAF4",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.brand.w10 - Completed step connector line</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#CCDEE6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.w20 - Inactive step background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#273749",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Active step label text</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#B1B9C0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.w50 - Inactive step label text</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Spacing between steps
+- theme.spacing(1) - Spacing between footer buttons
+- theme.components.MuiStepper.styleOverrides.root - Override stepper container styling
+- theme.components.MuiStep.styleOverrides.root - Override individual step styling
+- theme.typography.body1 - Step label text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and step appearance through stepper overrides.
+
+**Layout Specifications:**
+
+- Stepper width: Configurable sidebar width for step navigation
+- Content area: Flexible width for step content
+- Footer height: Fixed height for navigation buttons
+- Step spacing: theme.spacing(2) between steps
+- Icon size: 24px x 24px for step icons
+- Button spacing: theme.spacing(1) between footer buttons
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

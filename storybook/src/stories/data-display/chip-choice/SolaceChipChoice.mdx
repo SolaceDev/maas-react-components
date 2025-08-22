@@ -1,0 +1,151 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceChipStories from "./SolaceChipChoice.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceChipStories} />
+
+<Title>Chip Choice</Title>
+
+<Description of={SolaceChipStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceChip`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Chip Choice component provides a compact, interactive element for representing selectable options in a space-efficient format, useful for single or multiple selection scenarios that allow users to quickly choose from a set of predefined options. This selection-based interaction pattern simplifies choice interfaces, helping users clearly identify available options and their current selection state while maintaining a clean, uncluttered interface.
+
+<Subtitle>Usage</Subtitle>
+
+Chip choices are compact, selectable elements used for representing options in a space-efficient format. They function similar to radio buttons or checkboxes but with a more prominent, touch-friendly interface.
+
+### When to use
+
+- **Filter selection**: For toggling filters in search or data display interfaces
+- **Option selection**: As an alternative to radio buttons for a more visual selection experience
+- **Category selection**: For choosing from a set of predefined categories
+- **Preference toggles**: For enabling/disabling features or settings in a compact space
+
+### Guidelines
+
+- Limit to 5-7 options for optimal usability
+- Use consistent sizing and spacing between chip choices
+- Clearly differentiate selected and unselected states
+- Group related options together
+- Consider using icons to enhance visual recognition
+- Use the outlined variant for choice chips (Material Design recommendation)
+
+### Accessibility
+
+- Ensure sufficient color contrast between selected and unselected states
+- Provide keyboard navigation support between options
+- Use appropriate ARIA attributes for selection state
+- Include clear focus indicators for keyboard navigation
+- Consider screen reader users when designing chip choice groups
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceChip } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceChip.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceChip.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiChip" target="_blank">theme.ts (MuiChip styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceChipStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiChip-root` - Root chip container
+- `.MuiChip-label` - Text content container
+- `.MuiChip-icon` - Leading icon container
+
+**State Classes:**
+
+- `.Mui-disabled` - Applied when the disabled prop is true
+- `.Mui-clickable` - Applied when the clickable prop is true
+- `.solaceChip` - Base class applied to all Solace chips
+- `.light` - Applied when in light mode
+- `.dark` - Applied when in dark mode
+- `.active` - Applied when state is active
+- `.not-selected` - Applied when state is not selected
+
+**Variant Classes:**
+
+- `.MuiChip-filled` - Filled variant styling
+- `.MuiChip-outlined` - Outlined variant styling (default for choice chips)
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Background color for filled chips</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#8790A0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.wMain - Border color for outlined chips</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Active state highlight color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding between elements
+- theme.typography.body2 - Text style for chip labels
+- theme.components.MuiChip.styleOverrides.root - Override for chip root element
+- theme.components.MuiChip.styleOverrides.label - Override for chip label element
+- theme.components.MuiChip.styleOverrides.icon - Override for icon element
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Chip height: `24px` (small), `32px` (medium)
+- Border radius: Based on size type (sm, md, lg, xl)
+- Label padding: `2px` (default), `0px` (compressed)
+- Font size: Based on size type (xs, sm, md, lg, xl)
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

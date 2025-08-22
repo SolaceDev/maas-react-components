@@ -1,0 +1,166 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceChipStories from "./SolaceChip.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceChipStories} />
+
+<Title>Chip</Title>
+
+<Description of={SolaceChipStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceChip`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceChip component provides an interactive element for input, selection, or filtering with support for icons, deletable functionality, and various visual styles. This flexible chip pattern creates compact, interactive elements that can serve multiple interface functions from simple labels to complex input controls, helping organize information while providing consistent interaction patterns for selection, filtering, and data manipulation tasks.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceChip, CHIP_VARIANT, MODES } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Story Variants</Subtitle>
+
+The component includes three different story categories with multiple examples:
+
+**Standard Chip Stories (SolaceChip.stories.tsx):**
+
+- **DefaultChip** - Basic chip implementation with standard styling
+- **ChipWithPopover** - Demonstrates rich tooltip functionality with custom content and hover interactions
+- **ChipWithTooltip** - Shows simple tooltip integration for additional context
+- **TruncatedChip** - Illustrates content truncation with tooltip for overflow text
+- **ChipWithLeadingIcon** - Examples of icon integration for visual enhancement
+- **DisabledStandardChip** - Shows disabled state styling and behavior
+- **DarkStandardChip** - Demonstrates dark mode theming
+- **DisabledDarkStandardChip** - Combines disabled state with dark mode theming
+
+**Choice Chip Stories (SolaceChipChoice.stories.tsx):**
+
+- **DefaultActiveChoiceChip** - Choice chip in active/selected state with outlined variant
+- **DarkActiveChoiceChip** - Dark mode choice chip in active state
+- **DefaultNotSelectedChoiceChip** - Choice chip in unselected state
+- **DarkNotSelectedChoiceChip** - Dark mode choice chip in unselected state
+
+**Input Chip Stories (SolaceChipInput.stories.tsx):**
+
+- **DefaultInputChip** - Input chip with both click and delete functionality
+- **DarkInputChip** - Dark mode input chip with delete capability
+- **ErrorInputChip** - Input chip showing error status with error icon
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceChipStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiChip-root` - Root chip container with Material-UI styling
+- `.solaceChip` - Custom class for Solace-specific chip styling
+- `.MuiChip-label` - Text content wrapper
+- `.MuiChip-deleteIcon` - Delete button icon (when onDelete is provided)
+- `.MuiChip-icon` - Icon container for leading icons
+
+**Mode Classes:**
+
+- `.LIGHT_MODE` - Applied for light theme mode
+- `.DARK_MODE` - Applied for dark theme mode
+
+**Status Classes:**
+
+- `.NO_STATUS` - Default status with no special styling
+- `.ERROR_STATUS` - Applied when status indicates an error, shows error icon
+
+**State Classes:**
+
+- `.NOT_SELECTED` - Default unselected state
+- `.SELECTED` - Applied when chip is in selected state
+- `.MuiChip-clickable` - Applied when clickable is true
+- `.MuiChip-disabled` - Applied when disabled is true
+
+**Custom Icon Classes:**
+
+- `.leadingIcon` - Container for custom leading icons
+- `.errorIcon` - Container for error status icon
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default background color for filled variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Background color for outlined variant</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#C33135",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.w100 - Error icon color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for default padding)
+- theme.typography.[VARIANT] - Text styles for chip content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for chip container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for chip text
+- theme.components.MuiChip.styleOverrides.icon - Custom styling for leading icon
+- theme.components.MuiChip.styleOverrides.deleteIcon - Custom styling for delete icon
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in chip groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Height options: `xs: 12px`, `sm: 18px`, `md: 24px`, `lg: 30px`
+- Border radius options: `xs: 20px`, `sm: 30px`, `md: 40px`, `lg: 50px`
+- Default height: `md` (24px)
+- Default border radius: `md` (40px)
+- Default font size: `sm`
+- Default variant: `FILLED`
+- Icon size: `14x14` pixels for leading icons
+- Font weight: 400 by default, 500 when `boldLabel` is true
+- Transition timeout: `200ms`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories stories={SolaceChipStories} />

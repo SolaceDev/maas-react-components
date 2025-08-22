@@ -1,0 +1,149 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceTruncatableLinkStories from "./SolaceTruncatableLink.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceTruncatableLinkStories} />
+
+<Title>Truncatable Link</Title>
+
+<Description of={SolaceTruncatableLinkStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceTruncatableLink`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Truncatable Link component provides clickable links with automatic text truncation and tooltip display for long content. It's useful for displaying links in constrained spaces where text might overflow, implementing a truncatable link pattern that maintains accessibility and usability by showing full content in tooltips while keeping layouts clean and consistent.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceTruncatableLink } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceTruncatableLink.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceTruncatableLink.tsx)
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceTruncatableLinkStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- Custom `TextWrapper` - Text container with truncation styling
+- Custom `SolaceButtonWrapper` - Button wrapper for interactive links
+- `.MuiButton-root` - Underlying button component for clickable links
+- `.MuiTooltip-tooltip` - Tooltip container for overflow text
+
+**Custom Classes:**
+
+- Text truncation: `white-space: nowrap`, `overflow: hidden`, `text-overflow: ellipsis`
+- Button styling: `display: inline-flex`, `max-width: 100%`
+- Link styling: Custom hover states and focus indicators
+- Tooltip integration: Overflow-based tooltip triggering
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#273749",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Primary text color for links</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#009193",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.accent.n2.wMain - Focus outline color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Link color in default state</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#014968",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.w90 - Link hover color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#B1B9C0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.w50 - Disabled link color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.components.MuiButton.styleOverrides.textPrimary - Override link button styling
+- theme.components.MuiTooltip.styleOverrides.tooltip - Override tooltip appearance
+- theme.typography.body2 - Link text typography styling
+- theme.spacing() - Internal padding and margins
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and tooltip behavior through tooltip overrides.
+
+**Layout Specifications:**
+
+- Container: max-width: 100% to respect parent constraints
+- Text truncation: Ellipsis appears when content overflows
+- Tooltip positioning: bottom-end placement by default
+- Button padding: Inherited from SolaceButton link variant
+- Focus indicators: 1px solid outline with 1px offset
+- Hover states: Background color changes on interactive elements
+
+**Accessibility Features:**
+
+- Tooltip provides full text for screen readers
+- Proper focus management for keyboard navigation
+- ARIA labels for link context and behavior
+- Semantic link structure for assistive technologies
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

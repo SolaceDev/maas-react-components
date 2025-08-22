@@ -1,0 +1,115 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceFeatureTagStories from "./SolaceFeatureTag.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceFeatureTagStories} />
+
+<Title>Feature Tag</Title>
+
+<Description of={SolaceFeatureTagStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceFeatureTag`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceFeatureTag component provides a visual indicator for displaying feature states, release stages, or development status with customizable styling and colors. This feature status pattern helps users understand what to expect from different features while maintaining consistent visual styling across different feature states and development stages, allowing users to quickly identify and understand the current state or maturity level of features and functionality.
+
+<Subtitle>Usage Guidelines</Subtitle>
+
+**Visual Design & Accessibility Guidelines:**
+
+- **Contrast**: Ensure sufficient contrast between the tag's text/border and its background, especially when customizing colors.
+- **Sizing**: Choose appropriate size based on context and surrounding elements
+- **Placement**: Position consistently within feature lists, navigation, or content areas
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceFeatureTag } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceFeatureTag.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceFeatureTag.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiChip%3A%20%7B" target="_blank">theme.ts (MuiChip styles)</a>
+  <Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceFeatureTagStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.FeatureTag` - Styled span element with custom Solace feature tag styling
+
+**State Classes:**
+
+- `.active` - Applied when active prop is true, uses primary branding colors
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#B1B9C0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.w50 - Default border and text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Active state border and text color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and border radius (e.g., theme.spacing(0.5) for border radius)
+- theme.typography.[VARIANT] - Text styles for tag content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiChip.styleOverrides.root - Custom styling for tag container
+- theme.components.MuiChip.styleOverrides.label - Custom styling for tag text
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in tag groups
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Font size: `10px` (fixed)
+- Font weight: `500` (medium)
+- Line height: `10px`
+- Text transform: `uppercase`
+- Border width: `2px` solid
+- Border radius: `theme.spacing(0.5)` (4px typically)
+- Padding: `theme.spacing(0.25, 1)` (2px vertical, 8px horizontal typically)
+- Box sizing: `border-box`
+- Default colors: Secondary text at 50% opacity
+- Active colors: Primary brand color
+- Transition timeout: `200ms`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

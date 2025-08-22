@@ -11,101 +11,117 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 <Subtitle>Code Component Name</Subtitle>
 `SolaceAccordion`
 
-<Subtitle>How It Works</Subtitle>
+<Subtitle>Component Description</Subtitle>
 
-The `SolaceAccordion` component allows users to show and hide sections of related content. Accordions are useful when you want to toggle between hiding and showing large amounts of content. The component supports various states including expanded, disabled, with indicators, and with custom styling options.
+The SolaceAccordion component provides an expandable/collapsible container that helps organize content into sections by implementing a progressive disclosure pattern. This approach reduces visual clutter by only revealing essential information up front while keeping users focused on the main task, with secondary or complex content available in expandable areas when needed.
 
-<Subtitle>When To Use It</Subtitle>
-
-This is an interaction pattern called "progressive disclosure" with the purpose of only revealing the essential information up front, and moving the secondary/complex content out of the main interface into an expandable area. Usually used to keep user on track of the main task while still making additional information available.
-
-Examples of where it can be used:
-
-- Tables
-- Lists
-- Cards
-- Settings (for advanced options)
-
-<Subtitle>When Not To Use It</Subtitle>
-
-- The content is critical and should always be visible to users
-- There are only a few short sections that could easily fit on the screen at once
-- Users need to compare information across multiple sections simultaneously
-- The accordion would create an unnecessary extra step for frequently accessed content
-- The content has a natural sequential flow that users should follow step by step
-- The collapsed state might hide important information that users need to see immediately
-
-<Subtitle>Anatomy - Chevron Icon</Subtitle>
-
-- The chevron icon indicates the current state of the accordion (collapsed or expanded)
-- When collapsed, the chevron points to the right
-- When expanded, the chevron points down
-- The icon size is 24x24 pixels with 8px padding on all sides
-
-<Subtitle>Anatomy - Panel</Subtitle>
-
-- **Panel Area**: The container for the accordion content with a white background by default
-- **Separation Line**: A line below the section that gets pushed down with the content
-- **Background Area**: Default white (#FFFFFF) background color that may be changed based on context
-- **Padding Around Content**: Top: 8px, Right and Bottom: 16px
-- **Alignment of Content**: Content should be left-aligned with the title
-
-<Subtitle>Behavior</Subtitle>
-
-- **Default State**: May be collapsed or expanded depending on the context. The state should be maintained even if the user exits and returns to the page.
-- **Collapsed & Hover**: Hovering over the chevron icon or entire panel area triggers visual feedback.
-- **Expanded**: Clicking the chevron icon or anywhere in the title area will expand the panel and reveal content inside.
-- **Expanded & Hover**: Clicking the chevron icon or anywhere in the title area will collapse the panel and hide content inside.
-
-<Subtitle>Details</Subtitle>
+<Subtitle>Import Statement</Subtitle>
 
 ```tsx
-// Example of a basic accordion implementation with callback functions
-import React, { useState } from "react";
-
-const MyAccordionComponent = () => {
-	// State to track the expanded state of the accordion
-	const [isExpanded, setIsExpanded] = useState(false);
-
-	// Callback function for handling accordion expansion state changes
-	const handleAccordionChange = (event: React.SyntheticEvent, expanded: boolean) => {
-		setIsExpanded(expanded);
-
-		// Additional logic based on expansion state
-		if (expanded) {
-			console.log("Accordion expanded");
-			// You might want to:
-			// - Load additional content
-			// - Track analytics event
-			// - Update other UI elements
-		} else {
-			console.log("Accordion collapsed");
-			// You might want to:
-			// - Clean up resources
-			// - Reset form values
-			// - Update other UI elements
-		}
-	};
-
-	return (
-		<SolaceAccordion
-			id="exampleAccordion"
-			summary="Accordion Summary"
-			details="Accordion Details"
-			expanded={isExpanded}
-			onChange={handleAccordionChange}
-		/>
-	);
-};
+import { SolaceAccordion } from "@SolaceDev/maas-react-components";
 ```
 
-The source code for the `SolaceAccordion` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceAccordion.tsx)
+<Subtitle>Links</Subtitle>
 
-More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/file/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=1060%3A0)
+- **GitHub Source Code**: [SolaceAccordion.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceAccordion.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiAccordion" target="_blank">theme.ts (MuiAccordion, MuiAccordionSummary, MuiAccordionDetails styles)</a>
 
-<Subtitle>Properties</Subtitle>
+<Subtitle>Props</Subtitle>
 
 <ArgTypes of={SolaceAccordionStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiAccordion-root` - Root accordion container
+- `.MuiAccordionSummary-root` - Summary/header section
+- `.MuiAccordionDetails-root` - Expandable details section
+
+**State Classes:**
+
+- `.Mui-expanded` - Applied when accordion is expanded
+- `.Mui-disabled` - Applied when accordion is disabled
+- `.hasHoverEffect` - Applied when hover prop is true
+
+**Indicator Classes:**
+
+- `.indicator-info` - Info variant indicator styling
+- `.indicator-error` - Error variant indicator styling
+- `.indicator-warn` - Warning variant indicator styling
+- `.indicator-success` - Success variant indicator styling
+- `.indicator-secondary` - Secondary variant indicator styling
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Default border and divider color for accordion sections</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E94C4E",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Error state indicator color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#0591D3",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.info.wMain - Info state indicator color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding between elements (e.g., theme.spacing(2) for 16px)
+- theme.typography.body1 - Text style for accordion content
+- theme.typography.subtitle1 - Text style for accordion headers
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiAccordion.styleOverrides.root - Custom styling for accordion container
+- theme.components.MuiAccordionSummary.styleOverrides.root - Custom styling for header section
+- theme.components.MuiAccordionDetails.styleOverrides.root - Custom styling for content section
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Summary section padding: `theme.spacing(0.75, 0, 0.75, 1)` (6px 0px 6px 8px)
+- Details section padding: `theme.spacing(1, 2, 2, 6)` (8px 16px 16px 48px)
+- Expand icon: 24x24px ArrowRight icon
+- Transition timeout: `350ms`
 
 <Subtitle>Stories</Subtitle>
 

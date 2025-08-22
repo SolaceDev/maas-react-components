@@ -1,0 +1,140 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceMenuStories from "./SolaceMenu.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceMenuStories} />
+
+<Title>Menu</Title>
+
+<Description of={SolaceMenuStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceMenu`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Menu component provides a dropdown menu interface for displaying a list of actions or options. It combines a trigger button with a contextual menu that appears on click, implementing a menu pattern that provides organized navigation and action options in a space-efficient dropdown format while reducing interface clutter.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceMenu } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceMenu.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceMenu.tsx)
+- **GitHub Source Code**: [SolaceMenuItem.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolaceMenuItem.tsx)
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceMenuStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiMenu-root` - Root menu container
+- `.MuiMenu-paper` - Menu paper/popover container
+- `.MuiMenu-list` - Menu items list container
+- `.MuiMenuItem-root` - Individual menu item
+- `.MuiListItemIcon-root` - Menu item icon container
+- `.MuiListItemText-root` - Menu item text container
+
+**State Classes:**
+
+- `.Mui-selected` - Applied to selected menu items
+- `.Mui-disabled` - Applied to disabled menu items
+- `.Mui-focusVisible` - Applied when menu item has keyboard focus
+- `.pressed` - Applied to button when menu is open
+
+**Custom Classes:**
+
+- Custom scroll indicator styling for long menus
+- Nested submenu positioning and styling
+- Category heading styling for grouped items
+- Secondary action positioning within menu items
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#03223B",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.wMain - Menu background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Menu item hover background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#273749",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Menu item text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#009193",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.accent.n2.wMain - Focus indicator color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1, 0) - Menu container padding
+- theme.spacing(1) - Gap between icon and text
+- theme.components.MuiMenu.styleOverrides.paper - Override menu container styling
+- theme.components.MuiMenuItem.styleOverrides.root - Override menu item styling
+- theme.typography.body2 - Menu item text styling
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and positioning through menu overrides.
+
+**Layout Specifications:**
+
+- Default max width: 280px (configurable via maxWidth prop)
+- Default max height: Based on numOfMenuItemDisplayed (default 9 items)
+- Item height: 38px for single-line, 58px for multiline
+- Menu positioning: Configurable via anchorOrigin and transformOrigin
+- Padding: theme.spacing(1, 0) for menu container
+- Icon spacing: theme.spacing(1) gap between icon and text
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

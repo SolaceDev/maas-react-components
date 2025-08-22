@@ -1,0 +1,142 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceListStories from "./SolaceList.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceListStories} />
+
+<Title>List</Title>
+
+<Description of={SolaceListStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceList`
+
+<Subtitle>Component Description</Subtitle>
+
+The SolaceList component provides a flexible list layout for displaying collections of items with customizable styling, selection capabilities, and interactive elements. This versatile list pattern presents collections of related content in an organized, scannable format that helps users navigate through multiple items while providing flexible interaction options and consistent visual styling across different list types and configurations.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceList, SolaceListItem, SolaceListItemButton } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceList.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/layout/SolaceList.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiList%3A%20%7B" target="_blank">theme.ts (MuiList styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceListStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Material-UI List Classes:**
+
+Since SolaceList is a wrapper around Material-UI's List component, it inherits all the standard Material-UI list styling classes:
+
+- `.MuiList-root` - Root list container
+- `.MuiList-padding` - Applied when disablePadding is false (default)
+- `.MuiList-dense` - Applied when dense prop is true for compact spacing
+- `.MuiList-subheader` - Applied to subheader elements
+
+**List Item Classes (when using SolaceListItem):**
+
+- `.MuiListItem-root` - Root list item container
+- `.MuiListItem-dense` - Applied for compact list item spacing
+- `.MuiListItem-alignItemsFlexStart` - When alignItems="flex-start"
+- `.MuiListItem-divider` - Applied when divider prop is true
+- `.MuiListItem-gutters` - Default padding (removed when disableGutters=true)
+- `.MuiListItem-padding` - Applied when disablePadding is false
+
+**List Item Button Classes (when using SolaceListItemButton):**
+
+- `.MuiListItemButton-root` - Root list item button container
+- `.MuiListItemButton-dense` - Applied for compact button spacing
+- `.MuiListItemButton-alignItemsFlexStart` - When alignItems="flex-start"
+- `.MuiListItemButton-divider` - Applied when divider prop is true
+- `.MuiListItemButton-gutters` - Default padding (removed when disableGutters=true)
+- `.Mui-selected` - Applied when selected prop is true
+- `.Mui-disabled` - Applied when disabled prop is true
+- `.Mui-focusVisible` - Applied during keyboard focus
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - List background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E7E9EC",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w20 - List item divider color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Selected item background color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(2) - Default padding between list items
+- theme.typography.body1 - Base typography for list items
+- theme.components.MuiList.styleOverrides.root - Custom list container styling
+- theme.components.MuiListItem.styleOverrides.root - Custom list item styling
+- theme.components.MuiListItemButton.styleOverrides.root - Custom button styling
+- theme.transitions.create(['background-color']) - List item hover transitions
+
+Available mixins for consistent styling:
+
+- theme.mixins.list.item - Standard list item styling
+- theme.mixins.list.dense - Compact list item styling
+- theme.mixins.list.button - Interactive list item styling
+
+**Layout Specifications:**
+
+- Default padding: `8px` (theme.spacing(1))
+- Dense mode padding: `4px` (theme.spacing(0.5))
+- Item height: `48px` (standard), `32px` (dense)
+- Divider thickness: `1px`
+- Gutter spacing: `16px` (theme.spacing(2))
+- Flex direction: column
+- Width: 100% of container
+- Subheader height: `48px`
+- Hover state opacity: 0.04
+- Selected state opacity: 0.08
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

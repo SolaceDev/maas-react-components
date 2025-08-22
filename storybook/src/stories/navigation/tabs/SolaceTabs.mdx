@@ -1,0 +1,158 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceTabsStories from "./SolaceTabs.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceTabsStories} />
+
+<Title>Tabs</Title>
+
+<Description of={SolaceTabsStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceTabs`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Tabs component provides horizontal tab navigation for organizing content into multiple sections. It's useful for creating tabbed interfaces with text-based tab labels, implementing a tab navigation pattern that allows users to switch between different content views while maintaining context and providing clear section organization.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceTabs } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceTabs.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/layout/SolaceTabs.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiTabs" target="_blank">theme.ts (MuiTabs styles)</a>
+
+<Subtitle>Props</Subtitle>
+
+<ArgTypes of={SolaceTabsStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiTabs-root` - Root tabs container
+- `.MuiTabs-flexContainer` - Flex container for tab items
+- `.MuiTabs-indicator` - Active tab indicator line
+- `.MuiTab-root` - Individual tab button
+- `.MuiTab-labelIcon` - Tab with icon styling
+- `.MuiTabs-scrollButtons` - Scroll navigation buttons for scrollable variant
+
+**State Classes:**
+
+- `.Mui-selected` - Applied to the currently active tab
+- `.Mui-disabled` - Applied to disabled tabs
+- `.Mui-focusVisible` - Applied when tab has keyboard focus
+
+**Variant Classes:**
+
+- `.MuiTabs-standard` - Standard spacing variant
+- `.MuiTabs-fullWidth` - Full width variant where tabs fill container
+- `.MuiTabs-scrollable` - Scrollable variant for overflow content
+
+**Custom Classes:**
+
+- Custom active indicator styling with Solace brand colors
+- Notification counter integration for tab labels
+- Custom hover states and focus indicators
+- Typography scaling based on size prop
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#009193",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.accent.n2.wMain - Active tab indicator color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#273749",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.text.wMain - Active tab text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#647481",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.text.wMain - Inactive tab text color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Tab hover background</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#CFD3D9",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w40 - Disabled tab text color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1, 2) - Tab padding for comfortable click targets
+- theme.components.MuiTabs.styleOverrides.root - Override tabs container styling
+- theme.components.MuiTab.styleOverrides.root - Override individual tab styling
+- theme.typography.button - Tab text typography styling
+- theme.shape.borderRadius - Border radius for focus indicators
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and tab behavior through tabs overrides.
+
+**Layout Specifications:**
+
+- Tab height: 48px for standard size, 56px for medium size
+- Indicator height: 2px positioned at bottom of active tab
+- Tab padding: theme.spacing(1, 2) for comfortable click targets
+- Font sizes: sm (14px) default, md (16px) for larger variant
+- Border radius: 4px for focus indicators
+- Scroll button size: 40px x 40px for scrollable variant
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />

@@ -1,4 +1,4 @@
-import { Meta, Description, Title, Subtitle, ArgTypes, Markdown } from "@storybook/blocks";
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
 import * as SolacePopoverStories from "./SolacePopover.stories.tsx";
 import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 
@@ -11,100 +11,97 @@ import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
 <Subtitle>Code Component Name</Subtitle>
 `SolacePopover`
 
-<Subtitle>Popover Types</Subtitle>
+<Subtitle>Component Description</Subtitle>
 
-There are two main types of popovers:
+The SolacePopover component provides a floating container that displays content anchored to a specific element or position on the screen, useful for showing supplementary information, contextual actions, or interactive content without navigating away from the current view. This popover pattern creates non-modal overlays that display rich content positioned relative to trigger elements, helping reduce cognitive load by keeping related actions and information spatially connected while providing flexible positioning options for various layout requirements.
 
-1. **Standard Popover**
-
-- Contains supplementary or overflow information in flexible layouts
-- Content could be purely informational or interactive
-- Does not require user input to dismiss or proceed
-- Closes when clicking outside the popover
-
-2. **Input Popover**
-
-- Collects user input while maintaining page context
-- Ideal for situations where users need to reference nearby information while providing input
-- May include form elements and action buttons
-- Can include validation to prevent closing with unsaved changes
-
-<Subtitle>Alignment & Positioning</Subtitle>
-
-Popovers can be aligned to the trigger element in various ways:
-```
-Vertical 	Horizontal
-Top		Left
-Top		Center
-Top 		Right
-Center 		Left
-Center 		Center
-Center 		Right
-Bottom 		Left
-Bottom 		Center
-Bottom 		Right
-```
-The most important aspect of positioning is to ensure that the popover's placement does not block users from performing other tasks on screen. Implementation of alignments may differ from guidelines based on specific use cases.
-
-<Subtitle>Opening & Closing Behavior</Subtitle>
-
-- **Opening**:
-  - Popovers open upon the user clicking an interactive element (the trigger).
-- **Closing**:
-  - Standard popovers close when the user clicks outside the popover.
-  - Input popovers with unsaved changes should not close when clicked outside. Instead, display a warning to prompt the user to save or discard their changes.
-
-<Subtitle>Details</Subtitle>
+<Subtitle>Import Statement</Subtitle>
 
 ```tsx
-// Example of a basic popover implementation
-import React, { useState } from "react";
-import { SolaceButton, SolacePopover } from "@SolaceDev/maas-react-components";
-
-const MyComponent = () => {
-	// State to track the anchor element and open state
-	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-	const open = Boolean(anchorEl);
-	const id = open ? "simple-popover" : undefined;
-
-	// Handler for opening the popover
-	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	// Handler for closing the popover
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	return (
-		<div>
-			{/* Button that triggers the popover */}
-			<SolaceButton aria-describedby={id} variant="call-to-action" onClick={handleClick}>
-				Open Popover
-			</SolaceButton>
-
-			{/* The popover component */}
-			<SolacePopover
-				id={id}
-				open={open}
-				anchorElement={anchorEl}
-				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-				transformOrigin={{ vertical: "top", horizontal: "center" }}
-				onClose={handleClose}
-			>
-				<div style={{ padding: "16px" }}>This is the content of the popover.</div>
-			</SolacePopover>
-		</div>
-	);
-};
+import { SolacePopover } from "@SolaceDev/maas-react-components";
 ```
 
-The source code for the `SolacePopover` can be found in the [maas-react-component GitHub repository](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolacePopover.tsx)
+<Subtitle>Links</Subtitle>
 
-More examples and detailed explanations of this component can be found in the [UX Patterns (Figma)](https://www.figma.com/design/4Y6nwn19uTNgpxzNAP5Vqe/Patterns?node-id=21909-955&p=f&t=krT48Tpudmfvc1Pl-0)
+- **GitHub Source Code**: [SolacePopover.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/SolacePopover.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiPopover" target="_blank">theme.ts (MuiPopover styles)</a>
+
+<Subtitle>Props</Subtitle>
 
 <ArgTypes of={SolacePopoverStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiPopover-root` - Root popover container
+- `.MuiPopover-paper` - Paper component that contains the popover content
+- `.SolacePopover` - Custom class applied to the paper element for Solace-specific styling
+
+**State Classes:**
+
+- `.MuiPopover-root.Mui-open` - Applied when popover is open
+- `.MuiPopover-paper` - Paper container with elevation and border styling
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#FFFFFF",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.background.w10 - Popover background color</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#F3F4F6",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.w10 - Popover border color</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing([NUMBER]) - Padding and margin (e.g., theme.spacing(1) for default padding)
+- theme.typography.[VARIANT] - Text styles for popover content
+- theme.breakpoints.values.[SIZE] - Responsive behavior breakpoints
+- theme.components.MuiPopover.styleOverrides.root - Custom styling for popover container
+- theme.components.MuiPopover.styleOverrides.paper - Custom styling for popover paper element
+
+Available mixins for consistent styling:
+
+- theme.mixins.toolbar - Consistent toolbar styling if applicable in popover content
+
+To customize layout and structure, override the component styleOverrides in your theme configuration. You can modify spacing using the theme spacing function, typography using predefined variants, and responsive behavior using breakpoint values.
+
+**Layout Specifications:**
+
+- Anchor reference: Determined by presence of `anchorPosition` prop ("anchorPosition" or "anchorEl")
+- Pointer events: Set to "none" when `activateOnHover` is true, "auto" otherwise
+- Positioning: Controlled by `anchorOrigin` and `transformOrigin` props
+- Margin threshold: Configurable minimum distance from viewport edges
+- Content container: Material-UI Paper component with elevation and custom styling
+- Default padding: `theme.spacing(1)` (8px)
+- Border radius: Inherited from theme (default 4px)
+- Transition timeout: `225ms`
 
 <Subtitle>Stories</Subtitle>
 

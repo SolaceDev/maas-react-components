@@ -1,0 +1,236 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+/*
+ * Copyright 2023-2025 Solace Systems. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import React from "react";
+
+import { StoryFn } from "@storybook/react";
+
+import { Paper, SolaceGrid } from "@SolaceDev/maas-react-components";
+
+import { Meta } from "@storybook/react";
+
+(SolaceGrid as React.FC & { displayName?: string }).displayName = "SolaceGrid";
+(Paper as React.FC & { displayName?: string }).displayName = "Paper";
+
+export default {
+	title: "Layout/Grid",
+	component: SolaceGrid,
+	argTypes: {
+		id: {
+			control: { type: "text" },
+			description: "Unique identifier for the grid component. Used for accessibility and programmatic access.",
+			table: {
+				type: { summary: "string | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		hasWarnings: {
+			control: {
+				type: "boolean"
+			},
+			description:
+				"If true, displays the grid in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the grid content.",
+			table: {
+				type: { summary: "boolean | undefined" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		spacing: {
+			control: { type: "range", min: 1, max: 10, step: 1 },
+			description:
+				"Defines the space between the type item components. It can only be used on a type container component. Use this to control the spacing between grid items consistently across your layout.",
+			table: {
+				type: { summary: "Array<number| string>| number| object|string | undefined" },
+				defaultValue: { summary: "2" }
+			}
+		},
+		container: {
+			control: { type: "boolean" },
+			description:
+				"If true, the component will have the flex container behavior. You should be wrapping items with a container. Use this to create a grid container that holds grid items.",
+			table: {
+				type: { summary: "boolean | undefined" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		item: {
+			control: { type: "boolean" },
+			description:
+				"If true, the component will have the flex item behavior. You should be wrapping items with a container. Use this for grid items that are contained within a grid container.",
+			table: {
+				type: { summary: "boolean | undefined" },
+				defaultValue: { summary: "false" }
+			}
+		},
+		columns: {
+			control: { type: "text" },
+			description:
+				"The number of columns in the grid system. Controls how many columns are available for item placement. The default grid system uses 12 columns for maximum flexibility.",
+			table: {
+				type: { summary: "Array<number>| number| object | undefined" },
+				defaultValue: { summary: "12" }
+			}
+		},
+		direction: {
+			options: ["column-reverse", "column", "row-reverse", "row"],
+			control: { type: "select" },
+			description:
+				"Defines the flex-direction style property. It is applied for all screen sizes. Use this to control whether grid items flow in rows or columns and their direction.",
+			table: {
+				type: {
+					summary:
+						"'column-reverse'| 'column'| 'row-reverse'| 'row'| Array<'column-reverse'| 'column'| 'row-reverse'| 'row'>| object | undefined"
+				},
+				defaultValue: { summary: "row" }
+			}
+		},
+		xs: {
+			control: { type: "number" },
+			description:
+				"Number of columns the grid item should span on extra-small screens (0px and up). Use this to control responsive behavior on mobile devices.",
+			table: {
+				type: { summary: "number | 'auto' | boolean | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		sm: {
+			control: { type: "number" },
+			description:
+				"Number of columns the grid item should span on small screens (600px and up). Use this to control responsive behavior on tablets.",
+			table: {
+				type: { summary: "number | 'auto' | boolean | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		md: {
+			control: { type: "number" },
+			description:
+				"Number of columns the grid item should span on medium screens (900px and up). Use this to control responsive behavior on desktop displays.",
+			table: {
+				type: { summary: "number | 'auto' | boolean | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		lg: {
+			control: { type: "number" },
+			description:
+				"Number of columns the grid item should span on large screens (1200px and up). Use this to control responsive behavior on large desktop displays.",
+			table: {
+				type: { summary: "number | 'auto' | boolean | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		xl: {
+			control: { type: "number" },
+			description:
+				"Number of columns the grid item should span on extra-large screens (1536px and up). Use this to control responsive behavior on very large displays.",
+			table: {
+				type: { summary: "number | 'auto' | boolean | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		justifyContent: {
+			options: ["flex-start", "center", "flex-end", "space-between", "space-around", "space-evenly"],
+			control: { type: "select" },
+			description:
+				"Defines how grid items are aligned along the main axis. Use this to control horizontal alignment of items within the container.",
+			table: {
+				type: {
+					summary:
+						"'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | undefined"
+				},
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		alignItems: {
+			options: ["flex-start", "center", "flex-end", "stretch", "baseline"],
+			control: { type: "select" },
+			description:
+				"Defines how grid items are aligned along the cross axis. Use this to control vertical alignment of items within the container.",
+			table: {
+				type: { summary: "'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline' | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		wrap: {
+			options: ["nowrap", "wrap", "wrap-reverse"],
+			control: { type: "select" },
+			description:
+				"Defines whether grid items should wrap to new lines when they exceed the container width. Use 'wrap' for responsive layouts that adapt to different screen sizes.",
+			table: {
+				type: { summary: "'nowrap' | 'wrap' | 'wrap-reverse' | undefined" },
+				defaultValue: { summary: "wrap" }
+			}
+		},
+		sx: {
+			control: { type: "object" },
+			description:
+				"System prop for custom styling using the theme. Use this to apply custom styles, spacing, colors, or other theme-aware properties to the grid component.",
+			table: {
+				type: { summary: "object | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		},
+		children: {
+			control: { type: "object" },
+			description:
+				"The content of the grid component. Should contain SolaceGrid items when used as a container. Use this to nest grid items or other components within the grid.",
+			table: {
+				type: { summary: "React.ReactNode | undefined" },
+				defaultValue: { summary: "undefined" }
+			}
+		}
+	},
+	parameters: {}
+} as Meta;
+const Template: StoryFn<typeof SolaceGrid> = (args) => <SolaceGrid container {...args} />;
+
+const defaultStyle = { backgroundColor: "lightgrey", padding: 1, textAlign: "center" };
+const defaultContent = (
+	<>
+		<SolaceGrid item xs>
+			<Paper sx={defaultStyle}>xs</Paper>
+		</SolaceGrid>
+		<SolaceGrid item xs={6}>
+			<Paper sx={defaultStyle}>xs=6</Paper>
+		</SolaceGrid>
+		<SolaceGrid item xs>
+			<Paper sx={defaultStyle}>xs</Paper>
+		</SolaceGrid>
+	</>
+);
+
+export const AutoLayoutGrid = {
+	render: Template,
+
+	args: {
+		children: defaultContent
+	}
+};
+
+export const TextGrid = {
+	render: Template,
+
+	args: {
+		children: (
+			<>
+				<SolaceGrid item>{"Item 1"}</SolaceGrid>
+				<SolaceGrid item>{"Item 2"}</SolaceGrid>
+				<SolaceGrid item>{"Item 3"}</SolaceGrid>
+			</>
+		)
+	}
+};

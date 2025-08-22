@@ -1,0 +1,118 @@
+import { Meta, Description, Title, Subtitle, ArgTypes } from "@storybook/blocks";
+import * as SolaceCheckBoxStories from "./SolaceCheckBox.stories.tsx";
+import { CustomStories } from "../../../../.storybook/CustomStories.tsx";
+
+<Meta of={SolaceCheckBoxStories} />
+
+<Title>Checkbox</Title>
+
+<Description of={SolaceCheckBoxStories} />
+
+<Subtitle>Code Component Name</Subtitle>
+`SolaceCheckBox`
+
+<Subtitle>Component Description</Subtitle>
+
+The Solace Checkbox component provides a customizable checkbox input for user selection, useful for allowing users to make binary choices, enabling or disabling options, and creating lists of selectable items. The component implements a form input pattern with the purpose of capturing user preferences or acknowledgments, helping users make clear decisions while providing visual feedback and supporting various states such as checked, unchecked, and indeterminate.
+
+<Subtitle>Import Statement</Subtitle>
+
+```tsx
+import { SolaceCheckBox } from "@SolaceDev/maas-react-components";
+```
+
+<Subtitle>Links</Subtitle>
+
+- **GitHub Source Code**: [SolaceCheckBox.tsx](https://github.com/SolaceDev/maas-react-components/blob/main/src/components/form/SolaceCheckBox.tsx)
+- **GitHub Theme Styles**: <a href="https://github.com/SolaceDev/maas-react-components/blob/main/src/resources/theme.ts#:~:text=MuiCheckbox" target="_blank">theme.ts (MuiCheckbox styles)</a>
+
+<Subtitle>Properties</Subtitle>
+
+<ArgTypes of={SolaceCheckBoxStories} />
+
+<Subtitle>CSS Classes / Styles</Subtitle>
+
+**Main Component Classes:**
+
+- `.MuiCheckbox-root` - Root checkbox container
+- `.MuiCheckbox-checked` - Applied when the checkbox is checked
+- `.MuiCheckbox-indeterminate` - Applied when the checkbox is in an indeterminate state
+- `.MuiFormControlLabel-root` - Container for the checkbox and its label
+
+**State Classes:**
+
+- `.Mui-checked` - Applied when the checkbox is checked
+- `.Mui-disabled` - Applied when the checkbox is disabled
+- `.Mui-error` - Applied when the checkbox has an error state
+- `.Mui-focused` - Applied when the checkbox has focus
+
+**Theme Customization:**
+
+**Color Theming:**
+The component uses the theme.palette.ux color system for all color-related styling. Key color theme paths:
+
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#015B82",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.primary.wMain - Color for the checked state and focus ring</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#8790A0",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.secondary.wMain - Color for the unchecked state</span>
+</div>
+<div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+	<div
+		style={{
+			width: "16px",
+			height: "16px",
+			backgroundColor: "#E94C4E",
+			border: "1px solid rgba(0,0,0,0.2)",
+			borderRadius: "3px",
+			marginRight: "8px"
+		}}
+	></div>
+	<span>theme.palette.ux.error.wMain - Color for error states</span>
+</div>
+
+To customize colors, override the palette values in your theme configuration by extending the base theme and modifying the specific color group and variant you want to change.
+
+**Non-Color Theming:**
+Structural and layout customization through component overrides and mixins:
+
+- theme.spacing(1) - Padding between checkbox and label
+- theme.typography.body1 - Text style for checkbox label
+- theme.components.MuiCheckbox.styleOverrides.root - Base checkbox styling
+- theme.components.MuiFormControlLabel.styleOverrides.root - Label container styling
+
+Available mixins for consistent styling:
+
+- theme.mixins.checkbox.base - Standard checkbox styling patterns
+
+**Layout Specifications:**
+
+- Checkbox size: `18px × 18px` (default)
+- Label padding: `theme.spacing(1)` (9px) left of the checkbox
+- Focus ring size: `2px` width
+- Transition duration: `150ms`
+- Icon size: `18px`
+
+<Subtitle>Stories</Subtitle>
+
+<CustomStories />
