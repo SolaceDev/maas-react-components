@@ -25,18 +25,6 @@ export default {
 	title: "Messaging/Banner/Notification",
 	component: SolaceMessageBox,
 	parameters: {},
-	args: {
-		message: "helpful information.",
-		showIcon: true,
-		showCloseButton: false,
-		onClose: undefined,
-		variant: "info",
-		color: "",
-		dense: false,
-		details: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
 	argTypes: {
 		message: {
 			control: { type: "text" },
@@ -57,13 +45,6 @@ export default {
 			description: "Whether to show the close button",
 			table: {
 				defaultValue: { summary: "false" }
-			}
-		},
-		onClose: {
-			action: "message box closed",
-			description: "Callback function after the message box is closed",
-			table: {
-				defaultValue: { summary: "undefined" }
 			}
 		},
 		variant: {

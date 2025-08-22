@@ -66,22 +66,6 @@ export default {
 	title: "Navigation/Page Header",
 	component: SolacePageHeader,
 	parameters: {},
-	args: {
-		id: "",
-		title: "Page Name",
-		subTitle: "",
-		release: "",
-		environment: undefined,
-		borderTop: "",
-		breadcrumbs: undefined,
-		actions: undefined,
-		actionMenu: undefined,
-		tabs: undefined,
-		iconTabs: undefined,
-		returnTo: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

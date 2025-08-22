@@ -28,15 +28,6 @@ const meta: Meta<typeof SolaceEmptyStateBanner> = {
 	 */
 	title: "Layout/Empty State/Learning",
 	component: SolaceEmptyStateBanner,
-	args: {
-		bannerImage: undefined,
-		title: "",
-		subtitle: "",
-		description: "",
-		primaryButton: undefined,
-		secondaryButton: undefined,
-		dataQa: ""
-	},
 	parameters: {},
 	argTypes: {
 		bannerImage: {

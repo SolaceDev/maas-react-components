@@ -19,7 +19,6 @@ import { within, userEvent } from "@storybook/testing-library";
 import { Search } from "@mui/icons-material";
 import { SolaceTextField, SolaceButton, CloseIcon } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
-import { fn } from "@storybook/test";
 
 (SolaceTextField as React.FC & { displayName?: string }).displayName = "SolaceTextField";
 (SolaceButton as React.FC & { displayName?: string }).displayName = "SolaceButton";
@@ -27,31 +26,6 @@ import { fn } from "@storybook/test";
 export default {
 	title: "Input/Textfield/Standard",
 	component: SolaceTextField,
-	args: {
-		id: "",
-		name: "",
-		title: "",
-		label: "",
-		placeholder: "",
-		helperText: "",
-		value: "",
-		hasErrors: false,
-		hasWarnings: false,
-		autoFocus: false,
-		inlineLabel: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		type: "text",
-		size: undefined,
-		width: undefined,
-		minWidth: undefined,
-		customIcon: undefined,
-		endAdornment: undefined,
-		dataQa: "",
-		dataTags: "",
-		onFocus: fn()
-	},
 	parameters: {
 		design: {
 			type: "figma",
@@ -258,20 +232,6 @@ export default {
 		onChange: {
 			description:
 				"Callback function fired when the input value changes. Receives an event object with the new value. Essential for controlled components and form state management.",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		onBlur: {
-			description:
-				"Callback function fired when the input loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes editing.",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the input gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for input.",
 			table: {
 				defaultValue: { summary: "undefined" }
 			}

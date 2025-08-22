@@ -58,36 +58,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Dropdown/Standard",
 	component: SolaceSelect,
-	args: {
-		label: "",
-		helperText: "",
-		hasErrors: false,
-		hasWarnings: false,
-		inlineLabel: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		value: undefined,
-		defaultValue: undefined,
-		multiple: false,
-		width: undefined,
-		maxHeight: undefined,
-		displayEmpty: false,
-		placeholder: "",
-		name: "",
-		id: "",
-		title: "",
-		onChange: undefined,
-		onBlur: undefined,
-		onFocus: undefined,
-		children: undefined,
-		getOptionDisplayValue: undefined,
-		open: undefined,
-		onOpen: undefined,
-		onClose: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
 	parameters: {
 		controls: { sort: "alpha" },
 		docs: {
@@ -103,19 +73,14 @@ export default {
 			},
 			description:
 				"The label text displayed above or inline with the select field. Use this to clearly describe what the user is selecting. Labels should be concise and descriptive.",
-			table: {
-				defaultValue: { summary: "" }
-			}
+			table: {}
 		},
 		helperText: {
 			control: {
 				type: "text"
 			},
 			description:
-				"Additional text displayed below the select field to provide guidance or error messages. Use this to give users context about available options or validation requirements.",
-			table: {
-				defaultValue: { summary: "" }
-			}
+				"Additional text displayed below the select field to provide guidance or error messages. Use this to give users context about available options or validation requirements."
 		},
 		hasErrors: {
 			control: {
@@ -124,8 +89,7 @@ export default {
 			description:
 				"If true, displays the select field in an error state with red styling. Use this to indicate validation failures or selection errors. Often paired with error text in helperText.",
 			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
+				type: { summary: "boolean" }
 			}
 		},
 		hasWarnings: {
@@ -135,7 +99,6 @@ export default {
 			description:
 				"If true, displays the select in a warning state with amber styling. Use this to indicate potential issues or cautionary information about the select options.",
 			table: {
-				type: { summary: "boolean" },
 				defaultValue: { summary: "false" }
 			}
 		},
@@ -146,8 +109,7 @@ export default {
 			description:
 				"If true, displays the label inline with the select field rather than above it. Use this for compact layouts or when you need to save vertical space.",
 			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
+				type: { summary: "boolean" }
 			}
 		},
 		required: {
@@ -189,9 +151,7 @@ export default {
 			},
 			description:
 				"The current selected value of the select field. Use this for controlled components where you manage the field state externally. Should be paired with an onChange handler.",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
+			table: {}
 		},
 		defaultValue: {
 			control: {
@@ -200,7 +160,7 @@ export default {
 			description:
 				"The default selected value for uncontrolled components. Use this when you want to set an initial value but don't need to control the selection state.",
 			table: {
-				defaultValue: { summary: "undefined" }
+				defaultValue: { summary: '""' }
 			}
 		},
 		multiple: {
@@ -210,8 +170,7 @@ export default {
 			description:
 				"If true, enables multiple selection mode. Users can select multiple options from the dropdown. The value will be an array of selected values.",
 			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "false" }
+				type: { summary: "boolean" }
 			}
 		},
 		width: {
@@ -220,9 +179,7 @@ export default {
 			},
 			description:
 				"The width of the select field. Can be a number (pixels), percentage, or CSS width value. Use this to control the field width within your layout constraints.",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
+			table: {}
 		},
 		maxHeight: {
 			control: {
@@ -230,9 +187,7 @@ export default {
 			},
 			description:
 				"Maximum height of the dropdown menu. Use this to limit the dropdown height and enable scrolling when there are many options.",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
+			table: {}
 		},
 		displayEmpty: {
 			control: {
@@ -250,10 +205,7 @@ export default {
 				type: "text"
 			},
 			description:
-				"Placeholder text displayed when no value is selected and displayEmpty is true. Use this to provide guidance about what the user should select.",
-			table: {
-				defaultValue: { summary: "" }
-			}
+				"Placeholder text displayed when no value is selected and displayEmpty is true. Use this to provide guidance about what the user should select."
 		},
 		name: {
 			control: {
@@ -261,19 +213,14 @@ export default {
 			},
 			description:
 				"The name attribute for the select field, used for form submission and accessibility. Essential for proper form handling and assistive technology support.",
-			table: {
-				defaultValue: { summary: "" }
-			}
+			table: {}
 		},
 		id: {
 			control: {
 				type: "text"
 			},
 			description:
-				"Unique identifier for the select field. Used to associate the label with the input for accessibility and to reference the field programmatically.",
-			table: {
-				defaultValue: { summary: "" }
-			}
+				"Unique identifier for the select field. Used to associate the label with the input for accessibility and to reference the field programmatically."
 		},
 		title: {
 			control: {
@@ -281,29 +228,17 @@ export default {
 			},
 			description:
 				"The title attribute for the select field, displayed as a tooltip on hover. Use this for additional context or instructions that don't fit in the label or helper text.",
-			table: {
-				defaultValue: { summary: "" }
-			}
+			table: {}
 		},
 		onChange: {
 			description:
 				"Callback function fired when the selection changes. Receives an event object with the new value. Essential for controlled components and form state management."
 		},
-		onBlur: {
-			description:
-				"Callback function fired when the select field loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes selecting."
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the select field gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for selection."
-		},
 		children: {
 			control: { type: "object" },
 			description:
 				"MenuItem components that represent the available options. Use MenuItem components from the library to ensure proper styling and behavior.",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
+			table: {}
 		},
 		getOptionDisplayValue: {
 			description:
@@ -316,31 +251,16 @@ export default {
 			description:
 				"Controls whether the dropdown is open. Use this for controlled dropdown state, often paired with onOpen and onClose handlers.",
 			table: {
-				type: { summary: "boolean" },
-				defaultValue: { summary: "undefined" }
+				type: { summary: "boolean" }
 			}
-		},
-		onOpen: {
-			description:
-				"Callback function fired when the dropdown opens. Use this for controlled dropdown state or to trigger actions when the dropdown becomes visible."
-		},
-		onClose: {
-			description:
-				"Callback function fired when the dropdown closes. Use this for controlled dropdown state or to trigger actions when the dropdown becomes hidden."
 		},
 		dataQa: {
 			control: { type: "text" },
-			description: "Data attribute for QA testing. Use this to identify the select field during automated testing.",
-			table: {
-				defaultValue: { summary: "" }
-			}
+			description: "Data attribute for QA testing. Use this to identify the select field during automated testing."
 		},
 		dataTags: {
 			control: { type: "text" },
-			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata.",
-			table: {
-				defaultValue: { summary: "" }
-			}
+			description: "Data attribute for additional tagging. Use this for analytics, tracking, or additional metadata."
 		}
 	},
 	decorators: [withSnapshotContainer]

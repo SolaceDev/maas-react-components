@@ -16,7 +16,6 @@
 import React, { useState } from "react";
 import { Meta } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
-import { fn } from "@storybook/test";
 
 import {
 	InfoIcon,
@@ -32,24 +31,6 @@ import {
 export default {
 	title: "Input/Textfield/Attribute Pair",
 	component: SolaceAttributeValuePairForm,
-	args: {
-		id: "",
-		name: "",
-		labelForKeys: "Keys",
-		labelForValues: "Values",
-		avpList: [],
-		hasWarnings: false,
-		hasErrors: false,
-		helperText: "",
-		disableReorder: false,
-		readOnly: false,
-		emptyFieldDisplayValue: "",
-		enableRequiredKeyFieldIndicator: false,
-		keyIsRequiredMessage: "",
-		avpListMaxHeight: "",
-		virtualizedAvpListOption: undefined,
-		onAVPListUpdate: fn()
-	},
 	parameters: {
 		docs: {
 			story: { height: "500px" },
@@ -99,9 +80,6 @@ export default {
 				type: { summary: "Array<AVPItem>" },
 				defaultValue: { summary: "[]" }
 			}
-		},
-		onAVPListUpdate: {
-			description: "Callback function triggered when the list is updated."
 		},
 		hasWarnings: {
 			control: { type: "boolean" },
@@ -167,12 +145,6 @@ export default {
 				type: { summary: "string" },
 				defaultValue: { summary: "undefined" }
 			}
-		},
-		avpKeyValidationCallback: {
-			description: "Custom validation function for key fields."
-		},
-		avpValueValidationCallback: {
-			description: "Custom validation function for value fields."
 		},
 		avpListMaxHeight: {
 			control: { type: "text" },

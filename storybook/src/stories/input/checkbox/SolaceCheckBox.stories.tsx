@@ -27,30 +27,6 @@ const TITLE = "Demo Checkbox";
 export default {
 	title: "Input/Checkbox",
 	component: SolaceCheckBox,
-	args: {
-		label: "",
-		helperText: "",
-		hasErrors: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		checked: false,
-		defaultChecked: false,
-		indeterminate: false,
-		boldLabel: false,
-		largeLabel: false,
-		subTextProps: undefined,
-		name: "",
-		id: "",
-		title: "",
-		value: "",
-		onChange: undefined,
-		onBlur: undefined,
-		onFocus: undefined,
-		dataQa: "",
-		dataTags: "",
-		hasWarnings: false
-	},
 	parameters: {
 		design: {
 			type: "figma",
@@ -241,14 +217,6 @@ export default {
 		onChange: {
 			description:
 				"Callback function fired when the checkbox state changes. Receives an event object with the new checked state. Essential for controlled components and form state management."
-		},
-		onBlur: {
-			description:
-				"Callback function fired when the checkbox loses focus. Use this for validation or other actions that should occur when the user finishes interacting with the checkbox."
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the checkbox gains focus. Use this for tracking user interaction or showing additional UI elements."
 		},
 		dataQa: {
 			control: { type: "text" },

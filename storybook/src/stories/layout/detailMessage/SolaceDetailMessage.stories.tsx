@@ -27,14 +27,6 @@ import ApiProducts from "../../../resources/images/ApiProducts";
 export default {
 	title: "Layout/Empty State/Standard",
 	component: SolaceDetailMessage,
-	args: {
-		id: "",
-		hasWarnings: false,
-		msgImg: undefined,
-		title: "",
-		details: "",
-		actions: undefined
-	},
 	parameters: {},
 	argTypes: {
 		id: {

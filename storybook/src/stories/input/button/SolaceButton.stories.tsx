@@ -32,26 +32,6 @@ enum VARIANT {
 export default {
 	title: "Input/Button/Standard",
 	component: SolaceButton,
-	args: {
-		id: "",
-		variant: "text",
-		isDisabled: false,
-		title: "",
-		href: "",
-		component: "button",
-		type: "button",
-		size: "medium",
-		startIcon: undefined,
-		endIcon: undefined,
-		onClick: undefined,
-		children: "",
-		disabledFocusState: false,
-		fullWidth: false,
-		loading: false,
-		dataQa: "",
-		dataTags: "",
-		hasWarnings: false
-	},
 	parameters: {
 		design: {
 			type: "figma",

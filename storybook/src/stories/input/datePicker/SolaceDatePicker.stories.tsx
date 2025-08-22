@@ -40,32 +40,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Date Picker/Standard",
 	component: SolaceDatePicker,
-	args: {
-		value: "",
-		defaultValue: "",
-		variant: SolaceDatePickerVariant.FORMAT_YEAR_MONTH_DAY,
-		timezone: "",
-		label: "",
-		helperText: "",
-		hasErrors: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		disableFuture: false,
-		disablePast: false,
-		minDate: "",
-		maxDate: "",
-		placeholder: "",
-		name: "",
-		id: "",
-		hasWarnings: false,
-		onChange: undefined,
-		onClear: undefined,
-		onBlur: undefined,
-		onFocus: undefined,
-		dataQa: "",
-		dataTags: ""
-	},
 	properties: {
 		docs: {
 			description: {
@@ -245,14 +219,6 @@ export default {
 		onClear: {
 			description:
 				"Callback function fired when the date is cleared. Use this to handle clearing actions and update form state appropriately."
-		},
-		onBlur: {
-			description:
-				"Callback function fired when the date picker loses focus. Use this for validation or other actions that should occur when the user finishes date selection."
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the date picker gains focus. Use this for tracking user interaction or showing additional UI elements."
 		},
 		dataQa: {
 			control: { type: "text" },

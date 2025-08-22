@@ -24,21 +24,6 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Toggle Switch",
 	component: SolaceToggle,
-	args: {
-		id: "",
-		name: "",
-		title: "",
-		label: "",
-		helperText: "",
-		isOn: false,
-		hasErrors: false,
-		required: false,
-		disabled: false,
-		largeLabel: false,
-		stateText: false,
-		dataQa: "",
-		dataTags: ""
-	},
 	parameters: {
 		design: {
 			type: "figma",

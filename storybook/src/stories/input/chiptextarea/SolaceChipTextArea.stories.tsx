@@ -20,7 +20,6 @@ import { Meta } from "@storybook/react";
 import { SolaceChipTextArea } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { within, userEvent } from "@storybook/test";
-import { fn } from "@storybook/test";
 
 // Constants for reuse
 const DEMO_TITLE = "Demo Chip Text Area";
@@ -42,21 +41,6 @@ const emailValidationFunction = (text: string): string | undefined => {
 export default {
 	title: "Input/Textfield/Text Area with Chips",
 	component: SolaceChipTextArea,
-	args: {
-		id: "",
-		hasWarnings: false,
-		label: "Chip Text Area",
-		helperText: "",
-		hasErrors: false,
-		autoFocus: false,
-		inlineLabel: false,
-		required: false,
-		value: "",
-		width: "",
-		onKeyDown: fn(),
-		onFocus: fn(),
-		onKeyUp: fn()
-	},
 	parameters: {
 		docs: {
 			description: {
@@ -175,18 +159,6 @@ export default {
 		},
 		onChange: {
 			description: "Callback function to trigger whenever the value of the input is changed."
-		},
-		onBlur: {
-			description: "Callback function to trigger whenever the element of the input loses focus."
-		},
-		onKeyDown: {
-			description: "Callback function to trigger whenever the element of the input receives key down event."
-		},
-		onKeyUp: {
-			description: "Callback function to trigger whenever the element of the input receives key up event."
-		},
-		onFocus: {
-			description: "Callback function to trigger whenever the element of the input is focused."
 		},
 		validateChip: {
 			description:

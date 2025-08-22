@@ -156,24 +156,6 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
-		onOpen: {
-			control: false,
-			description:
-				"Callback fired when the tooltip requests to be opened. Use this for controlled tooltips or to track tooltip interactions for analytics.",
-			table: {
-				type: { summary: "(event: React.SyntheticEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		onClose: {
-			control: false,
-			description:
-				"Callback fired when the tooltip requests to be closed. Use this for controlled tooltips or to perform cleanup actions when tooltip is hidden.",
-			table: {
-				type: { summary: "(event: React.SyntheticEvent) => void" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
 		enterDelay: {
 			control: { type: "number" },
 			description:

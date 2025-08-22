@@ -24,31 +24,6 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Textfield/Text Area",
 	component: SolaceTextArea,
-	args: {
-		id: "",
-		name: "",
-		title: "",
-		label: "",
-		placeholder: "",
-		helperText: "",
-		value: "",
-		hasErrors: false,
-		hasWarnings: false,
-		autoFocus: false,
-		inlineLabel: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		type: "text",
-		rows: 4,
-		maxRows: undefined,
-		minRows: undefined,
-		size: undefined,
-		width: undefined,
-		resizable: "both",
-		dataQa: "",
-		dataTags: ""
-	},
 	parameters: {
 		design: {
 			type: "figma",
@@ -286,22 +261,6 @@ export default {
 		onChange: {
 			description:
 				"Callback function fired when the text area value changes. Receives an event object with the new value. Essential for controlled components and form state management."
-		},
-		onBlur: {
-			description:
-				"Callback function fired when the text area loses focus. Use this for validation, formatting, or other actions that should occur when the user finishes editing."
-		},
-		onKeyDown: {
-			description:
-				"Callback function fired when a key is pressed down in the text area. Use this for custom keyboard shortcuts, input validation, or navigation controls."
-		},
-		onKeyUp: {
-			description:
-				"Callback function fired when a key is released in the text area. Use this for delayed validation, auto-save functionality, or character counting."
-		},
-		onFocus: {
-			description:
-				"Callback function fired when the text area gains focus. Use this for tracking user interaction, showing additional UI elements, or preparing the field for input."
 		},
 		dataQa: {
 			control: { type: "text" },

@@ -34,20 +34,6 @@ import { expect } from "@storybook/jest";
 export default {
 	title: "Layout/Responsive Chip List",
 	component: SolaceResponsiveItemList,
-	args: {
-		id: "",
-		hasWarnings: false,
-		items: undefined,
-		containerWidth: undefined,
-		componentToShowOverflowItems: "popover",
-		numOfRowsToShow: 1,
-		numOfMenuItemsToDisplay: undefined,
-		showAll: false,
-		overflowIndicatorLabel: "more",
-		overflowIndicatorLabelSingular: "more",
-		onItemsOverflow: undefined,
-		onItemsOverflowIndicatorClick: undefined
-	},
 	parameters: {
 		docs: {
 			description: {

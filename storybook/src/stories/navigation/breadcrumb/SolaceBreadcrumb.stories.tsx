@@ -24,19 +24,6 @@ export default {
 	title: "Navigation/Breadcrumb",
 	component: SolaceBreadcrumb,
 	parameters: {},
-	args: {
-		id: "",
-		paths: [
-			{
-				title: "Home",
-				link: "/",
-				current: true
-			}
-		],
-		maxItems: 8,
-		dataQa: "breadcrumbs",
-		dataTags: ""
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },
@@ -71,13 +58,6 @@ export default {
 				defaultValue: { summary: "8" }
 			},
 			description: "Maximum of displayed paths (to see ... when there's more)"
-		},
-		onRouteClick: {
-			action: "route clicked",
-			description: "Callback function triggered when a route is clicked",
-			table: {
-				defaultValue: { summary: "undefined" }
-			}
 		},
 		dataQa: {
 			control: { type: "text" },

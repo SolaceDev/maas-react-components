@@ -33,23 +33,6 @@ export default {
 			url: "https://www.figma.com/file/P5XeF1KE6z2MKyzlEyInrH/Core-Component-Specs-(Copy)?node-id=1%3A2"
 		}
 	},
-	args: {
-		id: "",
-		variant: "link",
-		isDisabled: false,
-		underline: "hover",
-		title: "",
-		href: "",
-		dense: false,
-		component: "button",
-		type: "button",
-		children: "Click Me!",
-		openLinkInNewTab: true,
-		disabledFocusState: false,
-		dataQa: "",
-		dataTags: "",
-		eventName: ""
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

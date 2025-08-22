@@ -26,18 +26,6 @@ export default {
 	title: "Navigation/Tabs/Standard",
 	component: SolaceTabs,
 	parameters: {},
-	args: {
-		tabs: [
-			{ label: "Tab One", value: "tab_one", href: "#" },
-			{ label: "Tab Two", value: "tab_two", href: "#" },
-			{ label: "Tab Three", value: "tab_three", href: "#" }
-		],
-		activeTabValue: "tab_one",
-		size: "sm",
-		variant: "standard",
-		dataQa: "",
-		dataTags: ""
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

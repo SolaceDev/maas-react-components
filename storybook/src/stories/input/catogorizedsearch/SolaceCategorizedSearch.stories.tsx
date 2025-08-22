@@ -30,23 +30,6 @@ import { within, userEvent } from "@storybook/testing-library";
 export default {
 	title: "Input/Search & Filter/Categorized",
 	component: SolaceCategorizedSearch,
-	args: {
-		id: "",
-		name: "",
-		layout: SolaceCategorizedSearchLayout.vertical,
-		equalButtonWidth: false,
-		disabled: false,
-		autoFocus: false,
-		hasErrors: false,
-		hasWarnings: false,
-		categoryOptions: [],
-		selectedCategoryValue: "",
-		searchValue: "",
-		placeholder: "",
-		helperText: "",
-		categoryOptionsWidth: "",
-		searchInputWidth: ""
-	},
 	parameters: {
 		docs: {
 			description: {
@@ -190,13 +173,6 @@ export default {
 			description: "Width of the search input field.",
 			table: {
 				type: { summary: "string" },
-				defaultValue: { summary: "undefined" }
-			}
-		},
-		onClearAll: {
-			description: "Callback function triggered when the clear all button is clicked.",
-			table: {
-				type: { summary: "() => void" },
 				defaultValue: { summary: "undefined" }
 			}
 		}

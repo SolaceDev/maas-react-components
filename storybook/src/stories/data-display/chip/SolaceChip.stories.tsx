@@ -109,11 +109,6 @@ export default {
 				defaultValue: { summary: "undefined" }
 			}
 		},
-		onClick: {
-			control: false,
-			description:
-				"Callback function that fires when the chip is clicked. Only functional when the 'clickable' prop is true. The function receives the click event as its parameter."
-		},
 		dataQa: {
 			control: { type: "text" },
 			description: "Data attribute for QA testing. Use this to identify chips during automated testing.",

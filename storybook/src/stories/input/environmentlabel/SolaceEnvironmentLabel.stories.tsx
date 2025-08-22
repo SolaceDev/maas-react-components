@@ -52,17 +52,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Label/Environment",
 	component: SolaceEnvironmentLabel,
-	args: {
-		id: "",
-		hasWarnings: false,
-		label: "Default",
-		fgColor: "#ffffff",
-		bgColor: "#7841A8",
-		icon: undefined,
-		variant: "standard",
-		dataQa: "",
-		dataTags: ""
-	},
 	parameters: {
 		docs: {
 			description: {

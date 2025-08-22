@@ -25,19 +25,6 @@ import { action } from "@storybook/addon-actions";
 export default {
 	title: "Input/Code/Editor",
 	component: SolaceCodeEditor,
-	args: {
-		id: "",
-		name: "",
-		value: "",
-		mode: "json",
-		readOnly: false,
-		expandable: false,
-		fullScreen: false,
-		hasErrors: false,
-		hasWarnings: false,
-		helperText: "",
-		dataQa: ""
-	},
 	parameters: {},
 	argTypes: {
 		id: {

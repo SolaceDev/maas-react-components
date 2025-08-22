@@ -22,17 +22,6 @@ export default {
 	title: "Messaging/Progress Indicator/Circular",
 	component: SolaceCircularProgress,
 	parameters: {},
-	args: {
-		variant: "indeterminate",
-		size: "sm",
-		disableShrink: false,
-		value: undefined,
-		message: undefined,
-		inline: false,
-		dataQa: "loading-spinner",
-		dataTags: "",
-		eventName: ""
-	},
 	argTypes: {
 		variant: {
 			options: ["determinate", "indeterminate"],

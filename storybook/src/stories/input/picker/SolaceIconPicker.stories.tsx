@@ -61,30 +61,6 @@ const withSnapshotContainer: Decorator = (Story) => {
 export default {
 	title: "Input/Picker/Icon",
 	component: SolacePicker,
-	args: {
-		id: "",
-		name: "",
-		label: "Icon",
-		value: "",
-		variant: "icons",
-		title: "",
-		helperText: "",
-		hasErrors: false,
-		hasWarnings: false,
-		inlineLabel: false,
-		required: false,
-		disabled: false,
-		readOnly: false,
-		displayEmpty: false,
-		numOfItemsPerRow: 4,
-		numOfRowsDisplayed: 3,
-		autoFocusItem: false,
-		icons: {},
-		iconKeyOrderedList: undefined,
-		dataQa: "",
-		dataTags: "",
-		onChange: undefined
-	},
 	parameters: {
 		controls: { sort: "alpha" }
 	},

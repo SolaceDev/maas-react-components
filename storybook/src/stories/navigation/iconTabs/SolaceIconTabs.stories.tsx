@@ -27,13 +27,6 @@ const meta: Meta<typeof SolaceIconTabs> = {
 	title: "Navigation/Tabs/Icons",
 	component: SolaceIconTabs,
 	parameters: {},
-	args: {
-		views: [
-			{ tooltip: "Graph View", icon: <GraphViewIcon />, value: "view_graph" },
-			{ tooltip: "Components", icon: <ListViewIcon />, value: "view_components" }
-		],
-		activeViewValue: "view_graph"
-	},
 	argTypes: {
 		views: {
 			control: { type: "object" },
@@ -47,13 +40,6 @@ const meta: Meta<typeof SolaceIconTabs> = {
 			description: "The value of the active view",
 			table: {
 				defaultValue: { summary: '""' }
-			}
-		},
-		onViewClick: {
-			action: "clicked",
-			description: "Callback fired when the value changes",
-			table: {
-				defaultValue: { summary: "undefined" }
 			}
 		}
 	}

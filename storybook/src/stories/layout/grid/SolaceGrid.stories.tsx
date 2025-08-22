@@ -28,25 +28,6 @@ import { Meta } from "@storybook/react";
 export default {
 	title: "Layout/Grid",
 	component: SolaceGrid,
-	args: {
-		id: "",
-		hasWarnings: false,
-		spacing: 2,
-		container: false,
-		item: false,
-		columns: 12,
-		direction: "row",
-		xs: undefined,
-		sm: undefined,
-		md: undefined,
-		lg: undefined,
-		xl: undefined,
-		justifyContent: undefined,
-		alignItems: undefined,
-		wrap: "wrap",
-		sx: undefined,
-		children: undefined
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

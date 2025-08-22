@@ -22,15 +22,6 @@ import { SolaceLabel } from "@SolaceDev/maas-react-components";
 export default {
 	title: "Input/Label/Inline",
 	component: SolaceLabel,
-	args: {
-		id: "",
-		htmlForId: "",
-		required: false,
-		disabled: false,
-		children: "Label",
-		dataQa: "",
-		dataTags: ""
-	},
 	parameters: {
 		docs: {
 			description: {

@@ -46,15 +46,6 @@ const SELECT_OPTIONS: Array<JSX.Element> = [
 export default {
 	title: "Layout/Stack",
 	component: SolaceStack,
-	args: {
-		id: "",
-		hasWarnings: false,
-		spacing: 2,
-		direction: "column",
-		divider: undefined,
-		sx: undefined,
-		children: undefined
-	},
 	argTypes: {
 		id: {
 			control: { type: "text" },

@@ -25,15 +25,6 @@ export default {
 	title: "Messaging/Banner/Learning",
 	component: SolaceLearningBanner,
 	parameters: {},
-	args: {
-		title: "",
-		children: undefined,
-		showCloseButton: false,
-		onClose: undefined,
-		backgroundColor: "",
-		dataQa: "",
-		dataTags: ""
-	},
 	argTypes: {
 		title: {
 			control: { type: "text" },

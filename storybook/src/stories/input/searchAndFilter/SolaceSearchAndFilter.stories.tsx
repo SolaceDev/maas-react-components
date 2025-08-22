@@ -19,7 +19,6 @@ import { StoryFn, Meta } from "@storybook/react";
 import { SolaceSearchAndFilter, FIELD_TYPES, SolaceTextFieldChangeEvent } from "@SolaceDev/maas-react-components";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within } from "@storybook/testing-library";
-import { fn } from "@storybook/test";
 
 (SolaceSearchAndFilter as React.FC & { displayName?: string }).displayName = "SolaceSearchAndFilter";
 
@@ -28,19 +27,6 @@ const SEARCH_AND_FILTER = "search-and-filter";
 export default {
 	title: "Input/Search & Filter/Standard",
 	component: SolaceSearchAndFilter,
-	args: {
-		id: SEARCH_AND_FILTER,
-		name: SEARCH_AND_FILTER,
-		label: "Search",
-		value: "",
-		placeholder: "Search...",
-		width: "100%",
-		helperText: "",
-		hasErrors: false,
-		disabled: false,
-		type: FIELD_TYPES.SEARCH,
-		onFocus: fn()
-	},
 	parameters: {
 		docs: {
 			description: {
@@ -121,19 +107,6 @@ export default {
 			defaultValue: {
 				summary: "FIELD_TYPES.DEFAULT"
 			}
-		},
-		onChange: {
-			description: "Callback function to trigger whenever the value of the `input` is changed"
-		},
-		onFocus: {
-			description: "Callback function to notify the callee when the `input` is focused"
-		},
-		onBlur: {
-			description: "Callback function to notify the callee when the `input` is blurred"
-		},
-		onClearAll: {
-			description:
-				"Callback function to notify the callee when the clear (x) button is clicked (in case the callee wishes to perform any additional operations other than clearing the search/filter text)"
 		}
 	}
 } as Meta<typeof SolaceSearchAndFilter>;
