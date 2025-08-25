@@ -83,3 +83,25 @@ The tool generates a report in the specified format(s) in the output directory.
 - **CSV**: (Not yet implemented) A tabular format suitable for spreadsheets.
 
 The report includes statistics on component usage, a list of unused components, and the MRC version detected in each MFE.
+
+## Accessing Report Data from GitHub Actions
+
+The MRC Usage Report is automatically generated and stored as artifacts in GitHub Actions. To access the latest report:
+
+1. Navigate to [MaaS React Components Repository](https://github.com/SolaceDev/maas-react-components)
+2. Go to the "Actions" tab
+3. Click on "MRC Usage Report Generation" workflow
+4. Select the latest successful run
+5. Under the "generate report" job, expand the "upload merged reports" step
+6. Download the artifacts, which include:
+   - `mrc-usage-report-all.html`: Interactive web report
+   - `mrc-usage-report-all.json`: Detailed JSON data
+   - `mrc-usage-report-data`: Raw data directory
+
+These reports provide comprehensive insights into component usage across all applications and MFEs.
+
+## Confluence Links
+
+For additional documentation and architectural details, see:
+
+- [MRC Usage Report Project Architecture](https://sol-jira.atlassian.net/wiki/spaces/Guilds/pages/5419073540/MRC+Usage+Report+Project+Architecture)
