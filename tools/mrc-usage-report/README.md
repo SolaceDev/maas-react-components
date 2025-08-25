@@ -63,6 +63,16 @@ node dist/index.js [options]
 | `--github-url <url>`           | GitHub repository URL for MRC components.                            | `https://github.com/SolaceDev/maas-react-components` |
 | `--github-branch <branch>`     | Branch name for GitHub repository.                                   | `main`                                               |
 
+## GitHub Workflow Commands
+
+```bash
+gh workflow run "MRC Usage Report - Scheduler" --ref iphadte/DATAGO-108450-MRC-Usage-Report-Workflow-Scheduler
+
+gh workflow run "MRC Usage Report - Scheduler"  --ref feature/mrc-usage-report-data
+
+gh workflow run "MRC Usage Report Generation" --ref feature/mrc-usage-report-data
+```
+
 ## Output
 
 The tool generates a report in the specified format(s) in the output directory.
